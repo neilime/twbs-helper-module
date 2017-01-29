@@ -1,0 +1,9 @@
+/.settings
+/.buildpath
+/.project
+/vendor
+/nbproject/
+nbactions.xml
+nb-configuration.xml
+/build/
+.idea/
