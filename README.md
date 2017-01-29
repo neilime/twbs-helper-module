@@ -2,6 +2,8 @@
 
 __TwbsHelper__ is a Zend Framework module for easy integration of the [Twitter Bootstrap v4](https://github.com/twbs/bootstrap).
 
+__/!\ Work in progress /!\__
+
 [![Build Status](https://travis-ci.org/neilime/zf-twbs-helper-module.svg?branch=master)](https://travis-ci.org/neilime/zf-twbs-helper-module)
 [![Coverage Status](https://coveralls.io/repos/github/neilime/zf-twbs-helper-module/badge.svg)](https://coveralls.io/github/neilime/zf-twbs-helper-module)
 [![Latest Stable Version](https://poser.pugx.org/neilime/zf-twbs-helper-module/v/stable.png)](https://packagist.org/packages/neilime/zf-twbs-helper-module)
@@ -12,16 +14,12 @@ __TwbsHelper__ is a Zend Framework module for easy integration of the [Twitter B
 
 If this project helps you reduce time to develop and/or you want to help the maintainer of this project, you can make a donation, thank you.
 
-TODO : add pledge campain
+TODO : add pledgie campain
 
 # Contributing
 
 If you wish to contribute to TwbsHelper, please read the [CONTRIBUTING.md](CONTRIBUTING.md) file.
 NOTE : If you want to contribute don't hesitate, I'll review any PR.
-
-# Demonstration / example
-
-Render forms, buttons, alerts and many more with TwbsHelper : [see it in action (on-line)](http://neilime.github.io/zf-twbs-helper-module/demo.html).
 
 # Requirements
 
@@ -42,5 +40,3 @@ Name | Version
 [zendframework/zend-view](https://github.com/zendframework/zend-view) | 2.3.9
 
 # Documentation
-
-1. [Installation](https://github.com/neilime/zf-twbs-helper-module/wiki/1.-Installation)
