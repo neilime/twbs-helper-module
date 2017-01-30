@@ -1,14 +1,18 @@
+env:
+  global:
+    secure: RN0qHbuyyENWZ3ZPN2Py1WGhUaxm2VbY+jRE7A85YIY/W6SVN6O/nZIJN6fXj3Os0u495Mf7xwwsb4UVbstEOATGiUw3iaXRKj9mTeMaIC6IWpWAZEt82Ed8SRwh3koYBfdpgoXveYBKfDDb+Xw/tssWzrz+9YZo0JSDeuSdWdwl4/4sefbMMjXNMrUyGXkkdvTch1AZmWl+imoFq6y7Ps42xOfAHy8ReQ1+1/yEc7lIAJCd9ynyiBSPsr67FwfETir4mruUBSHJcYsH3ztWCRSyQTEopVqn0L9KkZCuVksLl+E8QIYYQ+//5bPgWiCIuM2BG1z6y90apH8U4EzTr8CN0SmFCsEWPgG41jc5+skfwkczHFafggEUjS+4zGB7lYDxuIBC/wTCx8COjYns04+FOCq95SClnfIvc5O5x0pWSDw7nVySSe0gUWVvandOtJIbPg4rcwq6U1Vzxkx7M3OU5mt9prOEqcg6yb7eR62Dr5Y1sux+amybx57tiuOkwH6DHuHKjz+bjWumbsbUkWJ66yTaraN1H9vLdacU7a4b12P2RxNtqqIQI7Y4bqp4ao2wNs4v2T1R+qgSUAFDvbj+eAKUYjar0IF4wUCxrZQ5uoRdJcu8GJSHMNvN+fLsFa+Pd3nTxGLcwsx22T2Ymo8rKifm+zKRUgT6PRCTYGw=
+
 language: php
 
 sudo: false
 
 matrix:
   include:
-    - php: '5.6'
-      env:
-        - EXECUTE_AFTER_SCRIPT=true
-    - php: '7.0'
-    - php: '7.1'
+  - php: '5.6'
+    env:
+    - EXECUTE_AFTER_SCRIPT=true
+  - php: '7.0'
+  - php: '7.1'
 
 addons:
   apt:
@@ -33,10 +37,13 @@ before_script:
 
 script:
 - cd tests
-- phpunit -d max_execution_time=0 --coverage-text --coverage-clover ../build/logs/clover.xml --coverage-html ../build/coverage/
+- phpunit -d max_execution_time=0 --coverage-text --coverage-clover ../build/logs/clover.xml
+  --coverage-html ../build/coverage/
 - cd ..
 
 after_script:
-- if [[ $EXECUTE_AFTER_SCRIPT == 'true' ]]; then php vendor/bin/coveralls --verbose --config;fi
-- if [[ $EXECUTE_AFTER_SCRIPT == 'true' ]]; then phpdoc -d "./src" -t "./build/phpdoc" --template="responsive-twig";fi
+- if [[ $EXECUTE_AFTER_SCRIPT == 'true' ]]; then php vendor/bin/coveralls --verbose
+  --config;fi
+- if [[ $EXECUTE_AFTER_SCRIPT == 'true' ]]; then phpdoc -d "./src" -t "./build/phpdoc"
+  --template="responsive-twig";fi
 - if [[ $EXECUTE_AFTER_SCRIPT == 'true' ]]; then bash <(curl -s https://gist.githubusercontent.com/neilime/769d733c52acdecea8d2548fb3aca3ff/raw/travis_ci_php_publish_build.sh);fi
