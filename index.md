@@ -1,4 +1,6 @@
----\nlayout: default\n---
+---
+layout: default
+---
 # TwbsHelper - Zend Framework module
 
 __TwbsHelper__ is a Zend Framework module for easy integration of the [Twitter Bootstrap v4](https://github.com/twbs/bootstrap).
