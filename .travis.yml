@@ -25,8 +25,8 @@ cache:
 
 before_install:
 - mkdir -p ~/.composer
-- cp .travis.composer.json ~/.composer/config.json
 - composer self-update
+- composer config --global github-oauth.github.com ${GH_TOKEN}
 - composer install --prefer-dist --dev
 - pear channel-discover pear.phpdoc.org
 - pear install phpdoc/phpDocumentor
