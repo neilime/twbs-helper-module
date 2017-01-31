@@ -74,7 +74,7 @@ Helper for rendering blockquotes
 Generates an 'blockquote' element : <blockquote class="blockquote"><p class="mb-0">Blockquote content</p></blockquote>
 
 ```php
-Blockquote::__invoke( string $sContent, array $aAttributes = array(), array $aContentAttributes = array(), boolean $bEscape = true ): string
+Blockquote::__invoke( string $sContent, string $sFooter = &#039;&#039;, array $aAttributes = array(), array $aContentAttributes = array(), array $aFooterAttributes = array(), boolean $bEscape = true ): string
 ```
 
 
@@ -84,15 +84,17 @@ Blockquote::__invoke( string $sContent, array $aAttributes = array(), array $aCo
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| `$sContent` | **string** | : the content of the blockquote |
-| `$aAttributes` | **array** | : html attributes of the <blockquote> element. Default : empty |
-| `$aContentAttributes` | **array** | : html attributes of the <p> (content) element. Default : empty |
-| `$bEscape` | **boolean** | : true espace html content '$sContent'. Default : true |
+| `$sContent` | **string** | The content of the blockquote |
+| `$sFooter` | **string** | The content of the footer of the blockquote. Default : empty |
+| `$aAttributes` | **array** | Html attributes of the <blockquote> element. Default : empty |
+| `$aContentAttributes` | **array** | Html attributes of the <p> (content) element. Default : empty |
+| `$aFooterAttributes` | **array** | Html attributes of the <p> (content) element. Default : empty |
+| `$bEscape` | **boolean** | True espace html content '$sContent'. Default True |
 
 
 **Return Value:**
 
-: the blockquote XHTML.
+The blockquote XHTML.
 
 
 
@@ -110,7 +112,7 @@ Blockquote::__invoke( string $sContent, array $aAttributes = array(), array $aCo
 
 ### getConfig
 
-
+Retrieve module configuration
 
 ```php
 Module::getConfig(  ): array
@@ -119,6 +121,10 @@ Module::getConfig(  ): array
 
 
 
+
+**Return Value:**
+
+The configuration array
 
 
 
