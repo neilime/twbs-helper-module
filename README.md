@@ -8,7 +8,6 @@ __! Work in progress !__
 [![Coverage Status](https://coveralls.io/repos/github/neilime/zf-twbs-helper-module/badge.svg)](https://coveralls.io/github/neilime/zf-twbs-helper-module)
 [![Latest Stable Version](https://poser.pugx.org/neilime/zf-twbs-helper-module/v/stable.png)](https://packagist.org/packages/neilime/zf-twbs-helper-module)
 [![Total Downloads](https://poser.pugx.org/neilime/zf-twbs-helper-module/downloads.png)](https://packagist.org/packages/neilime/zf-twbs-helper-module)
-[![Dependency Status](https://www.versioneye.com/user/projects/5294fa9d632bac5a67000046/badge.png)](https://www.versioneye.com/user/projects/5294fa9d632bac5a67000046)
 
 # Helping Project
 
