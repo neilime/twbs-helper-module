@@ -1,5 +1,5 @@
+#!/usr/bin/env php
 <?php
-
 if (empty($_SERVER['argv'])) {
     throw new \LogicException('Arguments are undefined');
 }
