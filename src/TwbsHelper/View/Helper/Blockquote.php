@@ -10,28 +10,27 @@ class Blockquote extends \Zend\View\Helper\AbstractHtmlElement {
     /**
      * Generates an 'blockquote' element : <blockquote class="blockquote"><p class="mb-0">Blockquote content</p></blockquote>
      *
-     * @param string $sContent : the content of the blockquote
-     * @param array $aAttributes : html attributes of the <blockquote> element. Default : empty
-     * @param array $aContentAttributes : html attributes of the <p> (content) element. Default : empty
-     * @param bool $bEscape : true espace html content '$sContent'. Default : true
-     * @return string : the blockquote XHTML.
+     * @param string $sContent The content of the blockquote
+     * @param string $sFooter The content of the footer of the blockquote. Default : empty
+     * @param array $aAttributes Html attributes of the <blockquote> element. Default : empty
+     * @param array $aContentAttributes Html attributes of the <p> (content) element. Default : empty
+     * @param array $aFooterAttributes Html attributes of the <p> (content) element. Default : empty
+     * @param bool $bEscape True espace html content '$sContent'. Default True
+     * @return string The blockquote XHTML.
      * @throws \InvalidArgumentException
      */
-    public function __invoke($sContent, $aAttributes = array(), $aContentAttributes = array(), $bEscape = true) {
+    public function __invoke($sContent, $sFooter = '', array $aAttributes = array(), array $aContentAttributes = array(), array $aFooterAttributes = array(), $bEscape = true) {
         if (!is_string($sContent)) {
             throw new \InvalidArgumentException('Argument "$sContent" expects a string, "' . (is_object($sContent) ? get_class($sContent) : gettype($sContent)) . '" given');
         }
-        if (!is_array($aAttributes)) {
-            throw new \InvalidArgumentException('Argument "$aAttributes" expects a boolean, "' . (is_object($aAttributes) ? get_class($aAttributes) : gettype($aAttributes)) . '" given');
-        }
-        if (!is_array($aContentAttributes)) {
-            throw new \InvalidArgumentException('Argument "$aContentAttributes" expects a boolean, "' . (is_object($aContentAttributes) ? get_class($aContentAttributes) : gettype($aContentAttributes)) . '" given');
+        if (!is_string($sFooter)) {
+            throw new \InvalidArgumentException('Argument "$sFooter" expects a string, "' . (is_object($sFooter) ? get_class($sFooter) : gettype($sFooter)) . '" given');
         }
         if (!is_bool($bEscape)) {
             throw new \InvalidArgumentException('Argument "$bEscape" expects a boolean, "' . (is_object($bEscape) ? get_class($bEscape) : gettype($bEscape)) . '" given');
         }
 
-
+        // Manage content
         if ($bEscape) {
             $sContent = $this->getView()->plugin('escapeHtml')->__invoke($sContent);
         }
@@ -49,8 +48,23 @@ class Blockquote extends \Zend\View\Helper\AbstractHtmlElement {
         } else {
             $aContentAttributes['class'] = trim($aContentAttributes['class']) . ' mb-0';
         }
+
+        // Manage footer
+        if ($sFooter) {
+            if ($bEscape) {
+                $sFooter = $this->getView()->plugin('escapeHtml')->__invoke($sFooter);
+            }
+            // Footer class
+            if (empty($aFooterAttributes['class'])) {
+                $aFooterAttributes['class'] = 'blockquote-footer';
+            } else {
+                $aFooterAttributes['class'] = trim($aFooterAttributes['class']) . ' blockquote-footer';
+            }
+        }
+
         return '<blockquote' . ($aAttributes ? $this->htmlAttribs($aAttributes) : '') . '>' . PHP_EOL .
                 '    <p' . ($aContentAttributes ? $this->htmlAttribs($aContentAttributes) : '') . '>' . $sContent . '</p>' . PHP_EOL .
+                ($sFooter ? '    <footer' . ($aAttributes ? $this->htmlAttribs($aFooterAttributes) : '') . '>' . $sFooter . '</footer>' . PHP_EOL : '') .
                 '</blockquote>';
     }
 

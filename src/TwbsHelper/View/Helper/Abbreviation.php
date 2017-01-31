@@ -18,7 +18,7 @@ class Abbreviation extends \Zend\View\Helper\AbstractHtmlElement {
      * @return string : the abbreviation XHTML.
      * @throws \InvalidArgumentException
      */
-    public function __invoke($sContent, $sTitle = '', $bInitialism = false, $aAttributes = array(), $bEscape = true) {
+    public function __invoke($sContent, $sTitle = '', $bInitialism = false, array $aAttributes = array(), $bEscape = true) {
         if (!is_string($sContent)) {
             throw new \InvalidArgumentException('Argument "$sContent" expects a string, "' . (is_object($sContent) ? get_class($sContent) : gettype($sContent)) . '" given');
         }
@@ -27,9 +27,6 @@ class Abbreviation extends \Zend\View\Helper\AbstractHtmlElement {
         }
         if (!is_bool($bInitialism)) {
             throw new \InvalidArgumentException('Argument "$bInitialism" expects a boolean, "' . (is_object($bInitialism) ? get_class($bInitialism) : gettype($bInitialism)) . '" given');
-        }
-        if (!is_array($aAttributes)) {
-            throw new \InvalidArgumentException('Argument "$aAttributes" expects a boolean, "' . (is_object($aAttributes) ? get_class($aAttributes) : gettype($aAttributes)) . '" given');
         }
         if (!is_bool($bEscape)) {
             throw new \InvalidArgumentException('Argument "$bEscape" expects a boolean, "' . (is_object($bEscape) ? get_class($bEscape) : gettype($bEscape)) . '" given');

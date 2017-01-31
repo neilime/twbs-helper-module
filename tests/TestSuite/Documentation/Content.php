@@ -28,6 +28,42 @@ return array(
                     },
                     'expected' => '<blockquote class="blockquote">' . PHP_EOL . '    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>' . PHP_EOL . '</blockquote>',
                 ),
+                array(
+                    'title' => 'Naming a source',
+                    'url' => 'https://v4-alpha.getbootstrap.com/content/typography/#naming-a-source',
+                    'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
+                        echo $oView->blockquote(
+                                // Content
+                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.',
+                                // Footer content
+                                'Someone famous in <cite title="Source Title">Source Title</cite>', array(), array(), array(),
+                                // Disable escaping
+                                false
+                        );
+                    },
+                    'expected' => '<blockquote class="blockquote">' . PHP_EOL .
+                    '    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>' . PHP_EOL .
+                    '    <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>' . PHP_EOL .
+                    '</blockquote>',
+                ),
+                array(
+                    'title' => 'Reverse layout',
+                    'url' => 'https://v4-alpha.getbootstrap.com/content/typography/#reverse-layout',
+                    'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
+                        echo $oView->blockquote(
+                                // Content
+                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.',
+                                // Footer content
+                                'Someone famous in <cite title="Source Title">Source Title</cite>', array('class' => 'blockquote-reverse'), array(), array(),
+                                // Disable escaping
+                                false
+                        );
+                    },
+                    'expected' => '<blockquote class="blockquote-reverse&#x20;blockquote">' . PHP_EOL .
+                    '    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>' . PHP_EOL .
+                    '    <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>' . PHP_EOL .
+                    '</blockquote>',
+                ),
             ),
         ),
     ),
