@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/print.css" media="print" />
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>TwbsHelper - Zend Framework module - API Documentation</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1> TwbsHelper - Zend Framework module </h1>
+        <h2> Zend Framework module for easy integration of Twitter Bootstrap </h2>
+        <a href="https://github.com/neilime/zf-twbs-helper-module" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+
+          <h1 id="api-documentation">API Documentation</h1>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ul>
+  <li><a href="#abbreviation">Abbreviation</a>
+    <ul>
+      <li><a href="#__invoke">__invoke</a></li>
+    </ul>
+  </li>
+  <li><a href="#blockquote">Blockquote</a>
+    <ul>
+      <li><a href="#__invoke-1">__invoke</a></li>
+    </ul>
+  </li>
+  <li><a href="#module">Module</a>
+    <ul>
+      <li><a href="#getconfig">getConfig</a></li>
+    </ul>
+  </li>
+  <li><a href="#moduleoptions">ModuleOptions</a>
+    <ul>
+      <li><a href="#getignoredviewhelpers">getIgnoredViewHelpers</a></li>
+      <li><a href="#setignoredviewhelpers">setIgnoredViewHelpers</a></li>
+      <li><a href="#getclassmap">getClassMap</a></li>
+      <li><a href="#setclassmap">setClassMap</a></li>
+      <li><a href="#gettypemap">getTypeMap</a></li>
+      <li><a href="#settypemap">setTypeMap</a></li>
+    </ul>
+  </li>
+  <li><a href="#moduleoptionsfactory">ModuleOptionsFactory</a>
+    <ul>
+      <li><a href="#createservice">createService</a></li>
+      <li><a href="#__invoke-2">__invoke</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="abbreviation">Abbreviation</h2>
+
+<p>Helper for rendering abbreviations</p>
+
+<ul>
+  <li>Full name: \TwbsHelper\View\Helper\Abbreviation</li>
+  <li>Parent class:</li>
+</ul>
+
+<h3 id="invoke">__invoke</h3>
+
+<p>Generates an ‘abbreviation’ element : <abbr title="abbreviation title">abbreviation content</abbr></p>
+
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>Abbreviation::__invoke( string $sContent, string $sTitle = <span class="ni">&amp;#039;&amp;#039;</span>, boolean $bInitialism = false, array $aAttributes = array(), boolean $bEscape = true ): string
+</code></pre>
+</div>
+
+<p><strong>Parameters:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">$sContent</code></td>
+      <td><strong>string</strong></td>
+      <td>: the content of the abbreviation</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">$sTitle</code></td>
+      <td><strong>string</strong></td>
+      <td>: the title of the abbreviation. Default : empty</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">$bInitialism</code></td>
+      <td><strong>boolean</strong></td>
+      <td>: true set the class ‘initialism’ to an abbreviation for a slightly smaller font-size. Default : false</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">$aAttributes</code></td>
+      <td><strong>array</strong></td>
+      <td>: html attributes of the <abbr> element</abbr></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">$bEscape</code></td>
+      <td><strong>boolean</strong></td>
+      <td>: true espace html content ‘$sContent’. Default : true</td>
+    </tr>
+  </tbody>
+</table>
+
+<dl>
+  <dt><strong>Return Value:</strong></dt>
+  <dd>
+    <p>the abbreviation XHTML.</p>
+  </dd>
+</dl>
+
+<hr />
+
+<h2 id="blockquote">Blockquote</h2>
+
+<p>Helper for rendering blockquotes</p>
+
+<ul>
+  <li>Full name: \TwbsHelper\View\Helper\Blockquote</li>
+  <li>Parent class:</li>
+</ul>
+
+<h3 id="invoke-1">__invoke</h3>
+
+<p>Generates an ‘blockquote’ element : &lt;blockquote class="blockquote"&gt;&lt;p class="mb-0"&gt;Blockquote content&lt;/p&gt;&lt;/blockquote&gt;</p>
+
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>Blockquote::__invoke( string $sContent, array $aAttributes = array(), array $aContentAttributes = array(), boolean $bEscape = true ): string
+</code></pre>
+</div>
+
+<p><strong>Parameters:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">$sContent</code></td>
+      <td><strong>string</strong></td>
+      <td>: the content of the blockquote</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">$aAttributes</code></td>
+      <td><strong>array</strong></td>
+      <td>: html attributes of the &lt;blockquote&gt; element. Default : empty</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">$aContentAttributes</code></td>
+      <td><strong>array</strong></td>
+      <td>: html attributes of the &lt;p&gt; (content) element. Default : empty</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">$bEscape</code></td>
+      <td><strong>boolean</strong></td>
+      <td>: true espace html content ‘$sContent’. Default : true</td>
+    </tr>
+  </tbody>
+</table>
+
+<dl>
+  <dt><strong>Return Value:</strong></dt>
+  <dd>
+    <p>the blockquote XHTML.</p>
+  </dd>
+</dl>
+
+<hr />
+
+<h2 id="module">Module</h2>
+
+<ul>
+  <li>Full name: \TwbsHelper\Module</li>
+  <li>This class implements: \Zend\ModuleManager\Feature\ConfigProviderInterface</li>
+</ul>
+
+<h3 id="getconfig">getConfig</h3>
+
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>Module::getConfig(  ): array
+</code></pre>
+</div>
+
+<hr />
+
+<h2 id="moduleoptions">ModuleOptions</h2>
+
+<p>Hold options for TwbsHelper module</p>
+
+<ul>
+  <li>Full name: \TwbsHelper\Options\ModuleOptions</li>
+  <li>Parent class:</li>
+</ul>
+
+<h3 id="getignoredviewhelpers">getIgnoredViewHelpers</h3>
+
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>ModuleOptions::getIgnoredViewHelpers(  ): array
+</code></pre>
+</div>
+
+<hr />
+
+<h3 id="setignoredviewhelpers">setIgnoredViewHelpers</h3>
+
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>ModuleOptions::setIgnoredViewHelpers( array $aIgnoredViewHelpers ): \TwbsHelper\Options\ModuleOptions
+</code></pre>
+</div>
+
+<p><strong>Parameters:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">$aIgnoredViewHelpers</code></td>
+      <td><strong>array</strong></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="getclassmap">getClassMap</h3>
+
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>ModuleOptions::getClassMap(  ): array
+</code></pre>
+</div>
+
+<hr />
+
+<h3 id="setclassmap">setClassMap</h3>
+
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>ModuleOptions::setClassMap( array $aClassMap ): \TwbsHelper\Options\ModuleOptions
+</code></pre>
+</div>
+
+<p><strong>Parameters:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">$aClassMap</code></td>
+      <td><strong>array</strong></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="gettypemap">getTypeMap</h3>
+
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>ModuleOptions::getTypeMap(  ): array
+</code></pre>
+</div>
+
+<hr />
+
+<h3 id="settypemap">setTypeMap</h3>
+
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>ModuleOptions::setTypeMap( array $aTypeMap ): \TwbsHelper\Options\ModuleOptions
+</code></pre>
+</div>
+
+<p><strong>Parameters:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">$aTypeMap</code></td>
+      <td><strong>array</strong></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="moduleoptionsfactory">ModuleOptionsFactory</h2>
+
+<ul>
+  <li>Full name: \TwbsHelper\Options\Factory\ModuleOptionsFactory</li>
+  <li>This class implements: \Zend\ServiceManager\FactoryInterface</li>
+</ul>
+
+<h3 id="createservice">createService</h3>
+
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>ModuleOptionsFactory::createService( \Zend\ServiceManager\ServiceLocatorInterface $oServiceLocator ): \TwbsHelper\Options\ModuleOptions
+</code></pre>
+</div>
+
+<p><strong>Parameters:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">$oServiceLocator</code></td>
+      <td><strong>\Zend\ServiceManager\ServiceLocatorInterface</strong></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="invoke-2">__invoke</h3>
+
+<div class="language-php highlighter-rouge"><pre class="highlight"><code>ModuleOptionsFactory::__invoke( \Interop\Container\ContainerInterface $oContainer, string $sRequestedName, array $aOptions = null ): \TwbsHelper\Options\ModuleOptions
+</code></pre>
+</div>
+
+<p><strong>Parameters:</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">$oContainer</code></td>
+      <td><strong>\Interop\Container\ContainerInterface</strong></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">$sRequestedName</code></td>
+      <td><strong>string</strong></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">$aOptions</code></td>
+      <td><strong>array</strong></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<hr />
+<blockquote>
+  <p>This document was automatically generated from source code comments on 2017-01-31 using <a href="http://www.phpdoc.org/">phpDocumentor</a> and <a href="https://github.com/cvuorinen/phpdoc-markdown-public">cvuorinen/phpdoc-markdown-public</a></p>
+</blockquote>
+
+
+
+        </section>
+
+        <aside id="sidebar">
+
+          <a href="https://github.com/neilime/zf-twbs-helper-module/archive/master.zip" class="button download">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/neilime/zf-twbs-helper-module/archive/master.tar.gz" class="button download">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+          
+            <a href="http://localhost:4000" class="button home">Home</a>
+          
+          <hr/>
+          
+
+          <p class="repo-owner"><a href="https://github.com/neilime/zf-twbs-helper-module">neilime/zf-twbs-helper-module</a> is maintained by <a href="https://github.com/neilime">neilime</a>.</p>
+        </aside>
+      </div>
+    </div>
+ <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  </body>
+</html>
