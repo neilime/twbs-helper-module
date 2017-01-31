@@ -633,11 +633,10 @@ form {
 #main-content h1 {
   font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: 15px;
   font-size: 2.8em;
   font-weight: normal;
   color: #474747;
-  text-indent: 6px;
   letter-spacing: -1px;
 }
 
@@ -649,7 +648,6 @@ form {
   font-size: 22px;
   font-weight: bold;
   color: #474747;
-  text-indent: 4px;
 }
 
 #main-content h3 {
@@ -659,7 +657,6 @@ form {
   font-size: 18px;
   font-weight: bold;
   color: #474747;
-  text-indent: 3px;
 }
 
 #main-content h4 {
@@ -668,7 +665,6 @@ form {
   font-size: 15px;
   font-weight: bold;
   color: #474747;
-  text-indent: 3px;
 }
 
 #main-content h5 {
@@ -676,7 +672,6 @@ form {
   margin-bottom: 8px;
   font-size: 14px;
   color: #474747;
-  text-indent: 3px;
 }
 
 #main-content h6 {
@@ -684,7 +679,6 @@ form {
   margin-bottom: 8px;
   font-size: .8em;
   color: #474747;
-  text-indent: 3px;
 }
 
 p {
