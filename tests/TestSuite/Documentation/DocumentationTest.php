@@ -123,7 +123,13 @@ class DocumentationTest extends \PHPUnit_Framework_TestCase {
         $oRenderer = new \Zend\View\Renderer\PhpRenderer();
         $oRenderer->setHelperPluginManager($oViewHelperPluginManager);
 
-        $this->assertSame($sExpected, call_user_func($oRendering, $oRenderer));
+        // Retrieve output of renderging
+        ob_start();
+        call_user_func($oRendering, $oRenderer);
+        $sRendering = ob_get_contents();
+        ob_end_clean();
+
+        $this->assertSame($sExpected, $sRendering);
     }
 
 }
