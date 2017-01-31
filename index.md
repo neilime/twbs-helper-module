@@ -4,7 +4,7 @@ title: Home
 ---
 # TwbsHelper - Zend Framework module
 
-__TwbsHelper__ is a Zend Framework module for easy integration of the [Twitter Bootstrap v4](https://github.com/twbs/bootstrap).
+__TwbsHelper__ is a Zend Framework module for easy integration of the [Twitter Bootstrap v4](https://v4-alpha.getbootstrap.com/).
 
 __! Work in progress !__
 
@@ -18,7 +18,7 @@ __! Work in progress !__
 
 If this project helps you reduce time to develop and/or you want to help the maintainer of this project, you can make a donation, thank you.
 
-TODO : add pledgie campain
+<a href='https://pledgie.com/campaigns/33297'><img alt='Click here to lend your support to: TwbsHelper - Zend Framework module and make a donation at pledgie.com !' src='https://pledgie.com/campaigns/33297.png?skin_name=chrome' border='0' ></a>
 
 # Contributing
 
@@ -48,3 +48,5 @@ Name | Version
 [zendframework/zend-view](https://github.com/zendframework/zend-view) | 2.3.9
 
 # Documentation
+
+ - [Php Doc](https://neilime.github.io/zf-twbs-helper-module/phpdoc)
