@@ -4,3 +4,6 @@ tagline: Zend Framework module for easy integration of Twitter Bootstrap
 owner: neilime
 repository: neilime/zf-twbs-helper-module
 exclude: ['nbproject']
+markdown: kramdown
+highlighter: rouge
+baseurl: "/zf-twbs-helper-module"

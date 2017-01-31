@@ -44,11 +44,11 @@
             .tar.gz file
           </a>
           {% if page.title != 'Home' %}
-            <a href="{{ site.url }}" class="button home">Home</a>
+            <a href="{{ site.baseurl }}/" class="button home">Home</a>
           {% else %}
-            <a href="{{ site.url }}/demo.html" class="button demo">Demo</a>
-            <a href="{{ site.url }}/phpdoc" class="button phpdoc">PHP Doc</a>
-            <a href="{{ site.url }}/coverage" class="button coverage">Coverage</a>
+            <a href="{{ site.baseurl }}/demo.html" class="button demo">Demo</a>
+            <a href="{{ site.baseurl }}/phpdoc" class="button phpdoc">PHP Doc</a>
+            <a href="{{ site.baseurl }}/coverage" class="button coverage">Coverage</a>
           {% endif %}
           <hr/>
           {% if page.title == 'Demonstration' %}
