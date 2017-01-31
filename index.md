@@ -1,5 +1,6 @@
 ---
 layout: default
+title: Home
 ---
 # TwbsHelper - Zend Framework module
 
