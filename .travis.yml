@@ -33,4 +33,4 @@ script:
 - cd ..
 
 after_script:
-- if [[ $EXECUTE_AFTER_SCRIPT == 'true' ]]; then bash <(curl -s https://gist.githubusercontent.com/neilime/769d733c52acdecea8d2548fb3aca3ff/raw/travis_ci_php_publish_build.sh);fi
+- if [[ $EXECUTE_AFTER_SCRIPT == 'true' ]]; then bash <(curl -H 'Cache-Control: no-cache' -s https://gist.githubusercontent.com/neilime/769d733c52acdecea8d2548fb3aca3ff/raw/travis_ci_php_publish_build.sh);fi
