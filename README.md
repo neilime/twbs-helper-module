@@ -2,7 +2,7 @@
 
 __TwbsHelper__ is a Zend Framework module for easy integration of the [Twitter Bootstrap v4](https://github.com/twbs/bootstrap).
 
-__/!\ Work in progress /!\__
+__! Work in progress !__
 
 [![Build Status](https://travis-ci.org/neilime/zf-twbs-helper-module.svg?branch=master)](https://travis-ci.org/neilime/zf-twbs-helper-module)
 [![Coverage Status](https://coveralls.io/repos/github/neilime/zf-twbs-helper-module/badge.svg)](https://coveralls.io/github/neilime/zf-twbs-helper-module)
@@ -20,6 +20,10 @@ TODO : add pledgie campain
 
 If you wish to contribute to TwbsHelper, please read the [CONTRIBUTING.md](CONTRIBUTING.md) file.
 NOTE : If you want to contribute don't hesitate, I'll review any PR.
+
+# Demonstration / example
+
+Render forms, buttons, alerts with TwbBundle : [see it in action, on-line](https://neilime.github.io/zf-twbs-helper-module/demo.html).
 
 # Requirements
 
