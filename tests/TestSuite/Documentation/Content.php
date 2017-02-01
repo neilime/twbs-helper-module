@@ -96,7 +96,8 @@ return array(
                                         // Do not order items
                                         false,
                                         // Add "list-unstyled" class
-                                        array('class' => 'list-unstyled'));
+                                        array('class' => 'list-unstyled')
+                                );
                             },
                             'expected' => '<ul class="list-unstyled">' . PHP_EOL .
                             '<li>Lorem ipsum dolor sit amet</li>' . PHP_EOL .
@@ -117,8 +118,8 @@ return array(
                             '</ul>' . PHP_EOL,
                         ),
                         array(
-                            'title' => 'Unstyled',
-                            'url' => 'https://v4-alpha.getbootstrap.com/content/typography/#unstyled',
+                            'title' => 'Inline',
+                            'url' => 'https://v4-alpha.getbootstrap.com/content/typography/#inline',
                             'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
                                 // First abbreviation
                                 echo $oView->htmlList(
@@ -126,8 +127,9 @@ return array(
                                         array('Lorem ipsum', 'Phasellus iaculis', 'Nulla volutpat',),
                                         // Do not order items
                                         false,
-                                        // Add "list-unstyled" class
-                                        array('class' => 'list-inline'));
+                                        // Add "list-inline" class
+                                        array('class' => 'list-inline')
+                                );
                             },
                             'expected' => '<ul class="list-inline">' . PHP_EOL .
                             '<li class="list-inline-item">Lorem ipsum</li>' . PHP_EOL .
