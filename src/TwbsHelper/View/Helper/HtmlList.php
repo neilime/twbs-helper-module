@@ -8,9 +8,9 @@ namespace TwbsHelper\View\Helper;
 class HtmlList extends \Zend\View\Helper\AbstractHtmlElement {
 
     /**
-     * Generates a 'List' element.
+     * Generates a 'List' element. Manage indentation of Xhtml markup
      *
-     * @param array $aItems   Array with the elements of the list
+     * @param array $aItems Array with the elements of the list
      * @param bool $bOrdered Specifies ordered/unordered list; default unordered
      * @param array $aAttributes Attributes for the ol/ul tag. If class attributes contains "list-inline", so the li will have the class "list-inline-item"
      * @param bool $bEscape  Escape the items.
@@ -31,33 +31,35 @@ class HtmlList extends \Zend\View\Helper\AbstractHtmlElement {
         $sList = '';
 
         if ($aAttributes) {
+            if (isset($aAttributes['nested_level'])) {
+                $iNestedLevel = $aAttributes['nested_level'];
+                unset($aAttributes['nested_level']);
+            } else {
+                $iNestedLevel = 0;
+            }
             $sUlAttributes = $this->htmlAttribs($aAttributes);
             $sLiAttributes = isset($aAttributes['class']) && strpos($aAttributes['class'], 'list-inline') !== false ? $this->htmlAttribs(array('class' => 'list-inline-item',)) : '';
-            if (isset($aAttributes['indentation'])) {
-                $iIndentation = $aAttributes['indentation'];
-                unset($aAttributes['indentation']);
-            } else {
-                $iIndentation = 0;
-            }
         } else {
             $sUlAttributes = $sLiAttributes = '';
-            $iIndentation = 0;
+            $iNestedLevel = 0;
         }
 
 
         foreach ($aItems as $sItem) {
+            $iNestedLevel++;
+            $sItemIndentation = str_repeat(' ', $iNestedLevel * 4);
             if (!is_array($sItem)) {
                 if ($bEscape) {
                     $oEscaper = $this->getView()->plugin('escapeHtml');
                     $sItem = $oEscaper($sItem);
                 }
-                $sList .= str_repeat(' ', $iIndentation * 4) . '<li' . ($sLiAttributes ?: '') . '>' . $sItem . '</li>' . PHP_EOL;
+                $sList .= $sItemIndentation . '<li' . ($sLiAttributes ?: '') . '>' . $sItem . '</li>' . PHP_EOL;
             } else {
                 // Remove end of last li element (</li>)
                 $iItemLength = 5 + strlen(PHP_EOL);
 
                 // Generate nested list
-                $sNestedList = $this($sItem, $bOrdered, array_merge($aAttributes, array('indentation' => $iIndentation + 1)), $bEscape) . '</li>' . PHP_EOL;
+                $sNestedList = PHP_EOL . $this($sItem, $bOrdered, array_merge($aAttributes, array('nested_level' => $iNestedLevel + 1)), $bEscape) . $sItemIndentation . '</li>' . PHP_EOL;
 
                 if ($iItemLength < strlen($sList)) {
                     $sList = substr($sList, 0, strlen($sList) - $iItemLength) . $sNestedList;
@@ -65,11 +67,12 @@ class HtmlList extends \Zend\View\Helper\AbstractHtmlElement {
                     $sList .= '<li>' . $sNestedList;
                 }
             }
+            $iNestedLevel--;
         }
 
         $sTag = $bOrdered ? 'ol' : 'ul';
-
-        return '<' . $sTag . ($sUlAttributes ?: '') . '>' . PHP_EOL . $sList . '</' . $sTag . '>' . PHP_EOL;
+        $sIndentation = str_repeat(' ', $iNestedLevel * 4);
+        return $sIndentation . '<' . $sTag . ($sUlAttributes ?: '') . '>' . PHP_EOL . $sList . $sIndentation . '</' . $sTag . '>' . PHP_EOL;
     }
 
 }
