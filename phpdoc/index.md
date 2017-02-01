@@ -31,7 +31,7 @@ Helper for rendering abbreviations
 
 ### __invoke
 
-Generates an 'abbreviation' element : <abbr title="abbreviation title">abbreviation content</abbr>
+Generates an 'abbreviation' element : "<abbr title="abbreviation title">abbreviation content</abbr>"
 
 ```php
 Abbreviation::__invoke( string $sContent, string $sTitle = &#039;&#039;, boolean $bInitialism = false, array $aAttributes = array(), boolean $bEscape = true ): string
@@ -44,16 +44,16 @@ Abbreviation::__invoke( string $sContent, string $sTitle = &#039;&#039;, boolean
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| `$sContent` | **string** | : the content of the abbreviation |
-| `$sTitle` | **string** | : the title of the abbreviation. Default : empty |
-| `$bInitialism` | **boolean** | : true set the class 'initialism' to an abbreviation for a slightly smaller font-size. Default : false |
-| `$aAttributes` | **array** | : html attributes of the <abbr> element |
-| `$bEscape` | **boolean** | : true espace html content '$sContent'. Default : true |
+| `$sContent` | **string** | The content of the abbreviation |
+| `$sTitle` | **string** | The title of the abbreviation. Default : empty |
+| `$bInitialism` | **boolean** | True set the class 'initialism' to an abbreviation for a slightly smaller font-size. Default : false |
+| `$aAttributes` | **array** | Html attributes of the <abbr> element |
+| `$bEscape` | **boolean** | True espace html content '$sContent'. Default True |
 
 
 **Return Value:**
 
-: the abbreviation XHTML.
+The abbreviation XHTML.
 
 
 
@@ -71,7 +71,7 @@ Helper for rendering blockquotes
 
 ### __invoke
 
-Generates an 'blockquote' element : <blockquote class="blockquote"><p class="mb-0">Blockquote content</p></blockquote>
+Generates an 'blockquote' element : "<blockquote class="blockquote"><p class="mb-0">Blockquote content</p></blockquote>"
 
 ```php
 Blockquote::__invoke( string $sContent, string $sFooter = &#039;&#039;, array $aAttributes = array(), array $aContentAttributes = array(), array $aFooterAttributes = array(), boolean $bEscape = true ): string
