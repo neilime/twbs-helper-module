@@ -20,6 +20,11 @@
 * [ModuleOptionsFactory](#moduleoptionsfactory)
     * [createService](#createservice)
     * [__invoke](#__invoke-3)
+* [Table](#table)
+    * [__invoke](#__invoke-4)
+    * [renderTableRows](#rendertablerows)
+    * [renderTableRow](#rendertablerow)
+    * [renderTableCell](#rendertablecell)
 
 ## Abbreviation
 
@@ -346,6 +351,156 @@ ModuleOptionsFactory::__invoke( \Interop\Container\ContainerInterface $oContaine
 | `$sRequestedName` | **string** |  |
 | `$aOptions` | **array** |  |
 
+
+
+
+---
+
+## Table
+
+Helper for rendering tables
+
+
+
+* Full name: \TwbsHelper\View\Helper\Table
+* Parent class: 
+
+
+### __invoke
+
+Generates an 'table' element : "<table>"
+
+```php
+Table::__invoke( array $aRows, array $aAttributes = array(), boolean $bEscape = true ): string
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$aRows` | **array** | : table rows.
+ Simple array : [ [one, two, three], [four, five, six] ]
+ Simple array with a head :
+    [ [first-col => one, second-col =>  two, third-col =>  three], [four, five, six] ]
+    or
+    [
+        head => [ [first-col, second-col, third-col] ]
+        body [ [one, two, three], [four, five, six] ]
+    ]
+ Custom cell, each cells (td,th) can be a scalar value or an array composed of :
+   - string 'type': (optionnal) th or td. Default is "th" for thead rows and "td" for tbody rows
+   - scalar 'data': the content of the cell
+   - array 'attributes': (optionnal) html attributes of the cell element. Default : empty
+   [
+       [ [ type => th, attributes => [ scope => row ] data => one ], two, three],
+       [ [ type => th, attributes => [ scope => row ] data => four ], five, six ]
+   ] |
+| `$aAttributes` | **array** | Html attributes of the <table> element. Default : empty |
+| `$bEscape` | **boolean** | True espace html content of cells. Default True |
+
+
+**Return Value:**
+
+The table XHTML.
+
+
+
+---
+
+### renderTableRows
+
+Generate table rows elements
+
+```php
+Table::renderTableRows( array $aRows, boolean $bEscape = true ): string
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$aRows` | **array** | The array of rows. Can be :
+    [ [first-col => one, second-col =>  two, third-col =>  three], [four, five, six] ]
+    or
+    [
+        head => [ [first-col, second-col, third-col] ]
+        body [ [one, two, three], [four, five, six] ]
+    ] |
+| `$bEscape` | **boolean** | True espace html content of cells. Default True |
+
+
+**Return Value:**
+
+The rows XHTML.
+
+
+
+---
+
+### renderTableRow
+
+Generate table row element "<tr>"
+
+```php
+Table::renderTableRow( array $aRow, string $sDefaultCellType, boolean $bEscape = true ): string
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$aRow` | **array** |  |
+| `$sDefaultCellType` | **string** | The default cell element (th or td) to be used |
+| `$bEscape` | **boolean** | True espace html content of cells. Default True |
+
+
+**Return Value:**
+
+The row XHTML.
+
+
+
+---
+
+### renderTableCell
+
+Generate table cell element "<th>" or "<td>"
+
+```php
+Table::renderTableCell( scalar|array $sCell, string $sDefaultCellType, boolean $bEscape = true ): string
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$sCell` | **scalar&#124;array** | : the cell data ; can be a scalar value or an array composed of :
+   - string 'type': (optionnal) th or td. Default is "th" for thead rows and "td" for tbody rows
+   - scalar 'data': the content of the cell
+   - array 'attributes': (optionnal) html attributes of the cell element. Default : empty
+   [
+       [ [ type => th, attributes => [ scope => row ] data => one ], two, three],
+       [ [ type => th, attributes => [ scope => row ] data => four ], five, six ]
+   ] |
+| `$sDefaultCellType` | **string** | The default cell element (th or td) to be used |
+| `$bEscape` | **boolean** | True espace html content of cells. Default True |
+
+
+**Return Value:**
+
+The cell XHTML.
 
 
 
