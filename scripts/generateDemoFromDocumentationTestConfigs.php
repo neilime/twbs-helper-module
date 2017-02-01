@@ -129,7 +129,7 @@ function convertTestConfigForDemoPage($sDemoPageFilePath, $sTitle, array $aTestC
             $sRenderingContent .= PHP_EOL;
         }
 
-        if ($sLine === ');' || $sLine === '}' || $sLine === '),') {
+        if (preg_match('/^\)+[;|,]$/', $sLine) || $sLine === '}') {
             $iIndentation--;
         }
 
