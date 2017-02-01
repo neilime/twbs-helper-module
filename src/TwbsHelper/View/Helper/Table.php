@@ -16,24 +16,8 @@ class Table extends \Zend\View\Helper\AbstractHtmlElement {
     /**
      * Generates an 'table' element : "<table>"
      *
-     * @param array $aRows : table rows.
-     *  Simple array : [ [one, two, three], [four, five, six] ]
-     *  Simple array with a head :
-     *     [ [first-col => one, second-col =>  two, third-col =>  three], [four, five, six] ]
-     *     or
-     *     [
-     *         head => [ [first-col, second-col, third-col] ]
-     *         body [ [one, two, three], [four, five, six] ]
-     *     ]
-     *  Custom cell, each cells (td,th) can be a scalar value or an array composed of :
-     *    - string 'type': (optionnal) th or td. Default is "th" for thead rows and "td" for tbody rows
-     *    - scalar 'data': the content of the cell
-     *    - array 'attributes': (optionnal) html attributes of the cell element. Default : empty
-     *    [
-     *        [ [ type => th, attributes => [ scope => row ] data => one ], two, three],
-     *        [ [ type => th, attributes => [ scope => row ] data => four ], five, six ]
-     *    ]
-     * @param array $aAttributes Html attributes of the <table> element. Default : empty
+     * @param array $aRows table rows
+     * @param array $aAttributes Html attributes of the "<table>" element. Default : empty
      * @param bool $bEscape True espace html content of cells. Default True
      * @return string The table XHTML.
      * @throws \InvalidArgumentException
@@ -51,13 +35,7 @@ class Table extends \Zend\View\Helper\AbstractHtmlElement {
 
     /**
      * Generate table rows elements
-     * @param array $aRows The array of rows. Can be :
-     *     [ [first-col => one, second-col =>  two, third-col =>  three], [four, five, six] ]
-     *     or
-     *     [
-     *         head => [ [first-col, second-col, third-col] ]
-     *         body [ [one, two, three], [four, five, six] ]
-     *     ]
+     * @param array $aRows The array of rows.
      * @param boolean $bEscape True espace html content of cells. Default True
      * @return string The rows XHTML.
      * @throws \InvalidArgumentException
@@ -94,16 +72,8 @@ class Table extends \Zend\View\Helper\AbstractHtmlElement {
             }
         }
 
-        if (!empty($aHeadRows)) {
-            if (!is_array(current($aHeadRows))) {
-                $aHeadRows = array($aHeadRows);
-            }
-
-            $sMarkup .= '    <' . self::TABLE_HEAD . '>' . PHP_EOL;
-            foreach ($aHeadRows as $aHeadRow) {
-                $sMarkup .= $this->renderTableRow($aHeadRow, self::TABLE_H, $bEscape);
-            }
-            $sMarkup .= '    </' . self::TABLE_HEAD . '>' . PHP_EOL;
+        if (isset($aHeadRows)) {
+            $sMarkup .= $this->renderHeadRows($aHeadRows);
         }
 
         if (!empty($aBodyRows)) {
@@ -117,8 +87,49 @@ class Table extends \Zend\View\Helper\AbstractHtmlElement {
     }
 
     /**
+     * Generate table "<thead>" rows elements
+     * @param array $aHeadRows
+     * @param boolean $bEscape True espace html content of cells. Default True
+     * @return string The "<thead>" rows XHTML.
+     * @throws \InvalidArgumentException
+     */
+    public function renderHeadRows(array $aHeadRows, $bEscape = true) {
+        $sMarkup = '';
+        if (!$aHeadRows) {
+            return $sMarkup;
+        }
+        $sHeadAttributes = '';
+        if (\Zend\Stdlib\ArrayUtils::hasStringKeys($aHeadRows)) {
+            if (isset($aHeadRows['attributes'])) {
+                $aHeadAttributes = $aHeadRows['attributes'];
+                if (!is_array($aHeadAttributes)) {
+                    throw new \InvalidArgumentException('Head "[\'attributes\']" expects an array, "' . (is_object($aHeadAttributes) ? get_class($aHeadAttributes) : gettype($aHeadAttributes)) . '" given');
+                }
+                $sHeadAttributes = $this->htmlAttribs($aHeadAttributes);
+            }
+            if (isset($aHeadRows['rows'])) {
+                $aHeadRows = $aHeadRows['rows'];
+                if (!is_array($aHeadRows)) {
+                    throw new \InvalidArgumentException('Head "[\'rows\']" expects an array, "' . (is_object($aHeadRows) ? get_class($aHeadRows) : gettype($aHeadRows)) . '" given');
+                }
+                $sHeadAttributes = $this->htmlAttribs($aHeadAttributes);
+            }
+        }
+
+        if (!is_array(current($aHeadRows))) {
+            $aHeadRows = array($aHeadRows);
+        }
+
+        $sMarkup .= '    <' . self::TABLE_HEAD . $sHeadAttributes . '>' . PHP_EOL;
+        foreach ($aHeadRows as $aHeadRow) {
+            $sMarkup .= $this->renderTableRow($aHeadRow, self::TABLE_H, $bEscape);
+        }
+        return $sMarkup . '    </' . self::TABLE_HEAD . '>' . PHP_EOL;
+    }
+
+    /**
      * Generate table row element "<tr>"
-     * @param array $aRow
+     * @param array $aRow The array of cells.
      * @param string $sDefaultCellType The default cell element (th or td) to be used
      * @param boolean $bEscape True espace html content of cells. Default True
      * @return string The row XHTML.
@@ -134,14 +145,7 @@ class Table extends \Zend\View\Helper\AbstractHtmlElement {
 
     /**
      * Generate table cell element "<th>" or "<td>"
-     * @param scalar|array $sCell : the cell data ; can be a scalar value or an array composed of :
-     *    - string 'type': (optionnal) th or td. Default is "th" for thead rows and "td" for tbody rows
-     *    - scalar 'data': the content of the cell
-     *    - array 'attributes': (optionnal) html attributes of the cell element. Default : empty
-     *    [
-     *        [ [ type => th, attributes => [ scope => row ] data => one ], two, three],
-     *        [ [ type => th, attributes => [ scope => row ] data => four ], five, six ]
-     *    ]
+     * @param scalar|array $sCell : the cell data
      * @param string $sDefaultCellType  The default cell element (th or td) to be used
      * @param boolean $bEscape True espace html content of cells. Default True
      * @return string The cell XHTML.
