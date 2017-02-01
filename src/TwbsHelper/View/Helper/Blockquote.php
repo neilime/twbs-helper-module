@@ -8,7 +8,7 @@ namespace TwbsHelper\View\Helper;
 class Blockquote extends \Zend\View\Helper\AbstractHtmlElement {
 
     /**
-     * Generates an 'blockquote' element : <blockquote class="blockquote"><p class="mb-0">Blockquote content</p></blockquote>
+     * Generates an 'blockquote' element : "<blockquote class="blockquote"><p class="mb-0">Blockquote content</p></blockquote>"
      *
      * @param string $sContent The content of the blockquote
      * @param string $sFooter The content of the footer of the blockquote. Default : empty

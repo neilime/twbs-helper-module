@@ -9,6 +9,33 @@ class BlockquoteTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase {
      */
     protected $helper = 'blockquote';
 
+    public function testInvokeWithExistingClassAttributeForContent() {
+        $this->assertSame(
+                // Expected
+                '<blockquote class="blockquote">' . PHP_EOL . '    <p class="test-class&#x20;mb-0">content</p>' . PHP_EOL . '    <footer class="blockquote-footer">footer</footer>' . PHP_EOL . '</blockquote>',
+                // Rendering
+                $this->helper->__invoke('content', 'footer', array(), array('class' => 'test-class'))
+        );
+    }
+
+    public function testInvokeWithExistingClassAttributeForFooter() {
+        $this->assertSame(
+                // Expected
+                '<blockquote class="blockquote">' . PHP_EOL . '    <p class="mb-0">content</p>' . PHP_EOL . '    <footer class="test-class&#x20;blockquote-footer">footer</footer>' . PHP_EOL . '</blockquote>',
+                // Rendering
+                $this->helper->__invoke('content', 'footer', array(), array(), array('class' => 'test-class'))
+        );
+    }
+
+    public function testInvokeWithEscapedFooter() {
+        $this->assertSame(
+                // Expected
+                '<blockquote class="blockquote">' . PHP_EOL . '    <p class="mb-0">content</p>' . PHP_EOL . '    <footer class="blockquote-footer">footer &amp; test</footer>' . PHP_EOL . '</blockquote>',
+                // Rendering
+                $this->helper->__invoke('content', 'footer & test')
+        );
+    }
+
     /**
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage Argument "$sContent" expects a string, "array" given

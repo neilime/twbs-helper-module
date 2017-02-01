@@ -8,14 +8,14 @@ namespace TwbsHelper\View\Helper;
 class Abbreviation extends \Zend\View\Helper\AbstractHtmlElement {
 
     /**
-     * Generates an 'abbreviation' element : <abbr title="abbreviation title">abbreviation content</abbr>
+     * Generates an 'abbreviation' element : "<abbr title="abbreviation title">abbreviation content</abbr>"
      *
-     * @param string $sContent : the content of the abbreviation
-     * @param string $sTitle : the title of the abbreviation. Default : empty
-     * @param bool $bInitialism : true set the class 'initialism' to an abbreviation for a slightly smaller font-size. Default : false
-     * @param array $aAttributes : html attributes of the <abbr> element
-     * @param bool $bEscape : true espace html content '$sContent'. Default : true
-     * @return string : the abbreviation XHTML.
+     * @param string $sContent The content of the abbreviation
+     * @param string $sTitle The title of the abbreviation. Default : empty
+     * @param bool $bInitialism True set the class 'initialism' to an abbreviation for a slightly smaller font-size. Default : false
+     * @param array $aAttributes Html attributes of the <abbr> element
+     * @param bool $bEscape True espace html content '$sContent'. Default True
+     * @return string The abbreviation XHTML.
      * @throws \InvalidArgumentException
      */
     public function __invoke($sContent, $sTitle = '', $bInitialism = false, array $aAttributes = array(), $bEscape = true) {

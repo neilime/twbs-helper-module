@@ -9,6 +9,10 @@ class AbbreviationTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase 
      */
     protected $helper = 'abbreviation';
 
+    public function testInvokeWithInitialismAndExistingClassAttribute() {
+        $this->assertSame('<abbr class="test-class&#x20;initialism" title="title">content</abbr>', $this->helper->__invoke('content', 'title', true, array('class' => 'test-class')));
+    }
+
     /**
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage Argument "$sContent" expects a string, "array" given
