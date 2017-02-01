@@ -57,7 +57,7 @@ class DocumentationTest extends \PHPUnit_Framework_TestCase {
                 throw new \LogicException('Documentation test config file "' . $sFilePath . '" expects returning an array, "' . (is_object($aTestsConfig) ? get_class($aTestsConfig) : gettype($aTestsConfig)) . '" retrieved');
             }
             try {
-                $aTestCases = array_merge($aTestCases, $this->extractTestCasesFromTestsConfig($aTestsConfig));
+                $aTestCases = array_merge($aTestCases, $this->parseTestsConfig($aTestsConfig));
             } catch (\Exception $oException) {
                 throw new \LogicException('An error occured while extracting test cases from documentation test config file "' . $sFilePath . '"', $oException->getCode(), $oException);
             }
@@ -72,7 +72,7 @@ class DocumentationTest extends \PHPUnit_Framework_TestCase {
      * @return array
      * @throws \InvalidArgumentException
      */
-    protected function extractTestCasesFromTestsConfig(array $aTestsConfig, $sParentTitle = null) {
+    protected function parseTestsConfig(array $aTestsConfig, $sParentTitle = null) {
         if (!isset($aTestsConfig['title'])) {
             throw new \InvalidArgumentException('Argument "$aTestsConfig" does not have a defined "title" key');
         }
@@ -85,34 +85,48 @@ class DocumentationTest extends \PHPUnit_Framework_TestCase {
             $sTitle = trim($sParentTitle . ' / ' . $sTitle);
         }
 
+        // Extract root tests for this tests config
+        $aTestCases = $this->extractTestCaseFromTestConfig($aTestsConfig, $sTitle);
+
         if (isset($aTestsConfig['tests'])) {
             if (!is_array($aTestsConfig)) {
                 throw new \InvalidArgumentException('Argument "$aTestsConfig[\'tests\']" for "' . $sTitle . '" expects an array, "' . (is_object($aTestsConfig['tests']) ? get_class($aTestsConfig['tests']) : gettype($aTestsConfig['tests'])) . '" given');
             }
-            $aTestCases = array();
             foreach ($aTestsConfig['tests'] as $aNestedTestsConfig) {
-                $aTestCases = array_merge($aTestCases, $this->extractTestCasesFromTestsConfig($aNestedTestsConfig, $sTitle));
+                $aTestCases = array_merge($aTestCases, $this->parseTestsConfig($aNestedTestsConfig, $sTitle));
             }
-            return $aTestCases;
         }
 
-        if (!isset($aTestsConfig['rendering'])) {
+        return $aTestCases;
+    }
+
+    /**
+     * Create a test case array for the given test config if tests params exist
+     * @param array $aTestConfig The test config array, expects ['rendering' => closure, 'expected' => string]
+     * @param string $sTitle The title of this test
+     * @return array An empty array if no test was found, else [ $sTitle => [rendering, expected] ]
+     * @throws \InvalidArgumentException
+     */
+    protected function extractTestCaseFromTestConfig($aTestConfig, $sTitle) {
+        if (isset($aTestConfig['rendering'])) {
+            if (!is_callable($aTestConfig['rendering'])) {
+                throw new \InvalidArgumentException('Argument "$aTestsConfig[\'rendering\']" expects a callable value for "' . $sTitle . '", "' . (is_object($aTestConfig['rendering']) ? get_class($aTestConfig['rendering']) : gettype($aTestConfig['rendering'])) . '" given');
+            }
+            if (!isset($aTestConfig['expected'])) {
+                throw new \InvalidArgumentException('Argument "$aTestsConfig" does not have a defined "expected" key for "' . $sTitle . '"');
+            }
+            if (!is_string($aTestConfig['expected'])) {
+                throw new \InvalidArgumentException('Argument "$aTestsConfig[\'expected\']" expects a string for "' . $sTitle . '", "' . (is_object($aTestConfig['expected']) ? get_class($aTestConfig['expected']) : gettype($aTestConfig['expected'])) . '" given');
+            }
+            return array($sTitle => array(
+                    $aTestConfig['rendering'],
+                    $aTestConfig['expected'],
+            ));
+        } elseif (isset($aTestConfig['expected'])) {
             throw new \InvalidArgumentException('Argument "$aTestsConfig" does not have a defined "rendering" key for "' . $sTitle . '"');
         }
-        if (!is_callable($aTestsConfig['rendering'])) {
-            throw new \InvalidArgumentException('Argument "$aTestsConfig[\'rendering\']" expects a callable value for "' . $sTitle . '", "' . (is_object($aTestsConfig['rendering']) ? get_class($aTestsConfig['rendering']) : gettype($aTestsConfig['rendering'])) . '" given');
-        }
-
-        if (!isset($aTestsConfig['expected'])) {
-            throw new \InvalidArgumentException('Argument "$aTestsConfig" does not have a defined "expected" key for "' . $sTitle . '"');
-        }
-        if (!is_string($aTestsConfig['expected'])) {
-            throw new \InvalidArgumentException('Argument "$aTestsConfig[\'expected\']" expects a string for "' . $sTitle . '", "' . (is_object($aTestsConfig['expected']) ? get_class($aTestsConfig['expected']) : gettype($aTestsConfig['expected'])) . '" given');
-        }
-        return array($sTitle => array(
-                $aTestsConfig['rendering'],
-                $aTestsConfig['expected'],
-        ));
+        // No tests available
+        return array();
     }
 
     /**

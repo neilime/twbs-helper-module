@@ -1,5 +1,5 @@
-#!/usr/bin/env php
 <?php
+
 if (empty($_SERVER['argv'])) {
     throw new \LogicException('Arguments are undefined');
 }
@@ -38,7 +38,8 @@ foreach (new \DirectoryIterator(__DIR__ . '/../tests/TestSuite/Documentation') a
         throw new \LogicException('Documentation test config file "' . $sFilePath . '" expects returning an array, "' . (is_object($aTestsConfig) ? get_class($aTestsConfig) : gettype($aTestsConfig)) . '" retrieved');
     }
     try {
-        generateDemoFromTestsConfig($sDemoPageFilePath, $sMenuPageFilePath, $aTestsConfig);
+        $iPreviousHeading = 1;
+        parseTestsConfig($sDemoPageFilePath, $sMenuPageFilePath, $aTestsConfig);
     } catch (\Exception $oException) {
         throw new \LogicException('An error occured while extracting test cases from documentation test config file "' . $sFilePath . '"', $oException->getCode(), $oException);
     }
@@ -47,87 +48,102 @@ foreach (new \DirectoryIterator(__DIR__ . '/../tests/TestSuite/Documentation') a
 // Add end of content to menu page
 file_put_contents($sMenuPageFilePath, '</ul>', FILE_APPEND);
 
-function generateDemoFromTestsConfig($sDemoPageFilePath, $sMenuPageFilePath, array $aTestsConfig, $iHeading = 1) {
+/**
+ * Extract test cases values for a given tests configuration
+ * @param array $aTestsConfig
+ * @param string|null $sParentTitle
+ * @return array
+ * @throws \InvalidArgumentException
+ */
+function parseTestsConfig($sDemoPageFilePath, $sMenuPageFilePath, array $aTestsConfig, $iHeading = 1) {
     if (!isset($aTestsConfig['title'])) {
         throw new \InvalidArgumentException('Argument "$aTestsConfig" does not have a defined "title" key');
     }
     $sTitle = $aTestsConfig['title'];
 
-    $sUrl = isset($aTestsConfig['url']) ? $aTestsConfig['url'] : '';
-
-
+    // Menu page entry
     $sId = strtolower(preg_replace('/-+/', '--', preg_replace('/[^a-z-]/i', '--', $sTitle)));
+    file_put_contents($sMenuPageFilePath, str_repeat(' ', $iHeading * 4) . '<li class="nav-item"><a class="nav-link" href="#' . $sId . '">' . str_repeat('&nbsp;', ($iHeading - 1) * 2) . $sTitle . '</a>', FILE_APPEND);
 
+    // Handle root tests for this tests config
+    convertTestConfigForDemoPage($sDemoPageFilePath, $sTitle, $aTestsConfig, $iHeading);
+    if (isset($aTestsConfig['tests'])) {
+        if (!is_array($aTestsConfig)) {
+            throw new \InvalidArgumentException('Argument "$aTestsConfig[\'tests\']" for "' . $sTitle . '" expects an array, "' . (is_object($aTestsConfig['tests']) ? get_class($aTestsConfig['tests']) : gettype($aTestsConfig['tests'])) . '" given');
+        }
+        // Menu page sublist
+        $sIndentation = str_repeat(' ', $iHeading * 4);
+        file_put_contents($sMenuPageFilePath, PHP_EOL . $sIndentation . '<ul class="nav flex-column">' . PHP_EOL, FILE_APPEND);
+        $iHeading++;
+        foreach ($aTestsConfig['tests'] as $aNestedTestsConfig) {
+            parseTestsConfig($sDemoPageFilePath, $sMenuPageFilePath, $aNestedTestsConfig, $iHeading);
+        }
+        // End of menu page sublist and entry
+        file_put_contents($sMenuPageFilePath, $sIndentation . '</ul>' . PHP_EOL . $sIndentation . '</li>' . PHP_EOL, FILE_APPEND);
+    }
+}
+
+/**
+ * Write the test content for the given params into the given demo page file
+ * @param string $sDemoPageFilePath
+ * @param string $sTitle
+ * @param callable $oRendering
+ * @param string $sExpected
+ * @param integer $iHeading
+ * @param string $sUrl
+ * @throws \InvalidArgumentException
+ */
+function convertTestConfigForDemoPage($sDemoPageFilePath, $sTitle, array $aTestConfig, $iHeading) {
     // Demo content header
+    $sUrl = isset($aTestConfig['url']) ? $aTestConfig['url'] : '';
     file_put_contents($sDemoPageFilePath,
             // Title
             str_repeat('#', $iHeading) . ' ' . $sTitle . PHP_EOL .
             // Twitter bootstrap Documentation url
             ($sUrl ? '<small>[Twitter bootstrap Documentation](' . $sUrl . ')</small>' . PHP_EOL : '') . PHP_EOL, FILE_APPEND);
 
-    // Menu page entry
-    file_put_contents($sMenuPageFilePath, str_repeat(' ', $iHeading * 4) . '<li class="nav-item"><a class="nav-link" href="#' . $sId . '">' . str_repeat('&nbsp;', ($iHeading - 1) * 2) . $sTitle . '</a>', FILE_APPEND);
-
-    // Nested tests
-    if (isset($aTestsConfig['tests'])) {
-        if (!is_array($aTestsConfig)) {
-            throw new \InvalidArgumentException('Argument "$aTestsConfig[\'tests\']" for "' . $sTitle . '" expects an array, "' . (is_object($aTestsConfig['tests']) ? get_class($aTestsConfig['tests']) : gettype($aTestsConfig['tests'])) . '" given');
+    if (isset($aTestConfig['rendering'])) {
+        if (!isset($aTestConfig['expected'])) {
+            throw new \InvalidArgumentException('Argument "$aTestConfig" does not have a defined "expected" key for "' . $sTitle . '"');
         }
-
-        $sIndentation = str_repeat(' ', $iHeading * 4);
-
-        // Menu page sublist
-        file_put_contents($sMenuPageFilePath, PHP_EOL . $sIndentation . '<ul class="nav flex-column">' . PHP_EOL, FILE_APPEND);
-
-        foreach ($aTestsConfig['tests'] as $aNestedTestsConfig) {
-            generateDemoFromTestsConfig($sDemoPageFilePath, $sMenuPageFilePath, $aNestedTestsConfig, $iHeading + 1);
-        }
-        // End of menu page sublist and entry
-        file_put_contents($sMenuPageFilePath, $sIndentation . '</ul>' . PHP_EOL . $sIndentation . '</li>' . PHP_EOL, FILE_APPEND);
-
+    } elseif (isset($aTestConfig['expected'])) {
+        throw new \InvalidArgumentException('Argument "$aTestConfig" does not have a defined "rendering" key for "' . $sTitle . '"');
+    } else {
         return;
     }
 
-    // End of menu page  entry
-    file_put_contents($sMenuPageFilePath, '</li>' . PHP_EOL, FILE_APPEND);
+    $oRendering = $aTestConfig['rendering'];
+    $sExpected = $aTestConfig['expected'];
 
-    if (!isset($aTestsConfig['rendering'])) {
-        throw new \InvalidArgumentException('Argument "$aTestsConfig" does not have a defined "rendering" key for "' . $sTitle . '"');
-    }
-    if (!is_callable($aTestsConfig['rendering'])) {
-        throw new \InvalidArgumentException('Argument "$aTestsConfig[\'rendering\']" expects a callable value for "' . $sTitle . '", "' . (is_object($aTestsConfig['rendering']) ? get_class($aTestsConfig['rendering']) : gettype($aTestsConfig['rendering'])) . '" given');
-    }
-
-    $oReflectionFunction = new \ReflectionFunction($aTestsConfig['rendering']);
+    // Extract rendering closure content
+    $oReflectionFunction = new \ReflectionFunction($oRendering);
     $sRenderingContent = '';
     $aLines = file($oReflectionFunction->getFileName());
-    $sIndentation = null;
+    $iIndentation = 0;
     for ($iLine = $oReflectionFunction->getStartLine(); $iLine < $oReflectionFunction->getEndLine() - 1; $iLine++) {
-        $sLine = $aLines[$iLine];
-        if ($sIndentation === null && $sLine) {
-            $iChar = 0;
-            while (isset($sLine[$iChar])) {
-                if ($sLine[$iChar] !== ' ') {
-                    break;
-                }
-                $sIndentation .= $sLine[$iChar];
-                $iChar++;
-            }
+        $sLine = trim($aLines[$iLine]);
+        if (!$sLine && !$sRenderingContent) {
+            continue;
         }
-        $sRenderingContent .= preg_replace('/^' . $sIndentation . '/', '', $sLine);
+        if ($sRenderingContent) {
+            $sRenderingContent .= PHP_EOL;
+        }
+
+        if ($sLine === ');' || $sLine === '}') {
+            $iIndentation--;
+        }
+
+        $sRenderingContent .= str_repeat(' ', $iIndentation * 4) . $sLine;
+
+        $sLastChar = substr($sLine, -1);
+        if ($sLastChar === '{' || $sLastChar === '(') {
+            $iIndentation++;
+        }
     }
 
     $sSource = highlight_string('<?php' . PHP_EOL . str_replace(array('$oView'), array('$this'), $sRenderingContent), true);
 
-    if (!isset($aTestsConfig['expected'])) {
-        throw new \InvalidArgumentException('Argument "$aTestsConfig" does not have a defined "expected" key for "' . $sTitle . '"');
-    }
-    if (!is_string($aTestsConfig['expected'])) {
-        throw new \InvalidArgumentException('Argument "$aTestsConfig[\'expected\']" expects a string for "' . $sTitle . '", "' . (is_object($aTestsConfig['expected']) ? get_class($aTestsConfig['expected']) : gettype($aTestsConfig['expected'])) . '" given');
-    }
-
-    $sId .= uniqid();
-
+    $sId = strtolower(preg_replace('/-+/', '--', preg_replace('/[^a-z-]/i', '--', $sTitle))) . '_' . uniqid();
     file_put_contents($sDemoPageFilePath, // Nav Tab header
             '<ul class="nav nav-tabs" id="' . $sId . '_tab" role="tablist">
   <li class="nav-item">
@@ -139,9 +155,7 @@ function generateDemoFromTestsConfig($sDemoPageFilePath, $sMenuPageFilePath, arr
 </ul>' . PHP_EOL .
             // Nav tab content
             '<div class="tab-content">
-  <div class="tab-pane active" id="' . $sId . '_result" role="tabpanel"><br/>' . $aTestsConfig['expected'] . '</div>
+  <div class="tab-pane active" id="' . $sId . '_result" role="tabpanel"><br/>' . $sExpected . '</div>
   <div class="tab-pane" id="' . $sId . '_source" role="tabpanel"><pre>' . $sSource . '</pre></div>
 </div>' . PHP_EOL . PHP_EOL, FILE_APPEND);
-
-    return;
 }
