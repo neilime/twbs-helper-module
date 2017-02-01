@@ -6,6 +6,8 @@
     * [__invoke](#__invoke)
 * [Blockquote](#blockquote)
     * [__invoke](#__invoke-1)
+* [HtmlList](#htmllist)
+    * [__invoke](#__invoke-2)
 * [Module](#module)
     * [getConfig](#getconfig)
 * [ModuleOptions](#moduleoptions)
@@ -17,7 +19,7 @@
     * [setTypeMap](#settypemap)
 * [ModuleOptionsFactory](#moduleoptionsfactory)
     * [createService](#createservice)
-    * [__invoke](#__invoke-2)
+    * [__invoke](#__invoke-3)
 
 ## Abbreviation
 
@@ -95,6 +97,45 @@ Blockquote::__invoke( string $sContent, string $sFooter = &#039;&#039;, array $a
 **Return Value:**
 
 The blockquote XHTML.
+
+
+
+---
+
+## HtmlList
+
+Helper for ordered and unordered lists
+
+
+
+* Full name: \TwbsHelper\View\Helper\HtmlList
+* Parent class: 
+
+
+### __invoke
+
+Generates a 'List' element.
+
+```php
+HtmlList::__invoke( array $aItems, boolean $bOrdered = false, array $aAttributes = false, boolean $bEscape = true ): string
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$aItems` | **array** | Array with the elements of the list |
+| `$bOrdered` | **boolean** | Specifies ordered/unordered list; default unordered |
+| `$aAttributes` | **array** | Attributes for the ol/ul tag. If class attributes contains "list-inline", so the li will have the class "list-inline-item" |
+| `$bEscape` | **boolean** | Escape the items. |
+
+
+**Return Value:**
+
+The list XHTML.
 
 
 
