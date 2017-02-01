@@ -112,7 +112,8 @@ class Table extends \Zend\View\Helper\AbstractHtmlElement {
                 if (!is_array($aHeadRows)) {
                     throw new \InvalidArgumentException('Head "[\'rows\']" expects an array, "' . (is_object($aHeadRows) ? get_class($aHeadRows) : gettype($aHeadRows)) . '" given');
                 }
-                $sHeadAttributes = $this->htmlAttribs($aHeadAttributes);
+            } else {
+                throw new \InvalidArgumentException('Head "[\'rows\']" is undefined');
             }
         }
 
@@ -135,8 +136,29 @@ class Table extends \Zend\View\Helper\AbstractHtmlElement {
      * @return string The row XHTML.
      */
     public function renderTableRow(array $aRow, $sDefaultCellType, $bEscape = true) {
-        $sMarkup = '        <' . self::TABLE_ROW . '>' . PHP_EOL;
 
+        $sRowAttributes = '';
+        if (\Zend\Stdlib\ArrayUtils::hasStringKeys($aRow)) {
+            if (isset($aRow['attributes'])) {
+                $aRowAttributes = $aRow['attributes'];
+                if (!is_array($aRowAttributes)) {
+                    throw new \InvalidArgumentException('Argument "$aRow[\'attributes\']" expects an array, "' . (is_object($aRow) ? get_class($aRow) : gettype($aRow)) . '" given');
+                }
+                $sRowAttributes = $this->htmlAttribs($aRowAttributes);
+            }
+            if (isset($aRow['cells'])) {
+                $aRow = $aRow['cells'];
+                if (!is_array($aRow)) {
+                    throw new \InvalidArgumentException('Argument "$aRow[\'cells\']" expects an array, "' . (is_object($aRow) ? get_class($aRow) : gettype($aRow)) . '" given');
+                }
+            } else {
+                throw new \InvalidArgumentException('Argument "$aRow[\'cells\']" is undefined');
+            }
+        } else {
+
+        }
+
+        $sMarkup = '        <' . self::TABLE_ROW . $sRowAttributes . '>' . PHP_EOL;
         foreach ($aRow as $aCell) {
             $sMarkup .= $this->renderTableCell($aCell, $sDefaultCellType, $bEscape);
         }
