@@ -114,7 +114,7 @@ Helper for ordered and unordered lists
 
 ### __invoke
 
-Generates a 'List' element.
+Generates a 'List' element. Manage indentation of Xhtml markup
 
 ```php
 HtmlList::__invoke( array $aItems, boolean $bOrdered = false, array $aAttributes = false, boolean $bEscape = true ): string
