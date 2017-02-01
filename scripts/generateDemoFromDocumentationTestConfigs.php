@@ -62,7 +62,7 @@ function parseTestsConfig($sDemoPageFilePath, $sMenuPageFilePath, array $aTestsC
     $sTitle = $aTestsConfig['title'];
 
     // Menu page entry
-    $sId = strtolower(preg_replace('/-+/', '--', preg_replace('/[^a-z-]/i', '--', $sTitle)));
+    $sId = strtolower(preg_replace('/[^a-z-]/i', '-', $sTitle));
     file_put_contents($sMenuPageFilePath, str_repeat(' ', $iHeading * 4) . '<li class="nav-item"><a class="nav-link" href="#' . $sId . '">' . str_repeat('&nbsp;', ($iHeading - 1) * 2) . $sTitle . '</a>', FILE_APPEND);
 
     // Handle root tests for this tests config

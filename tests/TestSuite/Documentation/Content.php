@@ -66,6 +66,77 @@ return array(
                         ),
                     ),
                 ),
+                array(
+                    'title' => 'List',
+                    'url' => 'https://v4-alpha.getbootstrap.com/content/typography/#lists',
+                    'tests' => array(
+                        array(
+                            'title' => 'Unstyled',
+                            'url' => 'https://v4-alpha.getbootstrap.com/content/typography/#unstyled',
+                            'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
+                                // First abbreviation
+                                echo $oView->htmlList(
+                                        // List items
+                                        array(
+                                    'Lorem ipsum dolor sit amet',
+                                    'Consectetur adipiscing elit',
+                                    'Integer molestie lorem at massa',
+                                    'Facilisis in pretium nisl aliquet',
+                                    'Nulla volutpat aliquam velit',
+                                    array(
+                                        'Phasellus iaculis neque',
+                                        'Purus sodales ultricies',
+                                        'Vestibulum laoreet porttitor sem',
+                                        'Ac tristique libero volutpat at',
+                                    ),
+                                    'Faucibus porta lacus fringilla vel',
+                                    'Aenean sit amet erat nunc',
+                                    'Eget porttitor lorem',
+                                        ),
+                                        // Do not order items
+                                        false,
+                                        // Add "list-unstyled" class
+                                        array('class' => 'list-unstyled'));
+                            },
+                            'expected' => '<ul class="list-unstyled">' . PHP_EOL .
+                            '<li>Lorem ipsum dolor sit amet</li>' . PHP_EOL .
+                            '<li>Consectetur adipiscing elit</li>' . PHP_EOL .
+                            '<li>Integer molestie lorem at massa</li>' . PHP_EOL .
+                            '<li>Facilisis in pretium nisl aliquet</li>' . PHP_EOL .
+                            '<li>Nulla volutpat aliquam velit' .
+                            '<ul class="list-unstyled">' . PHP_EOL .
+                            '<li>Phasellus iaculis neque</li>' . PHP_EOL .
+                            '<li>Purus sodales ultricies</li>' . PHP_EOL .
+                            '<li>Vestibulum laoreet porttitor sem</li>' . PHP_EOL .
+                            '<li>Ac tristique libero volutpat at</li>' . PHP_EOL .
+                            '</ul>' . PHP_EOL .
+                            '</li>' . PHP_EOL .
+                            '<li>Faucibus porta lacus fringilla vel</li>' . PHP_EOL .
+                            '<li>Aenean sit amet erat nunc</li>' . PHP_EOL .
+                            '<li>Eget porttitor lorem</li>' . PHP_EOL .
+                            '</ul>' . PHP_EOL,
+                        ),
+                        array(
+                            'title' => 'Unstyled',
+                            'url' => 'https://v4-alpha.getbootstrap.com/content/typography/#unstyled',
+                            'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
+                                // First abbreviation
+                                echo $oView->htmlList(
+                                        // List items
+                                        array('Lorem ipsum', 'Phasellus iaculis', 'Nulla volutpat',),
+                                        // Do not order items
+                                        false,
+                                        // Add "list-unstyled" class
+                                        array('class' => 'list-inline'));
+                            },
+                            'expected' => '<ul class="list-inline">' . PHP_EOL .
+                            '<li class="list-inline-item">Lorem ipsum</li>' . PHP_EOL .
+                            '<li class="list-inline-item">Phasellus iaculis</li>' . PHP_EOL .
+                            '<li class="list-inline-item">Nulla volutpat</li>' . PHP_EOL .
+                            '</ul>' . PHP_EOL,
+                        ),
+                    ),
+                ),
             ),
         ),
     ),
