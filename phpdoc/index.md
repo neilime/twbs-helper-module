@@ -6,8 +6,10 @@
     * [__invoke](#__invoke)
 * [Blockquote](#blockquote)
     * [__invoke](#__invoke-1)
-* [HtmlList](#htmllist)
+* [Figure](#figure)
     * [__invoke](#__invoke-2)
+* [HtmlList](#htmllist)
+    * [__invoke](#__invoke-3)
 * [Module](#module)
     * [getConfig](#getconfig)
 * [ModuleOptions](#moduleoptions)
@@ -19,9 +21,9 @@
     * [setTypeMap](#settypemap)
 * [ModuleOptionsFactory](#moduleoptionsfactory)
     * [createService](#createservice)
-    * [__invoke](#__invoke-3)
-* [Table](#table)
     * [__invoke](#__invoke-4)
+* [Table](#table)
+    * [__invoke](#__invoke-5)
     * [renderTableRows](#rendertablerows)
     * [renderHeadRows](#renderheadrows)
     * [renderTableRow](#rendertablerow)
@@ -79,7 +81,7 @@ Helper for rendering blockquotes
 
 ### __invoke
 
-Generates an 'blockquote' element : "<blockquote class="blockquote"><p class="mb-0">Blockquote content</p></blockquote>"
+Generates a 'blockquote' element : "<blockquote class="blockquote"><p class="mb-0">Blockquote content</p></blockquote>"
 
 ```php
 Blockquote::__invoke( string $sContent, string $sFooter = &#039;&#039;, array $aAttributes = array(), array $aContentAttributes = array(), array $aFooterAttributes = array(), boolean $bEscape = true ): string
@@ -95,14 +97,55 @@ Blockquote::__invoke( string $sContent, string $sFooter = &#039;&#039;, array $a
 | `$sContent` | **string** | The content of the blockquote |
 | `$sFooter` | **string** | The content of the footer of the blockquote. Default : empty |
 | `$aAttributes` | **array** | Html attributes of the <blockquote> element. Default : empty |
-| `$aContentAttributes` | **array** | Html attributes of the <p> (content) element. Default : empty |
-| `$aFooterAttributes` | **array** | Html attributes of the <p> (content) element. Default : empty |
+| `$aContentAttributes` | **array** | Html attributes of the "<p>" (content) element. Default : empty |
+| `$aFooterAttributes` | **array** | Html attributes of the "<footer>" (footer) element. Default : empty |
 | `$bEscape` | **boolean** | True espace html content '$sContent'. Default True |
 
 
 **Return Value:**
 
 The blockquote XHTML.
+
+
+
+---
+
+## Figure
+
+Helper for rendering figures
+
+
+
+* Full name: \TwbsHelper\View\Helper\Figure
+* Parent class: 
+
+
+### __invoke
+
+Generates a 'figure' element : '<figure class="figure"><img src=".
+
+```php
+Figure::__invoke( string $sImageSrc, string $sCaption = &#039;&#039;, array $aAttributes = array(), array $aImageAttributes = array(), array $aCaptionAttributes = array(), boolean $bEscape = true ): string
+```
+
+.." class="figure-img img-fluid rounded"><figcaption class="figure-caption">...</figcaption></figure>'
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$sImageSrc` | **string** | The path to the image of the figure |
+| `$sCaption` | **string** | The content of the caption of the figure. Default : empty |
+| `$aAttributes` | **array** | Html attributes of the "<figure>" element. Default : empty |
+| `$aImageAttributes` | **array** | Html attributes of the "<img>" (image) element. Default : empty |
+| `$aCaptionAttributes` | **array** | Html attributes of the "<figcaption>" (caption) element. Default : empty |
+| `$bEscape` | **boolean** | True espace html caption '$sCaption'. Default True |
+
+
+**Return Value:**
+
+The figure XHTML.
 
 
 
@@ -508,4 +551,4 @@ The cell XHTML.
 
 
 --------
-> This document was automatically generated from source code comments on 2017-02-01 using [phpDocumentor](http://www.phpdoc.org/) and [cvuorinen/phpdoc-markdown-public](https://github.com/cvuorinen/phpdoc-markdown-public)
+> This document was automatically generated from source code comments on 2017-02-04 using [phpDocumentor](http://www.phpdoc.org/) and [cvuorinen/phpdoc-markdown-public](https://github.com/cvuorinen/phpdoc-markdown-public)
