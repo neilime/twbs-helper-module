@@ -7,5 +7,6 @@ return array(
     'tests' => array(
         'Typography' => include __DIR__ . DIRECTORY_SEPARATOR . 'Content/Typography.php',
         'Tables' => include __DIR__ . DIRECTORY_SEPARATOR . 'Content/Tables.php',
+        'Figures' => include __DIR__ . DIRECTORY_SEPARATOR . 'Content/Figures.php',
     ),
 );

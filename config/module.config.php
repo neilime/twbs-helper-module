@@ -25,6 +25,7 @@ return array(
             // View helpers
             'abbreviation' => 'TwbsHelper\View\Helper\Abbreviation',
             'blockquote' => 'TwbsHelper\View\Helper\Blockquote',
+            'figure' => 'TwbsHelper\View\Helper\Figure',
             'htmlList' => 'TwbsHelper\View\Helper\HtmlList',
             'table' => 'TwbsHelper\View\Helper\Table',
             // Form helpers
