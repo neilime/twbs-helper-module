@@ -4,12 +4,14 @@
 
 * [Abbreviation](#abbreviation)
     * [__invoke](#__invoke)
-* [Blockquote](#blockquote)
+* [Alert](#alert)
     * [__invoke](#__invoke-1)
-* [Figure](#figure)
+* [Blockquote](#blockquote)
     * [__invoke](#__invoke-2)
-* [HtmlList](#htmllist)
+* [Figure](#figure)
     * [__invoke](#__invoke-3)
+* [HtmlList](#htmllist)
+    * [__invoke](#__invoke-4)
 * [Module](#module)
     * [getConfig](#getconfig)
 * [ModuleOptions](#moduleoptions)
@@ -21,9 +23,9 @@
     * [setTypeMap](#settypemap)
 * [ModuleOptionsFactory](#moduleoptionsfactory)
     * [createService](#createservice)
-    * [__invoke](#__invoke-4)
-* [Table](#table)
     * [__invoke](#__invoke-5)
+* [Table](#table)
+    * [__invoke](#__invoke-6)
     * [renderTableRows](#rendertablerows)
     * [renderHeadRows](#renderheadrows)
     * [renderTableRow](#rendertablerow)
@@ -41,7 +43,7 @@ Helper for rendering abbreviations
 
 ### __invoke
 
-Generates an 'abbreviation' element : "<abbr title="abbreviation title">abbreviation content</abbr>"
+Generates an 'abbreviation' element
 
 ```php
 Abbreviation::__invoke( string $sContent, string $sTitle = &#039;&#039;, boolean $bInitialism = false, array $aAttributes = array(), boolean $bEscape = true ): string
@@ -57,13 +59,53 @@ Abbreviation::__invoke( string $sContent, string $sTitle = &#039;&#039;, boolean
 | `$sContent` | **string** | The content of the abbreviation |
 | `$sTitle` | **string** | The title of the abbreviation. Default : empty |
 | `$bInitialism` | **boolean** | True set the class 'initialism' to an abbreviation for a slightly smaller font-size. Default : false |
-| `$aAttributes` | **array** | Html attributes of the <abbr> element |
+| `$aAttributes` | **array** | Html attributes of the "<abbr>" element |
 | `$bEscape` | **boolean** | True espace html content '$sContent'. Default True |
 
 
 **Return Value:**
 
 The abbreviation XHTML.
+
+
+
+---
+
+## Alert
+
+Helper for rendering alerts
+
+
+
+* Full name: \TwbsHelper\View\Helper\Alert
+* Parent class: 
+
+
+### __invoke
+
+Generates an 'alert' element
+
+```php
+Alert::__invoke( string $sContent, string $sType = &#039;&#039;, boolean $bDismissible = false, array $aAttributes = array(), boolean $bEscape = true ): string
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$sContent` | **string** | The content of the alert |
+| `$sType` | **string** | The type of the alert (success, info, warning, danger). Default : empty |
+| `$bDismissible` | **boolean** | True if the alert can be dismissable. Default : false |
+| `$aAttributes` | **array** | Html attributes of the "<div>" element |
+| `$bEscape` | **boolean** | True espace html content '$sContent'. Default True |
+
+
+**Return Value:**
+
+The alert XHTML.
 
 
 
@@ -81,7 +123,7 @@ Helper for rendering blockquotes
 
 ### __invoke
 
-Generates a 'blockquote' element : "<blockquote class="blockquote"><p class="mb-0">Blockquote content</p></blockquote>"
+Generates a 'blockquote' element
 
 ```php
 Blockquote::__invoke( string $sContent, string $sFooter = &#039;&#039;, array $aAttributes = array(), array $aContentAttributes = array(), array $aFooterAttributes = array(), boolean $bEscape = true ): string
@@ -96,7 +138,7 @@ Blockquote::__invoke( string $sContent, string $sFooter = &#039;&#039;, array $a
 |-----------|------|-------------|
 | `$sContent` | **string** | The content of the blockquote |
 | `$sFooter` | **string** | The content of the footer of the blockquote. Default : empty |
-| `$aAttributes` | **array** | Html attributes of the <blockquote> element. Default : empty |
+| `$aAttributes` | **array** | Html attributes of the "<blockquote>" element. Default : empty |
 | `$aContentAttributes` | **array** | Html attributes of the "<p>" (content) element. Default : empty |
 | `$aFooterAttributes` | **array** | Html attributes of the "<footer>" (footer) element. Default : empty |
 | `$bEscape` | **boolean** | True espace html content '$sContent'. Default True |
@@ -122,13 +164,13 @@ Helper for rendering figures
 
 ### __invoke
 
-Generates a 'figure' element : '<figure class="figure"><img src=".
+Generates a 'figure' element
 
 ```php
 Figure::__invoke( string $sImageSrc, string $sCaption = &#039;&#039;, array $aAttributes = array(), array $aImageAttributes = array(), array $aCaptionAttributes = array(), boolean $bEscape = true ): string
 ```
 
-.." class="figure-img img-fluid rounded"><figcaption class="figure-caption">...</figcaption></figure>'
+
 
 
 **Parameters:**
@@ -412,7 +454,7 @@ Helper for rendering tables
 
 ### __invoke
 
-Generates an 'table' element : "<table>"
+Generates a 'table' element
 
 ```php
 Table::__invoke( array $aRows, array $aAttributes = array(), boolean $bEscape = true ): string
