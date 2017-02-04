@@ -14,7 +14,7 @@ class Table extends \Zend\View\Helper\AbstractHtmlElement {
     const TABLE_DATA = 'td';
 
     /**
-     * Generates an 'table' element : "<table>"
+     * Generates a 'table' element
      *
      * @param array $aRows table rows
      * @param array $aAttributes Html attributes of the "<table>" element. Default : empty

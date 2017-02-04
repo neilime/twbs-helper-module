@@ -23,6 +23,7 @@ return array(
     'view_helpers' => array(
         'invokables' => array(
             // View helpers
+            'alert' => 'TwbsHelper\View\Helper\Alert',
             'abbreviation' => 'TwbsHelper\View\Helper\Abbreviation',
             'blockquote' => 'TwbsHelper\View\Helper\Blockquote',
             'figure' => 'TwbsHelper\View\Helper\Figure',

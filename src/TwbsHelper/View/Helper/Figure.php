@@ -8,7 +8,7 @@ namespace TwbsHelper\View\Helper;
 class Figure extends \Zend\View\Helper\AbstractHtmlElement {
 
     /**
-     * Generates a 'figure' element : '<figure class="figure"><img src="..." class="figure-img img-fluid rounded"><figcaption class="figure-caption">...</figcaption></figure>'
+     * Generates a 'figure' element
      *
      * @param string $sImageSrc The path to the image of the figure
      * @param string $sCaption The content of the caption of the figure. Default : empty
