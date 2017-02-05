@@ -157,5 +157,5 @@ function convertTestConfigForDemoPage($sDemoPageFilePath, $sTitle, array $aTestC
             '<div class="tab-content">
   <div class="tab-pane active" id="' . $sId . '_result" role="tabpanel"><br/>' . $sExpected . '</div>
   <div class="tab-pane" id="' . $sId . '_source" role="tabpanel"><pre>' . $sSource . '</pre></div>
-</div>' . PHP_EOL . PHP_EOL, FILE_APPEND);
+</div><br/>' . PHP_EOL . PHP_EOL, FILE_APPEND);
 }
