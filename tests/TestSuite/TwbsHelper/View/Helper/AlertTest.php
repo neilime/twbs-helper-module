@@ -9,6 +9,12 @@ class AlertTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase {
      */
     protected $helper = 'alert';
 
+    public function testInvokeWithExistingClassAttribute() {
+        $this->assertSame(
+                '<div class="test-class&#x20;alert&#x20;alert-success" role="alert">' . PHP_EOL . '    content' . PHP_EOL . '</div>', $this->helper->__invoke('content', 'success', false, array('class' => 'test-class'))
+        );
+    }
+
     /**
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage Argument "$sContent" expects a string, "array" given
