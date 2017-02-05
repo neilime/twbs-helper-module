@@ -13,6 +13,18 @@ class HtmlListTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase {
         $this->assertSame('<ul>' . PHP_EOL . '    <li>test</li>' . PHP_EOL . '</ul>' . PHP_EOL, $this->helper->__invoke(array('test')));
     }
 
+    public function testInvokeWithDirectNestedList() {
+        $sExpectedMarkup = '<ul>' . PHP_EOL .
+                '    <li>' . PHP_EOL .
+                '        <ul>' . PHP_EOL .
+                '            <li>test</li>' . PHP_EOL .
+                '        </ul>' . PHP_EOL .
+                '    </li>' . PHP_EOL .
+                '</ul>' . PHP_EOL;
+
+        $this->assertSame($sExpectedMarkup, $this->helper->__invoke(array(array('test'))));
+    }
+
     /**
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage Argument "$aItems" must not be empty

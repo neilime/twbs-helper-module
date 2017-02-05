@@ -66,7 +66,7 @@ class Table extends \Zend\View\Helper\AbstractHtmlElement {
         }
         if (!isset($aHeadRows) && $aBodyRows) {
             // Define head from first row keys
-            $aFirstRow = current($aBodyRows[0]);
+            $aFirstRow = current($aBodyRows);
             if (\Zend\Stdlib\ArrayUtils::hasStringKeys($aFirstRow)) {
                 $aHeadRows = array_keys($aFirstRow);
             }
@@ -78,7 +78,10 @@ class Table extends \Zend\View\Helper\AbstractHtmlElement {
 
         if (!empty($aBodyRows)) {
             $sMarkup .= '    <' . self::TABLE_BODY . '>' . PHP_EOL;
-            foreach ($aBodyRows as $aBodyRow) {
+            foreach ($aBodyRows as $iKey => $aBodyRow) {
+                if (!is_array($aBodyRow)) {
+                    throw new \InvalidArgumentException('Body row "' . $iKey . '" expects an array, "' . (is_object($aBodyRow) ? get_class($aBodyRow) : gettype($aBodyRow)) . '" given');
+                }
                 $sMarkup .= $this->renderTableRow($aBodyRow, self::TABLE_DATA, $bEscape);
             }
             $sMarkup .= '    </' . self::TABLE_BODY . '>' . PHP_EOL;
@@ -138,24 +141,22 @@ class Table extends \Zend\View\Helper\AbstractHtmlElement {
     public function renderTableRow(array $aRow, $sDefaultCellType, $bEscape = true) {
 
         $sRowAttributes = '';
-        if (\Zend\Stdlib\ArrayUtils::hasStringKeys($aRow)) {
-            if (isset($aRow['attributes'])) {
-                $aRowAttributes = $aRow['attributes'];
-                if (!is_array($aRowAttributes)) {
-                    throw new \InvalidArgumentException('Argument "$aRow[\'attributes\']" expects an array, "' . (is_object($aRow) ? get_class($aRow) : gettype($aRow)) . '" given');
-                }
-                $sRowAttributes = $this->htmlAttribs($aRowAttributes);
+        if (isset($aRow['attributes'])) {
+            $aRowAttributes = $aRow['attributes'];
+            if (!is_array($aRowAttributes)) {
+                throw new \InvalidArgumentException('Argument "$aRow[\'attributes\']" expects an array, "' . (is_object($aRow) ? get_class($aRow) : gettype($aRow)) . '" given');
             }
-            if (isset($aRow['cells'])) {
-                $aRow = $aRow['cells'];
-                if (!is_array($aRow)) {
-                    throw new \InvalidArgumentException('Argument "$aRow[\'cells\']" expects an array, "' . (is_object($aRow) ? get_class($aRow) : gettype($aRow)) . '" given');
-                }
-            } else {
-                throw new \InvalidArgumentException('Argument "$aRow[\'cells\']" is undefined');
-            }
+            $sRowAttributes = $this->htmlAttribs($aRowAttributes);
+            unset($aRow['attributes']);
         } else {
+            $sRowAttributes = '';
+        }
 
+        if (isset($aRow['cells'])) {
+            $aRow = $aRow['cells'];
+            if (!is_array($aRow)) {
+                throw new \InvalidArgumentException('Argument "$aRow[\'cells\']" expects an array, "' . (is_object($aRow) ? get_class($aRow) : gettype($aRow)) . '" given');
+            }
         }
 
         $sMarkup = '        <' . self::TABLE_ROW . $sRowAttributes . '>' . PHP_EOL;

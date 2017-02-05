@@ -9,11 +9,23 @@ class FigureTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase {
      */
     protected $helper = 'figure';
 
+    public function testInvokeWithExistingClassAttribute() {
+        $this->assertSame(
+                '<figure class="test-class&#x20;figure">' . PHP_EOL . '    <img src="..." class="figure-img&#x20;img-fluid&#x20;rounded"/>' . PHP_EOL . '</figure>', $this->helper->__invoke('...', '', array('class' => 'test-class'))
+        );
+    }
+
+    public function testInvokeWithExistingImageClassAttribute() {
+        $this->assertSame(
+                '<figure class="figure">' . PHP_EOL . '    <img class="test-class&#x20;figure-img&#x20;img-fluid&#x20;rounded" src="..."/>' . PHP_EOL . '</figure>', $this->helper->__invoke('...', '', array(), array('class' => 'test-class'))
+        );
+    }
+
     /**
      * @expectedException \InvalidArgumentException
      * @expectedExceptionMessage Argument "$sImageSrc" expects a string, "array" given
      */
-    public function testInvokeWithWrongArgumentIMageSrc() {
+    public function testInvokeWithWrongArgumentImageSrc() {
         $this->helper->__invoke(array());
     }
 

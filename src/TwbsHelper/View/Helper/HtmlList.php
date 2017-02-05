@@ -42,6 +42,7 @@ class HtmlList extends \Zend\View\Helper\AbstractHtmlElement {
         } else {
             $sUlAttributes = $sLiAttributes = '';
             $iNestedLevel = 0;
+            $aAttributes = array();
         }
 
 
@@ -64,7 +65,7 @@ class HtmlList extends \Zend\View\Helper\AbstractHtmlElement {
                 if ($iItemLength < strlen($sList)) {
                     $sList = substr($sList, 0, strlen($sList) - $iItemLength) . $sNestedList;
                 } else {
-                    $sList .= '<li>' . $sNestedList;
+                    $sList .= $sItemIndentation . '<li>' . $sNestedList;
                 }
             }
             $iNestedLevel--;
