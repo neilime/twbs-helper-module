@@ -32,6 +32,7 @@ class Alert extends \Zend\View\Helper\AbstractHtmlElement {
             throw new \InvalidArgumentException('Argument "$bEscape" expects a boolean, "' . (is_object($bEscape) ? get_class($bEscape) : gettype($bEscape)) . '" given');
         }
 
+        // Alert container
         if (empty($aAttributes['class'])) {
             $aAttributes['class'] = 'alert alert-' . $sType;
         } else {
@@ -39,10 +40,22 @@ class Alert extends \Zend\View\Helper\AbstractHtmlElement {
         }
         $aAttributes['role'] = 'alert';
 
+
+        // Dismissible
+        if ($bDismissible) {
+            $sDismissibleButton = '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">' . PHP_EOL .
+                    '      <span aria-hidden="true">&times;</span>' . PHP_EOL .
+                    '    </button>' . PHP_EOL;
+            $aAttributes['class'] = $aAttributes['class'] . ' alert-dismissible fade show';
+        } else {
+            $sDismissibleButton = '';
+        }
+
+        // Content
         if ($bEscape) {
             $sContent = $this->getView()->plugin('escapeHtml')->__invoke($sContent);
         }
-        return '<div' . ($aAttributes ? $this->htmlAttribs($aAttributes) : '') . '>' . PHP_EOL . '    ' . $sContent . PHP_EOL . '</div>';
+        return '<div' . ($aAttributes ? $this->htmlAttribs($aAttributes) : '') . '>' . PHP_EOL . $sDismissibleButton . '    ' . $sContent . PHP_EOL . '</div>';
     }
 
 }
