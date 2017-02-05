@@ -101,22 +101,21 @@ class Table extends \Zend\View\Helper\AbstractHtmlElement {
         if (!$aHeadRows) {
             return $sMarkup;
         }
-        $sHeadAttributes = '';
-        if (\Zend\Stdlib\ArrayUtils::hasStringKeys($aHeadRows)) {
-            if (isset($aHeadRows['attributes'])) {
-                $aHeadAttributes = $aHeadRows['attributes'];
-                if (!is_array($aHeadAttributes)) {
-                    throw new \InvalidArgumentException('Head "[\'attributes\']" expects an array, "' . (is_object($aHeadAttributes) ? get_class($aHeadAttributes) : gettype($aHeadAttributes)) . '" given');
-                }
-                $sHeadAttributes = $this->htmlAttribs($aHeadAttributes);
+
+        if (isset($aHeadRows['attributes'])) {
+            $aHeadAttributes = $aHeadRows['attributes'];
+            if (!is_array($aHeadAttributes)) {
+                throw new \InvalidArgumentException('Head "[\'attributes\']" expects an array, "' . (is_object($aHeadAttributes) ? get_class($aHeadAttributes) : gettype($aHeadAttributes)) . '" given');
             }
-            if (isset($aHeadRows['rows'])) {
-                $aHeadRows = $aHeadRows['rows'];
-                if (!is_array($aHeadRows)) {
-                    throw new \InvalidArgumentException('Head "[\'rows\']" expects an array, "' . (is_object($aHeadRows) ? get_class($aHeadRows) : gettype($aHeadRows)) . '" given');
-                }
-            } else {
-                throw new \InvalidArgumentException('Head "[\'rows\']" is undefined');
+            $sHeadAttributes = $this->htmlAttribs($aHeadAttributes);
+            unset($aHeadRows['attributes']);
+        } else {
+            $sHeadAttributes = '';
+        }
+        if (isset($aHeadRows['rows'])) {
+            $aHeadRows = $aHeadRows['rows'];
+            if (!is_array($aHeadRows)) {
+                throw new \InvalidArgumentException('Head "[\'rows\']" expects an array, "' . (is_object($aHeadRows) ? get_class($aHeadRows) : gettype($aHeadRows)) . '" given');
             }
         }
 
@@ -144,7 +143,7 @@ class Table extends \Zend\View\Helper\AbstractHtmlElement {
         if (isset($aRow['attributes'])) {
             $aRowAttributes = $aRow['attributes'];
             if (!is_array($aRowAttributes)) {
-                throw new \InvalidArgumentException('Argument "$aRow[\'attributes\']" expects an array, "' . (is_object($aRow) ? get_class($aRow) : gettype($aRow)) . '" given');
+                throw new \InvalidArgumentException('Argument "$aRow[\'attributes\']" expects an array, "' . (is_object($aRowAttributes) ? get_class($aRowAttributes) : gettype($aRowAttributes)) . '" given');
             }
             $sRowAttributes = $this->htmlAttribs($aRowAttributes);
             unset($aRow['attributes']);
@@ -182,18 +181,18 @@ class Table extends \Zend\View\Helper\AbstractHtmlElement {
             }
             $sCellData = $sCell['data'];
             if (!is_scalar($sCellData)) {
-                throw new \InvalidArgumentException('Argument "$sCell[\'data\']" expects an array or a scalar value, "' . (is_object($sCellData) ? get_class($sCellData) : gettype($sCellData)) . '" given');
+                throw new \InvalidArgumentException('Argument "$sCell[\'data\']" expects a scalar value, "' . (is_object($sCellData) ? get_class($sCellData) : gettype($sCellData)) . '" given');
             }
             if (isset($sCell['type'])) {
                 $sCellType = $sCell['type'];
-                if (!is_scalar($sCellType)) {
-                    throw new \InvalidArgumentException('Argument "$sCell[\'type\']" a string, "' . (is_object($sCellType) ? get_class($sCellType) : gettype($sCellType)) . '" given');
+                if (!is_string($sCellType)) {
+                    throw new \InvalidArgumentException('Argument "$sCell[\'type\']" expects a string, "' . (is_object($sCellType) ? get_class($sCellType) : gettype($sCellType)) . '" given');
                 }
             }
             if (isset($sCell['attributes'])) {
                 $aAttributes = $sCell['attributes'];
                 if (!is_array($aAttributes)) {
-                    throw new \InvalidArgumentException('Argument "$sCell[\'attributes\']" an array, "' . (is_object($aAttributes) ? get_class($aAttributes) : gettype($aAttributes)) . '" given');
+                    throw new \InvalidArgumentException('Argument "$sCell[\'attributes\']" expects an array, "' . (is_object($aAttributes) ? get_class($aAttributes) : gettype($aAttributes)) . '" given');
                 }
                 $sAttributes = $this->htmlAttribs($aAttributes);
             }
