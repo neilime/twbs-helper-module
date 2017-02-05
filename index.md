@@ -50,3 +50,4 @@ Name | Version
 
   1. [Installation](https://github.com/neilime/zf-twbs-helper-module/wiki/Installation)
   2. [Php Doc](https://neilime.github.io/zf-twbs-helper-module/phpdoc)
+  3. [Code coverage](https://neilime.github.io/zf-twbs-helper-module/coverage/)
