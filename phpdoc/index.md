@@ -6,12 +6,14 @@
     * [__invoke](#__invoke)
 * [Alert](#alert)
     * [__invoke](#__invoke-1)
-* [Blockquote](#blockquote)
+* [Badge](#badge)
     * [__invoke](#__invoke-2)
-* [Figure](#figure)
+* [Blockquote](#blockquote)
     * [__invoke](#__invoke-3)
-* [HtmlList](#htmllist)
+* [Figure](#figure)
     * [__invoke](#__invoke-4)
+* [HtmlList](#htmllist)
+    * [__invoke](#__invoke-5)
 * [Module](#module)
     * [getConfig](#getconfig)
 * [ModuleOptions](#moduleoptions)
@@ -23,9 +25,9 @@
     * [setTypeMap](#settypemap)
 * [ModuleOptionsFactory](#moduleoptionsfactory)
     * [createService](#createservice)
-    * [__invoke](#__invoke-5)
-* [Table](#table)
     * [__invoke](#__invoke-6)
+* [Table](#table)
+    * [__invoke](#__invoke-7)
     * [renderTableRows](#rendertablerows)
     * [renderHeadRows](#renderheadrows)
     * [renderTableRow](#rendertablerow)
@@ -106,6 +108,46 @@ Alert::__invoke( string $sContent, string $sType = &#039;&#039;, boolean $bDismi
 **Return Value:**
 
 The alert XHTML.
+
+
+
+---
+
+## Badge
+
+Helper for rendering badges
+
+
+
+* Full name: \TwbsHelper\View\Helper\Badge
+* Parent class: 
+
+
+### __invoke
+
+Generates a 'badge' element
+
+```php
+Badge::__invoke( string $sContent, string $sType = &#039;default&#039;, boolean $bPill = false, array $aAttributes = array(), boolean $bEscape = true ): string
+```
+
+
+
+
+**Parameters:**
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `$sContent` | **string** | The content of the badge |
+| `$sType` | **string** | The type of the badge (default, success, info, warning, danger). Default : default |
+| `$bPill` | **boolean** | True if the badge is a pill badge. Default : false |
+| `$aAttributes` | **array** | Html attributes of the "<span>" element |
+| `$bEscape` | **boolean** | True espace html content '$sContent'. Default True |
+
+
+**Return Value:**
+
+The badge XHTML.
 
 
 
