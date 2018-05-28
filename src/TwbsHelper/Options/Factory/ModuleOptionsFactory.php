@@ -1,33 +1,53 @@
 <?php
-
 namespace TwbsHelper\Options\Factory;
 
-class ModuleOptionsFactory implements \Zend\ServiceManager\FactoryInterface {
+use Interop\Container\ContainerInterface;
+use Zend\ServiceManager\FactoryInterface;
+use Zend\ServiceManager\ServiceLocatorInterface;
 
+
+/**
+ * ModuleOptionsFactory 
+ * 
+ * @uses FactoryInterface
+ */
+class ModuleOptionsFactory implements FactoryInterface
+{
     /**
-     * @param \Zend\ServiceManager\ServiceLocatorInterface $oServiceLocator
+     * createService 
+     * 
+     * @param ServiceLocatorInterface $oServiceLocator 
+     * @access public
      * @return \TwbsHelper\Options\ModuleOptions
      */
-    public function createService(\Zend\ServiceManager\ServiceLocatorInterface $oServiceLocator) {
+    public function createService(ServiceLocatorInterface $oServiceLocator) {
         return $this->createServiceWithConfig($oServiceLocator->get('config'));
     }
 
+
     /**
-     * @param \Interop\Container\ContainerInterface $oContainer
-     * @param string $sRequestedName
-     * @param array $aOptions
+     * __invoke 
+     * 
+     * @param ContainerInterface $oContainer 
+     * @param string $sRequestedName 
+     * @param array $aOptions 
+     * @access public
      * @return \TwbsHelper\Options\ModuleOptions
      */
-    public function __invoke(\Interop\Container\ContainerInterface $oContainer, $sRequestedName, array $aOptions = null) {
+    public function __invoke(ContainerInterface $oContainer, $sRequestedName, array $aOptions = null) {
         return $this->createServiceWithConfig($oContainer->get('config'));
     }
 
+
     /**
-     * @param array $aConfig
+     * createServiceWithConfig 
+     * 
+     * @param array $aConfig 
+     * @access protected
      * @return \TwbsHelper\Options\ModuleOptions
      */
     protected function createServiceWithConfig(array $aConfig) {
-        return new \TwbsHelper\Options\ModuleOptions($aConfig['twbbundle']);
+        return new \TwbsHelper\Options\ModuleOptions($aConfig['twbshelper']);
     }
-
 }
+

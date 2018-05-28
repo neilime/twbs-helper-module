@@ -1,73 +1,98 @@
 <?php
-
 namespace TwbsHelper\Options;
 
-/**
- * Hold options for TwbsHelper module
- */
-class ModuleOptions extends \Zend\Stdlib\AbstractOptions {
+use Zend\Stdlib\AbstractOptions;
 
-    /**
-     * @var array
-     */
+
+/**
+ * ModuleOptions 
+ * Hold options for TwbsHelper module
+ * 
+ * @uses AbstractOptions
+ */
+class ModuleOptions extends AbstractOptions
+{
+    // @var array
     protected $ignoredViewHelpers;
 
-    /**
-     * @var array
-     */
+    // @var array
     protected $classMap;
 
-    /**
-     * @var array
-     */
+    // @var array
     protected $typeMap;
 
     /**
+     * getIgnoredViewHelpers 
+     * 
+     * @access public
      * @return array
      */
     public function getIgnoredViewHelpers() {
         return $this->ignoredViewHelpers;
     }
 
+
     /**
-     * @param array $aIgnoredViewHelpers
+     * setIgnoredViewHelpers 
+     * 
+     * @param array $aIgnoredViewHelpers 
+     * @access public
      * @return \TwbsHelper\Options\ModuleOptions
      */
     public function setIgnoredViewHelpers(array $aIgnoredViewHelpers) {
         $this->ignoredViewHelpers = $aIgnoredViewHelpers;
+
         return $this;
     }
 
+
     /**
+     * getClassMap 
+     * 
+     * @access public
      * @return array
      */
     public function getClassMap() {
         return $this->classMap;
     }
 
+
     /**
-     * @param array $aClassMap
+     * setClassMap 
+     * 
+     * @param array $aClassMap 
+     * @access public
      * @return \TwbsHelper\Options\ModuleOptions
      */
     public function setClassMap(array $aClassMap) {
         $this->classMap = $aClassMap;
+
         return $this;
     }
 
+
     /**
+     * getTypeMap 
+     * 
+     * @access public
      * @return array
      */
     public function getTypeMap() {
         return $this->typeMap;
     }
 
+
     /**
-     * @param array $aTypeMap
+     * setTypeMap 
+     * 
+     * @param array $aTypeMap 
+     * @access public
      * @return \TwbsHelper\Options\ModuleOptions
      */
     public function setTypeMap(array $aTypeMap) {
         $this->typeMap = $aTypeMap;
+
         return $this;
     }
-
 }
+
