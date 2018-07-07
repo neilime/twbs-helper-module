@@ -65,11 +65,8 @@ class FormMultiCheckbox extends ZendFormMultiCheckboxViewHelper
         $iCount          = 0;
 
         foreach ($aOptions as $sKey => $aOptionSpec) {
+            // Count number of options
             $iCount++;
-
-            if ($iCount > 1 && array_key_exists('id', $aAttributes)) {
-                unset($aAttributes['id']);
-            }
 
             $sValue           = '';
             $sLabel           = '';
@@ -79,6 +76,12 @@ class FormMultiCheckbox extends ZendFormMultiCheckboxViewHelper
                 && $aInputAttributes['type'] != 'radio'
                 && $aInputAttributes['selected']);
             $bDisabled        = (isset($aInputAttributes['disabled']) && $aInputAttributes['disabled']);
+
+            // Customize the 'id' input attribute to enable
+            // working 'for' label attribute on all options
+            if ($iCount > 1 && array_key_exists('id', $aAttributes)) {
+                $aInputAttributes['id'] .= $iCount;
+            }
 
             if (is_scalar($aOptionSpec)) {
                 $aOptionSpec = [
@@ -140,7 +143,7 @@ class FormMultiCheckbox extends ZendFormMultiCheckboxViewHelper
                     : $aOptionSpec['label_attributes'];
             }
 
-            // Assign label for attribute with element id attribute when defined
+            // Assign label for attribute with defined element id attribute
             if (empty($aLabelAttributes['for']) && ! empty($aInputAttributes['id'])) {
                 $aLabelAttributes['for'] = $aInputAttributes['id'];
             }

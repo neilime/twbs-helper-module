@@ -82,26 +82,30 @@ class FormRadio extends ZendFormRadioViewHelper
      */
     protected function renderOptions(MultiCheckbox $oElement, array $aOptions, array $aSelectedOptions, array $aAttributes)
     {
-        $iIterator              = 0;
+        $iCount                 = 0;
         $aGlobalLabelAttributes = $oElement->getLabelAttributes() ? : $this->labelAttributes;
         $sMarkup                = '';
         $oLabelHelper           = $this->getLabelHelper();
         $aElementOptions        = $oElement->getOptions();
 
         foreach ($aOptions as $key => $aOptionspec) {
+            // Count number of options
+            $iCount++;
+
             if (is_scalar($aOptionspec)) {
                 $aOptionspec = ['label' => $aOptionspec, 'value' => $key];
-            }
-
-            $iIterator++;
-            if ($iIterator > 1 && array_key_exists('id', $aAttributes)) {
-                unset($aAttributes['id']);
             }
 
             // Option attributes
             $aInputAttributes = $aAttributes;
             if (isset($aOptionspec['attributes'])) {
                 $aInputAttributes = \Zend\Stdlib\ArrayUtils::merge($aInputAttributes, $aOptionspec['attributes']);
+            }
+
+            // Customize the 'id' input attribute to enable
+            // working 'for' label attribute on all options
+            if ($iCount > 1 && array_key_exists('id', $aAttributes)) {
+                $aInputAttributes['id'] .= $iCount;
             }
 
             // Add BS4 form-check-input class if not set
@@ -131,11 +135,16 @@ class FormRadio extends ZendFormRadioViewHelper
             // Render option
             $sOptionMarkup = sprintf('<input %s%s', $this->createAttributesString($aInputAttributes), $this->getInlineClosingBracket());
 
-            //Option label
+            // Option label
             $sLabel = isset($aOptionspec['label']) ? $aOptionspec['label'] : '';
 
             if ($sLabel) {
                 $aLabelAttributes = $aGlobalLabelAttributes;
+
+                // Assign label for attribute with defined element id attribute
+                if (empty($aLabelAttributes['for']) && ! empty($aInputAttributes['id'])) {
+                    $aLabelAttributes['for'] = $aInputAttributes['id'];
+                }
 
                 // Add BS4 form-check-label class if not set
                 $aLabelAttributes['class']  = ! empty($aLabelAttributes['class']) ? $aLabelAttributes['class'] : '';
