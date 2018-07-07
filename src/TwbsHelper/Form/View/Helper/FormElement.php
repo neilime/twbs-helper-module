@@ -15,10 +15,9 @@ use Zend\Form\Element\Button;
 
 use TwbsHelper\Options\ModuleOptions;
 
-
 /**
- * FormElement 
- * 
+ * FormElement
+ *
  * @uses ZendFormElementViewHelper
  * @uses TranslatorAwareInterface
  */
@@ -61,9 +60,9 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
 
 
     /**
-     * __construct 
-     * 
-     * @param  ModuleOptions $options 
+     * __construct
+     *
+     * @param  ModuleOptions $options
      * @access public
      * @return void
      */
@@ -82,10 +81,10 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
 
 
     /**
-     * render 
+     * render
      * Render an element
-     * 
-     * @param  ElementInterface $oElement 
+     *
+     * @param  ElementInterface $oElement
      * @access public
      * @return string
      */
@@ -94,11 +93,11 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
         // Add form-control class
         $sElementType = $oElement->getAttribute('type');
 
-        if (!in_array($sElementType, $this->options->getIgnoredViewHelpers()) &&
-            !($oElement instanceof Collection)
+        if (! in_array($sElementType, $this->options->getIgnoredViewHelpers()) &&
+            ! ($oElement instanceof Collection)
         ) {
             if ($sElementClass = $oElement->getAttribute('class')) {
-                if (!preg_match('/(\s|^)form-control(\s|$)/', $sElementClass)) {
+                if (! preg_match('/(\s|^)form-control(\s|$)/', $sElementClass)) {
                     $oElement->setAttribute('class', trim($sElementClass . ' form-control'));
                 }
             } else {
@@ -142,11 +141,11 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
 
 
     /**
-     * renderAddOn 
+     * renderAddOn
      * Render addo-on markup
-     * 
+     *
      * @param  ElementInterface|array|string $aAddOnOptions
-     * @param  string                        $sPosition 
+     * @param  string                        $sPosition
      * @throws InvalidArgumentException
      * @throws LogicException
      * @access protected
@@ -160,11 +159,9 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
 
         if ($aAddOnOptions instanceof ElementInterface) {
             $aAddOnOptions = ['element' => $aAddOnOptions];
-
         } elseif (is_scalar($aAddOnOptions)) {
             $aAddOnOptions = ['text' => $aAddOnOptions];
-
-        } elseif (!is_array($aAddOnOptions)) {
+        } elseif (! is_array($aAddOnOptions)) {
             throw new InvalidArgumentException(sprintf(
                 'Addon options expects an array or a scalar value, "%s" given',
                 is_object($aAddOnOptions) ? get_class($aAddOnOptions) : gettype($aAddOnOptions)
@@ -175,31 +172,27 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
         $sAddonTagName = 'div';
         $sAddonClass   = '';
 
-        if (!empty($aAddOnOptions['text'])) {
-            if (!is_scalar($aAddOnOptions['text'])) {
+        if (! empty($aAddOnOptions['text'])) {
+            if (! is_scalar($aAddOnOptions['text'])) {
                 throw new InvalidArgumentException(sprintf(
                     '"text" option expects a scalar value, "%s" given',
                     is_object($aAddOnOptions['text']) ? get_class($aAddOnOptions['text']) : gettype($aAddOnOptions['text'])
                 ));
-
             } elseif (($oTranslator = $this->getTranslator())) {
                 $sMarkup .= $oTranslator->translate($aAddOnOptions['text'], $this->getTranslatorTextDomain());
-
             } else {
                 $sMarkup .= $aAddOnOptions['text'];
             }
 
             $sAddonClass .= ('prepend' == $sPosition) ? ' input-group-prepend' : 'input-group-append';
-
-        } elseif (!empty($aAddOnOptions['element'])) {
+        } elseif (! empty($aAddOnOptions['element'])) {
             if (is_array($aAddOnOptions['element']) ||
                 ($aAddOnOptions['element'] instanceof Traversable &&
-                !($aAddOnOptions['element'] instanceof ElementInterface))
+                ! ($aAddOnOptions['element'] instanceof ElementInterface))
             ) {
                 $oFactory = new Factory();
                 $aAddOnOptions['element'] = $oFactory->create($aAddOnOptions['element']);
-
-            } elseif (!($aAddOnOptions['element'] instanceof ElementInterface)) {
+            } elseif (! ($aAddOnOptions['element'] instanceof ElementInterface)) {
                 throw new LogicException(sprintf(
                     '"element" option expects an instanceof Zend\Form\ElementInterface, "%s" given',
                     is_object($aAddOnOptions['element']) ? get_class($aAddOnOptions['element']) : gettype($aAddOnOptions['element'])
@@ -217,7 +210,6 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
             if ($aAddOnOptions['element'] instanceof Button) {
                 $sAddonClass .= ' input-group-btn';
                 $sAddonTagName = 'div';
-
             } else {
                 $sAddonClass .= ' input-group-addon';
             }
@@ -228,9 +220,9 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
 
 
     /**
-     * setTranslator 
+     * setTranslator
      * Sets translator to use in helper
-     * 
+     *
      * @see    TranslatorAwareInterface::setTranslator()
      * @param  TranslatorInterface $oTranslator : [optional] translator. Default is null, which sets no translator.
      * @param  string $sTextDomain : [optional] text domain Default is null, which skips setTranslatorTextDomain
@@ -250,7 +242,7 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
 
 
     /**
-     * getTranslator 
+     * getTranslator
      * Returns translator used in helper
      *
      * @see    TranslatorAwareInterface::getTranslator()
@@ -264,23 +256,23 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
 
 
     /**
-     * hasTranslator 
+     * hasTranslator
      * Checks if the helper has a translator
-     * 
+     *
      * @see    TranslatorAwareInterface::hasTranslator()
      * @access public
      * @return boolean
      */
     public function hasTranslator()
     {
-        return !!$this->getTranslator();
+        return ! ! $this->getTranslator();
     }
 
 
     /**
-     * setTranslatorEnabled 
+     * setTranslatorEnabled
      * Sets whether translator is enabled and should be used
-     * 
+     *
      * @see    TranslatorAwareInterface::setTranslatorEnabled()
      * @param  boolean $bEnabled
      * @access public
@@ -288,16 +280,16 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
      */
     public function setTranslatorEnabled($bEnabled = true)
     {
-        $this->translatorEnabled = !!$bEnabled;
+        $this->translatorEnabled = ! ! $bEnabled;
 
         return $this;
     }
 
 
     /**
-     * isTranslatorEnabled 
+     * isTranslatorEnabled
      * Returns whether translator is enabled and should be used
-     * 
+     *
      * @see    TranslatorAwareInterface::isTranslatorEnabled()
      * @access public
      * @return boolean
@@ -309,9 +301,9 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
 
 
     /**
-     * setTranslatorTextDomain 
+     * setTranslatorTextDomain
      * Set translation text domain
-     * 
+     *
      * @see    TranslatorAwareInterface::setTranslatorTextDomain()
      * @param  string $sTextDomain
      * @access public
@@ -326,9 +318,9 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
 
 
     /**
-     * getTranslatorTextDomain 
+     * getTranslatorTextDomain
      * Return the translation text domain
-     * 
+     *
      * @see    TranslatorAwareInterface::getTranslatorTextDomain()
      * @access public
      * @return string
@@ -338,4 +330,3 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
         return $this->translatorTextDomain;
     }
 }
-

@@ -5,7 +5,8 @@ namespace TwbsHelper\View\Helper;
 /**
  * Helper for rendering abbreviations
  */
-class Abbreviation extends \Zend\View\Helper\AbstractHtmlElement {
+class Abbreviation extends \Zend\View\Helper\AbstractHtmlElement
+{
 
     /**
      * Generates an 'abbreviation' element
@@ -18,17 +19,18 @@ class Abbreviation extends \Zend\View\Helper\AbstractHtmlElement {
      * @return string The abbreviation XHTML.
      * @throws \InvalidArgumentException
      */
-    public function __invoke($sContent, $sTitle = '', $bInitialism = false, array $aAttributes = array(), $bEscape = true) {
-        if (!is_string($sContent)) {
+    public function __invoke($sContent, $sTitle = '', $bInitialism = false, array $aAttributes = [], $bEscape = true)
+    {
+        if (! is_string($sContent)) {
             throw new \InvalidArgumentException('Argument "$sContent" expects a string, "' . (is_object($sContent) ? get_class($sContent) : gettype($sContent)) . '" given');
         }
-        if (!is_string($sTitle)) {
+        if (! is_string($sTitle)) {
             throw new \InvalidArgumentException('Argument "$sTitle" expects a string, "' . (is_object($sTitle) ? get_class($sTitle) : gettype($sTitle)) . '" given');
         }
-        if (!is_bool($bInitialism)) {
+        if (! is_bool($bInitialism)) {
             throw new \InvalidArgumentException('Argument "$bInitialism" expects a boolean, "' . (is_object($bInitialism) ? get_class($bInitialism) : gettype($bInitialism)) . '" given');
         }
-        if (!is_bool($bEscape)) {
+        if (! is_bool($bEscape)) {
             throw new \InvalidArgumentException('Argument "$bEscape" expects a boolean, "' . (is_object($bEscape) ? get_class($bEscape) : gettype($bEscape)) . '" given');
         }
 
@@ -49,5 +51,4 @@ class Abbreviation extends \Zend\View\Helper\AbstractHtmlElement {
 
         return '<abbr' . ($aAttributes ? $this->htmlAttribs($aAttributes) : '') . '>' . $sContent . '</abbr>';
     }
-
 }

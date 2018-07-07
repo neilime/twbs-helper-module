@@ -5,10 +5,9 @@ use Zend\Form\Element\Collection as CollectionElement;
 use Zend\Form\View\Helper\FormCollection as ZendFormCollectionViewHelper;
 use Zend\Form\ElementInterface;
 
-
 /**
- * FormCollection 
- * 
+ * FormCollection
+ *
  * @uses ZendFormCollectionViewHelper
  */
 class FormCollection extends ZendFormCollectionViewHelper
@@ -27,9 +26,9 @@ class FormCollection extends ZendFormCollectionViewHelper
 
 
     /**
-     * render 
+     * render
      * Render a collection by iterating through all fieldsets and elements
-     * 
+     *
      * @param  \Zend\Form\ElementInterface $oElement
      * @access public
      * @return string
@@ -38,7 +37,7 @@ class FormCollection extends ZendFormCollectionViewHelper
     {
         $oRenderer = $this->getView();
 
-        if (!method_exists($oRenderer, 'plugin')) {
+        if (! method_exists($oRenderer, 'plugin')) {
             return '';
         }
 
@@ -60,17 +59,16 @@ class FormCollection extends ZendFormCollectionViewHelper
 
                 if ($oElementOrFieldset instanceof \Zend\Form\FieldsetInterface) {
                     $sMarkup .= $oFieldsetHelper($oElementOrFieldset);
-
                 } elseif ($oElementOrFieldset instanceof \Zend\Form\ElementInterface) {
-                	if ($oElementOrFieldset->getOption('twbs-row-open')) {
-						$sMarkup .= '<div class="row">' . "\n";
-					}
+                    if ($oElementOrFieldset->getOption('twbs-row-open')) {
+                        $sMarkup .= '<div class="row">' . "\n";
+                    }
 
-					$sMarkup .= $oElementHelper($oElementOrFieldset);
+                    $sMarkup .= $oElementHelper($oElementOrFieldset);
 
-					if ($oElementOrFieldset->getOption('twbs-row-close')) {
-						$sMarkup .= '</div>' . "\n";
-					}
+                    if ($oElementOrFieldset->getOption('twbs-row-close')) {
+                        $sMarkup .= '</div>' . "\n";
+                    }
                 }
             }
             if ($oElement instanceof \Zend\Form\Element\Collection && $oElement->shouldCreateTemplate()) {
@@ -85,7 +83,9 @@ class FormCollection extends ZendFormCollectionViewHelper
                 }
 
                 $sMarkup = sprintf(
-                    static::$legendFormat, ($sAttributes = $this->createAttributesString($oElement->getLabelAttributes()? : [])) ? ' ' . $sAttributes : '', $this->getEscapeHtmlHelper()->__invoke($sLabel)
+                    static::$legendFormat,
+                    ($sAttributes = $this->createAttributesString($oElement->getLabelAttributes() ? : [])) ? ' ' . $sAttributes : '',
+                    $this->getEscapeHtmlHelper()->__invoke($sLabel)
                 ) . $sMarkup;
             }
 
@@ -94,7 +94,7 @@ class FormCollection extends ZendFormCollectionViewHelper
                 $sLayoutClass = "form-{$sElementLayout}";
 
                 if (false != ($sElementClass = $oElement->getAttribute('class'))) {
-                    if (!preg_match('/(\s|^)' . preg_quote($sLayoutClass, '/') . '(\s|$)/', $sElementClass)) {
+                    if (! preg_match('/(\s|^)' . preg_quote($sLayoutClass, '/') . '(\s|$)/', $sElementClass)) {
                         $oElement->setAttribute('class', trim("{$sElementClass} {$sLayoutClass}"));
                     }
                 } else {
@@ -103,17 +103,19 @@ class FormCollection extends ZendFormCollectionViewHelper
             }
 
             $sMarkup = sprintf(
-                    static::$fieldsetFormat, ($sAttributes = $this->createAttributesString($oElement->getAttributes())) ? " {$sAttributes}" : '', $sMarkup
+                static::$fieldsetFormat,
+                ($sAttributes = $this->createAttributesString($oElement->getAttributes())) ? " {$sAttributes}" : '',
+                $sMarkup
             );
         }
         return $sMarkup;
     }
 
     /**
-     * renderTemplate 
+     * renderTemplate
      * Only render a template
-     * 
-     * @param CollectionElement $collection 
+     *
+     * @param CollectionElement $collection
      * @access public
      * @return string
      */
@@ -127,4 +129,3 @@ class FormCollection extends ZendFormCollectionViewHelper
         return parent::renderTemplate($collection);
     }
 }
-

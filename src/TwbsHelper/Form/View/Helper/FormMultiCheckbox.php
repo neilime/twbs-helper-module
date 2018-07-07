@@ -5,17 +5,16 @@ use Zend\Form\Element\MultiCheckbox;
 use Zend\Form\View\Helper\FormMultiCheckbox as ZendFormMultiCheckboxViewHelper;
 use Zend\Form\ElementInterface;
 
-
 /**
- * FormMultiCheckbox 
- * 
+ * FormMultiCheckbox
+ *
  * @uses ZendFormMultiCheckboxViewHelper
  */
 class FormMultiCheckbox extends ZendFormMultiCheckboxViewHelper
 {
     /**
-     * render 
-     * 
+     * render
+     *
      * @see    FormMultiCheckbox::render()
      * @param  ElementInterface $oElement
      * @access public
@@ -36,7 +35,7 @@ class FormMultiCheckbox extends ZendFormMultiCheckboxViewHelper
 
 
     /**
-     * renderOptions 
+     * renderOptions
      * Render options
      *
      * @param  MultiCheckbox $oElement
@@ -45,7 +44,8 @@ class FormMultiCheckbox extends ZendFormMultiCheckboxViewHelper
      * @param  array         $aAttributes
      * @return string
      */
-    protected function renderOptions(MultiCheckbox $oElement, array $aOptions, array $selectedOptions, array $aAttributes) {
+    protected function renderOptions(MultiCheckbox $oElement, array $aOptions, array $selectedOptions, array $aAttributes)
+    {
         $oEscapeHtmlHelper      = $this->getEscapeHtmlHelper();
         $oLabelHelper           = $this->getLabelHelper();
         $sLabelClose            = $oLabelHelper->closeTag();
@@ -128,7 +128,7 @@ class FormMultiCheckbox extends ZendFormMultiCheckboxViewHelper
                 );
             }
 
-            if (!$oElement instanceof LabelAwareInterface || !$oElement->getLabelOption('disable_html_escape')) {
+            if (! $oElement instanceof LabelAwareInterface || ! $oElement->getLabelOption('disable_html_escape')) {
                 $sLabel = $oEscapeHtmlHelper($sLabel);
             }
 
@@ -141,7 +141,7 @@ class FormMultiCheckbox extends ZendFormMultiCheckboxViewHelper
             }
 
             // Assign label for attribute with element id attribute when defined
-            if (empty($aLabelAttributes['for']) && !empty($aInputAttributes['id'])) {
+            if (empty($aLabelAttributes['for']) && ! empty($aInputAttributes['id'])) {
                 $aLabelAttributes['for'] = $aInputAttributes['id'];
             }
 
@@ -167,4 +167,3 @@ class FormMultiCheckbox extends ZendFormMultiCheckboxViewHelper
         return implode($this->getSeparator(), $aCombinedMarkup);
     }
 }
-

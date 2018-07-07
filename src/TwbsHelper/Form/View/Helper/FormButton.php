@@ -8,10 +8,9 @@ use Zend\Form\LabelAwareInterface;
 use Zend\Form\View\Helper\FormButton as ZendFormButtonViewHelper;
 use Zend\Form\ElementInterface;
 
-
 /**
- * FormButton 
- * 
+ * FormButton
+ *
  * @uses ZendFormButtonViewHelper
  */
 class FormButton extends ZendFormButtonViewHelper
@@ -44,8 +43,8 @@ class FormButton extends ZendFormButtonViewHelper
 
 
     /**
-     * render 
-     * 
+     * render
+     *
      * @see    FormButton::render()
      * @param  ElementInterface $oElement
      * @param  string $sButtonContent
@@ -57,13 +56,12 @@ class FormButton extends ZendFormButtonViewHelper
     {
         // Set classes assigned via attribute
         if ($sClass = $oElement->getAttribute('class')) {
-            if (!preg_match('/(\s|^)btn(\s|$)/', $sClass)) {
+            if (! preg_match('/(\s|^)btn(\s|$)/', $sClass)) {
                 $sClass .= ' btn';
             }
 
-            if (!preg_match('/(\s|^)btn-.*(\s|$)/', $sClass)) {
+            if (! preg_match('/(\s|^)btn-.*(\s|$)/', $sClass)) {
                 $sClass .= ' btn-secondary';
-
             } else {
                 $bHasOption = false;
 
@@ -74,7 +72,7 @@ class FormButton extends ZendFormButtonViewHelper
                     }
                 }
 
-                if (!$bHasOption) {
+                if (! $bHasOption) {
                     $sClass .= ' btn-secondary';
                 }
             }
@@ -88,7 +86,6 @@ class FormButton extends ZendFormButtonViewHelper
         // Retrieve icon options
         if (null !== ($aIconOptions = $oElement->getOption('glyphicon'))) {
             $sIconHelperMethod = 'glyphicon';
-
         } elseif (null !== ($aIconOptions = $oElement->getOption('fontAwesome'))) {
             $sIconHelperMethod = 'fontAwesome';
         }
@@ -97,11 +94,11 @@ class FormButton extends ZendFormButtonViewHelper
         if (null === $sButtonContent) {
             $sButtonContent = $oElement->getLabel();
 
-            if (!$sButtonContent) {
+            if (! $sButtonContent) {
                 $sButtonContent = $oElement->getValue();
             }
 
-            if (null === $sButtonContent && !$aIconOptions) {
+            if (null === $sButtonContent && ! $aIconOptions) {
                 throw new DomainException(sprintf(
                     '%s expects either button content as the second argument, ' .
                     'or that the element provided has a label value, a glyphicon option, or a fontAwesome option; none found',
@@ -115,7 +112,7 @@ class FormButton extends ZendFormButtonViewHelper
             }
         }
 
-        if (!$oElement instanceof LabelAwareInterface || !$oElement->getLabelOption('disable_html_escape')) {
+        if (! $oElement instanceof LabelAwareInterface || ! $oElement->getLabelOption('disable_html_escape')) {
             $oEscapeHtmlHelper = $this->getEscapeHtmlHelper();
             $sButtonContent    = $oEscapeHtmlHelper($sButtonContent);
         }
@@ -131,7 +128,7 @@ class FormButton extends ZendFormButtonViewHelper
             }
 
             // Validate icon options type
-            if (!is_array($aIconOptions)) {
+            if (! is_array($aIconOptions)) {
                 throw new LogicException(sprintf(
                     '"glyphicon" and "fontAwesome" button option expects a scalar value or an array, "%s" given',
                     is_object($aIconOptions) ? get_class($aIconOptions) : gettype($aIconOptions)
@@ -141,24 +138,24 @@ class FormButton extends ZendFormButtonViewHelper
             $position = 'prepend';
 
             // Set icon position
-            if (!empty($aIconOptions['position'])) {
+            if (! empty($aIconOptions['position'])) {
                 $position = $aIconOptions['position'];
             }
 
             // Set icon
-            if (!empty($aIconOptions['icon'])) {
+            if (! empty($aIconOptions['icon'])) {
                 $icon = $aIconOptions['icon'];
             }
 
             // Validate icon option type
-            if (!is_scalar($icon)) {
+            if (! is_scalar($icon)) {
                 throw new LogicException(sprintf(
                     'Glyphicon and fontAwesome "icon" option expects a scalar value, "%s" given',
                     is_object($icon) ? get_class($icon) : gettype($icon)
                 ));
 
             // Validate icon position option type
-            } elseif (!is_string($position)) {
+            } elseif (! is_string($position)) {
                 throw new LogicException(sprintf(
                     'Glyphicon and fontAwesome "position" option expects a string, "%s" given',
                     is_object($position) ? get_class($position) : gettype($position)
@@ -202,7 +199,7 @@ class FormButton extends ZendFormButtonViewHelper
         // Dropdown button
         if ($aDropdownOptions = $oElement->getOption('dropdown')) {
             // Validate dropdown option type
-            if (!is_array($aDropdownOptions)) {
+            if (! is_array($aDropdownOptions)) {
                 throw new LogicException(sprintf(
                     '"dropdown" option expects an array, "%s" given',
                     is_object($aDropdownOptions) ? get_class($aDropdownOptions) : gettype($aDropdownOptions)
@@ -212,7 +209,7 @@ class FormButton extends ZendFormButtonViewHelper
             // Split dropdown button
             if (empty($aDropdownOptions['split'])) {
                 // Set class attribute
-                if (!preg_match('/(\s|^)dropdown-toggle(\s|$)/', $sClass = $oElement->getAttribute('class'))) {
+                if (! preg_match('/(\s|^)dropdown-toggle(\s|$)/', $sClass = $oElement->getAttribute('class'))) {
                     $oElement->setAttribute('class', trim($sClass . ' dropdown-toggle'));
                 }
 
@@ -250,4 +247,3 @@ class FormButton extends ZendFormButtonViewHelper
         return $this->openTag($oElement) . $sButtonContent . $this->closeTag();
     }
 }
-
