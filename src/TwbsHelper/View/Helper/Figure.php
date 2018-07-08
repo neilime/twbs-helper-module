@@ -5,7 +5,8 @@ namespace TwbsHelper\View\Helper;
 /**
  * Helper for rendering figures
  */
-class Figure extends \Zend\View\Helper\AbstractHtmlElement {
+class Figure extends \Zend\View\Helper\AbstractHtmlElement
+{
 
     /**
      * Generates a 'figure' element
@@ -19,14 +20,15 @@ class Figure extends \Zend\View\Helper\AbstractHtmlElement {
      * @return string The figure XHTML.
      * @throws \InvalidArgumentException
      */
-    public function __invoke($sImageSrc, $sCaption = '', array $aAttributes = array(), array $aImageAttributes = array(), array $aCaptionAttributes = array(), $bEscape = true) {
-        if (!is_string($sImageSrc)) {
+    public function __invoke($sImageSrc, $sCaption = '', array $aAttributes = [], array $aImageAttributes = [], array $aCaptionAttributes = [], $bEscape = true)
+    {
+        if (! is_string($sImageSrc)) {
             throw new \InvalidArgumentException('Argument "$sImageSrc" expects a string, "' . (is_object($sImageSrc) ? get_class($sImageSrc) : gettype($sImageSrc)) . '" given');
         }
-        if (!is_string($sCaption)) {
+        if (! is_string($sCaption)) {
             throw new \InvalidArgumentException('Argument "$sCaption" expects a string, "' . (is_object($sCaption) ? get_class($sCaption) : gettype($sCaption)) . '" given');
         }
-        if (!is_bool($bEscape)) {
+        if (! is_bool($bEscape)) {
             throw new \InvalidArgumentException('Argument "$bEscape" expects a boolean, "' . (is_object($bEscape) ? get_class($bEscape) : gettype($bEscape)) . '" given');
         }
 
@@ -63,5 +65,4 @@ class Figure extends \Zend\View\Helper\AbstractHtmlElement {
                 ($sCaption ? '    <figcaption' . ($aCaptionAttributes ? $this->htmlAttribs($aCaptionAttributes) : '') . '>' . $sCaption . '</figcaption>' . PHP_EOL : '') .
                 '</figure>';
     }
-
 }

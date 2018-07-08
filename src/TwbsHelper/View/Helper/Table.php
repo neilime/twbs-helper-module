@@ -5,7 +5,8 @@ namespace TwbsHelper\View\Helper;
 /**
  * Helper for rendering tables
  */
-class Table extends \Zend\View\Helper\AbstractHtmlElement {
+class Table extends \Zend\View\Helper\AbstractHtmlElement
+{
 
     const TABLE_HEAD = 'thead';
     const TABLE_BODY = 'tbody';
@@ -22,7 +23,8 @@ class Table extends \Zend\View\Helper\AbstractHtmlElement {
      * @return string The table XHTML.
      * @throws \InvalidArgumentException
      */
-    public function __invoke(array $aRows, array $aAttributes = array(), $bEscape = true) {
+    public function __invoke(array $aRows, array $aAttributes = [], $bEscape = true)
+    {
 
         // Table class
         if (empty($aAttributes['class'])) {
@@ -40,31 +42,32 @@ class Table extends \Zend\View\Helper\AbstractHtmlElement {
      * @return string The rows XHTML.
      * @throws \InvalidArgumentException
      */
-    public function renderTableRows(array $aRows, $bEscape = true) {
+    public function renderTableRows(array $aRows, $bEscape = true)
+    {
 
         $sMarkup = '';
-        if (!$aRows) {
+        if (! $aRows) {
             return $sMarkup;
         }
         if (isset($aRows['head'])) {
-            if (!is_array($aRows['head'])) {
+            if (! is_array($aRows['head'])) {
                 throw new \InvalidArgumentException('Argument "$aRows[\'head\']" expects an array, "' . (is_object($aRows['head']) ? get_class($aRows['head']) : gettype($aRows['head'])) . '" given');
             }
             $aHeadRows = $aRows['head'];
             unset($aRows['head']);
         }
         if (isset($aRows['body'])) {
-            if (!is_array($aRows['body'])) {
+            if (! is_array($aRows['body'])) {
                 throw new \InvalidArgumentException('Argument "$aRows[\'body\']" expects an array, "' . (is_object($aRows['body']) ? get_class($aRows['body']) : gettype($aRows['body'])) . '" given');
             }
             $aBodyRows = $aRows['body'];
             unset($aRows['body']);
         }
 
-        if (!isset($aBodyRows)) {
+        if (! isset($aBodyRows)) {
             $aBodyRows = $aRows;
         }
-        if (!isset($aHeadRows) && $aBodyRows) {
+        if (! isset($aHeadRows) && $aBodyRows) {
             // Define head from first row keys
             $aFirstRow = current($aBodyRows);
             if (\Zend\Stdlib\ArrayUtils::hasStringKeys($aFirstRow)) {
@@ -76,10 +79,10 @@ class Table extends \Zend\View\Helper\AbstractHtmlElement {
             $sMarkup .= $this->renderHeadRows($aHeadRows);
         }
 
-        if (!empty($aBodyRows)) {
+        if (! empty($aBodyRows)) {
             $sMarkup .= '    <' . self::TABLE_BODY . '>' . PHP_EOL;
             foreach ($aBodyRows as $iKey => $aBodyRow) {
-                if (!is_array($aBodyRow)) {
+                if (! is_array($aBodyRow)) {
                     throw new \InvalidArgumentException('Body row "' . $iKey . '" expects an array, "' . (is_object($aBodyRow) ? get_class($aBodyRow) : gettype($aBodyRow)) . '" given');
                 }
                 $sMarkup .= $this->renderTableRow($aBodyRow, self::TABLE_DATA, $bEscape);
@@ -96,15 +99,16 @@ class Table extends \Zend\View\Helper\AbstractHtmlElement {
      * @return string The "<thead>" rows XHTML.
      * @throws \InvalidArgumentException
      */
-    public function renderHeadRows(array $aHeadRows, $bEscape = true) {
+    public function renderHeadRows(array $aHeadRows, $bEscape = true)
+    {
         $sMarkup = '';
-        if (!$aHeadRows) {
+        if (! $aHeadRows) {
             return $sMarkup;
         }
 
         if (isset($aHeadRows['attributes'])) {
             $aHeadAttributes = $aHeadRows['attributes'];
-            if (!is_array($aHeadAttributes)) {
+            if (! is_array($aHeadAttributes)) {
                 throw new \InvalidArgumentException('Head "[\'attributes\']" expects an array, "' . (is_object($aHeadAttributes) ? get_class($aHeadAttributes) : gettype($aHeadAttributes)) . '" given');
             }
             $sHeadAttributes = $this->htmlAttribs($aHeadAttributes);
@@ -114,13 +118,13 @@ class Table extends \Zend\View\Helper\AbstractHtmlElement {
         }
         if (isset($aHeadRows['rows'])) {
             $aHeadRows = $aHeadRows['rows'];
-            if (!is_array($aHeadRows)) {
+            if (! is_array($aHeadRows)) {
                 throw new \InvalidArgumentException('Head "[\'rows\']" expects an array, "' . (is_object($aHeadRows) ? get_class($aHeadRows) : gettype($aHeadRows)) . '" given');
             }
         }
 
-        if (!is_array(current($aHeadRows))) {
-            $aHeadRows = array($aHeadRows);
+        if (! is_array(current($aHeadRows))) {
+            $aHeadRows = [$aHeadRows];
         }
 
         $sMarkup .= '    <' . self::TABLE_HEAD . $sHeadAttributes . '>' . PHP_EOL;
@@ -137,12 +141,13 @@ class Table extends \Zend\View\Helper\AbstractHtmlElement {
      * @param boolean $bEscape True espace html content of cells. Default True
      * @return string The row XHTML.
      */
-    public function renderTableRow(array $aRow, $sDefaultCellType, $bEscape = true) {
+    public function renderTableRow(array $aRow, $sDefaultCellType, $bEscape = true)
+    {
 
         $sRowAttributes = '';
         if (isset($aRow['attributes'])) {
             $aRowAttributes = $aRow['attributes'];
-            if (!is_array($aRowAttributes)) {
+            if (! is_array($aRowAttributes)) {
                 throw new \InvalidArgumentException('Argument "$aRow[\'attributes\']" expects an array, "' . (is_object($aRowAttributes) ? get_class($aRowAttributes) : gettype($aRowAttributes)) . '" given');
             }
             $sRowAttributes = $this->htmlAttribs($aRowAttributes);
@@ -153,7 +158,7 @@ class Table extends \Zend\View\Helper\AbstractHtmlElement {
 
         if (isset($aRow['cells'])) {
             $aRow = $aRow['cells'];
-            if (!is_array($aRow)) {
+            if (! is_array($aRow)) {
                 throw new \InvalidArgumentException('Argument "$aRow[\'cells\']" expects an array, "' . (is_object($aRow) ? get_class($aRow) : gettype($aRow)) . '" given');
             }
         }
@@ -173,25 +178,26 @@ class Table extends \Zend\View\Helper\AbstractHtmlElement {
      * @return string The cell XHTML.
      * @throws \InvalidArgumentException
      */
-    public function renderTableCell($sCell, $sDefaultCellType, $bEscape = true) {
+    public function renderTableCell($sCell, $sDefaultCellType, $bEscape = true)
+    {
 
         if (is_array($sCell)) {
-            if (!isset($sCell['data'])) {
+            if (! isset($sCell['data'])) {
                 throw new \InvalidArgumentException('Argument "$sCell[\'data\']" is undefined');
             }
             $sCellData = $sCell['data'];
-            if (!is_scalar($sCellData)) {
+            if (! is_scalar($sCellData)) {
                 throw new \InvalidArgumentException('Argument "$sCell[\'data\']" expects a scalar value, "' . (is_object($sCellData) ? get_class($sCellData) : gettype($sCellData)) . '" given');
             }
             if (isset($sCell['type'])) {
                 $sCellType = $sCell['type'];
-                if (!is_string($sCellType)) {
+                if (! is_string($sCellType)) {
                     throw new \InvalidArgumentException('Argument "$sCell[\'type\']" expects a string, "' . (is_object($sCellType) ? get_class($sCellType) : gettype($sCellType)) . '" given');
                 }
             }
             if (isset($sCell['attributes'])) {
                 $aAttributes = $sCell['attributes'];
-                if (!is_array($aAttributes)) {
+                if (! is_array($aAttributes)) {
                     throw new \InvalidArgumentException('Argument "$sCell[\'attributes\']" expects an array, "' . (is_object($aAttributes) ? get_class($aAttributes) : gettype($aAttributes)) . '" given');
                 }
                 $sAttributes = $this->htmlAttribs($aAttributes);
@@ -210,5 +216,4 @@ class Table extends \Zend\View\Helper\AbstractHtmlElement {
 
         return '            <' . $sCellType . $sAttributes . '>' . $sCellData . '</' . $sCellType . '>' . PHP_EOL;
     }
-
 }

@@ -5,10 +5,9 @@ use Zend\Form\View\Helper\Form as ZendFormViewHelper;
 use Zend\Form\FormInterface;
 use Zend\Form\FieldsetInterface;
 
-
 /**
- * Form 
- * 
+ * Form
+ *
  * @uses ZendFormViewHelper
  */
 class Form extends ZendFormViewHelper
@@ -25,11 +24,11 @@ class Form extends ZendFormViewHelper
 
 
     /**
-     * __invoke 
-     * 
+     * __invoke
+     *
      * @see    Form::__invoke()
-     * @param  FormInterface $oForm 
-     * @param  string $sFormLayout 
+     * @param  FormInterface $oForm
+     * @param  string $sFormLayout
      * @access public
      * @return TwbsHelperForm|string
      */
@@ -46,12 +45,12 @@ class Form extends ZendFormViewHelper
 
 
     /**
-     * render 
+     * render
      * Render a form from the provided $oForm,
-     * 
+     *
      * @see    Form::render()
-     * @param  FormInterface $oForm 
-     * @param  string|null $sFormLayout 
+     * @param  FormInterface $oForm
+     * @param  string|null $sFormLayout
      * @access public
      * @return string
      */
@@ -65,7 +64,7 @@ class Form extends ZendFormViewHelper
         $this->setFormClass($oForm, $sFormLayout);
 
         // Set form role
-        if (!$oForm->getAttribute('role')) {
+        if (! $oForm->getAttribute('role')) {
             $oForm->setAttribute('role', 'form');
         }
 
@@ -74,10 +73,10 @@ class Form extends ZendFormViewHelper
 
 
     /**
-     * renderElements 
-     * 
-     * @param  FormInterface $oForm 
-     * @param  string|null $sFormLayout 
+     * renderElements
+     *
+     * @param  FormInterface $oForm
+     * @param  string|null $sFormLayout
      * @access protected
      * @return string
      */
@@ -111,7 +110,7 @@ class Form extends ZendFormViewHelper
         foreach ($oForm as $iKey => $oElement) {
             $aOptions = $oElement->getOptions();
 
-            if (!$bHasColumnSize && !empty($aOptions['column-size'])) {
+            if (! $bHasColumnSize && ! empty($aOptions['column-size'])) {
                 $bHasColumnSize = true;
             }
 
@@ -126,20 +125,17 @@ class Form extends ZendFormViewHelper
 
                 if (isset($aButtonGroups[$sButtonGroupKey])) {
                     $aButtonGroups[$sButtonGroupKey][] = $oElement;
-
                 } else {
                     $aButtonGroups[$sButtonGroupKey] = [$oElement];
                     $aElementsRendering[$iKey]       = $sButtonGroupKey;
                 }
 
-                if (!empty($aOptions['column-size']) && !isset($aButtonGroupsColumnSize[$sButtonGroupKey])) {
+                if (! empty($aOptions['column-size']) && ! isset($aButtonGroupsColumnSize[$sButtonGroupKey])) {
                     // Only the first occured column-size will be set, other are ignored.
                     $aButtonGroupsColumnSize[$sButtonGroupKey] = $aOptions['column-size'];
                 }
-
             } elseif ($oElement instanceof FieldsetInterface) {
                 $aElementsRendering[$iKey] = $oFormCollectionHelper->__invoke($oElement);
-
             } else {
                 $aElementsRendering[$iKey] = $oFormRowHelper->__invoke($oElement);
             }
@@ -156,7 +152,6 @@ class Form extends ZendFormViewHelper
                 // Render button group content
                 $options       = (isset($aButtonGroupsColumnSize[$sElementRendering])) ? ['attributes' => ['class' => 'col-' . $aButtonGroupsColumnSize[$sElementRendering]]] : null;
                 $sFormContent .= $oFormRowHelper->renderElementFormGroup($oButtonGroupHelper($aButtons, $options), $oFormRowHelper->getRowClassFromElement(current($aButtons)));
-
             } else {
                 $sFormContent .= $sElementRendering;
             }
@@ -171,11 +166,11 @@ class Form extends ZendFormViewHelper
 
 
     /**
-     * setFormClass 
+     * setFormClass
      * Sets form layout class
-     * 
-     * @param  FormInterface $oForm 
-     * @param  string|null $sFormLayout 
+     *
+     * @param  FormInterface $oForm
+     * @param  string|null $sFormLayout
      * @access protected
      * @return TwbsHelper\Form\View\Helper\TwbsHelperForm
      */
@@ -185,10 +180,9 @@ class Form extends ZendFormViewHelper
             $sLayoutClass = 'form-' . $sFormLayout;
 
             if ($sFormClass = $oForm->getAttribute('class')) {
-                if (!preg_match('/(\s|^)' . preg_quote($sLayoutClass, '/') . '(\s|$)/', $sFormClass)) {
+                if (! preg_match('/(\s|^)' . preg_quote($sLayoutClass, '/') . '(\s|$)/', $sFormClass)) {
                     $oForm->setAttribute('class', trim($sFormClass . ' ' . $sLayoutClass));
                 }
-
             } else {
                 $oForm->setAttribute('class', $sLayoutClass);
             }
@@ -199,10 +193,10 @@ class Form extends ZendFormViewHelper
 
 
     /**
-     * openTag 
+     * openTag
      * Generate an opening form tag
-     * 
-     * @param FormInterface|null $oForm 
+     *
+     * @param FormInterface|null $oForm
      * @access public
      * @return string
      */
@@ -213,4 +207,3 @@ class Form extends ZendFormViewHelper
         return parent::openTag($oForm);
     }
 }
-

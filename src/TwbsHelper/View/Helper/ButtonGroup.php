@@ -7,10 +7,9 @@ use Zend\Form\View\Helper\AbstractHelper;
 use Zend\Form\ElementInterface;
 use Zend\Form\Factory;
 
-
 /**
- * ButtonGroup 
- * 
+ * ButtonGroup
+ *
  * @uses AbstractHelper
  */
 class ButtonGroup extends AbstractHelper
@@ -32,8 +31,8 @@ class ButtonGroup extends AbstractHelper
 
 
     /**
-     * __invoke 
-     * 
+     * __invoke
+     *
      * @param  array $aButtons
      * @param  array $aButtonGroupOptions
      * @access public
@@ -56,16 +55,14 @@ class ButtonGroup extends AbstractHelper
         // Button group container attributes
         if (empty($aButtonGroupOptions['attributes'])) {
             $aButtonGroupOptions['attributes'] = ['class' => 'btn-group'];
-
         } else {
-            if (!is_array($aButtonGroupOptions['attributes'])) {
+            if (! is_array($aButtonGroupOptions['attributes'])) {
                 throw new LogicException('"attributes" option expects an array, "' . gettype($aButtonGroupOptions['attributes']) . '" given');
             }
 
             if (empty($aButtonGroupOptions['attributes']['class'])) {
                 $aButtonGroupOptions['attributes']['class'] = 'btn-group';
-
-            } elseif (!preg_match('/(\s|^)(?:btn-group|btn-group-vertical)(\s|$)/', $aButtonGroupOptions['attributes']['class'])) {
+            } elseif (! preg_match('/(\s|^)(?:btn-group|btn-group-vertical)(\s|$)/', $aButtonGroupOptions['attributes']['class'])) {
                 $aButtonGroupOptions['attributes']['class'] .= ' btn-group';
             }
         }
@@ -85,9 +82,9 @@ class ButtonGroup extends AbstractHelper
 
 
     /**
-     * renderButtons 
+     * renderButtons
      * Render buttons markup
-     * 
+     *
      * @param  array $aButtons
      * @access protected
      * @return string
@@ -99,14 +96,14 @@ class ButtonGroup extends AbstractHelper
         foreach ($aButtons as $oButton) {
             if (is_array($oButton) ||
                 ($oButton instanceof Traversable &&
-                !($oButton instanceof ElementInterface))
+                ! ($oButton instanceof ElementInterface))
             ) {
                 $oFactory = new Factory();
                 $oButton = $oFactory->create($oButton);
-
-            } elseif (!($oButton instanceof ElementInterface)) {
+            } elseif (! ($oButton instanceof ElementInterface)) {
                 throw new LogicException(sprintf(
-                    'Button expects an instanceof Zend\Form\ElementInterface or an array / Traversable, "%s" given', is_object($oButton) ? get_class($oButton) : gettype($oButton)
+                    'Button expects an instanceof Zend\Form\ElementInterface or an array / Traversable, "%s" given',
+                    is_object($oButton) ? get_class($oButton) : gettype($oButton)
                 ));
             }
 
@@ -120,8 +117,8 @@ class ButtonGroup extends AbstractHelper
 
 
     /**
-     * getFormElementHelper 
-     * 
+     * getFormElementHelper
+     *
      * @access public
      * @return TwbsHelperFormElement
      */
@@ -138,4 +135,3 @@ class ButtonGroup extends AbstractHelper
         return $this->formElementHelper = new TwbsHelperFormElement();
     }
 }
-
