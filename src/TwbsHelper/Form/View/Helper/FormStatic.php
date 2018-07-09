@@ -4,10 +4,9 @@ namespace TwbsHelper\Form\View\Helper;
 use Zend\Form\ElementInterface;
 use Zend\View\Helper\AbstractHelper;
 
-
 /**
- * FormStatic 
- * 
+ * FormStatic
+ *
  * @uses AbstractHelper
  */
 class FormStatic extends AbstractHelper
@@ -19,7 +18,7 @@ class FormStatic extends AbstractHelper
 
 
     /**
-     * __invoke 
+     * __invoke
      * Invoke helper as functor
      * Proxies to {@link render()}.
      *
@@ -29,7 +28,7 @@ class FormStatic extends AbstractHelper
      */
     public function __invoke(ElementInterface $element = null)
     {
-        if (!$element) {
+        if (! $element) {
             return $this;
         }
 
@@ -38,8 +37,8 @@ class FormStatic extends AbstractHelper
 
 
     /**
-     * render 
-     * 
+     * render
+     *
      * @see \Zend\Form\View\Helper\AbstractHelper::render()
      * @param ElementInterface $oElement
      * @access public
@@ -50,4 +49,3 @@ class FormStatic extends AbstractHelper
         return sprintf(static::$staticFormat, $oElement->getValue());
     }
 }
-

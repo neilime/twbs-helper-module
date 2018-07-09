@@ -5,7 +5,8 @@ namespace TwbsHelper\View\Helper;
 /**
  * Helper for rendering blockquotes
  */
-class Blockquote extends \Zend\View\Helper\AbstractHtmlElement {
+class Blockquote extends \Zend\View\Helper\AbstractHtmlElement
+{
 
     /**
      * Generates a 'blockquote' element
@@ -19,14 +20,15 @@ class Blockquote extends \Zend\View\Helper\AbstractHtmlElement {
      * @return string The blockquote XHTML.
      * @throws \InvalidArgumentException
      */
-    public function __invoke($sContent, $sFooter = '', array $aAttributes = array(), array $aContentAttributes = array(), array $aFooterAttributes = array(), $bEscape = true) {
-        if (!is_string($sContent)) {
+    public function __invoke($sContent, $sFooter = '', array $aAttributes = [], array $aContentAttributes = [], array $aFooterAttributes = [], $bEscape = true)
+    {
+        if (! is_string($sContent)) {
             throw new \InvalidArgumentException('Argument "$sContent" expects a string, "' . (is_object($sContent) ? get_class($sContent) : gettype($sContent)) . '" given');
         }
-        if (!is_string($sFooter)) {
+        if (! is_string($sFooter)) {
             throw new \InvalidArgumentException('Argument "$sFooter" expects a string, "' . (is_object($sFooter) ? get_class($sFooter) : gettype($sFooter)) . '" given');
         }
-        if (!is_bool($bEscape)) {
+        if (! is_bool($bEscape)) {
             throw new \InvalidArgumentException('Argument "$bEscape" expects a boolean, "' . (is_object($bEscape) ? get_class($bEscape) : gettype($bEscape)) . '" given');
         }
 
@@ -67,5 +69,4 @@ class Blockquote extends \Zend\View\Helper\AbstractHtmlElement {
                 ($sFooter ? '    <footer' . ($aFooterAttributes ? $this->htmlAttribs($aFooterAttributes) : '') . '>' . $sFooter . '</footer>' . PHP_EOL : '') .
                 '</blockquote>';
     }
-
 }

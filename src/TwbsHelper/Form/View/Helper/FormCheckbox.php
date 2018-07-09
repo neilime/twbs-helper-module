@@ -9,10 +9,9 @@ use LogicException;
 use Zend\Form\Element\Checkbox;
 use Zend\Form\View\Helper\FormLabel;
 
-
 /**
- * FormCheckbox 
- * 
+ * FormCheckbox
+ *
  * @uses ZendFormCheckboxViewHelper
  */
 class FormCheckbox extends ZendFormCheckboxViewHelper
@@ -24,8 +23,8 @@ class FormCheckbox extends ZendFormCheckboxViewHelper
 
 
     /**
-     * render 
-     * 
+     * render
+     *
      * @see    ZendFormCheckboxViewHelper::render()
      * @param  ElementInterface $oElement
      * @throws LogicException
@@ -39,7 +38,7 @@ class FormCheckbox extends ZendFormCheckboxViewHelper
             return parent::render($oElement);
         }
 
-        if (!$oElement instanceof Checkbox) {
+        if (! $oElement instanceof Checkbox) {
             throw new InvalidArgumentException(sprintf(
                 '%s requires that the element is of type Zend\Form\Element\Checkbox',
                 __METHOD__
@@ -72,7 +71,7 @@ class FormCheckbox extends ZendFormCheckboxViewHelper
             $aLabelAttributes = $oElement->getLabelAttributes();
 
             // Set label "for" attribute with element "id" attribute when defined
-            if (empty($aLabelAttributes['for']) && !empty($aAttributes['id'])) {
+            if (empty($aLabelAttributes['for']) && ! empty($aAttributes['id'])) {
                 $aLabelAttributes['for'] = $aAttributes['id'];
             }
 
@@ -100,15 +99,16 @@ class FormCheckbox extends ZendFormCheckboxViewHelper
         return $sElementContent;
     }
 
-    
+
     /**
-     * getLabelContent 
-     * 
-     * @param ElementInterface $oElement 
+     * getLabelContent
+     *
+     * @param ElementInterface $oElement
      * @access public
      * @return string
      */
-    public function getLabelContent(ElementInterface $oElement){
+    public function getLabelContent(ElementInterface $oElement)
+    {
         $sLabelContent = $oElement->getLabel();
 
         if ($sLabelContent) {
@@ -122,9 +122,9 @@ class FormCheckbox extends ZendFormCheckboxViewHelper
 
 
     /**
-     * getLabelHelper 
+     * getLabelHelper
      * Retrieve the FormLabel helper
-     * 
+     *
      * @access protected
      * @return FormLabel
      */
@@ -138,7 +138,7 @@ class FormCheckbox extends ZendFormCheckboxViewHelper
             $this->oLabelHelper = $this->view->plugin('form_label');
         }
 
-        if (!($this->oLabelHelper instanceof FormLabel)) {
+        if (! ($this->oLabelHelper instanceof FormLabel)) {
             $this->oLabelHelper = new FormLabel();
         }
 
@@ -151,9 +151,9 @@ class FormCheckbox extends ZendFormCheckboxViewHelper
 
 
     /**
-     * getClass 
+     * getClass
      * Return class
-     * 
+     *
      * @access protected
      * @return void
      */
@@ -162,4 +162,3 @@ class FormCheckbox extends ZendFormCheckboxViewHelper
         return 'form-check-input';
     }
 }
-

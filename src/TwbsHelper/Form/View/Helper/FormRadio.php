@@ -5,10 +5,9 @@ use Zend\Form\View\Helper\FormRadio as ZendFormRadioViewHelper;
 use Zend\Form\ElementInterface;
 use Zend\Form\Element\MultiCheckbox;
 
-
 /**
- * FormRadio 
- * 
+ * FormRadio
+ *
  * @uses ZendFormRadioViewHelper
  */
 class FormRadio extends ZendFormRadioViewHelper
@@ -22,8 +21,8 @@ class FormRadio extends ZendFormRadioViewHelper
 
 
     /**
-     * render 
-     * 
+     * render
+     *
      * @see    \Zend\Form\View\Helper\FormRadio::render()
      * @param  \Zend\Form\ElementInterface $oElement
      * @access public
@@ -60,10 +59,10 @@ class FormRadio extends ZendFormRadioViewHelper
                 $buttonClass = $aElementOptions['btn-group']['btn-class'];
             }
 
-        	$this->setSeparator('');
-        	$oElement->setLabelAttributes(['class' => $buttonClass]);
+            $this->setSeparator('');
+            $oElement->setLabelAttributes(['class' => $buttonClass]);
 
-        	return sprintf('<div class="btn-group" data-toggle="buttons">%s</div>', parent::render($oElement));
+            return sprintf('<div class="btn-group" data-toggle="buttons">%s</div>', parent::render($oElement));
         }
 
         return sprintf(static::$checkboxFormat, parent::render($oElement));
@@ -71,8 +70,8 @@ class FormRadio extends ZendFormRadioViewHelper
 
 
     /**
-     * renderOptions 
-     * 
+     * renderOptions
+     *
      * @see    \Zend\Form\View\Helper\FormMultiCheckbox::renderOptions()
      * @param  \Zend\Form\Element\MultiCheckbox $oElement
      * @param  array $aOptions
@@ -81,21 +80,20 @@ class FormRadio extends ZendFormRadioViewHelper
      * @access protected
      * @return string
      */
-    protected function renderOptions(MultiCheckbox $oElement, array $aOptions, array $aSelectedOptions, array $aAttributes) {
-        $iIterator              = 0;
+    protected function renderOptions(MultiCheckbox $oElement, array $aOptions, array $aSelectedOptions, array $aAttributes)
+    {
+        $iCount                 = 0;
         $aGlobalLabelAttributes = $oElement->getLabelAttributes() ? : $this->labelAttributes;
         $sMarkup                = '';
         $oLabelHelper           = $this->getLabelHelper();
         $aElementOptions        = $oElement->getOptions();
 
         foreach ($aOptions as $key => $aOptionspec) {
+            // Count number of options
+            $iCount++;
+
             if (is_scalar($aOptionspec)) {
                 $aOptionspec = ['label' => $aOptionspec, 'value' => $key];
-            }
-
-            $iIterator++;
-            if ($iIterator > 1 && array_key_exists('id', $aAttributes)) {
-                unset($aAttributes['id']);
             }
 
             // Option attributes
@@ -104,9 +102,15 @@ class FormRadio extends ZendFormRadioViewHelper
                 $aInputAttributes = \Zend\Stdlib\ArrayUtils::merge($aInputAttributes, $aOptionspec['attributes']);
             }
 
-			// Add BS4 form-check-input class if not set
-			$aInputAttributes['class']  = !empty($aInputAttributes['class']) ? $aInputAttributes['class'] : '';
-			$aInputAttributes['class'] .= (false === strpos($aInputAttributes['class'], 'form-check-label')) ? ' form-check-input' : '';
+            // Customize the 'id' input attribute to enable
+            // working 'for' label attribute on all options
+            if ($iCount > 1 && array_key_exists('id', $aAttributes)) {
+                $aInputAttributes['id'] .= $iCount;
+            }
+
+            // Add BS4 form-check-input class if not set
+            $aInputAttributes['class']  = ! empty($aInputAttributes['class']) ? $aInputAttributes['class'] : '';
+            $aInputAttributes['class'] .= (false === strpos($aInputAttributes['class'], 'form-check-label')) ? ' form-check-input' : '';
 
 
             // Option value
@@ -115,18 +119,15 @@ class FormRadio extends ZendFormRadioViewHelper
             // Selected option
             if (in_array($aInputAttributes['value'], $aSelectedOptions)) {
                 $aInputAttributes['checked'] = true;
-
             } elseif (isset($aOptionspec['selected'])) {
-                $aInputAttributes['checked'] = !!$aOptionspec['selected'];
-
+                $aInputAttributes['checked'] = ! ! $aOptionspec['selected'];
             } else {
                 $aInputAttributes['checked'] = isset($aInputAttributes['selected']) && $aInputAttributes['type'] !== 'radio' && $aInputAttributes['selected'] != false;
             }
 
             // Disabled option
             if (isset($aOptionspec['disabled'])) {
-                $aInputAttributes['disabled'] = !!$aOptionspec['disabled'];
-
+                $aInputAttributes['disabled'] = ! ! $aOptionspec['disabled'];
             } else {
                 $aInputAttributes['disabled'] = isset($aInputAttributes['disabled']) && $aInputAttributes['disabled'] != false;
             }
@@ -134,20 +135,25 @@ class FormRadio extends ZendFormRadioViewHelper
             // Render option
             $sOptionMarkup = sprintf('<input %s%s', $this->createAttributesString($aInputAttributes), $this->getInlineClosingBracket());
 
-            //Option label
+            // Option label
             $sLabel = isset($aOptionspec['label']) ? $aOptionspec['label'] : '';
 
             if ($sLabel) {
                 $aLabelAttributes = $aGlobalLabelAttributes;
 
-				// Add BS4 form-check-label class if not set
-				$aLabelAttributes['class']  = !empty($aLabelAttributes['class']) ? $aLabelAttributes['class'] : '';
-				$aLabelAttributes['class'] .= (false === strpos($aLabelAttributes['class'], 'form-check-label')) ? ' form-check-label' : '';
+                // Assign label for attribute with defined element id attribute
+                if (empty($aLabelAttributes['for']) && ! empty($aInputAttributes['id'])) {
+                    $aLabelAttributes['for'] = $aInputAttributes['id'];
+                }
+
+                // Add BS4 form-check-label class if not set
+                $aLabelAttributes['class']  = ! empty($aLabelAttributes['class']) ? $aLabelAttributes['class'] : '';
+                $aLabelAttributes['class'] .= (false === strpos($aLabelAttributes['class'], 'form-check-label')) ? ' form-check-label' : '';
 
                 if (isset($aElementOptions['btn-group']) && $aElementOptions['btn-group'] == true) {
-                	if ($aInputAttributes['checked']) {
-                		$aLabelAttributes['class'] = ((isset($aLabelAttributes['class'])) ? $aLabelAttributes['class'] : '') . ' active';
-                	}
+                    if ($aInputAttributes['checked']) {
+                        $aLabelAttributes['class'] = ((isset($aLabelAttributes['class'])) ? $aLabelAttributes['class'] : '') . ' active';
+                    }
                 }
 
                 if (isset($aOptionspec['label_attributes'])) {
@@ -158,7 +164,7 @@ class FormRadio extends ZendFormRadioViewHelper
                     $sLabel = $oTranslator->translate($sLabel, $this->getTranslatorTextDomain());
                 }
 
-                if (!($oElement instanceof \Zend\Form\LabelAwareInterface) || !$oElement->getLabelOption('disable_html_escape')) {
+                if (! ($oElement instanceof \Zend\Form\LabelAwareInterface) || ! $oElement->getLabelOption('disable_html_escape')) {
                     $sLabel = $this->getEscapeHtmlHelper()->__invoke($sLabel);
                 }
 
@@ -180,4 +186,3 @@ class FormRadio extends ZendFormRadioViewHelper
         return $sMarkup;
     }
 }
-

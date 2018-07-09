@@ -5,10 +5,9 @@ use Zend\Form\ElementInterface;
 use Zend\Form\Exception;
 use Zend\Form\View\Helper\FormInput;
 
-
 /**
- * FormFile 
- * 
+ * FormFile
+ *
  * @uses FormInput
  */
 class FormFile extends FormInput
@@ -30,7 +29,7 @@ class FormFile extends FormInput
     ];
 
     /**
-     * render 
+     * render
      * Render a form <input> element from the provided $oElement
      *
      * @param  ElementInterface $oElement
@@ -61,14 +60,13 @@ class FormFile extends FormInput
 
         if (is_array($sValue) && isset($sValue['name']) && ! is_array($sValue['name'])) {
             $aAttributes['value'] = $sValue['name'];
-
         } elseif (is_string($sValue)) {
             $aAttributes['value'] = $sValue;
         }
 
-		// Add BS4 form-control-file class if not set
-		$aAttributes['class']  = !empty($aAttributes['class']) ? $aAttributes['class'] : '';
-		$aAttributes['class'] .= (false === strpos($aAttributes['class'], 'form-control-file')) ? ' form-control-file' : '';
+        // Add BS4 form-control-file class if not set
+        $aAttributes['class']  = ! empty($aAttributes['class']) ? $aAttributes['class'] : '';
+        $aAttributes['class'] .= (false === strpos($aAttributes['class'], 'form-control-file')) ? ' form-control-file' : '';
 
         return sprintf(
             '<input %s%s',
@@ -88,4 +86,3 @@ class FormFile extends FormInput
         return 'file';
     }
 }
-

@@ -4,10 +4,9 @@ namespace TwbsHelper\Form\View\Helper;
 use Zend\Form\View\Helper\AbstractHelper;
 use Zend\Form\FormInterface;
 
-
 /**
- * FormErrors 
- * 
+ * FormErrors
+ *
  * @uses AbstractHelper
  */
 class FormErrors extends AbstractHelper
@@ -19,9 +18,9 @@ class FormErrors extends AbstractHelper
 
 
     /**
-     * __invoke 
+     * __invoke
      * Invoke as function
-     * 
+     *
      * @param  \Zend\Form\FormInterface $oForm
      * @param  string $sMessage
      * @param  string $bDismissable
@@ -30,15 +29,15 @@ class FormErrors extends AbstractHelper
      */
     public function __invoke(FormInterface $oForm = null, $sMessage = null, $bDismissable = false)
     {
-        if (!$oForm) {
+        if (! $oForm) {
             return $this;
         }
 
-        if (!$sMessage) {
+        if (! $sMessage) {
             $sMessage = $this->sDefaultErrorText;
         }
 
-        if ($oForm->hasValidated() && !$oForm->isValid()) {
+        if ($oForm->hasValidated() && ! $oForm->isValid()) {
             return $this->render($oForm, $sMessage, $bDismissable);
         }
 
@@ -47,9 +46,9 @@ class FormErrors extends AbstractHelper
 
 
     /**
-     * render 
+     * render
      * Renders the error messages.
-     * 
+     *
      * @param \Zend\Form\FormInterface $oForm
      * @access public
      * @return string
@@ -67,7 +66,6 @@ class FormErrors extends AbstractHelper
                         $oForm->get($fieldName)->getAttribute('id'),
                         $oForm->get($fieldName)->getLabel() . ': ' . $sFormMessage
                     );
-
                 } else {
                     $aMessages[] = $oForm->get($fieldName)->getLabel() . ': ' . $sFormMessage;
                 }
@@ -84,16 +82,15 @@ class FormErrors extends AbstractHelper
 
 
     /**
-     * dangerAlert 
+     * dangerAlert
      * Creates and returns a "danger" alert.
-     * 
+     *
      * @param string  $content
      * @param boolean $bDismissable
      * @return string
      */
     public function dangerAlert($content, $bDismissable = false)
     {
-        return $this->getView()->alert($content, array('class' => 'alert-danger'), $bDismissable);
+        return $this->getView()->alert($content, ['class' => 'alert-danger'], $bDismissable);
     }
 }
-

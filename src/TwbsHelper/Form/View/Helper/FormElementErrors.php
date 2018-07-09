@@ -3,10 +3,9 @@ namespace TwbsHelper\Form\View\Helper;
 
 use Zend\Form\View\Helper\FormElementErrors as ZendFormElementErrorsViewHelper;
 
-
 /**
- * FormElementErrors 
- * 
+ * FormElementErrors
+ *
  * @uses ZendFormElementErrorsViewHelper
  */
 class FormElementErrors extends ZendFormElementErrorsViewHelper
@@ -15,4 +14,3 @@ class FormElementErrors extends ZendFormElementErrorsViewHelper
         'class' => 'form-text'
     ];
 }
-

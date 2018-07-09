@@ -10,20 +10,20 @@ use TwbsHelper\Form\View\Helper\FormElement;
 use TwbsHelper\Options\ModuleOptions;
 
 /**
- * FormElementFactory 
+ * FormElementFactory
  * Factory to inject the ModuleOptions hard dependency
- * 
+ *
  * @uses FactoryInterface
  */
 class FormElementFactory implements FactoryInterface
 {
     /**
-     * createService 
+     * createService
      * Compatibility with ZF2 (>= 2.2) -> proxy to __invoke
-     * 
-     * @param ServiceLocatorInterface $oServiceLocator 
-     * @param mixed $sCanonicalName 
-     * @param mixed $sRequestedName 
+     *
+     * @param ServiceLocatorInterface $oServiceLocator
+     * @param mixed $sCanonicalName
+     * @param mixed $sRequestedName
      * @access public
      * @return void
      */
@@ -34,12 +34,12 @@ class FormElementFactory implements FactoryInterface
 
 
     /**
-     * __invoke 
+     * __invoke
      * Compatibility with ZF3
-     * 
-     * @param ContainerInterface $container 
-     * @param mixed $requestedName 
-     * @param array $options 
+     *
+     * @param ContainerInterface $container
+     * @param mixed $requestedName
+     * @param array $options
      * @access public
      * @return void
      */
@@ -50,4 +50,3 @@ class FormElementFactory implements FactoryInterface
         return new FormElement($oOptions);
     }
 }
-

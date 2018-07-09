@@ -4,15 +4,15 @@ namespace TwbsHelper\Form\Element;
 use Zend\Form\Element as ZendElement;
 
 /**
- * StaticElement 
- * 
+ * StaticElement
+ *
  * @uses ZendElement
  */
 class StaticElement extends ZendElement
 {
     /**
      * Seed attributes
-     * 
+     *
      * @var array
      * @access protected
      */
@@ -20,4 +20,3 @@ class StaticElement extends ZendElement
         'type' => 'static'
     ];
 }
-
