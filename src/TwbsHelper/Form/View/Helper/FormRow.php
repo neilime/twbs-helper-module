@@ -33,13 +33,13 @@ class FormRow extends ZendFormRowViewHelper
     /**
      * @var string
      */
-    protected static $helpBlockFormat = '<p class="help-block">%s</p>';
+    protected static $helpBlockFormat = '<small class="form-text text-muted">%s</small>';
 
     /**
      * The class that is added to element that have errors
      * @var string
      */
-    protected $inputErrorClass = '';
+    protected $inputErrorClass = 'is-invalid';
 
     /**
      * @var string
@@ -332,8 +332,12 @@ class FormRow extends ZendFormRowViewHelper
 
                 // Render errors
                 if ($this->renderErrors) {
-                    $sElementContent .= $this->getElementErrorsHelper()->render($oElement);
+                    $sErrorMessages = $this->getElementErrorsHelper()->render($oElement);
+                } else {
+                    $sErrorMessages = '';
                 }
+
+                $sElementContent = sprintf($sElementContent, $sErrorMessages);
 
                 return $sElementContent;
 
