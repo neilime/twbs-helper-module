@@ -6,6 +6,7 @@ return [
             'button',
             'checkbox',
             'file',
+            'hidden',
             'multi_checkbox',
             'radio',
             'reset',

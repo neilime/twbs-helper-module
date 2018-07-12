@@ -129,11 +129,19 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
                 }
             }
 
-            return sprintf(
+            // Add a sprintf directive for correct render of errors
+            return $sMarkup = sprintf(
                 static::$inputGroupFormat,
                 trim($sSpecialClass),
                 $sMarkup . "%s"
             );
+        }
+
+        // Add a sprintf directive for correct render of errors
+        if (! in_array($sElementType, $this->options->getIgnoredViewHelpers()) &&
+            ! ($oElement instanceof Collection)
+        ) {
+            $sMarkup .= "%s";
         }
 
         return $sMarkup;
