@@ -49,7 +49,7 @@ class FormRadio extends ZendFormRadioViewHelper
             $sReturn = sprintf('%s', parent::render($oElement));
             $this->setSeparator($sSeparator);
 
-            return $sReturn;
+            return $sReturn . "%s";
         }
 
         if (isset($aElementOptions['btn-group']) && $aElementOptions['btn-group'] != false) {
@@ -62,7 +62,7 @@ class FormRadio extends ZendFormRadioViewHelper
             $this->setSeparator('');
             $oElement->setLabelAttributes(['class' => $buttonClass]);
 
-            return sprintf('<div class="btn-group" data-toggle="buttons">%s</div>', parent::render($oElement));
+            return sprintf('<div class="btn-group" data-toggle="buttons">%s</div>', parent::render($oElement)). "%s";
         }
 
         return sprintf(static::$checkboxFormat, parent::render($oElement));
@@ -83,6 +83,7 @@ class FormRadio extends ZendFormRadioViewHelper
     protected function renderOptions(MultiCheckbox $oElement, array $aOptions, array $aSelectedOptions, array $aAttributes)
     {
         $iCount                 = 0;
+        $iNumberOfOptions       = count($aOptions);
         $aGlobalLabelAttributes = $oElement->getLabelAttributes() ? : $this->labelAttributes;
         $sMarkup                = '';
         $oLabelHelper           = $this->getLabelHelper();
@@ -181,6 +182,7 @@ class FormRadio extends ZendFormRadioViewHelper
             }
 
             $sMarkup .= ($sMarkup ? $this->getSeparator() : '') . $sOptionMarkup;
+            $sMarkup .= ($iCount == $iNumberOfOptions) ? "%s" : "";
         }
 
         return $sMarkup;

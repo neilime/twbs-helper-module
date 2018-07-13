@@ -17,10 +17,17 @@ use Zend\Form\View\Helper\FormLabel;
 class FormCheckbox extends ZendFormCheckboxViewHelper
 {
 
-    // Form label helper instance
-    // @var FormLabel
+    /**
+     * Form label helper instance
+     * @var FormLabel
+     */
     protected $oLabelHelper;
 
+    /**
+     * The class that is added to element that have errors
+     * @var string
+     */
+    protected static $sInputErrorClass = 'is-invalid';
 
     /**
      * render
@@ -52,11 +59,11 @@ class FormCheckbox extends ZendFormCheckboxViewHelper
         }
 
         $aAttributes          = $oElement->getAttributes();
-        $aAttributes['name']  = $sName;
-        $aAttributes['type']  = $this->getInputType();
-        $aAttributes['value'] = $oElement->getCheckedValue();
-        $aAttributes['class'] = $this->getClass();
-        $sClosingBracket      = $this->getInlineClosingBracket();
+        $aAttributes['name']   = $sName;
+        $aAttributes['type']   = $this->getInputType();
+        $aAttributes['value']  = $oElement->getCheckedValue();
+        $aAttributes['class'] .= " {$this->getClass()}";
+        $sClosingBracket       = $this->getInlineClosingBracket();
 
         if ($oElement->isChecked()) {
             $aAttributes['checked'] = 'checked';
@@ -96,7 +103,7 @@ class FormCheckbox extends ZendFormCheckboxViewHelper
             ) . $sElementContent;
         }
 
-        return $sElementContent;
+        return $sElementContent . "%s";
     }
 
 
