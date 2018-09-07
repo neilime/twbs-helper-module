@@ -24,10 +24,10 @@ use TwbsHelper\Options\ModuleOptions;
 class FormElement extends ZendFormElementViewHelper implements TranslatorAwareInterface
 {
     // @var string
-    protected static $addonFormat = '<%s class="%s"><span class="input-group-text">%s</span></%s>';
+    protected static $addonFormat = '<%s class="%s" %s><span class="input-group-text">%s</span></%s>';
 
     // @var string
-    protected static $inputGroupFormat = '<div class="input-group %s">%s</div>';
+    protected static $inputGroupFormat = '<div class="input-group %s" %s>%s</div>';
 
     // Translator (optional)
     // @var Translator
@@ -114,7 +114,7 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
 
         // Addon append
         if ($aAddOnAppend = $oElement->getOption('add-on-append')) {
-            $sMarkup .= $this->renderAddOn($aAddOnAppend);
+            $sMarkup .= $this->renderAddOn($aAddOnAppend, 'append');
         }
 
         if ($aAddOnAppend || $aAddOnPrepend) {
@@ -128,11 +128,34 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
                     $sSpecialClass .= ' input-group-sm';
                 }
             }
+            
+            
+            $sSpecialAttributes = '';
+
+            // Input group attributes
+	        if (is_array($oElement->getOption('input-group'))){
+		        $aInputGroup = $oElement->getOption('input-group');
+
+		        // Input group class
+		        if(! empty($aInputGroup['class'])){
+					$sSpecialClass .= ' ' . $aInputGroup['class'];
+				}
+
+				// Input group other attributes
+				if(is_array($aInputGroup['attributes'])){
+					foreach ($aInputGroup['attributes'] as $name => $value){
+						$sSpecialAttributes .= $name . '="' . $value . '" ';
+					}
+					$sSpecialAttributes = trim($sSpecialAttributes);
+				}
+
+	        }
 
             // Add a sprintf directive for correct render of errors
             return $sMarkup = sprintf(
                 static::$inputGroupFormat,
                 trim($sSpecialClass),
+                $sSpecialAttributes,
                 $sMarkup . "%s"
             );
         }
@@ -222,8 +245,17 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
                 $sAddonClass .= ' input-group-addon';
             }
         }
+        
+        $sAttributes = '';
 
-        return sprintf(static::$addonFormat, $sAddonTagName, trim($sAddonClass), $sMarkup, $sAddonTagName);
+		if(! empty($aAddOnOptions['attributes'])){
+			foreach($aAddOnOptions['attributes'] as $name => $value){
+				$sAttributes .= $name .'="' . $value . '" ';
+			}
+			$sAttributes = rtrim($sAttributes);
+		}
+
+        return sprintf(static::$addonFormat, $sAddonTagName, trim($sAddonClass), $sAttributes, $sMarkup, $sAddonTagName);
     }
 
 
