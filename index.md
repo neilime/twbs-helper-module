@@ -6,27 +6,26 @@ title: Home
 
 __TwbsHelper__ is a Zend Framework module for easy integration of the [Twitter Bootstrap v4](https://v4-alpha.getbootstrap.com/).
 
-__! Work in progress !__
+### ⚠️ Work in progress ⚠️
 
 [![Build Status](https://travis-ci.org/neilime/zf-twbs-helper-module.svg?branch=master)](https://travis-ci.org/neilime/zf-twbs-helper-module)
 [![Coverage Status](https://coveralls.io/repos/github/neilime/zf-twbs-helper-module/badge.svg)](https://coveralls.io/github/neilime/zf-twbs-helper-module)
 [![Latest Stable Version](https://poser.pugx.org/neilime/zf-twbs-helper-module/v/stable.png)](https://packagist.org/packages/neilime/zf-twbs-helper-module)
 [![Total Downloads](https://poser.pugx.org/neilime/zf-twbs-helper-module/downloads.png)](https://packagist.org/packages/neilime/zf-twbs-helper-module)
+[![Beerpay](https://beerpay.io/neilime/zf-twbs-helper-module/badge.svg)](https://beerpay.io/neilime/zf-twbs-helper-module) 
 
 # Helping Project
 
-If this project helps you reduce time to develop and/or you want to help the maintainer of this project, you can make a donation, thank you.
-
-<a href='https://pledgie.com/campaigns/33297'><img alt='Click here to lend your support to: TwbsHelper - Zend Framework module and make a donation at pledgie.com !' src='https://pledgie.com/campaigns/33297.png?skin_name=chrome' border='0' ></a>
+❤️ If this project helps you reduce time to develop and/or you want to help the maintainer of this project, you can support him on [![Beerpay](https://beerpay.io/neilime/zf-twbs-helper-module/badge.svg)](https://beerpay.io/neilime/zf-twbs-helper-module) Thank you !
 
 # Contributing
 
-If you wish to contribute to TwbsHelper, please read the [CONTRIBUTING.md](CONTRIBUTING.md) file.
+👍 If you wish to contribute to TwbsHelper, please read the [CONTRIBUTING.md](CONTRIBUTING.md) file.
 NOTE : If you want to contribute don't hesitate, I'll review any PR.
 
 # Demonstration / example
 
-Render forms, buttons, alerts with TwbBundle : [see it in action, on-line](https://neilime.github.io/zf-twbs-helper-module/demo.html).
+🚀 Render forms, buttons, alerts with TwbBundle : [see it in action, on-line](https://neilime.github.io/zf-twbs-helper-module/demo.html).
 
 # Requirements
 
@@ -49,5 +48,4 @@ Name | Version
 # Documentation
 
   1. [Installation](https://github.com/neilime/zf-twbs-helper-module/wiki/Installation)
-  2. [Php Doc](https://neilime.github.io/zf-twbs-helper-module/phpdoc)
-  3. [Code coverage](https://neilime.github.io/zf-twbs-helper-module/coverage/)
+  3. [Code coverage](https://coveralls.io/github/neilime/zf-twbs-helper-module)
