@@ -22,7 +22,6 @@ cache:
 before_install:
 - mkdir -p ~/.composer
 - composer self-update
-- composer config --global github-oauth.github.com ${GH_TOKEN}
 - composer install --prefer-dist --dev
 
 before_script:
