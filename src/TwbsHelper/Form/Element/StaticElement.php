@@ -19,4 +19,5 @@ class StaticElement extends ZendElement
     protected $attributes = [
         'type' => 'static'
     ];
+
 }
