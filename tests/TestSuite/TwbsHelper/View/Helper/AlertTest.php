@@ -15,35 +15,23 @@ class AlertTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase {
         );
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Argument "$sContent" expects a string, "array" given
-     */
     public function testInvokeWithWrongArgumentContent() {
+        $this->expectExceptionMessage('Argument "$sContent" expects a string, "array" given');
         $this->helper->__invoke(array());
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Argument "$sType" expects a string, "array" given
-     */
     public function testInvokeWithWrongArgumentType() {
+        $this->expectExceptionMessage('Argument "$sType" expects a string, "array" given');
         $this->helper->__invoke('test', array('wrong'));
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Argument "$bDismissible" expects a boolean, "string" given
-     */
     public function testInvokeWithWrongArgumentDismissible() {
+        $this->expectExceptionMessage('Argument "$bDismissible" expects a boolean, "string" given');
         $this->helper->__invoke('test', 'test', 'wrong');
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Argument "$bEscape" expects a boolean, "string" given
-     */
     public function testInvokeWithWrongArgumentEscape() {
+        $this->expectExceptionMessage('Argument "$bEscape" expects a boolean, "string" given');
         $this->helper->__invoke('test', 'test', true, array(), 'wrong');
     }
 

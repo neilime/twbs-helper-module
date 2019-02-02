@@ -9,3 +9,4 @@ nb-configuration.xml
 .idea/
 composer.lock
 *.swp
+tests/.phpunit.result.cache

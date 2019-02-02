@@ -13,35 +13,23 @@ class AbbreviationTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase 
         $this->assertSame('<abbr class="test-class&#x20;initialism" title="title">content</abbr>', $this->helper->__invoke('content', 'title', true, array('class' => 'test-class')));
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Argument "$sContent" expects a string, "array" given
-     */
-    public function testInvokeWithWrongArgumentContent() {
+    public function testInvokeWithWrongArgumentContent() {        
+        $this->expectExceptionMessage('Argument "$sContent" expects a string, "array" given');
         $this->helper->__invoke(array());
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Argument "$sTitle" expects a string, "array" given
-     */
     public function testInvokeWithWrongArgumentTitle() {
+        $this->expectExceptionMessage('Argument "$sTitle" expects a string, "array" given');
         $this->helper->__invoke('test', array('wrong'));
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Argument "$bInitialism" expects a boolean, "string" given
-     */
-    public function testInvokeWithWrongArgumentInitialism() {
+    public function testInvokeWithWrongArgumentInitialism() {        
+        $this->expectExceptionMessage('Argument "$bInitialism" expects a boolean, "string" given');
         $this->helper->__invoke('test', 'test', 'wrong');
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Argument "$bEscape" expects a boolean, "string" given
-     */
     public function testInvokeWithWrongArgumentEscape() {
+        $this->expectExceptionMessage('Argument "$bEscape" expects a boolean, "string" given');
         $this->helper->__invoke('test', 'test', true, array(), 'wrong');
     }
 

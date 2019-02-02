@@ -36,27 +36,18 @@ class BlockquoteTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase {
         );
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Argument "$sContent" expects a string, "array" given
-     */
     public function testInvokeWithWrongArgumentContent() {
+        $this->expectExceptionMessage('Argument "$sContent" expects a string, "array" given');
         $this->helper->__invoke(array());
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Argument "$sFooter" expects a string, "array" given
-     */
-    public function testInvokeWithWrongArgumentFooter() {
+    public function testInvokeWithWrongArgumentFooter() {        
+        $this->expectExceptionMessage('Argument "$sFooter" expects a string, "array" given');
         $this->helper->__invoke('test', array('wrong'));
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Argument "$bEscape" expects a boolean, "string" given
-     */
     public function testInvokeWithWrongArgumentEscape() {
+        $this->expectExceptionMessage('Argument "$bEscape" expects a boolean, "string" given');
         $this->helper->__invoke('test', 'test', array(), array(), array(), 'wrong');
     }
 

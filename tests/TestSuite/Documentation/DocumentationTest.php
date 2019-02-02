@@ -35,7 +35,7 @@ namespace TestSuite\Documentation;
  *     ), // Tests array define tests to performs, each one of them compares a rendering versus an expected markup
  * );
  */
-class DocumentationTest extends \PHPUnit_Framework_TestCase {
+class DocumentationTest extends \PHPUnit\Framework\TestCase {
 
     /**
      * Provides test cases from existing documentation test config files

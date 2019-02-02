@@ -25,27 +25,18 @@ class HtmlListTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase {
         $this->assertSame($sExpectedMarkup, $this->helper->__invoke(array(array('test'))));
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Argument "$aItems" must not be empty
-     */
-    public function testInvokeWithEmptyArgumentItems() {
+    public function testInvokeWithEmptyArgumentItems() {        
+        $this->expectExceptionMessage('Argument "$aItems" must not be empty');
         $this->helper->__invoke(array());
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Argument "$bOrdered" expects a boolean, "string" given
-     */
-    public function testInvokeWithWrongArgumentOrdered() {
+    public function testInvokeWithWrongArgumentOrdered() {        
+        $this->expectExceptionMessage('Argument "$bOrdered" expects a boolean, "string" given');
         $this->helper->__invoke(array('test'), 'wrong');
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Argument "$bEscape" expects a boolean, "string" given
-     */
     public function testInvokeWithWrongArgumentEscape() {
+        $this->expectExceptionMessage('Argument "$bEscape" expects a boolean, "string" given');
         $this->helper->__invoke(array('test'), true, array(), 'wrong');
     }
 

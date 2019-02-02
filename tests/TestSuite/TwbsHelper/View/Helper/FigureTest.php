@@ -21,27 +21,18 @@ class FigureTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase {
         );
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Argument "$sImageSrc" expects a string, "array" given
-     */
-    public function testInvokeWithWrongArgumentImageSrc() {
+    public function testInvokeWithWrongArgumentImageSrc() {        
+        $this->expectExceptionMessage('Argument "$sImageSrc" expects a string, "array" given');
         $this->helper->__invoke(array());
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Argument "$sCaption" expects a string, "array" given
-     */
     public function testInvokeWithWrongArgumentCaption() {
+        $this->expectExceptionMessage('Argument "$sCaption" expects a string, "array" given');
         $this->helper->__invoke('test', array('wrong'));
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     * @expectedExceptionMessage Argument "$bEscape" expects a boolean, "string" given
-     */
     public function testInvokeWithWrongArgumentEscape() {
+        $this->expectExceptionMessage('Argument "$bEscape" expects a boolean, "string" given');
         $this->helper->__invoke('test', 'test', array(), array(), array(), 'wrong');
     }
 

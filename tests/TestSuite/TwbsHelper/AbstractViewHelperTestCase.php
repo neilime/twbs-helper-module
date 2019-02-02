@@ -2,14 +2,14 @@
 
 namespace TestSuite\TwbsHelper;
 
-abstract class AbstractViewHelperTestCase extends \PHPUnit_Framework_TestCase {
+abstract class AbstractViewHelperTestCase extends \PHPUnit\Framework\TestCase {
 
     /**
      * @var \Zend\View\Helper\AbstractHtmlElement
      */
     protected $helper;
 
-    public function setUp() {
+    public function setUp(): void {
         if (!is_string($this->helper)) {
             throw new \LogicException('Property "helper" expects a string, "' . (is_object($this->helper) ? get_class($this->helper) : gettype($this->helper)) . '" defined');
         }

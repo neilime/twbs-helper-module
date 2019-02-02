@@ -41,7 +41,7 @@
         "zendframework/zend-view": "^2.3"
     },
     "require-dev": {
-        "phpunit/phpunit": "^4.8"
+        "phpunit/phpunit": "^8.0"
     },
     "autoload": {
         "psr-4": {
@@ -52,6 +52,13 @@
         "psr-4": {
             "TestSuite\\": "tests/TestSuite"
         }
+    },
+    "scripts": {
+        "test": "cd tests && phpunit & cd ..",
+        "testCi": "cd tests && phpunit -d max_execution_time=0 --coverage-text --coverage-clover ../build/logs/clover.xml --coverage-html ../build/coverage/ && cd .."
+    },
+    "config": {
+        "sort-packages": true
     },
     "extra": {
         "branch-alias": {
