@@ -160,13 +160,6 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
             );
         }
 
-        // Add a sprintf directive for correct render of errors
-        if (! in_array($sElementType, $this->options->getIgnoredViewHelpers()) &&
-            ! ($oElement instanceof Collection)
-        ) {
-            $sMarkup .= "%s";
-        }
-
         return $sMarkup;
     }
 

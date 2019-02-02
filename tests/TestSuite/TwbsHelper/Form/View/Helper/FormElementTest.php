@@ -11,7 +11,7 @@ use Zend\Form\Form;
 use Zend\InputFilter\InputFilter;
 use Zend\Validator\EmailAddress;
 
-class FormElementTest extends \PHPUnit_Framework_TestCase
+class FormElementTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var FormElement
@@ -26,7 +26,7 @@ class FormElementTest extends \PHPUnit_Framework_TestCase
     /**
      * @see \PHPUnit_Framework_TestCase::setUp()
      */
-    public function setUp()
+    public function setUp() : void
     {
         $oViewHelperPluginManager = \TestSuite\Bootstrap::getServiceManager()->get('ViewHelperManager');
         $oRenderer = new \Zend\View\Renderer\PhpRenderer();
