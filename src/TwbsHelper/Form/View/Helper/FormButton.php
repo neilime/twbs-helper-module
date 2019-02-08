@@ -88,6 +88,9 @@ class FormButton extends ZendFormButtonViewHelper
             $sIconHelperMethod = 'glyphicon';
         } elseif (null !== ($aIconOptions = $oElement->getOption('fontAwesome'))) {
             $sIconHelperMethod = 'fontAwesome';
+        } elseif (null !== ($aIconOptions = $oElement->getOption('icon'))) {
+            // Direct icon tag provided, disable helper
+            $sIconHelperMethod = null;
         }
 
         // Define button content
@@ -130,7 +133,7 @@ class FormButton extends ZendFormButtonViewHelper
             // Validate icon options type
             if (! is_array($aIconOptions)) {
                 throw new LogicException(sprintf(
-                    '"glyphicon" and "fontAwesome" button option expects a scalar value or an array, "%s" given',
+                    '"glyphicon" and "fontAwesome" or "icon" button option expects a scalar value or an array, "%s" given',
                     is_object($aIconOptions) ? get_class($aIconOptions) : gettype($aIconOptions)
                 ));
             }
@@ -150,48 +153,70 @@ class FormButton extends ZendFormButtonViewHelper
             // Validate icon option type
             if (! is_scalar($icon)) {
                 throw new LogicException(sprintf(
-                    'Glyphicon and fontAwesome "icon" option expects a scalar value, "%s" given',
+                    'Direct icon, Glyphicon and fontAwesome "icon" option expects a scalar value, "%s" given',
                     is_object($icon) ? get_class($icon) : gettype($icon)
                 ));
 
             // Validate icon position option type
             } elseif (! is_string($position)) {
                 throw new LogicException(sprintf(
-                    'Glyphicon and fontAwesome "position" option expects a string, "%s" given',
+                    'Direct icon, Glyphicon and fontAwesome "position" option expects a string, "%s" given',
                     is_object($position) ? get_class($position) : gettype($position)
                 ));
 
             // Validate icon position option value
             } elseif ($position !== self::ICON_PREPEND && $position !== self::ICON_APPEND) {
                 throw new LogicException(sprintf(
-                    'Glyphicon and fontAwesome "position" option allows "'.self::ICON_PREPEND.'" or "'.self::ICON_APPEND.'", "%s" given',
+                    'Direct icon, Glyphicon and fontAwesome "position" option allows "'.self::ICON_PREPEND.'" or "'.self::ICON_APPEND.'", "%s" given',
                     is_object($position) ? get_class($position) : gettype($position)
                 ));
             }
 
-            // Button content provided
-            if ($sButtonContent) {
-                // Prepend icon to button content
-                if ($position === self::ICON_PREPEND) {
-                    $sButtonContent = $this->getView()->{$sIconHelperMethod}(
-                        $icon,
-                        isset($aIconOptions['attributes']) ? $aIconOptions['attributes'] : null
-                    ) . " {$sButtonContent}";
+            // fontAwesome or glyphicon provided
+            if ($sIconHelperMethod) {
+                // Button content provided
+                if ($sButtonContent) {
+                    // Prepend icon to button content
+                    if ($position === self::ICON_PREPEND) {
+                        $sButtonContent = $this->getView()->{$sIconHelperMethod}(
+                                $icon,
+                                isset($aIconOptions['attributes']) ? $aIconOptions['attributes'] : null
+                            ) . " {$sButtonContent}";
 
-                // Append icon to button content
+                    // Append icon to button content
+                    } else {
+                        $sButtonContent .= ' ' . $this->getView()->{$sIconHelperMethod}(
+                                $icon,
+                                isset($aIconOptions['attributes']) ? $aIconOptions['attributes'] : null
+                            );
+                    }
+
+                // No button content provided, set icon as button content
                 } else {
-                    $sButtonContent .= ' ' . $this->getView()->{$sIconHelperMethod}(
+                    $sButtonContent = $this->getView()->{$sIconHelperMethod}(
                         $icon,
                         isset($aIconOptions['attributes']) ? $aIconOptions['attributes'] : null
                     );
                 }
 
-            // No button content provided, set icon as button content
-            } else {
-                $sButtonContent = $this->getView()->{$sIconHelperMethod}(
-                    $icon,
-                    isset($aIconOptions['attributes']) ? $aIconOptions['attributes'] : null
-                );
+            // Direct icon tag provided
+            }
+            else {
+                // Button content provided
+                if ($sButtonContent) {
+                    // Prepend predefined icon to button content
+                    if ($position === self::ICON_PREPEND) {
+                        $sButtonContent = $aIconOptions['icon'] . ' ' . $sButtonContent;
+
+                    // Append icon to button content
+                    } else {
+                        $sButtonContent .= ' ' . $aIconOptions['icon'];
+                    }
+
+                // No button content provided, set icon as button content
+                } else {
+                    $sButtonContent = $aIconOptions['icon'];
+                }
             }
         }
 
