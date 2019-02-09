@@ -24,7 +24,10 @@ use TwbsHelper\Options\ModuleOptions;
 class FormElement extends ZendFormElementViewHelper implements TranslatorAwareInterface
 {
     // @var string
-    protected static $addonFormat = '<%s class="%s" %s><span class="input-group-text">%s</span></%s>';
+    protected static $addonFormat = '<%s class="%s" %s>%s</%s>';
+
+    // @var string
+    protected static $addonTextFormat = '<span class="input-group-text">%s</span>';
 
     // @var string
     protected static $inputGroupFormat = '<div class="input-group %s" %s>%s</div>';
@@ -194,7 +197,7 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
 
         $sMarkup       = '';
         $sAddonTagName = 'div';
-        $sAddonClass   = '';
+        $sAddonClass = ('prepend' == $sPosition) ? ' input-group-prepend' : 'input-group-append';
 
         if (! empty($aAddOnOptions['text'])) {
             if (! is_scalar($aAddOnOptions['text'])) {
@@ -203,12 +206,11 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
                     is_object($aAddOnOptions['text']) ? get_class($aAddOnOptions['text']) : gettype($aAddOnOptions['text'])
                 ));
             } elseif (($oTranslator = $this->getTranslator())) {
-                $sMarkup .= $oTranslator->translate($aAddOnOptions['text'], $this->getTranslatorTextDomain());
+                $sMarkup .= sprintf(static::$addonTextFormat, $oTranslator->translate($aAddOnOptions['text'], $this->getTranslatorTextDomain()));
             } else {
-                $sMarkup .= $aAddOnOptions['text'];
+                $sMarkup .= sprintf(static::$addonTextFormat, $aAddOnOptions['text']);
             }
 
-            $sAddonClass .= ('prepend' == $sPosition) ? ' input-group-prepend' : 'input-group-append';
         } elseif (! empty($aAddOnOptions['element'])) {
             if (is_array($aAddOnOptions['element']) ||
                 ($aAddOnOptions['element'] instanceof Traversable &&
@@ -229,14 +231,6 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
             ));
 
             $sMarkup .= $this->render($aAddOnOptions['element']);
-
-            //Element is a button, so add-on container must be a "div"
-            if ($aAddOnOptions['element'] instanceof Button) {
-                $sAddonClass .= ' input-group-btn';
-                $sAddonTagName = 'div';
-            } else {
-                $sAddonClass .= ' input-group-addon';
-            }
         }
         
         $sAttributes = '';
