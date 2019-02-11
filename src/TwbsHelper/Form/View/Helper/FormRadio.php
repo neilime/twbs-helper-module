@@ -49,7 +49,7 @@ class FormRadio extends ZendFormRadioViewHelper
             $sReturn = sprintf('%s', parent::render($oElement));
             $this->setSeparator($sSeparator);
 
-            return $sReturn . "%s";
+            return $sReturn;
         }
 
         if (isset($aElementOptions['btn-group']) && $aElementOptions['btn-group'] != false) {

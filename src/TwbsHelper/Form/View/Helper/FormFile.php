@@ -72,7 +72,7 @@ class FormFile extends FormInput
             '<input %s%s',
             $this->createAttributesString($aAttributes),
             $this->getInlineClosingBracket()
-        ) . "%s";
+        );
     }
 
     /**
