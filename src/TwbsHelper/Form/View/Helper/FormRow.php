@@ -337,7 +337,7 @@ class FormRow extends ZendFormRowViewHelper
                     $sErrorMessages = '';
                 }
 
-                $sElementContent = sprintf($sElementContent, $sErrorMessages);
+                $sElementContent .= $sErrorMessages;
 
                 return $sElementContent;
 
