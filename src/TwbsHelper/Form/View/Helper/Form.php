@@ -32,7 +32,7 @@ class Form extends ZendFormViewHelper
      * @access public
      * @return TwbsHelperForm|string
      */
-    public function __invoke(FormInterface $oForm = null, string $sFormLayout = self::LAYOUT_HORIZONTAL)
+    public function __invoke(FormInterface $oForm = null, $sFormLayout = null)
     {
         $this->sFormLayout = $sFormLayout;
 
@@ -54,7 +54,7 @@ class Form extends ZendFormViewHelper
      * @access public
      * @return string
      */
-    public function render(FormInterface $oForm, string $sFormLayout = self::LAYOUT_HORIZONTAL)
+    public function render(FormInterface $oForm, $sFormLayout = null)
     {
         // Prepare form if needed
         if (method_exists($oForm, 'prepare')) {
@@ -80,7 +80,7 @@ class Form extends ZendFormViewHelper
      * @access protected
      * @return string
      */
-    protected function renderElements(FormInterface $oForm, string $sFormLayout = self::LAYOUT_HORIZONTAL)
+    protected function renderElements(FormInterface $oForm, $sFormLayout = null)
     {
         // Store button groups
         $aButtonGroups = [];
@@ -174,7 +174,7 @@ class Form extends ZendFormViewHelper
      * @access protected
      * @return TwbsHelper\Form\View\Helper\TwbsHelperForm
      */
-    protected function setFormClass(FormInterface $oForm, string $sFormLayout = self::LAYOUT_HORIZONTAL)
+    protected function setFormClass(FormInterface $oForm, $sFormLayout = null)
     {
         if (is_string($sFormLayout)) {
             $sLayoutClass = 'form-' . $sFormLayout;
