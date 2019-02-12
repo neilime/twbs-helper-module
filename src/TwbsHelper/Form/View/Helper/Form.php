@@ -115,8 +115,8 @@ class Form extends ZendFormViewHelper
             }
 
             // Define layout option to form elements if not already defined
-            if ($sFormLayout && empty($aOptions['twb-layout'])) {
-                $oElement->setOption('twb-layout', $sFormLayout);
+            if ($sFormLayout && empty($aOptions['twbs-layout'])) {
+                $oElement->setOption('twbs-layout', $sFormLayout);
             }
 
             // Manage button group option
