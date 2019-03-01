@@ -103,7 +103,7 @@ class FormCheckbox extends ZendFormCheckboxViewHelper
             ) . $sElementContent;
         }
 
-        return $sElementContent . "%s";
+        return $sElementContent;
     }
 
 

@@ -159,7 +159,7 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
                 static::$inputGroupFormat,
                 trim($sSpecialClass),
                 $sSpecialAttributes,
-                $sMarkup . "%s"
+                $sMarkup
             );
         }
 
