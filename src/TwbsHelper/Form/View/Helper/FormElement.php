@@ -4,6 +4,8 @@ namespace TwbsHelper\Form\View\Helper;
 use Traversable;
 use InvalidArgumentException;
 use LogicException;
+use Zend\Form\Element\Checkbox;
+use Zend\Form\Element\Radio;
 use Zend\Form\ElementInterface;
 use Zend\Form\View\Helper\FormElement as ZendFormElementViewHelper;
 use Zend\Form\Element\Collection;
@@ -230,7 +232,12 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
                 ['disable-twbs' => true]
             ));
 
-            $sMarkup .= $this->render($aAddOnOptions['element']);
+            if ($aAddOnOptions['element'] instanceof Checkbox || $aAddOnOptions['element'] instanceof Radio) {
+                $sMarkup .= sprintf(static::$addonTextFormat, $this->render($aAddOnOptions['element']));
+            }
+            else {
+                $sMarkup .= $this->render($aAddOnOptions['element']);
+            }
         }
         
         $sAttributes = '';
