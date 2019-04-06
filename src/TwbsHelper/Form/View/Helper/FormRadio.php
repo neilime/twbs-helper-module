@@ -62,7 +62,7 @@ class FormRadio extends ZendFormRadioViewHelper
             $this->setSeparator('');
             $oElement->setLabelAttributes(['class' => $buttonClass]);
 
-            return sprintf('<div class="btn-group" data-toggle="buttons">%s</div>', parent::render($oElement)). "%s";
+            return sprintf('<div class="btn-group" data-toggle="buttons">%s</div>', parent::render($oElement));
         }
 
         return sprintf(static::$checkboxFormat, parent::render($oElement));
@@ -182,7 +182,6 @@ class FormRadio extends ZendFormRadioViewHelper
             }
 
             $sMarkup .= ($sMarkup ? $this->getSeparator() : '') . $sOptionMarkup;
-            $sMarkup .= ($iCount == $iNumberOfOptions) ? "%s" : "";
         }
 
         return $sMarkup;
