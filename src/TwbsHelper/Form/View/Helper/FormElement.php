@@ -168,6 +168,31 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
         return $sMarkup;
     }
 
+    /**
+     * Render element by helper name
+     *
+     * @param string $name
+     * @param ElementInterface $element
+     * @return string
+     */
+    protected function renderHelper($name, ElementInterface $element)
+    {
+        $helper = $this->getView()->plugin($name);
+
+        if (count($this->options->getValidTagAttributes())) {
+            foreach ($this->options->getValidTagAttributes() as $attribute) {
+                $helper->addValidAttribute($attribute);
+            }
+        }
+
+        if (count($this->options->getValidTagAttributePrefixes())) {
+            foreach ($this->options->getValidTagAttributePrefixes() as $prefix) {
+                $helper->addValidAttributePrefix($prefix);
+            }
+        }
+
+        return $helper($element);
+    }
 
     /**
      * renderAddOn
