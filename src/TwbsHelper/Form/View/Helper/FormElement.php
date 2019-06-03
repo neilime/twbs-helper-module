@@ -179,13 +179,13 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
     {
         $helper = $this->getView()->plugin($name);
 
-        if (count($this->options->getValidTagAttributes())) {
+        if ($this->options->getValidTagAttributes()) {
             foreach ($this->options->getValidTagAttributes() as $attribute) {
                 $helper->addValidAttribute($attribute);
             }
         }
 
-        if (count($this->options->getValidTagAttributePrefixes())) {
+        if ($this->options->getValidTagAttributePrefixes()) {
             foreach ($this->options->getValidTagAttributePrefixes() as $prefix) {
                 $helper->addValidAttributePrefix($prefix);
             }
