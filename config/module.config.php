@@ -13,6 +13,8 @@ return [
             'submit',
             'static',
         ],
+        'validTagAttributes' => [],
+        'validTagAttributePrefixes' => [],
         'type_map'  => [],
         'class_map' => [],
     ],
@@ -30,7 +32,7 @@ return [
             'alert'        => 'TwbsHelper\View\Helper\Alert',
             'badge'        => 'TwbsHelper\View\Helper\Badge',
             'blockquote'   => 'TwbsHelper\View\Helper\Blockquote',
-			'buttonGroup'  => 'TwbsHelper\View\Helper\ButtonGroup',
+            'buttonGroup'  => 'TwbsHelper\View\Helper\ButtonGroup',
             'figure'       => 'TwbsHelper\View\Helper\Figure',
             'htmlList'     => 'TwbsHelper\View\Helper\HtmlList',
             'table'        => 'TwbsHelper\View\Helper\Table',
@@ -47,12 +49,6 @@ return [
             'formRow'           => 'TwbsHelper\Form\View\Helper\FormRow',
             'formStatic'        => 'TwbsHelper\Form\View\Helper\FormStatic',
             'formErrors'        => 'TwbsHelper\Form\View\Helper\FormErrors',
-
-            // Glyphicon
-            'glyphicon' => 'TwbsHelper\View\Helper\Glyphicon',
-
-            // FontAwesome
-            'fontAwesome' => 'TwbsHelper\View\Helper\FontAwesome',
 
             // ZF3
             'form_button'         => 'TwbsHelper\Form\View\Helper\FormButton',

@@ -15,6 +15,12 @@ class ModuleOptions extends AbstractOptions
     protected $ignoredViewHelpers;
 
     // @var array
+    protected $validTagAttributes;
+
+    // @var array
+    protected $validTagAttributePrefixes;
+
+    // @var array
     protected $classMap;
 
     // @var array
@@ -42,6 +48,60 @@ class ModuleOptions extends AbstractOptions
     public function setIgnoredViewHelpers(array $aIgnoredViewHelpers)
     {
         $this->ignoredViewHelpers = $aIgnoredViewHelpers;
+
+        return $this;
+    }
+
+
+    /**
+     * getValidTagAttributes
+     *
+     * @access public
+     * @return array
+     */
+    public function getValidTagAttributes()
+    {
+        return $this->validTagAttributes;
+    }
+
+
+    /**
+     * setIgnoredViewHelpers
+     *
+     * @param array $aValidTagAttributes
+     * @access public
+     * @return \TwbsHelper\Options\ModuleOptions
+     */
+    public function setValidTagAttributes(array $aValidTagAttributes)
+    {
+        $this->validTagAttributes = $aValidTagAttributes;
+
+        return $this;
+    }
+
+
+    /**
+     * getValidTagAttributePrefixes
+     *
+     * @access public
+     * @return array
+     */
+    public function getValidTagAttributePrefixes()
+    {
+        return $this->validTagAttributePrefixes;
+    }
+
+
+    /**
+     * setValidTagAttributePrefixes
+     *
+     * @param array $aValidTagAttributePrefixes
+     * @access public
+     * @return \TwbsHelper\Options\ModuleOptions
+     */
+    public function setValidTagAttributePrefixes(array $aValidTagAttributePrefixes)
+    {
+        $this->validTagAttributePrefixes = $aValidTagAttributePrefixes;
 
         return $this;
     }
