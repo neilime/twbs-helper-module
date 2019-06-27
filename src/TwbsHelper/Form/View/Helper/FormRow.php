@@ -28,7 +28,7 @@ class FormRow extends ZendFormRowViewHelper
     /**
      * @var string
      */
-    protected static $checkboxFormat = '<div class="form-check">%s</div>';
+    protected static $checkboxFormat = '<div class="form-check %s">%s</div>';
 
     /**
      * @var string
@@ -318,7 +318,7 @@ class FormRow extends ZendFormRowViewHelper
 
                 // Checkbox elements are a special case, element is already rendered into label
                 if ($sElementType === 'checkbox') {
-                    $sElementContent = sprintf(static::$checkboxFormat, $sElementContent);
+                    $sElementContent = sprintf(static::$checkboxFormat, $oElement->getOption('twbs-row-class'), $sElementContent);
                 } else {
                     if ($sLabelPosition === self::LABEL_PREPEND) {
                         $sElementContent = $sLabelOpen . $sLabelContent . $sLabelClose . $sElementContent;
