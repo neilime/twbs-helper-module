@@ -8,48 +8,59 @@ namespace TwbsHelper\View\Helper;
 class Badge extends \Zend\View\Helper\AbstractHtmlElement
 {
 
+    const TYPE_SIMPLE = 'simple';
+    const TYPE_PILL = 'pill';
+    const TYPE_LINK = 'link';
+
     /**
      * Generates a 'badge' element
      *
      * @param string $sContent The content of the badge
-     * @param string $sType The type of the badge (default, success, info, warning, danger). Default : default
-     * @param bool $bPill True if the badge is a pill badge. Default : false
+     * @param string $sVariation The type of the badge (default, success, info, warning, danger). Default : default
+     * @param string $sType type of the badge ("simple", "pill", "link"). Default : 'simple'
      * @param array $aAttributes Html attributes of the "<span>" element
      * @param bool $bEscape True espace html content '$sContent'. Default True
      * @return string The badge XHTML.
      * @throws \InvalidArgumentException
      */
-    public function __invoke($sContent, $sType = 'default', $bPill = false, array $aAttributes = [], $bEscape = true)
+    public function __invoke($sContent, $sVariation = 'default', $sType = self::TYPE_SIMPLE, array $aAttributes = [], $bEscape = true)
     {
-        if (! is_string($sContent)) {
+        if (!is_string($sContent)) {
             throw new \InvalidArgumentException('Argument "$sContent" expects a string, "' . (is_object($sContent) ? get_class($sContent) : gettype($sContent)) . '" given');
         }
-        if (! is_string($sType)) {
+        if (!is_string($sVariation)) {
+            throw new \InvalidArgumentException('Argument "$sVariation" expects a string, "' . (is_object($sVariation) ? get_class($sVariation) : gettype($sVariation)) . '" given');
+        }
+        if (!is_string($sType)) {
             throw new \InvalidArgumentException('Argument "$sType" expects a string, "' . (is_object($sType) ? get_class($sType) : gettype($sType)) . '" given');
         }
-        if (! is_bool($bPill)) {
-            throw new \InvalidArgumentException('Argument "$bPill" expects a boolean, "' . (is_object($bPill) ? get_class($bPill) : gettype($bPill)) . '" given');
-        }
-        if (! is_bool($bEscape)) {
+        if (!is_bool($bEscape)) {
             throw new \InvalidArgumentException('Argument "$bEscape" expects a boolean, "' . (is_object($bEscape) ? get_class($bEscape) : gettype($bEscape)) . '" given');
         }
 
         // Badge container
         if (empty($aAttributes['class'])) {
-            $aAttributes['class'] = 'badge badge-' . $sType;
+            $aAttributes['class'] = 'badge badge-' . $sVariation;
         } else {
-            $aAttributes['class'] = trim($aAttributes['class']) . ' badge badge-' . $sType;
+            $aAttributes['class'] = trim($aAttributes['class']) . ' badge badge-' . $sVariation;
         }
 
-        // Pill
-        if ($bPill) {
-            $aAttributes['class'] = $aAttributes['class'] . ' badge-pill';
+
+        $sElement = 'span';
+        switch ($sType) {
+            case self::TYPE_PILL:
+                $aAttributes['class'] = $aAttributes['class'] . ' badge-pill';
+                break;
+            case self::TYPE_LINK:
+                $sElement = 'a';
+                break;
         }
 
         // Content
         if ($bEscape) {
             $sContent = $this->getView()->plugin('escapeHtml')->__invoke($sContent);
         }
-        return '<span' . ($aAttributes ? $this->htmlAttribs($aAttributes) : '') . '>' . $sContent . '</span>';
+        return '<' . $sElement . ($aAttributes ? $this->htmlAttribs($aAttributes) : '') . '>' . $sContent . '</' . $sElement . '>';
     }
 }
+

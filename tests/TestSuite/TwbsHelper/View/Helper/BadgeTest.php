@@ -11,7 +11,7 @@ class BadgeTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase {
 
     public function testInvokeWithExistingClassAttribute() {
         $this->assertSame(
-                '<span class="test-class&#x20;badge&#x20;badge-success">content</span>', $this->helper->__invoke('content', 'success', false, array('class' => 'test-class'))
+                '<span class="test-class&#x20;badge&#x20;badge-success">content</span>', $this->helper->__invoke('content', 'success', 'simple', array('class' => 'test-class'))
         );
     }
 
@@ -21,18 +21,18 @@ class BadgeTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase {
     }
 
     public function testInvokeWithWrongArgumentType() {        
-        $this->expectExceptionMessage('Argument "$sType" expects a string, "array" given');
+        $this->expectExceptionMessage('Argument "$sVariation" expects a string, "array" given');
         $this->helper->__invoke('test', array('wrong'));
     }
 
     public function testInvokeWithWrongArgumentPill() {        
-        $this->expectExceptionMessage('Argument "$bPill" expects a boolean, "string" given');
-        $this->helper->__invoke('test', 'test', 'wrong');
+        $this->expectExceptionMessage('Argument "$sType" expects a string, "boolean" given');
+        $this->helper->__invoke('test', 'test', false);
     }
 
     public function testInvokeWithWrongArgumentEscape() {        
         $this->expectExceptionMessage('Argument "$bEscape" expects a boolean, "string" given');
-        $this->helper->__invoke('test', 'test', true, array(), 'wrong');
+        $this->helper->__invoke('test', 'test', 'pill', array(), 'wrong');
     }
 
 }

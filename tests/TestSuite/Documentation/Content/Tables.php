@@ -282,6 +282,51 @@ return array(
             '</table>',
         ),
         array(
+            'title' => 'Borderless table',
+            'url' => 'https://getbootstrap.com/content/tables/#borderless-table',
+            'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
+                echo $oView->table(array(
+                    'head' => array('#', 'First Name', 'Last Name', 'Username'),
+                    'body' => array(
+                        array(array('data' => '1', 'type' => 'th', 'attributes' => array('scope' => 'row')), 'Mark', 'Otto', '@mdo'),
+                        array(array('data' => '2', 'type' => 'th', 'attributes' => array('scope' => 'row')), 'Jacob', 'Thornton', '@fat'),
+                        array(array('data' => '3', 'type' => 'th', 'attributes' => array('scope' => 'row')), 'Larry', 'the Bird', '@twitter'),
+                    ),
+                        ), array('class' => 'table-borderless')
+                );
+            },
+            'expected' => '<table class="table-borderless&#x20;table">' . PHP_EOL .
+            '    <thead>' . PHP_EOL .
+            '        <tr>' . PHP_EOL .
+            '            <th>#</th>' . PHP_EOL .
+            '            <th>First Name</th>' . PHP_EOL .
+            '            <th>Last Name</th>' . PHP_EOL .
+            '            <th>Username</th>' . PHP_EOL .
+            '        </tr>' . PHP_EOL .
+            '    </thead>' . PHP_EOL .
+            '    <tbody>' . PHP_EOL .
+            '        <tr>' . PHP_EOL .
+            '            <th scope="row">1</th>' . PHP_EOL .
+            '            <td>Mark</td>' . PHP_EOL .
+            '            <td>Otto</td>' . PHP_EOL .
+            '            <td>@mdo</td>' . PHP_EOL .
+            '        </tr>' . PHP_EOL .
+            '        <tr>' . PHP_EOL .
+            '            <th scope="row">2</th>' . PHP_EOL .
+            '            <td>Jacob</td>' . PHP_EOL .
+            '            <td>Thornton</td>' . PHP_EOL .
+            '            <td>@fat</td>' . PHP_EOL .
+            '        </tr>' . PHP_EOL .
+            '        <tr>' . PHP_EOL .
+            '            <th scope="row">3</th>' . PHP_EOL .
+            '            <td>Larry</td>' . PHP_EOL .
+            '            <td>the Bird</td>' . PHP_EOL .
+            '            <td>@twitter</td>' . PHP_EOL .
+            '        </tr>' . PHP_EOL .
+            '    </tbody>' . PHP_EOL .
+            '</table>',
+        ),
+        array(
             'title' => 'Hoverable rows',
             'url' => 'https://getbootstrap.com/content/tables/#hoverable-rows',
             'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
