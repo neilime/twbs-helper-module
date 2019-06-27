@@ -3,11 +3,11 @@
 // Documentation test config file for "Components / Badges" part
 return array(
     'title' => 'Badges',
-    'url' => 'https://v4-alpha.getbootstrap.com/components/badge/',
+    'url' => 'https://getbootstrap.com/components/badge/',
     'tests' => array(
         array(
             'title' => 'Exemple',
-            'url' => 'https://v4-alpha.getbootstrap.com/components/badge/#example',
+            'url' => 'https://getbootstrap.com/components/badge/#example',
             'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
                 // H1
                 echo '<h1>Example heading ' . $oView->badge('New') . '</h1>' . PHP_EOL;
@@ -31,7 +31,7 @@ return array(
             'tests' => array(
                 array(
                     'title' => 'Contextual variations',
-                    'url' => 'https://v4-alpha.getbootstrap.com/components/badge/#contextual-variations',
+                    'url' => 'https://getbootstrap.com/components/badge/#contextual-variations',
                     'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
                         // Default
                         echo $oView->badge('Default') . PHP_EOL;
@@ -55,7 +55,7 @@ return array(
                 ),
                 array(
                     'title' => 'Pill badges',
-                    'url' => 'https://v4-alpha.getbootstrap.com/components/badge/#pill-badges',
+                    'url' => 'https://getbootstrap.com/components/badge/#pill-badges',
                     'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
                         // Default
                         echo $oView->badge('Default', 'default', true) . PHP_EOL;

@@ -3,9 +3,10 @@
 // Documentation test config file for "Content" part
 return array(
     'title' => 'Content',
-    'url' => 'https://v4-alpha.getbootstrap.com/content/',
+    'url' => 'https://getbootstrap.com/content/',
     'tests' => array(
         'Typography' => include __DIR__ . DIRECTORY_SEPARATOR . 'Content/Typography.php',
+        'Images' => include __DIR__ . DIRECTORY_SEPARATOR . 'Content/Images.php',
         'Tables' => include __DIR__ . DIRECTORY_SEPARATOR . 'Content/Tables.php',
         'Figures' => include __DIR__ . DIRECTORY_SEPARATOR . 'Content/Figures.php',
     ),

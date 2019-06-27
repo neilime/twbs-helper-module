@@ -1,6 +1,6 @@
 # TwbsHelper - Zend Framework module
 
-__TwbsHelper__ is a Zend Framework module for easy integration of the [Twitter Bootstrap v4](https://v4-alpha.getbootstrap.com/).
+__TwbsHelper__ is a Zend Framework module for easy integration of the [Twitter Bootstrap v4](https://getbootstrap.com/).
 
 ### ⚠️ Work in progress ⚠️
 

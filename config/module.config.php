@@ -35,6 +35,7 @@ return [
             'buttonGroup'  => 'TwbsHelper\View\Helper\ButtonGroup',
             'figure'       => 'TwbsHelper\View\Helper\Figure',
             'htmlList'     => 'TwbsHelper\View\Helper\HtmlList',
+            'image'       => 'TwbsHelper\View\Helper\Image',
             'table'        => 'TwbsHelper\View\Helper\Table',
 
             // Form view helpers
