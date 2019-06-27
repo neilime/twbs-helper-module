@@ -18,7 +18,13 @@ class Image extends \Zend\View\Helper\AbstractHtmlElement
      * Generates a 'image' element
      *
      * @param string $sImageSrc The path to the image
-     * @param array $aOptions IMage options. Default : empty
+     * @param array $aOptions Image options. Default : empty. Allowed options: 
+     * - boolean fluid: responsive image
+     * - boolean thumbnail: thumbnail image
+     * - boolean rounded: rounded image
+     * - boolean figure: figure image
+     * - [srcset => type] sources: list of sources for <picture element>
+     * 
      * @param array $aAttributes Html attributes of the "<img>" element. Default : empty
      * @return string The image XHTML.
      * @throws \InvalidArgumentException
@@ -40,7 +46,7 @@ class Image extends \Zend\View\Helper\AbstractHtmlElement
         // Image class & src
         if ($aImageClasses) {
             if (!empty($aOptionsAndAttributes['class'])) {
-                $aImageClasses = array_merge ($aImageClasses, array_filter(explode(' ', $aOptionsAndAttributes['class']), function ($sClass) {
+                $aImageClasses = array_merge($aImageClasses, array_filter(explode(' ', $aOptionsAndAttributes['class']), function ($sClass) {
                     return !!trim($sClass);
                 }));
             }
@@ -48,6 +54,26 @@ class Image extends \Zend\View\Helper\AbstractHtmlElement
         }
         $aOptionsAndAttributes['src'] = $sImageSrc;
 
-        return '<img' . ($aOptionsAndAttributes ? $this->htmlAttribs($aOptionsAndAttributes) : '') . '/>';
+        $aSources = $aOptionsAndAttributes['sources'] ?? [];
+        unset($aOptionsAndAttributes['sources']);
+        $sImageContent = '<img' . ($aOptionsAndAttributes ? $this->htmlAttribs($aOptionsAndAttributes) : '') . '/>';
+        if (!$aSources) {
+            return $sImageContent;
+        }
+
+        return '<picture>' . PHP_EOL . $this->renderSources($aSources) . PHP_EOL . '    ' . $sImageContent . PHP_EOL . '</picture>';
+    }
+
+    public function renderSources(array $aSources, $sIndentation = '    ')
+    {
+        $aSourcesContents = [];
+        foreach ($aSources as $sSrcSet => $sType) {
+            $aSourceAttributes = [
+                'srcset' => $sSrcSet,
+                'type' => $sType,
+            ];
+            $aSourcesContents[] = $sIndentation . '<source' . $this->htmlAttribs($aSourceAttributes) . '/>';
+        }
+        return join(PHP_EOL, $aSourcesContents);
     }
 }

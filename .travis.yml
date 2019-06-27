@@ -8,7 +8,6 @@ sudo: false
 
 matrix:
   include:
-  - php: '7.1'
   - php: '7.2'
   - php: '7.3'
     env:
@@ -22,7 +21,7 @@ cache:
 before_install:
 - mkdir -p ~/.composer
 - composer self-update
-- composer install --prefer-dist --dev
+- composer install --prefer-dist
 
 before_script:
 - mkdir -p build/{logs,coverage}

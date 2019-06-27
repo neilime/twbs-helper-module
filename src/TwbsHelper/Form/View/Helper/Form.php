@@ -150,8 +150,8 @@ class Form extends ZendFormViewHelper
                 $aButtons = $aButtonGroups[$sElementRendering];
 
                 // Render button group content
-                $options       = (isset($aButtonGroupsColumnSize[$sElementRendering])) ? ['attributes' => ['class' => 'col-' . $aButtonGroupsColumnSize[$sElementRendering]]] : null;
-                $sFormContent .= $oFormRowHelper->renderElementFormGroup($oButtonGroupHelper($aButtons, $options), $oFormRowHelper->getRowClassFromElement(current($aButtons)));
+                $aGroupOptions       = (isset($aButtonGroupsColumnSize[$sElementRendering])) ? ['attributes' => ['class' => 'col-' . $aButtonGroupsColumnSize[$sElementRendering]]] : null;
+                $sFormContent .= $oFormRowHelper->renderElementFormGroup($oButtonGroupHelper($aButtons, $aGroupOptions), $oFormRowHelper->getRowClassFromElement(current($aButtons)));
             } else {
                 $sFormContent .= $sElementRendering;
             }
