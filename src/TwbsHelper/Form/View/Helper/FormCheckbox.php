@@ -62,7 +62,7 @@ class FormCheckbox extends ZendFormCheckboxViewHelper
         $aAttributes['name']   = $sName;
         $aAttributes['type']   = $this->getInputType();
         $aAttributes['value']  = $oElement->getCheckedValue();
-        $aAttributes['class'] = isset($aAttributes['class']) ? " {$this->getClass()}" : $this->getClass();
+        $aAttributes['class'] = isset($aAttributes['class']) ? "{$aAttributes['class']} {$this->getClass()}" : $this->getClass();
         $sClosingBracket       = $this->getInlineClosingBracket();
 
         if ($oElement->isChecked()) {
