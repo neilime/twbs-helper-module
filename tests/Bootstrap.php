@@ -37,15 +37,6 @@ class Bootstrap {
             throw new \LogicException('An error occured while including application configuration file "' . $sApplicationConfigPath . '"');
         }
 
-        $aZf2ModulePaths = array();
-        if (isset($aApplicationConfig['module_listener_options']['module_paths'])) {
-            foreach ($aApplicationConfig['module_listener_options']['module_paths'] as $sModulePath) {
-                if (($sPath = static::findParentPath($sModulePath))) {
-                    $aZf2ModulePaths[] = $sPath;
-                }
-            }
-        }
-
         // Prepare the service manager
         static::$config = $aApplicationConfig;
         $oServiceManager = new \Zend\ServiceManager\ServiceManager();
