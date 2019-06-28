@@ -6,7 +6,7 @@ return array(
     'url' => 'https://getbootstrap.com/components/badge/',
     'tests' => array(
         array(
-            'title' => 'Exemple',
+            'title' => 'Example',
             'url' => 'https://getbootstrap.com/components/badge/#example',
             'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
                 // H1

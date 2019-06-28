@@ -35,7 +35,7 @@ return [
             'buttonGroup'  => 'TwbsHelper\View\Helper\ButtonGroup',
             'figure'       => 'TwbsHelper\View\Helper\Figure',
             'htmlList'     => 'TwbsHelper\View\Helper\HtmlList',
-            'image'       => 'TwbsHelper\View\Helper\Image',
+            'image'        => 'TwbsHelper\View\Helper\Image',
             'table'        => 'TwbsHelper\View\Helper\Table',
 
             // Form view helpers
@@ -50,6 +50,7 @@ return [
             'formRow'           => 'TwbsHelper\Form\View\Helper\FormRow',
             'formStatic'        => 'TwbsHelper\Form\View\Helper\FormStatic',
             'formErrors'        => 'TwbsHelper\Form\View\Helper\FormErrors',
+            
 
             // ZF3
             'form_button'         => 'TwbsHelper\Form\View\Helper\FormButton',
@@ -96,5 +97,12 @@ return [
             'formelement'  => 'TwbsHelper\Form\View\Helper\FormElement',
         ],
     ],
+    'navigation_helpers' => array (
+        'invokables' => array(
+            // Navigation
+            'breadcrumbs'  => 'TwbsHelper\View\Helper\Navigation\Breadcrumbs',
+            'zendviewhelpernavigationbreadcrumbs'  => 'TwbsHelper\View\Helper\Navigation\Breadcrumbs',
+        ),
+    ),
 ];
 

@@ -7,5 +7,7 @@ return array(
     'tests' => array(
         'Alerts' => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Alerts.php',
         'Badges' => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Badges.php',
+        'Breadcrumb' => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Breadcrumb.php',
+        'Buttons' => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Buttons.php',
     ),
 );

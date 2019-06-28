@@ -6,7 +6,7 @@ return array(
     'url' => 'https://getbootstrap.com/components/alerts/',
     'tests' => array(
         array(
-            'title' => 'Exemple',
+            'title' => 'Example',
             'url' => 'https://getbootstrap.com/components/alerts/#examples',
             'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
                 // Success
