@@ -2,7 +2,7 @@
 
 // Documentation test config file for "Content / Images" part
 return array(
-    'title' => 'Figures',
+    'title' => 'Images',
     'url' => 'https://getbootstrap.com/content/images/',
     'tests' => array(
         array(
