@@ -228,7 +228,10 @@
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>render(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>string</em> <strong>$sButtonContent=null</strong>)</strong> : <em>string</em><br /><em>render</em> |
+| public | <strong>render(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>string</em> <strong>$sButtonContent=null</strong>)</strong> : <em>string</em><br /><em>render Accept element option "variant":  'danger', 'dark', 'info', 'light', 'link', 'primary', 'secondary', 'success', 'warning'</em> |
+| protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 
 *This class extends \Zend\Form\View\Helper\FormButton*
 
@@ -338,6 +341,9 @@
 | public | <strong>renderTableCell(</strong><em>\TwbsHelper\View\Helper\scalar/array</em> <strong>$sCell</strong>, <em>string</em> <strong>$sDefaultCellType</strong>, <em>bool/boolean</em> <strong>$bEscape=true</strong>)</strong> : <em>string The cell XHTML.</em><br /><em>Generate table cell element "<th>" or "<td>"</em> |
 | public | <strong>renderTableRow(</strong><em>array</em> <strong>$aRow</strong>, <em>string</em> <strong>$sDefaultCellType</strong>, <em>bool/boolean</em> <strong>$bEscape=true</strong>)</strong> : <em>string The row XHTML.</em><br /><em>Generate table row element "<tr>"</em> |
 | public | <strong>renderTableRows(</strong><em>array</em> <strong>$aRows</strong>, <em>bool/boolean</em> <strong>$bEscape=true</strong>)</strong> : <em>string The rows XHTML.</em><br /><em>Generate table rows elements</em> |
+| protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 
 *This class extends \Zend\View\Helper\AbstractHtmlElement*
 
@@ -353,6 +359,9 @@
 |:-----------|:---------|
 | public | <strong>__invoke(</strong><em>string</em> <strong>$sImageSrc</strong>, <em>array</em> <strong>$aOptionsAndAttributes=array()</strong>)</strong> : <em>string The image XHTML.</em><br /><em>Generates a 'image' element - boolean fluid: responsive image - boolean thumbnail: thumbnail image - boolean rounded: rounded image - boolean figure: figure image - [srcset => type] sources: list of sources for <picture element></em> |
 | public | <strong>renderSources(</strong><em>array</em> <strong>$aSources</strong>, <em>string</em> <strong>$sIndentation=`'    '`</strong>)</strong> : <em>void</em> |
+| protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 
 *This class extends \Zend\View\Helper\AbstractHtmlElement*
 
@@ -398,6 +407,9 @@
 | Visibility | Function |
 |:-----------|:---------|
 | public | <strong>__invoke(</strong><em>string</em> <strong>$sContent</strong>, <em>string</em> <strong>$sVariation=`'default'`</strong>, <em>string</em> <strong>$sType=`'simple'`</strong>, <em>array</em> <strong>$aAttributes=array()</strong>, <em>bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string The badge XHTML.</em><br /><em>Generates a 'badge' element</em> |
+| protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 
 *This class extends \Zend\View\Helper\AbstractHtmlElement*
 
@@ -426,6 +438,9 @@
 | Visibility | Function |
 |:-----------|:---------|
 | public | <strong>__invoke(</strong><em>string</em> <strong>$sImageSrc</strong>, <em>string</em> <strong>$sCaption=`''`</strong>, <em>array</em> <strong>$aAttributes=array()</strong>, <em>array</em> <strong>$aImageOptionsAndAttributes=array()</strong>, <em>array</em> <strong>$aCaptionAttributes=array()</strong>, <em>bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string The figure XHTML.</em><br /><em>Generates a 'figure' element</em> |
+| protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 
 *This class extends \Zend\View\Helper\AbstractHtmlElement*
 
