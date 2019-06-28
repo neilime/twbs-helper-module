@@ -3,7 +3,7 @@
 // Documentation test config file for "Content" part
 return array(
     'title' => 'Content',
-    'url' => 'https://getbootstrap.com/content/',
+    'url' => '%bootstrap-url%/content/',
     'tests' => array(
         'Typography' => include __DIR__ . DIRECTORY_SEPARATOR . 'Content/Typography.php',
         'Images' => include __DIR__ . DIRECTORY_SEPARATOR . 'Content/Images.php',

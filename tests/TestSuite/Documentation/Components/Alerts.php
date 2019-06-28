@@ -3,11 +3,11 @@
 // Documentation test config file for "Components / Alerts" part
 return array(
     'title' => 'Alerts',
-    'url' => 'https://getbootstrap.com/components/alerts/',
+    'url' => '%bootstrap-url%/components/alerts/',
     'tests' => array(
         array(
             'title' => 'Example',
-            'url' => 'https://getbootstrap.com/components/alerts/#examples',
+            'url' => '%bootstrap-url%/components/alerts/#examples',
             'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
                 // Success
                 echo $oView->alert('<strong>Well done!</strong> You successfully read this important alert message.', 'success', false, array(), false) . PHP_EOL;
@@ -36,7 +36,7 @@ return array(
             'tests' => array(
                 array(
                     'title' => 'Link color',
-                    'url' => 'https://getbootstrap.com/components/alerts/#link-color',
+                    'url' => '%bootstrap-url%/components/alerts/#link-color',
                     'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
                         // Success
                         echo $oView->alert('<strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.', 'success', false, array(), false) . PHP_EOL;
@@ -65,7 +65,7 @@ return array(
                 ),
                 array(
                     'title' => 'Additional content',
-                    'url' => 'https://getbootstrap.com/components/alerts/#additional-content',
+                    'url' => '%bootstrap-url%/components/alerts/#additional-content',
                     'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
                         // Success
                         echo $oView->alert(
@@ -82,7 +82,7 @@ return array(
                 ),
                 array(
                     'title' => 'Dismissing',
-                    'url' => 'https://getbootstrap.com/components/alerts/#dismissing',
+                    'url' => '%bootstrap-url%/components/alerts/#dismissing',
                     'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
                         echo $oView->alert('<strong>Holy guacamole!</strong> You should check in on some of those fields below.', 'warning', true, array(), false);
                     },

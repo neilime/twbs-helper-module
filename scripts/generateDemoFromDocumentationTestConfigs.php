@@ -1,5 +1,7 @@
 <?php
 
+const BOOTSTRAP_URL = 'https://getbootstrap.com/docs/4.3';
+
 if (empty($_SERVER['argv'])) {
     throw new \LogicException('Arguments are undefined');
 }
@@ -107,7 +109,7 @@ function convertTestConfigForDemoPage(string $sDemoPageFilePath, string $sTitle,
         // Title
         str_repeat('#', $iHeading) . ' ' . $sTitle . PHP_EOL .
             // Twitter bootstrap Documentation url
-            ($sUrl ? '<small>[Twitter bootstrap Documentation](' . $sUrl . ')</small>' . PHP_EOL : '') . PHP_EOL,
+            ($sUrl ? '<small>[Twitter bootstrap Documentation](' . str_replace('%bootstrap-url%', BOOTSTRAP_URL, $sUrl) . ')</small>' . PHP_EOL : '') . PHP_EOL,
         FILE_APPEND
     );
 

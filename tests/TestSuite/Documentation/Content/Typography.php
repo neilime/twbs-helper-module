@@ -3,11 +3,11 @@
 // Documentation test config file for "Content / Typography" part
 return array(
     'title' => 'Typography',
-    'url' => 'https://getbootstrap.com/content/typography/',
+    'url' => '%bootstrap-url%/content/typography/',
     'tests' => array(
         array(
             'title' => 'Abbreviations',
-            'url' => 'https://getbootstrap.com/content/typography/#abbreviations',
+            'url' => '%bootstrap-url%/content/typography/#abbreviations',
             'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
                 // First abbreviation
                 echo '<p>' . $oView->abbreviation('attr', 'attribute') . '</p>' . PHP_EOL;
@@ -18,7 +18,7 @@ return array(
         ),
         array(
             'title' => 'Blockquotes',
-            'url' => 'https://getbootstrap.com/content/typography/#blockquotes',
+            'url' => '%bootstrap-url%/content/typography/#blockquotes',
             'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
                 echo $oView->blockquote('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.');
             },
@@ -26,7 +26,7 @@ return array(
             'tests' => array(
                 array(
                     'title' => 'Naming a source',
-                    'url' => 'https://getbootstrap.com/content/typography/#naming-a-source',
+                    'url' => '%bootstrap-url%/content/typography/#naming-a-source',
                     'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
                         echo $oView->blockquote(
                                 // Content
@@ -44,7 +44,7 @@ return array(
                 ),
                 array(
                     'title' => 'Reverse layout',
-                    'url' => 'https://getbootstrap.com/content/typography/#reverse-layout',
+                    'url' => '%bootstrap-url%/content/typography/#reverse-layout',
                     'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
                         echo $oView->blockquote(
                                 // Content
@@ -64,11 +64,11 @@ return array(
         ),
         array(
             'title' => 'List',
-            'url' => 'https://getbootstrap.com/content/typography/#lists',
+            'url' => '%bootstrap-url%/content/typography/#lists',
             'tests' => array(
                 array(
                     'title' => 'Unstyled',
-                    'url' => 'https://getbootstrap.com/content/typography/#unstyled',
+                    'url' => '%bootstrap-url%/content/typography/#unstyled',
                     'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
                         echo $oView->htmlList(
                                 // List items
@@ -114,7 +114,7 @@ return array(
                 ),
                 array(
                     'title' => 'Inline',
-                    'url' => 'https://getbootstrap.com/content/typography/#inline',
+                    'url' => '%bootstrap-url%/content/typography/#inline',
                     'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
                         echo $oView->htmlList(
                                 // List items

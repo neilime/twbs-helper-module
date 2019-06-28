@@ -3,16 +3,16 @@
 namespace TestSuite\Documentation;
 
 /**
- * Base class to perform tests according to the Bootstrap documentation : https://getbootstrap.com/
+ * Base class to perform tests according to the Bootstrap documentation : %bootstrap-url%/
  * This test class use configuration files existing in this directory. Each configuration file match with a part of the Bootstrap documentation website.
  * Sample structure of a configuration file :
  * array(
  *     'title' => 'Sample', // The title of the documentation part
- *     'url' => 'https://getbootstrap.com/sample/', // The url of the documentation "Sample part"
+ *     'url' => '%bootstrap-url%/sample/', // The url of the documentation "Sample part"
  *     'tests' => array(
  *         array(
  *             'title' => 'Test 1 for sample part',
- *             'url' => 'https://getbootstrap.com/sample/test-1', // The url of the documentation "Sample part, test 1"
+ *             'url' => '%bootstrap-url%/sample/test-1', // The url of the documentation "Sample part, test 1"
  *             'rendering' => function(\Zend\ServiceManager\ServiceManager $oViewHelperPluginManager){
  *                 return $oViewHelperPluginManager->get('sampleTestOneHelper')->render('sample test-one');
  *             }, // The rendering function should return the expected markup as shown in the related documentation website page
@@ -20,7 +20,7 @@ namespace TestSuite\Documentation;
  *         ),
  *         array(
  *             'title' => 'Nested Tests for sample part',
- *             'url' => 'https://getbootstrap.com/sample/nested-tests', // The url of the documentation "Sample part, nested tests"
+ *             'url' => '%bootstrap-url%/sample/nested-tests', // The url of the documentation "Sample part, nested tests"
  *             'tests' => array(
  *                 array(
  *                     'title' => '...',

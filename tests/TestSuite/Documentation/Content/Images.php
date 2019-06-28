@@ -3,11 +3,11 @@
 // Documentation test config file for "Content / Images" part
 return array(
     'title' => 'Images',
-    'url' => 'https://getbootstrap.com/content/images/',
+    'url' => '%bootstrap-url%/content/images/',
     'tests' => array(
         array(
             'title' => 'Responsive images',
-            'url' => 'https://getbootstrap.com/content/images/#responsive-images',
+            'url' => '%bootstrap-url%/content/images/#responsive-images',
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 echo $oView->image('images/demo-sample.svg', array('fluid' => true, 'alt' => 'Responsive image',));
             },
@@ -15,7 +15,7 @@ return array(
         ),
         array(
             'title' => 'Image thumbnails',
-            'url' => 'https://getbootstrap.com/content/images/#image-thumbnails',
+            'url' => '%bootstrap-url%/content/images/#image-thumbnails',
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 echo $oView->image('images/demo-sample.svg', array('thumbnail' => true, 'alt' => 'Image thumbnail',));
             },
@@ -23,7 +23,7 @@ return array(
         ),
         array(
             'title' => 'Aligning images',
-            'url' => 'https://getbootstrap.com/content/images/#aligning-images',
+            'url' => '%bootstrap-url%/content/images/#aligning-images',
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 echo $oView->image('images/demo-sample.svg', array('rounded' => true, 'alt' => 'Image aligned left', 'class' => 'float-left'))  . PHP_EOL;
                 echo $oView->image('images/demo-sample.svg', array('rounded' => true, 'alt' => 'Image aligned right', 'class' => 'float-right')) . PHP_EOL;
@@ -36,7 +36,7 @@ return array(
         ),
         array(
             'title' => 'Picture',
-            'url' => 'https://getbootstrap.com/content/images/#picture',
+            'url' => '%bootstrap-url%/content/images/#picture',
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 echo $oView->image('images/demo-sample.svg', array(
                     'thumbnail' => true,

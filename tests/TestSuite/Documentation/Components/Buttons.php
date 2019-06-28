@@ -3,11 +3,11 @@
 // Documentation test config file for "Components / Buttons" part
 return array(
     'title' => 'Buttons',
-    'url' => 'https://getbootstrap.com/components/buttons/',
+    'url' => '%bootstrap-url%/components/buttons/',
     'tests' => array(
         array(
             'title' => 'Example',
-            'url' => 'https://getbootstrap.com/components/buttons/#example',
+            'url' => '%bootstrap-url%/components/buttons/#example',
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 foreach (['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark', 'link'] as $sVariant) {
                     $oButton = new \Zend\Form\Element\Button($sVariant, array(
@@ -29,7 +29,7 @@ return array(
         ),
         array(
             'title' => 'Outline buttons',
-            'url' => 'https://getbootstrap.com/components/buttons/#outline-buttons',
+            'url' => '%bootstrap-url%/components/buttons/#outline-buttons',
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 foreach (['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'] as $sVariant) {
                     $oButton = new \Zend\Form\Element\Button($sVariant, array(
@@ -50,7 +50,7 @@ return array(
         ),
         array(
             'title' => 'Sizes',
-            'url' => 'https://getbootstrap.com/components/buttons/#sizes',
+            'url' => '%bootstrap-url%/components/buttons/#sizes',
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
 
                 // Large buttons

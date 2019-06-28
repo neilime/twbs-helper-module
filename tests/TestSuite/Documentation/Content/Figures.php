@@ -3,7 +3,7 @@
 // Documentation test config file for "Content / Figures" part
 return array(
     'title' => 'Figures',
-    'url' => 'https://getbootstrap.com/content/figures/',
+    'url' => '%bootstrap-url%/content/figures/',
     'tests' => array(
         array(
             'title' => 'Basic',

@@ -3,11 +3,11 @@
 // Documentation test config file for "Content / Tables" part
 return array(
     'title' => 'Tables',
-    'url' => 'https://getbootstrap.com/content/tables/',
+    'url' => '%bootstrap-url%/content/tables/',
     'tests' => array(
         array(
             'title' => 'Examples',
-            'url' => 'https://getbootstrap.com/content/tables/#examples',
+            'url' => '%bootstrap-url%/content/tables/#examples',
             'tests' => array(
                 array(
                     'title' => 'Basic',
@@ -100,7 +100,7 @@ return array(
         ),
         array(
             'title' => 'Table head options',
-            'url' => 'https://getbootstrap.com/content/tables/#table-head-options',
+            'url' => '%bootstrap-url%/content/tables/#table-head-options',
             'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
 // First table (head inversed)
                 echo $oView->table(array(
@@ -193,7 +193,7 @@ return array(
         ),
         array(
             'title' => 'Striped rows',
-            'url' => 'https://getbootstrap.com/content/tables/#striped-rows',
+            'url' => '%bootstrap-url%/content/tables/#striped-rows',
             'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
                 echo $oView->table(array(
                     'head' => array('#', 'First Name', 'Last Name', 'Username'),
@@ -238,7 +238,7 @@ return array(
         ),
         array(
             'title' => 'Bordered table',
-            'url' => 'https://getbootstrap.com/content/tables/#bordered-table',
+            'url' => '%bootstrap-url%/content/tables/#bordered-table',
             'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
                 echo $oView->table(array(
                     'head' => array('#', 'First Name', 'Last Name', 'Username'),
@@ -283,7 +283,7 @@ return array(
         ),
         array(
             'title' => 'Borderless table',
-            'url' => 'https://getbootstrap.com/content/tables/#borderless-table',
+            'url' => '%bootstrap-url%/content/tables/#borderless-table',
             'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
                 echo $oView->table(array(
                     'head' => array('#', 'First Name', 'Last Name', 'Username'),
@@ -328,7 +328,7 @@ return array(
         ),
         array(
             'title' => 'Hoverable rows',
-            'url' => 'https://getbootstrap.com/content/tables/#hoverable-rows',
+            'url' => '%bootstrap-url%/content/tables/#hoverable-rows',
             'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
                 echo $oView->table(array(
                     'head' => array('#', 'First Name', 'Last Name', 'Username'),
@@ -373,7 +373,7 @@ return array(
         ),
         array(
             'title' => 'Small Table',
-            'url' => 'https://getbootstrap.com/content/tables/#small-table',
+            'url' => '%bootstrap-url%/content/tables/#small-table',
             'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
                 echo $oView->table(array(
                     'head' => array('#', 'First Name', 'Last Name', 'Username'),
@@ -418,7 +418,7 @@ return array(
         ),
         array(
             'title' => 'Contextual classes',
-            'url' => 'https://getbootstrap.com/content/tables/#contextual-classes',
+            'url' => '%bootstrap-url%/content/tables/#contextual-classes',
             'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
                 echo $oView->table(array(
                     'head' => array('#', 'Column heading', 'Column heading', 'Column heading'),
@@ -519,7 +519,7 @@ return array(
         ),
         array(
             'title' => 'Responsive classes',
-            'url' => 'https://getbootstrap.com/content/tables/#responsive-tables',
+            'url' => '%bootstrap-url%/content/tables/#responsive-tables',
             'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
                 echo $oView->table(array(
                     'head' => array('#', 'Table heading', 'Table heading', 'Table heading', 'Table heading', 'Table heading', 'Table heading'),

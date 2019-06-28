@@ -3,11 +3,11 @@
 // Documentation test config file for "Components / Breadcrumb" part
 return array(
     'title' => 'Breadcrumb',
-    'url' => 'https://getbootstrap.com/components/breadcrumb/',
+    'url' => '%bootstrap-url%/components/breadcrumb/',
     'tests' => array(
         array(
             'title' => 'Example',
-            'url' => 'https://getbootstrap.com/components/breadcrumb/#example',
+            'url' => '%bootstrap-url%/components/breadcrumb/#example',
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 $oNavigationHelper = $oView->navigation();
                 $oNavigationHelper->setContainer(new \Zend\Navigation\Navigation([
