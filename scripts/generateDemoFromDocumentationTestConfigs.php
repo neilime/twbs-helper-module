@@ -48,14 +48,11 @@ foreach (new \DirectoryIterator(__DIR__ . '/../tests/TestSuite/Documentation') a
 // Add end of content to menu page
 file_put_contents($sMenuPageFilePath, '</ul>', FILE_APPEND);
 
-/**
+/** 
  * Extract test cases values for a given tests configuration
- * @param array $aTestsConfig
- * @param string|null $sParentTitle
- * @return array
- * @throws \InvalidArgumentException
  */
-function parseTestsConfig($sDemoPageFilePath, $sMenuPageFilePath, array $aTestsConfig, $iHeading = 1) {
+function parseTestsConfig(string $sDemoPageFilePath,string $sMenuPageFilePath, array $aTestsConfig,int $iHeading = 1, string $sParentId  = '')
+{
     if (!isset($aTestsConfig['title'])) {
         throw new \InvalidArgumentException('Argument "$aTestsConfig" does not have a defined "title" key');
     }
@@ -63,10 +60,13 @@ function parseTestsConfig($sDemoPageFilePath, $sMenuPageFilePath, array $aTestsC
 
     // Menu page entry
     $sId = strtolower(preg_replace('/[^a-z-]/i', '-', $sTitle));
+    if ($sParentId) {
+        $sId = $sParentId . '-' . $sId;
+    }
     file_put_contents($sMenuPageFilePath, str_repeat(' ', $iHeading * 4) . '<li class="nav-item"><a class="nav-link" href="#' . $sId . '">' . str_repeat('&nbsp;', ($iHeading - 1) * 2) . $sTitle . '</a>', FILE_APPEND);
 
     // Handle root tests for this tests config
-    convertTestConfigForDemoPage($sDemoPageFilePath, $sTitle, $aTestsConfig, $iHeading);
+    convertTestConfigForDemoPage($sDemoPageFilePath, $sTitle, $aTestsConfig, $iHeading, $sId);
     if (isset($aTestsConfig['tests'])) {
         if (!is_array($aTestsConfig)) {
             throw new \InvalidArgumentException('Argument "$aTestsConfig[\'tests\']" for "' . $sTitle . '" expects an array, "' . (is_object($aTestsConfig['tests']) ? get_class($aTestsConfig['tests']) : gettype($aTestsConfig['tests'])) . '" given');
@@ -76,7 +76,7 @@ function parseTestsConfig($sDemoPageFilePath, $sMenuPageFilePath, array $aTestsC
         file_put_contents($sMenuPageFilePath, PHP_EOL . $sIndentation . '<ul class="nav flex-column">' . PHP_EOL, FILE_APPEND);
         $iHeading++;
         foreach ($aTestsConfig['tests'] as $aNestedTestsConfig) {
-            parseTestsConfig($sDemoPageFilePath, $sMenuPageFilePath, $aNestedTestsConfig, $iHeading);
+            parseTestsConfig($sDemoPageFilePath, $sMenuPageFilePath, $aNestedTestsConfig, $iHeading, $sId);
         }
         // End of menu page sublist and entry
         file_put_contents($sMenuPageFilePath, $sIndentation . '</ul>' . PHP_EOL . $sIndentation . '</li>' . PHP_EOL, FILE_APPEND);
@@ -85,22 +85,19 @@ function parseTestsConfig($sDemoPageFilePath, $sMenuPageFilePath, array $aTestsC
 
 /**
  * Write the test content for the given params into the given demo page file
- * @param string $sDemoPageFilePath
- * @param string $sTitle
- * @param callable $oRendering
- * @param string $sExpected
- * @param integer $iHeading
- * @param string $sUrl
- * @throws \InvalidArgumentException
  */
-function convertTestConfigForDemoPage($sDemoPageFilePath, $sTitle, array $aTestConfig, $iHeading) {
+function convertTestConfigForDemoPage(string $sDemoPageFilePath, string $sTitle, array $aTestConfig, int $iHeading, string $sParentId = '')
+{
     // Demo content header
     $sUrl = isset($aTestConfig['url']) ? $aTestConfig['url'] : '';
-    file_put_contents($sDemoPageFilePath,
-            // Title
-            str_repeat('#', $iHeading) . ' ' . $sTitle . PHP_EOL .
+    file_put_contents(
+        $sDemoPageFilePath,
+        // Title
+        str_repeat('#', $iHeading) . ' ' . $sTitle . PHP_EOL .
             // Twitter bootstrap Documentation url
-            ($sUrl ? '<small>[Twitter bootstrap Documentation](' . $sUrl . ')</small>' . PHP_EOL : '') . PHP_EOL, FILE_APPEND);
+            ($sUrl ? '<small>[Twitter bootstrap Documentation](' . $sUrl . ')</small>' . PHP_EOL : '') . PHP_EOL,
+        FILE_APPEND
+    );
 
     if (isset($aTestConfig['rendering'])) {
         if (!isset($aTestConfig['expected'])) {
@@ -144,8 +141,13 @@ function convertTestConfigForDemoPage($sDemoPageFilePath, $sTitle, array $aTestC
     $sSource = highlight_string('<?php' . PHP_EOL . str_replace(array('$oView'), array('$this'), $sRenderingContent), true);
 
     $sId = strtolower(preg_replace('/-+/', '--', preg_replace('/[^a-z-]/i', '--', $sTitle))) . '_' . uniqid();
-    file_put_contents($sDemoPageFilePath, // Nav Tab header
-            '<ul class="nav nav-tabs" id="' . $sId . '_tab" role="tablist">
+    if ($sParentId) {
+        $sId = $sParentId . '-' . $sId;
+    }
+
+    file_put_contents(
+        $sDemoPageFilePath, // Nav Tab header
+        '<ul class="nav nav-tabs" id="' . $sId . '_tab" role="tablist">
   <li class="nav-item">
     <a class="nav-link active" data-toggle="tab" href="#' . $sId . '_result" role="tab" aria-controls="result">Result</a>
   </li>
@@ -157,5 +159,7 @@ function convertTestConfigForDemoPage($sDemoPageFilePath, $sTitle, array $aTestC
             '<div class="tab-content">
   <div class="tab-pane active" id="' . $sId . '_result" role="tabpanel"><br/>' . $sExpected . '</div>
   <div class="tab-pane" id="' . $sId . '_source" role="tabpanel"><pre>' . $sSource . '</pre></div>
-</div><br/>' . PHP_EOL . PHP_EOL, FILE_APPEND);
+</div><br/>' . PHP_EOL . PHP_EOL,
+        FILE_APPEND
+    );
 }

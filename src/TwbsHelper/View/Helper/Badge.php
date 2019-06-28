@@ -7,6 +7,7 @@ namespace TwbsHelper\View\Helper;
  */
 class Badge extends \Zend\View\Helper\AbstractHtmlElement
 {
+    use \TwbsHelper\View\Helper\ClassAttributeTrait;
 
     const TYPE_SIMPLE = 'simple';
     const TYPE_PILL = 'pill';
@@ -38,23 +39,19 @@ class Badge extends \Zend\View\Helper\AbstractHtmlElement
             throw new \InvalidArgumentException('Argument "$bEscape" expects a boolean, "' . (is_object($bEscape) ? get_class($bEscape) : gettype($bEscape)) . '" given');
         }
 
-        // Badge container
-        if (empty($aAttributes['class'])) {
-            $aAttributes['class'] = 'badge badge-' . $sVariation;
-        } else {
-            $aAttributes['class'] = trim($aAttributes['class']) . ' badge badge-' . $sVariation;
-        }
-
-
+        // Badge class        
+        $aClasses = ['badge', 'badge-' . $sVariation];
         $sElement = 'span';
         switch ($sType) {
             case self::TYPE_PILL:
-                $aAttributes['class'] = $aAttributes['class'] . ' badge-pill';
+                $aClasses[] = 'badge-pill';
                 break;
             case self::TYPE_LINK:
                 $sElement = 'a';
                 break;
         }
+
+        $aAttributes['class'] = join(' ', $this->addClassesAttribute($aAttributes['class'] ?? '', $aClasses));
 
         // Content
         if ($bEscape) {
@@ -63,4 +60,3 @@ class Badge extends \Zend\View\Helper\AbstractHtmlElement
         return '<' . $sElement . ($aAttributes ? $this->htmlAttribs($aAttributes) : '') . '>' . $sContent . '</' . $sElement . '>';
     }
 }
-

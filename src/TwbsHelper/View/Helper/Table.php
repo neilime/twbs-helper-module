@@ -7,6 +7,7 @@ namespace TwbsHelper\View\Helper;
  */
 class Table extends \Zend\View\Helper\AbstractHtmlElement
 {
+    use \TwbsHelper\View\Helper\ClassAttributeTrait;
 
     const TABLE_HEAD = 'thead';
     const TABLE_BODY = 'tbody';
@@ -26,12 +27,8 @@ class Table extends \Zend\View\Helper\AbstractHtmlElement
     public function __invoke(array $aRows, array $aAttributes = [], $bEscape = true)
     {
 
-        // Table class
-        if (empty($aAttributes['class'])) {
-            $aAttributes['class'] = 'table';
-        } else {
-            $aAttributes['class'] = trim($aAttributes['class']) . ' table';
-        }
+        // Table class        
+        $aAttributes['class'] = join(' ', $this->addClassesAttribute($aAttributes['class'] ?? '', array('table')));
         return '<table' . ($aAttributes ? $this->htmlAttribs($aAttributes) : '') . '>' . PHP_EOL . $this->renderTableRows($aRows, $bEscape) . '</table>';
     }
 

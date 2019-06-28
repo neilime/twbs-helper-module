@@ -11,7 +11,7 @@ class FigureTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase {
 
     public function testInvokeWithExistingClassAttribute() {
         $this->assertSame(
-                '<figure class="test-class&#x20;figure">' . PHP_EOL . '    <img class="figure-img" src="..."/>' . PHP_EOL . '</figure>', $this->helper->__invoke('...', '', array('class' => 'test-class'))
+                '<figure class="figure&#x20;test-class">' . PHP_EOL . '    <img class="figure-img" src="..."/>' . PHP_EOL . '</figure>', $this->helper->__invoke('...', '', array('class' => 'test-class'))
         );
     }
 

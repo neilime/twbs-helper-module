@@ -71,10 +71,10 @@ return array(
                 echo $oView->badge('Danger', 'danger', 'pill');
             },
             'expected' => '<span class="badge&#x20;badge-default&#x20;badge-pill">Default</span>' . PHP_EOL .
-            '<span class="badge&#x20;badge-primary&#x20;badge-pill">Primary</span>' . PHP_EOL .
-            '<span class="badge&#x20;badge-success&#x20;badge-pill">Success</span>' . PHP_EOL .
+            '<span class="badge&#x20;badge-pill&#x20;badge-primary">Primary</span>' . PHP_EOL .
+            '<span class="badge&#x20;badge-pill&#x20;badge-success">Success</span>' . PHP_EOL .
             '<span class="badge&#x20;badge-info&#x20;badge-pill">Info</span>' . PHP_EOL .
-            '<span class="badge&#x20;badge-warning&#x20;badge-pill">Warning</span>' . PHP_EOL .
+            '<span class="badge&#x20;badge-pill&#x20;badge-warning">Warning</span>' . PHP_EOL .
             '<span class="badge&#x20;badge-danger&#x20;badge-pill">Danger</span>',
         ),
         array(

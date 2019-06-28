@@ -65,7 +65,7 @@ return array(
                                 ), array('class' => 'table-inverse')
                         );
                     },
-                    'expected' => '<table class="table-inverse&#x20;table">' . PHP_EOL .
+                    'expected' => '<table class="table&#x20;table-inverse">' . PHP_EOL .
                     '    <thead>' . PHP_EOL .
                     '        <tr>' . PHP_EOL .
                     '            <th>#</th>' . PHP_EOL .
@@ -205,7 +205,7 @@ return array(
                         ), array('class' => 'table-striped')
                 );
             },
-            'expected' => '<table class="table-striped&#x20;table">' . PHP_EOL .
+            'expected' => '<table class="table&#x20;table-striped">' . PHP_EOL .
             '    <thead>' . PHP_EOL .
             '        <tr>' . PHP_EOL .
             '            <th>#</th>' . PHP_EOL .
@@ -250,7 +250,7 @@ return array(
                         ), array('class' => 'table-bordered')
                 );
             },
-            'expected' => '<table class="table-bordered&#x20;table">' . PHP_EOL .
+            'expected' => '<table class="table&#x20;table-bordered">' . PHP_EOL .
             '    <thead>' . PHP_EOL .
             '        <tr>' . PHP_EOL .
             '            <th>#</th>' . PHP_EOL .
@@ -295,7 +295,7 @@ return array(
                         ), array('class' => 'table-borderless')
                 );
             },
-            'expected' => '<table class="table-borderless&#x20;table">' . PHP_EOL .
+            'expected' => '<table class="table&#x20;table-borderless">' . PHP_EOL .
             '    <thead>' . PHP_EOL .
             '        <tr>' . PHP_EOL .
             '            <th>#</th>' . PHP_EOL .
@@ -340,7 +340,7 @@ return array(
                         ), array('class' => 'table-hover')
                 );
             },
-            'expected' => '<table class="table-hover&#x20;table">' . PHP_EOL .
+            'expected' => '<table class="table&#x20;table-hover">' . PHP_EOL .
             '    <thead>' . PHP_EOL .
             '        <tr>' . PHP_EOL .
             '            <th>#</th>' . PHP_EOL .
@@ -385,7 +385,7 @@ return array(
                         ), array('class' => 'table-sm')
                 );
             },
-            'expected' => '<table class="table-sm&#x20;table">' . PHP_EOL .
+            'expected' => '<table class="table&#x20;table-sm">' . PHP_EOL .
             '    <thead>' . PHP_EOL .
             '        <tr>' . PHP_EOL .
             '            <th>#</th>' . PHP_EOL .
@@ -530,7 +530,7 @@ return array(
                     ),
                         ), array('class' => 'table-responsive'));
             },
-            'expected' => '<table class="table-responsive&#x20;table">' . PHP_EOL .
+            'expected' => '<table class="table&#x20;table-responsive">' . PHP_EOL .
             '    <thead>' . PHP_EOL .
             '        <tr>' . PHP_EOL .
             '            <th>#</th>' . PHP_EOL .

@@ -7,6 +7,8 @@ namespace TwbsHelper\View\Helper;
  */
 class Image extends \Zend\View\Helper\AbstractHtmlElement
 {
+    use \TwbsHelper\View\Helper\ClassAttributeTrait;
+
     protected $imagesClasses = [
         'fluid' => 'img-fluid',
         'thumbnail' => 'img-thumbnail',
@@ -43,15 +45,12 @@ class Image extends \Zend\View\Helper\AbstractHtmlElement
             unset($aOptionsAndAttributes[$sOptions]);
         }
 
-        // Image class & src
+        // Image class
         if ($aImageClasses) {
-            if (!empty($aOptionsAndAttributes['class'])) {
-                $aImageClasses = array_merge($aImageClasses, array_filter(explode(' ', $aOptionsAndAttributes['class']), function ($sClass) {
-                    return !!trim($sClass);
-                }));
-            }
-            $aOptionsAndAttributes['class'] = join(' ', array_unique($aImageClasses));
+            $aOptionsAndAttributes['class'] = join(' ', $this->addClassesAttribute($aOptionsAndAttributes['class']  ?? '', $aImageClasses));
         }
+
+        // Image src
         $aOptionsAndAttributes['src'] = $sImageSrc;
 
         $aSources = $aOptionsAndAttributes['sources'] ?? [];

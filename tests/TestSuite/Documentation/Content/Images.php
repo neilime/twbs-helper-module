@@ -30,9 +30,9 @@ return array(
                 echo $oView->image('images/demo-sample.svg', array('rounded' => true, 'alt' => 'Image aligned block', 'class' => 'mx-auto d-block'));
             },
             'expected' =>
-            '<img alt="Image&#x20;aligned&#x20;left" class="rounded&#x20;float-left" src="images&#x2F;demo-sample.svg"/>'  . PHP_EOL .
-                '<img alt="Image&#x20;aligned&#x20;right" class="rounded&#x20;float-right" src="images&#x2F;demo-sample.svg"/>' . PHP_EOL .
-                '<img alt="Image&#x20;aligned&#x20;block" class="rounded&#x20;mx-auto&#x20;d-block" src="images&#x2F;demo-sample.svg"/>',
+            '<img alt="Image&#x20;aligned&#x20;left" class="float-left&#x20;rounded" src="images&#x2F;demo-sample.svg"/>'  . PHP_EOL .
+                '<img alt="Image&#x20;aligned&#x20;right" class="float-right&#x20;rounded" src="images&#x2F;demo-sample.svg"/>' . PHP_EOL .
+                '<img alt="Image&#x20;aligned&#x20;block" class="d-block&#x20;mx-auto&#x20;rounded" src="images&#x2F;demo-sample.svg"/>',
         ),
         array(
             'title' => 'Picture',

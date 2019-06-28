@@ -7,6 +7,7 @@ namespace TwbsHelper\View\Helper;
  */
 class Figure extends \Zend\View\Helper\AbstractHtmlElement
 {
+    use \TwbsHelper\View\Helper\ClassAttributeTrait;
 
     /**
      * Generates a 'figure' element
@@ -39,23 +40,16 @@ class Figure extends \Zend\View\Helper\AbstractHtmlElement
         }
 
         // Figure class
-        if (empty($aAttributes['class'])) {
-            $aAttributes['class'] = 'figure';
-        } else {
-            $aAttributes['class'] = trim($aAttributes['class']) . ' figure';
-        }
+        $aAttributes['class'] = join(' ', $this->addClassesAttribute($aAttributes['class'] ?? '', array('figure')));
 
         // Manage caption
         if ($sCaption) {
             if ($bEscape) {
                 $sCaption = $this->getView()->plugin('escapeHtml')->__invoke($sCaption);
             }
-            // Footer class
-            if (empty($aCaptionAttributes['class'])) {
-                $aCaptionAttributes['class'] = 'figure-caption';
-            } else {
-                $aCaptionAttributes['class'] = trim($aCaptionAttributes['class']) . ' figure-caption';
-            }
+
+            // Caption class
+            $aCaptionAttributes['class'] = join(' ', $this->addClassesAttribute($aCaptionAttributes['class'] ?? '', array('figure-caption')));
         }
 
         // Images options
