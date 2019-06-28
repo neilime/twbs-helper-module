@@ -29,9 +29,8 @@ class FormButton extends ZendFormButtonViewHelper
     // @var string
     protected static $dropdownCaretFormat = '<button type="button" class="dropdown-toggle %s" data-toggle="dropdown"><span class="caret"></span></button>';
 
-    // Allowed button options
-    // @var array
-    protected static $buttonOptions = [
+    // Allowed variants
+    protected static $variants = [
         'danger',
         'dark', // Added in BS4
         'info',
@@ -43,10 +42,16 @@ class FormButton extends ZendFormButtonViewHelper
         'warning',
     ];
 
+    // Allowed sizes
+    protected static $sizes = ['sm', 'lg'];
+
 
     /**
      * render
-     * Accept element option "variant":  'danger', 'dark', 'info', 'light', 'link', 'primary', 'secondary', 'success', 'warning'
+     * Accept following extra options:
+     * * string variant:  'danger', 'dark', 'info', 'light', 'link', 'primary', 'secondary', 'success', 'warning'
+     * * string size:  'sm', 'lg'
+     * * bool block
      * @see  FormButton::render()
      * @param  ElementInterface $oElement
      * @param  string $sButtonContent
@@ -57,22 +62,37 @@ class FormButton extends ZendFormButtonViewHelper
     public function render(ElementInterface $oElement, $sButtonContent = null)
     {
 
+
         $aClassesToAdd = ['btn'];
+
+        // Variant option
         if (
             ($sVariant = $oElement->getOption('variant')) && (
                 // Basic variants
-                in_array($sVariant, static::$buttonOptions, true)
+                in_array($sVariant, static::$variants, true)
                 // Outline variants
-                || preg_match('/^outline-(' . join('|', static::$buttonOptions) . ')$/', $sVariant))
+                || preg_match('/^outline-(' . join('|', static::$variants) . ')$/', $sVariant))
         ) {
             $aClassesToAdd[] = 'btn-' . $sVariant;
         }
 
+        // Size option
+        if (($sSize = $oElement->getOption('size')) && in_array($sSize, static::$sizes, true)) {
+            $aClassesToAdd[] = 'btn-' . $sSize;
+        }
+
+        // Block option
+        if ($oElement->getOption('block')) {
+            $aClassesToAdd[] = 'btn-block';
+        }
+
         $aClasses = $this->addClassesAttribute($oElement->getAttribute('class') ?? '', $aClassesToAdd);
 
-        if (!preg_grep('/(\s|^)btn-.*(\s|$)/', $aClasses)) {
+        if (!preg_grep('/^btn-.*(' . join('|', static::$variants) . ')$/', $aClasses)) {
             $aClasses[] = 'btn-secondary';
         }
+
+
         $oElement->setAttribute('class', join(' ', $aClasses));
 
         // Retrieve icon options
