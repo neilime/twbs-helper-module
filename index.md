@@ -4,14 +4,16 @@ title: Home
 ---
 # TwbsHelper - Zend Framework module
 
-__TwbsHelper__ is a Zend Framework module for easy integration of the [Twitter Bootstrap v4](https://v4-alpha.getbootstrap.com/).
+__TwbsHelper__ is a Zend Framework module for easy integration of the [Twitter Bootstrap v4](https://getbootstrap.com/).
 
 ### ⚠️ Work in progress ⚠️
 
+
 [![Build Status](https://travis-ci.org/neilime/zf-twbs-helper-module.svg?branch=master)](https://travis-ci.org/neilime/zf-twbs-helper-module)
 [![Coverage Status](https://coveralls.io/repos/github/neilime/zf-twbs-helper-module/badge.svg)](https://coveralls.io/github/neilime/zf-twbs-helper-module)
-[![Latest Stable Version](https://poser.pugx.org/neilime/zf-twbs-helper-module/v/stable.png)](https://packagist.org/packages/neilime/zf-twbs-helper-module)
-[![Total Downloads](https://poser.pugx.org/neilime/zf-twbs-helper-module/downloads.png)](https://packagist.org/packages/neilime/zf-twbs-helper-module)
+[![Latest Stable Version](https://poser.pugx.org/neilime/zf-twbs-helper-module/v/stable)](https://packagist.org/packages/neilime/zf-twbs-helper-module)
+[![Total Downloads](https://poser.pugx.org/neilime/zf-twbs-helper-module/downloads)](https://packagist.org/packages/neilime/zf-twbs-helper-module)
+[![License](https://poser.pugx.org/neilime/zf-twbs-helper-module/license)](https://packagist.org/packages/neilime/zf-twbs-helper-module)
 [![Beerpay](https://beerpay.io/neilime/zf-twbs-helper-module/badge.svg)](https://beerpay.io/neilime/zf-twbs-helper-module) 
 
 # Helping Project
