@@ -14,18 +14,18 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Abbreviations
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/content/typography/#abbreviations)</small>
 
-<ul class="nav nav-tabs" id="abbreviations_5d1f8156138b2_tab" role="tablist">
+<ul class="nav nav-tabs" id="abbreviations_5d1f84f03308a_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#abbreviations_5d1f8156138b2_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#abbreviations_5d1f84f03308a_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#abbreviations_5d1f8156138b2_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#abbreviations_5d1f84f03308a_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="abbreviations_5d1f8156138b2_result" role="tabpanel"><br/><p><abbr title="attribute">attr</abbr></p>
+  <div class="tab-pane active" id="abbreviations_5d1f84f03308a_result" role="tabpanel"><br/><p><abbr title="attribute">attr</abbr></p>
 <p><abbr title="HyperText&#x20;Markup&#x20;Language" class="initialism">HTML</abbr></p></div>
-  <div class="tab-pane" id="abbreviations_5d1f8156138b2_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="abbreviations_5d1f84f03308a_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;First&nbsp;abbreviation<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'&lt;p&gt;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">abbreviation</span><span style="color: #007700">(</span><span style="color: #DD0000">'attr'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attribute'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'&lt;/p&gt;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;Second&nbsp;abbreviation<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'&lt;p&gt;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">abbreviation</span><span style="color: #007700">(</span><span style="color: #DD0000">'HTML'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'HyperText&nbsp;Markup&nbsp;Language'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'&lt;/p&gt;'</span><span style="color: #007700">;</span>
 </span>
 </code></pre></div>
@@ -34,19 +34,19 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Blockquotes
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/content/typography/#blockquotes)</small>
 
-<ul class="nav nav-tabs" id="blockquotes_5d1f815613912_tab" role="tablist">
+<ul class="nav nav-tabs" id="blockquotes_5d1f84f0330fd_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#blockquotes_5d1f815613912_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#blockquotes_5d1f84f0330fd_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#blockquotes_5d1f815613912_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#blockquotes_5d1f84f0330fd_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="blockquotes_5d1f815613912_result" role="tabpanel"><br/><blockquote class="blockquote">
+  <div class="tab-pane active" id="blockquotes_5d1f84f0330fd_result" role="tabpanel"><br/><blockquote class="blockquote">
     <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
 </blockquote></div>
-  <div class="tab-pane" id="blockquotes_5d1f815613912_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="blockquotes_5d1f84f0330fd_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">blockquote</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet,&nbsp;consectetur&nbsp;adipiscing&nbsp;elit.&nbsp;Integer&nbsp;posuere&nbsp;erat&nbsp;a&nbsp;ante.'<br /></span><span style="color: #007700">);</span>
 </span>
 </code></pre></div>
@@ -55,20 +55,20 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Naming a source
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/content/typography/#naming-a-source)</small>
 
-<ul class="nav nav-tabs" id="naming--a--source_5d1f8156139aa_tab" role="tablist">
+<ul class="nav nav-tabs" id="naming--a--source_5d1f84f0331aa_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#naming--a--source_5d1f8156139aa_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#naming--a--source_5d1f84f0331aa_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#naming--a--source_5d1f8156139aa_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#naming--a--source_5d1f84f0331aa_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="naming--a--source_5d1f8156139aa_result" role="tabpanel"><br/><blockquote class="blockquote">
+  <div class="tab-pane active" id="naming--a--source_5d1f84f0331aa_result" role="tabpanel"><br/><blockquote class="blockquote">
     <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
     <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
 </blockquote></div>
-  <div class="tab-pane" id="naming--a--source_5d1f8156139aa_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="naming--a--source_5d1f84f0331aa_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">blockquote</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Content<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet,&nbsp;consectetur&nbsp;adipiscing&nbsp;elit.&nbsp;Integer&nbsp;posuere&nbsp;erat&nbsp;a&nbsp;ante.'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Footer&nbsp;content<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Someone&nbsp;famous&nbsp;in&nbsp;&lt;cite&nbsp;title="Source&nbsp;Title"&gt;Source&nbsp;Title&lt;/cite&gt;'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;[],<br />&nbsp;&nbsp;&nbsp;&nbsp;[],<br />&nbsp;&nbsp;&nbsp;&nbsp;[],<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Disable&nbsp;escaping<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">false<br /></span><span style="color: #007700">);</span>
 </span>
 </code></pre></div>
@@ -77,20 +77,20 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Reverse layout
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/content/typography/#reverse-layout)</small>
 
-<ul class="nav nav-tabs" id="reverse--layout_5d1f815613a2d_tab" role="tablist">
+<ul class="nav nav-tabs" id="reverse--layout_5d1f84f033278_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#reverse--layout_5d1f815613a2d_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#reverse--layout_5d1f84f033278_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#reverse--layout_5d1f815613a2d_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#reverse--layout_5d1f84f033278_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="reverse--layout_5d1f815613a2d_result" role="tabpanel"><br/><blockquote class="blockquote&#x20;blockquote-reverse">
+  <div class="tab-pane active" id="reverse--layout_5d1f84f033278_result" role="tabpanel"><br/><blockquote class="blockquote&#x20;blockquote-reverse">
     <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
     <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
 </blockquote></div>
-  <div class="tab-pane" id="reverse--layout_5d1f815613a2d_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="reverse--layout_5d1f84f033278_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">blockquote</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Content<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet,&nbsp;consectetur&nbsp;adipiscing&nbsp;elit.&nbsp;Integer&nbsp;posuere&nbsp;erat&nbsp;a&nbsp;ante.'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Footer&nbsp;content<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Someone&nbsp;famous&nbsp;in&nbsp;&lt;cite&nbsp;title="Source&nbsp;Title"&gt;Source&nbsp;Title&lt;/cite&gt;'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'blockquote-reverse'</span><span style="color: #007700">],<br />&nbsp;&nbsp;&nbsp;&nbsp;[],<br />&nbsp;&nbsp;&nbsp;&nbsp;[],<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Disable&nbsp;escaping<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">false<br /></span><span style="color: #007700">);</span>
 </span>
 </code></pre></div>
@@ -102,16 +102,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Unstyled
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/content/typography/#unstyled)</small>
 
-<ul class="nav nav-tabs" id="unstyled_5d1f815613b14_tab" role="tablist">
+<ul class="nav nav-tabs" id="unstyled_5d1f84f033381_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#unstyled_5d1f815613b14_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#unstyled_5d1f84f033381_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#unstyled_5d1f815613b14_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#unstyled_5d1f84f033381_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="unstyled_5d1f815613b14_result" role="tabpanel"><br/><ul class="list-unstyled">
+  <div class="tab-pane active" id="unstyled_5d1f84f033381_result" role="tabpanel"><br/><ul class="list-unstyled">
     <li>Lorem ipsum dolor sit amet</li>
     <li>Consectetur adipiscing elit</li>
     <li>Integer molestie lorem at massa</li>
@@ -129,7 +129,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
     <li>Aenean sit amet erat nunc</li>
     <li>Eget porttitor lorem</li>
 </ul></div>
-  <div class="tab-pane" id="unstyled_5d1f815613b14_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="unstyled_5d1f84f033381_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">htmlList</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;List&nbsp;items<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">[<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Consectetur&nbsp;adipiscing&nbsp;elit'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Integer&nbsp;molestie&nbsp;lorem&nbsp;at&nbsp;massa'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Facilisis&nbsp;in&nbsp;pretium&nbsp;nisl&nbsp;aliquet'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Nulla&nbsp;volutpat&nbsp;aliquam&nbsp;velit'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Phasellus&nbsp;iaculis&nbsp;neque'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Purus&nbsp;sodales&nbsp;ultricies'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Vestibulum&nbsp;laoreet&nbsp;porttitor&nbsp;sem'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Ac&nbsp;tristique&nbsp;libero&nbsp;volutpat&nbsp;at'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;],<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Faucibus&nbsp;porta&nbsp;lacus&nbsp;fringilla&nbsp;vel'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Aenean&nbsp;sit&nbsp;amet&nbsp;erat&nbsp;nunc'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Eget&nbsp;porttitor&nbsp;lorem'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;],<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Add&nbsp;"list-unstyled"&nbsp;class<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'list-unstyled'</span><span style="color: #007700">]<br />);</span>
 </span>
 </code></pre></div>
@@ -138,21 +138,21 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Inline
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/content/typography/#inline)</small>
 
-<ul class="nav nav-tabs" id="inline_5d1f815613b89_tab" role="tablist">
+<ul class="nav nav-tabs" id="inline_5d1f84f033403_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#inline_5d1f815613b89_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#inline_5d1f84f033403_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#inline_5d1f815613b89_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#inline_5d1f84f033403_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="inline_5d1f815613b89_result" role="tabpanel"><br/><ul class="list-inline">
+  <div class="tab-pane active" id="inline_5d1f84f033403_result" role="tabpanel"><br/><ul class="list-inline">
     <li class="list-inline-item">Lorem ipsum</li>
     <li class="list-inline-item">Phasellus iaculis</li>
     <li class="list-inline-item">Nulla volutpat</li>
 </ul></div>
-  <div class="tab-pane" id="inline_5d1f815613b89_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="inline_5d1f84f033403_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">htmlList</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;List&nbsp;items<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">[</span><span style="color: #DD0000">'Lorem&nbsp;ipsum'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Phasellus&nbsp;iaculis'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Nulla&nbsp;volutpat'</span><span style="color: #007700">,],<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Add&nbsp;"list-inline"&nbsp;class<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'list-inline'</span><span style="color: #007700">]<br />);</span>
 </span>
 </code></pre></div>
@@ -164,17 +164,17 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Responsive images
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/content/images/#responsive-images)</small>
 
-<ul class="nav nav-tabs" id="responsive--images_5d1f815613bf9_tab" role="tablist">
+<ul class="nav nav-tabs" id="responsive--images_5d1f84f033492_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#responsive--images_5d1f815613bf9_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#responsive--images_5d1f84f033492_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#responsive--images_5d1f815613bf9_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#responsive--images_5d1f84f033492_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="responsive--images_5d1f815613bf9_result" role="tabpanel"><br/><img alt="Responsive&#x20;image" class="img-fluid" src="images&#x2F;demo-sample.svg"></div>
-  <div class="tab-pane" id="responsive--images_5d1f815613bf9_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane active" id="responsive--images_5d1f84f033492_result" role="tabpanel"><br/><img alt="Responsive&#x20;image" class="img-fluid" src="images&#x2F;demo-sample.svg"></div>
+  <div class="tab-pane" id="responsive--images_5d1f84f033492_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">image</span><span style="color: #007700">(</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'fluid'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Responsive&nbsp;image'</span><span style="color: #007700">,]);</span>
 </span>
 </code></pre></div>
@@ -183,17 +183,17 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Image thumbnails
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/content/images/#image-thumbnails)</small>
 
-<ul class="nav nav-tabs" id="image--thumbnails_5d1f815613c3f_tab" role="tablist">
+<ul class="nav nav-tabs" id="image--thumbnails_5d1f84f0334e3_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#image--thumbnails_5d1f815613c3f_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#image--thumbnails_5d1f84f0334e3_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#image--thumbnails_5d1f815613c3f_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#image--thumbnails_5d1f84f0334e3_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="image--thumbnails_5d1f815613c3f_result" role="tabpanel"><br/><img alt="Image&#x20;thumbnail" class="img-thumbnail" src="images&#x2F;demo-sample.svg"></div>
-  <div class="tab-pane" id="image--thumbnails_5d1f815613c3f_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane active" id="image--thumbnails_5d1f84f0334e3_result" role="tabpanel"><br/><img alt="Image&#x20;thumbnail" class="img-thumbnail" src="images&#x2F;demo-sample.svg"></div>
+  <div class="tab-pane" id="image--thumbnails_5d1f84f0334e3_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">image</span><span style="color: #007700">(</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'thumbnail'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Image&nbsp;thumbnail'</span><span style="color: #007700">,]);</span>
 </span>
 </code></pre></div>
@@ -202,19 +202,19 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Aligning images
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/content/images/#aligning-images)</small>
 
-<ul class="nav nav-tabs" id="aligning--images_5d1f815613cdd_tab" role="tablist">
+<ul class="nav nav-tabs" id="aligning--images_5d1f84f033595_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#aligning--images_5d1f815613cdd_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#aligning--images_5d1f84f033595_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#aligning--images_5d1f815613cdd_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#aligning--images_5d1f84f033595_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="aligning--images_5d1f815613cdd_result" role="tabpanel"><br/><img alt="Image&#x20;aligned&#x20;left" class="float-left&#x20;rounded" src="images&#x2F;demo-sample.svg">
+  <div class="tab-pane active" id="aligning--images_5d1f84f033595_result" role="tabpanel"><br/><img alt="Image&#x20;aligned&#x20;left" class="float-left&#x20;rounded" src="images&#x2F;demo-sample.svg">
 <img alt="Image&#x20;aligned&#x20;right" class="float-right&#x20;rounded" src="images&#x2F;demo-sample.svg">
 <img alt="Image&#x20;aligned&#x20;block" class="d-block&#x20;mx-auto&#x20;rounded" src="images&#x2F;demo-sample.svg"></div>
-  <div class="tab-pane" id="aligning--images_5d1f815613cdd_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="aligning--images_5d1f84f033595_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">image</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;[</span><span style="color: #DD0000">'rounded'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Image&nbsp;aligned&nbsp;left'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'float-left'</span><span style="color: #007700">]<br />&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">image</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</span><span style="color: #DD0000">'rounded'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Image&nbsp;aligned&nbsp;right'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'float-right'</span><span style="color: #007700">]<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">image</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[</span><span style="color: #DD0000">'rounded'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Image&nbsp;aligned&nbsp;block'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'mx-auto&nbsp;d-block'</span><span style="color: #007700">]<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);</span>
 </span>
 </code></pre></div>
@@ -223,20 +223,20 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Picture
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/content/images/#picture)</small>
 
-<ul class="nav nav-tabs" id="picture_5d1f815613d45_tab" role="tablist">
+<ul class="nav nav-tabs" id="picture_5d1f84f033606_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#picture_5d1f815613d45_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#picture_5d1f84f033606_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#picture_5d1f815613d45_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#picture_5d1f84f033606_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="picture_5d1f815613d45_result" role="tabpanel"><br/><picture>
+  <div class="tab-pane active" id="picture_5d1f84f033606_result" role="tabpanel"><br/><picture>
     <source srcset="images&#x2F;demo-sample.svg" type="image&#x2F;svg&#x2B;xml">
     <img alt="Picture&#x20;image" class="img-fluid&#x20;img-thumbnail" src="images&#x2F;demo-sample.svg">
 </picture></div>
-  <div class="tab-pane" id="picture_5d1f815613d45_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="picture_5d1f84f033606_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">image</span><span style="color: #007700">(</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[<br /></span><span style="color: #DD0000">'thumbnail'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'fluid'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Picture&nbsp;image'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'sources'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'images/demo-sample.svg'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'image/svg+xml'</span><span style="color: #007700">],<br />]);</span>
 </span>
 </code></pre></div>
@@ -250,16 +250,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 
 #### Basic
 
-<ul class="nav nav-tabs" id="basic_5d1f815613e64_tab" role="tablist">
+<ul class="nav nav-tabs" id="basic_5d1f84f033727_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#basic_5d1f815613e64_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#basic_5d1f84f033727_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#basic_5d1f815613e64_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#basic_5d1f84f033727_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="basic_5d1f815613e64_result" role="tabpanel"><br/><table class="table">
+  <div class="tab-pane active" id="basic_5d1f84f033727_result" role="tabpanel"><br/><table class="table">
     <thead>
         <tr>
             <th>#</th>
@@ -289,7 +289,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         </tr>
     </tbody>
 </table></div>
-  <div class="tab-pane" id="basic_5d1f815613e64_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="basic_5d1f84f033727_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">table</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'head'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'#'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'First&nbsp;Name'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Last&nbsp;Name'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Username'</span><span style="color: #007700">],<br /></span><span style="color: #DD0000">'body'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Mark'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Otto'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@mdo'</span><span style="color: #007700">,<br />],<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'2'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Jacob'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Thornton'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@fat'</span><span style="color: #007700">,<br />],<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'3'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Larry'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'the&nbsp;Bird'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@twitter'</span><span style="color: #007700">,<br />],<br />],<br />]);</span>
 </span>
 </code></pre></div>
@@ -297,16 +297,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 
 #### Invert the colors
 
-<ul class="nav nav-tabs" id="invert--the--colors_5d1f815613f67_tab" role="tablist">
+<ul class="nav nav-tabs" id="invert--the--colors_5d1f84f033807_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#invert--the--colors_5d1f815613f67_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#invert--the--colors_5d1f84f033807_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#invert--the--colors_5d1f815613f67_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#invert--the--colors_5d1f84f033807_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="invert--the--colors_5d1f815613f67_result" role="tabpanel"><br/><table class="table&#x20;table-inverse">
+  <div class="tab-pane active" id="invert--the--colors_5d1f84f033807_result" role="tabpanel"><br/><table class="table&#x20;table-inverse">
     <thead>
         <tr>
             <th>#</th>
@@ -336,7 +336,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         </tr>
     </tbody>
 </table></div>
-  <div class="tab-pane" id="invert--the--colors_5d1f815613f67_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="invert--the--colors_5d1f84f033807_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">table</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'head'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'#'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'First&nbsp;Name'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Last&nbsp;Name'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Username'</span><span style="color: #007700">],<br /></span><span style="color: #DD0000">'body'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Mark'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Otto'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@mdo'</span><span style="color: #007700">,<br />],<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'2'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Jacob'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Thornton'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@fat'</span><span style="color: #007700">,<br />],<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'3'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Larry'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'the&nbsp;Bird'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@twitter'</span><span style="color: #007700">,<br />],<br />],<br />],&nbsp;[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'table-inverse'</span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -345,16 +345,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Table head options
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/content/tables/#table-head-options)</small>
 
-<ul class="nav nav-tabs" id="table--head--options_5d1f8156140fd_tab" role="tablist">
+<ul class="nav nav-tabs" id="table--head--options_5d1f84f0339af_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#table--head--options_5d1f8156140fd_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#table--head--options_5d1f84f0339af_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#table--head--options_5d1f8156140fd_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#table--head--options_5d1f84f0339af_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="table--head--options_5d1f8156140fd_result" role="tabpanel"><br/><table class="table">
+  <div class="tab-pane active" id="table--head--options_5d1f84f0339af_result" role="tabpanel"><br/><table class="table">
     <thead class="thead-inverse">
         <tr>
             <th>#</th>
@@ -415,7 +415,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         </tr>
     </tbody>
 </table></div>
-  <div class="tab-pane" id="table--head--options_5d1f8156140fd_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="table--head--options_5d1f84f0339af_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;First&nbsp;table&nbsp;(head&nbsp;inversed)<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">table</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'head'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'thead-inverse'</span><span style="color: #007700">],<br /></span><span style="color: #DD0000">'rows'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'#'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'First&nbsp;Name'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Last&nbsp;Name'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Username'</span><span style="color: #007700">],<br />],<br /></span><span style="color: #DD0000">'body'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Mark'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Otto'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@mdo'</span><span style="color: #007700">,<br />],<br />[<br /><br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'2'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Jacob'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Thornton'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@fat'</span><span style="color: #007700">,<br />],<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'3'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Larry'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'the&nbsp;Bird'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@twitter'</span><span style="color: #007700">,<br />],<br />],<br />]);<br /><br />echo&nbsp;</span><span style="color: #0000BB">PHP_EOL&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Second&nbsp;table&nbsp;(head&nbsp;default)<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">table</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'head'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'thead-default'</span><span style="color: #007700">],<br /></span><span style="color: #DD0000">'rows'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'#'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'First&nbsp;Name'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Last&nbsp;Name'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Username'</span><span style="color: #007700">],<br />],<br /></span><span style="color: #DD0000">'body'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Mark'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Otto'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@mdo'</span><span style="color: #007700">,<br />],<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'2'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Jacob'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Thornton'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@fat'</span><span style="color: #007700">,<br />],<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'3'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Larry'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'the&nbsp;Bird'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@twitter'</span><span style="color: #007700">,<br />],<br />],<br />]);</span>
 </span>
 </code></pre></div>
@@ -424,16 +424,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Striped rows
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/content/tables/#striped-rows)</small>
 
-<ul class="nav nav-tabs" id="striped--rows_5d1f8156141d6_tab" role="tablist">
+<ul class="nav nav-tabs" id="striped--rows_5d1f84f033a9a_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#striped--rows_5d1f8156141d6_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#striped--rows_5d1f84f033a9a_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#striped--rows_5d1f8156141d6_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#striped--rows_5d1f84f033a9a_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="striped--rows_5d1f8156141d6_result" role="tabpanel"><br/><table class="table&#x20;table-striped">
+  <div class="tab-pane active" id="striped--rows_5d1f84f033a9a_result" role="tabpanel"><br/><table class="table&#x20;table-striped">
     <thead>
         <tr>
             <th>#</th>
@@ -463,7 +463,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         </tr>
     </tbody>
 </table></div>
-  <div class="tab-pane" id="striped--rows_5d1f8156141d6_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="striped--rows_5d1f84f033a9a_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">table</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'head'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'#'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'First&nbsp;Name'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Last&nbsp;Name'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Username'</span><span style="color: #007700">],<br /></span><span style="color: #DD0000">'body'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Mark'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Otto'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@mdo'</span><span style="color: #007700">,<br />],<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'2'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Jacob'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Thornton'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@fat'</span><span style="color: #007700">,<br />],<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'3'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Larry'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'the&nbsp;Bird'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@twitter'</span><span style="color: #007700">,<br />],<br />],<br />],&nbsp;[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'table-striped'</span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -472,16 +472,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Bordered table
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/content/tables/#bordered-table)</small>
 
-<ul class="nav nav-tabs" id="bordered--table_5d1f8156142a5_tab" role="tablist">
+<ul class="nav nav-tabs" id="bordered--table_5d1f84f033b79_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#bordered--table_5d1f8156142a5_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#bordered--table_5d1f84f033b79_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#bordered--table_5d1f8156142a5_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#bordered--table_5d1f84f033b79_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="bordered--table_5d1f8156142a5_result" role="tabpanel"><br/><table class="table&#x20;table-bordered">
+  <div class="tab-pane active" id="bordered--table_5d1f84f033b79_result" role="tabpanel"><br/><table class="table&#x20;table-bordered">
     <thead>
         <tr>
             <th>#</th>
@@ -511,7 +511,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         </tr>
     </tbody>
 </table></div>
-  <div class="tab-pane" id="bordered--table_5d1f8156142a5_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="bordered--table_5d1f84f033b79_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">table</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'head'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'#'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'First&nbsp;Name'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Last&nbsp;Name'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Username'</span><span style="color: #007700">],<br /></span><span style="color: #DD0000">'body'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Mark'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Otto'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@mdo'</span><span style="color: #007700">,<br />],<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'2'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Jacob'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Thornton'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@fat'</span><span style="color: #007700">,<br />],<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'3'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Larry'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'the&nbsp;Bird'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@twitter'</span><span style="color: #007700">,<br />],<br />],<br />],&nbsp;[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'table-bordered'</span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -520,16 +520,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Borderless table
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/content/tables/#borderless-table)</small>
 
-<ul class="nav nav-tabs" id="borderless--table_5d1f815614378_tab" role="tablist">
+<ul class="nav nav-tabs" id="borderless--table_5d1f84f033c58_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#borderless--table_5d1f815614378_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#borderless--table_5d1f84f033c58_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#borderless--table_5d1f815614378_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#borderless--table_5d1f84f033c58_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="borderless--table_5d1f815614378_result" role="tabpanel"><br/><table class="table&#x20;table-borderless">
+  <div class="tab-pane active" id="borderless--table_5d1f84f033c58_result" role="tabpanel"><br/><table class="table&#x20;table-borderless">
     <thead>
         <tr>
             <th>#</th>
@@ -559,7 +559,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         </tr>
     </tbody>
 </table></div>
-  <div class="tab-pane" id="borderless--table_5d1f815614378_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="borderless--table_5d1f84f033c58_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">table</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'head'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'#'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'First&nbsp;Name'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Last&nbsp;Name'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Username'</span><span style="color: #007700">],<br /></span><span style="color: #DD0000">'body'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Mark'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Otto'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@mdo'</span><span style="color: #007700">,<br />],<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'2'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Jacob'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Thornton'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@fat'</span><span style="color: #007700">,<br />],<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'3'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Larry'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'the&nbsp;Bird'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@twitter'</span><span style="color: #007700">,<br />],<br />],<br />],&nbsp;[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'table-borderless'</span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -568,16 +568,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Hoverable rows
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/content/tables/#hoverable-rows)</small>
 
-<ul class="nav nav-tabs" id="hoverable--rows_5d1f815614450_tab" role="tablist">
+<ul class="nav nav-tabs" id="hoverable--rows_5d1f84f033d3c_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#hoverable--rows_5d1f815614450_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#hoverable--rows_5d1f84f033d3c_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#hoverable--rows_5d1f815614450_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#hoverable--rows_5d1f84f033d3c_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="hoverable--rows_5d1f815614450_result" role="tabpanel"><br/><table class="table&#x20;table-hover">
+  <div class="tab-pane active" id="hoverable--rows_5d1f84f033d3c_result" role="tabpanel"><br/><table class="table&#x20;table-hover">
     <thead>
         <tr>
             <th>#</th>
@@ -607,7 +607,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         </tr>
     </tbody>
 </table></div>
-  <div class="tab-pane" id="hoverable--rows_5d1f815614450_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="hoverable--rows_5d1f84f033d3c_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">table</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'head'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'#'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'First&nbsp;Name'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Last&nbsp;Name'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Username'</span><span style="color: #007700">],<br /></span><span style="color: #DD0000">'body'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Mark'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Otto'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@mdo'</span><span style="color: #007700">,<br />],<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'2'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Jacob'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Thornton'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@fat'</span><span style="color: #007700">,<br />],<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'3'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Larry'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'the&nbsp;Bird'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@twitter'</span><span style="color: #007700">,<br />],<br />],<br />],&nbsp;[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'table-hover'</span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -616,16 +616,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Small Table
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/content/tables/#small-table)</small>
 
-<ul class="nav nav-tabs" id="small--table_5d1f815614520_tab" role="tablist">
+<ul class="nav nav-tabs" id="small--table_5d1f84f033e19_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#small--table_5d1f815614520_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#small--table_5d1f84f033e19_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#small--table_5d1f815614520_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#small--table_5d1f84f033e19_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="small--table_5d1f815614520_result" role="tabpanel"><br/><table class="table&#x20;table-sm">
+  <div class="tab-pane active" id="small--table_5d1f84f033e19_result" role="tabpanel"><br/><table class="table&#x20;table-sm">
     <thead>
         <tr>
             <th>#</th>
@@ -655,7 +655,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         </tr>
     </tbody>
 </table></div>
-  <div class="tab-pane" id="small--table_5d1f815614520_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="small--table_5d1f84f033e19_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">table</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'head'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'#'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'First&nbsp;Name'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Last&nbsp;Name'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Username'</span><span style="color: #007700">],<br /></span><span style="color: #DD0000">'body'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Mark'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Otto'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@mdo'</span><span style="color: #007700">,<br />],<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'2'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Jacob'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Thornton'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@fat'</span><span style="color: #007700">,<br />],<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'3'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Larry'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'the&nbsp;Bird'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'@twitter'</span><span style="color: #007700">,<br />],<br />],<br />],&nbsp;[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'table-sm'</span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -664,16 +664,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Contextual classes
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/content/tables/#contextual-classes)</small>
 
-<ul class="nav nav-tabs" id="contextual--classes_5d1f815614703_tab" role="tablist">
+<ul class="nav nav-tabs" id="contextual--classes_5d1f84f034004_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#contextual--classes_5d1f815614703_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#contextual--classes_5d1f84f034004_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#contextual--classes_5d1f815614703_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#contextual--classes_5d1f84f034004_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="contextual--classes_5d1f815614703_result" role="tabpanel"><br/><table class="table">
+  <div class="tab-pane active" id="contextual--classes_5d1f84f034004_result" role="tabpanel"><br/><table class="table">
     <thead>
         <tr>
             <th>#</th>
@@ -739,7 +739,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         </tr>
     </tbody>
 </table></div>
-  <div class="tab-pane" id="contextual--classes_5d1f815614703_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="contextual--classes_5d1f84f034004_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">table</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'head'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'#'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Column&nbsp;heading'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Column&nbsp;heading'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Column&nbsp;heading'</span><span style="color: #007700">],<br /></span><span style="color: #DD0000">'body'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />[<br /></span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'table-active'</span><span style="color: #007700">],<br /></span><span style="color: #DD0000">'cells'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Column&nbsp;content'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Column&nbsp;content'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Column&nbsp;content'</span><span style="color: #007700">,<br />]<br />],<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'2'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Column&nbsp;content'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Column&nbsp;content'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Column&nbsp;content'</span><span style="color: #007700">,<br />],<br />[<br /></span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'table-success'</span><span style="color: #007700">],<br /></span><span style="color: #DD0000">'cells'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'3'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Column&nbsp;content'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Column&nbsp;content'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Column&nbsp;content'</span><span style="color: #007700">,<br />]<br />],<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'4'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Column&nbsp;content'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Column&nbsp;content'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Column&nbsp;content'</span><span style="color: #007700">,<br />],<br />[<br /></span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'table-info'</span><span style="color: #007700">],<br /></span><span style="color: #DD0000">'cells'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'5'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Column&nbsp;content'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Column&nbsp;content'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Column&nbsp;content'</span><span style="color: #007700">,<br />]<br />],<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'6'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Column&nbsp;content'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Column&nbsp;content'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Column&nbsp;content'</span><span style="color: #007700">,<br />],<br />[<br /></span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'table-warning'</span><span style="color: #007700">],<br /></span><span style="color: #DD0000">'cells'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'7'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Column&nbsp;content'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Column&nbsp;content'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Column&nbsp;content'</span><span style="color: #007700">,<br />]<br />],<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'8'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Column&nbsp;content'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Column&nbsp;content'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Column&nbsp;content'</span><span style="color: #007700">,<br />],<br />[<br /></span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'table-danger'</span><span style="color: #007700">],<br /></span><span style="color: #DD0000">'cells'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'9'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Column&nbsp;content'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Column&nbsp;content'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Column&nbsp;content'</span><span style="color: #007700">,<br />]<br />],<br />],<br />]);</span>
 </span>
 </code></pre></div>
@@ -748,16 +748,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Responsive classes
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/content/tables/#responsive-tables)</small>
 
-<ul class="nav nav-tabs" id="responsive--classes_5d1f8156147f7_tab" role="tablist">
+<ul class="nav nav-tabs" id="responsive--classes_5d1f84f03411f_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#responsive--classes_5d1f8156147f7_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#responsive--classes_5d1f84f03411f_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#responsive--classes_5d1f8156147f7_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#responsive--classes_5d1f84f03411f_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="responsive--classes_5d1f8156147f7_result" role="tabpanel"><br/><table class="table&#x20;table-responsive">
+  <div class="tab-pane active" id="responsive--classes_5d1f84f03411f_result" role="tabpanel"><br/><table class="table&#x20;table-responsive">
     <thead>
         <tr>
             <th>#</th>
@@ -799,7 +799,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         </tr>
     </tbody>
 </table></div>
-  <div class="tab-pane" id="responsive--classes_5d1f8156147f7_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="responsive--classes_5d1f84f03411f_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">table</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'head'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'#'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Table&nbsp;heading'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Table&nbsp;heading'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Table&nbsp;heading'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Table&nbsp;heading'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Table&nbsp;heading'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Table&nbsp;heading'<br /></span><span style="color: #007700">],<br /></span><span style="color: #DD0000">'body'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Table&nbsp;cell'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Table&nbsp;cell'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Table&nbsp;cell'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Table&nbsp;cell'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Table&nbsp;cell'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Table&nbsp;cell'<br /></span><span style="color: #007700">],<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'2'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Table&nbsp;cell'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Table&nbsp;cell'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Table&nbsp;cell'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Table&nbsp;cell'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Table&nbsp;cell'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Table&nbsp;cell'<br /></span><span style="color: #007700">],<br />[<br />[</span><span style="color: #DD0000">'data'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'3'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'th'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'scope'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'row'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'Table&nbsp;cell'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Table&nbsp;cell'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Table&nbsp;cell'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Table&nbsp;cell'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Table&nbsp;cell'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Table&nbsp;cell'<br /></span><span style="color: #007700">],<br />],<br />],&nbsp;[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'table-responsive'</span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -810,20 +810,20 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 
 ### Basic
 
-<ul class="nav nav-tabs" id="basic_5d1f8156148a5_tab" role="tablist">
+<ul class="nav nav-tabs" id="basic_5d1f84f034214_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#basic_5d1f8156148a5_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#basic_5d1f84f034214_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#basic_5d1f8156148a5_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#basic_5d1f84f034214_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="basic_5d1f8156148a5_result" role="tabpanel"><br/><figure class="figure">
+  <div class="tab-pane active" id="basic_5d1f84f034214_result" role="tabpanel"><br/><figure class="figure">
     <img alt="A&#x20;generic&#x20;square&#x20;placeholder&#x20;image&#x20;with&#x20;rounded&#x20;corners&#x20;in&#x20;a&#x20;figure." class="figure-img&#x20;img-fluid&#x20;rounded" src="images&#x2F;demo-sample.svg">
     <figcaption class="figure-caption">A caption for the above image.</figcaption>
 </figure></div>
-  <div class="tab-pane" id="basic_5d1f8156148a5_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="basic_5d1f84f034214_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">figure</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'A&nbsp;caption&nbsp;for&nbsp;the&nbsp;above&nbsp;image.'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;[],<br />&nbsp;&nbsp;&nbsp;&nbsp;[<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'fluid'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'rounded'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'A&nbsp;generic&nbsp;square&nbsp;placeholder&nbsp;image&nbsp;with&nbsp;rounded&nbsp;corners&nbsp;in&nbsp;a&nbsp;figure.'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;]<br />);</span>
 </span>
 </code></pre></div>
@@ -831,20 +831,20 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 
 ### Aligning figure's caption
 
-<ul class="nav nav-tabs" id="aligning--figure--s--caption_5d1f815614925_tab" role="tablist">
+<ul class="nav nav-tabs" id="aligning--figure--s--caption_5d1f84f0342a1_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#aligning--figure--s--caption_5d1f815614925_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#aligning--figure--s--caption_5d1f84f0342a1_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#aligning--figure--s--caption_5d1f815614925_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#aligning--figure--s--caption_5d1f84f0342a1_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="aligning--figure--s--caption_5d1f815614925_result" role="tabpanel"><br/><figure class="figure">
+  <div class="tab-pane active" id="aligning--figure--s--caption_5d1f84f0342a1_result" role="tabpanel"><br/><figure class="figure">
     <img alt="A&#x20;generic&#x20;square&#x20;placeholder&#x20;image&#x20;with&#x20;rounded&#x20;corners&#x20;in&#x20;a&#x20;figure." class="figure-img&#x20;img-fluid&#x20;rounded" src="images&#x2F;demo-sample.svg">
     <figcaption class="figure-caption&#x20;text-right">A caption for the above image.</figcaption>
 </figure></div>
-  <div class="tab-pane" id="aligning--figure--s--caption_5d1f815614925_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="aligning--figure--s--caption_5d1f84f0342a1_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">figure</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'A&nbsp;caption&nbsp;for&nbsp;the&nbsp;above&nbsp;image.'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;[],<br />&nbsp;&nbsp;&nbsp;&nbsp;[<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'fluid'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'rounded'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'A&nbsp;generic&nbsp;square&nbsp;placeholder&nbsp;image&nbsp;with&nbsp;rounded&nbsp;corners&nbsp;in&nbsp;a&nbsp;figure.'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;],<br />&nbsp;&nbsp;&nbsp;&nbsp;[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'text-right'</span><span style="color: #007700">]<br />);</span>
 </span>
 </code></pre></div>
@@ -859,16 +859,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Example
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/alerts/#examples)</small>
 
-<ul class="nav nav-tabs" id="example_5d1f815615a49_tab" role="tablist">
+<ul class="nav nav-tabs" id="example_5d1f84f035202_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#example_5d1f815615a49_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#example_5d1f84f035202_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#example_5d1f815615a49_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#example_5d1f84f035202_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="example_5d1f815615a49_result" role="tabpanel"><br/><div class="alert&#x20;alert-success" role="alert">
+  <div class="tab-pane active" id="example_5d1f84f035202_result" role="tabpanel"><br/><div class="alert&#x20;alert-success" role="alert">
     <strong>Well done!</strong> You successfully read this important alert message.
 </div>
 <div class="alert&#x20;alert-info" role="alert">
@@ -880,7 +880,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 <div class="alert&#x20;alert-danger" role="alert">
     <strong>Oh snap!</strong> Change a few things up and try submitting again.
 </div></div>
-  <div class="tab-pane" id="example_5d1f815615a49_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="example_5d1f84f035202_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Success<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">alert</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'&lt;strong&gt;Well&nbsp;done!&lt;/strong&gt;&nbsp;You&nbsp;successfully&nbsp;read&nbsp;this&nbsp;important&nbsp;alert&nbsp;message.'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'success'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;[],<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">false<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Info<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">alert</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'&lt;strong&gt;Heads&nbsp;up!&lt;/strong&gt;&nbsp;This&nbsp;alert&nbsp;needs&nbsp;your&nbsp;attention,&nbsp;but&nbsp;it\'s&nbsp;not&nbsp;super&nbsp;important.'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'info'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[],<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">false<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Warning<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">alert</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'&lt;strong&gt;Warning!&lt;/strong&gt;&nbsp;Better&nbsp;check&nbsp;yourself,&nbsp;you\'re&nbsp;not&nbsp;looking&nbsp;too&nbsp;good.'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'warning'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[],<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">false<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Danger<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">alert</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'&lt;strong&gt;Oh&nbsp;snap!&lt;/strong&gt;&nbsp;Change&nbsp;a&nbsp;few&nbsp;things&nbsp;up&nbsp;and&nbsp;try&nbsp;submitting&nbsp;again.'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'danger'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[],<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">false<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">);</span>
 </span>
 </code></pre></div>
@@ -889,16 +889,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Link color
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/alerts/#link-color)</small>
 
-<ul class="nav nav-tabs" id="link--color_5d1f815615ba4_tab" role="tablist">
+<ul class="nav nav-tabs" id="link--color_5d1f84f03536c_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#link--color_5d1f815615ba4_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#link--color_5d1f84f03536c_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#link--color_5d1f815615ba4_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#link--color_5d1f84f03536c_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="link--color_5d1f815615ba4_result" role="tabpanel"><br/><div class="alert&#x20;alert-success" role="alert">
+  <div class="tab-pane active" id="link--color_5d1f84f03536c_result" role="tabpanel"><br/><div class="alert&#x20;alert-success" role="alert">
     <strong>Well done!</strong> You successfully read <a href="#" class="alert-link">this important alert message</a>.
 </div>
 <div class="alert&#x20;alert-info" role="alert">
@@ -910,7 +910,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 <div class="alert&#x20;alert-danger" role="alert">
     <strong>Oh snap!</strong> <a href="#" class="alert-link">Change a few things up</a> and try submitting again.
 </div></div>
-  <div class="tab-pane" id="link--color_5d1f815615ba4_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="link--color_5d1f84f03536c_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Success<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">alert</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'&lt;strong&gt;Well&nbsp;done!&lt;/strong&gt;&nbsp;You&nbsp;successfully&nbsp;read&nbsp;'&nbsp;</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'&lt;a&nbsp;href="#"&nbsp;class="alert-link"&gt;this&nbsp;important&nbsp;alert&nbsp;message&lt;/a&gt;.'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'success'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;[],<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">false<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Info<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">alert</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'&lt;strong&gt;Heads&nbsp;up!&lt;/strong&gt;&nbsp;This&nbsp;'&nbsp;</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'&lt;a&nbsp;href="#"&nbsp;class="alert-link"&gt;alert&nbsp;needs&nbsp;your&nbsp;attention&lt;/a&gt;,&nbsp;'&nbsp;</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'but&nbsp;it\'s&nbsp;not&nbsp;super&nbsp;important.'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'info'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[],<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">false<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Warning<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">alert</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'&lt;strong&gt;Warning!&lt;/strong&gt;&nbsp;Better&nbsp;check&nbsp;yourself,&nbsp;you\'re&nbsp;'&nbsp;</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'&lt;a&nbsp;href="#"&nbsp;class="alert-link"&gt;not&nbsp;looking&nbsp;too&nbsp;good&lt;/a&gt;.'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'warning'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[],<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">false<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Danger<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">alert</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'&lt;strong&gt;Oh&nbsp;snap!&lt;/strong&gt;&nbsp;'&nbsp;</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'&lt;a&nbsp;href="#"&nbsp;class="alert-link"&gt;Change&nbsp;a&nbsp;few&nbsp;things&nbsp;up&lt;/a&gt;&nbsp;and&nbsp;try&nbsp;submitting&nbsp;again.'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'danger'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[],<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">false<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">);</span>
 </span>
 </code></pre></div>
@@ -919,21 +919,21 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Additional content
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/alerts/#additional-content)</small>
 
-<ul class="nav nav-tabs" id="additional--content_5d1f815615c58_tab" role="tablist">
+<ul class="nav nav-tabs" id="additional--content_5d1f84f035420_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#additional--content_5d1f815615c58_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#additional--content_5d1f84f035420_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#additional--content_5d1f815615c58_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#additional--content_5d1f84f035420_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="additional--content_5d1f815615c58_result" role="tabpanel"><br/><div class="alert&#x20;alert-success" role="alert">
+  <div class="tab-pane active" id="additional--content_5d1f84f035420_result" role="tabpanel"><br/><div class="alert&#x20;alert-success" role="alert">
     <h4 class="alert-heading">Well done!</h4>
     <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
     <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
 </div></div>
-  <div class="tab-pane" id="additional--content_5d1f815615c58_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="additional--content_5d1f84f035420_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Success<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">alert</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'&lt;h4&nbsp;class="alert-heading"&gt;Well&nbsp;done!&lt;/h4&gt;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">PHP_EOL&nbsp;</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'&lt;p&gt;Aww&nbsp;yeah,&nbsp;you&nbsp;successfully&nbsp;read&nbsp;this&nbsp;important&nbsp;alert&nbsp;message.&nbsp;'&nbsp;</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'This&nbsp;example&nbsp;text&nbsp;is&nbsp;going&nbsp;to&nbsp;run&nbsp;a&nbsp;bit&nbsp;longer&nbsp;so&nbsp;that&nbsp;you&nbsp;can&nbsp;see&nbsp;how&nbsp;'&nbsp;</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'spacing&nbsp;within&nbsp;an&nbsp;alert&nbsp;works&nbsp;with&nbsp;this&nbsp;kind&nbsp;of&nbsp;content.&lt;/p&gt;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">PHP_EOL&nbsp;</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'&lt;p&nbsp;class="mb-0"&gt;'&nbsp;</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Whenever&nbsp;you&nbsp;need&nbsp;to,&nbsp;be&nbsp;sure&nbsp;to&nbsp;use&nbsp;margin&nbsp;utilities&nbsp;to&nbsp;keep&nbsp;things&nbsp;nice&nbsp;and&nbsp;tidy.'&nbsp;</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'&lt;/p&gt;'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'success'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;[],<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">false<br /></span><span style="color: #007700">);</span>
 </span>
 </code></pre></div>
@@ -942,20 +942,20 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Dismissing
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/alerts/#dismissing)</small>
 
-<ul class="nav nav-tabs" id="dismissing_5d1f815615cce_tab" role="tablist">
+<ul class="nav nav-tabs" id="dismissing_5d1f84f0354a3_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#dismissing_5d1f815615cce_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#dismissing_5d1f84f0354a3_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#dismissing_5d1f815615cce_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#dismissing_5d1f84f0354a3_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="dismissing_5d1f815615cce_result" role="tabpanel"><br/><div class="alert&#x20;alert-dismissible&#x20;alert-warning&#x20;fade&#x20;show" role="alert">
+  <div class="tab-pane active" id="dismissing_5d1f84f0354a3_result" role="tabpanel"><br/><div class="alert&#x20;alert-dismissible&#x20;alert-warning&#x20;fade&#x20;show" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <strong>Holy guacamole!</strong> You should check in on some of those fields below.
 </div></div>
-  <div class="tab-pane" id="dismissing_5d1f815615cce_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="dismissing_5d1f84f0354a3_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">alert</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'&lt;strong&gt;Holy&nbsp;guacamole!&lt;/strong&gt;&nbsp;You&nbsp;should&nbsp;check&nbsp;in&nbsp;on&nbsp;some&nbsp;of&nbsp;those&nbsp;fields&nbsp;below.'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'warning'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;[],<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">false<br /></span><span style="color: #007700">);</span>
 </span>
 </code></pre></div>
@@ -967,22 +967,22 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Example
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/badge/#example)</small>
 
-<ul class="nav nav-tabs" id="example_5d1f815615da6_tab" role="tablist">
+<ul class="nav nav-tabs" id="example_5d1f84f03557f_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#example_5d1f815615da6_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#example_5d1f84f03557f_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#example_5d1f815615da6_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#example_5d1f84f03557f_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="example_5d1f815615da6_result" role="tabpanel"><br/><h1>Example heading <span class="badge&#x20;badge-default">New</span></h1>
+  <div class="tab-pane active" id="example_5d1f84f03557f_result" role="tabpanel"><br/><h1>Example heading <span class="badge&#x20;badge-default">New</span></h1>
 <h2>Example heading <span class="badge&#x20;badge-default">New</span></h2>
 <h3>Example heading <span class="badge&#x20;badge-default">New</span></h3>
 <h4>Example heading <span class="badge&#x20;badge-default">New</span></h4>
 <h5>Example heading <span class="badge&#x20;badge-default">New</span></h5>
 <h6>Example heading <span class="badge&#x20;badge-default">New</span></h6></div>
-  <div class="tab-pane" id="example_5d1f815615da6_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="example_5d1f84f03557f_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;H1<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'&lt;h1&gt;Example&nbsp;heading&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">badge</span><span style="color: #007700">(</span><span style="color: #DD0000">'New'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'&lt;/h1&gt;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;H2<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'&lt;h2&gt;Example&nbsp;heading&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">badge</span><span style="color: #007700">(</span><span style="color: #DD0000">'New'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'&lt;/h2&gt;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;H3<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'&lt;h3&gt;Example&nbsp;heading&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">badge</span><span style="color: #007700">(</span><span style="color: #DD0000">'New'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'&lt;/h3&gt;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;H4<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'&lt;h4&gt;Example&nbsp;heading&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">badge</span><span style="color: #007700">(</span><span style="color: #DD0000">'New'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'&lt;/h4&gt;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;H5<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'&lt;h5&gt;Example&nbsp;heading&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">badge</span><span style="color: #007700">(</span><span style="color: #DD0000">'New'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'&lt;/h5&gt;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;H6<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'&lt;h6&gt;Example&nbsp;heading&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">badge</span><span style="color: #007700">(</span><span style="color: #DD0000">'New'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'&lt;/h6&gt;'</span><span style="color: #007700">;</span>
 </span>
 </code></pre></div>
@@ -991,22 +991,22 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Contextual variations
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/badge/#contextual-variations)</small>
 
-<ul class="nav nav-tabs" id="contextual--variations_5d1f815615e6f_tab" role="tablist">
+<ul class="nav nav-tabs" id="contextual--variations_5d1f84f035621_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#contextual--variations_5d1f815615e6f_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#contextual--variations_5d1f84f035621_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#contextual--variations_5d1f815615e6f_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#contextual--variations_5d1f84f035621_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="contextual--variations_5d1f815615e6f_result" role="tabpanel"><br/><span class="badge&#x20;badge-default">Default</span>
+  <div class="tab-pane active" id="contextual--variations_5d1f84f035621_result" role="tabpanel"><br/><span class="badge&#x20;badge-default">Default</span>
 <span class="badge&#x20;badge-primary">Primary</span>
 <span class="badge&#x20;badge-success">Success</span>
 <span class="badge&#x20;badge-info">Info</span>
 <span class="badge&#x20;badge-warning">Warning</span>
 <span class="badge&#x20;badge-danger">Danger</span></div>
-  <div class="tab-pane" id="contextual--variations_5d1f815615e6f_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="contextual--variations_5d1f84f035621_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Default<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">badge</span><span style="color: #007700">(</span><span style="color: #DD0000">'Default'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;Primary<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">badge</span><span style="color: #007700">(</span><span style="color: #DD0000">'Primary'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'primary'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;Success<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">badge</span><span style="color: #007700">(</span><span style="color: #DD0000">'Success'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'success'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;Info<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">badge</span><span style="color: #007700">(</span><span style="color: #DD0000">'Info'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'info'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;Warning<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">badge</span><span style="color: #007700">(</span><span style="color: #DD0000">'Warning'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'warning'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;Danger<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">badge</span><span style="color: #007700">(</span><span style="color: #DD0000">'Danger'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'danger'</span><span style="color: #007700">);</span>
 </span>
 </code></pre></div>
@@ -1015,22 +1015,22 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Pill badges
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/badge/#pill-badges)</small>
 
-<ul class="nav nav-tabs" id="pill--badges_5d1f815615f0f_tab" role="tablist">
+<ul class="nav nav-tabs" id="pill--badges_5d1f84f0356c6_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#pill--badges_5d1f815615f0f_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#pill--badges_5d1f84f0356c6_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#pill--badges_5d1f815615f0f_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#pill--badges_5d1f84f0356c6_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="pill--badges_5d1f815615f0f_result" role="tabpanel"><br/><span class="badge&#x20;badge-default&#x20;badge-pill">Default</span>
+  <div class="tab-pane active" id="pill--badges_5d1f84f0356c6_result" role="tabpanel"><br/><span class="badge&#x20;badge-default&#x20;badge-pill">Default</span>
 <span class="badge&#x20;badge-pill&#x20;badge-primary">Primary</span>
 <span class="badge&#x20;badge-pill&#x20;badge-success">Success</span>
 <span class="badge&#x20;badge-info&#x20;badge-pill">Info</span>
 <span class="badge&#x20;badge-pill&#x20;badge-warning">Warning</span>
 <span class="badge&#x20;badge-danger&#x20;badge-pill">Danger</span></div>
-  <div class="tab-pane" id="pill--badges_5d1f815615f0f_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="pill--badges_5d1f84f0356c6_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Default<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">badge</span><span style="color: #007700">(</span><span style="color: #DD0000">'Default'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'default'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'pill'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;Primary<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">badge</span><span style="color: #007700">(</span><span style="color: #DD0000">'Primary'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'primary'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'pill'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;Success<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">badge</span><span style="color: #007700">(</span><span style="color: #DD0000">'Success'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'success'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'pill'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;Info<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">badge</span><span style="color: #007700">(</span><span style="color: #DD0000">'Info'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'info'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'pill'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;Warning<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">badge</span><span style="color: #007700">(</span><span style="color: #DD0000">'Warning'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'warning'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'pill'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;Danger<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">badge</span><span style="color: #007700">(</span><span style="color: #DD0000">'Danger'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'danger'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'pill'</span><span style="color: #007700">);</span>
 </span>
 </code></pre></div>
@@ -1039,22 +1039,22 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Links
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/badge/#links)</small>
 
-<ul class="nav nav-tabs" id="links_5d1f815615fbc_tab" role="tablist">
+<ul class="nav nav-tabs" id="links_5d1f84f035778_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#links_5d1f815615fbc_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#links_5d1f84f035778_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#links_5d1f815615fbc_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#links_5d1f84f035778_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="links_5d1f815615fbc_result" role="tabpanel"><br/><a href="&#x23;" class="badge&#x20;badge-default">Default</a>
+  <div class="tab-pane active" id="links_5d1f84f035778_result" role="tabpanel"><br/><a href="&#x23;" class="badge&#x20;badge-default">Default</a>
 <a href="&#x23;" class="badge&#x20;badge-primary">Primary</a>
 <a href="&#x23;" class="badge&#x20;badge-success">Success</a>
 <a href="&#x23;" class="badge&#x20;badge-info">Info</a>
 <a href="&#x23;" class="badge&#x20;badge-warning">Warning</a>
 <a href="&#x23;" class="badge&#x20;badge-danger">Danger</a></div>
-  <div class="tab-pane" id="links_5d1f815615fbc_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="links_5d1f84f035778_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Default<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">badge</span><span style="color: #007700">(</span><span style="color: #DD0000">'Default'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'default'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'link'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'href'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'#'</span><span style="color: #007700">])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;Primary<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">badge</span><span style="color: #007700">(</span><span style="color: #DD0000">'Primary'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'primary'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'link'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'href'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'#'</span><span style="color: #007700">])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;Success<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">badge</span><span style="color: #007700">(</span><span style="color: #DD0000">'Success'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'success'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'link'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'href'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'#'</span><span style="color: #007700">])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;Info<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">badge</span><span style="color: #007700">(</span><span style="color: #DD0000">'Info'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'info'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'link'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'href'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'#'</span><span style="color: #007700">])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;Warning<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">badge</span><span style="color: #007700">(</span><span style="color: #DD0000">'Warning'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'warning'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'link'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'href'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'#'</span><span style="color: #007700">])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;Danger<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">badge</span><span style="color: #007700">(</span><span style="color: #DD0000">'Danger'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'danger'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'link'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'href'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'#'</span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -1066,16 +1066,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Example
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/breadcrumb/#example)</small>
 
-<ul class="nav nav-tabs" id="example_5d1f8156160cc_tab" role="tablist">
+<ul class="nav nav-tabs" id="example_5d1f84f035896_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#example_5d1f8156160cc_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#example_5d1f84f035896_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#example_5d1f8156160cc_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#example_5d1f84f035896_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="example_5d1f8156160cc_result" role="tabpanel"><br/><nav aria-label="breadcrumb">
+  <div class="tab-pane active" id="example_5d1f84f035896_result" role="tabpanel"><br/><nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item active" aria-current="page">Home</li>
     </ol>
@@ -1094,7 +1094,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
     </ol>
 </nav>
 </div>
-  <div class="tab-pane" id="example_5d1f8156160cc_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="example_5d1f84f035896_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">breadcrumbs</span><span style="color: #007700">(new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Navigation</span><span style="color: #007700">\</span><span style="color: #0000BB">Navigation</span><span style="color: #007700">([<br />[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Home'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'uri'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'/'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'active'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,],<br />]))-&gt;</span><span style="color: #0000BB">setMinDepth</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">breadcrumbs</span><span style="color: #007700">(new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Navigation</span><span style="color: #007700">\</span><span style="color: #0000BB">Navigation</span><span style="color: #007700">([<br />[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Home'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'uri'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'/'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'pages'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Library'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'uri'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'/library'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'active'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">],<br />],<br />],<br />]))-&gt;</span><span style="color: #0000BB">setMinDepth</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">breadcrumbs</span><span style="color: #007700">(new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Navigation</span><span style="color: #007700">\</span><span style="color: #0000BB">Navigation</span><span style="color: #007700">([<br />[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Home'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'uri'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'/'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'pages'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Library'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'uri'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'/library'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'pages'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Data'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'uri'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'/library/data'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'active'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">],<br />],<br />],<br />],<br />],<br />]))-&gt;</span><span style="color: #0000BB">setMinDepth</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;</span>
 </span>
 </code></pre></div>
@@ -1106,16 +1106,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Example
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/buttons/#example)</small>
 
-<ul class="nav nav-tabs" id="example_5d1f815616189_tab" role="tablist">
+<ul class="nav nav-tabs" id="example_5d1f84f035955_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#example_5d1f815616189_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#example_5d1f84f035955_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#example_5d1f815616189_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#example_5d1f84f035955_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="example_5d1f815616189_result" role="tabpanel"><br/><button type="button" name="primary" class="btn&#x20;btn-primary" value="">Primary</button>
+  <div class="tab-pane active" id="example_5d1f84f035955_result" role="tabpanel"><br/><button type="button" name="primary" class="btn&#x20;btn-primary" value="">Primary</button>
 <button type="button" name="secondary" class="btn&#x20;btn-secondary" value="">Secondary</button>
 <button type="button" name="success" class="btn&#x20;btn-success" value="">Success</button>
 <button type="button" name="danger" class="btn&#x20;btn-danger" value="">Danger</button>
@@ -1125,7 +1125,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 <button type="button" name="dark" class="btn&#x20;btn-dark" value="">Dark</button>
 <button type="button" name="link" class="btn&#x20;btn-link" value="">Link</button>
 </div>
-  <div class="tab-pane" id="example_5d1f815616189_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="example_5d1f84f035955_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">foreach&nbsp;([<br /></span><span style="color: #DD0000">'primary'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'secondary'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'success'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'danger'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'warning'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'info'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'light'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'dark'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'link'</span><span style="color: #007700">,<br />]&nbsp;as&nbsp;</span><span style="color: #0000BB">$sVariant</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$oButton&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #0000BB">$sVariant</span><span style="color: #007700">,&nbsp;[<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">ucfirst</span><span style="color: #007700">(</span><span style="color: #0000BB">$sVariant</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'variant'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$sVariant</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;]);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">formButton</span><span style="color: #007700">(</span><span style="color: #0000BB">$oButton</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />}</span>
 </span>
 </code></pre></div>
@@ -1134,19 +1134,19 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Button tags
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/buttons/#button-tags)</small>
 
-<ul class="nav nav-tabs" id="button--tags_5d1f81561623d_tab" role="tablist">
+<ul class="nav nav-tabs" id="button--tags_5d1f84f035a0b_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#button--tags_5d1f81561623d_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#button--tags_5d1f84f035a0b_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#button--tags_5d1f81561623d_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#button--tags_5d1f84f035a0b_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="button--tags_5d1f81561623d_result" role="tabpanel"><br/><a href="&#x23;" class="btn&#x20;btn-primary" role="button">Link</a>
+  <div class="tab-pane active" id="button--tags_5d1f84f035a0b_result" role="tabpanel"><br/><a href="&#x23;" class="btn&#x20;btn-primary" role="button">Link</a>
 <button type="submit" name="Button" class="btn&#x20;btn-primary" value="">Button</button>
 </div>
-  <div class="tab-pane" id="button--tags_5d1f81561623d_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="button--tags_5d1f84f035a0b_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Link&nbsp;button<br /></span><span style="color: #0000BB">$oButton&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'Link'</span><span style="color: #007700">,&nbsp;[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Link'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'variant'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'primary'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'tag'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'a'</span><span style="color: #007700">,<br />]);<br /></span><span style="color: #0000BB">$oButton</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAttribute</span><span style="color: #007700">(</span><span style="color: #DD0000">'href'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'#'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">formButton</span><span style="color: #007700">(</span><span style="color: #0000BB">$oButton</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Submit&nbsp;button<br /></span><span style="color: #0000BB">$oButton&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Submit</span><span style="color: #007700">(</span><span style="color: #DD0000">'Button'</span><span style="color: #007700">,&nbsp;[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Button'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'variant'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'primary'</span><span style="color: #007700">,<br />]);<br />echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">formButton</span><span style="color: #007700">(</span><span style="color: #0000BB">$oButton</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;</span>
 </span>
 </code></pre></div>
@@ -1155,16 +1155,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Outline buttons
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/buttons/#outline-buttons)</small>
 
-<ul class="nav nav-tabs" id="outline--buttons_5d1f8156162c8_tab" role="tablist">
+<ul class="nav nav-tabs" id="outline--buttons_5d1f84f035aac_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#outline--buttons_5d1f8156162c8_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#outline--buttons_5d1f84f035aac_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#outline--buttons_5d1f8156162c8_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#outline--buttons_5d1f84f035aac_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="outline--buttons_5d1f8156162c8_result" role="tabpanel"><br/><button type="button" name="primary" class="btn&#x20;btn-outline-primary" value="">Primary</button>
+  <div class="tab-pane active" id="outline--buttons_5d1f84f035aac_result" role="tabpanel"><br/><button type="button" name="primary" class="btn&#x20;btn-outline-primary" value="">Primary</button>
 <button type="button" name="secondary" class="btn&#x20;btn-outline-secondary" value="">Secondary</button>
 <button type="button" name="success" class="btn&#x20;btn-outline-success" value="">Success</button>
 <button type="button" name="danger" class="btn&#x20;btn-outline-danger" value="">Danger</button>
@@ -1173,7 +1173,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 <button type="button" name="light" class="btn&#x20;btn-outline-light" value="">Light</button>
 <button type="button" name="dark" class="btn&#x20;btn-outline-dark" value="">Dark</button>
 </div>
-  <div class="tab-pane" id="outline--buttons_5d1f8156162c8_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="outline--buttons_5d1f84f035aac_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">foreach&nbsp;([<br /></span><span style="color: #DD0000">'primary'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'secondary'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'success'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'danger'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'warning'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'info'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'light'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'dark'</span><span style="color: #007700">,<br />]&nbsp;as&nbsp;</span><span style="color: #0000BB">$sVariant</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$oButton&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #0000BB">$sVariant</span><span style="color: #007700">,&nbsp;[<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">ucfirst</span><span style="color: #007700">(</span><span style="color: #0000BB">$sVariant</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'variant'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'outline-'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$sVariant</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;]);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">formButton</span><span style="color: #007700">(</span><span style="color: #0000BB">$oButton</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />}</span>
 </span>
 </code></pre></div>
@@ -1182,23 +1182,23 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Sizes
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/buttons/#sizes)</small>
 
-<ul class="nav nav-tabs" id="sizes_5d1f81561643a_tab" role="tablist">
+<ul class="nav nav-tabs" id="sizes_5d1f84f035c42_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#sizes_5d1f81561643a_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#sizes_5d1f84f035c42_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#sizes_5d1f81561643a_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#sizes_5d1f84f035c42_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="sizes_5d1f81561643a_result" role="tabpanel"><br/><button type="button" name="large-button" class="btn&#x20;btn-lg&#x20;btn-primary" value="">Large button</button>
+  <div class="tab-pane active" id="sizes_5d1f84f035c42_result" role="tabpanel"><br/><button type="button" name="large-button" class="btn&#x20;btn-lg&#x20;btn-primary" value="">Large button</button>
 <button type="button" name="large-button" class="btn&#x20;btn-lg&#x20;btn-secondary" value="">Large button</button>
 <button type="button" name="small-button" class="btn&#x20;btn-primary&#x20;btn-sm" value="">Small button</button>
 <button type="button" name="small-button" class="btn&#x20;btn-sm&#x20;btn-secondary" value="">Small button</button>
 <button type="button" name="block-level-button" class="btn&#x20;btn-block&#x20;btn-lg&#x20;btn-primary" value="">Block level button</button>
 <button type="button" name="block-level-button" class="btn&#x20;btn-block&#x20;btn-lg&#x20;btn-secondary" value="">Block level button</button>
 </div>
-  <div class="tab-pane" id="sizes_5d1f81561643a_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="sizes_5d1f84f035c42_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Large&nbsp;buttons<br /></span><span style="color: #0000BB">$oButton&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'large-button'</span><span style="color: #007700">,&nbsp;[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Large&nbsp;button'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'variant'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'primary'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'size'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'lg'</span><span style="color: #007700">,<br />]);<br />echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">formButton</span><span style="color: #007700">(</span><span style="color: #0000BB">$oButton</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$oButton&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'large-button'</span><span style="color: #007700">,&nbsp;[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Large&nbsp;button'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'size'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'lg'</span><span style="color: #007700">,<br />]);<br />echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">formButton</span><span style="color: #007700">(</span><span style="color: #0000BB">$oButton</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Small&nbsp;buttons<br /></span><span style="color: #0000BB">$oButton&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'small-button'</span><span style="color: #007700">,&nbsp;[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Small&nbsp;button'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'variant'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'primary'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'size'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'sm'</span><span style="color: #007700">,<br />]);<br />echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">formButton</span><span style="color: #007700">(</span><span style="color: #0000BB">$oButton</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$oButton&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'small-button'</span><span style="color: #007700">,&nbsp;[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Small&nbsp;button'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'size'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'sm'</span><span style="color: #007700">,<br />]);<br />echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">formButton</span><span style="color: #007700">(</span><span style="color: #0000BB">$oButton</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Block&nbsp;level&nbsp;buttons<br /></span><span style="color: #0000BB">$oButton&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'block-level-button'</span><span style="color: #007700">,&nbsp;[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Block&nbsp;level&nbsp;button'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'variant'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'primary'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'size'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'lg'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'block'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,<br />]);<br />echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">formButton</span><span style="color: #007700">(</span><span style="color: #0000BB">$oButton</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$oButton&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'block-level-button'</span><span style="color: #007700">,&nbsp;[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Block&nbsp;level&nbsp;button'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'size'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'lg'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'block'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,<br />]);<br />echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">formButton</span><span style="color: #007700">(</span><span style="color: #0000BB">$oButton</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;</span>
 </span>
 </code></pre></div>
@@ -1210,21 +1210,21 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Basic example
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/button-group/#basic-example)</small>
 
-<ul class="nav nav-tabs" id="basic--example_5d1f8156164fa_tab" role="tablist">
+<ul class="nav nav-tabs" id="basic--example_5d1f84f035d0e_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#basic--example_5d1f8156164fa_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#basic--example_5d1f84f035d0e_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#basic--example_5d1f8156164fa_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#basic--example_5d1f84f035d0e_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="basic--example_5d1f8156164fa_result" role="tabpanel"><br/><div role="group" aria-label="Basic&#x20;example" class="btn-group">
+  <div class="tab-pane active" id="basic--example_5d1f84f035d0e_result" role="tabpanel"><br/><div role="group" aria-label="Basic&#x20;example" class="btn-group">
     <button type="button" name="left" class="btn&#x20;btn-secondary" value="">Left</button>
     <button type="button" name="middle" class="btn&#x20;btn-secondary" value="">Middle</button>
     <button type="button" name="right" class="btn&#x20;btn-secondary" value="">Right</button>
 </div></div>
-  <div class="tab-pane" id="basic--example_5d1f8156164fa_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="basic--example_5d1f84f035d0e_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">buttonGroup</span><span style="color: #007700">([<br /></span><span style="color: #FF8000">//&nbsp;Create&nbsp;button&nbsp;via&nbsp;\Zend\Form\Factory<br /></span><span style="color: #007700">[</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'button'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'left'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Left'</span><span style="color: #007700">]],<br /></span><span style="color: #FF8000">//&nbsp;Button&nbsp;object<br /></span><span style="color: #007700">new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'middle'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Middle'</span><span style="color: #007700">]),<br />[</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'button'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'right'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Right'</span><span style="color: #007700">]],<br />],&nbsp;[</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'role'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'group'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'aria-label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Basic&nbsp;example'</span><span style="color: #007700">]]);</span>
 </span>
 </code></pre></div>
@@ -1235,16 +1235,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 
 #### Combine sets of button groups
 
-<ul class="nav nav-tabs" id="combine--sets--of--button--groups_5d1f815616696_tab" role="tablist">
+<ul class="nav nav-tabs" id="combine--sets--of--button--groups_5d1f84f035eb7_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#combine--sets--of--button--groups_5d1f815616696_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#combine--sets--of--button--groups_5d1f84f035eb7_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#combine--sets--of--button--groups_5d1f815616696_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#combine--sets--of--button--groups_5d1f84f035eb7_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="combine--sets--of--button--groups_5d1f815616696_result" role="tabpanel"><br/><div role="toolbar" aria-label="Toolbar&#x20;with&#x20;button&#x20;groups" class="btn-toolbar">
+  <div class="tab-pane active" id="combine--sets--of--button--groups_5d1f84f035eb7_result" role="tabpanel"><br/><div role="toolbar" aria-label="Toolbar&#x20;with&#x20;button&#x20;groups" class="btn-toolbar">
     <div role="group" aria-label="First&#x20;group" class="btn-group&#x20;mr-2">
         <button type="button" name="1" class="btn&#x20;btn-secondary" value="">1</button>
         <button type="button" name="2" class="btn&#x20;btn-secondary" value="">2</button>
@@ -1260,7 +1260,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         <button type="button" name="8" class="btn&#x20;btn-secondary" value="">8</button>
     </div>
 </div></div>
-  <div class="tab-pane" id="combine--sets--of--button--groups_5d1f815616696_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="combine--sets--of--button--groups_5d1f84f035eb7_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">buttonToolbar</span><span style="color: #007700">([<br />[<br /></span><span style="color: #DD0000">'buttons'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'1'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'1'</span><span style="color: #007700">]),<br />new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'2'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'2'</span><span style="color: #007700">]),<br />new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'3'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'3'</span><span style="color: #007700">]),<br />new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'4'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'4'</span><span style="color: #007700">]),<br />],<br /></span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'role'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'group'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'aria-label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'First&nbsp;group'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'mr-2'</span><span style="color: #007700">,<br />],<br />],<br />],<br />[<br /></span><span style="color: #DD0000">'buttons'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'5'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'5'</span><span style="color: #007700">]),<br />new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'6'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'6'</span><span style="color: #007700">]),<br />new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'7'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'7'</span><span style="color: #007700">]),<br />],<br /></span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'role'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'group'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'aria-label'&nbsp;</span><span style="color: #007700">=&gt;<br /></span><span style="color: #DD0000">'Second&nbsp;group'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'mr-2'</span><span style="color: #007700">,<br />],<br />],<br />],<br />[<br /></span><span style="color: #DD0000">'buttons'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'8'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'8'</span><span style="color: #007700">]),<br />],<br /></span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'role'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'group'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'aria-label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Third&nbsp;group'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'mr-2'</span><span style="color: #007700">,<br />],<br />],<br />],<br />],&nbsp;[</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'role'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'toolbar'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'aria-label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Toolbar&nbsp;with&nbsp;button&nbsp;groups'</span><span style="color: #007700">]]);</span>
 </span>
 </code></pre></div>
@@ -1268,16 +1268,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 
 #### Mix input groups with button groups
 
-<ul class="nav nav-tabs" id="mix--input--groups--with--button--groups_5d1f815616844_tab" role="tablist">
+<ul class="nav nav-tabs" id="mix--input--groups--with--button--groups_5d1f84f036077_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#mix--input--groups--with--button--groups_5d1f815616844_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#mix--input--groups--with--button--groups_5d1f84f036077_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#mix--input--groups--with--button--groups_5d1f815616844_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#mix--input--groups--with--button--groups_5d1f84f036077_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="mix--input--groups--with--button--groups_5d1f815616844_result" role="tabpanel"><br/><div role="toolbar" aria-label="Toolbar&#x20;with&#x20;button&#x20;groups" class="btn-toolbar&#x20;mb-3">
+  <div class="tab-pane active" id="mix--input--groups--with--button--groups_5d1f84f036077_result" role="tabpanel"><br/><div role="toolbar" aria-label="Toolbar&#x20;with&#x20;button&#x20;groups" class="btn-toolbar&#x20;mb-3">
     <div role="group" aria-label="First&#x20;group" class="btn-group&#x20;mr-2">
         <button type="button" name="1" class="btn&#x20;btn-secondary" value="">1</button>
         <button type="button" name="2" class="btn&#x20;btn-secondary" value="">2</button>
@@ -1305,7 +1305,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         <input type="text" name="input-group-example" placeholder="Input&#x20;group&#x20;example" aria-label="Input&#x20;group&#x20;example" aria-describedby="btnGroupAddon" class="form-control" value="">
     </div>
 </div></div>
-  <div class="tab-pane" id="mix--input--groups--with--button--groups_5d1f815616844_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="mix--input--groups--with--button--groups_5d1f84f036077_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br />$aToolbarItems&nbsp;</span><span style="color: #007700">=&nbsp;[<br />[<br /></span><span style="color: #DD0000">'buttons'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'1'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'1'</span><span style="color: #007700">]),<br />new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'2'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'2'</span><span style="color: #007700">]),<br />new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'3'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'3'</span><span style="color: #007700">]),<br />new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'4'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'4'</span><span style="color: #007700">]),<br />],<br /></span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'role'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'group'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'aria-label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'First&nbsp;group'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'mr-2'</span><span style="color: #007700">,<br />],<br />],<br />],<br />[<br /></span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Text</span><span style="color: #007700">::class,<br /></span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'input-group-example'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'add-on-prepend'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'@'</span><span style="color: #007700">],<br /></span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'placeholder'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Input&nbsp;group&nbsp;example'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'aria-label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Input&nbsp;group&nbsp;example'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'aria-describedby'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'btnGroupAddon'</span><span style="color: #007700">,<br />],<br />],<br />];<br /><br />echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">buttonToolbar</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$aToolbarItems</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;[<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'role'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'toolbar'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'aria-label'&nbsp;</span><span style="color: #007700">=&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Toolbar&nbsp;with&nbsp;button&nbsp;groups'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'mb-3'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;],<br />&nbsp;&nbsp;&nbsp;&nbsp;]<br />&nbsp;&nbsp;&nbsp;&nbsp;)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Justified&nbsp;content<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">buttonToolbar</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$aToolbarItems</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'role'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'toolbar'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'aria-label'&nbsp;</span><span style="color: #007700">=&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Toolbar&nbsp;with&nbsp;button&nbsp;groups'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'justify-content-between'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;],<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br />&nbsp;&nbsp;&nbsp;&nbsp;);</span>
 </span>
 </code></pre></div>
@@ -1314,16 +1314,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Sizing
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/button-group/#sizing)</small>
 
-<ul class="nav nav-tabs" id="sizing_5d1f8156168e1_tab" role="tablist">
+<ul class="nav nav-tabs" id="sizing_5d1f84f036182_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#sizing_5d1f8156168e1_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#sizing_5d1f84f036182_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#sizing_5d1f8156168e1_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#sizing_5d1f84f036182_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="sizing_5d1f8156168e1_result" role="tabpanel"><br/><div role="group" aria-label="..." class="btn-group&#x20;btn-group-lg">
+  <div class="tab-pane active" id="sizing_5d1f84f036182_result" role="tabpanel"><br/><div role="group" aria-label="..." class="btn-group&#x20;btn-group-lg">
     <button type="button" name="left" class="btn&#x20;btn-secondary" value="">Left</button>
     <button type="button" name="middle" class="btn&#x20;btn-secondary" value="">Middle</button>
     <button type="button" name="right" class="btn&#x20;btn-secondary" value="">Right</button>
@@ -1339,7 +1339,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
     <button type="button" name="right" class="btn&#x20;btn-secondary" value="">Right</button>
 </div>
 </div>
-  <div class="tab-pane" id="sizing_5d1f8156168e1_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="sizing_5d1f84f036182_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">foreach&nbsp;([</span><span style="color: #DD0000">'lg'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'sm'</span><span style="color: #007700">]&nbsp;as&nbsp;</span><span style="color: #0000BB">$sSize</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">buttonGroup</span><span style="color: #007700">([<br />&nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'left'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Left'</span><span style="color: #007700">]),<br />&nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'middle'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Middle'</span><span style="color: #007700">]),<br />&nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'right'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Right'</span><span style="color: #007700">]),<br />&nbsp;&nbsp;&nbsp;&nbsp;],&nbsp;[</span><span style="color: #DD0000">'size'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$sSize</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'role'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'group'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'aria-label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'...'</span><span style="color: #007700">]])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />}</span>
 </span>
 </code></pre></div>
@@ -1348,16 +1348,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Nesting
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/button-group/#nesting)</small>
 
-<ul class="nav nav-tabs" id="nesting_5d1f8156169b9_tab" role="tablist">
+<ul class="nav nav-tabs" id="nesting_5d1f84f036251_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#nesting_5d1f8156169b9_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#nesting_5d1f84f036251_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#nesting_5d1f8156169b9_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#nesting_5d1f84f036251_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="nesting_5d1f8156169b9_result" role="tabpanel"><br/><div role="group" aria-label="Button&#x20;group&#x20;with&#x20;nested&#x20;dropdown" class="btn-group">
+  <div class="tab-pane active" id="nesting_5d1f84f036251_result" role="tabpanel"><br/><div role="group" aria-label="Button&#x20;group&#x20;with&#x20;nested&#x20;dropdown" class="btn-group">
     <button type="button" name="1" class="btn&#x20;btn-secondary" value="">1</button>
     <button type="button" name="2" class="btn&#x20;btn-secondary" value="">2</button>
     <div class="btn-group" role="group">
@@ -1368,7 +1368,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         </div>
     </div>
 </div></div>
-  <div class="tab-pane" id="nesting_5d1f8156169b9_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="nesting_5d1f84f036251_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">buttonGroup</span><span style="color: #007700">([<br />[</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">::class,&nbsp;</span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'1'</span><span style="color: #007700">]],<br />[</span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">::class,&nbsp;</span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'2'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'2'</span><span style="color: #007700">]],<br />[<br /></span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">::class,<br /></span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'dropdown'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Dropdown'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'dropdown'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'Dropdown&nbsp;link'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Dropdown&nbsp;link'</span><span style="color: #007700">],<br />],<br /></span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'btnGroupDrop1'</span><span style="color: #007700">],<br />],<br />],&nbsp;[</span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'role'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'group'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'aria-label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Button&nbsp;group&nbsp;with&nbsp;nested&nbsp;dropdown'</span><span style="color: #007700">]]);</span>
 </span>
 </code></pre></div>
@@ -1377,16 +1377,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Vertical variation
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/button-group/#vertical-variation)</small>
 
-<ul class="nav nav-tabs" id="vertical--variation_5d1f815616b17_tab" role="tablist">
+<ul class="nav nav-tabs" id="vertical--variation_5d1f84f0363af_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#vertical--variation_5d1f815616b17_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#vertical--variation_5d1f84f0363af_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#vertical--variation_5d1f815616b17_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#vertical--variation_5d1f84f0363af_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="vertical--variation_5d1f815616b17_result" role="tabpanel"><br/><div class="btn-group-vertical">
+  <div class="tab-pane active" id="vertical--variation_5d1f84f0363af_result" role="tabpanel"><br/><div class="btn-group-vertical">
     <button type="button" name="button" class="btn&#x20;btn-secondary" value="">Button</button>
     <button type="button" name="button" class="btn&#x20;btn-secondary" value="">Button</button>
     <button type="button" name="button" class="btn&#x20;btn-secondary" value="">Button</button>
@@ -1428,7 +1428,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         </div>
     </div>
 </div></div>
-  <div class="tab-pane" id="vertical--variation_5d1f815616b17_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="vertical--variation_5d1f84f0363af_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">buttonGroup</span><span style="color: #007700">([<br />new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'button'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Button'</span><span style="color: #007700">]),<br />new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'button'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Button'</span><span style="color: #007700">]),<br />new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'button'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Button'</span><span style="color: #007700">]),<br />new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'button'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Button'</span><span style="color: #007700">]),<br />new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'button'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Button'</span><span style="color: #007700">]),<br />new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'button'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Button'</span><span style="color: #007700">]),<br />],&nbsp;[</span><span style="color: #DD0000">'vertical'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">buttonGroup</span><span style="color: #007700">([<br />new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'button'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Button'</span><span style="color: #007700">]),<br />new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'button'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Button'</span><span style="color: #007700">]),<br />new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'dropdown'</span><span style="color: #007700">,&nbsp;[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Dropdown'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'dropdown'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'Dropdown&nbsp;link'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Dropdown&nbsp;link'</span><span style="color: #007700">],<br />]),<br />new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'button'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Button'</span><span style="color: #007700">]),<br />new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'button'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Button'</span><span style="color: #007700">]),<br />new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'dropdown'</span><span style="color: #007700">,&nbsp;[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Dropdown'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'dropdown'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'Dropdown&nbsp;link'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Dropdown&nbsp;link'</span><span style="color: #007700">],<br />]),<br />new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'dropdown'</span><span style="color: #007700">,&nbsp;[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Dropdown'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'dropdown'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'Dropdown&nbsp;link'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Dropdown&nbsp;link'</span><span style="color: #007700">],<br />]),<br />new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Element</span><span style="color: #007700">\</span><span style="color: #0000BB">Button</span><span style="color: #007700">(</span><span style="color: #DD0000">'dropdown'</span><span style="color: #007700">,&nbsp;[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Dropdown'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'dropdown'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'Dropdown&nbsp;link'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Dropdown&nbsp;link'</span><span style="color: #007700">],<br />]),<br />],&nbsp;[</span><span style="color: #DD0000">'vertical'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -1440,16 +1440,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Example
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/card/#example)</small>
 
-<ul class="nav nav-tabs" id="example_5d1f815616bc4_tab" role="tablist">
+<ul class="nav nav-tabs" id="example_5d1f84f03645f_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#example_5d1f815616bc4_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#example_5d1f84f03645f_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#example_5d1f815616bc4_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#example_5d1f84f03645f_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="example_5d1f815616bc4_result" role="tabpanel"><br/><div style="width&#x3A;&#x20;18rem&#x3B;" class="card">
+  <div class="tab-pane active" id="example_5d1f84f03645f_result" role="tabpanel"><br/><div style="width&#x3A;&#x20;18rem&#x3B;" class="card">
     <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">
     <div class="card-body">
         <h5 class="card-title">Card title</h5>
@@ -1457,7 +1457,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         <a href="&#x23;" class="btn btn-primary">Go somewhere</a>
     </div>
 </div></div>
-  <div class="tab-pane" id="example_5d1f815616bc4_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="example_5d1f84f03645f_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">card</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'imgTop'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'...'</span><span style="color: #007700">,]],<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Card&nbsp;title'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Some&nbsp;quick&nbsp;example&nbsp;text&nbsp;to&nbsp;build&nbsp;on&nbsp;the&nbsp;card&nbsp;title&nbsp;and&nbsp;make&nbsp;up&nbsp;the&nbsp;bulk&nbsp;of&nbsp;the&nbsp;card\'s&nbsp;content.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'&lt;a&nbsp;href="&amp;#x23;"&nbsp;class="btn&nbsp;btn-primary"&gt;Go&nbsp;somewhere&lt;/a&gt;'</span><span style="color: #007700">,<br />],&nbsp;[</span><span style="color: #DD0000">'style'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'width:&nbsp;18rem;'</span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -1469,21 +1469,21 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Body
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/card/#body)</small>
 
-<ul class="nav nav-tabs" id="body_5d1f815616c31_tab" role="tablist">
+<ul class="nav nav-tabs" id="body_5d1f84f0364d4_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#body_5d1f815616c31_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#body_5d1f84f0364d4_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#body_5d1f815616c31_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#body_5d1f84f0364d4_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="body_5d1f815616c31_result" role="tabpanel"><br/><div class="card">
+  <div class="tab-pane active" id="body_5d1f84f0364d4_result" role="tabpanel"><br/><div class="card">
     <div class="card-body">
         This is some text within a card body.
     </div>
 </div></div>
-  <div class="tab-pane" id="body_5d1f815616c31_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="body_5d1f84f0364d4_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">card</span><span style="color: #007700">(</span><span style="color: #DD0000">'This&nbsp;is&nbsp;some&nbsp;text&nbsp;within&nbsp;a&nbsp;card&nbsp;body.'</span><span style="color: #007700">);</span>
 </span>
 </code></pre></div>
@@ -1492,16 +1492,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Titles, text, and links
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/card/#titles-text-and-links)</small>
 
-<ul class="nav nav-tabs" id="titles--text--and--links_5d1f815616cc7_tab" role="tablist">
+<ul class="nav nav-tabs" id="titles--text--and--links_5d1f84f036574_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#titles--text--and--links_5d1f815616cc7_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#titles--text--and--links_5d1f84f036574_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#titles--text--and--links_5d1f815616cc7_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#titles--text--and--links_5d1f84f036574_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="titles--text--and--links_5d1f815616cc7_result" role="tabpanel"><br/><div style="width&#x3A;&#x20;18rem&#x3B;" class="card">
+  <div class="tab-pane active" id="titles--text--and--links_5d1f84f036574_result" role="tabpanel"><br/><div style="width&#x3A;&#x20;18rem&#x3B;" class="card">
     <div class="card-body">
         <h5 class="card-title">Card title</h5>
         <h6 class="card-subtitle&#x20;mb-2&#x20;text-muted">Card subtitle</h6>
@@ -1510,7 +1510,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         <a href="&#x23;" class="card-link">Another link</a>
     </div>
 </div></div>
-  <div class="tab-pane" id="titles--text--and--links_5d1f815616cc7_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="titles--text--and--links_5d1f84f036574_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">card</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Card&nbsp;title'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'subtitle'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'content'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Card&nbsp;subtitle'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'mb-2&nbsp;text-muted'</span><span style="color: #007700">],<br />],<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Some&nbsp;quick&nbsp;example&nbsp;text&nbsp;to&nbsp;build&nbsp;on&nbsp;the&nbsp;card&nbsp;title&nbsp;'</span><span style="color: #007700">.<br /></span><span style="color: #DD0000">'and&nbsp;make&nbsp;up&nbsp;the&nbsp;bulk&nbsp;of&nbsp;the&nbsp;card\'s&nbsp;content.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'link'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'Card&nbsp;link'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Another&nbsp;link'</span><span style="color: #007700">,<br />],<br />],&nbsp;[</span><span style="color: #DD0000">'style'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'width:&nbsp;18rem;'</span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -1519,22 +1519,22 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Images
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/card/#images)</small>
 
-<ul class="nav nav-tabs" id="images_5d1f815616d30_tab" role="tablist">
+<ul class="nav nav-tabs" id="images_5d1f84f0365ec_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#images_5d1f815616d30_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#images_5d1f84f0365ec_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#images_5d1f815616d30_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#images_5d1f84f0365ec_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="images_5d1f815616d30_result" role="tabpanel"><br/><div style="width&#x3A;&#x20;18rem&#x3B;" class="card">
+  <div class="tab-pane active" id="images_5d1f84f0365ec_result" role="tabpanel"><br/><div style="width&#x3A;&#x20;18rem&#x3B;" class="card">
     <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">
     <div class="card-body">
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card&#039;s content.</p>
     </div>
 </div></div>
-  <div class="tab-pane" id="images_5d1f815616d30_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="images_5d1f84f0365ec_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">card</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'imgTop'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'...'</span><span style="color: #007700">,]],<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Some&nbsp;quick&nbsp;example&nbsp;text&nbsp;to&nbsp;build&nbsp;on&nbsp;the&nbsp;card&nbsp;title&nbsp;'</span><span style="color: #007700">.<br /></span><span style="color: #DD0000">'and&nbsp;make&nbsp;up&nbsp;the&nbsp;bulk&nbsp;of&nbsp;the&nbsp;card\'s&nbsp;content.'</span><span style="color: #007700">,<br />],&nbsp;[</span><span style="color: #DD0000">'style'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'width:&nbsp;18rem;'</span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -1543,16 +1543,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### List groups
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/card/#list-groups)</small>
 
-<ul class="nav nav-tabs" id="list--groups_5d1f815616e09_tab" role="tablist">
+<ul class="nav nav-tabs" id="list--groups_5d1f84f0366c3_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#list--groups_5d1f815616e09_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#list--groups_5d1f84f0366c3_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#list--groups_5d1f815616e09_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#list--groups_5d1f84f0366c3_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="list--groups_5d1f815616e09_result" role="tabpanel"><br/><div style="width&#x3A;&#x20;18rem&#x3B;" class="card">
+  <div class="tab-pane active" id="list--groups_5d1f84f0366c3_result" role="tabpanel"><br/><div style="width&#x3A;&#x20;18rem&#x3B;" class="card">
     <ul class="list-group&#x20;list-group-flush">
         <li class="list-group-item">Cras justo odio</li>
         <li class="list-group-item">Dapibus ac facilisis in</li>
@@ -1569,7 +1569,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         <li class="list-group-item">Vestibulum at eros</li>
     </ul>
 </div></div>
-  <div class="tab-pane" id="list--groups_5d1f815616e09_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="list--groups_5d1f84f0366c3_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">card</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'listGroup'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />[<br /></span><span style="color: #DD0000">'Cras&nbsp;justo&nbsp;odio'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Dapibus&nbsp;ac&nbsp;facilisis&nbsp;in'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Vestibulum&nbsp;at&nbsp;eros'</span><span style="color: #007700">,<br />],<br />],<br />],&nbsp;[</span><span style="color: #DD0000">'style'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'width:&nbsp;18rem;'</span><span style="color: #007700">])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">card</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'header'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Featured'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'listGroup'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />[<br /></span><span style="color: #DD0000">'Cras&nbsp;justo&nbsp;odio'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Dapibus&nbsp;ac&nbsp;facilisis&nbsp;in'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Vestibulum&nbsp;at&nbsp;eros'</span><span style="color: #007700">,<br />],<br />],<br />],&nbsp;[</span><span style="color: #DD0000">'style'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'width:&nbsp;18rem;'</span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -1578,16 +1578,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Kitchen sink
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/card/#kitchen-sink)</small>
 
-<ul class="nav nav-tabs" id="kitchen--sink_5d1f815616ec0_tab" role="tablist">
+<ul class="nav nav-tabs" id="kitchen--sink_5d1f84f036784_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#kitchen--sink_5d1f815616ec0_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#kitchen--sink_5d1f84f036784_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#kitchen--sink_5d1f815616ec0_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#kitchen--sink_5d1f84f036784_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="kitchen--sink_5d1f815616ec0_result" role="tabpanel"><br/><div style="width&#x3A;&#x20;18rem&#x3B;" class="card">
+  <div class="tab-pane active" id="kitchen--sink_5d1f84f036784_result" role="tabpanel"><br/><div style="width&#x3A;&#x20;18rem&#x3B;" class="card">
     <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">
     <div class="card-body">
         <h5 class="card-title">Card title</h5>
@@ -1603,7 +1603,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         <a href="&#x23;" class="card-link">Another link</a>
     </div>
 </div></div>
-  <div class="tab-pane" id="kitchen--sink_5d1f815616ec0_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="kitchen--sink_5d1f84f036784_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">card</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'imgTop'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'...'</span><span style="color: #007700">,]],<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Card&nbsp;title'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Some&nbsp;quick&nbsp;example&nbsp;text&nbsp;to&nbsp;build&nbsp;on&nbsp;the&nbsp;card&nbsp;title&nbsp;'</span><span style="color: #007700">.<br /></span><span style="color: #DD0000">'and&nbsp;make&nbsp;up&nbsp;the&nbsp;bulk&nbsp;of&nbsp;the&nbsp;card\'s&nbsp;content.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'listGroup'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />[<br /></span><span style="color: #DD0000">'Cras&nbsp;justo&nbsp;odio'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Dapibus&nbsp;ac&nbsp;facilisis&nbsp;in'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Vestibulum&nbsp;at&nbsp;eros'</span><span style="color: #007700">,<br />],<br />],<br /></span><span style="color: #DD0000">'link'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'Card&nbsp;link'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Another&nbsp;link'</span><span style="color: #007700">,<br />],<br />],&nbsp;[</span><span style="color: #DD0000">'style'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'width:&nbsp;18rem;'</span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -1612,16 +1612,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Header and footer
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/card/#header-and-footer)</small>
 
-<ul class="nav nav-tabs" id="header--and--footer_5d1f815616fc6_tab" role="tablist">
+<ul class="nav nav-tabs" id="header--and--footer_5d1f84f03688b_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#header--and--footer_5d1f815616fc6_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#header--and--footer_5d1f84f03688b_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#header--and--footer_5d1f815616fc6_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#header--and--footer_5d1f84f03688b_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="header--and--footer_5d1f815616fc6_result" role="tabpanel"><br/><div class="card">
+  <div class="tab-pane active" id="header--and--footer_5d1f84f03688b_result" role="tabpanel"><br/><div class="card">
     <div class="card-header">
         Featured
     </div>
@@ -1655,7 +1655,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         2 days ago
     </div>
 </div></div>
-  <div class="tab-pane" id="header--and--footer_5d1f815616fc6_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="header--and--footer_5d1f84f03688b_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">card</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'header'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Featured'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Special&nbsp;title&nbsp;treatment'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'With&nbsp;supporting&nbsp;text&nbsp;below&nbsp;as&nbsp;a&nbsp;natural&nbsp;lead-in&nbsp;to&nbsp;additional&nbsp;content.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'&lt;a&nbsp;href="#"&nbsp;class="btn&nbsp;btn-primary"&gt;Go&nbsp;somewhere&lt;/a&gt;'</span><span style="color: #007700">,<br />])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;With&nbsp;blockquote<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">card</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'header'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Quote'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'blockquote'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet,&nbsp;consectetur&nbsp;adipiscing&nbsp;elit.&nbsp;Integer&nbsp;posuere&nbsp;erat&nbsp;a&nbsp;ante.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Someone&nbsp;famous&nbsp;in&nbsp;&lt;cite&nbsp;title="Source&nbsp;Title"&gt;Source&nbsp;Title&lt;/cite&gt;'</span><span style="color: #007700">,<br />[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'mb-0'</span><span style="color: #007700">],<br />],<br />])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Centered<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">card</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'header'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Featured'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Special&nbsp;title&nbsp;treatment'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'With&nbsp;supporting&nbsp;text&nbsp;below&nbsp;as&nbsp;a&nbsp;natural&nbsp;lead-in&nbsp;to&nbsp;additional&nbsp;content.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'&lt;a&nbsp;href="#"&nbsp;class="btn&nbsp;btn-primary"&gt;Go&nbsp;somewhere&lt;/a&gt;'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'footer'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'2&nbsp;days&nbsp;ago'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'text-muted'</span><span style="color: #007700">]],<br />],&nbsp;[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'text-center'</span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -1667,16 +1667,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Using utilities
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/card/#using-utilities)</small>
 
-<ul class="nav nav-tabs" id="using--utilities_5d1f81561707c_tab" role="tablist">
+<ul class="nav nav-tabs" id="using--utilities_5d1f84f036953_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#using--utilities_5d1f81561707c_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#using--utilities_5d1f84f036953_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#using--utilities_5d1f81561707c_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#using--utilities_5d1f84f036953_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="using--utilities_5d1f81561707c_result" role="tabpanel"><br/><div class="card&#x20;w-75">
+  <div class="tab-pane active" id="using--utilities_5d1f84f036953_result" role="tabpanel"><br/><div class="card&#x20;w-75">
     <div class="card-body">
         <h5 class="card-title">Card title</h5>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -1690,7 +1690,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         <a href="#" class="btn btn-primary">Button</a>
     </div>
 </div></div>
-  <div class="tab-pane" id="using--utilities_5d1f81561707c_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="using--utilities_5d1f84f036953_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">card</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Card&nbsp;title'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'With&nbsp;supporting&nbsp;text&nbsp;below&nbsp;as&nbsp;a&nbsp;natural&nbsp;lead-in&nbsp;to&nbsp;additional&nbsp;content.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'&lt;a&nbsp;href="#"&nbsp;class="btn&nbsp;btn-primary"&gt;Button&lt;/a&gt;'</span><span style="color: #007700">,<br />],&nbsp;[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'w-75'</span><span style="color: #007700">])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">card</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Card&nbsp;title'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'With&nbsp;supporting&nbsp;text&nbsp;below&nbsp;as&nbsp;a&nbsp;natural&nbsp;lead-in&nbsp;to&nbsp;additional&nbsp;content.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'&lt;a&nbsp;href="#"&nbsp;class="btn&nbsp;btn-primary"&gt;Button&lt;/a&gt;'</span><span style="color: #007700">,<br />],&nbsp;[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'w-50'</span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -1699,23 +1699,23 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Using custom CSS
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/card/#using-custom-css)</small>
 
-<ul class="nav nav-tabs" id="using--custom--css_5d1f8156170e3_tab" role="tablist">
+<ul class="nav nav-tabs" id="using--custom--css_5d1f84f0369bf_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#using--custom--css_5d1f8156170e3_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#using--custom--css_5d1f84f0369bf_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#using--custom--css_5d1f8156170e3_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#using--custom--css_5d1f84f0369bf_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="using--custom--css_5d1f8156170e3_result" role="tabpanel"><br/><div style="width&#x3A;&#x20;18rem&#x3B;" class="card">
+  <div class="tab-pane active" id="using--custom--css_5d1f84f0369bf_result" role="tabpanel"><br/><div style="width&#x3A;&#x20;18rem&#x3B;" class="card">
     <div class="card-body">
         <h5 class="card-title">Special title treatment</h5>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
         <a href="#" class="btn btn-primary">Button</a>
     </div>
 </div></div>
-  <div class="tab-pane" id="using--custom--css_5d1f8156170e3_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="using--custom--css_5d1f84f0369bf_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">card</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Special&nbsp;title&nbsp;treatment'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'With&nbsp;supporting&nbsp;text&nbsp;below&nbsp;as&nbsp;a&nbsp;natural&nbsp;lead-in&nbsp;to&nbsp;additional&nbsp;content.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'&lt;a&nbsp;href="#"&nbsp;class="btn&nbsp;btn-primary"&gt;Button&lt;/a&gt;'</span><span style="color: #007700">,<br />],&nbsp;[</span><span style="color: #DD0000">'style'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'width:&nbsp;18rem;'</span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -1724,16 +1724,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Text alignment
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/card/#text-alignment)</small>
 
-<ul class="nav nav-tabs" id="text--alignment_5d1f8156171b6_tab" role="tablist">
+<ul class="nav nav-tabs" id="text--alignment_5d1f84f036a9e_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#text--alignment_5d1f8156171b6_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#text--alignment_5d1f84f036a9e_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#text--alignment_5d1f8156171b6_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#text--alignment_5d1f84f036a9e_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="text--alignment_5d1f8156171b6_result" role="tabpanel"><br/><div style="width&#x3A;&#x20;18rem&#x3B;" class="card">
+  <div class="tab-pane active" id="text--alignment_5d1f84f036a9e_result" role="tabpanel"><br/><div style="width&#x3A;&#x20;18rem&#x3B;" class="card">
     <div class="card-body">
         <h5 class="card-title">Special title treatment</h5>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -1754,7 +1754,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         <a href="#" class="btn btn-primary">Button</a>
     </div>
 </div></div>
-  <div class="tab-pane" id="text--alignment_5d1f8156171b6_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="text--alignment_5d1f84f036a9e_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">card</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Special&nbsp;title&nbsp;treatment'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'With&nbsp;supporting&nbsp;text&nbsp;below&nbsp;as&nbsp;a&nbsp;natural&nbsp;lead-in&nbsp;to&nbsp;additional&nbsp;content.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'&lt;a&nbsp;href="#"&nbsp;class="btn&nbsp;btn-primary"&gt;Button&lt;/a&gt;'</span><span style="color: #007700">,<br />],&nbsp;[</span><span style="color: #DD0000">'style'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'width:&nbsp;18rem;'</span><span style="color: #007700">])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Text&nbsp;center<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">card</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Special&nbsp;title&nbsp;treatment'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'With&nbsp;supporting&nbsp;text&nbsp;below&nbsp;as&nbsp;a&nbsp;natural&nbsp;lead-in&nbsp;to&nbsp;additional&nbsp;content.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'&lt;a&nbsp;href="#"&nbsp;class="btn&nbsp;btn-primary"&gt;Button&lt;/a&gt;'</span><span style="color: #007700">,<br />],&nbsp;[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'text-center'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'style'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'width:&nbsp;18rem;'</span><span style="color: #007700">])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Text&nbsp;right<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">card</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Special&nbsp;title&nbsp;treatment'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'With&nbsp;supporting&nbsp;text&nbsp;below&nbsp;as&nbsp;a&nbsp;natural&nbsp;lead-in&nbsp;to&nbsp;additional&nbsp;content.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'&lt;a&nbsp;href="#"&nbsp;class="btn&nbsp;btn-primary"&gt;Button&lt;/a&gt;'</span><span style="color: #007700">,<br />],&nbsp;[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'text-right'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'style'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'width:&nbsp;18rem;'</span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -1763,16 +1763,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Navigation
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/card/#navigation)</small>
 
-<ul class="nav nav-tabs" id="navigation_5d1f8156172d5_tab" role="tablist">
+<ul class="nav nav-tabs" id="navigation_5d1f84f036bdb_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#navigation_5d1f8156172d5_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#navigation_5d1f84f036bdb_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#navigation_5d1f8156172d5_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#navigation_5d1f84f036bdb_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="navigation_5d1f8156172d5_result" role="tabpanel"><br/><div class="card&#x20;text-center">
+  <div class="tab-pane active" id="navigation_5d1f84f036bdb_result" role="tabpanel"><br/><div class="card&#x20;text-center">
     <div class="card-header">
         <ul class="card-header-tabs&#x20;nav&#x20;nav-tabs">
             <li class="&#x20;nav-item">
@@ -1818,7 +1818,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
 </div></div>
-  <div class="tab-pane" id="navigation_5d1f8156172d5_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="navigation_5d1f84f036bdb_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Nav&nbsp;tabs&nbsp;(pages&nbsp;defined&nbsp;by&nbsp;a&nbsp;\Zend\Navigation\Navigation&nbsp;object&nbsp;as&nbsp;container)<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">card</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'nav'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Navigation</span><span style="color: #007700">\</span><span style="color: #0000BB">Navigation</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;[<br />&nbsp;&nbsp;&nbsp;&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Active'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'uri'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'#'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'active'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,],<br />&nbsp;&nbsp;&nbsp;&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Link'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'uri'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'#'</span><span style="color: #007700">,],<br />&nbsp;&nbsp;&nbsp;&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Link'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'uri'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'#'</span><span style="color: #007700">,],<br />&nbsp;&nbsp;&nbsp;&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Disabled'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'uri'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'#'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'visible'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,],<br />&nbsp;&nbsp;&nbsp;&nbsp;]<br />),<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Special&nbsp;title&nbsp;treatment'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'With&nbsp;supporting&nbsp;text&nbsp;below&nbsp;as&nbsp;a&nbsp;natural&nbsp;lead-in&nbsp;to&nbsp;additional&nbsp;content.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'&lt;a&nbsp;href="#"&nbsp;class="btn&nbsp;btn-primary"&gt;Go&nbsp;somewhere&lt;/a&gt;'</span><span style="color: #007700">,<br />],&nbsp;[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'text-center'</span><span style="color: #007700">])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Nav&nbsp;pills&nbsp;(pages&nbsp;defined&nbsp;by&nbsp;an&nbsp;array&nbsp;as&nbsp;&nbsp;container)<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">card</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'nav'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'pills'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">],<br /></span><span style="color: #DD0000">'container'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Active'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'uri'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'#'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'active'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,],<br />[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Link'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'uri'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'#'</span><span style="color: #007700">,],<br />[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Link'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'uri'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'#'</span><span style="color: #007700">,],<br />[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Disabled'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'uri'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'#'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'visible'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,],<br />]<br />],<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Special&nbsp;title&nbsp;treatment'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'With&nbsp;supporting&nbsp;text&nbsp;below&nbsp;as&nbsp;a&nbsp;natural&nbsp;lead-in&nbsp;to&nbsp;additional&nbsp;content.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'&lt;a&nbsp;href="#"&nbsp;class="btn&nbsp;btn-primary"&gt;Go&nbsp;somewhere&lt;/a&gt;'</span><span style="color: #007700">,<br />],&nbsp;[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'text-center'</span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -1830,16 +1830,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Image caps
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/card/#image-caps)</small>
 
-<ul class="nav nav-tabs" id="image--caps_5d1f8156173c3_tab" role="tablist">
+<ul class="nav nav-tabs" id="image--caps_5d1f84f036ccc_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#image--caps_5d1f8156173c3_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#image--caps_5d1f84f036ccc_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#image--caps_5d1f8156173c3_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#image--caps_5d1f84f036ccc_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="image--caps_5d1f8156173c3_result" role="tabpanel"><br/><div class="card&#x20;mb-3">
+  <div class="tab-pane active" id="image--caps_5d1f84f036ccc_result" role="tabpanel"><br/><div class="card&#x20;mb-3">
     <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">
     <div class="card-body">
         <h5 class="card-title">Card title</h5>
@@ -1855,7 +1855,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
     </div>
     <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">
 </div></div>
-  <div class="tab-pane" id="image--caps_5d1f8156173c3_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="image--caps_5d1f84f036ccc_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">card</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'imgTop'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'...'</span><span style="color: #007700">,]],<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Card&nbsp;title'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'This&nbsp;is&nbsp;a&nbsp;wider&nbsp;card&nbsp;with&nbsp;supporting&nbsp;text&nbsp;below&nbsp;as&nbsp;a&nbsp;natural&nbsp;lead-in&nbsp;to&nbsp;additional&nbsp;content.&nbsp;'</span><span style="color: #007700">.<br /></span><span style="color: #DD0000">'This&nbsp;content&nbsp;is&nbsp;a&nbsp;little&nbsp;bit&nbsp;longer.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'&lt;small&nbsp;class="text-muted"&gt;Last&nbsp;updated&nbsp;3&nbsp;mins&nbsp;ago&lt;/small&gt;'<br /></span><span style="color: #007700">],<br />],&nbsp;[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'mb-3'</span><span style="color: #007700">])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">card</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Card&nbsp;title'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'This&nbsp;is&nbsp;a&nbsp;wider&nbsp;card&nbsp;with&nbsp;supporting&nbsp;text&nbsp;below&nbsp;as&nbsp;a&nbsp;natural&nbsp;lead-in&nbsp;to&nbsp;additional&nbsp;content.&nbsp;'</span><span style="color: #007700">.<br /></span><span style="color: #DD0000">'This&nbsp;content&nbsp;is&nbsp;a&nbsp;little&nbsp;bit&nbsp;longer.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'&lt;small&nbsp;class="text-muted"&gt;Last&nbsp;updated&nbsp;3&nbsp;mins&nbsp;ago&lt;/small&gt;'<br /></span><span style="color: #007700">],<br /></span><span style="color: #DD0000">'imgTop'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'...'</span><span style="color: #007700">,]],<br />]);</span>
 </span>
 </code></pre></div>
@@ -1864,16 +1864,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Image overlays
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/card/#image-overlays)</small>
 
-<ul class="nav nav-tabs" id="image--overlays_5d1f815617457_tab" role="tablist">
+<ul class="nav nav-tabs" id="image--overlays_5d1f84f036d68_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#image--overlays_5d1f815617457_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#image--overlays_5d1f84f036d68_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#image--overlays_5d1f815617457_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#image--overlays_5d1f84f036d68_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="image--overlays_5d1f815617457_result" role="tabpanel"><br/><div class="bg-dark&#x20;card&#x20;text-white">
+  <div class="tab-pane active" id="image--overlays_5d1f84f036d68_result" role="tabpanel"><br/><div class="bg-dark&#x20;card&#x20;text-white">
     <img alt="..." class="card-img" src="images&#x2F;demo-sample.svg">
     <div class="card-img-overlay">
         <h5 class="card-title">Card title</h5>
@@ -1881,7 +1881,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
 </div></div>
-  <div class="tab-pane" id="image--overlays_5d1f815617457_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="image--overlays_5d1f84f036d68_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">card</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'overlay'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'img'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'...'</span><span style="color: #007700">,]],<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Card&nbsp;title'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'This&nbsp;is&nbsp;a&nbsp;wider&nbsp;card&nbsp;with&nbsp;supporting&nbsp;text&nbsp;below&nbsp;as&nbsp;a&nbsp;natural&nbsp;'</span><span style="color: #007700">.<br /></span><span style="color: #DD0000">'lead-in&nbsp;to&nbsp;additional&nbsp;content.&nbsp;'</span><span style="color: #007700">.<br /></span><span style="color: #DD0000">'This&nbsp;content&nbsp;is&nbsp;a&nbsp;little&nbsp;bit&nbsp;longer.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'&lt;small&nbsp;class="text-muted"&gt;Last&nbsp;updated&nbsp;3&nbsp;mins&nbsp;ago&lt;/small&gt;'<br /></span><span style="color: #007700">],<br />],<br />],&nbsp;[</span><span style="color: #DD0000">'bgVariant'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'dark'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'text-white'</span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -1893,16 +1893,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Background and color
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/card/#background-and-color)</small>
 
-<ul class="nav nav-tabs" id="background--and--color_5d1f81561751f_tab" role="tablist">
+<ul class="nav nav-tabs" id="background--and--color_5d1f84f036e36_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#background--and--color_5d1f81561751f_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#background--and--color_5d1f84f036e36_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#background--and--color_5d1f81561751f_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#background--and--color_5d1f84f036e36_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="background--and--color_5d1f81561751f_result" role="tabpanel"><br/><div class="bg-primary&#x20;card&#x20;mb-3&#x20;text-white">
+  <div class="tab-pane active" id="background--and--color_5d1f84f036e36_result" role="tabpanel"><br/><div class="bg-primary&#x20;card&#x20;mb-3&#x20;text-white">
     <div class="card-header">
         Header
     </div>
@@ -1975,7 +1975,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
     </div>
 </div>
 </div>
-  <div class="tab-pane" id="background--and--color_5d1f81561751f_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="background--and--color_5d1f84f036e36_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">foreach&nbsp;([<br /></span><span style="color: #DD0000">'primary'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'secondary'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'success'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'danger'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'warning'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'info'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'light'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'dark'</span><span style="color: #007700">,<br />]&nbsp;as&nbsp;</span><span style="color: #0000BB">$sVariant</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">card</span><span style="color: #007700">([<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'header'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Header'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Primary&nbsp;card&nbsp;title'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Some&nbsp;quick&nbsp;example&nbsp;text&nbsp;to&nbsp;build&nbsp;on&nbsp;the&nbsp;card&nbsp;title&nbsp;'</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'and&nbsp;make&nbsp;up&nbsp;the&nbsp;bulk&nbsp;of&nbsp;the&nbsp;card\'s&nbsp;content.'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;],&nbsp;[</span><span style="color: #DD0000">'bgVariant'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$sVariant</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'text-white&nbsp;mb-3'</span><span style="color: #007700">])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />}</span>
 </span>
 </code></pre></div>
@@ -1984,16 +1984,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Border
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/card/#border)</small>
 
-<ul class="nav nav-tabs" id="border_5d1f8156175d3_tab" role="tablist">
+<ul class="nav nav-tabs" id="border_5d1f84f036ef3_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#border_5d1f8156175d3_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#border_5d1f84f036ef3_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#border_5d1f8156175d3_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#border_5d1f84f036ef3_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="border_5d1f8156175d3_result" role="tabpanel"><br/><div class="border-primary&#x20;card&#x20;mb-3">
+  <div class="tab-pane active" id="border_5d1f84f036ef3_result" role="tabpanel"><br/><div class="border-primary&#x20;card&#x20;mb-3">
     <div class="card-header">
         Header
     </div>
@@ -2066,7 +2066,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
     </div>
 </div>
 </div>
-  <div class="tab-pane" id="border_5d1f8156175d3_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="border_5d1f84f036ef3_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">foreach&nbsp;([<br /></span><span style="color: #DD0000">'primary'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'secondary'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'success'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'danger'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'warning'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'info'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'light'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'dark'</span><span style="color: #007700">,<br />]&nbsp;as&nbsp;</span><span style="color: #0000BB">$sVariant</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">card</span><span style="color: #007700">([<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'header'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Header'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Primary&nbsp;card&nbsp;title'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Some&nbsp;quick&nbsp;example&nbsp;text&nbsp;to&nbsp;build&nbsp;on&nbsp;the&nbsp;card&nbsp;title&nbsp;and&nbsp;'</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'make&nbsp;up&nbsp;the&nbsp;bulk&nbsp;of&nbsp;the&nbsp;card\'s&nbsp;content.'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;],&nbsp;[<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'borderVariant'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$sVariant</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'bodyVariant'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$sVariant</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'mb-3'<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />}</span>
 </span>
 </code></pre></div>
@@ -2075,16 +2075,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Mixins utilities
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/card/#mixins-utilities)</small>
 
-<ul class="nav nav-tabs" id="mixins--utilities_5d1f81561766d_tab" role="tablist">
+<ul class="nav nav-tabs" id="mixins--utilities_5d1f84f036f99_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#mixins--utilities_5d1f81561766d_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#mixins--utilities_5d1f84f036f99_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#mixins--utilities_5d1f81561766d_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#mixins--utilities_5d1f84f036f99_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="mixins--utilities_5d1f81561766d_result" role="tabpanel"><br/><div class="border-success&#x20;card&#x20;mb-3">
+  <div class="tab-pane active" id="mixins--utilities_5d1f84f036f99_result" role="tabpanel"><br/><div class="border-success&#x20;card&#x20;mb-3">
     <div class="bg-transparent&#x20;border-success&#x20;card-header">
         Header
     </div>
@@ -2096,7 +2096,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         Footer
     </div>
 </div></div>
-  <div class="tab-pane" id="mixins--utilities_5d1f81561766d_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="mixins--utilities_5d1f84f036f99_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">card</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'header'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'Header'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'bg-transparent&nbsp;border-success'</span><span style="color: #007700">]],<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Success&nbsp;card&nbsp;title'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Some&nbsp;quick&nbsp;example&nbsp;text&nbsp;to&nbsp;build&nbsp;on&nbsp;the&nbsp;card&nbsp;title&nbsp;'</span><span style="color: #007700">.<br /></span><span style="color: #DD0000">'and&nbsp;make&nbsp;up&nbsp;the&nbsp;bulk&nbsp;of&nbsp;the&nbsp;card\'s&nbsp;content.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'footer'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'Footer'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'card-footer&nbsp;bg-transparent&nbsp;border-success'</span><span style="color: #007700">]],<br />],&nbsp;[<br /></span><span style="color: #DD0000">'borderVariant'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'success'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'bodyVariant'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'success'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'mb-3'<br /></span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -2108,16 +2108,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Card groups
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/card/#card-groups)</small>
 
-<ul class="nav nav-tabs" id="card--groups_5d1f8156179be_tab" role="tablist">
+<ul class="nav nav-tabs" id="card--groups_5d1f84f0371ca_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#card--groups_5d1f8156179be_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#card--groups_5d1f84f0371ca_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#card--groups_5d1f8156179be_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#card--groups_5d1f84f0371ca_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="card--groups_5d1f8156179be_result" role="tabpanel"><br/><div class="card-group">
+  <div class="tab-pane active" id="card--groups_5d1f84f0371ca_result" role="tabpanel"><br/><div class="card-group">
     <div class="card">
         <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">
         <div class="card-body">
@@ -2175,7 +2175,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         </div>
     </div>
 </div></div>
-  <div class="tab-pane" id="card--groups_5d1f8156179be_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="card--groups_5d1f84f0371ca_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">cardGroup</span><span style="color: #007700">([<br />[<br /></span><span style="color: #DD0000">'imgTop'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'...'</span><span style="color: #007700">,]],<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Primary&nbsp;card&nbsp;title'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'This&nbsp;is&nbsp;a&nbsp;wider&nbsp;card&nbsp;with&nbsp;supporting&nbsp;text&nbsp;below&nbsp;as&nbsp;a&nbsp;natural&nbsp;lead-in&nbsp;to&nbsp;additional&nbsp;'</span><span style="color: #007700">.<br /></span><span style="color: #DD0000">'content.&nbsp;This&nbsp;content&nbsp;is&nbsp;a&nbsp;little&nbsp;bit&nbsp;longer.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'&lt;small&nbsp;class="text-muted"&gt;Last&nbsp;updated&nbsp;3&nbsp;mins&nbsp;ago&lt;/small&gt;'</span><span style="color: #007700">,<br />],<br />],<br />[<br /></span><span style="color: #DD0000">'imgTop'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'...'</span><span style="color: #007700">,]],<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Primary&nbsp;card&nbsp;title'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'This&nbsp;card&nbsp;has&nbsp;supporting&nbsp;text&nbsp;below&nbsp;as&nbsp;a&nbsp;natural&nbsp;lead-in&nbsp;to&nbsp;additional&nbsp;content.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'&lt;small&nbsp;class="text-muted"&gt;Last&nbsp;updated&nbsp;3&nbsp;mins&nbsp;ago&lt;/small&gt;'<br /></span><span style="color: #007700">],<br />],<br />[<br /></span><span style="color: #DD0000">'imgTop'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'...'</span><span style="color: #007700">,]],<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Primary&nbsp;card&nbsp;title'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'This&nbsp;is&nbsp;a&nbsp;wider&nbsp;card&nbsp;with&nbsp;supporting&nbsp;text&nbsp;below&nbsp;as&nbsp;a&nbsp;natural&nbsp;lead-in&nbsp;'</span><span style="color: #007700">.<br /></span><span style="color: #DD0000">'to&nbsp;additional&nbsp;content.&nbsp;This&nbsp;card&nbsp;has&nbsp;even&nbsp;longer&nbsp;content&nbsp;than&nbsp;the&nbsp;'</span><span style="color: #007700">.<br /></span><span style="color: #DD0000">'first&nbsp;to&nbsp;show&nbsp;that&nbsp;equal&nbsp;height&nbsp;action.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'&lt;small&nbsp;class="text-muted"&gt;Last&nbsp;updated&nbsp;3&nbsp;mins&nbsp;ago&lt;/small&gt;'</span><span style="color: #007700">,<br />],<br />],<br />])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;With&nbsp;footers<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">cardGroup</span><span style="color: #007700">([<br />[<br /></span><span style="color: #DD0000">'imgTop'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'...'</span><span style="color: #007700">,]],<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Primary&nbsp;card&nbsp;title'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'This&nbsp;is&nbsp;a&nbsp;wider&nbsp;card&nbsp;with&nbsp;supporting&nbsp;text&nbsp;below&nbsp;as&nbsp;a&nbsp;natural&nbsp;lead-in&nbsp;to&nbsp;'</span><span style="color: #007700">.<br /></span><span style="color: #DD0000">'additional&nbsp;content.&nbsp;This&nbsp;content&nbsp;is&nbsp;a&nbsp;little&nbsp;bit&nbsp;longer.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'footer'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'&lt;small&nbsp;class="text-muted"&gt;Last&nbsp;updated&nbsp;3&nbsp;mins&nbsp;ago&lt;/small&gt;'</span><span style="color: #007700">,<br />],<br />[<br /></span><span style="color: #DD0000">'imgTop'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'...'</span><span style="color: #007700">,]],<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Primary&nbsp;card&nbsp;title'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'This&nbsp;card&nbsp;has&nbsp;supporting&nbsp;text&nbsp;below&nbsp;as&nbsp;a&nbsp;natural&nbsp;lead-in&nbsp;to&nbsp;additional&nbsp;content.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'footer'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'&lt;small&nbsp;class="text-muted"&gt;Last&nbsp;updated&nbsp;3&nbsp;mins&nbsp;ago&lt;/small&gt;'</span><span style="color: #007700">,<br />],<br />[<br /></span><span style="color: #DD0000">'imgTop'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'...'</span><span style="color: #007700">,]],<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Primary&nbsp;card&nbsp;title'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'This&nbsp;is&nbsp;a&nbsp;wider&nbsp;card&nbsp;with&nbsp;supporting&nbsp;text&nbsp;below&nbsp;'</span><span style="color: #007700">.<br /></span><span style="color: #DD0000">'as&nbsp;a&nbsp;natural&nbsp;lead-in&nbsp;to&nbsp;additional&nbsp;content.&nbsp;'</span><span style="color: #007700">.<br /></span><span style="color: #DD0000">'This&nbsp;card&nbsp;has&nbsp;even&nbsp;longer&nbsp;content&nbsp;than&nbsp;the&nbsp;first&nbsp;to&nbsp;show&nbsp;that&nbsp;equal&nbsp;height&nbsp;action.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'footer'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'&lt;small&nbsp;class="text-muted"&gt;Last&nbsp;updated&nbsp;3&nbsp;mins&nbsp;ago&lt;/small&gt;'</span><span style="color: #007700">,<br />],<br />]);</span>
 </span>
 </code></pre></div>
@@ -2184,16 +2184,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Card decks
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/card/#card-decks)</small>
 
-<ul class="nav nav-tabs" id="card--decks_5d1f815617c03_tab" role="tablist">
+<ul class="nav nav-tabs" id="card--decks_5d1f84f0373bb_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#card--decks_5d1f815617c03_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#card--decks_5d1f84f0373bb_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#card--decks_5d1f815617c03_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#card--decks_5d1f84f0373bb_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="card--decks_5d1f815617c03_result" role="tabpanel"><br/><div class="card-deck">
+  <div class="tab-pane active" id="card--decks_5d1f84f0373bb_result" role="tabpanel"><br/><div class="card-deck">
     <div class="card">
         <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">
         <div class="card-body">
@@ -2251,7 +2251,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         </div>
     </div>
 </div></div>
-  <div class="tab-pane" id="card--decks_5d1f815617c03_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="card--decks_5d1f84f0373bb_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">cardDeck</span><span style="color: #007700">([<br />[<br /></span><span style="color: #DD0000">'imgTop'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'...'</span><span style="color: #007700">,]],<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Primary&nbsp;card&nbsp;title'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'This&nbsp;is&nbsp;a&nbsp;wider&nbsp;card&nbsp;with&nbsp;supporting&nbsp;text&nbsp;below&nbsp;'</span><span style="color: #007700">.<br /></span><span style="color: #DD0000">'as&nbsp;a&nbsp;natural&nbsp;lead-in&nbsp;to&nbsp;additional&nbsp;content.&nbsp;'</span><span style="color: #007700">.<br /></span><span style="color: #DD0000">'This&nbsp;content&nbsp;is&nbsp;a&nbsp;little&nbsp;bit&nbsp;longer.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'&lt;small&nbsp;class="text-muted"&gt;Last&nbsp;updated&nbsp;3&nbsp;mins&nbsp;ago&lt;/small&gt;'</span><span style="color: #007700">,<br />],<br />],<br />[<br /></span><span style="color: #DD0000">'imgTop'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'...'</span><span style="color: #007700">,]],<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Primary&nbsp;card&nbsp;title'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'This&nbsp;card&nbsp;has&nbsp;supporting&nbsp;text&nbsp;below&nbsp;as&nbsp;a&nbsp;natural&nbsp;lead-in&nbsp;to&nbsp;additional&nbsp;content.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'&lt;small&nbsp;class="text-muted"&gt;Last&nbsp;updated&nbsp;3&nbsp;mins&nbsp;ago&lt;/small&gt;'<br /></span><span style="color: #007700">],<br />],<br />[<br /></span><span style="color: #DD0000">'imgTop'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'...'</span><span style="color: #007700">,]],<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Primary&nbsp;card&nbsp;title'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'This&nbsp;is&nbsp;a&nbsp;wider&nbsp;card&nbsp;with&nbsp;supporting&nbsp;text&nbsp;below&nbsp;as&nbsp;a&nbsp;'</span><span style="color: #007700">.<br /></span><span style="color: #DD0000">'natural&nbsp;lead-in&nbsp;to&nbsp;additional&nbsp;content.&nbsp;'</span><span style="color: #007700">.<br /></span><span style="color: #DD0000">'This&nbsp;card&nbsp;has&nbsp;even&nbsp;longer&nbsp;content&nbsp;than&nbsp;the&nbsp;first&nbsp;to&nbsp;show&nbsp;that&nbsp;equal&nbsp;height&nbsp;action.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'&lt;small&nbsp;class="text-muted"&gt;Last&nbsp;updated&nbsp;3&nbsp;mins&nbsp;ago&lt;/small&gt;'</span><span style="color: #007700">,<br />],<br />],<br />])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;With&nbsp;footers<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">cardDeck</span><span style="color: #007700">([<br />[<br /></span><span style="color: #DD0000">'imgTop'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'...'</span><span style="color: #007700">,]],<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Primary&nbsp;card&nbsp;title'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'This&nbsp;is&nbsp;a&nbsp;wider&nbsp;card&nbsp;with&nbsp;supporting&nbsp;text&nbsp;below&nbsp;as&nbsp;a&nbsp;'</span><span style="color: #007700">.<br /></span><span style="color: #DD0000">'natural&nbsp;lead-in&nbsp;to&nbsp;additional&nbsp;content.&nbsp;This&nbsp;content&nbsp;is&nbsp;a&nbsp;little&nbsp;bit&nbsp;longer.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'footer'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'&lt;small&nbsp;class="text-muted"&gt;Last&nbsp;updated&nbsp;3&nbsp;mins&nbsp;ago&lt;/small&gt;'</span><span style="color: #007700">,<br />],<br />[<br /></span><span style="color: #DD0000">'imgTop'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'...'</span><span style="color: #007700">,]],<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Primary&nbsp;card&nbsp;title'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'This&nbsp;card&nbsp;has&nbsp;supporting&nbsp;text&nbsp;below&nbsp;as&nbsp;a&nbsp;natural&nbsp;lead-in&nbsp;to&nbsp;additional&nbsp;content.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'footer'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'&lt;small&nbsp;class="text-muted"&gt;Last&nbsp;updated&nbsp;3&nbsp;mins&nbsp;ago&lt;/small&gt;'</span><span style="color: #007700">,<br />],<br />[<br /></span><span style="color: #DD0000">'imgTop'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'...'</span><span style="color: #007700">,]],<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Primary&nbsp;card&nbsp;title'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'This&nbsp;is&nbsp;a&nbsp;wider&nbsp;card&nbsp;with&nbsp;supporting&nbsp;text&nbsp;below&nbsp;as&nbsp;a&nbsp;natural&nbsp;lead-in&nbsp;to&nbsp;additional&nbsp;'</span><span style="color: #007700">.<br /></span><span style="color: #DD0000">'content.&nbsp;This&nbsp;card&nbsp;has&nbsp;even&nbsp;longer&nbsp;content&nbsp;than&nbsp;the&nbsp;first&nbsp;to&nbsp;show&nbsp;that&nbsp;equal&nbsp;height&nbsp;action.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'footer'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'&lt;small&nbsp;class="text-muted"&gt;Last&nbsp;updated&nbsp;3&nbsp;mins&nbsp;ago&lt;/small&gt;'</span><span style="color: #007700">,<br />],<br />]);</span>
 </span>
 </code></pre></div>
@@ -2260,16 +2260,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Card columns
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/card/#card-columns)</small>
 
-<ul class="nav nav-tabs" id="card--columns_5d1f815617efa_tab" role="tablist">
+<ul class="nav nav-tabs" id="card--columns_5d1f84f0375d6_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#card--columns_5d1f815617efa_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#card--columns_5d1f84f0375d6_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#card--columns_5d1f815617efa_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#card--columns_5d1f84f0375d6_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="card--columns_5d1f815617efa_result" role="tabpanel"><br/><div class="card-column">
+  <div class="tab-pane active" id="card--columns_5d1f84f0375d6_result" role="tabpanel"><br/><div class="card-columns">
     <div class="card">
         <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">
         <div class="card-body">
@@ -2327,8 +2327,8 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         </div>
     </div>
 </div></div>
-  <div class="tab-pane" id="card--columns_5d1f815617efa_source" role="tabpanel"><pre><code><span style="color: #000000">
-<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">cardColumn</span><span style="color: #007700">([<br />[<br /></span><span style="color: #DD0000">'imgTop'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'...'</span><span style="color: #007700">,]],<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Card&nbsp;title&nbsp;that&nbsp;wraps&nbsp;to&nbsp;a&nbsp;new&nbsp;line'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'This&nbsp;is&nbsp;a&nbsp;longer&nbsp;card&nbsp;with&nbsp;supporting&nbsp;text&nbsp;below&nbsp;as&nbsp;'</span><span style="color: #007700">.<br /></span><span style="color: #DD0000">'a&nbsp;natural&nbsp;lead-in&nbsp;to&nbsp;additional&nbsp;content.&nbsp;This&nbsp;content&nbsp;is&nbsp;a&nbsp;little&nbsp;bit&nbsp;longer.'</span><span style="color: #007700">,<br />],<br />[<br />[<br /></span><span style="color: #DD0000">'blockquote'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet,&nbsp;consectetur&nbsp;adipiscing&nbsp;elit.&nbsp;Integer&nbsp;posuere&nbsp;erat&nbsp;a&nbsp;ante.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Someone&nbsp;famous&nbsp;in&nbsp;&lt;cite&nbsp;title="Source&nbsp;Title"&gt;Source&nbsp;Title&lt;/cite&gt;'</span><span style="color: #007700">,<br />[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'mb-0'</span><span style="color: #007700">],<br />],<br />],<br />[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'p-3'</span><span style="color: #007700">],<br />],<br />[<br /></span><span style="color: #DD0000">'imgTop'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'...'</span><span style="color: #007700">,]],<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Card&nbsp;title'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'This&nbsp;card&nbsp;has&nbsp;supporting&nbsp;text&nbsp;below&nbsp;as&nbsp;a&nbsp;natural&nbsp;lead-in&nbsp;to&nbsp;additional&nbsp;content.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'&lt;small&nbsp;class="text-muted"&gt;Last&nbsp;updated&nbsp;3&nbsp;mins&nbsp;ago&lt;/small&gt;'</span><span style="color: #007700">,<br />],<br />],<br />[<br />[<br /></span><span style="color: #DD0000">'blockquote'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet,&nbsp;consectetur&nbsp;adipiscing&nbsp;elit.&nbsp;Integer&nbsp;posuere&nbsp;erat.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Someone&nbsp;famous&nbsp;in&nbsp;&lt;cite&nbsp;title="Source&nbsp;Title"&gt;Source&nbsp;Title&lt;/cite&gt;'</span><span style="color: #007700">,<br />[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'mb-0'</span><span style="color: #007700">],<br />],<br />],<br />[</span><span style="color: #DD0000">'bgVariant'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'primary'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'text-white&nbsp;text-center&nbsp;p-3'</span><span style="color: #007700">],<br />],<br />[<br />[<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Card&nbsp;title'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'This&nbsp;card&nbsp;has&nbsp;a&nbsp;regular&nbsp;title&nbsp;and&nbsp;short&nbsp;paragraphy&nbsp;of&nbsp;text&nbsp;below&nbsp;it.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'&lt;small&nbsp;class="text-muted"&gt;Last&nbsp;updated&nbsp;3&nbsp;mins&nbsp;ago&lt;/small&gt;'</span><span style="color: #007700">,<br />],<br />],<br />[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'text-center'</span><span style="color: #007700">],<br />],<br />[<br /></span><span style="color: #DD0000">'imgTop'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'...'</span><span style="color: #007700">,]],<br />],<br />[<br />[<br /></span><span style="color: #DD0000">'blockquote'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet,&nbsp;consectetur&nbsp;adipiscing&nbsp;elit.&nbsp;'&nbsp;</span><span style="color: #007700">.<br /></span><span style="color: #DD0000">'Integer&nbsp;posuere&nbsp;erat&nbsp;a&nbsp;ante.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Someone&nbsp;famous&nbsp;in&nbsp;&lt;cite&nbsp;title="Source&nbsp;Title"&gt;Source&nbsp;Title&lt;/cite&gt;'</span><span style="color: #007700">,<br />[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'mb-0'</span><span style="color: #007700">],<br />],<br />],<br />[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'p-3&nbsp;text-right'</span><span style="color: #007700">],<br />],<br />[<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Card&nbsp;title'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'This&nbsp;is&nbsp;another&nbsp;card&nbsp;with&nbsp;title&nbsp;and&nbsp;supporting&nbsp;text&nbsp;below.&nbsp;'&nbsp;</span><span style="color: #007700">.<br /></span><span style="color: #DD0000">'This&nbsp;card&nbsp;has&nbsp;some&nbsp;additional&nbsp;content&nbsp;to&nbsp;make&nbsp;it&nbsp;slightly&nbsp;taller&nbsp;overall.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'&lt;small&nbsp;class="text-muted"&gt;Last&nbsp;updated&nbsp;3&nbsp;mins&nbsp;ago&lt;/small&gt;'</span><span style="color: #007700">,<br />],<br />],<br />]);</span>
+  <div class="tab-pane" id="card--columns_5d1f84f0375d6_source" role="tabpanel"><pre><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">cardColumns</span><span style="color: #007700">([<br />[<br /></span><span style="color: #DD0000">'imgTop'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'...'</span><span style="color: #007700">,]],<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Card&nbsp;title&nbsp;that&nbsp;wraps&nbsp;to&nbsp;a&nbsp;new&nbsp;line'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'This&nbsp;is&nbsp;a&nbsp;longer&nbsp;card&nbsp;with&nbsp;supporting&nbsp;text&nbsp;below&nbsp;as&nbsp;'</span><span style="color: #007700">.<br /></span><span style="color: #DD0000">'a&nbsp;natural&nbsp;lead-in&nbsp;to&nbsp;additional&nbsp;content.&nbsp;This&nbsp;content&nbsp;is&nbsp;a&nbsp;little&nbsp;bit&nbsp;longer.'</span><span style="color: #007700">,<br />],<br />[<br />[<br /></span><span style="color: #DD0000">'blockquote'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet,&nbsp;consectetur&nbsp;adipiscing&nbsp;elit.&nbsp;Integer&nbsp;posuere&nbsp;erat&nbsp;a&nbsp;ante.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Someone&nbsp;famous&nbsp;in&nbsp;&lt;cite&nbsp;title="Source&nbsp;Title"&gt;Source&nbsp;Title&lt;/cite&gt;'</span><span style="color: #007700">,<br />[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'mb-0'</span><span style="color: #007700">],<br />],<br />],<br />[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'p-3'</span><span style="color: #007700">],<br />],<br />[<br /></span><span style="color: #DD0000">'imgTop'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'...'</span><span style="color: #007700">,]],<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Card&nbsp;title'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'This&nbsp;card&nbsp;has&nbsp;supporting&nbsp;text&nbsp;below&nbsp;as&nbsp;a&nbsp;natural&nbsp;lead-in&nbsp;to&nbsp;additional&nbsp;content.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'&lt;small&nbsp;class="text-muted"&gt;Last&nbsp;updated&nbsp;3&nbsp;mins&nbsp;ago&lt;/small&gt;'</span><span style="color: #007700">,<br />],<br />],<br />[<br />[<br /></span><span style="color: #DD0000">'blockquote'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet,&nbsp;consectetur&nbsp;adipiscing&nbsp;elit.&nbsp;Integer&nbsp;posuere&nbsp;erat.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Someone&nbsp;famous&nbsp;in&nbsp;&lt;cite&nbsp;title="Source&nbsp;Title"&gt;Source&nbsp;Title&lt;/cite&gt;'</span><span style="color: #007700">,<br />[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'mb-0'</span><span style="color: #007700">],<br />],<br />],<br />[</span><span style="color: #DD0000">'bgVariant'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'primary'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'text-white&nbsp;text-center&nbsp;p-3'</span><span style="color: #007700">],<br />],<br />[<br />[<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Card&nbsp;title'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'This&nbsp;card&nbsp;has&nbsp;a&nbsp;regular&nbsp;title&nbsp;and&nbsp;short&nbsp;paragraphy&nbsp;of&nbsp;text&nbsp;below&nbsp;it.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'&lt;small&nbsp;class="text-muted"&gt;Last&nbsp;updated&nbsp;3&nbsp;mins&nbsp;ago&lt;/small&gt;'</span><span style="color: #007700">,<br />],<br />],<br />[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'text-center'</span><span style="color: #007700">],<br />],<br />[<br /></span><span style="color: #DD0000">'imgTop'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'...'</span><span style="color: #007700">,]],<br />],<br />[<br />[<br /></span><span style="color: #DD0000">'blockquote'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet,&nbsp;consectetur&nbsp;adipiscing&nbsp;elit.&nbsp;'&nbsp;</span><span style="color: #007700">.<br /></span><span style="color: #DD0000">'Integer&nbsp;posuere&nbsp;erat&nbsp;a&nbsp;ante.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Someone&nbsp;famous&nbsp;in&nbsp;&lt;cite&nbsp;title="Source&nbsp;Title"&gt;Source&nbsp;Title&lt;/cite&gt;'</span><span style="color: #007700">,<br />[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'mb-0'</span><span style="color: #007700">],<br />],<br />],<br />[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'p-3&nbsp;text-right'</span><span style="color: #007700">],<br />],<br />[<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Card&nbsp;title'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'This&nbsp;is&nbsp;another&nbsp;card&nbsp;with&nbsp;title&nbsp;and&nbsp;supporting&nbsp;text&nbsp;below.&nbsp;'&nbsp;</span><span style="color: #007700">.<br /></span><span style="color: #DD0000">'This&nbsp;card&nbsp;has&nbsp;some&nbsp;additional&nbsp;content&nbsp;to&nbsp;make&nbsp;it&nbsp;slightly&nbsp;taller&nbsp;overall.'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'&lt;small&nbsp;class="text-muted"&gt;Last&nbsp;updated&nbsp;3&nbsp;mins&nbsp;ago&lt;/small&gt;'</span><span style="color: #007700">,<br />],<br />],<br />]);</span>
 </span>
 </code></pre></div>
 </div><br/>
@@ -2342,16 +2342,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Slides only
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/carousel/#slides-only)</small>
 
-<ul class="nav nav-tabs" id="slides--only_5d1f81561801d_tab" role="tablist">
+<ul class="nav nav-tabs" id="slides--only_5d1f84f0376cf_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#slides--only_5d1f81561801d_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#slides--only_5d1f84f0376cf_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#slides--only_5d1f81561801d_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#slides--only_5d1f84f0376cf_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="slides--only_5d1f81561801d_result" role="tabpanel"><br/><div id="carouselExampleSlidesOnly" data-ride="carousel" class="carousel&#x20;slide">
+  <div class="tab-pane active" id="slides--only_5d1f84f0376cf_result" role="tabpanel"><br/><div id="carouselExampleSlidesOnly" data-ride="carousel" class="carousel&#x20;slide">
     <div class="carousel-inner">
         <div class="active&#x20;carousel-item">
             <img alt="Slide&#x20;1" class="d-block&#x20;w-100" src="images&#x2F;demo-sample.svg">
@@ -2364,7 +2364,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         </div>
     </div>
 </div></div>
-  <div class="tab-pane" id="slides--only_5d1f81561801d_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="slides--only_5d1f84f0376cf_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">carousel</span><span style="color: #007700">([<br />[<br /></span><span style="color: #DD0000">'src'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'optionsAndAttributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'active'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Slide&nbsp;1'</span><span style="color: #007700">],<br />],<br />[</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Slide&nbsp;2'</span><span style="color: #007700">,]],<br /></span><span style="color: #DD0000">'images/demo-sample.svg'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Slide&nbsp;3'</span><span style="color: #007700">,],<br />],&nbsp;[</span><span style="color: #DD0000">'id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'carouselExampleSlidesOnly'</span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -2373,16 +2373,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### With controls
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/carousel/#with-controls)</small>
 
-<ul class="nav nav-tabs" id="with--controls_5d1f8156180ac_tab" role="tablist">
+<ul class="nav nav-tabs" id="with--controls_5d1f84f03775c_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#with--controls_5d1f8156180ac_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#with--controls_5d1f84f03775c_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#with--controls_5d1f8156180ac_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#with--controls_5d1f84f03775c_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="with--controls_5d1f8156180ac_result" role="tabpanel"><br/><div id="carouselExampleControls" data-ride="carousel" class="carousel&#x20;slide">
+  <div class="tab-pane active" id="with--controls_5d1f84f03775c_result" role="tabpanel"><br/><div id="carouselExampleControls" data-ride="carousel" class="carousel&#x20;slide">
     <div class="carousel-inner">
         <div class="active&#x20;carousel-item">
             <img alt="Slide&#x20;1" class="d-block&#x20;w-100" src="images&#x2F;demo-sample.svg">
@@ -2403,7 +2403,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         <span class="sr-only">Next</span>
     </a>
 </div></div>
-  <div class="tab-pane" id="with--controls_5d1f8156180ac_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="with--controls_5d1f84f03775c_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">carousel</span><span style="color: #007700">([<br />[<br /></span><span style="color: #DD0000">'src'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'optionsAndAttributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'active'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Slide&nbsp;1'</span><span style="color: #007700">],<br />],<br />[</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Slide&nbsp;2'</span><span style="color: #007700">,]],<br /></span><span style="color: #DD0000">'images/demo-sample.svg'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Slide&nbsp;3'</span><span style="color: #007700">,],<br />],&nbsp;[</span><span style="color: #DD0000">'id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'carouselExampleControls'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'controls'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -2412,16 +2412,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### With indicators
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/carousel/#with-indicators)</small>
 
-<ul class="nav nav-tabs" id="with--indicators_5d1f815618136_tab" role="tablist">
+<ul class="nav nav-tabs" id="with--indicators_5d1f84f0377f8_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#with--indicators_5d1f815618136_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#with--indicators_5d1f84f0377f8_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#with--indicators_5d1f815618136_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#with--indicators_5d1f84f0377f8_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="with--indicators_5d1f815618136_result" role="tabpanel"><br/><div id="carouselExampleIndicators" data-ride="carousel" class="carousel&#x20;slide">
+  <div class="tab-pane active" id="with--indicators_5d1f84f0377f8_result" role="tabpanel"><br/><div id="carouselExampleIndicators" data-ride="carousel" class="carousel&#x20;slide">
     <ol class="carousel-indicators">
         <li data-target="&#x23;carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="&#x23;carouselExampleIndicators" data-slide-to="1"></li>
@@ -2447,7 +2447,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         <span class="sr-only">Next</span>
     </a>
 </div></div>
-  <div class="tab-pane" id="with--indicators_5d1f815618136_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="with--indicators_5d1f84f0377f8_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">carousel</span><span style="color: #007700">([<br />[<br /></span><span style="color: #DD0000">'src'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'optionsAndAttributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'active'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Slide&nbsp;1'</span><span style="color: #007700">],<br />],<br />[</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Slide&nbsp;2'</span><span style="color: #007700">,]],<br /></span><span style="color: #DD0000">'images/demo-sample.svg'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Slide&nbsp;3'</span><span style="color: #007700">,],<br />],&nbsp;[</span><span style="color: #DD0000">'id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'carouselExampleIndicators'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'controls'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'indicators'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -2456,16 +2456,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### With captions
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/carousel/#with-captions)</small>
 
-<ul class="nav nav-tabs" id="with--captions_5d1f815618268_tab" role="tablist">
+<ul class="nav nav-tabs" id="with--captions_5d1f84f037926_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#with--captions_5d1f815618268_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#with--captions_5d1f84f037926_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#with--captions_5d1f815618268_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#with--captions_5d1f84f037926_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="with--captions_5d1f815618268_result" role="tabpanel"><br/><div id="carouselExampleCaptions" data-ride="carousel" class="carousel&#x20;slide">
+  <div class="tab-pane active" id="with--captions_5d1f84f037926_result" role="tabpanel"><br/><div id="carouselExampleCaptions" data-ride="carousel" class="carousel&#x20;slide">
     <ol class="carousel-indicators">
         <li data-target="&#x23;carouselExampleCaptions" data-slide-to="0" class="active"></li>
         <li data-target="&#x23;carouselExampleCaptions" data-slide-to="1"></li>
@@ -2503,7 +2503,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         <span class="sr-only">Next</span>
     </a>
 </div></div>
-  <div class="tab-pane" id="with--captions_5d1f815618268_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="with--captions_5d1f84f037926_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">carousel</span><span style="color: #007700">([<br />[<br /></span><span style="color: #DD0000">'src'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'optionsAndAttributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'active'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Slide&nbsp;1'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'caption'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'First&nbsp;slide&nbsp;label'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Nulla&nbsp;vitae&nbsp;elit&nbsp;libero,&nbsp;a&nbsp;pharetra&nbsp;augue&nbsp;mollis&nbsp;interdum.'</span><span style="color: #007700">,<br />],<br />]<br />],<br />[<br /></span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,<br />[<br /></span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Slide&nbsp;2'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'caption'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Second&nbsp;slide&nbsp;label'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Lorem&nbsp;ipsum&nbsp;dolor&nbsp;sit&nbsp;amet,&nbsp;consectetur&nbsp;adipiscing&nbsp;elit.'</span><span style="color: #007700">,<br />],<br />],<br />],<br /></span><span style="color: #DD0000">'images/demo-sample.svg'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Slide&nbsp;3'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'caption'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'title'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Third&nbsp;slide&nbsp;label'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Praesent&nbsp;commodo&nbsp;cursus&nbsp;magna,&nbsp;vel&nbsp;scelerisque&nbsp;nisl&nbsp;consectetur.'</span><span style="color: #007700">,<br />],<br />],<br />],&nbsp;[<br /></span><span style="color: #DD0000">'id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'carouselExampleCaptions'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'controls'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'indicators'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,<br />]);</span>
 </span>
 </code></pre></div>
@@ -2512,16 +2512,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Crossfade
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/carousel/#crossfade)</small>
 
-<ul class="nav nav-tabs" id="crossfade_5d1f815618320_tab" role="tablist">
+<ul class="nav nav-tabs" id="crossfade_5d1f84f0379c6_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#crossfade_5d1f815618320_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#crossfade_5d1f84f0379c6_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#crossfade_5d1f815618320_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#crossfade_5d1f84f0379c6_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="crossfade_5d1f815618320_result" role="tabpanel"><br/><div id="carouselExampleFade" data-ride="carousel" class="carousel&#x20;carousel-fade&#x20;slide">
+  <div class="tab-pane active" id="crossfade_5d1f84f0379c6_result" role="tabpanel"><br/><div id="carouselExampleFade" data-ride="carousel" class="carousel&#x20;carousel-fade&#x20;slide">
     <div class="carousel-inner">
         <div class="active&#x20;carousel-item">
             <img alt="Slide&#x20;1" class="d-block&#x20;w-100" src="images&#x2F;demo-sample.svg">
@@ -2542,7 +2542,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         <span class="sr-only">Next</span>
     </a>
 </div></div>
-  <div class="tab-pane" id="crossfade_5d1f815618320_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="crossfade_5d1f84f0379c6_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">carousel</span><span style="color: #007700">([<br />[<br /></span><span style="color: #DD0000">'src'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'optionsAndAttributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'active'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Slide&nbsp;1'</span><span style="color: #007700">],<br />],<br />[</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Slide&nbsp;2'</span><span style="color: #007700">,]],<br /></span><span style="color: #DD0000">'images/demo-sample.svg'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Slide&nbsp;3'</span><span style="color: #007700">,],<br />],&nbsp;[</span><span style="color: #DD0000">'id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'carouselExampleFade'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'controls'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'crossfade'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -2551,16 +2551,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Individual .carousel-item interval
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/carousel/#individual-carousel-item-interval)</small>
 
-<ul class="nav nav-tabs" id="individual--carousel--item--interval_5d1f8156183b4_tab" role="tablist">
+<ul class="nav nav-tabs" id="individual--carousel--item--interval_5d1f84f037a63_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#individual--carousel--item--interval_5d1f8156183b4_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#individual--carousel--item--interval_5d1f84f037a63_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#individual--carousel--item--interval_5d1f8156183b4_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#individual--carousel--item--interval_5d1f84f037a63_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="individual--carousel--item--interval_5d1f8156183b4_result" role="tabpanel"><br/><div id="carouselExampleControls" data-ride="carousel" class="carousel&#x20;slide">
+  <div class="tab-pane active" id="individual--carousel--item--interval_5d1f84f037a63_result" role="tabpanel"><br/><div id="carouselExampleControls" data-ride="carousel" class="carousel&#x20;slide">
     <div class="carousel-inner">
         <div data-interval="10000" class="active&#x20;carousel-item">
             <img alt="Slide&#x20;1" class="d-block&#x20;w-100" src="images&#x2F;demo-sample.svg">
@@ -2581,7 +2581,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         <span class="sr-only">Next</span>
     </a>
 </div></div>
-  <div class="tab-pane" id="individual--carousel--item--interval_5d1f8156183b4_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="individual--carousel--item--interval_5d1f84f037a63_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">carousel</span><span style="color: #007700">([<br />[</span><span style="color: #DD0000">'src'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'optionsAndAttributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'interval'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">10000</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'active'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Slide&nbsp;1'</span><span style="color: #007700">,<br />]],<br />[</span><span style="color: #DD0000">'images/demo-sample.svg'</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'interval'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">2000</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Slide&nbsp;2'</span><span style="color: #007700">,]],<br /></span><span style="color: #DD0000">'images/demo-sample.svg'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'alt'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Slide&nbsp;3'</span><span style="color: #007700">,],<br />],&nbsp;[</span><span style="color: #DD0000">'id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'carouselExampleControls'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'controls'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -2596,16 +2596,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Single button
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/dropdowns/#single-button)</small>
 
-<ul class="nav nav-tabs" id="single--button_5d1f8156185a2_tab" role="tablist">
+<ul class="nav nav-tabs" id="single--button_5d1f84f037c65_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#single--button_5d1f8156185a2_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#single--button_5d1f84f037c65_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#single--button_5d1f8156185a2_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#single--button_5d1f84f037c65_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="single--button_5d1f8156185a2_result" role="tabpanel"><br/><div class="dropdown">
+  <div class="tab-pane active" id="single--button_5d1f84f037c65_result" role="tabpanel"><br/><div class="dropdown">
     <button type="button" name="dropdown" id="dropdownMenuButton" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="btn&#x20;dropdown-toggle&#x20;btn-secondary" value="">Dropdown</button>
     <div aria-labelledby="dropdownMenuButton" class="dropdown-menu">
         <a href="&#x23;" class="dropdown-item">Action</a>
@@ -2702,7 +2702,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
     </div>
 </div>
 </div>
-  <div class="tab-pane" id="single--button_5d1f8156185a2_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="single--button_5d1f84f037c65_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">formButton</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'dropdown'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Dropdown'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'dropdown'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'Action'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Another&nbsp;action'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Something&nbsp;else&nbsp;here'</span><span style="color: #007700">,],<br />],<br /></span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'dropdownMenuButton'</span><span style="color: #007700">],<br />])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;With&nbsp;&lt;a&gt;&nbsp;elements<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">formButton</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'dropdown'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'tag'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'a'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Dropdown'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'dropdown'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'Action'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Another&nbsp;action'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Something&nbsp;else&nbsp;here'</span><span style="color: #007700">,],<br />],<br /></span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'dropdownMenuButton'</span><span style="color: #007700">],<br />])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Variations<br /></span><span style="color: #007700">foreach&nbsp;([<br /></span><span style="color: #DD0000">'primary'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'secondary'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'success'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'danger'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'warning'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'info'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'light'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'dark'</span><span style="color: #007700">,<br />]&nbsp;as&nbsp;</span><span style="color: #0000BB">$sVariant</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">formButton</span><span style="color: #007700">([<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'dropdown'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'variant'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$sVariant</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Dropdown'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'dropdown'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Action'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Another&nbsp;action'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Something&nbsp;else&nbsp;here'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'---'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Separated&nbsp;link'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;],<br />&nbsp;&nbsp;&nbsp;&nbsp;],<br />&nbsp;&nbsp;&nbsp;&nbsp;])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />}</span>
 </span>
 </code></pre></div>
@@ -2711,16 +2711,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Split button
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/dropdowns/#split-button)</small>
 
-<ul class="nav nav-tabs" id="split--button_5d1f8156186b6_tab" role="tablist">
+<ul class="nav nav-tabs" id="split--button_5d1f84f037d80_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#split--button_5d1f8156186b6_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#split--button_5d1f84f037d80_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#split--button_5d1f8156186b6_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#split--button_5d1f84f037d80_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="split--button_5d1f8156186b6_result" role="tabpanel"><br/><div class="btn-group&#x20;dropdown">
+  <div class="tab-pane active" id="split--button_5d1f84f037d80_result" role="tabpanel"><br/><div class="btn-group&#x20;dropdown">
     <button type="button" name="dropdown" class="btn&#x20;btn-primary" value="">Dropdown</button>
     <button type="button" name="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="btn&#x20;btn-primary&#x20;dropdown-toggle" value=""><span class="sr-only">Toggle Dropdown</span></button>
     <div class="dropdown-menu">
@@ -2809,7 +2809,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
     </div>
 </div>
 </div>
-  <div class="tab-pane" id="split--button_5d1f8156186b6_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="split--button_5d1f84f037d80_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">foreach&nbsp;([<br /></span><span style="color: #DD0000">'primary'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'secondary'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'success'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'danger'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'warning'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'info'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'light'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'dark'</span><span style="color: #007700">,<br />]&nbsp;as&nbsp;</span><span style="color: #0000BB">$sVariant</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">formButton</span><span style="color: #007700">([<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'dropdown'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'variant'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sVariant</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Dropdown'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'dropdown'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'split'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Toggle&nbsp;Dropdown'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'items'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Action'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Another&nbsp;action'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Something&nbsp;else&nbsp;here'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'---'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Separated&nbsp;link'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;],<br />&nbsp;&nbsp;&nbsp;&nbsp;],<br />&nbsp;&nbsp;&nbsp;&nbsp;],<br />&nbsp;&nbsp;&nbsp;&nbsp;])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />}</span>
 </span>
 </code></pre></div>
@@ -2818,16 +2818,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Sizing
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/dropdowns/#sizing)</small>
 
-<ul class="nav nav-tabs" id="sizing_5d1f815618865_tab" role="tablist">
+<ul class="nav nav-tabs" id="sizing_5d1f84f037f36_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#sizing_5d1f815618865_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#sizing_5d1f84f037f36_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#sizing_5d1f815618865_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#sizing_5d1f84f037f36_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="sizing_5d1f815618865_result" role="tabpanel"><br/><div class="dropdown">
+  <div class="tab-pane active" id="sizing_5d1f84f037f36_result" role="tabpanel"><br/><div class="dropdown">
     <button type="button" name="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="btn&#x20;btn-lg&#x20;dropdown-toggle&#x20;btn-secondary" value="">Large button</button>
     <div class="dropdown-menu">
         <a href="&#x23;" class="dropdown-item">Action</a>
@@ -2870,7 +2870,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
     </div>
 </div>
 </div>
-  <div class="tab-pane" id="sizing_5d1f815618865_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="sizing_5d1f84f037f36_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Large&nbsp;button<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">formButton</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'dropdown'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Large&nbsp;button'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'size'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'lg'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'dropdown'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'Action'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Another&nbsp;action'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Something&nbsp;else&nbsp;here'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'---'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Separated&nbsp;link'</span><span style="color: #007700">],<br />],<br />])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Large&nbsp;split&nbsp;button<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">formButton</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'dropdown'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Large&nbsp;button'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'size'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'lg'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'dropdown'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'split'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Toggle&nbsp;Dropdown'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'items'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'Action'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Another&nbsp;action'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Something&nbsp;else&nbsp;here'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'---'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Separated&nbsp;link'</span><span style="color: #007700">],<br />],<br />],<br />])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Small&nbsp;button<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">formButton</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'dropdown'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Small&nbsp;button'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'size'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'sm'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'dropdown'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'Action'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Another&nbsp;action'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Something&nbsp;else&nbsp;here'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'---'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Separated&nbsp;link'</span><span style="color: #007700">],<br />],<br />])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Small&nbsp;split&nbsp;button<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">formButton</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'dropdown'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Small&nbsp;button'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'size'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'sm'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'dropdown'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'split'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Toggle&nbsp;Dropdown'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'items'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'Action'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Another&nbsp;action'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Something&nbsp;else&nbsp;here'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'---'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Separated&nbsp;link'</span><span style="color: #007700">],<br />],<br />],<br />])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;</span>
 </span>
 </code></pre></div>
@@ -2882,16 +2882,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Dropup
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/dropdowns/#dropup)</small>
 
-<ul class="nav nav-tabs" id="dropup_5d1f815618c4b_tab" role="tablist">
+<ul class="nav nav-tabs" id="dropup_5d1f84f038110_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#dropup_5d1f815618c4b_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#dropup_5d1f84f038110_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#dropup_5d1f815618c4b_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#dropup_5d1f84f038110_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="dropup_5d1f815618c4b_result" role="tabpanel"><br/><div class="dropup">
+  <div class="tab-pane active" id="dropup_5d1f84f038110_result" role="tabpanel"><br/><div class="dropup">
     <button type="button" name="dropup" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="btn&#x20;btn-lg&#x20;dropdown-toggle&#x20;btn-secondary" value="">Dropup</button>
     <div class="dropdown-menu">
         <a href="&#x23;" class="dropdown-item">Action</a>
@@ -2913,7 +2913,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
     </div>
 </div>
 </div>
-  <div class="tab-pane" id="dropup_5d1f815618c4b_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="dropup_5d1f84f038110_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Dropup&nbsp;button<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">formButton</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'dropup'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Dropup'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'size'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'lg'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'dropdown'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'direction'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'up'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'items'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'Action'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Another&nbsp;action'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Something&nbsp;else&nbsp;here'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'---'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Separated&nbsp;link'</span><span style="color: #007700">,<br />]<br />],<br />],<br />])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;Dropup&nbsp;split&nbsp;button<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">formButton</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'split-dropup'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Split&nbsp;dropup'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'size'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'lg'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'dropdown'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'direction'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'up'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'split'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Toggle&nbsp;Dropdown'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'items'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'Action'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Another&nbsp;action'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Something&nbsp;else&nbsp;here'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'---'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Separated&nbsp;link'</span><span style="color: #007700">,<br />],<br />],<br />],<br />])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;</span>
 </span>
 </code></pre></div>
@@ -2922,16 +2922,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Dropright
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/dropdowns/#dropright)</small>
 
-<ul class="nav nav-tabs" id="dropright_5d1f815618dc9_tab" role="tablist">
+<ul class="nav nav-tabs" id="dropright_5d1f84f038280_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#dropright_5d1f815618dc9_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#dropright_5d1f84f038280_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#dropright_5d1f815618dc9_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#dropright_5d1f84f038280_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="dropright_5d1f815618dc9_result" role="tabpanel"><br/><div class="dropright">
+  <div class="tab-pane active" id="dropright_5d1f84f038280_result" role="tabpanel"><br/><div class="dropright">
     <button type="button" name="dropright" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="btn&#x20;btn-lg&#x20;dropdown-toggle&#x20;btn-secondary" value="">Dropright</button>
     <div class="dropdown-menu">
         <a href="&#x23;" class="dropdown-item">Action</a>
@@ -2953,7 +2953,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
     </div>
 </div>
 </div>
-  <div class="tab-pane" id="dropright_5d1f815618dc9_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="dropright_5d1f84f038280_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Dropright&nbsp;button<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">formButton</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'dropright'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Dropright'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'size'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'lg'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'dropdown'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'direction'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'right'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'items'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'Action'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Another&nbsp;action'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Something&nbsp;else&nbsp;here'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'---'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Separated&nbsp;link'</span><span style="color: #007700">,<br />],<br />],<br />],<br />])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;Dropright&nbsp;split&nbsp;button<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">formButton</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'split-dropright'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Split&nbsp;dropright'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'size'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'lg'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'dropdown'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'direction'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'right'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'split'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Toggle&nbsp;Dropdown'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'items'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'Action'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Another&nbsp;action'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Something&nbsp;else&nbsp;here'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'---'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Separated&nbsp;link'</span><span style="color: #007700">,<br />],<br />],<br />],<br />])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;</span>
 </span>
 </code></pre></div>
@@ -2962,16 +2962,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Menu items
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/dropdowns/#menu-items)</small>
 
-<ul class="nav nav-tabs" id="menu--items_5d1f815618ec8_tab" role="tablist">
+<ul class="nav nav-tabs" id="menu--items_5d1f84f03837c_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#menu--items_5d1f815618ec8_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#menu--items_5d1f84f03837c_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#menu--items_5d1f815618ec8_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#menu--items_5d1f84f03837c_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="menu--items_5d1f815618ec8_result" role="tabpanel"><br/><div class="dropdown">
+  <div class="tab-pane active" id="menu--items_5d1f84f03837c_result" role="tabpanel"><br/><div class="dropdown">
     <button type="button" name="dropdown" id="dropdownMenu2" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="btn&#x20;dropdown-toggle&#x20;btn-secondary" value="">Dropdown</button>
     <div aria-labelledby="dropdownMenu2" class="dropdown-menu">
         <a href="&#x23;" class="dropdown-item">Action</a>
@@ -2985,7 +2985,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
     <a href="&#x23;" class="dropdown-item">Another action</a>
     <a href="&#x23;" class="dropdown-item">Something else here</a>
 </div></div>
-  <div class="tab-pane" id="menu--items_5d1f815618ec8_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="menu--items_5d1f84f03837c_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">formButton</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'dropdown'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Dropdown'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'dropdown'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'Action'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Another&nbsp;action'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Something&nbsp;else&nbsp;here'</span><span style="color: #007700">],<br />],<br /></span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'dropdownMenu2'</span><span style="color: #007700">],<br />])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Non-interactive&nbsp;dropdown&nbsp;items<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">dropdown</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">renderMenu</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'Dropdown&nbsp;item&nbsp;text'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;\</span><span style="color: #0000BB">TwbsHelper</span><span style="color: #007700">\</span><span style="color: #0000BB">View</span><span style="color: #007700">\</span><span style="color: #0000BB">Helper</span><span style="color: #007700">\</span><span style="color: #0000BB">Dropdown</span><span style="color: #007700">::</span><span style="color: #0000BB">TYPE_ITEM_TEXT</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Action'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Another&nbsp;action'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Something&nbsp;else&nbsp;here'<br /></span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -2994,21 +2994,21 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Active
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/dropdowns/#active)</small>
 
-<ul class="nav nav-tabs" id="active_5d1f815618f5d_tab" role="tablist">
+<ul class="nav nav-tabs" id="active_5d1f84f038422_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#active_5d1f815618f5d_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#active_5d1f84f038422_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#active_5d1f815618f5d_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#active_5d1f84f038422_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="active_5d1f815618f5d_result" role="tabpanel"><br/><div class="dropdown-menu">
+  <div class="tab-pane active" id="active_5d1f84f038422_result" role="tabpanel"><br/><div class="dropdown-menu">
     <a href="&#x23;" class="dropdown-item">Regular link</a>
     <a href="&#x23;" class="active&#x20;dropdown-item">Active link</a>
     <a href="&#x23;" class="dropdown-item">Another link</a>
 </div></div>
-  <div class="tab-pane" id="active_5d1f815618f5d_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="active_5d1f84f038422_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">dropdown</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">renderMenu</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'Regular&nbsp;link'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Active&nbsp;link'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'active'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">],<br /></span><span style="color: #DD0000">'Another&nbsp;link'<br /></span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -3017,21 +3017,21 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Disabled
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/dropdowns/#disabled)</small>
 
-<ul class="nav nav-tabs" id="disabled_5d1f815618fe3_tab" role="tablist">
+<ul class="nav nav-tabs" id="disabled_5d1f84f0384bd_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#disabled_5d1f815618fe3_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#disabled_5d1f84f0384bd_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#disabled_5d1f815618fe3_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#disabled_5d1f84f0384bd_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="disabled_5d1f815618fe3_result" role="tabpanel"><br/><div class="dropdown-menu">
+  <div class="tab-pane active" id="disabled_5d1f84f0384bd_result" role="tabpanel"><br/><div class="dropdown-menu">
     <a href="&#x23;" class="dropdown-item">Regular link</a>
     <a href="&#x23;" tabindex="-1" aria-disabled="true" class="disabled&#x20;dropdown-item">Active link</a>
     <a href="&#x23;" class="dropdown-item">Another link</a>
 </div></div>
-  <div class="tab-pane" id="disabled_5d1f815618fe3_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="disabled_5d1f84f0384bd_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">dropdown</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">renderMenu</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'Regular&nbsp;link'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Active&nbsp;link'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'disabled'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">],<br /></span><span style="color: #DD0000">'Another&nbsp;link'<br /></span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -3040,16 +3040,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Menu alignment
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/dropdowns/#menu-alignment)</small>
 
-<ul class="nav nav-tabs" id="menu--alignment_5d1f815619095_tab" role="tablist">
+<ul class="nav nav-tabs" id="menu--alignment_5d1f84f03858b_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#menu--alignment_5d1f815619095_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#menu--alignment_5d1f84f03858b_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#menu--alignment_5d1f815619095_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#menu--alignment_5d1f84f03858b_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="menu--alignment_5d1f815619095_result" role="tabpanel"><br/><div class="dropdown">
+  <div class="tab-pane active" id="menu--alignment_5d1f84f03858b_result" role="tabpanel"><br/><div class="dropdown">
     <button type="button" name="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="btn&#x20;dropdown-toggle&#x20;btn-secondary" value="">Right-aligned menu</button>
     <div class="dropdown-menu&#x20;dropdown-menu-right">
         <a href="&#x23;" class="dropdown-item">Action</a>
@@ -3057,7 +3057,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         <a href="&#x23;" class="dropdown-item">Something else here</a>
     </div>
 </div></div>
-  <div class="tab-pane" id="menu--alignment_5d1f815619095_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="menu--alignment_5d1f84f03858b_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">formButton</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'dropdown'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Right-aligned&nbsp;menu'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'dropdown'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'alignment'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'right'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'items'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'Action'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Another&nbsp;action'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Something&nbsp;else&nbsp;here'</span><span style="color: #007700">],<br />],<br />],<br /><br />]);</span>
 </span>
 </code></pre></div>
@@ -3066,16 +3066,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Responsive alignment
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/dropdowns/#responsive-alignment)</small>
 
-<ul class="nav nav-tabs" id="responsive--alignment_5d1f815619186_tab" role="tablist">
+<ul class="nav nav-tabs" id="responsive--alignment_5d1f84f038692_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#responsive--alignment_5d1f815619186_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#responsive--alignment_5d1f84f038692_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#responsive--alignment_5d1f815619186_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#responsive--alignment_5d1f84f038692_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="responsive--alignment_5d1f815619186_result" role="tabpanel"><br/><div class="dropdown">
+  <div class="tab-pane active" id="responsive--alignment_5d1f84f038692_result" role="tabpanel"><br/><div class="dropdown">
     <button type="button" name="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="btn&#x20;dropdown-toggle&#x20;btn-secondary" value="">Left-aligned but right aligned when large screen</button>
     <div class="dropdown-menu&#x20;dropdown-menu-lg-right">
         <a href="&#x23;" class="dropdown-item">Action</a>
@@ -3091,7 +3091,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         <a href="&#x23;" class="dropdown-item">Something else here</a>
     </div>
 </div></div>
-  <div class="tab-pane" id="responsive--alignment_5d1f815619186_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="responsive--alignment_5d1f84f038692_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">formButton</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'dropdown'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Left-aligned&nbsp;but&nbsp;right&nbsp;aligned&nbsp;when&nbsp;large&nbsp;screen'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'dropdown'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'alignment'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'lg-right'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'items'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'Action'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Another&nbsp;action'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Something&nbsp;else&nbsp;here'</span><span style="color: #007700">],<br />],<br />],<br />])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">formButton</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'dropdown'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Left-aligned&nbsp;but&nbsp;right&nbsp;aligned&nbsp;when&nbsp;large&nbsp;screen'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'dropdown'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'alignment'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'right'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'lg-left'</span><span style="color: #007700">],<br /></span><span style="color: #DD0000">'items'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'Action'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Another&nbsp;action'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Something&nbsp;else&nbsp;here'</span><span style="color: #007700">],<br />],<br />],<br />]);</span>
 </span>
 </code></pre></div>
@@ -3103,21 +3103,21 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Headers
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/dropdowns/#headers)</small>
 
-<ul class="nav nav-tabs" id="headers_5d1f81561923f_tab" role="tablist">
+<ul class="nav nav-tabs" id="headers_5d1f84f038763_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#headers_5d1f81561923f_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#headers_5d1f84f038763_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#headers_5d1f81561923f_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#headers_5d1f84f038763_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="headers_5d1f81561923f_result" role="tabpanel"><br/><div class="dropdown-menu">
+  <div class="tab-pane active" id="headers_5d1f84f038763_result" role="tabpanel"><br/><div class="dropdown-menu">
     <h6 class="dropdown-header">Dropdown header</h6>
     <a href="&#x23;" class="dropdown-item">Action</a>
     <a href="&#x23;" class="dropdown-item">Another action</a>
 </div></div>
-  <div class="tab-pane" id="headers_5d1f81561923f_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="headers_5d1f84f038763_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">dropdown</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">renderMenu</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'Dropdown&nbsp;header'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;\</span><span style="color: #0000BB">TwbsHelper</span><span style="color: #007700">\</span><span style="color: #0000BB">View</span><span style="color: #007700">\</span><span style="color: #0000BB">Helper</span><span style="color: #007700">\</span><span style="color: #0000BB">Dropdown</span><span style="color: #007700">::</span><span style="color: #0000BB">TYPE_ITEM_HEADER</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Action'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Another&nbsp;action'</span><span style="color: #007700">,<br />]);</span>
 </span>
 </code></pre></div>
@@ -3126,23 +3126,23 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Dividers
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/dropdowns/#headers)</small>
 
-<ul class="nav nav-tabs" id="dividers_5d1f8156192e2_tab" role="tablist">
+<ul class="nav nav-tabs" id="dividers_5d1f84f03881a_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#dividers_5d1f8156192e2_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#dividers_5d1f84f03881a_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#dividers_5d1f8156192e2_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#dividers_5d1f84f03881a_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="dividers_5d1f8156192e2_result" role="tabpanel"><br/><div class="dropdown-menu">
+  <div class="tab-pane active" id="dividers_5d1f84f03881a_result" role="tabpanel"><br/><div class="dropdown-menu">
     <a href="&#x23;" class="dropdown-item">Action</a>
     <a href="&#x23;" class="dropdown-item">Another action</a>
     <a href="&#x23;" class="dropdown-item">Something else here</a>
     <div class="dropdown-divider"></div>
     <a href="&#x23;" class="dropdown-item">Separated link</a>
 </div></div>
-  <div class="tab-pane" id="dividers_5d1f8156192e2_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="dividers_5d1f84f03881a_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">dropdown</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">renderMenu</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'Action'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Another&nbsp;action'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Something&nbsp;else&nbsp;here'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'---'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Separated&nbsp;link'</span><span style="color: #007700">,<br />]);</span>
 </span>
 </code></pre></div>
@@ -3151,20 +3151,20 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Text
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/dropdowns/#headers)</small>
 
-<ul class="nav nav-tabs" id="text_5d1f815619374_tab" role="tablist">
+<ul class="nav nav-tabs" id="text_5d1f84f0388b1_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#text_5d1f815619374_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#text_5d1f84f0388b1_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#text_5d1f815619374_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#text_5d1f84f0388b1_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="text_5d1f815619374_result" role="tabpanel"><br/><div class="dropdown-menu&#x20;p-4&#x20;text-muted" style="max-width&#x3A;&#x20;200px&#x3B;">
+  <div class="tab-pane active" id="text_5d1f84f0388b1_result" role="tabpanel"><br/><div class="dropdown-menu&#x20;p-4&#x20;text-muted" style="max-width&#x3A;&#x20;200px&#x3B;">
     <p>Some example text that's free-flowing within the dropdown menu.</p>
     <p class="mb-0">And this is more example text.</p>
 </div></div>
-  <div class="tab-pane" id="text_5d1f815619374_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="text_5d1f84f0388b1_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">dropdown</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">renderMenu</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'&lt;p&gt;Some&nbsp;example&nbsp;text&nbsp;that\'s&nbsp;free-flowing&nbsp;within&nbsp;the&nbsp;dropdown&nbsp;menu.&lt;/p&gt;'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'&lt;p&nbsp;class="mb-0"&gt;And&nbsp;this&nbsp;is&nbsp;more&nbsp;example&nbsp;text.&lt;/p&gt;'</span><span style="color: #007700">,<br />],&nbsp;[</span><span style="color: #DD0000">'class'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'p-4&nbsp;text-muted'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'style'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'max-width:&nbsp;200px;'</span><span style="color: #007700">]);</span>
 </span>
 </code></pre></div>
@@ -3173,16 +3173,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 #### Forms
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/dropdowns/#forms)</small>
 
-<ul class="nav nav-tabs" id="forms_5d1f81561954e_tab" role="tablist">
+<ul class="nav nav-tabs" id="forms_5d1f84f038a7b_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#forms_5d1f81561954e_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#forms_5d1f84f038a7b_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#forms_5d1f81561954e_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#forms_5d1f84f038a7b_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="forms_5d1f81561954e_result" role="tabpanel"><br/><div class="dropdown-menu">
+  <div class="tab-pane active" id="forms_5d1f84f038a7b_result" role="tabpanel"><br/><div class="dropdown-menu">
     <form method="POST" name="dropdown" id="dropdown" role="form">
         <div class="form-group">
             <label for="exampleDropdownFormEmail1">Email address</label>
@@ -3203,7 +3203,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
     <a href="&#x23;" class="dropdown-item">New around here? Sign up</a>
     <a href="&#x23;" class="dropdown-item">Forgot password?</a>
 </div></div>
-  <div class="tab-pane" id="forms_5d1f81561954e_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="forms_5d1f84f038a7b_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Create&nbsp;form<br /></span><span style="color: #0000BB">$oFactory&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Form</span><span style="color: #007700">\</span><span style="color: #0000BB">Factory</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$oForm&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$oFactory</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">create</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'form'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'dropdown'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'dropdown'</span><span style="color: #007700">],<br /></span><span style="color: #DD0000">'elements'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br />[<br /></span><span style="color: #DD0000">'spec'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'email'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Email&nbsp;address'</span><span style="color: #007700">],<br /></span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'email'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'exampleDropdownFormEmail1'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'placeholder'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'email@example.com'</span><span style="color: #007700">,<br />],<br />],<br />],<br />[<br /></span><span style="color: #DD0000">'spec'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'password'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Password'</span><span style="color: #007700">],<br /></span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'password'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'exampleDropdownFormPassword1'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'placeholder'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Password'</span><span style="color: #007700">,<br />],<br />],<br />],<br />[<br /></span><span style="color: #DD0000">'spec'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'checkbox'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'remember_me'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Remember&nbsp;me'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'use_hidden_element'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">],<br /></span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'dropdownCheck'</span><span style="color: #007700">,<br />],<br />],<br />],<br />[<br /></span><span style="color: #DD0000">'spec'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'type'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'submit'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Sign&nbsp;in'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'variant'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'primary'</span><span style="color: #007700">],<br />],<br />],<br />]<br />]);<br /><br />echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">dropdown</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">renderMenu</span><span style="color: #007700">([<br /></span><span style="color: #0000BB">$oForm</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'New&nbsp;around&nbsp;here?&nbsp;Sign&nbsp;up'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'Forgot&nbsp;password?'</span><span style="color: #007700">,<br />]);</span>
 </span>
 </code></pre></div>
@@ -3212,16 +3212,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Dropdown options
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/dropdowns/#dropdown-options)</small>
 
-<ul class="nav nav-tabs" id="dropdown--options_5d1f815619673_tab" role="tablist">
+<ul class="nav nav-tabs" id="dropdown--options_5d1f84f038bc7_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#dropdown--options_5d1f815619673_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#dropdown--options_5d1f84f038bc7_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#dropdown--options_5d1f815619673_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#dropdown--options_5d1f84f038bc7_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="dropdown--options_5d1f815619673_result" role="tabpanel"><br/><div class="dropdown">
+  <div class="tab-pane active" id="dropdown--options_5d1f84f038bc7_result" role="tabpanel"><br/><div class="dropdown">
     <button type="button" name="dropdown" id="dropdownMenuOffset" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" data-offset="10,20" class="btn&#x20;dropdown-toggle&#x20;btn-secondary" value="">Offset</button>
     <div aria-labelledby="dropdownMenuOffset" class="dropdown-menu">
         <a href="&#x23;" class="dropdown-item">Action</a>
@@ -3238,7 +3238,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         <a href="&#x23;" class="dropdown-item">Something else here</a>
     </div>
 </div></div>
-  <div class="tab-pane" id="dropdown--options_5d1f815619673_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="dropdown--options_5d1f84f038bc7_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">formButton</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'dropdown'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Offset'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'dropdown'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'offset'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'10,20'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'items'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'Action'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Another&nbsp;action'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Something&nbsp;else&nbsp;here'</span><span style="color: #007700">],<br />],<br />],<br /></span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'dropdownMenuOffset'</span><span style="color: #007700">],<br />])&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">formButton</span><span style="color: #007700">([<br /></span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'dropdown'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Reference'</span><span style="color: #007700">,<br /></span><span style="color: #DD0000">'dropdown'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'split'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[<br /></span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'data-reference'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'parent'</span><span style="color: #007700">],<br />],<br /></span><span style="color: #DD0000">'items'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'Action'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Another&nbsp;action'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Something&nbsp;else&nbsp;here'</span><span style="color: #007700">],<br />],<br />],<br /></span><span style="color: #DD0000">'attributes'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'dropdownMenuReference'</span><span style="color: #007700">],<br />]);</span>
 </span>
 </code></pre></div>
@@ -3250,16 +3250,16 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
 ### Base nav
 <small>[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.3/components/navs/#base-nav)</small>
 
-<ul class="nav nav-tabs" id="base--nav_5d1f81561971b_tab" role="tablist">
+<ul class="nav nav-tabs" id="base--nav_5d1f84f038c87_tab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" data-toggle="tab" href="#base--nav_5d1f81561971b_result" role="tab" aria-controls="result">Result</a>
+    <a class="nav-link active" data-toggle="tab" href="#base--nav_5d1f84f038c87_result" role="tab" aria-controls="result">Result</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#base--nav_5d1f81561971b_source" role="tab" aria-controls="source">Source</a>
+    <a class="nav-link" data-toggle="tab" href="#base--nav_5d1f84f038c87_source" role="tab" aria-controls="source">Source</a>
   </li>
 </ul>
 <div class="tab-content">
-  <div class="tab-pane active" id="base--nav_5d1f81561971b_result" role="tabpanel"><br/><ul class="nav">
+  <div class="tab-pane active" id="base--nav_5d1f84f038c87_result" role="tabpanel"><br/><ul class="nav">
     <li class="&#x20;nav-item">
         <a class="nav-link&#x20;active" href="&#x23;">Active</a>
     </li>
@@ -3273,7 +3273,7 @@ This demonstration page shows how to render Twitter Boostrap elements. For each 
         <a class="nav-link&#x20;disabled" href="&#x23;" tabindex="-1" aria-disabled="true">Disabled</a>
     </li>
 </ul></div>
-  <div class="tab-pane" id="base--nav_5d1f81561971b_source" role="tabpanel"><pre><code><span style="color: #000000">
+  <div class="tab-pane" id="base--nav_5d1f84f038c87_source" role="tabpanel"><pre><code><span style="color: #000000">
 <span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">navigation</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">menu</span><span style="color: #007700">(new&nbsp;\</span><span style="color: #0000BB">Zend</span><span style="color: #007700">\</span><span style="color: #0000BB">Navigation</span><span style="color: #007700">\</span><span style="color: #0000BB">Navigation</span><span style="color: #007700">([<br />[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Active'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'uri'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'#'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'active'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,],<br />[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Link'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'uri'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'#'</span><span style="color: #007700">,],<br />[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Link'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'uri'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'#'</span><span style="color: #007700">,],<br />[</span><span style="color: #DD0000">'label'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'Disabled'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'uri'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'#'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'visible'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,],<br />]));</span>
 </span>
 </code></pre></div>

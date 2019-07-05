@@ -18,10 +18,10 @@
 - [\TwbsHelper\Options\ModuleOptions](#class-twbshelperoptionsmoduleoptions)
 - [\TwbsHelper\Options\Factory\ModuleOptionsFactory](#class-twbshelperoptionsfactorymoduleoptionsfactory)
 - [\TwbsHelper\View\Helper\Card](#class-twbshelperviewhelpercard)
+- [\TwbsHelper\View\Helper\CardColumns](#class-twbshelperviewhelpercardcolumns)
 - [\TwbsHelper\View\Helper\Blockquote](#class-twbshelperviewhelperblockquote)
 - [\TwbsHelper\View\Helper\Alert](#class-twbshelperviewhelperalert)
 - [\TwbsHelper\View\Helper\Table](#class-twbshelperviewhelpertable)
-- [\TwbsHelper\View\Helper\CardColumn](#class-twbshelperviewhelpercardcolumn)
 - [\TwbsHelper\View\Helper\Carousel](#class-twbshelperviewhelpercarousel)
 - [\TwbsHelper\View\Helper\Image](#class-twbshelperviewhelperimage)
 - [\TwbsHelper\View\Helper\Dropdown](#class-twbshelperviewhelperdropdown)
@@ -400,6 +400,19 @@
 
 <hr />
 
+### Class: \TwbsHelper\View\Helper\CardColumns
+
+> Helper for card columns
+
+| Visibility | Function |
+|:-----------|:---------|
+
+*This class extends [\TwbsHelper\View\Helper\CardGroup](#class-twbshelperviewhelpercardgroup)*
+
+*This class implements \Zend\View\Helper\HelperInterface, \Zend\I18n\Translator\TranslatorAwareInterface*
+
+<hr />
+
 ### Class: \TwbsHelper\View\Helper\Blockquote
 
 > Helper for rendering blockquotes
@@ -444,19 +457,6 @@
 *This class extends [\TwbsHelper\View\Helper\AbstractHtmlElement](#class-twbshelperviewhelperabstracthtmlelement)*
 
 *This class implements \Zend\I18n\Translator\TranslatorAwareInterface, \Zend\View\Helper\HelperInterface*
-
-<hr />
-
-### Class: \TwbsHelper\View\Helper\CardColumn
-
-> Helper for card deck
-
-| Visibility | Function |
-|:-----------|:---------|
-
-*This class extends [\TwbsHelper\View\Helper\CardGroup](#class-twbshelperviewhelpercardgroup)*
-
-*This class implements \Zend\View\Helper\HelperInterface, \Zend\I18n\Translator\TranslatorAwareInterface*
 
 <hr />
 
