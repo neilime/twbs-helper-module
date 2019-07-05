@@ -5,9 +5,8 @@ namespace TwbsHelper\View\Helper;
 /**
  * Helper for rendering figures
  */
-class Figure extends \Zend\View\Helper\AbstractHtmlElement
+class Figure extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
-    use \TwbsHelper\View\Helper\ClassAttributeTrait;
 
     /**
      * Generates a 'figure' element
@@ -17,48 +16,37 @@ class Figure extends \Zend\View\Helper\AbstractHtmlElement
      * @param array $aAttributes Html attributes of the "<figure>" element. Default : empty
      * @param array $aImageOptionsAndAttributes \TwbsHelper\View\Helper\Image options and attributes. Default : empty
      * @param array $aCaptionAttributes Html attributes of the "<figcaption>" (caption) element. Default : empty
-     * @param bool $bEscape True espace html caption '$sCaption'. Default True
+     * @param boolean $bEscape True espace html caption '$sCaption'. Default True
      * @return string The figure XHTML.
      * @throws \InvalidArgumentException
      */
     public function __invoke(
-        $sImageSrc,
-        $sCaption = '',
+        string $sImageSrc,
+        string $sCaption = '',
         array $aAttributes = [],
         array $aImageOptionsAndAttributes = [],
         array $aCaptionAttributes = [],
-        $bEscape = true
+        bool $bEscape = true
     ) {
-        if (!is_string($sImageSrc)) {
-            throw new \InvalidArgumentException('Argument "$sImageSrc" expects a string, "' . (is_object($sImageSrc) ? get_class($sImageSrc) : gettype($sImageSrc)) . '" given');
-        }
-        if (!is_string($sCaption)) {
-            throw new \InvalidArgumentException('Argument "$sCaption" expects a string, "' . (is_object($sCaption) ? get_class($sCaption) : gettype($sCaption)) . '" given');
-        }
-        if (!is_bool($bEscape)) {
-            throw new \InvalidArgumentException('Argument "$bEscape" expects a boolean, "' . (is_object($bEscape) ? get_class($bEscape) : gettype($bEscape)) . '" given');
-        }
 
-        // Figure class
-        $aAttributes['class'] = join(' ', $this->addClassesAttribute($aAttributes['class'] ?? '', array('figure')));
+        // Handle caption
+        $sCaptionContent = $sCaption ? PHP_EOL . $this->htmlElement(
+            'figcaption',
+            $this->setClassesToAttributes($aCaptionAttributes, ['figure-caption']),
+            $sCaption,
+            $bEscape
+        ) : '';
 
-        // Manage caption
-        if ($sCaption) {
-            if ($bEscape) {
-                $sCaption = $this->getView()->plugin('escapeHtml')->__invoke($sCaption);
-            }
-
-            // Caption class
-            $aCaptionAttributes['class'] = join(' ', $this->addClassesAttribute($aCaptionAttributes['class'] ?? '', array('figure-caption')));
-        }
-
-        // Images options
+        // Handle image
         $aImageOptionsAndAttributes['figure'] = true;
+        $sImageContent = $this->getView()->plugin('image')->__invoke($sImageSrc, $aImageOptionsAndAttributes);
 
-        return '<figure' . ($aAttributes ? $this->htmlAttribs($aAttributes) : '') . '>' . PHP_EOL .
-            '    ' . $this->getView()->plugin('image')->__invoke($sImageSrc, $aImageOptionsAndAttributes) . PHP_EOL . ($sCaption ?
-                '    <figcaption' . ($aCaptionAttributes ? $this->htmlAttribs($aCaptionAttributes) : '') . '>' . $sCaption . '</figcaption>' . PHP_EOL
-                : '') .
-            '</figure>';
+
+        return $this->htmlElement(
+            'figure',
+            $this->setClassesToAttributes($aAttributes, ['figure']),
+            $sImageContent . $sCaptionContent,
+            false
+        );
     }
 }

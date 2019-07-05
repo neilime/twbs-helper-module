@@ -1,4 +1,5 @@
 <?php
+
 namespace TwbsHelper\Form\View\Helper;
 
 use Zend\Form\Element\MultiCheckbox;
@@ -12,6 +13,9 @@ use Zend\Form\ElementInterface;
  */
 class FormMultiCheckbox extends ZendFormMultiCheckboxViewHelper
 {
+
+    use \TwbsHelper\View\Helper\ClassAttributeTrait;
+
     /**
      * render
      *
@@ -22,13 +26,28 @@ class FormMultiCheckbox extends ZendFormMultiCheckboxViewHelper
      */
     public function render(ElementInterface $oElement)
     {
-        $aElementOptions  = $oElement->getOptions();
-        $sClass           = 'form-check';
-        $sClass          .= isset($aElementOptions['inline']) && $aElementOptions['inline'] ? ' form-check-inline' : '';
+        $aElementOptions = $oElement->getOptions();
+        $sClass          = 'form-check';
+        $sClass         .= isset($aElementOptions['inline']) && $aElementOptions['inline'] ? ' form-check-inline' : '';
 
         $this->setSeparator("</div><div class='{$sClass}'>");
-        $oElement->setAttribute('class', 'form-check-input');
-        $oElement->setLabelAttributes(['class' => 'form-check-label']);
+
+        $oElement->setAttribute(
+            'class',
+            join(' ', $this->addClassesAttribute(
+                $oElement->getAttribute('class'),
+                ['form-check-input']
+            ))
+        );
+
+        $oElement->setLabelAttributes(
+            [
+                'class' => join(' ', $this->addClassesAttribute(
+                    $oElement->getLabelAttributes()['class'] ?? '',
+                    ['form-check-label']
+                ))
+            ]
+        );
 
         return sprintf("<div class='{$sClass}'>%s</div>", parent::render($oElement));
     }
@@ -44,8 +63,12 @@ class FormMultiCheckbox extends ZendFormMultiCheckboxViewHelper
      * @param  array         $aAttributes
      * @return string
      */
-    protected function renderOptions(MultiCheckbox $oElement, array $aOptions, array $selectedOptions, array $aAttributes)
-    {
+    protected function renderOptions(
+        MultiCheckbox $oElement,
+        array $aOptions,
+        array $selectedOptions,
+        array $aAttributes
+    ) {
         $oEscapeHtmlHelper      = $this->getEscapeHtmlHelper();
         $oLabelHelper           = $this->getLabelHelper();
         $sLabelClose            = $oLabelHelper->closeTag();
@@ -86,7 +109,7 @@ class FormMultiCheckbox extends ZendFormMultiCheckboxViewHelper
             if (is_scalar($aOptionSpec)) {
                 $aOptionSpec = [
                     'label' => $aOptionSpec,
-                    'value' => $sKey
+                    'value' => $sKey,
                 ];
             }
 
@@ -131,20 +154,20 @@ class FormMultiCheckbox extends ZendFormMultiCheckboxViewHelper
                 );
             }
 
-            if (! $oElement instanceof LabelAwareInterface || ! $oElement->getLabelOption('disable_html_escape')) {
+            if (!$oElement instanceof LabelAwareInterface || !$oElement->getLabelOption('disable_html_escape')) {
                 $sLabel = $oEscapeHtmlHelper($sLabel);
             }
 
             // Label
             // Set label attributes
             if (isset($aOptionSpec['label_attributes'])) {
-                $aLabelAttributes = (isset($aLabelAttributes))
+                $aLabelAttributes = isset($aLabelAttributes)
                     ? array_merge($aLabelAttributes, $aOptionSpec['label_attributes'])
                     : $aOptionSpec['label_attributes'];
             }
 
             // Assign label for attribute with defined element id attribute
-            if (empty($aLabelAttributes['for']) && ! empty($aInputAttributes['id'])) {
+            if (empty($aLabelAttributes['for']) && !empty($aInputAttributes['id'])) {
                 $aLabelAttributes['for'] = $aInputAttributes['id'];
             }
 

@@ -1,4 +1,5 @@
 <?php
+
 namespace TwbsHelper\Form\View\Helper;
 
 use Traversable;
@@ -7,51 +8,25 @@ use LogicException;
 use Zend\Form\Element\Checkbox;
 use Zend\Form\Element\Radio;
 use Zend\Form\ElementInterface;
-use Zend\Form\View\Helper\FormElement as ZendFormElementViewHelper;
 use Zend\Form\Element\Collection;
 use Zend\Form\Factory;
 use Zend\I18n\Translator\TranslatorAwareInterface;
 use Zend\I18n\Translator\TranslatorInterface;
-use Zend\I18n\Translator\Translator;
-use Zend\Form\Element\Button;
-
 use TwbsHelper\Options\ModuleOptions;
 
-/**
- * FormElement
- *
- * @uses ZendFormElementViewHelper
- * @uses TranslatorAwareInterface
- */
-class FormElement extends ZendFormElementViewHelper implements TranslatorAwareInterface
+class FormElement extends \Zend\Form\View\Helper\FormElement implements TranslatorAwareInterface
 {
-    // @var string
-    protected static $addonFormat = '<%s class="%s" %s>%s</%s>';
 
-    // @var string
+    use \Zend\I18n\Translator\TranslatorAwareTrait;
+    use \TwbsHelper\View\Helper\ClassAttributeTrait;
+    use \TwbsHelper\View\Helper\HtmlTrait;
+
     protected static $addonTextFormat = '<span class="input-group-text">%s</span>';
 
-    // @var string
-    protected static $inputGroupFormat = '<div class="input-group %s" %s>%s</div>';
-
-    // Translator (optional)
-    // @var Translator
-    protected $translator;
-
-    // Translator text domain (optional)
-    // @var string
-    protected $translatorTextDomain = 'default';
-
-    // Whether translator should be used
-    // @var boolean
-    protected $translatorEnabled = true;
-
     // Hold configurable options
-    // @var ModuleOptions
     protected $options;
 
     // Instance map to view helper
-    // @var array
     protected $classMap = [
         'Zend\Form\Element\Button'              => 'formbutton',
         'Zend\Form\Element\Captcha'             => 'formcaptcha',
@@ -65,7 +40,7 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
 
 
     /**
-     * __construct
+     * COnstructor
      *
      * @param  ModuleOptions $options
      * @access public
@@ -86,7 +61,6 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
 
 
     /**
-     * render
      * Render an element
      *
      * @param  ElementInterface $oElement
@@ -98,11 +72,12 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
         // Add form-control class
         $sElementType = $oElement->getAttribute('type');
 
-        if (! in_array($sElementType, $this->options->getIgnoredViewHelpers()) &&
-            ! ($oElement instanceof Collection)
+        if (
+            !in_array($sElementType, $this->options->getIgnoredViewHelpers())
+            && !($oElement instanceof Collection)
         ) {
             if ($sElementClass = $oElement->getAttribute('class')) {
-                if (! preg_match('/(\s|^)form-control(\s|$)/', $sElementClass)) {
+                if (!preg_match('/(\s|^)form-control(\s|$)/', $sElementClass)) {
                     $oElement->setAttribute('class', trim($sElementClass . ' form-control'));
                 }
             } else {
@@ -114,7 +89,7 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
 
         // Addon prepend
         if ($aAddOnPrepend = $oElement->getOption('add-on-prepend')) {
-            $sMarkup = $this->renderAddOn($aAddOnPrepend) . $sMarkup;
+            $sMarkup = $this->renderAddOn($aAddOnPrepend) . PHP_EOL . $sMarkup;
         }
 
         // Addon append
@@ -123,56 +98,34 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
         }
 
         if ($aAddOnAppend || $aAddOnPrepend) {
-            $sSpecialClass = '';
+            $aInputGroupClasses = ['input-group'];
 
             // Input size
             if ($sElementClass = $oElement->getAttribute('class')) {
                 if (preg_match('/(\s|^)input-lg(\s|$)/', $sElementClass)) {
-                    $sSpecialClass .= ' input-group-lg';
+                    $aInputGroupClasses[] = 'input-group-lg';
                 } elseif (preg_match('/(\s|^)input-sm(\s|$)/', $sElementClass)) {
-                    $sSpecialClass .= ' input-group-sm';
+                    $aInputGroupClasses[] = 'input-group-sm';
                 }
             }
-            
-            
-            $sSpecialAttributes = '';
 
-            // Input group attributes
-	        if (is_array($oElement->getOption('input-group'))){
-		        $aInputGroup = $oElement->getOption('input-group');
-
-		        // Input group class
-		        if(! empty($aInputGroup['class'])){
-					$sSpecialClass .= ' ' . $aInputGroup['class'];
-				}
-
-				// Input group other attributes
-				if(is_array($aInputGroup['attributes'])){
-					foreach ($aInputGroup['attributes'] as $name => $value){
-						$sSpecialAttributes .= $name . '="' . $value . '" ';
-					}
-					$sSpecialAttributes = trim($sSpecialAttributes);
-				}
-
-	        }
-
-            // Add a sprintf directive for correct render of errors
-            return $sMarkup = sprintf(
-                static::$inputGroupFormat,
-                trim($sSpecialClass),
-                $sSpecialAttributes,
-                $sMarkup
+            $aAttributes = $this->setClassesToAttributes(
+                $oElement->getOption('input-group')['attributes'] ?? [],
+                $aInputGroupClasses
             );
+
+            return $this->htmlElement('div', $aAttributes, $sMarkup);
         }
 
         return $sMarkup;
     }
 
+
     /**
      * Render element by helper name
      *
-     * @param string $name
-     * @param ElementInterface $element
+     * @param  string           $name
+     * @param  ElementInterface $element
      * @return string
      */
     protected function renderHelper($name, ElementInterface $element)
@@ -195,8 +148,7 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
     }
 
     /**
-     * renderAddOn
-     * Render addo-on markup
+     * Render add-on markup
      *
      * @param  ElementInterface|array|string $aAddOnOptions
      * @param  string                        $sPosition
@@ -215,177 +167,73 @@ class FormElement extends ZendFormElementViewHelper implements TranslatorAwareIn
             $aAddOnOptions = ['element' => $aAddOnOptions];
         } elseif (is_scalar($aAddOnOptions)) {
             $aAddOnOptions = ['text' => $aAddOnOptions];
-        } elseif (! is_array($aAddOnOptions)) {
-            throw new InvalidArgumentException(sprintf(
-                'Addon options expects an array or a scalar value, "%s" given',
-                is_object($aAddOnOptions) ? get_class($aAddOnOptions) : gettype($aAddOnOptions)
-            ));
+        } elseif (!is_array($aAddOnOptions)) {
+            throw new InvalidArgumentException(
+                sprintf(
+                    'Addon options expects an array or a scalar value, "%s" given',
+                    is_object($aAddOnOptions) ? get_class($aAddOnOptions) : gettype($aAddOnOptions)
+                )
+            );
         }
 
         $sMarkup       = '';
         $sAddonTagName = 'div';
-        $sAddonClass = ('prepend' == $sPosition) ? ' input-group-prepend' : 'input-group-append';
 
-        if (! empty($aAddOnOptions['text'])) {
-            if (! is_scalar($aAddOnOptions['text'])) {
+        if (!empty($aAddOnOptions['text'])) {
+            if (!is_scalar($aAddOnOptions['text'])) {
                 throw new InvalidArgumentException(sprintf(
                     '"text" option expects a scalar value, "%s" given',
-                    is_object($aAddOnOptions['text']) ? get_class($aAddOnOptions['text']) : gettype($aAddOnOptions['text'])
+                    is_object($aAddOnOptions['text'])
+                        ? get_class($aAddOnOptions['text'])
+                        : gettype($aAddOnOptions['text'])
                 ));
-            } elseif (($oTranslator = $this->getTranslator())) {
-                $sMarkup .= sprintf(static::$addonTextFormat, $oTranslator->translate($aAddOnOptions['text'], $this->getTranslatorTextDomain()));
+            }
+
+            if (($oTranslator = $this->getTranslator())) {
+                $sMarkup .= sprintf(
+                    static::$addonTextFormat,
+                    $oTranslator->translate($aAddOnOptions['text'], $this->getTranslatorTextDomain())
+                );
             } else {
                 $sMarkup .= sprintf(static::$addonTextFormat, $aAddOnOptions['text']);
             }
-
-        } elseif (! empty($aAddOnOptions['element'])) {
-            if (is_array($aAddOnOptions['element']) ||
-                ($aAddOnOptions['element'] instanceof Traversable &&
-                ! ($aAddOnOptions['element'] instanceof ElementInterface))
+        } elseif (!empty($aAddOnOptions['element'])) {
+            if (
+                is_array($aAddOnOptions['element'])
+                || ($aAddOnOptions['element'] instanceof Traversable
+                    && !($aAddOnOptions['element'] instanceof ElementInterface))
             ) {
-                $oFactory = new Factory();
+                $oFactory                 = new Factory();
                 $aAddOnOptions['element'] = $oFactory->create($aAddOnOptions['element']);
-            } elseif (! ($aAddOnOptions['element'] instanceof ElementInterface)) {
+            } elseif (!($aAddOnOptions['element'] instanceof ElementInterface)) {
                 throw new LogicException(sprintf(
                     '"element" option expects an instanceof Zend\Form\ElementInterface, "%s" given',
-                    is_object($aAddOnOptions['element']) ? get_class($aAddOnOptions['element']) : gettype($aAddOnOptions['element'])
+                    is_object($aAddOnOptions['element'])
+                        ? get_class($aAddOnOptions['element'])
+                        : gettype($aAddOnOptions['element'])
                 ));
             }
 
-            $aAddOnOptions['element']->setOptions(array_merge(
-                $aAddOnOptions['element']->getOptions(),
-                ['disable-twbs' => true]
-            ));
+            $aAddOnOptions['element']->setOptions(
+                array_merge(
+                    $aAddOnOptions['element']->getOptions(),
+                    ['disable-twbs' => true]
+                )
+            );
 
             if ($aAddOnOptions['element'] instanceof Checkbox || $aAddOnOptions['element'] instanceof Radio) {
                 $sMarkup .= sprintf(static::$addonTextFormat, $this->render($aAddOnOptions['element']));
-            }
-            else {
+            } else {
                 $sMarkup .= $this->render($aAddOnOptions['element']);
             }
         }
-        
-        $sAttributes = '';
-
-		if(! empty($aAddOnOptions['attributes'])){
-			foreach($aAddOnOptions['attributes'] as $name => $value){
-				$sAttributes .= $name .'="' . $value . '" ';
-			}
-			$sAttributes = rtrim($sAttributes);
-		}
-
-        return sprintf(static::$addonFormat, $sAddonTagName, trim($sAddonClass), $sAttributes, $sMarkup, $sAddonTagName);
-    }
 
 
-    /**
-     * setTranslator
-     * Sets translator to use in helper
-     *
-     * @see    TranslatorAwareInterface::setTranslator()
-     * @param  TranslatorInterface $oTranslator : [optional] translator. Default is null, which sets no translator.
-     * @param  string $sTextDomain : [optional] text domain Default is null, which skips setTranslatorTextDomain
-     * @access public
-     * @return TwbsHelperFormElement
-     */
-    public function setTranslator(TranslatorInterface $oTranslator = null, $sTextDomain = null)
-    {
-        $this->translator = $oTranslator;
+        $aAttributes = $this->setClassesToAttributes(
+            $aAddOnOptions['attributes'] ?? [],
+            ['prepend' === $sPosition ? 'input-group-prepend' : 'input-group-append']
+        );
 
-        if (null !== $sTextDomain) {
-            $this->setTranslatorTextDomain($sTextDomain);
-        }
-
-        return $this;
-    }
-
-
-    /**
-     * getTranslator
-     * Returns translator used in helper
-     *
-     * @see    TranslatorAwareInterface::getTranslator()
-     * @access public
-     * @return null|TranslatorInterface
-     */
-    public function getTranslator()
-    {
-        return $this->isTranslatorEnabled() ? $this->translator : null;
-    }
-
-
-    /**
-     * hasTranslator
-     * Checks if the helper has a translator
-     *
-     * @see    TranslatorAwareInterface::hasTranslator()
-     * @access public
-     * @return boolean
-     */
-    public function hasTranslator()
-    {
-        return ! ! $this->getTranslator();
-    }
-
-
-    /**
-     * setTranslatorEnabled
-     * Sets whether translator is enabled and should be used
-     *
-     * @see    TranslatorAwareInterface::setTranslatorEnabled()
-     * @param  boolean $bEnabled
-     * @access public
-     * @return TwbsHelperFormElement
-     */
-    public function setTranslatorEnabled($bEnabled = true)
-    {
-        $this->translatorEnabled = ! ! $bEnabled;
-
-        return $this;
-    }
-
-
-    /**
-     * isTranslatorEnabled
-     * Returns whether translator is enabled and should be used
-     *
-     * @see    TranslatorAwareInterface::isTranslatorEnabled()
-     * @access public
-     * @return boolean
-     */
-    public function isTranslatorEnabled()
-    {
-        return $this->translatorEnabled;
-    }
-
-
-    /**
-     * setTranslatorTextDomain
-     * Set translation text domain
-     *
-     * @see    TranslatorAwareInterface::setTranslatorTextDomain()
-     * @param  string $sTextDomain
-     * @access public
-     * @return TwbsHelperFormElement
-     */
-    public function setTranslatorTextDomain($sTextDomain = 'default')
-    {
-        $this->translatorTextDomain = $sTextDomain;
-
-        return $this;
-    }
-
-
-    /**
-     * getTranslatorTextDomain
-     * Return the translation text domain
-     *
-     * @see    TranslatorAwareInterface::getTranslatorTextDomain()
-     * @access public
-     * @return string
-     */
-    public function getTranslatorTextDomain()
-    {
-        return $this->translatorTextDomain;
+        return $this->htmlElement($sAddonTagName, $aAttributes, $sMarkup);
     }
 }

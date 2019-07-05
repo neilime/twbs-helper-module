@@ -10,14 +10,12 @@ use Zend\Form\Element as ZendElement;
  */
 class StaticElement extends ZendElement
 {
+
     /**
      * Seed attributes
      *
-     * @var array
+     * @var    array
      * @access protected
      */
-    protected $attributes = [
-        'type' => 'static'
-    ];
-
+    protected $attributes = ['type' => 'static'];
 }

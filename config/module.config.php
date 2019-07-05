@@ -28,15 +28,23 @@ return [
     'view_helpers' => [
         'invokables' => [
             // Misc view helpers
-            'abbreviation' => 'TwbsHelper\View\Helper\Abbreviation',
-            'alert'        => 'TwbsHelper\View\Helper\Alert',
-            'badge'        => 'TwbsHelper\View\Helper\Badge',
-            'blockquote'   => 'TwbsHelper\View\Helper\Blockquote',
-            'buttonGroup'  => 'TwbsHelper\View\Helper\ButtonGroup',
-            'figure'       => 'TwbsHelper\View\Helper\Figure',
-            'htmlList'     => 'TwbsHelper\View\Helper\HtmlList',
-            'image'        => 'TwbsHelper\View\Helper\Image',
-            'table'        => 'TwbsHelper\View\Helper\Table',
+            'abbreviation'  => 'TwbsHelper\View\Helper\Abbreviation',
+            'alert'         => 'TwbsHelper\View\Helper\Alert',
+            'badge'         => 'TwbsHelper\View\Helper\Badge',
+            'blockquote'    => 'TwbsHelper\View\Helper\Blockquote',
+            'buttonGroup'   => 'TwbsHelper\View\Helper\ButtonGroup',
+            'buttonToolbar' => 'TwbsHelper\View\Helper\ButtonToolbar',
+            'card'          => 'TwbsHelper\View\Helper\Card',
+            'cardColumn'     => 'TwbsHelper\View\Helper\CardColumn',
+            'cardDeck'     => 'TwbsHelper\View\Helper\CardDeck',
+            'cardGroup'     => 'TwbsHelper\View\Helper\CardGroup',
+            'carousel'     => 'TwbsHelper\View\Helper\Carousel',
+            'dropdown'      => 'TwbsHelper\View\Helper\Dropdown',
+            'figure'        => 'TwbsHelper\View\Helper\Figure',
+            'htmlList'      => 'TwbsHelper\View\Helper\HtmlList',
+            'image'         => 'TwbsHelper\View\Helper\Image',
+            'listGroup'     => 'TwbsHelper\View\Helper\ListGroup',
+            'table'         => 'TwbsHelper\View\Helper\Table',
 
             // Form view helpers
             'form'              => 'TwbsHelper\Form\View\Helper\Form',
@@ -50,7 +58,7 @@ return [
             'formRow'           => 'TwbsHelper\Form\View\Helper\FormRow',
             'formStatic'        => 'TwbsHelper\Form\View\Helper\FormStatic',
             'formErrors'        => 'TwbsHelper\Form\View\Helper\FormErrors',
-            
+
 
             // ZF3
             'form_button'         => 'TwbsHelper\Form\View\Helper\FormButton',
@@ -97,12 +105,13 @@ return [
             'formelement'  => 'TwbsHelper\Form\View\Helper\FormElement',
         ],
     ],
-    'navigation_helpers' => array (
+    'navigation_helpers' => array(
         'invokables' => array(
             // Navigation
             'breadcrumbs'  => 'TwbsHelper\View\Helper\Navigation\Breadcrumbs',
             'zendviewhelpernavigationbreadcrumbs'  => 'TwbsHelper\View\Helper\Navigation\Breadcrumbs',
+            'menu'  => 'TwbsHelper\View\Helper\Navigation\Menu',
+            'zendviewhelpernavigationmenu'        => 'TwbsHelper\View\Helper\Navigation\Menu',
         ),
     ),
 ];
-

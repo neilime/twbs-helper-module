@@ -1,4 +1,5 @@
 <?php
+
 namespace TwbsHelper\Form\View\Helper;
 
 use Zend\Form\Element\Collection as CollectionElement;
@@ -12,6 +13,7 @@ use Zend\Form\ElementInterface;
  */
 class FormCollection extends ZendFormCollectionViewHelper
 {
+
     // @var string
     protected static $legendFormat = '<legend%s>%s</legend>';
 
@@ -20,9 +22,7 @@ class FormCollection extends ZendFormCollectionViewHelper
 
     // Attributes valid for the tag represented by this helper
     // @var array
-    protected $validTagAttributes = [
-        'disabled' => true
-    ];
+    protected $validTagAttributes = ['disabled' => true];
 
 
     /**
@@ -37,7 +37,7 @@ class FormCollection extends ZendFormCollectionViewHelper
     {
         $oRenderer = $this->getView();
 
-        if (! method_exists($oRenderer, 'plugin')) {
+        if (!method_exists($oRenderer, 'plugin')) {
             return '';
         }
 
@@ -71,6 +71,7 @@ class FormCollection extends ZendFormCollectionViewHelper
                     }
                 }
             }
+
             if ($oElement instanceof \Zend\Form\Element\Collection && $oElement->shouldCreateTemplate()) {
                 $sMarkup .= $this->renderTemplate($oElement);
             }
@@ -82,9 +83,10 @@ class FormCollection extends ZendFormCollectionViewHelper
                     $sLabel = $oTranslator->translate($sLabel, $this->getTranslatorTextDomain());
                 }
 
-                $sMarkup = sprintf(
+                $sAttributes = $this->createAttributesString($oElement->getLabelAttributes() ?: []);
+                $sMarkup          = sprintf(
                     static::$legendFormat,
-                    ($sAttributes = $this->createAttributesString($oElement->getLabelAttributes() ? : [])) ? ' ' . $sAttributes : '',
+                    ($sAttributes) ? ' ' . $sAttributes : '',
                     $this->getEscapeHtmlHelper()->__invoke($sLabel)
                 ) . $sMarkup;
             }
@@ -94,7 +96,7 @@ class FormCollection extends ZendFormCollectionViewHelper
                 $sLayoutClass = "form-{$sElementLayout}";
 
                 if (false != ($sElementClass = $oElement->getAttribute('class'))) {
-                    if (! preg_match('/(\s|^)' . preg_quote($sLayoutClass, '/') . '(\s|$)/', $sElementClass)) {
+                    if (!preg_match('/(\s|^)' . preg_quote($sLayoutClass, '/') . '(\s|$)/', $sElementClass)) {
                         $oElement->setAttribute('class', trim("{$sElementClass} {$sLayoutClass}"));
                     }
                 } else {
@@ -102,20 +104,22 @@ class FormCollection extends ZendFormCollectionViewHelper
                 }
             }
 
-            $sMarkup = sprintf(
+            $sMarkup          = sprintf(
                 static::$fieldsetFormat,
                 ($sAttributes = $this->createAttributesString($oElement->getAttributes())) ? " {$sAttributes}" : '',
                 $sMarkup
             );
         }
+
         return $sMarkup;
     }
+
 
     /**
      * renderTemplate
      * Only render a template
      *
-     * @param CollectionElement $collection
+     * @param  CollectionElement $collection
      * @access public
      * @return string
      */

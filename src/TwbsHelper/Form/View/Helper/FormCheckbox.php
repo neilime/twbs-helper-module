@@ -1,4 +1,5 @@
 <?php
+
 namespace TwbsHelper\Form\View\Helper;
 
 use Zend\Form\View\Helper\FormRow;
@@ -16,18 +17,22 @@ use Zend\Form\View\Helper\FormLabel;
  */
 class FormCheckbox extends ZendFormCheckboxViewHelper
 {
+    use \TwbsHelper\View\Helper\ClassAttributeTrait;
 
     /**
      * Form label helper instance
+     *
      * @var FormLabel
      */
     protected $oLabelHelper;
 
     /**
      * The class that is added to element that have errors
+     *
      * @var string
      */
     protected static $sInputErrorClass = 'is-invalid';
+
 
     /**
      * render
@@ -45,42 +50,48 @@ class FormCheckbox extends ZendFormCheckboxViewHelper
             return parent::render($oElement);
         }
 
-        if (! $oElement instanceof Checkbox) {
-            throw new InvalidArgumentException(sprintf(
-                '%s requires that the element is of type Zend\Form\Element\Checkbox',
-                __METHOD__
-            ));
+        if (!$oElement instanceof Checkbox) {
+            throw new InvalidArgumentException(
+                sprintf(
+                    '%s requires that the element is of type Zend\Form\Element\Checkbox',
+                    __METHOD__
+                )
+            );
         }
+
         if (($sName = $oElement->getName()) !== 0 && empty($sName)) {
-            throw new LogicException(sprintf(
-                '%s requires that the element has an assigned name; none discovered',
-                __METHOD__
-            ));
+            throw new LogicException(
+                sprintf(
+                    '%s requires that the element has an assigned name; none discovered',
+                    __METHOD__
+                )
+            );
         }
 
         $aAttributes          = $oElement->getAttributes();
-        $aAttributes['name']   = $sName;
-        $aAttributes['type']   = $this->getInputType();
-        $aAttributes['value']  = $oElement->getCheckedValue();
-        $aAttributes['class'] = isset($aAttributes['class']) ? "{$aAttributes['class']} {$this->getClass()}" : $this->getClass();
-        $sClosingBracket       = $this->getInlineClosingBracket();
+        $aAttributes['name']  = $sName;
+        $aAttributes['type']  = $this->getInputType();
+        $aAttributes['value'] = $oElement->getCheckedValue();
+        $aAttributes['class'] = join(' ', $this->addClassesAttribute($aAttributes['class'] ?? '', [$this->getClass()]));
+        $sClosingBracket      = $this->getInlineClosingBracket();
 
         if ($oElement->isChecked()) {
             $aAttributes['checked'] = 'checked';
         }
 
         // Render label
-        $sLabel         = '';
-        $sLabelContent  = $this->getLabelContent($oElement);
+        $sLabel        = '';
+        $sLabelContent = $this->getLabelContent($oElement);
 
         if ($sLabelContent) {
             $oLabelHelper     = $this->getLabelHelper();
-            $aLabelAttributes = $oElement->getLabelAttributes();
+            $aLabelAttributes = $this->setClassesToAttributes($oElement->getLabelAttributes(), ['form-check-label']);
 
             // Set label "for" attribute with element "id" attribute when defined
-            if (empty($aLabelAttributes['for']) && ! empty($aAttributes['id'])) {
+            if (empty($aLabelAttributes['for']) && !empty($aAttributes['id'])) {
                 $aLabelAttributes['for'] = $aAttributes['id'];
             }
+
 
             $sLabel = $oLabelHelper->openTag($aLabelAttributes) . $sLabelContent . $oLabelHelper->closeTag();
         }
@@ -89,7 +100,7 @@ class FormCheckbox extends ZendFormCheckboxViewHelper
         $sElementContent = sprintf('<input %s%s', $this->createAttributesString($aAttributes), $sClosingBracket);
 
         // Attach label to input
-        $sElementContent .= $sLabel;
+        $sElementContent .= PHP_EOL . $sLabel;
 
         // Render hidden input
         if ($oElement->useHiddenElement()) {
@@ -100,7 +111,7 @@ class FormCheckbox extends ZendFormCheckboxViewHelper
                     'value' => $oElement->getUncheckedValue(),
                 ]),
                 $sClosingBracket
-            ) . $sElementContent;
+            ) . PHP_EOL . $sElementContent;
         }
 
         return $sElementContent;
@@ -110,7 +121,7 @@ class FormCheckbox extends ZendFormCheckboxViewHelper
     /**
      * getLabelContent
      *
-     * @param ElementInterface $oElement
+     * @param  ElementInterface $oElement
      * @access public
      * @return string
      */
@@ -145,7 +156,7 @@ class FormCheckbox extends ZendFormCheckboxViewHelper
             $this->oLabelHelper = $this->view->plugin('form_label');
         }
 
-        if (! ($this->oLabelHelper instanceof FormLabel)) {
+        if (!($this->oLabelHelper instanceof FormLabel)) {
             $this->oLabelHelper = new FormLabel();
         }
 

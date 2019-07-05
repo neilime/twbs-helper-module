@@ -5,66 +5,92 @@ namespace TwbsHelper\View\Helper;
 /**
  * Helper for rendering tables
  */
-class Table extends \Zend\View\Helper\AbstractHtmlElement
+class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
-    use \TwbsHelper\View\Helper\ClassAttributeTrait;
 
     const TABLE_HEAD = 'thead';
     const TABLE_BODY = 'tbody';
-    const TABLE_ROW = 'tr';
-    const TABLE_H = 'th';
+    const TABLE_ROW  = 'tr';
+    const TABLE_H    = 'th';
     const TABLE_DATA = 'td';
 
     /**
      * Generates a 'table' element
      *
      * @param array $aRows table rows
-     * @param array $aAttributes Html attributes of the "<table>" element. Default : empty
-     * @param bool $bEscape True espace html content of cells. Default True
+     * @param array $aAttributes html attributes of the "<table>" element.
+     *   Default : empty
+     * @param bool $bEscape true espace html content of cells. Default True
      * @return string The table XHTML.
      * @throws \InvalidArgumentException
      */
-    public function __invoke(array $aRows, array $aAttributes = [], $bEscape = true)
-    {
-
-        // Table class        
-        $aAttributes['class'] = join(' ', $this->addClassesAttribute($aAttributes['class'] ?? '', array('table')));
-        return '<table' . ($aAttributes ? $this->htmlAttribs($aAttributes) : '') . '>' . PHP_EOL . $this->renderTableRows($aRows, $bEscape) . '</table>';
+    public function __invoke(
+        array $aRows,
+        array $aAttributes = [],
+        bool $bEscape = true
+    ) {
+        return $this->htmlElement(
+            'table',
+            $this->setClassesToAttributes($aAttributes, ['table']),
+            $this->renderTableRows($aRows, $bEscape),
+            false
+        );
     }
 
     /**
      * Generate table rows elements
-     * @param array $aRows The array of rows.
-     * @param boolean $bEscape True espace html content of cells. Default True
+     *
+     * @param array $aRows the array of rows.
+     * @param bool $bEscape true espace html content of cells. Default True
      * @return string The rows XHTML.
      * @throws \InvalidArgumentException
      */
-    public function renderTableRows(array $aRows, $bEscape = true)
+    public function renderTableRows(array $aRows, bool $bEscape = true)
     {
-
         $sMarkup = '';
-        if (! $aRows) {
+        if (!$aRows) {
             return $sMarkup;
         }
+
         if (isset($aRows['head'])) {
-            if (! is_array($aRows['head'])) {
-                throw new \InvalidArgumentException('Argument "$aRows[\'head\']" expects an array, "' . (is_object($aRows['head']) ? get_class($aRows['head']) : gettype($aRows['head'])) . '" given');
+            if (!is_array($aRows['head'])) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        'Argument "%s" expects an array, "%s" given',
+                        '$aRows[\'head\']',
+                        is_object($aRows['head'])
+                            ? get_class($aRows['head'])
+                            : gettype($aRows['head'])
+                    )
+                );
             }
+
             $aHeadRows = $aRows['head'];
             unset($aRows['head']);
         }
+
         if (isset($aRows['body'])) {
-            if (! is_array($aRows['body'])) {
-                throw new \InvalidArgumentException('Argument "$aRows[\'body\']" expects an array, "' . (is_object($aRows['body']) ? get_class($aRows['body']) : gettype($aRows['body'])) . '" given');
+            if (!is_array($aRows['body'])) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        'Argument "%s" expects an array, "%s" given',
+                        '$aRows[\'body\']',
+                        is_object($aRows['body'])
+                            ? get_class($aRows['body'])
+                            : gettype($aRows['body'])
+                    )
+                );
             }
+
             $aBodyRows = $aRows['body'];
             unset($aRows['body']);
         }
 
-        if (! isset($aBodyRows)) {
+        if (!isset($aBodyRows)) {
             $aBodyRows = $aRows;
         }
-        if (! isset($aHeadRows) && $aBodyRows) {
+
+        if (!isset($aHeadRows) && $aBodyRows) {
             // Define head from first row keys
             $aFirstRow = current($aBodyRows);
             if (\Zend\Stdlib\ArrayUtils::hasStringKeys($aFirstRow)) {
@@ -76,141 +102,238 @@ class Table extends \Zend\View\Helper\AbstractHtmlElement
             $sMarkup .= $this->renderHeadRows($aHeadRows);
         }
 
-        if (! empty($aBodyRows)) {
-            $sMarkup .= '    <' . self::TABLE_BODY . '>' . PHP_EOL;
+        if (!empty($aBodyRows)) {
+            $sRowsContent = '';
             foreach ($aBodyRows as $iKey => $aBodyRow) {
-                if (! is_array($aBodyRow)) {
-                    throw new \InvalidArgumentException('Body row "' . $iKey . '" expects an array, "' . (is_object($aBodyRow) ? get_class($aBodyRow) : gettype($aBodyRow)) . '" given');
+                if (!is_array($aBodyRow)) {
+                    throw new \InvalidArgumentException(sprintf(
+                        'Body row "%s" expects an array, "%s" given',
+                        $iKey,
+                        is_object($aBodyRow)
+                            ? get_class($aBodyRow)
+                            : gettype($aBodyRow)
+                    ));
                 }
-                $sMarkup .= $this->renderTableRow($aBodyRow, self::TABLE_DATA, $bEscape);
+
+                $sRowsContent .= ($sRowsContent ? PHP_EOL : '') . $this->renderTableRow(
+                    $aBodyRow,
+                    self::TABLE_DATA,
+                    $bEscape
+                );
             }
-            $sMarkup .= '    </' . self::TABLE_BODY . '>' . PHP_EOL;
+
+            $sMarkup .= ($sMarkup ? PHP_EOL : '') . $this->htmlElement(self::TABLE_BODY, [], $sRowsContent, false);
         }
+
         return $sMarkup;
     }
 
+
     /**
      * Generate table "<thead>" rows elements
-     * @param array $aHeadRows
-     * @param boolean $bEscape True espace html content of cells. Default True
+     *
+     * @param arra $aHeadRows
+     * @param bool $bEscape true espace html content of cells. Default True
      * @return string The "<thead>" rows XHTML.
      * @throws \InvalidArgumentException
      */
-    public function renderHeadRows(array $aHeadRows, $bEscape = true)
+    public function renderHeadRows(array $aHeadRows, bool $bEscape = true)
     {
-        $sMarkup = '';
-        if (! $aHeadRows) {
-            return $sMarkup;
+        if (!$aHeadRows) {
+            return '';
         }
 
         if (isset($aHeadRows['attributes'])) {
             $aHeadAttributes = $aHeadRows['attributes'];
-            if (! is_array($aHeadAttributes)) {
-                throw new \InvalidArgumentException('Head "[\'attributes\']" expects an array, "' . (is_object($aHeadAttributes) ? get_class($aHeadAttributes) : gettype($aHeadAttributes)) . '" given');
+            if (!is_array($aHeadAttributes)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        'Head "[\'attributes\']" expects an array, "%s" given',
+                        is_object($aHeadAttributes)
+                            ? get_class($aHeadAttributes)
+                            : gettype($aHeadAttributes)
+                    )
+                );
             }
-            $sHeadAttributes = $this->htmlAttribs($aHeadAttributes);
             unset($aHeadRows['attributes']);
         } else {
-            $sHeadAttributes = '';
+            $aHeadAttributes = [];
         }
+
         if (isset($aHeadRows['rows'])) {
             $aHeadRows = $aHeadRows['rows'];
-            if (! is_array($aHeadRows)) {
-                throw new \InvalidArgumentException('Head "[\'rows\']" expects an array, "' . (is_object($aHeadRows) ? get_class($aHeadRows) : gettype($aHeadRows)) . '" given');
+            if (!is_array($aHeadRows)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        'Head "[\'rows\']" expects an array, "%s" given',
+                        is_object($aHeadRows)
+                            ? get_class($aHeadRows)
+                            : gettype($aHeadRows)
+                    )
+                );
             }
         }
 
-        if (! is_array(current($aHeadRows))) {
+        if (!is_array(current($aHeadRows))) {
             $aHeadRows = [$aHeadRows];
         }
 
-        $sMarkup .= '    <' . self::TABLE_HEAD . $sHeadAttributes . '>' . PHP_EOL;
+        $sHeadRowsContent = '';
         foreach ($aHeadRows as $aHeadRow) {
-            $sMarkup .= $this->renderTableRow($aHeadRow, self::TABLE_H, $bEscape);
+            $sHeadRowsContent .= ($sHeadRowsContent ? PHP_EOL : '') . $this->renderTableRow(
+                $aHeadRow,
+                self::TABLE_H,
+                $bEscape
+            );
         }
-        return $sMarkup . '    </' . self::TABLE_HEAD . '>' . PHP_EOL;
+
+        return $this->htmlElement(self::TABLE_HEAD, $aHeadAttributes, $sHeadRowsContent, false);
     }
 
     /**
      * Generate table row element "<tr>"
-     * @param array $aRow The array of cells.
-     * @param string $sDefaultCellType The default cell element (th or td) to be used
-     * @param boolean $bEscape True espace html content of cells. Default True
+     *
+     * @param array $aRow the array of cells.
+     * @param string $sDefaultCellType the default cell element
+     * (th or td) to be used
+     * @param boolean $bEscape true espace html content of cells. Default True
      * @return string The row XHTML.
      */
-    public function renderTableRow(array $aRow, $sDefaultCellType, $bEscape = true)
-    {
-
-        $sRowAttributes = '';
+    public function renderTableRow(
+        array $aRow,
+        string $sDefaultCellType,
+        bool $bEscape = true
+    ): string {
         if (isset($aRow['attributes'])) {
             $aRowAttributes = $aRow['attributes'];
-            if (! is_array($aRowAttributes)) {
-                throw new \InvalidArgumentException('Argument "$aRow[\'attributes\']" expects an array, "' . (is_object($aRowAttributes) ? get_class($aRowAttributes) : gettype($aRowAttributes)) . '" given');
+            if (!is_array($aRowAttributes)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        'Argument "%s" expects an array, "%s" given',
+                        '$aRow[\'attributes\']',
+                        is_object($aRowAttributes)
+                            ? get_class($aRowAttributes)
+                            : gettype($aRowAttributes)
+                    )
+                );
             }
-            $sRowAttributes = $this->htmlAttribs($aRowAttributes);
             unset($aRow['attributes']);
         } else {
-            $sRowAttributes = '';
+            $aRowAttributes = [];
         }
 
         if (isset($aRow['cells'])) {
             $aRow = $aRow['cells'];
-            if (! is_array($aRow)) {
-                throw new \InvalidArgumentException('Argument "$aRow[\'cells\']" expects an array, "' . (is_object($aRow) ? get_class($aRow) : gettype($aRow)) . '" given');
+            if (!is_array($aRow)) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        'Argument "%s" expects an array, "%s" given',
+                        '$aRow[\'cells\']',
+                        is_object($aRow) ? get_class($aRow) : gettype($aRow)
+                    )
+                );
             }
         }
 
-        $sMarkup = '        <' . self::TABLE_ROW . $sRowAttributes . '>' . PHP_EOL;
+        $sRowsContent = '';
         foreach ($aRow as $aCell) {
-            $sMarkup .= $this->renderTableCell($aCell, $sDefaultCellType, $bEscape);
+            $sRowsContent .= ($sRowsContent ? PHP_EOL : '') . $this->renderTableCell(
+                $aCell,
+                $sDefaultCellType,
+                $bEscape
+            );
         }
-        return $sMarkup . '        </' . self::TABLE_ROW . '>' . PHP_EOL;
+
+        return $this->htmlElement(self::TABLE_ROW, $aRowAttributes, $sRowsContent, false);
     }
 
     /**
      * Generate table cell element "<th>" or "<td>"
-     * @param scalar|array $sCell : the cell data
-     * @param string $sDefaultCellType  The default cell element (th or td) to be used
-     * @param boolean $bEscape True espace html content of cells. Default True
+     *
+     * @param scalar|array $sCell the cell data
+     * @param string $sDefaultCellType the default cell element
+     * (th or td) to be used
+     * @param boolean $bEscape true espace html content of cells. Default True
      * @return string The cell XHTML.
      * @throws \InvalidArgumentException
      */
-    public function renderTableCell($sCell, $sDefaultCellType, $bEscape = true)
-    {
-
+    public function renderTableCell(
+        $sCell,
+        string $sDefaultCellType,
+        bool $bEscape = true
+    ) {
         if (is_array($sCell)) {
-            if (! isset($sCell['data'])) {
-                throw new \InvalidArgumentException('Argument "$sCell[\'data\']" is undefined');
-            }
-            $sCellData = $sCell['data'];
-            if (! is_scalar($sCellData)) {
-                throw new \InvalidArgumentException('Argument "$sCell[\'data\']" expects a scalar value, "' . (is_object($sCellData) ? get_class($sCellData) : gettype($sCellData)) . '" given');
-            }
-            if (isset($sCell['type'])) {
-                $sCellType = $sCell['type'];
-                if (! is_string($sCellType)) {
-                    throw new \InvalidArgumentException('Argument "$sCell[\'type\']" expects a string, "' . (is_object($sCellType) ? get_class($sCellType) : gettype($sCellType)) . '" given');
-                }
-            }
-            if (isset($sCell['attributes'])) {
-                $aAttributes = $sCell['attributes'];
-                if (! is_array($aAttributes)) {
-                    throw new \InvalidArgumentException('Argument "$sCell[\'attributes\']" expects an array, "' . (is_object($aAttributes) ? get_class($aAttributes) : gettype($aAttributes)) . '" given');
-                }
-                $sAttributes = $this->htmlAttribs($aAttributes);
-            }
-        } elseif (is_scalar($sCell)) {
-            $sCellData = $sCell;
-            $sCellType = $sDefaultCellType;
-            $sAttributes = '';
-        } else {
-            throw new \InvalidArgumentException('Argument "$sCell" expects an array or a scalar value, "' . (is_object($sCell) ? get_class($sCell) : gettype($sCell)) . '" given');
+            return $this->renderTableCellFromArray($sCell, $bEscape);
+        }
+        if (is_scalar($sCell)) {
+            return $this->renderTableCellFromArray(
+                [
+                    'data' => $sCell,
+                    'type' => $sDefaultCellType,
+                ],
+                $bEscape
+            );
+        }
+        $sError = 'Argument "%s" expects %s value, "%s" given';
+        throw new \InvalidArgumentException(
+            sprintf(
+                $sError,
+                '$sCell',
+                'an array or a scalar',
+                is_object($sCell) ? get_class($sCell) : gettype($sCell)
+            )
+        );
+    }
+
+    protected function renderTableCellFromArray(array $aCell, bool $bEscape)
+    {
+        if (!isset($aCell['data'])) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    'Argument "%s" is undefined',
+                    '$sCell[\'data\']'
+                )
+            );
         }
 
-        if ($bEscape) {
-            $sCellData . $this->getView()->plugin('escapeHtml')->__invoke($sCellData);
+        $sCellData = $aCell['data'];
+        if (!is_scalar($sCellData)) {
+            throw new \InvalidArgumentException(sprintf(
+                'Argument "%s" expects a scalar value, "%s" given',
+                '$sCell[\'data\']',
+                is_object($sCellData)
+                    ? get_class($sCellData)
+                    : gettype($sCellData)
+            ));
         }
 
-        return '            <' . $sCellType . $sAttributes . '>' . $sCellData . '</' . $sCellType . '>' . PHP_EOL;
+        if (isset($aCell['type'])) {
+            $sCellType = $aCell['type'];
+            if (!is_string($sCellType)) {
+                throw new \InvalidArgumentException(sprintf(
+                    'Argument "%s" expects a string, "%s" given',
+                    '$sCell[\'type\']',
+                    is_object($sCellType)
+                        ? get_class($sCellType)
+                        : gettype($sCellType)
+                ));
+            }
+        }
+
+        $aAttributes = [];
+        if (isset($aCell['attributes'])) {
+            $aAttributes = $aCell['attributes'];
+            if (!is_array($aAttributes)) {
+                throw new \InvalidArgumentException(sprintf(
+                    'Argument "$sCell[\'attributes\']" expects an array, ' .
+                        '"%s" given',
+                    is_object($aAttributes)
+                        ? get_class($aAttributes)
+                        : gettype($aAttributes)
+                ));
+            }
+        }
+
+        return $this->htmlElement($sCellType, $aAttributes, $sCellData, $bEscape);
     }
 }

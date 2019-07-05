@@ -1,8 +1,8 @@
 <?php
+
 namespace TwbsHelper\Form\View\Helper;
 
 use DomainException;
-use Zend\Form\View\Helper\FormRow as ZendFormRowViewHelper;
 use Zend\Form\ElementInterface;
 use Zend\Form\LabelAwareInterface;
 use Zend\Form\Element\Button;
@@ -13,22 +13,10 @@ use Zend\Form\Element\Submit;
  *
  * @uses ZendFormRowViewHelper
  */
-class FormRow extends ZendFormRowViewHelper
+class FormRow extends \Zend\Form\View\Helper\FormRow
 {
-    /**
-     * @var string
-     */
-    protected static $formGroupFormat = '<div class="form-group %s">%s</div>';
-
-    /**
-     * @var string
-     */
-    protected static $horizontalLayoutFormat = '<div class="%s">%s</div>';
-
-    /**
-     * @var string
-     */
-    protected static $checkboxFormat = '<div class="form-check %s">%s</div>';
+    use \TwbsHelper\View\Helper\ClassAttributeTrait;
+    use \TwbsHelper\View\Helper\HtmlTrait;
 
     /**
      * @var string
@@ -37,6 +25,7 @@ class FormRow extends ZendFormRowViewHelper
 
     /**
      * The class that is added to element that have errors
+     *
      * @var string
      */
     protected $inputErrorClass = 'is-invalid';
@@ -46,13 +35,12 @@ class FormRow extends ZendFormRowViewHelper
      */
     protected $requiredFormat = null;
 
-
     /**
      * render
      *
      * @see    FormRow::render()
      * @param  ElementInterface $oElement
-     * @param  mixed $sLabelPosition
+     * @param  mixed            $sLabelPosition
      * @access public
      * @return string
      */
@@ -62,7 +50,7 @@ class FormRow extends ZendFormRowViewHelper
         $sElementType = $oElement->getAttribute('type');
 
         // Nothing to do for hidden elements which have no messages
-        if ('hidden' === $sElementType && ! $oElement->getMessages()) {
+        if ('hidden' === $sElementType && !$oElement->getMessages()) {
             return parent::render($oElement, $sLabelPosition);
         }
 
@@ -90,10 +78,10 @@ class FormRow extends ZendFormRowViewHelper
 
         // "has-error" validation state case
         if ($oElement->getMessages()) {
-            //Element have errors
+            // Element have errors
             if ($sInputErrorClass = $this->getInputErrorClass()) {
                 if ($sElementClass = $oElement->getAttribute('class')) {
-                    if (! preg_match('/(\s|^)' . preg_quote($sInputErrorClass, '/') . '(\s|$)/', $sElementClass)) {
+                    if (!preg_match('/(\s|^)' . preg_quote($sInputErrorClass, '/') . '(\s|$)/', $sElementClass)) {
                         $oElement->setAttribute('class', trim($sElementClass . ' ' . $sInputErrorClass));
                     }
                 } else {
@@ -107,22 +95,29 @@ class FormRow extends ZendFormRowViewHelper
 
         // Render form row
         switch (true) {
-            // Checkbox element not in horizontal form
-            case $sElementType === 'checkbox' && $sLayout !== Form::LAYOUT_HORIZONTAL && ! $oElement->getOption('form-group'):
-            // All "button" elements in inline form
+                // Checkbox element not in horizontal form
+            case $sElementType === 'checkbox'
+                && $sLayout !== Form::LAYOUT_HORIZONTAL
+                && !$oElement->getOption('form-group'):
+                // All "button" elements in inline form
             case in_array($sElementType, ['submit', 'button', 'reset'], true) && $sLayout === Form::LAYOUT_INLINE:
-                return $sElementContent . "\n";
+                return $sElementContent;
 
             default:
                 // Render element into form group
-                return $this->renderElementFormGroup($sElementContent, $this->getRowClassFromElement($oElement), $oElement->getOption('feedback'));
+                return $this->renderElementFormGroup(
+                    $sElementContent,
+                    ['class' => $this->getRowClassFromElement($oElement)],
+                    $oElement->getOption('feedback')
+                );
         }
     }
+
 
     /**
      * getRowClassFromElement
      *
-     * @param ElementInterface $oElement
+     * @param  ElementInterface $oElement
      * @access public
      * @return string
      */
@@ -138,59 +133,77 @@ class FormRow extends ZendFormRowViewHelper
         if (($sValidationState = $oElement->getOption('validation-state'))) {
             $sRowClass .= ' has-' . $sValidationState;
         }
+
         if ($oElement->getMessages()) {
             $sRowClass .= ' has-error';
         }
+
         if ($oElement->getOption('feedback')) {
             $sRowClass .= ' has-feedback';
         }
 
         // Column size
-        if (($sColumSize = $oElement->getOption('column-size')) && $oElement->getOption('twbs-layout') !== Form::LAYOUT_HORIZONTAL
+        $sColumSize = $oElement->getOption('column-size');
+        if (
+            $sColumSize
+            && $oElement->getOption('twbs-layout') !== Form::LAYOUT_HORIZONTAL
         ) {
             $sColumSize = (is_array($sColumSize)) ? $sColumSize : [$sColumSize];
-            $sRowClass .= implode('', array_map(function ($item) {
-                return ' col-' . $item;
-            }, $sColumSize));
+            $sRowClass .= implode(
+                '',
+                array_map(
+                    function ($item) {
+                        return ' col-' . $item;
+                    },
+                    $sColumSize
+                )
+            );
         }
 
-        //Additional row class
+        // Additional row class
         if ($sAddRowClass = $oElement->getOption('twbs-row-class')) {
             $sRowClass .= ' ' . $sAddRowClass;
         }
+
         return $sRowClass;
     }
 
-
     /**
-     * renderElementFormGroup
+     * Render form group HTML
      *
-     * @param string $sElementContent
-     * @param string $sRowClass
-     * @param string $sFeedbackElement A feedback element that should be rendered within the element, optional
+     * @param  string $sElementContent
+     * @param  string $sRowClass
+     * @param  string $sFeedbackElement A feedback element that should be rendered within the element, optional
      * @access public
      * @return string
      * @throws \InvalidArgumentException
      */
-    public function renderElementFormGroup($sElementContent, $sRowClass, $sFeedbackElement = '')
-    {
-        if (! is_string($sElementContent)) {
-            throw new \InvalidArgumentException('Argument "$sElementContent" expects a string, "' . (is_object($sElementContent) ? get_class($sElementContent) : gettype($sElementContent)) . '" given');
+    public function renderElementFormGroup(
+        string $sElementContent,
+        array $aAttributes = [],
+        string $sFeedbackElement = null
+    ): string {
+        if (!is_string($sElementContent)) {
+            throw new \InvalidArgumentException(sprintf(
+                'Argument "$sElementContent" expects a string, "%s" given',
+                is_object($sElementContent) ? get_class($sElementContent) : gettype($sElementContent)
+            ));
         }
-
-        if (! is_string($sRowClass)) {
-            throw new \InvalidArgumentException('Argument "$sRowClass" expects a string, "' . (is_object($sRowClass) ? get_class($sRowClass) : gettype($sRowClass)) . '" given');
-        }
-
-        if ($sFeedbackElement && ! is_string($sFeedbackElement)) {
-            throw new \InvalidArgumentException('Argument "$sFeedbackElement" expects a string, "' . (is_object($sFeedbackElement) ? get_class($sFeedbackElement) : gettype($sFeedbackElement)) . '" given');
-        }
-
         if ($sFeedbackElement) {
+            if (!is_string($sFeedbackElement)) {
+                throw new \InvalidArgumentException(sprintf(
+                    'Argument "$sFeedbackElement" expects a string, "%s" given',
+                    is_object($sFeedbackElement) ? get_class($sFeedbackElement) : gettype($sFeedbackElement)
+                ));
+            }
             $sElementContent .= '<i class="' . $sFeedbackElement . ' form-control-feedback"></i>';
         }
 
-        return sprintf(static::$formGroupFormat, $sRowClass, $sElementContent) . "\n";
+        return $this->htmlElement(
+            'div',
+            $this->setClassesToAttributes($aAttributes, ['form-group']),
+            $sElementContent
+        );
     }
 
 
@@ -198,11 +211,11 @@ class FormRow extends ZendFormRowViewHelper
      * renderLabel
      * Render element's label
      *
-     * @param ElementInterface $oElement
+     * @param  ElementInterface $oElement
      * @access protected
      * @return string
      */
-    protected function renderLabel(ElementInterface $oElement)
+    protected function renderLabel(ElementInterface $oElement): string
     {
         if (($sLabel = $oElement->getLabel()) && ($oTranslator = $this->getTranslator())) {
             $sLabel = $oTranslator->translate($sLabel, $this->getTranslatorTextDomain());
@@ -211,105 +224,101 @@ class FormRow extends ZendFormRowViewHelper
         return $sLabel;
     }
 
+    protected function renderLabelContent(ElementInterface $oElement): string
+    {
+
+        $sLabelContent = $this->renderLabel($oElement);
+        /*
+         * Multicheckbox elements have to be handled differently
+         * as the HTML standard does not allow nested labels.
+         * The semantic way is to group them inside a fieldset
+         */
+        $sElementType = $oElement->getAttribute('type');
+
+        // Button element is a special case, because label is always rendered inside it
+        if (($oElement instanceof Button) or ($oElement instanceof Submit)) {
+            return '';
+        } else {
+            $aLabelAttributes = $oElement->getLabelAttributes() ?: $this->labelAttributes;
+
+            $aLabelClasses = [];
+
+            // Validation state
+            if (
+                $sElementType !== 'checkbox'
+                && ($oElement->getOption('validation-state') || $oElement->getMessages())
+            ) {
+                $aLabelClasses[] = 'control-label';
+            }
+
+            $sLayout = $oElement->getOption('twbs-layout');
+            switch ($sLayout) {
+                    // Hide label for "inline" layout
+                case Form::LAYOUT_INLINE:
+                    if ($sElementType !== 'checkbox' && !$oElement->getOption('showLabel')) {
+                        $aLabelClasses[] = 'sr-only';
+                    }
+                    break;
+
+                case Form::LAYOUT_HORIZONTAL:
+                    if ($sElementType !== 'checkbox') {
+                        $aLabelClasses[] = 'control-label';
+                    }
+                    break;
+            }
+
+            if ($aLabelClasses) {
+                $aLabelAttributes['class'] = join(' ', $this->addClassesAttribute(
+                    $aLabelAttributes['class'] ?? '',
+                    $aLabelClasses
+                ));
+            }
+
+            if ($aLabelAttributes) {
+                $oElement->setLabelAttributes($aLabelAttributes);
+            }
+
+            $oLabelHelper = $this->getLabelHelper();
+            $sLabelOpen  = $oLabelHelper->openTag($oElement->getAttribute('id') ? $oElement : $aLabelAttributes);
+            $sLabelClose = $oLabelHelper->closeTag();
+
+            // Allow label html escape disable
+            if (!$oElement instanceof LabelAwareInterface || !$oElement->getLabelOption('disable_html_escape')) {
+                $sLabelContent = $this->getEscapeHtmlHelper()->__invoke($sLabelContent);
+            }
+        }
+
+        // Add required string if element is required
+        if (
+            $this->requiredFormat &&
+            $oElement->getAttribute('required') && strpos($this->requiredFormat, $sLabelContent) === false
+        ) {
+            $sLabelContent .= $this->requiredFormat;
+        }
+
+        return $sLabelOpen . $sLabelContent . $sLabelClose;
+    }
 
     /**
-     * renderElement
-     * Render element
      *
-     * @param ElementInterface $oElement
-     * @param string $sLabelPosition
+     * @param  ElementInterface $oElement
+     * @param  string           $sLabelPosition
      * @access protected
-     * @return type
+     * @return string
      * @throws DomainException
      */
-    protected function renderElement(ElementInterface $oElement, $sLabelPosition = null)
+    protected function renderElement(ElementInterface $oElement, $sLabelPosition = null): string
     {
         // Retrieve expected layout
         $sLayout = $oElement->getOption('twbs-layout');
+        $sElementType = $oElement->getAttribute('type');
 
         // Define label position
         if ($sLabelPosition === null) {
             $sLabelPosition = $this->getLabelPosition();
         }
 
-        // Render label
-        $sLabelOpen = $sLabelClose = $sLabelContent = $sElementType = '';
-
-        if ($sLabelContent = $this->renderLabel($oElement)) {
-            /*
-             * Multicheckbox elements have to be handled differently
-             * as the HTML standard does not allow nested labels.
-             * The semantic way is to group them inside a fieldset
-             */
-            $sElementType = $oElement->getAttribute('type');
-
-            // Button element is a special case, because label is always rendered inside it
-            if (($oElement instanceof Button) or ( $oElement instanceof Submit)) {
-                $sLabelContent = '';
-            } else {
-                $aLabelAttributes = $oElement->getLabelAttributes() ? : $this->labelAttributes;
-
-                //Validation state
-                if ($oElement->getOption('validation-state') || $oElement->getMessages()) {
-                    if (empty($aLabelAttributes['class'])) {
-                        $aLabelAttributes['class'] = 'control-label';
-                    } elseif (! preg_match('/(\s|^)control-label(\s|$)/', $aLabelAttributes['class']) && $sElementType !== 'checkbox') {
-                        $aLabelAttributes['class'] = trim($aLabelAttributes['class'] . ' control-label');
-                    }
-                }
-
-                $oLabelHelper = $this->getLabelHelper();
-
-                switch ($sLayout) {
-                    // Hide label for "inline" layout
-                    case Form::LAYOUT_INLINE:
-                        if ($sElementType !== 'checkbox') {
-                            if ($sElementType !== 'checkbox') {
-                                if (empty($aLabelAttributes['class']) && empty($oElement->getOption('showLabel'))) {
-                                    $aLabelAttributes['class'] = 'sr-only';
-                                } elseif (empty($oElement->getOption('showLabel')) && ! preg_match('/(\s|^)sr-only(\s|$)/', $aLabelAttributes['class'])) {
-                                    $aLabelAttributes['class'] = trim($aLabelAttributes['class'] . ' sr-only');
-                                }
-                            }
-                        }
-                        break;
-
-                    case Form::LAYOUT_HORIZONTAL:
-                        if ($sElementType !== 'checkbox') {
-                            if (empty($aLabelAttributes['class'])) {
-                                $aLabelAttributes['class'] = 'control-label';
-                            } else {
-                                if (! preg_match('/(\s|^)control-label(\s|$)/', $aLabelAttributes['class'])) {
-                                    $aLabelAttributes['class'] = trim($aLabelAttributes['class'] . ' control-label');
-                                }
-                            }
-                        }
-                        break;
-                }
-
-                if ($aLabelAttributes) {
-                    $oElement->setLabelAttributes($aLabelAttributes);
-                }
-
-                $sLabelOpen  = $oLabelHelper->openTag($oElement->getAttribute('id') ? $oElement : $aLabelAttributes);
-                $sLabelClose = $oLabelHelper->closeTag();
-
-                // Allow label html escape desable
-                //$sLabelContent = $this->getEscapeHtmlHelper()->__invoke($sLabelContent);
-
-                if (! $oElement instanceof LabelAwareInterface || ! $oElement->getLabelOption('disable_html_escape')) {
-                    $sLabelContent = $this->getEscapeHtmlHelper()->__invoke($sLabelContent);
-                }
-            }
-        }
-
-        //Add required string if element is required
-        if ($this->requiredFormat &&
-            $oElement->getAttribute('required') &&
-            strpos($this->requiredFormat, $sLabelContent) === false
-        ) {
-            $sLabelContent .= $this->requiredFormat;
-        }
+        $sLabelContent = $this->renderLabelContent($oElement);
 
         switch ($sLayout) {
             case null:
@@ -318,12 +327,19 @@ class FormRow extends ZendFormRowViewHelper
 
                 // Checkbox elements are a special case, element is already rendered into label
                 if ($sElementType === 'checkbox') {
-                    $sElementContent = sprintf(static::$checkboxFormat, $oElement->getOption('twbs-row-class'), $sElementContent);
-                } else {
+                    $sElementContent = $this->htmlElement(
+                        'div',
+                        $this->setClassesToAttributes(
+                            ['class' => $oElement->getOption('twbs-row-class')],
+                            ['form-group', 'form-check']
+                        ),
+                        $sElementContent
+                    );
+                } elseif ($sLabelContent) {
                     if ($sLabelPosition === self::LABEL_PREPEND) {
-                        $sElementContent = $sLabelOpen . $sLabelContent . $sLabelClose . $sElementContent;
+                        $sElementContent = $sLabelContent . PHP_EOL . $sElementContent;
                     } else {
-                        $sElementContent = $sElementContent . $sLabelOpen . $sLabelContent . $sLabelClose;
+                        $sElementContent = $sElementContent . PHP_EOL . $sLabelContent;
                     }
                 }
 
@@ -358,26 +374,31 @@ class FormRow extends ZendFormRowViewHelper
 
                 // Checkbox elements are a special case, element is rendered into label
                 if ($sElementType === 'checkbox') {
-                    return sprintf(
-                        static::$horizontalLayoutFormat,
-                        $sClass,
-                        sprintf(static::$checkboxFormat, $sElementContent)
+                    return $this->htmlElement(
+                        'div',
+                        ['class' => $sClass],
+                        $this->htmlElement(
+                            'div',
+                            ['class' => 'form-check'],
+                            $sElementContent
+                        )
                     );
                 }
 
-                if ($sLabelPosition === self::LABEL_PREPEND) {
-                    return $sLabelOpen . $sLabelContent . $sLabelClose . sprintf(
-                        static::$horizontalLayoutFormat,
-                        $sClass,
-                        $sElementContent
-                    );
-                } else {
-                    return sprintf(
-                        static::$horizontalLayoutFormat,
-                        $sClass,
-                        $sElementContent
-                    ) . $sLabelOpen . $sLabelContent . $sLabelClose;
+                $sElementContent = $this->htmlElement(
+                    'div',
+                    ['class' => $sClass],
+                    $sElementContent
+                );
+
+                if (!$sLabelContent) {
+                    return $sElementContent;
                 }
+
+                if ($sLabelPosition === self::LABEL_PREPEND) {
+                    return $sLabelContent . PHP_EOL . $sElementContent;
+                }
+                return $sElementContent . PHP_EOL . $sLabelContent;
         }
 
         throw new DomainException('Layout "' . $sLayout . '" is not valid');
@@ -388,7 +409,7 @@ class FormRow extends ZendFormRowViewHelper
      * renderHelpBlock
      * Render element's help block
      *
-     * @param ElementInterface $oElement
+     * @param  ElementInterface $oElement
      * @access protected
      * @return string
      */

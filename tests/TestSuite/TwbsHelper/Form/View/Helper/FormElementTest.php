@@ -2,7 +2,6 @@
 
 namespace TestSuite\TwbsHelper\View\Helper;
 
-
 use TwbsHelper\Form\View\Helper\FormElement;
 use Zend\Filter\StringToLower;
 use Zend\Filter\StringTrim;
@@ -26,11 +25,14 @@ class FormElementTest extends \PHPUnit\Framework\TestCase
     /**
      * @see \PHPUnit_Framework_TestCase::setUp()
      */
-    public function setUp() : void
+    public function setUp(): void
     {
         $oViewHelperPluginManager = \TestSuite\Bootstrap::getServiceManager()->get('ViewHelperManager');
         $oRenderer = new \Zend\View\Renderer\PhpRenderer();
-        $this->formElementHelper = $oViewHelperPluginManager->get('formElement')->setView($oRenderer->setHelperPluginManager($oViewHelperPluginManager));
+        $this->formElementHelper = $oViewHelperPluginManager
+            ->get('formElement')
+            ->setView($oRenderer->setHelperPluginManager($oViewHelperPluginManager));
+
         $this->testform = new Form();
         $this->testform->add([
             'name' => 'email',
@@ -55,6 +57,4 @@ class FormElementTest extends \PHPUnit\Framework\TestCase
             '<input type="email" name="email" maxlength="254" class="form-control" value="">'
         );
     }
-
-
 }

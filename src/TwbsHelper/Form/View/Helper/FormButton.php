@@ -1,84 +1,139 @@
 <?php
+
 namespace TwbsHelper\Form\View\Helper;
 
-use DomainException;
-use LogicException;
-use Exception;
-use Zend\Form\LabelAwareInterface;
-use Zend\Form\View\Helper\FormButton as ZendFormButtonViewHelper;
-use Zend\Form\ElementInterface;
-
-/**
- * FormButton
- *
- * @uses ZendFormButtonViewHelper
- */
-class FormButton extends ZendFormButtonViewHelper
+class FormButton extends \Zend\Form\View\Helper\FormButton
 {
     use \TwbsHelper\View\Helper\ClassAttributeTrait;
 
     const ICON_PREPEND = 'prepend';
     const ICON_APPEND  = 'append';
 
-    // @var string
-    protected static $dropdownContainerFormat = '<div class="btn-group %s">%s</div>';
-
-    // @var string
-    protected static $dropdownToggleFormat = '%s <b class="caret"></b>';
-
-    // @var string
-    protected static $dropdownCaretFormat = '<button type="button" class="dropdown-toggle %s" data-toggle="dropdown"><span class="caret"></span></button>';
+    protected static $dropdownContainerFormat = '<div %s>%s</div>';
 
     // Allowed variants
     protected static $variants = [
         'danger',
-        'dark', // Added in BS4
+        'dark',
+        // Added in BS4
         'info',
-        'light', // Added in BS4
+        'light',
+        // Added in BS4
         'link',
         'primary',
-        'secondary', // BS4 Renamed .btn-default to .btn-secondary
+        'secondary',
+        // BS4 Renamed .btn-default to .btn-secondary
         'success',
         'warning',
     ];
 
-    // Allowed sizes
-    protected static $sizes = ['sm', 'lg'];
+    /**
+     * Invoke helper as functor
+     *
+     * Proxies to {@link render()}.
+     *
+     * @param array|\Zend\Form\ElementInterface|null $oElement
+     * @param null|string           $sButtonContent
+     * @return string|FormButton
+     */
+    public function __invoke($oElement = null, $sButtonContent = null)
+    {
+        if (!$oElement) {
+            return $this;
+        }
 
+        return $this->render($oElement, $sButtonContent);
+    }
 
     /**
-     * render
      * Accept following extra options:
      * * string variant:  'danger', 'dark', 'info', 'light', 'link', 'primary', 'secondary', 'success', 'warning'
      * * string size:  'sm', 'lg'
      * * bool block
-     * @see  FormButton::render()
-     * @param  ElementInterface $oElement
-     * @param  string $sButtonContent
-     * @throws LogicException
-     * @throws Exception
+     *
+     * @see FormButton::render()
+     * @param array|\Zend\Form\ElementInterface $oElement
+     * @param string $sButtonContent
+     * @throws \InvalidArgumentException
      * @return string
      */
-    public function render(ElementInterface $oElement, $sButtonContent = null)
+    public function render($oElement, $sButtonContent = null)
     {
+        if (
+            is_array($oElement)
+            || ($oElement instanceof \Traversable
+                && !($oElement instanceof \Zend\Form\ElementInterface))
+        ) {
+            $oFactory = new \Zend\Form\Factory();
+
+            // Set default type if none given
+            if (empty($oElement['type'])) {
+                $oElement['type'] = \Zend\Form\Element\Button::class;
+            }
+
+            $oElement = $oFactory->create($oElement);
+        } elseif (!($oElement instanceof \Zend\Form\ElementInterface)) {
+            throw new \InvalidArgumentException(sprintf(
+                'Button expects an instanceof \Zend\Form\ElementInterface or an array / Traversable, "%s" given',
+                is_object($oElement) ? get_class($oElement) : gettype($oElement)
+            ));
+        }
+
+        // Dropdown button
+        if ($oElement->getOption('dropdown')) {
+            return $this->getView()->dropdown()->render($oElement);
+        }
+
+        $this->defineButtonClasses($oElement);
 
 
+        $sButtonContent = $this->renderButtonContent($oElement, $sButtonContent);
+
+        $sTag = $oElement->getOption('tag');
+
+        $aValidTagAttributes = $this->validTagAttributes;
+        if ($sTag === 'a') {
+            $this->validTagAttributes['href'] = true;
+            unset(
+                $this->validTagAttributes['type'],
+                $this->validTagAttributes['value'],
+                $this->validTagAttributes['name']
+            );
+            $oElement->setAttribute('type', null);
+            $oElement->setAttribute('name', 0);
+
+            if (!$oElement->getAttribute('role')) {
+                $oElement->setAttribute('role', 'button');
+            }
+        }
+
+        $sMarkup =  $this->openTag($oElement) . $sButtonContent . $this->closeTag();
+        $this->validTagAttributes = $aValidTagAttributes;
+
+        if ($sTag && $sTag !== 'button') {
+            unset($this->booleanAttributes['type'], $this->booleanAttributes['value']);
+
+            $sMarkup = str_replace(
+                ['<button', '</button>'],
+                ['<' . $sTag,  '</' . $sTag . '>'],
+                $sMarkup
+            );
+        }
+        return $sMarkup;
+    }
+
+    protected function defineButtonClasses(\Zend\Form\ElementInterface $oElement)
+    {
         $aClassesToAdd = ['btn'];
 
         // Variant option
-        if (
-            ($sVariant = $oElement->getOption('variant')) && (
-                // Basic variants
-                in_array($sVariant, static::$variants, true)
-                // Outline variants
-                || preg_match('/^outline-(' . join('|', static::$variants) . ')$/', $sVariant))
-        ) {
-            $aClassesToAdd[] = 'btn-' . $sVariant;
+        if ($sVariant = $oElement->getOption('variant')) {
+            $aClassesToAdd[] = $this->getVariantClass($sVariant, 'btn', 'outline');
         }
 
         // Size option
-        if (($sSize = $oElement->getOption('size')) && in_array($sSize, static::$sizes, true)) {
-            $aClassesToAdd[] = 'btn-' . $sSize;
+        if ($sSize = $oElement->getOption('size')) {
+            $aClassesToAdd[] = $this->getSizeClass($sSize, 'btn');
         }
 
         // Block option
@@ -86,25 +141,17 @@ class FormButton extends ZendFormButtonViewHelper
             $aClassesToAdd[] = 'btn-block';
         }
 
-        $aClasses = $this->addClassesAttribute($oElement->getAttribute('class') ?? '', $aClassesToAdd);
+        $aClasses = $this->addClassesAttribute(($oElement->getAttribute('class') ?? ''), $aClassesToAdd);
 
         if (!preg_grep('/^btn-.*(' . join('|', static::$variants) . ')$/', $aClasses)) {
             $aClasses[] = 'btn-secondary';
         }
 
-
         $oElement->setAttribute('class', join(' ', $aClasses));
+    }
 
-        // Retrieve icon options
-        if (null !== ($aIconOptions = $oElement->getOption('glyphicon'))) {
-            $sIconHelperMethod = 'glyphicon';
-        } elseif (null !== ($aIconOptions = $oElement->getOption('fontAwesome'))) {
-            $sIconHelperMethod = 'fontAwesome';
-        } elseif (null !== ($aIconOptions = $oElement->getOption('icon'))) {
-            // Direct icon tag provided, disable helper
-            $sIconHelperMethod = null;
-        }
-
+    protected function renderButtonContent(\Zend\Form\ElementInterface $oElement, string $sButtonContent = null)
+    {
         // Define button content
         if (null === $sButtonContent) {
             $sButtonContent = $oElement->getLabel();
@@ -112,174 +159,114 @@ class FormButton extends ZendFormButtonViewHelper
             if (!$sButtonContent) {
                 $sButtonContent = $oElement->getValue();
             }
+        }
 
-            if (null === $sButtonContent && !$aIconOptions) {
-                throw new DomainException(sprintf(
-                    '%s expects either button content as the second argument, ' .
-                        'or that the element provided has a label value, a glyphicon option, or a fontAwesome option; none found',
-                    __METHOD__
-                ));
-            }
-
+        if ($sButtonContent) {
             // Translate button content upon request
             if (null !== ($oTranslator = $this->getTranslator())) {
                 $sButtonContent = $oTranslator->translate($sButtonContent, $this->getTranslatorTextDomain());
             }
+
+            if (
+                !$oElement instanceof \Zend\Form\LabelAwareInterface
+                || !$oElement->getLabelOption('disable_html_escape')
+            ) {
+                $oEscapeHtmlHelper = $this->getEscapeHtmlHelper();
+                $sButtonContent    = $oEscapeHtmlHelper($sButtonContent);
+            }
         }
 
-        if (!$oElement instanceof LabelAwareInterface || !$oElement->getLabelOption('disable_html_escape')) {
-            $oEscapeHtmlHelper = $this->getEscapeHtmlHelper();
-            $sButtonContent    = $oEscapeHtmlHelper($sButtonContent);
+        $sButtonContent = $this->renderIconContent($oElement, $sButtonContent);
+        if (null === $sButtonContent) {
+            throw new \DomainException(sprintf(
+                '%s expects either button content as the second argument, ' .
+                    'or that the element provided has a label value, ' .
+                    'a glyphicon option, or a fontAwesome option; none found',
+                __METHOD__
+            ));
+        }
+        return $sButtonContent;
+    }
+
+    protected function renderIconContent(\Zend\Form\ElementInterface $oElement, string $sButtonContent = null)
+    {
+        // Retrieve icon options
+        $aIconOptions = $oElement->getOption('icon');
+        if (!$aIconOptions) {
+            return $sButtonContent;
         }
 
-        // Manage icon
-        if ($aIconOptions) {
-            // Set default icon options if scalar provided
-            if (is_scalar($aIconOptions)) {
-                $aIconOptions = [
-                    'icon'     => $aIconOptions,
-                    'position' => self::ICON_PREPEND
-                ];
+        // Set default icon options if scalar provided
+        if (is_scalar($aIconOptions)) {
+            $aIconOptions = [
+                'class'     => $aIconOptions,
+                'position' => self::ICON_PREPEND,
+            ];
+        } elseif (is_array($aIconOptions)) {
+            if (empty($aIconOptions['class'])) {
+                throw new \InvalidArgumentException('"[icon][class]" option is undefined');
             }
 
-            // Validate icon options type
-            if (!is_array($aIconOptions)) {
-                throw new LogicException(sprintf(
-                    '"glyphicon" and "fontAwesome" or "icon" button option expects a scalar value or an array, "%s" given',
-                    is_object($aIconOptions) ? get_class($aIconOptions) : gettype($aIconOptions)
+            if (!is_scalar($aIconOptions['class'])) {
+                throw new \InvalidArgumentException(sprintf(
+                    '"[icon][class]" option expects a scalar value, "%s" given',
+                    is_object($aIconOptions['class'])
+                        ? get_class($aIconOptions['class'])
+                        : gettype($aIconOptions['class'])
                 ));
             }
 
-            $position = 'prepend';
-
-            // Set icon position
-            if (!empty($aIconOptions['position'])) {
-                $position = $aIconOptions['position'];
-            }
-
-            // Set icon
-            if (!empty($aIconOptions['icon'])) {
-                $icon = $aIconOptions['icon'];
-            }
-
-            // Validate icon option type
-            if (!is_scalar($icon)) {
-                throw new LogicException(sprintf(
-                    'Direct icon, Glyphicon and fontAwesome "icon" option expects a scalar value, "%s" given',
-                    is_object($icon) ? get_class($icon) : gettype($icon)
-                ));
-
-                // Validate icon position option type
-            } elseif (!is_string($position)) {
-                throw new LogicException(sprintf(
-                    'Direct icon, Glyphicon and fontAwesome "position" option expects a string, "%s" given',
-                    is_object($position) ? get_class($position) : gettype($position)
-                ));
-
-                // Validate icon position option value
-            } elseif ($position !== self::ICON_PREPEND && $position !== self::ICON_APPEND) {
-                throw new LogicException(sprintf(
-                    'Direct icon, Glyphicon and fontAwesome "position" option allows "' . self::ICON_PREPEND . '" or "' . self::ICON_APPEND . '", "%s" given',
-                    is_object($position) ? get_class($position) : gettype($position)
-                ));
-            }
-
-            // fontAwesome or glyphicon provided
-            if ($sIconHelperMethod) {
-                // Button content provided
-                if ($sButtonContent) {
-                    // Prepend icon to button content
-                    if ($position === self::ICON_PREPEND) {
-                        $sButtonContent = $this->getView()->{$sIconHelperMethod}(
-                            $icon,
-                            isset($aIconOptions['attributes']) ? $aIconOptions['attributes'] : null
-                        ) . " {$sButtonContent}";
-
-                        // Append icon to button content
-                    } else {
-                        $sButtonContent .= ' ' . $this->getView()->{$sIconHelperMethod}(
-                            $icon,
-                            isset($aIconOptions['attributes']) ? $aIconOptions['attributes'] : null
-                        );
-                    }
-
-                    // No button content provided, set icon as button content
-                } else {
-                    $sButtonContent = $this->getView()->{$sIconHelperMethod}(
-                        $icon,
-                        isset($aIconOptions['attributes']) ? $aIconOptions['attributes'] : null
-                    );
+            if (isset($aIconOptions['position'])) {
+                if (!is_string($aIconOptions['position'])) {
+                    throw new \InvalidArgumentException(sprintf(
+                        '"[icon][position]" option expects a string, "%s" given',
+                        is_object($aIconOptions['position'])
+                            ? get_class($aIconOptions['position'])
+                            : gettype($aIconOptions['position'])
+                    ));
                 }
-
-                // Direct icon tag provided
-            } else {
-                // Button content provided
-                if ($sButtonContent) {
-                    // Prepend predefined icon to button content
-                    if ($position === self::ICON_PREPEND) {
-                        $sButtonContent = $aIconOptions['icon'] . ' ' . $sButtonContent;
-
-                        // Append icon to button content
-                    } else {
-                        $sButtonContent .= ' ' . $aIconOptions['icon'];
-                    }
-
-                    // No button content provided, set icon as button content
-                } else {
-                    $sButtonContent = $aIconOptions['icon'];
+                if (!in_array($aIconOptions['position'], [self::ICON_PREPEND, self::ICON_APPEND, true])) {
+                    throw new \InvalidArgumentException(sprintf(
+                        '"[icon][position]" option allows "%s" or "%s", "%s" given',
+                        self::ICON_PREPEND,
+                        self::ICON_APPEND,
+                        $aIconOptions['position']
+                    ));
                 }
             }
+        } else {
+            throw new \InvalidArgumentException(sprintf(
+                '"icon" button option expects a scalar value or an array, "%s" given',
+                is_object($aIconOptions) ? get_class($aIconOptions) : gettype($aIconOptions)
+            ));
         }
 
+        // Set icon position
+        $sIconPosition = $aIconOptions['position'] ?? 'prepend';
+        $sIconContent = '<i class="' . $aIconOptions['class'] . '"></i>';
 
-        // Dropdown button
-        if ($aDropdownOptions = $oElement->getOption('dropdown')) {
-            // Validate dropdown option type
-            if (!is_array($aDropdownOptions)) {
-                throw new LogicException(sprintf(
-                    '"dropdown" option expects an array, "%s" given',
-                    is_object($aDropdownOptions) ? get_class($aDropdownOptions) : gettype($aDropdownOptions)
-                ));
-            }
+        return $sButtonContent
+            ? $sIconPosition === self::ICON_PREPEND
+            // Append icon to button content
+            ? $sIconContent . ' ' . $sButtonContent
+            // Prepend icon to button content
+            : $sButtonContent . ' ' . $sIconContent
+            // No button content provided, set icon as button content
+            : $sIconContent;
+    }
 
-            // Split dropdown button
-            if (empty($aDropdownOptions['split'])) {
-                // Set class attribute
-                if (!preg_match('/(\s|^)dropdown-toggle(\s|$)/', $sClass = $oElement->getAttribute('class'))) {
-                    $oElement->setAttribute('class', trim($sClass . ' dropdown-toggle'));
-                }
-
-                // Set data-toggle attribute
-                $oElement->setAttribute('data-toggle', 'dropdown');
-
-                $sMarkup = $this->openTag($oElement) .
-                    sprintf(static::$dropdownToggleFormat, $sButtonContent) .
-                    $this->closeTag();
-
-                // Regular dropdown button
-            } else {
-                // Add caret element
-                $sMarkup = $this->openTag($oElement) .
-                    $sButtonContent .
-                    $this->closeTag() .
-                    sprintf(static::$dropdownCaretFormat, $oElement->getAttribute('class'));
-            }
-
-            // No container
-            if ($oElement->getOption('disable-twbs')) {
-                return $sMarkup . $this->getView()->dropdown()->renderListItems($aDropdownOptions);
-            }
-
-            // Render button + dropdown
-            return sprintf(
-                static::$dropdownContainerFormat,
-                // Drop way
-                empty($aDropdownOptions['dropup']) ? '' : 'dropup',
-                $sMarkup .
-                    $this->getView()->dropdown()->renderListItems($aDropdownOptions)
-            );
+    /**
+     * Determine button type to use
+     *
+     * @param \Zend\Form\ElementInterface $element
+     * @return string
+     */
+    protected function getType(\Zend\Form\ElementInterface $oElement)
+    {
+        $sTag = $oElement->getOption('tag');
+        if (!$sTag || $sTag === 'button') {
+            return parent::getType($oElement);
         }
-
-        return $this->openTag($oElement) . $sButtonContent . $this->closeTag();
+        return false;
     }
 }

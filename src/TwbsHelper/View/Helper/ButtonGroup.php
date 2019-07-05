@@ -1,42 +1,25 @@
 <?php
-namespace TwbsHelper\View\Helper;
 
-use Traversable;
-use LogicException;
-use Zend\Form\View\Helper\AbstractHelper;
-use Zend\Form\ElementInterface;
-use Zend\Form\Factory;
+namespace TwbsHelper\View\Helper;
 
 /**
  * ButtonGroup
  *
  * @uses AbstractHelper
  */
-class ButtonGroup extends AbstractHelper
+class ButtonGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
-    /**
-     * @var string
-     */
-    protected static $buttonGroupContainerFormat = '<div %s>%s</div>';
 
     /**
-     * @var string
-     */
-    protected static $buttonGroupJustifiedFormat = '<div class="btn-group">%s</div>';
-
-    /**
-     * @var TwbsHelperFormElement
+     * @var \TwbsHelper\Form\View\Helper\FormElement
      */
     protected $formElementHelper;
 
 
     /**
-     * __invoke
-     *
-     * @param  array $aButtons
-     * @param  array $aButtonGroupOptions
-     * @access public
-     * @return TwbsHelperButtonGroup|string
+     * @param array $aButtons
+     * @param array $aButtonGroupOptions
+     * @return \TwbsHelper\View\Helper\ButtonGroup|string
      */
     public function __invoke(array $aButtons = null, array $aButtonGroupOptions = null)
     {
@@ -45,86 +28,91 @@ class ButtonGroup extends AbstractHelper
 
     /**
      * Render button groups markup
-     * @param  array $aButtons
-     * @param  array $aButtonGroupOptions
-     * @throws LogicException
-     * @return string
-     */
-    public function render(array $aButtons, array $aButtonGroupOptions = null)
-    {
-        // Button group container attributes
-        if (empty($aButtonGroupOptions['attributes'])) {
-            $aButtonGroupOptions['attributes'] = ['class' => 'btn-group'];
-        } else {
-            if (! is_array($aButtonGroupOptions['attributes'])) {
-                throw new LogicException('"attributes" option expects an array, "' . gettype($aButtonGroupOptions['attributes']) . '" given');
-            }
-
-            if (empty($aButtonGroupOptions['attributes']['class'])) {
-                $aButtonGroupOptions['attributes']['class'] = 'btn-group';
-            } elseif (! preg_match('/(\s|^)(?:btn-group|btn-group-vertical)(\s|$)/', $aButtonGroupOptions['attributes']['class'])) {
-                $aButtonGroupOptions['attributes']['class'] .= ' btn-group';
-            }
-        }
-
-        // Render button group
-        return sprintf(
-            static::$buttonGroupContainerFormat,
-            //Container attributes
-            $this->createAttributesString($aButtonGroupOptions['attributes']),
-            //Buttons
-            $this->renderButtons(
-                $aButtons,
-                strpos($aButtonGroupOptions['attributes']['class'], 'btn-group-justified') !== false
-            )
-        );
-    }
-
-
-    /**
-     * renderButtons
-     * Render buttons markup
      *
      * @param  array $aButtons
-     * @access protected
+     * @param  array $aButtonGroupOptions
+     * @throws \LogicException
      * @return string
      */
-    protected function renderButtons(array $aButtons, $bJustified = false)
+    public function render(array $aButtons, array $aButtonGroupOptions = null): string
+    {
+        // Button group container attributes: regular or vertical
+        $aClasses = empty($aButtonGroupOptions['vertical']) ? ['btn-group'] : ['btn-group-vertical'];
+
+        // Size option
+        if (!empty($aButtonGroupOptions['size'])) {
+            $aClasses[] = $this->getSizeClass($aButtonGroupOptions['size'], 'btn-group');
+        }
+
+        $aClasses = $this->addClassesAttribute(
+            $aButtonGroupOptions['attributes']['class'] ?? '',
+            $aClasses
+        );
+
+        $aAttributes = array_merge(
+            $aButtonGroupOptions['attributes'] ?? [],
+            ['class' => join(' ', $aClasses)]
+        );
+
+        $sMarkup = $this->renderButtons(
+            $aButtons,
+            strpos($aAttributes['class'], 'btn-group-justified') !== false
+        );
+
+        // Render button group
+        return $this->htmlElement('div', $aAttributes, $sMarkup);
+    }
+
+    /**
+     * Render buttons markup
+     *
+     * @param array $aButtons
+     * @return string
+     */
+    protected function renderButtons(array $aButtons, bool $bJustified = false): string
     {
         $sMarkup = '';
-
         foreach ($aButtons as $oButton) {
-            if (is_array($oButton) ||
-                ($oButton instanceof Traversable &&
-                ! ($oButton instanceof ElementInterface))
+            if (
+                is_array($oButton)
+                || ($oButton instanceof \Traversable
+                    && !($oButton instanceof \Zend\Form\ElementInterface))
             ) {
-                $oFactory = new Factory();
+                $oFactory = new \Zend\Form\Factory();
                 $oButton = $oFactory->create($oButton);
-            } elseif (! ($oButton instanceof ElementInterface)) {
-                throw new LogicException(sprintf(
-                    'Button expects an instanceof Zend\Form\ElementInterface or an array / Traversable, "%s" given',
+            } elseif (!($oButton instanceof \Zend\Form\ElementInterface)) {
+                throw new \LogicException(sprintf(
+                    'Button expects an instanceof \Zend\Form\ElementInterface or an array / Traversable, "%s" given',
                     is_object($oButton) ? get_class($oButton) : gettype($oButton)
                 ));
             }
 
+            $aDropdownOptions = $oButton->getOption('dropdown');
+            if ($aDropdownOptions) {
+                if (\Zend\Stdlib\ArrayUtils::isList($aDropdownOptions)) {
+                    $aDropdownOptions = ['items' => $aDropdownOptions];
+                }
+                $aDropdownOptions['noDropdownContainer'] = true;
+                $oButton->setOption('dropdown', $aDropdownOptions);
+            }
             $sButtonMarkup = $this->getFormElementHelper()->__invoke($oButton);
 
-            $sMarkup .= $bJustified ? sprintf(static::$buttonGroupJustifiedFormat, $sButtonMarkup) : $sButtonMarkup;
+            if ($bJustified || $aDropdownOptions) {
+                $sButtonMarkup = $this->htmlElement('div', ['class' => 'btn-group', 'role' => 'group'], $sButtonMarkup);
+            }
+
+            $sMarkup .= ($sMarkup ? PHP_EOL : '') . $sButtonMarkup;
         }
 
         return $sMarkup;
     }
 
-
     /**
-     * getFormElementHelper
-     *
-     * @access public
-     * @return TwbsHelperFormElement
+     * @return \TwbsHelper\Form\View\Helper\FormElement
      */
-    public function getFormElementHelper()
+    public function getFormElementHelper(): \TwbsHelper\Form\View\Helper\FormElement
     {
-        if ($this->formElementHelper instanceof TwbsHelperFormElement) {
+        if ($this->formElementHelper instanceof \TwbsHelper\Form\View\Helper\FormElement) {
             return $this->formElementHelper;
         }
 
@@ -132,6 +120,8 @@ class ButtonGroup extends AbstractHelper
             return $this->formElementHelper = $this->view->plugin('form_element');
         }
 
-        return $this->formElementHelper = new TwbsHelperFormElement();
+        return $this->formElementHelper = new \TwbsHelper\Form\View\Helper\FormElement(
+            new \TwbsHelper\Options\ModuleOptions()
+        );
     }
 }

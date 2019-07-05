@@ -1,14 +1,14 @@
 <?php
 
 // Documentation test config file for "Components / Badges" part
-return array(
+return [
     'title' => 'Badges',
     'url' => '%bootstrap-url%/components/badge/',
-    'tests' => array(
-        array(
+    'tests' => [
+        [
             'title' => 'Example',
             'url' => '%bootstrap-url%/components/badge/#example',
-            'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 // H1
                 echo '<h1>Example heading ' . $oView->badge('New') . '</h1>' . PHP_EOL;
                 // H2
@@ -28,11 +28,11 @@ return array(
             '<h4>Example heading <span class="badge&#x20;badge-default">New</span></h4>' . PHP_EOL .
             '<h5>Example heading <span class="badge&#x20;badge-default">New</span></h5>' . PHP_EOL .
             '<h6>Example heading <span class="badge&#x20;badge-default">New</span></h6>',
-        ),
-        array(
+        ],
+        [
             'title' => 'Contextual variations',
             'url' => '%bootstrap-url%/components/badge/#contextual-variations',
-            'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 // Default
                 echo $oView->badge('Default') . PHP_EOL;
                 // Primary
@@ -52,11 +52,11 @@ return array(
             '<span class="badge&#x20;badge-info">Info</span>' . PHP_EOL .
             '<span class="badge&#x20;badge-warning">Warning</span>' . PHP_EOL .
             '<span class="badge&#x20;badge-danger">Danger</span>',
-        ),
-        array(
+        ],
+        [
             'title' => 'Pill badges',
             'url' => '%bootstrap-url%/components/badge/#pill-badges',
-            'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 // Default
                 echo $oView->badge('Default', 'default', 'pill') . PHP_EOL;
                 // Primary
@@ -76,23 +76,23 @@ return array(
             '<span class="badge&#x20;badge-info&#x20;badge-pill">Info</span>' . PHP_EOL .
             '<span class="badge&#x20;badge-pill&#x20;badge-warning">Warning</span>' . PHP_EOL .
             '<span class="badge&#x20;badge-danger&#x20;badge-pill">Danger</span>',
-        ),
-        array(
+        ],
+        [
             'title' => 'Links',
             'url' => '%bootstrap-url%/components/badge/#links',
-            'rendering' => function(\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 // Default
-                echo $oView->badge('Default', 'default', 'link', array('href' => '#')) . PHP_EOL;
+                echo $oView->badge('Default', 'default', 'link', ['href' => '#']) . PHP_EOL;
                 // Primary
-                echo $oView->badge('Primary', 'primary', 'link', array('href' => '#')) . PHP_EOL;
+                echo $oView->badge('Primary', 'primary', 'link', ['href' => '#']) . PHP_EOL;
                 // Success
-                echo $oView->badge('Success', 'success', 'link', array('href' => '#')) . PHP_EOL;
+                echo $oView->badge('Success', 'success', 'link', ['href' => '#']) . PHP_EOL;
                 // Info
-                echo $oView->badge('Info', 'info', 'link', array('href' => '#')) . PHP_EOL;
+                echo $oView->badge('Info', 'info', 'link', ['href' => '#']) . PHP_EOL;
                 // Warning
-                echo $oView->badge('Warning', 'warning', 'link', array('href' => '#')) . PHP_EOL;
+                echo $oView->badge('Warning', 'warning', 'link', ['href' => '#']) . PHP_EOL;
                 // Danger
-                echo $oView->badge('Danger', 'danger', 'link', array('href' => '#'));
+                echo $oView->badge('Danger', 'danger', 'link', ['href' => '#']);
             },
             'expected' => '<a href="&#x23;" class="badge&#x20;badge-default">Default</a>' . PHP_EOL .
             '<a href="&#x23;" class="badge&#x20;badge-primary">Primary</a>' . PHP_EOL .
@@ -100,6 +100,6 @@ return array(
             '<a href="&#x23;" class="badge&#x20;badge-info">Info</a>' . PHP_EOL .
             '<a href="&#x23;" class="badge&#x20;badge-warning">Warning</a>' . PHP_EOL .
             '<a href="&#x23;" class="badge&#x20;badge-danger">Danger</a>',
-        ),
-    ),
-);
+        ],
+    ],
+];

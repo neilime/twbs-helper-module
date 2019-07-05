@@ -11,6 +11,7 @@ use Zend\Stdlib\AbstractOptions;
  */
 class ModuleOptions extends AbstractOptions
 {
+
     // @var array
     protected $ignoredViewHelpers;
 
@@ -25,6 +26,7 @@ class ModuleOptions extends AbstractOptions
 
     // @var array
     protected $typeMap;
+
 
     /**
      * getIgnoredViewHelpers
@@ -41,7 +43,7 @@ class ModuleOptions extends AbstractOptions
     /**
      * setIgnoredViewHelpers
      *
-     * @param array $aIgnoredViewHelpers
+     * @param  array $aIgnoredViewHelpers
      * @access public
      * @return \TwbsHelper\Options\ModuleOptions
      */
@@ -68,7 +70,7 @@ class ModuleOptions extends AbstractOptions
     /**
      * setIgnoredViewHelpers
      *
-     * @param array $aValidTagAttributes
+     * @param  array $aValidTagAttributes
      * @access public
      * @return \TwbsHelper\Options\ModuleOptions
      */
@@ -95,7 +97,7 @@ class ModuleOptions extends AbstractOptions
     /**
      * setValidTagAttributePrefixes
      *
-     * @param array $aValidTagAttributePrefixes
+     * @param  array $aValidTagAttributePrefixes
      * @access public
      * @return \TwbsHelper\Options\ModuleOptions
      */
@@ -122,7 +124,7 @@ class ModuleOptions extends AbstractOptions
     /**
      * setClassMap
      *
-     * @param array $aClassMap
+     * @param  array $aClassMap
      * @access public
      * @return \TwbsHelper\Options\ModuleOptions
      */
@@ -149,7 +151,7 @@ class ModuleOptions extends AbstractOptions
     /**
      * setTypeMap
      *
-     * @param array $aTypeMap
+     * @param  array $aTypeMap
      * @access public
      * @return \TwbsHelper\Options\ModuleOptions
      */

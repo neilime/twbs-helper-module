@@ -11,9 +11,12 @@ use Zend\Form\FormInterface;
  */
 class FormErrors extends AbstractHelper
 {
-    protected $sDefaultErrorText       = 'There were errors in the form submission';
-    protected $sMessageOpenFormat      = '<h4>%s</h4><ul><li>';
-    protected $sMessageCloseString     = '</li></ul>';
+    protected $sDefaultErrorText = 'There were errors in the form submission';
+
+    protected $sMessageOpenFormat = '<h4>%s</h4><ul><li>';
+
+    protected $sMessageCloseString = '</li></ul>';
+
     protected $sMessageSeparatorString = '</li><li>';
 
 
@@ -22,8 +25,8 @@ class FormErrors extends AbstractHelper
      * Invoke as function
      *
      * @param  \Zend\Form\FormInterface $oForm
-     * @param  string $sMessage
-     * @param  string $bDismissable
+     * @param  string                   $sMessage
+     * @param  string                   $bDismissable
      * @access public
      * @return string|null
      */
@@ -49,7 +52,7 @@ class FormErrors extends AbstractHelper
      * render
      * Renders the error messages.
      *
-     * @param \Zend\Form\FormInterface $oForm
+     * @param  \Zend\Form\FormInterface $oForm
      * @access public
      * @return string
      */
@@ -64,18 +67,16 @@ class FormErrors extends AbstractHelper
                     $aMessages[] = sprintf(
                         '<a href="#%s">%s</a>',
                         $oForm->get($fieldName)->getAttribute('id'),
-                        $oForm->get($fieldName)->getLabel() . ': ' . $sFormMessage
+                        $oForm->get($fieldName)->getLabel().': '.$sFormMessage
                     );
                 } else {
-                    $aMessages[] = $oForm->get($fieldName)->getLabel() . ': ' . $sFormMessage;
+                    $aMessages[] = $oForm->get($fieldName)->getLabel().': '.$sFormMessage;
                 }
             }
         }
 
         return $this->dangerAlert(
-            $errorHtml .
-            implode($this->sMessageSeparatorString, $aMessages) .
-            $this->sMessageCloseString,
+            $errorHtml.implode($this->sMessageSeparatorString, $aMessages).$this->sMessageCloseString,
             $bDismissable
         );
     }
@@ -85,8 +86,8 @@ class FormErrors extends AbstractHelper
      * dangerAlert
      * Creates and returns a "danger" alert.
      *
-     * @param string  $content
-     * @param boolean $bDismissable
+     * @param  string  $content
+     * @param  boolean $bDismissable
      * @return string
      */
     public function dangerAlert($content, $bDismissable = false)

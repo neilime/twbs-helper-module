@@ -1,19 +1,10 @@
 <?php
 
+// phpcs:disable 
 namespace TestSuite;
 
-error_reporting(E_ALL | E_STRICT);
-chdir(__DIR__);
-
-// Composer autoloading
-if (!file_exists($sComposerAutoloadPath = __DIR__ . '/../vendor/autoload.php')) {
-    throw new \LogicException('Composer autoload file "' . $sComposerAutoloadPath . '" does not exist');
-}
-if (false === (include $sComposerAutoloadPath)) {
-    throw new \LogicException('An error occured while including composer autoload file "' . $sComposerAutoloadPath . '"');
-}
-
-class Bootstrap {
+class Bootstrap
+{
 
     /**
      * @var \Zend\ServiceManager\ServiceManager
@@ -28,19 +19,26 @@ class Bootstrap {
     /**
      * Initialize bootstrap
      */
-    public static function init() {
+    public static function init()
+    {
         // Load the user-defined test configuration file
         if (!file_exists($sApplicationConfigPath = __DIR__ . '/config/application-config.php')) {
-            throw new \LogicException('Application configuration file "' . $sApplicationConfigPath . '" does not exist');
+            throw new \LogicException(sprintf(
+                'Application configuration file "%s" does not exist',
+                $sApplicationConfigPath
+            ));
         }
         if (false === ($aApplicationConfig = include $sApplicationConfigPath)) {
-            throw new \LogicException('An error occured while including application configuration file "' . $sApplicationConfigPath . '"');
+            throw new \LogicException(sprintf(
+                'An error occured while including application configuration file "%"',
+                $sApplicationConfigPath
+            ));
         }
 
         // Prepare the service manager
         static::$config = $aApplicationConfig;
         $oServiceManager = new \Zend\ServiceManager\ServiceManager();
-        $oServiceManagerConfig = new \Zend\Mvc\Service\ServiceManagerConfig(isset(static::$config['service_manager']) ? static::$config['service_manager'] : array());
+        $oServiceManagerConfig = new \Zend\Mvc\Service\ServiceManagerConfig(static::$config['service_manager'] ??  []);
         $oServiceManagerConfig->configureServiceManager($oServiceManager);
         $oServiceManager->setService('ApplicationConfig', static::$config);
 
@@ -53,14 +51,16 @@ class Bootstrap {
     /**
      * @return \Zend\ServiceManager\ServiceManager
      */
-    public static function getServiceManager() {
+    public static function getServiceManager()
+    {
         return static::$serviceManager;
     }
 
     /**
      * @return array
      */
-    public static function getConfig() {
+    public static function getConfig()
+    {
         return static::$config;
     }
 
@@ -69,7 +69,8 @@ class Bootstrap {
      * @param string $sPath
      * @return boolean|string
      */
-    protected static function findParentPath($sPath) {
+    protected static function findParentPath($sPath)
+    {
         $sCurrentDir = __DIR__;
         $sPreviousDir = '.';
         while (!is_dir($sPreviousDir . '/' . $sPath)) {
@@ -81,7 +82,19 @@ class Bootstrap {
         }
         return $sCurrentDir . '/' . $sPath;
     }
+}
 
+error_reporting(E_ALL | E_STRICT);
+chdir(__DIR__);
+// Composer autoloading
+if (!file_exists($sComposerAutoloadPath = __DIR__ . '/../vendor/autoload.php')) {
+    throw new \LogicException('Composer autoload file "' . $sComposerAutoloadPath . '" does not exist');
+}
+if (false === (include $sComposerAutoloadPath)) {
+    throw new \LogicException(sprintf(
+        'An error occured while including composer autoload file "%s"',
+        $sComposerAutoloadPath
+    ));
 }
 
 Bootstrap::init();

@@ -12,10 +12,12 @@ use Zend\ServiceManager\ServiceLocatorInterface;
  */
 class ModuleOptionsFactory implements FactoryInterface
 {
+
+
     /**
      * createService
      *
-     * @param ServiceLocatorInterface $oServiceLocator
+     * @param  ServiceLocatorInterface $oServiceLocator
      * @access public
      * @return \TwbsHelper\Options\ModuleOptions
      */
@@ -28,9 +30,9 @@ class ModuleOptionsFactory implements FactoryInterface
     /**
      * __invoke
      *
-     * @param ContainerInterface $oContainer
-     * @param string $sRequestedName
-     * @param array $aOptions
+     * @param  ContainerInterface $oContainer
+     * @param  string             $sRequestedName
+     * @param  array              $aOptions
      * @access public
      * @return \TwbsHelper\Options\ModuleOptions
      */
@@ -43,7 +45,7 @@ class ModuleOptionsFactory implements FactoryInterface
     /**
      * createServiceWithConfig
      *
-     * @param array $aConfig
+     * @param  array $aConfig
      * @access protected
      * @return \TwbsHelper\Options\ModuleOptions
      */

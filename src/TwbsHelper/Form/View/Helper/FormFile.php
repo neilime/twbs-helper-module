@@ -1,4 +1,5 @@
 <?php
+
 namespace TwbsHelper\Form\View\Helper;
 
 use Zend\Form\ElementInterface;
@@ -12,6 +13,8 @@ use Zend\Form\View\Helper\FormInput;
  */
 class FormFile extends FormInput
 {
+    use \TwbsHelper\View\Helper\ClassAttributeTrait;
+
     /**
      * Attributes valid for the input tag type="file"
      *
@@ -27,6 +30,7 @@ class FormFile extends FormInput
         'required'  => true,
         'type'      => true,
     ];
+
 
     /**
      * render
@@ -48,9 +52,9 @@ class FormFile extends FormInput
             ));
         }
 
-        $aAttributes          = $oElement->getAttributes();
-        $aAttributes['type']  = $this->getType($oElement);
-        $aAttributes['name']  = $sName;
+        $aAttributes         = $oElement->getAttributes();
+        $aAttributes['type'] = $this->getType($oElement);
+        $aAttributes['name'] = $sName;
 
         if (array_key_exists('multiple', $aAttributes) && $aAttributes['multiple']) {
             $aAttributes['name'] .= '[]';
@@ -58,15 +62,17 @@ class FormFile extends FormInput
 
         $sValue = $oElement->getValue();
 
-        if (is_array($sValue) && isset($sValue['name']) && ! is_array($sValue['name'])) {
+        if (is_array($sValue) && isset($sValue['name']) && !is_array($sValue['name'])) {
             $aAttributes['value'] = $sValue['name'];
         } elseif (is_string($sValue)) {
             $aAttributes['value'] = $sValue;
         }
 
         // Add BS4 form-control-file class if not set
-        $aAttributes['class']  = ! empty($aAttributes['class']) ? $aAttributes['class'] : '';
-        $aAttributes['class'] .= (false === strpos($aAttributes['class'], 'form-control-file')) ? ' form-control-file' : '';
+        $aAttributes['class'] = join(' ', $this->addClassesAttribute(
+            $aAttributes['class'] ?? '',
+            ['form-control-file']
+        ));
 
         return sprintf(
             '<input %s%s',
@@ -74,6 +80,7 @@ class FormFile extends FormInput
             $this->getInlineClosingBracket()
         );
     }
+
 
     /**
      * Determine input type to use

@@ -11,6 +11,7 @@ use Zend\View\Helper\AbstractHelper;
  */
 class FormStatic extends AbstractHelper
 {
+
     /**
      * @var string
      */
@@ -39,8 +40,8 @@ class FormStatic extends AbstractHelper
     /**
      * render
      *
-     * @see \Zend\Form\View\Helper\AbstractHelper::render()
-     * @param ElementInterface $oElement
+     * @see    \Zend\Form\View\Helper\AbstractHelper::render()
+     * @param  ElementInterface $oElement
      * @access public
      * @return string
      */
