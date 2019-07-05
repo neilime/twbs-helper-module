@@ -35,7 +35,7 @@ return [
             'buttonGroup'   => 'TwbsHelper\View\Helper\ButtonGroup',
             'buttonToolbar' => 'TwbsHelper\View\Helper\ButtonToolbar',
             'card'          => 'TwbsHelper\View\Helper\Card',
-            'cardColumn'     => 'TwbsHelper\View\Helper\CardColumn',
+            'cardColumns'     => 'TwbsHelper\View\Helper\CardColumns',
             'cardDeck'     => 'TwbsHelper\View\Helper\CardDeck',
             'cardGroup'     => 'TwbsHelper\View\Helper\CardGroup',
             'carousel'     => 'TwbsHelper\View\Helper\Carousel',

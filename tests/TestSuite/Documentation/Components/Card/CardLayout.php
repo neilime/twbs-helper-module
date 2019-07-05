@@ -289,7 +289,7 @@ return [
             'title' => 'Card columns',
             'url' => '%bootstrap-url%/components/card/#card-columns',
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-                echo $oView->cardColumn([
+                echo $oView->cardColumns([
                     [
                         'imgTop' => ['images/demo-sample.svg', ['alt' => '...',]],
                         'title' => 'Card title that wraps to a new line',
@@ -358,7 +358,7 @@ return [
                     ],
                 ]);
             },
-            'expected' => '<div class="card-column">' . PHP_EOL .
+            'expected' => '<div class="card-columns">' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
                 '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">'
                 . PHP_EOL .
