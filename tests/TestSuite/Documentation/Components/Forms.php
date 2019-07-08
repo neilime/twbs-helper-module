@@ -6,5 +6,6 @@ return [
     'url' => '%bootstrap-url%/components/forms/',
     'tests' => [
         include __DIR__ . DIRECTORY_SEPARATOR . 'Forms/Overview.php',
+        include __DIR__ . DIRECTORY_SEPARATOR . 'Forms/FormControls.php',
     ],
 ];

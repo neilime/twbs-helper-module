@@ -56,9 +56,9 @@ return [
             'formMultiCheckbox' => 'TwbsHelper\Form\View\Helper\FormMultiCheckbox',
             'formRadio'         => 'TwbsHelper\Form\View\Helper\FormRadio',
             'formRow'           => 'TwbsHelper\Form\View\Helper\FormRow',
+            'formSelect'        => 'TwbsHelper\Form\View\Helper\FormSelect',
             'formStatic'        => 'TwbsHelper\Form\View\Helper\FormStatic',
             'formErrors'        => 'TwbsHelper\Form\View\Helper\FormErrors',
-
 
             // ZF3
             'form_button'         => 'TwbsHelper\Form\View\Helper\FormButton',
@@ -80,6 +80,7 @@ return [
             'formmulticheckbox'   => 'TwbsHelper\Form\View\Helper\FormMultiCheckbox',
             'formradio'           => 'TwbsHelper\Form\View\Helper\FormRadio',
             'formrow'             => 'TwbsHelper\Form\View\Helper\FormRow',
+            'formselect'          => 'TwbsHelper\Form\View\Helper\FormSelect',
             'formstatic'          => 'TwbsHelper\Form\View\Helper\FormStatic',
             'formerrors'          => 'TwbsHelper\Form\View\Helper\FormErrors',
 
@@ -90,7 +91,6 @@ return [
             'formpassword' => 'Zend\Form\View\Helper\FormPassword',
             'formtext'     => 'Zend\Form\View\Helper\FormText',
             'formtextarea' => 'Zend\Form\View\Helper\FormTextarea',
-            'formselect'   => 'Zend\Form\View\Helper\FormSelect',
             'forminput'    => 'Zend\Form\View\Helper\FormInput',
             'formhidden'   => 'Zend\Form\View\Helper\FormHidden',
         ],
