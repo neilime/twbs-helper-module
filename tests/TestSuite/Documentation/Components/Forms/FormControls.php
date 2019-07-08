@@ -47,7 +47,7 @@ return [
                         'name' => 'multiple_select',
                         'type' => 'select',
                         'options' => [
-                            'label' => 'Example select',
+                            'label' => 'Example multiple select',
                             'value_options' => [
                                 1 => 1,
                                 2 => 2,
@@ -75,6 +75,18 @@ return [
                         ],
                     ],
                 ],
+                [
+                    'spec' => [
+                        'name' => 'file_input',
+                        'options' => [
+                            'label' => 'Example file input'
+                        ],
+                        'attributes' => [
+                            'type' => 'file',
+                            'id' => 'exampleFormControlFile1',
+                        ],
+                    ],
+                ],
             ],
         ]);
 
@@ -97,7 +109,7 @@ return [
         '        </select>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '    <div class="form-group">' . PHP_EOL .
-        '        <label for="exampleFormControlSelect2">Example select</label>' . PHP_EOL .
+        '        <label for="exampleFormControlSelect2">Example multiple select</label>' . PHP_EOL .
         '        <select name="multiple_select&#x5B;&#x5D;" id="exampleFormControlSelect2" ' .
         'multiple="multiple" class="form-control">' . PHP_EOL .
         '            <option value="1">1</option>' . PHP_EOL .
@@ -111,6 +123,11 @@ return [
         '        <label for="exampleFormControlTextarea1">Example textarea</label>' . PHP_EOL .
         '        <textarea name="textarea" id="exampleFormControlTextarea1" rows="3" class="form-control">' .
         '</textarea>' . PHP_EOL .
+        '    </div>' . PHP_EOL .
+        '    <div class="form-group">' . PHP_EOL .
+        '        <label for="exampleFormControlFile1">Example file input</label>' . PHP_EOL .
+        '        <input name="file_input" type="file" id="exampleFormControlFile1" class="form-control-file">'
+        . PHP_EOL .
         '    </div>' . PHP_EOL .
         '</form>',
 ];
