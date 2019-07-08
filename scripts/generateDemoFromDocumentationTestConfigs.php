@@ -140,14 +140,14 @@ function convertTestConfigForDemoPage(string $sDemoPageFilePath, string $sTitle,
             $sRenderingContent .= PHP_EOL;
         }
 
-        if (preg_match('/^\)+[;|,]$/', $sLine) || $sLine === '}') {
+        if (preg_match('/^[\)|\]]+[;|,]$/', $sLine) || $sLine === '}') {
             $iIndentation--;
         }
 
         $sRenderingContent .= str_repeat(' ', $iIndentation * 4) . $sLine;
 
         $sLastChar = substr($sLine, -1);
-        if ($sLastChar === '{' || $sLastChar === '(') {
+        if ($sLastChar === '{' || $sLastChar === '(' || $sLastChar === '[') {
             $iIndentation++;
         }
     }
