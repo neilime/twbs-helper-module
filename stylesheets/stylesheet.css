@@ -843,3 +843,9 @@ dl dd {
     position: static;
     display: block;
 }
+
+.tab-pane::after {
+    display: block;
+    clear: both;
+    content: "";
+}
