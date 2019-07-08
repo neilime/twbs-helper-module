@@ -4,6 +4,7 @@
 - [\TwbsHelper\Form\Element\StaticElement](#class-twbshelperformelementstaticelement)
 - [\TwbsHelper\Form\View\Helper\FormErrors](#class-twbshelperformviewhelperformerrors)
 - [\TwbsHelper\Form\View\Helper\FormCheckbox](#class-twbshelperformviewhelperformcheckbox)
+- [\TwbsHelper\Form\View\Helper\FormSelect](#class-twbshelperformviewhelperformselect)
 - [\TwbsHelper\Form\View\Helper\FormElement](#class-twbshelperformviewhelperformelement)
 - [\TwbsHelper\Form\View\Helper\Form](#class-twbshelperformviewhelperform)
 - [\TwbsHelper\Form\View\Helper\FormStatic](#class-twbshelperformviewhelperformstatic)
@@ -101,6 +102,22 @@
 *This class extends \Zend\Form\View\Helper\FormCheckbox*
 
 *This class implements \Zend\View\Helper\HelperInterface, \Zend\I18n\Translator\TranslatorAwareInterface*
+
+<hr />
+
+### Class: \TwbsHelper\Form\View\Helper\FormSelect
+
+| Visibility | Function |
+|:-----------|:---------|
+| public | <strong>addProperIndentation(</strong><em>\string</em> <strong>$sContent</strong>, <em>\bool</em> <strong>$bForceIndentation=false</strong>, <em>\string</em> <strong>$sIndentation=null</strong>)</strong> : <em>void</em> |
+| public | <strong>htmlElement(</strong><em>\string</em> <strong>$sTag</strong>, <em>array</em> <strong>$aAttributes=array()</strong>, <em>\string</em> <strong>$sContent=null</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
+| public | <strong>renderOptions(</strong><em>array</em> <strong>$aOptions</strong>, <em>array</em> <strong>$aSelectedOptions=array()</strong>)</strong> : <em>string</em><br /><em>Render an array of options Individual options should be of the form: <code> array( 'value'    => 'value', 'label'    => 'label', 'disabled' => $booleanFlag, 'selected' => $booleanFlag, ) </code></em> |
+| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>)</strong> : <em>void</em> |
+| protected | <strong>isHTML(</strong><em>\string</em> <strong>$sString</strong>)</strong> : <em>bool</em> |
+
+*This class extends \Zend\Form\View\Helper\FormSelect*
+
+*This class implements \Zend\I18n\Translator\TranslatorAwareInterface, \Zend\View\Helper\HelperInterface*
 
 <hr />
 
