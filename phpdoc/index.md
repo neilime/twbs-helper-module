@@ -159,15 +159,21 @@
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>__invoke(</strong><em>\Zend\Form\FormInterface</em> <strong>$oForm=null</strong>, <em>string</em> <strong>$sFormLayout=null</strong>)</strong> : <em>\TwbsHelper\Form\View\Helper\TwbsHelperForm/string</em><br /><em>__invoke</em> |
+| public | <strong>__invoke(</strong><em>\Zend\Form\FormInterface</em> <strong>$oForm=null</strong>, <em>string</em> <strong>$sFormLayout=null</strong>)</strong> : <em>\TwbsHelper\Form\View\Helper\TwbsHelperForm/string</em> |
 | public | <strong>addProperIndentation(</strong><em>\string</em> <strong>$sContent</strong>, <em>\bool</em> <strong>$bForceIndentation=false</strong>, <em>\string</em> <strong>$sIndentation=null</strong>)</strong> : <em>void</em> |
 | public | <strong>htmlElement(</strong><em>\string</em> <strong>$sTag</strong>, <em>array</em> <strong>$aAttributes=array()</strong>, <em>\string</em> <strong>$sContent=null</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
-| public | <strong>openTag(</strong><em>[\TwbsHelper\Form\View\Helper\Form](#class-twbshelperformviewhelperform)Interface/null/\Zend\Form\FormInterface</em> <strong>$oForm=null</strong>)</strong> : <em>string</em><br /><em>openTag Generate an opening form tag</em> |
-| public | <strong>render(</strong><em>\Zend\Form\FormInterface</em> <strong>$oForm</strong>, <em>string/null</em> <strong>$sFormLayout=null</strong>)</strong> : <em>string</em><br /><em>render Render a form from the provided $oForm,</em> |
+| public | <strong>render(</strong><em>\Zend\Form\FormInterface</em> <strong>$oForm</strong>, <em>\string</em> <strong>$sFormLayout=null</strong>)</strong> : <em>string</em><br /><em>Render a form from the provided $oForm,</em> |
+| protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
 | protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>)</strong> : <em>void</em> |
+| protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getSizeClass(</strong><em>\string</em> <strong>$sSize</strong>, <em>\string</em> <strong>$sPrefix</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getSizes()</strong> : <em>mixed</em> |
+| protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getVariants()</strong> : <em>mixed</em> |
 | protected | <strong>isHTML(</strong><em>\string</em> <strong>$sString</strong>)</strong> : <em>bool</em> |
-| protected | <strong>renderElements(</strong><em>\Zend\Form\FormInterface</em> <strong>$oForm</strong>, <em>string/null</em> <strong>$sFormLayout=null</strong>)</strong> : <em>string</em><br /><em>renderElements</em> |
-| protected | <strong>setFormClass(</strong><em>\Zend\Form\FormInterface</em> <strong>$oForm</strong>, <em>string/null</em> <strong>$sFormLayout=null</strong>)</strong> : <em>\TwbsHelper\Form\View\Helper\TwbsHelper\Form\View\Helper\TwbsHelperForm</em><br /><em>setFormClass Sets form layout class</em> |
+| protected | <strong>renderElements(</strong><em>\Zend\Form\FormInterface</em> <strong>$oForm</strong>, <em>\string</em> <strong>$sFormLayout=null</strong>)</strong> : <em>string</em> |
+| protected | <strong>setClassesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
 
 *This class extends \Zend\Form\View\Helper\Form*
 
@@ -264,7 +270,7 @@
 | Visibility | Function |
 |:-----------|:---------|
 | public | <strong>addProperIndentation(</strong><em>\string</em> <strong>$sContent</strong>, <em>\bool</em> <strong>$bForceIndentation=false</strong>, <em>\string</em> <strong>$sIndentation=null</strong>)</strong> : <em>void</em> |
-| public | <strong>getRowClassFromElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>string</em> |
+| public | <strong>getRowClassesFromElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>string</em> |
 | public | <strong>htmlElement(</strong><em>\string</em> <strong>$sTag</strong>, <em>array</em> <strong>$aAttributes=array()</strong>, <em>\string</em> <strong>$sContent=null</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
 | public | <strong>render(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>string/null</em> <strong>$sLabelPosition=null</strong>)</strong> : <em>string</em> |
 | public | <strong>renderElementFormGroup(</strong><em>\string</em> <strong>$sElementContent</strong>, <em>array</em> <strong>$aAttributes=array()</strong>, <em>\string</em> <strong>$sFeedbackElement=null</strong>)</strong> : <em>string</em><br /><em>Render form group HTML</em> |
@@ -465,9 +471,10 @@
 |:-----------|:---------|
 | public | <strong>__invoke(</strong><em>array</em> <strong>$aRows</strong>, <em>array</em> <strong>$aAttributes=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string The table XHTML.</em><br /><em>Generates a 'table' element Default : empty</em> |
 | public | <strong>renderHeadRows(</strong><em>\TwbsHelper\View\Helper\arra/array</em> <strong>$aHeadRows</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string The "<thead>" rows XHTML.</em><br /><em>Generate table "<thead>" rows elements</em> |
-| public | <strong>renderTableCell(</strong><em>\TwbsHelper\View\Helper\scalar/array</em> <strong>$sCell</strong>, <em>\string</em> <strong>$sDefaultCellType</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string The cell XHTML.</em><br /><em>Generate table cell element "<th>" or "<td>" (th or td) to be used</em> |
+| public | <strong>renderTableCell(</strong><em>\TwbsHelper\View\Helper\scalar/array</em> <strong>$sCell</strong>, <em>\string</em> <strong>$sDefaultCellType</strong>, <em>\bool</em> <strong>$bIsFirstCol</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string The cell XHTML.</em><br /><em>Generate table cell element "<th>" or "<td>" (th or td) to be used</em> |
 | public | <strong>renderTableRow(</strong><em>array</em> <strong>$aRow</strong>, <em>\string</em> <strong>$sDefaultCellType</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string The row XHTML.</em><br /><em>Generate table row element "<tr>" (th or td) to be used</em> |
 | public | <strong>renderTableRows(</strong><em>array</em> <strong>$aRows</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string The rows XHTML.</em><br /><em>Generate table rows elements</em> |
+| protected | <strong>renderTableCation(</strong><em>mixed</em> <strong>$sCaption</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
 | protected | <strong>renderTableCellFromArray(</strong><em>array</em> <strong>$aCell</strong>, <em>\bool</em> <strong>$bEscape</strong>)</strong> : <em>void</em> |
 
 *This class extends [\TwbsHelper\View\Helper\AbstractHtmlElement](#class-twbshelperviewhelperabstracthtmlelement)*
