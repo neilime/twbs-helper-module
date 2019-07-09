@@ -138,28 +138,59 @@ return [
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 // Create element
                 $oFactory = new \Zend\Form\Factory();
+
+                // Large input
                 $oElement = $oFactory->create([
                     'name' => 'lg',
                     'type' => 'text',
                     'options' => ['size' => 'lg'],
                     'attributes' => ['placeholder' => '.form-control-lg'],
                 ]);
-                echo $oView->formElement($oElement).PHP_EOL;
+                echo $oView->formElement($oElement) . PHP_EOL;
 
+                // Default input
                 $oElement = $oFactory->create([
                     'name' => 'default',
                     'type' => 'text',
                     'attributes' => ['placeholder' => 'Default input'],
                 ]);
-                echo $oView->formElement($oElement).PHP_EOL;
+                echo $oView->formElement($oElement) . PHP_EOL;
 
+                // Small input
                 $oElement = $oFactory->create([
                     'name' => 'sm',
                     'type' => 'text',
                     'options' => ['size' => 'sm'],
                     'attributes' => ['placeholder' => '.form-control-sm'],
                 ]);
-                echo $oView->formElement($oElement).PHP_EOL;
+                echo $oView->formElement($oElement) . PHP_EOL;
+
+                // Large select
+                $oElement = $oFactory->create([
+                    'name' => 'lg',
+                    'type' => 'select',
+                    'options' => ['size' => 'lg', 'value_options' => ['Large select']],
+                    'attributes' => ['placeholder' => '.form-control-lg'],
+                ]);
+                echo $oView->formElement($oElement) . PHP_EOL;
+
+                // Default select
+                $oElement = $oFactory->create([
+                    'name' => 'default',
+                    'type' => 'select',
+                    'options' => ['value_options' => ['Default select']],
+                    'attributes' => ['placeholder' => 'Default input'],
+                ]);
+                echo $oView->formElement($oElement) . PHP_EOL;
+
+                // Small select
+                $oElement = $oFactory->create([
+                    'name' => 'sm',
+                    'type' => 'select',
+                    'options' => ['size' => 'sm', 'value_options' => ['Small select']],
+                    'attributes' => ['placeholder' => '.form-control-sm'],
+                ]);
+                echo $oView->formElement($oElement) . PHP_EOL;
             },
             'expected' =>
             '<input type="text" name="lg" placeholder=".form-control-lg" ' .
@@ -167,7 +198,16 @@ return [
                 '<input type="text" name="default" placeholder="Default&#x20;input" ' .
                 'class="form-control" value="">' . PHP_EOL .
                 '<input type="text" name="sm" placeholder=".form-control-sm" ' .
-                'class="form-control&#x20;form-control-sm" value="">' . PHP_EOL,
+                'class="form-control&#x20;form-control-sm" value="">' . PHP_EOL .
+                '<select name="lg" class="form-control&#x20;form-control-lg">' .
+                '<option value="0">Large select</option>' .
+                '</select>' . PHP_EOL.
+                '<select name="default" class="form-control">' .
+                '<option value="0">Default select</option>' .
+                '</select>' . PHP_EOL.
+                '<select name="sm" class="form-control&#x20;form-control-sm">' .
+                '<option value="0">Small select</option>' .
+                '</select>' . PHP_EOL,
         ]
     ],
 ];

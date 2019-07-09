@@ -54,7 +54,7 @@ class Menu extends \Zend\View\Helper\Navigation\Menu
                 'liActiveClass' => '',
                 'addClassToListItem' => true,
                 'onlyActiveBranch' => false,
-            ], $aOptions),
+            ], $aOptions)
         );
     }
 
