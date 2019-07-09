@@ -682,40 +682,40 @@ return [
                     'head' => ['Class', 'Heading', 'Heading'],
                     'body' => [
                         [
-                            'attributes' => ['class' => 'table-active'],
+                            'attributes' => ['class' => 'bg-active'],
                             'cells' => ['Active', 'Cell', 'Cell'],
                         ],
                         ['Default', 'Cell', 'Cell'],
                         [
-                            'attributes' => ['class' => 'table-primary'],
+                            'attributes' => ['class' => 'bg-primary'],
                             'cells' => ['Primary', 'Cell', 'Cell'],
                         ],
                         [
-                            'attributes' => ['class' => 'table-secondary'],
+                            'attributes' => ['class' => 'bg-secondary'],
                             'cells' => ['Secondary', 'Cell', 'Cell'],
                         ],
                         [
-                            'attributes' => ['class' => 'table-success'],
+                            'attributes' => ['class' => 'bg-success'],
                             'cells' => ['Success', 'Cell', 'Cell'],
                         ],
                         [
-                            'attributes' => ['class' => 'table-danger'],
+                            'attributes' => ['class' => 'bg-danger'],
                             'cells' => ['Danger', 'Cell', 'Cell'],
                         ],
                         [
-                            'attributes' => ['class' => 'table-warning'],
+                            'attributes' => ['class' => 'bg-warning'],
                             'cells' => ['Warning', 'Cell', 'Cell'],
                         ],
                         [
-                            'attributes' => ['class' => 'table-info'],
+                            'attributes' => ['class' => 'bg-info'],
                             'cells' => ['Info', 'Cell', 'Cell'],
                         ],
                         [
-                            'attributes' => ['class' => 'table-light'],
+                            'attributes' => ['class' => 'bg-light'],
                             'cells' => ['Light', 'Cell', 'Cell'],
                         ],
                         [
-                            'attributes' => ['class' => 'table-dark'],
+                            'attributes' => ['class' => 'bg-dark'],
                             'cells' => ['Dark', 'Cell', 'Cell'],
                         ],
                     ],
@@ -792,7 +792,7 @@ return [
                 '        </tr>' . PHP_EOL .
                 '    </thead>' . PHP_EOL .
                 '    <tbody>' . PHP_EOL .
-                '        <tr class="table-active">' . PHP_EOL .
+                '        <tr class="bg-active">' . PHP_EOL .
                 '            <th scope="row">Active</th>' . PHP_EOL .
                 '            <td>Cell</td>' . PHP_EOL .
                 '            <td>Cell</td>' . PHP_EOL .
@@ -802,42 +802,42 @@ return [
                 '            <td>Cell</td>' . PHP_EOL .
                 '            <td>Cell</td>' . PHP_EOL .
                 '        </tr>' . PHP_EOL .
-                '        <tr class="table-primary">' . PHP_EOL .
+                '        <tr class="bg-primary">' . PHP_EOL .
                 '            <th scope="row">Primary</th>' . PHP_EOL .
                 '            <td>Cell</td>' . PHP_EOL .
                 '            <td>Cell</td>' . PHP_EOL .
                 '        </tr>' . PHP_EOL .
-                '        <tr class="table-secondary">' . PHP_EOL .
+                '        <tr class="bg-secondary">' . PHP_EOL .
                 '            <th scope="row">Secondary</th>' . PHP_EOL .
                 '            <td>Cell</td>' . PHP_EOL .
                 '            <td>Cell</td>' . PHP_EOL .
                 '        </tr>' . PHP_EOL .
-                '        <tr class="table-success">' . PHP_EOL .
+                '        <tr class="bg-success">' . PHP_EOL .
                 '            <th scope="row">Success</th>' . PHP_EOL .
                 '            <td>Cell</td>' . PHP_EOL .
                 '            <td>Cell</td>' . PHP_EOL .
                 '        </tr>' . PHP_EOL .
-                '        <tr class="table-danger">' . PHP_EOL .
+                '        <tr class="bg-danger">' . PHP_EOL .
                 '            <th scope="row">Danger</th>' . PHP_EOL .
                 '            <td>Cell</td>' . PHP_EOL .
                 '            <td>Cell</td>' . PHP_EOL .
                 '        </tr>' . PHP_EOL .
-                '        <tr class="table-warning">' . PHP_EOL .
+                '        <tr class="bg-warning">' . PHP_EOL .
                 '            <th scope="row">Warning</th>' . PHP_EOL .
                 '            <td>Cell</td>' . PHP_EOL .
                 '            <td>Cell</td>' . PHP_EOL .
                 '        </tr>' . PHP_EOL .
-                '        <tr class="table-info">' . PHP_EOL .
+                '        <tr class="bg-info">' . PHP_EOL .
                 '            <th scope="row">Info</th>' . PHP_EOL .
                 '            <td>Cell</td>' . PHP_EOL .
                 '            <td>Cell</td>' . PHP_EOL .
                 '        </tr>' . PHP_EOL .
-                '        <tr class="table-light">' . PHP_EOL .
+                '        <tr class="bg-light">' . PHP_EOL .
                 '            <th scope="row">Light</th>' . PHP_EOL .
                 '            <td>Cell</td>' . PHP_EOL .
                 '            <td>Cell</td>' . PHP_EOL .
                 '        </tr>' . PHP_EOL .
-                '        <tr class="table-dark">' . PHP_EOL .
+                '        <tr class="bg-dark">' . PHP_EOL .
                 '            <th scope="row">Dark</th>' . PHP_EOL .
                 '            <td>Cell</td>' . PHP_EOL .
                 '            <td>Cell</td>' . PHP_EOL .
@@ -900,6 +900,7 @@ return [
                     'url' => '%bootstrap-url%/content/tables/#always-responsive',
                     'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                         echo $oView->table([
+                            'responsive' => true,
                             'head' => [
                                 '#', 'Heading', 'Heading', 'Heading', 'Heading',
                                 'Heading', 'Heading', 'Heading', 'Heading', 'Heading',
@@ -909,62 +910,65 @@ return [
                                 ['2', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell'],
                                 ['3', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell'],
                             ],
-                        ], ['class' => 'table-responsive']);
+                        ]);
                     },
-                    'expected' => '<table class="table&#x20;table-responsive">' . PHP_EOL .
-                        '    <thead>' . PHP_EOL .
-                        '        <tr>' . PHP_EOL .
-                        '            <th scope="col">#</th>' . PHP_EOL .
-                        '            <th scope="col">Heading</th>' . PHP_EOL .
-                        '            <th scope="col">Heading</th>' . PHP_EOL .
-                        '            <th scope="col">Heading</th>' . PHP_EOL .
-                        '            <th scope="col">Heading</th>' . PHP_EOL .
-                        '            <th scope="col">Heading</th>' . PHP_EOL .
-                        '            <th scope="col">Heading</th>' . PHP_EOL .
-                        '            <th scope="col">Heading</th>' . PHP_EOL .
-                        '            <th scope="col">Heading</th>' . PHP_EOL .
-                        '            <th scope="col">Heading</th>' . PHP_EOL .
-                        '        </tr>' . PHP_EOL .
-                        '    </thead>' . PHP_EOL .
-                        '    <tbody>' . PHP_EOL .
-                        '        <tr>' . PHP_EOL .
-                        '            <th scope="row">1</th>' . PHP_EOL .
-                        '            <td>Cell</td>' . PHP_EOL .
-                        '            <td>Cell</td>' . PHP_EOL .
-                        '            <td>Cell</td>' . PHP_EOL .
-                        '            <td>Cell</td>' . PHP_EOL .
-                        '            <td>Cell</td>' . PHP_EOL .
-                        '            <td>Cell</td>' . PHP_EOL .
-                        '            <td>Cell</td>' . PHP_EOL .
-                        '            <td>Cell</td>' . PHP_EOL .
-                        '            <td>Cell</td>' . PHP_EOL .
-                        '        </tr>' . PHP_EOL .
-                        '        <tr>' . PHP_EOL .
-                        '            <th scope="row">2</th>' . PHP_EOL .
-                        '            <td>Cell</td>' . PHP_EOL .
-                        '            <td>Cell</td>' . PHP_EOL .
-                        '            <td>Cell</td>' . PHP_EOL .
-                        '            <td>Cell</td>' . PHP_EOL .
-                        '            <td>Cell</td>' . PHP_EOL .
-                        '            <td>Cell</td>' . PHP_EOL .
-                        '            <td>Cell</td>' . PHP_EOL .
-                        '            <td>Cell</td>' . PHP_EOL .
-                        '            <td>Cell</td>' . PHP_EOL .
-                        '        </tr>' . PHP_EOL .
-                        '        <tr>' . PHP_EOL .
-                        '            <th scope="row">3</th>' . PHP_EOL .
-                        '            <td>Cell</td>' . PHP_EOL .
-                        '            <td>Cell</td>' . PHP_EOL .
-                        '            <td>Cell</td>' . PHP_EOL .
-                        '            <td>Cell</td>' . PHP_EOL .
-                        '            <td>Cell</td>' . PHP_EOL .
-                        '            <td>Cell</td>' . PHP_EOL .
-                        '            <td>Cell</td>' . PHP_EOL .
-                        '            <td>Cell</td>' . PHP_EOL .
-                        '            <td>Cell</td>' . PHP_EOL .
-                        '        </tr>' . PHP_EOL .
-                        '    </tbody>' . PHP_EOL .
-                        '</table>',
+                    'expected' =>
+                    '<div class="table-responsive">' . PHP_EOL .
+                        '    <table class="table">' . PHP_EOL .
+                        '        <thead>' . PHP_EOL .
+                        '            <tr>' . PHP_EOL .
+                        '                <th scope="col">#</th>' . PHP_EOL .
+                        '                <th scope="col">Heading</th>' . PHP_EOL .
+                        '                <th scope="col">Heading</th>' . PHP_EOL .
+                        '                <th scope="col">Heading</th>' . PHP_EOL .
+                        '                <th scope="col">Heading</th>' . PHP_EOL .
+                        '                <th scope="col">Heading</th>' . PHP_EOL .
+                        '                <th scope="col">Heading</th>' . PHP_EOL .
+                        '                <th scope="col">Heading</th>' . PHP_EOL .
+                        '                <th scope="col">Heading</th>' . PHP_EOL .
+                        '                <th scope="col">Heading</th>' . PHP_EOL .
+                        '            </tr>' . PHP_EOL .
+                        '        </thead>' . PHP_EOL .
+                        '        <tbody>' . PHP_EOL .
+                        '            <tr>' . PHP_EOL .
+                        '                <th scope="row">1</th>' . PHP_EOL .
+                        '                <td>Cell</td>' . PHP_EOL .
+                        '                <td>Cell</td>' . PHP_EOL .
+                        '                <td>Cell</td>' . PHP_EOL .
+                        '                <td>Cell</td>' . PHP_EOL .
+                        '                <td>Cell</td>' . PHP_EOL .
+                        '                <td>Cell</td>' . PHP_EOL .
+                        '                <td>Cell</td>' . PHP_EOL .
+                        '                <td>Cell</td>' . PHP_EOL .
+                        '                <td>Cell</td>' . PHP_EOL .
+                        '            </tr>' . PHP_EOL .
+                        '            <tr>' . PHP_EOL .
+                        '                <th scope="row">2</th>' . PHP_EOL .
+                        '                <td>Cell</td>' . PHP_EOL .
+                        '                <td>Cell</td>' . PHP_EOL .
+                        '                <td>Cell</td>' . PHP_EOL .
+                        '                <td>Cell</td>' . PHP_EOL .
+                        '                <td>Cell</td>' . PHP_EOL .
+                        '                <td>Cell</td>' . PHP_EOL .
+                        '                <td>Cell</td>' . PHP_EOL .
+                        '                <td>Cell</td>' . PHP_EOL .
+                        '                <td>Cell</td>' . PHP_EOL .
+                        '            </tr>' . PHP_EOL .
+                        '            <tr>' . PHP_EOL .
+                        '                <th scope="row">3</th>' . PHP_EOL .
+                        '                <td>Cell</td>' . PHP_EOL .
+                        '                <td>Cell</td>' . PHP_EOL .
+                        '                <td>Cell</td>' . PHP_EOL .
+                        '                <td>Cell</td>' . PHP_EOL .
+                        '                <td>Cell</td>' . PHP_EOL .
+                        '                <td>Cell</td>' . PHP_EOL .
+                        '                <td>Cell</td>' . PHP_EOL .
+                        '                <td>Cell</td>' . PHP_EOL .
+                        '                <td>Cell</td>' . PHP_EOL .
+                        '            </tr>' . PHP_EOL .
+                        '        </tbody>' . PHP_EOL .
+                        '    </table>'.PHP_EOL.
+                        '</div>',
                 ],
             ],
         ],

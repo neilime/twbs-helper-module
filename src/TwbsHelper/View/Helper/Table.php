@@ -29,10 +29,29 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
         array $aAttributes = [],
         bool $bEscape = true
     ) {
-        return $this->htmlElement(
+
+        $sResponsiveOption = $aRows['responsive'] ?? null;
+        unset($aRows['responsive']);
+
+        $sTableContent = $this->htmlElement(
             'table',
             $this->setClassesToAttributes($aAttributes, ['table']),
             $this->renderTableRows($aRows, $bEscape),
+            $bEscape
+        );
+
+        if (!$sResponsiveOption) {
+            return $sTableContent;
+        }
+
+        $sReponsiveClass = $sResponsiveOption === true
+            ? 'table-responsive'
+            : $this->getSizeClass($sResponsiveOption, 'table-responsive');
+
+        return $this->htmlElement(
+            'div',
+            ['class' => $sReponsiveClass],
+            $sTableContent,
             $bEscape
         );
     }
