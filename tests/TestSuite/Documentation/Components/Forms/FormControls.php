@@ -146,7 +146,7 @@ return [
                     'options' => ['size' => 'lg'],
                     'attributes' => ['placeholder' => '.form-control-lg'],
                 ]);
-                echo $oView->formElement($oElement) . PHP_EOL;
+                echo $oView->formElement($oElement) . PHP_EOL . '<br>' . PHP_EOL;
 
                 // Default input
                 $oElement = $oFactory->create([
@@ -154,7 +154,7 @@ return [
                     'type' => 'text',
                     'attributes' => ['placeholder' => 'Default input'],
                 ]);
-                echo $oView->formElement($oElement) . PHP_EOL;
+                echo $oView->formElement($oElement) . PHP_EOL . '<br>' . PHP_EOL;
 
                 // Small input
                 $oElement = $oFactory->create([
@@ -163,7 +163,7 @@ return [
                     'options' => ['size' => 'sm'],
                     'attributes' => ['placeholder' => '.form-control-sm'],
                 ]);
-                echo $oView->formElement($oElement) . PHP_EOL;
+                echo $oView->formElement($oElement) . PHP_EOL . '<br>' . PHP_EOL;
 
                 // Large select
                 $oElement = $oFactory->create([
@@ -172,7 +172,7 @@ return [
                     'options' => ['size' => 'lg', 'value_options' => ['Large select']],
                     'attributes' => ['placeholder' => '.form-control-lg'],
                 ]);
-                echo $oView->formElement($oElement) . PHP_EOL;
+                echo $oView->formElement($oElement) . PHP_EOL . '<br>' . PHP_EOL;
 
                 // Default select
                 $oElement = $oFactory->create([
@@ -181,7 +181,7 @@ return [
                     'options' => ['value_options' => ['Default select']],
                     'attributes' => ['placeholder' => 'Default input'],
                 ]);
-                echo $oView->formElement($oElement) . PHP_EOL;
+                echo $oView->formElement($oElement) . PHP_EOL . '<br>' . PHP_EOL;
 
                 // Small select
                 $oElement = $oFactory->create([
@@ -190,24 +190,48 @@ return [
                     'options' => ['size' => 'sm', 'value_options' => ['Small select']],
                     'attributes' => ['placeholder' => '.form-control-sm'],
                 ]);
-                echo $oView->formElement($oElement) . PHP_EOL;
+                echo $oView->formElement($oElement) . PHP_EOL . '<br>' . PHP_EOL;
             },
             'expected' =>
             '<input type="text" name="lg" placeholder=".form-control-lg" ' .
                 'class="form-control&#x20;form-control-lg" value="">' . PHP_EOL .
+                '<br>' . PHP_EOL .
                 '<input type="text" name="default" placeholder="Default&#x20;input" ' .
                 'class="form-control" value="">' . PHP_EOL .
+                '<br>' . PHP_EOL .
                 '<input type="text" name="sm" placeholder=".form-control-sm" ' .
                 'class="form-control&#x20;form-control-sm" value="">' . PHP_EOL .
+                '<br>' . PHP_EOL .
                 '<select name="lg" class="form-control&#x20;form-control-lg">' .
                 '<option value="0">Large select</option>' .
-                '</select>' . PHP_EOL.
+                '</select>' . PHP_EOL .
+                '<br>' . PHP_EOL .
                 '<select name="default" class="form-control">' .
                 '<option value="0">Default select</option>' .
-                '</select>' . PHP_EOL.
+                '</select>' . PHP_EOL .
+                '<br>' . PHP_EOL .
                 '<select name="sm" class="form-control&#x20;form-control-sm">' .
                 '<option value="0">Small select</option>' .
-                '</select>' . PHP_EOL,
-        ]
+                '</select>' . PHP_EOL .
+                '<br>' . PHP_EOL,
+        ], [
+            'title' => 'Readonly',
+            'url' => '%bootstrap-url%/components/forms/#readonly',
+            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                // Create element
+                $oFactory = new \Zend\Form\Factory();
+
+                // Large input
+                $oElement = $oFactory->create([
+                    'name' => 'readonly-input',
+                    'type' => 'text',
+                    'attributes' => ['readonly' => true, 'placeholder' => 'Readonly input here...'],
+                ]);
+                echo $oView->formElement($oElement);
+            },
+            'expected' =>
+            '<input type="text" name="readonly-input" readonly="readonly" ' .
+                'placeholder="Readonly&#x20;input&#x20;here..." class="form-control" value="">',
+        ],
     ],
 ];

@@ -162,7 +162,7 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
             'div',
             $this->setClassesToAttributes($aAttributes, $aClasses),
             $sSlideContent,
-            $bEscape,
+            $bEscape
         );
     }
 
@@ -196,7 +196,7 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
             'div',
             $this->setClassesToAttributes([], ['carousel-caption', 'd-none', 'd-md-block']),
             $sCaptionContent,
-            $bEscape,
+            $bEscape
         );
     }
 
