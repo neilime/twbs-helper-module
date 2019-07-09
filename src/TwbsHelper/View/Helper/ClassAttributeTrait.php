@@ -24,7 +24,9 @@ trait ClassAttributeTrait
     // Allowed sizes
     protected static $sizes = [
         'sm',
+        'md',
         'lg',
+        'xl',
     ];
 
     protected function getClassesAttribute(string $sClassAttribute, $bCleanClasses = true): array
@@ -90,7 +92,7 @@ trait ClassAttributeTrait
     protected function getSizeClass(string $sSize, string $sPrefix): string
     {
         if (!in_array($sSize, $this->getSizes())) {
-            throw new \InvalidArgumentException('Variant "' . $sSize . '" does not exist');
+            throw new \InvalidArgumentException('Size "' . $sSize . '" does not exist');
         }
         return $sPrefix . '-' . $sSize;
     }

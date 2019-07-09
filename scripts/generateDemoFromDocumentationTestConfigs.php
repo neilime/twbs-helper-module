@@ -41,7 +41,7 @@ foreach (new \DirectoryIterator(__DIR__ . '/../tests/TestSuite/Documentation') a
     }
     try {
         $iPreviousHeading = 1;
-        $aMenuIds =parseTestsConfig($sDemoPageFilePath, $sMenuPageFilePath, $aTestsConfig, 1, $aMenuIds);
+        $aMenuIds = parseTestsConfig($sDemoPageFilePath, $sMenuPageFilePath, $aTestsConfig, 1, $aMenuIds);
     } catch (\Exception $oException) {
         throw new \LogicException('An error occured while extracting test cases from documentation test config file "' . $sFilePath . '"', $oException->getCode(), $oException);
     }
@@ -53,7 +53,7 @@ file_put_contents($sMenuPageFilePath, '</ul>', FILE_APPEND);
 /** 
  * Extract test cases values for a given tests configuration
  */
-function parseTestsConfig(string $sDemoPageFilePath, string $sMenuPageFilePath, array $aTestsConfig, int $iHeading, array $aMenuIds) : array
+function parseTestsConfig(string $sDemoPageFilePath, string $sMenuPageFilePath, array $aTestsConfig, int $iHeading, array $aMenuIds): array
 {
     if (!isset($aTestsConfig['title'])) {
         throw new \InvalidArgumentException('Argument "$aTestsConfig" does not have a defined "title" key');
@@ -140,14 +140,17 @@ function convertTestConfigForDemoPage(string $sDemoPageFilePath, string $sTitle,
             $sRenderingContent .= PHP_EOL;
         }
 
-        if (preg_match('/^[\)|\]]+[;|,]$/', $sLine) || $sLine === '}') {
+        if (
+            preg_match('/^[\)|\]]+[;|,|\s]$/', $sLine)            
+            || $sLine === '}'
+        ) {
             $iIndentation--;
         }
 
         $sRenderingContent .= str_repeat(' ', $iIndentation * 4) . $sLine;
 
         $sLastChar = substr($sLine, -1);
-        if ($sLastChar === '{' || $sLastChar === '(' || $sLastChar === '[') {
+        if (in_array($sLastChar, ['{', '(', '['], true)) {
             $iIndentation++;
         }
     }
