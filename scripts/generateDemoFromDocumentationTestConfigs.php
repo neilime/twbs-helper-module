@@ -141,7 +141,7 @@ function convertTestConfigForDemoPage(string $sDemoPageFilePath, string $sTitle,
         }
 
         if (
-            preg_match('/^[\)|\]]+[;|,|\s]$/', $sLine)            
+            preg_match('/^[\)|\]]+[;|,|\s].*$/', $sLine)            
             || $sLine === '}'
         ) {
             $iIndentation--;
