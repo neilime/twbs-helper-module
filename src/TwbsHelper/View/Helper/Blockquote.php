@@ -48,7 +48,7 @@ class Blockquote extends \TwbsHelper\View\Helper\AbstractHtmlElement
             'blockquote',
             $this->setClassesToAttributes($aAttributes, ['blockquote']),
             $sBlockquoteContent . $sFooterContent,
-            false
+            $bEscape
         );
     }
 }

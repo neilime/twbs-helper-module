@@ -39,12 +39,7 @@ return [
                             // Content
                             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.',
                             // Footer content
-                            'Someone famous in <cite title="Source Title">Source Title</cite>',
-                            [],
-                            [],
-                            [],
-                            // Disable escaping
-                            false
+                            'Someone famous in <cite title="Source Title">Source Title</cite>'
                         );
                     },
                     'expected' => '<blockquote class="blockquote">' . PHP_EOL .
@@ -57,29 +52,43 @@ return [
                         '</blockquote>',
                 ],
                 [
-                    'title' => 'Reverse layout',
-                    'url' => '%bootstrap-url%/content/typography/#reverse-layout',
+                    'title' => 'Alignment',
+                    'url' => '%bootstrap-url%/content/typography/#alignment',
                     'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                        // Center
                         echo $oView->blockquote(
                             // Content
                             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.',
                             // Footer content
                             'Someone famous in <cite title="Source Title">Source Title</cite>',
-                            ['class' => 'blockquote-reverse'],
-                            [],
-                            [],
-                            // Disable escaping
-                            false
-                        );
+                            ['class' => 'text-center']
+                        ) . PHP_EOL;
+
+                        // Right
+                        echo $oView->blockquote(
+                            // Content
+                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.',
+                            // Footer content
+                            'Someone famous in <cite title="Source Title">Source Title</cite>',
+                            ['class' => 'text-right']
+                        ) . PHP_EOL;
                     },
-                    'expected' => '<blockquote class="blockquote&#x20;blockquote-reverse">' . PHP_EOL .
+                    'expected' => '<blockquote class="blockquote&#x20;text-center">' . PHP_EOL .
                         '    <p class="mb-0">' .
                         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.' .
                         '</p>' . PHP_EOL .
                         '    <footer class="blockquote-footer">' .
                         'Someone famous in <cite title="Source Title">Source Title</cite>' .
                         '</footer>' . PHP_EOL .
-                        '</blockquote>',
+                        '</blockquote>' . PHP_EOL .
+                        '<blockquote class="blockquote&#x20;text-right">' . PHP_EOL .
+                        '    <p class="mb-0">' .
+                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.' .
+                        '</p>' . PHP_EOL .
+                        '    <footer class="blockquote-footer">' .
+                        'Someone famous in <cite title="Source Title">Source Title</cite>' .
+                        '</footer>' . PHP_EOL .
+                        '</blockquote>' . PHP_EOL,
                 ],
             ],
         ],

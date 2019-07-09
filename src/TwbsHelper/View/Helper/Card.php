@@ -153,10 +153,7 @@ class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
             $aOptions['ulClass'] = empty($aOptions['pills']) ? 'card-header-tabs' : 'card-header-pills';
         }
 
-        $sContent = $this->getView()->plugin('menu')->renderMenu(
-            $oContainer,
-            $aOptions,
-        );
+        $sContent = $this->getView()->plugin('menu')->renderMenu($oContainer, $aOptions);
 
         return $this->renderCardHeader([$sContent, $aAttributes], $bEscape);
     }
