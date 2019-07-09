@@ -40,15 +40,7 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
     {
         // Button group container attributes
         $aClasses = ['btn-toolbar'];
-        $aAttributes = array_merge(
-            $aButtonToolbarOptions['attributes'] ?? [],
-            [
-                'class' => join(' ', $this->addClassesAttribute(
-                    $aButtonToolbarOptions['attributes']['class'] ?? '',
-                    $aClasses,
-                ))
-            ]
-        );
+        $aAttributes = $this->setClassesToAttributes($aButtonToolbarOptions['attributes'] ?? [], $aClasses);
 
         // Render button group
         return $this->htmlElement('div', $aAttributes, $this->renderToolbarItems(

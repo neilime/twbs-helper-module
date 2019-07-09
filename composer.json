@@ -30,7 +30,7 @@
         "twitter/bootstrap": "Twitter bootstrap assets"
     },
     "require": {
-        "php": ">=7.1",
+        "php": "^7.2",
         "zendframework/zend-config": "^2.3 || ^3.0",
         "zendframework/zend-escaper": "^2.3",
         "zendframework/zend-form": "^2.3",
