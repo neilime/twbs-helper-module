@@ -87,7 +87,10 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
                 // Render element into form group
                 return $this->renderElementFormGroup(
                     $sElementContent,
-                    ['class' => $this->getRowClassFromElement($oElement)],
+                    $this->setClassesToAttributes(
+                        [],
+                        $this->getRowClassesFromElement($oElement)
+                    ),
                     $oElement->getOption('feedback')
                 );
         }
@@ -98,51 +101,46 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
      * @param \Zend\Form\ElementInterface $oElement
      * @return string
      */
-    public function getRowClassFromElement(\Zend\Form\ElementInterface $oElement): string
+    public function getRowClassesFromElement(\Zend\Form\ElementInterface $oElement): array
     {
-        $sRowClass = '';
+        $aRowClasses = [];
 
         if ($sFormGroupSize = $oElement->getOption('twbs-form-group-size')) {
-            $sRowClass = $sFormGroupSize;
+            $aRowClasses[] = $sFormGroupSize;
         }
 
         // Validation state
         if (($sValidationState = $oElement->getOption('validation-state'))) {
-            $sRowClass .= ' has-' . $sValidationState;
+            $aRowClasses[] = 'has-' . $sValidationState;
         }
 
         if ($oElement->getMessages()) {
-            $sRowClass .= ' has-error';
+            $aRowClasses[]  = 'has-error';
         }
 
         if ($oElement->getOption('feedback')) {
-            $sRowClass .= ' has-feedback';
+            $aRowClasses[]  = 'has-feedback';
         }
 
         // Column size
         $sColumSize = $oElement->getOption('column-size');
-        if (
-            $sColumSize
-            && $oElement->getOption('twbs-layout') !== Form::LAYOUT_HORIZONTAL
-        ) {
-            $sColumSize = (is_array($sColumSize)) ? $sColumSize : [$sColumSize];
-            $sRowClass .= implode(
-                '',
-                array_map(
-                    function ($item) {
-                        return ' col-' . $item;
-                    },
-                    $sColumSize
-                )
-            );
+        if ($sColumSize) {
+            if ($oElement->getOption('twbs-layout') === Form::LAYOUT_HORIZONTAL) {
+                $aRowClasses[] = 'row';
+            } else {
+                $aColumSizes = (is_array($sColumSize)) ? $sColumSize : [$sColumSize];
+                foreach ($aColumSizes as $sColumSize) {
+                    $aRowClasses[] = 'col-' . $sColumSize;
+                }
+            }
         }
 
         // Additional row class
         if ($sAddRowClass = $oElement->getOption('twbs-row-class')) {
-            $sRowClass .= ' ' . $sAddRowClass;
+            $aRowClasses = array_merge($aRowClasses, explode(' ', $sAddRowClass));
         }
 
-        return $sRowClass;
+        return $aRowClasses;
     }
 
     /**
@@ -233,18 +231,18 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
                 // Render errors
                 $sElementContent = $this->renderErrors($oElement, $sElementContent);
 
-                $sClass = '';
+                $aClasses = [];
 
                 // Column size
                 if ($sColumSize = $oElement->getOption('column-size')) {
-                    $sClass .= ' col-' . $sColumSize;
+                    $aClasses[] = 'col-' . $sColumSize;
                 }
 
                 // Checkbox elements are a special case, element is rendered into label
                 if ($sElementType === 'checkbox') {
                     return $this->htmlElement(
                         'div',
-                        ['class' => $sClass],
+                        $this->setClassesToAttributes([], $aClasses),
                         $this->htmlElement(
                             'div',
                             ['class' => 'form-check'],
@@ -255,7 +253,7 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
 
                 $sElementContent = $this->htmlElement(
                     'div',
-                    ['class' => $sClass],
+                    $this->setClassesToAttributes([], $aClasses),
                     $sElementContent
                 );
 
@@ -265,6 +263,8 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
                     $sElementContent,
                     $sLabelPosition
                 );
+
+                return $sElementContent;
         }
 
         throw new \DomainException('Layout "' . $sLayout . '" is not valid');

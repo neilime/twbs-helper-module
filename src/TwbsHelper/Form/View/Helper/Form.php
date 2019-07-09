@@ -8,58 +8,55 @@ use Zend\Form\FieldsetInterface;
 class Form extends \Zend\Form\View\Helper\Form
 {
     use \TwbsHelper\View\Helper\HtmlTrait;
+    use \TwbsHelper\View\Helper\ClassAttributeTrait;
 
     const LAYOUT_HORIZONTAL = 'horizontal';
     const LAYOUT_INLINE     = 'inline';
 
-    // Form layout (see LAYOUT_* consts)
-    // @var string
-    protected $sFormLayout = null;
-
 
     /**
-     * __invoke
-     *
-     * @see    Form::__invoke()
      * @param  FormInterface $oForm
      * @param  string        $sFormLayout
-     * @access public
      * @return TwbsHelperForm|string
      */
     public function __invoke(FormInterface $oForm = null, $sFormLayout = null)
     {
-        $this->sFormLayout = $sFormLayout;
-
         if ($oForm) {
             return $this->render($oForm, $sFormLayout);
         }
-
         return $this;
     }
 
 
     /**
-     * render
      * Render a form from the provided $oForm,
      *
-     * @see    Form::render()
      * @param  FormInterface $oForm
      * @param  string|null   $sFormLayout
-     * @access public
      * @return string
      */
-    public function render(FormInterface $oForm, $sFormLayout = null)
+    public function render(FormInterface $oForm, string $sFormLayout = null): string
     {
         // Prepare form if needed
         if (method_exists($oForm, 'prepare')) {
             $oForm->prepare();
         }
 
-        $this->setFormClass($oForm, $sFormLayout);
-
         // Set form role
         if (!$oForm->getAttribute('role')) {
             $oForm->setAttribute('role', 'form');
+        }
+
+        if ($sFormLayout === null) {
+            $sFormLayout = $oForm->getOption('twbs-layout');
+        }
+
+        // Set inline class
+        if ($sFormLayout === self::LAYOUT_INLINE) {
+            $oForm->setAttributes($this->setClassesToAttributes(
+                $oForm->getAttributes(),
+                ['form-inline']
+            ));
         }
 
         return $this->openTag($oForm) .
@@ -69,14 +66,11 @@ class Form extends \Zend\Form\View\Helper\Form
 
 
     /**
-     * renderElements
-     *
      * @param  FormInterface $oForm
      * @param  string|null   $sFormLayout
-     * @access protected
      * @return string
      */
-    protected function renderElements(FormInterface $oForm, $sFormLayout = null)
+    protected function renderElements(FormInterface $oForm, string $sFormLayout = null): string
     {
         // Store button groups
         $aButtonGroups = [];
@@ -165,48 +159,5 @@ class Form extends \Zend\Form\View\Helper\Form
         }
 
         return $sFormContent;
-    }
-
-
-    /**
-     * setFormClass
-     * Sets form layout class
-     *
-     * @param  FormInterface $oForm
-     * @param  string|null   $sFormLayout
-     * @access protected
-     * @return TwbsHelper\Form\View\Helper\TwbsHelperForm
-     */
-    protected function setFormClass(FormInterface $oForm, $sFormLayout = null)
-    {
-        if (is_string($sFormLayout)) {
-            $sLayoutClass = 'form-' . $sFormLayout;
-
-            if ($sFormClass = $oForm->getAttribute('class')) {
-                if (!preg_match('/(\s|^)' . preg_quote($sLayoutClass, '/') . '(\s|$)/', $sFormClass)) {
-                    $oForm->setAttribute('class', trim($sFormClass . ' ' . $sLayoutClass));
-                }
-            } else {
-                $oForm->setAttribute('class', $sLayoutClass);
-            }
-        }
-
-        return $this;
-    }
-
-
-    /**
-     * openTag
-     * Generate an opening form tag
-     *
-     * @param  FormInterface|null $oForm
-     * @access public
-     * @return string
-     */
-    public function openTag(FormInterface $oForm = null)
-    {
-        $this->setFormClass($oForm, $this->sFormLayout);
-
-        return parent::openTag($oForm);
     }
 }

@@ -23,7 +23,7 @@ NOTE : If you want to contribute don't hesitate, I'll review any PR.
 
 # Demonstration / example
 
-🚀 Render forms, buttons, alerts with TwbBundle : [see it in action, on-line](https://neilime.github.io/zf-twbs-helper-module/demo.html).
+🚀 Render forms, buttons, alerts... with TwbsHelper : [see it in action, on-line](https://neilime.github.io/zf-twbs-helper-module/demo.html).
 
 # Requirements
 

@@ -136,10 +136,9 @@ return [
             'title' => 'Sizing',
             'url' => '%bootstrap-url%/components/forms/#sizing',
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-                // Create element
                 $oFactory = new \Zend\Form\Factory();
 
-                // Large input
+                // Create large input
                 $oElement = $oFactory->create([
                     'name' => 'lg',
                     'type' => 'text',
@@ -148,7 +147,7 @@ return [
                 ]);
                 echo $oView->formElement($oElement) . PHP_EOL . '<br>' . PHP_EOL;
 
-                // Default input
+                // Create default input
                 $oElement = $oFactory->create([
                     'name' => 'default',
                     'type' => 'text',
@@ -156,7 +155,7 @@ return [
                 ]);
                 echo $oView->formElement($oElement) . PHP_EOL . '<br>' . PHP_EOL;
 
-                // Small input
+                // Create small input
                 $oElement = $oFactory->create([
                     'name' => 'sm',
                     'type' => 'text',
@@ -165,7 +164,7 @@ return [
                 ]);
                 echo $oView->formElement($oElement) . PHP_EOL . '<br>' . PHP_EOL;
 
-                // Large select
+                // Create large select
                 $oElement = $oFactory->create([
                     'name' => 'lg',
                     'type' => 'select',
@@ -174,7 +173,7 @@ return [
                 ]);
                 echo $oView->formElement($oElement) . PHP_EOL . '<br>' . PHP_EOL;
 
-                // Default select
+                // Createdefault select
                 $oElement = $oFactory->create([
                     'name' => 'default',
                     'type' => 'select',
@@ -183,7 +182,7 @@ return [
                 ]);
                 echo $oView->formElement($oElement) . PHP_EOL . '<br>' . PHP_EOL;
 
-                // Small select
+                // Create small select
                 $oElement = $oFactory->create([
                     'name' => 'sm',
                     'type' => 'select',
@@ -214,14 +213,13 @@ return [
                 '<option value="0">Small select</option>' .
                 '</select>' . PHP_EOL .
                 '<br>' . PHP_EOL,
-        ], [
+        ],
+        [
             'title' => 'Readonly',
             'url' => '%bootstrap-url%/components/forms/#readonly',
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 // Create element
                 $oFactory = new \Zend\Form\Factory();
-
-                // Large input
                 $oElement = $oFactory->create([
                     'name' => 'readonly-input',
                     'type' => 'text',
@@ -232,6 +230,133 @@ return [
             'expected' =>
             '<input type="text" name="readonly-input" readonly="readonly" ' .
                 'placeholder="Readonly&#x20;input&#x20;here..." class="form-control" value="">',
+        ],
+        [
+            'title' => 'Readonly plain text',
+            'url' => '%bootstrap-url%/components/forms/#readonly-plain-text',
+            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                $oFactory = new \Zend\Form\Factory();
+                // Create horizontal form
+                $oForm = $oFactory->create([
+                    'type' => 'form',
+                    'options' => ['twbs-layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL],
+                    'elements' => [
+                        [
+                            'spec' => [
+                                'name' => 'email',
+                                'options' => [
+                                    'plaintext' => true,
+                                    'column-size' => 'sm-10',
+                                    'label' => 'Email',
+                                ],
+                                'attributes' => [
+                                    'type' => 'email',
+                                    'id' => 'staticEmail',
+                                    'value' => 'email@example.com',
+                                ],
+                            ],
+                        ],
+                        [
+                            'spec' => [
+                                'name' => 'password',
+                                'options' => [
+                                    'column-size' => 'sm-10',
+                                    'label' => 'Password',
+                                ],
+                                'attributes' => [
+                                    'type' => 'password',
+                                    'id' => 'inputPassword',
+                                    'placeholder' => 'Password',
+                                ],
+                            ],
+                        ],
+                    ],
+                ]);
+
+                echo $oView->form($oForm);
+
+                echo PHP_EOL . '<br>' . PHP_EOL;
+
+                // Create inline form
+                $oForm = $oFactory->create([
+                    'type' => 'form',
+                    'options' => ['twbs-layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE],
+                    'elements' => [
+                        [
+                            'spec' => [
+                                'name' => 'email',
+                                'options' => [
+                                    'plaintext' => true,
+                                    'label' => 'Email',
+                                    'twbs-row-class' => 'mb-2',
+                                ],
+                                'attributes' => [
+                                    'type' => 'email',
+                                    'id' => 'staticEmail2',
+                                    'value' => 'email@example.com',
+                                ],
+                            ],
+                        ],
+                        [
+                            'spec' => [
+                                'name' => 'password',
+                                'options' => [
+                                    'label' => 'Password',
+                                    'twbs-row-class' => 'mx-sm-3 mb-2',
+                                ],
+                                'attributes' => [
+                                    'type' => 'password',
+                                    'id' => 'inputPassword2',
+                                    'placeholder' => 'Password',
+                                ],
+                            ],
+                        ],
+                        [
+                            'spec' => [
+                                'type' => 'submit',
+                                'options' => ['label' => 'Confirm identity', 'variant' => 'primary'],
+                                'attributes' => ['class' => 'mb-2'],
+                            ],
+                        ],
+                    ],
+                ]);
+
+                echo $oView->form($oForm);
+            },
+            'expected' =>
+            '<form method="POST" name="form" role="form" id="form">' . PHP_EOL .
+                '    <div class="form-group&#x20;row">' . PHP_EOL .
+                '        <label class="control-label" for="staticEmail">Email</label>'
+                . PHP_EOL .
+                '        <div class="col-sm-10">' . PHP_EOL .
+                '            <input name="email" type="email" id="staticEmail" ' .
+                'class="form-control" value="email&#x40;example.com">' . PHP_EOL .
+                '        </div>' . PHP_EOL .
+                '    </div>' . PHP_EOL .
+                '    <div class="form-group&#x20;row">' . PHP_EOL .
+                '        <label class="control-label" for="inputPassword">Password</label>' . PHP_EOL .
+                '        <div class="col-sm-10">' . PHP_EOL .
+                '            <input name="password" type="password" id="inputPassword" ' .
+                'placeholder="Password" class="form-control" value="">' . PHP_EOL .
+                '        </div>' . PHP_EOL .
+                '    </div>' . PHP_EOL .
+                '</form>' . PHP_EOL .
+                '<br>' . PHP_EOL .
+                '<form method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
+                '    <div class="form-group&#x20;mb-2">' . PHP_EOL .
+                '        <label class="sr-only" for="staticEmail2">Email</label>'
+                . PHP_EOL .
+                '        <input name="email" type="email" id="staticEmail2" ' .
+                'class="form-control" value="email&#x40;example.com">' . PHP_EOL .
+                '    </div>' . PHP_EOL .
+                '    <div class="form-group&#x20;mb-2&#x20;mx-sm-3">' . PHP_EOL .
+                '        <label class="sr-only" for="inputPassword2">Password</label>' . PHP_EOL .
+                '        <input name="password" type="password" id="inputPassword2" ' .
+                'placeholder="Password" class="form-control" value="">' . PHP_EOL .
+                '    </div>' . PHP_EOL .
+                '    <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">' .
+                'Confirm identity</button>' . PHP_EOL .
+                '</form>',
         ],
     ],
 ];

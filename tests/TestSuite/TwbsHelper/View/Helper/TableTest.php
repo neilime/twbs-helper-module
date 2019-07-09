@@ -43,13 +43,13 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
     {
         $sExpectedMarkup = '<thead>' . PHP_EOL .
             '    <tr>' . PHP_EOL .
-            '        <th>head 1</th>' . PHP_EOL .
-            '        <th>head 2</th>' . PHP_EOL .
+            '        <th scope="col">head 1</th>' . PHP_EOL .
+            '        <th scope="col">head 2</th>' . PHP_EOL .
             '    </tr>' . PHP_EOL .
             '</thead>' . PHP_EOL .
             '<tbody>' . PHP_EOL .
             '    <tr>' . PHP_EOL .
-            '        <td>value 1</td>' . PHP_EOL .
+            '        <th scope="row">value 1</th>' . PHP_EOL .
             '        <td>value 2</td>' . PHP_EOL .
             '    </tr>' . PHP_EOL .
             '</tbody>';
@@ -98,7 +98,7 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
     public function testRenderTableCellWithEmptyArgumentCell()
     {
         $this->expectExceptionMessage('Argument "$sCell" expects an array or a scalar value, "stdClass" given');
-        $this->helper->renderTableCell(new \stdClass(), 'td');
+        $this->helper->renderTableCell(new \stdClass(), 'td', true);
     }
 
     public function testRenderTableCellWithUndefinedCellData()
@@ -106,7 +106,7 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
         $this->expectExceptionMessage('Argument "$sCell[\'data\']" is undefined');
         $this->helper->renderTableCell([
             'data' => null,
-        ], 'td');
+        ], 'td', true);
     }
 
     public function testRenderTableCellWithWrongTypeCellData()
@@ -114,7 +114,7 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
         $this->expectExceptionMessage('Argument "$sCell[\'data\']" expects a scalar value, "array" given');
         $this->helper->renderTableCell([
             'data' => [],
-        ], 'td');
+        ], 'td', true);
     }
 
     public function testRenderTableCellWithWrongTypeCellType()
@@ -123,7 +123,7 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
         $this->helper->renderTableCell([
             'data' => 'test',
             'type' => [],
-        ], 'td');
+        ], 'td', true);
     }
 
     public function testRenderTableCellWithWrongTypeCellAttributes()
@@ -132,6 +132,6 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
         $this->helper->renderTableCell([
             'data' => 'test',
             'attributes' => 'wrong',
-        ], 'td');
+        ], 'td', true);
     }
 }
