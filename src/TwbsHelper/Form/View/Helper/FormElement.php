@@ -72,18 +72,19 @@ class FormElement extends \Zend\Form\View\Helper\FormElement implements Translat
         // Add form-control class
         $sElementType = $oElement->getAttribute('type');
 
+        $aClasses = [];
         if (
             !in_array($sElementType, $this->options->getIgnoredViewHelpers())
             && !($oElement instanceof Collection)
         ) {
-            if ($sElementClass = $oElement->getAttribute('class')) {
-                if (!preg_match('/(\s|^)form-control(\s|$)/', $sElementClass)) {
-                    $oElement->setAttribute('class', trim($sElementClass . ' form-control'));
-                }
-            } else {
-                $oElement->setAttribute('class', 'form-control');
-            }
+            $aClasses[] = 'form-control';
         }
+
+        if ($sSizeOption = $oElement->getOption('size')) {
+            $aClasses[] = $this->getSizeClass($sSizeOption, 'form-control');
+        }
+
+        $oElement->setAttributes($this->setClassesToAttributes($oElement->getAttributes() ?? [], $aClasses));
 
         $sMarkup = parent::render($oElement);
 

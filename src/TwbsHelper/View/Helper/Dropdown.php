@@ -461,15 +461,7 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
         }
 
         // Dropdown list class attribute
-        $aAttributes = array_merge(
-            $aAttributes  ?? [],
-            [
-                'class' => join(' ', $this->addClassesAttribute(
-                    $aAttributes['class'] ?? '',
-                    $aClasses,
-                ))
-            ]
-        );
+        $aAttributes = $this->setClassesToAttributes($aAttributes, $aClasses);
 
         if ($sItemContent) {
             if (($oTranslator = $this->getTranslator())) {

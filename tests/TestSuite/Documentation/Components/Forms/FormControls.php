@@ -130,4 +130,44 @@ return [
         . PHP_EOL .
         '    </div>' . PHP_EOL .
         '</form>',
+
+    'tests' => [
+        [
+            'title' => 'Sizing',
+            'url' => '%bootstrap-url%/components/forms/#sizing',
+            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                // Create element
+                $oFactory = new \Zend\Form\Factory();
+                $oElement = $oFactory->create([
+                    'name' => 'lg',
+                    'type' => 'text',
+                    'options' => ['size' => 'lg'],
+                    'attributes' => ['placeholder' => '.form-control-lg'],
+                ]);
+                echo $oView->formElement($oElement).PHP_EOL;
+
+                $oElement = $oFactory->create([
+                    'name' => 'default',
+                    'type' => 'text',
+                    'attributes' => ['placeholder' => 'Default input'],
+                ]);
+                echo $oView->formElement($oElement).PHP_EOL;
+
+                $oElement = $oFactory->create([
+                    'name' => 'sm',
+                    'type' => 'text',
+                    'options' => ['size' => 'sm'],
+                    'attributes' => ['placeholder' => '.form-control-sm'],
+                ]);
+                echo $oView->formElement($oElement).PHP_EOL;
+            },
+            'expected' =>
+            '<input type="text" name="lg" placeholder=".form-control-lg" ' .
+                'class="form-control&#x20;form-control-lg" value="">' . PHP_EOL .
+                '<input type="text" name="default" placeholder="Default&#x20;input" ' .
+                'class="form-control" value="">' . PHP_EOL .
+                '<input type="text" name="sm" placeholder=".form-control-sm" ' .
+                'class="form-control&#x20;form-control-sm" value="">' . PHP_EOL,
+        ]
+    ],
 ];
