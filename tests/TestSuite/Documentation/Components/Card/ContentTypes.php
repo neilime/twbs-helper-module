@@ -78,9 +78,9 @@ return [
                             'Vestibulum at eros',
                         ],
                     ],
-                ], ['style' => 'width: 18rem;']) . PHP_EOL;
+                ], ['style' => 'width: 18rem;']);
 
-                echo '<hr>'. PHP_EOL;
+                echo PHP_EOL . '<br>' . PHP_EOL;
 
                 echo $oView->card([
                     'header' => 'Featured',
@@ -100,7 +100,7 @@ return [
                 '        <li class="list-group-item">Vestibulum at eros</li>' . PHP_EOL .
                 '    </ul>' . PHP_EOL .
                 '</div>' . PHP_EOL .
-                '<hr>' . PHP_EOL .
+                '<br>'. PHP_EOL .
                 '<div style="width&#x3A;&#x20;18rem&#x3B;" class="card">' . PHP_EOL .
                 '    <div class="card-header">' . PHP_EOL .
                 '        Featured' . PHP_EOL .
@@ -163,9 +163,9 @@ return [
                     'title' => 'Special title treatment',
                     'text' => 'With supporting text below as a natural lead-in to additional content.',
                     '<a href="#" class="btn btn-primary">Go somewhere</a>',
-                ]) . PHP_EOL;
+                ]);
 
-                echo '<hr>'. PHP_EOL;
+                echo PHP_EOL . '<br>' . PHP_EOL;
 
                 // With blockquote
                 echo $oView->card([
@@ -175,9 +175,9 @@ return [
                         'Someone famous in <cite title="Source Title">Source Title</cite>',
                         ['class' => 'mb-0'],
                     ],
-                ]) . PHP_EOL;
+                ]);
                 
-                echo '<hr>'. PHP_EOL;
+                echo PHP_EOL . '<br>' . PHP_EOL;
 
                 // Centered
                 echo $oView->card([
@@ -200,7 +200,7 @@ return [
                 '        <a href="#" class="btn btn-primary">Go somewhere</a>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</div>' . PHP_EOL .
-                '<hr>' . PHP_EOL .
+                '<br>'. PHP_EOL .
                 '<div class="card">' . PHP_EOL .
                 '    <div class="card-header">' . PHP_EOL .
                 '        Quote' . PHP_EOL .
@@ -216,7 +216,7 @@ return [
                 '        </blockquote>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</div>' . PHP_EOL .
-                '<hr>' . PHP_EOL .
+                '<br>'. PHP_EOL .
                 '<div class="card&#x20;text-center">' . PHP_EOL .
                 '    <div class="card-header">' . PHP_EOL .
                 '        Featured' . PHP_EOL .

@@ -48,7 +48,7 @@ return [
                 echo $oView->card([
                     'title' => 'Special title treatment',
                     'text' => 'With supporting text below as a natural lead-in to additional content.',
-                    '<a href="#" class="btn btn-primary">Button</a>',
+                    '<a href="#" class="btn btn-primary">Go somewhere</a>',
                 ], ['style' => 'width: 18rem;']);
             },
             'expected' => '<div style="width&#x3A;&#x20;18rem&#x3B;" class="card">' . PHP_EOL .
@@ -57,7 +57,7 @@ return [
                 '        <p class="card-text">'.
                 'With supporting text below as a natural lead-in to additional content.'.
                 '</p>' . PHP_EOL .
-                '        <a href="#" class="btn btn-primary">Button</a>' . PHP_EOL .
+                '        <a href="#" class="btn btn-primary">Go somewhere</a>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</div>',
         ],

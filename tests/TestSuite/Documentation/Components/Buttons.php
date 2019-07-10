@@ -131,6 +131,8 @@ return [
                 ]);
                 echo $oView->formButton($oButton) . PHP_EOL;
 
+                echo '<br>' . PHP_EOL;
+
                 // Small buttons
                 $oButton = new \Zend\Form\Element\Button('small-button', [
                     'label' => 'Small button',
@@ -144,6 +146,8 @@ return [
                     'size' => 'sm',
                 ]);
                 echo $oView->formButton($oButton) . PHP_EOL;
+
+                echo '<br>' . PHP_EOL;
 
                 // Block level buttons
                 $oButton = new \Zend\Form\Element\Button('block-level-button', [
@@ -166,10 +170,12 @@ return [
                 'class="btn&#x20;btn-lg&#x20;btn-primary" value="">Large button</button>' . PHP_EOL .
                 '<button type="button" name="large-button" ' .
                 'class="btn&#x20;btn-lg&#x20;btn-secondary" value="">Large button</button>' . PHP_EOL .
+                '<br>'. PHP_EOL .
                 '<button type="button" name="small-button" ' .
                 'class="btn&#x20;btn-primary&#x20;btn-sm" value="">Small button</button>' . PHP_EOL .
                 '<button type="button" name="small-button" ' .
                 'class="btn&#x20;btn-sm&#x20;btn-secondary" value="">Small button</button>' . PHP_EOL .
+                '<br>'. PHP_EOL .
                 '<button type="button" name="block-level-button" ' .
                 'class="btn&#x20;btn-block&#x20;btn-lg&#x20;btn-primary" ' .
                 'value="">Block level button</button>' . PHP_EOL .

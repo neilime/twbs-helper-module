@@ -64,7 +64,7 @@ return [
                             'This is a wider card with supporting text below as a natural '.
                             'lead-in to additional content. '.
                             'This content is a little bit longer.',
-                            '<small class="text-muted">Last updated 3 mins ago</small>'
+                            'Last updated 3 mins ago'
                         ],
                     ],
                 ], ['bgVariant' => 'dark', 'class' => 'text-white']);
@@ -77,7 +77,7 @@ return [
                 'This is a wider card with supporting text below as a natural lead-in to additional content. '.
                 'This content is a little bit longer.'.
                 '</p>' . PHP_EOL .
-                '        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>' . PHP_EOL .
+                '        <p class="card-text">Last updated 3 mins ago</p>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</div>',
         ]

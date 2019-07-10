@@ -18,7 +18,9 @@ return [
             'title' => 'Special title treatment',
             'text' => 'With supporting text below as a natural lead-in to additional content.',
             '<a href="#" class="btn btn-primary">Go somewhere</a>',
-        ], ['class' => 'text-center']) . PHP_EOL;
+        ], ['class' => 'text-center']);
+
+        echo PHP_EOL . '<br>' . PHP_EOL;
 
         // Nav pills (pages defined by an array as  container)
         echo $oView->card([
@@ -63,6 +65,7 @@ return [
         '        <a href="#" class="btn btn-primary">Go somewhere</a>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '</div>' . PHP_EOL .
+        '<br>' . PHP_EOL .
         '<div class="card&#x20;text-center">' . PHP_EOL .
         '    <div class="card-header">' . PHP_EOL .
         '        <ul class="card-header-pills&#x20;nav&#x20;nav-pills">' . PHP_EOL .
