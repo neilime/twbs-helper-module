@@ -148,7 +148,7 @@ class Form extends \Zend\Form\View\Helper\Form
 
                 $sElementRendering = $oFormRowHelper->renderFormRow(
                     current($aButtons),
-                    $oButtonGroupHelper($aButtons, $aGroupOptions ?? []),
+                    $oButtonGroupHelper($aButtons, $aGroupOptions ?? [])
                 );
             }
             if ($sElementRendering) {

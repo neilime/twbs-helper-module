@@ -9,9 +9,10 @@ return [
             'title' => 'Form groups',
             'url' => '%bootstrap-url%/components/forms/#form-groups',
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-                // Create form
                 $oFactory = new \Zend\Form\Factory();
-                $oForm = $oFactory->create([
+
+                // Create form
+                echo $oView->form($oFactory->create([
                     'type' => 'form',
                     'elements' => [
                         [
@@ -41,9 +42,7 @@ return [
                             ],
                         ],
                     ]
-                ]);
-
-                echo $oView->form($oForm);
+                ]));
             },
             'expected' => '<form method="POST" name="form" role="form" id="form">' . PHP_EOL .
                 '    <div class="form-group">' . PHP_EOL .
@@ -62,9 +61,10 @@ return [
             'title' => 'Form grid',
             'url' => '%bootstrap-url%/components/forms/#form-grid',
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-                // Create form
                 $oFactory = new \Zend\Form\Factory();
-                $oForm = $oFactory->create([
+
+                // Create form
+                echo $oView->form($oFactory->create([
                     'type' => 'form',
                     'elements' => [
                         [
@@ -92,9 +92,7 @@ return [
                             ],
                         ],
                     ]
-                ]);
-
-                echo $oView->form($oForm);
+                ]));
             },
             'expected' => '<form method="POST" name="form" role="form" id="form">' . PHP_EOL .
                 '    <div class="row">' . PHP_EOL .
@@ -114,9 +112,10 @@ return [
                     'url' => '%bootstrap-url%/components/forms/#form-row',
 
                     'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-                        // Create form
                         $oFactory = new \Zend\Form\Factory();
-                        $oForm = $oFactory->create([
+
+                        // Create form
+                        echo $oView->form($oFactory->create([
                             'type' => 'form',
                             'options' => ['row_class' => 'form-row'],
                             'elements' => [
@@ -145,9 +144,71 @@ return [
                                     ],
                                 ],
                             ]
-                        ]);
+                        ]));
 
-                        echo $oView->form($oForm);
+                        echo PHP_EOL . '<br>' . PHP_EOL;
+
+                        // Create form
+                        echo $oView->form($oFactory->create([
+                            'type' => 'form',
+                            'options' => ['row_class' => 'form-row'],
+                            'elements' => [
+                                [
+                                    'spec' => [
+                                        'name' => 'email',
+                                        'options' => [
+                                            'column' => 'md-6',
+                                            'label' => 'Email'
+                                        ],
+                                        'attributes' => [
+                                            'type' => 'email',
+                                            'placeholder' => 'Email',
+                                            'id' => 'inputEmail4',
+                                        ],
+                                    ],
+                                ],
+                                [
+                                    'spec' => [
+                                        'name' => 'password',
+                                        'options' => [
+                                            'column' => 'md-6',
+                                            'label' => 'Password'
+                                        ],
+                                        'attributes' => [
+                                            'type' => 'password',
+                                            'placeholder' => 'Password',
+                                            'id' => 'inputPassword4',
+                                        ],
+                                    ],
+                                ],
+                                // [
+                                //     'spec' => [
+                                //         'name' => 'address',
+                                //         'options' => [
+                                //             'label' => 'Address'
+                                //         ],
+                                //         'attributes' => [
+                                //             'type' => 'text',
+                                //             'placeholder' => '1234 Main St',
+                                //             'id' => 'inputAddress',
+                                //         ],
+                                //     ],
+                                // ],
+                                // [
+                                //     'spec' => [
+                                //         'name' => 'address2',
+                                //         'options' => [
+                                //             'label' => 'Address 2'
+                                //         ],
+                                //         'attributes' => [
+                                //             'type' => 'text',
+                                //             'placeholder' => 'Apartment, studio, or floor',
+                                //             'id' => 'inputAddress2',
+                                //         ],
+                                //     ],
+                                // ],
+                            ]
+                        ]));
                     },
                     'expected' => '<form method="POST" name="form" role="form" id="form">' . PHP_EOL .
                         '    <div class="form-row">' . PHP_EOL .
@@ -160,6 +221,33 @@ return [
                         'class="form-control" value="">' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
+                        '</form>' . PHP_EOL .
+                        '<br>' . PHP_EOL .
+                        '<form method="POST" name="form" role="form" id="form">' . PHP_EOL .
+                        '    <div class="form-row">' . PHP_EOL .
+                        '        <div class="col-md-6">' . PHP_EOL .
+                        '            <label class="col-form-label&#x20;col-md-6" for="inputEmail4">' .
+                        'Email</label>' . PHP_EOL .
+                        '            <input name="email" type="email" placeholder="Email" id="inputEmail4" ' .
+                        'class="form-control" value="">' . PHP_EOL .
+                        '        </div>' . PHP_EOL .
+                        '        <div class="col-md-6">' . PHP_EOL .
+                        '            <label class="col-form-label&#x20;col-md-6" for="inputPassword4">' .
+                        'Password</label>' . PHP_EOL .
+                        '            <input name="password" type="password" placeholder="Password" ' .
+                        'id="inputPassword4" class="form-control" value="">' . PHP_EOL .
+                        '        </div>' . PHP_EOL .
+                        '    </div>' . PHP_EOL .
+                        // '    <div class="form-group">' . PHP_EOL .
+                        // '        <label class="col-form-label" for="inputAddress">Address</label>' . PHP_EOL .
+                        // '        <input name="address" type="text" placeholder="1234 Main St" id="inputAddress" ' .
+                        // 'class="form-control" value="">' . PHP_EOL .
+                        // '    </div>' . PHP_EOL .
+                        // '    <div class="form-group">' . PHP_EOL .
+                        // '        <label class="col-form-label" for="inputAddress2">Address 2</label>' . PHP_EOL .
+                        // '        <input name="address2" type="text" placeholder="Apartment, studio, or floor" ' .
+                        // 'id="inputAddress2" class="form-control" value="">' . PHP_EOL .
+                        // '    </div>' . PHP_EOL .
                         '</form>',
                 ],
             ],
