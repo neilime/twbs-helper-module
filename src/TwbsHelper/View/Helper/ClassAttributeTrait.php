@@ -50,10 +50,14 @@ trait ClassAttributeTrait
         return $bCleanClasses ? $this->cleanClassesAttribute($aClasses) : $aClasses;
     }
 
-    protected function setClassesToAttributes(array $aAttributes, array $aClasses): array
-    {
-        $aClasses = $this->addClassesAttribute($aAttributes['class'] ?? '', $aClasses);
+    protected function setClassesToAttributes(
+        array $aAttributes,
+        array $aAddClasses = [],
+        array $aRemoveClasses = []
+    ): array {
+        $aClasses = $this->addClassesAttribute($aAttributes['class'] ?? '', $aAddClasses);
         if ($aClasses) {
+            $aClasses = array_diff($aClasses, $aRemoveClasses);
             $aAttributes['class'] = join(' ', $aClasses);
         }
         return $aAttributes;

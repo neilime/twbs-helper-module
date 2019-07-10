@@ -2,12 +2,12 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
-class FormCheckbox extends \Zend\Form\View\Helper\FormCheckbox
+class FormRange extends \Zend\Form\View\Helper\FormRange
 {
     use \TwbsHelper\View\Helper\ClassAttributeTrait;
 
     /**
-     * Render a form <checkbox> element from the provided $oElement
+     * Render a form <input> element from the provided $oElement
      *
      * @param \Zend\Form\ElementInterface $oElement
      * @return string
@@ -16,7 +16,7 @@ class FormCheckbox extends \Zend\Form\View\Helper\FormCheckbox
     {
         $oElement->setAttributes($this->setClassesToAttributes(
             $oElement->getAttributes() ?? [],
-            ['form-check-input'],
+            ['form-control-range'],
             ['form-control']
         ));
         return parent::render($oElement);

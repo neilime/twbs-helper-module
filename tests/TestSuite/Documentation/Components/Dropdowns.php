@@ -896,11 +896,13 @@ return [
                         '            <input name="password" type="password" id="exampleDropdownFormPassword1" ' .
                         'placeholder="Password" class="form-control" value="">' . PHP_EOL .
                         '        </div>' . PHP_EOL .
-                        '        <div class="form-check&#x20;form-group">' . PHP_EOL .
-                        '            <input type="checkbox" name="remember_me" id="dropdownCheck" ' .
-                        'value="1" class="form-check-input">' . PHP_EOL .
-                        '            <label class="form-check-label" for="dropdownCheck">' .
+                        '        <div class="form-group">' . PHP_EOL .
+                        '            <div class="form-check">' . PHP_EOL .
+                        '                <input type="checkbox" name="remember_me" id="dropdownCheck" '.
+                        'class="form-check-input" value="1">' . PHP_EOL .
+                        '                <label class="form-check-label" for="dropdownCheck">' .
                         'Remember me</label>' . PHP_EOL .
+                        '            </div>' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '        <div class="form-group">' . PHP_EOL .
                         '            <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">' .

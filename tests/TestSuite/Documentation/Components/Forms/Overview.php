@@ -73,11 +73,13 @@ return [
         '        <input name="password" type="password" id="exampleInputPassword1" ' .
         'placeholder="Password" class="form-control" value="">' . PHP_EOL .
         '    </div>' . PHP_EOL .
-        '    <div class="form-check&#x20;form-group">' . PHP_EOL .
-        '        <input type="checkbox" name="remember_me" id="exampleCheck1" ' .
-        'value="1" class="form-check-input">' . PHP_EOL .
-        '        <label class="form-check-label" for="exampleCheck1">' .
+        '    <div class="form-group">' . PHP_EOL .
+        '        <div class="form-check">' . PHP_EOL .
+        '            <input type="checkbox" name="remember_me" id="exampleCheck1" '.
+        'class="form-check-input" value="1">' . PHP_EOL .
+        '            <label class="form-check-label" for="exampleCheck1">' .
         'Check me out</label>' . PHP_EOL .
+        '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '    <div class="form-group">' . PHP_EOL .
         '        <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">' .

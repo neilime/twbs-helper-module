@@ -126,7 +126,7 @@ return [
         '    </div>' . PHP_EOL .
         '    <div class="form-group">' . PHP_EOL .
         '        <label for="exampleFormControlFile1">Example file input</label>' . PHP_EOL .
-        '        <input name="file_input" type="file" id="exampleFormControlFile1" class="form-control-file">'
+        '        <input name="file_input" type="file" id="exampleFormControlFile1" class="form-control-file" value="">'
         . PHP_EOL .
         '    </div>' . PHP_EOL .
         '</form>',

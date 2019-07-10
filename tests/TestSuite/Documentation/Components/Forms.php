@@ -7,5 +7,7 @@ return [
     'tests' => [
         include __DIR__ . DIRECTORY_SEPARATOR . 'Forms/Overview.php',
         include __DIR__ . DIRECTORY_SEPARATOR . 'Forms/FormControls.php',
+        include __DIR__ . DIRECTORY_SEPARATOR . 'Forms/RangeInputs.php',
+        include __DIR__ . DIRECTORY_SEPARATOR . 'Forms/CheckboxesAndRadios.php',
     ],
 ];

@@ -1,52 +1,36 @@
 <?php
+
 namespace TwbsHelper\Form\View\Helper;
 
-use Zend\Form\ElementInterface;
-use Zend\View\Helper\AbstractHelper;
-
-/**
- * FormStatic
- *
- * @uses AbstractHelper
- */
-class FormStatic extends AbstractHelper
+class FormStatic extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
 
     /**
-     * @var string
-     */
-    protected static $staticFormat = '<p class="form-control-static">%s</p>';
-
-
-    /**
-     * __invoke
      * Invoke helper as functor
      * Proxies to {@link render()}.
      *
-     * @param  ElementInterface|null $element
-     * @access public
-     * @return string|TwbsHelperFormStatic
+     * @param \Zend\Form\ElementInterface|null $element
+     * @return string|\TwbsHelper\Form\View\Helper\FormStatic
      */
-    public function __invoke(ElementInterface $element = null)
+    public function __invoke(\Zend\Form\ElementInterface $oElement = null)
     {
-        if (! $element) {
+        if (!$oElement) {
             return $this;
         }
 
-        return $this->render($element);
+        return $this->render($oElement);
     }
 
 
     /**
-     * render
+     * Render a <p> static element
      *
-     * @see    \Zend\Form\View\Helper\AbstractHelper::render()
-     * @param  ElementInterface $oElement
+     * @param \Zend\Form\ElementInterface $oElement
      * @access public
      * @return string
      */
-    public function render(ElementInterface $oElement)
+    public function render(\Zend\Form\ElementInterface $oElement)
     {
-        return sprintf(static::$staticFormat, $oElement->getValue());
+        return $this->htmlElement('p', ['class' => 'form-control-static'], $oElement->getValue());
     }
 }

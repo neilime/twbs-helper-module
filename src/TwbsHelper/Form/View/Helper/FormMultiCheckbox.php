@@ -2,194 +2,88 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
-use Zend\Form\Element\MultiCheckbox;
-use Zend\Form\View\Helper\FormMultiCheckbox as ZendFormMultiCheckboxViewHelper;
-use Zend\Form\ElementInterface;
-
-/**
- * FormMultiCheckbox
- *
- * @uses ZendFormMultiCheckboxViewHelper
- */
-class FormMultiCheckbox extends ZendFormMultiCheckboxViewHelper
+class FormMultiCheckbox extends \Zend\Form\View\Helper\FormMultiCheckbox
 {
-
     use \TwbsHelper\View\Helper\ClassAttributeTrait;
+    use \TwbsHelper\View\Helper\HtmlTrait;
 
     /**
-     * render
+     * The attributes applied to option label
      *
-     * @see    FormMultiCheckbox::render()
-     * @param  ElementInterface $oElement
-     * @access public
+     * @var array
+     */
+    protected $labelAttributes = ['class' => 'form-check-label'];
+
+    /**
+     * Render a form <input type="radio"> element from the provided $oElement
+     *
+     * @param \Zend\Form\ElementInterface $oElement
      * @return string
      */
-    public function render(ElementInterface $oElement)
+    public function render(\Zend\Form\ElementInterface $oElement): string
     {
-        $aElementOptions = $oElement->getOptions();
-        $sClass          = 'form-check';
-        $sClass         .= isset($aElementOptions['inline']) && $aElementOptions['inline'] ? ' form-check-inline' : '';
+        $oElement->setAttributes($this->setClassesToAttributes(
+            $oElement->getAttributes() ?? [],
+            ['form-check-input'],
+            ['form-control']
+        ));
 
-        $this->setSeparator("</div><div class='{$sClass}'>");
-
-        $oElement->setAttribute(
-            'class',
-            join(' ', $this->addClassesAttribute(
-                $oElement->getAttribute('class'),
-                ['form-check-input']
-            ))
-        );
-
-        $oElement->setLabelAttributes(
-            [
-                'class' => join(' ', $this->addClassesAttribute(
-                    $oElement->getLabelAttributes()['class'] ?? '',
-                    ['form-check-label']
-                ))
-            ]
-        );
-
-        return sprintf("<div class='{$sClass}'>%s</div>", parent::render($oElement));
-    }
-
-
-    /**
-     * renderOptions
-     * Render options
-     *
-     * @param  MultiCheckbox $oElement
-     * @param  array         $aOptions
-     * @param  array         $selectedOptions
-     * @param  array         $aAttributes
-     * @return string
-     */
-    protected function renderOptions(
-        MultiCheckbox $oElement,
-        array $aOptions,
-        array $selectedOptions,
-        array $aAttributes
-    ) {
-        $oEscapeHtmlHelper      = $this->getEscapeHtmlHelper();
-        $oLabelHelper           = $this->getLabelHelper();
-        $sLabelClose            = $oLabelHelper->closeTag();
-        $sLabelPosition         = $this->getLabelPosition();
-        $aGlobalLabelAttributes = $oElement->getLabelAttributes();
-        $sClosingBracket        = $this->getInlineClosingBracket();
-
-        if ($oElement instanceof LabelAwareInterface) {
-            $aGlobalLabelAttributes = $oElement->getLabelAttributes();
-        }
-
-        if (empty($aGlobalLabelAttributes)) {
-            $aGlobalLabelAttributes = $this->labelAttributes;
-        }
-
-        $aCombinedMarkup = [];
-        $iCount          = 0;
-
-        foreach ($aOptions as $sKey => $aOptionSpec) {
-            // Count number of options
-            $iCount++;
-
-            $sValue           = '';
-            $sLabel           = '';
-            $aInputAttributes = $aAttributes;
-            $aLabelAttributes = $aGlobalLabelAttributes;
-            $bSelected        = (isset($aInputAttributes['selected'])
-                && $aInputAttributes['type'] != 'radio'
-                && $aInputAttributes['selected']);
-            $bDisabled        = (isset($aInputAttributes['disabled']) && $aInputAttributes['disabled']);
-
-            // Customize the 'id' input attribute to enable
-            // working 'for' label attribute on all options
-            if ($iCount > 1 && array_key_exists('id', $aAttributes)) {
-                $aInputAttributes['id'] .= $iCount;
+        // Handle label attributes for options
+        $aValueOptions = $oElement->getValueOptions();
+        foreach ($aValueOptions as &$aOption) {
+            if (!is_array($aOption)) {
+                continue;
             }
 
-            if (is_scalar($aOptionSpec)) {
-                $aOptionSpec = [
-                    'label' => $aOptionSpec,
-                    'value' => $sKey,
-                ];
-            }
-
-            if (isset($aOptionSpec['value'])) {
-                $sValue = $aOptionSpec['value'];
-            }
-
-            if (isset($aOptionSpec['label'])) {
-                $sLabel = $aOptionSpec['label'];
-            }
-
-            if (isset($aOptionSpec['selected'])) {
-                $bSelected = $aOptionSpec['selected'];
-            }
-
-            if (isset($aOptionSpec['disabled'])) {
-                $bDisabled = $aOptionSpec['disabled'];
-            }
-
-            if (isset($aOptionSpec['attributes'])) {
-                $aInputAttributes = array_merge($aInputAttributes, $aOptionSpec['attributes']);
-            }
-
-            if (in_array($sValue, $selectedOptions)) {
-                $bSelected = true;
-            }
-
-            $aInputAttributes['value']    = $sValue;
-            $aInputAttributes['checked']  = $bSelected;
-            $aInputAttributes['disabled'] = $bDisabled;
-
-            $input = sprintf(
-                '<input %s%s',
-                $this->createAttributesString($aInputAttributes),
-                $sClosingBracket
-            );
-
-            if (null !== ($translator = $this->getTranslator())) {
-                $sLabel = $translator->translate(
-                    $sLabel,
-                    $this->getTranslatorTextDomain()
+            if (empty($aOption['label'])) {
+                $aOption['attributes'] = $this->setClassesToAttributes(
+                    $aOption['attributes'] ?? [],
+                    ['position-static', 'form-check-input']
                 );
             }
 
-            if (!$oElement instanceof LabelAwareInterface || !$oElement->getLabelOption('disable_html_escape')) {
-                $sLabel = $oEscapeHtmlHelper($sLabel);
+            if (isset($aOption['attributes']['id'])) {
+                $aOption['label_attributes'] = \Zend\Stdlib\ArrayUtils::merge(
+                    $aOption['label_attributes'] ?? [],
+                    [
+                        'for' => $aOption['attributes']['id'],
+                    ]
+                );
             }
+        }
+        $oElement->setValueOptions($aValueOptions);
 
-            // Label
-            // Set label attributes
-            if (isset($aOptionSpec['label_attributes'])) {
-                $aLabelAttributes = isset($aLabelAttributes)
-                    ? array_merge($aLabelAttributes, $aOptionSpec['label_attributes'])
-                    : $aOptionSpec['label_attributes'];
-            }
+        $sSeparator = $this->getSeparator();
+        $sTmpSeparator = '[SEPARATOR]';
+        $this->setSeparator($sTmpSeparator);
 
-            // Assign label for attribute with defined element id attribute
-            if (empty($aLabelAttributes['for']) && !empty($aInputAttributes['id'])) {
-                $aLabelAttributes['for'] = $aInputAttributes['id'];
-            }
+        $sTmpContent = parent::render($oElement);
 
-            // Create label markup
-            $sLabelOpen = $oLabelHelper->openTag($aLabelAttributes);
-            $sLabel     = $sLabelOpen . $sLabel . $sLabelClose;
+        $this->setSeparator($sSeparator);
 
-            // Attach label to input
-            switch ($sLabelPosition) {
-                case self::LABEL_PREPEND:
-                    $markup = $sLabel . $input;
-                    break;
+        $sContent = '';
 
-                case self::LABEL_APPEND:
-                default:
-                    $markup = $input . $sLabel;
-                    break;
-            }
+        $aGroupClasses = ['form-check'];
 
-            $aCombinedMarkup[] = $markup;
+        if ($oElement->getOption('twbs-layout') === \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE) {
+            $aGroupClasses[] = 'form-check-inline';
         }
 
-        return implode($this->getSeparator(), $aCombinedMarkup);
+        foreach (explode($sTmpSeparator, $sTmpContent) as $sOptionContent) {
+            // Retrieve input content
+            if (preg_match('/(<label[^>]*>.*)(<input[^>]+>)(.*<\/label[^>]*>)/', $sOptionContent, $aMatches)) {
+                $sLabelContent = $aMatches[1] . $aMatches[3];
+                if (preg_match('/<label[^>]*>\s*<\/label[^>]*>/', $sLabelContent)) {
+                    $sLabelContent = '';
+                }
+
+                $sContent .= ($sContent ? PHP_EOL : '') . $this->htmlElement(
+                    'div',
+                    $this->setClassesToAttributes([], $aGroupClasses),
+                    $aMatches[2] . ($sLabelContent ? PHP_EOL . $sLabelContent : '')
+                );
+            }
+        }
+        return $sContent;
     }
 }
