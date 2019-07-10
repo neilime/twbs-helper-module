@@ -351,7 +351,10 @@ return [
                     'options' => [
                         'label' => 'Large button',
                         'size' => 'lg',
-                        'dropdown' => ['Action', 'Another action', 'Something else here', '---', 'Separated link'],
+                        'dropdown' => [
+                            'attributes' => ['class' => 'btn-group'],
+                            'items' => ['Action', 'Another action', 'Something else here', '---', 'Separated link'],
+                        ],
                     ],
                 ]) . PHP_EOL;
 
@@ -366,7 +369,9 @@ return [
                             'items' => ['Action', 'Another action', 'Something else here', '---', 'Separated link'],
                         ],
                     ],
-                ]) . PHP_EOL;
+                ]);
+
+                echo PHP_EOL . '<br>' . PHP_EOL;
 
                 // Small button
                 echo $oView->formButton([
@@ -374,7 +379,10 @@ return [
                     'options' => [
                         'label' => 'Small button',
                         'size' => 'sm',
-                        'dropdown' => ['Action', 'Another action', 'Something else here', '---', 'Separated link'],
+                        'dropdown' => [
+                            'attributes' => ['class' => 'btn-group'],
+                            'items' => ['Action', 'Another action', 'Something else here', '---', 'Separated link'],
+                        ],
                     ],
                 ]) . PHP_EOL;
 
@@ -389,9 +397,9 @@ return [
                             'items' => ['Action', 'Another action', 'Something else here', '---', 'Separated link'],
                         ],
                     ],
-                ]) . PHP_EOL;
+                ]);
             },
-            'expected' => '<div class="dropdown">' . PHP_EOL .
+            'expected' => '<div class="btn-group&#x20;dropdown">' . PHP_EOL .
                 '    <button type="button" name="dropdown" ' .
                 'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
                 'class="btn&#x20;btn-lg&#x20;dropdown-toggle&#x20;btn-secondary" value="">' .
@@ -419,7 +427,8 @@ return [
                 '        <a href="&#x23;" class="dropdown-item">Separated link</a>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</div>' . PHP_EOL .
-                '<div class="dropdown">' . PHP_EOL .
+                '<br>' . PHP_EOL .
+                '<div class="btn-group&#x20;dropdown">' . PHP_EOL .
                 '    <button type="button" name="dropdown" ' .
                 'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
                 'class="btn&#x20;btn-sm&#x20;dropdown-toggle&#x20;btn-secondary" value="">' .
@@ -446,7 +455,7 @@ return [
                 '        <div class="dropdown-divider"></div>' . PHP_EOL .
                 '        <a href="&#x23;" class="dropdown-item">Separated link</a>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
-                '</div>' . PHP_EOL,
+                '</div>',
         ],
         [
             'title' => 'Directions',
@@ -464,6 +473,7 @@ return [
                                 'size' => 'lg',
                                 'dropdown' => [
                                     'direction' => 'up',
+                                    'attributes' => ['class' => 'btn-group'],
                                     'items' => [
                                         'Action',
                                         'Another action',
@@ -474,6 +484,7 @@ return [
                                 ],
                             ],
                         ]) . PHP_EOL;
+
                         // Dropup split button
                         echo $oView->formButton([
                             'name' => 'split-dropup',
@@ -492,9 +503,9 @@ return [
                                     ],
                                 ],
                             ],
-                        ]) . PHP_EOL;
+                        ]);
                     },
-                    'expected' => '<div class="dropup">' . PHP_EOL .
+                    'expected' => '<div class="btn-group&#x20;dropup">' . PHP_EOL .
                         '    <button type="button" name="dropup" ' .
                         'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
                         'class="btn&#x20;btn-lg&#x20;dropdown-toggle&#x20;btn-secondary" value="">' .
@@ -521,7 +532,7 @@ return [
                         '        <div class="dropdown-divider"></div>' . PHP_EOL .
                         '        <a href="&#x23;" class="dropdown-item">Separated link</a>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
-                        '</div>' . PHP_EOL,
+                        '</div>',
                 ],
                 [
                     'title' => 'Dropright',
@@ -535,6 +546,7 @@ return [
                                 'size' => 'lg',
                                 'dropdown' => [
                                     'direction' => 'right',
+                                    'attributes' => ['class' => 'btn-group'],
                                     'items' => [
                                         'Action',
                                         'Another action',
@@ -545,6 +557,7 @@ return [
                                 ],
                             ],
                         ]) . PHP_EOL;
+
                         // Dropright split button
                         echo $oView->formButton([
                             'name' => 'split-dropright',
@@ -563,9 +576,9 @@ return [
                                     ],
                                 ],
                             ],
-                        ]) . PHP_EOL;
+                        ]);
                     },
-                    'expected' => '<div class="dropright">' . PHP_EOL .
+                    'expected' => '<div class="btn-group&#x20;dropright">' . PHP_EOL .
                         '    <button type="button" name="dropright" ' .
                         'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
                         'class="btn&#x20;btn-lg&#x20;dropdown-toggle&#x20;btn-secondary" value="">' .
@@ -592,7 +605,7 @@ return [
                         '        <div class="dropdown-divider"></div>' . PHP_EOL .
                         '        <a href="&#x23;" class="dropdown-item">Separated link</a>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
-                        '</div>' . PHP_EOL,
+                        '</div>',
                 ],
             ],
         ],
@@ -607,7 +620,9 @@ return [
                         'dropdown' => ['Action', 'Another action', 'Something else here'],
                     ],
                     'attributes' => ['id' => 'dropdownMenu2'],
-                ]) . PHP_EOL;
+                ]);
+
+                echo PHP_EOL . '<br>' . PHP_EOL;
 
                 // Non-interactive dropdown items
                 echo $oView->dropdown()->renderMenu([
@@ -628,6 +643,7 @@ return [
                 '        <a href="&#x23;" class="dropdown-item">Something else here</a>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</div>' . PHP_EOL .
+                '<br>' . PHP_EOL .
                 '<div class="dropdown-menu">' . PHP_EOL .
                 '    <span class="dropdown-item-text">Dropdown item text</span>' . PHP_EOL .
                 '    <a href="&#x23;" class="dropdown-item">Action</a>' . PHP_EOL .
@@ -657,14 +673,14 @@ return [
                     'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                         echo $oView->dropdown()->renderMenu([
                             'Regular link',
-                            'Active link' => ['disabled' => true],
+                            'Disabled link' => ['disabled' => true],
                             'Another link'
                         ]);
                     },
                     'expected' => '<div class="dropdown-menu">' . PHP_EOL .
                         '    <a href="&#x23;" class="dropdown-item">Regular link</a>' . PHP_EOL .
                         '    <a href="&#x23;" tabindex="-1" aria-disabled="true" class="disabled&#x20;dropdown-item">' .
-                        'Active link</a>' . PHP_EOL .
+                        'Disabled link</a>' . PHP_EOL .
                         '    <a href="&#x23;" class="dropdown-item">Another link</a>' . PHP_EOL .
                         '</div>',
                 ],
@@ -711,7 +727,10 @@ return [
                                     'items' => ['Action', 'Another action', 'Something else here'],
                                 ],
                             ],
-                        ]) . PHP_EOL;
+                        ]);
+
+                        echo PHP_EOL . '<br>' . PHP_EOL;
+
                         echo $oView->formButton([
                             'name' => 'dropdown',
                             'options' => [
@@ -734,6 +753,7 @@ return [
                         '        <a href="&#x23;" class="dropdown-item">Something else here</a>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '</div>' . PHP_EOL .
+                        '<br>' . PHP_EOL .
                         '<div class="dropdown">' . PHP_EOL .
                         '    <button type="button" name="dropdown" ' .
                         'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
@@ -897,11 +917,15 @@ return [
             'title' => 'Dropdown options',
             'url' => '%bootstrap-url%/components/dropdowns/#dropdown-options',
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+
+                echo '<div class="d-flex">' . PHP_EOL;
+
                 echo $oView->formButton([
                     'name' => 'dropdown',
                     'options' => [
                         'label' => 'Offset',
                         'dropdown' => [
+                            'attributes' => ['class' => 'mr-1'],
                             'offset' => '10,20',
                             'items' => ['Action', 'Another action', 'Something else here'],
                         ],
@@ -922,8 +946,12 @@ return [
                     ],
                     'attributes' => ['id' => 'dropdownMenuReference'],
                 ]);
+
+
+                echo PHP_EOL . '</div>';
             },
-            'expected' => '<div class="dropdown">' . PHP_EOL .
+            'expected' => '<div class="d-flex">' . PHP_EOL .
+                '<div class="dropdown&#x20;mr-1">' . PHP_EOL .
                 '    <button type="button" name="dropdown" id="dropdownMenuOffset" ' .
                 'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
                 'data-offset="10,20" class="btn&#x20;dropdown-toggle&#x20;btn-secondary" value="">' .
@@ -947,6 +975,7 @@ return [
                 '        <a href="&#x23;" class="dropdown-item">Another action</a>' . PHP_EOL .
                 '        <a href="&#x23;" class="dropdown-item">Something else here</a>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
+                '</div>' . PHP_EOL .
                 '</div>',
         ],
     ],
