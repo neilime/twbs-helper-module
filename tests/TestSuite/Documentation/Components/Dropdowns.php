@@ -20,7 +20,10 @@ return [
                                 'dropdown' => ['Action', 'Another action', 'Something else here',],
                             ],
                             'attributes' => ['id' => 'dropdownMenuButton'],
-                        ]) . PHP_EOL;
+                        ]);
+
+
+                        echo PHP_EOL . '<br>' . PHP_EOL;
 
                         // With <a> elements
                         echo $oView->formButton([
@@ -31,7 +34,9 @@ return [
                                 'dropdown' => ['Action', 'Another action', 'Something else here',],
                             ],
                             'attributes' => ['id' => 'dropdownMenuButton'],
-                        ]) . PHP_EOL;
+                        ]);
+
+                        echo PHP_EOL . '<br>' . PHP_EOL;
 
                         // Variations
                         foreach ([
@@ -44,11 +49,14 @@ return [
                                     'variant' => $sVariant,
                                     'label' => 'Dropdown',
                                     'dropdown' => [
-                                        'Action',
-                                        'Another action',
-                                        'Something else here',
-                                        '---',
-                                        'Separated link',
+                                        'attributes' => ['class' => 'btn-group'],
+                                        'items' => [
+                                            'Action',
+                                            'Another action',
+                                            'Something else here',
+                                            '---',
+                                            'Separated link',
+                                        ],
                                     ],
                                 ],
                             ]) . PHP_EOL;
@@ -65,6 +73,7 @@ return [
                         '        <a href="&#x23;" class="dropdown-item">Something else here</a>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '</div>' . PHP_EOL .
+                        '<br>' . PHP_EOL .
                         '<div class="dropdown">' . PHP_EOL .
                         '    <a id="dropdownMenuButton" data-toggle="dropdown" role="button" aria-haspopup="true" ' .
                         'aria-expanded="false" href="&#x23;" class="btn&#x20;dropdown-toggle&#x20;btn-secondary">' .
@@ -75,7 +84,8 @@ return [
                         '        <a href="&#x23;" class="dropdown-item">Something else here</a>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '</div>' . PHP_EOL .
-                        '<div class="dropdown">' . PHP_EOL .
+                        '<br>' . PHP_EOL .
+                        '<div class="btn-group&#x20;dropdown">' . PHP_EOL .
                         '    <button type="button" name="dropdown" ' .
                         'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
                         'class="btn&#x20;btn-primary&#x20;dropdown-toggle" value="">' .
@@ -88,7 +98,7 @@ return [
                         '        <a href="&#x23;" class="dropdown-item">Separated link</a>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '</div>' . PHP_EOL .
-                        '<div class="dropdown">' . PHP_EOL .
+                        '<div class="btn-group&#x20;dropdown">' . PHP_EOL .
                         '    <button type="button" name="dropdown" ' .
                         'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
                         'class="btn&#x20;btn-secondary&#x20;dropdown-toggle" value="">' .
@@ -101,7 +111,7 @@ return [
                         '        <a href="&#x23;" class="dropdown-item">Separated link</a>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '</div>' . PHP_EOL .
-                        '<div class="dropdown">' . PHP_EOL .
+                        '<div class="btn-group&#x20;dropdown">' . PHP_EOL .
                         '    <button type="button" name="dropdown" ' .
                         'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
                         'class="btn&#x20;btn-success&#x20;dropdown-toggle" value="">' .
@@ -114,7 +124,7 @@ return [
                         '        <a href="&#x23;" class="dropdown-item">Separated link</a>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '</div>' . PHP_EOL .
-                        '<div class="dropdown">' . PHP_EOL .
+                        '<div class="btn-group&#x20;dropdown">' . PHP_EOL .
                         '    <button type="button" name="dropdown" ' .
                         'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
                         'class="btn&#x20;btn-danger&#x20;dropdown-toggle" value="">' .
@@ -127,7 +137,7 @@ return [
                         '        <a href="&#x23;" class="dropdown-item">Separated link</a>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '</div>' . PHP_EOL .
-                        '<div class="dropdown">' . PHP_EOL .
+                        '<div class="btn-group&#x20;dropdown">' . PHP_EOL .
                         '    <button type="button" name="dropdown" ' .
                         'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
                         'class="btn&#x20;btn-warning&#x20;dropdown-toggle" value="">' .
@@ -140,7 +150,7 @@ return [
                         '        <a href="&#x23;" class="dropdown-item">Separated link</a>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '</div>' . PHP_EOL .
-                        '<div class="dropdown">' . PHP_EOL .
+                        '<div class="btn-group&#x20;dropdown">' . PHP_EOL .
                         '    <button type="button" name="dropdown" ' .
                         'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
                         'class="btn&#x20;btn-info&#x20;dropdown-toggle" value="">' .
@@ -153,7 +163,7 @@ return [
                         '        <a href="&#x23;" class="dropdown-item">Separated link</a>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '</div>' . PHP_EOL .
-                        '<div class="dropdown">' . PHP_EOL .
+                        '<div class="btn-group&#x20;dropdown">' . PHP_EOL .
                         '    <button type="button" name="dropdown" ' .
                         'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
                         'class="btn&#x20;btn-light&#x20;dropdown-toggle" value="">' .
@@ -166,7 +176,7 @@ return [
                         '        <a href="&#x23;" class="dropdown-item">Separated link</a>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '</div>' . PHP_EOL .
-                        '<div class="dropdown">' . PHP_EOL .
+                        '<div class="btn-group&#x20;dropdown">' . PHP_EOL .
                         '    <button type="button" name="dropdown" ' .
                         'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
                         'class="btn&#x20;btn-dark&#x20;dropdown-toggle" value="">' .
@@ -191,7 +201,8 @@ return [
                             echo $oView->formButton([
                                 'name' => 'dropdown',
                                 'options' => [
-                                    'variant' =>   $sVariant, 'label' => 'Dropdown',
+                                    'variant' => $sVariant,
+                                    'label' => 'Dropdown',
                                     'dropdown' => [
                                         'split' => 'Toggle Dropdown',
                                         'items' => [

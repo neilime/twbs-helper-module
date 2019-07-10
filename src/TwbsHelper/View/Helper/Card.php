@@ -52,8 +52,8 @@ class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
         $aBodyAttributes = [];
         if (!empty($aAttributes['bodyVariant'])) {
             $aBodyAttributes['class'] = $this->getVariantClass($aAttributes['bodyVariant'], 'text');
-            unset($aAttributes['bodyVariant']);
         }
+        unset($aAttributes['bodyVariant']);
 
         if (is_string($sContent)) {
             $sContent = $this->renderCardBody($sContent, $aBodyAttributes);
@@ -96,12 +96,13 @@ class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
         $aClasses = ['card'];
         if (!empty($aAttributes['bgVariant'])) {
             $aClasses[] = $this->getVariantClass($aAttributes['bgVariant'], 'bg');
-            unset($aAttributes['bgVariant']);
         }
+        unset($aAttributes['bgVariant']);
+
         if (!empty($aAttributes['borderVariant'])) {
             $aClasses[] = $this->getVariantClass($aAttributes['borderVariant'], 'border');
-            unset($aAttributes['borderVariant']);
         }
+        unset($aAttributes['borderVariant']);
 
         return $this->htmlElement(
             'div',

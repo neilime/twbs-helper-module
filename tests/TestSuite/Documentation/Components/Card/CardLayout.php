@@ -14,8 +14,8 @@ return [
                         'imgTop' => ['images/demo-sample.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
                         'text' => [
-                            'This is a wider card with supporting text below as a natural lead-in to additional '.
-                            'content. This content is a little bit longer.',
+                            'This is a wider card with supporting text below as a natural lead-in to additional ' .
+                                'content. This content is a little bit longer.',
                             '<small class="text-muted">Last updated 3 mins ago</small>',
                         ],
                     ],
@@ -31,21 +31,24 @@ return [
                         'imgTop' => ['images/demo-sample.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
                         'text' => [
-                            'This is a wider card with supporting text below as a natural lead-in '.
-                            'to additional content. This card has even longer content than the '.
-                            'first to show that equal height action.',
+                            'This is a wider card with supporting text below as a natural lead-in ' .
+                                'to additional content. This card has even longer content than the ' .
+                                'first to show that equal height action.',
                             '<small class="text-muted">Last updated 3 mins ago</small>',
                         ],
                     ],
-                ]) . PHP_EOL;
+                ]);
+
+
+                echo PHP_EOL . '<br>' . PHP_EOL;
 
                 // With footers
                 echo $oView->cardGroup([
                     [
                         'imgTop' => ['images/demo-sample.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
-                        'text' => 'This is a wider card with supporting text below as a natural lead-in to '.
-                        'additional content. This content is a little bit longer.',
+                        'text' => 'This is a wider card with supporting text below as a natural lead-in to ' .
+                            'additional content. This content is a little bit longer.',
                         'footer' => '<small class="text-muted">Last updated 3 mins ago</small>',
                     ],
                     [
@@ -57,9 +60,9 @@ return [
                     [
                         'imgTop' => ['images/demo-sample.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
-                        'text' => 'This is a wider card with supporting text below '.
-                        'as a natural lead-in to additional content. '.
-                        'This card has even longer content than the first to show that equal height action.',
+                        'text' => 'This is a wider card with supporting text below ' .
+                            'as a natural lead-in to additional content. ' .
+                            'This card has even longer content than the first to show that equal height action.',
                         'footer' => '<small class="text-muted">Last updated 3 mins ago</small>',
                     ],
                 ]);
@@ -69,24 +72,12 @@ return [
                 '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
-                '            <p class="card-text">'.
-                'This is a wider card with supporting text below as a natural lead-in to additional content. '.
-                'This content is a little bit longer.'.
+                '            <p class="card-text">' .
+                'This is a wider card with supporting text below as a natural lead-in to additional content. ' .
+                'This content is a little bit longer.' .
                 '</p>' . PHP_EOL .
-                '            <p class="card-text">'.
-                '<small class="text-muted">Last updated 3 mins ago</small>'.
-                '</p>' . PHP_EOL .
-                '        </div>' . PHP_EOL .
-                '    </div>' . PHP_EOL .
-                '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
-                '        <div class="card-body">' . PHP_EOL .
-                '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
-                '            <p class="card-text">'.
-                'This card has supporting text below as a natural lead-in to additional content.'.
-                '</p>' . PHP_EOL .
-                '            <p class="card-text">'.
-                '<small class="text-muted">Last updated 3 mins ago</small>'.
+                '            <p class="card-text">' .
+                '<small class="text-muted">Last updated 3 mins ago</small>' .
                 '</p>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
@@ -94,24 +85,37 @@ return [
                 '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
-                '            <p class="card-text">'.
-                'This is a wider card with supporting text below as a natural lead-in to additional content. '.
-                'This card has even longer content than the first to show that equal height action.'.
+                '            <p class="card-text">' .
+                'This card has supporting text below as a natural lead-in to additional content.' .
                 '</p>' . PHP_EOL .
-                '            <p class="card-text">'.
-                '<small class="text-muted">Last updated 3 mins ago</small>'.
+                '            <p class="card-text">' .
+                '<small class="text-muted">Last updated 3 mins ago</small>' .
+                '</p>' . PHP_EOL .
+                '        </div>' . PHP_EOL .
+                '    </div>' . PHP_EOL .
+                '    <div class="card">' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                '        <div class="card-body">' . PHP_EOL .
+                '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
+                '            <p class="card-text">' .
+                'This is a wider card with supporting text below as a natural lead-in to additional content. ' .
+                'This card has even longer content than the first to show that equal height action.' .
+                '</p>' . PHP_EOL .
+                '            <p class="card-text">' .
+                '<small class="text-muted">Last updated 3 mins ago</small>' .
                 '</p>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</div>' . PHP_EOL .
+                '<br>' . PHP_EOL .
                 '<div class="card-group">' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
                 '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
-                '            <p class="card-text">'.
-                'This is a wider card with supporting text below as a natural lead-in to additional content. '.
-                'This content is a little bit longer.'.
+                '            <p class="card-text">' .
+                'This is a wider card with supporting text below as a natural lead-in to additional content. ' .
+                'This content is a little bit longer.' .
                 '</p>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '        <div class="card-footer">' . PHP_EOL .
@@ -122,8 +126,8 @@ return [
                 '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
-                '            <p class="card-text">'.
-                'This card has supporting text below as a natural lead-in to additional content.'.
+                '            <p class="card-text">' .
+                'This card has supporting text below as a natural lead-in to additional content.' .
                 '</p>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '        <div class="card-footer">' . PHP_EOL .
@@ -134,9 +138,9 @@ return [
                 '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
-                '            <p class="card-text">'.
-                'This is a wider card with supporting text below as a natural lead-in to additional content. '.
-                'This card has even longer content than the first to show that equal height action.'.
+                '            <p class="card-text">' .
+                'This is a wider card with supporting text below as a natural lead-in to additional content. ' .
+                'This card has even longer content than the first to show that equal height action.' .
                 '</p>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '        <div class="card-footer">' . PHP_EOL .
@@ -154,9 +158,9 @@ return [
                         'imgTop' => ['images/demo-sample.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
                         'text' => [
-                            'This is a wider card with supporting text below '.
-                            'as a natural lead-in to additional content. '.
-                            'This content is a little bit longer.',
+                            'This is a wider card with supporting text below ' .
+                                'as a natural lead-in to additional content. ' .
+                                'This content is a little bit longer.',
                             '<small class="text-muted">Last updated 3 mins ago</small>',
                         ],
                     ],
@@ -172,21 +176,23 @@ return [
                         'imgTop' => ['images/demo-sample.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
                         'text' => [
-                            'This is a wider card with supporting text below as a '.
-                            'natural lead-in to additional content. '.
-                            'This card has even longer content than the first to show that equal height action.',
+                            'This is a wider card with supporting text below as a ' .
+                                'natural lead-in to additional content. ' .
+                                'This card has even longer content than the first to show that equal height action.',
                             '<small class="text-muted">Last updated 3 mins ago</small>',
                         ],
                     ],
-                ]) . PHP_EOL;
+                ]);
+
+                echo PHP_EOL . '<br>' . PHP_EOL;
 
                 // With footers
                 echo $oView->cardDeck([
                     [
                         'imgTop' => ['images/demo-sample.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
-                        'text' => 'This is a wider card with supporting text below as a '.
-                        'natural lead-in to additional content. This content is a little bit longer.',
+                        'text' => 'This is a wider card with supporting text below as a ' .
+                            'natural lead-in to additional content. This content is a little bit longer.',
                         'footer' => '<small class="text-muted">Last updated 3 mins ago</small>',
                     ],
                     [
@@ -198,8 +204,9 @@ return [
                     [
                         'imgTop' => ['images/demo-sample.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
-                        'text' => 'This is a wider card with supporting text below as a natural lead-in to additional '.
-                        'content. This card has even longer content than the first to show that equal height action.',
+                        'text' => 'This is a wider card with supporting text below as a natural ' .
+                            'lead-in to additional content. This card has even longer content than ' .
+                            'the first to show that equal height action.',
                         'footer' => '<small class="text-muted">Last updated 3 mins ago</small>',
                     ],
                 ]);
@@ -209,24 +216,12 @@ return [
                 '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
-                '            <p class="card-text">'.
-                'This is a wider card with supporting text below as a natural lead-in to additional content. '.
-                'This content is a little bit longer.'.
+                '            <p class="card-text">' .
+                'This is a wider card with supporting text below as a natural lead-in to additional content. ' .
+                'This content is a little bit longer.' .
                 '</p>' . PHP_EOL .
-                '            <p class="card-text">'.
-                '<small class="text-muted">Last updated 3 mins ago</small>'.
-                '</p>' . PHP_EOL .
-                '        </div>' . PHP_EOL .
-                '    </div>' . PHP_EOL .
-                '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
-                '        <div class="card-body">' . PHP_EOL .
-                '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
-                '            <p class="card-text">'.
-                'This card has supporting text below as a natural lead-in to additional content.'.
-                '</p>' . PHP_EOL .
-                '            <p class="card-text">'.
-                '<small class="text-muted">Last updated 3 mins ago</small>'.
+                '            <p class="card-text">' .
+                '<small class="text-muted">Last updated 3 mins ago</small>' .
                 '</p>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
@@ -234,24 +229,37 @@ return [
                 '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
-                '            <p class="card-text">'.
-                'This is a wider card with supporting text below as a natural lead-in to additional content. '.
-                'This card has even longer content than the first to show that equal height action.'.
+                '            <p class="card-text">' .
+                'This card has supporting text below as a natural lead-in to additional content.' .
                 '</p>' . PHP_EOL .
-                '            <p class="card-text">'.
-                '<small class="text-muted">Last updated 3 mins ago</small>'.
+                '            <p class="card-text">' .
+                '<small class="text-muted">Last updated 3 mins ago</small>' .
+                '</p>' . PHP_EOL .
+                '        </div>' . PHP_EOL .
+                '    </div>' . PHP_EOL .
+                '    <div class="card">' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                '        <div class="card-body">' . PHP_EOL .
+                '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
+                '            <p class="card-text">' .
+                'This is a wider card with supporting text below as a natural lead-in to additional content. ' .
+                'This card has even longer content than the first to show that equal height action.' .
+                '</p>' . PHP_EOL .
+                '            <p class="card-text">' .
+                '<small class="text-muted">Last updated 3 mins ago</small>' .
                 '</p>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</div>' . PHP_EOL .
+                '<br>' . PHP_EOL .
                 '<div class="card-deck">' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
                 '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
-                '            <p class="card-text">'.
-                'This is a wider card with supporting text below as a natural lead-in to additional content. '.
-                'This content is a little bit longer.'.
+                '            <p class="card-text">' .
+                'This is a wider card with supporting text below as a natural lead-in to additional content. ' .
+                'This content is a little bit longer.' .
                 '</p>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '        <div class="card-footer">' . PHP_EOL .
@@ -262,8 +270,8 @@ return [
                 '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
-                '            <p class="card-text">'.
-                'This card has supporting text below as a natural lead-in to additional content.'.
+                '            <p class="card-text">' .
+                'This card has supporting text below as a natural lead-in to additional content.' .
                 '</p>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '        <div class="card-footer">' . PHP_EOL .
@@ -274,9 +282,9 @@ return [
                 '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
-                '            <p class="card-text">'.
-                'This is a wider card with supporting text below as a natural lead-in to additional content. '.
-                'This card has even longer content than the first to show that equal height action.'.
+                '            <p class="card-text">' .
+                'This is a wider card with supporting text below as a natural lead-in to additional content. ' .
+                'This card has even longer content than the first to show that equal height action.' .
                 '</p>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '        <div class="card-footer">' . PHP_EOL .
@@ -293,8 +301,8 @@ return [
                     [
                         'imgTop' => ['images/demo-sample.svg', ['alt' => '...',]],
                         'title' => 'Card title that wraps to a new line',
-                        'text' => 'This is a longer card with supporting text below as '.
-                        'a natural lead-in to additional content. This content is a little bit longer.',
+                        'text' => 'This is a longer card with supporting text below as ' .
+                            'a natural lead-in to additional content. This content is a little bit longer.',
                     ],
                     [
                         [
@@ -320,6 +328,8 @@ return [
                                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.',
                                 'Someone famous in <cite title="Source Title">Source Title</cite>',
                                 ['class' => 'mb-0'],
+                                [],
+                                ['class' => 'text-white'],
                             ],
                         ],
                         ['bgVariant' => 'primary', 'class' => 'text-white text-center p-3'],
@@ -405,7 +415,7 @@ return [
                 '                <p class="mb-0">' .
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.' .
                 '</p>' . PHP_EOL .
-                '                <footer class="blockquote-footer">' .
+                '                <footer class="blockquote-footer&#x20;text-white">' .
                 'Someone famous in <cite title="Source Title">Source Title</cite>' .
                 '</footer>' . PHP_EOL .
                 '            </blockquote>' . PHP_EOL .
