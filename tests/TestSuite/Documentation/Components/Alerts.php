@@ -109,7 +109,7 @@ return [
                             [
                                 'heading' => 'Well done!',
                                 'variant' => 'success',
-                            ],
+                            ]
                         );
                     },
                     'expected' => '<div class="alert&#x20;alert-success" role="alert">' . PHP_EOL .
@@ -132,7 +132,7 @@ return [
                             [
                                 'variant' => 'warning',
                                 'dismissible' => true,
-                            ],
+                            ]
                         );
                     },
                     'expected' =>
