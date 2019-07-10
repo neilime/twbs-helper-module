@@ -253,6 +253,7 @@ return [
                                     'type' => 'email',
                                     'id' => 'staticEmail',
                                     'value' => 'email@example.com',
+                                    'readonly' => true,
                                 ],
                             ],
                         ],
@@ -294,6 +295,7 @@ return [
                                     'type' => 'email',
                                     'id' => 'staticEmail2',
                                     'value' => 'email@example.com',
+                                    'readonly' => true,
                                 ],
                             ],
                         ],
@@ -326,15 +328,15 @@ return [
             'expected' =>
             '<form method="POST" name="form" role="form" id="form">' . PHP_EOL .
                 '    <div class="form-group&#x20;row">' . PHP_EOL .
-                '        <label class="control-label" for="staticEmail">Email</label>'
+                '        <label class="col-form-label&#x20;col-sm-2" for="staticEmail">Email</label>'
                 . PHP_EOL .
                 '        <div class="col-sm-10">' . PHP_EOL .
-                '            <input name="email" type="email" id="staticEmail" ' .
-                'class="form-control" value="email&#x40;example.com">' . PHP_EOL .
+                '            <input name="email" type="email" id="staticEmail" readonly="readonly" ' .
+                'class="form-control-plaintext" value="email&#x40;example.com">' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="form-group&#x20;row">' . PHP_EOL .
-                '        <label class="control-label" for="inputPassword">Password</label>' . PHP_EOL .
+                '        <label class="col-form-label&#x20;col-sm-2" for="inputPassword">Password</label>' . PHP_EOL .
                 '        <div class="col-sm-10">' . PHP_EOL .
                 '            <input name="password" type="password" id="inputPassword" ' .
                 'placeholder="Password" class="form-control" value="">' . PHP_EOL .
@@ -346,8 +348,8 @@ return [
                 '    <div class="form-group&#x20;mb-2">' . PHP_EOL .
                 '        <label class="sr-only" for="staticEmail2">Email</label>'
                 . PHP_EOL .
-                '        <input name="email" type="email" id="staticEmail2" ' .
-                'class="form-control" value="email&#x40;example.com">' . PHP_EOL .
+                '        <input name="email" type="email" id="staticEmail2" readonly="readonly" ' .
+                'class="form-control-plaintext" value="email&#x40;example.com">' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="form-group&#x20;mb-2&#x20;mx-sm-3">' . PHP_EOL .
                 '        <label class="sr-only" for="inputPassword2">Password</label>' . PHP_EOL .

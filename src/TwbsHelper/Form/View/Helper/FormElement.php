@@ -73,11 +73,12 @@ class FormElement extends \Zend\Form\View\Helper\FormElement implements Translat
         $sElementType = $oElement->getAttribute('type');
 
         $aClasses = [];
+
         if (
             !in_array($sElementType, $this->options->getIgnoredViewHelpers())
             && !($oElement instanceof Collection)
         ) {
-            $aClasses[] = 'form-control';
+            $aClasses[] = $oElement->getOption('plaintext') ? 'form-control-plaintext' : 'form-control';
         }
 
         if ($sSizeOption = $oElement->getOption('size')) {

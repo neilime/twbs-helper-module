@@ -61,7 +61,7 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
             // Element have errors
             if ($sInputErrorClass = $this->getInputErrorClass()) {
                 if ($sElementClass = $oElement->getAttribute('class')) {
-                    if (!preg_match('/(\s|^)' . preg_quote($sInputErrorClass, '/') . '(\s|$)/', $sElementClass)) {
+                    if (!$this->hasClassAttribute($sElementClass, $sInputErrorClass)) {
                         $oElement->setAttribute('class', trim($sElementClass . ' ' . $sInputErrorClass));
                     }
                 } else {
@@ -307,7 +307,7 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
         ) {
             return $sElementContent;
         }
-        $aLabelAttributes = $oElement->getLabelAttributes() ?: $this->labelAttributes;
+        $aLabelAttributes = $oElement->getLabelAttributes() ?? $this->labelAttributes ?? [];
 
         $aLabelClasses = [];
 
@@ -336,10 +336,19 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
         }
 
         if ($aLabelClasses) {
-            $aLabelAttributes['class'] = join(' ', $this->addClassesAttribute(
-                $aLabelAttributes['class'] ?? '',
-                $aLabelClasses
-            ));
+            $aLabelAttributes = $this->setClassesToAttributes($aLabelAttributes, $aLabelClasses);
+        }
+
+        // Define label column-size classes
+        if ($sColumSize = $oElement->getOption('column-size')) {
+            $aLabelAttributes['class'] = str_replace('control-label', '', $aLabelAttributes['class'] ?? '');
+            $aLabelClasses = ['col-form-label'];
+
+            if (!$this->hasColumnClassAttribute($aLabelAttributes['class'])) {
+                $aColumnParts = $this->getColumnClassParts($sColumSize);
+                $aLabelClasses[] = 'col-' . $aColumnParts['size'] . '-' . (12 - $aColumnParts['number']);
+            }
+            $aLabelAttributes = $this->setClassesToAttributes($aLabelAttributes, $aLabelClasses);
         }
 
         if ($aLabelAttributes) {

@@ -23,7 +23,7 @@ return [
                         'attributes' => [
                             'type' => 'email',
                             'id' => 'exampleInputEmail1',
-                            'placeholder' => 'email@example.com',
+                            'placeholder' => 'Enter email',
                         ],
                     ],
                 ],
@@ -42,7 +42,7 @@ return [
                     'spec' => [
                         'type' => 'checkbox',
                         'name' => 'remember_me',
-                        'options' => ['label' => 'Remember me', 'use_hidden_element' => false],
+                        'options' => ['label' => 'Check me out', 'use_hidden_element' => false],
                         'attributes' => [
                             'id' => 'exampleCheck1',
                         ],
@@ -51,7 +51,7 @@ return [
                 [
                     'spec' => [
                         'type' => 'submit',
-                        'options' => ['label' => 'Sign in', 'variant' => 'primary'],
+                        'options' => ['label' => 'Submit', 'variant' => 'primary'],
                     ],
                 ],
             ]
@@ -63,7 +63,7 @@ return [
         '    <div class="form-group">' . PHP_EOL .
         '        <label for="exampleInputEmail1">Email address</label>' . PHP_EOL .
         '        <input name="email" type="email" id="exampleInputEmail1" ' .
-        'placeholder="email&#x40;example.com" class="form-control" value="">' . PHP_EOL .
+        'placeholder="Enter&#x20;email" class="form-control" value="">' . PHP_EOL .
         '        <small id="emailHelp" class="form-text&#x20;text-muted">' .
         'We&#039;ll never share your email with anyone else.' .
         '</small>' . PHP_EOL .
@@ -77,11 +77,11 @@ return [
         '        <input type="checkbox" name="remember_me" id="exampleCheck1" ' .
         'value="1" class="form-check-input">' . PHP_EOL .
         '        <label class="form-check-label" for="exampleCheck1">' .
-        'Remember me</label>' . PHP_EOL .
+        'Check me out</label>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '    <div class="form-group">' . PHP_EOL .
         '        <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">' .
-        'Sign in</button>' . PHP_EOL .
+        'Submit</button>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '</form>',
 ];
