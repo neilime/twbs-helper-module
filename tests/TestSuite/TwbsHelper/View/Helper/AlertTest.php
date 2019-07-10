@@ -16,7 +16,7 @@ class AlertTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
             '<div class="alert&#x20;alert-success&#x20;test-class" role="alert">' . PHP_EOL .
                 '    content' . PHP_EOL .
                 '</div>',
-            $this->helper->__invoke('content', 'success', false, ['class' => 'test-class'])
+            $this->helper->__invoke('content', ['variant' => 'success', 'class' => 'test-class'])
         );
     }
 }

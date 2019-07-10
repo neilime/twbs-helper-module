@@ -16,26 +16,39 @@ class Badge extends \TwbsHelper\View\Helper\AbstractHtmlElement
      * Generates a 'badge' element
      *
      * @param string $sContent    The content of the badge
-     * @param string $sVariation  The type of the badge (default, success, info, warning, danger). Default : default
-     * @param string $sType       type of the badge ("simple", "pill", "link"). Default : 'simple'
-     * @param array  $aAttributes Html attributes of the "<span>" element
+     * @param string|array $aOptionsAndAttributes options and Html attributes of the "<span>" element
      * @param boolean $bEscape     True espace html content '$sContent'. Default True
      * @return string The badge XHTML.
      * @throws \InvalidArgumentException
      */
     public function __invoke(
         string $sContent,
-        string $sVariation = 'default',
-        string $sType = self::TYPE_SIMPLE,
-        array $aAttributes = [],
+        $aOptionsAndAttributes = null,
         bool  $bEscape = true
     ) {
+
+        if (!$aOptionsAndAttributes) {
+            $aOptionsAndAttributes = [];
+        } elseif (is_string($aOptionsAndAttributes)) {
+            $aOptionsAndAttributes = [
+                'variant' => $aOptionsAndAttributes,
+            ];
+        }
+
+        $sVariantClass = $this->getVariantClass(
+            $aOptionsAndAttributes['variant'] ?? 'secondary',
+            'badge'
+        );
+        unset($aOptionsAndAttributes['variant']);
 
         // Badge class
         $aClasses = [
             'badge',
-            'badge-' . $sVariation,
+            $sVariantClass,
         ];
+
+        $sType = $aOptionsAndAttributes['type'] ?? self::TYPE_SIMPLE;
+        unset($aOptionsAndAttributes['type']);
         $sTag = 'span';
         switch ($sType) {
             case self::TYPE_PILL:
@@ -46,9 +59,12 @@ class Badge extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 $sTag = 'a';
                 break;
         }
-        
-        $aAttributes = $this->setClassesToAttributes($aAttributes, $aClasses);
-        
-        return $this->htmlElement($sTag, $aAttributes, $sContent, $bEscape);
+
+        return $this->htmlElement(
+            $sTag,
+            $this->setClassesToAttributes($aOptionsAndAttributes, $aClasses),
+            $sContent,
+            $bEscape
+        );
     }
 }

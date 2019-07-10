@@ -284,7 +284,7 @@ return [
                     'body' => [
                         ['1', 'Mark', 'Otto', '@mdo'],
                         ['2', 'Jacob', 'Thornton', '@fat'],
-                        ['3', 'Larry', 'the Bird', '@twitter'],
+                        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
                     ],
                 ], ['class' => 'table-bordered']);
 
@@ -296,7 +296,7 @@ return [
                     'body' => [
                         ['1', 'Mark', 'Otto', '@mdo'],
                         ['2', 'Jacob', 'Thornton', '@fat'],
-                        ['3', 'Larry', 'the Bird', '@twitter'],
+                        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
                     ],
                 ], ['class' => 'table-bordered table-dark']);
             },
@@ -324,8 +324,7 @@ return [
                 '        </tr>' . PHP_EOL .
                 '        <tr>' . PHP_EOL .
                 '            <th scope="row">3</th>' . PHP_EOL .
-                '            <td>Larry</td>' . PHP_EOL .
-                '            <td>the Bird</td>' . PHP_EOL .
+                '            <td colspan="2">Larry the Bird</td>' . PHP_EOL .
                 '            <td>@twitter</td>' . PHP_EOL .
                 '        </tr>' . PHP_EOL .
                 '    </tbody>' . PHP_EOL .
@@ -355,8 +354,7 @@ return [
                 '        </tr>' . PHP_EOL .
                 '        <tr>' . PHP_EOL .
                 '            <th scope="row">3</th>' . PHP_EOL .
-                '            <td>Larry</td>' . PHP_EOL .
-                '            <td>the Bird</td>' . PHP_EOL .
+                '            <td colspan="2">Larry the Bird</td>' . PHP_EOL .
                 '            <td>@twitter</td>' . PHP_EOL .
                 '        </tr>' . PHP_EOL .
                 '    </tbody>' . PHP_EOL .
@@ -373,7 +371,7 @@ return [
                     'body' => [
                         ['1', 'Mark', 'Otto', '@mdo'],
                         ['2', 'Jacob', 'Thornton', '@fat'],
-                        ['3', 'Larry', 'the Bird', '@twitter'],
+                        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
                     ],
                 ], ['class' => 'table-borderless']);
 
@@ -385,7 +383,7 @@ return [
                     'body' => [
                         ['1', 'Mark', 'Otto', '@mdo'],
                         ['2', 'Jacob', 'Thornton', '@fat'],
-                        ['3', 'Larry', 'the Bird', '@twitter'],
+                        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
                     ],
                 ], ['class' => 'table-borderless table-dark']);
             },
@@ -413,8 +411,7 @@ return [
                 '        </tr>' . PHP_EOL .
                 '        <tr>' . PHP_EOL .
                 '            <th scope="row">3</th>' . PHP_EOL .
-                '            <td>Larry</td>' . PHP_EOL .
-                '            <td>the Bird</td>' . PHP_EOL .
+                '            <td colspan="2">Larry the Bird</td>' . PHP_EOL .
                 '            <td>@twitter</td>' . PHP_EOL .
                 '        </tr>' . PHP_EOL .
                 '    </tbody>' . PHP_EOL .
@@ -444,8 +441,7 @@ return [
                 '        </tr>' . PHP_EOL .
                 '        <tr>' . PHP_EOL .
                 '            <th scope="row">3</th>' . PHP_EOL .
-                '            <td>Larry</td>' . PHP_EOL .
-                '            <td>the Bird</td>' . PHP_EOL .
+                '            <td colspan="2">Larry the Bird</td>' . PHP_EOL .
                 '            <td>@twitter</td>' . PHP_EOL .
                 '        </tr>' . PHP_EOL .
                 '    </tbody>' . PHP_EOL .
@@ -461,7 +457,7 @@ return [
                     'body' => [
                         ['1', 'Mark', 'Otto', '@mdo'],
                         ['2', 'Jacob', 'Thornton', '@fat'],
-                        ['3', 'Larry', 'the Bird', '@twitter'],
+                        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
                     ],
                 ], ['class' => 'table-hover']);
 
@@ -473,7 +469,7 @@ return [
                     'body' => [
                         ['1', 'Mark', 'Otto', '@mdo'],
                         ['2', 'Jacob', 'Thornton', '@fat'],
-                        ['3', 'Larry', 'the Bird', '@twitter'],
+                        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
                     ],
                 ], ['class' => 'table-hover table-dark']);
             },
@@ -501,8 +497,7 @@ return [
                 '        </tr>' . PHP_EOL .
                 '        <tr>' . PHP_EOL .
                 '            <th scope="row">3</th>' . PHP_EOL .
-                '            <td>Larry</td>' . PHP_EOL .
-                '            <td>the Bird</td>' . PHP_EOL .
+                '            <td colspan="2">Larry the Bird</td>' . PHP_EOL .
                 '            <td>@twitter</td>' . PHP_EOL .
                 '        </tr>' . PHP_EOL .
                 '    </tbody>' . PHP_EOL .
@@ -532,8 +527,7 @@ return [
                 '        </tr>' . PHP_EOL .
                 '        <tr>' . PHP_EOL .
                 '            <th scope="row">3</th>' . PHP_EOL .
-                '            <td>Larry</td>' . PHP_EOL .
-                '            <td>the Bird</td>' . PHP_EOL .
+                '            <td colspan="2">Larry the Bird</td>' . PHP_EOL .
                 '            <td>@twitter</td>' . PHP_EOL .
                 '        </tr>' . PHP_EOL .
                 '    </tbody>' . PHP_EOL .
@@ -549,7 +543,7 @@ return [
                     'body' => [
                         ['1', 'Mark', 'Otto', '@mdo'],
                         ['2', 'Jacob', 'Thornton', '@fat'],
-                        ['3', 'Larry', 'the Bird', '@twitter'],
+                        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
                     ],
                 ], ['class' => 'table-sm']);
 
@@ -561,7 +555,7 @@ return [
                     'body' => [
                         ['1', 'Mark', 'Otto', '@mdo'],
                         ['2', 'Jacob', 'Thornton', '@fat'],
-                        ['3', 'Larry', 'the Bird', '@twitter'],
+                        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
                     ],
                 ], ['class' => 'table-sm table-dark']);
             },
@@ -589,8 +583,7 @@ return [
                 '        </tr>' . PHP_EOL .
                 '        <tr>' . PHP_EOL .
                 '            <th scope="row">3</th>' . PHP_EOL .
-                '            <td>Larry</td>' . PHP_EOL .
-                '            <td>the Bird</td>' . PHP_EOL .
+                '            <td colspan="2">Larry the Bird</td>' . PHP_EOL .
                 '            <td>@twitter</td>' . PHP_EOL .
                 '        </tr>' . PHP_EOL .
                 '    </tbody>' . PHP_EOL .
@@ -620,8 +613,7 @@ return [
                 '        </tr>' . PHP_EOL .
                 '        <tr>' . PHP_EOL .
                 '            <th scope="row">3</th>' . PHP_EOL .
-                '            <td>Larry</td>' . PHP_EOL .
-                '            <td>the Bird</td>' . PHP_EOL .
+                '            <td colspan="2">Larry the Bird</td>' . PHP_EOL .
                 '            <td>@twitter</td>' . PHP_EOL .
                 '        </tr>' . PHP_EOL .
                 '    </tbody>' . PHP_EOL .

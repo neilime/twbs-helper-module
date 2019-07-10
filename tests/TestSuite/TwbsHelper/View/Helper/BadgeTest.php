@@ -14,7 +14,10 @@ class BadgeTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
     {
         $this->assertSame(
             '<span class="badge&#x20;badge-success&#x20;test-class">content</span>',
-            $this->helper->__invoke('content', 'success', 'simple', ['class' => 'test-class'])
+            $this->helper->__invoke('content', [
+                'variant' => 'success',
+                'class' => 'test-class',
+            ])
         );
     }
 }

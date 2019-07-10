@@ -5,6 +5,7 @@ namespace TwbsHelper\Form\View\Helper;
 class FormButton extends \Zend\Form\View\Helper\FormButton
 {
     use \TwbsHelper\View\Helper\ClassAttributeTrait;
+    use \TwbsHelper\View\Helper\HtmlTrait;
 
     const ICON_PREPEND = 'prepend';
     const ICON_APPEND  = 'append';
@@ -107,7 +108,7 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
             }
         }
 
-        $sMarkup =  $this->openTag($oElement) . $sButtonContent . $this->closeTag();
+        $sMarkup =  $this->openTag($oElement) . $this->addProperIndentation($sButtonContent) . $this->closeTag();
         $this->validTagAttributes = $aValidTagAttributes;
 
         if ($sTag && $sTag !== 'button') {
@@ -168,8 +169,10 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
             }
 
             if (
-                !$oElement instanceof \Zend\Form\LabelAwareInterface
-                || !$oElement->getLabelOption('disable_html_escape')
+                !$this->isHTML($sButtonContent)
+                && (!$oElement instanceof \Zend\Form\LabelAwareInterface
+                    || !$oElement->getLabelOption('disable_html_escape'))
+
             ) {
                 $oEscapeHtmlHelper = $this->getEscapeHtmlHelper();
                 $sButtonContent    = $oEscapeHtmlHelper($sButtonContent);
