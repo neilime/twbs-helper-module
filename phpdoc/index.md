@@ -316,8 +316,11 @@
 | Visibility | Function |
 |:-----------|:---------|
 | public | <strong>__invoke(</strong><em>array/\Zend\Form\ElementInterface/null</em> <strong>$oElement=null</strong>, <em>null/string</em> <strong>$sButtonContent=null</strong>)</strong> : <em>string/[\TwbsHelper\Form\View\Helper\FormButton](#class-twbshelperformviewhelperformbutton)</em><br /><em>Invoke helper as functor Proxies to {@link render()}.</em> |
+| public | <strong>addProperIndentation(</strong><em>\string</em> <strong>$sContent</strong>, <em>\bool</em> <strong>$bForceIndentation=false</strong>, <em>\string</em> <strong>$sIndentation=null</strong>)</strong> : <em>void</em> |
+| public | <strong>htmlElement(</strong><em>\string</em> <strong>$sTag</strong>, <em>array</em> <strong>$aAttributes=array()</strong>, <em>\string</em> <strong>$sContent=null</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
 | public | <strong>render(</strong><em>array/\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>string</em> <strong>$sButtonContent=null</strong>)</strong> : <em>string</em><br /><em>Accept following extra options: * string variant:  'danger', 'dark', 'info', 'light', 'link', 'primary', 'secondary', 'success', 'warning' * string size:  'sm', 'lg' * bool block</em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
 | protected | <strong>defineButtonClasses(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
@@ -326,6 +329,7 @@
 | protected | <strong>getType(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>string</em><br /><em>Determine button type to use</em> |
 | protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariants()</strong> : <em>mixed</em> |
+| protected | <strong>isHTML(</strong><em>\string</em> <strong>$sString</strong>)</strong> : <em>bool</em> |
 | protected | <strong>renderButtonContent(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>\string</em> <strong>$sButtonContent=null</strong>)</strong> : <em>void</em> |
 | protected | <strong>renderIconContent(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>\string</em> <strong>$sButtonContent=null</strong>)</strong> : <em>void</em> |
 | protected | <strong>setClassesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
@@ -455,7 +459,7 @@
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>__invoke(</strong><em>\string</em> <strong>$sContent</strong>, <em>\string</em> <strong>$sVariation=`''`</strong>, <em>\bool</em> <strong>$bDismissible=false</strong>, <em>array</em> <strong>$aAttributes=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string The alert XHTML.</em><br /><em>Generates an 'alert' element</em> |
+| public | <strong>__invoke(</strong><em>\string</em> <strong>$sContent</strong>, <em>string/array</em> <strong>$aOptionsAndAttributes=null</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string The alert XHTML.</em><br /><em>Generates an 'alert' element</em> |
 
 *This class extends [\TwbsHelper\View\Helper\AbstractHtmlElement](#class-twbshelperviewhelperabstracthtmlelement)*
 
@@ -665,7 +669,7 @@
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>__invoke(</strong><em>\string</em> <strong>$sContent</strong>, <em>\string</em> <strong>$sVariation=`'default'`</strong>, <em>\string</em> <strong>$sType=`'simple'`</strong>, <em>array</em> <strong>$aAttributes=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string The badge XHTML.</em><br /><em>Generates a 'badge' element</em> |
+| public | <strong>__invoke(</strong><em>\string</em> <strong>$sContent</strong>, <em>string/array</em> <strong>$aOptionsAndAttributes=null</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string The badge XHTML.</em><br /><em>Generates a 'badge' element</em> |
 
 *This class extends [\TwbsHelper\View\Helper\AbstractHtmlElement](#class-twbshelperviewhelperabstracthtmlelement)*
 
