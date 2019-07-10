@@ -13,7 +13,6 @@ class Form extends \Zend\Form\View\Helper\Form
     const LAYOUT_HORIZONTAL = 'horizontal';
     const LAYOUT_INLINE     = 'inline';
 
-
     /**
      * @param  FormInterface $oForm
      * @param  string        $sFormLayout
@@ -26,7 +25,6 @@ class Form extends \Zend\Form\View\Helper\Form
         }
         return $this;
     }
-
 
     /**
      * Render a form from the provided $oForm,
@@ -148,9 +146,9 @@ class Form extends \Zend\Form\View\Helper\Form
                     ];
                 }
 
-                $sElementRendering = $oFormRowHelper->renderElementFormGroup(
+                $sElementRendering = $oFormRowHelper->renderFormRow(
+                    current($aButtons),
                     $oButtonGroupHelper($aButtons, $aGroupOptions ?? []),
-                    $oFormRowHelper->getRowClassFromElement(current($aButtons))
                 );
             }
             if ($sElementRendering) {
