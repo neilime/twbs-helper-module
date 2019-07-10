@@ -81,26 +81,17 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
                 return $sElementContent;
 
             default:
-                // Render element into form group
-                return $this->renderElementFormGroup(
-                    $sElementContent,
-                    $this->setClassesToAttributes(
-                        [],
-                        $this->getRowClassesFromElement($oElement)
-                    ),
-                    $oElement->getOption('feedback')
-                );
+                return $this->renderFormRow($oElement, $sElementContent);
         }
     }
-
 
     /**
      * @param \Zend\Form\ElementInterface $oElement
      * @return string
      */
-    public function getRowClassesFromElement(\Zend\Form\ElementInterface $oElement): array
+    public function renderFormRow(\Zend\Form\ElementInterface $oElement, $sElementContent): string
     {
-        $aRowClasses = [];
+        $aRowClasses = ['form-group'];
 
         if ($sFormGroupSize = $oElement->getOption('twbs-form-group-size')) {
             $aRowClasses[] = $sFormGroupSize;
@@ -119,60 +110,42 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
             $aRowClasses[]  = 'has-feedback';
         }
 
-        // Column size
-        $sColumSize = $oElement->getOption('column-size');
-        if ($sColumSize) {
+        // Column
+        $sColum = $oElement->getOption('column');
+        if ($sColum) {
             if ($oElement->getOption('twbs-layout') ===  \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL) {
                 $aRowClasses[] = 'row';
             } else {
-                $aColumSizes = (is_array($sColumSize)) ? $sColumSize : [$sColumSize];
+                $aColumSizes = is_array($sColum) ? $sColum : [$sColum];
                 foreach ($aColumSizes as $sColumSize) {
-                    $aRowClasses[] = 'col-' . $sColumSize;
+                    $aRowClasses[] = $this->getColumnClass($sColumSize);
                 }
             }
         }
 
         // Additional row class
-        if ($sAddRowClass = $oElement->getOption('twbs-row-class')) {
+        if ($sAddRowClass = $oElement->getOption('row_class')) {
             $aRowClasses = array_merge($aRowClasses, explode(' ', $sAddRowClass));
         }
 
-        return $aRowClasses;
-    }
+        $aAttributes = $this->setClassesToAttributes(
+            [],
+            $aRowClasses
+        );
 
-    /**
-     * Render form group HTML
-     *
-     * @param string $sElementContent
-     * @param string $sRowClass
-     * @param string $sFeedbackElement A feedback element that should be rendered within the element, optional
-     * @return string
-     * @throws \InvalidArgumentException
-     */
-    public function renderElementFormGroup(
-        string $sElementContent,
-        array $aAttributes = [],
-        string $sFeedbackElement = null
-    ): string {
-        if (!is_string($sElementContent)) {
-            throw new \InvalidArgumentException(sprintf(
-                'Argument "$sElementContent" expects a string, "%s" given',
-                is_object($sElementContent) ? get_class($sElementContent) : gettype($sElementContent)
-            ));
-        }
-        if ($sFeedbackElement) {
-            if (!is_string($sFeedbackElement)) {
-                throw new \InvalidArgumentException(sprintf(
-                    'Argument "$sFeedbackElement" expects a string, "%s" given',
-                    is_object($sFeedbackElement) ? get_class($sFeedbackElement) : gettype($sFeedbackElement)
-                ));
-            }
-            $sElementContent .= '<i class="' . $sFeedbackElement . ' form-control-feedback"></i>';
+        if ($this->hasColumnClassAttribute($aAttributes['class'] ?? '')) {
+            $aAttributes = $this->setClassesToAttributes(
+                $aAttributes,
+                [],
+                ['form-group']
+            );
         }
 
+        
+        // Render element into form group
         return $this->htmlElement(
             'div',
-            $this->setClassesToAttributes($aAttributes, ['form-group']),
+            $aAttributes,
             $sElementContent
         );
     }
@@ -191,6 +164,9 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
 
         // Render element
         $sElementContent = $this->getElementHelper()->render($oElement);
+
+        // Render feedback
+        $sElementContent = $this->renderFeedback($oElement, $sElementContent);
 
         switch ($sLayout) {
             case null:
@@ -224,8 +200,8 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
                 $aClasses = [];
 
                 // Column size
-                if ($sColumSize = $oElement->getOption('column-size')) {
-                    $aClasses[] = 'col-' . $sColumSize;
+                if ($sColumn = $oElement->getOption('column')) {
+                    $aClasses[] = $this->getColumnClass($sColumn);
                 }
 
                 // Checkbox elements are a special case, element is rendered into label
@@ -327,14 +303,18 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
             $aLabelAttributes = $this->setClassesToAttributes($aLabelAttributes, $aLabelClasses);
         }
 
-        // Define label column-size classes
-        if ($sColumSize = $oElement->getOption('column-size')) {
+        // Define label column classes
+        if ($sColumSize = $oElement->getOption('column')) {
             $aLabelAttributes['class'] = str_replace('control-label', '', $aLabelAttributes['class'] ?? '');
             $aLabelClasses = ['col-form-label'];
 
             if (!$this->hasColumnClassAttribute($aLabelAttributes['class'])) {
                 $aColumnParts = $this->getColumnClassParts($sColumSize);
-                $aLabelClasses[] = 'col-' . $aColumnParts['size'] . '-' . (12 - $aColumnParts['number']);
+
+                $aLabelClasses[] = $this->getColumnClass(
+                    ($aColumnParts['size'] ? $aColumnParts['size'] . '-' : '')
+                        . (12 - $aColumnParts['number'])
+                );
             }
             $aLabelAttributes = $this->setClassesToAttributes($aLabelAttributes, $aLabelClasses);
         }
@@ -437,6 +417,27 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
             if ($sElementErrorsContent) {
                 $sElementContent .= PHP_EOL . $sElementErrorsContent;
             }
+        }
+        return $sElementContent;
+    }
+
+    /**
+     * Render element's errors
+     *
+     * @param \Zend\Form\ElementInterface $oElement
+     * @return string
+     */
+    protected function renderFeedback(\Zend\Form\ElementInterface $oElement, string $sElementContent): string
+    {
+        $sFeedback = $oElement->getOption('feedback');
+        if ($sFeedback) {
+            if (!is_string($sFeedback)) {
+                throw new \InvalidArgumentException(sprintf(
+                    'Argument "$sFeedbackElement" expects a string, "%s" given',
+                    is_object($sFeedback) ? get_class($sFeedback) : gettype($sFeedback)
+                ));
+            }
+            $sElementContent .= '<i class="' . $sFeedback . ' form-control-feedback"></i>';
         }
         return $sElementContent;
     }

@@ -75,8 +75,8 @@ class Form extends \Zend\Form\View\Helper\Form
         // Store button groups
         $aButtonGroups = [];
 
-        // Store button groups column-size from buttons
-        $aButtonGroupsColumnSize = [];
+        // Store button groups column from buttons
+        $aButtonGroupsColumns = [];
 
         // Store elements rendering
         $aElementsRendering = [];
@@ -93,15 +93,15 @@ class Form extends \Zend\Form\View\Helper\Form
         // Retrieve button group helper
         $oButtonGroupHelper = $oHelperPluginManager->get('buttonGroup');
 
-        // Store column size option
-        $bHasColumnSize = false;
+        // Store column option
+        $bHasColumn = false;
 
         // Prepare options
         foreach ($oForm as $iKey => $oElement) {
             $aOptions = $oElement->getOptions();
 
-            if (!$bHasColumnSize && !empty($aOptions['column-size'])) {
-                $bHasColumnSize = true;
+            if (!$bHasColumn && !empty($aOptions['column'])) {
+                $bHasColumn = true;
             }
 
             // Define layout option to form elements if not already defined
@@ -120,9 +120,9 @@ class Form extends \Zend\Form\View\Helper\Form
                     $aElementsRendering[$iKey]       = $sButtonGroupKey;
                 }
 
-                if (!empty($aOptions['column-size']) && !isset($aButtonGroupsColumnSize[$sButtonGroupKey])) {
-                    // Only the first occured column-size will be set, other are ignored.
-                    $aButtonGroupsColumnSize[$sButtonGroupKey] = $aOptions['column-size'];
+                if (!empty($aOptions['column']) && !isset($aButtonGroupsColumns[$sButtonGroupKey])) {
+                    // Only the first occured column will be set, other are ignored.
+                    $aButtonGroupsColumns[$sButtonGroupKey] = $aOptions['column'];
                 }
             } elseif ($oElement instanceof FieldsetInterface) {
                 $aElementsRendering[$iKey] = $oFormCollectionHelper->__invoke($oElement);
@@ -140,12 +140,16 @@ class Form extends \Zend\Form\View\Helper\Form
                 $aButtons = $aButtonGroups[$sElementRendering];
 
                 // Render button group content
-                $aGroupOptions = isset($aButtonGroupsColumnSize[$sElementRendering])
-                    ? ['attributes' => ['class' => 'col-' . $aButtonGroupsColumnSize[$sElementRendering]]]
-                    : null;
+                if (!empty($aButtonGroupsColumns[$sElementRendering])) {
+                    $aGroupOptions = [
+                        'attributes' => [
+                            'class' => $this->getColumnClass($aButtonGroupsColumns[$sElementRendering]),
+                        ],
+                    ];
+                }
 
                 $sElementRendering = $oFormRowHelper->renderElementFormGroup(
-                    $oButtonGroupHelper($aButtons, $aGroupOptions),
+                    $oButtonGroupHelper($aButtons, $aGroupOptions ?? []),
                     $oFormRowHelper->getRowClassFromElement(current($aButtons))
                 );
             }
@@ -154,8 +158,12 @@ class Form extends \Zend\Form\View\Helper\Form
             }
         }
 
-        if ($bHasColumnSize && self::LAYOUT_HORIZONTAL !== $sFormLayout) {
-            $sFormContent = $this->htmlElement('div', ['class' => 'row'], $sFormContent);
+        if ($bHasColumn && self::LAYOUT_HORIZONTAL !== $sFormLayout) {
+            $sFormContent = $this->htmlElement(
+                'div',
+                ['class' => $oForm->getOption('row_class') ?? 'row'],
+                $sFormContent
+            );
         }
 
         return $sFormContent;

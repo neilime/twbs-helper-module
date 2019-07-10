@@ -33,16 +33,6 @@ trait ClassAttributeTrait
     {
         return preg_match('/(\s|^)' . preg_quote($sClass, '/') . '(\s|$)/', $sClassAttribute);
     }
-    protected function hasColumnClassAttribute(string $sClassAttribute): bool
-    {
-        return
-            // Simple "col" class
-            preg_match('/(\s|^)col(\s|$)/', $sClassAttribute)
-            // Number col class. Example: "col-6"
-            || preg_match('/(\s|^)col-([1-9]|1[0-2])(\s|$)/', $sClassAttribute)
-            // Sized col class. Example: "col-sm-6"
-            || preg_match('/(\s|^)col-(' . join('|', $this->getSizes()) . ')-([1-9]|1[0-2])(\s|$)/', $sClassAttribute);
-    }
 
     protected function getClassesAttribute(string $sClassAttribute, $bCleanClasses = true): array
     {
@@ -116,12 +106,43 @@ trait ClassAttributeTrait
         return $sPrefix . '-' . $sSize;
     }
 
-    protected function getColumnClassParts(string $sColumn): array
+    protected function getColumnClass($sColumn): string
     {
-        if (!preg_match('/^(' . join('|', $this->getSizes()) . ')-([1-9]|1[0-2])$/', $sColumn, $aMatches)) {
-            throw new \InvalidArgumentException('Column class "' . $sColumn . '" is not valid');
+        if ($sColumn === true) {
+            return 'col';
         }
 
-        return ['size' => $aMatches[1], 'number' => (int) $aMatches[2]];
+        if (
+            // Number col class. Example: "col-6"
+            !preg_match('/(\s|^)([1-9]|1[0-2])(\s|$)/', $sColumn)
+            // Sized col class. Example: "col-sm-6"
+            && !preg_match('/^(' . join('|', $this->getSizes()) . ')-([1-9]|1[0-2])$/', $sColumn)
+        ) {
+            throw new \InvalidArgumentException('Column "' . $sColumn . '" is not valid');
+        }
+        return 'col-' . $sColumn;
+    }
+
+    protected function hasColumnClassAttribute(string $sClassAttribute): bool
+    {
+        return
+            // Simple "col" class
+            preg_match('/(\s|^)col(\s|$)/', $sClassAttribute)
+            // Number col class. Example: "col-6"
+            || preg_match('/(\s|^)col-([1-9]|1[0-2])(\s|$)/', $sClassAttribute)
+            // Sized col class. Example: "col-sm-6"
+            || preg_match('/(\s|^)col-(' . join('|', $this->getSizes()) . ')-([1-9]|1[0-2])(\s|$)/', $sClassAttribute);
+    }
+
+    protected function getColumnClassParts(string $sColumn): array
+    {
+        if (preg_match('/^([1-9]|1[0-2])$/', $sColumn, $aMatches)) {
+            return ['size' => null, 'number' => $aMatches[1]];
+        }
+
+        if (preg_match('/^(' . join('|', $this->getSizes()) . ')-([1-9]|1[0-2])$/', $sColumn, $aMatches)) {
+            return ['size' => $aMatches[1], 'number' => (int) $aMatches[2]];
+        }
+        throw new \InvalidArgumentException('Column class "' . $sColumn . '" is not valid');
     }
 }

@@ -246,7 +246,7 @@ return [
                                 'name' => 'email',
                                 'options' => [
                                     'plaintext' => true,
-                                    'column-size' => 'sm-10',
+                                    'column' => 'sm-10',
                                     'label' => 'Email',
                                 ],
                                 'attributes' => [
@@ -261,7 +261,7 @@ return [
                             'spec' => [
                                 'name' => 'password',
                                 'options' => [
-                                    'column-size' => 'sm-10',
+                                    'column' => 'sm-10',
                                     'label' => 'Password',
                                 ],
                                 'attributes' => [
@@ -289,7 +289,7 @@ return [
                                 'options' => [
                                     'plaintext' => true,
                                     'label' => 'Email',
-                                    'twbs-row-class' => 'mb-2',
+                                    'row_class' => 'mb-2',
                                 ],
                                 'attributes' => [
                                     'type' => 'email',
@@ -304,7 +304,7 @@ return [
                                 'name' => 'password',
                                 'options' => [
                                     'label' => 'Password',
-                                    'twbs-row-class' => 'mx-sm-3 mb-2',
+                                    'row_class' => 'mx-sm-3 mb-2',
                                 ],
                                 'attributes' => [
                                     'type' => 'password',
