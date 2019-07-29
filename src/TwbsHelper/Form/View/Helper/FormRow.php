@@ -411,8 +411,7 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
      */
     protected function renderErrors(\Zend\Form\ElementInterface $oElement, string $sElementContent): string
     {
-        if (!$this->renderErrors) {
-            return '';
+        if ($this->renderErrors) {
             $sElementErrorsContent = $this->getElementErrorsHelper()->render($oElement);
             if ($sElementErrorsContent) {
                 $sElementContent .= PHP_EOL . $sElementErrorsContent;
