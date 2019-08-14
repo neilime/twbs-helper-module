@@ -54,5 +54,6 @@ return [
         include __DIR__ . DIRECTORY_SEPARATOR . 'FormGrid/FormRow.php',
         include __DIR__ . DIRECTORY_SEPARATOR . 'FormGrid/HorizontalForm.php',
         include __DIR__ . DIRECTORY_SEPARATOR . 'FormGrid/ColumnSizing.php',
+        include __DIR__ . DIRECTORY_SEPARATOR . 'FormGrid/AutoSizing.php',
     ],
 ];

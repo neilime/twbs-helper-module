@@ -252,15 +252,9 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
         $aLabelClasses = [];
 
         // Define label column class
-        if ($sColumSize = $oElement->getOption('column')) {
-            if (!$this->hasColumnClassAttribute($aLabelAttributes['class'] ?? '')) {
-                $aColumnParts = $this->getColumnClassParts($sColumSize);
-
-                $aLabelClasses[] = $this->getColumnClass(
-                    ($aColumnParts['size'] ? $aColumnParts['size'] . '-' : '')
-                        . (12 - $aColumnParts['number'])
-                );
-            }
+        $sColumSize = $oElement->getOption('column');
+        if ($sColumSize && !$this->hasColumnClassAttribute($aLabelAttributes['class'] ?? '')) {
+            $aLabelClasses[] = $this->getColumnCounterpartClass($sColumSize);
         }
 
         // Define label size class
@@ -282,13 +276,18 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
                 switch ($sLayout) {
                         // Hide label for "inline" layout
                     case \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE:
-                        if (!$oElement->getOption('showLabel')) {
+                        if ($oElement->getOption('show_label') !== true) {
                             $aLabelClasses[] = 'sr-only';
                         }
                         break;
 
                     case \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL:
                         $aLabelClasses[] = 'col-form-label';
+                        break;
+                    case null:
+                        if ($oElement->getOption('show_label') === false) {
+                            $aLabelClasses[] = 'sr-only';
+                        }
                         break;
                 }
             }
@@ -438,7 +437,10 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
         if (in_array($sElementType, ['checkbox'], true)) {
             $sElementContent = $this->htmlElement(
                 'div',
-                ['class' => 'form-check'],
+                $this->setClassesToAttributes(
+                    ['class' => $oElement->getOption('form_check_class')],
+                    ['form-check']
+                ),
                 $sElementContent
             );
         }

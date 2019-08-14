@@ -78,12 +78,12 @@ class FormElement extends \Zend\Form\View\Helper\FormElement implements Translat
         $sMarkup = parent::render($oElement);
 
         // Addon prepend
-        if ($aAddOnPrepend = $oElement->getOption('add-on-prepend')) {
+        if ($aAddOnPrepend = $oElement->getOption('add_on_prepend')) {
             $sMarkup = $this->renderAddOn($aAddOnPrepend) . PHP_EOL . $sMarkup;
         }
 
         // Addon append
-        if ($aAddOnAppend = $oElement->getOption('add-on-append')) {
+        if ($aAddOnAppend = $oElement->getOption('add_on_append')) {
             $sMarkup .= $this->renderAddOn($aAddOnAppend, 'append');
         }
 
@@ -100,7 +100,7 @@ class FormElement extends \Zend\Form\View\Helper\FormElement implements Translat
             }
 
             $aAttributes = $this->setClassesToAttributes(
-                $oElement->getOption('input-group')['attributes'] ?? [],
+                ['class' => $oElement->getOption('input_group_class')],
                 $aInputGroupClasses
             );
 
@@ -229,7 +229,7 @@ class FormElement extends \Zend\Form\View\Helper\FormElement implements Translat
     protected function renderAddOnElement(string $sAddonText): string
     {
         return $this->htmlElement(
-            'span',
+            'div',
             ['class' => 'input-group-text'],
             $sAddonText
         );

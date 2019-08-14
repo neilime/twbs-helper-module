@@ -127,7 +127,7 @@ return [
                             [
                                 'type' => \Zend\Form\Element\Text::class,
                                 'name' => 'input-group-example',
-                                'options' => ['add-on-prepend' => '@'],
+                                'options' => ['add_on_prepend' => '@'],
                                 'attributes' => [
                                     'placeholder' => 'Input group example',
                                     'aria-label' => 'Input group example',
@@ -175,7 +175,9 @@ return [
                         '    </div>' . PHP_EOL .
                         '    <div class="input-group">' . PHP_EOL .
                         '        <div class="input-group-prepend">' . PHP_EOL .
-                        '            <span class="input-group-text">@</span>' . PHP_EOL .
+                        '            <div class="input-group-text">' . PHP_EOL .
+                        '                @' . PHP_EOL .
+                        '            </div>' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '        <input type="text" name="input-group-example" ' .
                         'placeholder="Input&#x20;group&#x20;example" aria-label="Input&#x20;group&#x20;example" ' .
@@ -197,7 +199,9 @@ return [
                         '    </div>' . PHP_EOL .
                         '    <div class="input-group">' . PHP_EOL .
                         '        <div class="input-group-prepend">' . PHP_EOL .
-                        '            <span class="input-group-text">@</span>' . PHP_EOL .
+                        '            <div class="input-group-text">' . PHP_EOL .
+                        '                @' . PHP_EOL .
+                        '            </div>' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '        <input type="text" name="input-group-example" ' .
                         'placeholder="Input&#x20;group&#x20;example" aria-label="Input&#x20;group&#x20;example" ' .

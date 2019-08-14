@@ -50,15 +50,9 @@ class FormCollection extends \Zend\Form\View\Helper\FormCollection
         $aLegendClasses = ['col-form-label'];
 
         // Define legend column classes
-        if ($sColumSize = $oElement->getOption('column')) {
-            if (!$this->hasColumnClassAttribute($aLabelAttributes['class'] ?? '')) {
-                $aColumnParts = $this->getColumnClassParts($sColumSize);
-
-                $aLegendClasses[] = $this->getColumnClass(
-                    ($aColumnParts['size'] ? $aColumnParts['size'] . '-' : '')
-                        . (12 - $aColumnParts['number'])
-                );
-            }
+        $sColumSize = $oElement->getOption('column');
+        if ($sColumSize && !$this->hasColumnClassAttribute($aLabelAttributes['class'] ?? '')) {
+            $aLegendClasses[] = $this->getColumnCounterpartClass($sColumSize);
         }
 
         // Extract legend
