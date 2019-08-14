@@ -40,6 +40,20 @@ trait ClassAttributeTrait
         return $bCleanClasses ? $this->cleanClassesAttribute($aClasses) : $aClasses;
     }
 
+    protected function setClassesToElement(
+        \Zend\Form\ElementInterface $oElement,
+        array $aAddClasses = [],
+        array $aRemoveClasses = []
+    ): \Zend\Form\ElementInterface {
+        return $oElement->setAttributes(
+            $this->setClassesToAttributes(
+                $oElement->getAttributes(),
+                $aAddClasses,
+                $aRemoveClasses
+            )
+        );
+    }
+
     protected function setClassesToAttributes(
         array $aAttributes,
         array $aAddClasses = [],

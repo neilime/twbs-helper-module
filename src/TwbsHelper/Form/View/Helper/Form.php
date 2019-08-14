@@ -2,9 +2,6 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
-use Zend\Form\FormInterface;
-use Zend\Form\FieldsetInterface;
-
 class Form extends \Zend\Form\View\Helper\Form
 {
     use \TwbsHelper\View\Helper\HtmlTrait;
@@ -14,14 +11,13 @@ class Form extends \Zend\Form\View\Helper\Form
     const LAYOUT_INLINE     = 'inline';
 
     /**
-     * @param  FormInterface $oForm
-     * @param  string        $sFormLayout
-     * @return TwbsHelperForm|string
+     * @param \Zend\Form\FormInterface $oForm
+     * @return \TwbsHelper\Form\View\Helper\Form|string
      */
-    public function __invoke(FormInterface $oForm = null, $sFormLayout = null)
+    public function __invoke(\Zend\Form\FormInterface $oForm = null)
     {
         if ($oForm) {
-            return $this->render($oForm, $sFormLayout);
+            return $this->render($oForm);
         }
         return $this;
     }
@@ -29,11 +25,10 @@ class Form extends \Zend\Form\View\Helper\Form
     /**
      * Render a form from the provided $oForm,
      *
-     * @param  FormInterface $oForm
-     * @param  string|null   $sFormLayout
+     * @param \Zend\Form\FormInterface $oForm
      * @return string
      */
-    public function render(FormInterface $oForm, string $sFormLayout = null): string
+    public function render(\Zend\Form\FormInterface $oForm): string
     {
         // Prepare form if needed
         if (method_exists($oForm, 'prepare')) {
@@ -45,16 +40,11 @@ class Form extends \Zend\Form\View\Helper\Form
             $oForm->setAttribute('role', 'form');
         }
 
-        if ($sFormLayout === null) {
-            $sFormLayout = $oForm->getOption('twbs-layout');
-        }
+        $sFormLayout = $oForm->getOption('layout');
 
         // Set inline class
         if ($sFormLayout === self::LAYOUT_INLINE) {
-            $oForm->setAttributes($this->setClassesToAttributes(
-                $oForm->getAttributes(),
-                ['form-inline']
-            ));
+            $this->setClassesToElement($oForm, ['form-inline']);
         }
 
         return $this->openTag($oForm) .
@@ -64,11 +54,10 @@ class Form extends \Zend\Form\View\Helper\Form
 
 
     /**
-     * @param  FormInterface $oForm
-     * @param  string|null   $sFormLayout
+     * @param \Zend\Form\FormInterface $oForm
      * @return string
      */
-    protected function renderElements(FormInterface $oForm, string $sFormLayout = null): string
+    protected function renderElements(\Zend\Form\FormInterface $oForm): string
     {
         // Store button groups
         $aButtonGroups = [];
@@ -95,6 +84,7 @@ class Form extends \Zend\Form\View\Helper\Form
         $bHasColumn = false;
 
         // Prepare options
+        $sFormLayout = $oForm->getOption('layout');
         foreach ($oForm as $iKey => $oElement) {
             $aOptions = $oElement->getOptions();
 
@@ -103,8 +93,8 @@ class Form extends \Zend\Form\View\Helper\Form
             }
 
             // Define layout option to form elements if not already defined
-            if ($sFormLayout && empty($aOptions['twbs-layout'])) {
-                $oElement->setOption('twbs-layout', $sFormLayout);
+            if ($sFormLayout && empty($aOptions['layout'])) {
+                $oElement->setOption('layout', $sFormLayout);
             }
 
             // Manage button group option
@@ -115,14 +105,15 @@ class Form extends \Zend\Form\View\Helper\Form
                     $aButtonGroups[$sButtonGroupKey][] = $oElement;
                 } else {
                     $aButtonGroups[$sButtonGroupKey] = [$oElement];
-                    $aElementsRendering[$iKey]       = $sButtonGroupKey;
+                    $aElementsRendering[$iKey] = $sButtonGroupKey;
                 }
 
                 if (!empty($aOptions['column']) && !isset($aButtonGroupsColumns[$sButtonGroupKey])) {
                     // Only the first occured column will be set, other are ignored.
                     $aButtonGroupsColumns[$sButtonGroupKey] = $aOptions['column'];
                 }
-            } elseif ($oElement instanceof FieldsetInterface) {
+            } elseif ($oElement instanceof \Zend\Form\FieldsetInterface) {
+                $this->setClassesToElement($oElement, ['form-group']);
                 $aElementsRendering[$iKey] = $oFormCollectionHelper->__invoke($oElement);
             } else {
                 $aElementsRendering[$iKey] = $oFormRowHelper->__invoke($oElement);

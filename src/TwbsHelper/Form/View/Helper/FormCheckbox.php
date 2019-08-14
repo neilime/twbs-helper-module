@@ -14,11 +14,11 @@ class FormCheckbox extends \Zend\Form\View\Helper\FormCheckbox
      */
     public function render(\Zend\Form\ElementInterface $oElement): string
     {
-        $oElement->setAttributes($this->setClassesToAttributes(
-            $oElement->getAttributes() ?? [],
+        $this->setClassesToElement(
+            $oElement,
             ['form-check-input'],
             ['form-control']
-        ));
+        );
         return parent::render($oElement);
     }
 }

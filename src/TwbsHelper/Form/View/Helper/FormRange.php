@@ -14,11 +14,11 @@ class FormRange extends \Zend\Form\View\Helper\FormRange
      */
     public function render(\Zend\Form\ElementInterface $oElement): string
     {
-        $oElement->setAttributes($this->setClassesToAttributes(
-            $oElement->getAttributes() ?? [],
+        $this->setClassesToElement(
+            $oElement,
             ['form-control-range'],
             ['form-control']
-        ));
+        );
         return parent::render($oElement);
     }
 }

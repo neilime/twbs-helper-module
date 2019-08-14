@@ -145,70 +145,6 @@ return [
                                 ],
                             ]
                         ]));
-
-                        echo PHP_EOL . '<br>' . PHP_EOL;
-
-                        // Create form
-                        echo $oView->form($oFactory->create([
-                            'type' => 'form',
-                            'options' => ['row_class' => 'form-row'],
-                            'elements' => [
-                                [
-                                    'spec' => [
-                                        'name' => 'email',
-                                        'options' => [
-                                            'column' => 'md-6',
-                                            'label' => 'Email'
-                                        ],
-                                        'attributes' => [
-                                            'type' => 'email',
-                                            'placeholder' => 'Email',
-                                            'id' => 'inputEmail4',
-                                        ],
-                                    ],
-                                ],
-                                [
-                                    'spec' => [
-                                        'name' => 'password',
-                                        'options' => [
-                                            'column' => 'md-6',
-                                            'label' => 'Password'
-                                        ],
-                                        'attributes' => [
-                                            'type' => 'password',
-                                            'placeholder' => 'Password',
-                                            'id' => 'inputPassword4',
-                                        ],
-                                    ],
-                                ],
-                                // [
-                                //     'spec' => [
-                                //         'name' => 'address',
-                                //         'options' => [
-                                //             'label' => 'Address'
-                                //         ],
-                                //         'attributes' => [
-                                //             'type' => 'text',
-                                //             'placeholder' => '1234 Main St',
-                                //             'id' => 'inputAddress',
-                                //         ],
-                                //     ],
-                                // ],
-                                // [
-                                //     'spec' => [
-                                //         'name' => 'address2',
-                                //         'options' => [
-                                //             'label' => 'Address 2'
-                                //         ],
-                                //         'attributes' => [
-                                //             'type' => 'text',
-                                //             'placeholder' => 'Apartment, studio, or floor',
-                                //             'id' => 'inputAddress2',
-                                //         ],
-                                //     ],
-                                // ],
-                            ]
-                        ]));
                     },
                     'expected' => '<form method="POST" name="form" role="form" id="form">' . PHP_EOL .
                         '    <div class="form-row">' . PHP_EOL .
@@ -221,33 +157,184 @@ return [
                         'class="form-control" value="">' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
-                        '</form>' . PHP_EOL .
-                        '<br>' . PHP_EOL .
-                        '<form method="POST" name="form" role="form" id="form">' . PHP_EOL .
-                        '    <div class="form-row">' . PHP_EOL .
-                        '        <div class="col-md-6">' . PHP_EOL .
-                        '            <label class="col-form-label&#x20;col-md-6" for="inputEmail4">' .
-                        'Email</label>' . PHP_EOL .
-                        '            <input name="email" type="email" placeholder="Email" id="inputEmail4" ' .
-                        'class="form-control" value="">' . PHP_EOL .
-                        '        </div>' . PHP_EOL .
-                        '        <div class="col-md-6">' . PHP_EOL .
-                        '            <label class="col-form-label&#x20;col-md-6" for="inputPassword4">' .
-                        'Password</label>' . PHP_EOL .
-                        '            <input name="password" type="password" placeholder="Password" ' .
-                        'id="inputPassword4" class="form-control" value="">' . PHP_EOL .
+                        '</form>',
+                ],
+                [
+                    'title' => 'Horizontal form',
+                    'url' => '%bootstrap-url%/components/forms/#horizontal-form',
+
+                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                        $oFactory = new \Zend\Form\Factory();
+
+                        // Create form
+                        echo $oView->form($oFactory->create([
+                            'type' => 'form',
+                            'options' => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL],
+                            'elements' => [
+                                [
+                                    'spec' => [
+                                        'name' => 'email',
+                                        'options' => [
+                                            'label' => 'Email',
+                                            'column' => 'sm-10',
+                                        ],
+                                        'attributes' => [
+                                            'type' => 'email',
+                                            'id' => 'inputEmail3',
+                                            'placeholder' => 'Email',
+                                        ],
+                                    ],
+                                ],
+                                [
+                                    'spec' => [
+                                        'name' => 'password',
+                                        'options' => [
+                                            'label' => 'Password',
+                                            'column' => 'sm-10',
+                                        ],
+                                        'attributes' => [
+                                            'type' => 'password',
+                                            'id' => 'inputPassword3',
+                                            'placeholder' => 'Password',
+                                        ],
+                                    ],
+                                ],
+                                [
+                                    'spec' => [
+                                        'type' => 'fieldset',
+                                        'options' => [
+                                            'label' => 'Radios',
+                                            'label_attributes' => ['class' => 'pt-0'],
+                                            'column' => 'sm-10',
+                                        ],
+                                        'elements' => [
+                                            [
+                                                'spec' => [
+                                                    'type' => 'radio',
+                                                    'name' => 'gridRadios',
+                                                    'options' => [
+                                                        'column' => 'sm-10',
+                                                        'value_options' => [
+                                                            [
+                                                                'label' => 'First radio',
+                                                                'attributes' => ['id' => 'gridRadios1'],
+                                                                'value' => 'option1',
+                                                            ],
+                                                            [
+                                                                'label' => 'Second radio',
+                                                                'attributes' => ['id' => 'gridRadios2'],
+                                                                'value' => 'option2',
+                                                            ],
+                                                            [
+                                                                'label' => 'Third disabled radio',
+                                                                'disabled' => true,
+                                                                'attributes' => ['id' => 'gridRadios3'],
+                                                                'value' => 'option3',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                                [
+                                    'spec' => [
+                                        'type' => 'multicheckbox',
+                                        'options' => [
+                                            'label' => 'Checkbox',
+                                            'column' => 'sm-10',
+                                            'value_options' => [
+                                                [
+                                                    'label' => 'Example checkbox',
+                                                    'attributes' => ['id' => 'gridCheck1'],
+                                                    'value' => 1,
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                                [
+                                    'spec' => [
+                                        'type' => 'submit',
+                                        'options' => [
+                                            'label' => 'Sign in',
+                                            'variant' => 'primary',
+                                            'column' => 'sm-10',
+                                        ],
+                                    ],
+                                ],
+                            ]
+                        ]));
+                    },
+                    'expected' => '<form method="POST" name="form" role="form" id="form">' . PHP_EOL .
+                        '    <div class="form-group&#x20;row">' . PHP_EOL .
+                        '        <label class="col-form-label&#x20;col-sm-2" for="inputEmail3">' .
+                        'Email' .
+                        '</label>' . PHP_EOL .
+                        '        <div class="col-sm-10">' . PHP_EOL .
+                        '            <input name="email" type="email" id="inputEmail3" ' .
+                        'placeholder="Email" class="form-control" value="">' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
-                        // '    <div class="form-group">' . PHP_EOL .
-                        // '        <label class="col-form-label" for="inputAddress">Address</label>' . PHP_EOL .
-                        // '        <input name="address" type="text" placeholder="1234 Main St" id="inputAddress" ' .
-                        // 'class="form-control" value="">' . PHP_EOL .
-                        // '    </div>' . PHP_EOL .
-                        // '    <div class="form-group">' . PHP_EOL .
-                        // '        <label class="col-form-label" for="inputAddress2">Address 2</label>' . PHP_EOL .
-                        // '        <input name="address2" type="text" placeholder="Apartment, studio, or floor" ' .
-                        // 'id="inputAddress2" class="form-control" value="">' . PHP_EOL .
-                        // '    </div>' . PHP_EOL .
+                        '    <div class="form-group&#x20;row">' . PHP_EOL .
+                        '        <label class="col-form-label&#x20;col-sm-2" for="inputPassword3">' .
+                        'Password' .
+                        '</label>' . PHP_EOL .
+                        '        <div class="col-sm-10">' . PHP_EOL .
+                        '            <input name="password" type="password" id="inputPassword3" ' .
+                        'placeholder="Password" class="form-control" value="">' . PHP_EOL .
+                        '        </div>' . PHP_EOL .
+                        '    </div>'  . PHP_EOL .
+                        '    <fieldset class="form-group">'  . PHP_EOL .
+                        '        <div class="row">'  . PHP_EOL .
+                        '            <legend class="col-form-label&#x20;col-sm-2&#x20;pt-0">' .
+                        'Radios' .
+                        '</legend>'  . PHP_EOL .
+                        '            <div class="col-sm-10">'  . PHP_EOL .
+                        '                <div class="form-check">'  . PHP_EOL .
+                        '                    <input type="radio" name="fieldset&#x5B;gridRadios&#x5D;" ' .
+                        'class="form-check-input" id="gridRadios1" value="option1">'  . PHP_EOL .
+                        '                    <label class="form-check-label" for="gridRadios1">' .
+                        'First radio' .
+                        '</label>'  . PHP_EOL .
+                        '                </div>'  . PHP_EOL .
+                        '                <div class="form-check">'  . PHP_EOL .
+                        '                    <input type="radio" name="fieldset&#x5B;gridRadios&#x5D;" ' .
+                        'class="form-check-input" id="gridRadios2" value="option2">'  . PHP_EOL .
+                        '                    <label class="form-check-label" for="gridRadios2">' .
+                        'Second radio' .
+                        '</label>'  . PHP_EOL .
+                        '                </div>'  . PHP_EOL .
+                        '                <div class="form-check">'  . PHP_EOL .
+                        '                    <input type="radio" name="fieldset&#x5B;gridRadios&#x5D;" ' .
+                        'class="form-check-input" id="gridRadios3" value="option3" disabled="disabled">'  . PHP_EOL .
+                        '                    <label class="form-check-label" for="gridRadios3">' .
+                        'Third disabled radio' .
+                        '</label>'  . PHP_EOL .
+                        '                </div>'  . PHP_EOL .
+                        '            </div>'  . PHP_EOL .
+                        '        </div>'  . PHP_EOL .
+                        '    </fieldset>'  . PHP_EOL .
+                        '    <div class="form-group&#x20;row">' . PHP_EOL .
+                        '        <div class="col-sm-2">' . PHP_EOL .
+                        '            Checkbox' . PHP_EOL .
+                        '        </div>' . PHP_EOL .
+                        '        <div class="col-sm-10">' . PHP_EOL .
+                        '            <div class="form-check">' . PHP_EOL .
+                        '                <input type="checkbox" name="multicheckbox&#x5B;&#x5D;" ' .
+                        'class="form-check-input" id="gridCheck1" value="1">' . PHP_EOL .
+                        '                <label class="form-check-label" for="gridCheck1">' .
+                        'Example checkbox</label>' . PHP_EOL .
+                        '            </div>' . PHP_EOL .
+                        '        </div>' . PHP_EOL .
+                        '    </div>' . PHP_EOL .
+                        '    <div class="form-group&#x20;row">' . PHP_EOL .
+                        '        <div class="col-sm-10">' . PHP_EOL .
+                        '            <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">' .
+                        'Sign in</button>' . PHP_EOL .
+                        '        </div>' . PHP_EOL .
+                        '    </div>' . PHP_EOL .
                         '</form>',
                 ],
             ],

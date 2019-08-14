@@ -36,7 +36,7 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
 
 
         // Retrieve expected layout
-        $sLayout = $oElement->getOption('twbs-layout');
+        $sLayout = $oElement->getOption('layout');
 
         // Partial rendering
         if ($this->partial) {
@@ -113,7 +113,7 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
         // Column
         $sColum = $oElement->getOption('column');
         if ($sColum) {
-            if ($oElement->getOption('twbs-layout') ===  \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL) {
+            if ($oElement->getOption('layout') ===  \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL) {
                 $aRowClasses[] = 'row';
             } else {
                 $aColumSizes = is_array($sColum) ? $sColum : [$sColum];
@@ -141,7 +141,7 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
             );
         }
 
-        
+
         // Render element into form group
         return $this->htmlElement(
             'div',
@@ -159,77 +159,56 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
     protected function renderElement(\Zend\Form\ElementInterface $oElement, string $sLabelPosition = null): string
     {
         // Retrieve expected layout
-        $sLayout = $oElement->getOption('twbs-layout');
-        $sElementType = $oElement->getAttribute('type');
+        $sLayout = $oElement->getOption('layout');
 
         // Render element
         $sElementContent = $this->getElementHelper()->render($oElement);
 
-        // Render feedback
-        $sElementContent = $this->renderFeedback($oElement, $sElementContent);
-
         switch ($sLayout) {
             case null:
             case \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE:
-                // Render label
-                $sElementContent = $this->renderLabelContent($oElement, $sElementContent, $sLabelPosition);
-
-                // Render help block
-                $sElementContent = $this->renderHelpBlock($oElement, $sElementContent);
-
-                // Render errors
-                $sElementContent = $this->renderErrors($oElement, $sElementContent);
-
-                if (in_array($sElementType, ['checkbox'], true)) {
-                    $sElementContent = $this->htmlElement(
-                        'div',
-                        ['class' => 'form-check'],
-                        $sElementContent
-                    );
-                }
-
-                return $sElementContent;
-
+                $aRenderingOrder = [
+                    'renderFeedback' => [],
+                    'renderLabelContent' =>  [$sLabelPosition],
+                    'renderHelpBlock' => [],
+                    'renderErrors' => [],
+                    'renderCheckbox' => [],
+                ];
+                break;
             case \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL:
-                // Render help block
-                $sElementContent = $this->renderHelpBlock($oElement, $sElementContent);
-
-                // Render errors
-                $sElementContent = $this->renderErrors($oElement, $sElementContent);
-
-                $aClasses = [];
-
-                // Column size
-                if ($sColumn = $oElement->getOption('column')) {
-                    $aClasses[] = $this->getColumnClass($sColumn);
-                }
-
-                // Checkbox elements are a special case, element is rendered into label
-                if (in_array($sElementType, ['checkbox'], true)) {
-                    $sElementContent = $this->htmlElement(
-                        'div',
-                        ['class' => 'form-check'],
-                        $sElementContent
-                    );
-                }
-
-                $sElementContent = $this->htmlElement(
-                    'div',
-                    $this->setClassesToAttributes([], $aClasses),
-                    $sElementContent
-                );
-
-                // Render label
-                $sElementContent = $this->renderLabelContent(
-                    $oElement,
-                    $sElementContent,
-                    $sLabelPosition
-                );
-
-                return $sElementContent;
+                $aRenderingOrder = [
+                    'renderFeedback' => [],
+                    'renderHelpBlock' => [],
+                    'renderErrors' => [],
+                    'renderCheckbox' => [],
+                ];
+                break;
+            default:
+                throw new \DomainException('Layout "' . $sLayout . '" is not supported');
         }
 
-        throw new \DomainException('Layout "' . $sLayout . '" is not valid');
+        foreach ($aRenderingOrder as $sFunction => $aArguments) {
+            array_unshift($aArguments, $oElement, $sElementContent);
+            $sElementContent = call_user_func_array([$this, $sFunction], $aArguments);
+        }
+
+        if ($sLayout !== \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL) {
+            return $sElementContent;
+        }
+
+        // Column size
+        $aClasses = [];
+        if ($sColumn = $oElement->getOption('column')) {
+            $aClasses[] = $this->getColumnClass($sColumn);
+        }
+
+        $sElementContent = $this->htmlElement(
+            'div',
+            $this->setClassesToAttributes([], $aClasses),
+            $sElementContent
+        );
+
+        return $this->renderLabelContent($oElement, $sElementContent, $sLabelPosition);
     }
 
     /**
@@ -259,13 +238,6 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
             return $sElementContent;
         }
 
-        /*
-         * Multicheckbox elements have to be handled differently
-         * as the HTML standard does not allow nested labels.
-         * The semantic way is to group them inside a fieldset
-         */
-        $sElementType = $oElement->getAttribute('type');
-
         // Button element is a special case, because label is always rendered inside it
         if (
             $oElement instanceof \Zend\Form\Element\Button
@@ -273,42 +245,16 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
         ) {
             return $sElementContent;
         }
-        $aLabelAttributes = $oElement->getLabelAttributes() ?? $this->labelAttributes ?? [];
+
+        $aLabelAttributes = $oElement instanceof \Zend\Form\LabelAwareInterface
+            ? $oElement->getLabelAttributes()
+            : $this->labelAttributes ?? [];
 
         $aLabelClasses = [];
-        if (in_array($sElementType, ['checkbox', 'radio'], true)) {
-            $aLabelClasses[] = 'form-check-label';
-        } else {
-            // Validation state
-            if ($oElement->getOption('validation-state') || $oElement->getMessages()) {
-                $aLabelClasses[] = 'control-label';
-            }
-
-            $sLayout = $oElement->getOption('twbs-layout');
-            switch ($sLayout) {
-                    // Hide label for "inline" layout
-                case \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE:
-                    if (!$oElement->getOption('showLabel')) {
-                        $aLabelClasses[] = 'sr-only';
-                    }
-                    break;
-
-                case \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL:
-                    $aLabelClasses[] = 'control-label';
-                    break;
-            }
-        }
-
-        if ($aLabelClasses) {
-            $aLabelAttributes = $this->setClassesToAttributes($aLabelAttributes, $aLabelClasses);
-        }
 
         // Define label column classes
         if ($sColumSize = $oElement->getOption('column')) {
-            $aLabelAttributes['class'] = str_replace('control-label', '', $aLabelAttributes['class'] ?? '');
-            $aLabelClasses = ['col-form-label'];
-
-            if (!$this->hasColumnClassAttribute($aLabelAttributes['class'])) {
+            if (!$this->hasColumnClassAttribute($aLabelAttributes['class'] ?? '')) {
                 $aColumnParts = $this->getColumnClassParts($sColumSize);
 
                 $aLabelClasses[] = $this->getColumnClass(
@@ -316,16 +262,41 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
                         . (12 - $aColumnParts['number'])
                 );
             }
+        }
+
+        if (!$oElement instanceof \Zend\Form\Element\MultiCheckbox) {
+            $sElementType = $oElement->getAttribute('type');
+            if (in_array($sElementType, ['checkbox', 'radio'], true)) {
+                $aLabelClasses[] = 'form-check-label';
+            } else {
+                // Validation state
+                if ($oElement->getOption('validation-state') || $oElement->getMessages()) {
+                    $aLabelClasses[] = 'col-form-label';
+                }
+
+                $sLayout = $oElement->getOption('layout');
+                switch ($sLayout) {
+                        // Hide label for "inline" layout
+                    case \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE:
+                        if (!$oElement->getOption('showLabel')) {
+                            $aLabelClasses[] = 'sr-only';
+                        }
+                        break;
+
+                    case \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL:
+                        $aLabelClasses[] = 'col-form-label';
+                        break;
+                }
+            }
+        }
+
+        if ($aLabelClasses) {
             $aLabelAttributes = $this->setClassesToAttributes($aLabelAttributes, $aLabelClasses);
         }
 
         if ($aLabelAttributes) {
             $oElement->setLabelAttributes($aLabelAttributes);
         }
-
-        $oLabelHelper = $this->getLabelHelper();
-        $sLabelOpen  = $oLabelHelper->openTag($oElement->getAttribute('id') ? $oElement : $aLabelAttributes);
-        $sLabelClose = $oLabelHelper->closeTag();
 
         // Allow label html escape disable
         if (
@@ -343,8 +314,22 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
             $sLabelContent .= $this->requiredFormat;
         }
 
-        $sLabelContent = $sLabelOpen . $sLabelContent . $sLabelClose;
 
+        if ($oElement instanceof \Zend\Form\Element\MultiCheckbox) {
+            $sLabelContent = $this->htmlElement(
+                'div',
+                $aLabelAttributes,
+                $sLabelContent,
+                !$oElement->getLabelOption('disable_html_escape')
+            );
+        } else {
+            $oLabelHelper = $this->getLabelHelper();
+            $sLabelOpen  = $oLabelHelper->openTag($oElement->getAttribute('id') ? $oElement : $aLabelAttributes);
+            $sLabelClose = $oLabelHelper->closeTag();
+            $sLabelContent = $sLabelOpen . $sLabelContent . $sLabelClose;
+        }
+
+        $sElementType = $oElement->getAttribute('type');
         $sLabelPosition = in_array($sElementType, ['checkbox', 'radio'], true)
             ? self::LABEL_APPEND
             : $sLabelPosition ?? $this->getLabelPosition();
@@ -425,6 +410,7 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
      * Render element's errors
      *
      * @param \Zend\Form\ElementInterface $oElement
+     * @param string $sElementContent
      * @return string
      */
     protected function renderFeedback(\Zend\Form\ElementInterface $oElement, string $sElementContent): string
@@ -438,6 +424,19 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
                 ));
             }
             $sElementContent .= '<i class="' . $sFeedback . ' form-control-feedback"></i>';
+        }
+        return $sElementContent;
+    }
+
+    protected function renderCheckbox(\Zend\Form\ElementInterface $oElement, string $sElementContent): string
+    {
+        $sElementType = $oElement->getAttribute('type');
+        if (in_array($sElementType, ['checkbox'], true)) {
+            $sElementContent = $this->htmlElement(
+                'div',
+                ['class' => 'form-check'],
+                $sElementContent
+            );
         }
         return $sElementContent;
     }

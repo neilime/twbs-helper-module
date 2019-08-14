@@ -2,48 +2,100 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
-use Zend\Form\Element\Collection as CollectionElement;
-use Zend\Form\View\Helper\FormCollection as ZendFormCollectionViewHelper;
-use Zend\Form\ElementInterface;
-
 /**
  * FormCollection
- *
- * @uses ZendFormCollectionViewHelper
  */
-class FormCollection extends ZendFormCollectionViewHelper
+class FormCollection extends \Zend\Form\View\Helper\FormCollection
 {
 
-    // @var string
-    protected static $legendFormat = '<legend%s>%s</legend>';
+    use \TwbsHelper\View\Helper\ClassAttributeTrait;
+    use \TwbsHelper\View\Helper\HtmlTrait;
 
-    // @var string
-    protected static $fieldsetFormat = '<fieldset%s>%s</fieldset>';
-
-    // Attributes valid for the tag represented by this helper
-    // @var array
-    protected $validTagAttributes = ['disabled' => true];
+    /**
+     * This is the default wrapper that the collection is wrapped into
+     *
+     * @var string
+     */
+    protected $wrapper = '<fieldset%4$s>%2$s%1$s%3$s</fieldset>';
 
 
     /**
-     * render
      * Render a collection by iterating through all fieldsets and elements
      *
-     * @param  \Zend\Form\ElementInterface $oElement
-     * @access public
+     * @param \Zend\Form\ElementInterface $oElement
      * @return string
      */
-    public function render(ElementInterface $oElement)
+    public function render(\Zend\Form\ElementInterface $oElement): string
     {
+        $sElementLayout = $oElement->getOption('layout');
+
+        // Set form layout class
+        if ($sElementLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE) {
+            $this->setClassesToElement($oElement, ['form-' . $sElementLayout]);
+        }
+
+        $sMarkup = parent::render($oElement);
+        if (!$sMarkup || !$this->shouldWrap) {
+            return $sMarkup;
+        }
+
+        if (!preg_match('/(<fieldset[^>]*>)([\s\S]*)(<\/fieldset[^>]*>)/imU', $sMarkup, $aMatches)) {
+            return $sMarkup;
+        }
+
+        $sMarkup = $aMatches[2];
+
+        // Define legend class
+        $aLabelAttributes = $oElement instanceof \Zend\Form\LabelAwareInterface ? $oElement->getLabelAttributes() : [];
+        $aLegendClasses = ['col-form-label'];
+
+        // Define legend column classes
+        if ($sColumSize = $oElement->getOption('column')) {
+            if (!$this->hasColumnClassAttribute($aLabelAttributes['class'] ?? '')) {
+                $aColumnParts = $this->getColumnClassParts($sColumSize);
+
+                $aLegendClasses[] = $this->getColumnClass(
+                    ($aColumnParts['size'] ? $aColumnParts['size'] . '-' : '')
+                        . (12 - $aColumnParts['number'])
+                );
+            }
+        }
+
+        // Extract legend
+        $sLegendContent = '';
+        if (preg_match('/<legend[^>]*>([\s\S]*)<\/legend[^>]*>/imU', $sMarkup, $aLegendMatches)) {
+            $sLegendContent = sprintf(
+                '<legend%s>%s</legend>',
+                $this->attributesToString($this->setClassesToAttributes(
+                    $aLabelAttributes,
+                    $aLegendClasses
+                )),
+                $aLegendMatches[1]
+            ) . PHP_EOL;
+            $sMarkup = str_replace($aLegendMatches[0], '', $sMarkup);
+        }
+
+        if ($sColumSize) {
+            $sMarkup = $this->htmlElement('div', ['class' => $this->getColumnClass($sColumSize)], $sMarkup);
+        }
+
+        $sMarkup = $sLegendContent . $sMarkup;
+
+        if ($sElementLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL) {
+            $sMarkup = $this->htmlElement('div', ['class' => 'row'], $sMarkup);
+        }
+
+        return $aMatches[1] . $this->addProperIndentation($sMarkup) . $aMatches[3];
+
         $oRenderer = $this->getView();
 
-        if (!method_exists($oRenderer, 'plugin')) {
+        if (!is_callable([$oRenderer, 'plugin'])) {
             return '';
         }
 
-        $bShouldWrap    = $this->shouldWrap;
-        $sMarkup        = '';
-        $sElementLayout = $oElement->getOption('twbs-layout');
+        $bShouldWrap = $this->shouldWrap;
+        $sMarkup = '';
+        $sElementLayout = $oElement->getOption('layout');
 
         if ($oElement instanceof \IteratorAggregate) {
             $oElementHelper  = $this->getElementHelper();
@@ -52,8 +104,8 @@ class FormCollection extends ZendFormCollectionViewHelper
             foreach ($oElement->getIterator() as $oElementOrFieldset) {
                 $aOptions = $oElementOrFieldset->getOptions();
 
-                if ($sElementLayout && empty($aOptions['twbs-layout'])) {
-                    $aOptions['twbs-layout'] = $sElementLayout;
+                if ($sElementLayout && empty($aOptions['layout'])) {
+                    $aOptions['layout'] = $sElementLayout;
                     $oElementOrFieldset->setOptions($aOptions);
                 }
 
@@ -61,13 +113,13 @@ class FormCollection extends ZendFormCollectionViewHelper
                     $sMarkup .= $oFieldsetHelper($oElementOrFieldset);
                 } elseif ($oElementOrFieldset instanceof \Zend\Form\ElementInterface) {
                     if ($oElementOrFieldset->getOption('twbs-row-open')) {
-                        $sMarkup .= '<div class="row">' . "\n";
+                        $sMarkup .= '<div class="row">' . PHP_EOL;
                     }
 
                     $sMarkup .= $oElementHelper($oElementOrFieldset);
 
                     if ($oElementOrFieldset->getOption('twbs-row-close')) {
-                        $sMarkup .= '</div>' . "\n";
+                        $sMarkup .= '</div>' . PHP_EOL;
                     }
                 }
             }
@@ -78,37 +130,22 @@ class FormCollection extends ZendFormCollectionViewHelper
         }
 
         if ($bShouldWrap) {
-            if (false != ($sLabel = $oElement->getLabel())) {
+            if ($sLabel = $oElement->getLabel()) {
                 if (null !== ($oTranslator = $this->getTranslator())) {
                     $sLabel = $oTranslator->translate($sLabel, $this->getTranslatorTextDomain());
                 }
 
-                $sAttributes = $this->createAttributesString($oElement->getLabelAttributes() ?: []);
-                $sMarkup          = sprintf(
-                    static::$legendFormat,
-                    ($sAttributes) ? ' ' . $sAttributes : '',
-                    $this->getEscapeHtmlHelper()->__invoke($sLabel)
-                ) . $sMarkup;
+                $sMarkup = $this->htmlElement('legend', $oElement->getLabelAttributes(), $sLabel);
             }
 
             // Set form layout class
-            if ($sElementLayout) {
-                $sLayoutClass = "form-{$sElementLayout}";
-
-                if (false != ($sElementClass = $oElement->getAttribute('class'))) {
-                    if (!preg_match('/(\s|^)' . preg_quote($sLayoutClass, '/') . '(\s|$)/', $sElementClass)) {
-                        $oElement->setAttribute('class', trim("{$sElementClass} {$sLayoutClass}"));
-                    }
-                } else {
-                    $oElement->setAttribute('class', $sLayoutClass);
-                }
+            if ($sElementLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE) {
+                $this->setClassesToElement($oElement, ['form-' . $sElementLayout]);
+            } elseif ($sElementLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL) {
+                $sMarkup = $this->htmlElement('div', ['class' => 'row'], $sMarkup);
             }
 
-            $sMarkup          = sprintf(
-                static::$fieldsetFormat,
-                ($sAttributes = $this->createAttributesString($oElement->getAttributes())) ? " {$sAttributes}" : '',
-                $sMarkup
-            );
+            $sMarkup = $this->htmlElement('fieldset', $oElement->getAttributes(), $sMarkup);
         }
 
         return $sMarkup;
@@ -116,20 +153,21 @@ class FormCollection extends ZendFormCollectionViewHelper
 
 
     /**
-     * renderTemplate
      * Only render a template
      *
-     * @param  CollectionElement $collection
-     * @access public
+     * @param \Zend\Form\Element\Collection $collection
      * @return string
      */
-    public function renderTemplate(CollectionElement $collection)
+    public function renderTemplate(\Zend\Form\Element\Collection $oCollection): string
     {
-        if (false != ($sElementLayout = $collection->getOption('twbs-layout'))) {
-            $elementOrFieldset = $collection->getTemplateElement();
-            $elementOrFieldset->setOption('twbs-layout', $sElementLayout);
+
+        // Set inline class
+        $sElementLayout = $oCollection->getOption('layout');
+        if ($sElementLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE) {
+            $oElementOrFieldset = $oCollection->getTemplateElement();
+            $oElementOrFieldset->setOption('layout', $sElementLayout);
         }
 
-        return parent::renderTemplate($collection);
+        return parent::renderTemplate($oCollection);
     }
 }

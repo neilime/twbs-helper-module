@@ -239,7 +239,7 @@ return [
                 // Create horizontal form
                 $oForm = $oFactory->create([
                     'type' => 'form',
-                    'options' => ['twbs-layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL],
+                    'options' => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL],
                     'elements' => [
                         [
                             'spec' => [
@@ -281,7 +281,7 @@ return [
                 // Create inline form
                 $oForm = $oFactory->create([
                     'type' => 'form',
-                    'options' => ['twbs-layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE],
+                    'options' => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE],
                     'elements' => [
                         [
                             'spec' => [

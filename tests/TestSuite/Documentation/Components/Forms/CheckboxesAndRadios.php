@@ -107,7 +107,7 @@ return [
                     'name' => 'inlineCheckboxOptions',
                     'type' => 'multicheckbox',
                     'options' => [
-                        'twbs-layout' => 'inline',
+                        'layout' => 'inline',
                         'form-group' => false,
                         'value_options' => [
                             [
@@ -137,7 +137,7 @@ return [
                     'name' => 'inlineRadioOptions',
                     'type' => 'radio',
                     'options' => [
-                        'twbs-layout' => 'inline',
+                        'layout' => 'inline',
                         'form-group' => false,
                         'value_options' => [
                             [

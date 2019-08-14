@@ -14,9 +14,6 @@ trait HtmlTrait
         bool $bEscape = true
     ): string {
 
-
-
-
         $sElementContent = '<' . $sTag . $this->attributesToString($aAttributes);
         if ($sContent === null) {
             $sElementContent .= $this->getClosingBracket();
@@ -29,7 +26,7 @@ trait HtmlTrait
 
         $sTag = strtolower($sTag);
 
-        $bForceIndentation = in_array($sTag, ['div', 'blockquote', 'figure', 'ul'], true);
+        $bForceIndentation = in_array($sTag, ['div', 'blockquote', 'figure', 'ul', 'fieldset'], true);
 
         return sprintf(
             '<%s%s>%s</%s>',
@@ -70,6 +67,14 @@ trait HtmlTrait
         }, $aLines));
 
         return PHP_EOL . $sContent . PHP_EOL;
+    }
+
+    public function removeIndentation(string $sContent): string
+    {
+        return join(PHP_EOL, array_map('ltrim', explode(
+            PHP_EOL,
+            $sContent
+        )));
     }
 
     protected function isHTML(string $sString): bool

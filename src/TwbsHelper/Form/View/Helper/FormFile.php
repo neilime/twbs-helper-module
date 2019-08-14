@@ -14,11 +14,10 @@ class FormFile extends \Zend\Form\View\Helper\FormInput
      */
     public function render(\Zend\Form\ElementInterface $oElement): string
     {
-        $oElement->setAttributes($this->setClassesToAttributes(
-            $oElement->getAttributes() ?? [],
+        return parent::render($this->setClassesToElement(
+            $oElement,
             ['form-control-file'],
             ['form-control']
         ));
-        return parent::render($oElement);
     }
 }

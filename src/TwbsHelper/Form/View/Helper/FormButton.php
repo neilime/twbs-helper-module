@@ -95,11 +95,11 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
         $aValidTagAttributes = $this->validTagAttributes;
         if ($sTag === 'a') {
             $this->validTagAttributes['href'] = true;
-            unset(
-                $this->validTagAttributes['type'],
-                $this->validTagAttributes['value'],
-                $this->validTagAttributes['name']
-            );
+
+            unset($this->validTagAttributes['type']);
+            unset($this->validTagAttributes['value']);
+            unset($this->validTagAttributes['name']);
+
             $oElement->setAttribute('type', null);
             $oElement->setAttribute('name', 0);
 
@@ -164,7 +164,8 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
 
         if ($sButtonContent) {
             // Translate button content upon request
-            if (null !== ($oTranslator = $this->getTranslator())) {
+            $oTranslator = $this->getTranslator();
+            if ($oTranslator) {
                 $sButtonContent = $oTranslator->translate($sButtonContent, $this->getTranslatorTextDomain());
             }
 
@@ -172,10 +173,8 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
                 !$this->isHTML($sButtonContent)
                 && (!$oElement instanceof \Zend\Form\LabelAwareInterface
                     || !$oElement->getLabelOption('disable_html_escape'))
-
             ) {
-                $oEscapeHtmlHelper = $this->getEscapeHtmlHelper();
-                $sButtonContent    = $oEscapeHtmlHelper($sButtonContent);
+                $sButtonContent = $this->getEscapeHtmlHelper()($sButtonContent);
             }
         }
 

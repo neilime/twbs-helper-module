@@ -210,8 +210,6 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
         ));
         $sToogleMarkup = $this->getView()->formButton()->render($oToogleElement);
 
-
-
         if (!$sSplitOption) {
             return $sToogleMarkup;
         }

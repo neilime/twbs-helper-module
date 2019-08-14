@@ -22,11 +22,11 @@ class FormRadio extends \Zend\Form\View\Helper\FormRadio
      */
     public function render(\Zend\Form\ElementInterface $oElement): string
     {
-        $oElement->setAttributes($this->setClassesToAttributes(
-            $oElement->getAttributes() ?? [],
+        $this->setClassesToElement(
+            $oElement,
             ['form-check-input'],
             ['form-control']
-        ));
+        );
 
         // Handle label attributes for options
         $aValueOptions = $oElement->getValueOptions();
@@ -65,7 +65,7 @@ class FormRadio extends \Zend\Form\View\Helper\FormRadio
 
         $aGroupClasses = ['form-check'];
 
-        if ($oElement->getOption('twbs-layout') === \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE) {
+        if ($oElement->getOption('layout') === \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE) {
             $aGroupClasses[] = 'form-check-inline';
         }
 
