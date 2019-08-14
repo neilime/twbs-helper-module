@@ -336,6 +336,103 @@ return [
                         '        </div>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '</form>',
+                    'tests' => [
+                        [
+                            'title' => 'Horizontal form label sizing',
+                            'url' => '%bootstrap-url%/components/forms/#horizontal-form-label-sizing',
+
+                            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                                $oFactory = new \Zend\Form\Factory();
+
+                                // Create form
+                                echo $oView->form($oFactory->create([
+                                    'type' => 'form',
+                                    'options' => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL],
+                                    'elements' => [
+                                        [
+                                            'spec' => [
+                                                'name' => 'emailSm',
+                                                'options' => [
+                                                    'label' => 'Email',
+                                                    'column' => 'sm-10',
+                                                    'size' => 'sm',
+                                                ],
+                                                'attributes' => [
+                                                    'type' => 'email',
+                                                    'id' => 'colFormLabelSm',
+                                                    'placeholder' => 'col-form-label-sm',
+                                                ],
+                                            ],
+                                        ],
+                                        [
+                                            'spec' => [
+                                                'name' => 'email',
+                                                'options' => [
+                                                    'label' => 'Email',
+                                                    'column' => 'sm-10',
+                                                ],
+                                                'attributes' => [
+                                                    'type' => 'email',
+                                                    'id' => 'colFormLabel',
+                                                    'placeholder' => 'col-form-label',
+                                                ],
+                                            ],
+                                        ],
+                                        [
+                                            'spec' => [
+                                                'name' => 'emailLg',
+                                                'options' => [
+                                                    'label' => 'Email',
+                                                    'column' => 'sm-10',
+                                                    'size' => 'lg',
+                                                ],
+                                                'attributes' => [
+                                                    'type' => 'email',
+                                                    'id' => 'colFormLabelLg',
+                                                    'placeholder' => 'col-form-label-lg',
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ]));
+                            },
+                            'expected' => '<form method="POST" name="form" role="form" id="form">' . PHP_EOL .
+                                '    <div class="form-group&#x20;row">' . PHP_EOL .
+                                '        <label class="col-form-label&#x20;col-form-label-sm&#x20;col-sm-2" ' .
+                                'for="colFormLabelSm">' .
+                                'Email' .
+                                '</label>' . PHP_EOL .
+                                '        <div class="col-sm-10">' . PHP_EOL .
+                                '            <input name="emailSm" type="email" id="colFormLabelSm" ' .
+                                'placeholder="col-form-label-sm" class="form-control&#x20;form-control-sm" '.
+                                'value="">' . PHP_EOL .
+                                '        </div>' . PHP_EOL .
+                                '    </div>' . PHP_EOL .
+                                '    <div class="form-group&#x20;row">' . PHP_EOL .
+                                '        <label class="col-form-label&#x20;col-sm-2" ' .
+                                'for="colFormLabel">' .
+                                'Email' .
+                                '</label>' . PHP_EOL .
+                                '        <div class="col-sm-10">' . PHP_EOL .
+                                '            <input name="email" type="email" id="colFormLabel" ' .
+                                'placeholder="col-form-label" class="form-control" '.
+                                'value="">' . PHP_EOL .
+                                '        </div>' . PHP_EOL .
+                                '    </div>' . PHP_EOL .
+                                '    <div class="form-group&#x20;row">' . PHP_EOL .
+                                '        <label class="col-form-label&#x20;col-form-label-lg&#x20;col-sm-2" ' .
+                                'for="colFormLabelLg">' .
+                                'Email' .
+                                '</label>' . PHP_EOL .
+                                '        <div class="col-sm-10">' . PHP_EOL .
+                                '            <input name="emailLg" type="email" id="colFormLabelLg" ' .
+                                'placeholder="col-form-label-lg" class="form-control&#x20;form-control-lg" '.
+                                'value="">' . PHP_EOL .
+                                '        </div>' . PHP_EOL .
+                                '    </div>' . PHP_EOL .
+                                '</form>',
+                        ],
+                    ],
                 ],
             ],
         ],

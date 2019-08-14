@@ -34,7 +34,6 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
             return parent::render($oElement, $sLabelPosition);
         }
 
-
         // Retrieve expected layout
         $sLayout = $oElement->getOption('layout');
 
@@ -252,7 +251,7 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
 
         $aLabelClasses = [];
 
-        // Define label column classes
+        // Define label column class
         if ($sColumSize = $oElement->getOption('column')) {
             if (!$this->hasColumnClassAttribute($aLabelAttributes['class'] ?? '')) {
                 $aColumnParts = $this->getColumnClassParts($sColumSize);
@@ -262,6 +261,11 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
                         . (12 - $aColumnParts['number'])
                 );
             }
+        }
+
+        // Define label size class
+        if ($sSize = $oElement->getOption('size')) {
+            $aLabelClasses[] = $this->getSizeClass($sSize, 'col-form-label');
         }
 
         if (!$oElement instanceof \Zend\Form\Element\MultiCheckbox) {
