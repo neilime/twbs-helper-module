@@ -78,7 +78,7 @@
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
-| protected | <strong>getColumnClassParts(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizeClass(</strong><em>\string</em> <strong>$sSize</strong>, <em>\string</em> <strong>$sPrefix</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizes()</strong> : <em>mixed</em> |
 | protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
@@ -109,7 +109,7 @@
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
-| protected | <strong>getColumnClassParts(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizeClass(</strong><em>\string</em> <strong>$sSize</strong>, <em>\string</em> <strong>$sPrefix</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizes()</strong> : <em>mixed</em> |
 | protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
@@ -148,7 +148,7 @@
 | protected | <strong>defineButtonClasses(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
-| protected | <strong>getColumnClassParts(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizeClass(</strong><em>\string</em> <strong>$sSize</strong>, <em>\string</em> <strong>$sPrefix</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizes()</strong> : <em>mixed</em> |
 | protected | <strong>getType(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>string</em><br /><em>Determine button type to use</em> |
@@ -202,7 +202,7 @@
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
-| protected | <strong>getColumnClassParts(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizeClass(</strong><em>\string</em> <strong>$sSize</strong>, <em>\string</em> <strong>$sPrefix</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizes()</strong> : <em>mixed</em> |
 | protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
@@ -236,7 +236,7 @@
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
-| protected | <strong>getColumnClassParts(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizeClass(</strong><em>\string</em> <strong>$sSize</strong>, <em>\string</em> <strong>$sPrefix</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizes()</strong> : <em>mixed</em> |
 | protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
@@ -262,7 +262,7 @@
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
-| protected | <strong>getColumnClassParts(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizeClass(</strong><em>\string</em> <strong>$sSize</strong>, <em>\string</em> <strong>$sPrefix</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizes()</strong> : <em>mixed</em> |
 | protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
@@ -304,7 +304,7 @@
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
-| protected | <strong>getColumnClassParts(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizeClass(</strong><em>\string</em> <strong>$sSize</strong>, <em>\string</em> <strong>$sPrefix</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizes()</strong> : <em>mixed</em> |
 | protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
@@ -336,7 +336,7 @@
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
-| protected | <strong>getColumnClassParts(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizeClass(</strong><em>\string</em> <strong>$sSize</strong>, <em>\string</em> <strong>$sPrefix</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizes()</strong> : <em>mixed</em> |
 | protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
@@ -396,7 +396,7 @@
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
-| protected | <strong>getColumnClassParts(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizeClass(</strong><em>\string</em> <strong>$sSize</strong>, <em>\string</em> <strong>$sPrefix</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizes()</strong> : <em>mixed</em> |
 | protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
@@ -423,7 +423,7 @@
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
-| protected | <strong>getColumnClassParts(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizeClass(</strong><em>\string</em> <strong>$sSize</strong>, <em>\string</em> <strong>$sPrefix</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizes()</strong> : <em>mixed</em> |
 | protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
@@ -607,7 +607,7 @@
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
-| protected | <strong>getColumnClassParts(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizeClass(</strong><em>\string</em> <strong>$sSize</strong>, <em>\string</em> <strong>$sPrefix</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizes()</strong> : <em>mixed</em> |
 | protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
@@ -810,7 +810,7 @@
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
-| protected | <strong>getColumnClassParts(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizeClass(</strong><em>\string</em> <strong>$sSize</strong>, <em>\string</em> <strong>$sPrefix</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizes()</strong> : <em>mixed</em> |
 | protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
