@@ -10,5 +10,6 @@ return [
         include __DIR__ . DIRECTORY_SEPARATOR . 'Forms/RangeInputs.php',
         include __DIR__ . DIRECTORY_SEPARATOR . 'Forms/CheckboxesAndRadios.php',
         include __DIR__ . DIRECTORY_SEPARATOR . 'Forms/Layout.php',
+        include __DIR__ . DIRECTORY_SEPARATOR . 'Forms/HelpText.php',
     ],
 ];

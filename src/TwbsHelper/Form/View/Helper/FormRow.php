@@ -390,9 +390,14 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
             $sContent = $oTranslator->translate($sContent, $this->getTranslatorTextDomain());
         }
 
+        $aClasses = ['text-muted'];
+        if ($oElement->getOption('layout') !== \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE) {
+            $aClasses[] = 'form-text';
+        }
+
         return $sElementContent . PHP_EOL . $this->htmlElement(
             'small',
-            $this->setClassesToAttributes($aAttributes, ['form-text', 'text-muted']),
+            $this->setClassesToAttributes($aAttributes, $aClasses),
             $sContent
         );
     }
