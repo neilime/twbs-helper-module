@@ -5,9 +5,9 @@ return [
     'title' => 'Overview',
     'url' => '%bootstrap-url%/components/forms/#overview',
     'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-        // Create form
         $oFactory = new \Zend\Form\Factory();
-        $oForm = $oFactory->create([
+
+        echo $oView->form($oFactory->create([
             'type' => 'form',
             'elements' => [
                 [
@@ -55,9 +55,7 @@ return [
                     ],
                 ],
             ]
-        ]);
-
-        echo $oView->form($oForm);
+        ]));
     },
     'expected' => '<form method="POST" name="form" role="form" id="form">' . PHP_EOL .
         '    <div class="form-group">' . PHP_EOL .

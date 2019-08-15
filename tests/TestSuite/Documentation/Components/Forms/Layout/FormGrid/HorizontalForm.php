@@ -7,7 +7,6 @@ return [
     'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
         $oFactory = new \Zend\Form\Factory();
 
-        // Create form
         echo $oView->form($oFactory->create([
             'type' => 'form',
             'options' => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL],
@@ -185,7 +184,6 @@ return [
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 $oFactory = new \Zend\Form\Factory();
 
-                // Create form
                 echo $oView->form($oFactory->create([
                     'type' => 'form',
                     'options' => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL],

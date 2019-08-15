@@ -151,7 +151,7 @@ trait ClassAttributeTrait
     protected function getColumnCounterpartClass(string $sColumn): string
     {
         if ($sColumn === 'auto') {
-            return '';
+            return $sColumn;
         }
 
         if (preg_match('/^([1-9]|1[0-2]|auto)$/', $sColumn, $aMatches)) {

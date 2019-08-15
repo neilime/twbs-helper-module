@@ -16,7 +16,7 @@ class FormCheckbox extends \Zend\Form\View\Helper\FormCheckbox
     {
         $this->setClassesToElement(
             $oElement,
-            ['form-check-input'],
+            [$oElement->getOption('custom') ? 'custom-control-input' : 'form-check-input'],
             ['form-control']
         );
         return parent::render($oElement);

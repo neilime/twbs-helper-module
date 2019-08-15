@@ -11,7 +11,6 @@ class FormElement extends \Zend\Form\View\Helper\FormElement implements Translat
     use \TwbsHelper\View\Helper\ClassAttributeTrait;
     use \TwbsHelper\View\Helper\HtmlTrait;
 
-
     // Hold configurable options
     protected $options;
 
@@ -26,7 +25,6 @@ class FormElement extends \Zend\Form\View\Helper\FormElement implements Translat
         'Zend\Form\Element\MonthSelect'         => 'formmonthselect',
         'TwbsHelper\Form\Element\StaticElement' => 'formStatic',
     ];
-
 
     /**
      * Constructor
@@ -52,10 +50,9 @@ class FormElement extends \Zend\Form\View\Helper\FormElement implements Translat
      * Render an element
      *
      * @param \Zend\Form\ElementInterface $oElement
-     * @access public
      * @return string
      */
-    public function render(\Zend\Form\ElementInterface $oElement)
+    public function render(\Zend\Form\ElementInterface $oElement): string
     {
         // Add form-control class
         $sElementType = $oElement->getAttribute('type');
@@ -65,6 +62,7 @@ class FormElement extends \Zend\Form\View\Helper\FormElement implements Translat
         if (
             !in_array($sElementType, $this->options->getIgnoredViewHelpers())
             && !($oElement instanceof \Zend\Form\Element\Collection)
+            && !$oElement->getOption('custom')
         ) {
             $aClasses[] = $oElement->getOption('plaintext') ? 'form-control-plaintext' : 'form-control';
         }
@@ -110,7 +108,6 @@ class FormElement extends \Zend\Form\View\Helper\FormElement implements Translat
         return $sMarkup;
     }
 
-
     /**
      * Render element by helper name
      *
@@ -141,10 +138,9 @@ class FormElement extends \Zend\Form\View\Helper\FormElement implements Translat
      * Render add-on markup
      *
      * @param \Zend\Form\ElementInterface|array|string $aAddOnOptions
-     * @param  string                        $sPosition
+     * @param  string $sPosition
      * @throws \InvalidArgumentException
      * @throws \LogicException
-     * @access protected
      * @return string
      */
     protected function renderAddOn($aAddOnOptions, string $sPosition = 'prepend'): string

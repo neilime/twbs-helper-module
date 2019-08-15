@@ -5,9 +5,9 @@ return [
     'title' => 'Form controls',
     'url' => '%bootstrap-url%/components/forms/#form-controls',
     'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-        // Create form
         $oFactory = new \Zend\Form\Factory();
-        $oForm = $oFactory->create([
+
+        echo $oView->form($oFactory->create([
             'type' => 'form',
             'elements' => [
                 [
@@ -88,9 +88,7 @@ return [
                     ],
                 ],
             ],
-        ]);
-
-        echo $oView->form($oForm);
+        ]));
     },
     'expected' => '<form method="POST" name="form" role="form" id="form">' . PHP_EOL .
         '    <div class="form-group">' . PHP_EOL .
@@ -138,7 +136,7 @@ return [
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 $oFactory = new \Zend\Form\Factory();
 
-                // Create large input
+                // Render large input
                 $oElement = $oFactory->create([
                     'name' => 'lg',
                     'type' => 'text',
@@ -147,7 +145,7 @@ return [
                 ]);
                 echo $oView->formElement($oElement) . PHP_EOL . '<br>' . PHP_EOL;
 
-                // Create default input
+                // Render default input
                 $oElement = $oFactory->create([
                     'name' => 'default',
                     'type' => 'text',
@@ -155,7 +153,7 @@ return [
                 ]);
                 echo $oView->formElement($oElement) . PHP_EOL . '<br>' . PHP_EOL;
 
-                // Create small input
+                // Render small input
                 $oElement = $oFactory->create([
                     'name' => 'sm',
                     'type' => 'text',
@@ -164,7 +162,7 @@ return [
                 ]);
                 echo $oView->formElement($oElement) . PHP_EOL . '<br>' . PHP_EOL;
 
-                // Create large select
+                // Render large select
                 $oElement = $oFactory->create([
                     'name' => 'lg',
                     'type' => 'select',
@@ -173,7 +171,7 @@ return [
                 ]);
                 echo $oView->formElement($oElement) . PHP_EOL . '<br>' . PHP_EOL;
 
-                // Createdefault select
+                // Render default select
                 $oElement = $oFactory->create([
                     'name' => 'default',
                     'type' => 'select',
@@ -182,7 +180,7 @@ return [
                 ]);
                 echo $oView->formElement($oElement) . PHP_EOL . '<br>' . PHP_EOL;
 
-                // Create small select
+                // Render small select
                 $oElement = $oFactory->create([
                     'name' => 'sm',
                     'type' => 'select',
@@ -218,7 +216,7 @@ return [
             'title' => 'Readonly',
             'url' => '%bootstrap-url%/components/forms/#readonly',
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-                // Create element
+                // Render element
                 $oFactory = new \Zend\Form\Factory();
                 $oElement = $oFactory->create([
                     'name' => 'readonly-input',
@@ -236,7 +234,7 @@ return [
             'url' => '%bootstrap-url%/components/forms/#readonly-plain-text',
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 $oFactory = new \Zend\Form\Factory();
-                // Create horizontal form
+                // Render horizontal form
                 $oForm = $oFactory->create([
                     'type' => 'form',
                     'options' => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL],
@@ -278,8 +276,8 @@ return [
 
                 echo PHP_EOL . '<br>' . PHP_EOL;
 
-                // Create inline form
-                $oForm = $oFactory->create([
+                // Render inline form
+                echo $oView->form($oFactory->create([
                     'type' => 'form',
                     'options' => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE],
                     'elements' => [
@@ -321,9 +319,7 @@ return [
                             ],
                         ],
                     ],
-                ]);
-
-                echo $oView->form($oForm);
+                ]));
             },
             'expected' =>
             '<form method="POST" name="form" role="form" id="form">' . PHP_EOL .

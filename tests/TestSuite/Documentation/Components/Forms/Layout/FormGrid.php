@@ -7,7 +7,6 @@ return [
     'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
         $oFactory = new \Zend\Form\Factory();
 
-        // Create form
         echo $oView->form($oFactory->create([
             'type' => 'form',
             'elements' => [

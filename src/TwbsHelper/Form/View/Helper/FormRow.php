@@ -253,7 +253,11 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
 
         // Define label column class
         $sColumSize = $oElement->getOption('column');
-        if ($sColumSize && !$this->hasColumnClassAttribute($aLabelAttributes['class'] ?? '')) {
+        if (
+            $sColumSize
+            && $oElement->getOption('layout') !== null
+            && !$this->hasColumnClassAttribute($aLabelAttributes['class'] ?? '')
+        ) {
             $aLabelClasses[] = $this->getColumnCounterpartClass($sColumSize);
         }
 
@@ -265,7 +269,9 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
         if (!$oElement instanceof \Zend\Form\Element\MultiCheckbox) {
             $sElementType = $oElement->getAttribute('type');
             if (in_array($sElementType, ['checkbox', 'radio'], true)) {
-                $aLabelClasses[] = 'form-check-label';
+                $aLabelClasses[] = $oElement->getOption('custom')
+                    ? 'custom-control-label'
+                    : 'form-check-label';
             } else {
                 // Validation state
                 if ($oElement->getOption('validation-state') || $oElement->getMessages()) {
@@ -439,7 +445,9 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
                 'div',
                 $this->setClassesToAttributes(
                     ['class' => $oElement->getOption('form_check_class')],
-                    ['form-check']
+                    $oElement->getOption('custom')
+                        ? ['custom-control', 'custom-checkbox']
+                        : ['form-check']
                 ),
                 $sElementContent
             );

@@ -11,7 +11,7 @@ return [
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 $oFactory = new \Zend\Form\Factory();
 
-                // Create Default checkbox
+                // Render Default checkbox
                 echo $oView->formRow($oFactory->create([
                     'name' => 'default-checkbox',
                     'type' => 'checkbox',
@@ -25,7 +25,7 @@ return [
                     ],
                 ])) . PHP_EOL;
 
-                // Create Disabled checkbox
+                // Render Disabled checkbox
                 echo $oView->formRow($oFactory->create([
                     'name' => 'disabled-checkbox',
                     'type' => 'checkbox',
@@ -42,7 +42,7 @@ return [
 
                 echo PHP_EOL . '<br>' . PHP_EOL;
 
-                // Create radio
+                // Render radio
                 echo $oView->formRow($oFactory->create([
                     'name' => 'exampleRadios',
                     'type' => 'radio',
@@ -102,7 +102,7 @@ return [
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 $oFactory = new \Zend\Form\Factory();
 
-                // Create checkbox
+                // Render checkbox
                 echo $oView->formRow($oFactory->create([
                     'name' => 'inlineCheckboxOptions',
                     'type' => 'multicheckbox',
@@ -132,7 +132,7 @@ return [
 
                 echo PHP_EOL . '<br>' . PHP_EOL;
 
-                // Create radio
+                // Render radio
                 echo $oView->formRow($oFactory->create([
                     'name' => 'inlineRadioOptions',
                     'type' => 'radio',
@@ -199,7 +199,7 @@ return [
 
                 $oFactory = new \Zend\Form\Factory();
 
-                // Create checkbox
+                // Render checkbox
                 echo $oView->formRow($oFactory->create([
                     'name' => 'blankCheckbox',
                     'type' => 'multicheckbox',
@@ -215,7 +215,7 @@ return [
                     ],
                 ])) . PHP_EOL;
 
-                // Create radio
+                // Render radio
                 echo $oView->formRow($oFactory->create([
                     'name' => 'blankRadio',
                     'type' => 'radio',
