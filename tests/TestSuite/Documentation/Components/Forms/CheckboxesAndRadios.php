@@ -18,7 +18,7 @@ return [
                     'options' => [
                         'label' => 'Default checkbox',
                         'use_hidden_element' => false,
-                        'form-group' => false,
+                        'form_group' => false,
                     ],
                     'attributes' => [
                         'id' => 'defaultCheck1',
@@ -32,7 +32,7 @@ return [
                     'options' => [
                         'label' => 'Disabled checkbox',
                         'use_hidden_element' => false,
-                        'form-group' => false,
+                        'form_group' => false,
                     ],
                     'attributes' => [
                         'id' => 'defaultCheck2',
@@ -47,7 +47,7 @@ return [
                     'name' => 'exampleRadios',
                     'type' => 'radio',
                     'options' => [
-                        'form-group' => false,
+                        'form_group' => false,
                         'value_options' => [
                             [
                                 'label' => 'Default radio',
@@ -108,7 +108,7 @@ return [
                     'type' => 'multicheckbox',
                     'options' => [
                         'layout' => 'inline',
-                        'form-group' => false,
+                        'form_group' => false,
                         'value_options' => [
                             [
                                 'label' => '1',
@@ -138,7 +138,7 @@ return [
                     'type' => 'radio',
                     'options' => [
                         'layout' => 'inline',
-                        'form-group' => false,
+                        'form_group' => false,
                         'value_options' => [
                             [
                                 'label' => '1',
@@ -204,7 +204,7 @@ return [
                     'name' => 'blankCheckbox',
                     'type' => 'multicheckbox',
                     'options' => [
-                        'form-group' => false,
+                        'form_group' => false,
                         'value_options' => [
                             [
                                 'label' => '',
@@ -220,7 +220,7 @@ return [
                     'name' => 'blankRadio',
                     'type' => 'radio',
                     'options' => [
-                        'form-group' => false,
+                        'form_group' => false,
                         'value_options' => [
                             [
                                 'label' => '',

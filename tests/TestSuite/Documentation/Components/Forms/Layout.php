@@ -7,5 +7,6 @@ return [
     'tests' => [
         include __DIR__ . DIRECTORY_SEPARATOR . 'Layout/FormGroups.php',
         include __DIR__ . DIRECTORY_SEPARATOR . 'Layout/FormGrid.php',
+        include __DIR__ . DIRECTORY_SEPARATOR . 'Layout/InlineForms.php',
     ],
 ];

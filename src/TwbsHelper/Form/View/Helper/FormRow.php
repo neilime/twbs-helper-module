@@ -71,7 +71,7 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
         // Render form row
         switch (true) {
                 // Form group disabled
-            case $oElement->getOption('form-group') === false:
+            case $oElement->getOption('form_group') === false:
                 // Radio elements
             case in_array($sElementType, ['radio'], true):
                 // All "button" elements in inline form
