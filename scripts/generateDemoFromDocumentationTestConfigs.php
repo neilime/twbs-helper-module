@@ -21,18 +21,33 @@ if (!file_exists($sMenuPageFilePath)) {
 }
 
 // Add default content to demo page
-file_put_contents($sDemoPageFilePath, '---' . PHP_EOL . 'layout: default' . PHP_EOL . 'title:  "Demonstration"' . PHP_EOL . 'menu: "menu.html"' . PHP_EOL . '---' . PHP_EOL . 'This demonstration page shows how to render Twitter Boostrap elements. For each elements, you can see how to do it in "Source" tabs. These are supposed to be run into a view file.' . PHP_EOL . PHP_EOL);
+file_put_contents(
+    $sDemoPageFilePath,
+    '---' . PHP_EOL .
+        'layout: default' . PHP_EOL .
+        'title:  "Demonstration"' . PHP_EOL .
+        'menu: "menu.html"' . PHP_EOL .
+        '---' . PHP_EOL .
+        'This demonstration page shows how to render Twitter Boostrap elements. ' .
+        'For each elements, you can see how to do it in "Source" tabs. ' .
+        'These are supposed to be run into a view file.' . PHP_EOL . PHP_EOL
+);
 
 // Add default content to menu page
 file_put_contents($sMenuPageFilePath, '<ul class="nav flex-column">' . PHP_EOL);
 
-$aMenuIds = [];
+$aDocumentationFiles = [];
 foreach (new \DirectoryIterator(__DIR__ . '/../tests/TestSuite/Documentation') as $oFileInfo) {
     // Ignore non php filesand current class file
     if (!$oFileInfo->isFile() || $oFileInfo->getExtension() !== 'php' || $oFileInfo->getFilename() === 'DocumentationTest.php') {
         continue;
     }
-    $sFilePath = $oFileInfo->getRealPath();
+    $aDocumentationFiles[] = $oFileInfo->getRealPath();
+}
+natsort($aDocumentationFiles);
+
+foreach ($aDocumentationFiles as $sFilePath) {
+    $aMenuIds = [];
     if (false === ($aTestsConfig = include $sFilePath)) {
         throw new \LogicException('An error occured while including documentation test config file "' . $sFilePath . '"');
     }
@@ -141,7 +156,7 @@ function convertTestConfigForDemoPage(string $sDemoPageFilePath, string $sTitle,
         }
 
         if (
-            preg_match('/^[\)|\]]+[;|,|\s].*$/', $sLine)            
+            preg_match('/^[\)|\]]+[;|,|\s].*$/', $sLine)
             || $sLine === '}'
         ) {
             $iIndentation--;
