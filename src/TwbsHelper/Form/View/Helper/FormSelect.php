@@ -17,9 +17,17 @@ class FormSelect extends \Zend\Form\View\Helper\FormSelect
      */
     public function render(\Zend\Form\ElementInterface $oElement): string
     {
-        if ($oElement->getOption('custom')) {
+        if ($bIsCustom = $oElement->getOption('custom')) {
             $this->setClassesToElement($oElement, ['custom-select']);
         }
+
+        if ($sSizeOption = $oElement->getOption('size')) {
+            $this->setClassesToElement($oElement, [$this->getSizeClass(
+                $sSizeOption,
+                $bIsCustom ? 'custom-select' : 'form-control'
+            )]);
+        }
+
         return parent::render($oElement);
     }
 

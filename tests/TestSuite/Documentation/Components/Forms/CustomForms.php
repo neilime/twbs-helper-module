@@ -174,57 +174,174 @@ return [
                         '</label>' . PHP_EOL .
                         '</div>',
                 ],
-                [
-                    'title' => 'Switches',
-                    'url' => '%bootstrap-url%/components/forms/#switches',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-                        $oFactory = new \Zend\Form\Factory();
-
-                        echo $oView->formRow($oFactory->create([
-                            'name' => 'custom_switch',
-                            'type' => 'checkbox',
-                            'options' => [
-                                'label' => 'Toggle this switch element',
-                                'use_hidden_element' => false,
-                                'form_group' => false,
-                                'custom' => true,
-                                'switch' => true,
-                            ],
-                            'attributes' => ['id' => 'customSwitch1'],
-                        ])) . PHP_EOL;
-
-                        echo $oView->formRow($oFactory->create([
-                            'name' => 'custom_switch',
-                            'type' => 'checkbox',
-                            'options' => [
-                                'label' => 'Disabled switch element',
-                                'use_hidden_element' => false,
-                                'form_group' => false,
-                                'custom' => true,
-                                'switch' => true,
-                            ],
-                            'attributes' => [
-                                'id' => 'customSwitch2',
-                                'disabled' => true,
-                            ],
-                        ]));
-                    },
-                    'expected' => '<div class="custom-control&#x20;custom-switch">' . PHP_EOL .
-                        '    <input type="checkbox" name="custom_switch" id="customSwitch1" ' .
-                        'class="custom-control-input" value="1">' . PHP_EOL .
-                        '    <label class="custom-control-label" for="customSwitch1">' .
-                        'Toggle this switch element' .
-                        '</label>' . PHP_EOL .
-                        '</div>' . PHP_EOL .
-                        '<div class="custom-control&#x20;custom-switch">' . PHP_EOL .
-                        '    <input type="checkbox" name="custom_switch" id="customSwitch2" ' .
-                        'disabled="disabled" class="custom-control-input" value="1">' . PHP_EOL .
-                        '    <label class="custom-control-label" for="customSwitch2">' .
-                        'Disabled switch element' .
-                        '</label>' . PHP_EOL .
-                        '</div>',
-                ],
             ],
+        ],
+        [
+            'title' => 'Switches',
+            'url' => '%bootstrap-url%/components/forms/#switches',
+            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                $oFactory = new \Zend\Form\Factory();
+
+                echo $oView->formRow($oFactory->create([
+                    'name' => 'custom_switch',
+                    'type' => 'checkbox',
+                    'options' => [
+                        'label' => 'Toggle this switch element',
+                        'use_hidden_element' => false,
+                        'form_group' => false,
+                        'custom' => true,
+                        'switch' => true,
+                    ],
+                    'attributes' => ['id' => 'customSwitch1'],
+                ])) . PHP_EOL;
+
+                echo $oView->formRow($oFactory->create([
+                    'name' => 'custom_switch',
+                    'type' => 'checkbox',
+                    'options' => [
+                        'label' => 'Disabled switch element',
+                        'use_hidden_element' => false,
+                        'form_group' => false,
+                        'custom' => true,
+                        'switch' => true,
+                    ],
+                    'attributes' => [
+                        'id' => 'customSwitch2',
+                        'disabled' => true,
+                    ],
+                ]));
+            },
+            'expected' => '<div class="custom-control&#x20;custom-switch">' . PHP_EOL .
+                '    <input type="checkbox" name="custom_switch" id="customSwitch1" ' .
+                'class="custom-control-input" value="1">' . PHP_EOL .
+                '    <label class="custom-control-label" for="customSwitch1">' .
+                'Toggle this switch element' .
+                '</label>' . PHP_EOL .
+                '</div>' . PHP_EOL .
+                '<div class="custom-control&#x20;custom-switch">' . PHP_EOL .
+                '    <input type="checkbox" name="custom_switch" id="customSwitch2" ' .
+                'disabled="disabled" class="custom-control-input" value="1">' . PHP_EOL .
+                '    <label class="custom-control-label" for="customSwitch2">' .
+                'Disabled switch element' .
+                '</label>' . PHP_EOL .
+                '</div>',
+        ],
+        [
+            'title' => 'Select menu',
+            'url' => '%bootstrap-url%/components/forms/#select-menu',
+            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                $oFactory = new \Zend\Form\Factory();
+
+                echo $oView->formElement($oFactory->create([
+                    'name' => 'custom_select',
+                    'type' => 'select',
+                    'options' => [
+                        'custom' => true,
+                        'empty_option' => 'Open this select menu',
+                        'value_options' => [
+                            1 => 'One',
+                            2 => 'Two',
+                            3 => 'Three',
+                        ],
+                    ],
+                ])->setValue('')) . PHP_EOL;
+
+                // You may also choose from small and large custom selects to match our similarly sized text inputs.
+                echo $oView->formElement($oFactory->create([
+                    'name' => 'custom_select_lg',
+                    'type' => 'select',
+                    'options' => [
+                        'size' => 'lg',
+                        'custom' => true,
+                        'empty_option' => 'Open this select menu',
+                        'value_options' => [
+                            1 => 'One',
+                            2 => 'Two',
+                            3 => 'Three',
+                        ],
+                    ],
+                    'attributes' => ['class' => 'mb-3'],
+                ])->setValue('')) . PHP_EOL;
+
+                echo $oView->formElement($oFactory->create([
+                    'name' => 'custom_select_sm',
+                    'type' => 'select',
+                    'options' => [
+                        'size' => 'sm',
+                        'custom' => true,
+                        'empty_option' => 'Open this select menu',
+                        'value_options' => [
+                            1 => 'One',
+                            2 => 'Two',
+                            3 => 'Three',
+                        ],
+                    ],
+                ])->setValue('')) . PHP_EOL;
+
+                // The multiple attribute is also supported
+                echo $oView->formElement($oFactory->create([
+                    'name' => 'custom_select_multiple',
+                    'type' => 'select',
+                    'options' => [
+                        'custom' => true,
+                        'empty_option' => 'Open this select menu',
+                        'value_options' => [
+                            1 => 'One',
+                            2 => 'Two',
+                            3 => 'Three',
+                        ],
+                    ],
+                    'attributes' => ['multiple' => true],
+                ])->setValue('')) . PHP_EOL;
+
+                // As is the size attribute
+                echo $oView->formElement($oFactory->create([
+                    'name' => 'custom_select_size',
+                    'type' => 'select',
+                    'options' => [
+                        'custom' => true,
+                        'empty_option' => 'Open this select menu',
+                        'value_options' => [
+                            1 => 'One',
+                            2 => 'Two',
+                            3 => 'Three',
+                        ],
+                    ],
+                    'attributes' => ['size' => 3],
+                ])->setValue(''));
+            },
+            'expected' => '<select name="custom_select" class="custom-select">' . PHP_EOL .
+                '    <option value="" selected="selected">Open this select menu</option>' . PHP_EOL .
+                '    <option value="1">One</option>' . PHP_EOL .
+                '    <option value="2">Two</option>' . PHP_EOL .
+                '    <option value="3">Three</option>' . PHP_EOL .
+                '</select>' . PHP_EOL .
+                '<select name="custom_select_lg" ' .
+                'class="custom-select&#x20;custom-select-lg&#x20;mb-3">' . PHP_EOL .
+                '    <option value="" selected="selected">Open this select menu</option>' . PHP_EOL .
+                '    <option value="1">One</option>' . PHP_EOL .
+                '    <option value="2">Two</option>' . PHP_EOL .
+                '    <option value="3">Three</option>' . PHP_EOL .
+                '</select>' . PHP_EOL .
+                '<select name="custom_select_sm" class="custom-select&#x20;custom-select-sm">' . PHP_EOL .
+                '    <option value="" selected="selected">Open this select menu</option>' . PHP_EOL .
+                '    <option value="1">One</option>' . PHP_EOL .
+                '    <option value="2">Two</option>' . PHP_EOL .
+                '    <option value="3">Three</option>' . PHP_EOL .
+                '</select>' . PHP_EOL .
+                '<select name="custom_select_multiple&#x5B;&#x5D;" multiple="multiple" '.
+                'class="custom-select">' . PHP_EOL .
+                '    <option value="" selected="selected">Open this select menu</option>' . PHP_EOL .
+                '    <option value="1">One</option>' . PHP_EOL .
+                '    <option value="2">Two</option>' . PHP_EOL .
+                '    <option value="3">Three</option>' . PHP_EOL .
+                '</select>' . PHP_EOL .
+                '<select name="custom_select_size" size="3" class="custom-select">' . PHP_EOL .
+                '    <option value="" selected="selected">Open this select menu</option>' . PHP_EOL .
+                '    <option value="1">One</option>' . PHP_EOL .
+                '    <option value="2">Two</option>' . PHP_EOL .
+                '    <option value="3">Three</option>' . PHP_EOL .
+                '</select>',
         ],
     ],
 ];
