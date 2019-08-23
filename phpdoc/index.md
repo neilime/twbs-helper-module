@@ -449,7 +449,7 @@
 | protected | <strong>hasClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>\string</em> <strong>$sClass</strong>)</strong> : <em>bool</em> |
 | protected | <strong>hasColumnClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>)</strong> : <em>bool</em> |
 | protected | <strong>isHTML(</strong><em>\string</em> <strong>$sString</strong>)</strong> : <em>bool</em> |
-| protected | <strong>renderAddOn(</strong><em>\Zend\Form\ElementInterface/array/string</em> <strong>$aAddOnOptions</strong>, <em>\string</em> <strong>$sAddOnPosition</strong>, <em>\string</em> <strong>$sAddOnId=null</strong>)</strong> : <em>string</em><br /><em>Render add-on markup</em> |
+| protected | <strong>renderAddOn(</strong><em>\Zend\Form\ElementInterface/array/string</em> <strong>$aAddOnOptions</strong>, <em>\string</em> <strong>$sAddOnId=null</strong>)</strong> : <em>string</em><br /><em>Render add-on markup</em> |
 | protected | <strong>renderAddOnElement(</strong><em>\string</em> <strong>$sAddonText</strong>, <em>array</em> <strong>$aAttributes=array()</strong>)</strong> : <em>void</em> |
 | protected | <strong>renderContent(</strong><em>array</em> <strong>$aAddOnOptions</strong>)</strong> : <em>void</em> |
 | protected | <strong>renderElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAttributes=array()</strong>)</strong> : <em>void</em> |
