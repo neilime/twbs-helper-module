@@ -411,19 +411,18 @@ return [
                                 'custom' => true,
                                 'label' => 'Voeg je document toe',
                                 'form_group' => false,
+                                'label_attributes' => [
+                                    'data-browse' => 'Bestand kiezen',
+                                ],
                             ],
-                            'attributes' => [
-                                'id' => 'customFileLangHTML',
-                                'data-browse' => 'Bestand kiezen',
-                            ],
+                            'attributes' => ['id' => 'customFileLangHTML'],
                         ]));
                     },
                     'expected' => '<div class="custom-file">' . PHP_EOL .
-                        '    <label class="custom-file-label" for="customFileLangHTML">' .
-                        'Voeg je document toe' .
-                        '</label>' . PHP_EOL .
+                        '    <label data-browse="Bestand&#x20;kiezen" class="custom-file-label" '.
+                        'for="customFileLangHTML">Voeg je document toe</label>' . PHP_EOL .
                         '    <input type="file" name="custom_file" id="customFileLangHTML" ' .
-                        'data-browse="Bestand&#x20;kiezen" class="custom-file-input" value="">'
+                        'class="custom-file-input" value="">'
                         . PHP_EOL .
                         '</div>',
                 ],
