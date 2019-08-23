@@ -15,7 +15,8 @@ return [
                     'name' => 'username',
                     'type' => 'text',
                     'options' => [
-                        'addOnPrepend' => '@',
+                        'form_group' => false,
+                        'add_on_prepend' => '@',
                     ],
                     'attributes' => [
                         'id' => 'basic-addon1',
@@ -31,8 +32,8 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <input type="text" name="username" ' .
-                'placeholder="Username" aria-label="Username" ' .
-                'aria-describedby="basic-addon1" class="form-control" value="">' . PHP_EOL .
+                'id="basic-addon1" placeholder="Username" aria-label="Username" '.
+                'class="form-control" value="">' . PHP_EOL .
                 '</div>',
         ],
     ],

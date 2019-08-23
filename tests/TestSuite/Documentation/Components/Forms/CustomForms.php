@@ -393,9 +393,9 @@ return [
                 ]));
             },
             'expected' => '<div class="custom-file">' . PHP_EOL .
-                '    <label class="custom-file-label" for="customFile">Choose file</label>' . PHP_EOL .
                 '    <input type="file" name="custom_file" id="customFile" class="custom-file-input" value="">'
                 . PHP_EOL .
+                '    <label class="custom-file-label" for="customFile">Choose file</label>' . PHP_EOL .
                 '</div>',
             'tests' => [
                 [
@@ -419,11 +419,11 @@ return [
                         ]));
                     },
                     'expected' => '<div class="custom-file">' . PHP_EOL .
-                        '    <label data-browse="Bestand&#x20;kiezen" class="custom-file-label" '.
-                        'for="customFileLangHTML">Voeg je document toe</label>' . PHP_EOL .
                         '    <input type="file" name="custom_file" id="customFileLangHTML" ' .
                         'class="custom-file-input" value="">'
                         . PHP_EOL .
+                        '    <label data-browse="Bestand&#x20;kiezen" class="custom-file-label" ' .
+                        'for="customFileLangHTML">Voeg je document toe</label>' . PHP_EOL .
                         '</div>',
                 ],
             ],

@@ -14,6 +14,7 @@ return [
         'Carousel' => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Carousel.php',
         'Dropdowns' => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Dropdowns.php',
         'Forms' => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Forms.php',
+        // 'InputGroup' => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/InputGroup.php',
         'Navs' => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Navs.php',
     ],
 ];

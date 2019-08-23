@@ -283,14 +283,38 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
             $sLabelContent = $sLabelOpen . $sLabelContent . $sLabelClose;
         }
 
-        $sElementType = $oElement->getAttribute('type');
-        $sLabelPosition = in_array($sElementType, ['checkbox', 'radio'], true)
-            ? self::LABEL_APPEND
-            : $sLabelPosition ?? $this->getLabelPosition();
+        $sLabelPosition = $this->getDefaultLabelPosition($oElement, $sLabelPosition);
 
         return $sLabelPosition === self::LABEL_PREPEND
             ? $sLabelContent . PHP_EOL . $sElementContent
             : $sElementContent . PHP_EOL . $sLabelContent;
+    }
+
+    protected function getDefaultLabelPosition(\Zend\Form\ElementInterface $oElement, $sLabelPosition = null): string
+    {
+
+        if ($oElement instanceof \Zend\Form\LabelAwareInterface) {
+            $sPosition = $oElement->getLabelOption('position');
+            if ($sPosition) {
+                return $sPosition;
+            }
+        }
+
+        switch ($oElement->getAttribute('type')) {
+            case 'checkbox':
+            case 'radio':
+                return self::LABEL_APPEND;
+            case 'file':
+                if ($oElement->getOption('custom')) {
+                    return self::LABEL_APPEND;
+                }
+                // Default behaviour
+            default:
+                if ($sLabelPosition) {
+                    return $sLabelPosition;
+                }
+                return $this->getLabelPosition();
+        }
     }
 
     protected function getLabelClasses(\Zend\Form\ElementInterface $oElement, array $aLabelAttributes): array
