@@ -246,7 +246,7 @@ return [
                     ],
                 ])->setValue('')) . PHP_EOL;
 
-                echo '<br>' . PHP_EOL;
+                echo '<br><br>' . PHP_EOL;
 
                 // You may also choose from small and large custom selects to match our similarly sized text inputs.
                 echo $oView->formElement($oFactory->create([
@@ -265,7 +265,7 @@ return [
                     'attributes' => ['class' => 'mb-3'],
                 ])->setValue('')) . PHP_EOL;
 
-                echo '<br>' . PHP_EOL;
+                echo '<br><br>' . PHP_EOL;
 
                 echo $oView->formElement($oFactory->create([
                     'name' => 'custom_select_sm',
@@ -282,7 +282,7 @@ return [
                     ],
                 ])->setValue('')) . PHP_EOL;
 
-                echo '<br>' . PHP_EOL;
+                echo '<br><br>' . PHP_EOL;
 
                 // The multiple attribute is also supported
                 echo $oView->formElement($oFactory->create([
@@ -300,7 +300,7 @@ return [
                     'attributes' => ['multiple' => true],
                 ])->setValue('')) . PHP_EOL;
 
-                echo '<br>' . PHP_EOL;
+                echo '<br><br>' . PHP_EOL;
 
                 // As is the size attribute
                 echo $oView->formElement($oFactory->create([
@@ -324,7 +324,7 @@ return [
                 '    <option value="2">Two</option>' . PHP_EOL .
                 '    <option value="3">Three</option>' . PHP_EOL .
                 '</select>' . PHP_EOL .
-                '<br>' . PHP_EOL .
+                '<br><br>' . PHP_EOL .
                 '<select name="custom_select_lg" ' .
                 'class="custom-select&#x20;custom-select-lg&#x20;mb-3">' . PHP_EOL .
                 '    <option value="" selected="selected">Open this select menu</option>' . PHP_EOL .
@@ -332,14 +332,14 @@ return [
                 '    <option value="2">Two</option>' . PHP_EOL .
                 '    <option value="3">Three</option>' . PHP_EOL .
                 '</select>' . PHP_EOL .
-                '<br>' . PHP_EOL .
+                '<br><br>' . PHP_EOL .
                 '<select name="custom_select_sm" class="custom-select&#x20;custom-select-sm">' . PHP_EOL .
                 '    <option value="" selected="selected">Open this select menu</option>' . PHP_EOL .
                 '    <option value="1">One</option>' . PHP_EOL .
                 '    <option value="2">Two</option>' . PHP_EOL .
                 '    <option value="3">Three</option>' . PHP_EOL .
                 '</select>' . PHP_EOL .
-                '<br>' . PHP_EOL .
+                '<br><br>' . PHP_EOL .
                 '<select name="custom_select_multiple&#x5B;&#x5D;" multiple="multiple" ' .
                 'class="custom-select">' . PHP_EOL .
                 '    <option value="" selected="selected">Open this select menu</option>' . PHP_EOL .
@@ -347,7 +347,7 @@ return [
                 '    <option value="2">Two</option>' . PHP_EOL .
                 '    <option value="3">Three</option>' . PHP_EOL .
                 '</select>' . PHP_EOL .
-                '<br>' . PHP_EOL .
+                '<br><br>' . PHP_EOL .
                 '<select name="custom_select_size" size="3" class="custom-select">' . PHP_EOL .
                 '    <option value="" selected="selected">Open this select menu</option>' . PHP_EOL .
                 '    <option value="1">One</option>' . PHP_EOL .
@@ -397,6 +397,37 @@ return [
                 '    <input type="file" name="custom_file" id="customFile" class="custom-file-input" value="">'
                 . PHP_EOL .
                 '</div>',
+            'tests' => [
+                [
+                    'title' => 'Translating or customizing the strings with HTML',
+                    'url' => '%bootstrap-url%/components/forms/#translating-or-customizing-the-strings-with-html',
+                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                        $oFactory = new \Zend\Form\Factory();
+
+                        echo $oView->formRow($oFactory->create([
+                            'name' => 'custom_file',
+                            'type' => 'file',
+                            'options' => [
+                                'custom' => true,
+                                'label' => 'Voeg je document toe',
+                                'form_group' => false,
+                            ],
+                            'attributes' => [
+                                'id' => 'customFileLangHTML',
+                                'data-browse' => 'Bestand kiezen',
+                            ],
+                        ]));
+                    },
+                    'expected' => '<div class="custom-file">' . PHP_EOL .
+                        '    <label class="custom-file-label" for="customFileLangHTML">' .
+                        'Voeg je document toe' .
+                        '</label>' . PHP_EOL .
+                        '    <input type="file" name="custom_file" id="customFileLangHTML" ' .
+                        'data-browse="Bestand&#x20;kiezen" class="custom-file-input" value="">'
+                        . PHP_EOL .
+                        '</div>',
+                ],
+            ],
         ],
     ],
 ];
