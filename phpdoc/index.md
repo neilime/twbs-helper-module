@@ -15,6 +15,7 @@
 - [\TwbsHelper\Form\View\Helper\FormErrors](#class-twbshelperformviewhelperformerrors)
 - [\TwbsHelper\Form\View\Helper\FormElementErrors](#class-twbshelperformviewhelperformelementerrors)
 - [\TwbsHelper\Form\View\Helper\Form](#class-twbshelperformviewhelperform)
+- [\TwbsHelper\Form\View\Helper\FormAddOn](#class-twbshelperformviewhelperformaddon)
 - [\TwbsHelper\Form\View\Helper\FormRange](#class-twbshelperformviewhelperformrange)
 - [\TwbsHelper\Form\View\Helper\Factory\FormElementFactory](#class-twbshelperformviewhelperfactoryformelementfactory)
 - [\TwbsHelper\Options\ModuleOptions](#class-twbshelperoptionsmoduleoptions)
@@ -189,16 +190,9 @@
 |:-----------|:---------|
 | public | <strong>__construct(</strong><em>[\TwbsHelper\Options\ModuleOptions](#class-twbshelperoptionsmoduleoptions)</em> <strong>$options</strong>)</strong> : <em>void</em><br /><em>Constructor</em> |
 | public | <strong>addProperIndentation(</strong><em>\string</em> <strong>$sContent</strong>, <em>\bool</em> <strong>$bForceIndentation=false</strong>, <em>\string</em> <strong>$sIndentation=null</strong>)</strong> : <em>void</em> |
-| public | <strong>getTranslator()</strong> : <em>\TwbsHelper\Form\View\Helper\TranslatorInterface</em><br /><em>Returns translator used in object</em> |
-| public | <strong>getTranslatorTextDomain()</strong> : <em>string</em><br /><em>Return the translation text domain</em> |
-| public | <strong>hasTranslator()</strong> : <em>bool</em><br /><em>Checks if the object has a translator</em> |
 | public | <strong>htmlElement(</strong><em>\string</em> <strong>$sTag</strong>, <em>array</em> <strong>$aAttributes=array()</strong>, <em>\string</em> <strong>$sContent=null</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
-| public | <strong>isTranslatorEnabled()</strong> : <em>bool</em><br /><em>Returns whether translator is enabled and should be used</em> |
 | public | <strong>removeIndentation(</strong><em>\string</em> <strong>$sContent</strong>)</strong> : <em>void</em> |
 | public | <strong>render(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>string</em><br /><em>Render an element</em> |
-| public | <strong>setTranslator(</strong><em>\Zend\I18n\Translator\TranslatorInterface</em> <strong>$translator=null</strong>, <em>string</em> <strong>$textDomain=null</strong>)</strong> : <em>mixed</em><br /><em>Sets translator to use in helper</em> |
-| public | <strong>setTranslatorEnabled(</strong><em>bool</em> <strong>$enabled=true</strong>)</strong> : <em>mixed</em><br /><em>Sets whether translator is enabled and should be used</em> |
-| public | <strong>setTranslatorTextDomain(</strong><em>string</em> <strong>$textDomain=`'default'`</strong>)</strong> : <em>mixed</em><br /><em>Set translation text domain</em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
 | protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
@@ -213,15 +207,13 @@
 | protected | <strong>hasColumnClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>)</strong> : <em>bool</em> |
 | protected | <strong>isHTML(</strong><em>\string</em> <strong>$sString</strong>)</strong> : <em>bool</em> |
 | protected | <strong>renderAddOn(</strong><em>\Zend\Form\ElementInterface/array/string</em> <strong>$aAddOnOptions</strong>, <em>\string</em> <strong>$sPosition=`'prepend'`</strong>)</strong> : <em>string</em><br /><em>Render add-on markup</em> |
-| protected | <strong>renderAddOnContent(</strong><em>array</em> <strong>$aAddOnOptions</strong>)</strong> : <em>void</em> |
-| protected | <strong>renderAddOnElement(</strong><em>\string</em> <strong>$sAddonText</strong>)</strong> : <em>void</em> |
 | protected | <strong>renderHelper(</strong><em>string</em> <strong>$sName</strong>, <em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>string</em><br /><em>Render element by helper name</em> |
 | protected | <strong>setClassesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
 | protected | <strong>setClassesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
 
 *This class extends \Zend\Form\View\Helper\FormElement*
 
-*This class implements \Zend\View\Helper\HelperInterface, \Zend\I18n\Translator\TranslatorAwareInterface*
+*This class implements \Zend\View\Helper\HelperInterface*
 
 <hr />
 
@@ -432,6 +424,42 @@
 *This class extends \Zend\Form\View\Helper\Form*
 
 *This class implements \Zend\I18n\Translator\TranslatorAwareInterface, \Zend\View\Helper\HelperInterface*
+
+<hr />
+
+### Class: \TwbsHelper\Form\View\Helper\FormAddOn
+
+| Visibility | Function |
+|:-----------|:---------|
+| public | <strong>__invoke(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement=null</strong>, <em>\string</em> <strong>$sContent=`''`</strong>)</strong> : <em>[\TwbsHelper\Form\View\Helper\FormAddOn](#class-twbshelperformviewhelperformaddon)/string</em> |
+| public | <strong>addProperIndentation(</strong><em>\string</em> <strong>$sContent</strong>, <em>\bool</em> <strong>$bForceIndentation=false</strong>, <em>\string</em> <strong>$sIndentation=null</strong>)</strong> : <em>void</em> |
+| public | <strong>htmlElement(</strong><em>\string</em> <strong>$sTag</strong>, <em>array</em> <strong>$aAttributes=array()</strong>, <em>\string</em> <strong>$sContent=null</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
+| public | <strong>removeIndentation(</strong><em>\string</em> <strong>$sContent</strong>)</strong> : <em>void</em> |
+| public | <strong>render(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement=null</strong>, <em>\string</em> <strong>$sContent=`''`</strong>)</strong> : <em>void</em> |
+| protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>)</strong> : <em>void</em> |
+| protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getSizeClass(</strong><em>\string</em> <strong>$sSize</strong>, <em>\string</em> <strong>$sPrefix</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getSizes()</strong> : <em>mixed</em> |
+| protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getVariants()</strong> : <em>mixed</em> |
+| protected | <strong>hasClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>\string</em> <strong>$sClass</strong>)</strong> : <em>bool</em> |
+| protected | <strong>hasColumnClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>)</strong> : <em>bool</em> |
+| protected | <strong>isHTML(</strong><em>\string</em> <strong>$sString</strong>)</strong> : <em>bool</em> |
+| protected | <strong>renderAddOn(</strong><em>\Zend\Form\ElementInterface/array/string</em> <strong>$aAddOnOptions</strong>, <em>\string</em> <strong>$sAddOnPosition</strong>, <em>\string</em> <strong>$sAddOnId=null</strong>)</strong> : <em>string</em><br /><em>Render add-on markup</em> |
+| protected | <strong>renderAddOnElement(</strong><em>\string</em> <strong>$sAddonText</strong>, <em>array</em> <strong>$aAttributes=array()</strong>)</strong> : <em>void</em> |
+| protected | <strong>renderContent(</strong><em>array</em> <strong>$aAddOnOptions</strong>)</strong> : <em>void</em> |
+| protected | <strong>renderElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAttributes=array()</strong>)</strong> : <em>void</em> |
+| protected | <strong>renderText(</strong><em>\string</em> <strong>$sAddonText</strong>, <em>array</em> <strong>$aAttributes=array()</strong>)</strong> : <em>void</em> |
+| protected | <strong>setClassesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| protected | <strong>setClassesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+
+*This class extends \Zend\Form\View\Helper\AbstractHelper*
+
+*This class implements \Zend\View\Helper\HelperInterface, \Zend\I18n\Translator\TranslatorAwareInterface*
 
 <hr />
 
