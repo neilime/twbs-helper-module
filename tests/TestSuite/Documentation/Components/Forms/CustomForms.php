@@ -374,6 +374,29 @@ return [
             },
             'expected' => '<label for="customRange1">Example range</label>' . PHP_EOL .
                 '<input type="range" name="custom_range" id="customRange1" class="custom-range" value="">',
-        ]
+        ],
+        [
+            'title' => 'File browser',
+            'url' => '%bootstrap-url%/components/forms/#file-browser',
+            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                $oFactory = new \Zend\Form\Factory();
+
+                echo $oView->formRow($oFactory->create([
+                    'name' => 'custom_file',
+                    'type' => 'file',
+                    'options' => [
+                        'custom' => true,
+                        'label' => 'Choose file',
+                        'form_group' => false,
+                    ],
+                    'attributes' => ['id' => 'customFile'],
+                ]));
+            },
+            'expected' => '<div class="custom-file">' . PHP_EOL .
+                '    <label class="custom-file-label" for="customFile">Choose file</label>' . PHP_EOL .
+                '    <input type="file" name="custom_file" id="customFile" class="custom-file-input" value="">'
+                . PHP_EOL .
+                '</div>',
+        ],
     ],
 ];

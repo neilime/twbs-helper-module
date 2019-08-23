@@ -140,7 +140,6 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
             );
         }
 
-
         // Render element into form group
         return $this->htmlElement(
             'div',
@@ -171,7 +170,7 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
                     'renderLabelContent' =>  [$sLabelPosition],
                     'renderHelpBlock' => [],
                     'renderErrors' => [],
-                    'renderCheckbox' => [],
+                    'renderDedicatedContainer' => [],
                 ];
                 break;
             case \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL:
@@ -179,7 +178,7 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
                     'renderFeedback' => [],
                     'renderHelpBlock' => [],
                     'renderErrors' => [],
-                    'renderCheckbox' => [],
+                    'renderDedicatedContainer' => [],
                 ];
                 break;
             default:
@@ -249,63 +248,10 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
             ? $oElement->getLabelAttributes()
             : $this->labelAttributes ?? [];
 
-        $aLabelClasses = [];
-
-        // Define label column class
-        $sColumSize = $oElement->getOption('column');
-        if (
-            $sColumSize
-            && $oElement->getOption('layout') !== null
-            && !$this->hasColumnClassAttribute($aLabelAttributes['class'] ?? '')
-        ) {
-            $aLabelClasses[] = $this->getColumnCounterpartClass($sColumSize);
-        }
-
-        // Define label size class
-        if ($sSize = $oElement->getOption('size')) {
-            $aLabelClasses[] = $this->getSizeClass($sSize, 'col-form-label');
-        }
-
-        if (!$oElement instanceof \Zend\Form\Element\MultiCheckbox) {
-            $sElementType = $oElement->getAttribute('type');
-            if (in_array($sElementType, ['checkbox', 'radio'], true)) {
-                $aLabelClasses[] = $oElement->getOption('custom')
-                    ? 'custom-control-label'
-                    : 'form-check-label';
-            } else {
-                // Validation state
-                if ($oElement->getOption('validation-state') || $oElement->getMessages()) {
-                    $aLabelClasses[] = 'col-form-label';
-                }
-
-                $sLayout = $oElement->getOption('layout');
-                switch ($sLayout) {
-                        // Hide label for "inline" layout
-                    case \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE:
-                        if ($oElement->getOption('show_label') !== true) {
-                            $aLabelClasses[] = 'sr-only';
-                        }
-                        break;
-
-                    case \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL:
-                        $aLabelClasses[] = 'col-form-label';
-                        break;
-                    case null:
-                        if ($oElement->getOption('show_label') === false) {
-                            $aLabelClasses[] = 'sr-only';
-                        }
-                        break;
-                }
-            }
-        }
-
-        if ($aLabelClasses) {
-            $aLabelAttributes = $this->setClassesToAttributes($aLabelAttributes, $aLabelClasses);
-        }
-
-        if ($aLabelAttributes) {
-            $oElement->setLabelAttributes($aLabelAttributes);
-        }
+        $oElement->setLabelAttributes($aLabelAttributes = $this->setClassesToAttributes(
+            $aLabelAttributes,
+            $this->getLabelClasses($oElement, $aLabelAttributes)
+        ));
 
         // Allow label html escape disable
         if (
@@ -322,7 +268,6 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
         ) {
             $sLabelContent .= $this->requiredFormat;
         }
-
 
         if ($oElement instanceof \Zend\Form\Element\MultiCheckbox) {
             $sLabelContent = $this->htmlElement(
@@ -346,6 +291,73 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
         return $sLabelPosition === self::LABEL_PREPEND
             ? $sLabelContent . PHP_EOL . $sElementContent
             : $sElementContent . PHP_EOL . $sLabelContent;
+    }
+
+    protected function getLabelClasses(\Zend\Form\ElementInterface $oElement, array $aLabelAttributes): array
+    {
+        $aLabelClasses = [];
+
+        // Define label column class
+        $sColumSize = $oElement->getOption('column');
+        if (
+            $sColumSize
+            && $oElement->getOption('layout') !== null
+            && !$this->hasColumnClassAttribute($aLabelAttributes['class'] ?? '')
+        ) {
+            $aLabelClasses[] = $this->getColumnCounterpartClass($sColumSize);
+        }
+
+        // Define label size class
+        if ($sSize = $oElement->getOption('size')) {
+            $aLabelClasses[] = $this->getSizeClass($sSize, 'col-form-label');
+        }
+
+        if ($oElement instanceof \Zend\Form\Element\MultiCheckbox) {
+            return $aLabelClasses;
+        }
+
+
+
+        switch ($oElement->getAttribute('type')) {
+            case 'checkbox':
+            case 'radio':
+                $aLabelClasses[] = $oElement->getOption('custom')
+                    ? 'custom-control-label'
+                    : 'form-check-label';
+                break;
+
+            case 'file':
+                if ($oElement->getOption('custom')) {
+                    $aLabelClasses[] = 'custom-file-label';
+                }
+                break;
+
+            default:
+                // Validation state
+                if ($oElement->getOption('validation-state') || $oElement->getMessages()) {
+                    $aLabelClasses[] = 'col-form-label';
+                }
+
+                $sLayout = $oElement->getOption('layout');
+                switch ($sLayout) {
+                        // Hide label for "inline" layout
+                    case \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE:
+                        if ($oElement->getOption('show_label') !== true) {
+                            $aLabelClasses[] = 'sr-only';
+                        }
+                        break;
+
+                    case \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL:
+                        $aLabelClasses[] = 'col-form-label';
+                        break;
+                    case null:
+                        if ($oElement->getOption('show_label') === false) {
+                            $aLabelClasses[] = 'sr-only';
+                        }
+                        break;
+                }
+        }
+        return $aLabelClasses;
     }
 
     /**
@@ -442,31 +454,41 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
         return $sElementContent;
     }
 
-    protected function renderCheckbox(\Zend\Form\ElementInterface $oElement, string $sElementContent): string
+    protected function renderDedicatedContainer(\Zend\Form\ElementInterface $oElement, string $sElementContent): string
     {
-        $sElementType = $oElement->getAttribute('type');
-        if (in_array($sElementType, ['checkbox'], true)) {
-            $aClassesToAdd =  $oElement->getOption('custom')
-                // Custom checkbox classes
-                ? [
-                    'custom-control',
-                    $oElement->getOption('switch')
-                        // Switch custom checkbox
-                        ? 'custom-switch'
-                        // Regular custom checkbox
-                        : 'custom-checkbox',
-                ]
-                // Regular checkbox class
-                : ['form-check'];
+        switch ($oElement->getAttribute('type')) {
+            case 'checkbox':
+                $aClassesToAdd =  $oElement->getOption('custom')
+                    // Custom checkbox classes
+                    ? [
+                        'custom-control',
+                        $oElement->getOption('switch')
+                            // Switch custom checkbox
+                            ? 'custom-switch'
+                            // Regular custom checkbox
+                            : 'custom-checkbox',
+                    ]
+                    // Regular checkbox class
+                    : ['form-check'];
 
-            $sElementContent = $this->htmlElement(
-                'div',
-                $this->setClassesToAttributes(
-                    ['class' => $oElement->getOption('form_check_class')],
-                    $aClassesToAdd
-                ),
-                $sElementContent
-            );
+                $sElementContent = $this->htmlElement(
+                    'div',
+                    $this->setClassesToAttributes(
+                        ['class' => $oElement->getOption('form_check_class')],
+                        $aClassesToAdd
+                    ),
+                    $sElementContent
+                );
+                break;
+            case 'file':
+                if ($oElement->getOption('custom')) {
+                    $sElementContent = $this->htmlElement(
+                        'div',
+                        ['class' => 'custom-file'],
+                        $sElementContent
+                    );
+                }
+                break;
         }
         return $sElementContent;
     }

@@ -5,6 +5,7 @@ namespace TwbsHelper\Form\View\Helper;
 class FormFile extends \Zend\Form\View\Helper\FormInput
 {
     use \TwbsHelper\View\Helper\ClassAttributeTrait;
+    use \TwbsHelper\View\Helper\HtmlTrait;
 
     /**
      * Render a form <input> element from the provided $oElement
@@ -14,9 +15,11 @@ class FormFile extends \Zend\Form\View\Helper\FormInput
      */
     public function render(\Zend\Form\ElementInterface $oElement): string
     {
-        return parent::render($this->setClassesToElement(
+        $bCustom = $oElement->getOption('custom');
+
+        return  parent::render($this->setClassesToElement(
             $oElement,
-            ['form-control-file'],
+            [$bCustom ? 'custom-file-input' : 'form-control-file'],
             ['form-control']
         ));
     }
