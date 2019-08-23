@@ -75,7 +75,19 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
             $aAddOnOptions = ['element' => $aAddOnOptions];
         } elseif (is_scalar($aAddOnOptions)) {
             $aAddOnOptions = ['text' => $aAddOnOptions];
-        } elseif (!is_array($aAddOnOptions)) {
+        } elseif (is_array($aAddOnOptions)) {
+            if (\Zend\Stdlib\ArrayUtils::isList($aAddOnOptions)) {
+                $sContent = '';
+                foreach ($aAddOnOptions as $aAddOnOptionsTmp) {
+                    $sContent .= ($sContent ? PHP_EOL : '') . $this->renderAddOn(
+                        $aAddOnOptionsTmp,
+                        $sAddOnPosition,
+                        $sAddOnId
+                    );
+                }
+                return $sContent;
+            }
+        } else {
             throw new \InvalidArgumentException(sprintf(
                 'Addon options expects an array or a scalar value, "%s" given',
                 is_object($aAddOnOptions) ? get_class($aAddOnOptions) : gettype($aAddOnOptions)
@@ -127,7 +139,7 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
                     ));
                 }
                 return $this->renderElement(
-                    $aAddOnOptions['text'],
+                    $aAddOnOptions['element'],
                     $aAddOnOptions['attributes'] ?? []
                 );
 
@@ -150,7 +162,8 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
 
     protected function renderElement(\Zend\Form\ElementInterface $oElement, array $aAttributes = []): string
     {
-        $sMarkup = $this->render($oElement);
+        $oElement->setOption('form_group', false);
+        $sMarkup = $this->getView()->plugin('formElement')->render($oElement);
         if (
             $oElement instanceof \Zend\Form\Element\Checkbox
             || $oElement instanceof \Zend\Form\Element\Radio
