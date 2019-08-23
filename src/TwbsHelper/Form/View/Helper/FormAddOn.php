@@ -24,13 +24,19 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
         // Addon
         $bHasAddOn = false;
         $sAddOnId = $oElement->getAttribute('aria-describedby');
+
         foreach ([self::POSITION_APPEND, self::POSITION_PREPEND] as $sAddOnPosition) {
             if ($aAddOnOptions = $oElement->getOption('add_on_' . $sAddOnPosition)) {
                 $bHasAddOn = true;
 
+                $aAttributes = ['class' => 'input-group-' . $sAddOnPosition];
+                if ($sAddOnId && \Zend\Stdlib\ArrayUtils::isList($aAddOnOptions)) {
+                    $aAttributes['id'] = $sAddOnId;
+                }
+
                 $sAddOnContent = $this->htmlElement(
                     'div',
-                    ['class' => 'input-group-' . $sAddOnPosition],
+                    $aAttributes,
                     $this->renderAddOn($aAddOnOptions, $sAddOnId)
                 );
 
@@ -53,12 +59,16 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
             $aInputGroupClasses[] = $this->getSizeClass($sSize, 'input-group');
         }
 
-        $aAttributes = $this->setClassesToAttributes(
-            ['class' => $oElement->getOption('input_group_class')],
-            $aInputGroupClasses
+        return $this->htmlElement(
+            'div',
+            $this->setClassesToAttributes(
+                [
+                    'class' => $oElement->getOption('input_group_class'),
+                ],
+                $aInputGroupClasses
+            ),
+            $sContent
         );
-
-        return $this->htmlElement('div', $aAttributes, $sContent);
     }
 
     /**
@@ -85,8 +95,7 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
                 $sContent = '';
                 foreach ($aAddOnOptions as $aAddOnOptionsTmp) {
                     $sContent .= ($sContent ? PHP_EOL : '') . $this->renderAddOn(
-                        $aAddOnOptionsTmp,
-                        $sAddOnId
+                        $aAddOnOptionsTmp
                     );
                 }
                 return $sContent;
