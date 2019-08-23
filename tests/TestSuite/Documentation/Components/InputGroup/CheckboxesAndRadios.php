@@ -61,7 +61,7 @@ return [
         '        <div class="input-group-text">' . PHP_EOL .
         '            <input type="checkbox" name="checkbox" ' .
         'aria-label="Checkbox&#x20;for&#x20;following&#x20;text&#x20;input" ' .
-        'class="form-check-input" value="1">' . PHP_EOL .
+        'value="1">' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '    <input type="text" name="checkbox-text" aria-label="Text&#x20;input&#x20;with&#x20;checkbox" ' .
@@ -70,10 +70,8 @@ return [
         '<div class="input-group">' . PHP_EOL .
         '    <div class="input-group-prepend">' . PHP_EOL .
         '        <div class="input-group-text">' . PHP_EOL .
-        '            <div class="form-check">' . PHP_EOL .
-        '                <input type="radio" name="radio" class="form-check-input&#x20;position-static" ' .
-        'aria-label="Radio&#x20;button&#x20;for&#x20;following&#x20;text&#x20;input" value="">' . PHP_EOL .
-        '            </div>' . PHP_EOL .
+        '            <label><input type="radio" name="radio" ' .
+        'aria-label="Radio&#x20;button&#x20;for&#x20;following&#x20;text&#x20;input" value=""></label>' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '    <input type="text" name="radio-text" aria-label="Text&#x20;input&#x20;with&#x20;radio&#x20;button" ' .

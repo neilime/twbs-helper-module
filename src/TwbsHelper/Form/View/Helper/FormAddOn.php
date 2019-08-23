@@ -28,7 +28,12 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
             if ($aAddOnOptions = $oElement->getOption('add_on_' . $sAddOnPosition)) {
                 $bHasAddOn = true;
 
-                $sAddOnContent = $this->renderAddOn($aAddOnOptions, $sAddOnPosition, $sAddOnId);
+                $sAddOnContent = $this->htmlElement(
+                    'div',
+                    ['class' => 'input-group-' . $sAddOnPosition],
+                    $this->renderAddOn($aAddOnOptions, $sAddOnId)
+                );
+
                 if ($sAddOnPosition === self::POSITION_APPEND) {
                     $sContent .= PHP_EOL . $sAddOnContent;
                 } else {
@@ -65,7 +70,7 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
      * @throws \LogicException
      * @return string
      */
-    protected function renderAddOn($aAddOnOptions, string $sAddOnPosition, string $sAddOnId = null): string
+    protected function renderAddOn($aAddOnOptions, string $sAddOnId = null): string
     {
         if (empty($aAddOnOptions)) {
             throw new \InvalidArgumentException('Addon options are empty');
@@ -81,7 +86,6 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
                 foreach ($aAddOnOptions as $aAddOnOptionsTmp) {
                     $sContent .= ($sContent ? PHP_EOL : '') . $this->renderAddOn(
                         $aAddOnOptionsTmp,
-                        $sAddOnPosition,
                         $sAddOnId
                     );
                 }
@@ -98,11 +102,7 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
             $aAddOnOptions['attributes']['id'] = $sAddOnId;
         }
 
-        return $this->htmlElement(
-            'div',
-            ['class' => 'input-group-' . $sAddOnPosition],
-            $this->renderContent($aAddOnOptions)
-        );
+        return $this->renderContent($aAddOnOptions);
     }
 
     protected function renderContent(array $aAddOnOptions): string
@@ -162,7 +162,7 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
 
     protected function renderElement(\Zend\Form\ElementInterface $oElement, array $aAttributes = []): string
     {
-        $oElement->setOption('form_group', false);
+        $oElement->setOption('disable_twbs', true);
         $sMarkup = $this->getView()->plugin('formElement')->render($oElement);
         if (
             $oElement instanceof \Zend\Form\Element\Checkbox

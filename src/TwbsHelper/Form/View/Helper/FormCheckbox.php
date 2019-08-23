@@ -14,11 +14,13 @@ class FormCheckbox extends \Zend\Form\View\Helper\FormCheckbox
      */
     public function render(\Zend\Form\ElementInterface $oElement): string
     {
-        $this->setClassesToElement(
-            $oElement,
-            [$oElement->getOption('custom') ? 'custom-control-input' : 'form-check-input'],
-            ['form-control']
-        );
+        if (!$oElement->getOption('disable_twbs')) {
+            $this->setClassesToElement(
+                $oElement,
+                [$oElement->getOption('custom') ? 'custom-control-input' : 'form-check-input'],
+                ['form-control']
+            );
+        }
         return parent::render($oElement);
     }
 }

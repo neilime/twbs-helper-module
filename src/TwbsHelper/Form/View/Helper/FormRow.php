@@ -92,15 +92,6 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
     {
         $aRowClasses = ['form-group'];
 
-        if ($sFormGroupSize = $oElement->getOption('twbs-form-group-size')) {
-            $aRowClasses[] = $sFormGroupSize;
-        }
-
-        // Validation state
-        if (($sValidationState = $oElement->getOption('validation-state'))) {
-            $aRowClasses[] = 'has-' . $sValidationState;
-        }
-
         if ($oElement->getMessages()) {
             $aRowClasses[]  = 'has-error';
         }

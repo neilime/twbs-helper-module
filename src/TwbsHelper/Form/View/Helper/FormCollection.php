@@ -105,16 +105,6 @@ class FormCollection extends \Zend\Form\View\Helper\FormCollection
 
                 if ($oElementOrFieldset instanceof \Zend\Form\FieldsetInterface) {
                     $sMarkup .= $oFieldsetHelper($oElementOrFieldset);
-                } elseif ($oElementOrFieldset instanceof \Zend\Form\ElementInterface) {
-                    if ($oElementOrFieldset->getOption('twbs-row-open')) {
-                        $sMarkup .= '<div class="row">' . PHP_EOL;
-                    }
-
-                    $sMarkup .= $oElementHelper($oElementOrFieldset);
-
-                    if ($oElementOrFieldset->getOption('twbs-row-close')) {
-                        $sMarkup .= '</div>' . PHP_EOL;
-                    }
                 }
             }
 

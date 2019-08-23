@@ -15,6 +15,9 @@ trait MultiCheckboxTrait
      */
     public function render(\Zend\Form\ElementInterface $oElement): string
     {
+        if ($oElement->getOption('disable_twbs')) {
+            return parent::render($oElement);
+        }
 
         $bIsCustom = $oElement->getOption('custom');
 
