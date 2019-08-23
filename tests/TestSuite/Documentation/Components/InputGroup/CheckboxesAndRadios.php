@@ -70,8 +70,8 @@ return [
         '<div class="input-group">' . PHP_EOL .
         '    <div class="input-group-prepend">' . PHP_EOL .
         '        <div class="input-group-text">' . PHP_EOL .
-        '            <label><input type="radio" name="radio" ' .
-        'aria-label="Radio&#x20;button&#x20;for&#x20;following&#x20;text&#x20;input" value=""></label>' . PHP_EOL .
+        '            <input type="radio" name="radio" ' .
+        'aria-label="Radio&#x20;button&#x20;for&#x20;following&#x20;text&#x20;input" value="">' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '    <input type="text" name="radio-text" aria-label="Text&#x20;input&#x20;with&#x20;radio&#x20;button" ' .
