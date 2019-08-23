@@ -12,6 +12,7 @@ return [
             'reset',
             'submit',
             'static',
+            'add_on',
         ],
         'validTagAttributes' => [],
         'validTagAttributePrefixes' => [],
@@ -48,6 +49,7 @@ return [
 
             // Form view helpers
             'form'              => 'TwbsHelper\Form\View\Helper\Form',
+            'formAddOn'        => 'TwbsHelper\Form\View\Helper\FormAddOn',
             'formButton'        => 'TwbsHelper\Form\View\Helper\FormButton',
             'formSubmit'        => 'TwbsHelper\Form\View\Helper\FormButton',
             'formCheckbox'      => 'TwbsHelper\Form\View\Helper\FormCheckbox',
@@ -62,6 +64,7 @@ return [
             'formErrors'        => 'TwbsHelper\Form\View\Helper\FormErrors',
 
             // ZF3
+            'form_add_on'         => 'TwbsHelper\Form\View\Helper\FormAddOn',
             'form_button'         => 'TwbsHelper\Form\View\Helper\FormButton',
             'form_submit'         => 'TwbsHelper\Form\View\Helper\FormButton',
             'form_checkbox'       => 'TwbsHelper\Form\View\Helper\FormCheckbox',
@@ -72,6 +75,7 @@ return [
             'form_row'            => 'TwbsHelper\Form\View\Helper\FormRow',
             'form_static'         => 'TwbsHelper\Form\View\Helper\FormStatic',
             'form_errors'         => 'TwbsHelper\Form\View\Helper\FormErrors',
+            'formaddon'          => 'TwbsHelper\Form\View\Helper\FormAddOn',
             'formbutton'          => 'TwbsHelper\Form\View\Helper\FormButton',
             'formsubmit'          => 'TwbsHelper\Form\View\Helper\FormButton',
             'formcheckbox'        => 'TwbsHelper\Form\View\Helper\FormCheckbox',

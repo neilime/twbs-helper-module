@@ -175,7 +175,7 @@ return [
                         '    </div>' . PHP_EOL .
                         '    <div class="input-group">' . PHP_EOL .
                         '        <div class="input-group-prepend">' . PHP_EOL .
-                        '            <div class="input-group-text">' . PHP_EOL .
+                        '            <div id="btnGroupAddon" class="input-group-text">' . PHP_EOL .
                         '                @' . PHP_EOL .
                         '            </div>' . PHP_EOL .
                         '        </div>' . PHP_EOL .
@@ -199,7 +199,7 @@ return [
                         '    </div>' . PHP_EOL .
                         '    <div class="input-group">' . PHP_EOL .
                         '        <div class="input-group-prepend">' . PHP_EOL .
-                        '            <div class="input-group-text">' . PHP_EOL .
+                        '            <div id="btnGroupAddon" class="input-group-text">' . PHP_EOL .
                         '                @' . PHP_EOL .
                         '            </div>' . PHP_EOL .
                         '        </div>' . PHP_EOL .

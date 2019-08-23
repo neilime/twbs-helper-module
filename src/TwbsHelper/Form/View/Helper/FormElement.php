@@ -2,12 +2,8 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
-use Zend\I18n\Translator\TranslatorAwareInterface;
-
-class FormElement extends \Zend\Form\View\Helper\FormElement implements TranslatorAwareInterface
+class FormElement extends \Zend\Form\View\Helper\FormElement
 {
-
-    use \Zend\I18n\Translator\TranslatorAwareTrait;
     use \TwbsHelper\View\Helper\ClassAttributeTrait;
     use \TwbsHelper\View\Helper\HtmlTrait;
 
@@ -77,37 +73,8 @@ class FormElement extends \Zend\Form\View\Helper\FormElement implements Translat
 
         $sMarkup = parent::render($oElement);
 
-        // Addon prepend
-        if ($aAddOnPrepend = $oElement->getOption('add_on_prepend')) {
-            $sMarkup = $this->renderAddOn($aAddOnPrepend) . PHP_EOL . $sMarkup;
-        }
-
-        // Addon append
-        if ($aAddOnAppend = $oElement->getOption('add_on_append')) {
-            $sMarkup .= $this->renderAddOn($aAddOnAppend, 'append');
-        }
-
-        if ($aAddOnAppend || $aAddOnPrepend) {
-            $aInputGroupClasses = ['input-group'];
-
-            // Input size
-            if ($sElementClass = $oElement->getAttribute('class')) {
-                if (preg_match('/(\s|^)input-lg(\s|$)/', $sElementClass)) {
-                    $aInputGroupClasses[] = 'input-group-lg';
-                } elseif (preg_match('/(\s|^)input-sm(\s|$)/', $sElementClass)) {
-                    $aInputGroupClasses[] = 'input-group-sm';
-                }
-            }
-
-            $aAttributes = $this->setClassesToAttributes(
-                ['class' => $oElement->getOption('input_group_class')],
-                $aInputGroupClasses
-            );
-
-            return $this->htmlElement('div', $aAttributes, $sMarkup);
-        }
-
-        return $sMarkup;
+        // Render element's add-on
+        return $this->getView()->plugin('formAddOn')->render($oElement, $sMarkup);
     }
 
     /**
@@ -168,68 +135,5 @@ class FormElement extends \Zend\Form\View\Helper\FormElement implements Translat
         );
 
         return $this->htmlElement('div', $aAttributes, $this->renderAddOnContent($aAddOnOptions));
-    }
-
-    protected function renderAddOnContent(array $aAddOnOptions): string
-    {
-        if (!empty($aAddOnOptions['text'])) {
-            if (!is_scalar($aAddOnOptions['text'])) {
-                throw new \InvalidArgumentException(sprintf(
-                    '"text" option expects a scalar value, "%s" given',
-                    is_object($aAddOnOptions['text'])
-                        ? get_class($aAddOnOptions['text'])
-                        : gettype($aAddOnOptions['text'])
-                ));
-            }
-
-            $sAddonText = $aAddOnOptions['text'];
-
-            $oTranslator = $this->getTranslator();
-            if ($oTranslator) {
-                $sAddonText =  $oTranslator->translate(
-                    $sAddonText,
-                    $this->getTranslatorTextDomain()
-                );
-            }
-
-            return $this->renderAddOnElement($sAddonText);
-        }
-
-        if (!empty($aAddOnOptions['element'])) {
-            if (
-                is_array($aAddOnOptions['element'])
-                || ($aAddOnOptions['element'] instanceof \Traversable
-                    && !($aAddOnOptions['element'] instanceof \Zend\Form\ElementInterface))
-            ) {
-                $oFactory  = new \Zend\Form\Factory();
-                $aAddOnOptions['element'] = $oFactory->create($aAddOnOptions['element']);
-            } elseif (!($aAddOnOptions['element'] instanceof \Zend\Form\ElementInterface)) {
-                throw new \LogicException(sprintf(
-                    '"element" option expects an instanceof \Zend\Form\ElementInterface, "%s" given',
-                    is_object($aAddOnOptions['element'])
-                        ? get_class($aAddOnOptions['element'])
-                        : gettype($aAddOnOptions['element'])
-                ));
-            }
-
-            if (
-                $aAddOnOptions['element'] instanceof \Zend\Form\Element\Checkbox
-                || $aAddOnOptions['element'] instanceof \Zend\Form\Element\Radio
-            ) {
-                return $this->renderAddOnElement($this->render($aAddOnOptions['element']));
-            }
-            return $this->render($aAddOnOptions['element']);
-        }
-
-        throw new \InvalidArgumentException('Addon options expects a text or an element to render, none given');
-    }
-
-    protected function renderAddOnElement(string $sAddonText): string
-    {
-        return $this->htmlElement(
-            'div',
-            ['class' => 'input-group-text'],
-            $sAddonText
-        );
     }
 }
