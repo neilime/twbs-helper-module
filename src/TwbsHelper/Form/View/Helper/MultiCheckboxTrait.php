@@ -44,7 +44,7 @@ trait MultiCheckboxTrait
 
                 $sContent .= ($sContent ? PHP_EOL : '') . $this->renderElementOption(
                     $oElement,
-                    $aMatches[2] . ($sLabelContent ? PHP_EOL . $sLabelContent : ''),
+                    $aMatches[2] . ($sLabelContent ? PHP_EOL . $sLabelContent : '')
                 );
             }
         }

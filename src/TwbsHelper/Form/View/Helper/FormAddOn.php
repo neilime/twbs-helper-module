@@ -163,6 +163,10 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
     protected function renderElement(\Zend\Form\ElementInterface $oElement, array $aAttributes = []): string
     {
         $oElement->setOption('disable_twbs', true);
+        $oElement->setAttributes(\Zend\Stdlib\ArrayUtils::merge(
+            $aAttributes,
+            $oElement->getAttributes()
+        ));
         $sMarkup = $this->getView()->plugin('formElement')->render($oElement);
         if (
             $oElement instanceof \Zend\Form\Element\Checkbox
