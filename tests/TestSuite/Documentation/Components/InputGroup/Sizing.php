@@ -2,133 +2,82 @@
 
 // Documentation test config file for "Components / Input group / Sizing" part
 return [
-            'title' => 'Sizing',
-            'url' => '%bootstrap-url%/components/input-group/#sizing',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-                $oFactory = new \Zend\Form\Factory();
+    'title' => 'Sizing',
+    'url' => '%bootstrap-url%/components/input-group/#sizing',
+    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+        $oFactory = new \Zend\Form\Factory();
 
-                echo $oView->formRow($oFactory->create([
-                    'name' => 'username',
-                    'type' => 'text',
-                    'options' => [
-                        'form_group' => false,
-                        'input_group_class' => 'mb-3',
-                        'add_on_prepend' => '@',
-                    ],
-                    'attributes' => [
-                        'placeholder' => 'Username',
-                        'aria-label' => 'Username',
-                        'aria-describedby' => 'basic-addon1',
-                    ],
-                ])) . PHP_EOL;
+        // Small
+        echo $oView->formRow($oFactory->create([
+            'name' => 'small',
+            'type' => 'text',
+            'options' => [
+                'form_group' => false,
+                'input_group_class' => 'mb-3',
+                'add_on_prepend' => 'Small',
+                'size' => 'sm',
+            ],
+            'attributes' => [
+                'aria-label' => 'Sizing example input',
+                'aria-describedby' => 'inputGroup-sizing-sm',
+            ],
+        ])) . PHP_EOL;
 
-                echo $oView->formRow($oFactory->create([
-                    'name' => 'recipient_username',
-                    'type' => 'text',
-                    'options' => [
-                        'form_group' => false,
-                        'input_group_class' => 'mb-3',
-                        'add_on_append' => '@example.com',
-                    ],
-                    'attributes' => [
-                        'placeholder' => 'Recipient\'s username',
-                        'aria-label' => 'Recipient\'s username',
-                        'aria-describedby' => 'basic-addon2',
-                    ],
-                ])) . PHP_EOL;
+        // Default
+        echo $oView->formRow($oFactory->create([
+            'name' => 'default',
+            'type' => 'text',
+            'options' => [
+                'form_group' => false,
+                'input_group_class' => 'mb-3',
+                'add_on_prepend' => 'Default',
+            ],
+            'attributes' => [
+                'aria-label' => 'Sizing example input',
+                'aria-describedby' => 'inputGroup-sizing-default',
+            ],
+        ])) . PHP_EOL;
 
-                echo $oView->formRow($oFactory->create([
-                    'name' => 'url',
-                    'type' => 'text',
-                    'options' => [
-                        'label' => 'Your vanity URL',
-                        'form_group' => false,
-                        'input_group_class' => 'mb-3',
-                        'add_on_prepend' => 'https://example.com/users/',
-                    ],
-                    'attributes' => [
-                        'id' => 'basic-url',
-                        'aria-describedby' => 'basic-addon3',
-                    ],
-                ])) . PHP_EOL;
-
-                echo $oView->formRow($oFactory->create([
-                    'name' => 'amount',
-                    'type' => 'text',
-                    'options' => [
-                        'form_group' => false,
-                        'input_group_class' => 'mb-3',
-                        'add_on_prepend' => '$',
-                        'add_on_append' => '.00',
-                    ],
-                    'attributes' => [
-                        'aria-label' => 'Amount (to the nearest dollar)',
-                    ],
-                ])) . PHP_EOL;
-
-                echo $oView->formRow($oFactory->create([
-                    'name' => 'textarea',
-                    'type' => 'textarea',
-                    'options' => [
-                        'form_group' => false,
-                        'add_on_prepend' => 'With textarea',
-                    ],
-                    'attributes' => [
-                        'aria-label' => 'With textarea',
-                    ],
-                ]));
-            },
-            'expected' => '<div class="input-group&#x20;mb-3">' . PHP_EOL .
-                '    <div class="input-group-prepend">' . PHP_EOL .
-                '        <div id="basic-addon1" class="input-group-text">' . PHP_EOL .
-                '            @' . PHP_EOL .
-                '        </div>' . PHP_EOL .
-                '    </div>' . PHP_EOL .
-                '    <input type="text" name="username" placeholder="Username" aria-label="Username" ' .
-                'aria-describedby="basic-addon1" class="form-control" value="">' . PHP_EOL .
-                '</div>' . PHP_EOL .
-                '<div class="input-group&#x20;mb-3">' . PHP_EOL .
-                '    <input type="text" name="recipient_username" placeholder="Recipient&#x27;s&#x20;username" ' .
-                'aria-label="Recipient&#x27;s&#x20;username" ' .
-                'aria-describedby="basic-addon2" class="form-control" value="">' . PHP_EOL .
-                '    <div class="input-group-append">' . PHP_EOL .
-                '        <div id="basic-addon2" class="input-group-text">' . PHP_EOL .
-                '            @example.com' . PHP_EOL .
-                '        </div>' . PHP_EOL .
-                '    </div>' . PHP_EOL .
-                '</div>' . PHP_EOL .
-                '<label for="basic-url">Your vanity URL</label>' . PHP_EOL .
-                '<div class="input-group&#x20;mb-3">' . PHP_EOL .
-                '    <div class="input-group-prepend">' . PHP_EOL .
-                '        <div id="basic-addon3" class="input-group-text">' . PHP_EOL .
-                '            https://example.com/users/' . PHP_EOL .
-                '        </div>' . PHP_EOL .
-                '    </div>' . PHP_EOL .
-                '    <input type="text" name="url" id="basic-url" aria-describedby="basic-addon3" ' .
-                'class="form-control" value="">' . PHP_EOL .
-                '</div>' . PHP_EOL.
-                '<div class="input-group&#x20;mb-3">' . PHP_EOL .
-                '    <div class="input-group-prepend">' . PHP_EOL .
-                '        <div class="input-group-text">' . PHP_EOL .
-                '            $' . PHP_EOL .
-                '        </div>' . PHP_EOL .
-                '    </div>' . PHP_EOL .
-                '    <input type="text" name="amount" '.
-                'aria-label="Amount&#x20;&#x28;to&#x20;the&#x20;nearest&#x20;dollar&#x29;" ' .
-                'class="form-control" value="">' . PHP_EOL .
-                '    <div class="input-group-append">' . PHP_EOL .
-                '        <div class="input-group-text">' . PHP_EOL .
-                '            .00' . PHP_EOL .
-                '        </div>' . PHP_EOL .
-                '    </div>' . PHP_EOL .
-                '</div>' . PHP_EOL .
-                '<div class="input-group">' . PHP_EOL .
-                '    <div class="input-group-prepend">' . PHP_EOL .
-                '        <div class="input-group-text">' . PHP_EOL .
-                '            With textarea' . PHP_EOL .
-                '        </div>' . PHP_EOL .
-                '    </div>' . PHP_EOL .
-                '    <textarea name="textarea" aria-label="With&#x20;textarea" class="form-control">'.
-                '</textarea>' . PHP_EOL .
-                '</div>',
-        ];
+        // Large
+        echo $oView->formRow($oFactory->create([
+            'name' => 'large',
+            'type' => 'text',
+            'options' => [
+                'form_group' => false,
+                'add_on_prepend' => 'Large',
+                'size' => 'lg',
+            ],
+            'attributes' => [
+                'aria-label' => 'Sizing example input',
+                'aria-describedby' => 'inputGroup-sizing-lg',
+            ],
+        ]));
+    },
+    'expected' => '<div class="input-group&#x20;input-group-sm&#x20;mb-3">' . PHP_EOL .
+        '    <div class="input-group-prepend">' . PHP_EOL .
+        '        <div id="inputGroup-sizing-sm" class="input-group-text">' . PHP_EOL .
+        '            Small' . PHP_EOL .
+        '        </div>' . PHP_EOL .
+        '    </div>' . PHP_EOL .
+        '    <input type="text" name="small" aria-label="Sizing&#x20;example&#x20;input" ' .
+        'aria-describedby="inputGroup-sizing-sm" class="form-control&#x20;form-control-sm" value="">' . PHP_EOL .
+        '</div>' . PHP_EOL .
+        '<div class="input-group&#x20;mb-3">' . PHP_EOL .
+        '    <div class="input-group-prepend">' . PHP_EOL .
+        '        <div id="inputGroup-sizing-default" class="input-group-text">' . PHP_EOL .
+        '            Default' . PHP_EOL .
+        '        </div>' . PHP_EOL .
+        '    </div>' . PHP_EOL .
+        '    <input type="text" name="default" aria-label="Sizing&#x20;example&#x20;input" ' .
+        'aria-describedby="inputGroup-sizing-default" class="form-control" value="">' . PHP_EOL .
+        '</div>' . PHP_EOL .
+        '<div class="input-group&#x20;input-group-lg">' . PHP_EOL .
+        '    <div class="input-group-prepend">' . PHP_EOL .
+        '        <div id="inputGroup-sizing-lg" class="input-group-text">' . PHP_EOL .
+        '            Large' . PHP_EOL .
+        '        </div>' . PHP_EOL .
+        '    </div>' . PHP_EOL .
+        '    <input type="text" name="large" aria-label="Sizing&#x20;example&#x20;input" ' .
+        'aria-describedby="inputGroup-sizing-lg" class="form-control&#x20;form-control-lg" value="">' . PHP_EOL .
+        '</div>',
+];

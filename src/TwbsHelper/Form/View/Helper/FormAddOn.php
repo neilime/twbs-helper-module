@@ -43,13 +43,9 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
 
         $aInputGroupClasses = ['input-group'];
 
-        // Input size
-        if ($sElementClass = $oElement->getAttribute('class')) {
-            if (preg_match('/(\s|^)input-lg(\s|$)/', $sElementClass)) {
-                $aInputGroupClasses[] = 'input-group-lg';
-            } elseif (preg_match('/(\s|^)input-sm(\s|$)/', $sElementClass)) {
-                $aInputGroupClasses[] = 'input-group-sm';
-            }
+        // Input group size
+        if ($sSize = $oElement->getOption('size')) {
+            $aInputGroupClasses[] = $this->getSizeClass($sSize, 'input-group');
         }
 
         $aAttributes = $this->setClassesToAttributes(
