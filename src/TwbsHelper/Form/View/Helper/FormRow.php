@@ -446,13 +446,24 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
     {
         $sElementType = $oElement->getAttribute('type');
         if (in_array($sElementType, ['checkbox'], true)) {
+            $aClassesToAdd =  $oElement->getOption('custom')
+                // Custom checkbox classes
+                ? [
+                    'custom-control',
+                    $oElement->getOption('switch')
+                        // Switch custom checkbox
+                        ? 'custom-switch'
+                        // Regular custom checkbox
+                        : 'custom-checkbox',
+                ]
+                // Regular checkbox class
+                : ['form-check'];
+
             $sElementContent = $this->htmlElement(
                 'div',
                 $this->setClassesToAttributes(
                     ['class' => $oElement->getOption('form_check_class')],
-                    $oElement->getOption('custom')
-                        ? ['custom-control', 'custom-checkbox']
-                        : ['form-check']
+                    $aClassesToAdd
                 ),
                 $sElementContent
             );
