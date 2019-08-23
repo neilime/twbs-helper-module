@@ -69,6 +69,18 @@ return [
                         'aria-label' => 'Amount (to the nearest dollar)',
                     ],
                 ])) . PHP_EOL;
+
+                echo $oView->formRow($oFactory->create([
+                    'name' => 'textarea',
+                    'type' => 'textarea',
+                    'options' => [
+                        'form_group' => false,
+                        'add_on_prepend' => 'With textarea',
+                    ],
+                    'attributes' => [
+                        'aria-label' => 'With textarea',
+                    ],
+                ]));
             },
             'expected' => '<div class="input-group&#x20;mb-3">' . PHP_EOL .
                 '    <div class="input-group-prepend">' . PHP_EOL .
@@ -113,7 +125,16 @@ return [
                 '            .00' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
-                '</div>' . PHP_EOL,
+                '</div>' . PHP_EOL .
+                '<div class="input-group">' . PHP_EOL .
+                '    <div class="input-group-prepend">' . PHP_EOL .
+                '        <div class="input-group-text">' . PHP_EOL .
+                '            With textarea' . PHP_EOL .
+                '        </div>' . PHP_EOL .
+                '    </div>' . PHP_EOL .
+                '    <textarea name="textarea" aria-label="With&#x20;textarea" class="form-control">'.
+                '</textarea>' . PHP_EOL .
+                '</div>',
         ],
     ],
 ];
