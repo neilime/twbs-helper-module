@@ -386,7 +386,7 @@ return [
                     'type' => 'file',
                     'options' => [
                         'custom' => true,
-                        'label' => 'Choose file',
+                        'custom_label' => 'Choose file',
                         'form_group' => false,
                     ],
                     'attributes' => ['id' => 'customFile'],
@@ -409,7 +409,7 @@ return [
                             'type' => 'file',
                             'options' => [
                                 'custom' => true,
-                                'label' => 'Voeg je document toe',
+                                'custom_label' => 'Voeg je document toe',
                                 'form_group' => false,
                                 'label_attributes' => [
                                     'data-browse' => 'Bestand kiezen',

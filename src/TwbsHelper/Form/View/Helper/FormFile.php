@@ -17,10 +17,29 @@ class FormFile extends \Zend\Form\View\Helper\FormInput
     {
         $bCustom = $oElement->getOption('custom');
 
-        return  parent::render($this->setClassesToElement(
+        $sElementContent =  parent::render($this->setClassesToElement(
             $oElement,
             [$bCustom ? 'custom-file-input' : 'form-control-file'],
             ['form-control']
         ));
+
+        if ($bCustom) {
+            if ($sLabel = $oElement->getOption('custom_label')) {
+                $sLabelTmp = $oElement->getLabel();
+                $oElement->setLabel($sLabel);
+                $sLabel = $this->view->plugin('form_label')->__invoke($oElement);
+                $oElement->setLabel($sLabelTmp ?? '');
+                if ($sLabel) {
+                    $sElementContent .= PHP_EOL . $sLabel;
+                }
+            }
+
+            $sElementContent = $this->htmlElement(
+                'div',
+                ['class' => 'custom-file'],
+                $sElementContent
+            );
+        }
+        return $sElementContent;
     }
 }

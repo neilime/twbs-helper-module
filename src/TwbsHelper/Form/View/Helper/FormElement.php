@@ -102,38 +102,4 @@ class FormElement extends \Zend\Form\View\Helper\FormElement
 
         return $oHelper($oElement);
     }
-
-    /**
-     * Render add-on markup
-     *
-     * @param \Zend\Form\ElementInterface|array|string $aAddOnOptions
-     * @param  string $sPosition
-     * @throws \InvalidArgumentException
-     * @throws \LogicException
-     * @return string
-     */
-    protected function renderAddOn($aAddOnOptions, string $sPosition = 'prepend'): string
-    {
-        if (empty($aAddOnOptions)) {
-            throw new \InvalidArgumentException('Addon options are empty');
-        }
-
-        if ($aAddOnOptions instanceof \Zend\Form\ElementInterface) {
-            $aAddOnOptions = ['element' => $aAddOnOptions];
-        } elseif (is_scalar($aAddOnOptions)) {
-            $aAddOnOptions = ['text' => $aAddOnOptions];
-        } elseif (!is_array($aAddOnOptions)) {
-            throw new \InvalidArgumentException(sprintf(
-                'Addon options expects an array or a scalar value, "%s" given',
-                is_object($aAddOnOptions) ? get_class($aAddOnOptions) : gettype($aAddOnOptions)
-            ));
-        }
-
-        $aAttributes = $this->setClassesToAttributes(
-            $aAddOnOptions['attributes'] ?? [],
-            ['prepend' === $sPosition ? 'input-group-prepend' : 'input-group-append']
-        );
-
-        return $this->htmlElement('div', $aAttributes, $this->renderAddOnContent($aAddOnOptions));
-    }
 }

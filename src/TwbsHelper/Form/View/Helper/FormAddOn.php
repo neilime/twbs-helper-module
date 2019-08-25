@@ -224,7 +224,7 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
             if (\Zend\Stdlib\ArrayUtils::isList($aDropdownOptions)) {
                 $oElement->setOption('dropdown', [
                     'items' => $aDropdownOptions,
-                    'disable_container'      => true,
+                    'disable_container' => true,
                 ]);
             } elseif (!isset($aDropdownOptions['disable_container'])) {
                 $aDropdownOptions['disable_container'] = true;
@@ -237,6 +237,7 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
             $oElement->getAttributes()
         ));
         $sMarkup = $this->getView()->plugin('formElement')->render($oElement);
+
         if (
             $oElement instanceof \Zend\Form\Element\Checkbox
             || $oElement instanceof \Zend\Form\Element\Radio

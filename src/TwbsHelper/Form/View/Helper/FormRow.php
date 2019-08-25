@@ -327,7 +327,7 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
     }
 
     /**
-     * Render element's errors
+     * Render element's feedback
      *
      * @param \Zend\Form\ElementInterface $oElement
      * @param string $sElementContent
@@ -348,6 +348,13 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
         return $sElementContent;
     }
 
+    /**
+     * Render element's dedicated container
+     *
+     * @param \Zend\Form\ElementInterface $oElement
+     * @param string $sElementContent
+     * @return string
+     */
     protected function renderDedicatedContainer(\Zend\Form\ElementInterface $oElement, string $sElementContent): string
     {
         switch ($oElement->getAttribute('type')) {
@@ -373,15 +380,6 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
                     ),
                     $sElementContent
                 );
-                break;
-            case 'file':
-                if ($oElement->getOption('custom')) {
-                    $sElementContent = $this->htmlElement(
-                        'div',
-                        ['class' => 'custom-file'],
-                        $sElementContent
-                    );
-                }
                 break;
         }
         return $sElementContent;

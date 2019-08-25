@@ -167,27 +167,131 @@ return [
                 $oFactory = new \Zend\Form\Factory();
 
                 echo $oView->formRow($oFactory->create([
-                    'name' => 'custom_file',
+                    'name' => 'custom_file_label_prepend',
                     'type' => 'file',
                     'options' => [
                         'custom' => true,
-                        'label' => 'Choose file',
+                        'custom_label' => 'Choose file',
                         'form_group' => false,
                         'input_group_class' => 'mb-3',
                         'add_on_prepend' => 'Upload',
                     ],
-                    'attributes' => ['id' => 'inputGroupFileAddon01'],
+                    'attributes' => [
+                        'id' => 'inputGroupFile01',
+                        'aria-describedby' => 'inputGroupFileAddon01',
+                    ],
+                ])) . PHP_EOL;
+
+                echo $oView->formRow($oFactory->create([
+                    'name' => 'custom_file_label_append',
+                    'type' => 'file',
+                    'options' => [
+                        'custom' => true,
+                        'custom_label' => 'Choose file',
+                        'form_group' => false,
+                        'input_group_class' => 'mb-3',
+                        'add_on_append' => 'Upload',
+                    ],
+                    'attributes' => [
+                        'id' => 'inputGroupFile02',
+                        'aria-describedby' => 'inputGroupFileAddon02',
+                    ],
+                ])) . PHP_EOL;
+
+                echo $oView->formRow($oFactory->create([
+                    'name' => 'custom_file_button_prepend',
+                    'type' => 'file',
+                    'options' => [
+                        'custom' => true,
+                        'custom_label' => 'Choose file',
+                        'form_group' => false,
+                        'input_group_class' => 'mb-3',
+                        'add_on_prepend' => [
+                            'element' => [
+                                'type' => 'button',
+                                'options' => [
+                                    'label' => 'Button',
+                                    'variant' => 'outline-secondary',
+                                ],
+                            ],
+                        ],
+                    ],
+                    'attributes' => [
+                        'id' => 'inputGroupFile03',
+                        'aria-describedby' => 'inputGroupFileAddon03',
+                    ],
+                ])) . PHP_EOL;
+
+                echo $oView->formRow($oFactory->create([
+                    'name' => 'custom_file_button_append',
+                    'type' => 'file',
+                    'options' => [
+                        'custom' => true,
+                        'custom_label' => 'Choose file',
+                        'form_group' => false,
+                        'input_group_class' => 'mb-3',
+                        'add_on_append' => [
+                            'element' => [
+                                'type' => 'button',
+                                'options' => [
+                                    'label' => 'Button',
+                                    'variant' => 'outline-secondary',
+                                ],
+                            ],
+                        ],
+                    ],
+                    'attributes' => [
+                        'id' => 'inputGroupFile04',
+                        'aria-describedby' => 'inputGroupFileAddon04',
+                    ],
                 ]));
             },
-            'expected' => '<div class="input-group mb-3">' . PHP_EOL .
-            '    <div class="input-group-prepend">' . PHP_EOL .
-            '        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>' . PHP_EOL .
-            '    </div>' . PHP_EOL .
-            '    <div class="custom-file">' . PHP_EOL .
-            '        <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">' . PHP_EOL .
-            '        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>' . PHP_EOL .
-            '    </div>' . PHP_EOL .
-            '</div>',
+            'expected' => '<div class="input-group&#x20;mb-3">' . PHP_EOL .
+                '    <div class="input-group-prepend">' . PHP_EOL .
+                '        <div id="inputGroupFileAddon01" class="input-group-text">' . PHP_EOL .
+                '            Upload' . PHP_EOL .
+                '        </div>' . PHP_EOL .
+                '    </div>' . PHP_EOL .
+                '    <div class="custom-file">' . PHP_EOL .
+                '        <input type="file" name="custom_file_label_prepend" id="inputGroupFile01" ' .
+                'aria-describedby="inputGroupFileAddon01" class="custom-file-input" value="">' . PHP_EOL .
+                '        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>' . PHP_EOL .
+                '    </div>' . PHP_EOL .
+                '</div>' . PHP_EOL .
+                '<div class="input-group&#x20;mb-3">' . PHP_EOL .
+                '    <div class="custom-file">' . PHP_EOL .
+                '        <input type="file" name="custom_file_label_append" id="inputGroupFile02" ' .
+                'aria-describedby="inputGroupFileAddon02" class="custom-file-input" value="">' . PHP_EOL .
+                '        <label class="custom-file-label" for="inputGroupFile02">Choose file</label>' . PHP_EOL .
+                '    </div>' . PHP_EOL .
+                '    <div class="input-group-append">' . PHP_EOL .
+                '        <div id="inputGroupFileAddon02" class="input-group-text">' . PHP_EOL .
+                '            Upload' . PHP_EOL .
+                '        </div>' . PHP_EOL .
+                '    </div>' . PHP_EOL .
+                '</div>' . PHP_EOL.
+                '<div class="input-group&#x20;mb-3">' . PHP_EOL .
+                '    <div class="input-group-prepend">' . PHP_EOL .
+                '        <button type="button" name="button" id="inputGroupFileAddon03" '.
+                'class="btn&#x20;btn-outline-secondary" value="">Button</button>' . PHP_EOL .
+                '    </div>' . PHP_EOL .
+                '    <div class="custom-file">' . PHP_EOL .
+                '        <input type="file" name="custom_file_button_prepend" id="inputGroupFile03" ' .
+                'aria-describedby="inputGroupFileAddon03" class="custom-file-input" value="">' . PHP_EOL .
+                '        <label class="custom-file-label" for="inputGroupFile03">Choose file</label>' . PHP_EOL .
+                '    </div>' . PHP_EOL .
+                '</div>' . PHP_EOL.
+                '<div class="input-group&#x20;mb-3">' . PHP_EOL .
+                '    <div class="custom-file">' . PHP_EOL .
+                '        <input type="file" name="custom_file_button_append" id="inputGroupFile04" ' .
+                'aria-describedby="inputGroupFileAddon04" class="custom-file-input" value="">' . PHP_EOL .
+                '        <label class="custom-file-label" for="inputGroupFile04">Choose file</label>' . PHP_EOL .
+                '    </div>' . PHP_EOL .
+                '    <div class="input-group-append">' . PHP_EOL .
+                '        <button type="button" name="button" id="inputGroupFileAddon04" '.
+                'class="btn&#x20;btn-outline-secondary" value="">Button</button>' . PHP_EOL .
+                '    </div>' . PHP_EOL .
+                '</div>',
         ],
     ],
 ];
