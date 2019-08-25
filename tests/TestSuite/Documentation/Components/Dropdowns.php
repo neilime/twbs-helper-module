@@ -372,7 +372,7 @@ return [
                     ],
                 ]);
 
-                echo PHP_EOL . '<br>' . PHP_EOL;
+                echo PHP_EOL . '<br><br>' . PHP_EOL;
 
                 // Small button
                 echo $oView->formButton([
@@ -428,7 +428,7 @@ return [
                 '        <a href="&#x23;" class="dropdown-item">Separated link</a>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</div>' . PHP_EOL .
-                '<br>' . PHP_EOL .
+                '<br><br>' . PHP_EOL .
                 '<div class="btn-group&#x20;dropdown">' . PHP_EOL .
                 '    <button type="button" name="dropdown" ' .
                 'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
