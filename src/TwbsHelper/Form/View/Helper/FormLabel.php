@@ -1,0 +1,162 @@
+<?php
+
+namespace TwbsHelper\Form\View\Helper;
+
+class FormLabel extends \Zend\Form\View\Helper\FormLabel
+{
+    use \TwbsHelper\View\Helper\HtmlTrait;
+    use \TwbsHelper\View\Helper\ClassAttributeTrait;
+
+    /**
+     * @var string
+     */
+    protected $requiredFormat = null;
+
+    /**
+     * Generate a form label, optionally with content
+     *
+     * Always generates a "for" statement, as we cannot assume the form input
+     * will be provided in the $labelContent.
+     *
+     * @param \Zend\Form\ElementInterface $oElement
+     * @param  null|string $sLabelContent
+     * @param string $sPosition
+     * @return string|\TwbsHelper\Form\View\HelperFormLabel
+     */
+    public function __invoke(
+        \Zend\Form\ElementInterface $oElement = null,
+        $sLabelContent = null,
+        $sPosition = null
+    ) {
+        if (!$oElement) {
+            return $this;
+        }
+
+        // Button element is a special case, because label is always rendered inside it
+        if (
+            $oElement instanceof \Zend\Form\Element\Button
+            || $oElement instanceof \Zend\Form\Element\Submit
+        ) {
+            return $sLabelContent;
+        }
+
+        $aLabelAttributes = $oElement instanceof \Zend\Form\LabelAwareInterface
+            ? $oElement->getLabelAttributes()
+            : [];
+
+        $oElement->setLabelAttributes($aLabelAttributes = $this->setClassesToAttributes(
+            $aLabelAttributes,
+            $this->getLabelClasses($oElement, $aLabelAttributes)
+        ));
+
+        $sMarkup = parent::__invoke($oElement, $sLabelContent, $sPosition);
+        if (!preg_match('/(<label[^>]*>)([\s\S]*)(<\/label[^>]*>)/imU', $sMarkup, $aMatches)) {
+            return $sMarkup;
+        }
+
+        $sLabel = trim($aMatches[2]);
+        if (!$sLabel) {
+            return $sLabelContent;
+        }
+
+        // Add required string if element is required
+        if (
+            $this->requiredFormat &&
+            $oElement->getAttribute('required') && strpos($this->requiredFormat, $sLabel) === false
+        ) {
+            $sLabel .= $this->requiredFormat;
+        }
+
+        if ($oElement instanceof \Zend\Form\Element\MultiCheckbox) {
+            return $this->htmlElement(
+                'div',
+                $aLabelAttributes,
+                $sLabel,
+                !$oElement->getLabelOption('disable_html_escape')
+            );
+        }
+
+        return $aMatches[1] . $sLabel . $aMatches[3];
+    }
+
+    /**
+     * Render element's label
+     *
+     * @param \Zend\Form\ElementInterface $oElement
+     * @return string
+     */
+    public function renderPartial(\Zend\Form\ElementInterface $oElement): string
+    {
+        $sLabel = $oElement->getLabel();
+        if ($sLabel && ($oTranslator = $this->getTranslator())) {
+            $sLabel = $oTranslator->translate($sLabel, $this->getTranslatorTextDomain());
+        }
+
+        return $sLabel ?? '';
+    }
+
+    protected function getLabelClasses(\Zend\Form\ElementInterface $oElement, array $aLabelAttributes): array
+    {
+        $aLabelClasses = [];
+
+        // Define label column class
+        $sColumSize = $oElement->getOption('column');
+        if (
+            $sColumSize
+            && $oElement->getOption('layout') !== null
+            && !$this->hasColumnClassAttribute($aLabelAttributes['class'] ?? '')
+        ) {
+            $aLabelClasses[] = $this->getColumnCounterpartClass($sColumSize);
+        }
+
+        // Define label size class
+        if ($sSize = $oElement->getOption('size')) {
+            $aLabelClasses[] = $this->getSizeClass($sSize, 'col-form-label');
+        }
+
+        if ($oElement instanceof \Zend\Form\Element\MultiCheckbox) {
+            return $aLabelClasses;
+        }
+
+        switch ($oElement->getAttribute('type')) {
+            case 'checkbox':
+            case 'radio':
+                $aLabelClasses[] = $oElement->getOption('custom')
+                    ? 'custom-control-label'
+                    : 'form-check-label';
+                break;
+
+            case 'file':
+                if ($oElement->getOption('custom')) {
+                    $aLabelClasses[] = 'custom-file-label';
+                }
+                break;
+
+            default:
+                // Validation state
+                if ($oElement->getOption('validation-state') || $oElement->getMessages()) {
+                    $aLabelClasses[] = 'col-form-label';
+                }
+
+                $sLayout = $oElement->getOption('layout');
+                switch ($sLayout) {
+                        // Hide label for "inline" layout
+                    case \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE:
+                        if ($oElement->getOption('show_label') !== true) {
+                            $aLabelClasses[] = 'sr-only';
+                        }
+                        break;
+
+                    case \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL:
+                        $aLabelClasses[] = 'col-form-label';
+                        break;
+                    case null:
+                        if ($oElement->getOption('show_label') === false) {
+                            $aLabelClasses[] = 'sr-only';
+                        }
+                        break;
+                }
+        }
+        return $aLabelClasses;
+    }
+}
