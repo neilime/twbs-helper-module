@@ -745,8 +745,8 @@
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>__invoke(</strong><em>array</em> <strong>$oDropdown=null</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>\TwbsHelper\View\Helper\TwbsHelper\View\Helper\Dropdown/string</em> |
-| public | <strong>render(</strong><em>mixed</em> <strong>$oDropdown</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string</em><br /><em>Render dropdown markup</em> |
+| public | <strong>__invoke(</strong><em>\Zend\Form\ElementInterface/array</em> <strong>$oDropdown=null</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>[\TwbsHelper\View\Helper\Dropdown](#class-twbshelperviewhelperdropdown)/string</em> |
+| public | <strong>render(</strong><em>\Zend\Form\ElementInterface/array</em> <strong>$oDropdown</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string</em><br /><em>Render dropdown markup</em> |
 | public | <strong>renderMenu(</strong><em>array</em> <strong>$aItems</strong>, <em>array</em> <strong>$aAttributes=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string</em><br /><em>Render dropdown menu markup</em> |
 | public | <strong>renderToggle(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oDropdown</strong>)</strong> : <em>string</em><br /><em>Render dropdown toggle markup</em> |
 | protected | <strong>renderContainer(</strong><em>array</em> <strong>$aDropdownOptions</strong>, <em>\string</em> <strong>$sDropdownContent</strong>)</strong> : <em>void</em> |
