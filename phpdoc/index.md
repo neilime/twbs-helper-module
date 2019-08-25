@@ -77,7 +77,7 @@
 | public | <strong>removeIndentation(</strong><em>\string</em> <strong>$sContent</strong>)</strong> : <em>void</em> |
 | public | <strong>render(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>string</em><br /><em>Render a form <input type="radio"> element from the provided $oElement</em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
-| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>)</strong> : <em>void</em> |
+| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>, <em>\string</em> <strong>$sTag</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
@@ -110,7 +110,7 @@
 | public | <strong>render(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>string/null</em> <strong>$sLabelPosition=null</strong>)</strong> : <em>string</em> |
 | public | <strong>renderFormRow(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>mixed</em> <strong>$sElementContent</strong>)</strong> : <em>string</em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
-| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>)</strong> : <em>void</em> |
+| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>, <em>\string</em> <strong>$sTag</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
@@ -148,7 +148,7 @@
 | public | <strong>removeIndentation(</strong><em>\string</em> <strong>$sContent</strong>)</strong> : <em>void</em> |
 | public | <strong>render(</strong><em>array/\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>string</em> <strong>$sButtonContent=null</strong>)</strong> : <em>string</em><br /><em>Accept following extra options: * string variant:  'danger', 'dark', 'info', 'light', 'link', 'primary', 'secondary', 'success', 'warning' * string size:  'sm', 'lg' * bool block</em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
-| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>)</strong> : <em>void</em> |
+| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>, <em>\string</em> <strong>$sTag</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
 | protected | <strong>defineButtonClasses(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
@@ -196,7 +196,7 @@
 | public | <strong>removeIndentation(</strong><em>\string</em> <strong>$sContent</strong>)</strong> : <em>void</em> |
 | public | <strong>render(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>string</em><br /><em>Render an element</em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
-| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>)</strong> : <em>void</em> |
+| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>, <em>\string</em> <strong>$sTag</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
@@ -227,7 +227,7 @@
 | public | <strong>removeIndentation(</strong><em>\string</em> <strong>$sContent</strong>)</strong> : <em>void</em> |
 | public | <strong>render(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>string</em><br /><em>Render a form <input type="radio"> element from the provided $oElement</em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
-| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>)</strong> : <em>void</em> |
+| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>, <em>\string</em> <strong>$sTag</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
@@ -259,7 +259,7 @@
 | public | <strong>removeIndentation(</strong><em>\string</em> <strong>$sContent</strong>)</strong> : <em>void</em> |
 | public | <strong>render(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>string</em><br /><em>Render a form <input> element from the provided $oElement</em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
-| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>)</strong> : <em>void</em> |
+| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>, <em>\string</em> <strong>$sTag</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
@@ -290,7 +290,7 @@
 | public | <strong>render(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>string</em><br /><em>Render a form <select> element from the provided $element</em> |
 | public | <strong>renderOptions(</strong><em>array</em> <strong>$aOptions</strong>, <em>array</em> <strong>$aSelectedOptions=array()</strong>)</strong> : <em>string</em><br /><em>Render an array of options Individual options should be of the form: <code> array( 'value'    => 'value', 'label'    => 'label', 'disabled' => $booleanFlag, 'selected' => $booleanFlag, ) </code></em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
-| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>)</strong> : <em>void</em> |
+| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>, <em>\string</em> <strong>$sTag</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
@@ -348,7 +348,7 @@
 | public | <strong>render(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>string</em><br /><em>Render a collection by iterating through all fieldsets and elements</em> |
 | public | <strong>renderTemplate(</strong><em>\Zend\Form\Element\Collection</em> <strong>$oCollection</strong>)</strong> : <em>string</em><br /><em>Only render a template</em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
-| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>)</strong> : <em>void</em> |
+| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>, <em>\string</em> <strong>$sTag</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
@@ -408,7 +408,7 @@
 | public | <strong>removeIndentation(</strong><em>\string</em> <strong>$sContent</strong>)</strong> : <em>void</em> |
 | public | <strong>renderPartial(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>string</em><br /><em>Render element's label</em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
-| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>)</strong> : <em>void</em> |
+| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>, <em>\string</em> <strong>$sTag</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
@@ -440,7 +440,7 @@
 | public | <strong>removeIndentation(</strong><em>\string</em> <strong>$sContent</strong>)</strong> : <em>void</em> |
 | public | <strong>render(</strong><em>\Zend\Form\FormInterface</em> <strong>$oForm</strong>)</strong> : <em>string</em><br /><em>Render a form from the provided $oForm,</em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
-| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>)</strong> : <em>void</em> |
+| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>, <em>\string</em> <strong>$sTag</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
@@ -472,7 +472,7 @@
 | public | <strong>removeIndentation(</strong><em>\string</em> <strong>$sContent</strong>)</strong> : <em>void</em> |
 | public | <strong>render(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement=null</strong>, <em>\string</em> <strong>$sContent=`''`</strong>)</strong> : <em>void</em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
-| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>)</strong> : <em>void</em> |
+| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>, <em>\string</em> <strong>$sTag</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
 | protected | <strong>createFormElement(</strong><em>array</em> <strong>$aElement</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
@@ -652,7 +652,8 @@
 | Visibility | Function |
 |:-----------|:---------|
 | public | <strong>__invoke(</strong><em>array</em> <strong>$aItems</strong>, <em>array</em> <strong>$aOptionsAndAttributes=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string The list XHTML.</em><br /><em>Generates a 'List' element. Manage indentation of Xhtml markup If class attributes contains "list-inline", so the li will have the class "list-inline-item"</em> |
-| protected | <strong>renderListItem(</strong><em>mixed</em> <strong>$sItem</strong>, <em>\string</em> <strong>$sItemLabel=`''`</strong>, <em>array</em> <strong>$aOptionsAndAttributes=array()</strong>, <em>array</em> <strong>$aLiAttributes=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
+| protected | <strong>renderContainer(</strong><em>\string</em> <strong>$sTag</strong>, <em>array</em> <strong>$aOptionsAndAttributes</strong>, <em>\string</em> <strong>$sListContent</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
+| protected | <strong>renderListItem(</strong><em>mixed</em> <strong>$sItem</strong>, <em>\string</em> <strong>$sItemLabel=`''`</strong>, <em>array</em> <strong>$aOptionsAndAttributes=array()</strong>, <em>array</em> <strong>$aItemAttributes=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>, <em>\string</em> <strong>$sTag=`'li'`</strong>)</strong> : <em>void</em> |
 
 *This class extends [\TwbsHelper\View\Helper\AbstractHtmlElement](#class-twbshelperviewhelperabstracthtmlelement)*
 
@@ -706,7 +707,7 @@
 | public | <strong>setTranslatorEnabled(</strong><em>bool</em> <strong>$enabled=true</strong>)</strong> : <em>mixed</em><br /><em>Sets whether translator is enabled and should be used</em> |
 | public | <strong>setTranslatorTextDomain(</strong><em>string</em> <strong>$textDomain=`'default'`</strong>)</strong> : <em>mixed</em><br /><em>Set translation text domain</em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
-| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>)</strong> : <em>void</em> |
+| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>, <em>\string</em> <strong>$sTag</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
@@ -878,7 +879,8 @@
 | Visibility | Function |
 |:-----------|:---------|
 | public | <strong>__invoke(</strong><em>array</em> <strong>$aItems</strong>, <em>array</em> <strong>$aOptionsAndAttributes=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string The list XHTML.</em><br /><em>Generates a 'List' element. Manage indentation of Xhtml markup</em> |
-| protected | <strong>renderListItem(</strong><em>mixed</em> <strong>$sItem</strong>, <em>\string</em> <strong>$sItemLabel=`''`</strong>, <em>array</em> <strong>$aOptionsAndAttributes=array()</strong>, <em>array</em> <strong>$aLiAttributes=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
+| protected | <strong>renderContainer(</strong><em>\string</em> <strong>$sTag</strong>, <em>array</em> <strong>$aOptionsAndAttributes</strong>, <em>\string</em> <strong>$sListContent</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
+| protected | <strong>renderListItem(</strong><em>mixed</em> <strong>$sItem</strong>, <em>\string</em> <strong>$sItemLabel=`''`</strong>, <em>array</em> <strong>$aOptionsAndAttributes=array()</strong>, <em>array</em> <strong>$aItemAttributes=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>, <em>\string</em> <strong>$sTag=`'li'`</strong>)</strong> : <em>void</em> |
 
 *This class extends [\TwbsHelper\View\Helper\HtmlList](#class-twbshelperviewhelperhtmllist)*
 
