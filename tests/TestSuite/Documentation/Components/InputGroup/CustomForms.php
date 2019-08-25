@@ -159,6 +159,35 @@ return [
                 'Button</button>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</div>',
-        ]
+        ],
+        [
+            'title' => 'Custom file input',
+            'url' => '%bootstrap-url%/components/input-group/#custom-file-input',
+            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                $oFactory = new \Zend\Form\Factory();
+
+                echo $oView->formRow($oFactory->create([
+                    'name' => 'custom_file',
+                    'type' => 'file',
+                    'options' => [
+                        'custom' => true,
+                        'label' => 'Choose file',
+                        'form_group' => false,
+                        'input_group_class' => 'mb-3',
+                        'add_on_prepend' => 'Upload',
+                    ],
+                    'attributes' => ['id' => 'inputGroupFileAddon01'],
+                ]));
+            },
+            'expected' => '<div class="input-group mb-3">' . PHP_EOL .
+            '    <div class="input-group-prepend">' . PHP_EOL .
+            '        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>' . PHP_EOL .
+            '    </div>' . PHP_EOL .
+            '    <div class="custom-file">' . PHP_EOL .
+            '        <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">' . PHP_EOL .
+            '        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>' . PHP_EOL .
+            '    </div>' . PHP_EOL .
+            '</div>',
+        ],
     ],
 ];
