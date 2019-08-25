@@ -26,6 +26,7 @@
 - [\TwbsHelper\View\Helper\Carousel](#class-twbshelperviewhelpercarousel)
 - [\TwbsHelper\View\Helper\Table](#class-twbshelperviewhelpertable)
 - [\TwbsHelper\View\Helper\HtmlList](#class-twbshelperviewhelperhtmllist)
+- [\TwbsHelper\View\Helper\Jumbotron](#class-twbshelperviewhelperjumbotron)
 - [\TwbsHelper\View\Helper\Badge](#class-twbshelperviewhelperbadge)
 - [\TwbsHelper\View\Helper\AbstractHtmlElement](#class-twbshelperviewhelperabstracthtmlelement)
 - [\TwbsHelper\View\Helper\CardDeck](#class-twbshelperviewhelpercarddeck)
@@ -659,6 +660,23 @@
 
 <hr />
 
+### Class: \TwbsHelper\View\Helper\Jumbotron
+
+> Helper for rendering jumbotrons
+
+| Visibility | Function |
+|:-----------|:---------|
+| public | <strong>__invoke(</strong><em>string/array</em> <strong>$sContent</strong>, <em>array</em> <strong>$aOptionsAndAttributes=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string The jumbotron XHTML.</em><br /><em>Generates a 'jumbotron' element</em> |
+| protected | <strong>renderJumbotron(</strong><em>mixed</em> <strong>$sContent</strong>, <em>array</em> <strong>$aOptionsAndAttributes=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
+| protected | <strong>renderJumbotronPart(</strong><em>\string</em> <strong>$sType</strong>, <em>array</em> <strong>$aOptions=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
+| protected | <strong>renderJumbotronParts(</strong><em>array</em> <strong>$aParts=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
+
+*This class extends [\TwbsHelper\View\Helper\AbstractHtmlElement](#class-twbshelperviewhelperabstracthtmlelement)*
+
+*This class implements \Zend\I18n\Translator\TranslatorAwareInterface, \Zend\View\Helper\HelperInterface*
+
+<hr />
+
 ### Class: \TwbsHelper\View\Helper\Badge
 
 > Helper for rendering badges
@@ -752,7 +770,7 @@
 
 ### Class: \TwbsHelper\View\Helper\Card
 
-> Helper for rendering alerts
+> Helper for rendering cards
 
 | Visibility | Function |
 |:-----------|:---------|
