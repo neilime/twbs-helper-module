@@ -92,7 +92,7 @@ class ButtonGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 if (\Zend\Stdlib\ArrayUtils::isList($aDropdownOptions)) {
                     $aDropdownOptions = ['items' => $aDropdownOptions];
                 }
-                $aDropdownOptions['noDropdownContainer'] = true;
+                $aDropdownOptions['disable_container'] = true;
                 $oButton->setOption('dropdown', $aDropdownOptions);
             }
             $sButtonMarkup = $this->getFormElementHelper()->__invoke($oButton);

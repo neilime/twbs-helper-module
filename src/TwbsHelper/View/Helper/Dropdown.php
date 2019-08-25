@@ -55,8 +55,8 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
     ];
 
     /**
-     * @param array $oDropdown
-     * @return TwbsHelper\View\Helper\Dropdown|string
+     * @param \Zend\Form\ElementInterface|array $oDropdown
+     * @return \TwbsHelper\View\Helper\Dropdown|string
      */
     public function __invoke($oDropdown = null, bool $bEscape = true)
     {
@@ -65,7 +65,7 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
     /**
      * Render dropdown markup
-     * @param array $aDropdownOptions
+     * @param \Zend\Form\ElementInterface|array $oDropdown
      * @return string
      */
     public function render($oDropdown, bool $bEscape = true): string
@@ -97,7 +97,7 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
         // Menu
         $sDropdownContent .= $this->renderMenuFromElement($oDropdown, $bEscape);
 
-        if (!empty($aDropdownOptions['noDropdownContainer'])) {
+        if (!empty($aDropdownOptions['disable_container'])) {
             return $sDropdownContent;
         }
 

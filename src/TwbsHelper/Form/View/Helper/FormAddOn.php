@@ -171,7 +171,20 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
 
     protected function renderElement(\Zend\Form\ElementInterface $oElement, array $aAttributes = []): string
     {
+        // Set options to improve rendering
         $oElement->setOption('disable_twbs', true);
+        if ($aDropdownOptions = $oElement->getOption('dropdown')) {
+            if (\Zend\Stdlib\ArrayUtils::isList($aDropdownOptions)) {
+                $oElement->setOption('dropdown', [
+                    'items' => $aDropdownOptions,
+                    'disable_container'      => true,
+                ]);
+            } elseif (!isset($aDropdownOptions['disable_container'])) {
+                $aDropdownOptions['disable_container'] = true;
+                $oElement->setOption('dropdown', $aDropdownOptions);
+            }
+        }
+
         $oElement->setAttributes(\Zend\Stdlib\ArrayUtils::merge(
             $aAttributes,
             $oElement->getAttributes()
