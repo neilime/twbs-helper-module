@@ -18,9 +18,49 @@ class ListGroup extends \TwbsHelper\View\Helper\HtmlList
      */
     public function __invoke(array $aItems, array $aOptionsAndAttributes = [], bool $bEscape = true)
     {
+
         return parent::__invoke(
             $aItems,
             $this->setClassesToAttributes($aOptionsAndAttributes, ['list-group']),
+            $bEscape
+        );
+    }
+
+    protected function renderContainer(
+        string $sTag,
+        array $aOptionsAndAttributes,
+        string $sListContent,
+        bool $bEscape = true
+    ) {
+        if (isset($aOptionsAndAttributes['type'])) {
+            $sTag = 'div';
+        }
+        unset($aOptionsAndAttributes['type']);
+
+        if (isset($aOptionsAndAttributes['flush'])) {
+            $aOptionsAndAttributes = $this->setClassesToAttributes($aOptionsAndAttributes, ['list-group-flush']);
+        }
+        unset($aOptionsAndAttributes['flush']);
+
+        if (isset($aOptionsAndAttributes['horizontal'])) {
+            $aOptionsAndAttributes = $this->setClassesToAttributes(
+                $aOptionsAndAttributes,
+                [
+                    $aOptionsAndAttributes['horizontal'] === true
+                        ? 'list-group-horizontal'
+                        : $this->getSizeClass(
+                            $aOptionsAndAttributes['horizontal'],
+                            'list-group-horizontal'
+                        ),
+                ]
+            );
+        }
+        unset($aOptionsAndAttributes['horizontal']);
+
+        return parent::renderContainer(
+            $sTag,
+            $aOptionsAndAttributes,
+            $sListContent,
             $bEscape
         );
     }
@@ -29,15 +69,62 @@ class ListGroup extends \TwbsHelper\View\Helper\HtmlList
         $sItem,
         string $sItemLabel = '',
         array $aOptionsAndAttributes = [],
-        array $aLiAttributes = [],
-        bool $bEscape = true
+        array $aItemAttributes = [],
+        bool $bEscape = true,
+        string $sTag = 'li'
     ): string {
+
+        $bDisabled = false;
+        if (is_array($sItem)) {
+            if (!empty($sItem['attributes'])) {
+                $aItemAttributes = \Zend\Stdlib\ArrayUtils::merge($aItemAttributes, $sItem['attributes']);
+            }
+            unset($sItem['attributes']);
+
+            $bDisabled =  !empty($sItem['disabled']);
+            unset($sItem['disabled']);
+            if ($bDisabled) {
+                $aItemAttributes['aria-disabled'] = 'true';
+                $aItemAttributes = $this->setClassesToAttributes($aItemAttributes, ['disabled']);
+            }
+
+            if (!empty($sItem['active'])) {
+                $aItemAttributes = $this->setClassesToAttributes($aItemAttributes, ['active']);
+            }
+            unset($sItem['active']);
+        }
+
+        if (!empty($aOptionsAndAttributes['type'])) {
+            switch ($aOptionsAndAttributes['type']) {
+                case 'action':
+                    $sTag = 'a';
+                    $aItemAttributes = $this->setClassesToAttributes($aItemAttributes, ['list-group-item-action']);
+                    if ($bDisabled) {
+                        $aItemAttributes['tabindex'] = -1;
+                    }
+                    break;
+                case 'button':
+                    $sTag = 'button';
+                    $aItemAttributes = $this->setClassesToAttributes($aItemAttributes, ['list-group-item-action']);
+                    $aItemAttributes['type'] = 'button';
+                    if ($bDisabled) {
+                        $aItemAttributes = $this->setClassesToAttributes($aItemAttributes, [], ['disabled']);
+                        $aItemAttributes['disabled'] = true;
+                    }
+                    break;
+
+                default:
+                    throw new \DomainException('Item "type" option "' . $sItem['type'] . '" is not supported');
+            }
+        }
+
         return parent::renderListItem(
             $sItem,
             $sItemLabel,
             $aOptionsAndAttributes,
-            $this->setClassesToAttributes($aLiAttributes, ['list-group-item']),
-            $bEscape
+            $this->setClassesToAttributes($aItemAttributes, ['list-group-item']),
+            $bEscape,
+            $sTag,
         );
     }
 }

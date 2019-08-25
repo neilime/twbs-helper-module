@@ -3,7 +3,7 @@
 // Documentation test config file for "Components / Jumbotron" part
 return [
     'title' => 'Jumbotron',
-    'url' => '%bootstrap-url%/components/jumbotron',
+    'url' => '%bootstrap-url%/components/jumbotron/',
     'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
         echo $oView->jumbotron([
             'title' => 'Hello, world!',

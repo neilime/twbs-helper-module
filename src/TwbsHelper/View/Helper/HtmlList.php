@@ -27,7 +27,7 @@ class HtmlList extends \TwbsHelper\View\Helper\AbstractHtmlElement
         }
 
 
-        $aLiAttributes = isset($aOptionsAndAttributes['class'])
+        $aItemAttributes = isset($aOptionsAndAttributes['class'])
             && strpos($aOptionsAndAttributes['class'], 'list-inline') !== false
             ? $this->setClassesToAttributes([], ['list-inline-item'])
             : [];
@@ -38,19 +38,32 @@ class HtmlList extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 $sItem,
                 is_string($sKey) ? $sKey : '',
                 $aOptionsAndAttributes,
-                $aLiAttributes,
+                $aItemAttributes,
                 $bEscape
             );
         }
 
         $bOrdered = isset($aOptionsAndAttributes['ordered']) ? $aOptionsAndAttributes['ordered'] : false;
         unset($aOptionsAndAttributes['ordered']);
-
-        return $this->htmlElement(
+        return $this->renderContainer(
             $bOrdered ? 'ol' : 'ul',
             $aOptionsAndAttributes,
             $sListContent,
-            false
+            $bEscape
+        );
+    }
+
+    protected function renderContainer(
+        string $sTag,
+        array $aOptionsAndAttributes,
+        string $sListContent,
+        bool $bEscape = true
+    ) {
+        return $this->htmlElement(
+            $sTag,
+            $aOptionsAndAttributes,
+            $sListContent,
+            $bEscape
         );
     }
 
@@ -58,8 +71,9 @@ class HtmlList extends \TwbsHelper\View\Helper\AbstractHtmlElement
         $sItem,
         string $sItemLabel = '',
         array $aOptionsAndAttributes = [],
-        array $aLiAttributes = [],
-        bool $bEscape = true
+        array $aItemAttributes = [],
+        bool $bEscape = true,
+        string $sTag = 'li'
     ): string {
 
         if (is_array($sItem)) {
@@ -67,24 +81,27 @@ class HtmlList extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 if ($bEscape) {
                     $sItemLabel = $this->getView()->plugin('escapeHtml')->__invoke($sItemLabel);
                 }
-                $sItemLabel .= PHP_EOL;
             }
 
-            // Generate nested list
-            $sItem = $sItemLabel . $this(
-                $sItem,
-                $aOptionsAndAttributes,
-                $bEscape
-            );
+            if ($sItem) {
+                // Generate nested list
+                $sItem = ($sItemLabel ? $sItemLabel . PHP_EOL : '') . $this(
+                    $sItem,
+                    $aOptionsAndAttributes,
+                    $bEscape
+                );
+            } else {
+                $sItem = $sItemLabel;
+            }
         } elseif ($bEscape) {
             $sItem = $this->getView()->plugin('escapeHtml')->__invoke($sItem);
         }
 
         return $this->htmlElement(
-            'li',
-            $aLiAttributes,
+            $sTag,
+            $aItemAttributes,
             $sItem,
-            false
+            $bEscape
         );
     }
 }

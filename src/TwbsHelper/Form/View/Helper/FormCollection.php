@@ -63,7 +63,7 @@ class FormCollection extends \Zend\Form\View\Helper\FormCollection
                 $this->attributesToString($this->setClassesToAttributes(
                     $aLabelAttributes,
                     $aLegendClasses
-                )),
+                ), 'legend'),
                 $aLegendMatches[1]
             ) . PHP_EOL;
             $sMarkup = str_replace($aLegendMatches[0], '', $sMarkup);

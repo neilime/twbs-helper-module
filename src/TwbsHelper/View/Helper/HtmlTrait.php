@@ -14,7 +14,9 @@ trait HtmlTrait
         bool $bEscape = true
     ): string {
 
-        $sElementContent = '<' . $sTag . $this->attributesToString($aAttributes);
+        $sAttributes = $this->attributesToString($aAttributes, $sTag);
+
+        $sElementContent = '<' . $sTag . $sAttributes;
         if ($sContent === null) {
             $sElementContent .= $this->getClosingBracket();
             return $sElementContent;
@@ -31,7 +33,7 @@ trait HtmlTrait
         return sprintf(
             '<%s%s>%s</%s>',
             $sTag,
-            $this->attributesToString($aAttributes),
+            $sAttributes,
             $this->addProperIndentation($sContent, $bForceIndentation),
             $sTag
         );
@@ -82,13 +84,20 @@ trait HtmlTrait
         return $sString !== strip_tags($sString);
     }
 
-    protected function attributesToString(array $aAttributes): string
+    protected function attributesToString(array $aAttributes, string $sTag): string
     {
         $aPossibleHelpers = [
-            [$this, 'htmlAttribs'],
             [$this, 'createAttributesString'],
-            [$this->getView()->plugin('form'), 'createAttributesString'],
+            [$this, 'htmlAttribs'],
         ];
+        switch ($sTag) {
+            case 'button':
+                array_unshift(
+                    $aPossibleHelpers,
+                    [$this->getView()->plugin('formButton'), 'createAttributesString']
+                );
+                break;
+        }
 
         foreach ($aPossibleHelpers as $aPossibleHelper) {
             if (!is_callable($aPossibleHelper)) {
