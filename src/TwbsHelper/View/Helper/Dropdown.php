@@ -158,7 +158,9 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 'type' => \Zend\Form\Element\Button::class,
                 'name' => $oDropdown->getName() . '-toggle',
                 'options' => $aOptions,
-                'attributes' => [],
+                'attributes' => [
+                    'class' => 'dropdown-toggle-split',
+                ],
             ];
 
             if (is_string($sSplitOption)) {
