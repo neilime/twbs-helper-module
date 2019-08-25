@@ -31,7 +31,7 @@ return [
                 'title' => 'Fluid jumbotron',
                 'lead' => 'This is a modified jumbotron that occupies the entire horizontal space of its parent.',
             ],
-            ['fluid' => true],
+            ['fluid' => true]
         );
     },
     'expected' => '<div class="jumbotron">' . PHP_EOL .
