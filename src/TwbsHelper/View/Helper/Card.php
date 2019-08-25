@@ -3,7 +3,7 @@
 namespace TwbsHelper\View\Helper;
 
 /**
- * Helper for rendering alerts
+ * Helper for rendering cards
  */
 class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {

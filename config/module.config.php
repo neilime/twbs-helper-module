@@ -46,6 +46,7 @@ return [
             'image'         => 'TwbsHelper\View\Helper\Image',
             'listGroup'     => 'TwbsHelper\View\Helper\ListGroup',
             'table'         => 'TwbsHelper\View\Helper\Table',
+            'jumbotron'         => 'TwbsHelper\View\Helper\Jumbotron',
 
             // Form view helpers
             'form'              => 'TwbsHelper\Form\View\Helper\Form',
