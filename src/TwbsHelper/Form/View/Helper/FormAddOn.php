@@ -11,6 +11,11 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
     const POSITION_PREPEND = 'prepend';
 
     /**
+     * @var \Zend\Form\Factory
+     */
+    protected $formFactory;
+
+    /**
      * @param \Zend\Form\ElementInterface $oElement
      * @return \TwbsHelper\Form\View\Helper\FormAddOn|string
      */
@@ -30,6 +35,8 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
                 $bHasAddOn = true;
 
                 $aAttributes = ['class' => 'input-group-' . $sAddOnPosition];
+
+                // Define global add-on id based on element's aria-describedby
                 if ($sAddOnId && \Zend\Stdlib\ArrayUtils::isList($aAddOnOptions)) {
                     $aAttributes['id'] = $sAddOnId;
                 }
@@ -37,7 +44,7 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
                 $sAddOnContent = $this->htmlElement(
                     'div',
                     $aAttributes,
-                    $this->renderAddOn($aAddOnOptions, $sAddOnId)
+                    $this->renderAddOn($aAddOnOptions, $oElement, $sAddOnId)
                 );
 
                 if ($sAddOnPosition === self::POSITION_APPEND) {
@@ -80,8 +87,11 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
      * @throws \LogicException
      * @return string
      */
-    protected function renderAddOn($aAddOnOptions, string $sAddOnId = null): string
-    {
+    protected function renderAddOn(
+        $aAddOnOptions,
+        \Zend\Form\ElementInterface $oElement,
+        string $sAddOnId = null
+    ): string {
         if (empty($aAddOnOptions)) {
             throw new \InvalidArgumentException('Addon options are empty');
         }
@@ -90,32 +100,36 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
             $aAddOnOptions = ['element' => $aAddOnOptions];
         } elseif (is_scalar($aAddOnOptions)) {
             $aAddOnOptions = ['text' => $aAddOnOptions];
-        } elseif (is_array($aAddOnOptions)) {
-            if (\Zend\Stdlib\ArrayUtils::isList($aAddOnOptions)) {
-                $sContent = '';
-                foreach ($aAddOnOptions as $aAddOnOptionsTmp) {
-                    $sContent .= ($sContent ? PHP_EOL : '') . $this->renderAddOn(
-                        $aAddOnOptionsTmp
-                    );
-                }
-                return $sContent;
-            }
-        } else {
+        } elseif (!is_array($aAddOnOptions)) {
             throw new \InvalidArgumentException(sprintf(
                 'Addon options expects an array or a scalar value, "%s" given',
                 is_object($aAddOnOptions) ? get_class($aAddOnOptions) : gettype($aAddOnOptions)
             ));
         }
 
+        if (\Zend\Stdlib\ArrayUtils::isList($aAddOnOptions)) {
+            $sContent = '';
+            foreach ($aAddOnOptions as $aAddOnOptionsTmp) {
+                $sContent .= ($sContent ? PHP_EOL : '') . $this->renderAddOn(
+                    $aAddOnOptionsTmp,
+                    $oElement
+                );
+            }
+            return $sContent;
+        }
+
+        // Define add-on id based on element's aria-describedby
         if ($sAddOnId && !isset($aAddOnOptions['attributes']['id'])) {
             $aAddOnOptions['attributes']['id'] = $sAddOnId;
         }
 
-        return $this->renderContent($aAddOnOptions);
+        return $this->renderContent($aAddOnOptions, $oElement);
     }
 
-    protected function renderContent(array $aAddOnOptions): string
+    protected function renderContent(array $aAddOnOptions, \Zend\Form\ElementInterface $oElement): string
     {
+        $aAttributes = $aAddOnOptions['attributes'] ?? [];
+
         switch (true) {
             case isset($aAddOnOptions['text']):
                 if (!is_string($aAddOnOptions['text'])) {
@@ -128,7 +142,23 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
                 }
                 return $this->renderText(
                     $aAddOnOptions['text'],
-                    $aAddOnOptions['attributes'] ?? []
+                    $aAttributes
+                );
+
+            case isset($aAddOnOptions['label']):
+                if (!is_string($aAddOnOptions['label'])) {
+                    throw new \InvalidArgumentException(sprintf(
+                        '"label" option expects a string, "%s" given',
+                        is_object($aAddOnOptions['label'])
+                            ? get_class($aAddOnOptions['label'])
+                            : gettype($aAddOnOptions['label'])
+                    ));
+                }
+
+                return $this->renderLabel(
+                    $aAddOnOptions['label'],
+                    $aAttributes,
+                    $oElement
                 );
 
             case isset($aAddOnOptions['element']):
@@ -137,8 +167,7 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
                     || ($aAddOnOptions['element'] instanceof \Traversable
                         && !($aAddOnOptions['element'] instanceof \Zend\Form\ElementInterface))
                 ) {
-                    $oFactory  = new \Zend\Form\Factory();
-                    $aAddOnOptions['element'] = $oFactory->create($aAddOnOptions['element']);
+                    $aAddOnOptions['element'] = $this->createFormElement($aAddOnOptions['element']);
                 } elseif (!($aAddOnOptions['element'] instanceof \Zend\Form\ElementInterface)) {
                     throw new \LogicException(sprintf(
                         '"element" option expects an instanceof \Zend\Form\ElementInterface, "%s" given',
@@ -149,7 +178,7 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
                 }
                 return $this->renderElement(
                     $aAddOnOptions['element'],
-                    $aAddOnOptions['attributes'] ?? []
+                    $aAttributes
                 );
 
             default:
@@ -157,7 +186,7 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
         }
     }
 
-    protected function renderText(string $sAddonText, array $aAttributes = []): string
+    protected function renderText(string $sAddonText, array $aAttributes): string
     {
         $oTranslator = $this->getTranslator();
         if ($oTranslator) {
@@ -169,7 +198,25 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
         return $this->renderAddOnElement($sAddonText, $aAttributes);
     }
 
-    protected function renderElement(\Zend\Form\ElementInterface $oElement, array $aAttributes = []): string
+    protected function renderLabel(
+        string $sAddonLabel,
+        array $aAttributes,
+        \Zend\Form\ElementInterface $oElement
+    ): string {
+        return $this->getView()->plugin('formLabel')->__invoke($this->createFormElement([
+            'name' => $oElement->getName(),
+            'options' => [
+                'label' => $sAddonLabel,
+                'label_attributes' => $this->setClassesToAttributes(
+                    $aAttributes,
+                    ['input-group-text']
+                ),
+            ],
+            'attributes' => ['id' => $oElement->getAttribute('id')],
+        ]));
+    }
+
+    protected function renderElement(\Zend\Form\ElementInterface $oElement, array $aAttributes): string
     {
         // Set options to improve rendering
         $oElement->setOption('disable_twbs', true);
@@ -206,5 +253,13 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
             $this->setClassesToAttributes($aAttributes, ['input-group-text']),
             $sAddonText
         );
+    }
+
+    protected function createFormElement(array $aElement): \Zend\Form\ElementInterface
+    {
+        if (!$this->formFactory) {
+            $this->formFactory = new \Zend\Form\Factory();
+        }
+        return $this->formFactory->createElement($aElement);
     }
 }

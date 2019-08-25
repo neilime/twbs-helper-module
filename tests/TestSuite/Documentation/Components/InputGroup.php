@@ -9,7 +9,6 @@ return [
         include __DIR__ . DIRECTORY_SEPARATOR . 'InputGroup/Wrapping.php',
         include __DIR__ . DIRECTORY_SEPARATOR . 'InputGroup/Sizing.php',
         include __DIR__ . DIRECTORY_SEPARATOR . 'InputGroup/CheckboxesAndRadios.php',
-        include __DIR__ . DIRECTORY_SEPARATOR . 'InputGroup/MultipleInputs.php',
         include __DIR__ . DIRECTORY_SEPARATOR . 'InputGroup/MultipleAddons.php',
         include __DIR__ . DIRECTORY_SEPARATOR . 'InputGroup/ButtonAddons.php',
         include __DIR__ . DIRECTORY_SEPARATOR . 'InputGroup/ButtonsWithDropdowns.php',

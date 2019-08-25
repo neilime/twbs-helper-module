@@ -15,11 +15,6 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
     protected $inputErrorClass = 'is-invalid';
 
     /**
-     * @var string
-     */
-    protected $requiredFormat = null;
-
-    /**
      * @param \Zend\Form\ElementInterface $oElement
      * @param string|null $sLabelPosition
      * @return string
@@ -43,7 +38,7 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
                 $this->partial,
                 [
                     'element'         => $oElement,
-                    'label'           => $this->renderLabel($oElement),
+                    'label'           => $this->getLabelHelper()->renderPartial($oElement),
                     'labelAttributes' => $this->labelAttributes,
                     'labelPosition'   => $sLabelPosition,
                     'renderErrors'    => $this->renderErrors,
@@ -158,7 +153,7 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
             case \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE:
                 $aRenderingOrder = [
                     'renderFeedback' => [],
-                    'renderLabelContent' =>  [$sLabelPosition],
+                    'renderLabel' =>  [$sLabelPosition],
                     'renderHelpBlock' => [],
                     'renderErrors' => [],
                     'renderDedicatedContainer' => [],
@@ -197,88 +192,39 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
             $sElementContent
         );
 
-        return $this->renderLabelContent($oElement, $sElementContent, $sLabelPosition);
+        return $this->renderLabel($oElement, $sElementContent, $sLabelPosition);
     }
+
 
     /**
      * Render element's label
      *
      * @param \Zend\Form\ElementInterface $oElement
+     * @param string $sElementContent
+     * @param string $sLabelPosition
      * @return string
      */
-    protected function renderLabel(\Zend\Form\ElementInterface $oElement): string
-    {
-        $sLabel = $oElement->getLabel();
-        if ($sLabel && ($oTranslator = $this->getTranslator())) {
-            $sLabel = $oTranslator->translate($sLabel, $this->getTranslatorTextDomain());
-        }
-
-        return $sLabel ?? '';
-    }
-
-    protected function renderLabelContent(
+    protected function renderLabel(
         \Zend\Form\ElementInterface $oElement,
         string $sElementContent,
         string $sLabelPosition = null
     ): string {
 
-        $sLabelContent = $this->renderLabel($oElement);
+        if (!$oElement->getLabel()) {
+            return $sElementContent;
+        }
+
+        $sLabelContent = $this->getLabelHelper()->__invoke($oElement);
+
         if (!$sLabelContent) {
             return $sElementContent;
         }
 
-        // Button element is a special case, because label is always rendered inside it
-        if (
-            $oElement instanceof \Zend\Form\Element\Button
-            || $oElement instanceof \Zend\Form\Element\Submit
-        ) {
-            return $sElementContent;
-        }
+        $sPosition = $this->getDefaultLabelPosition($oElement, $sLabelPosition);
 
-        $aLabelAttributes = $oElement instanceof \Zend\Form\LabelAwareInterface
-            ? $oElement->getLabelAttributes()
-            : $this->labelAttributes ?? [];
-
-        $oElement->setLabelAttributes($aLabelAttributes = $this->setClassesToAttributes(
-            $aLabelAttributes,
-            $this->getLabelClasses($oElement, $aLabelAttributes)
-        ));
-
-        // Allow label html escape disable
-        if (
-            !$oElement instanceof \Zend\Form\LabelAwareInterface
-            || !$oElement->getLabelOption('disable_html_escape')
-        ) {
-            $sLabelContent = $this->getEscapeHtmlHelper()->__invoke($sLabelContent);
-        }
-
-        // Add required string if element is required
-        if (
-            $this->requiredFormat &&
-            $oElement->getAttribute('required') && strpos($this->requiredFormat, $sLabelContent) === false
-        ) {
-            $sLabelContent .= $this->requiredFormat;
-        }
-
-        if ($oElement instanceof \Zend\Form\Element\MultiCheckbox) {
-            $sLabelContent = $this->htmlElement(
-                'div',
-                $aLabelAttributes,
-                $sLabelContent,
-                !$oElement->getLabelOption('disable_html_escape')
-            );
-        } else {
-            $oLabelHelper = $this->getLabelHelper();
-            $sLabelOpen  = $oLabelHelper->openTag($oElement->getAttribute('id') ? $oElement : $aLabelAttributes);
-            $sLabelClose = $oLabelHelper->closeTag();
-            $sLabelContent = $sLabelOpen . $sLabelContent . $sLabelClose;
-        }
-
-        $sLabelPosition = $this->getDefaultLabelPosition($oElement, $sLabelPosition);
-
-        return $sLabelPosition === self::LABEL_PREPEND
-            ? $sLabelContent . PHP_EOL . $sElementContent
-            : $sElementContent . PHP_EOL . $sLabelContent;
+        return $sPosition === self::LABEL_APPEND
+            ? $sElementContent . PHP_EOL . $sLabelContent
+            : $sLabelContent . PHP_EOL . $sElementContent;
     }
 
     protected function getDefaultLabelPosition(\Zend\Form\ElementInterface $oElement, $sLabelPosition = null): string
@@ -306,73 +252,6 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
                 }
                 return $this->getLabelPosition();
         }
-    }
-
-    protected function getLabelClasses(\Zend\Form\ElementInterface $oElement, array $aLabelAttributes): array
-    {
-        $aLabelClasses = [];
-
-        // Define label column class
-        $sColumSize = $oElement->getOption('column');
-        if (
-            $sColumSize
-            && $oElement->getOption('layout') !== null
-            && !$this->hasColumnClassAttribute($aLabelAttributes['class'] ?? '')
-        ) {
-            $aLabelClasses[] = $this->getColumnCounterpartClass($sColumSize);
-        }
-
-        // Define label size class
-        if ($sSize = $oElement->getOption('size')) {
-            $aLabelClasses[] = $this->getSizeClass($sSize, 'col-form-label');
-        }
-
-        if ($oElement instanceof \Zend\Form\Element\MultiCheckbox) {
-            return $aLabelClasses;
-        }
-
-
-
-        switch ($oElement->getAttribute('type')) {
-            case 'checkbox':
-            case 'radio':
-                $aLabelClasses[] = $oElement->getOption('custom')
-                    ? 'custom-control-label'
-                    : 'form-check-label';
-                break;
-
-            case 'file':
-                if ($oElement->getOption('custom')) {
-                    $aLabelClasses[] = 'custom-file-label';
-                }
-                break;
-
-            default:
-                // Validation state
-                if ($oElement->getOption('validation-state') || $oElement->getMessages()) {
-                    $aLabelClasses[] = 'col-form-label';
-                }
-
-                $sLayout = $oElement->getOption('layout');
-                switch ($sLayout) {
-                        // Hide label for "inline" layout
-                    case \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE:
-                        if ($oElement->getOption('show_label') !== true) {
-                            $aLabelClasses[] = 'sr-only';
-                        }
-                        break;
-
-                    case \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL:
-                        $aLabelClasses[] = 'col-form-label';
-                        break;
-                    case null:
-                        if ($oElement->getOption('show_label') === false) {
-                            $aLabelClasses[] = 'sr-only';
-                        }
-                        break;
-                }
-        }
-        return $aLabelClasses;
     }
 
     /**

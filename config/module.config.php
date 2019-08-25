@@ -62,6 +62,7 @@ return [
             'formSelect'        => 'TwbsHelper\Form\View\Helper\FormSelect',
             'formStatic'        => 'TwbsHelper\Form\View\Helper\FormStatic',
             'formErrors'        => 'TwbsHelper\Form\View\Helper\FormErrors',
+            'formLabel'        => 'TwbsHelper\Form\View\Helper\FormLabel',
 
             // ZF3
             'form_add_on'         => 'TwbsHelper\Form\View\Helper\FormAddOn',
@@ -70,12 +71,13 @@ return [
             'form_checkbox'       => 'TwbsHelper\Form\View\Helper\FormCheckbox',
             'form_collection'     => 'TwbsHelper\Form\View\Helper\FormCollection',
             'form_element_errors' => 'TwbsHelper\Form\View\Helper\FormElementErrors',
+            'form_label'          => 'TwbsHelper\Form\View\Helper\FormLabel',
             'form_multi_checkbox' => 'TwbsHelper\Form\View\Helper\FormMultiCheckbox',
             'form_radio'          => 'TwbsHelper\Form\View\Helper\FormRadio',
             'form_row'            => 'TwbsHelper\Form\View\Helper\FormRow',
             'form_static'         => 'TwbsHelper\Form\View\Helper\FormStatic',
             'form_errors'         => 'TwbsHelper\Form\View\Helper\FormErrors',
-            'formaddon'          => 'TwbsHelper\Form\View\Helper\FormAddOn',
+            'formaddon'           => 'TwbsHelper\Form\View\Helper\FormAddOn',
             'formbutton'          => 'TwbsHelper\Form\View\Helper\FormButton',
             'formsubmit'          => 'TwbsHelper\Form\View\Helper\FormButton',
             'formcheckbox'        => 'TwbsHelper\Form\View\Helper\FormCheckbox',
@@ -89,10 +91,9 @@ return [
             'formselect'          => 'TwbsHelper\Form\View\Helper\FormSelect',
             'formstatic'          => 'TwbsHelper\Form\View\Helper\FormStatic',
             'formerrors'          => 'TwbsHelper\Form\View\Helper\FormErrors',
+            'formlabel'           => 'TwbsHelper\Form\View\Helper\FormLabel',
 
             // Zend
-            'form_label'   => 'Zend\Form\View\Helper\FormLabel',
-            'formlabel'    => 'Zend\Form\View\Helper\FormLabel',
             'formemail'    => 'Zend\Form\View\Helper\FormEmail',
             'formpassword' => 'Zend\Form\View\Helper\FormPassword',
             'formtext'     => 'Zend\Form\View\Helper\FormText',
