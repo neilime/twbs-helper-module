@@ -14,6 +14,7 @@
 - [\TwbsHelper\Form\View\Helper\FormCollection](#class-twbshelperformviewhelperformcollection)
 - [\TwbsHelper\Form\View\Helper\FormErrors](#class-twbshelperformviewhelperformerrors)
 - [\TwbsHelper\Form\View\Helper\FormElementErrors](#class-twbshelperformviewhelperformelementerrors)
+- [\TwbsHelper\Form\View\Helper\FormLabel](#class-twbshelperformviewhelperformlabel)
 - [\TwbsHelper\Form\View\Helper\Form](#class-twbshelperformviewhelperform)
 - [\TwbsHelper\Form\View\Helper\FormAddOn](#class-twbshelperformviewhelperformaddon)
 - [\TwbsHelper\Form\View\Helper\FormRange](#class-twbshelperformviewhelperformrange)
@@ -392,6 +393,38 @@
 |:-----------|:---------|
 
 *This class extends \Zend\Form\View\Helper\FormElementErrors*
+
+*This class implements \Zend\I18n\Translator\TranslatorAwareInterface, \Zend\View\Helper\HelperInterface*
+
+<hr />
+
+### Class: \TwbsHelper\Form\View\Helper\FormLabel
+
+| Visibility | Function |
+|:-----------|:---------|
+| public | <strong>__invoke(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement=null</strong>, <em>null/string</em> <strong>$sLabelContent=null</strong>, <em>string</em> <strong>$sPosition=null</strong>)</strong> : <em>string/\TwbsHelper\Form\View\HelperFormLabel</em><br /><em>Generate a form label, optionally with content Always generates a "for" statement, as we cannot assume the form input will be provided in the $labelContent.</em> |
+| public | <strong>addProperIndentation(</strong><em>\string</em> <strong>$sContent</strong>, <em>\bool</em> <strong>$bForceIndentation=false</strong>, <em>\string</em> <strong>$sIndentation=null</strong>)</strong> : <em>void</em> |
+| public | <strong>htmlElement(</strong><em>\string</em> <strong>$sTag</strong>, <em>array</em> <strong>$aAttributes=array()</strong>, <em>\string</em> <strong>$sContent=null</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
+| public | <strong>removeIndentation(</strong><em>\string</em> <strong>$sContent</strong>)</strong> : <em>void</em> |
+| public | <strong>renderPartial(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>string</em><br /><em>Render element's label</em> |
+| protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>)</strong> : <em>void</em> |
+| protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getLabelClasses(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aLabelAttributes</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getSizeClass(</strong><em>\string</em> <strong>$sSize</strong>, <em>\string</em> <strong>$sPrefix</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getSizes()</strong> : <em>mixed</em> |
+| protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getVariants()</strong> : <em>mixed</em> |
+| protected | <strong>hasClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>\string</em> <strong>$sClass</strong>)</strong> : <em>bool</em> |
+| protected | <strong>hasColumnClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>)</strong> : <em>bool</em> |
+| protected | <strong>isHTML(</strong><em>\string</em> <strong>$sString</strong>)</strong> : <em>bool</em> |
+| protected | <strong>setClassesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| protected | <strong>setClassesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+
+*This class extends \Zend\Form\View\Helper\FormLabel*
 
 *This class implements \Zend\I18n\Translator\TranslatorAwareInterface, \Zend\View\Helper\HelperInterface*
 
