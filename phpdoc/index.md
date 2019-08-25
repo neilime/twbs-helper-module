@@ -122,10 +122,10 @@
 | protected | <strong>hasClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>\string</em> <strong>$sClass</strong>)</strong> : <em>bool</em> |
 | protected | <strong>hasColumnClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>)</strong> : <em>bool</em> |
 | protected | <strong>isHTML(</strong><em>\string</em> <strong>$sString</strong>)</strong> : <em>bool</em> |
-| protected | <strong>renderDedicatedContainer(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>\string</em> <strong>$sElementContent</strong>)</strong> : <em>void</em> |
+| protected | <strong>renderDedicatedContainer(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>\string</em> <strong>$sElementContent</strong>)</strong> : <em>string</em><br /><em>Render element's dedicated container</em> |
 | protected | <strong>renderElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>\string</em> <strong>$sLabelPosition=null</strong>)</strong> : <em>string</em> |
 | protected | <strong>renderErrors(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>\string</em> <strong>$sElementContent</strong>)</strong> : <em>string</em><br /><em>Render element's errors</em> |
-| protected | <strong>renderFeedback(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>\string</em> <strong>$sElementContent</strong>)</strong> : <em>string</em><br /><em>Render element's errors</em> |
+| protected | <strong>renderFeedback(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>\string</em> <strong>$sElementContent</strong>)</strong> : <em>string</em><br /><em>Render element's feedback</em> |
 | protected | <strong>renderHelpBlock(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>\string</em> <strong>$sElementContent</strong>)</strong> : <em>string</em><br /><em>Render element's help block</em> |
 | protected | <strong>renderLabel(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>\string</em> <strong>$sElementContent</strong>, <em>\string</em> <strong>$sLabelPosition=null</strong>)</strong> : <em>string</em><br /><em>Render element's label</em> |
 | protected | <strong>setClassesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
@@ -207,7 +207,6 @@
 | protected | <strong>hasClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>\string</em> <strong>$sClass</strong>)</strong> : <em>bool</em> |
 | protected | <strong>hasColumnClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>)</strong> : <em>bool</em> |
 | protected | <strong>isHTML(</strong><em>\string</em> <strong>$sString</strong>)</strong> : <em>bool</em> |
-| protected | <strong>renderAddOn(</strong><em>\Zend\Form\ElementInterface/array/string</em> <strong>$aAddOnOptions</strong>, <em>\string</em> <strong>$sPosition=`'prepend'`</strong>)</strong> : <em>string</em><br /><em>Render add-on markup</em> |
 | protected | <strong>renderHelper(</strong><em>string</em> <strong>$sName</strong>, <em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>string</em><br /><em>Render element by helper name</em> |
 | protected | <strong>setClassesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
 | protected | <strong>setClassesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
