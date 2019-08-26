@@ -40,21 +40,21 @@ class Menu extends \Zend\View\Helper\Navigation\Menu
         }
 
         $aUlClasses = [$this->ulClass];
-        if (!empty($aOptions['tabs'])) {
-            $aUlClasses[] = 'nav-tabs';
+        foreach ([
+            'tabs' => 'nav-tabs',
+            'pills' => 'nav-pills',
+            'centered' => 'justify-content-center',
+            'right_aligned' => 'justify-content-end',
+            'vertical' => 'flex-column',
+        ] as $sOption => $sClassName) {
+            if (!empty($aOptions[$sOption])) {
+                $aUlClasses[] = $sClassName;
+            }
         }
-        if (!empty($aOptions['pills'])) {
-            $aUlClasses[] = 'nav-pills';
-        }
-        if (!empty($aOptions['centered'])) {
-            $aUlClasses[] = 'justify-content-center';
-        }
-        if (!empty($aOptions['right_aligned'])) {
-            $aUlClasses[] = 'justify-content-end';
-        }
+
         $aOptions['ulClass'] = join(' ', $this->addClassesAttribute($aOptions['ulClass'] ?? '', $aUlClasses));
 
-        return parent::renderMenu(
+        $sContent = parent::renderMenu(
             $container,
             array_merge([
                 'liActiveClass' => '',
@@ -62,6 +62,13 @@ class Menu extends \Zend\View\Helper\Navigation\Menu
                 'onlyActiveBranch' => false,
             ], $aOptions)
         );
+
+        if (isset($aOptions['list']) && $aOptions['list'] === false) {
+            $sContent = preg_replace('/(<)ul([^>]*>[\s\S]*<\/)ul([^>]*>)/imU', '$1nav$2nav$3', $sContent);
+            $sContent = preg_replace('/<li[^>]*>\s*(\S(.*\S)?)\s*<\/li[^>]*>/imU', '$1', $sContent);
+        }
+
+        return $sContent;
     }
 
     /**
@@ -70,13 +77,16 @@ class Menu extends \Zend\View\Helper\Navigation\Menu
      *
      * Overrides {@link AbstractHelper::htmlify()}.
      *
-     * @param  AbstractPage $page               page to generate HTML for
-     * @param  bool         $escapeLabel        Whether or not to escape the label
-     * @param  bool         $addClassToListItem Whether or not to add the page class to the list item
+     * @param \Zend\Navigation\Page\AbstractPage $oPage page to generate HTML for
+     * @param bool $bEscapeLabel        Whether or not to escape the label
+     * @param bool $bAddClassToListItem Whether or not to add the page class to the list item
      * @return string
      */
-    public function htmlify(\Zend\Navigation\Page\AbstractPage $oPage, $escapeLabel = true, $addClassToListItem = false)
-    {
+    public function htmlify(
+        \Zend\Navigation\Page\AbstractPage $oPage,
+        $bEscapeLabel = true,
+        $bAddClassToListItem = false
+    ) {
         $sPageClass = $oPage->getClass();
 
         $aClasses = ['nav-link'];
@@ -88,7 +98,7 @@ class Menu extends \Zend\View\Helper\Navigation\Menu
         }
 
         $oPage->setClass(join(' ', $aClasses));
-        $sHtml = parent::htmlify($oPage, $escapeLabel, false);
+        $sHtml = parent::htmlify($oPage, $bEscapeLabel, false);
         $oPage->setClass($sPageClass);
         return $sHtml;
     }
