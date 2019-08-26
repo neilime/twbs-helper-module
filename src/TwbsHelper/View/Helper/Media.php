@@ -45,10 +45,10 @@ class Media extends \TwbsHelper\View\Helper\AbstractHtmlElement
         $sBodyPart = '';
         foreach ($aParts as $sKey => $sPartContent) {
             $sType = is_numeric($sKey) ? self::MEDIA_TEXT : $sKey;
-            if (is_string($sPartContent)) {
-                $aOptions = ['content' => $sPartContent];
-            } elseif (is_array($sPartContent)) {
+            if (is_array($sPartContent)) {
                 $aOptions = $sPartContent;
+            } elseif (is_string($sPartContent)) {
+                $aOptions = ['content' => $sPartContent];
             }
 
             $sPartContent = $this->renderPart(
@@ -71,7 +71,7 @@ class Media extends \TwbsHelper\View\Helper\AbstractHtmlElement
                     $sContent .= ($sContent ? PHP_EOL : '') . $sBodyPart;
                     $sBodyPart = '';
                 }
-                $sContent .= ($sContent ? PHP_EOL : '')  . $sPartContent;
+                $sContent .= ($sContent ? PHP_EOL : '') . $sPartContent;
             }
         }
         if ($sBodyPart) {
@@ -91,6 +91,24 @@ class Media extends \TwbsHelper\View\Helper\AbstractHtmlElement
         array $aOptions = [],
         bool $bEscape = true
     ): string {
+
+        if (
+            $sType !== self::MEDIA_IMAGE
+            && \Zend\Stdlib\ArrayUtils::isList($aOptions)
+        ) {
+            $that = $this;
+            return join(
+                PHP_EOL,
+                array_map(function ($aOptionsItem) use ($that, $sType, $bEscape) {
+                    if (is_string($aOptionsItem)) {
+                        $aOptionsItem = [
+                            'content' => $aOptionsItem,
+                        ];
+                    }
+                    return $that->renderPart($sType, $aOptionsItem, $bEscape);
+                }, $aOptions)
+            );
+        }
 
         $aAttributes = $aOptions['attributes'] ?? [];
         switch ($sType) {
@@ -112,7 +130,8 @@ class Media extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 if (empty($aOptions['content'])) {
                     throw new \DomainException('Media part type "' . $sType . '" expects a content, none given');
                 }
-                return $aOptions['content'];
+                $sTag = 'p';
+                break;
 
             case self::MEDIA_MEDIA:
                 if (empty($aOptions['content'])) {
