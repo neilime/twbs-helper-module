@@ -75,12 +75,22 @@ class ListGroup extends \TwbsHelper\View\Helper\HtmlList
     ): string {
 
         $bDisabled = false;
+
+        // Item with options
         if (is_array($sItem)) {
+            // Content
+            if (!empty($sItem['content'])) {
+                $sItemLabel = $sItem['content'];
+            }
+            unset($sItem['content']);
+
+            // Custom attributes
             if (!empty($sItem['attributes'])) {
                 $aItemAttributes = \Zend\Stdlib\ArrayUtils::merge($aItemAttributes, $sItem['attributes']);
             }
             unset($sItem['attributes']);
 
+            // Disabled state
             $bDisabled =  !empty($sItem['disabled']);
             unset($sItem['disabled']);
             if ($bDisabled) {
@@ -88,12 +98,33 @@ class ListGroup extends \TwbsHelper\View\Helper\HtmlList
                 $aItemAttributes = $this->setClassesToAttributes($aItemAttributes, ['disabled']);
             }
 
+            // Active state
             if (!empty($sItem['active'])) {
                 $aItemAttributes = $this->setClassesToAttributes($aItemAttributes, ['active']);
             }
             unset($sItem['active']);
+
+            // Variant
+            if (!empty($sItem['variant'])) {
+                $aItemAttributes = $this->setClassesToAttributes(
+                    $aItemAttributes,
+                    [$this->getVariantClass($sItem['variant'], 'list-group-item')]
+                );
+            }
+            unset($sItem['variant']);
+
+            // Badge
+            if (!empty($sItem['badge'])) {
+                $aItemAttributes = $this->setClassesToAttributes(
+                    $aItemAttributes,
+                    ['d-flex', 'justify-content-between', 'align-items-center']
+                );
+                $sItemLabel = $this->renderBadge($sItem['badge'], $sItemLabel, $bEscape);
+            }
+            unset($sItem['badge']);
         }
 
+        // Item type
         if (!empty($aOptionsAndAttributes['type'])) {
             switch ($aOptionsAndAttributes['type']) {
                 case 'action':
@@ -126,5 +157,19 @@ class ListGroup extends \TwbsHelper\View\Helper\HtmlList
             $bEscape,
             $sTag,
         );
+    }
+
+    protected function renderBadge($aBadgeOptions, string $sItemLabel, bool $bEscape): string
+    {
+        if ($sItemLabel && $bEscape && !$this->isHTML($sItemLabel)) {
+            $sItemLabel = $this->getView()->plugin('escapeHtml')->__invoke($sItemLabel);
+        }
+
+        $sBadgeContent =  call_user_func_array(
+            [$this->getView()->plugin('badge'), '__invoke'],
+            is_array($aBadgeOptions) ? $aBadgeOptions : [$aBadgeOptions]
+        );
+
+        return ($sItemLabel ? $sItemLabel . PHP_EOL : '') . $sBadgeContent;
     }
 }

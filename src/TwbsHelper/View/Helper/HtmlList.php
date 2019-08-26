@@ -78,7 +78,7 @@ class HtmlList extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
         if (is_array($sItem)) {
             if ($sItemLabel) {
-                if ($bEscape) {
+                if ($bEscape && !$this->isHTML($sItemLabel)) {
                     $sItemLabel = $this->getView()->plugin('escapeHtml')->__invoke($sItemLabel);
                 }
             }
@@ -93,7 +93,7 @@ class HtmlList extends \TwbsHelper\View\Helper\AbstractHtmlElement
             } else {
                 $sItem = $sItemLabel;
             }
-        } elseif ($bEscape) {
+        } elseif ($bEscape && !$this->isHTML($sItem)) {
             $sItem = $this->getView()->plugin('escapeHtml')->__invoke($sItem);
         }
 
