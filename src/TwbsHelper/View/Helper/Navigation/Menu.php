@@ -46,6 +46,12 @@ class Menu extends \Zend\View\Helper\Navigation\Menu
         if (!empty($aOptions['pills'])) {
             $aUlClasses[] = 'nav-pills';
         }
+        if (!empty($aOptions['centered'])) {
+            $aUlClasses[] = 'justify-content-center';
+        }
+        if (!empty($aOptions['right_aligned'])) {
+            $aUlClasses[] = 'justify-content-end';
+        }
         $aOptions['ulClass'] = join(' ', $this->addClassesAttribute($aOptions['ulClass'] ?? '', $aUlClasses));
 
         return parent::renderMenu(
