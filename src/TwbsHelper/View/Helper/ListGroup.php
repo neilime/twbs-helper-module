@@ -155,7 +155,7 @@ class ListGroup extends \TwbsHelper\View\Helper\HtmlList
             $aOptionsAndAttributes,
             $this->setClassesToAttributes($aItemAttributes, ['list-group-item']),
             $bEscape,
-            $sTag,
+            $sTag
         );
     }
 
