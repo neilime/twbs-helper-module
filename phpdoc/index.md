@@ -879,6 +879,7 @@
 | Visibility | Function |
 |:-----------|:---------|
 | public | <strong>__invoke(</strong><em>array</em> <strong>$aItems</strong>, <em>array</em> <strong>$aOptionsAndAttributes=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string The list XHTML.</em><br /><em>Generates a 'List' element. Manage indentation of Xhtml markup</em> |
+| protected | <strong>renderBadge(</strong><em>mixed</em> <strong>$aBadgeOptions</strong>, <em>\string</em> <strong>$sItemLabel</strong>, <em>\bool</em> <strong>$bEscape</strong>)</strong> : <em>void</em> |
 | protected | <strong>renderContainer(</strong><em>\string</em> <strong>$sTag</strong>, <em>array</em> <strong>$aOptionsAndAttributes</strong>, <em>\string</em> <strong>$sListContent</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
 | protected | <strong>renderListItem(</strong><em>mixed</em> <strong>$sItem</strong>, <em>\string</em> <strong>$sItemLabel=`''`</strong>, <em>array</em> <strong>$aOptionsAndAttributes=array()</strong>, <em>array</em> <strong>$aItemAttributes=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>, <em>\string</em> <strong>$sTag=`'li'`</strong>)</strong> : <em>void</em> |
 
