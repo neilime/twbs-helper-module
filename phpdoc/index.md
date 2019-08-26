@@ -672,7 +672,7 @@
 | Visibility | Function |
 |:-----------|:---------|
 | public | <strong>__invoke(</strong><em>string/array</em> <strong>$sContent</strong>, <em>array</em> <strong>$aOptionsAndAttributes=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string The jumbotron XHTML.</em><br /><em>Generates a 'modal' element</em> |
-| protected | <strong>renderPart(</strong><em>\string</em> <strong>$sType</strong>, <em>array</em> <strong>$aOptions=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
+| protected | <strong>renderPart(</strong><em>array</em> <strong>$aOptions=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
 | protected | <strong>renderParts(</strong><em>array</em> <strong>$aParts</strong>, <em>array</em> <strong>$aOptionsAndAttributes</strong>, <em>\bool</em> <strong>$bEscape</strong>)</strong> : <em>void</em> |
 
 *This class extends [\TwbsHelper\View\Helper\AbstractHtmlElement](#class-twbshelperviewhelperabstracthtmlelement)*
