@@ -30,6 +30,8 @@
 - [\TwbsHelper\View\Helper\Badge](#class-twbshelperviewhelperbadge)
 - [\TwbsHelper\View\Helper\AbstractHtmlElement](#class-twbshelperviewhelperabstracthtmlelement)
 - [\TwbsHelper\View\Helper\CardDeck](#class-twbshelperviewhelpercarddeck)
+- [\TwbsHelper\View\Helper\MediaList](#class-twbshelperviewhelpermedialist)
+- [\TwbsHelper\View\Helper\AbstractGroup (abstract)](#class-twbshelperviewhelperabstractgroup-abstract)
 - [\TwbsHelper\View\Helper\Blockquote](#class-twbshelperviewhelperblockquote)
 - [\TwbsHelper\View\Helper\Media](#class-twbshelperviewhelpermedia)
 - [\TwbsHelper\View\Helper\Figure](#class-twbshelperviewhelperfigure)
@@ -600,7 +602,7 @@
 
 *This class extends [\TwbsHelper\View\Helper\CardGroup](#class-twbshelperviewhelpercardgroup)*
 
-*This class implements \Zend\View\Helper\HelperInterface, \Zend\I18n\Translator\TranslatorAwareInterface*
+*This class implements \Zend\I18n\Translator\TranslatorAwareInterface, \Zend\View\Helper\HelperInterface*
 
 <hr />
 
@@ -737,7 +739,37 @@
 
 *This class extends [\TwbsHelper\View\Helper\CardGroup](#class-twbshelperviewhelpercardgroup)*
 
+*This class implements \Zend\I18n\Translator\TranslatorAwareInterface, \Zend\View\Helper\HelperInterface*
+
+<hr />
+
+### Class: \TwbsHelper\View\Helper\MediaList
+
+> Helper for media list
+
+| Visibility | Function |
+|:-----------|:---------|
+| protected | <strong>renderGroupItem(</strong><em>\Zend\View\Helper\HelperInterface</em> <strong>$oItemHelper</strong>, <em>array</em> <strong>$aArguments</strong>)</strong> : <em>void</em> |
+
+*This class extends [\TwbsHelper\View\Helper\AbstractGroup](#class-twbshelperviewhelperabstractgroup-abstract)*
+
 *This class implements \Zend\View\Helper\HelperInterface, \Zend\I18n\Translator\TranslatorAwareInterface*
+
+<hr />
+
+### Class: \TwbsHelper\View\Helper\AbstractGroup (abstract)
+
+> Abstract helper for group rendering
+
+| Visibility | Function |
+|:-----------|:---------|
+| public | <strong>__invoke(</strong><em>array</em> <strong>$aItems</strong>, <em>array</em> <strong>$aOptionsAndAttributes=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string The group XHTML.</em><br /><em>Render a group</em> |
+| protected | <strong>renderGroupItem(</strong><em>\Zend\View\Helper\HelperInterface</em> <strong>$oItemHelper</strong>, <em>array</em> <strong>$aArguments</strong>)</strong> : <em>void</em> |
+| protected | <strong>renderGroupItems(</strong><em>array</em> <strong>$aItems</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
+
+*This class extends [\TwbsHelper\View\Helper\AbstractHtmlElement](#class-twbshelperviewhelperabstracthtmlelement)*
+
+*This class implements \Zend\I18n\Translator\TranslatorAwareInterface, \Zend\View\Helper\HelperInterface*
 
 <hr />
 
@@ -911,12 +943,10 @@
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>__invoke(</strong><em>array</em> <strong>$aItems</strong>, <em>array</em> <strong>$aOptionsAndAttributes=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string The card group XHTML.</em><br /><em>Render a card group</em> |
-| protected | <strong>renderCards(</strong><em>array</em> <strong>$aItems</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
 
-*This class extends [\TwbsHelper\View\Helper\AbstractHtmlElement](#class-twbshelperviewhelperabstracthtmlelement)*
+*This class extends [\TwbsHelper\View\Helper\AbstractGroup](#class-twbshelperviewhelperabstractgroup-abstract)*
 
-*This class implements \Zend\I18n\Translator\TranslatorAwareInterface, \Zend\View\Helper\HelperInterface*
+*This class implements \Zend\View\Helper\HelperInterface, \Zend\I18n\Translator\TranslatorAwareInterface*
 
 <hr />
 
