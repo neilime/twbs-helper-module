@@ -31,6 +31,7 @@
 - [\TwbsHelper\View\Helper\AbstractHtmlElement](#class-twbshelperviewhelperabstracthtmlelement)
 - [\TwbsHelper\View\Helper\CardDeck](#class-twbshelperviewhelpercarddeck)
 - [\TwbsHelper\View\Helper\Blockquote](#class-twbshelperviewhelperblockquote)
+- [\TwbsHelper\View\Helper\Media](#class-twbshelperviewhelpermedia)
 - [\TwbsHelper\View\Helper\Figure](#class-twbshelperviewhelperfigure)
 - [\TwbsHelper\View\Helper\Card](#class-twbshelperviewhelpercard)
 - [\TwbsHelper\View\Helper\Dropdown](#class-twbshelperviewhelperdropdown)
@@ -668,7 +669,6 @@
 | Visibility | Function |
 |:-----------|:---------|
 | public | <strong>__invoke(</strong><em>string/array</em> <strong>$sContent</strong>, <em>array</em> <strong>$aOptionsAndAttributes=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string The jumbotron XHTML.</em><br /><em>Generates a 'jumbotron' element</em> |
-| protected | <strong>renderJumbotron(</strong><em>mixed</em> <strong>$sContent</strong>, <em>array</em> <strong>$aOptionsAndAttributes=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
 | protected | <strong>renderJumbotronPart(</strong><em>\string</em> <strong>$sType</strong>, <em>array</em> <strong>$aOptions=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
 | protected | <strong>renderJumbotronParts(</strong><em>array</em> <strong>$aParts=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
 
@@ -748,6 +748,22 @@
 | Visibility | Function |
 |:-----------|:---------|
 | public | <strong>__invoke(</strong><em>\string</em> <strong>$sContent</strong>, <em>\string</em> <strong>$sFooter=`''`</strong>, <em>array</em> <strong>$aAttributes=array()</strong>, <em>array</em> <strong>$aContentAttributes=array()</strong>, <em>array</em> <strong>$aFooterAttributes=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string The blockquote XHTML.</em><br /><em>Generates a 'blockquote' element</em> |
+
+*This class extends [\TwbsHelper\View\Helper\AbstractHtmlElement](#class-twbshelperviewhelperabstracthtmlelement)*
+
+*This class implements \Zend\I18n\Translator\TranslatorAwareInterface, \Zend\View\Helper\HelperInterface*
+
+<hr />
+
+### Class: \TwbsHelper\View\Helper\Media
+
+> Helper for rendering media objects
+
+| Visibility | Function |
+|:-----------|:---------|
+| public | <strong>__invoke(</strong><em>string/array</em> <strong>$sContent</strong>, <em>array</em> <strong>$aOptionsAndAttributes=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string The jumbotron XHTML.</em><br /><em>Generates a 'media' element</em> |
+| protected | <strong>renderPart(</strong><em>\string</em> <strong>$sType</strong>, <em>array</em> <strong>$aOptions=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
+| protected | <strong>renderParts(</strong><em>array</em> <strong>$aParts=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
 
 *This class extends [\TwbsHelper\View\Helper\AbstractHtmlElement](#class-twbshelperviewhelperabstracthtmlelement)*
 
