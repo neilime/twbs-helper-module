@@ -52,13 +52,13 @@ return [
             'url' => '%bootstrap-url%/components/card/#images',
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 echo $oView->card([
-                    'imgTop' => ['images/demo-sample.svg', ['alt' => '...',]],
+                    'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                     'text' => 'Some quick example text to build on the card title '.
                     'and make up the bulk of the card\'s content.',
                 ], ['style' => 'width: 18rem;']);
             },
             'expected' => '<div style="width&#x3A;&#x20;18rem&#x3B;" class="card">' . PHP_EOL .
-                '    <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                '    <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
                 '    <div class="card-body">' . PHP_EOL .
                 '        <p class="card-text">'.
                 'Some quick example text to build on the card title and make up the bulk of the card&#039;s content.'.
@@ -117,7 +117,7 @@ return [
             'url' => '%bootstrap-url%/components/card/#kitchen-sink',
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 echo $oView->card([
-                    'imgTop' => ['images/demo-sample.svg', ['alt' => '...',]],
+                    'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                     'title' => 'Card title',
                     'text' => 'Some quick example text to build on the card title '.
                     'and make up the bulk of the card\'s content.',
@@ -135,7 +135,7 @@ return [
                 ], ['style' => 'width: 18rem;']);
             },
             'expected' => '<div style="width&#x3A;&#x20;18rem&#x3B;" class="card">' . PHP_EOL .
-                '    <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                '    <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
                 '    <div class="card-body">' . PHP_EOL .
                 '        <h5 class="card-title">Card title</h5>' . PHP_EOL .
                 '        <p class="card-text">'.

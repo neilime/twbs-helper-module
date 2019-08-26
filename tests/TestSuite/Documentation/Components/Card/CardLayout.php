@@ -11,7 +11,7 @@ return [
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 echo $oView->cardGroup([
                     [
-                        'imgTop' => ['images/demo-sample.svg', ['alt' => '...',]],
+                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
                         'text' => [
                             'This is a wider card with supporting text below as a natural lead-in to additional ' .
@@ -20,7 +20,7 @@ return [
                         ],
                     ],
                     [
-                        'imgTop' => ['images/demo-sample.svg', ['alt' => '...',]],
+                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
                         'text' => [
                             'This card has supporting text below as a natural lead-in to additional content.',
@@ -28,7 +28,7 @@ return [
                         ],
                     ],
                     [
-                        'imgTop' => ['images/demo-sample.svg', ['alt' => '...',]],
+                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
                         'text' => [
                             'This is a wider card with supporting text below as a natural lead-in ' .
@@ -45,20 +45,20 @@ return [
                 // With footers
                 echo $oView->cardGroup([
                     [
-                        'imgTop' => ['images/demo-sample.svg', ['alt' => '...',]],
+                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
                         'text' => 'This is a wider card with supporting text below as a natural lead-in to ' .
                             'additional content. This content is a little bit longer.',
                         'footer' => '<small class="text-muted">Last updated 3 mins ago</small>',
                     ],
                     [
-                        'imgTop' => ['images/demo-sample.svg', ['alt' => '...',]],
+                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
                         'text' => 'This card has supporting text below as a natural lead-in to additional content.',
                         'footer' => '<small class="text-muted">Last updated 3 mins ago</small>',
                     ],
                     [
-                        'imgTop' => ['images/demo-sample.svg', ['alt' => '...',]],
+                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
                         'text' => 'This is a wider card with supporting text below ' .
                             'as a natural lead-in to additional content. ' .
@@ -69,7 +69,7 @@ return [
             },
             'expected' => '<div class="card-group">' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -82,7 +82,7 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -94,7 +94,7 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -110,7 +110,7 @@ return [
                 '<br>' . PHP_EOL .
                 '<div class="card-group">' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -123,7 +123,7 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -135,7 +135,7 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -155,7 +155,7 @@ return [
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 echo $oView->cardDeck([
                     [
-                        'imgTop' => ['images/demo-sample.svg', ['alt' => '...',]],
+                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
                         'text' => [
                             'This is a wider card with supporting text below ' .
@@ -165,7 +165,7 @@ return [
                         ],
                     ],
                     [
-                        'imgTop' => ['images/demo-sample.svg', ['alt' => '...',]],
+                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
                         'text' => [
                             'This card has supporting text below as a natural lead-in to additional content.',
@@ -173,7 +173,7 @@ return [
                         ],
                     ],
                     [
-                        'imgTop' => ['images/demo-sample.svg', ['alt' => '...',]],
+                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
                         'text' => [
                             'This is a wider card with supporting text below as a ' .
@@ -189,20 +189,20 @@ return [
                 // With footers
                 echo $oView->cardDeck([
                     [
-                        'imgTop' => ['images/demo-sample.svg', ['alt' => '...',]],
+                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
                         'text' => 'This is a wider card with supporting text below as a ' .
                             'natural lead-in to additional content. This content is a little bit longer.',
                         'footer' => '<small class="text-muted">Last updated 3 mins ago</small>',
                     ],
                     [
-                        'imgTop' => ['images/demo-sample.svg', ['alt' => '...',]],
+                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
                         'text' => 'This card has supporting text below as a natural lead-in to additional content.',
                         'footer' => '<small class="text-muted">Last updated 3 mins ago</small>',
                     ],
                     [
-                        'imgTop' => ['images/demo-sample.svg', ['alt' => '...',]],
+                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
                         'text' => 'This is a wider card with supporting text below as a natural ' .
                             'lead-in to additional content. This card has even longer content than ' .
@@ -213,7 +213,7 @@ return [
             },
             'expected' => '<div class="card-deck">' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -226,7 +226,7 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -238,7 +238,7 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -254,7 +254,7 @@ return [
                 '<br>' . PHP_EOL .
                 '<div class="card-deck">' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -267,7 +267,7 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -279,7 +279,7 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -299,7 +299,7 @@ return [
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 echo $oView->cardColumns([
                     [
-                        'imgTop' => ['images/demo-sample.svg', ['alt' => '...',]],
+                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Card title that wraps to a new line',
                         'text' => 'This is a longer card with supporting text below as ' .
                             'a natural lead-in to additional content. This content is a little bit longer.',
@@ -315,7 +315,7 @@ return [
                         ['class' => 'p-3'],
                     ],
                     [
-                        'imgTop' => ['images/demo-sample.svg', ['alt' => '...',]],
+                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Card title',
                         'text' => [
                             'This card has supporting text below as a natural lead-in to additional content.',
@@ -345,7 +345,7 @@ return [
                         ['class' => 'text-center'],
                     ],
                     [
-                        'imgTop' => ['images/demo-sample.svg', ['alt' => '...',]],
+                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                     ],
                     [
                         [
@@ -370,7 +370,7 @@ return [
             },
             'expected' => '<div class="card-columns">' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">'
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">'
                 . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">' .
@@ -396,7 +396,7 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">'
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">'
                 . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Card title</h5>' . PHP_EOL .
@@ -433,7 +433,7 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo-sample.svg">'
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">'
                 . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card&#x20;p-3&#x20;text-right">' . PHP_EOL .

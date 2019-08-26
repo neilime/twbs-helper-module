@@ -11,6 +11,7 @@ class Media extends \TwbsHelper\View\Helper\AbstractHtmlElement
     const MEDIA_IMAGE = 'img';
     const MEDIA_TITLE = 'title';
     const MEDIA_TEXT = 'text';
+    const MEDIA_MEDIA = 'media';
 
     /**
      * Generates a 'media' element
@@ -112,6 +113,12 @@ class Media extends \TwbsHelper\View\Helper\AbstractHtmlElement
                     throw new \DomainException('Media part type "' . $sType . '" expects a content, none given');
                 }
                 return $aOptions['content'];
+
+            case self::MEDIA_MEDIA:
+                if (empty($aOptions['content'])) {
+                    throw new \DomainException('Media part type "' . $sType . '" expects a content, none given');
+                }
+                return $this->__invoke($aOptions['content'], $aAttributes, $bEscape);
 
             default:
                 throw new \DomainException('Media part type "' . $sType . '" is not supported');
