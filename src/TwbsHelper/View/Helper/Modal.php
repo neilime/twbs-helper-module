@@ -9,7 +9,9 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
 
     const MODAL_TITLE = 'title';
+    const MODAL_SUBTITLE = 'subtitle';
     const MODAL_TEXT = 'text';
+    const MODAL_DIVIDER = '---';
     const MODAL_FOOTER = 'footer';
     const MODAL_BUTTON = 'button';
 
@@ -79,12 +81,21 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
             $sType = is_numeric($sKey) ? self::MODAL_TEXT : $sKey;
             if (is_array($sPartContent)) {
                 $aOptions = $sPartContent;
+                if (empty($aOptions['type'])) {
+                    $aOptions['type'] = $sType;
+                }
             } elseif (is_string($sPartContent)) {
-                $aOptions = ['content' => $sPartContent];
+                if ($sPartContent === self::MODAL_DIVIDER) {
+                    $aOptions = ['type' => self::MODAL_DIVIDER];
+                } else {
+                    $aOptions = [
+                        'type' => $sType,
+                        'content' => $sPartContent,
+                    ];
+                }
             }
 
             $sPartContent = $this->renderPart(
-                $sType,
                 $aOptions,
                 $bEscape
             );
@@ -93,13 +104,17 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 case self::MODAL_TITLE:
                     $sHeaderPart .= ($sHeaderPart ? PHP_EOL : '') . $sPartContent;
                     break;
+
                 case self::MODAL_TEXT:
+                case self::MODAL_DIVIDER:
                 case self::MODAL_BUTTON:
                     $sBodyPart .= ($sBodyPart ? PHP_EOL : '') . $sPartContent;
                     break;
+
                 case self::MODAL_FOOTER:
                     $sFooterPart .= ($sFooterPart ? PHP_EOL : '') . $sPartContent;
                     break;
+
                 default:
                     throw new \DomainException(__CLASS__ . ' part type "' . $sType . '" is not supported');
             }
@@ -150,10 +165,14 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
     }
 
     protected function renderPart(
-        string $sType,
         array $aOptions = [],
         bool $bEscape = true
     ): string {
+        if (empty($aOptions['type'])) {
+            throw new \DomainException('Modal part expects a type, none given');
+        }
+        $sType = $aOptions['type'];
+        unset($aOptions['type']);
 
         if (\Zend\Stdlib\ArrayUtils::isList($aOptions)) {
             $that = $this;
@@ -165,7 +184,10 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
                             'content' => $aOptionsItem,
                         ];
                     }
-                    return $that->renderPart($sType, $aOptionsItem, $bEscape);
+                    if (!isset($aOptionsItem['type'])) {
+                        $aOptionsItem['type'] = $sType;
+                    }
+                    return $that->renderPart($aOptionsItem, $bEscape);
                 }, $aOptions)
             );
         }
@@ -173,10 +195,16 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
         $aAttributes = $aOptions['attributes'] ?? [];
         switch ($sType) {
             case self::MODAL_TITLE:
+            case self::MODAL_SUBTITLE:
                 if (empty($aOptions['content'])) {
                     throw new \DomainException('Modal part type "' . $sType . '" expects a content, none given');
                 }
                 $sTag = 'h5';
+
+                if ($sType === self::MODAL_SUBTITLE) {
+                    break;
+                }
+
                 $aAttributes = $this->setClassesToAttributes(
                     $aAttributes,
                     ['modal-title']
@@ -188,6 +216,10 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
                     throw new \DomainException(__CLASS__ . ' part type "' . $sType . '" expects a content, none given');
                 }
                 $sTag = 'p';
+                break;
+
+            case self::MODAL_DIVIDER:
+                $sTag = 'hr';
                 break;
 
             case self::MODAL_BUTTON:
@@ -202,8 +234,12 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
                     } elseif (is_string($sPartContent)) {
                         $aTmpOptions = ['content' => $sPartContent];
                     }
+
+                    if (!isset($aTmpOptions['type'])) {
+                        $aTmpOptions['type'] = $sType;
+                    }
+
                     $sPartContent = $this->renderPart(
-                        $sType,
                         $aTmpOptions,
                         $bEscape
                     );

@@ -261,6 +261,72 @@ return [
                         '    </div>' . PHP_EOL .
                         '</div>',
                 ],
+                [
+                    'title' => 'Tooltips and popovers',
+                    'url' => '%bootstrap-url%/components/modal/#tooltips-and-popovers',
+                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                        echo $oView->modal([
+                            'title' => 'Modal title',
+                            ['type' => 'subtitle','content' => 'Popover in a modal'],
+                            'This <a href="#" role="button" class="btn btn-secondary popover-test" '.
+                            'title="Popover title" data-content="Popover body content is set in this attribute.">'.
+                            'button</a> triggers a popover on click.',
+                            '---',
+                            ['type' => 'subtitle','content' => 'Tooltips in a modal'],
+                            '<a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" '.
+                            'class="tooltip-test" title="Tooltip">that link</a> have tooltips on hover.',
+                            'footer' => [
+                                'button' => [
+                                    [
+                                        'options' => [
+                                            'label' => 'Close',
+                                            'variant' => 'secondary',
+                                        ],
+                                        'attributes' => [
+                                            'data-dismiss' => 'modal',
+                                        ],
+                                    ],
+                                    [
+                                        'options' => [
+                                            'label' => 'Save changes',
+                                            'variant' => 'primary',
+                                        ],
+                                    ],
+                                ],
+                            ]
+                            ], ['centered' => true]);
+                    },
+                    'expected' => '<div tabindex="-1" role="dialog" class="modal">' . PHP_EOL .
+                        '    <div class="modal-dialog&#x20;modal-dialog-centered" role="document">' . PHP_EOL .
+                        '        <div class="modal-content">' . PHP_EOL .
+                        '            <div class="modal-header">' . PHP_EOL .
+                        '                <h5 class="modal-title">Modal title</h5>' . PHP_EOL .
+                        '                <button class="close" data-dismiss="modal" aria-label="Close">' .
+                        '<span aria-hidden="true">&times;</span></button>' . PHP_EOL .
+                        '            </div>' . PHP_EOL .
+                        '            <div class="modal-body">' . PHP_EOL .
+                        '                <h5>Popover in a modal</h5>' . PHP_EOL .
+                        '                <p>'.
+                        'This <a href="#" role="button" class="btn btn-secondary popover-test" title="Popover title" '.
+                        'data-content="Popover body content is set in this attribute.">button</a> '.
+                        'triggers a popover on click.</p>' . PHP_EOL .
+                        '                <hr>' . PHP_EOL .
+                        '                <h5>Tooltips in a modal</h5>' . PHP_EOL .
+                        '                <p>'.
+                        '<a href="#" class="tooltip-test" title="Tooltip">This link</a> and '.
+                        '<a href="#" class="tooltip-test" title="Tooltip">that link</a> have tooltips on hover.'.
+                        '</p>' . PHP_EOL .
+                        '            </div>' . PHP_EOL .
+                        '            <div class="modal-footer">' . PHP_EOL .
+                        '                <button type="button" name="button" data-dismiss="modal" ' .
+                        'class="btn&#x20;btn-secondary" value="">Close</button>' . PHP_EOL .
+                        '                <button type="button" name="button" class="btn&#x20;btn-primary" ' .
+                        'value="">Save changes</button>' . PHP_EOL .
+                        '            </div>' . PHP_EOL .
+                        '        </div>' . PHP_EOL .
+                        '    </div>' . PHP_EOL .
+                        '</div>',
+                ],
             ],
         ],
     ],
