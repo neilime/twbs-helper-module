@@ -973,7 +973,7 @@
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>htmlify(</strong><em>\Zend\Navigation\Page\AbstractPage</em> <strong>$oPage</strong>, <em>bool</em> <strong>$escapeLabel=true</strong>, <em>bool</em> <strong>$addClassToListItem=false</strong>)</strong> : <em>string</em><br /><em>Returns an HTML string containing an 'a' element for the given page if the page's href is not empty, and a 'span' element if it is empty. Overrides {@link AbstractHelper::htmlify()}.</em> |
+| public | <strong>htmlify(</strong><em>\Zend\Navigation\Page\AbstractPage</em> <strong>$oPage</strong>, <em>bool</em> <strong>$bEscapeLabel=true</strong>, <em>bool</em> <strong>$bAddClassToListItem=false</strong>)</strong> : <em>string</em><br /><em>Returns an HTML string containing an 'a' element for the given page if the page's href is not empty, and a 'span' element if it is empty. Overrides {@link AbstractHelper::htmlify()}.</em> |
 | public | <strong>renderMenu(</strong><em>mixed</em> <strong>$container=null</strong>, <em>array</em> <strong>$aOptions=array()</strong>)</strong> : <em>void</em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
