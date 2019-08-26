@@ -207,19 +207,17 @@ return [
             'url' => '%bootstrap-url%/components/list-group/#contextual-classes',
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 // Use option 'variant' to style list items with a stateful background and color
-                echo $oView->listGroup(
-                    [
-                        'Dapibus ac facilisis in',
-                        'A simple primary list group item' => ['variant' => 'primary'],
-                        'A simple secondary list group item' => ['variant' => 'secondary'],
-                        'A simple success list group item' => ['variant' => 'success'],
-                        'A simple danger list group item' => ['variant' => 'danger'],
-                        'A simple warning list group item' => ['variant' => 'warning'],
-                        'A simple info list group item' => ['variant' => 'info'],
-                        'A simple light list group item' => ['variant' => 'light'],
-                        'A simple dark list group item' => ['variant' => 'dark'],
-                    ],
-                );
+                echo $oView->listGroup([
+                    'Dapibus ac facilisis in',
+                    'A simple primary list group item' => ['variant' => 'primary'],
+                    'A simple secondary list group item' => ['variant' => 'secondary'],
+                    'A simple success list group item' => ['variant' => 'success'],
+                    'A simple danger list group item' => ['variant' => 'danger'],
+                    'A simple warning list group item' => ['variant' => 'warning'],
+                    'A simple info list group item' => ['variant' => 'info'],
+                    'A simple light list group item' => ['variant' => 'light'],
+                    'A simple dark list group item' => ['variant' => 'dark'],
+                ]);
 
                 echo '<br>' . PHP_EOL;
 

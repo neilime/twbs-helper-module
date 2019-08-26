@@ -17,6 +17,7 @@ return [
         'InputGroup' => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/InputGroup.php',
         'Jumbotron' => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Jumbotron.php',
         'ListGroup' => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/ListGroup.php',
+        'MediaObject' => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/MediaObject.php',
         'Navs' => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Navs.php',
     ],
 ];

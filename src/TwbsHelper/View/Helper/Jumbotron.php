@@ -28,12 +28,6 @@ class Jumbotron extends \TwbsHelper\View\Helper\AbstractHtmlElement
         array $aOptionsAndAttributes = [],
         bool $bEscape = true
     ): string {
-        return $this->renderJumbotron($sContent, $aOptionsAndAttributes, $bEscape);
-    }
-
-    protected function renderJumbotron($sContent, array $aOptionsAndAttributes = [], bool $bEscape = true): string
-    {
-
         $bFluid = !empty($aOptionsAndAttributes['fluid']);
         unset($aOptionsAndAttributes['fluid']);
         if ($bFluid) {
@@ -93,7 +87,6 @@ class Jumbotron extends \TwbsHelper\View\Helper\AbstractHtmlElement
         array $aOptions = [],
         bool $bEscape = true
     ): string {
-
 
         $aAttributes = $aOptions['attributes'] ?? [];
         switch ($sType) {
