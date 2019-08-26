@@ -258,7 +258,7 @@ return [
                             'attributes' => ['href' => '#'],
                         ],
                     ],
-                    ['type' => 'action'],
+                    ['type' => 'action']
                 );
             },
             'expected' => '<ul class="list-group">' . PHP_EOL .
