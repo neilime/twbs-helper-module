@@ -26,6 +26,7 @@
 - [\TwbsHelper\View\Helper\Carousel](#class-twbshelperviewhelpercarousel)
 - [\TwbsHelper\View\Helper\Table](#class-twbshelperviewhelpertable)
 - [\TwbsHelper\View\Helper\HtmlList](#class-twbshelperviewhelperhtmllist)
+- [\TwbsHelper\View\Helper\Modal](#class-twbshelperviewhelpermodal)
 - [\TwbsHelper\View\Helper\Jumbotron](#class-twbshelperviewhelperjumbotron)
 - [\TwbsHelper\View\Helper\Badge](#class-twbshelperviewhelperbadge)
 - [\TwbsHelper\View\Helper\AbstractHtmlElement](#class-twbshelperviewhelperabstracthtmlelement)
@@ -657,6 +658,22 @@
 | public | <strong>__invoke(</strong><em>array</em> <strong>$aItems</strong>, <em>array</em> <strong>$aOptionsAndAttributes=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string The list XHTML.</em><br /><em>Generates a 'List' element. Manage indentation of Xhtml markup If class attributes contains "list-inline", so the li will have the class "list-inline-item"</em> |
 | protected | <strong>renderContainer(</strong><em>\string</em> <strong>$sTag</strong>, <em>array</em> <strong>$aOptionsAndAttributes</strong>, <em>\string</em> <strong>$sListContent</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
 | protected | <strong>renderListItem(</strong><em>mixed</em> <strong>$sItem</strong>, <em>\string</em> <strong>$sItemLabel=`''`</strong>, <em>array</em> <strong>$aOptionsAndAttributes=array()</strong>, <em>array</em> <strong>$aItemAttributes=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>, <em>\string</em> <strong>$sTag=`'li'`</strong>)</strong> : <em>void</em> |
+
+*This class extends [\TwbsHelper\View\Helper\AbstractHtmlElement](#class-twbshelperviewhelperabstracthtmlelement)*
+
+*This class implements \Zend\I18n\Translator\TranslatorAwareInterface, \Zend\View\Helper\HelperInterface*
+
+<hr />
+
+### Class: \TwbsHelper\View\Helper\Modal
+
+> Helper for rendering modal objects
+
+| Visibility | Function |
+|:-----------|:---------|
+| public | <strong>__invoke(</strong><em>string/array</em> <strong>$sContent</strong>, <em>array</em> <strong>$aOptionsAndAttributes=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string The jumbotron XHTML.</em><br /><em>Generates a 'modal' element</em> |
+| protected | <strong>renderPart(</strong><em>\string</em> <strong>$sType</strong>, <em>array</em> <strong>$aOptions=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
+| protected | <strong>renderParts(</strong><em>array</em> <strong>$aParts</strong>, <em>array</em> <strong>$aOptionsAndAttributes</strong>, <em>\bool</em> <strong>$bEscape</strong>)</strong> : <em>void</em> |
 
 *This class extends [\TwbsHelper\View\Helper\AbstractHtmlElement](#class-twbshelperviewhelperabstracthtmlelement)*
 
