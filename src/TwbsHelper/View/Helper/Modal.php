@@ -27,6 +27,12 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
         bool $bEscape = true
     ): string {
 
+        $aDialogClasses = ['modal-dialog'];
+        if (!empty($aOptionsAndAttributes['scrollable'])) {
+            $aDialogClasses[] = 'modal-dialog-scrollable';
+        }
+        unset($aOptionsAndAttributes['scrollable']);
+
         $sContent = $this->renderParts(
             (array) $sContent,
             $aOptionsAndAttributes,
@@ -46,7 +52,7 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
             $this->setClassesToAttributes($aOptionsAndAttributes, ['modal']),
             $this->htmlElement(
                 'div',
-                ['class' => 'modal-dialog', 'role' => 'document'],
+                ['class' => $aDialogClasses, 'role' => 'document'],
                 $this->htmlElement(
                     'div',
                     ['class' => 'modal-content'],
