@@ -208,6 +208,59 @@ return [
                         '    </div>' . PHP_EOL .
                         '</div>',
                 ],
+                [
+                    'title' => 'Vertically centered',
+                    'url' => '%bootstrap-url%/components/modal/#vertically-centered',
+                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                        echo $oView->modal([
+                            'title' => 'Modal title',
+                            'Cras mattis consectetur purus sit amet fermentum. Cras justo odio, '.
+                            'dapibus ac facilisis in, egestas eget quam. Morbi leo risus, '.
+                            'porta ac consectetur ac, vestibulum at eros.',
+                            'footer' => [
+                                'button' => [
+                                    [
+                                        'options' => [
+                                            'label' => 'Close',
+                                            'variant' => 'secondary',
+                                        ],
+                                        'attributes' => [
+                                            'data-dismiss' => 'modal',
+                                        ],
+                                    ],
+                                    [
+                                        'options' => [
+                                            'label' => 'Save changes',
+                                            'variant' => 'primary',
+                                        ],
+                                    ],
+                                ],
+                            ]
+                            ], ['centered' => true]);
+                    },
+                    'expected' => '<div tabindex="-1" role="dialog" class="modal">' . PHP_EOL .
+                        '    <div class="modal-dialog&#x20;modal-dialog-centered" role="document">' . PHP_EOL .
+                        '        <div class="modal-content">' . PHP_EOL .
+                        '            <div class="modal-header">' . PHP_EOL .
+                        '                <h5 class="modal-title">Modal title</h5>' . PHP_EOL .
+                        '                <button class="close" data-dismiss="modal" aria-label="Close">' .
+                        '<span aria-hidden="true">&times;</span></button>' . PHP_EOL .
+                        '            </div>' . PHP_EOL .
+                        '            <div class="modal-body">' . PHP_EOL .
+                        '                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, '.
+                        'dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, '.
+                        'vestibulum at eros.</p>' . PHP_EOL .
+                        '            </div>' . PHP_EOL .
+                        '            <div class="modal-footer">' . PHP_EOL .
+                        '                <button type="button" name="button" data-dismiss="modal" ' .
+                        'class="btn&#x20;btn-secondary" value="">Close</button>' . PHP_EOL .
+                        '                <button type="button" name="button" class="btn&#x20;btn-primary" ' .
+                        'value="">Save changes</button>' . PHP_EOL .
+                        '            </div>' . PHP_EOL .
+                        '        </div>' . PHP_EOL .
+                        '    </div>' . PHP_EOL .
+                        '</div>',
+                ],
             ],
         ],
     ],

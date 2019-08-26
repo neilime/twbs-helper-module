@@ -28,10 +28,12 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
     ): string {
 
         $aDialogClasses = ['modal-dialog'];
-        if (!empty($aOptionsAndAttributes['scrollable'])) {
-            $aDialogClasses[] = 'modal-dialog-scrollable';
+        foreach (['scrollable', 'centered'] as $sModalOption) {
+            if (!empty($aOptionsAndAttributes[$sModalOption])) {
+                $aDialogClasses[] = 'modal-dialog-' . $sModalOption;
+            }
+            unset($aOptionsAndAttributes[$sModalOption]);
         }
-        unset($aOptionsAndAttributes['scrollable']);
 
         $sContent = $this->renderParts(
             (array) $sContent,
