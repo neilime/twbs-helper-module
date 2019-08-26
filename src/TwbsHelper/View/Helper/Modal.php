@@ -29,6 +29,12 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
         bool $bEscape = true
     ): string {
 
+        $aModalClasses = ['modal'];
+        if (!empty($aOptionsAndAttributes['fade'])) {
+            $aModalClasses[] = 'fade';
+        }
+        unset($aOptionsAndAttributes['fade']);
+
         $aDialogClasses = ['modal-dialog'];
         foreach (['scrollable', 'centered'] as $sModalOption) {
             if (!empty($aOptionsAndAttributes[$sModalOption])) {
@@ -36,6 +42,10 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
             }
             unset($aOptionsAndAttributes[$sModalOption]);
         }
+        if (!empty($aOptionsAndAttributes['size'])) {
+            $aDialogClasses[] = $this->getSizeClass($aOptionsAndAttributes['size'], 'modal');
+        }
+        unset($aOptionsAndAttributes['size']);
 
         $sContent = $this->renderParts(
             (array) $sContent,
@@ -53,7 +63,7 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
         return $this->htmlElement(
             'div',
-            $this->setClassesToAttributes($aOptionsAndAttributes, ['modal']),
+            $this->setClassesToAttributes($aOptionsAndAttributes, $aModalClasses),
             $this->htmlElement(
                 'div',
                 ['class' => $aDialogClasses, 'role' => 'document'],
@@ -138,30 +148,30 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 $bEscape
             );
         }
-        $sHeaderPart = $this->htmlElement(
+        $sHeaderPart = $sHeaderPart ? $this->htmlElement(
             'div',
             ['class' => 'modal-header'],
             $sHeaderPart,
             $bEscape
-        );
+        ) : '';
 
         // Render body
-        $sBodyPart = $this->htmlElement(
+        $sBodyPart = $sBodyPart ? $this->htmlElement(
             'div',
             ['class' => 'modal-body'],
             $sBodyPart,
             $bEscape
-        );
+        ) : '';
 
         // Render footer
-        $sFooterPart = $this->htmlElement(
+        $sFooterPart = $sFooterPart ? $this->htmlElement(
             'div',
             ['class' => 'modal-footer'],
             $sFooterPart,
             $bEscape
-        );
+        ) : '';
 
-        return $sHeaderPart . PHP_EOL . $sBodyPart . PHP_EOL . $sFooterPart;
+        return join(PHP_EOL, array_filter([$sHeaderPart, $sBodyPart, $sFooterPart]));
     }
 
     protected function renderPart(

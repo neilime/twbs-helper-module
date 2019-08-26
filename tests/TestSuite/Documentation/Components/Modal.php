@@ -214,9 +214,9 @@ return [
                     'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                         echo $oView->modal([
                             'title' => 'Modal title',
-                            'Cras mattis consectetur purus sit amet fermentum. Cras justo odio, '.
-                            'dapibus ac facilisis in, egestas eget quam. Morbi leo risus, '.
-                            'porta ac consectetur ac, vestibulum at eros.',
+                            'Cras mattis consectetur purus sit amet fermentum. Cras justo odio, ' .
+                                'dapibus ac facilisis in, egestas eget quam. Morbi leo risus, ' .
+                                'porta ac consectetur ac, vestibulum at eros.',
                             'footer' => [
                                 'button' => [
                                     [
@@ -236,7 +236,7 @@ return [
                                     ],
                                 ],
                             ]
-                            ], ['centered' => true]);
+                        ], ['centered' => true]);
                     },
                     'expected' => '<div tabindex="-1" role="dialog" class="modal">' . PHP_EOL .
                         '    <div class="modal-dialog&#x20;modal-dialog-centered" role="document">' . PHP_EOL .
@@ -247,8 +247,8 @@ return [
                         '<span aria-hidden="true">&times;</span></button>' . PHP_EOL .
                         '            </div>' . PHP_EOL .
                         '            <div class="modal-body">' . PHP_EOL .
-                        '                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, '.
-                        'dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, '.
+                        '                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, ' .
+                        'dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, ' .
                         'vestibulum at eros.</p>' . PHP_EOL .
                         '            </div>' . PHP_EOL .
                         '            <div class="modal-footer">' . PHP_EOL .
@@ -267,14 +267,14 @@ return [
                     'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                         echo $oView->modal([
                             'title' => 'Modal title',
-                            ['type' => 'subtitle','content' => 'Popover in a modal'],
-                            'This <a href="#" role="button" class="btn btn-secondary popover-test" '.
-                            'title="Popover title" data-content="Popover body content is set in this attribute.">'.
-                            'button</a> triggers a popover on click.',
+                            ['type' => 'subtitle', 'content' => 'Popover in a modal'],
+                            'This <a href="#" role="button" class="btn btn-secondary popover-test" ' .
+                                'title="Popover title" data-content="Popover body content is set in this attribute.">' .
+                                'button</a> triggers a popover on click.',
                             '---',
-                            ['type' => 'subtitle','content' => 'Tooltips in a modal'],
-                            '<a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" '.
-                            'class="tooltip-test" title="Tooltip">that link</a> have tooltips on hover.',
+                            ['type' => 'subtitle', 'content' => 'Tooltips in a modal'],
+                            '<a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" ' .
+                                'class="tooltip-test" title="Tooltip">that link</a> have tooltips on hover.',
                             'footer' => [
                                 'button' => [
                                     [
@@ -294,7 +294,7 @@ return [
                                     ],
                                 ],
                             ]
-                            ], ['centered' => true]);
+                        ], ['centered' => true]);
                     },
                     'expected' => '<div tabindex="-1" role="dialog" class="modal">' . PHP_EOL .
                         '    <div class="modal-dialog&#x20;modal-dialog-centered" role="document">' . PHP_EOL .
@@ -306,15 +306,15 @@ return [
                         '            </div>' . PHP_EOL .
                         '            <div class="modal-body">' . PHP_EOL .
                         '                <h5>Popover in a modal</h5>' . PHP_EOL .
-                        '                <p>'.
-                        'This <a href="#" role="button" class="btn btn-secondary popover-test" title="Popover title" '.
-                        'data-content="Popover body content is set in this attribute.">button</a> '.
+                        '                <p>' .
+                        'This <a href="#" role="button" class="btn btn-secondary popover-test" title="Popover title" ' .
+                        'data-content="Popover body content is set in this attribute.">button</a> ' .
                         'triggers a popover on click.</p>' . PHP_EOL .
                         '                <hr>' . PHP_EOL .
                         '                <h5>Tooltips in a modal</h5>' . PHP_EOL .
-                        '                <p>'.
-                        '<a href="#" class="tooltip-test" title="Tooltip">This link</a> and '.
-                        '<a href="#" class="tooltip-test" title="Tooltip">that link</a> have tooltips on hover.'.
+                        '                <p>' .
+                        '<a href="#" class="tooltip-test" title="Tooltip">This link</a> and ' .
+                        '<a href="#" class="tooltip-test" title="Tooltip">that link</a> have tooltips on hover.' .
                         '</p>' . PHP_EOL .
                         '            </div>' . PHP_EOL .
                         '            <div class="modal-footer">' . PHP_EOL .
@@ -322,6 +322,35 @@ return [
                         'class="btn&#x20;btn-secondary" value="">Close</button>' . PHP_EOL .
                         '                <button type="button" name="button" class="btn&#x20;btn-primary" ' .
                         'value="">Save changes</button>' . PHP_EOL .
+                        '            </div>' . PHP_EOL .
+                        '        </div>' . PHP_EOL .
+                        '    </div>' . PHP_EOL .
+                        '</div>',
+                ],
+                [
+                    'title' => 'Optional sizes',
+                    'url' => '%bootstrap-url%/components/modal/#optional-sizes',
+                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                        echo $oView->modal([
+                            'title' => 'Extra large modal',
+                            '...',
+                        ], [
+                            'fade' => true,
+                            'size' => 'xl',
+                            'class' => 'bd-example-modal-xl',
+                        ]);
+                    },
+                    'expected' => '<div tabindex="-1" role="dialog" ' .
+                        'class="bd-example-modal-xl&#x20;fade&#x20;modal">' . PHP_EOL .
+                        '    <div class="modal-dialog&#x20;modal-xl" role="document">' . PHP_EOL .
+                        '        <div class="modal-content">' . PHP_EOL .
+                        '            <div class="modal-header">' . PHP_EOL .
+                        '                <h5 class="modal-title">Extra large modal</h5>' . PHP_EOL .
+                        '                <button class="close" data-dismiss="modal" aria-label="Close">' .
+                        '<span aria-hidden="true">&times;</span></button>' . PHP_EOL .
+                        '            </div>' . PHP_EOL .
+                        '            <div class="modal-body">' . PHP_EOL .
+                        '                <p>...</p>' . PHP_EOL .
                         '            </div>' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
