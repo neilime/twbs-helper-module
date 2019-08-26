@@ -48,6 +48,7 @@ return [
             'table'               => 'TwbsHelper\View\Helper\Table',
             'jumbotron'           => 'TwbsHelper\View\Helper\Jumbotron',
             'media'               => 'TwbsHelper\View\Helper\Media',
+            'mediaList'           => 'TwbsHelper\View\Helper\MediaList',
 
             // Form view helpers
             'form'                => 'TwbsHelper\Form\View\Helper\Form',

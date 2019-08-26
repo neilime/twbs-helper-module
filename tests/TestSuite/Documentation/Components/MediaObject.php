@@ -188,7 +188,7 @@ return [
                         'Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. ' .
                         'Fusce condimentum nunc ac nisi vulputate fringilla. ' .
                         'Donec lacinia congue felis in faucibus.',
-                    'img' => ['images/demo/64x64.svg', ['alt' => '...', 'class' => 'mr-3']],
+                    'img' => ['images/demo/64x64.svg', ['alt' => '...', 'class' => 'ml-3']],
                 ]);
             },
             'expected' => '<div class="media">' . PHP_EOL .
@@ -200,8 +200,38 @@ return [
                 'Fusce condimentum nunc ac nisi vulputate fringilla. ' .
                 'Donec lacinia congue felis in faucibus.</p>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
-                '    <img alt="..." class="mr-3" src="images&#x2F;demo&#x2F;64x64.svg">' . PHP_EOL .
+                '    <img alt="..." class="ml-3" src="images&#x2F;demo&#x2F;64x64.svg">' . PHP_EOL .
                 '</div>',
+        ],
+        [
+            'title' => 'Media list',
+            'url' => '%bootstrap-url%/components/media-object/#media-list',
+            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                echo $oView->mediaList([
+                    [
+                        'img' => ['images/demo/64x64.svg', ['alt' => '...', 'class' => 'mr-3']],
+                        'title' => ['content' => 'List-based media object', 'attributes' => ['class' => 'mb-1']],
+                        'text' => 'Cras sit amet nibh libero, in gravida nulla. ' .
+                            'Nulla vel metus scelerisque ante sollicitudin. ' .
+                            'Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. ' .
+                            'Fusce condimentum nunc ac nisi vulputate fringilla. ' .
+                            'Donec lacinia congue felis in faucibus.',
+                    ],
+                ]);
+            },
+            'expected' => '<ul class="list-unstyled">' . PHP_EOL .
+                '    <li class="media">' . PHP_EOL .
+                '        <img alt="..." class="mr-3" src="images&#x2F;demo&#x2F;64x64.svg">' . PHP_EOL .
+                '        <div class="media-body">' . PHP_EOL .
+                '            <h5 class="mb-1&#x20;mt-0">List-based media object</h5>' . PHP_EOL .
+                '            <p>Cras sit amet nibh libero, in gravida nulla. ' .
+                'Nulla vel metus scelerisque ante sollicitudin. ' .
+                'Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. ' .
+                'Fusce condimentum nunc ac nisi vulputate fringilla. ' .
+                'Donec lacinia congue felis in faucibus.</p>' . PHP_EOL .
+                '        </div>' . PHP_EOL .
+                '    </li>' . PHP_EOL .
+                '</ul>',
         ],
     ],
 ];

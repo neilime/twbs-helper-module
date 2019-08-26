@@ -8,7 +8,6 @@ namespace TwbsHelper\View\Helper;
 class HtmlList extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
 
-
     /**
      * Generates a 'List' element. Manage indentation of Xhtml markup
      *
@@ -25,7 +24,6 @@ class HtmlList extends \TwbsHelper\View\Helper\AbstractHtmlElement
         if (empty($aItems)) {
             throw new \InvalidArgumentException('Argument "$aItems" must not be empty');
         }
-
 
         $aItemAttributes = isset($aOptionsAndAttributes['class'])
             && strpos($aOptionsAndAttributes['class'], 'list-inline') !== false

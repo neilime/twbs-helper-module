@@ -27,12 +27,15 @@ class Media extends \TwbsHelper\View\Helper\AbstractHtmlElement
         bool $bEscape = true
     ): string {
 
+        $sTag = $aOptionsAndAttributes['tag'] ?? 'div';
+        unset($aOptionsAndAttributes['tag']);
+
         if (is_array($sContent)) {
             $sContent = $this->renderParts($sContent, $bEscape);
         }
 
         return $this->htmlElement(
-            'div',
+            $sTag,
             $this->setClassesToAttributes($aOptionsAndAttributes, ['media']),
             $sContent,
             $bEscape
