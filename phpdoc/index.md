@@ -47,6 +47,7 @@
 - [\TwbsHelper\View\Helper\CardGroup](#class-twbshelperviewhelpercardgroup)
 - [\TwbsHelper\View\Helper\Navigation\Menu](#class-twbshelperviewhelpernavigationmenu)
 - [\TwbsHelper\View\Helper\Navigation\Breadcrumbs](#class-twbshelperviewhelpernavigationbreadcrumbs)
+- [\TwbsHelper\View\Helper\Navigation\Navbar](#class-twbshelperviewhelpernavigationnavbar)
 
 <hr />
 
@@ -1018,7 +1019,7 @@
 
 ### Class: \TwbsHelper\View\Helper\Navigation\Breadcrumbs
 
-> Helper for rendering abbreviations
+> Helper for rendering breadcrumbs
 
 | Visibility | Function |
 |:-----------|:---------|
@@ -1029,4 +1030,50 @@
 *This class extends \Zend\View\Helper\Navigation\Breadcrumbs*
 
 *This class implements \Zend\View\Helper\HelperInterface, \Zend\EventManager\EventManagerAwareInterface, \Zend\EventManager\EventsCapableInterface, \Zend\View\Helper\Navigation\HelperInterface*
+
+<hr />
+
+### Class: \TwbsHelper\View\Helper\Navigation\Navbar
+
+> Helper for rendering navbar
+
+| Visibility | Function |
+|:-----------|:---------|
+| public | <strong>__invoke(</strong><em>\Zend\Navigation\AbstractContainer</em> <strong>$oContainer=null</strong>)</strong> : <em>\TwbsHelper\View\Helper\Navigation\self/string</em><br /><em>View helper entry point. Retrieves helper and optionally sets container to operate on.</em> |
+| public | <strong>addProperIndentation(</strong><em>\string</em> <strong>$sContent</strong>, <em>\bool</em> <strong>$bForceIndentation=false</strong>, <em>\string</em> <strong>$sIndentation=null</strong>)</strong> : <em>void</em> |
+| public | <strong>getTranslator()</strong> : <em>\TwbsHelper\View\Helper\Navigation\TranslatorInterface</em><br /><em>Returns translator used in object</em> |
+| public | <strong>getTranslatorTextDomain()</strong> : <em>string</em><br /><em>Return the translation text domain</em> |
+| public | <strong>hasTranslator()</strong> : <em>bool</em><br /><em>Checks if the object has a translator</em> |
+| public | <strong>htmlElement(</strong><em>\string</em> <strong>$sTag</strong>, <em>array</em> <strong>$aAttributes=array()</strong>, <em>\string</em> <strong>$sContent=null</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
+| public | <strong>isTranslatorEnabled()</strong> : <em>bool</em><br /><em>Returns whether translator is enabled and should be used</em> |
+| public | <strong>removeIndentation(</strong><em>\string</em> <strong>$sContent</strong>)</strong> : <em>void</em> |
+| public | <strong>render(</strong><em>\Zend\Navigation\AbstractContainer</em> <strong>$oContainer=null</strong>, <em>array</em> <strong>$aOptions=array()</strong>)</strong> : <em>string</em><br /><em>Renders navbar. Implements {@link HelperInterface::render()}.</em> |
+| public | <strong>renderBrand(</strong><em>mixed</em> <strong>$aBrandOptions</strong>)</strong> : <em>void</em> |
+| public | <strong>renderForm(</strong><em>mixed</em> <strong>$oForm</strong>)</strong> : <em>void</em> |
+| public | <strong>renderNav(</strong><em>\Zend\Navigation\AbstractContainer</em> <strong>$oContainer</strong>)</strong> : <em>void</em> |
+| public | <strong>renderNavbar(</strong><em>\Zend\Navigation\AbstractContainer</em> <strong>$oContainer=null</strong>, <em>array</em> <strong>$aOptions=array()</strong>)</strong> : <em>string</em><br /><em>Renders helper. Renders a HTML 'ul' for the given $container. If $container is not given, the container registered in the helper will be used. Available $options: Default is to use the container retrieved from {@link getContainer()}.</em> |
+| public | <strong>renderToggler(</strong><em>array</em> <strong>$aTogglerOptions</strong>)</strong> : <em>void</em> |
+| public | <strong>setTranslator(</strong><em>\Zend\I18n\Translator\TranslatorInterface</em> <strong>$translator=null</strong>, <em>string</em> <strong>$textDomain=null</strong>)</strong> : <em>mixed</em><br /><em>Sets translator to use in helper</em> |
+| public | <strong>setTranslatorEnabled(</strong><em>bool</em> <strong>$enabled=true</strong>)</strong> : <em>mixed</em><br /><em>Sets whether translator is enabled and should be used</em> |
+| public | <strong>setTranslatorTextDomain(</strong><em>string</em> <strong>$textDomain=`'default'`</strong>)</strong> : <em>mixed</em><br /><em>Set translation text domain</em> |
+| protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>, <em>\string</em> <strong>$sTag</strong>)</strong> : <em>void</em> |
+| protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getSizeClass(</strong><em>\string</em> <strong>$sSize</strong>, <em>\string</em> <strong>$sPrefix</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getSizes()</strong> : <em>mixed</em> |
+| protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getVariants()</strong> : <em>mixed</em> |
+| protected | <strong>hasClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>\string</em> <strong>$sClass</strong>)</strong> : <em>bool</em> |
+| protected | <strong>hasColumnClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>)</strong> : <em>bool</em> |
+| protected | <strong>isHTML(</strong><em>\string</em> <strong>$sString</strong>)</strong> : <em>bool</em> |
+| protected | <strong>normalizeId(</strong><em>mixed</em> <strong>$sValue</strong>)</strong> : <em>string</em><br /><em>Normalize an ID Overrides {@link View\Helper\AbstractHtmlElement::normalizeId()}.</em> |
+| protected | <strong>setClassesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| protected | <strong>setClassesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+
+*This class extends \Zend\View\Helper\Navigation\AbstractHelper*
+
+*This class implements \Zend\View\Helper\Navigation\HelperInterface, \Zend\EventManager\EventsCapableInterface, \Zend\EventManager\EventManagerAwareInterface, \Zend\View\Helper\HelperInterface*
 
