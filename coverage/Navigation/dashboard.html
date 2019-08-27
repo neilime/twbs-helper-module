@@ -2,12 +2,12 @@
 <html lang="en">
  <head>
   <meta charset="UTF-8">
-  <title>Dashboard for /home/travis/build/neilime/zf-twbs-helper-module/src/TwbsHelper/Form/View/Helper/Factory</title>
+  <title>Dashboard for /home/travis/build/neilime/zf-twbs-helper-module/src/TwbsHelper/Navigation</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="../../../../_css/bootstrap.min.css" rel="stylesheet" type="text/css">
-  <link href="../../../../_css/nv.d3.min.css" rel="stylesheet" type="text/css">
-  <link href="../../../../_css/style.css" rel="stylesheet" type="text/css">
-  <link href="../../../../_css/custom.css" rel="stylesheet" type="text/css">
+  <link href="../_css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="../_css/nv.d3.min.css" rel="stylesheet" type="text/css">
+  <link href="../_css/style.css" rel="stylesheet" type="text/css">
+  <link href="../_css/custom.css" rel="stylesheet" type="text/css">
  </head>
  <body>
   <header>
@@ -16,11 +16,8 @@
      <div class="col-md-12">
       <nav aria-label="breadcrumb">
        <ol class="breadcrumb">
-         <li class="breadcrumb-item"><a href="../../../../index.html">/home/travis/build/neilime/zf-twbs-helper-module/src/TwbsHelper</a></li>
-         <li class="breadcrumb-item"><a href="../../../index.html">Form</a></li>
-         <li class="breadcrumb-item"><a href="../../index.html">View</a></li>
-         <li class="breadcrumb-item"><a href="../index.html">Helper</a></li>
-         <li class="breadcrumb-item"><a href="index.html">Factory</a></li>
+         <li class="breadcrumb-item"><a href="../index.html">/home/travis/build/neilime/zf-twbs-helper-module/src/TwbsHelper</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Navigation</a></li>
          <li class="breadcrumb-item active">(Dashboard)</li>
 
        </ol>
@@ -61,7 +58,6 @@
         </tr>
        </thead>
        <tbody>
-       <tr><td><a href="FormElementFactory.php.html#18">TwbsHelper\Form\View\Helper\Factory\FormElementFactory</a></td><td class="text-right">66%</td></tr>
 
        </tbody>
       </table>
@@ -115,7 +111,6 @@
         </tr>
        </thead>
        <tbody>
-       <tr><td><a href="FormElementFactory.php.html#32"><abbr title="TwbsHelper\Form\View\Helper\Factory\FormElementFactory::createService">createService</abbr></a></td><td class="text-right">0%</td></tr>
 
        </tbody>
       </table>
@@ -145,9 +140,9 @@
     </p>
    </footer>
   </div>
-  <script src="../../../../_js/jquery.min.js" type="text/javascript"></script>
-  <script src="../../../../_js/d3.min.js" type="text/javascript"></script>
-  <script src="../../../../_js/nv.d3.min.js" type="text/javascript"></script>
+  <script src="../_js/jquery.min.js" type="text/javascript"></script>
+  <script src="../_js/d3.min.js" type="text/javascript"></script>
+  <script src="../_js/nv.d3.min.js" type="text/javascript"></script>
   <script type="text/javascript">
 $(document).ready(function() {
   nv.addGraph(function() {
@@ -160,7 +155,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#classCoverageDistribution svg')
-      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,1,0,0,0,0], "Class Coverage"))
+      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,0,0,1], "Class Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -178,7 +173,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#methodCoverageDistribution svg')
-      .datum(getCoverageDistributionData([1,0,0,0,0,0,0,0,0,0,0,1], "Method Coverage"))
+      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,0,0,3], "Method Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -228,7 +223,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Cyclomatic Complexity');
 
     d3.select('#classComplexity svg')
-      .datum(getComplexityData([[66.66666666666666,2,"<a href=\"FormElementFactory.php.html#18\">TwbsHelper\\Form\\View\\Helper\\Factory\\FormElementFactory<\/a>"]], 'Class Complexity'))
+      .datum(getComplexityData([[100,3,"<a href=\"Page\/DropdownPage.php.html#5\">TwbsHelper\\Navigation\\Page\\DropdownPage<\/a>"]], 'Class Complexity'))
       .transition()
       .duration(500)
       .call(chart);
@@ -252,7 +247,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Method Complexity');
 
     d3.select('#methodComplexity svg')
-      .datum(getComplexityData([[0,1,"<a href=\"FormElementFactory.php.html#32\">TwbsHelper\\Form\\View\\Helper\\Factory\\FormElementFactory::createService<\/a>"],[100,1,"<a href=\"FormElementFactory.php.html#51\">TwbsHelper\\Form\\View\\Helper\\Factory\\FormElementFactory::__invoke<\/a>"]], 'Method Complexity'))
+      .datum(getComplexityData([[100,1,"<a href=\"Page\/DropdownPage.php.html#14\">TwbsHelper\\Navigation\\Page\\DropdownPage::getDropdown<\/a>"],[100,1,"<a href=\"Page\/DropdownPage.php.html#19\">TwbsHelper\\Navigation\\Page\\DropdownPage::setDropdown<\/a>"],[100,1,"<a href=\"Page\/DropdownPage.php.html#25\">TwbsHelper\\Navigation\\Page\\DropdownPage::getHref<\/a>"]], 'Method Complexity'))
       .transition()
       .duration(500)
       .call(chart);

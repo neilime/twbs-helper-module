@@ -19,6 +19,7 @@
 - [\TwbsHelper\Form\View\Helper\FormAddOn](#class-twbshelperformviewhelperformaddon)
 - [\TwbsHelper\Form\View\Helper\FormRange](#class-twbshelperformviewhelperformrange)
 - [\TwbsHelper\Form\View\Helper\Factory\FormElementFactory](#class-twbshelperformviewhelperfactoryformelementfactory)
+- [\TwbsHelper\Navigation\Page\DropdownPage](#class-twbshelpernavigationpagedropdownpage)
 - [\TwbsHelper\Options\ModuleOptions](#class-twbshelperoptionsmoduleoptions)
 - [\TwbsHelper\Options\Factory\ModuleOptionsFactory](#class-twbshelperoptionsfactorymoduleoptionsfactory)
 - [\TwbsHelper\View\Helper\Image](#class-twbshelperviewhelperimage)
@@ -542,6 +543,20 @@
 
 <hr />
 
+### Class: \TwbsHelper\Navigation\Page\DropdownPage
+
+| Visibility | Function |
+|:-----------|:---------|
+| public | <strong>getDropdown()</strong> : <em>mixed</em> |
+| public | <strong>getHref()</strong> : <em>mixed</em> |
+| public | <strong>setDropdown(</strong><em>array</em> <strong>$aDropdown</strong>)</strong> : <em>void</em> |
+
+*This class extends \Zend\Navigation\Page\AbstractPage*
+
+*This class implements \Countable, \RecursiveIterator, \Traversable, \Iterator*
+
+<hr />
+
 ### Class: \TwbsHelper\Options\ModuleOptions
 
 > ModuleOptions Hold options for TwbsHelper module
@@ -864,10 +879,10 @@
 | public | <strong>__invoke(</strong><em>\Zend\Form\ElementInterface/array</em> <strong>$oDropdown=null</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>[\TwbsHelper\View\Helper\Dropdown](#class-twbshelperviewhelperdropdown)/string</em> |
 | public | <strong>render(</strong><em>\Zend\Form\ElementInterface/array</em> <strong>$oDropdown</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string</em><br /><em>Render dropdown markup</em> |
 | public | <strong>renderMenu(</strong><em>array</em> <strong>$aItems</strong>, <em>array</em> <strong>$aAttributes=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string</em><br /><em>Render dropdown menu markup</em> |
+| public | <strong>renderMenuFromElement(</strong><em>mixed</em> <strong>$oDropdown</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
 | public | <strong>renderToggle(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oDropdown</strong>)</strong> : <em>string</em><br /><em>Render dropdown toggle markup</em> |
 | protected | <strong>renderContainer(</strong><em>array</em> <strong>$aDropdownOptions</strong>, <em>\string</em> <strong>$sDropdownContent</strong>)</strong> : <em>void</em> |
 | protected | <strong>renderItem(</strong><em>array</em> <strong>$aItemOptions</strong>, <em>\bool</em> <strong>$bEscape</strong>)</strong> : <em>string</em><br /><em>Render dropdown list item markup</em> |
-| protected | <strong>renderMenuFromElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oDropdown</strong>, <em>\bool</em> <strong>$bEscape</strong>)</strong> : <em>void</em> |
 
 *This class extends [\TwbsHelper\View\Helper\AbstractHtmlElement](#class-twbshelperviewhelperabstracthtmlelement)*
 
@@ -973,9 +988,13 @@
 
 | Visibility | Function |
 |:-----------|:---------|
+| public | <strong>addProperIndentation(</strong><em>\string</em> <strong>$sContent</strong>, <em>\bool</em> <strong>$bForceIndentation=false</strong>, <em>\string</em> <strong>$sIndentation=null</strong>)</strong> : <em>void</em> |
+| public | <strong>htmlElement(</strong><em>\string</em> <strong>$sTag</strong>, <em>array</em> <strong>$aAttributes=array()</strong>, <em>\string</em> <strong>$sContent=null</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
 | public | <strong>htmlify(</strong><em>\Zend\Navigation\Page\AbstractPage</em> <strong>$oPage</strong>, <em>bool</em> <strong>$bEscapeLabel=true</strong>, <em>bool</em> <strong>$bAddClassToListItem=false</strong>)</strong> : <em>string</em><br /><em>Returns an HTML string containing an 'a' element for the given page if the page's href is not empty, and a 'span' element if it is empty. Overrides {@link AbstractHelper::htmlify()}.</em> |
+| public | <strong>removeIndentation(</strong><em>\string</em> <strong>$sContent</strong>)</strong> : <em>void</em> |
 | public | <strong>renderMenu(</strong><em>mixed</em> <strong>$container=null</strong>, <em>array</em> <strong>$aOptions=array()</strong>)</strong> : <em>void</em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>, <em>\string</em> <strong>$sTag</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
@@ -986,7 +1005,8 @@
 | protected | <strong>getVariants()</strong> : <em>mixed</em> |
 | protected | <strong>hasClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>\string</em> <strong>$sClass</strong>)</strong> : <em>bool</em> |
 | protected | <strong>hasColumnClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>)</strong> : <em>bool</em> |
-| protected | <strong>htmlAttribs(</strong><em>array</em> <strong>$attribs</strong>)</strong> : <em>string</em><br /><em>Converts an associative array to a string of tag attributes. Overloads {@link View\Helper\AbstractHtmlElement::htmlAttribs()}. to an attribute name and value</em> |
+| protected | <strong>htmlAttribs(</strong><em>mixed</em> <strong>$aAttributes</strong>)</strong> : <em>string</em><br /><em>Converts an associative array to a string of tag attributes. Overloads {@link View\Helper\AbstractHtmlElement::htmlAttribs()}. to an attribute name and value</em> |
+| protected | <strong>isHTML(</strong><em>\string</em> <strong>$sString</strong>)</strong> : <em>bool</em> |
 | protected | <strong>setClassesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
 | protected | <strong>setClassesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
 
