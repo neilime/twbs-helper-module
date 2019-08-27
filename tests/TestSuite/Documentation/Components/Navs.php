@@ -376,7 +376,56 @@ return [
                         '</a>' . PHP_EOL .
                         '    </li>' . PHP_EOL .
                         '</ul>',
-                ]
+                ],
+                [
+                    'title' => 'Pills with dropdowns',
+                    'url' => '%bootstrap-url%/components/navs/#pills-with-dropdowns',
+                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                        echo $oView->navigation()->menu()->renderMenu(
+                            new \Zend\Navigation\Navigation([
+                                ['label' => 'Active', 'uri' => '#', 'active' => true],
+                                [
+                                    'type' => '\TwbsHelper\Navigation\Page\DropdownPage',
+                                    'label' => 'Dropdown',
+                                    'dropdown' => [
+                                        'Action',
+                                        'Another action',
+                                        'Something else here',
+                                        '---',
+                                        'Separated link',
+                                    ],
+                                ],
+                                ['label' => 'Link', 'uri' => '#'],
+                                ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+                            ]),
+                            ['pills' => true]
+                        );
+                    },
+                    'expected' => '<ul class="nav&#x20;nav-pills">' . PHP_EOL .
+                        '    <li class="&#x20;nav-item">' . PHP_EOL .
+                        '        <a class="nav-link&#x20;active" href="&#x23;">Active</a>' . PHP_EOL .
+                        '    </li>' . PHP_EOL .
+                        '    <li class="dropdown&#x20;nav-item">' . PHP_EOL .
+                        '        <a class="nav-link&#x20;dropdown-toggle" href="&#x23;" data-toggle="dropdown" ' .
+                        'role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>' . PHP_EOL .
+                        '        <div class="dropdown-menu">' . PHP_EOL .
+                        '            <a href="&#x23;" class="dropdown-item">Action</a>' . PHP_EOL .
+                        '            <a href="&#x23;" class="dropdown-item">Another action</a>' . PHP_EOL .
+                        '            <a href="&#x23;" class="dropdown-item">Something else here</a>' . PHP_EOL .
+                        '            <div class="dropdown-divider"></div>' . PHP_EOL .
+                        '            <a href="&#x23;" class="dropdown-item">Separated link</a>' . PHP_EOL .
+                        '        </div>' . PHP_EOL .
+                        '    </li>' . PHP_EOL .
+                        '    <li class="nav-item">' . PHP_EOL .
+                        '        <a class="nav-link" href="&#x23;">Link</a>' . PHP_EOL .
+                        '    </li>' . PHP_EOL .
+                        '    <li class="nav-item">' . PHP_EOL .
+                        '        <a class="nav-link&#x20;disabled" href="&#x23;" tabindex="-1" aria-disabled="true">' .
+                        'Disabled' .
+                        '</a>' . PHP_EOL .
+                        '    </li>' . PHP_EOL .
+                        '</ul>',
+                ],
             ],
         ],
     ],
