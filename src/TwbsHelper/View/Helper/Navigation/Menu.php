@@ -40,9 +40,13 @@ class Menu extends \Zend\View\Helper\Navigation\Menu
         }
 
         $aUlClasses = [$this->ulClass];
+        $aItemClasses = [];
+
         foreach ([
             'tabs' => 'nav-tabs',
             'pills' => 'nav-pills',
+            'fill' => 'nav-fill',
+            'justified' => 'nav-justified',
             'centered' => 'justify-content-center',
             'right_aligned' => 'justify-content-end',
             'vertical' => 'flex-column',
@@ -50,6 +54,13 @@ class Menu extends \Zend\View\Helper\Navigation\Menu
             if (!empty($aOptions[$sOption])) {
                 $aUlClasses[] = $sClassName;
             }
+        }
+
+
+        if (isset($aOptions['vertical']) && is_string($aOptions['vertical'])) {
+            $aUlClasses[] = $this->getSizeClass($aOptions['vertical'], 'flex-%s-row');
+            $aItemClasses[] = $this->getSizeClass($aOptions['vertical'], 'flex-%s-fill');
+            $aItemClasses[] = $this->getSizeClass($aOptions['vertical'], 'text-%s-center');
         }
 
         $aOptions['ulClass'] = join(' ', $this->addClassesAttribute($aOptions['ulClass'] ?? '', $aUlClasses));
@@ -66,6 +77,28 @@ class Menu extends \Zend\View\Helper\Navigation\Menu
         if (isset($aOptions['list']) && $aOptions['list'] === false) {
             $sContent = preg_replace('/(<)ul([^>]*>[\s\S]*<\/)ul([^>]*>)/imU', '$1nav$2nav$3', $sContent);
             $sContent = preg_replace('/<li[^>]*>\s*(\S(.*\S)?)\s*<\/li[^>]*>/imU', '$1', $sContent);
+
+            // When using a <nav>-based navigation, include .nav-item on the anchors
+            // For nav-fill & nav-justified
+            if (
+                !empty($aOptions['fill'])
+                || !empty($aOptions['justified'])
+            ) {
+                $aItemClasses[] = 'nav-item';
+            }
+        }
+
+        if ($aItemClasses) {
+            $sContent = preg_replace(
+                '/(<a.*class=")([^"]*"[^>]*>)/imU',
+                sprintf(
+                    '$1%s$2',
+                    $this->getView()->plugin('escapehtmlattr')->__invoke(
+                        join(' ', $this->cleanClassesAttribute($aItemClasses)).' '
+                    )
+                ),
+                $sContent
+            );
         }
 
         return $sContent;

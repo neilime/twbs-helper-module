@@ -44,14 +44,9 @@ class ButtonGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
             $aClasses[] = $this->getSizeClass($aButtonGroupOptions['size'], 'btn-group');
         }
 
-        $aClasses = $this->addClassesAttribute(
-            $aButtonGroupOptions['attributes']['class'] ?? '',
-            $aClasses
-        );
-
-        $aAttributes = array_merge(
+        $aAttributes = $this->setClassesToAttributes(
             $aButtonGroupOptions['attributes'] ?? [],
-            ['class' => join(' ', $aClasses)]
+            $aClasses
         );
 
         $sMarkup = $this->renderButtons(

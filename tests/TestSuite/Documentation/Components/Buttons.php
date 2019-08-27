@@ -174,7 +174,7 @@ return [
                 '<button type="button" name="small-button" ' .
                 'class="btn&#x20;btn-primary&#x20;btn-sm" value="">Small button</button>' . PHP_EOL .
                 '<button type="button" name="small-button" ' .
-                'class="btn&#x20;btn-sm&#x20;btn-secondary" value="">Small button</button>' . PHP_EOL .
+                'class="btn&#x20;btn-secondary&#x20;btn-sm" value="">Small button</button>' . PHP_EOL .
                 '<br><br>'. PHP_EOL .
                 '<button type="button" name="block-level-button" ' .
                 'class="btn&#x20;btn-block&#x20;btn-lg&#x20;btn-primary" ' .

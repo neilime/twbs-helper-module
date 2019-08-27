@@ -106,7 +106,7 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
     protected function renderContainer(array $aDropdownOptions, string $sDropdownContent): string
     {
-        $aClasses = [];
+        $aClasses = $this->getClassesAttribute($aDropdownOptions['attributes']['class'] ?? '');
         if (!empty($aDropdownOptions['direction'])) {
             if (!in_array($aDropdownOptions['direction'], static::$directions, true)) {
                 throw new \InvalidArgumentException(sprintf(
@@ -114,10 +114,7 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
                     $aDropdownOptions['direction']
                 ));
             }
-            $aClasses = $this->addClassesAttribute(
-                $aDropdownOptions['attributes']['class'] ?? '',
-                ['drop' . $aDropdownOptions['direction']]
-            );
+            $aClasses[] = 'drop' . $aDropdownOptions['direction'];
         }
 
         if (!preg_grep('/^drop(' . join('|', static::$directions) . ')$/', $aClasses)) {

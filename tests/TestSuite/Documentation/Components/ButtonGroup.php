@@ -276,7 +276,7 @@ return [
                 '    <div class="btn-group" role="group">' . PHP_EOL .
                 '        <button type="button" name="dropdown" id="btnGroupDrop1" '.
                 'data-toggle="dropdown" role="button" aria-haspopup="true" ' .
-                'aria-expanded="false" class="btn&#x20;dropdown-toggle&#x20;btn-secondary" value="">' .
+                'aria-expanded="false" class="btn&#x20;btn-secondary&#x20;dropdown-toggle" value="">' .
                 'Dropdown' . '</button>' . PHP_EOL .
                 '        <div aria-labelledby="btnGroupDrop1" class="dropdown-menu">' . PHP_EOL .
                 '            <a href="&#x23;" class="dropdown-item">Dropdown link</a>' . PHP_EOL .
@@ -344,7 +344,7 @@ return [
                 '    <div class="btn-group" role="group">' . PHP_EOL .
                 '        <button type="button" name="dropdown" data-toggle="dropdown" '.
                 'role="button" aria-haspopup="true" aria-expanded="false" '.
-                'class="btn&#x20;dropdown-toggle&#x20;btn-secondary" value="">' .
+                'class="btn&#x20;btn-secondary&#x20;dropdown-toggle" value="">' .
                 'Dropdown' . '</button>' . PHP_EOL .
                 '        <div class="dropdown-menu">' . PHP_EOL .
                 '            <a href="&#x23;" class="dropdown-item">Dropdown link</a>' . PHP_EOL .
@@ -358,7 +358,7 @@ return [
                 '    <div class="btn-group" role="group">' . PHP_EOL .
                 '        <button type="button" name="dropdown" data-toggle="dropdown" '.
                 'role="button" aria-haspopup="true" aria-expanded="false" '.
-                'class="btn&#x20;dropdown-toggle&#x20;btn-secondary" value="">' .
+                'class="btn&#x20;btn-secondary&#x20;dropdown-toggle" value="">' .
                 'Dropdown' . '</button>' . PHP_EOL .
                 '        <div class="dropdown-menu">' . PHP_EOL .
                 '            <a href="&#x23;" class="dropdown-item">Dropdown link</a>' . PHP_EOL .
@@ -368,7 +368,7 @@ return [
                 '    <div class="btn-group" role="group">' . PHP_EOL .
                 '        <button type="button" name="dropdown" data-toggle="dropdown" '.
                 'role="button" aria-haspopup="true" aria-expanded="false" '.
-                'class="btn&#x20;dropdown-toggle&#x20;btn-secondary" value="">' .
+                'class="btn&#x20;btn-secondary&#x20;dropdown-toggle" value="">' .
                 'Dropdown' . '</button>' . PHP_EOL .
                 '        <div class="dropdown-menu">' . PHP_EOL .
                 '            <a href="&#x23;" class="dropdown-item">Dropdown link</a>' . PHP_EOL .
@@ -378,7 +378,7 @@ return [
                 '    <div class="btn-group" role="group">' . PHP_EOL .
                 '        <button type="button" name="dropdown" data-toggle="dropdown" '.
                 'role="button" aria-haspopup="true" aria-expanded="false" '.
-                'class="btn&#x20;dropdown-toggle&#x20;btn-secondary" value="">' .
+                'class="btn&#x20;btn-secondary&#x20;dropdown-toggle" value="">' .
                 'Dropdown' . '</button>' . PHP_EOL .
                 '        <div class="dropdown-menu">' . PHP_EOL .
                 '            <a href="&#x23;" class="dropdown-item">Dropdown link</a>' . PHP_EOL .

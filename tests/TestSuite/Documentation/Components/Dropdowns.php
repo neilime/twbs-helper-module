@@ -65,7 +65,7 @@ return [
                     'expected' => '<div class="dropdown">' . PHP_EOL .
                         '    <button type="button" name="dropdown" id="dropdownMenuButton" ' .
                         'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
-                        'class="btn&#x20;dropdown-toggle&#x20;btn-secondary" value="">' .
+                        'class="btn&#x20;btn-secondary&#x20;dropdown-toggle" value="">' .
                         'Dropdown</button>' . PHP_EOL .
                         '    <div aria-labelledby="dropdownMenuButton" class="dropdown-menu">' . PHP_EOL .
                         '        <a href="&#x23;" class="dropdown-item">Action</a>' . PHP_EOL .
@@ -76,7 +76,7 @@ return [
                         '<br>' . PHP_EOL .
                         '<div class="dropdown">' . PHP_EOL .
                         '    <a id="dropdownMenuButton" data-toggle="dropdown" role="button" aria-haspopup="true" ' .
-                        'aria-expanded="false" href="&#x23;" class="btn&#x20;dropdown-toggle&#x20;btn-secondary">' .
+                        'aria-expanded="false" href="&#x23;" class="btn&#x20;btn-secondary&#x20;dropdown-toggle">' .
                         'Dropdown</a>' . PHP_EOL .
                         '    <div aria-labelledby="dropdownMenuButton" class="dropdown-menu">' . PHP_EOL .
                         '        <a href="&#x23;" class="dropdown-item">Action</a>' . PHP_EOL .
@@ -403,7 +403,7 @@ return [
             'expected' => '<div class="btn-group&#x20;dropdown">' . PHP_EOL .
                 '    <button type="button" name="dropdown" ' .
                 'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
-                'class="btn&#x20;btn-lg&#x20;dropdown-toggle&#x20;btn-secondary" value="">' .
+                'class="btn&#x20;btn-lg&#x20;btn-secondary&#x20;dropdown-toggle" value="">' .
                 'Large button</button>' . PHP_EOL .
                 '    <div class="dropdown-menu">' . PHP_EOL .
                 '        <a href="&#x23;" class="dropdown-item">Action</a>' . PHP_EOL .
@@ -417,7 +417,7 @@ return [
                 '    <button type="button" name="dropdown" class="btn&#x20;btn-lg&#x20;btn-secondary" ' .
                 'value="">Large button</button>' . PHP_EOL .
                 '    <button type="button" name="dropdown-toggle" ' .
-                'class="btn&#x20;btn-lg&#x20;dropdown-toggle&#x20;dropdown-toggle-split&#x20;btn-secondary" ' .
+                'class="btn&#x20;btn-lg&#x20;btn-secondary&#x20;dropdown-toggle&#x20;dropdown-toggle-split" ' .
                 'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
                 'value=""><span class="sr-only">Toggle Dropdown</span></button>' . PHP_EOL .
                 '    <div class="dropdown-menu">' . PHP_EOL .
@@ -432,7 +432,7 @@ return [
                 '<div class="btn-group&#x20;dropdown">' . PHP_EOL .
                 '    <button type="button" name="dropdown" ' .
                 'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
-                'class="btn&#x20;btn-sm&#x20;dropdown-toggle&#x20;btn-secondary" ' .
+                'class="btn&#x20;btn-secondary&#x20;btn-sm&#x20;dropdown-toggle" ' .
                 'value="">Small button</button>' . PHP_EOL .
                 '    <div class="dropdown-menu">' . PHP_EOL .
                 '        <a href="&#x23;" class="dropdown-item">Action</a>' . PHP_EOL .
@@ -443,10 +443,10 @@ return [
                 '    </div>' . PHP_EOL .
                 '</div>' . PHP_EOL .
                 '<div class="btn-group&#x20;dropdown">' . PHP_EOL .
-                '    <button type="button" name="dropdown" class="btn&#x20;btn-sm&#x20;btn-secondary" ' .
+                '    <button type="button" name="dropdown" class="btn&#x20;btn-secondary&#x20;btn-sm" ' .
                 'value="">Small button</button>' . PHP_EOL .
                 '    <button type="button" name="dropdown-toggle" ' .
-                'class="btn&#x20;btn-sm&#x20;dropdown-toggle&#x20;dropdown-toggle-split&#x20;btn-secondary" ' .
+                'class="btn&#x20;btn-secondary&#x20;btn-sm&#x20;dropdown-toggle&#x20;dropdown-toggle-split" ' .
                 'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
                 'value=""><span class="sr-only">Toggle Dropdown</span></button>' . PHP_EOL .
                 '    <div class="dropdown-menu">' . PHP_EOL .
@@ -509,7 +509,7 @@ return [
                     'expected' => '<div class="btn-group&#x20;dropup">' . PHP_EOL .
                         '    <button type="button" name="dropup" ' .
                         'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
-                        'class="btn&#x20;btn-lg&#x20;dropdown-toggle&#x20;btn-secondary" ' .
+                        'class="btn&#x20;btn-lg&#x20;btn-secondary&#x20;dropdown-toggle" ' .
                         'value="">Dropup</button>' . PHP_EOL .
                         '    <div class="dropdown-menu">' . PHP_EOL .
                         '        <a href="&#x23;" class="dropdown-item">Action</a>' . PHP_EOL .
@@ -523,7 +523,7 @@ return [
                         '    <button type="button" name="split-dropup" class="btn&#x20;btn-lg&#x20;btn-secondary" ' .
                         'value="">Split dropup</button>' . PHP_EOL .
                         '    <button type="button" name="split-dropup-toggle" ' .
-                        'class="btn&#x20;btn-lg&#x20;dropdown-toggle&#x20;dropdown-toggle-split&#x20;btn-secondary" ' .
+                        'class="btn&#x20;btn-lg&#x20;btn-secondary&#x20;dropdown-toggle&#x20;dropdown-toggle-split" ' .
                         'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
                         'value=""><span class="sr-only">Toggle Dropdown</span></button>' . PHP_EOL .
                         '    <div class="dropdown-menu">' . PHP_EOL .
@@ -582,7 +582,7 @@ return [
                     'expected' => '<div class="btn-group&#x20;dropright">' . PHP_EOL .
                         '    <button type="button" name="dropright" ' .
                         'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
-                        'class="btn&#x20;btn-lg&#x20;dropdown-toggle&#x20;btn-secondary" ' .
+                        'class="btn&#x20;btn-lg&#x20;btn-secondary&#x20;dropdown-toggle" ' .
                         'value="">Dropright</button>' . PHP_EOL .
                         '    <div class="dropdown-menu">' . PHP_EOL .
                         '        <a href="&#x23;" class="dropdown-item">Action</a>' . PHP_EOL .
@@ -596,7 +596,7 @@ return [
                         '    <button type="button" name="split-dropright" ' .
                         'class="btn&#x20;btn-lg&#x20;btn-secondary" value="">Split dropright</button>' . PHP_EOL .
                         '    <button type="button" name="split-dropright-toggle" ' .
-                        'class="btn&#x20;btn-lg&#x20;dropdown-toggle&#x20;dropdown-toggle-split&#x20;btn-secondary" ' .
+                        'class="btn&#x20;btn-lg&#x20;btn-secondary&#x20;dropdown-toggle&#x20;dropdown-toggle-split" ' .
                         'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
                         'value=""><span class="sr-only">Toggle Dropdown</span></button>' . PHP_EOL .
                         '    <div class="dropdown-menu">' . PHP_EOL .
@@ -636,7 +636,7 @@ return [
             'expected' => '<div class="dropdown">' . PHP_EOL .
                 '    <button type="button" name="dropdown" id="dropdownMenu2" ' .
                 'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
-                'class="btn&#x20;dropdown-toggle&#x20;btn-secondary" value="">' .
+                'class="btn&#x20;btn-secondary&#x20;dropdown-toggle" value="">' .
                 'Dropdown</button>' . PHP_EOL .
                 '    <div aria-labelledby="dropdownMenu2" class="dropdown-menu">' . PHP_EOL .
                 '        <a href="&#x23;" class="dropdown-item">Action</a>' . PHP_EOL .
@@ -706,7 +706,7 @@ return [
             'expected' => '<div class="dropdown">' . PHP_EOL .
                 '    <button type="button" name="dropdown" ' .
                 'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
-                'class="btn&#x20;dropdown-toggle&#x20;btn-secondary" value="">' .
+                'class="btn&#x20;btn-secondary&#x20;dropdown-toggle" value="">' .
                 'Right-aligned menu</button>' . PHP_EOL .
                 '    <div class="dropdown-menu&#x20;dropdown-menu-right">' . PHP_EOL .
                 '        <a href="&#x23;" class="dropdown-item">Action</a>' . PHP_EOL .
@@ -746,7 +746,7 @@ return [
                     'expected' => '<div class="dropdown">' . PHP_EOL .
                         '    <button type="button" name="dropdown" ' .
                         'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
-                        'class="btn&#x20;dropdown-toggle&#x20;btn-secondary" value="">' .
+                        'class="btn&#x20;btn-secondary&#x20;dropdown-toggle" value="">' .
                         'Left-aligned but right aligned when large screen</button>' . PHP_EOL .
                         '    <div class="dropdown-menu&#x20;dropdown-menu-lg-right">' . PHP_EOL .
                         '        <a href="&#x23;" class="dropdown-item">Action</a>' . PHP_EOL .
@@ -758,7 +758,7 @@ return [
                         '<div class="dropdown">' . PHP_EOL .
                         '    <button type="button" name="dropdown" ' .
                         'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
-                        'class="btn&#x20;dropdown-toggle&#x20;btn-secondary" value="">' .
+                        'class="btn&#x20;btn-secondary&#x20;dropdown-toggle" value="">' .
                         'Left-aligned but right aligned when large screen</button>' . PHP_EOL .
                         '    <div class="dropdown-menu&#x20;dropdown-menu-lg-left&#x20;dropdown-menu-right">'
                         . PHP_EOL .
@@ -957,7 +957,7 @@ return [
                 '<div class="dropdown&#x20;mr-1">' . PHP_EOL .
                 '    <button type="button" name="dropdown" id="dropdownMenuOffset" ' .
                 'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
-                'data-offset="10,20" class="btn&#x20;dropdown-toggle&#x20;btn-secondary" value="">' .
+                'data-offset="10,20" class="btn&#x20;btn-secondary&#x20;dropdown-toggle" value="">' .
                 'Offset</button>' . PHP_EOL .
                 '    <div aria-labelledby="dropdownMenuOffset" class="dropdown-menu">' . PHP_EOL .
                 '        <a href="&#x23;" class="dropdown-item">Action</a>' . PHP_EOL .
@@ -970,7 +970,7 @@ return [
                 'class="btn&#x20;btn-secondary" value="">' .
                 'Reference</button>' . PHP_EOL .
                 '    <button type="button" name="dropdown-toggle" ' .
-                'class="btn&#x20;dropdown-toggle&#x20;dropdown-toggle-split&#x20;btn-secondary" ' .
+                'class="btn&#x20;btn-secondary&#x20;dropdown-toggle&#x20;dropdown-toggle-split" ' .
                 'data-reference="parent" data-toggle="dropdown" role="button" aria-haspopup="true" '.
                 'aria-expanded="false" value=""><span class="sr-only">Reference</span></button>' . PHP_EOL .
                 '    <div aria-labelledby="dropdownMenuReference" class="dropdown-menu">' . PHP_EOL .

@@ -148,7 +148,7 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
             $aClasses[] = 'btn-secondary';
         }
 
-        $oElement->setAttribute('class', join(' ', $aClasses));
+        $this->setClassesToElement($oElement, $aClasses);
     }
 
     protected function renderButtonContent(\Zend\Form\ElementInterface $oElement, string $sButtonContent = null)

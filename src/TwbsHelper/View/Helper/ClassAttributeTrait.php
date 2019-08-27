@@ -117,7 +117,11 @@ trait ClassAttributeTrait
         if (!in_array($sSize, $this->getSizes())) {
             throw new \InvalidArgumentException('Size "' . $sSize . '" does not exist');
         }
-        return $sPrefix . '-' . $sSize;
+        if (!strstr($sPrefix, '%s')) {
+            return $sPrefix . '-' . $sSize;
+        }
+
+        return sprintf($sPrefix, $sSize);
     }
 
     protected function getColumnClass($sColumn): string
