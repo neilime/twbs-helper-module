@@ -700,7 +700,6 @@ return [
                             'items' => ['Action', 'Another action', 'Something else here'],
                         ],
                     ],
-
                 ]);
             },
             'expected' => '<div class="dropdown">' . PHP_EOL .
@@ -971,7 +970,7 @@ return [
                 'Reference</button>' . PHP_EOL .
                 '    <button type="button" name="dropdown-toggle" ' .
                 'class="btn&#x20;btn-secondary&#x20;dropdown-toggle&#x20;dropdown-toggle-split" ' .
-                'data-reference="parent" data-toggle="dropdown" role="button" aria-haspopup="true" '.
+                'data-reference="parent" data-toggle="dropdown" role="button" aria-haspopup="true" ' .
                 'aria-expanded="false" value=""><span class="sr-only">Reference</span></button>' . PHP_EOL .
                 '    <div aria-labelledby="dropdownMenuReference" class="dropdown-menu">' . PHP_EOL .
                 '        <a href="&#x23;" class="dropdown-item">Action</a>' . PHP_EOL .

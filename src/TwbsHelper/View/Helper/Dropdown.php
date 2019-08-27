@@ -78,8 +78,9 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
             $oFactory = new \Zend\Form\Factory();
             $oDropdown = $oFactory->create($oDropdown);
         } elseif (!($oDropdown instanceof \Zend\Form\ElementInterface)) {
-            throw new \LogicException(sprintf(
-                'Button expects an instanceof \Zend\Form\ElementInterface or an array / Traversable, "%s" given',
+            throw new \InvalidArgumentException(sprintf(
+                'Argument "$oDropdown" expects %s, "%s" given',
+                'an instanceof \Zend\Form\ElementInterface or an array / Traversable',
                 is_object($oDropdown) ? get_class($oDropdown) : gettype($oDropdown)
             ));
         }
@@ -220,8 +221,23 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
         return  $sToogleMarkup;
     }
 
-    protected function renderMenuFromElement(\Zend\Form\ElementInterface $oDropdown, bool $bEscape)
+    public function renderMenuFromElement($oDropdown, bool $bEscape = true)
     {
+        if (
+            is_array($oDropdown)
+            || ($oDropdown instanceof \Traversable
+                && !($oDropdown instanceof \Zend\Form\ElementInterface))
+        ) {
+            $oFactory = new \Zend\Form\Factory();
+            $oDropdown = $oFactory->create($oDropdown);
+        } elseif (!($oDropdown instanceof \Zend\Form\ElementInterface)) {
+            throw new \InvalidArgumentException(sprintf(
+                'Argument "$oDropdown" expects %s, "%s" given',
+                'an instanceof \Zend\Form\ElementInterface or an array / Traversable',
+                is_object($oDropdown) ? get_class($oDropdown) : gettype($oDropdown)
+            ));
+        }
+
         $aDropdownOptions = $oDropdown->getOption('dropdown');
         if (!isset($aDropdownOptions['items'])) {
             throw new \InvalidArgumentException(__METHOD__ . ' expects "items" option');

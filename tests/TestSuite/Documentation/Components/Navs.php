@@ -10,17 +10,17 @@ return [
             'url' => '%bootstrap-url%/components/navs/#base-nav',
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 echo $oView->navigation()->menu(new \Zend\Navigation\Navigation([
-                    ['label' => 'Active', 'uri' => '#', 'active' => true,],
-                    ['label' => 'Link', 'uri' => '#',],
-                    ['label' => 'Link', 'uri' => '#',],
-                    ['label' => 'Disabled', 'uri' => '#', 'visible' => false,],
+                    ['label' => 'Active', 'uri' => '#', 'active' => true],
+                    ['label' => 'Link', 'uri' => '#'],
+                    ['label' => 'Link', 'uri' => '#'],
+                    ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
                 ])) . PHP_EOL;
 
                 echo $oView->navigation()->menu()->renderMenu(new \Zend\Navigation\Navigation([
-                    ['label' => 'Active', 'uri' => '#', 'active' => true,],
-                    ['label' => 'Link', 'uri' => '#',],
-                    ['label' => 'Link', 'uri' => '#',],
-                    ['label' => 'Disabled', 'uri' => '#', 'visible' => false,],
+                    ['label' => 'Active', 'uri' => '#', 'active' => true],
+                    ['label' => 'Link', 'uri' => '#'],
+                    ['label' => 'Link', 'uri' => '#'],
+                    ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
                 ]), ['list' => false]);
             },
             'expected' => '<ul class="nav">' . PHP_EOL .
@@ -57,18 +57,18 @@ return [
                     'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                         // Centered with option 'center'
                         echo $oView->navigation()->menu()->renderMenu(new \Zend\Navigation\Navigation([
-                            ['label' => 'Active', 'uri' => '#', 'active' => true,],
-                            ['label' => 'Link', 'uri' => '#',],
-                            ['label' => 'Link', 'uri' => '#',],
-                            ['label' => 'Disabled', 'uri' => '#', 'visible' => false,],
+                            ['label' => 'Active', 'uri' => '#', 'active' => true],
+                            ['label' => 'Link', 'uri' => '#'],
+                            ['label' => 'Link', 'uri' => '#'],
+                            ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
                         ]), ['centered' => true]) . PHP_EOL;
 
                         // Right-aligned with option 'right_aligned'
                         echo $oView->navigation()->menu()->renderMenu(new \Zend\Navigation\Navigation([
-                            ['label' => 'Active', 'uri' => '#', 'active' => true,],
-                            ['label' => 'Link', 'uri' => '#',],
-                            ['label' => 'Link', 'uri' => '#',],
-                            ['label' => 'Disabled', 'uri' => '#', 'visible' => false,],
+                            ['label' => 'Active', 'uri' => '#', 'active' => true],
+                            ['label' => 'Link', 'uri' => '#'],
+                            ['label' => 'Link', 'uri' => '#'],
+                            ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
                         ]), ['right_aligned' => true]);
                     },
                     'expected' => '<ul class="justify-content-center&#x20;nav">' . PHP_EOL .
@@ -110,10 +110,10 @@ return [
                     'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                         echo $oView->navigation()->menu()->renderMenu(
                             new \Zend\Navigation\Navigation([
-                                ['label' => 'Active', 'uri' => '#', 'active' => true,],
-                                ['label' => 'Link', 'uri' => '#',],
-                                ['label' => 'Link', 'uri' => '#',],
-                                ['label' => 'Disabled', 'uri' => '#', 'visible' => false,],
+                                ['label' => 'Active', 'uri' => '#', 'active' => true],
+                                ['label' => 'Link', 'uri' => '#'],
+                                ['label' => 'Link', 'uri' => '#'],
+                                ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
                             ]),
                             ['vertical' => true]
                         ) . PHP_EOL;
@@ -121,8 +121,8 @@ return [
                         echo $oView->navigation()->menu()->renderMenu(
                             new \Zend\Navigation\Navigation([
                                 ['label' => 'Active', 'uri' => '#', 'active' => true],
-                                ['label' => 'Link', 'uri' => '#',],
-                                ['label' => 'Link', 'uri' => '#',],
+                                ['label' => 'Link', 'uri' => '#'],
+                                ['label' => 'Link', 'uri' => '#'],
                                 ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
                             ]),
                             [
@@ -160,10 +160,10 @@ return [
                     'url' => '%bootstrap-url%/components/navs/#tabs',
                     'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                         echo $oView->navigation()->menu()->renderMenu(new \Zend\Navigation\Navigation([
-                            ['label' => 'Active', 'uri' => '#', 'active' => true,],
-                            ['label' => 'Link', 'uri' => '#',],
-                            ['label' => 'Link', 'uri' => '#',],
-                            ['label' => 'Disabled', 'uri' => '#', 'visible' => false,],
+                            ['label' => 'Active', 'uri' => '#', 'active' => true],
+                            ['label' => 'Link', 'uri' => '#'],
+                            ['label' => 'Link', 'uri' => '#'],
+                            ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
                         ]), ['tabs' => true]);
                     },
                     'expected' => '<ul class="nav&#x20;nav-tabs">' . PHP_EOL .
@@ -188,10 +188,10 @@ return [
                     'url' => '%bootstrap-url%/components/navs/#pills',
                     'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                         echo $oView->navigation()->menu()->renderMenu(new \Zend\Navigation\Navigation([
-                            ['label' => 'Active', 'uri' => '#', 'active' => true,],
-                            ['label' => 'Link', 'uri' => '#',],
-                            ['label' => 'Link', 'uri' => '#',],
-                            ['label' => 'Disabled', 'uri' => '#', 'visible' => false,],
+                            ['label' => 'Active', 'uri' => '#', 'active' => true],
+                            ['label' => 'Link', 'uri' => '#'],
+                            ['label' => 'Link', 'uri' => '#'],
+                            ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
                         ]), ['pills' => true]);
                     },
                     'expected' => '<ul class="nav&#x20;nav-pills">' . PHP_EOL .
@@ -217,10 +217,10 @@ return [
                     'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                         echo $oView->navigation()->menu()->renderMenu(
                             new \Zend\Navigation\Navigation([
-                                ['label' => 'Active', 'uri' => '#', 'active' => true,],
-                                ['label' => 'Much longer nav link', 'uri' => '#',],
-                                ['label' => 'Link', 'uri' => '#',],
-                                ['label' => 'Disabled', 'uri' => '#', 'visible' => false,],
+                                ['label' => 'Active', 'uri' => '#', 'active' => true],
+                                ['label' => 'Much longer nav link', 'uri' => '#'],
+                                ['label' => 'Link', 'uri' => '#'],
+                                ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
                             ]),
                             [
                                 'pills' => true,
@@ -231,8 +231,8 @@ return [
                         echo $oView->navigation()->menu()->renderMenu(
                             new \Zend\Navigation\Navigation([
                                 ['label' => 'Active', 'uri' => '#', 'active' => true],
-                                ['label' => 'Much longer nav link', 'uri' => '#',],
-                                ['label' => 'Link', 'uri' => '#',],
+                                ['label' => 'Much longer nav link', 'uri' => '#'],
+                                ['label' => 'Link', 'uri' => '#'],
                                 ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
                             ]),
                             [
@@ -245,8 +245,8 @@ return [
                         echo $oView->navigation()->menu()->renderMenu(
                             new \Zend\Navigation\Navigation([
                                 ['label' => 'Active', 'uri' => '#', 'active' => true],
-                                ['label' => 'Much longer nav link', 'uri' => '#',],
-                                ['label' => 'Link', 'uri' => '#',],
+                                ['label' => 'Much longer nav link', 'uri' => '#'],
+                                ['label' => 'Link', 'uri' => '#'],
                                 ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
                             ]),
                             [
@@ -293,15 +293,15 @@ return [
                     'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                         echo $oView->navigation()->menu()->renderMenu(
                             new \Zend\Navigation\Navigation([
-                                ['label' => 'Active', 'uri' => '#', 'active' => true,],
-                                ['label' => 'Longer nav link', 'uri' => '#',],
-                                ['label' => 'Link', 'uri' => '#',],
-                                ['label' => 'Disabled', 'uri' => '#', 'visible' => false,],
+                                ['label' => 'Active', 'uri' => '#', 'active' => true],
+                                ['label' => 'Longer nav link', 'uri' => '#'],
+                                ['label' => 'Link', 'uri' => '#'],
+                                ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
                             ]),
                             [
                                 'list' => false,
                                 'pills' => true,
-                                'vertical' => 'sm'
+                                'vertical' => 'sm',
                             ]
                         );
                     },
@@ -316,6 +316,61 @@ return [
                         'href="&#x23;" tabindex="-1" aria-disabled="true">Disabled</a>' . PHP_EOL .
                         '</nav>',
                 ],
+            ],
+        ],
+        [
+            'title' => 'Using dropdowns',
+            'url' => '%bootstrap-url%/components/navs/#using-dropdowns',
+            'tests' => [
+                [
+                    'title' => 'Tabs with dropdowns',
+                    'url' => '%bootstrap-url%/components/navs/#tabs-with-dropdowns',
+                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                        echo $oView->navigation()->menu()->renderMenu(
+                            new \Zend\Navigation\Navigation([
+                                ['label' => 'Active', 'uri' => '#', 'active' => true],
+                                [
+                                    'type' => '\TwbsHelper\Navigation\Page\DropdownPage',
+                                    'label' => 'Dropdown',
+                                    'dropdown' => [
+                                        'Action',
+                                        'Another action',
+                                        'Something else here',
+                                        '---',
+                                        'Separated link',
+                                    ],
+                                ],
+                                ['label' => 'Link', 'uri' => '#'],
+                                ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+                            ]),
+                            ['tabs' => true]
+                        );
+                    },
+                    'expected' => '<ul class="nav&#x20;nav-tabs">' . PHP_EOL .
+                        '    <li class="&#x20;nav-item">' . PHP_EOL .
+                        '        <a class="nav-link&#x20;active" href="&#x23;">Active</a>' . PHP_EOL .
+                        '    </li>' . PHP_EOL .
+                        '    <li class="dropdown&#x20;nav-item">' . PHP_EOL .
+                        '        <a class="nav-link&#x20;dropdown-toggle" href="&#x23;" data-toggle="dropdown" '.
+                        'role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>' . PHP_EOL .
+                        '        <div class="dropdown-menu">' . PHP_EOL .
+                        '            <a href="&#x23;" class="dropdown-item">Action</a>' . PHP_EOL .
+                        '            <a href="&#x23;" class="dropdown-item">Another action</a>' . PHP_EOL .
+                        '            <a href="&#x23;" class="dropdown-item">Something else here</a>' . PHP_EOL .
+                        '            <div class="dropdown-divider"></div>' . PHP_EOL .
+                        '            <a href="&#x23;" class="dropdown-item">Separated link</a>' . PHP_EOL .
+                        '        </div>' . PHP_EOL .
+                        '    </li>' . PHP_EOL .
+                        '    <li class="nav-item">' . PHP_EOL .
+                        '        <a class="nav-link" href="&#x23;">Link</a>' . PHP_EOL .
+                        '    </li>' . PHP_EOL .
+                        '    <li class="nav-item">' . PHP_EOL .
+                        '        <a class="nav-link&#x20;disabled" href="&#x23;" tabindex="-1" aria-disabled="true">' .
+                        'Disabled' .
+                        '</a>' . PHP_EOL .
+                        '    </li>' . PHP_EOL .
+                        '</ul>',
+                ]
             ],
         ],
     ],

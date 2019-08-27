@@ -8,6 +8,7 @@ namespace TwbsHelper\View\Helper\Navigation;
 class Menu extends \Zend\View\Helper\Navigation\Menu
 {
     use \TwbsHelper\View\Helper\ClassAttributeTrait;
+    use \TwbsHelper\View\Helper\HtmlTrait;
 
     /**
      * CSS class to use for the ul element.
@@ -36,7 +37,14 @@ class Menu extends \Zend\View\Helper\Navigation\Menu
         );
 
         foreach ($oIterator as $oPage) {
-            $oPage->setClass(join(' ', $this->addClassesAttribute($oPage->getClass() ?? '', ['nav-item'])));
+            $aPageClasses = ['nav-item'];
+            if ($oPage instanceof \TwbsHelper\Navigation\Page\DropdownPage) {
+                $aPageClasses[] = 'dropdown';
+            }
+            $oPage->setClass(join(
+                ' ',
+                $this->addClassesAttribute($oPage->getClass() ?? '', $aPageClasses)
+            ));
         }
 
         $aUlClasses = [$this->ulClass];
@@ -55,7 +63,6 @@ class Menu extends \Zend\View\Helper\Navigation\Menu
                 $aUlClasses[] = $sClassName;
             }
         }
-
 
         if (isset($aOptions['vertical']) && is_string($aOptions['vertical'])) {
             $aUlClasses[] = $this->getSizeClass($aOptions['vertical'], 'flex-%s-row');
@@ -94,7 +101,7 @@ class Menu extends \Zend\View\Helper\Navigation\Menu
                 sprintf(
                     '$1%s$2',
                     $this->getView()->plugin('escapehtmlattr')->__invoke(
-                        join(' ', $this->cleanClassesAttribute($aItemClasses)).' '
+                        join(' ', $this->cleanClassesAttribute($aItemClasses)) . ' '
                     )
                 ),
                 $sContent
@@ -130,9 +137,32 @@ class Menu extends \Zend\View\Helper\Navigation\Menu
             $aClasses[] = 'disabled';
         }
 
+        $bIsDropdownPage = $oPage instanceof \TwbsHelper\Navigation\Page\DropdownPage;
+        if ($bIsDropdownPage) {
+            $aClasses[] = 'dropdown-toggle';
+        }
+
         $oPage->setClass(join(' ', $aClasses));
         $sHtml = parent::htmlify($oPage, $bEscapeLabel, false);
         $oPage->setClass($sPageClass);
+
+        if ($bIsDropdownPage) {
+            $aDropdownOptions = $oPage->getDropdown();
+            if (\Zend\Stdlib\ArrayUtils::isList($aDropdownOptions)) {
+                $aDropdownOptions = ['items' => $aDropdownOptions];
+            }
+            $sHtml .= rtrim($this->addProperIndentation($this->getView()->plugin('dropdown')->renderMenuFromElement([
+                'name' => 'dropdown',
+                'options' => [
+                    'tag' => 'a',
+                    'label' => $oPage->getLabel(),
+                    'dropdown' => \Zend\Stdlib\ArrayUtils::merge(
+                        ['disable_container' => true],
+                        $aDropdownOptions
+                    ),
+                ],
+            ]), true, $this->indentation . $this->indentation), PHP_EOL);
+        }
         return $sHtml;
     }
 
@@ -145,13 +175,21 @@ class Menu extends \Zend\View\Helper\Navigation\Menu
      *                         to an attribute name and value
      * @return string
      */
-    protected function htmlAttribs($attribs)
+    protected function htmlAttribs($aAttributes)
     {
-        if (isset($attribs['class']) && strstr($attribs['class'], 'disabled')) {
-            $attribs['tabindex'] = '-1';
-            $attribs['aria-disabled'] = 'true';
+        if (isset($aAttributes['class'])) {
+            if (strstr($aAttributes['class'], 'disabled')) {
+                $aAttributes['tabindex'] = '-1';
+                $aAttributes['aria-disabled'] = 'true';
+            }
+            if (strstr($aAttributes['class'], 'dropdown-toggle')) {
+                $aAttributes['data-toggle'] = 'dropdown';
+                $aAttributes['role'] = 'button';
+                $aAttributes['aria-haspopup'] = 'true';
+                $aAttributes['aria-expanded'] = 'false';
+            }
         }
 
-        return parent::htmlAttribs($attribs);
+        return parent::htmlAttribs($aAttributes);
     }
 }
