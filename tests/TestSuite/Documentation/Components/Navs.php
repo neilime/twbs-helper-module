@@ -226,7 +226,9 @@ return [
                                 'pills' => true,
                                 'fill' => true,
                             ]
-                        ) . PHP_EOL;
+                        );
+
+                        echo PHP_EOL . '<br>' . PHP_EOL;
 
                         echo $oView->navigation()->menu()->renderMenu(
                             new \Zend\Navigation\Navigation([
@@ -240,7 +242,9 @@ return [
                                 'fill' => true,
                                 'list' => false,
                             ]
-                        ) . PHP_EOL;
+                        );
+
+                        echo PHP_EOL . '<br>' . PHP_EOL;
 
                         echo $oView->navigation()->menu()->renderMenu(
                             new \Zend\Navigation\Navigation([
@@ -272,6 +276,7 @@ return [
                         '</a>' . PHP_EOL .
                         '    </li>' . PHP_EOL .
                         '</ul>' . PHP_EOL .
+                        '<br>' . PHP_EOL .
                         '<nav class="nav&#x20;nav-fill&#x20;nav-pills">' . PHP_EOL .
                         '    <a class="nav-item&#x20;nav-link&#x20;active" href="&#x23;">Active</a>' . PHP_EOL .
                         '    <a class="nav-item&#x20;nav-link" href="&#x23;">Much longer nav link</a>' . PHP_EOL .
@@ -279,6 +284,7 @@ return [
                         '    <a class="nav-item&#x20;nav-link&#x20;disabled" href="&#x23;" tabindex="-1" ' .
                         'aria-disabled="true">Disabled</a>' . PHP_EOL .
                         '</nav>' . PHP_EOL .
+                        '<br>' . PHP_EOL .
                         '<nav class="nav&#x20;nav-justified&#x20;nav-pills">' . PHP_EOL .
                         '    <a class="nav-item&#x20;nav-link&#x20;active" href="&#x23;">Active</a>' . PHP_EOL .
                         '    <a class="nav-item&#x20;nav-link" href="&#x23;">Much longer nav link</a>' . PHP_EOL .
@@ -351,7 +357,7 @@ return [
                         '        <a class="nav-link&#x20;active" href="&#x23;">Active</a>' . PHP_EOL .
                         '    </li>' . PHP_EOL .
                         '    <li class="dropdown&#x20;nav-item">' . PHP_EOL .
-                        '        <a class="nav-link&#x20;dropdown-toggle" href="&#x23;" data-toggle="dropdown" '.
+                        '        <a class="nav-link&#x20;dropdown-toggle" href="&#x23;" data-toggle="dropdown" ' .
                         'role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>' . PHP_EOL .
                         '        <div class="dropdown-menu">' . PHP_EOL .
                         '            <a href="&#x23;" class="dropdown-item">Action</a>' . PHP_EOL .
