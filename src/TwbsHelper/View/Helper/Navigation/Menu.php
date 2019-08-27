@@ -140,20 +140,19 @@ class Menu extends \Zend\View\Helper\Navigation\Menu
         $bIsDropdownPage = $oPage instanceof \TwbsHelper\Navigation\Page\DropdownPage;
         if ($bIsDropdownPage) {
             $aClasses[] = 'dropdown-toggle';
-        }
-
-        $oPage->setClass(join(' ', $aClasses));
-        $sHtml = parent::htmlify($oPage, $bEscapeLabel, false);
-        $oPage->setClass($sPageClass);
-
-        if ($bIsDropdownPage) {
             $aDropdownOptions = $oPage->getDropdown();
+            $aDropdownAttributes = [];
             if (\Zend\Stdlib\ArrayUtils::isList($aDropdownOptions)) {
                 $aDropdownOptions = ['items' => $aDropdownOptions];
+            } else {
+                if (!empty($aDropdownOptions['attributes'])) {
+                    $aDropdownAttributes = $aDropdownOptions['attributes'];
+                }
             }
-            $sHtml .= rtrim($this->addProperIndentation($this->getView()->plugin('dropdown')->renderMenuFromElement([
+            return trim($this->addProperIndentation($this->getView()->plugin('dropdown')->render([
                 'name' => 'dropdown',
                 'options' => [
+                    'disable_twbs' => true,
                     'tag' => 'a',
                     'label' => $oPage->getLabel(),
                     'dropdown' => \Zend\Stdlib\ArrayUtils::merge(
@@ -161,8 +160,22 @@ class Menu extends \Zend\View\Helper\Navigation\Menu
                         $aDropdownOptions
                     ),
                 ],
-            ]), true, $this->indentation . $this->indentation), PHP_EOL);
+                'attributes' => $this->setClassesToAttributes($aDropdownAttributes, $aClasses)
+            ]), true, $this->indentation . $this->indentation));
         }
+
+
+        $oPage->setClass(join(' ', $aClasses));
+
+        if (
+            $bEscapeLabel
+            && $this->isHTML($this->translate($oPage->getLabel(), $oPage->getTextDomain()))
+        ) {
+            $bEscapeLabel = false;
+        }
+
+        $sHtml = parent::htmlify($oPage, $bEscapeLabel, false);
+        $oPage->setClass($sPageClass);
         return $sHtml;
     }
 

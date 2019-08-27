@@ -125,6 +125,10 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
 
     protected function defineButtonClasses(\Zend\Form\ElementInterface $oElement)
     {
+        if (!empty($oElement->getOption('disable_twbs'))) {
+            return;
+        }
+
         $aClassesToAdd = ['btn'];
 
         // Variant option

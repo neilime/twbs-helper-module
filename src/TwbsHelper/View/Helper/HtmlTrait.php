@@ -28,7 +28,11 @@ trait HtmlTrait
 
         $sTag = strtolower($sTag);
 
-        $bForceIndentation = in_array($sTag, ['div', 'blockquote', 'figure', 'ul', 'fieldset'], true);
+        $bForceIndentation = in_array(
+            $sTag,
+            ['div', 'blockquote', 'figure', 'ul', 'fieldset', 'nav'],
+            true
+        );
 
         return sprintf(
             '<%s%s>%s</%s>',
@@ -53,7 +57,6 @@ trait HtmlTrait
             PHP_EOL,
             $sContent
         );
-
 
         if (count($aLines) === 1 && !$bForceIndentation) {
             return $sContent;
@@ -103,8 +106,16 @@ trait HtmlTrait
             if (!is_callable($aPossibleHelper)) {
                 continue;
             }
-            $sMarkup = trim($aPossibleHelper($aAttributes));
-            return $sMarkup ? ' ' . $sMarkup : '';
+
+            try {
+                $sMarkup = trim(call_user_func($aPossibleHelper, $aAttributes));
+                return $sMarkup ? ' ' . $sMarkup : '';
+            } catch (\Throwable $oException) {
+                if ($oException instanceof \BadMethodCallException) {
+                    continue;
+                }
+                throw $oException;
+            }
         }
         throw new \LogicException('No helpers available to transform attributes to string');
     }

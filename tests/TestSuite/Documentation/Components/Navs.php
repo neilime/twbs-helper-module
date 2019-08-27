@@ -357,8 +357,8 @@ return [
                         '        <a class="nav-link&#x20;active" href="&#x23;">Active</a>' . PHP_EOL .
                         '    </li>' . PHP_EOL .
                         '    <li class="dropdown&#x20;nav-item">' . PHP_EOL .
-                        '        <a class="nav-link&#x20;dropdown-toggle" href="&#x23;" data-toggle="dropdown" ' .
-                        'role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>' . PHP_EOL .
+                        '        <a class="dropdown-toggle&#x20;nav-link" data-toggle="dropdown" role="button" '.
+                        'aria-haspopup="true" aria-expanded="false" href="&#x23;">Dropdown</a>' . PHP_EOL .
                         '        <div class="dropdown-menu">' . PHP_EOL .
                         '            <a href="&#x23;" class="dropdown-item">Action</a>' . PHP_EOL .
                         '            <a href="&#x23;" class="dropdown-item">Another action</a>' . PHP_EOL .
@@ -406,8 +406,8 @@ return [
                         '        <a class="nav-link&#x20;active" href="&#x23;">Active</a>' . PHP_EOL .
                         '    </li>' . PHP_EOL .
                         '    <li class="dropdown&#x20;nav-item">' . PHP_EOL .
-                        '        <a class="nav-link&#x20;dropdown-toggle" href="&#x23;" data-toggle="dropdown" ' .
-                        'role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>' . PHP_EOL .
+                        '        <a class="dropdown-toggle&#x20;nav-link" data-toggle="dropdown" role="button" '.
+                        'aria-haspopup="true" aria-expanded="false" href="&#x23;">Dropdown</a>' . PHP_EOL .
                         '        <div class="dropdown-menu">' . PHP_EOL .
                         '            <a href="&#x23;" class="dropdown-item">Action</a>' . PHP_EOL .
                         '            <a href="&#x23;" class="dropdown-item">Another action</a>' . PHP_EOL .

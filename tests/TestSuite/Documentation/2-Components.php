@@ -20,5 +20,6 @@ return [
         'MediaObject' => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/MediaObject.php',
         'Modal' => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Modal.php',
         'Navs' => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Navs.php',
+        'Navbar' => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Navbar.php',
     ],
 ];

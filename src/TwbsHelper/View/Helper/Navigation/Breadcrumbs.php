@@ -3,7 +3,7 @@
 namespace TwbsHelper\View\Helper\Navigation;
 
 /**
- * Helper for rendering abbreviations
+ * Helper for rendering breadcrumbs
  */
 class Breadcrumbs extends \Zend\View\Helper\Navigation\Breadcrumbs
 {

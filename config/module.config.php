@@ -104,6 +104,7 @@ return [
             'formtextarea'        => 'Zend\Form\View\Helper\FormTextarea',
             'forminput'           => 'Zend\Form\View\Helper\FormInput',
             'formhidden'          => 'Zend\Form\View\Helper\FormHidden',
+            'formsearch'          => 'Zend\Form\View\Helper\FormSearch',
         ],
 
         'factories' => [
@@ -119,10 +120,12 @@ return [
     'navigation_helpers' => array(
         'invokables' => array(
             // Navigation
-            'breadcrumbs'                          => 'TwbsHelper\View\Helper\Navigation\Breadcrumbs',
+            'breadcrumbs'                           => 'TwbsHelper\View\Helper\Navigation\Breadcrumbs',
             'zendviewhelpernavigationbreadcrumbs'  => 'TwbsHelper\View\Helper\Navigation\Breadcrumbs',
             'menu'                                 => 'TwbsHelper\View\Helper\Navigation\Menu',
             'zendviewhelpernavigationmenu'         => 'TwbsHelper\View\Helper\Navigation\Menu',
+            'navbar'                                 => 'TwbsHelper\View\Helper\Navigation\Navbar',
+            'zendviewhelpernavigationnavbar'         => 'TwbsHelper\View\Helper\Navigation\Navbar',
         ),
     ),
 ];

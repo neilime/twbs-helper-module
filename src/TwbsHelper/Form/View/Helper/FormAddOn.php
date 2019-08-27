@@ -219,7 +219,6 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
     protected function renderElement(\Zend\Form\ElementInterface $oElement, array $aAttributes): string
     {
         // Set options to improve rendering
-        $oElement->setOption('disable_twbs', true);
         if ($aDropdownOptions = $oElement->getOption('dropdown')) {
             if (\Zend\Stdlib\ArrayUtils::isList($aDropdownOptions)) {
                 $oElement->setOption('dropdown', [
@@ -236,15 +235,20 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
             $aAttributes,
             $oElement->getAttributes()
         ));
-        $sMarkup = $this->getView()->plugin('formElement')->render($oElement);
+
+        $oHelper = $this->getView()->plugin('formElement');
 
         if (
             $oElement instanceof \Zend\Form\Element\Checkbox
             || $oElement instanceof \Zend\Form\Element\Radio
         ) {
-            return $this->renderAddOnElement($sMarkup, $aAttributes);
+            $oElement->setOption('disable_twbs', true);
+            return $this->renderAddOnElement(
+                $oHelper->render($oElement),
+                $aAttributes
+            );
         }
-        return $sMarkup;
+        return $oHelper->render($oElement);
     }
 
     protected function renderAddOnElement(string $sAddonText, array $aAttributes = []): string
