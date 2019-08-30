@@ -97,17 +97,10 @@ class Navbar extends \Zend\View\Helper\Navigation\AbstractHelper
 
         // Toggler
         if (!isset($aOptions['toggler']) || $aOptions['toggler'] !== false) {
-            $aTogglerOptions = $aOptions['toggler'] ?? [];
-            if (!empty($sId)) {
-                \Zend\Stdlib\ArrayUtils::merge(
-                    [
-                        'data-target' => '#' . $sId,
-                        'aria-controls' => $sId,
-                    ],
-                    $aTogglerOptions['attributes'] ?? []
-                );
-            }
-            $sContent .= ($sContent ? PHP_EOL : '') . $this->renderToggler($aTogglerOptions);
+            $sContent .= ($sContent ? PHP_EOL : '') . $this->renderToggler(
+                $aOptions['toggler'] ?? [],
+                $sId
+            );
         }
 
         // Nav
@@ -116,7 +109,7 @@ class Navbar extends \Zend\View\Helper\Navigation\AbstractHelper
             $aNavContainerAttributes['id'] = $sId;
         }
 
-        $sNavContent =  $this->renderNav($oContainer);
+        $sNavContent =  $this->renderNav($oContainer, $aOptions['nav'] ?? []);
 
         // Nav form
         if (isset($aOptions['form'])) {
@@ -141,9 +134,25 @@ class Navbar extends \Zend\View\Helper\Navigation\AbstractHelper
         );
     }
 
-    public function renderToggler(array $aTogglerOptions): string
+    public function renderToggler(array $aTogglerOptions, string $sId = null): string
     {
         $oTranslator = $this->getTranslator();
+
+        $aAttributes = [
+            'class' => 'navbar-toggler',
+            'type' => 'button',
+            'data-toggle' => 'collapse',
+            'aria-expanded' => 'false',
+            'aria-label' => $oTranslator
+                ? $oTranslator->translate('Toggle navigation', $this->getTranslatorTextDomain())
+                : 'Toggle navigation',
+        ];
+
+        if ($sId) {
+            $aAttributes['data-target'] = '#' . $sId;
+            $aAttributes['aria-controls'] = $sId;
+        }
+
         return $this->getView()->plugin('formButton')->__invoke(\Zend\Stdlib\ArrayUtils::merge(
             [
                 'name' => 'navbar_toggler',
@@ -151,15 +160,7 @@ class Navbar extends \Zend\View\Helper\Navigation\AbstractHelper
                     'label' => '<span class="navbar-toggler-icon"></span>',
                     'disable_twbs' => true,
                 ],
-                'attributes' => [
-                    'class' => 'navbar-toggler',
-                    'type' => 'button',
-                    'data-toggle' => 'collapse',
-                    'aria-expanded' => 'false',
-                    'aria-label' => $oTranslator
-                        ? $oTranslator->translate('Toggle navigation', $this->getTranslatorTextDomain())
-                        : 'Toggle navigation',
-                ],
+                'attributes' => $aAttributes,
             ],
             $aTogglerOptions
         ));
@@ -190,9 +191,9 @@ class Navbar extends \Zend\View\Helper\Navigation\AbstractHelper
                 $aBrandOptions['img'][1] ?? []
             );
 
-            $sContent =
-                $this->getView()->plugin('image')->__invoke(...$aBrandOptions['img']) . PHP_EOL .
-                $sContent;
+            $sContent = $this->getView()->plugin('image')->__invoke(...$aBrandOptions['img']) . ($sContent
+                ? PHP_EOL . $sContent
+                : '');
         }
 
         $sType =  $aBrandOptions['type'] ?? 'link';
@@ -222,13 +223,13 @@ class Navbar extends \Zend\View\Helper\Navigation\AbstractHelper
         );
     }
 
-    public function renderNav(\Zend\Navigation\AbstractContainer $oContainer): string
+    public function renderNav(\Zend\Navigation\AbstractContainer $oContainer, array $aNavOptions = []): string
     {
         return $this->getView()->navigation()->menu()->renderMenu(
             $oContainer,
-            [
+            \Zend\Stdlib\ArrayUtils::merge([
                 'ulClass' => 'navbar-nav mr-auto',
-            ]
+            ], $aNavOptions)
         );
     }
 
