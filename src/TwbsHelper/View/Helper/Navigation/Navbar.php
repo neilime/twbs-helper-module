@@ -170,9 +170,34 @@ class Navbar extends \Zend\View\Helper\Navigation\AbstractHelper
         if (is_string($aBrandOptions)) {
             $aBrandOptions = ['content' => $aBrandOptions];
         }
-        $sContent = $aBrandOptions['content'] ?? '';
-        $sType =  $aBrandOptions['type'] ?? 'link';
 
+        $sContent = '';
+        if (!empty($aBrandOptions['content'])) {
+            $sContent .= $aBrandOptions['content'];
+        }
+
+        if (!empty($aBrandOptions['img'])) {
+            $aImgAttributes = [
+                'width' => 30,
+                'height' => 30,
+                'alt' => '',
+            ];
+            if ($sContent) {
+                $aImgAttributes['class'] = 'd-inline-block align-top';
+            }
+            $aBrandOptions['img'][1] = \Zend\Stdlib\ArrayUtils::merge(
+                $aImgAttributes,
+                $aBrandOptions['img'][1] ?? []
+            );
+
+            $sContent =
+                $this->getView()->plugin('image')->__invoke(...$aBrandOptions['img']) .
+                $sContent;
+        }
+
+
+
+        $sType =  $aBrandOptions['type'] ?? 'link';
         $aAttributes = [];
 
         switch ($sType) {
