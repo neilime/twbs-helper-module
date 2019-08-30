@@ -167,7 +167,7 @@ return [
                                             'width' => 30,
                                             'height' => 30,
                                             'alt' => '',
-                                        ]
+                                        ],
                                     ],
                                 ],
                                 'expand' => false,
@@ -191,9 +191,58 @@ return [
                         '<br>' . PHP_EOL .
                         '<nav class="bg-light&#x20;navbar&#x20;navbar-light">' . PHP_EOL .
                         '    <a href="&#x23;" class="navbar-brand">' .
-                        '<img width="30" height="30" alt="" class="d-inline-block&#x20;align-top" '.
+                        '<img width="30" height="30" alt="" class="d-inline-block&#x20;align-top" ' .
                         'src="images&#x2F;demo&#x2F;bootstrap-solid.svg">' .
                         'Bootstrap</a>' . PHP_EOL .
+                        '</nav>',
+                ],
+                [
+                    'title' => 'Nav',
+                    'url' => '%bootstrap-url%/components/navbar/#nav',
+                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                        // As a link
+                        echo $oView->navigation()->navbar()->render(
+                            new \Zend\Navigation\Navigation([
+                                [
+                                    'label' => 'Home <span class="sr-only">(current)</span>',
+                                    'uri' => '#',
+                                    'active' => true,
+                                ],
+                                ['label' => 'Features', 'uri' => '#'],
+                                ['label' => 'Pricing', 'uri' => '#'],
+                                ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+                            ]),
+                            [
+                                'brand' => 'Navbar',
+                                'attributes' => ['id' => 'navbarNav'],
+                            ]
+                        );
+                    },
+                    'expected' => '<nav class="bg-light&#x20;navbar&#x20;navbar-expand-lg&#x20;navbar-light">' .
+                        PHP_EOL .
+                        '    <a href="&#x23;" class="navbar-brand">Navbar</a>' . PHP_EOL .
+                        '    <button type="button" name="navbar_toggler" class="navbar-toggler" ' .
+                        'data-toggle="collapse" aria-expanded="false" aria-label="Toggle&#x20;navigation" ' .
+                        'value=""><span class="navbar-toggler-icon"></span></button>' . PHP_EOL .
+                        '    <div id="navbarNav" class="collapse&#x20;navbar-collapse">' . PHP_EOL .
+                        '        <ul class="mr-auto&#x20;nav&#x20;navbar-nav">' . PHP_EOL .
+                        '            <li class="&#x20;nav-item">' . PHP_EOL .
+                        '                <a class="nav-link&#x20;active" href="&#x23;">'.
+                        'Home <span class="sr-only">(current)</span></a>' . PHP_EOL .
+                        '            </li>' . PHP_EOL .
+                        '            <li class="nav-item">' . PHP_EOL .
+                        '                <a class="nav-link" href="&#x23;">Features</a>' . PHP_EOL .
+                        '            </li>' .
+                        PHP_EOL .
+                        '            <li class="nav-item">' . PHP_EOL .
+                        '                <a class="nav-link" href="&#x23;">Pricing</a>' . PHP_EOL .
+                        '            </li>' . PHP_EOL .
+                        '            <li class="nav-item">' . PHP_EOL .
+                        '                <a class="nav-link&#x20;disabled" href="&#x23;" tabindex="-1" ' .
+                        'aria-disabled="true">Disabled</a>' . PHP_EOL .
+                        '            </li>' . PHP_EOL .
+                        '        </ul>' . PHP_EOL .
+                        '    </div>' . PHP_EOL .
                         '</nav>',
                 ],
             ],
