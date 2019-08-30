@@ -118,7 +118,7 @@ class Navbar extends \Zend\View\Helper\Navigation\AbstractHelper
                 $aNavContainerAttributes,
                 ['collapse', 'navbar-collapse']
             ),
-            $sNavContent,
+            $sNavContent
         );
 
         return $this->htmlElement(
