@@ -190,10 +190,11 @@ return [
                         '</nav>' . PHP_EOL .
                         '<br>' . PHP_EOL .
                         '<nav class="bg-light&#x20;navbar&#x20;navbar-light">' . PHP_EOL .
-                        '    <a href="&#x23;" class="navbar-brand">' .
-                        '<img width="30" height="30" alt="" class="d-inline-block&#x20;align-top" ' .
-                        'src="images&#x2F;demo&#x2F;bootstrap-solid.svg">' .
-                        'Bootstrap</a>' . PHP_EOL .
+                        '    <a href="&#x23;" class="navbar-brand">' . PHP_EOL .
+                        '        <img width="30" height="30" alt="" class="d-inline-block&#x20;align-top" ' .
+                        'src="images&#x2F;demo&#x2F;bootstrap-solid.svg">' . PHP_EOL .
+                        '        Bootstrap' . PHP_EOL .
+                        '    </a>' . PHP_EOL .
                         '</nav>',
                 ],
                 [

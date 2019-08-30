@@ -191,11 +191,9 @@ class Navbar extends \Zend\View\Helper\Navigation\AbstractHelper
             );
 
             $sContent =
-                $this->getView()->plugin('image')->__invoke(...$aBrandOptions['img']) .
+                $this->getView()->plugin('image')->__invoke(...$aBrandOptions['img']) . PHP_EOL .
                 $sContent;
         }
-
-
 
         $sType =  $aBrandOptions['type'] ?? 'link';
         $aAttributes = [];
