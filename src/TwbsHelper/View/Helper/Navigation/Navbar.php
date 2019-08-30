@@ -68,16 +68,25 @@ class Navbar extends \Zend\View\Helper\Navigation\AbstractHelper
         $sId = $aAttributes['id'] ?? null;
         unset($aAttributes['id']);
 
-        $sExpendSize = $aOptions['expend'] ?? 'lg';
-        $sVariant = $aOptions['variant'] ?? 'light';
-        $sBackground = $aOptions['background'] ?? 'light';
-
-        $aClasses = [
-            'navbar',
-            $this->getSizeClass($sExpendSize, 'navbar-expand'),
-            $this->getVariantClass($sVariant, 'navbar'),
-            $this->getVariantClass($sBackground, 'bg'),
-        ];
+        $aClasses = ['navbar'];
+        if (!isset($aOptions['expand']) || $aOptions['expand'] !== false) {
+            $aClasses[] = $this->getSizeClass(
+                $aOptions['expand'] ?? 'lg',
+                'navbar-expand'
+            );
+        }
+        if (!isset($aOptions['variant']) || $aOptions['variant'] !== false) {
+            $aClasses[] = $this->getVariantClass(
+                $aOptions['variant'] ?? 'light',
+                'navbar'
+            );
+        }
+        if (!isset($aOptions['background']) || $aOptions['background'] !== false) {
+            $aClasses[] = $this->getVariantClass(
+                $aOptions['background'] ?? 'light',
+                'bg'
+            );
+        }
 
         $sContent = '';
 
@@ -87,17 +96,19 @@ class Navbar extends \Zend\View\Helper\Navigation\AbstractHelper
         }
 
         // Toggler
-        $aTogglerOptions = $aOptions['toggler'] ?? [];
-        if (!empty($sId)) {
-            \Zend\Stdlib\ArrayUtils::merge(
-                [
-                    'data-target' => '#' . $sId,
-                    'aria-controls' => $sId,
-                ],
-                $aTogglerOptions['attributes'] ?? []
-            );
+        if (!isset($aOptions['toggler']) || $aOptions['toggler'] !== false) {
+            $aTogglerOptions = $aOptions['toggler'] ?? [];
+            if (!empty($sId)) {
+                \Zend\Stdlib\ArrayUtils::merge(
+                    [
+                        'data-target' => '#' . $sId,
+                        'aria-controls' => $sId,
+                    ],
+                    $aTogglerOptions['attributes'] ?? []
+                );
+            }
+            $sContent .= ($sContent ? PHP_EOL : '') . $this->renderToggler($aTogglerOptions);
         }
-        $sContent .= ($sContent ? PHP_EOL : '') . $this->renderToggler($aTogglerOptions);
 
         // Nav
         $aNavContainerAttributes = [];
@@ -112,14 +123,16 @@ class Navbar extends \Zend\View\Helper\Navigation\AbstractHelper
             $sNavContent .= ($sNavContent ? PHP_EOL : '') . $this->renderForm($aOptions['form']);
         }
 
-        $sContent .= ($sContent ? PHP_EOL : '') . $this->htmlElement(
-            'div',
-            $this->setClassesToAttributes(
-                $aNavContainerAttributes,
-                ['collapse', 'navbar-collapse']
-            ),
-            $sNavContent
-        );
+        if ($sNavContent) {
+            $sContent .= ($sContent ? PHP_EOL : '') . $this->htmlElement(
+                'div',
+                $this->setClassesToAttributes(
+                    $aNavContainerAttributes,
+                    ['collapse', 'navbar-collapse']
+                ),
+                $sNavContent
+            );
+        }
 
         return $this->htmlElement(
             'nav',
@@ -158,16 +171,30 @@ class Navbar extends \Zend\View\Helper\Navigation\AbstractHelper
             $aBrandOptions = ['content' => $aBrandOptions];
         }
         $sContent = $aBrandOptions['content'] ?? '';
+        $sType =  $aBrandOptions['type'] ?? 'link';
+
+        $aAttributes = [];
+
+        switch ($sType) {
+            case 'link':
+                $sTag = 'a';
+                $aAttributes['href'] = '#';
+                break;
+            case 'heading':
+                $sTag = 'span';
+                break;
+            default:
+                throw new \DomainException(__METHOD__ . ' doe snot support brand type "' . $sType . '"');
+        }
 
         $aAttributes = \Zend\Stdlib\ArrayUtils::merge(
-            ['href' => '#'],
+            $aAttributes,
             $aBrandOptions['attributes'] ?? []
         );
-        $aClasses = ['navbar-brand'];
 
         return $this->htmlElement(
-            'a',
-            $this->setClassesToAttributes($aAttributes, $aClasses),
+            $sTag,
+            $this->setClassesToAttributes($aAttributes, ['navbar-brand']),
             $sContent
         );
     }

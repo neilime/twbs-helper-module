@@ -7,7 +7,7 @@ return [
     'tests' => [
         [
             'title' => 'Supported content',
-            'url' => '%bootstrap-url%/components/navs/#supported-content',
+            'url' => '%bootstrap-url%/components/navbar/#supported-content',
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 echo $oView->navigation()->navbar()->render(
                     new \Zend\Navigation\Navigation([
@@ -99,13 +99,53 @@ return [
                 '        <form method="POST" name="form" class="form-inline&#x20;my-2&#x20;my-lg-0" role="form" ' .
                 'id="form">' . PHP_EOL .
                 '            <label class="sr-only" for="search">Search</label>' . PHP_EOL .
-                '            <input name="search" type="search" placeholder="Search" aria-label="Search" '.
+                '            <input name="search" type="search" placeholder="Search" aria-label="Search" ' .
                 'class="form-control&#x20;mr-sm-2" value="">' . PHP_EOL .
-                '            <button type="submit" name="submit" '.
+                '            <button type="submit" name="submit" ' .
                 'class="btn&#x20;btn-outline-success&#x20;my-2&#x20;my-sm-0" value="">Search</button>' . PHP_EOL .
                 '        </form>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</nav>',
+            'tests' => [
+                [
+                    'title' => 'Brand',
+                    'url' => '%bootstrap-url%/components/navbar/#brand',
+                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                        // As a link
+                        echo $oView->navigation()->navbar()->render(
+                            new \Zend\Navigation\Navigation(),
+                            [
+                                'brand' => 'Navbar',
+                                'expand' => false,
+                                'toggler' => false,
+                            ]
+                        );
+
+                        echo PHP_EOL . '<br>' . PHP_EOL;
+
+                        // As a heading
+                        echo $oView->navigation()->navbar()->render(
+                            new \Zend\Navigation\Navigation(),
+                            [
+                                'brand' => [
+                                    'content' => 'Navbar',
+                                    'attributes' => ['class' => 'mb-0 h1'],
+                                    'type' => 'heading',
+                                ],
+                                'expand' => false,
+                                'toggler' => false,
+                            ]
+                        );
+                    },
+                    'expected' => '<nav class="bg-light&#x20;navbar&#x20;navbar-light">' . PHP_EOL .
+                        '    <a href="&#x23;" class="navbar-brand">Navbar</a>' . PHP_EOL .
+                        '</nav>' . PHP_EOL .
+                        '<br>' . PHP_EOL .
+                        '<nav class="bg-light&#x20;navbar&#x20;navbar-light">' . PHP_EOL .
+                        '    <span class="h1&#x20;mb-0&#x20;navbar-brand">Navbar</span>' . PHP_EOL .
+                        '</nav>',
+                ],
+            ],
         ],
     ],
 ];
