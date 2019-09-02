@@ -117,14 +117,17 @@ class Navbar extends \Zend\View\Helper\Navigation\AbstractHelper
         }
 
         if ($sNavContent) {
-            $sContent .= ($sContent ? PHP_EOL : '') . $this->htmlElement(
-                'div',
-                $this->setClassesToAttributes(
-                    $aNavContainerAttributes,
-                    ['collapse', 'navbar-collapse']
-                ),
-                $sNavContent
-            );
+            $bCollapse = !isset($aOptions['collapse']) || $aOptions['collapse'] !== false;
+            $sContent .= ($sContent ? PHP_EOL : '') . ($bCollapse
+                ? $this->htmlElement(
+                    'div',
+                    $this->setClassesToAttributes(
+                        $aNavContainerAttributes,
+                        ['collapse', 'navbar-collapse']
+                    ),
+                    $sNavContent
+                )
+                : $sNavContent);
         }
 
         return $this->htmlElement(
