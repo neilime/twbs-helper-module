@@ -258,6 +258,12 @@ class Navbar extends \Zend\View\Helper\Navigation\AbstractHelper
                 is_object($oForm) ? get_class($oForm) : gettype($oForm)
             ));
         }
+
+        // Disable form_group
+        foreach ($oForm as $oElement) {
+            $oElement->setOption('form_group', false);
+        }
+
         $oForm->setOption('layout', \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE);
         return $this->getView()->plugin('form')->__invoke($oForm);
     }

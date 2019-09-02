@@ -30,7 +30,7 @@ class Menu extends \Zend\View\Helper\Navigation\Menu
         if (null === $container) {
             $container = $this->getContainer();
         }
-        // create iterator
+        // Create iterator
         $oIterator = new \RecursiveIteratorIterator(
             $container,
             \RecursiveIteratorIterator::SELF_FIRST

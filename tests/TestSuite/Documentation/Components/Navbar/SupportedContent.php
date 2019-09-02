@@ -31,9 +31,6 @@ return [
                         [
                             'spec' => [
                                 'name' => 'search',
-                                'options' => [
-                                    'form_group' => false,
-                                ],
                                 'attributes' => [
                                     'type' => 'search',
                                     'placeholder' => 'Search',

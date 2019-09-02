@@ -47,8 +47,10 @@ class Form extends \Zend\Form\View\Helper\Form
             $this->setClassesToElement($oForm, ['form-inline']);
         }
 
-        return $this->openTag($oForm) .
-            $this->addProperIndentation($this->renderElements($oForm, $sFormLayout)) .
+        $sElementsContent = $this->renderElements($oForm, $sFormLayout);
+
+        return $this->openTag($oForm)
+            . ($sElementsContent ? $this->addProperIndentation($sElementsContent, true) : '') .
             $this->closeTag();
     }
 
