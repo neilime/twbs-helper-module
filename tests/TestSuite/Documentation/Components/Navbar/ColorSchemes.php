@@ -58,7 +58,7 @@ return [
 
         // Navbar light, custom background-color
         $aOptions['variant'] = 'dark';
-        unset($aOptions['background']);
+        $aOptions['background'] = false;
         $aOptions['attributes'] = ['style' => 'background-color: #e3f2fd;'];
 
         echo $oView->navigation()->navbar()->render($oNavigationContainer, $aOptions);
@@ -130,7 +130,7 @@ return [
         '</nav>' . PHP_EOL .
         '<br>' . PHP_EOL .
         '<nav style="background-color&#x3A;&#x20;&#x23;e3f2fd&#x3B;" ' .
-        'class="bg-light&#x20;navbar&#x20;navbar-dark&#x20;navbar-expand-lg">' . PHP_EOL .
+        'class="navbar&#x20;navbar-dark&#x20;navbar-expand-lg">' . PHP_EOL .
         '    <a href="&#x23;" class="navbar-brand">Navbar</a>' . PHP_EOL .
         '    <button type="button" name="navbar_toggler" class="navbar-toggler" data-toggle="collapse" ' .
         'aria-expanded="false" aria-label="Toggle&#x20;navigation" value="">' .
