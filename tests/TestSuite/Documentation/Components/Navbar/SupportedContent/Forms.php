@@ -107,6 +107,42 @@ return [
         );
 
         // Various buttons are supported as part of these navbar forms, too.
+        echo PHP_EOL . '<br>' . PHP_EOL;
+
+        // Input groups work, too:
+        echo $oView->navigation()->navbar()->render(
+            new \Zend\Navigation\Navigation(),
+            [
+                'expand' => false,
+                'toggler' => false,
+                'collapse' => false,
+                'form' => [
+                    'elements' => [
+                        [
+                            'spec' => [
+                                'type' => 'button',
+                                'name' => 'main_button',
+                                'options' => [
+                                    'label' => 'Main button',
+                                    'variant' => 'outline-success',
+                                ],
+                            ],
+                        ],
+                        [
+                            'spec' => [
+                                'type' => 'button',
+                                'name' => 'smaller_button',
+                                'options' => [
+                                    'label' => 'Smaller button',
+                                    'variant' => 'outline-secondary',
+                                    'size' => 'sm',
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ]
+        );
     },
     'expected' => '<nav class="bg-light&#x20;navbar&#x20;navbar-light">' . PHP_EOL .
         '    <form method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
@@ -135,9 +171,18 @@ return [
         '                    @' . PHP_EOL .
         '                </div>' . PHP_EOL .
         '            </div>' . PHP_EOL .
-        '            <input name="username" type="text" placeholder="Username" aria-label="Username" '.
+        '            <input name="username" type="text" placeholder="Username" aria-label="Username" ' .
         'aria-describedby="basic-addon1" class="form-control" value="">' . PHP_EOL .
         '        </div>' . PHP_EOL .
+        '    </form>' . PHP_EOL .
+        '</nav>' . PHP_EOL .
+        '<br>' . PHP_EOL .
+        '<nav class="bg-light&#x20;navbar&#x20;navbar-light">' . PHP_EOL .
+        '    <form method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
+        '        <button type="button" name="main_button" class="btn&#x20;btn-outline-success" value="">' .
+        'Main button</button>' . PHP_EOL .
+        '        <button type="button" name="smaller_button" class="btn&#x20;btn-outline-secondary&#x20;btn-sm" ' .
+        'value="">Smaller button</button>' . PHP_EOL .
         '    </form>' . PHP_EOL .
         '</nav>',
 ];
