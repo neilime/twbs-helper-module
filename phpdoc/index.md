@@ -1052,6 +1052,7 @@
 | public | <strong>renderForm(</strong><em>mixed</em> <strong>$oForm</strong>)</strong> : <em>void</em> |
 | public | <strong>renderNav(</strong><em>\Zend\Navigation\AbstractContainer</em> <strong>$oContainer</strong>, <em>array</em> <strong>$aNavOptions=array()</strong>)</strong> : <em>void</em> |
 | public | <strong>renderNavbar(</strong><em>\Zend\Navigation\AbstractContainer</em> <strong>$oContainer=null</strong>, <em>array</em> <strong>$aOptions=array()</strong>)</strong> : <em>string</em><br /><em>Renders helper. Renders a HTML 'ul' for the given $container. If $container is not given, the container registered in the helper will be used. Available $options: Default is to use the container retrieved from {@link getContainer()}.</em> |
+| public | <strong>renderText(</strong><em>mixed</em> <strong>$aTextOptions</strong>)</strong> : <em>void</em> |
 | public | <strong>renderToggler(</strong><em>array</em> <strong>$aTogglerOptions</strong>, <em>\string</em> <strong>$sId=null</strong>)</strong> : <em>void</em> |
 | public | <strong>setTranslator(</strong><em>\Zend\I18n\Translator\TranslatorInterface</em> <strong>$translator=null</strong>, <em>string</em> <strong>$textDomain=null</strong>)</strong> : <em>mixed</em><br /><em>Sets translator to use in helper</em> |
 | public | <strong>setTranslatorEnabled(</strong><em>bool</em> <strong>$enabled=true</strong>)</strong> : <em>mixed</em><br /><em>Sets whether translator is enabled and should be used</em> |
