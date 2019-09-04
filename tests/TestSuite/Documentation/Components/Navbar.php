@@ -6,5 +6,6 @@ return [
     'url' => '%bootstrap-url%/components/navbar/',
     'tests' => [
         include __DIR__ . DIRECTORY_SEPARATOR . 'Navbar/SupportedContent.php',
+        include __DIR__ . DIRECTORY_SEPARATOR . 'Navbar/ColorSchemes.php',
     ],
 ];
