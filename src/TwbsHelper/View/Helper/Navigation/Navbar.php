@@ -87,6 +87,9 @@ class Navbar extends \Zend\View\Helper\Navigation\AbstractHelper
                 'bg'
             );
         }
+        if (!empty($aOptions['placement'])) {
+            $aClasses[] = $aOptions['placement'];
+        }
 
         $sContent = '';
 
