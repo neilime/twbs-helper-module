@@ -102,5 +102,6 @@ return [
         include __DIR__ . DIRECTORY_SEPARATOR . 'SupportedContent/Brand.php',
         include __DIR__ . DIRECTORY_SEPARATOR . 'SupportedContent/Nav.php',
         include __DIR__ . DIRECTORY_SEPARATOR . 'SupportedContent/Forms.php',
+        include __DIR__ . DIRECTORY_SEPARATOR . 'SupportedContent/Text.php',
     ],
 ];

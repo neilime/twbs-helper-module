@@ -116,6 +116,16 @@ class Navbar extends \Zend\View\Helper\Navigation\AbstractHelper
             $sNavContent .= ($sNavContent ? PHP_EOL : '') . $this->renderForm($aOptions['form']);
         }
 
+        // Nav text
+        if (isset($aOptions['text'])) {
+            $sTextContent = $this->renderText($aOptions['text']);
+            if ($sNavContent) {
+                $sNavContent .=  PHP_EOL . $sTextContent;
+            } else {
+                $sContent .= ($sContent ? PHP_EOL : '') . $sTextContent;
+            }
+        }
+
         if ($sNavContent) {
             $bCollapse = !isset($aOptions['collapse']) || $aOptions['collapse'] !== false;
             $sContent .= ($sContent ? PHP_EOL : '') . ($bCollapse
@@ -222,6 +232,27 @@ class Navbar extends \Zend\View\Helper\Navigation\AbstractHelper
         return $this->htmlElement(
             $sTag,
             $this->setClassesToAttributes($aAttributes, ['navbar-brand']),
+            $sContent
+        );
+    }
+
+    public function renderText($aTextOptions): string
+    {
+        if (is_string($aTextOptions)) {
+            $aTextOptions = ['content' => $aTextOptions];
+        }
+
+        $sContent = '';
+        if (!empty($aTextOptions['content'])) {
+            $sContent .= $aTextOptions['content'];
+        }
+
+        return $this->htmlElement(
+            'span',
+            $this->setClassesToAttributes(
+                $aTextOptions['attributes'] ?? [],
+                ['navbar-text']
+            ),
             $sContent
         );
     }
