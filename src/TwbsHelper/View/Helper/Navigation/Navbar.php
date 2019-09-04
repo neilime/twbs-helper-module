@@ -140,11 +140,31 @@ class Navbar extends \Zend\View\Helper\Navigation\AbstractHelper
                 : $sNavContent);
         }
 
-        return $this->htmlElement(
+        $sContainerOption = $aOptions['container'] ?? null;
+
+        if ($sContainerOption === 'within') {
+            $sContent = $this->htmlElement(
+                'div',
+                ['class' => 'container'],
+                $sContent
+            );
+        }
+
+        $sContent = $this->htmlElement(
             'nav',
             $this->setClassesToAttributes($aAttributes, $aClasses),
             $sContent
         );
+
+        if ($sContainerOption === 'wrap') {
+            $sContent = $this->htmlElement(
+                'div',
+                ['class' => 'container'],
+                $sContent
+            );
+        }
+
+        return $sContent;
     }
 
     public function renderToggler(array $aTogglerOptions, string $sId = null): string

@@ -7,5 +7,6 @@ return [
     'tests' => [
         include __DIR__ . DIRECTORY_SEPARATOR . 'Navbar/SupportedContent.php',
         include __DIR__ . DIRECTORY_SEPARATOR . 'Navbar/ColorSchemes.php',
+        include __DIR__ . DIRECTORY_SEPARATOR . 'Navbar/Containers.php',
     ],
 ];
