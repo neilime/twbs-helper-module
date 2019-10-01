@@ -39,6 +39,7 @@
         "zendframework/zend-log": "^2.3",
         "zendframework/zend-modulemanager": "^2.3",
         "zendframework/zend-navigation": "^2.9",
+        "zendframework/zend-paginator": "^2.8",
         "zendframework/zend-mvc": "^2.3 || ^3.0",
         "zendframework/zend-serializer": "^2.3",
         "zendframework/zend-servicemanager": "^2.3 || ^3.1",
@@ -50,7 +51,8 @@
         "phpstan/phpstan": "^0.11.8",
         "phpstan/phpstan-phpunit": "^0.11.2",
         "phpunit/phpunit": "^7 || ^8.2",
-        "squizlabs/php_codesniffer": "^3.4"
+        "squizlabs/php_codesniffer": "^3.4",
+        "zendframework/zend-component-installer": "^2.1"
     },
     "autoload": {
         "psr-4": {
@@ -67,7 +69,10 @@
             "@cs",
             "cd tests && phpunit --colors & cd .."
         ],
-        "test-coverage": "cd tests && phpunit -d max_execution_time=0 --coverage-text --coverage-clover ../build/logs/clover.xml --coverage-html ../build/coverage/ && cd ..",
+        "test:ci": [
+            "@cs",
+            "cd tests && phpunit -d max_execution_time=0 --coverage-text --coverage-clover ../build/logs/clover.xml --coverage-html ../build/coverage/ && cd .."
+        ],
         "cs": "phpcs",
         "cbf": "phpcbf",
         "ci": [

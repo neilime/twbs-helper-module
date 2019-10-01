@@ -19,17 +19,11 @@ cache:
   - "$HOME/.composer/cache"
 
 before_install:
-- mkdir -p ~/.composer
-- composer self-update
-- composer install --prefer-dist
-
-before_script:
-- mkdir -p build/{logs,coverage}
+- travis_retry composer self-update
+- travis_retry composer update --prefer-dist --no-interaction --prefer-stable --no-suggest; fi
 
 script:
-- cd tests
-- phpunit -d max_execution_time=0 --coverage-text --coverage-clover ../build/logs/clover.xml --coverage-html ../build/coverage/
-- cd ..
+- composer test:ci
 
 after_script:
 - if [[ $EXECUTE_AFTER_SCRIPT == 'true' ]]; then bash <(curl -s https://gist.githubusercontent.com/neilime/769d733c52acdecea8d2548fb3aca3ff/raw/travis_ci_php_publish_build.sh);fi

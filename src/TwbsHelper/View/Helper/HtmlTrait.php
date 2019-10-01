@@ -87,7 +87,7 @@ trait HtmlTrait
         return $sString !== strip_tags($sString);
     }
 
-    protected function attributesToString(array $aAttributes, string $sTag): string
+    public function attributesToString(array $aAttributes, string $sTag): string
     {
         $aPossibleHelpers = [
             [$this, 'createAttributesString'],
@@ -117,6 +117,13 @@ trait HtmlTrait
                 throw $oException;
             }
         }
-        throw new \LogicException('No helpers available to transform attributes to string');
+
+        $oHelper = $this->getView()->plugin('HtmlTag');
+        $oReflectionClass = new \ReflectionClass($oHelper);
+        $oMethod = $oReflectionClass->getMethod('htmlAttribs');
+        $oMethod->setAccessible(true);
+
+        $sMarkup = trim($oMethod->invoke($oHelper, $aAttributes));
+        return $sMarkup ? ' ' . $sMarkup : '';
     }
 }

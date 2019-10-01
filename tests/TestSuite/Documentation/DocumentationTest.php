@@ -53,7 +53,8 @@ class DocumentationTest extends \PHPUnit\Framework\TestCase
         $aTestCases = [];
         foreach (new \DirectoryIterator(__DIR__) as $oFileInfo) {
             // Ignore non php files and current class file
-            if (!$oFileInfo->isFile()
+            if (
+                !$oFileInfo->isFile()
                 || $oFileInfo->getExtension() !== 'php'
                 || ($sFilePath = $oFileInfo->getRealPath()) === __FILE__
             ) {
@@ -195,9 +196,13 @@ class DocumentationTest extends \PHPUnit\Framework\TestCase
      */
     public function testDocumentation($oRendering, $sExpected)
     {
-        $oViewHelperPluginManager = \TestSuite\Bootstrap::getServiceManager()->get('ViewHelperManager');
-        $oRenderer = new \Zend\View\Renderer\PhpRenderer();
-        $oRenderer->setHelperPluginManager($oViewHelperPluginManager);
+        $oRenderer = \TestSuite\Bootstrap::getServiceManager()->get('ViewPhpRenderer');
+        
+        $oApplication = \TestSuite\Bootstrap::getServiceManager()->get('Application');
+        $oApplication->bootstrap();
+        $oRouteMatch = new \Zend\Router\RouteMatch([]);
+        $oRouteMatch->setMatchedRouteName('test-route');
+        $oApplication->getMvcEvent()->setRouteMatch($oRouteMatch);
 
         // Retrieve output of renderging
         ob_start();
