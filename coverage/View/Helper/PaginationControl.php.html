@@ -2,7 +2,7 @@
 <html lang="en">
  <head>
   <meta charset="UTF-8">
-  <title>Code Coverage for /home/travis/build/neilime/zf-twbs-helper-module/src/TwbsHelper/View/Helper/AbstractHtmlElement.php</title>
+  <title>Code Coverage for /home/travis/build/neilime/zf-twbs-helper-module/src/TwbsHelper/View/Helper/PaginationControl.php</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../../_css/bootstrap.min.css" rel="stylesheet" type="text/css">
   <link href="../../_css/octicons.css" rel="stylesheet" type="text/css">
@@ -19,7 +19,7 @@
          <li class="breadcrumb-item"><a href="../../index.html">/home/travis/build/neilime/zf-twbs-helper-module/src/TwbsHelper</a></li>
          <li class="breadcrumb-item"><a href="../index.html">View</a></li>
          <li class="breadcrumb-item"><a href="index.html">Helper</a></li>
-         <li class="breadcrumb-item active">AbstractHtmlElement.php</li>
+         <li class="breadcrumb-item active">PaginationControl.php</li>
 
        </ol>
       </nav>
@@ -58,7 +58,7 @@
       </tr>
 
       <tr>
-       <td class=""><abbr title="TwbsHelper\View\Helper\AbstractHtmlElement">AbstractHtmlElement</abbr></td>
+       <td class=""><abbr title="TwbsHelper\View\Helper\PaginationControl">PaginationControl</abbr></td>
        <td class=" big"></td>
        <td class=" small"><div align="right">n/a</div></td>
        <td class=" small"><div align="right">0&nbsp;/&nbsp;0</div></td>
@@ -81,14 +81,20 @@
      <tr><td><div align="right"><a name="2"></a><a href="#2">2</a></div></td><td class="codeLine"></td></tr>
      <tr><td><div align="right"><a name="3"></a><a href="#3">3</a></div></td><td class="codeLine"><span class="keyword">namespace</span><span class="default">&nbsp;</span><span class="default">TwbsHelper</span><span class="default">\</span><span class="default">View</span><span class="default">\</span><span class="default">Helper</span><span class="keyword">;</span></td></tr>
      <tr><td><div align="right"><a name="4"></a><a href="#4">4</a></div></td><td class="codeLine"></td></tr>
-     <tr><td><div align="right"><a name="5"></a><a href="#5">5</a></div></td><td class="codeLine"><span class="keyword">use</span><span class="default">&nbsp;</span><span class="default">Zend</span><span class="default">\</span><span class="default">I18n</span><span class="default">\</span><span class="default">Translator</span><span class="default">\</span><span class="default">TranslatorAwareInterface</span><span class="keyword">;</span></td></tr>
-     <tr><td><div align="right"><a name="6"></a><a href="#6">6</a></div></td><td class="codeLine"></td></tr>
-     <tr><td><div align="right"><a name="7"></a><a href="#7">7</a></div></td><td class="codeLine"><span class="keyword">class</span><span class="default">&nbsp;</span><span class="default">AbstractHtmlElement</span><span class="default">&nbsp;</span><span class="keyword">extends</span><span class="default">&nbsp;</span><span class="default">\</span><span class="default">Zend</span><span class="default">\</span><span class="default">View</span><span class="default">\</span><span class="default">Helper</span><span class="default">\</span><span class="default">AbstractHtmlElement</span><span class="default">&nbsp;</span><span class="keyword">implements</span><span class="default">&nbsp;</span><span class="default">TranslatorAwareInterface</span></td></tr>
-     <tr><td><div align="right"><a name="8"></a><a href="#8">8</a></div></td><td class="codeLine"><span class="keyword">{</span></td></tr>
-     <tr><td><div align="right"><a name="9"></a><a href="#9">9</a></div></td><td class="codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">use</span><span class="default">&nbsp;</span><span class="default">\</span><span class="default">Zend</span><span class="default">\</span><span class="default">I18n</span><span class="default">\</span><span class="default">Translator</span><span class="default">\</span><span class="default">TranslatorAwareTrait</span><span class="keyword">;</span></td></tr>
-     <tr><td><div align="right"><a name="10"></a><a href="#10">10</a></div></td><td class="codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">use</span><span class="default">&nbsp;</span><span class="default">\</span><span class="default">TwbsHelper</span><span class="default">\</span><span class="default">View</span><span class="default">\</span><span class="default">Helper</span><span class="default">\</span><span class="default">ClassAttributeTrait</span><span class="keyword">;</span></td></tr>
-     <tr><td><div align="right"><a name="11"></a><a href="#11">11</a></div></td><td class="codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">use</span><span class="default">&nbsp;</span><span class="default">\</span><span class="default">TwbsHelper</span><span class="default">\</span><span class="default">View</span><span class="default">\</span><span class="default">Helper</span><span class="default">\</span><span class="default">HtmlTrait</span><span class="keyword">;</span></td></tr>
-     <tr><td><div align="right"><a name="12"></a><a href="#12">12</a></div></td><td class="codeLine"><span class="keyword">}</span></td></tr>
+     <tr><td><div align="right"><a name="5"></a><a href="#5">5</a></div></td><td class="codeLine"><span class="comment">/**</span></td></tr>
+     <tr><td><div align="right"><a name="6"></a><a href="#6">6</a></div></td><td class="codeLine"><span class="comment">&nbsp;*&nbsp;Helper&nbsp;for&nbsp;rendering&nbsp;pagination</span></td></tr>
+     <tr><td><div align="right"><a name="7"></a><a href="#7">7</a></div></td><td class="codeLine"><span class="comment">&nbsp;*/</span></td></tr>
+     <tr><td><div align="right"><a name="8"></a><a href="#8">8</a></div></td><td class="codeLine"><span class="keyword">class</span><span class="default">&nbsp;</span><span class="default">PaginationControl</span><span class="default">&nbsp;</span><span class="keyword">extends</span><span class="default">&nbsp;</span><span class="default">\</span><span class="default">Zend</span><span class="default">\</span><span class="default">View</span><span class="default">\</span><span class="default">Helper</span><span class="default">\</span><span class="default">PaginationControl</span></td></tr>
+     <tr><td><div align="right"><a name="9"></a><a href="#9">9</a></div></td><td class="codeLine"><span class="keyword">{</span></td></tr>
+     <tr><td><div align="right"><a name="10"></a><a href="#10">10</a></div></td><td class="codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">use</span><span class="default">&nbsp;</span><span class="default">\</span><span class="default">TwbsHelper</span><span class="default">\</span><span class="default">View</span><span class="default">\</span><span class="default">Helper</span><span class="default">\</span><span class="default">HtmlTrait</span><span class="keyword">;</span></td></tr>
+     <tr><td><div align="right"><a name="11"></a><a href="#11">11</a></div></td><td class="codeLine"></td></tr>
+     <tr><td><div align="right"><a name="12"></a><a href="#12">12</a></div></td><td class="codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="comment">/**</span></td></tr>
+     <tr><td><div align="right"><a name="13"></a><a href="#13">13</a></div></td><td class="codeLine"><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Default&nbsp;view&nbsp;partial</span></td></tr>
+     <tr><td><div align="right"><a name="14"></a><a href="#14">14</a></div></td><td class="codeLine"><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*</span></td></tr>
+     <tr><td><div align="right"><a name="15"></a><a href="#15">15</a></div></td><td class="codeLine"><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;@var&nbsp;string|array</span></td></tr>
+     <tr><td><div align="right"><a name="16"></a><a href="#16">16</a></div></td><td class="codeLine"><span class="comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></td></tr>
+     <tr><td><div align="right"><a name="17"></a><a href="#17">17</a></div></td><td class="codeLine"><span class="default">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">protected</span><span class="default">&nbsp;</span><span class="keyword">static</span><span class="default">&nbsp;</span><span class="default">$defaultViewPartial</span><span class="default">&nbsp;</span><span class="keyword">=</span><span class="default">&nbsp;</span><span class="default">'TwbsHelper/pagination_control'</span><span class="keyword">;</span></td></tr>
+     <tr><td><div align="right"><a name="18"></a><a href="#18">18</a></div></td><td class="codeLine"><span class="keyword">}</span></td></tr>
 
     </tbody>
    </table>
