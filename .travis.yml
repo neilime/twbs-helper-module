@@ -20,7 +20,7 @@ cache:
 
 before_install:
 - travis_retry composer self-update
-- travis_retry composer update --prefer-dist --no-interaction --prefer-stable --no-suggest; fi
+- travis_retry composer update --prefer-dist --no-interaction --prefer-stable --no-suggest
 
 script:
 - composer test:ci
