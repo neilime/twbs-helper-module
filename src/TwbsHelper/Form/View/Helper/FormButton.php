@@ -4,6 +4,7 @@ namespace TwbsHelper\Form\View\Helper;
 
 class FormButton extends \Zend\Form\View\Helper\FormButton
 {
+    use \TwbsHelper\View\Helper\StyleAttributeTrait;
     use \TwbsHelper\View\Helper\ClassAttributeTrait;
     use \TwbsHelper\View\Helper\HtmlTrait;
 
@@ -86,8 +87,6 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
         }
 
         $this->defineButtonClasses($oElement);
-
-
         $sButtonContent = $this->renderButtonContent($oElement, $sButtonContent);
 
         $sTag = $oElement->getOption('tag');
@@ -107,6 +106,20 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
                 $oElement->setAttribute('role', 'button');
             }
         }
+        
+        // Popover
+        $aPopoverAttributes = $this->getPopoverAttributes($oElement);
+        $bIsDisabled = $oElement->getAttribute('disabled');
+        if ($aPopoverAttributes) {
+            if ($bIsDisabled) {
+                $this->setStylesToElement($oElement, ['pointer-events' => 'none']);
+            } else {
+                $oElement->setAttributes(array_merge(
+                    $aPopoverAttributes,
+                    $oElement->getAttributes()
+                ));
+            }
+        }
 
         $sMarkup =  $this->openTag($oElement) . $this->addProperIndentation($sButtonContent) . $this->closeTag();
         $this->validTagAttributes = $aValidTagAttributes;
@@ -120,9 +133,45 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
                 $sMarkup
             );
         }
+
+        if ($aPopoverAttributes && $bIsDisabled) {
+            $sMarkup = $this->htmlElement(
+                'span',
+                $this->setClassesToAttributes($aPopoverAttributes, ['d-inline-block']),
+                $sMarkup
+            );
+        }
+
         return $sMarkup;
     }
 
+    protected function getPopoverAttributes(\Zend\Form\ElementInterface $oElement) : array
+    {
+        $aPopoverAttributes = [];
+        if ($aPopoverOption = $oElement->getOption('popover')) {
+            $aPopoverAttributes['data-toggle'] = 'popover';
+
+            if (is_string($aPopoverOption)) {
+                $aPopoverOption = ['content' => $aPopoverOption];
+            } elseif (!is_array($aPopoverOption)) {
+                throw new \InvalidArgumentException(sprintf(
+                    'Option "popover" expects a string or an array, "%s" given',
+                    is_object($aPopoverOption) ? get_class($aPopoverOption) : gettype($aPopoverOption)
+                ));
+            }
+            $aPopoverAttributes['data-content'] = $aPopoverOption['content'];
+
+            if (isset($aPopoverOption['placement'])) {
+                $aPopoverAttributes['data-placement'] = $aPopoverOption['placement'];
+                $aPopoverAttributes['data-container'] = 'body';
+            }
+
+            if (isset($aPopoverOption['trigger'])) {
+                $aPopoverAttributes['data-trigger'] = $aPopoverOption['trigger'];
+            }
+        }
+        return $aPopoverAttributes;
+    }
     protected function defineButtonClasses(\Zend\Form\ElementInterface $oElement)
     {
         if (!empty($oElement->getOption('disable_twbs'))) {

@@ -22,5 +22,6 @@ return [
         'Navs' => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Navs.php',
         'Navbar' => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Navbar.php',
         'Pagination' => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Pagination.php',
+        'Popovers' => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Popovers.php',
     ],
 ];
