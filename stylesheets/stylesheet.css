@@ -859,3 +859,9 @@ dl dd {
     z-index: 1;
     display: block;
 }
+
+.tab-pane nav.navbar.fixed-top{
+    position: static;
+}
+
+
