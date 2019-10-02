@@ -2,7 +2,7 @@
 <html lang="en">
  <head>
   <meta charset="UTF-8">
-  <title>Dashboard for /home/travis/build/neilime/zf-twbs-helper-module/src/TwbsHelper/Options</title>
+  <title>Dashboard for /home/travis/build/neilime/zf-twbs-helper-module/src/TwbsHelper/ProgressBar</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="../_css/bootstrap.min.css" rel="stylesheet" type="text/css">
   <link href="../_css/nv.d3.min.css" rel="stylesheet" type="text/css">
@@ -17,7 +17,7 @@
       <nav aria-label="breadcrumb">
        <ol class="breadcrumb">
          <li class="breadcrumb-item"><a href="../index.html">/home/travis/build/neilime/zf-twbs-helper-module/src/TwbsHelper</a></li>
-         <li class="breadcrumb-item"><a href="index.html">Options</a></li>
+         <li class="breadcrumb-item"><a href="index.html">ProgressBar</a></li>
          <li class="breadcrumb-item active">(Dashboard)</li>
 
        </ol>
@@ -111,6 +111,7 @@
         </tr>
        </thead>
        <tbody>
+       <tr><td><a href="Adapter/Html.php.html#107"><abbr title="TwbsHelper\ProgressBar\Adapter\Html::setAttributes">setAttributes</abbr></a></td><td class="text-right">0%</td></tr>
 
        </tbody>
       </table>
@@ -155,7 +156,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#classCoverageDistribution svg')
-      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,0,0,2], "Class Coverage"))
+      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,0,1,0], "Class Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -173,7 +174,7 @@ $(document).ready(function() {
       .yAxis.tickFormat(d3.format('d'));
 
     d3.select('#methodCoverageDistribution svg')
-      .datum(getCoverageDistributionData([0,0,0,0,0,0,0,0,0,0,0,13], "Method Coverage"))
+      .datum(getCoverageDistributionData([1,0,0,0,0,0,0,0,0,0,0,8], "Method Coverage"))
       .transition().duration(500).call(chart);
 
     nv.utils.windowResize(chart.update);
@@ -223,7 +224,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Cyclomatic Complexity');
 
     d3.select('#classComplexity svg')
-      .datum(getComplexityData([[100,3,"<a href=\"Factory\/ModuleOptionsFactory.php.html#13\">TwbsHelper\\Options\\Factory\\ModuleOptionsFactory<\/a>"],[100,10,"<a href=\"ModuleOptions.php.html#12\">TwbsHelper\\Options\\ModuleOptions<\/a>"]], 'Class Complexity'))
+      .datum(getComplexityData([[94.44444444444444,13,"<a href=\"Adapter\/Html.php.html#9\">TwbsHelper\\ProgressBar\\Adapter\\Html<\/a>"]], 'Class Complexity'))
       .transition()
       .duration(500)
       .call(chart);
@@ -247,7 +248,7 @@ $(document).ready(function() {
     chart.yAxis.axisLabel('Method Complexity');
 
     d3.select('#methodComplexity svg')
-      .datum(getComplexityData([[100,1,"<a href=\"Factory\/ModuleOptionsFactory.php.html#24\">TwbsHelper\\Options\\Factory\\ModuleOptionsFactory::createService<\/a>"],[100,1,"<a href=\"Factory\/ModuleOptionsFactory.php.html#39\">TwbsHelper\\Options\\Factory\\ModuleOptionsFactory::__invoke<\/a>"],[100,1,"<a href=\"Factory\/ModuleOptionsFactory.php.html#52\">TwbsHelper\\Options\\Factory\\ModuleOptionsFactory::createServiceWithConfig<\/a>"],[100,1,"<a href=\"ModuleOptions.php.html#37\">TwbsHelper\\Options\\ModuleOptions::getIgnoredViewHelpers<\/a>"],[100,1,"<a href=\"ModuleOptions.php.html#50\">TwbsHelper\\Options\\ModuleOptions::setIgnoredViewHelpers<\/a>"],[100,1,"<a href=\"ModuleOptions.php.html#64\">TwbsHelper\\Options\\ModuleOptions::getValidTagAttributes<\/a>"],[100,1,"<a href=\"ModuleOptions.php.html#77\">TwbsHelper\\Options\\ModuleOptions::setValidTagAttributes<\/a>"],[100,1,"<a href=\"ModuleOptions.php.html#91\">TwbsHelper\\Options\\ModuleOptions::getValidTagAttributePrefixes<\/a>"],[100,1,"<a href=\"ModuleOptions.php.html#104\">TwbsHelper\\Options\\ModuleOptions::setValidTagAttributePrefixes<\/a>"],[100,1,"<a href=\"ModuleOptions.php.html#118\">TwbsHelper\\Options\\ModuleOptions::getClassMap<\/a>"],[100,1,"<a href=\"ModuleOptions.php.html#131\">TwbsHelper\\Options\\ModuleOptions::setClassMap<\/a>"],[100,1,"<a href=\"ModuleOptions.php.html#145\">TwbsHelper\\Options\\ModuleOptions::getTypeMap<\/a>"],[100,1,"<a href=\"ModuleOptions.php.html#158\">TwbsHelper\\Options\\ModuleOptions::setTypeMap<\/a>"]], 'Method Complexity'))
+      .datum(getComplexityData([[100,1,"<a href=\"Adapter\/Html.php.html#59\">TwbsHelper\\ProgressBar\\Adapter\\Html::setHelper<\/a>"],[100,1,"<a href=\"Adapter\/Html.php.html#71\">TwbsHelper\\ProgressBar\\Adapter\\Html::setShowLabel<\/a>"],[100,1,"<a href=\"Adapter\/Html.php.html#83\">TwbsHelper\\ProgressBar\\Adapter\\Html::setMin<\/a>"],[100,1,"<a href=\"Adapter\/Html.php.html#95\">TwbsHelper\\ProgressBar\\Adapter\\Html::setMax<\/a>"],[0,1,"<a href=\"Adapter\/Html.php.html#107\">TwbsHelper\\ProgressBar\\Adapter\\Html::setAttributes<\/a>"],[100,1,"<a href=\"Adapter\/Html.php.html#119\">TwbsHelper\\ProgressBar\\Adapter\\Html::setVariant<\/a>"],[100,1,"<a href=\"Adapter\/Html.php.html#136\">TwbsHelper\\ProgressBar\\Adapter\\Html::notify<\/a>"],[100,1,"<a href=\"Adapter\/Html.php.html#152\">TwbsHelper\\ProgressBar\\Adapter\\Html::finish<\/a>"],[100,5,"<a href=\"Adapter\/Html.php.html#165\">TwbsHelper\\ProgressBar\\Adapter\\Html::outputData<\/a>"]], 'Method Complexity'))
       .transition()
       .duration(500)
       .call(chart);

@@ -22,6 +22,7 @@
 - [\TwbsHelper\Navigation\Page\DropdownPage](#class-twbshelpernavigationpagedropdownpage)
 - [\TwbsHelper\Options\ModuleOptions](#class-twbshelperoptionsmoduleoptions)
 - [\TwbsHelper\Options\Factory\ModuleOptionsFactory](#class-twbshelperoptionsfactorymoduleoptionsfactory)
+- [\TwbsHelper\ProgressBar\Adapter\Html](#class-twbshelperprogressbaradapterhtml)
 - [\TwbsHelper\View\Helper\Image](#class-twbshelperviewhelperimage)
 - [\TwbsHelper\View\Helper\PaginationControl](#class-twbshelperviewhelperpaginationcontrol)
 - [\TwbsHelper\View\Helper\CardColumns](#class-twbshelperviewhelpercardcolumns)
@@ -46,6 +47,7 @@
 - [\TwbsHelper\View\Helper\ButtonToolbar](#class-twbshelperviewhelperbuttontoolbar)
 - [\TwbsHelper\View\Helper\ListGroup](#class-twbshelperviewhelperlistgroup)
 - [\TwbsHelper\View\Helper\CardGroup](#class-twbshelperviewhelpercardgroup)
+- [\TwbsHelper\View\Helper\ProgressBar](#class-twbshelperviewhelperprogressbar)
 - [\TwbsHelper\View\Helper\Navigation\Menu](#class-twbshelperviewhelpernavigationmenu)
 - [\TwbsHelper\View\Helper\Navigation\Breadcrumbs](#class-twbshelperviewhelpernavigationbreadcrumbs)
 - [\TwbsHelper\View\Helper\Navigation\Navbar](#class-twbshelperviewhelpernavigationnavbar)
@@ -615,6 +617,50 @@
 
 <hr />
 
+### Class: \TwbsHelper\ProgressBar\Adapter\Html
+
+> TwbsHelper\ProgressBar\Adapter\Html offers a simple method for rendering a progressbar in a browser.
+
+| Visibility | Function |
+|:-----------|:---------|
+| public | <strong>addProperIndentation(</strong><em>\string</em> <strong>$sContent</strong>, <em>\bool</em> <strong>$bForceIndentation=false</strong>, <em>\string</em> <strong>$sIndentation=null</strong>)</strong> : <em>void</em> |
+| public | <strong>attributesToString(</strong><em>array</em> <strong>$aAttributes</strong>, <em>\string</em> <strong>$sTag</strong>)</strong> : <em>void</em> |
+| public | <strong>finish()</strong> : <em>void</em><br /><em>Defined by Zend\ProgressBar\Adapter\AbstractAdapter</em> |
+| public | <strong>getPrefixedClass(</strong><em>\string</em> <strong>$sClass</strong>, <em>\string</em> <strong>$sPrefix</strong>)</strong> : <em>mixed</em> |
+| public | <strong>getSizeClass(</strong><em>\string</em> <strong>$sSize</strong>, <em>\string</em> <strong>$sPrefix</strong>)</strong> : <em>mixed</em> |
+| public | <strong>htmlElement(</strong><em>\string</em> <strong>$sTag</strong>, <em>array</em> <strong>$aAttributes=array()</strong>, <em>\string</em> <strong>$sContent=null</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
+| public | <strong>notify(</strong><em>float</em> <strong>$iCurrent</strong>, <em>float</em> <strong>$iMax</strong>, <em>float</em> <strong>$iPercent</strong>, <em>int</em> <strong>$iTimeTaken</strong>, <em>int</em> <strong>$iTimeRemaining</strong>, <em>string</em> <strong>$sText</strong>)</strong> : <em>void</em><br /><em>Defined by Zend\ProgressBar\Adapter\AbstractAdapter</em> |
+| public | <strong>removeIndentation(</strong><em>\string</em> <strong>$sContent</strong>)</strong> : <em>void</em> |
+| public | <strong>setAttributes(</strong><em>array</em> <strong>$aAttributes</strong>)</strong> : <em>[\TwbsHelper\ProgressBar\Adapter\Html](#class-twbshelperprogressbaradapterhtml)</em><br /><em>Set progressbar attributes</em> |
+| public | <strong>setClassesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| public | <strong>setHelper(</strong><em>[\TwbsHelper\View\Helper\ProgressBar](#class-twbshelperviewhelperprogressbar)</em> <strong>$oHelper</strong>)</strong> : <em>[\TwbsHelper\ProgressBar\Adapter\Html](#class-twbshelperprogressbaradapterhtml)</em><br /><em>Set progressbar min value</em> |
+| public | <strong>setMax(</strong><em>\int</em> <strong>$iMax</strong>)</strong> : <em>[\TwbsHelper\ProgressBar\Adapter\Html](#class-twbshelperprogressbaradapterhtml)</em><br /><em>Set progressbar max value</em> |
+| public | <strong>setMin(</strong><em>\int</em> <strong>$iMin</strong>)</strong> : <em>[\TwbsHelper\ProgressBar\Adapter\Html](#class-twbshelperprogressbaradapterhtml)</em><br /><em>Set progressbar min value</em> |
+| public | <strong>setShowLabel(</strong><em>\bool</em> <strong>$bShowLabel</strong>)</strong> : <em>[\TwbsHelper\ProgressBar\Adapter\Html](#class-twbshelperprogressbaradapterhtml)</em><br /><em>Set whether progressbar shows label or not</em> |
+| public | <strong>setStylesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
+| public | <strong>setVariant(</strong><em>\string</em> <strong>$sVariant</strong>)</strong> : <em>[\TwbsHelper\ProgressBar\Adapter\Html](#class-twbshelperprogressbaradapterhtml)</em><br /><em>Set progressbar background variant</em> |
+| protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>addStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
+| protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>cleanStylesAttribute(</strong><em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
+| protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getSizes()</strong> : <em>mixed</em> |
+| protected | <strong>getStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>bool</em> <strong>$bCleanStyles=true</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getVariants()</strong> : <em>mixed</em> |
+| protected | <strong>hasClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>\string</em> <strong>$sClass</strong>)</strong> : <em>bool</em> |
+| protected | <strong>hasColumnClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>)</strong> : <em>bool</em> |
+| protected | <strong>isHTML(</strong><em>\string</em> <strong>$sString</strong>)</strong> : <em>bool</em> |
+| protected | <strong>outputData(</strong><em>\int</em> <strong>$iCurrent</strong>, <em>mixed</em> <strong>$iPercent</strong>)</strong> : <em>void</em><br /><em>Outputs given data the user agent. This split-off is required for unit-testing.</em> |
+| protected | <strong>setClassesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| protected | <strong>setStylesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
+
+*This class extends \Zend\ProgressBar\Adapter\AbstractAdapter*
+
+<hr />
+
 ### Class: \TwbsHelper\View\Helper\Image
 
 > Helper for rendering images
@@ -794,21 +840,26 @@
 | public | <strong>isTranslatorEnabled()</strong> : <em>bool</em><br /><em>Returns whether translator is enabled and should be used</em> |
 | public | <strong>removeIndentation(</strong><em>\string</em> <strong>$sContent</strong>)</strong> : <em>void</em> |
 | public | <strong>setClassesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| public | <strong>setStylesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
 | public | <strong>setTranslator(</strong><em>\TwbsHelper\View\Helper\TranslatorInterface/null/\Zend\I18n\Translator\TranslatorInterface</em> <strong>$translator=null</strong>, <em>string/null</em> <strong>$textDomain=null</strong>)</strong> : <em>\TwbsHelper\View\Helper\$this</em><br /><em>Sets translator to use in helper</em> |
 | public | <strong>setTranslatorEnabled(</strong><em>bool</em> <strong>$enabled=true</strong>)</strong> : <em>\TwbsHelper\View\Helper\$this</em><br /><em>Sets whether translator is enabled and should be used</em> |
 | public | <strong>setTranslatorTextDomain(</strong><em>string</em> <strong>$textDomain=`'default'`</strong>)</strong> : <em>\TwbsHelper\View\Helper\$this</em><br /><em>Set translation text domain</em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>addStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>cleanStylesAttribute(</strong><em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizes()</strong> : <em>mixed</em> |
+| protected | <strong>getStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>bool</em> <strong>$bCleanStyles=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariants()</strong> : <em>mixed</em> |
 | protected | <strong>hasClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>\string</em> <strong>$sClass</strong>)</strong> : <em>bool</em> |
 | protected | <strong>hasColumnClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>)</strong> : <em>bool</em> |
 | protected | <strong>isHTML(</strong><em>\string</em> <strong>$sString</strong>)</strong> : <em>bool</em> |
 | protected | <strong>setClassesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| protected | <strong>setStylesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
 
 *This class extends \Zend\View\Helper\AbstractHtmlElement*
 
@@ -1033,6 +1084,20 @@
 *This class extends [\TwbsHelper\View\Helper\AbstractGroup](#class-twbshelperviewhelperabstractgroup-abstract)*
 
 *This class implements \Zend\View\Helper\HelperInterface, \Zend\I18n\Translator\TranslatorAwareInterface*
+
+<hr />
+
+### Class: \TwbsHelper\View\Helper\ProgressBar
+
+> Helper for rendering tables
+
+| Visibility | Function |
+|:-----------|:---------|
+| public | <strong>__invoke(</strong><em>\float</em> <strong>$iMin</strong>, <em>\float</em> <strong>$iMax</strong>, <em>array</em> <strong>$aOptions=array()</strong>)</strong> : <em>void</em><br /><em>Generates a 'progressbar' element</em> |
+
+*This class extends [\TwbsHelper\View\Helper\AbstractHtmlElement](#class-twbshelperviewhelperabstracthtmlelement)*
+
+*This class implements \Zend\I18n\Translator\TranslatorAwareInterface, \Zend\View\Helper\HelperInterface*
 
 <hr />
 
