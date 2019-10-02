@@ -54,7 +54,7 @@ trait ClassAttributeTrait
         );
     }
 
-    protected function setClassesToAttributes(
+    public function setClassesToAttributes(
         array $aAttributes,
         array $aAddClasses = [],
         array $aRemoveClasses = []
@@ -89,6 +89,15 @@ trait ClassAttributeTrait
         return $aClasses;
     }
 
+    public function getPrefixedClass(string $sClass, string $sPrefix) : string
+    {
+        if (!strstr($sPrefix, '%s')) {
+            return $sPrefix . '-' . $sClass;
+        }
+
+        return sprintf($sPrefix, $sClass);
+    }
+
     protected function getVariants(): array
     {
         return static::$variants;
@@ -104,7 +113,7 @@ trait ClassAttributeTrait
         ) {
             throw new \InvalidArgumentException('Variant "' . $sVariant . '" does not exist');
         }
-        return $sPrefix . '-' . $sVariant;
+        return $this->getPrefixedClass($sVariant, $sPrefix);
     }
 
     protected function getSizes(): array
@@ -112,16 +121,12 @@ trait ClassAttributeTrait
         return static::$sizes;
     }
 
-    protected function getSizeClass(string $sSize, string $sPrefix): string
+    public function getSizeClass(string $sSize, string $sPrefix): string
     {
         if (!in_array($sSize, $this->getSizes())) {
             throw new \InvalidArgumentException('Size "' . $sSize . '" does not exist');
         }
-        if (!strstr($sPrefix, '%s')) {
-            return $sPrefix . '-' . $sSize;
-        }
-
-        return sprintf($sPrefix, $sSize);
+        return $this->getPrefixedClass($sSize, $sPrefix);
     }
 
     protected function getColumnClass($sColumn): string
@@ -138,7 +143,7 @@ trait ClassAttributeTrait
         ) {
             throw new \InvalidArgumentException('Column "' . $sColumn . '" is not valid');
         }
-        return 'col-' . $sColumn;
+        return $this->getPrefixedClass($sColumn, 'col');
     }
 
     protected function hasColumnClassAttribute(string $sClassAttribute): bool
