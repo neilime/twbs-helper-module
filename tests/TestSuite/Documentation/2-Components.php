@@ -23,5 +23,6 @@ return [
         'Navbar' => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Navbar.php',
         'Pagination' => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Pagination.php',
         'Popovers' => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Popovers.php',
+        'Progress' => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Progress.php',
     ],
 ];

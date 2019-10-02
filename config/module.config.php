@@ -54,6 +54,7 @@ return [
             'mediaList'           => 'TwbsHelper\View\Helper\MediaList',
             'modal'               => 'TwbsHelper\View\Helper\Modal',
             'paginationControl'   => 'TwbsHelper\View\Helper\PaginationControl',
+            'progressBar'         => 'TwbsHelper\View\Helper\ProgressBar',
 
             // Form view helpers
             'form'                => 'TwbsHelper\Form\View\Helper\Form',
