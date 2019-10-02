@@ -89,12 +89,16 @@
 | public | <strong>removeIndentation(</strong><em>\string</em> <strong>$sContent</strong>)</strong> : <em>void</em> |
 | public | <strong>render(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>string</em><br /><em>Render a form <input type="radio"> element from the provided $oElement</em> |
 | public | <strong>setClassesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| public | <strong>setStylesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>addStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>cleanStylesAttribute(</strong><em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizes()</strong> : <em>mixed</em> |
+| protected | <strong>getStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>bool</em> <strong>$bCleanStyles=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariants()</strong> : <em>mixed</em> |
 | protected | <strong>hasClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>\string</em> <strong>$sClass</strong>)</strong> : <em>bool</em> |
@@ -103,6 +107,7 @@
 | protected | <strong>prepareElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>void</em> |
 | protected | <strong>renderElementOption(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>\string</em> <strong>$sOptionContent</strong>)</strong> : <em>void</em> |
 | protected | <strong>setClassesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| protected | <strong>setStylesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
 
 *This class extends \Zend\Form\View\Helper\FormRadio*
 
@@ -123,13 +128,17 @@
 | public | <strong>render(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>string/null</em> <strong>$sLabelPosition=null</strong>)</strong> : <em>string</em> |
 | public | <strong>renderFormRow(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>mixed</em> <strong>$sElementContent</strong>)</strong> : <em>string</em> |
 | public | <strong>setClassesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| public | <strong>setStylesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>addStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>cleanStylesAttribute(</strong><em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getDefaultLabelPosition(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>mixed</em> <strong>$sLabelPosition=null</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizes()</strong> : <em>mixed</em> |
+| protected | <strong>getStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>bool</em> <strong>$bCleanStyles=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariants()</strong> : <em>mixed</em> |
 | protected | <strong>hasClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>\string</em> <strong>$sClass</strong>)</strong> : <em>bool</em> |
@@ -142,6 +151,7 @@
 | protected | <strong>renderHelpBlock(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>\string</em> <strong>$sElementContent</strong>)</strong> : <em>string</em><br /><em>Render element's help block</em> |
 | protected | <strong>renderLabel(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>\string</em> <strong>$sElementContent</strong>, <em>\string</em> <strong>$sLabelPosition=null</strong>)</strong> : <em>string</em><br /><em>Render element's label</em> |
 | protected | <strong>setClassesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| protected | <strong>setStylesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
 
 *This class extends \Zend\Form\View\Helper\FormRow*
 
@@ -217,12 +227,16 @@
 | public | <strong>removeIndentation(</strong><em>\string</em> <strong>$sContent</strong>)</strong> : <em>void</em> |
 | public | <strong>render(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>string</em><br /><em>Render an element</em> |
 | public | <strong>setClassesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| public | <strong>setStylesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>addStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>cleanStylesAttribute(</strong><em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizes()</strong> : <em>mixed</em> |
+| protected | <strong>getStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>bool</em> <strong>$bCleanStyles=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariants()</strong> : <em>mixed</em> |
 | protected | <strong>hasClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>\string</em> <strong>$sClass</strong>)</strong> : <em>bool</em> |
@@ -230,6 +244,7 @@
 | protected | <strong>isHTML(</strong><em>\string</em> <strong>$sString</strong>)</strong> : <em>bool</em> |
 | protected | <strong>renderHelper(</strong><em>string</em> <strong>$sName</strong>, <em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>string</em><br /><em>Render element by helper name</em> |
 | protected | <strong>setClassesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| protected | <strong>setStylesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
 
 *This class extends \Zend\Form\View\Helper\FormElement*
 
@@ -249,12 +264,16 @@
 | public | <strong>removeIndentation(</strong><em>\string</em> <strong>$sContent</strong>)</strong> : <em>void</em> |
 | public | <strong>render(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>string</em><br /><em>Render a form <input type="radio"> element from the provided $oElement</em> |
 | public | <strong>setClassesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| public | <strong>setStylesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>addStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>cleanStylesAttribute(</strong><em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizes()</strong> : <em>mixed</em> |
+| protected | <strong>getStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>bool</em> <strong>$bCleanStyles=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariants()</strong> : <em>mixed</em> |
 | protected | <strong>hasClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>\string</em> <strong>$sClass</strong>)</strong> : <em>bool</em> |
@@ -263,6 +282,7 @@
 | protected | <strong>prepareElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>void</em> |
 | protected | <strong>renderElementOption(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>\string</em> <strong>$sOptionContent</strong>)</strong> : <em>void</em> |
 | protected | <strong>setClassesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| protected | <strong>setStylesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
 
 *This class extends \Zend\Form\View\Helper\FormMultiCheckbox*
 
@@ -282,18 +302,23 @@
 | public | <strong>removeIndentation(</strong><em>\string</em> <strong>$sContent</strong>)</strong> : <em>void</em> |
 | public | <strong>render(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>string</em><br /><em>Render a form <input> element from the provided $oElement</em> |
 | public | <strong>setClassesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| public | <strong>setStylesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>addStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>cleanStylesAttribute(</strong><em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizes()</strong> : <em>mixed</em> |
+| protected | <strong>getStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>bool</em> <strong>$bCleanStyles=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariants()</strong> : <em>mixed</em> |
 | protected | <strong>hasClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>\string</em> <strong>$sClass</strong>)</strong> : <em>bool</em> |
 | protected | <strong>hasColumnClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>)</strong> : <em>bool</em> |
 | protected | <strong>isHTML(</strong><em>\string</em> <strong>$sString</strong>)</strong> : <em>bool</em> |
 | protected | <strong>setClassesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| protected | <strong>setStylesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
 
 *This class extends \Zend\Form\View\Helper\FormInput*
 
@@ -314,18 +339,23 @@
 | public | <strong>render(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>string</em><br /><em>Render a form <select> element from the provided $element</em> |
 | public | <strong>renderOptions(</strong><em>array</em> <strong>$aOptions</strong>, <em>array</em> <strong>$aSelectedOptions=array()</strong>)</strong> : <em>string</em><br /><em>Render an array of options Individual options should be of the form: <code> array( 'value'    => 'value', 'label'    => 'label', 'disabled' => $booleanFlag, 'selected' => $booleanFlag, ) </code></em> |
 | public | <strong>setClassesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| public | <strong>setStylesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>addStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>cleanStylesAttribute(</strong><em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizes()</strong> : <em>mixed</em> |
+| protected | <strong>getStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>bool</em> <strong>$bCleanStyles=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariants()</strong> : <em>mixed</em> |
 | protected | <strong>hasClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>\string</em> <strong>$sClass</strong>)</strong> : <em>bool</em> |
 | protected | <strong>hasColumnClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>)</strong> : <em>bool</em> |
 | protected | <strong>isHTML(</strong><em>\string</em> <strong>$sString</strong>)</strong> : <em>bool</em> |
 | protected | <strong>setClassesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| protected | <strong>setStylesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
 
 *This class extends \Zend\Form\View\Helper\FormSelect*
 
@@ -374,18 +404,23 @@
 | public | <strong>render(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>string</em><br /><em>Render a collection by iterating through all fieldsets and elements</em> |
 | public | <strong>renderTemplate(</strong><em>\Zend\Form\Element\Collection</em> <strong>$oCollection</strong>)</strong> : <em>string</em><br /><em>Only render a template</em> |
 | public | <strong>setClassesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| public | <strong>setStylesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>addStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>cleanStylesAttribute(</strong><em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizes()</strong> : <em>mixed</em> |
+| protected | <strong>getStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>bool</em> <strong>$bCleanStyles=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariants()</strong> : <em>mixed</em> |
 | protected | <strong>hasClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>\string</em> <strong>$sClass</strong>)</strong> : <em>bool</em> |
 | protected | <strong>hasColumnClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>)</strong> : <em>bool</em> |
 | protected | <strong>isHTML(</strong><em>\string</em> <strong>$sString</strong>)</strong> : <em>bool</em> |
 | protected | <strong>setClassesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| protected | <strong>setStylesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
 
 *This class extends \Zend\Form\View\Helper\FormCollection*
 
@@ -435,19 +470,24 @@
 | public | <strong>removeIndentation(</strong><em>\string</em> <strong>$sContent</strong>)</strong> : <em>void</em> |
 | public | <strong>renderPartial(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>string</em><br /><em>Render element's label</em> |
 | public | <strong>setClassesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| public | <strong>setStylesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>addStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>cleanStylesAttribute(</strong><em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getLabelClasses(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aLabelAttributes</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizes()</strong> : <em>mixed</em> |
+| protected | <strong>getStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>bool</em> <strong>$bCleanStyles=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariants()</strong> : <em>mixed</em> |
 | protected | <strong>hasClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>\string</em> <strong>$sClass</strong>)</strong> : <em>bool</em> |
 | protected | <strong>hasColumnClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>)</strong> : <em>bool</em> |
 | protected | <strong>isHTML(</strong><em>\string</em> <strong>$sString</strong>)</strong> : <em>bool</em> |
 | protected | <strong>setClassesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| protected | <strong>setStylesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
 
 *This class extends \Zend\Form\View\Helper\FormLabel*
 
@@ -468,12 +508,16 @@
 | public | <strong>removeIndentation(</strong><em>\string</em> <strong>$sContent</strong>)</strong> : <em>void</em> |
 | public | <strong>render(</strong><em>\Zend\Form\FormInterface</em> <strong>$oForm</strong>)</strong> : <em>string</em><br /><em>Render a form from the provided $oForm,</em> |
 | public | <strong>setClassesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| public | <strong>setStylesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>addStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>cleanStylesAttribute(</strong><em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizes()</strong> : <em>mixed</em> |
+| protected | <strong>getStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>bool</em> <strong>$bCleanStyles=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariants()</strong> : <em>mixed</em> |
 | protected | <strong>hasClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>\string</em> <strong>$sClass</strong>)</strong> : <em>bool</em> |
@@ -481,6 +525,7 @@
 | protected | <strong>isHTML(</strong><em>\string</em> <strong>$sString</strong>)</strong> : <em>bool</em> |
 | protected | <strong>renderElements(</strong><em>\Zend\Form\FormInterface</em> <strong>$oForm</strong>)</strong> : <em>string</em> |
 | protected | <strong>setClassesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| protected | <strong>setStylesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
 
 *This class extends \Zend\Form\View\Helper\Form*
 
@@ -501,13 +546,17 @@
 | public | <strong>removeIndentation(</strong><em>\string</em> <strong>$sContent</strong>)</strong> : <em>void</em> |
 | public | <strong>render(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement=null</strong>, <em>\string</em> <strong>$sContent=`''`</strong>)</strong> : <em>void</em> |
 | public | <strong>setClassesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| public | <strong>setStylesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>addStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>cleanStylesAttribute(</strong><em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
 | protected | <strong>createFormElement(</strong><em>array</em> <strong>$aElement</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizes()</strong> : <em>mixed</em> |
+| protected | <strong>getStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>bool</em> <strong>$bCleanStyles=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariants()</strong> : <em>mixed</em> |
 | protected | <strong>hasClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>\string</em> <strong>$sClass</strong>)</strong> : <em>bool</em> |
@@ -520,6 +569,7 @@
 | protected | <strong>renderLabel(</strong><em>\string</em> <strong>$sAddonLabel</strong>, <em>array</em> <strong>$aAttributes</strong>, <em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>void</em> |
 | protected | <strong>renderText(</strong><em>\string</em> <strong>$sAddonText</strong>, <em>array</em> <strong>$aAttributes</strong>)</strong> : <em>void</em> |
 | protected | <strong>setClassesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| protected | <strong>setStylesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
 
 *This class extends \Zend\Form\View\Helper\AbstractHelper*
 
@@ -689,18 +739,23 @@
 | public | <strong>htmlElement(</strong><em>\string</em> <strong>$sTag</strong>, <em>array</em> <strong>$aAttributes=array()</strong>, <em>\string</em> <strong>$sContent=null</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
 | public | <strong>removeIndentation(</strong><em>\string</em> <strong>$sContent</strong>)</strong> : <em>void</em> |
 | public | <strong>setClassesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| public | <strong>setStylesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>addStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>cleanStylesAttribute(</strong><em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizes()</strong> : <em>mixed</em> |
+| protected | <strong>getStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>bool</em> <strong>$bCleanStyles=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariants()</strong> : <em>mixed</em> |
 | protected | <strong>hasClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>\string</em> <strong>$sClass</strong>)</strong> : <em>bool</em> |
 | protected | <strong>hasColumnClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>)</strong> : <em>bool</em> |
 | protected | <strong>isHTML(</strong><em>\string</em> <strong>$sString</strong>)</strong> : <em>bool</em> |
 | protected | <strong>setClassesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| protected | <strong>setStylesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
 
 *This class extends \Zend\View\Helper\PaginationControl*
 
@@ -1116,12 +1171,16 @@
 | public | <strong>removeIndentation(</strong><em>\string</em> <strong>$sContent</strong>)</strong> : <em>void</em> |
 | public | <strong>renderMenu(</strong><em>mixed</em> <strong>$container=null</strong>, <em>array</em> <strong>$aOptions=array()</strong>)</strong> : <em>void</em> |
 | public | <strong>setClassesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| public | <strong>setStylesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>addStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>cleanStylesAttribute(</strong><em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizes()</strong> : <em>mixed</em> |
+| protected | <strong>getStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>bool</em> <strong>$bCleanStyles=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariants()</strong> : <em>mixed</em> |
 | protected | <strong>hasClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>\string</em> <strong>$sClass</strong>)</strong> : <em>bool</em> |
@@ -1129,6 +1188,7 @@
 | protected | <strong>htmlAttribs(</strong><em>mixed</em> <strong>$aAttributes</strong>)</strong> : <em>string</em><br /><em>Converts an associative array to a string of tag attributes. Overloads {@link View\Helper\AbstractHtmlElement::htmlAttribs()}. to an attribute name and value</em> |
 | protected | <strong>isHTML(</strong><em>\string</em> <strong>$sString</strong>)</strong> : <em>bool</em> |
 | protected | <strong>setClassesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| protected | <strong>setStylesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
 
 *This class extends \Zend\View\Helper\Navigation\Menu*
 
@@ -1177,15 +1237,19 @@
 | public | <strong>renderText(</strong><em>mixed</em> <strong>$aTextOptions</strong>)</strong> : <em>void</em> |
 | public | <strong>renderToggler(</strong><em>array</em> <strong>$aTogglerOptions</strong>, <em>\string</em> <strong>$sId=null</strong>)</strong> : <em>void</em> |
 | public | <strong>setClassesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| public | <strong>setStylesToAttributes(</strong><em>array</em> <strong>$aAttributes</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
 | public | <strong>setTranslator(</strong><em>\TwbsHelper\View\Helper\Navigation\TranslatorInterface/null/\Zend\I18n\Translator\TranslatorInterface</em> <strong>$translator=null</strong>, <em>string/null</em> <strong>$textDomain=null</strong>)</strong> : <em>\TwbsHelper\View\Helper\Navigation\$this</em><br /><em>Sets translator to use in helper</em> |
 | public | <strong>setTranslatorEnabled(</strong><em>bool</em> <strong>$enabled=true</strong>)</strong> : <em>\TwbsHelper\View\Helper\Navigation\$this</em><br /><em>Sets whether translator is enabled and should be used</em> |
 | public | <strong>setTranslatorTextDomain(</strong><em>string</em> <strong>$textDomain=`'default'`</strong>)</strong> : <em>\TwbsHelper\View\Helper\Navigation\$this</em><br /><em>Set translation text domain</em> |
 | protected | <strong>addClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>addStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
 | protected | <strong>cleanClassesAttribute(</strong><em>array</em> <strong>$aClasses</strong>)</strong> : <em>void</em> |
+| protected | <strong>cleanStylesAttribute(</strong><em>array</em> <strong>$aStyles</strong>)</strong> : <em>void</em> |
 | protected | <strong>getClassesAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>bool</em> <strong>$bCleanClasses=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnClass(</strong><em>mixed</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getColumnCounterpartClass(</strong><em>\string</em> <strong>$sColumn</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizes()</strong> : <em>mixed</em> |
+| protected | <strong>getStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>bool</em> <strong>$bCleanStyles=true</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariants()</strong> : <em>mixed</em> |
 | protected | <strong>hasClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>\string</em> <strong>$sClass</strong>)</strong> : <em>bool</em> |
@@ -1193,6 +1257,7 @@
 | protected | <strong>isHTML(</strong><em>\string</em> <strong>$sString</strong>)</strong> : <em>bool</em> |
 | protected | <strong>normalizeId(</strong><em>mixed</em> <strong>$sValue</strong>)</strong> : <em>string</em><br /><em>Normalize an ID Overrides {@link View\Helper\AbstractHtmlElement::normalizeId()}.</em> |
 | protected | <strong>setClassesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
+| protected | <strong>setStylesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
 
 *This class extends \Zend\View\Helper\Navigation\AbstractHelper*
 
