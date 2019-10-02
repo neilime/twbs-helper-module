@@ -860,7 +860,7 @@ dl dd {
     display: block;
 }
 
-.tab-pane nav.navbar.fixed-top{
+.tab-pane nav.navbar.fixed-top, .tab-pane nav.navbar.fixed-bottom {
     position: static;
 }
 
