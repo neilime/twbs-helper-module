@@ -5,7 +5,6 @@ namespace TwbsHelper\Form\View\Helper;
 class Form extends \Zend\Form\View\Helper\Form
 {
     use \TwbsHelper\View\Helper\HtmlTrait;
-    use \TwbsHelper\View\Helper\ClassAttributeTrait;
 
     const LAYOUT_HORIZONTAL = 'horizontal';
     const LAYOUT_INLINE     = 'inline';

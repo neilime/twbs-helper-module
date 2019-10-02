@@ -15,7 +15,7 @@ return [
                 echo '<p>' . $oView->abbreviation('HTML', 'HyperText Markup Language', true) . '</p>';
             },
             'expected' => '<p><abbr title="attribute">attr</abbr></p>' . PHP_EOL .
-                '<p><abbr title="HyperText&#x20;Markup&#x20;Language" class="initialism">HTML</abbr></p>',
+                '<p><abbr class="initialism" title="HyperText&#x20;Markup&#x20;Language">HTML</abbr></p>',
         ],
         [
             'title' => 'Blockquotes',

@@ -62,7 +62,7 @@ return [
         '        <label for="exampleInputEmail1">Email address</label>' . PHP_EOL .
         '        <input name="email" type="email" id="exampleInputEmail1" ' .
         'placeholder="Enter&#x20;email" class="form-control" value="">' . PHP_EOL .
-        '        <small id="emailHelp" class="form-text&#x20;text-muted">' .
+        '        <small class="form-text&#x20;text-muted" id="emailHelp">' .
         'We&#039;ll never share your email with anyone else.' .
         '</small>' . PHP_EOL .
         '    </div>' . PHP_EOL .

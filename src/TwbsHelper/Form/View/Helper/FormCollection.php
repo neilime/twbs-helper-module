@@ -7,8 +7,6 @@ namespace TwbsHelper\Form\View\Helper;
  */
 class FormCollection extends \Zend\Form\View\Helper\FormCollection
 {
-
-    use \TwbsHelper\View\Helper\ClassAttributeTrait;
     use \TwbsHelper\View\Helper\HtmlTrait;
 
     /**

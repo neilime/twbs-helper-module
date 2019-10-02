@@ -78,11 +78,11 @@ return [
         '<span class="sr-only">Toggle Dropdown</span>' .
         '</button>' . PHP_EOL .
         '        <div class="dropdown-menu">' . PHP_EOL .
-        '            <a href="&#x23;" class="dropdown-item">Action</a>' . PHP_EOL .
-        '            <a href="&#x23;" class="dropdown-item">Another action</a>' . PHP_EOL .
-        '            <a href="&#x23;" class="dropdown-item">Something else here</a>' . PHP_EOL .
+        '            <a class="dropdown-item" href="&#x23;">Action</a>' . PHP_EOL .
+        '            <a class="dropdown-item" href="&#x23;">Another action</a>' . PHP_EOL .
+        '            <a class="dropdown-item" href="&#x23;">Something else here</a>' . PHP_EOL .
         '            <div class="dropdown-divider"></div>' . PHP_EOL .
-        '            <a href="&#x23;" class="dropdown-item">Separated link</a>' . PHP_EOL .
+        '            <a class="dropdown-item" href="&#x23;">Separated link</a>' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '    <input type="text" name="segmented-dropdown-prepend" ' .
@@ -102,11 +102,11 @@ return [
         '<span class="sr-only">Toggle Dropdown</span>' .
         '</button>' . PHP_EOL .
         '        <div class="dropdown-menu">' . PHP_EOL .
-        '            <a href="&#x23;" class="dropdown-item">Action</a>' . PHP_EOL .
-        '            <a href="&#x23;" class="dropdown-item">Another action</a>' . PHP_EOL .
-        '            <a href="&#x23;" class="dropdown-item">Something else here</a>' . PHP_EOL .
+        '            <a class="dropdown-item" href="&#x23;">Action</a>' . PHP_EOL .
+        '            <a class="dropdown-item" href="&#x23;">Another action</a>' . PHP_EOL .
+        '            <a class="dropdown-item" href="&#x23;">Something else here</a>' . PHP_EOL .
         '            <div class="dropdown-divider"></div>' . PHP_EOL .
-        '            <a href="&#x23;" class="dropdown-item">Separated link</a>' . PHP_EOL .
+        '            <a class="dropdown-item" href="&#x23;">Separated link</a>' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '</div>',

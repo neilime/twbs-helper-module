@@ -4,7 +4,6 @@ namespace TwbsHelper\Form\View\Helper;
 
 class FormFile extends \Zend\Form\View\Helper\FormInput
 {
-    use \TwbsHelper\View\Helper\ClassAttributeTrait;
     use \TwbsHelper\View\Helper\HtmlTrait;
 
     /**

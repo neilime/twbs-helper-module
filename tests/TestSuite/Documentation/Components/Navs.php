@@ -360,11 +360,11 @@ return [
                         '        <a class="dropdown-toggle&#x20;nav-link" data-toggle="dropdown" role="button" '.
                         'aria-haspopup="true" aria-expanded="false" href="&#x23;">Dropdown</a>' . PHP_EOL .
                         '        <div class="dropdown-menu">' . PHP_EOL .
-                        '            <a href="&#x23;" class="dropdown-item">Action</a>' . PHP_EOL .
-                        '            <a href="&#x23;" class="dropdown-item">Another action</a>' . PHP_EOL .
-                        '            <a href="&#x23;" class="dropdown-item">Something else here</a>' . PHP_EOL .
+                        '            <a class="dropdown-item" href="&#x23;">Action</a>' . PHP_EOL .
+                        '            <a class="dropdown-item" href="&#x23;">Another action</a>' . PHP_EOL .
+                        '            <a class="dropdown-item" href="&#x23;">Something else here</a>' . PHP_EOL .
                         '            <div class="dropdown-divider"></div>' . PHP_EOL .
-                        '            <a href="&#x23;" class="dropdown-item">Separated link</a>' . PHP_EOL .
+                        '            <a class="dropdown-item" href="&#x23;">Separated link</a>' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '    </li>' . PHP_EOL .
                         '    <li class="nav-item">' . PHP_EOL .
@@ -409,11 +409,11 @@ return [
                         '        <a class="dropdown-toggle&#x20;nav-link" data-toggle="dropdown" role="button" '.
                         'aria-haspopup="true" aria-expanded="false" href="&#x23;">Dropdown</a>' . PHP_EOL .
                         '        <div class="dropdown-menu">' . PHP_EOL .
-                        '            <a href="&#x23;" class="dropdown-item">Action</a>' . PHP_EOL .
-                        '            <a href="&#x23;" class="dropdown-item">Another action</a>' . PHP_EOL .
-                        '            <a href="&#x23;" class="dropdown-item">Something else here</a>' . PHP_EOL .
+                        '            <a class="dropdown-item" href="&#x23;">Action</a>' . PHP_EOL .
+                        '            <a class="dropdown-item" href="&#x23;">Another action</a>' . PHP_EOL .
+                        '            <a class="dropdown-item" href="&#x23;">Something else here</a>' . PHP_EOL .
                         '            <div class="dropdown-divider"></div>' . PHP_EOL .
-                        '            <a href="&#x23;" class="dropdown-item">Separated link</a>' . PHP_EOL .
+                        '            <a class="dropdown-item" href="&#x23;">Separated link</a>' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '    </li>' . PHP_EOL .
                         '    <li class="nav-item">' . PHP_EOL .

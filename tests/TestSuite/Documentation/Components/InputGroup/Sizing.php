@@ -55,7 +55,7 @@ return [
     },
     'expected' => '<div class="input-group&#x20;input-group-sm&#x20;mb-3">' . PHP_EOL .
         '    <div class="input-group-prepend">' . PHP_EOL .
-        '        <div id="inputGroup-sizing-sm" class="input-group-text">' . PHP_EOL .
+        '        <div class="input-group-text" id="inputGroup-sizing-sm">' . PHP_EOL .
         '            Small' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .
@@ -64,7 +64,7 @@ return [
         '</div>' . PHP_EOL .
         '<div class="input-group&#x20;mb-3">' . PHP_EOL .
         '    <div class="input-group-prepend">' . PHP_EOL .
-        '        <div id="inputGroup-sizing-default" class="input-group-text">' . PHP_EOL .
+        '        <div class="input-group-text" id="inputGroup-sizing-default">' . PHP_EOL .
         '            Default' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .
@@ -73,7 +73,7 @@ return [
         '</div>' . PHP_EOL .
         '<div class="input-group&#x20;input-group-lg">' . PHP_EOL .
         '    <div class="input-group-prepend">' . PHP_EOL .
-        '        <div id="inputGroup-sizing-lg" class="input-group-text">' . PHP_EOL .
+        '        <div class="input-group-text" id="inputGroup-sizing-lg">' . PHP_EOL .
         '            Large' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .

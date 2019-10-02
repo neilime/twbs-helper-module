@@ -5,7 +5,6 @@ namespace TwbsHelper\Form\View\Helper;
 class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
 {
     use \TwbsHelper\View\Helper\HtmlTrait;
-    use \TwbsHelper\View\Helper\ClassAttributeTrait;
 
     const POSITION_APPEND = 'append';
     const POSITION_PREPEND = 'prepend';

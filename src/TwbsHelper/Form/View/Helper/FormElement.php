@@ -4,7 +4,6 @@ namespace TwbsHelper\Form\View\Helper;
 
 class FormElement extends \Zend\Form\View\Helper\FormElement
 {
-    use \TwbsHelper\View\Helper\ClassAttributeTrait;
     use \TwbsHelper\View\Helper\HtmlTrait;
 
     // Hold configurable options

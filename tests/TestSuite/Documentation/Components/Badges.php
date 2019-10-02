@@ -110,14 +110,14 @@ return [
                     ) . PHP_EOL;
                 }
             },
-            'expected' => '<a href="&#x23;" class="badge&#x20;badge-primary">Primary</a>' . PHP_EOL .
-            '<a href="&#x23;" class="badge&#x20;badge-secondary">Secondary</a>' . PHP_EOL .
-            '<a href="&#x23;" class="badge&#x20;badge-success">Success</a>' . PHP_EOL .
-            '<a href="&#x23;" class="badge&#x20;badge-danger">Danger</a>' . PHP_EOL .
-            '<a href="&#x23;" class="badge&#x20;badge-warning">Warning</a>' . PHP_EOL .
-            '<a href="&#x23;" class="badge&#x20;badge-info">Info</a>' . PHP_EOL .
-            '<a href="&#x23;" class="badge&#x20;badge-light">Light</a>' . PHP_EOL .
-            '<a href="&#x23;" class="badge&#x20;badge-dark">Dark</a>'. PHP_EOL,
+            'expected' => '<a class="badge&#x20;badge-primary" href="&#x23;">Primary</a>' . PHP_EOL .
+            '<a class="badge&#x20;badge-secondary" href="&#x23;">Secondary</a>' . PHP_EOL .
+            '<a class="badge&#x20;badge-success" href="&#x23;">Success</a>' . PHP_EOL .
+            '<a class="badge&#x20;badge-danger" href="&#x23;">Danger</a>' . PHP_EOL .
+            '<a class="badge&#x20;badge-warning" href="&#x23;">Warning</a>' . PHP_EOL .
+            '<a class="badge&#x20;badge-info" href="&#x23;">Info</a>' . PHP_EOL .
+            '<a class="badge&#x20;badge-light" href="&#x23;">Light</a>' . PHP_EOL .
+            '<a class="badge&#x20;badge-dark" href="&#x23;">Dark</a>'. PHP_EOL,
         ],
     ],
 ];

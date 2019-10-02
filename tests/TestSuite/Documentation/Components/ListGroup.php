@@ -94,17 +94,17 @@ return [
                 ], ['type' => 'button']);
             },
             'expected' => '<div class="list-group">' . PHP_EOL .
-                '    <a href="&#x23;" class="active&#x20;list-group-item&#x20;list-group-item-action">' .
+                '    <a class="active&#x20;list-group-item&#x20;list-group-item-action" href="&#x23;">' .
                 'Cras justo odio</a>' . PHP_EOL .
-                '    <a href="&#x23;" class="list-group-item&#x20;list-group-item-action">Dapibus ac facilisis in</a>' .
+                '    <a class="list-group-item&#x20;list-group-item-action" href="&#x23;">Dapibus ac facilisis in</a>' .
                 PHP_EOL .
-                '    <a href="&#x23;" class="list-group-item&#x20;list-group-item-action">Morbi leo risus</a>' .
+                '    <a class="list-group-item&#x20;list-group-item-action" href="&#x23;">Morbi leo risus</a>' .
                 PHP_EOL .
-                '    <a href="&#x23;" class="list-group-item&#x20;list-group-item-action">Porta ac consectetur ac</a>' .
+                '    <a class="list-group-item&#x20;list-group-item-action" href="&#x23;">Porta ac consectetur ac</a>' .
                 PHP_EOL .
-                '    <a href="&#x23;" aria-disabled="true" ' .
+                '    <a aria-disabled="true" ' .
                 'class="disabled&#x20;list-group-item&#x20;list-group-item-action" ' .
-                'tabindex="-1">Vestibulum at eros</a>' . PHP_EOL .
+                'href="&#x23;" tabindex="-1">Vestibulum at eros</a>' . PHP_EOL .
                 '</div>' . PHP_EOL .
                 '<br>' . PHP_EOL .
                 '<div class="list-group">' . PHP_EOL .
@@ -116,8 +116,8 @@ return [
                 'Morbi leo risus</button>' . PHP_EOL .
                 '    <button class="list-group-item&#x20;list-group-item-action" type="button">' .
                 'Porta ac consectetur ac</button>' . PHP_EOL .
-                '    <button aria-disabled="true" class="list-group-item&#x20;list-group-item-action" type="button" ' .
-                'disabled="disabled">Vestibulum at eros</button>' . PHP_EOL .
+                '    <button aria-disabled="true" class="list-group-item&#x20;list-group-item-action" '.
+                'disabled="disabled" type="button">Vestibulum at eros</button>' . PHP_EOL .
                 '</div>',
         ],
         [
@@ -282,31 +282,39 @@ return [
                 '</ul>' .
                 '<br>' . PHP_EOL .
                 '<div class="list-group">' . PHP_EOL .
-                '    <a href="&#x23;" class="list-group-item&#x20;list-group-item-action">' .
+                '    <a class="list-group-item&#x20;list-group-item-action" href="&#x23;">' .
                 'Dapibus ac facilisis in</a>' . PHP_EOL .
-                '    <a href="&#x23;" ' .
-                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-primary">' .
+                '    <a ' .
+                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-primary" '.
+                'href="&#x23;">' .
                 'A simple primary list group item</a>' . PHP_EOL .
-                '    <a href="&#x23;" ' .
-                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-secondary">' .
+                '    <a ' .
+                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-secondary" '.
+                'href="&#x23;">' .
                 'A simple secondary list group item</a>' . PHP_EOL .
-                '    <a href="&#x23;" ' .
-                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-success">' .
+                '    <a ' .
+                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-success" '.
+                'href="&#x23;">' .
                 'A simple success list group item</a>' . PHP_EOL .
-                '    <a href="&#x23;" ' .
-                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-danger">' .
+                '    <a ' .
+                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-danger" '.
+                'href="&#x23;">' .
                 'A simple danger list group item</a>' . PHP_EOL .
-                '    <a href="&#x23;" ' .
-                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-warning">' .
+                '    <a ' .
+                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-warning" '.
+                'href="&#x23;">' .
                 'A simple warning list group item</a>' . PHP_EOL .
-                '    <a href="&#x23;" ' .
-                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-info">' .
+                '    <a ' .
+                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-info" '.
+                'href="&#x23;">' .
                 'A simple info list group item</a>' . PHP_EOL .
-                '    <a href="&#x23;" ' .
-                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-light">' .
+                '    <a ' .
+                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-light" '.
+                'href="&#x23;">' .
                 'A simple light list group item</a>' . PHP_EOL .
-                '    <a href="&#x23;" ' .
-                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-dark">' .
+                '    <a ' .
+                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-dark" '.
+                'href="&#x23;">' .
                 'A simple dark list group item</a>' . PHP_EOL .
                 '</div>',
         ],
@@ -397,7 +405,7 @@ return [
                 );
             },
             'expected' => '<div class="list-group">' . PHP_EOL .
-                '    <a href="&#x23;" class="active&#x20;list-group-item&#x20;list-group-item-action">' . PHP_EOL .
+                '    <a class="active&#x20;list-group-item&#x20;list-group-item-action" href="&#x23;">' . PHP_EOL .
                 '        <div class="d-flex w-100 justify-content-between">' . PHP_EOL .
                 '            <h5 class="mb-1">List group item heading</h5>' . PHP_EOL .
                 '            <small>3 days ago</small>' . PHP_EOL .
@@ -406,7 +414,7 @@ return [
                 'Maecenas sed diam eget risus varius blandit.</p>' . PHP_EOL .
                 '        <small>Donec id elit non mi porta.</small>' . PHP_EOL .
                 '    </a>' . PHP_EOL .
-                '    <a href="&#x23;" class="list-group-item&#x20;list-group-item-action">' . PHP_EOL .
+                '    <a class="list-group-item&#x20;list-group-item-action" href="&#x23;">' . PHP_EOL .
                 '        <div class="d-flex w-100 justify-content-between">' . PHP_EOL .
                 '            <h5 class="mb-1">List group item heading</h5>' . PHP_EOL .
                 '            <small>3 days ago</small>' . PHP_EOL .
@@ -415,7 +423,7 @@ return [
                 'Maecenas sed diam eget risus varius blandit.</p>' . PHP_EOL .
                 '        <small>Donec id elit non mi porta.</small>' . PHP_EOL .
                 '    </a>' . PHP_EOL .
-                '    <a href="&#x23;" class="list-group-item&#x20;list-group-item-action">' . PHP_EOL .
+                '    <a class="list-group-item&#x20;list-group-item-action" href="&#x23;">' . PHP_EOL .
                 '        <div class="d-flex w-100 justify-content-between">' . PHP_EOL .
                 '            <h5 class="mb-1">List group item heading</h5>' . PHP_EOL .
                 '            <small>3 days ago</small>' . PHP_EOL .

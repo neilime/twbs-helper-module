@@ -17,7 +17,7 @@ return [
                     ['type' => 'button', 'name' => 'right', 'options' =>  ['label' => 'Right']],
                 ], ['attributes' => ['role' => 'group', 'aria-label' => 'Basic example']]);
             },
-            'expected' => '<div role="group" aria-label="Basic&#x20;example" class="btn-group">' . PHP_EOL .
+            'expected' => '<div aria-label="Basic&#x20;example" class="btn-group" role="group">' . PHP_EOL .
                 '    <button type="button" name="left" class="btn&#x20;btn-secondary" value="">Left</button>'
                 . PHP_EOL .
                 '    <button type="button" name="middle" class="btn&#x20;btn-secondary" value="">Middle</button>'
@@ -79,9 +79,9 @@ return [
                         ], ['attributes' => ['role' => 'toolbar', 'aria-label' => 'Toolbar with button groups']]);
                     },
                     'expected' =>
-                    '<div role="toolbar" aria-label="Toolbar&#x20;with&#x20;button&#x20;groups" class="btn-toolbar">'
+                    '<div aria-label="Toolbar&#x20;with&#x20;button&#x20;groups" class="btn-toolbar" role="toolbar">'
                         . PHP_EOL .
-                        '    <div role="group" aria-label="First&#x20;group" class="btn-group&#x20;mr-2">' . PHP_EOL .
+                        '    <div aria-label="First&#x20;group" class="btn-group&#x20;mr-2" role="group">' . PHP_EOL .
                         '        <button type="button" name="1" class="btn&#x20;btn-secondary" value="">1</button>'
                         . PHP_EOL .
                         '        <button type="button" name="2" class="btn&#x20;btn-secondary" value="">2</button>'
@@ -91,7 +91,7 @@ return [
                         '        <button type="button" name="4" class="btn&#x20;btn-secondary" value="">4</button>'
                         . PHP_EOL .
                         '    </div>' . PHP_EOL .
-                        '    <div role="group" aria-label="Second&#x20;group" class="btn-group&#x20;mr-2">' . PHP_EOL .
+                        '    <div aria-label="Second&#x20;group" class="btn-group&#x20;mr-2" role="group">' . PHP_EOL .
                         '        <button type="button" name="5" class="btn&#x20;btn-secondary" value="">5</button>'
                         . PHP_EOL .
                         '        <button type="button" name="6" class="btn&#x20;btn-secondary" value="">6</button>'
@@ -99,7 +99,7 @@ return [
                         '        <button type="button" name="7" class="btn&#x20;btn-secondary" value="">7</button>'
                         . PHP_EOL .
                         '    </div>' . PHP_EOL .
-                        '    <div role="group" aria-label="Third&#x20;group" class="btn-group&#x20;mr-2">' . PHP_EOL .
+                        '    <div aria-label="Third&#x20;group" class="btn-group&#x20;mr-2" role="group">' . PHP_EOL .
                         '        <button type="button" name="8" class="btn&#x20;btn-secondary" value="">8</button>'
                         . PHP_EOL .
                         '    </div>' . PHP_EOL .
@@ -161,9 +161,9 @@ return [
                             ]
                         );
                     },
-                    'expected' => '<div role="toolbar" aria-label="Toolbar&#x20;with&#x20;button&#x20;groups" ' .
-                        'class="btn-toolbar&#x20;mb-3">' . PHP_EOL .
-                        '    <div role="group" aria-label="First&#x20;group" class="btn-group&#x20;mr-2">' . PHP_EOL .
+                    'expected' => '<div aria-label="Toolbar&#x20;with&#x20;button&#x20;groups" '.
+                    'class="btn-toolbar&#x20;mb-3" role="toolbar">' . PHP_EOL .
+                        '    <div aria-label="First&#x20;group" class="btn-group&#x20;mr-2" role="group">' . PHP_EOL .
                         '        <button type="button" name="1" class="btn&#x20;btn-secondary" value="">1</button>'
                         . PHP_EOL .
                         '        <button type="button" name="2" class="btn&#x20;btn-secondary" value="">2</button>'
@@ -175,7 +175,7 @@ return [
                         '    </div>' . PHP_EOL .
                         '    <div class="input-group">' . PHP_EOL .
                         '        <div class="input-group-prepend">' . PHP_EOL .
-                        '            <div id="btnGroupAddon" class="input-group-text">' . PHP_EOL .
+                        '            <div class="input-group-text" id="btnGroupAddon">' . PHP_EOL .
                         '                @' . PHP_EOL .
                         '            </div>' . PHP_EOL .
                         '        </div>' . PHP_EOL .
@@ -184,10 +184,10 @@ return [
                         'aria-describedby="btnGroupAddon" class="form-control" value="">' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '</div>' . PHP_EOL .
-                        '<div role="toolbar" aria-label="Toolbar&#x20;with&#x20;button&#x20;groups" ' .
-                        'class="btn-toolbar&#x20;justify-content-between">'
+                        '<div aria-label="Toolbar&#x20;with&#x20;button&#x20;groups" ' .
+                        'class="btn-toolbar&#x20;justify-content-between" role="toolbar">'
                         . PHP_EOL .
-                        '    <div role="group" aria-label="First&#x20;group" class="btn-group&#x20;mr-2">' . PHP_EOL .
+                        '    <div aria-label="First&#x20;group" class="btn-group&#x20;mr-2" role="group">' . PHP_EOL .
                         '        <button type="button" name="1" class="btn&#x20;btn-secondary" value="">1</button>'
                         . PHP_EOL .
                         '        <button type="button" name="2" class="btn&#x20;btn-secondary" value="">2</button>'
@@ -199,7 +199,7 @@ return [
                         '    </div>' . PHP_EOL .
                         '    <div class="input-group">' . PHP_EOL .
                         '        <div class="input-group-prepend">' . PHP_EOL .
-                        '            <div id="btnGroupAddon" class="input-group-text">' . PHP_EOL .
+                        '            <div class="input-group-text" id="btnGroupAddon">' . PHP_EOL .
                         '                @' . PHP_EOL .
                         '            </div>' . PHP_EOL .
                         '        </div>' . PHP_EOL .
@@ -224,7 +224,7 @@ return [
                     ], ['size' => $sSize, 'attributes' => ['role' => 'group', 'aria-label' => '...']]) . PHP_EOL;
                 }
             },
-            'expected' => '<div role="group" aria-label="..." class="btn-group&#x20;btn-group-lg">'
+            'expected' => '<div aria-label="..." class="btn-group&#x20;btn-group-lg" role="group">'
                 . PHP_EOL .
                 '    <button type="button" name="left" class="btn&#x20;btn-secondary" value="">Left</button>'
                 . PHP_EOL .
@@ -233,7 +233,7 @@ return [
                 '    <button type="button" name="right" class="btn&#x20;btn-secondary" value="">Right</button>'
                 . PHP_EOL .
                 '</div>' . PHP_EOL .
-                '<div role="group" aria-label="..." class="btn-group">' . PHP_EOL .
+                '<div aria-label="..." class="btn-group" role="group">' . PHP_EOL .
                 '    <button type="button" name="left" class="btn&#x20;btn-secondary" value="">Left</button>'
                 . PHP_EOL .
                 '    <button type="button" name="middle" class="btn&#x20;btn-secondary" value="">Middle</button>'
@@ -241,7 +241,7 @@ return [
                 '    <button type="button" name="right" class="btn&#x20;btn-secondary" value="">Right</button>'
                 . PHP_EOL .
                 '</div>' . PHP_EOL .
-                '<div role="group" aria-label="..." class="btn-group&#x20;btn-group-sm">' . PHP_EOL .
+                '<div aria-label="..." class="btn-group&#x20;btn-group-sm" role="group">' . PHP_EOL .
                 '    <button type="button" name="left" class="btn&#x20;btn-secondary" value="">Left</button>'
                 . PHP_EOL .
                 '    <button type="button" name="middle" class="btn&#x20;btn-secondary" value="">Middle</button>'
@@ -269,7 +269,7 @@ return [
                 ], ['attributes' => ['role' => 'group', 'aria-label' => 'Button group with nested dropdown']]);
             },
             'expected' =>
-            '<div role="group" aria-label="Button&#x20;group&#x20;with&#x20;nested&#x20;dropdown" class="btn-group">'
+            '<div aria-label="Button&#x20;group&#x20;with&#x20;nested&#x20;dropdown" class="btn-group" role="group">'
                 . PHP_EOL .
                 '    <button type="button" name="1" class="btn&#x20;btn-secondary" value="">1</button>' . PHP_EOL .
                 '    <button type="button" name="2" class="btn&#x20;btn-secondary" value="">2</button>' . PHP_EOL .
@@ -279,8 +279,8 @@ return [
                 'aria-expanded="false" class="btn&#x20;btn-secondary&#x20;dropdown-toggle" value="">' .
                 'Dropdown' . '</button>' . PHP_EOL .
                 '        <div aria-labelledby="btnGroupDrop1" class="dropdown-menu">' . PHP_EOL .
-                '            <a href="&#x23;" class="dropdown-item">Dropdown link</a>' . PHP_EOL .
-                '            <a href="&#x23;" class="dropdown-item">Dropdown link</a>' . PHP_EOL .
+                '            <a class="dropdown-item" href="&#x23;">Dropdown link</a>' . PHP_EOL .
+                '            <a class="dropdown-item" href="&#x23;">Dropdown link</a>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</div>',
@@ -347,8 +347,8 @@ return [
                 'class="btn&#x20;btn-secondary&#x20;dropdown-toggle" value="">' .
                 'Dropdown' . '</button>' . PHP_EOL .
                 '        <div class="dropdown-menu">' . PHP_EOL .
-                '            <a href="&#x23;" class="dropdown-item">Dropdown link</a>' . PHP_EOL .
-                '            <a href="&#x23;" class="dropdown-item">Dropdown link</a>' . PHP_EOL .
+                '            <a class="dropdown-item" href="&#x23;">Dropdown link</a>' . PHP_EOL .
+                '            <a class="dropdown-item" href="&#x23;">Dropdown link</a>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <button type="button" name="button" class="btn&#x20;btn-secondary" value="">Button</button>'
@@ -361,8 +361,8 @@ return [
                 'class="btn&#x20;btn-secondary&#x20;dropdown-toggle" value="">' .
                 'Dropdown' . '</button>' . PHP_EOL .
                 '        <div class="dropdown-menu">' . PHP_EOL .
-                '            <a href="&#x23;" class="dropdown-item">Dropdown link</a>' . PHP_EOL .
-                '            <a href="&#x23;" class="dropdown-item">Dropdown link</a>' . PHP_EOL .
+                '            <a class="dropdown-item" href="&#x23;">Dropdown link</a>' . PHP_EOL .
+                '            <a class="dropdown-item" href="&#x23;">Dropdown link</a>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="btn-group" role="group">' . PHP_EOL .
@@ -371,8 +371,8 @@ return [
                 'class="btn&#x20;btn-secondary&#x20;dropdown-toggle" value="">' .
                 'Dropdown' . '</button>' . PHP_EOL .
                 '        <div class="dropdown-menu">' . PHP_EOL .
-                '            <a href="&#x23;" class="dropdown-item">Dropdown link</a>' . PHP_EOL .
-                '            <a href="&#x23;" class="dropdown-item">Dropdown link</a>' . PHP_EOL .
+                '            <a class="dropdown-item" href="&#x23;">Dropdown link</a>' . PHP_EOL .
+                '            <a class="dropdown-item" href="&#x23;">Dropdown link</a>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="btn-group" role="group">' . PHP_EOL .
@@ -381,8 +381,8 @@ return [
                 'class="btn&#x20;btn-secondary&#x20;dropdown-toggle" value="">' .
                 'Dropdown' . '</button>' . PHP_EOL .
                 '        <div class="dropdown-menu">' . PHP_EOL .
-                '            <a href="&#x23;" class="dropdown-item">Dropdown link</a>' . PHP_EOL .
-                '            <a href="&#x23;" class="dropdown-item">Dropdown link</a>' . PHP_EOL .
+                '            <a class="dropdown-item" href="&#x23;">Dropdown link</a>' . PHP_EOL .
+                '            <a class="dropdown-item" href="&#x23;">Dropdown link</a>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</div>',

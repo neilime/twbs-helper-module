@@ -8,8 +8,6 @@ namespace TwbsHelper\ProgressBar\Adapter;
  */
 class Html extends \Zend\ProgressBar\Adapter\AbstractAdapter
 {
-    use \TwbsHelper\View\Helper\StyleAttributeTrait;
-    use \TwbsHelper\View\Helper\ClassAttributeTrait;
     use \TwbsHelper\View\Helper\HtmlTrait;
 
     /**
@@ -180,12 +178,12 @@ class Html extends \Zend\ProgressBar\Adapter\AbstractAdapter
 
         echo $this->helper->htmlElement(
             'div',
-            ['class' => 'progress'],
+            $this->helper->setClassesToAttributes($this->attributes, ['progress']),
             $this->helper->htmlElement(
                 'div',
                 $this->helper->setStylesToAttributes(
                     $this->helper->setClassesToAttributes(
-                        array_merge($aDefaultAttributes, $this->attributes),
+                        $aDefaultAttributes,
                         $aProgressBarClasses
                     ),
                     $iPercent !== false && $iPercent > 0 ? ['width' => $sPercent] : []

@@ -248,7 +248,7 @@ return [
             },
             'expected' => '<div class="input-group&#x20;mb-3">' . PHP_EOL .
                 '    <div class="input-group-prepend">' . PHP_EOL .
-                '        <div id="inputGroupFileAddon01" class="input-group-text">' . PHP_EOL .
+                '        <div class="input-group-text" id="inputGroupFileAddon01">' . PHP_EOL .
                 '            Upload' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
@@ -265,7 +265,7 @@ return [
                 '        <label class="custom-file-label" for="inputGroupFile02">Choose file</label>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="input-group-append">' . PHP_EOL .
-                '        <div id="inputGroupFileAddon02" class="input-group-text">' . PHP_EOL .
+                '        <div class="input-group-text" id="inputGroupFileAddon02">' . PHP_EOL .
                 '            Upload' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .

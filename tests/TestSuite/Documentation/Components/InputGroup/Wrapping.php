@@ -24,7 +24,7 @@ return [
     },
     'expected' => '<div class="flex-nowrap&#x20;input-group">' . PHP_EOL .
         '    <div class="input-group-prepend">' . PHP_EOL .
-        '        <div id="addon-wrapping" class="input-group-text">' . PHP_EOL .
+        '        <div class="input-group-text" id="addon-wrapping">' . PHP_EOL .
         '            @' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .

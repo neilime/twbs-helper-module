@@ -4,7 +4,6 @@ namespace TwbsHelper\Form\View\Helper;
 
 class FormRow extends \Zend\Form\View\Helper\FormRow
 {
-    use \TwbsHelper\View\Helper\ClassAttributeTrait;
     use \TwbsHelper\View\Helper\HtmlTrait;
 
     /**

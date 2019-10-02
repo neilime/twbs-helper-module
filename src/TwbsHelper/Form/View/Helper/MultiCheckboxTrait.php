@@ -4,7 +4,6 @@ namespace TwbsHelper\Form\View\Helper;
 
 trait MultiCheckboxTrait
 {
-    use \TwbsHelper\View\Helper\ClassAttributeTrait;
     use \TwbsHelper\View\Helper\HtmlTrait;
 
     /**

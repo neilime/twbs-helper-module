@@ -8,7 +8,6 @@ namespace TwbsHelper\View\Helper;
 class PaginationControl extends \Zend\View\Helper\PaginationControl
 {
     use \TwbsHelper\View\Helper\HtmlTrait;
-    use \TwbsHelper\View\Helper\ClassAttributeTrait;
 
     /**
      * Default view partial

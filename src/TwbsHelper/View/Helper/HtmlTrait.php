@@ -4,6 +4,8 @@ namespace TwbsHelper\View\Helper;
 
 trait HtmlTrait
 {
+    use \TwbsHelper\View\Helper\StyleAttributeTrait;
+    use \TwbsHelper\View\Helper\ClassAttributeTrait;
 
     protected $indentation = '    ';
 
@@ -89,6 +91,15 @@ trait HtmlTrait
 
     public function attributesToString(array $aAttributes, string $sTag): string
     {
+        // Clean attributes
+        if (!empty($aAttributes['class'])) {
+            $aAttributes = $this->setClassesToAttributes($aAttributes);
+        }
+        if (!empty($aAttributes['style'])) {
+            $aAttributes = $this->setStylesToAttributes($aAttributes);
+        }
+        ksort($aAttributes);
+
         $aPossibleHelpers = [
             [$this, 'createAttributesString'],
             [$this, 'htmlAttribs'],

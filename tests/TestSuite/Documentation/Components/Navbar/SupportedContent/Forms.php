@@ -154,7 +154,7 @@ return [
         '</nav>' . PHP_EOL .
         '<br>' . PHP_EOL .
         '<nav class="bg-light&#x20;navbar&#x20;navbar-light">' . PHP_EOL .
-        '    <a href="&#x23;" class="navbar-brand">Navbar</a>' . PHP_EOL .
+        '    <a class="navbar-brand" href="&#x23;">Navbar</a>' . PHP_EOL .
         '    <form method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
         '        <input name="search" type="search" placeholder="Search" aria-label="Search" ' .
         'class="form-control&#x20;mr-sm-2" value="">' . PHP_EOL .
@@ -167,7 +167,7 @@ return [
         '    <form method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
         '        <div class="input-group">' . PHP_EOL .
         '            <div class="input-group-prepend">' . PHP_EOL .
-        '                <div id="basic-addon1" class="input-group-text">' . PHP_EOL .
+        '                <div class="input-group-text" id="basic-addon1">' . PHP_EOL .
         '                    @' . PHP_EOL .
         '                </div>' . PHP_EOL .
         '            </div>' . PHP_EOL .

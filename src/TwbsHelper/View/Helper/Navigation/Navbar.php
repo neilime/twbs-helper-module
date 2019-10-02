@@ -7,7 +7,6 @@ namespace TwbsHelper\View\Helper\Navigation;
  */
 class Navbar extends \Zend\View\Helper\Navigation\AbstractHelper
 {
-    use \TwbsHelper\View\Helper\ClassAttributeTrait;
     use \TwbsHelper\View\Helper\HtmlTrait;
     use \Zend\I18n\Translator\TranslatorAwareTrait;
 

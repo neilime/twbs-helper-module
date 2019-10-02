@@ -51,7 +51,7 @@ return [
                     '<a href="#" class="btn btn-primary">Go somewhere</a>',
                 ], ['style' => 'width: 18rem;']);
             },
-            'expected' => '<div style="width&#x3A;&#x20;18rem&#x3B;" class="card">' . PHP_EOL .
+            'expected' => '<div class="card" style="width&#x3A;&#x20;18rem&#x3B;">' . PHP_EOL .
                 '    <div class="card-body">' . PHP_EOL .
                 '        <h5 class="card-title">Special title treatment</h5>' . PHP_EOL .
                 '        <p class="card-text">'.

@@ -7,7 +7,6 @@ namespace TwbsHelper\View\Helper\Navigation;
  */
 class Menu extends \Zend\View\Helper\Navigation\Menu
 {
-    use \TwbsHelper\View\Helper\ClassAttributeTrait;
     use \TwbsHelper\View\Helper\HtmlTrait;
 
     /**

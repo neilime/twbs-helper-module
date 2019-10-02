@@ -142,7 +142,7 @@ return [
                         '>' . PHP_EOL .
                         '    <strong>Holy guacamole!</strong> You should check in on some of those fields below.'
                         . PHP_EOL .
-                        '    <button type="button" class="close" data-dismiss="alert" aria-label="Close">' .
+                        '    <button aria-label="Close" class="close" data-dismiss="alert" type="button">' .
                         '<span aria-hidden="true">&times;</span>' .
                         '</button>' . PHP_EOL .
                         '</div>',

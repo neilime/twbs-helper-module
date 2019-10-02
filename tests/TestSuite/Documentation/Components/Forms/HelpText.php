@@ -61,7 +61,7 @@ return [
     'expected' => '<label for="inputPassword5">Password</label>' . PHP_EOL .
         '<input name="password" id="inputPassword5" type="password" aria-describedby="passwordHelpBlock" ' .
         'class="form-control" value="">' . PHP_EOL .
-        '<small id="passwordHelpBlock" class="form-text&#x20;text-muted">' .
+        '<small class="form-text&#x20;text-muted" id="passwordHelpBlock">' .
         'Your password must be 8-20 characters long, contain letters and numbers, ' .
         'and must not contain spaces, special characters, or emoji.' .
         '</small>' . PHP_EOL .
@@ -71,7 +71,7 @@ return [
         '        <label for="inputPassword6">Password</label>' . PHP_EOL .
         '        <input name="password" id="inputPassword6" type="password" aria-describedby="passwordHelpInline" ' .
         'class="form-control&#x20;mx-sm-3" value="">' . PHP_EOL .
-        '        <small id="passwordHelpInline" class="text-muted">Must be 8-20 characters long.</small>' . PHP_EOL .
+        '        <small class="text-muted" id="passwordHelpInline">Must be 8-20 characters long.</small>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '</form>',
 ];

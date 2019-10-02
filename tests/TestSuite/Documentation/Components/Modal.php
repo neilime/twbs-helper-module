@@ -37,12 +37,12 @@ return [
                             ]
                         ]);
                     },
-                    'expected' => '<div tabindex="-1" role="dialog" class="modal">' . PHP_EOL .
+                    'expected' => '<div class="modal" role="dialog" tabindex="-1">' . PHP_EOL .
                         '    <div class="modal-dialog" role="document">' . PHP_EOL .
                         '        <div class="modal-content">' . PHP_EOL .
                         '            <div class="modal-header">' . PHP_EOL .
                         '                <h5 class="modal-title">Modal title</h5>' . PHP_EOL .
-                        '                <button class="close" data-dismiss="modal" aria-label="Close">' .
+                        '                <button aria-label="Close" class="close" data-dismiss="modal">' .
                         '<span aria-hidden="true">&times;</span></button>' . PHP_EOL .
                         '            </div>' . PHP_EOL .
                         '            <div class="modal-body">' . PHP_EOL .
@@ -137,12 +137,12 @@ return [
                             ],
                         ], ['scrollable' => true]);
                     },
-                    'expected' => '<div tabindex="-1" role="dialog" class="modal">' . PHP_EOL .
+                    'expected' => '<div class="modal" role="dialog" tabindex="-1">' . PHP_EOL .
                         '    <div class="modal-dialog&#x20;modal-dialog-scrollable" role="document">' . PHP_EOL .
                         '        <div class="modal-content">' . PHP_EOL .
                         '            <div class="modal-header">' . PHP_EOL .
                         '                <h5 class="modal-title">Modal title</h5>' . PHP_EOL .
-                        '                <button class="close" data-dismiss="modal" aria-label="Close">' .
+                        '                <button aria-label="Close" class="close" data-dismiss="modal">' .
                         '<span aria-hidden="true">&times;</span></button>' . PHP_EOL .
                         '            </div>' . PHP_EOL .
                         '            <div class="modal-body">' . PHP_EOL .
@@ -238,12 +238,12 @@ return [
                             ]
                         ], ['centered' => true]);
                     },
-                    'expected' => '<div tabindex="-1" role="dialog" class="modal">' . PHP_EOL .
+                    'expected' => '<div class="modal" role="dialog" tabindex="-1">' . PHP_EOL .
                         '    <div class="modal-dialog&#x20;modal-dialog-centered" role="document">' . PHP_EOL .
                         '        <div class="modal-content">' . PHP_EOL .
                         '            <div class="modal-header">' . PHP_EOL .
                         '                <h5 class="modal-title">Modal title</h5>' . PHP_EOL .
-                        '                <button class="close" data-dismiss="modal" aria-label="Close">' .
+                        '                <button aria-label="Close" class="close" data-dismiss="modal">' .
                         '<span aria-hidden="true">&times;</span></button>' . PHP_EOL .
                         '            </div>' . PHP_EOL .
                         '            <div class="modal-body">' . PHP_EOL .
@@ -296,12 +296,12 @@ return [
                             ]
                         ], ['centered' => true]);
                     },
-                    'expected' => '<div tabindex="-1" role="dialog" class="modal">' . PHP_EOL .
+                    'expected' => '<div class="modal" role="dialog" tabindex="-1">' . PHP_EOL .
                         '    <div class="modal-dialog&#x20;modal-dialog-centered" role="document">' . PHP_EOL .
                         '        <div class="modal-content">' . PHP_EOL .
                         '            <div class="modal-header">' . PHP_EOL .
                         '                <h5 class="modal-title">Modal title</h5>' . PHP_EOL .
-                        '                <button class="close" data-dismiss="modal" aria-label="Close">' .
+                        '                <button aria-label="Close" class="close" data-dismiss="modal">' .
                         '<span aria-hidden="true">&times;</span></button>' . PHP_EOL .
                         '            </div>' . PHP_EOL .
                         '            <div class="modal-body">' . PHP_EOL .
@@ -358,13 +358,13 @@ return [
                             'class' => 'bd-example-modal-sm',
                         ]);
                     },
-                    'expected' => '<div tabindex="-1" role="dialog" ' .
-                        'class="bd-example-modal-xl&#x20;fade&#x20;modal">' . PHP_EOL .
+                    'expected' => '<div class="bd-example-modal-xl&#x20;fade&#x20;modal" '.
+                    'role="dialog" tabindex="-1">' . PHP_EOL .
                         '    <div class="modal-dialog&#x20;modal-xl" role="document">' . PHP_EOL .
                         '        <div class="modal-content">' . PHP_EOL .
                         '            <div class="modal-header">' . PHP_EOL .
                         '                <h5 class="modal-title">Extra large modal</h5>' . PHP_EOL .
-                        '                <button class="close" data-dismiss="modal" aria-label="Close">' .
+                        '                <button aria-label="Close" class="close" data-dismiss="modal">' .
                         '<span aria-hidden="true">&times;</span></button>' . PHP_EOL .
                         '            </div>' . PHP_EOL .
                         '            <div class="modal-body">' . PHP_EOL .
@@ -373,13 +373,13 @@ return [
                         '        </div>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '</div>' . PHP_EOL .
-                        '<div tabindex="-1" role="dialog" ' .
-                        'class="bd-example-modal-lg&#x20;fade&#x20;modal">' . PHP_EOL .
+                        '<div class="bd-example-modal-lg&#x20;fade&#x20;modal" '.
+                        'role="dialog" tabindex="-1">' . PHP_EOL .
                         '    <div class="modal-dialog&#x20;modal-lg" role="document">' . PHP_EOL .
                         '        <div class="modal-content">' . PHP_EOL .
                         '            <div class="modal-header">' . PHP_EOL .
                         '                <h5 class="modal-title">Large modal</h5>' . PHP_EOL .
-                        '                <button class="close" data-dismiss="modal" aria-label="Close">' .
+                        '                <button aria-label="Close" class="close" data-dismiss="modal">' .
                         '<span aria-hidden="true">&times;</span></button>' . PHP_EOL .
                         '            </div>' . PHP_EOL .
                         '            <div class="modal-body">' . PHP_EOL .
@@ -388,13 +388,13 @@ return [
                         '        </div>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '</div>' . PHP_EOL .
-                        '<div tabindex="-1" role="dialog" ' .
-                        'class="bd-example-modal-sm&#x20;fade&#x20;modal">' . PHP_EOL .
+                        '<div class="bd-example-modal-sm&#x20;fade&#x20;modal" '.
+                        'role="dialog" tabindex="-1">' . PHP_EOL .
                         '    <div class="modal-dialog&#x20;modal-sm" role="document">' . PHP_EOL .
                         '        <div class="modal-content">' . PHP_EOL .
                         '            <div class="modal-header">' . PHP_EOL .
                         '                <h5 class="modal-title">Small modal</h5>' . PHP_EOL .
-                        '                <button class="close" data-dismiss="modal" aria-label="Close">' .
+                        '                <button aria-label="Close" class="close" data-dismiss="modal">' .
                         '<span aria-hidden="true">&times;</span></button>' . PHP_EOL .
                         '            </div>' . PHP_EOL .
                         '            <div class="modal-body">' . PHP_EOL .

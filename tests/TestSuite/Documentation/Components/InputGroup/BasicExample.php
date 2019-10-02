@@ -80,7 +80,7 @@ return [
             },
             'expected' => '<div class="input-group&#x20;mb-3">' . PHP_EOL .
                 '    <div class="input-group-prepend">' . PHP_EOL .
-                '        <div id="basic-addon1" class="input-group-text">' . PHP_EOL .
+                '        <div class="input-group-text" id="basic-addon1">' . PHP_EOL .
                 '            @' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
@@ -92,7 +92,7 @@ return [
                 'aria-label="Recipient&#x27;s&#x20;username" ' .
                 'aria-describedby="basic-addon2" class="form-control" value="">' . PHP_EOL .
                 '    <div class="input-group-append">' . PHP_EOL .
-                '        <div id="basic-addon2" class="input-group-text">' . PHP_EOL .
+                '        <div class="input-group-text" id="basic-addon2">' . PHP_EOL .
                 '            @example.com' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
@@ -100,7 +100,7 @@ return [
                 '<label for="basic-url">Your vanity URL</label>' . PHP_EOL .
                 '<div class="input-group&#x20;mb-3">' . PHP_EOL .
                 '    <div class="input-group-prepend">' . PHP_EOL .
-                '        <div id="basic-addon3" class="input-group-text">' . PHP_EOL .
+                '        <div class="input-group-text" id="basic-addon3">' . PHP_EOL .
                 '            https://example.com/users/' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .

@@ -23,7 +23,7 @@ return [
                         ], ['id' => 'carouselExampleSlidesOnly']);
                     },
                     'expected' =>
-                    '<div id="carouselExampleSlidesOnly" data-ride="carousel" class="carousel&#x20;slide">' . PHP_EOL .
+                    '<div class="carousel&#x20;slide" data-ride="carousel" id="carouselExampleSlidesOnly">' . PHP_EOL .
                         '    <div class="carousel-inner">' . PHP_EOL .
                         '        <div class="active&#x20;carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;1" class="d-block&#x20;w-100" ' .
@@ -54,7 +54,7 @@ return [
                         ], ['id' => 'carouselExampleControls', 'controls' => true]);
                     },
                     'expected' =>
-                    '<div id="carouselExampleControls" data-ride="carousel" class="carousel&#x20;slide">' . PHP_EOL .
+                    '<div class="carousel&#x20;slide" data-ride="carousel" id="carouselExampleControls">' . PHP_EOL .
                         '    <div class="carousel-inner">' . PHP_EOL .
                         '        <div class="active&#x20;carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;1" class="d-block&#x20;w-100" ' .
@@ -69,14 +69,14 @@ return [
                         'src="images&#x2F;demo-sample.svg">' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
-                        '    <a class="carousel-control-prev" href="&#x23;carouselExampleControls" ' .
-                        'role="button" data-slide="prev">' . PHP_EOL .
-                        '        <span class="carousel-control-prev-icon" aria-hidden="true"></span>' . PHP_EOL .
+                        '    <a class="carousel-control-prev" data-slide="prev" href="&#x23;carouselExampleControls" ' .
+                        'role="button">' . PHP_EOL .
+                        '        <span aria-hidden="true" class="carousel-control-prev-icon"></span>' . PHP_EOL .
                         '        <span class="sr-only">Previous</span>' . PHP_EOL .
                         '    </a>' . PHP_EOL .
-                        '    <a class="carousel-control-next" href="&#x23;carouselExampleControls" ' .
-                        'role="button" data-slide="next">' . PHP_EOL .
-                        '        <span class="carousel-control-next-icon" aria-hidden="true"></span>' . PHP_EOL .
+                        '    <a class="carousel-control-next" data-slide="next" href="&#x23;carouselExampleControls" ' .
+                        'role="button">' . PHP_EOL .
+                        '        <span aria-hidden="true" class="carousel-control-next-icon"></span>' . PHP_EOL .
                         '        <span class="sr-only">Next</span>' . PHP_EOL .
                         '    </a>' . PHP_EOL .
                         '</div>',
@@ -95,12 +95,12 @@ return [
                         ], ['id' => 'carouselExampleIndicators', 'controls' => true, 'indicators' => true]);
                     },
                     'expected' =>
-                    '<div id="carouselExampleIndicators" data-ride="carousel" class="carousel&#x20;slide">' . PHP_EOL .
+                    '<div class="carousel&#x20;slide" data-ride="carousel" id="carouselExampleIndicators">' . PHP_EOL .
                         '    <ol class="carousel-indicators">' . PHP_EOL .
-                        '        <li data-target="&#x23;carouselExampleIndicators" data-slide-to="0" class="active">' .
+                        '        <li class="active" data-slide-to="0" data-target="&#x23;carouselExampleIndicators">' .
                         '</li>' . PHP_EOL .
-                        '        <li data-target="&#x23;carouselExampleIndicators" data-slide-to="1"></li>' . PHP_EOL .
-                        '        <li data-target="&#x23;carouselExampleIndicators" data-slide-to="2"></li>' . PHP_EOL .
+                        '        <li data-slide-to="1" data-target="&#x23;carouselExampleIndicators"></li>' . PHP_EOL .
+                        '        <li data-slide-to="2" data-target="&#x23;carouselExampleIndicators"></li>' . PHP_EOL .
                         '    </ol>' . PHP_EOL .
                         '    <div class="carousel-inner">' . PHP_EOL .
                         '        <div class="active&#x20;carousel-item">' . PHP_EOL .
@@ -116,14 +116,14 @@ return [
                         'src="images&#x2F;demo-sample.svg">' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
-                        '    <a class="carousel-control-prev" href="&#x23;carouselExampleIndicators" ' .
-                        'role="button" data-slide="prev">' . PHP_EOL .
-                        '        <span class="carousel-control-prev-icon" aria-hidden="true"></span>' . PHP_EOL .
+                        '    <a class="carousel-control-prev" data-slide="prev" '.
+                        'href="&#x23;carouselExampleIndicators" role="button">' . PHP_EOL .
+                        '        <span aria-hidden="true" class="carousel-control-prev-icon"></span>' . PHP_EOL .
                         '        <span class="sr-only">Previous</span>' . PHP_EOL .
                         '    </a>' . PHP_EOL .
-                        '    <a class="carousel-control-next" href="&#x23;carouselExampleIndicators" ' .
-                        'role="button" data-slide="next">' . PHP_EOL .
-                        '        <span class="carousel-control-next-icon" aria-hidden="true"></span>' . PHP_EOL .
+                        '    <a class="carousel-control-next" data-slide="next" '.
+                        'href="&#x23;carouselExampleIndicators" role="button">' . PHP_EOL .
+                        '        <span aria-hidden="true" class="carousel-control-next-icon"></span>' . PHP_EOL .
                         '        <span class="sr-only">Next</span>' . PHP_EOL .
                         '    </a>' . PHP_EOL .
                         '</div>',
@@ -168,12 +168,12 @@ return [
                         ]);
                     },
                     'expected' =>
-                    '<div id="carouselExampleCaptions" data-ride="carousel" class="carousel&#x20;slide">' . PHP_EOL .
+                    '<div class="carousel&#x20;slide" data-ride="carousel" id="carouselExampleCaptions">' . PHP_EOL .
                         '    <ol class="carousel-indicators">' . PHP_EOL .
-                        '        <li data-target="&#x23;carouselExampleCaptions" data-slide-to="0" class="active">' .
+                        '        <li class="active" data-slide-to="0" data-target="&#x23;carouselExampleCaptions">' .
                         '</li>' . PHP_EOL .
-                        '        <li data-target="&#x23;carouselExampleCaptions" data-slide-to="1"></li>' . PHP_EOL .
-                        '        <li data-target="&#x23;carouselExampleCaptions" data-slide-to="2"></li>' . PHP_EOL .
+                        '        <li data-slide-to="1" data-target="&#x23;carouselExampleCaptions"></li>' . PHP_EOL .
+                        '        <li data-slide-to="2" data-target="&#x23;carouselExampleCaptions"></li>' . PHP_EOL .
                         '    </ol>' . PHP_EOL .
                         '    <div class="carousel-inner">' . PHP_EOL .
                         '        <div class="active&#x20;carousel-item">' . PHP_EOL .
@@ -204,14 +204,14 @@ return [
                         '            </div>' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
-                        '    <a class="carousel-control-prev" href="&#x23;carouselExampleCaptions" ' .
-                        'role="button" data-slide="prev">' . PHP_EOL .
-                        '        <span class="carousel-control-prev-icon" aria-hidden="true"></span>' . PHP_EOL .
+                        '    <a class="carousel-control-prev" data-slide="prev" href="&#x23;carouselExampleCaptions" ' .
+                        'role="button">' . PHP_EOL .
+                        '        <span aria-hidden="true" class="carousel-control-prev-icon"></span>' . PHP_EOL .
                         '        <span class="sr-only">Previous</span>' . PHP_EOL .
                         '    </a>' . PHP_EOL .
-                        '    <a class="carousel-control-next" href="&#x23;carouselExampleCaptions" ' .
-                        'role="button" data-slide="next">' . PHP_EOL .
-                        '        <span class="carousel-control-next-icon" aria-hidden="true"></span>' . PHP_EOL .
+                        '    <a class="carousel-control-next" data-slide="next" href="&#x23;carouselExampleCaptions" ' .
+                        'role="button">' . PHP_EOL .
+                        '        <span aria-hidden="true" class="carousel-control-next-icon"></span>' . PHP_EOL .
                         '        <span class="sr-only">Next</span>' . PHP_EOL .
                         '    </a>' . PHP_EOL .
                         '</div>',
@@ -229,8 +229,8 @@ return [
                             'images/demo-sample.svg' => ['alt' => 'Slide 3',],
                         ], ['id' => 'carouselExampleFade', 'controls' => true, 'crossfade' => true]);
                     },
-                    'expected' => '<div id="carouselExampleFade" data-ride="carousel" ' .
-                        'class="carousel&#x20;carousel-fade&#x20;slide">' . PHP_EOL .
+                    'expected' => '<div class="carousel&#x20;carousel-fade&#x20;slide" data-ride="carousel" '.
+                    'id="carouselExampleFade">' . PHP_EOL .
                         '    <div class="carousel-inner">' . PHP_EOL .
                         '        <div class="active&#x20;carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;1" class="d-block&#x20;w-100" ' .
@@ -245,14 +245,14 @@ return [
                         'src="images&#x2F;demo-sample.svg">' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
-                        '    <a class="carousel-control-prev" href="&#x23;carouselExampleFade" ' .
-                        'role="button" data-slide="prev">' . PHP_EOL .
-                        '        <span class="carousel-control-prev-icon" aria-hidden="true"></span>' . PHP_EOL .
+                        '    <a class="carousel-control-prev" data-slide="prev" href="&#x23;carouselExampleFade" ' .
+                        'role="button">' . PHP_EOL .
+                        '        <span aria-hidden="true" class="carousel-control-prev-icon"></span>' . PHP_EOL .
                         '        <span class="sr-only">Previous</span>' . PHP_EOL .
                         '    </a>' . PHP_EOL .
-                        '    <a class="carousel-control-next" href="&#x23;carouselExampleFade" ' .
-                        'role="button" data-slide="next">' . PHP_EOL .
-                        '        <span class="carousel-control-next-icon" aria-hidden="true"></span>' . PHP_EOL .
+                        '    <a class="carousel-control-next" data-slide="next" href="&#x23;carouselExampleFade" ' .
+                        'role="button">' . PHP_EOL .
+                        '        <span aria-hidden="true" class="carousel-control-next-icon"></span>' . PHP_EOL .
                         '        <span class="sr-only">Next</span>' . PHP_EOL .
                         '    </a>' . PHP_EOL .
                         '</div>',
@@ -271,30 +271,30 @@ return [
                             'images/demo-sample.svg' => ['alt' => 'Slide 3',],
                         ], ['id' => 'carouselExampleControls', 'controls' => true]);
                     },
-                    'expected' => '<div id="carouselExampleControls" data-ride="carousel"' .
-                        ' class="carousel&#x20;slide">' . PHP_EOL .
+                    'expected' => '<div class="carousel&#x20;slide" data-ride="carousel" ' .
+                        'id="carouselExampleControls">' . PHP_EOL .
                         '    <div class="carousel-inner">' . PHP_EOL .
-                        '        <div data-interval="10000" class="active&#x20;carousel-item">' . PHP_EOL .
-                        '            <img alt="Slide&#x20;1" class="d-block&#x20;w-100"' .
-                        ' src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                        '        <div class="active&#x20;carousel-item" data-interval="10000">' . PHP_EOL .
+                        '            <img alt="Slide&#x20;1" class="d-block&#x20;w-100" ' .
+                        'src="images&#x2F;demo-sample.svg">' . PHP_EOL .
                         '        </div>' . PHP_EOL .
-                        '        <div data-interval="2000" class="carousel-item">' . PHP_EOL .
-                        '            <img alt="Slide&#x20;2" class="d-block&#x20;w-100"' .
-                        ' src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                        '        <div class="carousel-item" data-interval="2000">' . PHP_EOL .
+                        '            <img alt="Slide&#x20;2" class="d-block&#x20;w-100" ' .
+                        'src="images&#x2F;demo-sample.svg">' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '        <div class="carousel-item">' . PHP_EOL .
-                        '            <img alt="Slide&#x20;3" class="d-block&#x20;w-100"' .
-                        ' src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                        '            <img alt="Slide&#x20;3" class="d-block&#x20;w-100" ' .
+                        'src="images&#x2F;demo-sample.svg">' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
-                        '    <a class="carousel-control-prev" href="&#x23;carouselExampleControls"' .
-                        ' role="button" data-slide="prev">' . PHP_EOL .
-                        '        <span class="carousel-control-prev-icon" aria-hidden="true"></span>' . PHP_EOL .
+                        '    <a class="carousel-control-prev" data-slide="prev" href="&#x23;carouselExampleControls" ' .
+                        'role="button">' . PHP_EOL .
+                        '        <span aria-hidden="true" class="carousel-control-prev-icon"></span>' . PHP_EOL .
                         '        <span class="sr-only">Previous</span>' . PHP_EOL .
                         '    </a>' . PHP_EOL .
-                        '    <a class="carousel-control-next" href="&#x23;carouselExampleControls"' .
-                        ' role="button" data-slide="next">' . PHP_EOL .
-                        '        <span class="carousel-control-next-icon" aria-hidden="true"></span>' . PHP_EOL .
+                        '    <a class="carousel-control-next" data-slide="next" href="&#x23;carouselExampleControls" ' .
+                        'role="button">' . PHP_EOL .
+                        '        <span aria-hidden="true" class="carousel-control-next-icon"></span>' . PHP_EOL .
                         '        <span class="sr-only">Next</span>' . PHP_EOL .
                         '    </a>' . PHP_EOL .
                         '</div>',

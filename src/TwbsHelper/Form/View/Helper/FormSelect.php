@@ -4,7 +4,6 @@ namespace TwbsHelper\Form\View\Helper;
 
 class FormSelect extends \Zend\Form\View\Helper\FormSelect
 {
-    use \TwbsHelper\View\Helper\ClassAttributeTrait;
     use \TwbsHelper\View\Helper\HtmlTrait;
 
     /**

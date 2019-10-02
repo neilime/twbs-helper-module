@@ -66,7 +66,7 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
             $this->setClassesToAttributes($aOptionsAndAttributes, $aModalClasses),
             $this->htmlElement(
                 'div',
-                ['class' => $aDialogClasses, 'role' => 'document'],
+                $this->setClassesToAttributes(['role' => 'document'], $aDialogClasses),
                 $this->htmlElement(
                     'div',
                     ['class' => 'modal-content'],

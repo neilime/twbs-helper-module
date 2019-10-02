@@ -64,7 +64,7 @@ return [
         echo $oView->navigation()->navbar()->render($oNavigationContainer, $aOptions);
     },
     'expected' => '<nav class="bg-dark&#x20;navbar&#x20;navbar-dark&#x20;navbar-expand-lg">' . PHP_EOL .
-        '    <a href="&#x23;" class="navbar-brand">Navbar</a>' . PHP_EOL .
+        '    <a class="navbar-brand" href="&#x23;">Navbar</a>' . PHP_EOL .
         '    <button type="button" name="navbar_toggler" class="navbar-toggler" data-toggle="collapse" ' .
         'aria-expanded="false" aria-label="Toggle&#x20;navigation" value="">' .
         '<span class="navbar-toggler-icon"></span></button>' . PHP_EOL .
@@ -97,7 +97,7 @@ return [
         '</nav>' . PHP_EOL .
         '<br>' . PHP_EOL .
         '<nav class="bg-primary&#x20;navbar&#x20;navbar-dark&#x20;navbar-expand-lg">' . PHP_EOL .
-        '    <a href="&#x23;" class="navbar-brand">Navbar</a>' . PHP_EOL .
+        '    <a class="navbar-brand" href="&#x23;">Navbar</a>' . PHP_EOL .
         '    <button type="button" name="navbar_toggler" class="navbar-toggler" data-toggle="collapse" ' .
         'aria-expanded="false" aria-label="Toggle&#x20;navigation" value="">' .
         '<span class="navbar-toggler-icon"></span></button>' . PHP_EOL .
@@ -129,9 +129,9 @@ return [
         '    </div>' . PHP_EOL .
         '</nav>' . PHP_EOL .
         '<br>' . PHP_EOL .
-        '<nav style="background-color&#x3A;&#x20;&#x23;e3f2fd&#x3B;" ' .
-        'class="navbar&#x20;navbar-dark&#x20;navbar-expand-lg">' . PHP_EOL .
-        '    <a href="&#x23;" class="navbar-brand">Navbar</a>' . PHP_EOL .
+        '<nav class="navbar&#x20;navbar-dark&#x20;navbar-expand-lg" '.
+        'style="background-color&#x3A;&#x20;&#x23;e3f2fd&#x3B;">' . PHP_EOL .
+        '    <a class="navbar-brand" href="&#x23;">Navbar</a>' . PHP_EOL .
         '    <button type="button" name="navbar_toggler" class="navbar-toggler" data-toggle="collapse" ' .
         'aria-expanded="false" aria-label="Toggle&#x20;navigation" value="">' .
         '<span class="navbar-toggler-icon"></span></button>' . PHP_EOL .

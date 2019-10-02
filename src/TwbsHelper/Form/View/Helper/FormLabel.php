@@ -5,7 +5,6 @@ namespace TwbsHelper\Form\View\Helper;
 class FormLabel extends \Zend\Form\View\Helper\FormLabel
 {
     use \TwbsHelper\View\Helper\HtmlTrait;
-    use \TwbsHelper\View\Helper\ClassAttributeTrait;
 
     /**
      * @var string

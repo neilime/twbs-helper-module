@@ -25,19 +25,19 @@ return [
         }
     },
     'expected' => '<nav class="bg-light&#x20;navbar&#x20;navbar-light">' . PHP_EOL .
-        '    <a href="&#x23;" class="navbar-brand">Default</a>' . PHP_EOL .
+        '    <a class="navbar-brand" href="&#x23;">Default</a>' . PHP_EOL .
         '</nav>' . PHP_EOL .
         '<br>' . PHP_EOL .
         '<nav class="bg-light&#x20;fixed-top&#x20;navbar&#x20;navbar-light">' . PHP_EOL .
-        '    <a href="&#x23;" class="navbar-brand">Fixed top</a>' . PHP_EOL .
+        '    <a class="navbar-brand" href="&#x23;">Fixed top</a>' . PHP_EOL .
         '</nav>' . PHP_EOL .
         '<br>' . PHP_EOL .
         '<nav class="bg-light&#x20;fixed-bottom&#x20;navbar&#x20;navbar-light">' . PHP_EOL .
-        '    <a href="&#x23;" class="navbar-brand">Fixed bottom</a>' . PHP_EOL .
+        '    <a class="navbar-brand" href="&#x23;">Fixed bottom</a>' . PHP_EOL .
         '</nav>' . PHP_EOL .
         '<br>' . PHP_EOL .
         '<nav class="bg-light&#x20;navbar&#x20;navbar-light&#x20;sticky-top">' . PHP_EOL .
-        '    <a href="&#x23;" class="navbar-brand">Sticky top</a>' . PHP_EOL .
+        '    <a class="navbar-brand" href="&#x23;">Sticky top</a>' . PHP_EOL .
         '</nav>' . PHP_EOL .
         '<br>' . PHP_EOL,
 ];

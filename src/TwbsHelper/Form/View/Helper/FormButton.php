@@ -4,8 +4,6 @@ namespace TwbsHelper\Form\View\Helper;
 
 class FormButton extends \Zend\Form\View\Helper\FormButton
 {
-    use \TwbsHelper\View\Helper\StyleAttributeTrait;
-    use \TwbsHelper\View\Helper\ClassAttributeTrait;
     use \TwbsHelper\View\Helper\HtmlTrait;
 
     const ICON_PREPEND = 'prepend';

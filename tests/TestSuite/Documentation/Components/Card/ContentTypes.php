@@ -35,15 +35,15 @@ return [
                     ],
                 ], ['style' => 'width: 18rem;']);
             },
-            'expected' => '<div style="width&#x3A;&#x20;18rem&#x3B;" class="card">' . PHP_EOL .
+            'expected' => '<div class="card" style="width&#x3A;&#x20;18rem&#x3B;">' . PHP_EOL .
                 '    <div class="card-body">' . PHP_EOL .
                 '        <h5 class="card-title">Card title</h5>' . PHP_EOL .
                 '        <h6 class="card-subtitle&#x20;mb-2&#x20;text-muted">Card subtitle</h6>' . PHP_EOL .
                 '        <p class="card-text">'.
                 'Some quick example text to build on the card title and make up the bulk of the card&#039;s content.'.
                 '</p>' . PHP_EOL .
-                '        <a href="&#x23;" class="card-link">Card link</a>' . PHP_EOL .
-                '        <a href="&#x23;" class="card-link">Another link</a>' . PHP_EOL .
+                '        <a class="card-link" href="&#x23;">Card link</a>' . PHP_EOL .
+                '        <a class="card-link" href="&#x23;">Another link</a>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</div>',
         ],
@@ -57,7 +57,7 @@ return [
                     'and make up the bulk of the card\'s content.',
                 ], ['style' => 'width: 18rem;']);
             },
-            'expected' => '<div style="width&#x3A;&#x20;18rem&#x3B;" class="card">' . PHP_EOL .
+            'expected' => '<div class="card" style="width&#x3A;&#x20;18rem&#x3B;">' . PHP_EOL .
                 '    <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
                 '    <div class="card-body">' . PHP_EOL .
                 '        <p class="card-text">'.
@@ -93,7 +93,7 @@ return [
                     ],
                 ], ['style' => 'width: 18rem;']);
             },
-            'expected' => '<div style="width&#x3A;&#x20;18rem&#x3B;" class="card">' . PHP_EOL .
+            'expected' => '<div class="card" style="width&#x3A;&#x20;18rem&#x3B;">' . PHP_EOL .
                 '    <ul class="list-group&#x20;list-group-flush">' . PHP_EOL .
                 '        <li class="list-group-item">Cras justo odio</li>' . PHP_EOL .
                 '        <li class="list-group-item">Dapibus ac facilisis in</li>' . PHP_EOL .
@@ -101,7 +101,7 @@ return [
                 '    </ul>' . PHP_EOL .
                 '</div>' . PHP_EOL .
                 '<br>'. PHP_EOL .
-                '<div style="width&#x3A;&#x20;18rem&#x3B;" class="card">' . PHP_EOL .
+                '<div class="card" style="width&#x3A;&#x20;18rem&#x3B;">' . PHP_EOL .
                 '    <div class="card-header">' . PHP_EOL .
                 '        Featured' . PHP_EOL .
                 '    </div>' . PHP_EOL .
@@ -134,7 +134,7 @@ return [
                     ],
                 ], ['style' => 'width: 18rem;']);
             },
-            'expected' => '<div style="width&#x3A;&#x20;18rem&#x3B;" class="card">' . PHP_EOL .
+            'expected' => '<div class="card" style="width&#x3A;&#x20;18rem&#x3B;">' . PHP_EOL .
                 '    <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
                 '    <div class="card-body">' . PHP_EOL .
                 '        <h5 class="card-title">Card title</h5>' . PHP_EOL .
@@ -148,8 +148,8 @@ return [
                 '        <li class="list-group-item">Vestibulum at eros</li>' . PHP_EOL .
                 '    </ul>' . PHP_EOL .
                 '    <div class="card-body">' . PHP_EOL .
-                '        <a href="&#x23;" class="card-link">Card link</a>' . PHP_EOL .
-                '        <a href="&#x23;" class="card-link">Another link</a>' . PHP_EOL .
+                '        <a class="card-link" href="&#x23;">Card link</a>' . PHP_EOL .
+                '        <a class="card-link" href="&#x23;">Another link</a>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</div>',
         ],
