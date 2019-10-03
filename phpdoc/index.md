@@ -27,6 +27,7 @@
 - [\TwbsHelper\View\Helper\CardColumns](#class-twbshelperviewhelpercardcolumns)
 - [\TwbsHelper\View\Helper\Carousel](#class-twbshelperviewhelpercarousel)
 - [\TwbsHelper\View\Helper\ProgressBarGroup](#class-twbshelperviewhelperprogressbargroup)
+- [\TwbsHelper\View\Helper\Spinner](#class-twbshelperviewhelperspinner)
 - [\TwbsHelper\View\Helper\Table](#class-twbshelperviewhelpertable)
 - [\TwbsHelper\View\Helper\HtmlList](#class-twbshelperviewhelperhtmllist)
 - [\TwbsHelper\View\Helper\Modal](#class-twbshelperviewhelpermodal)
@@ -761,6 +762,21 @@
 | Visibility | Function |
 |:-----------|:---------|
 | public | <strong>__invoke(</strong><em>array</em> <strong>$aProgressBars</strong>, <em>array</em> <strong>$aOptions=array()</strong>)</strong> : <em>void</em><br /><em>Generates a 'progressbar' element</em> |
+
+*This class extends [\TwbsHelper\View\Helper\AbstractHtmlElement](#class-twbshelperviewhelperabstracthtmlelement)*
+
+*This class implements \Zend\I18n\Translator\TranslatorAwareInterface, \Zend\View\Helper\HelperInterface*
+
+<hr />
+
+### Class: \TwbsHelper\View\Helper\Spinner
+
+> Helper for rendering progress bar
+
+| Visibility | Function |
+|:-----------|:---------|
+| public | <strong>__invoke(</strong><em>mixed</em> <strong>$sLabel=null</strong>)</strong> : <em>void</em><br /><em>Generates a 'progressbar' element</em> |
+| public | <strong>render(</strong><em>array</em> <strong>$aOptions</strong>)</strong> : <em>void</em> |
 
 *This class extends [\TwbsHelper\View\Helper\AbstractHtmlElement](#class-twbshelperviewhelperabstracthtmlelement)*
 
