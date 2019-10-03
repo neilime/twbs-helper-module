@@ -111,12 +111,12 @@ return [
                     'info' => 50,
                     'warning' => 75,
                     'danger' => 100,
-                ] as $variant => $progress) {
+                ] as $sVariant => $iCurrent) {
                     echo $oView->progressBar([
-                        'variant' => $variant,
+                        'variant' => $sVariant,
                         'min' => 0,
                         'max' => 100,
-                        'current' => $progress,
+                        'current' => $iCurrent,
                     ]);
                     echo PHP_EOL . '<br>' . PHP_EOL;
                 }
@@ -168,17 +168,16 @@ return [
             'url' => '%bootstrap-url%/components/progress/#striped',
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 foreach ([
-                    null => 0,
+                    null => 10,
                     'success' => 25,
                     'info' => 50,
                     'warning' => 75,
                     'danger' => 100,
-                ] as $variant => $progress) {
-                    /** @var \Zend\ProgressBar\ProgressBar $progressBar */
+                ] as $sVariant => $iCurrent) {
                     echo $oView->progressBar([
                         'striped' => true,
-                        'variant' => $variant,
-                        'current' => $progress,
+                        'variant' => $sVariant,
+                        'current' => $iCurrent,
                         'min' => 0,
                         'max' => 100,
                     ]);
@@ -186,8 +185,9 @@ return [
                 }
             },
             'expected' => '<div class="progress">' . PHP_EOL .
-            '    <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" '.
-            'class="progress-bar&#x20;progress-bar-striped" role="progressbar"></div>' . PHP_EOL .
+            '    <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="10" '.
+            'class="progress-bar&#x20;progress-bar-striped" role="progressbar" '.
+            'style="width&#x3A;&#x20;10&#x25;&#x3B;"></div>' . PHP_EOL .
             '</div>' . PHP_EOL .
             '<br>' . PHP_EOL .
             '<div class="progress">' . PHP_EOL .

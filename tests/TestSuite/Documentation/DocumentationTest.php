@@ -50,6 +50,13 @@ class DocumentationTest extends \PHPUnit\Framework\TestCase
      */
     public function getTestCasesProvider()
     {
+
+        $oApplication = \TestSuite\Bootstrap::getServiceManager()->get('Application');
+        $oApplication->bootstrap();
+        $oRouteMatch = new \Zend\Router\RouteMatch([]);
+        $oRouteMatch->setMatchedRouteName('test-route');
+        $oApplication->getMvcEvent()->setRouteMatch($oRouteMatch);
+
         $aTestCases = [];
         foreach (new \DirectoryIterator(__DIR__) as $oFileInfo) {
             // Ignore non php files and current class file
@@ -197,12 +204,6 @@ class DocumentationTest extends \PHPUnit\Framework\TestCase
     public function testDocumentation($oRendering, $sExpected)
     {
         $oRenderer = \TestSuite\Bootstrap::getServiceManager()->get('ViewPhpRenderer');
-        
-        $oApplication = \TestSuite\Bootstrap::getServiceManager()->get('Application');
-        $oApplication->bootstrap();
-        $oRouteMatch = new \Zend\Router\RouteMatch([]);
-        $oRouteMatch->setMatchedRouteName('test-route');
-        $oApplication->getMvcEvent()->setRouteMatch($oRouteMatch);
 
         // Retrieve output of renderging
         ob_start();

@@ -56,6 +56,7 @@ return [
             'paginationControl'   => \TwbsHelper\View\Helper\PaginationControl::class,
             'progressBar'         => \TwbsHelper\View\Helper\ProgressBar::class,
             'progressBarGroup'    => \TwbsHelper\View\Helper\ProgressBarGroup::class,
+            'spinner'             => \TwbsHelper\View\Helper\Spinner::class,
 
             // Form view helpers
             'form'                => \TwbsHelper\Form\View\Helper\Form::class,
