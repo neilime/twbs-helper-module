@@ -163,7 +163,7 @@ return [
                         echo '<div class="bg-dark" style="position:relative;min-height:200px;">';
 
                         echo $oView->toast([
-                            'placement' => 'center',
+                            'placement' => 'top-center',
                             'header' => [
                                 'image' => [
                                     'images/demo/rounded-blue.svg',
@@ -196,9 +196,10 @@ return [
                     '</div>'. PHP_EOL .
                     '<br><br>' . PHP_EOL .
                     '<div class="bg-dark" style="position:relative;min-height:200px;">' .
-                    '<div aria-atomic="true" aria-live="assertive" '.
-                    'class="align-items-center&#x20;justify-content-center&#x20;toast" role="alert"'.
-                    '>' . PHP_EOL .
+                    '<div aria-atomic="true" aria-live="assertive" class="toast" role="alert" '.
+                    'style="left&#x3A;&#x20;0&#x3B;margin-left&#x3A;&#x20;auto&#x3B;'.
+                    'margin-right&#x3A;&#x20;auto&#x3B;position&#x3A;&#x20;'.
+                    'absolute&#x3B;top&#x3A;&#x20;0&#x3B;">' . PHP_EOL .
                     '    <div class="toast-header">' . PHP_EOL .
                     '        <img alt="..." class="mr-2&#x20;rounded" '.
                     'src="images&#x2F;demo&#x2F;rounded-blue.svg">' . PHP_EOL .
