@@ -6,8 +6,8 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
 {
     use \TwbsHelper\View\Helper\HtmlTrait;
 
-    const ICON_PREPEND = 'prepend';
-    const ICON_APPEND  = 'append';
+    const POSITION_PREPEND = 'prepend';
+    const POSITION_APPEND  = 'append';
 
     protected static $dropdownContainerFormat = '<div %s>%s</div>';
 
@@ -229,7 +229,13 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
             }
         }
 
+        // Render icon
         $sButtonContent = $this->renderIconContent($oElement, $sButtonContent);
+
+        
+        // Render spinner
+        $sButtonContent = $this->renderSpinnerContent($oElement, $sButtonContent);
+
         if (null === $sButtonContent) {
             throw new \DomainException(sprintf(
                 '%s expects either button content as the second argument, ' .
@@ -253,7 +259,7 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
         if (is_scalar($aIconOptions)) {
             $aIconOptions = [
                 'class'     => $aIconOptions,
-                'position' => self::ICON_PREPEND,
+                'position' => self::POSITION_PREPEND,
             ];
         } elseif (is_array($aIconOptions)) {
             if (empty($aIconOptions['class'])) {
@@ -278,11 +284,11 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
                             : gettype($aIconOptions['position'])
                     ));
                 }
-                if (!in_array($aIconOptions['position'], [self::ICON_PREPEND, self::ICON_APPEND, true])) {
+                if (!in_array($aIconOptions['position'], [self::POSITION_PREPEND, self::POSITION_APPEND, true])) {
                     throw new \InvalidArgumentException(sprintf(
                         '"[icon][position]" option allows "%s" or "%s", "%s" given',
-                        self::ICON_PREPEND,
-                        self::ICON_APPEND,
+                        self::POSITION_PREPEND,
+                        self::POSITION_APPEND,
                         $aIconOptions['position']
                     ));
                 }
@@ -294,18 +300,56 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
             ));
         }
 
-        // Set icon position
-        $sIconPosition = $aIconOptions['position'] ?? 'prepend';
-        $sIconContent = '<i class="' . $aIconOptions['class'] . '"></i>';
+        // Define icon position
+        $sIconPosition = $aIconOptions['position'] ?? self::POSITION_PREPEND;
+
+        $sIconContent = $this->htmlElement('i', ['class' => $aIconOptions['class']]);
 
         return $sButtonContent
-            ? $sIconPosition === self::ICON_PREPEND
+            ? $sIconPosition === self::POSITION_PREPEND
             // Append icon to button content
             ? $sIconContent . ' ' . $sButtonContent
             // Prepend icon to button content
             : $sButtonContent . ' ' . $sIconContent
             // No button content provided, set icon as button content
             : $sIconContent;
+    }
+
+    protected function renderSpinnerContent(\Zend\Form\ElementInterface $oElement, string $sButtonContent = null)
+    {
+        // Retrieve spinner options
+        $aSpinnerOptions = $oElement->getOption('spinner');
+        if (!$aSpinnerOptions) {
+            return $sButtonContent;
+        }
+
+        if (is_string($aSpinnerOptions)) {
+            $aSpinnerOptions = ['label' => $aSpinnerOptions];
+        }
+        if ($aSpinnerOptions === true) {
+            $aSpinnerOptions = [];
+        }
+        $aSpinnerOptions['tag'] = 'span';
+        $aSpinnerOptions['size'] = 'sm';
+
+        $aSpinnerOptions['attributes'] = array_merge(
+            $aSpinnerOptions['attributes'] ?? [],
+            ['aria-hidden' => 'true']
+        );
+
+        // Define spinner position
+        $sSpinnerPosition = $aSpinnerOptions['position'] ?? self::POSITION_PREPEND;
+
+        $sSpinnerContent = $this->getView()->plugin('spinner')->__invoke($aSpinnerOptions);
+
+        return $sButtonContent
+            ? $sSpinnerPosition === self::POSITION_PREPEND
+            // Append spinner to button content
+            ? $sSpinnerContent . PHP_EOL . $sButtonContent
+            // Prepend spinner to button content
+            : $sButtonContent . PHP_EOL . $sSpinnerContent
+            // No button content provided, set spinner as button content
+            : $sSpinnerContent;
     }
 
     /**

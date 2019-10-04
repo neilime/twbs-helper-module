@@ -230,6 +230,73 @@ return [
                     '    <span class="sr-only">Loading...</span>' . PHP_EOL .
                     '</div>',
                 ],
+                [
+                    'title' => 'Buttons',
+                    'url' => '%bootstrap-url%/components/spinners/#buttons',
+                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                        echo $oView->formButton([
+                            'options' => [
+                                'spinner' => 'Loading...',
+                                'variant' => 'primary',
+                            ],
+                            'attributes' => ['disabled' => true],
+                        ]) . PHP_EOL;
+
+                        echo $oView->formButton([
+                            'options' => [
+                                'label' => 'Loading...',
+                                'spinner' => true,
+                                'variant' => 'primary',
+                            ],
+                            'attributes' => ['disabled' => true],
+                        ]);
+
+                        echo PHP_EOL . '<br>' . PHP_EOL;
+
+                        echo $oView->formButton([
+                            'options' => [
+                                'spinner' => [
+                                    'type' => 'grow',
+                                    'label' => 'Loading...',
+                                ],
+                                'variant' => 'primary',
+                            ],
+                            'attributes' => ['disabled' => true],
+                        ]) . PHP_EOL;
+            
+                        echo $oView->formButton([
+                            'options' => [
+                                'label' => 'Loading...',
+                                'spinner' => ['type' => 'grow'],
+                                'variant' => 'primary',
+                            ],
+                            'attributes' => ['disabled' => true],
+                        ]);
+                    },
+                    'expected' => '<button type="button" name="button" disabled="disabled" '.
+                    'class="btn&#x20;btn-primary" value="">' .
+                    '<span aria-hidden="true" class="spinner-border&#x20;spinner-border-sm" '.
+                    'role="status"><span class="sr-only">Loading...</span></span>' .
+                    '</button>' . PHP_EOL .
+                    '<button type="button" name="button" disabled="disabled" '.
+                    'class="btn&#x20;btn-primary" value="">' . PHP_EOL .
+                    '    <span aria-hidden="true" class="spinner-border&#x20;spinner-border-sm" '.
+                    'role="status"></span>' . PHP_EOL .
+                    '    Loading...' . PHP_EOL .
+                    '</button>'. PHP_EOL .
+                    '<br>' . PHP_EOL .
+                    '<button type="button" name="button" disabled="disabled" '.
+                    'class="btn&#x20;btn-primary" value="">' .
+                    '<span aria-hidden="true" class="spinner-grow&#x20;spinner-grow-sm" '.
+                    'role="status"><span class="sr-only">Loading...</span></span>' .
+                    '</button>' . PHP_EOL .
+                    '<button type="button" name="button" disabled="disabled" '.
+                    'class="btn&#x20;btn-primary" value="">' . PHP_EOL .
+                    '    <span aria-hidden="true" class="spinner-grow&#x20;spinner-grow-sm" '.
+                    'role="status"></span>' . PHP_EOL .
+                    '    Loading...' . PHP_EOL .
+                    '</button>',
+                ],
             ],
         ],
     ],

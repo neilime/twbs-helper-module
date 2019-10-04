@@ -3,19 +3,21 @@
 namespace TwbsHelper\View\Helper;
 
 /**
- * Helper for rendering progress bar
+ * Helper for rendering spinner
  */
 class Spinner extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
     /**
-     * Generates a 'progressbar' element
+     * Generates a 'spinner' element
      */
     public function __invoke($sLabel = null) : string
     {
         if (is_array($sLabel)) {
             $aOptions = $sLabel;
-        } else {
+        } elseif ($sLabel) {
             $aOptions = ['label' => $sLabel];
+        } else {
+            $aOptions = [];
         }
         
         return $this->render($aOptions);
@@ -41,20 +43,22 @@ class Spinner extends \TwbsHelper\View\Helper\AbstractHtmlElement
             $aClasses[] = $this->getPrefixedClass($aOptions['margin'], 'm');
         }
 
+        $sLabelContent = $aOptions['label'] ?? '';
         $bShowLabel = !empty($aOptions['show_label']);
-        $sLabelMarkup = empty($aOptions['label'])
-            ? ''
-            : $bShowLabel
+
+        $sLabelMarkup = $sLabelContent
+            ? $bShowLabel
                 ? $this->htmlElement(
                     'strong',
                     [],
-                    $aOptions['label']
+                    $sLabelContent
                 )
                 : $this->htmlElement(
                     'span',
                     ['class' => 'sr-only'],
-                    $aOptions['label']
-                );
+                    $sLabelContent
+                )
+            : '';
 
         $sPlacement = $aOptions['placement'] ?? null;
 
@@ -62,7 +66,6 @@ class Spinner extends \TwbsHelper\View\Helper\AbstractHtmlElement
             case 'center':
                 if ($bShowLabel) {
                     $aClasses[] = 'ml-auto';
-                    $aAttributes['aria-hidden'] = 'true';
                 }
                 break;
             case 'right':
@@ -70,9 +73,12 @@ class Spinner extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 break;
         }
 
+        if (!$sLabelMarkup || ($sPlacement === 'center' && $bShowLabel)) {
+            $aAttributes['aria-hidden'] = 'true';
+        }
            
         $sSpinnerMarkup = $this->htmlElement(
-            'div',
+            $aOptions['tag'] ?? 'div',
             $this->setClassesToAttributes($aAttributes, $aClasses),
             $sLabelMarkup && !($sPlacement === 'center' && $bShowLabel) ? $sLabelMarkup : ''
         );
