@@ -186,13 +186,13 @@
 | protected | <strong>getPopoverAttributes(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getSizes()</strong> : <em>mixed</em> |
 | protected | <strong>getStylesAttribute(</strong><em>\string</em> <strong>$sStyleAttribute</strong>, <em>bool</em> <strong>$bCleanStyles=true</strong>)</strong> : <em>mixed</em> |
+| protected | <strong>getTooltipAttributes(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getType(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>string</em><br /><em>Determine button type to use</em> |
 | protected | <strong>getVariantClass(</strong><em>\string</em> <strong>$sVariant</strong>, <em>\string</em> <strong>$sPrefix</strong>, <em>\string</em> <strong>$sAllowedVariantPrefix=null</strong>)</strong> : <em>mixed</em> |
 | protected | <strong>getVariants()</strong> : <em>mixed</em> |
 | protected | <strong>hasClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>, <em>\string</em> <strong>$sClass</strong>)</strong> : <em>bool</em> |
 | protected | <strong>hasColumnClassAttribute(</strong><em>\string</em> <strong>$sClassAttribute</strong>)</strong> : <em>bool</em> |
 | protected | <strong>isHTML(</strong><em>\string</em> <strong>$sString</strong>)</strong> : <em>bool</em> |
-| protected | <strong>prepareForTooltip(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>void</em> |
 | protected | <strong>renderButtonContent(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>\string</em> <strong>$sButtonContent=null</strong>)</strong> : <em>void</em> |
 | protected | <strong>renderIconContent(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>\string</em> <strong>$sButtonContent=null</strong>)</strong> : <em>void</em> |
 | protected | <strong>renderSpinnerContent(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>\string</em> <strong>$sButtonContent=null</strong>)</strong> : <em>void</em> |
