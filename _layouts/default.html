@@ -70,6 +70,10 @@
       $(function () {      
         $('[data-toggle="tooltip"]').tooltip();
         $('[data-toggle="popover"]').popover();
+        $('.toast').toast({ 
+            animation: true, 
+            autohide: false, 
+        });
         $('.toast').toast('show');
       });
     </script>
