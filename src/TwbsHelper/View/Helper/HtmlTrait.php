@@ -20,7 +20,7 @@ trait HtmlTrait
 
         $sElementContent = '<' . $sTag . $sAttributes;
         if ($sContent === null) {
-            $sElementContent .= $this->getClosingBracket();
+            $sElementContent .= $this->getView()->plugin('HtmlTag')->getClosingBracket();
             return $sElementContent;
         }
 

@@ -7,21 +7,25 @@ class FormTest extends \PHPUnit\Framework\TestCase
     /**
      * @var \TwbsHelper\Form\View\Helper\Form
      */
-    protected $form;
+    protected $formHelper;
 
     /**
      * @see \PHPUnit_Framework_TestCase::setUp()
      */
     public function setUp(): void
     {
-        $this->form = new \TwbsHelper\Form\View\Helper\Form();
+        $oViewHelperPluginManager = \TestSuite\Bootstrap::getServiceManager()->get('ViewHelperManager');
+        $oRenderer = new \Zend\View\Renderer\PhpRenderer();
+        $this->formHelper = $oViewHelperPluginManager
+            ->get('form')
+            ->setView($oRenderer->setHelperPluginManager($oViewHelperPluginManager));
     }
 
     public function testInvokeWithoutArgumentsReturnSelf()
     {
         $this->assertSame(
-            $this->form,
-            $this->form->__invoke()
+            $this->formHelper,
+            $this->formHelper->__invoke()
         );
     }
 }

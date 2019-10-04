@@ -1,0 +1,119 @@
+<?php
+
+namespace TestSuite\TwbsHelper\Form\View\Helper;
+
+class FormButtonTest extends \PHPUnit\Framework\TestCase
+{
+    /**
+     * @var \TwbsHelper\Form\View\Helper\FormButton
+     */
+    protected $formButtonHelper;
+
+    /**
+     * @see \PHPUnit_Framework_TestCase::setUp()
+     */
+    public function setUp(): void
+    {
+        $oViewHelperPluginManager = \TestSuite\Bootstrap::getServiceManager()->get('ViewHelperManager');
+        $oRenderer = new \Zend\View\Renderer\PhpRenderer();
+        $this->formButtonHelper = $oViewHelperPluginManager
+            ->get('formButton')
+            ->setView($oRenderer->setHelperPluginManager($oViewHelperPluginManager));
+    }
+
+    public function testRenderWithWrongTypeElementThrowsAnException()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage(
+            'Button expects an instanceof \Zend\Form\ElementInterface or an array / Traversable, "stdClass" given'
+        );
+        
+        $this->formButtonHelper->render(new \stdClass());
+    }
+
+    public function testRenderWithWrongPopoverOptionThrowsAnException()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage(
+            'Option "popover" expects a string or an array, "stdClass" given'
+        );
+        
+        $this->formButtonHelper->render(new \Zend\Form\Element\Button(
+            'test',
+            [
+                'label' => 'test',
+                'popover' => new \stdClass(),
+            ]
+        ));
+    }
+
+    public function testRenderWithoutButtonContentThrowsAnException()
+    {
+        $this->expectException(\DomainException::class);
+        $this->expectExceptionMessage(
+            'TwbsHelper\Form\View\Helper\FormButton::renderButtonContent expects either button content '.
+            'as the second argument, or that the element provided has a label value, a glyphicon option, '.
+            'or a fontAwesome option; none found'
+        );
+        
+        $this->formButtonHelper->render(new \Zend\Form\Element\Button('test', []));
+    }
+
+    public function testRenderIconWithStringIconOption()
+    {
+        $this->assertEquals(
+            '<button type="button" name="test" class="btn&#x20;btn-secondary" value="">'.
+            '<i class="fa-bootstrap&#x20;fab"></button>',
+            $this->formButtonHelper->render(new \Zend\Form\Element\Button(
+                'test',
+                [
+                    'icon' => 'fab fa-bootstrap',
+                ]
+            ))
+        );
+    }
+
+    public function testRenderIconWithArrayIconOption()
+    {
+        $this->assertEquals(
+            '<button type="button" name="test" class="btn&#x20;btn-secondary" value="">'.
+            '<i class="fa-bootstrap&#x20;fab"> test</button>',
+            $this->formButtonHelper->render(new \Zend\Form\Element\Button(
+                'test',
+                [
+                    'label' => 'test',
+                    'icon' => [
+                       'class' => 'fab fa-bootstrap',
+                       'position' => 'prepend',
+                    ],
+                ]
+            ))
+        );
+    
+        $this->assertEquals(
+            '<button type="button" name="test" class="btn&#x20;btn-secondary" value="">'.
+            'test <i class="fa-bootstrap&#x20;fab"></button>',
+            $this->formButtonHelper->render(new \Zend\Form\Element\Button(
+                'test',
+                [
+                    'label' => 'test',
+                    'icon' => [
+                       'class' => 'fab fa-bootstrap',
+                       'position' => 'append',
+                    ],
+                ]
+            ))
+        );
+    }
+
+    public function testRenderWithWrongIconOptionThrowsAnException()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('"icon" button option expects a scalar value or an array, "stdClass" given');
+        
+        $this->formButtonHelper->render(new \Zend\Form\Element\Button(
+            'test',
+            ['icon' => new \stdClass()]
+        ));
+    }
+}

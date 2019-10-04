@@ -84,7 +84,6 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
             return $this->getView()->dropdown()->render($oElement);
         }
 
-
         $this->defineButtonClasses($oElement);
         $sButtonContent = $this->renderButtonContent($oElement, $sButtonContent);
 

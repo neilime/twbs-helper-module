@@ -47,9 +47,9 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
                 );
 
                 if ($sAddOnPosition === self::POSITION_APPEND) {
-                    $sContent .= PHP_EOL . $sAddOnContent;
+                    $sContent .= ($sContent ? PHP_EOL : '') . $sAddOnContent;
                 } else {
-                    $sContent = $sAddOnContent . PHP_EOL . $sContent;
+                    $sContent = $sAddOnContent . ($sContent ? PHP_EOL . $sContent : '');
                 }
             }
         }
@@ -91,10 +91,6 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
         \Zend\Form\ElementInterface $oElement,
         string $sAddOnId = null
     ): string {
-        if (empty($aAddOnOptions)) {
-            throw new \InvalidArgumentException('Addon options are empty');
-        }
-
         if ($aAddOnOptions instanceof \Zend\Form\ElementInterface) {
             $aAddOnOptions = ['element' => $aAddOnOptions];
         } elseif (is_scalar($aAddOnOptions)) {
@@ -163,12 +159,11 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
             case isset($aAddOnOptions['element']):
                 if (
                     is_array($aAddOnOptions['element'])
-                    || ($aAddOnOptions['element'] instanceof \Traversable
-                        && !($aAddOnOptions['element'] instanceof \Zend\Form\ElementInterface))
+                    && !($aAddOnOptions['element'] instanceof \Zend\Form\ElementInterface)
                 ) {
                     $aAddOnOptions['element'] = $this->createFormElement($aAddOnOptions['element']);
                 } elseif (!($aAddOnOptions['element'] instanceof \Zend\Form\ElementInterface)) {
-                    throw new \LogicException(sprintf(
+                    throw new \InvalidArgumentException(sprintf(
                         '"element" option expects an instanceof \Zend\Form\ElementInterface, "%s" given',
                         is_object($aAddOnOptions['element'])
                             ? get_class($aAddOnOptions['element'])
