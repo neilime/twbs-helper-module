@@ -251,7 +251,7 @@ return [
                             'attributes' => ['disabled' => true],
                         ]);
 
-                        echo PHP_EOL . '<br>' . PHP_EOL;
+                        echo PHP_EOL . '<br><br>' . PHP_EOL;
 
                         echo $oView->formButton([
                             'options' => [
@@ -284,7 +284,7 @@ return [
                     'role="status"></span>' . PHP_EOL .
                     '    Loading...' . PHP_EOL .
                     '</button>'. PHP_EOL .
-                    '<br>' . PHP_EOL .
+                    '<br><br>' . PHP_EOL .
                     '<button type="button" name="button" disabled="disabled" '.
                     'class="btn&#x20;btn-primary" value="">' .
                     '<span aria-hidden="true" class="spinner-grow&#x20;spinner-grow-sm" '.
