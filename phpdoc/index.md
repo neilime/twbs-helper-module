@@ -193,6 +193,7 @@
 | protected | <strong>isHTML(</strong><em>\string</em> <strong>$sString</strong>)</strong> : <em>bool</em> |
 | protected | <strong>renderButtonContent(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>\string</em> <strong>$sButtonContent=null</strong>)</strong> : <em>void</em> |
 | protected | <strong>renderIconContent(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>\string</em> <strong>$sButtonContent=null</strong>)</strong> : <em>void</em> |
+| protected | <strong>renderSpinnerContent(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>\string</em> <strong>$sButtonContent=null</strong>)</strong> : <em>void</em> |
 | protected | <strong>setClassesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddClasses=array()</strong>, <em>array</em> <strong>$aRemoveClasses=array()</strong>)</strong> : <em>void</em> |
 | protected | <strong>setStylesToElement(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>, <em>array</em> <strong>$aAddStyles=array()</strong>, <em>array</em> <strong>$aRemoveStyles=array()</strong>)</strong> : <em>void</em> |
 
@@ -771,11 +772,11 @@
 
 ### Class: \TwbsHelper\View\Helper\Spinner
 
-> Helper for rendering progress bar
+> Helper for rendering spinner
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>__invoke(</strong><em>mixed</em> <strong>$sLabel=null</strong>)</strong> : <em>void</em><br /><em>Generates a 'progressbar' element</em> |
+| public | <strong>__invoke(</strong><em>mixed</em> <strong>$sLabel=null</strong>)</strong> : <em>void</em><br /><em>Generates a 'spinner' element</em> |
 | public | <strong>render(</strong><em>array</em> <strong>$aOptions</strong>)</strong> : <em>void</em> |
 
 *This class extends [\TwbsHelper\View\Helper\AbstractHtmlElement](#class-twbshelperviewhelperabstracthtmlelement)*
