@@ -37,6 +37,7 @@
 - [\TwbsHelper\View\Helper\CardDeck](#class-twbshelperviewhelpercarddeck)
 - [\TwbsHelper\View\Helper\MediaList](#class-twbshelperviewhelpermedialist)
 - [\TwbsHelper\View\Helper\AbstractGroup (abstract)](#class-twbshelperviewhelperabstractgroup-abstract)
+- [\TwbsHelper\View\Helper\Toast](#class-twbshelperviewhelpertoast)
 - [\TwbsHelper\View\Helper\Blockquote](#class-twbshelperviewhelperblockquote)
 - [\TwbsHelper\View\Helper\Media](#class-twbshelperviewhelpermedia)
 - [\TwbsHelper\View\Helper\Figure](#class-twbshelperviewhelperfigure)
@@ -945,6 +946,23 @@
 | public | <strong>__invoke(</strong><em>array</em> <strong>$aItems</strong>, <em>array</em> <strong>$aOptionsAndAttributes=array()</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>string The group XHTML.</em><br /><em>Render a group</em> |
 | protected | <strong>renderGroupItem(</strong><em>\Zend\View\Helper\HelperInterface</em> <strong>$oItemHelper</strong>, <em>array</em> <strong>$aArguments</strong>)</strong> : <em>void</em> |
 | protected | <strong>renderGroupItems(</strong><em>array</em> <strong>$aItems</strong>, <em>\bool</em> <strong>$bEscape=true</strong>)</strong> : <em>void</em> |
+
+*This class extends [\TwbsHelper\View\Helper\AbstractHtmlElement](#class-twbshelperviewhelperabstracthtmlelement)*
+
+*This class implements \Zend\I18n\Translator\TranslatorAwareInterface, \Zend\View\Helper\HelperInterface*
+
+<hr />
+
+### Class: \TwbsHelper\View\Helper\Toast
+
+> Helper for rendering toast
+
+| Visibility | Function |
+|:-----------|:---------|
+| public | <strong>__invoke(</strong><em>array</em> <strong>$aOptions</strong>)</strong> : <em>void</em><br /><em>Generates a 'toast' element</em> |
+| public | <strong>render(</strong><em>array</em> <strong>$aOptions</strong>)</strong> : <em>void</em> |
+| public | <strong>renderBody(</strong><em>\string</em> <strong>$sBody</strong>)</strong> : <em>void</em> |
+| public | <strong>renderHeader(</strong><em>array</em> <strong>$aHeaderOptions</strong>)</strong> : <em>void</em> |
 
 *This class extends [\TwbsHelper\View\Helper\AbstractHtmlElement](#class-twbshelperviewhelperabstracthtmlelement)*
 
