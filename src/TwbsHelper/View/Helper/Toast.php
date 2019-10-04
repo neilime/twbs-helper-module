@@ -7,7 +7,8 @@ namespace TwbsHelper\View\Helper;
  */
 class Toast extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
-    const PLACEMENT_CENTER = 'center';
+    const PLACEMENT_TOP_CENTER = 'top-center';
+    const PLACEMENT_BOTTOM_CENTER = 'bottom-center';
     const PLACEMENT_BOTTOM_LEFT = 'bottom-left';
     const PLACEMENT_BOTTOM_RIGHT = 'bottom-right';
     const PLACEMENT_TOP_LEFT = 'top-left';
@@ -28,8 +29,23 @@ class Toast extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
         if (!empty($aOptions['placement'])) {
             switch ($aOptions['placement']) {
-                case self::PLACEMENT_CENTER:
-                    $aClasses += ['d-flex','justify-content-center','align-items-center'];
+                case self::PLACEMENT_TOP_CENTER:
+                    $aStyles = [
+                        'position' => 'absolute',
+                        'top' => '0',
+                        'left' => '0',
+                        'margin-left' => 'auto',
+                        'margin-right'=> 'auto',
+                    ];
+                    break;
+                case self::PLACEMENT_BOTTOM_CENTER:
+                    $aStyles = [
+                        'position' => 'absolute',
+                        'bottom' => '0',
+                        'left' => '0',
+                        'margin-left' => 'auto',
+                        'margin-right'=> 'auto',
+                    ];
                     break;
                 case self::PLACEMENT_BOTTOM_LEFT:
                     $aStyles = [
