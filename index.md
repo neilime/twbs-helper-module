@@ -24,7 +24,7 @@ NOTE : If you want to contribute don't hesitate, I'll review any PR.
 
 # Demonstration / example
 
-🚀 Render __ALL__ bootstrap components with TwbsHelper : [see it in action, on-line](https://neilime.github.io/zf-twbs-helper-module/demo.html).
+🚀 Render __ALL__ of the [Twitter Bootstrap v4](https://getbootstrap.com/) elements with TwbsHelper : [see it in action, on-line](https://neilime.github.io/zf-twbs-helper-module/demo.html).
 
 # Requirements
 
