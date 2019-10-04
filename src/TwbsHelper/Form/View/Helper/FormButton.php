@@ -84,6 +84,7 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
             return $this->getView()->dropdown()->render($oElement);
         }
 
+
         $this->defineButtonClasses($oElement);
         $sButtonContent = $this->renderButtonContent($oElement, $sButtonContent);
 
@@ -119,6 +120,9 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
             }
         }
 
+        // Tooltip
+        $this->prepareForTooltip($oElement);
+
         $sMarkup =  $this->openTag($oElement) . $this->addProperIndentation($sButtonContent) . $this->closeTag();
         $this->validTagAttributes = $aValidTagAttributes;
 
@@ -141,6 +145,35 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
         }
 
         return $sMarkup;
+    }
+
+    protected function prepareForTooltip(\Zend\Form\ElementInterface $oElement)
+    {
+        // Retrieve tooltip options
+        $aTooltipOptions = $oElement->getOption('tooltip');
+        if (!$aTooltipOptions) {
+            return;
+        }
+
+        if (is_string($aTooltipOptions)) {
+            $aTooltipOptions = ['content' => $aTooltipOptions];
+        }
+
+        if (!$oElement->getAttribute('title')) {
+            $oElement->setAttribute('title', $aTooltipOptions['content']);
+        }
+
+        if ($this->isHTML($aTooltipOptions['content']) && !$oElement->getAttribute('data-html')) {
+            $oElement->setAttribute('data-html', 'true');
+        }
+
+        if (!$oElement->getAttribute('data-toggle')) {
+            $oElement->setAttribute('data-toggle', 'tooltip');
+        }
+
+        if (isset($aTooltipOptions['placement']) && !$oElement->getAttribute('data-placement')) {
+            $oElement->setAttribute('data-placement', $aTooltipOptions['placement']);
+        }
     }
 
     protected function getPopoverAttributes(\Zend\Form\ElementInterface $oElement) : array
@@ -232,7 +265,6 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
         // Render icon
         $sButtonContent = $this->renderIconContent($oElement, $sButtonContent);
 
-        
         // Render spinner
         $sButtonContent = $this->renderSpinnerContent($oElement, $sButtonContent);
 
