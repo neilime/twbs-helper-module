@@ -10,7 +10,6 @@
 - [\TwbsHelper\Form\View\Helper\FormSelect](#class-twbshelperformviewhelperformselect)
 - [\TwbsHelper\Form\View\Helper\FormCheckbox](#class-twbshelperformviewhelperformcheckbox)
 - [\TwbsHelper\Form\View\Helper\FormCollection](#class-twbshelperformviewhelperformcollection)
-- [\TwbsHelper\Form\View\Helper\FormErrors](#class-twbshelperformviewhelperformerrors)
 - [\TwbsHelper\Form\View\Helper\FormElementErrors](#class-twbshelperformviewhelperformelementerrors)
 - [\TwbsHelper\Form\View\Helper\FormLabel](#class-twbshelperformviewhelperformlabel)
 - [\TwbsHelper\Form\View\Helper\Form](#class-twbshelperformviewhelperform)
@@ -401,22 +400,6 @@
 *This class extends \Zend\Form\View\Helper\FormCollection*
 
 *This class implements \Zend\I18n\Translator\TranslatorAwareInterface, \Zend\View\Helper\HelperInterface*
-
-<hr />
-
-### Class: \TwbsHelper\Form\View\Helper\FormErrors
-
-> FormErrors
-
-| Visibility | Function |
-|:-----------|:---------|
-| public | <strong>__invoke(</strong><em>\Zend\Form\FormInterface</em> <strong>$oForm=null</strong>, <em>string</em> <strong>$sMessage=null</strong>, <em>bool/string</em> <strong>$bDismissable=false</strong>)</strong> : <em>string/null</em><br /><em>__invoke Invoke as function</em> |
-| public | <strong>dangerAlert(</strong><em>string</em> <strong>$content</strong>, <em>bool/boolean</em> <strong>$bDismissable=false</strong>)</strong> : <em>string</em><br /><em>dangerAlert Creates and returns a "danger" alert.</em> |
-| public | <strong>render(</strong><em>\Zend\Form\FormInterface</em> <strong>$oForm</strong>, <em>mixed</em> <strong>$sMessage</strong>, <em>bool</em> <strong>$bDismissable=false</strong>)</strong> : <em>string</em><br /><em>render Renders the error messages.</em> |
-
-*This class extends \Zend\Form\View\Helper\AbstractHelper*
-
-*This class implements \Zend\View\Helper\HelperInterface, \Zend\I18n\Translator\TranslatorAwareInterface*
 
 <hr />
 
