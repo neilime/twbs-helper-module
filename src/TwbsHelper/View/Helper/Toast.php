@@ -7,6 +7,12 @@ namespace TwbsHelper\View\Helper;
  */
 class Toast extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
+    const PLACEMENT_CENTER = 'center';
+    const PLACEMENT_BOTTOM_LEFT = 'bottom-left';
+    const PLACEMENT_BOTTOM_RIGHT = 'bottom-right';
+    const PLACEMENT_TOP_LEFT = 'top-left';
+    const PLACEMENT_TOP_RIGHT = 'top-right';
+
     /**
      * Generates a 'toast' element
      */
@@ -17,16 +23,65 @@ class Toast extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
     public function render(array $aOptions) : string
     {
-        $aAttributes = array_merge(
+        $aClasses = ['toast'];
+        $aStyles = [];
+
+        if (!empty($aOptions['placement'])) {
+            switch ($aOptions['placement']) {
+                case self::PLACEMENT_CENTER:
+                    $aClasses += ['d-flex','justify-content-center','align-items-center'];
+                    break;
+                case self::PLACEMENT_BOTTOM_LEFT:
+                    $aStyles = [
+                        'position' => 'absolute',
+                        'bottom' => '0',
+                        'left' => '0',
+                    ];
+                    break;
+                case self::PLACEMENT_BOTTOM_RIGHT:
+                    $aStyles = [
+                        'position' => 'absolute',
+                        'bottom' => '0',
+                        'right' => '0',
+                    ];
+                    break;
+                case self::PLACEMENT_TOP_LEFT:
+                    $aStyles = [
+                        'position' => 'absolute',
+                        'top' => '0',
+                        'left' => '0',
+                    ];
+                    break;
+                case self::PLACEMENT_TOP_RIGHT:
+                    $aStyles = [
+                        'position' => 'absolute',
+                        'top' => '0',
+                        'right' => '0',
+                    ];
+                    break;
+                default:
+                    throw new \InvalidArgumentException(sprintf(
+                        'Option "placement" "%s" is not supported',
+                        $aOptions['placement']
+                    ));
+            }
+        }
+        
+        $aAttributes = $this->setClassesToAttributes(array_merge(
             [
                 'role' => 'alert',
                 'aria-live' => 'assertive',
                 'aria-atomic' => 'true',
             ],
             $aOptions['attributes'] ?? []
-        );
+        ), $aClasses);
 
-        $aClasses = ['toast'];
+        if ($aStyles) {
+            $aAttributes = $this->setStylesToAttributes(
+                $aAttributes,
+                $aStyles
+            );
+        }
 
         $sToastContent =
             $this->renderHeader($aOptions['header'] ?? []) .
@@ -35,7 +90,7 @@ class Toast extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
         return $this->htmlElement(
             'div',
-            $this->setClassesToAttributes($aAttributes, $aClasses),
+            $aAttributes,
             $sToastContent
         );
     }
