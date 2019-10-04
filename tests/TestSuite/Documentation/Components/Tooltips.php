@@ -53,9 +53,31 @@ return [
             '</button>' . PHP_EOL.
             '<button type="button" name="tooltip" class="btn&#x20;btn-secondary" '.
             'title="&lt;em&gt;Tooltip&lt;&#x2F;em&gt;&#x20;&lt;u&gt;with&lt;&#x2F;'.
-            'u&gt;&#x20;&lt;b&gt;HTML&lt;&#x2F;b&gt;" data-html="true" data-toggle="tooltip" value="">'.
+            'u&gt;&#x20;&lt;b&gt;HTML&lt;&#x2F;b&gt;" data-toggle="tooltip" data-html="true" value="">'.
             'Tooltip with HTML' .
             '</button>',
+        ],
+        [
+            'title' => 'Disabled elements',
+            'url' => '%bootstrap-url%/components/tooltips/#disabled-elements',
+            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                echo $oView->formButton([
+                    'name' => 'tooltip',
+                    'options' => [
+                        'label' => 'Disabled button',
+                        'tooltip' => 'Disabled tooltip',
+                        'variant' => 'primary',
+                    ],
+                    'attributes' => [
+                        'disabled' => true,
+                    ],
+                ]);
+            },
+            'expected' => '<span class="d-inline-block" data-toggle="tooltip" tabindex="0" '.
+            'title="Disabled&#x20;tooltip">' .
+            '<button type="button" name="tooltip" disabled="disabled" class="btn&#x20;btn-primary" '.
+            'style="pointer-events&#x3A;&#x20;none&#x3B;" value="">Disabled button</button>' .
+            '</span>',
         ],
     ],
 ];

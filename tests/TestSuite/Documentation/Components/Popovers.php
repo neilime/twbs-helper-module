@@ -114,7 +114,8 @@ return [
                     'attributes' => ['disabled' => true],
                 ]);
             },
-            'expected' => '<span class="d-inline-block" data-content="Disabled&#x20;popover" data-toggle="popover">'.
+            'expected' => '<span class="d-inline-block" data-content="Disabled&#x20;popover" '.
+            'data-toggle="popover" tabindex="0">'.
             '<button type="button" name="popover" disabled="disabled" class="btn&#x20;btn-primary" '.
             'style="pointer-events&#x3A;&#x20;none&#x3B;" value="">'.
             'Disabled button'.

@@ -108,20 +108,24 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
         
         // Popover
         $aPopoverAttributes = $this->getPopoverAttributes($oElement);
+
+        // Tooltip
+        $aTooltipAttributes = $this->getTooltipAttributes($oElement);
+
         $bIsDisabled = $oElement->getAttribute('disabled');
-        if ($aPopoverAttributes) {
+        if ($aPopoverAttributes || $aTooltipAttributes) {
             if ($bIsDisabled) {
-                $this->setStylesToElement($oElement, ['pointer-events' => 'none']);
+                $this->setStylesToElement($oElement, [
+                    'pointer-events' => 'none',
+                ]);
             } else {
                 $oElement->setAttributes(array_merge(
                     $aPopoverAttributes,
+                    $aTooltipAttributes,
                     $oElement->getAttributes()
                 ));
             }
         }
-
-        // Tooltip
-        $this->prepareForTooltip($oElement);
 
         $sMarkup =  $this->openTag($oElement) . $this->addProperIndentation($sButtonContent) . $this->closeTag();
         $this->validTagAttributes = $aValidTagAttributes;
@@ -136,10 +140,17 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
             );
         }
 
-        if ($aPopoverAttributes && $bIsDisabled) {
+        if ($bIsDisabled && ($aPopoverAttributes || $aTooltipAttributes)) {
             $sMarkup = $this->htmlElement(
                 'span',
-                $this->setClassesToAttributes($aPopoverAttributes, ['d-inline-block']),
+                $this->setClassesToAttributes(
+                    array_merge(
+                        $aPopoverAttributes,
+                        $aTooltipAttributes,
+                        ['tabindex' => '0']
+                    ),
+                    ['d-inline-block']
+                ),
                 $sMarkup
             );
         }
@@ -147,62 +158,65 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
         return $sMarkup;
     }
 
-    protected function prepareForTooltip(\Zend\Form\ElementInterface $oElement)
+    protected function getTooltipAttributes(\Zend\Form\ElementInterface $oElement) : array
     {
         // Retrieve tooltip options
         $aTooltipOptions = $oElement->getOption('tooltip');
         if (!$aTooltipOptions) {
-            return;
+            return [];
         }
 
         if (is_string($aTooltipOptions)) {
             $aTooltipOptions = ['content' => $aTooltipOptions];
         }
 
-        if (!$oElement->getAttribute('title')) {
-            $oElement->setAttribute('title', $aTooltipOptions['content']);
+        $aTooltipAttributes = [
+            'title' => $aTooltipOptions['content'],
+            'data-toggle' => 'tooltip',
+        ];
+        
+        if ($this->isHTML($aTooltipOptions['content'])) {
+            $aTooltipAttributes['data-html'] = 'true';
         }
 
-        if ($this->isHTML($aTooltipOptions['content']) && !$oElement->getAttribute('data-html')) {
-            $oElement->setAttribute('data-html', 'true');
+        if (isset($aTooltipOptions['placement'])) {
+            $aTooltipAttributes['data-placement'] = $aTooltipOptions['placement'];
         }
-
-        if (!$oElement->getAttribute('data-toggle')) {
-            $oElement->setAttribute('data-toggle', 'tooltip');
-        }
-
-        if (isset($aTooltipOptions['placement']) && !$oElement->getAttribute('data-placement')) {
-            $oElement->setAttribute('data-placement', $aTooltipOptions['placement']);
-        }
+        return $aTooltipAttributes;
     }
 
     protected function getPopoverAttributes(\Zend\Form\ElementInterface $oElement) : array
     {
-        $aPopoverAttributes = [];
-        if ($aPopoverOption = $oElement->getOption('popover')) {
-            $aPopoverAttributes['data-toggle'] = 'popover';
+        $aPopoverOption = $oElement->getOption('popover');
+        if (!$aPopoverOption) {
+            return [];
+        }
 
-            if (is_string($aPopoverOption)) {
-                $aPopoverOption = ['content' => $aPopoverOption];
-            } elseif (!is_array($aPopoverOption)) {
-                throw new \InvalidArgumentException(sprintf(
-                    'Option "popover" expects a string or an array, "%s" given',
-                    is_object($aPopoverOption) ? get_class($aPopoverOption) : gettype($aPopoverOption)
-                ));
-            }
-            $aPopoverAttributes['data-content'] = $aPopoverOption['content'];
+        if (is_string($aPopoverOption)) {
+            $aPopoverOption = ['content' => $aPopoverOption];
+        } elseif (!is_array($aPopoverOption)) {
+            throw new \InvalidArgumentException(sprintf(
+                'Option "popover" expects a string or an array, "%s" given',
+                is_object($aPopoverOption) ? get_class($aPopoverOption) : gettype($aPopoverOption)
+            ));
+        }
 
-            if (isset($aPopoverOption['placement'])) {
-                $aPopoverAttributes['data-placement'] = $aPopoverOption['placement'];
-                $aPopoverAttributes['data-container'] = 'body';
-            }
+        $aPopoverAttributes = [
+            'data-toggle' => 'popover',
+            'data-content' => $aPopoverOption['content'],
+        ];
 
-            if (isset($aPopoverOption['trigger'])) {
-                $aPopoverAttributes['data-trigger'] = $aPopoverOption['trigger'];
-            }
+        if (isset($aPopoverOption['placement'])) {
+            $aPopoverAttributes['data-placement'] = $aPopoverOption['placement'];
+            $aPopoverAttributes['data-container'] = 'body';
+        }
+
+        if (isset($aPopoverOption['trigger'])) {
+            $aPopoverAttributes['data-trigger'] = $aPopoverOption['trigger'];
         }
         return $aPopoverAttributes;
     }
+
     protected function defineButtonClasses(\Zend\Form\ElementInterface $oElement)
     {
         if (!empty($oElement->getOption('disable_twbs'))) {
