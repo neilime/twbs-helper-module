@@ -105,12 +105,11 @@ class Spinner extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 $aClasses[] = 'text-center';
                 break;
         }
+
         return $this->htmlElement(
             'div',
             $this->setClassesToAttributes([], $aClasses),
             $sSpinnerMarkup
         );
-
-        return $sSpinnerMarkup;
     }
 }

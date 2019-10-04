@@ -25,5 +25,6 @@ return [
         'Popovers'    => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Popovers.php',
         'Progress'    => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Progress.php',
         'Spinners'    => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Spinners.php',
+        'Toasts'      => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Toasts.php',
     ],
 ];

@@ -6,7 +6,7 @@ return [
     'url' => '%bootstrap-url%/components/card/#example',
     'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
         echo $oView->card([
-            'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+            'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
             'title' => 'Card title',
             'text' => 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
             '<a href="&#x23;" class="btn btn-primary">Go somewhere</a>',

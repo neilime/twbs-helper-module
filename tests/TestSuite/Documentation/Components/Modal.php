@@ -42,7 +42,7 @@ return [
                         '        <div class="modal-content">' . PHP_EOL .
                         '            <div class="modal-header">' . PHP_EOL .
                         '                <h5 class="modal-title">Modal title</h5>' . PHP_EOL .
-                        '                <button aria-label="Close" class="close" data-dismiss="modal">' .
+                        '                <button aria-label="Close" class="close" data-dismiss="modal" type="button">' .
                         '<span aria-hidden="true">&times;</span></button>' . PHP_EOL .
                         '            </div>' . PHP_EOL .
                         '            <div class="modal-body">' . PHP_EOL .
@@ -142,7 +142,7 @@ return [
                         '        <div class="modal-content">' . PHP_EOL .
                         '            <div class="modal-header">' . PHP_EOL .
                         '                <h5 class="modal-title">Modal title</h5>' . PHP_EOL .
-                        '                <button aria-label="Close" class="close" data-dismiss="modal">' .
+                        '                <button aria-label="Close" class="close" data-dismiss="modal" type="button">' .
                         '<span aria-hidden="true">&times;</span></button>' . PHP_EOL .
                         '            </div>' . PHP_EOL .
                         '            <div class="modal-body">' . PHP_EOL .
@@ -243,7 +243,7 @@ return [
                         '        <div class="modal-content">' . PHP_EOL .
                         '            <div class="modal-header">' . PHP_EOL .
                         '                <h5 class="modal-title">Modal title</h5>' . PHP_EOL .
-                        '                <button aria-label="Close" class="close" data-dismiss="modal">' .
+                        '                <button aria-label="Close" class="close" data-dismiss="modal" type="button">' .
                         '<span aria-hidden="true">&times;</span></button>' . PHP_EOL .
                         '            </div>' . PHP_EOL .
                         '            <div class="modal-body">' . PHP_EOL .
@@ -301,7 +301,7 @@ return [
                         '        <div class="modal-content">' . PHP_EOL .
                         '            <div class="modal-header">' . PHP_EOL .
                         '                <h5 class="modal-title">Modal title</h5>' . PHP_EOL .
-                        '                <button aria-label="Close" class="close" data-dismiss="modal">' .
+                        '                <button aria-label="Close" class="close" data-dismiss="modal" type="button">' .
                         '<span aria-hidden="true">&times;</span></button>' . PHP_EOL .
                         '            </div>' . PHP_EOL .
                         '            <div class="modal-body">' . PHP_EOL .
@@ -364,7 +364,7 @@ return [
                         '        <div class="modal-content">' . PHP_EOL .
                         '            <div class="modal-header">' . PHP_EOL .
                         '                <h5 class="modal-title">Extra large modal</h5>' . PHP_EOL .
-                        '                <button aria-label="Close" class="close" data-dismiss="modal">' .
+                        '                <button aria-label="Close" class="close" data-dismiss="modal" type="button">' .
                         '<span aria-hidden="true">&times;</span></button>' . PHP_EOL .
                         '            </div>' . PHP_EOL .
                         '            <div class="modal-body">' . PHP_EOL .
@@ -379,7 +379,7 @@ return [
                         '        <div class="modal-content">' . PHP_EOL .
                         '            <div class="modal-header">' . PHP_EOL .
                         '                <h5 class="modal-title">Large modal</h5>' . PHP_EOL .
-                        '                <button aria-label="Close" class="close" data-dismiss="modal">' .
+                        '                <button aria-label="Close" class="close" data-dismiss="modal" type="button">' .
                         '<span aria-hidden="true">&times;</span></button>' . PHP_EOL .
                         '            </div>' . PHP_EOL .
                         '            <div class="modal-body">' . PHP_EOL .
@@ -394,7 +394,7 @@ return [
                         '        <div class="modal-content">' . PHP_EOL .
                         '            <div class="modal-header">' . PHP_EOL .
                         '                <h5 class="modal-title">Small modal</h5>' . PHP_EOL .
-                        '                <button aria-label="Close" class="close" data-dismiss="modal">' .
+                        '                <button aria-label="Close" class="close" data-dismiss="modal" type="button">' .
                         '<span aria-hidden="true">&times;</span></button>' . PHP_EOL .
                         '            </div>' . PHP_EOL .
                         '            <div class="modal-body">' . PHP_EOL .

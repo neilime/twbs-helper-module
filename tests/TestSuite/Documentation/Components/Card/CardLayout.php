@@ -11,7 +11,7 @@ return [
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 echo $oView->cardGroup([
                     [
-                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+                        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
                         'text' => [
                             'This is a wider card with supporting text below as a natural lead-in to additional ' .
@@ -20,7 +20,7 @@ return [
                         ],
                     ],
                     [
-                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+                        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
                         'text' => [
                             'This card has supporting text below as a natural lead-in to additional content.',
@@ -28,7 +28,7 @@ return [
                         ],
                     ],
                     [
-                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+                        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
                         'text' => [
                             'This is a wider card with supporting text below as a natural lead-in ' .
@@ -45,20 +45,20 @@ return [
                 // With footers
                 echo $oView->cardGroup([
                     [
-                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+                        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
                         'text' => 'This is a wider card with supporting text below as a natural lead-in to ' .
                             'additional content. This content is a little bit longer.',
                         'footer' => '<small class="text-muted">Last updated 3 mins ago</small>',
                     ],
                     [
-                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+                        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
                         'text' => 'This card has supporting text below as a natural lead-in to additional content.',
                         'footer' => '<small class="text-muted">Last updated 3 mins ago</small>',
                     ],
                     [
-                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+                        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
                         'text' => 'This is a wider card with supporting text below ' .
                             'as a natural lead-in to additional content. ' .
@@ -155,7 +155,7 @@ return [
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 echo $oView->cardDeck([
                     [
-                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+                        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
                         'text' => [
                             'This is a wider card with supporting text below ' .
@@ -165,7 +165,7 @@ return [
                         ],
                     ],
                     [
-                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+                        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
                         'text' => [
                             'This card has supporting text below as a natural lead-in to additional content.',
@@ -173,7 +173,7 @@ return [
                         ],
                     ],
                     [
-                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+                        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
                         'text' => [
                             'This is a wider card with supporting text below as a ' .
@@ -189,20 +189,20 @@ return [
                 // With footers
                 echo $oView->cardDeck([
                     [
-                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+                        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
                         'text' => 'This is a wider card with supporting text below as a ' .
                             'natural lead-in to additional content. This content is a little bit longer.',
                         'footer' => '<small class="text-muted">Last updated 3 mins ago</small>',
                     ],
                     [
-                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+                        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
                         'text' => 'This card has supporting text below as a natural lead-in to additional content.',
                         'footer' => '<small class="text-muted">Last updated 3 mins ago</small>',
                     ],
                     [
-                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+                        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
                         'text' => 'This is a wider card with supporting text below as a natural ' .
                             'lead-in to additional content. This card has even longer content than ' .
@@ -299,7 +299,7 @@ return [
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 echo $oView->cardColumns([
                     [
-                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+                        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Card title that wraps to a new line',
                         'text' => 'This is a longer card with supporting text below as ' .
                             'a natural lead-in to additional content. This content is a little bit longer.',
@@ -315,7 +315,7 @@ return [
                         ['class' => 'p-3'],
                     ],
                     [
-                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+                        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Card title',
                         'text' => [
                             'This card has supporting text below as a natural lead-in to additional content.',
@@ -345,7 +345,7 @@ return [
                         ['class' => 'text-center'],
                     ],
                     [
-                        'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+                        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                     ],
                     [
                         [

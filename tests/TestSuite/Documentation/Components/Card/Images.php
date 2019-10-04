@@ -10,7 +10,7 @@ return [
             'url' => '%bootstrap-url%/components/card/#image-caps',
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 echo $oView->card([
-                    'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...']],
+                    'image_top' => ['images/demo/image-cap.svg', ['alt' => '...']],
                     'title' => 'Card title',
                     'text' => [
                         'This is a wider card with supporting text below as a natural lead-in to additional content. '.
@@ -26,7 +26,7 @@ return [
                         'This content is a little bit longer.',
                         '<small class="text-muted">Last updated 3 mins ago</small>'
                     ],
-                    'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...']],
+                    'image_top' => ['images/demo/image-cap.svg', ['alt' => '...']],
                 ]);
             },
             'expected' => '<div class="card&#x20;mb-3">' . PHP_EOL .

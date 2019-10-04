@@ -52,7 +52,7 @@ return [
             'url' => '%bootstrap-url%/components/card/#images',
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 echo $oView->card([
-                    'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+                    'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                     'text' => 'Some quick example text to build on the card title '.
                     'and make up the bulk of the card\'s content.',
                 ], ['style' => 'width: 18rem;']);
@@ -117,7 +117,7 @@ return [
             'url' => '%bootstrap-url%/components/card/#kitchen-sink',
             'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
                 echo $oView->card([
-                    'imgTop' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+                    'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                     'title' => 'Card title',
                     'text' => 'Some quick example text to build on the card title '.
                     'and make up the bulk of the card\'s content.',

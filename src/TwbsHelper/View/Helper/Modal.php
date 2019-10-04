@@ -132,12 +132,17 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
         // Render header
         if (empty($aOptionsAndAttributes['disable_close'])) {
+            $oTranslator = $this->getTranslator();
             $sHeaderPart .= ($sHeaderPart ? PHP_EOL : '') .  $this->htmlElement(
                 'button',
                 [
+                    'type' => 'button',
                     'class' => 'close',
                     'data-dismiss' => 'modal',
-                    'aria-label' => 'Close',
+                    'aria-label' => $oTranslator ? $oTranslator->translate(
+                        'Close',
+                        $this->getTranslatorTextDomain()
+                    ) : 'Close',
                 ],
                 $this->htmlElement(
                     'span',

@@ -11,7 +11,7 @@ class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
     const CARD_HEADER = 'header';
     const CARD_HEADER_NAV_TABS = 'nav';
     const CARD_FOOTER = 'footer';
-    const CARD_IMG_TOP = 'imgTop';
+    const CARD_IMG_TOP = 'image_top';
     const CARD_OVERLAY = 'overlay';
     const CARD_LIST_GROUP = 'listGroup';
     const CARD_BODY_TITLE = 'title';

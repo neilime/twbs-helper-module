@@ -57,6 +57,7 @@ return [
             'progressBar'         => \TwbsHelper\View\Helper\ProgressBar::class,
             'progressBarGroup'    => \TwbsHelper\View\Helper\ProgressBarGroup::class,
             'spinner'             => \TwbsHelper\View\Helper\Spinner::class,
+            'toast'               => \TwbsHelper\View\Helper\Toast::class,
 
             // Form view helpers
             'form'                => \TwbsHelper\Form\View\Helper\Form::class,
