@@ -2,56 +2,40 @@
 
 namespace TwbsHelper\Form\View\Helper\Factory;
 
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
-use Interop\Container\ContainerInterface;
-
-use TwbsHelper\Form\View\Helper\FormElement;
-use TwbsHelper\Options\ModuleOptions;
-
 /**
- * FormElementFactory
  * Factory to inject the ModuleOptions hard dependency
- *
- * @uses FactoryInterface
  */
-class FormElementFactory implements FactoryInterface
+class FormElementFactory implements \Zend\ServiceManager\FactoryInterface
 {
 
-
     /**
-     * createService
      * Compatibility with ZF2 (>= 2.2) -> proxy to __invoke
      *
-     * @param  ServiceLocatorInterface $oServiceLocator
-     * @param  mixed                   $sCanonicalName
-     * @param  mixed                   $sRequestedName
-     * @access public
+     * @param \Zend\ServiceManager\ServiceLocatorInterface $oServiceLocator
+     * @param mixed $sCanonicalName
+     * @param mixed $sRequestedName
      * @return void
      */
     public function createService(
-        ServiceLocatorInterface $oServiceLocator,
+        \Zend\ServiceManager\ServiceLocatorInterface $oServiceLocator,
         $sCanonicalName = null,
         $sRequestedName = null
     ) {
         return $this($oServiceLocator, $sRequestedName);
     }
 
-
     /**
-     * __invoke
      * Compatibility with ZF3
      *
-     * @param  ContainerInterface $container
-     * @param  mixed              $requestedName
-     * @param  array              $options
-     * @access public
+     * @param \Interop\Container\ContainerInterface $oContainer
+     * @param mixed $sRequestedName
+     * @param array $aOptions
      * @return void
      */
-    public function __invoke(ContainerInterface $oContainer, $sRequestedName, array $aOptions = null)
+    public function __invoke(\Interop\Container\ContainerInterface $oContainer, $sRequestedName, array $aOptions = null)
     {
-        $oOptions = $oContainer->get(ModuleOptions::class);
+        $oOptions = $oContainer->get(\TwbsHelper\Options\ModuleOptions::class);
 
-        return new FormElement($oOptions);
+        return new \TwbsHelper\Form\View\Helper\FormElement($oOptions);
     }
 }

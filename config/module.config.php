@@ -72,7 +72,6 @@ return [
             'formRange'           => \TwbsHelper\Form\View\Helper\FormRange::class,
             'formRow'             => \TwbsHelper\Form\View\Helper\FormRow::class,
             'formSelect'          => \TwbsHelper\Form\View\Helper\FormSelect::class,
-            'formStatic'          => \TwbsHelper\Form\View\Helper\FormStatic::class,
             'formErrors'          => \TwbsHelper\Form\View\Helper\FormErrors::class,
             'formLabel'           => \TwbsHelper\Form\View\Helper\FormLabel::class,
 
@@ -87,7 +86,6 @@ return [
             'form_multi_checkbox' => \TwbsHelper\Form\View\Helper\FormMultiCheckbox::class,
             'form_radio'          => \TwbsHelper\Form\View\Helper\FormRadio::class,
             'form_row'            => \TwbsHelper\Form\View\Helper\FormRow::class,
-            'form_static'         => \TwbsHelper\Form\View\Helper\FormStatic::class,
             'form_errors'         => \TwbsHelper\Form\View\Helper\FormErrors::class,
             'formaddon'           => \TwbsHelper\Form\View\Helper\FormAddOn::class,
             'formbutton'          => \TwbsHelper\Form\View\Helper\FormButton::class,
@@ -101,7 +99,6 @@ return [
             'formrange'           => \TwbsHelper\Form\View\Helper\FormRange::class,
             'formrow'             => \TwbsHelper\Form\View\Helper\FormRow::class,
             'formselect'          => \TwbsHelper\Form\View\Helper\FormSelect::class,
-            'formstatic'          => \TwbsHelper\Form\View\Helper\FormStatic::class,
             'formerrors'          => \TwbsHelper\Form\View\Helper\FormErrors::class,
             'formlabel'           => \TwbsHelper\Form\View\Helper\FormLabel::class,
 

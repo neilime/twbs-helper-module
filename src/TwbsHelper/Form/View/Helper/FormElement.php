@@ -18,7 +18,6 @@ class FormElement extends \Zend\Form\View\Helper\FormElement
         'Zend\Form\Element\DateTimeSelect'      => 'formdatetimeselect',
         'Zend\Form\Element\DateSelect'          => 'formdateselect',
         'Zend\Form\Element\MonthSelect'         => 'formmonthselect',
-        'TwbsHelper\Form\Element\StaticElement' => 'formStatic',
     ];
 
     /**

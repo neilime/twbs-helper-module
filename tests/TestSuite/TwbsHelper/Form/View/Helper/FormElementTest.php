@@ -1,24 +1,16 @@
 <?php
 
-namespace TestSuite\TwbsHelper\View\Helper;
-
-use TwbsHelper\Form\View\Helper\FormElement;
-use Zend\Filter\StringToLower;
-use Zend\Filter\StringTrim;
-use Zend\Form\Element\Email;
-use Zend\Form\Form;
-use Zend\InputFilter\InputFilter;
-use Zend\Validator\EmailAddress;
+namespace TestSuite\TwbsHelper\Form\View\Helper;
 
 class FormElementTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @var FormElement
+     * @var \TwbsHelper\Form\View\Helper\FormElement
      */
     protected $formElementHelper;
 
     /**
-     * @var Form
+     * @var \Zend\Form\Form
      */
     private $testform;
 
@@ -33,13 +25,13 @@ class FormElementTest extends \PHPUnit\Framework\TestCase
             ->get('formElement')
             ->setView($oRenderer->setHelperPluginManager($oViewHelperPluginManager));
 
-        $this->testform = new Form();
+        $this->testform = new \Zend\Form\Form();
         $this->testform->add([
             'name' => 'email',
             'id' => 'email',
-            'type' => Email::class,
+            'type' => \Zend\Form\Element\Email::class,
             'options' => [
-                'label' => "Your Email Address",
+                'label' => 'Your Email Address',
                 'label_attributes' => ['for' => 'email'],
             ],
             'attributes' => [
@@ -50,10 +42,10 @@ class FormElementTest extends \PHPUnit\Framework\TestCase
 
     public function testRenderElement()
     {
-        $element = $this->testform->get('email');
+        $oElement = $this->testform->get('email');
 
         $this->assertEquals(
-            $this->formElementHelper->render($element),
+            $this->formElementHelper->render($oElement),
             '<input type="email" name="email" maxlength="254" class="form-control" value="">'
         );
     }
