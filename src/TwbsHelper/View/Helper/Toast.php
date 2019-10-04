@@ -66,13 +66,19 @@ class Toast extends \TwbsHelper\View\Helper\AbstractHtmlElement
                     ));
             }
         }
+
+        $aDefaultAttributes = [
+            'role' => 'alert',
+            'aria-live' => 'assertive',
+            'aria-atomic' => 'true',
+        ];
+
+        if (isset($aOptions['autohide'])) {
+            $aDefaultAttributes['data-autohide'] = $aOptions['autohide'] ? 'true' : 'false';
+        }
         
         $aAttributes = $this->setClassesToAttributes(array_merge(
-            [
-                'role' => 'alert',
-                'aria-live' => 'assertive',
-                'aria-atomic' => 'true',
-            ],
+            $aDefaultAttributes,
             $aOptions['attributes'] ?? []
         ), $aClasses);
 

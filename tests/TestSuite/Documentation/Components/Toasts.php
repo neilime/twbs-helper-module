@@ -213,6 +213,38 @@ return [
                     '</div>' .
                     '</div>',
                 ],
+                [
+                    'title' => 'Accessibility',
+                    'url' => '%bootstrap-url%/components/toasts/#accessibility',
+                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                        echo $oView->toast([
+                            'autohide' => false,
+                            'header' => [
+                                'image' => [
+                                    'images/demo/rounded-blue.svg',
+                                    ['alt' => '...', 'class' => 'rounded mr-2'],
+                                ],
+                                'title' => 'Bootstrap',
+                                'subtitle' => '11 mins ago',
+                            ],
+                            'body' => 'Hello, world! This is a toast message.',
+                        ]);
+                    },
+                    'expected' => '<div aria-atomic="true" aria-live="assertive" class="toast" '.
+                    'data-autohide="false" role="alert">' . PHP_EOL .
+                    '    <div class="toast-header">' . PHP_EOL .
+                    '        <img alt="..." class="mr-2&#x20;rounded" '.
+                    'src="images&#x2F;demo&#x2F;rounded-blue.svg">' . PHP_EOL .
+                    '        <strong class="mr-auto">Bootstrap</strong>' . PHP_EOL .
+                    '        <small class="text-muted">11 mins ago</small>' . PHP_EOL .
+                    '        <button aria-label="Close" class="close&#x20;mb-1&#x20;ml-2" data-dismiss="toast" '.
+                    'type="button"><span aria-hidden="true">&times;</span></button>' . PHP_EOL .
+                    '    </div>' . PHP_EOL .
+                    '    <div class="toast-body">' . PHP_EOL .
+                    '        Hello, world! This is a toast message.' . PHP_EOL .
+                    '    </div>' . PHP_EOL .
+                    '</div>',
+                ],
             ],
         ],
     ],
