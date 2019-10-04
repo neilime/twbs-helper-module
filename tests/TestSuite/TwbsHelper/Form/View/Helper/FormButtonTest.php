@@ -113,7 +113,74 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
         
         $this->formButtonHelper->render(new \Zend\Form\Element\Button(
             'test',
-            ['icon' => new \stdClass()]
+            [
+                'label' => 'test',
+                'icon' => new \stdClass(),
+            ]
+        ));
+    }
+
+    public function testRenderWithoutIconClassOptionThrowsAnException()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('"[icon][class]" option is undefined');
+        
+        $this->formButtonHelper->render(new \Zend\Form\Element\Button(
+            'test',
+            [
+                'label' => 'test',
+                'icon' => [
+                    'position' => 'append',
+                ],
+            ]
+        ));
+    }
+
+    public function testRenderWithWrongTypeIconClassOptionThrowsAnException()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('"[icon][class]" option expects a scalar value, "stdClass" given');
+        
+        $this->formButtonHelper->render(new \Zend\Form\Element\Button(
+            'test',
+            [
+                'label' => 'test',
+                'icon' => ['class' => new \stdClass()],
+            ]
+        ));
+    }
+
+    public function testRenderWithWrongTypeIconPositionOptionThrowsAnException()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('"[icon][position]" option expects a string, "stdClass" given');
+        
+        $this->formButtonHelper->render(new \Zend\Form\Element\Button(
+            'test',
+            [
+                'label' => 'test',
+                'icon' => [
+                    'class' => 'fab fa-bootstrap',
+                    'position' => new \stdClass(),
+                ],
+            ]
+        ));
+    }
+
+    public function testRenderWithWrongIconPositionOptionThrowsAnException()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('"[icon][position]" option allows "prepend" or "append", "wrong" given');
+        
+        $this->formButtonHelper->render(new \Zend\Form\Element\Button(
+            'test',
+            [
+                'label' => 'test',
+                'icon' => [
+                    'class' => 'fab fa-bootstrap',
+                    'position' => 'wrong',
+                ],
+            ]
         ));
     }
 }

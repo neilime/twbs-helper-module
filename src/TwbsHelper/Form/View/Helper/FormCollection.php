@@ -16,7 +16,6 @@ class FormCollection extends \Zend\Form\View\Helper\FormCollection
      */
     protected $wrapper = '<fieldset%4$s>%2$s%1$s%3$s</fieldset>';
 
-
     /**
      * Render a collection by iterating through all fieldsets and elements
      *
@@ -133,7 +132,6 @@ class FormCollection extends \Zend\Form\View\Helper\FormCollection
         return $sMarkup;
     }
 
-
     /**
      * Only render a template
      *
@@ -142,7 +140,6 @@ class FormCollection extends \Zend\Form\View\Helper\FormCollection
      */
     public function renderTemplate(\Zend\Form\Element\Collection $oCollection): string
     {
-
         // Set inline class
         $sElementLayout = $oCollection->getOption('layout');
         if ($sElementLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE) {

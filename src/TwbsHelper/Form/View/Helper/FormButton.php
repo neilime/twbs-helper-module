@@ -329,7 +329,7 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
                             : gettype($aIconOptions['position'])
                     ));
                 }
-                if (!in_array($aIconOptions['position'], [self::POSITION_PREPEND, self::POSITION_APPEND, true])) {
+                if (!in_array($aIconOptions['position'], [self::POSITION_PREPEND, self::POSITION_APPEND], true)) {
                     throw new \InvalidArgumentException(sprintf(
                         '"[icon][position]" option allows "%s" or "%s", "%s" given',
                         self::POSITION_PREPEND,
