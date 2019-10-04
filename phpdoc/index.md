@@ -1,11 +1,9 @@
 ## Table of contents
 
 - [\TwbsHelper\Module](#class-twbshelpermodule)
-- [\TwbsHelper\Form\Element\StaticElement](#class-twbshelperformelementstaticelement)
 - [\TwbsHelper\Form\View\Helper\FormRadio](#class-twbshelperformviewhelperformradio)
 - [\TwbsHelper\Form\View\Helper\FormRow](#class-twbshelperformviewhelperformrow)
 - [\TwbsHelper\Form\View\Helper\FormButton](#class-twbshelperformviewhelperformbutton)
-- [\TwbsHelper\Form\View\Helper\FormStatic](#class-twbshelperformviewhelperformstatic)
 - [\TwbsHelper\Form\View\Helper\FormElement](#class-twbshelperformviewhelperformelement)
 - [\TwbsHelper\Form\View\Helper\FormMultiCheckbox](#class-twbshelperformviewhelperformmulticheckbox)
 - [\TwbsHelper\Form\View\Helper\FormFile](#class-twbshelperformviewhelperformfile)
@@ -63,19 +61,6 @@
 | public | <strong>getConfig()</strong> : <em>array The configuration array</em><br /><em>Retrieve module configuration</em> |
 
 *This class implements \Zend\ModuleManager\Feature\ConfigProviderInterface*
-
-<hr />
-
-### Class: \TwbsHelper\Form\Element\StaticElement
-
-> StaticElement
-
-| Visibility | Function |
-|:-----------|:---------|
-
-*This class extends \Zend\Form\Element*
-
-*This class implements \Zend\Form\LabelAwareInterface, \Zend\Stdlib\InitializableInterface, \Zend\Form\ElementInterface, \Zend\Form\ElementAttributeRemovalInterface*
 
 <hr />
 
@@ -202,19 +187,6 @@
 *This class extends \Zend\Form\View\Helper\FormButton*
 
 *This class implements \Zend\View\Helper\HelperInterface, \Zend\I18n\Translator\TranslatorAwareInterface*
-
-<hr />
-
-### Class: \TwbsHelper\Form\View\Helper\FormStatic
-
-| Visibility | Function |
-|:-----------|:---------|
-| public | <strong>__invoke(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement=null</strong>)</strong> : <em>string/[\TwbsHelper\Form\View\Helper\FormStatic](#class-twbshelperformviewhelperformstatic)</em><br /><em>Invoke helper as functor Proxies to {@link render()}.</em> |
-| public | <strong>render(</strong><em>\Zend\Form\ElementInterface</em> <strong>$oElement</strong>)</strong> : <em>string</em><br /><em>Render a <p> static element</em> |
-
-*This class extends [\TwbsHelper\View\Helper\AbstractHtmlElement](#class-twbshelperviewhelperabstracthtmlelement)*
-
-*This class implements \Zend\I18n\Translator\TranslatorAwareInterface, \Zend\View\Helper\HelperInterface*
 
 <hr />
 
@@ -609,12 +581,12 @@
 
 ### Class: \TwbsHelper\Form\View\Helper\Factory\FormElementFactory
 
-> FormElementFactory Factory to inject the ModuleOptions hard dependency
+> Factory to inject the ModuleOptions hard dependency
 
 | Visibility | Function |
 |:-----------|:---------|
-| public | <strong>__invoke(</strong><em>\Interop\Container\ContainerInterface</em> <strong>$oContainer</strong>, <em>mixed</em> <strong>$sRequestedName</strong>, <em>array</em> <strong>$aOptions=null</strong>)</strong> : <em>void</em><br /><em>__invoke Compatibility with ZF3</em> |
-| public | <strong>createService(</strong><em>\Zend\ServiceManager\ServiceLocatorInterface</em> <strong>$oServiceLocator</strong>, <em>mixed</em> <strong>$sCanonicalName=null</strong>, <em>mixed</em> <strong>$sRequestedName=null</strong>)</strong> : <em>void</em><br /><em>createService Compatibility with ZF2 (>= 2.2) -> proxy to __invoke</em> |
+| public | <strong>__invoke(</strong><em>\Interop\Container\ContainerInterface</em> <strong>$oContainer</strong>, <em>mixed</em> <strong>$sRequestedName</strong>, <em>array</em> <strong>$aOptions=null</strong>)</strong> : <em>void</em><br /><em>Compatibility with ZF3</em> |
+| public | <strong>createService(</strong><em>\Zend\ServiceManager\ServiceLocatorInterface</em> <strong>$oServiceLocator</strong>, <em>mixed</em> <strong>$sCanonicalName=null</strong>, <em>mixed</em> <strong>$sRequestedName=null</strong>)</strong> : <em>void</em><br /><em>Compatibility with ZF2 (>= 2.2) -> proxy to __invoke</em> |
 
 *This class implements \Zend\ServiceManager\FactoryInterface, \Zend\ServiceManager\Factory\FactoryInterface*
 
