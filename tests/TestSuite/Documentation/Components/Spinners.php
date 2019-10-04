@@ -201,7 +201,7 @@ return [
                             'label' => 'Loading...',
                         ]);
 
-                        echo PHP_EOL . '<br>' . PHP_EOL;
+                        echo PHP_EOL . '<br><br>' . PHP_EOL;
 
                         echo $oView->spinner([
                             'attributes' => ['style' => 'width: 3rem; height: 3rem;'],
@@ -220,7 +220,7 @@ return [
                     '<div class="spinner-grow&#x20;spinner-grow-sm" role="status">' . PHP_EOL .
                     '    <span class="sr-only">Loading...</span>' . PHP_EOL .
                     '</div>' . PHP_EOL .
-                    '<br>' . PHP_EOL .
+                    '<br><br>' . PHP_EOL .
                     '<div class="spinner-border" role="status" '.
                     'style="height&#x3A;&#x20;3rem&#x3B;width&#x3A;&#x20;3rem&#x3B;">' . PHP_EOL .
                     '    <span class="sr-only">Loading...</span>' . PHP_EOL .
