@@ -99,21 +99,7 @@ class Form extends \Zend\Form\View\Helper\Form
             }
 
             // Manage button group option
-            if (isset($aOptions['button-group'])) {
-                $sButtonGroupKey = $aOptions['button-group'];
-
-                if (isset($aButtonGroups[$sButtonGroupKey])) {
-                    $aButtonGroups[$sButtonGroupKey][] = $oElement;
-                } else {
-                    $aButtonGroups[$sButtonGroupKey] = [$oElement];
-                    $aElementsRendering[$iKey] = $sButtonGroupKey;
-                }
-
-                if (!empty($aOptions['column']) && !isset($aButtonGroupsColumns[$sButtonGroupKey])) {
-                    // Only the first occured column will be set, other are ignored.
-                    $aButtonGroupsColumns[$sButtonGroupKey] = $aOptions['column'];
-                }
-            } elseif ($oElement instanceof \Zend\Form\FieldsetInterface) {
+            if ($oElement instanceof \Zend\Form\FieldsetInterface) {
                 $this->setClassesToElement($oElement, ['form-group']);
                 $aElementsRendering[$iKey] = $oFormCollectionHelper->__invoke($oElement);
             } else {
@@ -125,24 +111,6 @@ class Form extends \Zend\Form\View\Helper\Form
         $sFormContent = '';
 
         foreach ($aElementsRendering as $sElementRendering) {
-            // Check if element rendering is a button group key
-            if (isset($aButtonGroups[$sElementRendering])) {
-                $aButtons = $aButtonGroups[$sElementRendering];
-
-                // Render button group content
-                if (!empty($aButtonGroupsColumns[$sElementRendering])) {
-                    $aGroupOptions = [
-                        'attributes' => [
-                            'class' => $this->getColumnClass($aButtonGroupsColumns[$sElementRendering]),
-                        ],
-                    ];
-                }
-
-                $sElementRendering = $oFormRowHelper->renderFormRow(
-                    current($aButtons),
-                    $oButtonGroupHelper($aButtons, $aGroupOptions ?? [])
-                );
-            }
             if ($sElementRendering) {
                 $sFormContent .= ($sFormContent ? PHP_EOL : '') . $sElementRendering;
             }
