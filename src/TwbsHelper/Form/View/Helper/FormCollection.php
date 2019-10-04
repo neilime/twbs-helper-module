@@ -144,7 +144,9 @@ class FormCollection extends \Zend\Form\View\Helper\FormCollection
         $sElementLayout = $oCollection->getOption('layout');
         if ($sElementLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE) {
             $oElementOrFieldset = $oCollection->getTemplateElement();
-            $oElementOrFieldset->setOption('layout', $sElementLayout);
+            if ($oElementOrFieldset) {
+                $oElementOrFieldset->setOption('layout', $sElementLayout);
+            }
         }
 
         return parent::renderTemplate($oCollection);
