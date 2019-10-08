@@ -31,7 +31,7 @@
     },
     "require": {
         "php": "^7.2",
-        "zendframework/zend-config": "^2.6",
+        "zendframework/zend-config": "^2.6 || ^3.0",
         "zendframework/zend-escaper": "^2.5.1",
         "zendframework/zend-form": "^2.9",
         "zendframework/zend-i18n": "^2.7.3",
