@@ -26,28 +26,8 @@ NOTE : If you want to contribute don't hesitate, I'll review any PR.
 
 🚀 Render __ALL__ of the [Twitter Bootstrap v4](https://getbootstrap.com/) elements with TwbsHelper : [see it in action, on-line](https://neilime.github.io/zf-twbs-helper-module/demo.html).
 
-# Requirements
-
-Name | Version
------|--------
-[php](https://secure.php.net/) | ^7.2
-[zendframework/zend-config](https://github.com/zendframework/zend-config) | ^2.6
-[zendframework/zend-escaper](https://github.com/zendframework/zend-escaper) | ^2.5.1
-[zendframework/zend-form](https://github.com/zendframework/zend-form) | ^2.9
-[zendframework/zend-i18n](https://github.com/zendframework/zend-i18n) | ^2.7.3
-[zendframework/zend-loader](https://github.com/zendframework/zend-loader) | ^2.5.1
-[zendframework/zend-log](https://github.com/zendframework/zend-log) |^2.9
-[zendframework/zend-modulemanager](https://github.com/zendframework/zend-modulemanager) | ^2.7.2
-[zendframework/zend-mvc](https://github.com/zendframework/zend-mvc) | ^3.0.1
-[zendframework/zend-navigation](https://github.com/zendframework/zend-navigation) | ^2.8.1
-[zendframework/zend-paginator](https://github.com/zendframework/zend-paginator) | ^2.7
-[zendframework/zend-progressbar](https://github.com/zendframework/zend-progressbar) | ^2.5.2
-[zendframework/zend-serializer](https://github.com/zendframework/zend-serializer) | ^2.8
-[zendframework/zend-servicemanager](https://github.com/zendframework/zend-servicemanager) | ^3.1
-[zendframework/zend-stdlib](https://github.com/zendframework/zend-stdlib) | ^3.0.1
-[zendframework/zend-view](https://github.com/zendframework/zend-view) | ^2.8
-
 # Documentation
 
   1. [Installation](https://github.com/neilime/zf-twbs-helper-module/wiki/Installation)
   3. [Code coverage](https://coveralls.io/github/neilime/zf-twbs-helper-module)
+  3. [PHP Doc](https://neilime.github.io/zf-twbs-helper-module/phpdoc)
