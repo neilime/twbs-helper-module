@@ -348,7 +348,7 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
         // Define icon position
         $sIconPosition = $aIconOptions['position'] ?? self::POSITION_PREPEND;
 
-        $sIconContent = $this->htmlElement('i', ['class' => $aIconOptions['class']]);
+        $sIconContent = $this->htmlElement('i', ['class' => $aIconOptions['class']], '');
 
         return $sButtonContent
             ? $sIconPosition === self::POSITION_PREPEND
