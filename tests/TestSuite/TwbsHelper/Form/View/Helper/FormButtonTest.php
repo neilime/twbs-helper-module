@@ -63,7 +63,8 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
     {
         $this->assertEquals(
             '<button type="button" name="test" class="btn&#x20;btn-secondary" value="">'.
-            '<i class="fa-bootstrap&#x20;fab"></button>',
+            '<i class="fa-bootstrap&#x20;fab"></i>'.
+            '</button>',
             $this->formButtonHelper->render(new \Zend\Form\Element\Button(
                 'test',
                 [
@@ -77,7 +78,8 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
     {
         $this->assertEquals(
             '<button type="button" name="test" class="btn&#x20;btn-secondary" value="">'.
-            '<i class="fa-bootstrap&#x20;fab"> test</button>',
+            '<i class="fa-bootstrap&#x20;fab"></i> test'.
+            '</button>',
             $this->formButtonHelper->render(new \Zend\Form\Element\Button(
                 'test',
                 [
@@ -92,7 +94,8 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
     
         $this->assertEquals(
             '<button type="button" name="test" class="btn&#x20;btn-secondary" value="">'.
-            'test <i class="fa-bootstrap&#x20;fab"></button>',
+            'test <i class="fa-bootstrap&#x20;fab"></i>'.
+            '</button>',
             $this->formButtonHelper->render(new \Zend\Form\Element\Button(
                 'test',
                 [
