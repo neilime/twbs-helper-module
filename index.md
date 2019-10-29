@@ -15,7 +15,7 @@ title: Home
 
 # Helping Project
 
-❤️ If this project helps you reduce time to develop and/or you want to help the maintainer of this project, you can support him on [![Sponsor](https://img.shields.io/badge/%E2%9D%A4-Sponsor-ff69b4)](https://github.com/sponsors/neilime)  Thank you !
+❤️ If this project helps you reduce time to develop and/or you want to help the maintainer of this project, you can [![Sponsor](https://img.shields.io/badge/%E2%9D%A4-Sponsor-ff69b4)](https://github.com/sponsors/neilime) him. Thank you !
 
 # Contributing
 
