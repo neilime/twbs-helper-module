@@ -9,13 +9,13 @@ title: Home
 [![Latest Stable Version](https://poser.pugx.org/neilime/zf-twbs-helper-module/v/stable)](https://packagist.org/packages/neilime/zf-twbs-helper-module)
 [![Total Downloads](https://poser.pugx.org/neilime/zf-twbs-helper-module/downloads)](https://packagist.org/packages/neilime/zf-twbs-helper-module)
 [![License](https://poser.pugx.org/neilime/zf-twbs-helper-module/license)](https://packagist.org/packages/neilime/zf-twbs-helper-module)
-[![Beerpay](https://beerpay.io/neilime/zf-twbs-helper-module/badge.svg)](https://beerpay.io/neilime/zf-twbs-helper-module) 
+[![Sponsor](https://img.shields.io/badge/%E2%9D%A4-Sponsor-ff69b4)](https://github.com/sponsors/neilime) 
 
 📢 __TwbsHelper__ is a Zend Framework module for easy integration of the [Twitter Bootstrap v4](https://getbootstrap.com/).
 
 # Helping Project
 
-❤️ If this project helps you reduce time to develop and/or you want to help the maintainer of this project, you can support him on [![Beerpay](https://beerpay.io/neilime/zf-twbs-helper-module/badge.svg)](https://beerpay.io/neilime/zf-twbs-helper-module) Thank you !
+❤️ If this project helps you reduce time to develop and/or you want to help the maintainer of this project, you can support him on [![Sponsor](https://img.shields.io/badge/%E2%9D%A4-Sponsor-ff69b4)](https://github.com/sponsors/neilime)  Thank you !
 
 # Contributing
 
