@@ -15,8 +15,7 @@ title: Home
 
 # Helping Project
 
-❤️ If this project helps you reduce time to develop and/or you want to help the maintainer of this project\ 
-You can [sponsor](https://github.com/sponsors/neilime) him. Thank you !
+❤️ If this project helps you reduce time to develop and/or you want to help the maintainer of this project. You can [sponsor](https://github.com/sponsors/neilime) him. Thank you !
 
 # Contributing
 
