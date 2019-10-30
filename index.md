@@ -3,7 +3,7 @@ layout: default
 title: Home
 ---
 <p align="center">
-  <a href="https://github.com/neilime/easy-win-setup" target="_blank"><img src="resources/banner.jpg" width="600"></a>
+  <a href="https://github.com/neilime/easy-win-setup" target="_blank"><img src="https://repository-images.githubusercontent.com/80362393/0286f600-fab3-11e9-9d0a-d76983616175" width="600"></a>
 </p>
 
 [![Build Status](https://travis-ci.org/neilime/zf-twbs-helper-module.svg?branch=master)](https://travis-ci.org/neilime/zf-twbs-helper-module)
