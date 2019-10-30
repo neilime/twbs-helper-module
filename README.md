@@ -7,6 +7,7 @@
 [![Latest Stable Version](https://poser.pugx.org/neilime/zf-twbs-helper-module/v/stable)](https://packagist.org/packages/neilime/zf-twbs-helper-module)
 [![Total Downloads](https://poser.pugx.org/neilime/zf-twbs-helper-module/downloads)](https://packagist.org/packages/neilime/zf-twbs-helper-module)
 [![License](https://poser.pugx.org/neilime/zf-twbs-helper-module/license)](https://packagist.org/packages/neilime/zf-twbs-helper-module)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![Sponsor](https://img.shields.io/badge/%E2%9D%A4-Sponsor-ff69b4)](https://github.com/sponsors/neilime) 
 
 📢 __TwbsHelper__ is a Zend Framework module for easy integration of the [Twitter Bootstrap v4](https://getbootstrap.com/).
@@ -17,8 +18,7 @@
 
 # Contributing
 
-👍 If you wish to contribute to TwbsHelper, please read the [CONTRIBUTING.md](CONTRIBUTING.md) file.
-NOTE : If you want to contribute don't hesitate, I'll review any PR.
+👍 If you wish to contribute to TwbsHelper, PRs are welcome! Please read the [CONTRIBUTING.md](CONTRIBUTING.md) file.
 
 # Demonstration / example
 
