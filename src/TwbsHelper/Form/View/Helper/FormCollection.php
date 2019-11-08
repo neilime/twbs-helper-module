@@ -9,6 +9,9 @@ class FormCollection extends \Zend\Form\View\Helper\FormCollection
 {
     use \TwbsHelper\View\Helper\HtmlTrait;
 
+    protected static $fieldsetRegex = '/(<fieldset[^>]*>)([\s\S]*)(<\/fieldset[^>]*>)$/imU';
+    protected static $legendRegex = '/<legend[^>]*>([\s\S]*)<\/legend[^>]*>/imU';
+
     /**
      * This is the default wrapper that the collection is wrapped into
      *
@@ -36,7 +39,7 @@ class FormCollection extends \Zend\Form\View\Helper\FormCollection
             return $sMarkup;
         }
 
-        if (!preg_match('/(<fieldset[^>]*>)([\s\S]*)(<\/fieldset[^>]*>)/imU', $sMarkup, $aMatches)) {
+        if (!preg_match(self::$fieldsetRegex, $sMarkup, $aMatches)) {
             return $sMarkup;
         }
 
@@ -54,7 +57,7 @@ class FormCollection extends \Zend\Form\View\Helper\FormCollection
 
         // Extract legend
         $sLegendContent = '';
-        if (preg_match('/<legend[^>]*>([\s\S]*)<\/legend[^>]*>/imU', $sMarkup, $aLegendMatches)) {
+        if (preg_match(self::$legendRegex, $sMarkup, $aLegendMatches)) {
             $sLegendContent = sprintf(
                 '<legend%s>%s</legend>',
                 $this->attributesToString($this->setClassesToAttributes(
