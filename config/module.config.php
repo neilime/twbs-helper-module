@@ -4,7 +4,7 @@ namespace TwbsHelper;
 
 return [
     'twbshelper' => [
-        'ignoredViewHelpers' => [
+        'ignoredViewHelpers'        => [
             'button',
             'checkbox',
             'file',
@@ -16,20 +16,20 @@ return [
             'static',
             'add_on',
         ],
-        'validTagAttributes' => [],
+        'validTagAttributes'        => [],
         'validTagAttributePrefixes' => [],
-        'type_map'  => [],
-        'class_map' => [],
+        'type_map'                  => [],
+        'class_map'                 => [],
     ],
 
     'service_manager' => [
         'factories' => [
-            \TwbsHelper\Options\ModuleOptions::class => \TwbsHelper\Options\Factory\ModuleOptionsFactory::class,
+            \TwbsHelper\Options\ModuleOptions::class         => \TwbsHelper\Options\Factory\ModuleOptionsFactory::class,
             \Zend\I18n\Translator\TranslatorInterface::class => \Zend\I18n\Translator\TranslatorServiceFactory::class,
         ],
     ],
 
-    'view_helpers' => [
+    'view_helpers'       => [
         'invokables' => [
             // Misc view helpers
             'abbreviation'        => \TwbsHelper\View\Helper\Abbreviation::class,
@@ -60,17 +60,14 @@ return [
             'toast'               => \TwbsHelper\View\Helper\Toast::class,
 
             // Form view helpers
-            'form'                => \TwbsHelper\Form\View\Helper\Form::class,
             'formAddOn'           => \TwbsHelper\Form\View\Helper\FormAddOn::class,
             'formButton'          => \TwbsHelper\Form\View\Helper\FormButton::class,
             'formSubmit'          => \TwbsHelper\Form\View\Helper\FormButton::class,
             'formCheckbox'        => \TwbsHelper\Form\View\Helper\FormCheckbox::class,
-            'formCollection'      => \TwbsHelper\Form\View\Helper\FormCollection::class,
             'formElementErrors'   => \TwbsHelper\Form\View\Helper\FormElementErrors::class,
             'formMultiCheckbox'   => \TwbsHelper\Form\View\Helper\FormMultiCheckbox::class,
             'formRadio'           => \TwbsHelper\Form\View\Helper\FormRadio::class,
             'formRange'           => \TwbsHelper\Form\View\Helper\FormRange::class,
-            'formRow'             => \TwbsHelper\Form\View\Helper\FormRow::class,
             'formSelect'          => \TwbsHelper\Form\View\Helper\FormSelect::class,
             'formErrors'          => \TwbsHelper\Form\View\Helper\FormErrors::class,
             'formLabel'           => \TwbsHelper\Form\View\Helper\FormLabel::class,
@@ -80,24 +77,20 @@ return [
             'form_button'         => \TwbsHelper\Form\View\Helper\FormButton::class,
             'form_submit'         => \TwbsHelper\Form\View\Helper\FormButton::class,
             'form_checkbox'       => \TwbsHelper\Form\View\Helper\FormCheckbox::class,
-            'form_collection'     => \TwbsHelper\Form\View\Helper\FormCollection::class,
             'form_element_errors' => \TwbsHelper\Form\View\Helper\FormElementErrors::class,
             'form_label'          => \TwbsHelper\Form\View\Helper\FormLabel::class,
             'form_multi_checkbox' => \TwbsHelper\Form\View\Helper\FormMultiCheckbox::class,
             'form_radio'          => \TwbsHelper\Form\View\Helper\FormRadio::class,
-            'form_row'            => \TwbsHelper\Form\View\Helper\FormRow::class,
             'form_errors'         => \TwbsHelper\Form\View\Helper\FormErrors::class,
             'formaddon'           => \TwbsHelper\Form\View\Helper\FormAddOn::class,
             'formbutton'          => \TwbsHelper\Form\View\Helper\FormButton::class,
             'formsubmit'          => \TwbsHelper\Form\View\Helper\FormButton::class,
             'formcheckbox'        => \TwbsHelper\Form\View\Helper\FormCheckbox::class,
-            'formcollection'      => \TwbsHelper\Form\View\Helper\FormCollection::class,
             'formelement_errors'  => \TwbsHelper\Form\View\Helper\FormElementErrors::class,
             'formfile'            => \TwbsHelper\Form\View\Helper\FormFile::class,
             'formmulticheckbox'   => \TwbsHelper\Form\View\Helper\FormMultiCheckbox::class,
             'formradio'           => \TwbsHelper\Form\View\Helper\FormRadio::class,
             'formrange'           => \TwbsHelper\Form\View\Helper\FormRange::class,
-            'formrow'             => \TwbsHelper\Form\View\Helper\FormRow::class,
             'formselect'          => \TwbsHelper\Form\View\Helper\FormSelect::class,
             'formerrors'          => \TwbsHelper\Form\View\Helper\FormErrors::class,
             'formlabel'           => \TwbsHelper\Form\View\Helper\FormLabel::class,
@@ -109,18 +102,28 @@ return [
             'formtextarea'        => \Zend\Form\View\Helper\FormTextarea::class,
             'forminput'           => \Zend\Form\View\Helper\FormInput::class,
             'formhidden'          => \Zend\Form\View\Helper\FormHidden::class,
-            'formsearch'          => \Zend\Form\View\Helper\FormSearch::class,            
+            'formsearch'          => \Zend\Form\View\Helper\FormSearch::class,
             'translate'           => \Zend\I18n\View\Helper\Translate::class,
         ],
 
         'factories' => [
-            \TwbsHelper\Form\View\Helper\FormElement::class => \TwbsHelper\Form\View\Helper\Factory\FormElementFactory::class,
+            \TwbsHelper\Form\View\Helper\Form::class           => \TwbsHelper\Form\View\Helper\Factory\FormFactory::class,
+            \TwbsHelper\Form\View\Helper\FormElement::class    => \TwbsHelper\Form\View\Helper\Factory\FormElementFactory::class,
+            \TwbsHelper\Form\View\Helper\FormRow::class        => \TwbsHelper\Form\View\Helper\Factory\FormRowFactory::class,
+            \TwbsHelper\Form\View\Helper\FormCollection::class => \TwbsHelper\Form\View\Helper\Factory\FormCollectionFactory::class,
         ],
 
         'aliases' => [
-            'formElement'  => \TwbsHelper\Form\View\Helper\FormElement::class,
-            'form_element' => \TwbsHelper\Form\View\Helper\FormElement::class,
-            'formelement'  => \TwbsHelper\Form\View\Helper\FormElement::class,
+            'formElement'     => \TwbsHelper\Form\View\Helper\FormElement::class,
+            'form_element'    => \TwbsHelper\Form\View\Helper\FormElement::class,
+            'formelement'     => \TwbsHelper\Form\View\Helper\FormElement::class,
+            'form'            => \TwbsHelper\Form\View\Helper\Form::class,
+            'formCollection'  => \TwbsHelper\Form\View\Helper\FormCollection::class,
+            'form_collection' => \TwbsHelper\Form\View\Helper\FormCollection::class,
+            'formcollection'  => \TwbsHelper\Form\View\Helper\FormCollection::class,
+            'formRow'         => \TwbsHelper\Form\View\Helper\FormRow::class,
+            'form_row'        => \TwbsHelper\Form\View\Helper\FormRow::class,
+            'formrow'         => \TwbsHelper\Form\View\Helper\FormRow::class,
         ],
     ],
     'navigation_helpers' => [
@@ -134,7 +137,7 @@ return [
             'zendviewhelpernavigationnavbar'      => \TwbsHelper\View\Helper\Navigation\Navbar::class,
         ],
     ],
-    'view_manager' => [
+    'view_manager'       => [
         'template_map' => [
             __NAMESPACE__ . '/pagination_control' => __DIR__ . '/../view/partial/twbsPaginationControl.phtml',
         ],

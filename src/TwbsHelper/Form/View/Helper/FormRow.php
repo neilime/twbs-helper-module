@@ -13,6 +13,21 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
      */
     protected $inputErrorClass = 'is-invalid';
 
+    // Hold configurable options
+    protected $options;
+
+    /**
+     * Constructor
+     *
+     * @param \TwbsHelper\Options\ModuleOptions $options
+     * @access public
+     * @return void
+     */
+    public function __construct(\TwbsHelper\Options\ModuleOptions $options)
+    {
+        $this->options = $options;
+    }
+
     /**
      * @param \Zend\Form\ElementInterface $oElement
      * @param string|null $sLabelPosition
@@ -123,6 +138,24 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
                 [],
                 ['form-group']
             );
+        }
+
+        // Add valid custom attributes
+        if ($this->options->getValidTagAttributes()) {
+            foreach ($this->options->getValidTagAttributes() as $attribute) {
+                $this->addValidAttribute($attribute);
+            }
+        }
+
+        if ($this->options->getValidTagAttributePrefixes()) {
+            foreach ($this->options->getValidTagAttributePrefixes() as $prefix) {
+                $this->addValidAttributePrefix($prefix);
+            }
+        }
+
+        // Additional row attributes
+        if ($aRowAdditionalAttributes = $oElement->getOption('row-attributes')) {
+             $aAttributes = array_merge($aAttributes, $aRowAdditionalAttributes);
         }
 
         // Render element into form group

@@ -12,12 +12,28 @@ class FormCollection extends \Zend\Form\View\Helper\FormCollection
     protected static $fieldsetRegex = '/(<fieldset[^>]*>)([\s\S]*)(<\/fieldset[^>]*>)$/imU';
     protected static $legendRegex = '/<legend[^>]*>([\s\S]*)<\/legend[^>]*>/imU';
 
+    // Hold configurable options
+    protected $options;
+
     /**
      * This is the default wrapper that the collection is wrapped into
      *
      * @var string
      */
     protected $wrapper = '<fieldset%4$s>%2$s%1$s%3$s</fieldset>';
+
+
+    /**
+     * Constructor
+     *
+     * @param \TwbsHelper\Options\ModuleOptions $options
+     * @access public
+     * @return void
+     */
+    public function __construct(\TwbsHelper\Options\ModuleOptions $options)
+    {
+        $this->options = $options;
+    }
 
     /**
      * Render a collection by iterating through all fieldsets and elements
@@ -27,6 +43,19 @@ class FormCollection extends \Zend\Form\View\Helper\FormCollection
      */
     public function render(\Zend\Form\ElementInterface $oElement): string
     {
+        // Add valid custom attributes
+        if ($this->options->getValidTagAttributes()) {
+            foreach ($this->options->getValidTagAttributes() as $attribute) {
+                $this->addValidAttribute($attribute);
+            }
+        }
+
+        if ($this->options->getValidTagAttributePrefixes()) {
+            foreach ($this->options->getValidTagAttributePrefixes() as $prefix) {
+                $this->addValidAttributePrefix($prefix);
+            }
+        }
+
         $sElementLayout = $oElement->getOption('layout');
 
         // Set form layout class
