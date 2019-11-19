@@ -9,6 +9,21 @@ class Form extends \Zend\Form\View\Helper\Form
     const LAYOUT_HORIZONTAL = 'horizontal';
     const LAYOUT_INLINE     = 'inline';
 
+    // Hold configurable options
+    protected $options;
+
+    /**
+     * Constructor
+     *
+     * @param \TwbsHelper\Options\ModuleOptions $options
+     * @access public
+     * @return void
+     */
+    public function __construct(\TwbsHelper\Options\ModuleOptions $options)
+    {
+        $this->options = $options;
+    }
+
     /**
      * @param \Zend\Form\FormInterface $oForm
      * @return \TwbsHelper\Form\View\Helper\Form|string
@@ -29,6 +44,19 @@ class Form extends \Zend\Form\View\Helper\Form
      */
     public function render(\Zend\Form\FormInterface $oForm): string
     {
+        // Add valid custom attributes
+        if ($this->options->getValidTagAttributes()) {
+            foreach ($this->options->getValidTagAttributes() as $attribute) {
+                $this->addValidAttribute($attribute);
+            }
+        }
+
+        if ($this->options->getValidTagAttributePrefixes()) {
+            foreach ($this->options->getValidTagAttributePrefixes() as $prefix) {
+                $this->addValidAttributePrefix($prefix);
+            }
+        }
+
         // Prepare form if needed
         if (method_exists($oForm, 'prepare')) {
             $oForm->prepare();
