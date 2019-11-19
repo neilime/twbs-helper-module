@@ -7,7 +7,6 @@
 
 namespace TwbsHelper\Form\View\Helper\Factory;
 
-
 class FormCollectionFactory implements \Zend\ServiceManager\FactoryInterface
 {
     /**
