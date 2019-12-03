@@ -30,6 +30,19 @@ class Form extends \Zend\Form\View\Helper\Form
      */
     public function __invoke(\Zend\Form\FormInterface $oForm = null)
     {
+        // Add valid custom attributes
+        if ($this->options->getValidTagAttributes()) {
+            foreach ($this->options->getValidTagAttributes() as $attribute) {
+                $this->addValidAttribute($attribute);
+            }
+        }
+
+        if ($this->options->getValidTagAttributePrefixes()) {
+            foreach ($this->options->getValidTagAttributePrefixes() as $prefix) {
+                $this->addValidAttributePrefix($prefix);
+            }
+        }
+
         if ($oForm) {
             return $this->render($oForm);
         }
@@ -44,19 +57,6 @@ class Form extends \Zend\Form\View\Helper\Form
      */
     public function render(\Zend\Form\FormInterface $oForm): string
     {
-        // Add valid custom attributes
-        if ($this->options->getValidTagAttributes()) {
-            foreach ($this->options->getValidTagAttributes() as $attribute) {
-                $this->addValidAttribute($attribute);
-            }
-        }
-
-        if ($this->options->getValidTagAttributePrefixes()) {
-            foreach ($this->options->getValidTagAttributePrefixes() as $prefix) {
-                $this->addValidAttributePrefix($prefix);
-            }
-        }
-
         // Prepare form if needed
         if (method_exists($oForm, 'prepare')) {
             $oForm->prepare();
