@@ -8,7 +8,7 @@ return [
         [
             'title' => 'Background and color',
             'url' => '%bootstrap-url%/components/card/#background-and-color',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 foreach ([
                     'primary', 'secondary', 'success', 'danger',
                     'warning', 'info', 'light', 'dark',
@@ -116,7 +116,7 @@ return [
         [
             'title' => 'Border',
             'url' => '%bootstrap-url%/components/card/#border',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 foreach ([
                     'primary', 'secondary', 'success', 'danger',
                     'warning', 'info', 'light', 'dark',
@@ -225,7 +225,7 @@ return [
         [
             'title' => 'Mixins utilities',
             'url' => '%bootstrap-url%/components/card/#mixins-utilities',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->card([
                     'header' => ['Header', ['class' => 'bg-transparent border-success']],
                     'title' => 'Success card title',

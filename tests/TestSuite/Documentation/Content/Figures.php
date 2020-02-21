@@ -7,7 +7,7 @@ return [
     'tests' => [
         [
             'title' => 'Basic',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->figure(
                     'images/demo-sample.svg',
                     'A caption for the above image.',
@@ -29,7 +29,7 @@ return [
         ],
         [
             'title' => 'Aligning figure\'s caption',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->figure(
                     'images/demo-sample.svg',
                     'A caption for the above image.',

@@ -16,7 +16,7 @@ namespace TestSuite\Documentation;
  *             'url' => '%bootstrap-url%/sample/test-1', // The url of the documentation "Sample part, test 1"
  *             // The rendering function should return the expected markup
  *             // as shown in the related documentation website page
- *             'rendering' => function(\Zend\ServiceManager\ServiceManager $oViewHelperPluginManager){
+ *             'rendering' => function(\Laminas\ServiceManager\ServiceManager $oViewHelperPluginManager){
  *                 return $oViewHelperPluginManager->get('sampleTestOneHelper')->render('sample test-one');
  *             },
  *             // The expected markup (as shown in the related documentation website page)
@@ -30,7 +30,7 @@ namespace TestSuite\Documentation;
  *                 array(
  *                     'title' => '...',
  *                     'url' => '...',
- *                     'rendering' => function(\Zend\ServiceManager\ServiceManager $oViewHelperPluginManager){
+ *                     'rendering' => function(\Laminas\ServiceManager\ServiceManager $oViewHelperPluginManager){
  *                         // ...
  *                     },
  *                     'expected' => '...',
@@ -53,7 +53,7 @@ class DocumentationTest extends \PHPUnit\Framework\TestCase
 
         $oApplication = \TestSuite\Bootstrap::getServiceManager()->get('Application');
         $oApplication->bootstrap();
-        $oRouteMatch = new \Zend\Router\RouteMatch([]);
+        $oRouteMatch = new \Laminas\Router\RouteMatch([]);
         $oRouteMatch->setMatchedRouteName('test-route');
         $oApplication->getMvcEvent()->setRouteMatch($oRouteMatch);
 

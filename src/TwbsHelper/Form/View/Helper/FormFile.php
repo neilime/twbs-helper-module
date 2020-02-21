@@ -2,17 +2,17 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
-class FormFile extends \Zend\Form\View\Helper\FormInput
+class FormFile extends \Laminas\Form\View\Helper\FormInput
 {
     use \TwbsHelper\View\Helper\HtmlTrait;
 
     /**
      * Render a form <input> element from the provided $oElement
      *
-     * @param \Zend\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface $oElement
      * @return string
      */
-    public function render(\Zend\Form\ElementInterface $oElement): string
+    public function render(\Laminas\Form\ElementInterface $oElement): string
     {
         $bCustom = $oElement->getOption('custom');
 

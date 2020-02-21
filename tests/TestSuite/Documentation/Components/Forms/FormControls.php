@@ -4,8 +4,8 @@
 return [
     'title' => 'Form controls',
     'url' => '%bootstrap-url%/components/forms/#form-controls',
-    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-        $oFactory = new \Zend\Form\Factory();
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+        $oFactory = new \Laminas\Form\Factory();
 
         echo $oView->form($oFactory->create([
             'type' => 'form',
@@ -133,8 +133,8 @@ return [
         [
             'title' => 'Sizing',
             'url' => '%bootstrap-url%/components/forms/#sizing',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-                $oFactory = new \Zend\Form\Factory();
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+                $oFactory = new \Laminas\Form\Factory();
 
                 // Render large input
                 $oElement = $oFactory->create([
@@ -215,9 +215,9 @@ return [
         [
             'title' => 'Readonly',
             'url' => '%bootstrap-url%/components/forms/#readonly',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 // Render element
-                $oFactory = new \Zend\Form\Factory();
+                $oFactory = new \Laminas\Form\Factory();
                 $oElement = $oFactory->create([
                     'name' => 'readonly-input',
                     'type' => 'text',
@@ -232,8 +232,8 @@ return [
         [
             'title' => 'Readonly plain text',
             'url' => '%bootstrap-url%/components/forms/#readonly-plain-text',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-                $oFactory = new \Zend\Form\Factory();
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+                $oFactory = new \Laminas\Form\Factory();
                 // Render horizontal form
                 $oForm = $oFactory->create([
                     'type' => 'form',

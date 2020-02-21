@@ -6,7 +6,7 @@ abstract class AbstractViewHelperTestCase extends \PHPUnit\Framework\TestCase
 {
 
     /**
-     * @var \Zend\View\Helper\AbstractHtmlElement
+     * @var \Laminas\View\Helper\AbstractHtmlElement
      */
     protected $helper;
 
@@ -20,7 +20,7 @@ abstract class AbstractViewHelperTestCase extends \PHPUnit\Framework\TestCase
         }
 
         $oViewHelperPluginManager = \TestSuite\Bootstrap::getServiceManager()->get('ViewHelperManager');
-        $oRenderer = new \Zend\View\Renderer\PhpRenderer();
+        $oRenderer = new \Laminas\View\Renderer\PhpRenderer();
         $oRenderer->setHelperPluginManager($oViewHelperPluginManager);
         $this->helper = $oRenderer->getHelperPluginManager()->get($this->helper);
     }

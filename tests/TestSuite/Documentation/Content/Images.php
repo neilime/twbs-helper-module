@@ -8,7 +8,7 @@ return [
         [
             'title' => 'Responsive images',
             'url' => '%bootstrap-url%/content/images/#responsive-images',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->image('images/demo/responsive.svg', ['fluid' => true, 'alt' => 'Responsive image',]);
             },
             'expected' =>
@@ -17,7 +17,7 @@ return [
         [
             'title' => 'Image thumbnails',
             'url' => '%bootstrap-url%/content/images/#image-thumbnails',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->image('images/demo/200x200.svg', ['thumbnail' => true, 'alt' => 'Image thumbnail',]);
             },
             'expected' =>
@@ -26,7 +26,7 @@ return [
         [
             'title' => 'Aligning images',
             'url' => '%bootstrap-url%/content/images/#aligning-images',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->image(
                     'images/demo/200x200.svg',
                     ['rounded' => true, 'alt' => 'Image aligned left', 'class' => 'float-left']
@@ -52,7 +52,7 @@ return [
         [
             'title' => 'Picture',
             'url' => '%bootstrap-url%/content/images/#picture',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->image('images/demo/200x200.svg', [
                     'thumbnail' => true,
                     'fluid' => true,

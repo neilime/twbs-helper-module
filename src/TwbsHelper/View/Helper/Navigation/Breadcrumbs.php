@@ -5,7 +5,7 @@ namespace TwbsHelper\View\Helper\Navigation;
 /**
  * Helper for rendering breadcrumbs
  */
-class Breadcrumbs extends \Zend\View\Helper\Navigation\Breadcrumbs
+class Breadcrumbs extends \Laminas\View\Helper\Navigation\Breadcrumbs
 {
     protected static $navFormat =
     '<nav aria-label="breadcrumb">' . PHP_EOL .
@@ -55,7 +55,7 @@ class Breadcrumbs extends \Zend\View\Helper\Navigation\Breadcrumbs
 
         // Walk back to root
         while ($parent = $bActive->getParent()) {
-            if ($parent instanceof \Zend\Navigation\Page\AbstractPage) {
+            if ($parent instanceof \Laminas\Navigation\Page\AbstractPage) {
                 // Prepend crumb to html
                 $sHtml = $this->htmlify($parent) . PHP_EOL . $sHtml;
             }
@@ -77,10 +77,10 @@ class Breadcrumbs extends \Zend\View\Helper\Navigation\Breadcrumbs
     /**
      * Returns an HTML string containing an 'a' element for the given page
      *
-     * @param \Zend\Navigation\Page\AbstractPage $oPage
+     * @param \Laminas\Navigation\Page\AbstractPage $oPage
      * @return string HTML string
      */
-    public function htmlify(\Zend\Navigation\Page\AbstractPage $oPage)
+    public function htmlify(\Laminas\Navigation\Page\AbstractPage $oPage)
     {
         return $this->renderBreadcrumbItem(
             parent::htmlify($oPage),

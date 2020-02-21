@@ -4,10 +4,10 @@
 return [
     'title' => 'Brand',
     'url' => '%bootstrap-url%/components/navbar/#brand',
-    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
         // As a link
         echo $oView->navigation()->navbar()->render(
-            new \Zend\Navigation\Navigation(),
+            new \Laminas\Navigation\Navigation(),
             [
                 'brand' => 'Navbar',
                 'expand' => false,
@@ -19,7 +19,7 @@ return [
 
         // As a heading
         echo $oView->navigation()->navbar()->render(
-            new \Zend\Navigation\Navigation(),
+            new \Laminas\Navigation\Navigation(),
             [
                 'brand' => [
                     'content' => 'Navbar',
@@ -35,7 +35,7 @@ return [
 
         // Just an image
         echo $oView->navigation()->navbar()->render(
-            new \Zend\Navigation\Navigation(),
+            new \Laminas\Navigation\Navigation(),
             [
                 'brand' => [
                     'img' => [
@@ -51,7 +51,7 @@ return [
 
         // Image and text
         echo $oView->navigation()->navbar()->render(
-            new \Zend\Navigation\Navigation(),
+            new \Laminas\Navigation\Navigation(),
             [
                 'brand' => [
                     'content' => 'Bootstrap',

@@ -4,10 +4,10 @@
 return [
     'title' => 'Navigation',
     'url' => '%bootstrap-url%/components/card/#navigation',
-    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-        // Nav tabs (pages defined by a \Zend\Navigation\Navigation object as container)
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+        // Nav tabs (pages defined by a \Laminas\Navigation\Navigation object as container)
         echo $oView->card([
-            'nav' => new \Zend\Navigation\Navigation(
+            'nav' => new \Laminas\Navigation\Navigation(
                 [
                     ['label' => 'Active', 'uri' => '#', 'active' => true,],
                     ['label' => 'Link', 'uri' => '#',],

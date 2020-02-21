@@ -15,7 +15,7 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
     public function setUp(): void
     {
         $oViewHelperPluginManager = \TestSuite\Bootstrap::getServiceManager()->get('ViewHelperManager');
-        $oRenderer = new \Zend\View\Renderer\PhpRenderer();
+        $oRenderer = new \Laminas\View\Renderer\PhpRenderer();
         $this->formButtonHelper = $oViewHelperPluginManager
             ->get('formButton')
             ->setView($oRenderer->setHelperPluginManager($oViewHelperPluginManager));
@@ -25,7 +25,7 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage(
-            'Button expects an instanceof \Zend\Form\ElementInterface or an array / Traversable, "stdClass" given'
+            'Button expects an instanceof \Laminas\Form\ElementInterface or an array / Traversable, "stdClass" given'
         );
         
         $this->formButtonHelper->render(new \stdClass());
@@ -38,7 +38,7 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
             'Option "popover" expects a string or an array, "stdClass" given'
         );
         
-        $this->formButtonHelper->render(new \Zend\Form\Element\Button(
+        $this->formButtonHelper->render(new \Laminas\Form\Element\Button(
             'test',
             [
                 'label' => 'test',
@@ -56,7 +56,7 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
             'or a fontAwesome option; none found'
         );
         
-        $this->formButtonHelper->render(new \Zend\Form\Element\Button('test', []));
+        $this->formButtonHelper->render(new \Laminas\Form\Element\Button('test', []));
     }
 
     public function testRenderIconWithStringIconOption()
@@ -65,7 +65,7 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
             '<button type="button" name="test" class="btn&#x20;btn-secondary" value="">'.
             '<i class="fa-bootstrap&#x20;fab"></i>'.
             '</button>',
-            $this->formButtonHelper->render(new \Zend\Form\Element\Button(
+            $this->formButtonHelper->render(new \Laminas\Form\Element\Button(
                 'test',
                 [
                     'icon' => 'fab fa-bootstrap',
@@ -80,7 +80,7 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
             '<button type="button" name="test" class="btn&#x20;btn-secondary" value="">'.
             '<i class="fa-bootstrap&#x20;fab"></i> test'.
             '</button>',
-            $this->formButtonHelper->render(new \Zend\Form\Element\Button(
+            $this->formButtonHelper->render(new \Laminas\Form\Element\Button(
                 'test',
                 [
                     'label' => 'test',
@@ -96,7 +96,7 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
             '<button type="button" name="test" class="btn&#x20;btn-secondary" value="">'.
             'test <i class="fa-bootstrap&#x20;fab"></i>'.
             '</button>',
-            $this->formButtonHelper->render(new \Zend\Form\Element\Button(
+            $this->formButtonHelper->render(new \Laminas\Form\Element\Button(
                 'test',
                 [
                     'label' => 'test',
@@ -114,7 +114,7 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('"icon" button option expects a scalar value or an array, "stdClass" given');
         
-        $this->formButtonHelper->render(new \Zend\Form\Element\Button(
+        $this->formButtonHelper->render(new \Laminas\Form\Element\Button(
             'test',
             [
                 'label' => 'test',
@@ -128,7 +128,7 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('"[icon][class]" option is undefined');
         
-        $this->formButtonHelper->render(new \Zend\Form\Element\Button(
+        $this->formButtonHelper->render(new \Laminas\Form\Element\Button(
             'test',
             [
                 'label' => 'test',
@@ -144,7 +144,7 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('"[icon][class]" option expects a scalar value, "stdClass" given');
         
-        $this->formButtonHelper->render(new \Zend\Form\Element\Button(
+        $this->formButtonHelper->render(new \Laminas\Form\Element\Button(
             'test',
             [
                 'label' => 'test',
@@ -158,7 +158,7 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('"[icon][position]" option expects a string, "stdClass" given');
         
-        $this->formButtonHelper->render(new \Zend\Form\Element\Button(
+        $this->formButtonHelper->render(new \Laminas\Form\Element\Button(
             'test',
             [
                 'label' => 'test',
@@ -175,7 +175,7 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('"[icon][position]" option allows "prepend" or "append", "wrong" given');
         
-        $this->formButtonHelper->render(new \Zend\Form\Element\Button(
+        $this->formButtonHelper->render(new \Laminas\Form\Element\Button(
             'test',
             [
                 'label' => 'test',

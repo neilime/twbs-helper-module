@@ -2,7 +2,7 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
-class FormRow extends \Zend\Form\View\Helper\FormRow
+class FormRow extends \Laminas\Form\View\Helper\FormRow
 {
     use \TwbsHelper\View\Helper\HtmlTrait;
 
@@ -29,11 +29,11 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
     }
 
     /**
-     * @param \Zend\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface $oElement
      * @param string|null $sLabelPosition
      * @return string
      */
-    public function render(\Zend\Form\ElementInterface $oElement, $sLabelPosition = null): string
+    public function render(\Laminas\Form\ElementInterface $oElement, $sLabelPosition = null): string
     {
         // Retrieve element type
         $sElementType = $oElement->getAttribute('type');
@@ -94,10 +94,10 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
     }
 
     /**
-     * @param \Zend\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface $oElement
      * @return string
      */
-    public function renderFormRow(\Zend\Form\ElementInterface $oElement, $sElementContent): string
+    public function renderFormRow(\Laminas\Form\ElementInterface $oElement, $sElementContent): string
     {
         $aRowClasses = ['form-group'];
 
@@ -167,12 +167,12 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
     }
 
     /**
-     * @param \Zend\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface $oElement
      * @param string $sLabelPosition
      * @return string
      * @throws \DomainException
      */
-    protected function renderElement(\Zend\Form\ElementInterface $oElement, string $sLabelPosition = null): string
+    protected function renderElement(\Laminas\Form\ElementInterface $oElement, string $sLabelPosition = null): string
     {
         // Retrieve expected layout
         $sLayout = $oElement->getOption('layout');
@@ -231,13 +231,13 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
     /**
      * Render element's label
      *
-     * @param \Zend\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface $oElement
      * @param string $sElementContent
      * @param string $sLabelPosition
      * @return string
      */
     protected function renderLabel(
-        \Zend\Form\ElementInterface $oElement,
+        \Laminas\Form\ElementInterface $oElement,
         string $sElementContent,
         string $sLabelPosition = null
     ): string {
@@ -259,10 +259,10 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
             : $sLabelContent . PHP_EOL . $sElementContent;
     }
 
-    protected function getDefaultLabelPosition(\Zend\Form\ElementInterface $oElement, $sLabelPosition = null): string
+    protected function getDefaultLabelPosition(\Laminas\Form\ElementInterface $oElement, $sLabelPosition = null): string
     {
 
-        if ($oElement instanceof \Zend\Form\LabelAwareInterface) {
+        if ($oElement instanceof \Laminas\Form\LabelAwareInterface) {
             $sPosition = $oElement->getLabelOption('position');
             if ($sPosition) {
                 return $sPosition;
@@ -289,10 +289,10 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
     /**
      * Render element's help block
      *
-     * @param \Zend\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface $oElement
      * @return string
      */
-    protected function renderHelpBlock(\Zend\Form\ElementInterface $oElement, string $sElementContent): string
+    protected function renderHelpBlock(\Laminas\Form\ElementInterface $oElement, string $sElementContent): string
     {
         $sHelpBlock = $oElement->getOption('help_block');
         if (!$sHelpBlock) {
@@ -316,7 +316,7 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
                 ));
             }
             if (!empty($sHelpBlock['attributes'])) {
-                $aAttributes = \Zend\Stdlib\ArrayUtils::merge($aAttributes, $sHelpBlock['attributes']);
+                $aAttributes = \Laminas\Stdlib\ArrayUtils::merge($aAttributes, $sHelpBlock['attributes']);
             }
         } else {
             throw new \InvalidArgumentException(sprintf(
@@ -343,10 +343,10 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
     /**
      * Render element's errors
      *
-     * @param \Zend\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface $oElement
      * @return string
      */
-    protected function renderErrors(\Zend\Form\ElementInterface $oElement, string $sElementContent): string
+    protected function renderErrors(\Laminas\Form\ElementInterface $oElement, string $sElementContent): string
     {
         if ($this->renderErrors) {
             $sElementErrorsContent = $this->getElementErrorsHelper()->render($oElement);
@@ -360,11 +360,11 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
     /**
      * Render element's feedback
      *
-     * @param \Zend\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface $oElement
      * @param string $sElementContent
      * @return string
      */
-    protected function renderFeedback(\Zend\Form\ElementInterface $oElement, string $sElementContent): string
+    protected function renderFeedback(\Laminas\Form\ElementInterface $oElement, string $sElementContent): string
     {
         $sFeedback = $oElement->getOption('feedback');
         if ($sFeedback) {
@@ -382,11 +382,11 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
     /**
      * Render element's dedicated container
      *
-     * @param \Zend\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface $oElement
      * @param string $sElementContent
      * @return string
      */
-    protected function renderDedicatedContainer(\Zend\Form\ElementInterface $oElement, string $sElementContent): string
+    protected function renderDedicatedContainer(\Laminas\Form\ElementInterface $oElement, string $sElementContent): string
     {
         switch ($oElement->getAttribute('type')) {
             case 'checkbox':

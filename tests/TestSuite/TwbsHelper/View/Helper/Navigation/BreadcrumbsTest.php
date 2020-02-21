@@ -16,7 +16,7 @@ class BreadcrumbsTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
             '<nav aria-label="breadcrumb">' . PHP_EOL .
                 '    <ol class="breadcrumb"></ol>' . PHP_EOL .
                 '</nav>',
-            $this->helper->renderStraight(new \Zend\Navigation\Navigation([]))
+            $this->helper->renderStraight(new \Laminas\Navigation\Navigation([]))
         );
     }
 
@@ -32,7 +32,7 @@ class BreadcrumbsTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 '</li>' . PHP_EOL .
                 '    </ol>' . PHP_EOL .
                 '</nav>',
-            $this->helper->renderStraight(new \Zend\Navigation\Navigation([
+            $this->helper->renderStraight(new \Laminas\Navigation\Navigation([
                 [
                     'label' => 'Home', 'uri' => '/', 'pages' => [
                         ['label' => 'Library', 'uri' => '/library', 'active' => true],

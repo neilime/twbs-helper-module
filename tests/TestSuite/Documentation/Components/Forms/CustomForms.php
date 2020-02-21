@@ -12,8 +12,8 @@ return [
                 [
                     'title' => 'Checkboxes',
                     'url' => '%bootstrap-url%/components/forms/#checkboxes',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-                        $oFactory = new \Zend\Form\Factory();
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+                        $oFactory = new \Laminas\Form\Factory();
 
                         echo $oView->formRow($oFactory->create([
                             'name' => 'custom_checkbox',
@@ -40,8 +40,8 @@ return [
                 [
                     'title' => 'Radios',
                     'url' => '%bootstrap-url%/components/forms/#checkboxes',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-                        $oFactory = new \Zend\Form\Factory();
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+                        $oFactory = new \Laminas\Form\Factory();
 
                         echo $oView->formRow($oFactory->create([
                             'name' => 'customRadio',
@@ -81,8 +81,8 @@ return [
                 [
                     'title' => 'Inline',
                     'url' => '%bootstrap-url%/components/forms/#inline-1',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-                        $oFactory = new \Zend\Form\Factory();
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+                        $oFactory = new \Laminas\Form\Factory();
 
                         echo $oView->formRow($oFactory->create([
                             'name' => 'customRadioInline1',
@@ -124,8 +124,8 @@ return [
                 [
                     'title' => 'Disabled',
                     'url' => '%bootstrap-url%/components/forms/#disabled',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-                        $oFactory = new \Zend\Form\Factory();
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+                        $oFactory = new \Laminas\Form\Factory();
 
                         echo $oView->formRow($oFactory->create([
                             'name' => 'custom_checkbox_disabled',
@@ -179,8 +179,8 @@ return [
         [
             'title' => 'Switches',
             'url' => '%bootstrap-url%/components/forms/#switches',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-                $oFactory = new \Zend\Form\Factory();
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+                $oFactory = new \Laminas\Form\Factory();
 
                 echo $oView->formRow($oFactory->create([
                     'name' => 'custom_switch',
@@ -229,8 +229,8 @@ return [
         [
             'title' => 'Select menu',
             'url' => '%bootstrap-url%/components/forms/#select-menu',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-                $oFactory = new \Zend\Form\Factory();
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+                $oFactory = new \Laminas\Form\Factory();
 
                 echo $oView->formElement($oFactory->create([
                     'name' => 'custom_select',
@@ -358,8 +358,8 @@ return [
         [
             'title' => 'Range',
             'url' => '%bootstrap-url%/components/forms/#range',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-                $oFactory = new \Zend\Form\Factory();
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+                $oFactory = new \Laminas\Form\Factory();
 
                 echo $oView->formRow($oFactory->create([
                     'name' => 'custom_range',
@@ -378,8 +378,8 @@ return [
         [
             'title' => 'File browser',
             'url' => '%bootstrap-url%/components/forms/#file-browser',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-                $oFactory = new \Zend\Form\Factory();
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+                $oFactory = new \Laminas\Form\Factory();
 
                 echo $oView->formRow($oFactory->create([
                     'name' => 'custom_file',
@@ -401,8 +401,8 @@ return [
                 [
                     'title' => 'Translating or customizing the strings with HTML',
                     'url' => '%bootstrap-url%/components/forms/#translating-or-customizing-the-strings-with-html',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-                        $oFactory = new \Zend\Form\Factory();
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+                        $oFactory = new \Laminas\Form\Factory();
 
                         echo $oView->formRow($oFactory->create([
                             'name' => 'custom_file',

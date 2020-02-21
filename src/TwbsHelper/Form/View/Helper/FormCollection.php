@@ -5,7 +5,7 @@ namespace TwbsHelper\Form\View\Helper;
 /**
  * FormCollection
  */
-class FormCollection extends \Zend\Form\View\Helper\FormCollection
+class FormCollection extends \Laminas\Form\View\Helper\FormCollection
 {
     use \TwbsHelper\View\Helper\HtmlTrait;
 
@@ -38,10 +38,10 @@ class FormCollection extends \Zend\Form\View\Helper\FormCollection
     /**
      * Render a collection by iterating through all fieldsets and elements
      *
-     * @param \Zend\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface $oElement
      * @return string
      */
-    public function render(\Zend\Form\ElementInterface $oElement): string
+    public function render(\Laminas\Form\ElementInterface $oElement): string
     {
         // Add valid custom attributes
         if ($this->options->getValidTagAttributes()) {
@@ -75,7 +75,7 @@ class FormCollection extends \Zend\Form\View\Helper\FormCollection
         $sMarkup = $aMatches[2];
 
         // Define legend class
-        $aLabelAttributes = $oElement instanceof \Zend\Form\LabelAwareInterface ? $oElement->getLabelAttributes() : [];
+        $aLabelAttributes = $oElement instanceof \Laminas\Form\LabelAwareInterface ? $oElement->getLabelAttributes() : [];
         $aLegendClasses = ['col-form-label'];
 
         // Define legend column classes
@@ -132,12 +132,12 @@ class FormCollection extends \Zend\Form\View\Helper\FormCollection
                     $oElementOrFieldset->setOptions($aOptions);
                 }
 
-                if ($oElementOrFieldset instanceof \Zend\Form\FieldsetInterface) {
+                if ($oElementOrFieldset instanceof \Laminas\Form\FieldsetInterface) {
                     $sMarkup .= $oFieldsetHelper($oElementOrFieldset);
                 }
             }
 
-            if ($oElement instanceof \Zend\Form\Element\Collection && $oElement->shouldCreateTemplate()) {
+            if ($oElement instanceof \Laminas\Form\Element\Collection && $oElement->shouldCreateTemplate()) {
                 $sMarkup .= $this->renderTemplate($oElement);
             }
         }
@@ -167,10 +167,10 @@ class FormCollection extends \Zend\Form\View\Helper\FormCollection
     /**
      * Only render a template
      *
-     * @param \Zend\Form\Element\Collection $collection
+     * @param \Laminas\Form\Element\Collection $collection
      * @return string
      */
-    public function renderTemplate(\Zend\Form\Element\Collection $oCollection): string
+    public function renderTemplate(\Laminas\Form\Element\Collection $oCollection): string
     {
         // Set inline class
         $sElementLayout = $oCollection->getOption('layout');

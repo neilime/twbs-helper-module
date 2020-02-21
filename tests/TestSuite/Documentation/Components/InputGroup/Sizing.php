@@ -4,8 +4,8 @@
 return [
     'title' => 'Sizing',
     'url' => '%bootstrap-url%/components/input-group/#sizing',
-    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-        $oFactory = new \Zend\Form\Factory();
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+        $oFactory = new \Laminas\Form\Factory();
 
         // Small
         echo $oView->formRow($oFactory->create([

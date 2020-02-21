@@ -5,7 +5,7 @@ namespace TwbsHelper\View\Helper\Navigation;
 /**
  * Helper for rendering abbreviations
  */
-class Menu extends \Zend\View\Helper\Navigation\Menu
+class Menu extends \Laminas\View\Helper\Navigation\Menu
 {
     use \TwbsHelper\View\Helper\HtmlTrait;
 
@@ -116,13 +116,13 @@ class Menu extends \Zend\View\Helper\Navigation\Menu
      *
      * Overrides {@link AbstractHelper::htmlify()}.
      *
-     * @param \Zend\Navigation\Page\AbstractPage $oPage page to generate HTML for
+     * @param \Laminas\Navigation\Page\AbstractPage $oPage page to generate HTML for
      * @param bool $bEscapeLabel        Whether or not to escape the label
      * @param bool $bAddClassToListItem Whether or not to add the page class to the list item
      * @return string
      */
     public function htmlify(
-        \Zend\Navigation\Page\AbstractPage $oPage,
+        \Laminas\Navigation\Page\AbstractPage $oPage,
         $bEscapeLabel = true,
         $bAddClassToListItem = false
     ) {
@@ -141,7 +141,7 @@ class Menu extends \Zend\View\Helper\Navigation\Menu
             $aClasses[] = 'dropdown-toggle';
             $aDropdownOptions = $oPage->getDropdown();
             $aDropdownAttributes = [];
-            if (\Zend\Stdlib\ArrayUtils::isList($aDropdownOptions)) {
+            if (\Laminas\Stdlib\ArrayUtils::isList($aDropdownOptions)) {
                 $aDropdownOptions = ['items' => $aDropdownOptions];
             } else {
                 if (!empty($aDropdownOptions['attributes'])) {
@@ -154,7 +154,7 @@ class Menu extends \Zend\View\Helper\Navigation\Menu
                     'disable_twbs' => true,
                     'tag' => 'a',
                     'label' => $oPage->getLabel(),
-                    'dropdown' => \Zend\Stdlib\ArrayUtils::merge(
+                    'dropdown' => \Laminas\Stdlib\ArrayUtils::merge(
                         ['disable_container' => true],
                         $aDropdownOptions
                     ),

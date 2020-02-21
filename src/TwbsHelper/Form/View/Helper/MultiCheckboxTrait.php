@@ -9,10 +9,10 @@ trait MultiCheckboxTrait
     /**
      * Render a form <input type="radio"> element from the provided $oElement
      *
-     * @param \Zend\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface $oElement
      * @return string
      */
-    public function render(\Zend\Form\ElementInterface $oElement): string
+    public function render(\Laminas\Form\ElementInterface $oElement): string
     {
 
         $this->prepareElement($oElement);
@@ -50,7 +50,7 @@ trait MultiCheckboxTrait
         return $sContent;
     }
 
-    protected function prepareElement(\Zend\Form\ElementInterface $oElement)
+    protected function prepareElement(\Laminas\Form\ElementInterface $oElement)
     {
         if ($oElement->getOption('disable_twbs')) {
             return;
@@ -79,7 +79,7 @@ trait MultiCheckboxTrait
             }
 
             if (isset($aOption['attributes']['id'])) {
-                $aOption['label_attributes'] = \Zend\Stdlib\ArrayUtils::merge(
+                $aOption['label_attributes'] = \Laminas\Stdlib\ArrayUtils::merge(
                     $aOption['label_attributes'] ?? [],
                     [
                         'for' => $aOption['attributes']['id'],
@@ -90,7 +90,7 @@ trait MultiCheckboxTrait
         $oElement->setValueOptions($aValueOptions);
     }
 
-    protected function renderElementOption(\Zend\Form\ElementInterface $oElement, string $sOptionContent): string
+    protected function renderElementOption(\Laminas\Form\ElementInterface $oElement, string $sOptionContent): string
     {
 
         if ($oElement->getOption('disable_twbs')) {

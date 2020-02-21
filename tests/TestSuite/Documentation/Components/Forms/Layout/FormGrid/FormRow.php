@@ -5,8 +5,8 @@ return [
     'title' => 'Form row',
     'url' => '%bootstrap-url%/components/forms/#form-row',
 
-    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-        $oFactory = new \Zend\Form\Factory();
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+        $oFactory = new \Laminas\Form\Factory();
 
         echo $oView->form($oFactory->create([
             'type' => 'form',

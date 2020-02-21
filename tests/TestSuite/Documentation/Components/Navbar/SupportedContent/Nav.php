@@ -4,9 +4,9 @@
 return [
     'title' => 'Nav',
     'url' => '%bootstrap-url%/components/navbar/#nav',
-    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
         echo $oView->navigation()->navbar()->render(
-            new \Zend\Navigation\Navigation([
+            new \Laminas\Navigation\Navigation([
                 [
                     'label' => 'Home <span class="sr-only">(current)</span>',
                     'uri' => '#',
@@ -26,7 +26,7 @@ return [
 
         // Avoid the list-based approach
         echo $oView->navigation()->navbar()->render(
-            new \Zend\Navigation\Navigation([
+            new \Laminas\Navigation\Navigation([
                 [
                     'label' => 'Home <span class="sr-only">(current)</span>',
                     'uri' => '#',
@@ -46,7 +46,7 @@ return [
         echo PHP_EOL . '<br>' . PHP_EOL;
 
         echo $oView->navigation()->navbar()->render(
-            new \Zend\Navigation\Navigation([
+            new \Laminas\Navigation\Navigation([
                 [
                     'label' => 'Home <span class="sr-only">(current)</span>',
                     'uri' => '#',

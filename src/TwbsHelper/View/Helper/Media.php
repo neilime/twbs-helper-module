@@ -97,7 +97,7 @@ class Media extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
         if (
             $sType !== self::MEDIA_IMAGE
-            && \Zend\Stdlib\ArrayUtils::isList($aOptions)
+            && \Laminas\Stdlib\ArrayUtils::isList($aOptions)
         ) {
             $that = $this;
             return join(

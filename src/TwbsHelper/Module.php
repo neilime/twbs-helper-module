@@ -2,7 +2,7 @@
 
 namespace TwbsHelper;
 
-class Module implements \Zend\ModuleManager\Feature\ConfigProviderInterface
+class Module implements \Laminas\ModuleManager\Feature\ConfigProviderInterface
 {
 
 

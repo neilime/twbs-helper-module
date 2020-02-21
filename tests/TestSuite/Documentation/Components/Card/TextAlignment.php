@@ -4,7 +4,7 @@
 return [
     'title' => 'Text alignment',
     'url' => '%bootstrap-url%/components/card/#text-alignment',
-    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
         echo $oView->card([
             'title' => 'Special title treatment',
             'text' => 'With supporting text below as a natural lead-in to additional content.',

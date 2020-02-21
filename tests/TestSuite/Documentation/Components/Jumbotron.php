@@ -4,7 +4,7 @@
 return [
     'title' => 'Jumbotron',
     'url' => '%bootstrap-url%/components/jumbotron/',
-    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
         echo $oView->jumbotron([
             'title' => 'Hello, world!',
             'lead' => 'This is a simple hero unit, a simple jumbotron-style component ' .

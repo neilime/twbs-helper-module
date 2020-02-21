@@ -5,7 +5,7 @@ namespace TwbsHelper\View\Helper;
 /**
  * Helper for rendering pagination
  */
-class PaginationControl extends \Zend\View\Helper\PaginationControl
+class PaginationControl extends \Laminas\View\Helper\PaginationControl
 {
     use \TwbsHelper\View\Helper\HtmlTrait;
 

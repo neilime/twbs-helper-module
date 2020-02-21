@@ -8,7 +8,7 @@ return [
         [
             'title' => 'Body',
             'url' => '%bootstrap-url%/components/card/#body',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->card('This is some text within a card body.');
             },
             'expected' => '<div class="card">' . PHP_EOL .
@@ -20,7 +20,7 @@ return [
         [
             'title' => 'Titles, text, and links',
             'url' => '%bootstrap-url%/components/card/#titles-text-and-links',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->card([
                     'title' => 'Card title',
                     'subtitle' => [
@@ -50,7 +50,7 @@ return [
         [
             'title' => 'Images',
             'url' => '%bootstrap-url%/components/card/#images',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->card([
                     'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                     'text' => 'Some quick example text to build on the card title '.
@@ -69,7 +69,7 @@ return [
         [
             'title' => 'List groups',
             'url' => '%bootstrap-url%/components/card/#list-groups',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->card([
                     'listGroup' => [
                         [
@@ -115,7 +115,7 @@ return [
         [
             'title' => 'Kitchen sink',
             'url' => '%bootstrap-url%/components/card/#kitchen-sink',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->card([
                     'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                     'title' => 'Card title',
@@ -156,7 +156,7 @@ return [
         [
             'title' => 'Header and footer',
             'url' => '%bootstrap-url%/components/card/#header-and-footer',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
 
                 echo $oView->card([
                     'header' => 'Featured',

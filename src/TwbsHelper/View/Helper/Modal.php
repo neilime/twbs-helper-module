@@ -53,7 +53,7 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
             $bEscape
         );
 
-        $aOptionsAndAttributes = \Zend\Stdlib\ArrayUtils::merge(
+        $aOptionsAndAttributes = \Laminas\Stdlib\ArrayUtils::merge(
             [
                 'tabindex' => '-1',
                 'role' => 'dialog',
@@ -189,7 +189,7 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
         $sType = $aOptions['type'];
         unset($aOptions['type']);
 
-        if (\Zend\Stdlib\ArrayUtils::isList($aOptions)) {
+        if (\Laminas\Stdlib\ArrayUtils::isList($aOptions)) {
             $that = $this;
             return join(
                 PHP_EOL,
