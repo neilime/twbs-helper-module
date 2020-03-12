@@ -20,7 +20,7 @@ class FormLabel extends \Zend\Form\View\Helper\FormLabel
      * @param \Zend\Form\ElementInterface $oElement
      * @param  null|string $sLabelContent
      * @param string $sPosition
-     * @return string|\TwbsHelper\Form\View\HelperFormLabel
+     * @return string|\TwbsHelper\Form\View\Helper\FormLabel
      */
     public function __invoke(
         \Zend\Form\ElementInterface $oElement = null,
@@ -98,12 +98,19 @@ class FormLabel extends \Zend\Form\View\Helper\FormLabel
     {
         $aLabelClasses = [];
 
+        $sLayout = $oElement->getOption('layout');
+
         // Define label column class
         $sColumSize = $oElement->getOption('column');
         if (
             $sColumSize
             && $oElement->getOption('layout') !== null
             && !$this->hasColumnClassAttribute($aLabelAttributes['class'] ?? '')
+            && ! (
+                $oElement instanceof \Zend\Form\Element\Checkbox
+                && ! $oElement instanceof \Zend\Form\Element\MultiCheckbox
+                && $sLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL
+            )
         ) {
             $aLabelClasses[] = $this->getColumnCounterpartClass($sColumSize);
         }
@@ -137,7 +144,6 @@ class FormLabel extends \Zend\Form\View\Helper\FormLabel
                     $aLabelClasses[] = 'col-form-label';
                 }
 
-                $sLayout = $oElement->getOption('layout');
                 switch ($sLayout) {
                         // Hide label for "inline" layout
                     case \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE:
