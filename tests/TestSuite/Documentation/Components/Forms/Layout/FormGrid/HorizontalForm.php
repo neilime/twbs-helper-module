@@ -80,9 +80,18 @@ return [
                 ],
                 [
                     'spec' => [
-                        'type' => 'multicheckbox',
+                        'type' => 'checkbox',
                         'options' => [
                             'label' => 'Checkbox',
+                            'column' => 'sm-10',
+                        ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'type' => 'multicheckbox',
+                        'options' => [
+                            'label' => 'Multicheckbox',
                             'column' => 'sm-10',
                             'value_options' => [
                                 [
@@ -157,8 +166,18 @@ return [
         '        </div>'  . PHP_EOL .
         '    </fieldset>'  . PHP_EOL .
         '    <div class="form-group&#x20;row">' . PHP_EOL .
+        '        <div class="col-sm-10&#x20;offset-sm-2">' . PHP_EOL .
+        '            <div class="form-check">' . PHP_EOL .
+        '                <input type="hidden" name="checkbox" value="0">' .
+        '<input type="checkbox" name="checkbox" class="form-check-input" value="1">' . PHP_EOL .
+        '                <label class="form-check-label" for="checkbox">' .
+        'Checkbox</label>' . PHP_EOL .
+        '            </div>' . PHP_EOL .
+        '        </div>' . PHP_EOL .
+        '    </div>' . PHP_EOL .
+        '    <div class="form-group&#x20;row">' . PHP_EOL .
         '        <div class="col-sm-2">' . PHP_EOL .
-        '            Checkbox' . PHP_EOL .
+        '            Multicheckbox' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '        <div class="col-sm-10">' . PHP_EOL .
         '            <div class="form-check">' . PHP_EOL .

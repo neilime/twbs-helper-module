@@ -146,6 +146,19 @@ trait ClassAttributeTrait
         return $this->getPrefixedClass($sColumn, 'col');
     }
 
+    protected function getOffsetClass($sColumn): string
+    {
+        if (
+            // "auto" or number col class. Example: "auto" or "6"
+            !preg_match('/(\s|^)([1-9]|1[0-2]|auto)(\s|$)/', $sColumn)
+            // Sized col class. Example: "sm-6"
+            && !preg_match('/^(' . join('|', $this->getSizes()) . ')-([1-9]|1[0-2])$/', $sColumn)
+        ) {
+            throw new \InvalidArgumentException('Column "' . $sColumn . '" is not valid');
+        }
+        return $this->getPrefixedClass($sColumn, 'offset');
+    }
+
     protected function hasColumnClassAttribute(string $sClassAttribute): bool
     {
         return
@@ -169,6 +182,24 @@ trait ClassAttributeTrait
 
         if (preg_match('/^(' . join('|', $this->getSizes()) . ')-([1-9]|1[0-2])$/', $sColumn, $aMatches)) {
             return $this->getColumnClass(
+                $aMatches[1] . '-' . (12 - (int) $aMatches[2])
+            );
+        }
+        throw new \InvalidArgumentException('Column class "' . $sColumn . '" is not valid');
+    }
+
+    protected function getOffsetCounterpartClass(string $sColumn): string
+    {
+        if ($sColumn === 'auto') {
+            return '';
+        }
+
+        if (preg_match('/^([1-9]|1[0-2]|auto)$/', $sColumn, $aMatches)) {
+            return $this->getOffsetClass((int) $aMatches[1]);
+        }
+
+        if (preg_match('/^(' . join('|', $this->getSizes()) . ')-([1-9]|1[0-2])$/', $sColumn, $aMatches)) {
+            return $this->getOffsetClass(
                 $aMatches[1] . '-' . (12 - (int) $aMatches[2])
             );
         }

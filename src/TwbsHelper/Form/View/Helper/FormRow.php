@@ -180,6 +180,20 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
         // Render element
         $sElementContent = $this->getElementHelper()->render($oElement);
 
+        $checkBoxHorizontalLogic = false;
+        if (
+            $oElement instanceof \Zend\Form\Element\Checkbox
+            && ! $oElement instanceof \Zend\Form\Element\MultiCheckbox
+            && $sLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL
+        ) {
+            $checkBoxHorizontalLogic = true;
+            $sElementContent = $this->renderLabel(
+                $oElement,
+                $sElementContent,
+                self::LABEL_APPEND
+            );
+        }
+
         switch ($sLayout) {
             case null:
             case \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE:
@@ -216,6 +230,10 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
         $aClasses = [];
         if ($sColumn = $oElement->getOption('column')) {
             $aClasses[] = $this->getColumnClass($sColumn);
+
+            if ($checkBoxHorizontalLogic) {
+                $aClasses[] = $this->getOffsetCounterpartClass($sColumn);
+            }
         }
 
         $sElementContent = $this->htmlElement(
@@ -223,6 +241,10 @@ class FormRow extends \Zend\Form\View\Helper\FormRow
             $this->setClassesToAttributes([], $aClasses),
             $sElementContent
         );
+        
+        if ($checkBoxHorizontalLogic) {
+            return $sElementContent;
+        }
 
         return $this->renderLabel($oElement, $sElementContent, $sLabelPosition);
     }
