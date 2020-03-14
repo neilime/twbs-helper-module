@@ -55,7 +55,24 @@ class ButtonGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
         );
 
         // Render button group
-        return $this->htmlElement('div', $aAttributes, $sMarkup);
+        $sMarkup = $this->htmlElement('div', $aAttributes, $sMarkup);
+
+        if (!empty($aButtonGroupOptions['column'])) {
+            $aClasses = [];
+            $aClasses[] = $this->getColumnClass($aButtonGroupOptions['column']);
+
+            if ($aButtons[0]->getOption('layout') == \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL) {
+                $aClasses[] = $this->getOffsetCounterpartClass($aButtonGroupOptions['column']);
+            }
+
+            $sMarkup = $this->htmlElement(
+                'div',
+                $this->setClassesToAttributes([], $aClasses),
+                $sMarkup
+            );
+        }
+
+        return $sMarkup;
     }
 
     /**
@@ -118,5 +135,32 @@ class ButtonGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
         return $this->formElementHelper = new \TwbsHelper\Form\View\Helper\FormElement(
             new \TwbsHelper\Options\ModuleOptions()
         );
+    }
+
+    /**
+     * Return valid button group settings or null
+     *
+     * @param array $options
+     * @return array|NULL
+     */
+    public function getButtonGroupOptions(array $options): ?array
+    {
+        if (isset($options['button_group'])
+            && is_array($options['button_group'])
+            && isset($options['button_group']['group_name'])
+            && is_string($options['button_group']['group_name'])
+        ) {
+            $buttonGroupOptions = [];
+            $buttonGroupOptions['group_name'] = $options['button_group']['group_name'];
+            if (isset($options['button_group']['group_options'])
+                && is_array($options['button_group']['group_options'])
+            ) {
+                $buttonGroupOptions['group_options'] = $options['button_group']['group_options'];
+            } else {
+                $buttonGroupOptions['group_options'] = [];
+            }
+            return $buttonGroupOptions;
+        }
+        return null;
     }
 }

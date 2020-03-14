@@ -105,6 +105,35 @@ return [
                 ],
                 [
                     'spec' => [
+                        'type' => 'button',
+                        'name' => 'button1',
+                        'options' => [
+                            'label' => 'Button 1',
+                            'variant' => 'primary',
+                            'button_group' => [
+                                'group_name' => 'button-group-1',
+                                'group_options' => [
+                                    'column' => 'sm-10',
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'type' => 'button',
+                        'name' => 'button2',
+                        'options' => [
+                            'label' => 'Button 2',
+                            'variant' => 'secondary',
+                            'button_group' => [
+                                'group_name' => 'button-group-1',
+                            ],
+                        ],
+                    ],
+                ],
+                [
+                    'spec' => [
                         'type' => 'submit',
                         'options' => [
                             'label' => 'Sign in',
@@ -185,6 +214,16 @@ return [
         'class="form-check-input" id="gridCheck1" value="1">' . PHP_EOL .
         '                <label class="form-check-label" for="gridCheck1">' .
         'Example checkbox</label>' . PHP_EOL .
+        '            </div>' . PHP_EOL .
+        '        </div>' . PHP_EOL .
+        '    </div>' . PHP_EOL .
+        '    <div class="form-group&#x20;row">' . PHP_EOL .
+        '        <div class="col-sm-10&#x20;offset-sm-2">' . PHP_EOL .
+        '            <div class="btn-group">' . PHP_EOL .
+        '                <button type="button" name="button1" class="btn&#x20;btn-primary" value="">' .
+        'Button 1</button>' . PHP_EOL .
+        '                <button type="button" name="button2" class="btn&#x20;btn-secondary" value="">' .
+        'Button 2</button>' . PHP_EOL .
         '            </div>' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .
