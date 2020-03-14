@@ -25,7 +25,7 @@ return [
     'service_manager' => [
         'factories' => [
             \TwbsHelper\Options\ModuleOptions::class         => \TwbsHelper\Options\Factory\ModuleOptionsFactory::class,
-            \Zend\I18n\Translator\TranslatorInterface::class => \Zend\I18n\Translator\TranslatorServiceFactory::class,
+            \Laminas\I18n\Translator\TranslatorInterface::class => \Laminas\I18n\Translator\TranslatorServiceFactory::class,
         ],
     ],
 
@@ -72,7 +72,7 @@ return [
             'formErrors'          => \TwbsHelper\Form\View\Helper\FormErrors::class,
             'formLabel'           => \TwbsHelper\Form\View\Helper\FormLabel::class,
 
-            // ZF3
+            // ZF3 and Laminas
             'form_add_on'         => \TwbsHelper\Form\View\Helper\FormAddOn::class,
             'form_button'         => \TwbsHelper\Form\View\Helper\FormButton::class,
             'form_submit'         => \TwbsHelper\Form\View\Helper\FormButton::class,
@@ -96,14 +96,14 @@ return [
             'formlabel'           => \TwbsHelper\Form\View\Helper\FormLabel::class,
 
             // Zend
-            'formemail'           => \Zend\Form\View\Helper\FormEmail::class,
-            'formpassword'        => \Zend\Form\View\Helper\FormPassword::class,
-            'formtext'            => \Zend\Form\View\Helper\FormText::class,
-            'formtextarea'        => \Zend\Form\View\Helper\FormTextarea::class,
-            'forminput'           => \Zend\Form\View\Helper\FormInput::class,
-            'formhidden'          => \Zend\Form\View\Helper\FormHidden::class,
-            'formsearch'          => \Zend\Form\View\Helper\FormSearch::class,
-            'translate'           => \Zend\I18n\View\Helper\Translate::class,
+            'formemail'           => \Laminas\Form\View\Helper\FormEmail::class,
+            'formpassword'        => \Laminas\Form\View\Helper\FormPassword::class,
+            'formtext'            => \Laminas\Form\View\Helper\FormText::class,
+            'formtextarea'        => \Laminas\Form\View\Helper\FormTextarea::class,
+            'forminput'           => \Laminas\Form\View\Helper\FormInput::class,
+            'formhidden'          => \Laminas\Form\View\Helper\FormHidden::class,
+            'formsearch'          => \Laminas\Form\View\Helper\FormSearch::class,
+            'translate'           => \Laminas\I18n\View\Helper\Translate::class,
         ],
 
         'factories' => [
@@ -130,11 +130,11 @@ return [
         'invokables' => [
             // Navigation
             'breadcrumbs'                         => \TwbsHelper\View\Helper\Navigation\Breadcrumbs::class,
-            'zendviewhelpernavigationbreadcrumbs' => \TwbsHelper\View\Helper\Navigation\Breadcrumbs::class,
+            'laminasviewhelpernavigationbreadcrumbs' => \TwbsHelper\View\Helper\Navigation\Breadcrumbs::class,
             'menu'                                => \TwbsHelper\View\Helper\Navigation\Menu::class,
-            'zendviewhelpernavigationmenu'        => \TwbsHelper\View\Helper\Navigation\Menu::class,
+            'laminasviewhelpernavigationmenu'        => \TwbsHelper\View\Helper\Navigation\Menu::class,
             'navbar'                              => \TwbsHelper\View\Helper\Navigation\Navbar::class,
-            'zendviewhelpernavigationnavbar'      => \TwbsHelper\View\Helper\Navigation\Navbar::class,
+            'laminasviewhelpernavigationnavbar'      => \TwbsHelper\View\Helper\Navigation\Navbar::class,
         ],
     ],
     'view_manager'       => [

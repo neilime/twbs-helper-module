@@ -8,7 +8,7 @@ return [
         [
             'title' => 'Using utilities',
             'url' => '%bootstrap-url%/components/card/#using-utilities',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
 
                 echo $oView->card([
                     'title' => 'Card title',
@@ -44,7 +44,7 @@ return [
         [
             'title' => 'Using custom CSS',
             'url' => '%bootstrap-url%/components/card/#using-custom-css',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->card([
                     'title' => 'Special title treatment',
                     'text' => 'With supporting text below as a natural lead-in to additional content.',

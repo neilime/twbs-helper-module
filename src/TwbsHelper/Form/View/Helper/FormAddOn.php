@@ -2,7 +2,7 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
-class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
+class FormAddOn extends \Laminas\Form\View\Helper\AbstractHelper
 {
     use \TwbsHelper\View\Helper\HtmlTrait;
 
@@ -10,20 +10,20 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
     const POSITION_PREPEND = 'prepend';
 
     /**
-     * @var \Zend\Form\Factory
+     * @var \Laminas\Form\Factory
      */
     protected $formFactory;
 
     /**
-     * @param \Zend\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface $oElement
      * @return \TwbsHelper\Form\View\Helper\FormAddOn|string
      */
-    public function __invoke(\Zend\Form\ElementInterface $oElement = null, string $sContent = '')
+    public function __invoke(\Laminas\Form\ElementInterface $oElement = null, string $sContent = '')
     {
         return $oElement ? $this->render($oElement, $sContent) : $this;
     }
 
-    public function render(\Zend\Form\ElementInterface $oElement = null, string $sContent = ''): string
+    public function render(\Laminas\Form\ElementInterface $oElement = null, string $sContent = ''): string
     {
         // Addon
         $bHasAddOn = false;
@@ -36,7 +36,7 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
                 $aAttributes = ['class' => 'input-group-' . $sAddOnPosition];
 
                 // Define global add-on id based on element's aria-describedby
-                if ($sAddOnId && \Zend\Stdlib\ArrayUtils::isList($aAddOnOptions)) {
+                if ($sAddOnId && \Laminas\Stdlib\ArrayUtils::isList($aAddOnOptions)) {
                     $aAttributes['id'] = $sAddOnId;
                 }
 
@@ -80,7 +80,7 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
     /**
      * Render add-on markup
      *
-     * @param \Zend\Form\ElementInterface|array|string $aAddOnOptions
+     * @param \Laminas\Form\ElementInterface|array|string $aAddOnOptions
      * @param  string $sPosition
      * @throws \InvalidArgumentException
      * @throws \LogicException
@@ -88,10 +88,10 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
      */
     protected function renderAddOn(
         $aAddOnOptions,
-        \Zend\Form\ElementInterface $oElement,
+        \Laminas\Form\ElementInterface $oElement,
         string $sAddOnId = null
     ): string {
-        if ($aAddOnOptions instanceof \Zend\Form\ElementInterface) {
+        if ($aAddOnOptions instanceof \Laminas\Form\ElementInterface) {
             $aAddOnOptions = ['element' => $aAddOnOptions];
         } elseif (is_scalar($aAddOnOptions)) {
             $aAddOnOptions = ['text' => $aAddOnOptions];
@@ -102,7 +102,7 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
             ));
         }
 
-        if (\Zend\Stdlib\ArrayUtils::isList($aAddOnOptions)) {
+        if (\Laminas\Stdlib\ArrayUtils::isList($aAddOnOptions)) {
             $sContent = '';
             foreach ($aAddOnOptions as $aAddOnOptionsTmp) {
                 $sContent .= ($sContent ? PHP_EOL : '') . $this->renderAddOn(
@@ -121,7 +121,7 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
         return $this->renderContent($aAddOnOptions, $oElement);
     }
 
-    protected function renderContent(array $aAddOnOptions, \Zend\Form\ElementInterface $oElement): string
+    protected function renderContent(array $aAddOnOptions, \Laminas\Form\ElementInterface $oElement): string
     {
         $aAttributes = $aAddOnOptions['attributes'] ?? [];
 
@@ -159,12 +159,12 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
             case isset($aAddOnOptions['element']):
                 if (
                     is_array($aAddOnOptions['element'])
-                    && !($aAddOnOptions['element'] instanceof \Zend\Form\ElementInterface)
+                    && !($aAddOnOptions['element'] instanceof \Laminas\Form\ElementInterface)
                 ) {
                     $aAddOnOptions['element'] = $this->createFormElement($aAddOnOptions['element']);
-                } elseif (!($aAddOnOptions['element'] instanceof \Zend\Form\ElementInterface)) {
+                } elseif (!($aAddOnOptions['element'] instanceof \Laminas\Form\ElementInterface)) {
                     throw new \InvalidArgumentException(sprintf(
-                        '"element" option expects an instanceof \Zend\Form\ElementInterface, "%s" given',
+                        '"element" option expects an instanceof \Laminas\Form\ElementInterface, "%s" given',
                         is_object($aAddOnOptions['element'])
                             ? get_class($aAddOnOptions['element'])
                             : gettype($aAddOnOptions['element'])
@@ -195,7 +195,7 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
     protected function renderLabel(
         string $sAddonLabel,
         array $aAttributes,
-        \Zend\Form\ElementInterface $oElement
+        \Laminas\Form\ElementInterface $oElement
     ): string {
         return $this->getView()->plugin('formLabel')->__invoke($this->createFormElement([
             'name' => $oElement->getName(),
@@ -210,11 +210,11 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
         ]));
     }
 
-    protected function renderElement(\Zend\Form\ElementInterface $oElement, array $aAttributes): string
+    protected function renderElement(\Laminas\Form\ElementInterface $oElement, array $aAttributes): string
     {
         // Set options to improve rendering
         if ($aDropdownOptions = $oElement->getOption('dropdown')) {
-            if (\Zend\Stdlib\ArrayUtils::isList($aDropdownOptions)) {
+            if (\Laminas\Stdlib\ArrayUtils::isList($aDropdownOptions)) {
                 $oElement->setOption('dropdown', [
                     'items' => $aDropdownOptions,
                     'disable_container' => true,
@@ -225,7 +225,7 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
             }
         }
 
-        $oElement->setAttributes(\Zend\Stdlib\ArrayUtils::merge(
+        $oElement->setAttributes(\Laminas\Stdlib\ArrayUtils::merge(
             $aAttributes,
             $oElement->getAttributes()
         ));
@@ -233,8 +233,8 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
         $oHelper = $this->getView()->plugin('formElement');
 
         if (
-            $oElement instanceof \Zend\Form\Element\Checkbox
-            || $oElement instanceof \Zend\Form\Element\Radio
+            $oElement instanceof \Laminas\Form\Element\Checkbox
+            || $oElement instanceof \Laminas\Form\Element\Radio
         ) {
             $oElement->setOption('disable_twbs', true);
             return $this->renderAddOnElement(
@@ -254,10 +254,10 @@ class FormAddOn extends \Zend\Form\View\Helper\AbstractHelper
         );
     }
 
-    protected function createFormElement(array $aElement): \Zend\Form\ElementInterface
+    protected function createFormElement(array $aElement): \Laminas\Form\ElementInterface
     {
         if (!$this->formFactory) {
-            $this->formFactory = new \Zend\Form\Factory();
+            $this->formFactory = new \Laminas\Form\Factory();
         }
         return $this->formFactory->createElement($aElement);
     }

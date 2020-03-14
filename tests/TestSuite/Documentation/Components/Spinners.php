@@ -8,7 +8,7 @@ return [
         [
             'title' => 'Border spinner',
             'url' => '%bootstrap-url%/components/spinners/#border-spinner',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->spinner('Loading...');
             },
             'expected' => '<div class="spinner-border" role="status">' . PHP_EOL .
@@ -18,7 +18,7 @@ return [
                 [
                     'title' => 'Colors',
                     'url' => '%bootstrap-url%/components/spinners/#colors',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         foreach ([
                             'primary', 'secondary', 'success', 'danger',
                             'warning', 'info', 'light', 'dark',
@@ -59,7 +59,7 @@ return [
         [
             'title' => 'Growing spinner',
             'url' => '%bootstrap-url%/components/spinners/#growing-spinner',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->spinner(['type' => 'grow', 'label' => 'Loading...']);
                 
                 echo PHP_EOL . '<br>' . PHP_EOL;
@@ -111,7 +111,7 @@ return [
                 [
                     'title' => 'Margin',
                     'url' => '%bootstrap-url%/components/spinners/#margin',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->spinner([
                             'margin' => 5,
                             'label' => 'Loading...',
@@ -128,7 +128,7 @@ return [
                         [
                             'title' => 'Flex',
                             'url' => '%bootstrap-url%/components/spinners/#flex',
-                            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                                 echo $oView->spinner([
                                     'placement' => 'center',
                                     'label' => 'Loading...',
@@ -157,7 +157,7 @@ return [
                         [
                             'title' => 'Floats',
                             'url' => '%bootstrap-url%/components/spinners/#floats',
-                            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                                 echo $oView->spinner([
                                     'placement' => 'right',
                                     'label' => 'Loading...',
@@ -172,7 +172,7 @@ return [
                         [
                             'title' => 'Text align',
                             'url' => '%bootstrap-url%/components/spinners/#text-align',
-                            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                                 echo $oView->spinner([
                                     'placement' => 'text-center',
                                     'label' => 'Loading...',
@@ -189,7 +189,7 @@ return [
                 [
                     'title' => 'Size',
                     'url' => '%bootstrap-url%/components/spinners/#size',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->spinner([
                             'size' => 'sm',
                             'label' => 'Loading...',
@@ -233,7 +233,7 @@ return [
                 [
                     'title' => 'Buttons',
                     'url' => '%bootstrap-url%/components/spinners/#buttons',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->formButton([
                             'options' => [
                                 'spinner' => 'Loading...',

@@ -4,10 +4,10 @@
 return [
     'title' => 'Containers',
     'url' => '%bootstrap-url%/components/navbar/#containers',
-    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
 
         echo $oView->navigation()->navbar()->render(
-            new \Zend\Navigation\Navigation(),
+            new \Laminas\Navigation\Navigation(),
             [
                 'brand' => 'Navbar',
                 'container' => 'wrap',
@@ -18,7 +18,7 @@ return [
         echo PHP_EOL . '<br>' . PHP_EOL;
 
         echo $oView->navigation()->navbar()->render(
-            new \Zend\Navigation\Navigation(),
+            new \Laminas\Navigation\Navigation(),
             [
                 'brand' => 'Navbar',
                 'container' => 'within',

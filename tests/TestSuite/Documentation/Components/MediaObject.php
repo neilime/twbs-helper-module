@@ -8,7 +8,7 @@ return [
         [
             'title' => 'Example',
             'url' => '%bootstrap-url%/components/media-object/#example',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->media([
                     'img' => ['images/demo/64x64.svg', ['alt' => '...', 'class' => 'mr-3']],
                     'title' => 'Media heading',
@@ -34,7 +34,7 @@ return [
         [
             'title' => 'Nesting',
             'url' => '%bootstrap-url%/components/media-object/#nesting',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->media([
                     'img' => ['images/demo/64x64.svg', ['alt' => '...', 'class' => 'mr-3']],
                     'title' => 'Media heading',
@@ -82,7 +82,7 @@ return [
         [
             'title' => 'Alignment',
             'url' => '%bootstrap-url%/components/media-object/#alignment',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 // Top-aligned media
                 echo $oView->media([
                     'img' => ['images/demo/64x64.svg', ['alt' => '...', 'class' => 'align-self-start mr-3']],
@@ -180,7 +180,7 @@ return [
         [
             'title' => 'Order',
             'url' => '%bootstrap-url%/components/media-object/#order',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->media([
                     'title' => ['content' => 'Media object', 'attributes' => ['class' => 'mb-1']],
                     'text' => 'Cras sit amet nibh libero, in gravida nulla. ' .
@@ -206,7 +206,7 @@ return [
         [
             'title' => 'Media list',
             'url' => '%bootstrap-url%/components/media-object/#media-list',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->mediaList([
                     [
                         'img' => ['images/demo/64x64.svg', ['alt' => '...', 'class' => 'mr-3']],

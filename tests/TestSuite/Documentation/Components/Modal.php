@@ -12,7 +12,7 @@ return [
                 [
                     'title' => 'Modal components',
                     'url' => '%bootstrap-url%/components/modal/#modal-components',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->modal([
                             'title' => 'Modal title',
                             'Modal body text goes here.',
@@ -61,7 +61,7 @@ return [
                 [
                     'title' => 'Scrolling long content',
                     'url' => '%bootstrap-url%/components/modal/#scrolling-long-content',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         // You can also create a scrollable modal that allows scroll the modal body
                         // by adding the option 'scrollable'
                         echo $oView->modal([
@@ -211,7 +211,7 @@ return [
                 [
                     'title' => 'Vertically centered',
                     'url' => '%bootstrap-url%/components/modal/#vertically-centered',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->modal([
                             'title' => 'Modal title',
                             'Cras mattis consectetur purus sit amet fermentum. Cras justo odio, ' .
@@ -264,7 +264,7 @@ return [
                 [
                     'title' => 'Tooltips and popovers',
                     'url' => '%bootstrap-url%/components/modal/#tooltips-and-popovers',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->modal([
                             'title' => 'Modal title',
                             ['type' => 'subtitle', 'content' => 'Popover in a modal'],
@@ -330,7 +330,7 @@ return [
                 [
                     'title' => 'Optional sizes',
                     'url' => '%bootstrap-url%/components/modal/#optional-sizes',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->modal([
                             'title' => 'Extra large modal',
                             '...',

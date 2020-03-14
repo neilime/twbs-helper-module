@@ -2,7 +2,7 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
-class FormMultiCheckbox extends \Zend\Form\View\Helper\FormMultiCheckbox
+class FormMultiCheckbox extends \Laminas\Form\View\Helper\FormMultiCheckbox
 {
     use \TwbsHelper\Form\View\Helper\MultiCheckboxTrait;
 }

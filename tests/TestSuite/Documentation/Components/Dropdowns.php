@@ -12,7 +12,7 @@ return [
                 [
                     'title' => 'Single button',
                     'url' => '%bootstrap-url%/components/dropdowns/#single-button',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->formButton([
                             'name' => 'dropdown',
                             'options' => [
@@ -193,7 +193,7 @@ return [
                 [
                     'title' => 'Split button',
                     'url' => '%bootstrap-url%/components/dropdowns/#split-button',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         foreach ([
                             'primary', 'secondary', 'success', 'danger',
                             'warning', 'info', 'light', 'dark',
@@ -345,7 +345,7 @@ return [
         [
             'title' => 'Sizing',
             'url' => '%bootstrap-url%/components/dropdowns/#sizing',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 // Large button
                 echo $oView->formButton([
                     'name' => 'dropdown',
@@ -465,7 +465,7 @@ return [
                 [
                     'title' => 'Dropup',
                     'url' => '%bootstrap-url%/components/dropdowns/#dropup',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         // Dropup button
                         echo $oView->formButton([
                             'name' => 'dropup',
@@ -538,7 +538,7 @@ return [
                 [
                     'title' => 'Dropright',
                     'url' => '%bootstrap-url%/components/dropdowns/#dropright',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         // Dropright button
                         echo $oView->formButton([
                             'name' => 'dropright',
@@ -613,7 +613,7 @@ return [
         [
             'title' => 'Menu items',
             'url' => '%bootstrap-url%/components/dropdowns/#menu-items',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->formButton([
                     'name' => 'dropdown',
                     'options' => [
@@ -655,7 +655,7 @@ return [
                 [
                     'title' => 'Active',
                     'url' => '%bootstrap-url%/components/dropdowns/#active',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->dropdown()->renderMenu([
                             'Regular link',
                             'Active link' => ['active' => true],
@@ -671,7 +671,7 @@ return [
                 [
                     'title' => 'Disabled',
                     'url' => '%bootstrap-url%/components/dropdowns/#disabled',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->dropdown()->renderMenu([
                             'Regular link',
                             'Disabled link' => ['disabled' => true],
@@ -690,7 +690,7 @@ return [
         [
             'title' => 'Menu alignment',
             'url' => '%bootstrap-url%/components/dropdowns/#menu-alignment',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->formButton([
                     'name' => 'dropdown',
                     'options' => [
@@ -717,7 +717,7 @@ return [
                 [
                     'title' => 'Responsive alignment',
                     'url' => '%bootstrap-url%/components/dropdowns/#responsive-alignment',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->formButton([
                             'name' => 'dropdown',
                             'options' => [
@@ -776,7 +776,7 @@ return [
                 [
                     'title' => 'Headers',
                     'url' => '%bootstrap-url%/components/dropdowns/#headers',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->dropdown()->renderMenu([
                             'Dropdown header' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_HEADER,
                             'Action',
@@ -792,7 +792,7 @@ return [
                 [
                     'title' => 'Dividers',
                     'url' => '%bootstrap-url%/components/dropdowns/#headers',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->dropdown()->renderMenu([
                             'Action',
                             'Another action',
@@ -812,7 +812,7 @@ return [
                 [
                     'title' => 'Text',
                     'url' => '%bootstrap-url%/components/dropdowns/#headers',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->dropdown()->renderMenu([
                             '<p>Some example text that\'s free-flowing within the dropdown menu.</p>',
                             '<p class="mb-0">And this is more example text.</p>',
@@ -828,10 +828,10 @@ return [
                 [
                     'title' => 'Forms',
                     'url' => '%bootstrap-url%/components/dropdowns/#forms',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
 
                         // Create form
-                        $oFactory = new \Zend\Form\Factory();
+                        $oFactory = new \Laminas\Form\Factory();
                         $oForm = $oFactory->create([
                             'type' => 'form',
                             'name' => 'dropdown',
@@ -918,7 +918,7 @@ return [
         [
             'title' => 'Dropdown options',
             'url' => '%bootstrap-url%/components/dropdowns/#dropdown-options',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
 
                 echo '<div class="d-flex">' . PHP_EOL;
 

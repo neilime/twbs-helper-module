@@ -8,7 +8,7 @@ return [
         [
             'title' => 'Example',
             'url' => '%bootstrap-url%/components/alerts/#examples',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 foreach ([
                     'primary', 'secondary', 'success', 'danger',
                     'warning', 'info', 'light', 'dark',
@@ -47,7 +47,7 @@ return [
                 [
                     'title' => 'Link color',
                     'url' => '%bootstrap-url%/components/alerts/#link-color',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         foreach ([
                             'primary', 'secondary', 'success', 'danger',
                             'warning', 'info', 'light', 'dark',
@@ -96,7 +96,7 @@ return [
                 [
                     'title' => 'Additional content',
                     'url' => '%bootstrap-url%/components/alerts/#additional-content',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         // Success
                         echo $oView->alert(
                             '<p>Aww yeah, you successfully read this important alert message. ' .
@@ -126,7 +126,7 @@ return [
                 [
                     'title' => 'Dismissing',
                     'url' => '%bootstrap-url%/components/alerts/#dismissing',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->alert(
                             '<strong>Holy guacamole!</strong> You should check in on some of those fields below.',
                             [

@@ -10,7 +10,7 @@ class FormElementTest extends \PHPUnit\Framework\TestCase
     protected $formElementHelper;
 
     /**
-     * @var \Zend\Form\Form
+     * @var \Laminas\Form\Form
      */
     private $testform;
 
@@ -20,16 +20,16 @@ class FormElementTest extends \PHPUnit\Framework\TestCase
     public function setUp(): void
     {
         $oViewHelperPluginManager = \TestSuite\Bootstrap::getServiceManager()->get('ViewHelperManager');
-        $oRenderer = new \Zend\View\Renderer\PhpRenderer();
+        $oRenderer = new \Laminas\View\Renderer\PhpRenderer();
         $this->formElementHelper = $oViewHelperPluginManager
             ->get('formElement')
             ->setView($oRenderer->setHelperPluginManager($oViewHelperPluginManager));
 
-        $this->testform = new \Zend\Form\Form();
+        $this->testform = new \Laminas\Form\Form();
         $this->testform->add([
             'name' => 'email',
             'id' => 'email',
-            'type' => \Zend\Form\Element\Email::class,
+            'type' => \Laminas\Form\Element\Email::class,
             'options' => [
                 'label' => 'Your Email Address',
                 'label_attributes' => ['for' => 'email'],

@@ -8,7 +8,7 @@ return [
         [
             'title' => 'Examples',
             'url' => '%bootstrap-url%/content/tables/#examples',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->table([
                     'head' => ['#', 'First', 'Last', 'Handle'],
                     'body' => [
@@ -94,7 +94,7 @@ return [
         [
             'title' => 'Table head options',
             'url' => '%bootstrap-url%/content/tables/#table-head-options',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 // First table (head dark)
                 echo $oView->table([
                     'head' => [
@@ -188,7 +188,7 @@ return [
         [
             'title' => 'Striped rows',
             'url' => '%bootstrap-url%/content/tables/#striped-rows',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 // First table (head striped)
                 echo $oView->table([
                     'head' => ['#', 'First', 'Last', 'Handle'],
@@ -277,7 +277,7 @@ return [
         [
             'title' => 'Bordered table',
             'url' => '%bootstrap-url%/content/tables/#bordered-table',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 // First table (bordered)
                 echo $oView->table([
                     'head' => ['#', 'First', 'Last', 'Handle'],
@@ -363,7 +363,7 @@ return [
         [
             'title' => 'Borderless table',
             'url' => '%bootstrap-url%/content/tables/#borderless-table',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
 
                 // First table (borderless)
                 echo $oView->table([
@@ -450,7 +450,7 @@ return [
         [
             'title' => 'Hoverable rows',
             'url' => '%bootstrap-url%/content/tables/#hoverable-rows',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 // First table (hoverable)
                 echo $oView->table([
                     'head' => ['#', 'First', 'Last', 'Handle'],
@@ -536,7 +536,7 @@ return [
         [
             'title' => 'Small Table',
             'url' => '%bootstrap-url%/content/tables/#small-table',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 // First table (small)
                 echo $oView->table([
                     'head' => ['#', 'First', 'Last', 'Handle'],
@@ -622,7 +622,7 @@ return [
         [
             'title' => 'Contextual classes',
             'url' => '%bootstrap-url%/content/tables/#contextual-classes',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 // First table
                 echo $oView->table([
                     'head' => ['Class', 'Heading', 'Heading'],
@@ -840,7 +840,7 @@ return [
         [
             'title' => 'Captions',
             'url' => '%bootstrap-url%/content/tables/#captions',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->table([
                     'caption' => 'List of users',
                     'head' => ['#', 'First', 'Last', 'Handle'],
@@ -890,7 +890,7 @@ return [
                 [
                     'title' => 'Always responsive',
                     'url' => '%bootstrap-url%/content/tables/#always-responsive',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->table([
                             'responsive' => true,
                             'head' => [
@@ -965,7 +965,7 @@ return [
                 [
                     'title' => 'Breakpoint specific',
                     'url' => '%bootstrap-url%/content/tables/#breakpoint-specific',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         foreach (['sm', 'md', 'lg', 'xl'] as $iKey => $sSize) {
                             if ($iKey) {
                                 echo PHP_EOL . '<br>' . PHP_EOL;

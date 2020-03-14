@@ -8,8 +8,8 @@ return [
         [
             'title' => 'Default (stacked)',
             'url' => '%bootstrap-url%/components/forms/#default-stacked',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-                $oFactory = new \Zend\Form\Factory();
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+                $oFactory = new \Laminas\Form\Factory();
 
                 // Render Default checkbox
                 echo $oView->formRow($oFactory->create([
@@ -99,8 +99,8 @@ return [
         [
             'title' => 'Inline',
             'url' => '%bootstrap-url%/components/forms/#inline',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-                $oFactory = new \Zend\Form\Factory();
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+                $oFactory = new \Laminas\Form\Factory();
 
                 // Render checkbox
                 echo $oView->formRow($oFactory->create([
@@ -195,9 +195,9 @@ return [
         [
             'title' => 'Without labels',
             'url' => '%bootstrap-url%/components/forms/#without-labels',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
 
-                $oFactory = new \Zend\Form\Factory();
+                $oFactory = new \Laminas\Form\Factory();
 
                 // Render checkbox
                 echo $oView->formRow($oFactory->create([

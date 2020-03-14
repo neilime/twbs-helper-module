@@ -8,7 +8,7 @@ return [
         [
             'title' => 'Card groups',
             'url' => '%bootstrap-url%/components/card/#card-groups',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->cardGroup([
                     [
                         'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
@@ -152,7 +152,7 @@ return [
         [
             'title' => 'Card decks',
             'url' => '%bootstrap-url%/components/card/#card-decks',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->cardDeck([
                     [
                         'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
@@ -296,7 +296,7 @@ return [
         [
             'title' => 'Card columns',
             'url' => '%bootstrap-url%/components/card/#card-columns',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->cardColumns([
                     [
                         'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],

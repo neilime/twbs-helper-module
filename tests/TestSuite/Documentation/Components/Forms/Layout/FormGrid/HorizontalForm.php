@@ -4,8 +4,8 @@
 return [
     'title' => 'Horizontal form',
     'url' => '%bootstrap-url%/components/forms/#horizontal-form',
-    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-        $oFactory = new \Zend\Form\Factory();
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+        $oFactory = new \Laminas\Form\Factory();
 
         echo $oView->form($oFactory->create([
             'type' => 'form',
@@ -239,8 +239,8 @@ return [
             'title' => 'Horizontal form label sizing',
             'url' => '%bootstrap-url%/components/forms/#horizontal-form-label-sizing',
 
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-                $oFactory = new \Zend\Form\Factory();
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+                $oFactory = new \Laminas\Form\Factory();
 
                 echo $oView->form($oFactory->create([
                     'type' => 'form',

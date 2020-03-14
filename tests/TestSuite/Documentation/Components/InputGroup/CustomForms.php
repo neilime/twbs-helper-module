@@ -8,8 +8,8 @@ return [
         [
             'title' => 'Custom select',
             'url' => '%bootstrap-url%/components/input-group/#custom-select',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-                $oFactory = new \Zend\Form\Factory();
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+                $oFactory = new \Laminas\Form\Factory();
 
                 echo $oView->formElement($oFactory->create([
                     'name' => 'select_label_prepend',
@@ -163,8 +163,8 @@ return [
         [
             'title' => 'Custom file input',
             'url' => '%bootstrap-url%/components/input-group/#custom-file-input',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-                $oFactory = new \Zend\Form\Factory();
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+                $oFactory = new \Laminas\Form\Factory();
 
                 echo $oView->formRow($oFactory->create([
                     'name' => 'custom_file_label_prepend',

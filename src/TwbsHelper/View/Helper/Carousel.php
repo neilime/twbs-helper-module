@@ -85,7 +85,7 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 if (is_string($sKey)) {
                     $aSlide = ['src' => $sKey, 'optionsAndAttributes' => $aSlide];
                 } else {
-                    if (\Zend\Stdlib\ArrayUtils::isList($aSlide)) {
+                    if (\Laminas\Stdlib\ArrayUtils::isList($aSlide)) {
                         $aSlide = ['src' => $aSlide[0], 'optionsAndAttributes' => $aSlide[1] ?? []];
                     } else {
                         if (isset($aSlide['options'])) {

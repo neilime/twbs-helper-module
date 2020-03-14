@@ -15,7 +15,7 @@ class FormCollectionTest extends \PHPUnit\Framework\TestCase
     public function setUp(): void
     {
         $oViewHelperPluginManager = \TestSuite\Bootstrap::getServiceManager()->get('ViewHelperManager');
-        $oRenderer = new \Zend\View\Renderer\PhpRenderer();
+        $oRenderer = new \Laminas\View\Renderer\PhpRenderer();
         $this->formCollectionHelper = $oViewHelperPluginManager
             ->get('formCollection')
             ->setView($oRenderer->setHelperPluginManager($oViewHelperPluginManager));
@@ -23,11 +23,11 @@ class FormCollectionTest extends \PHPUnit\Framework\TestCase
 
     public function testRenderWithInlineLayoutAddFormInlineClass()
     {
-        $oCollection = new \Zend\Form\Element\Collection('test-collection', [
+        $oCollection = new \Laminas\Form\Element\Collection('test-collection', [
             'count' => 1,
             'layout' => 'inline',
             'should_create_template' => true,
-            'target_element' => new \Zend\Form\Element\Button(
+            'target_element' => new \Laminas\Form\Element\Button(
                 'test',
                 ['label' => 'test']
             ),
@@ -44,11 +44,11 @@ class FormCollectionTest extends \PHPUnit\Framework\TestCase
 
     public function testRenderTemplateWithInlineLayout()
     {
-        $oCollection = new \Zend\Form\Element\Collection('test-collection', [
+        $oCollection = new \Laminas\Form\Element\Collection('test-collection', [
             'count' => 1,
             'layout' => 'inline',
             'should_create_template' => true,
-            'target_element' => new \Zend\Form\Element\Button(
+            'target_element' => new \Laminas\Form\Element\Button(
                 'test',
                 ['label' => 'test']
             ),

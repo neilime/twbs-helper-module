@@ -2,7 +2,7 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
-class FormButton extends \Zend\Form\View\Helper\FormButton
+class FormButton extends \Laminas\Form\View\Helper\FormButton
 {
     use \TwbsHelper\View\Helper\HtmlTrait;
 
@@ -32,7 +32,7 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
      *
      * Proxies to {@link render()}.
      *
-     * @param array|\Zend\Form\ElementInterface|null $oElement
+     * @param array|\Laminas\Form\ElementInterface|null $oElement
      * @param null|string           $sButtonContent
      * @return string|FormButton
      */
@@ -52,7 +52,7 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
      * * bool block
      *
      * @see FormButton::render()
-     * @param array|\Zend\Form\ElementInterface $oElement
+     * @param array|\Laminas\Form\ElementInterface $oElement
      * @param string $sButtonContent
      * @throws \InvalidArgumentException
      * @return string
@@ -62,19 +62,19 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
         if (
             is_array($oElement)
             || ($oElement instanceof \Traversable
-                && !($oElement instanceof \Zend\Form\ElementInterface))
+                && !($oElement instanceof \Laminas\Form\ElementInterface))
         ) {
-            $oFactory = new \Zend\Form\Factory();
+            $oFactory = new \Laminas\Form\Factory();
 
             // Set default type if none given
             if (empty($oElement['type'])) {
-                $oElement['type'] = \Zend\Form\Element\Button::class;
+                $oElement['type'] = \Laminas\Form\Element\Button::class;
             }
 
             $oElement = $oFactory->create($oElement);
-        } elseif (!($oElement instanceof \Zend\Form\ElementInterface)) {
+        } elseif (!($oElement instanceof \Laminas\Form\ElementInterface)) {
             throw new \InvalidArgumentException(sprintf(
-                'Button expects an instanceof \Zend\Form\ElementInterface or an array / Traversable, "%s" given',
+                'Button expects an instanceof \Laminas\Form\ElementInterface or an array / Traversable, "%s" given',
                 is_object($oElement) ? get_class($oElement) : gettype($oElement)
             ));
         }
@@ -157,7 +157,7 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
         return $sMarkup;
     }
 
-    protected function getTooltipAttributes(\Zend\Form\ElementInterface $oElement) : array
+    protected function getTooltipAttributes(\Laminas\Form\ElementInterface $oElement) : array
     {
         // Retrieve tooltip options
         $aTooltipOptions = $oElement->getOption('tooltip');
@@ -184,7 +184,7 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
         return $aTooltipAttributes;
     }
 
-    protected function getPopoverAttributes(\Zend\Form\ElementInterface $oElement) : array
+    protected function getPopoverAttributes(\Laminas\Form\ElementInterface $oElement) : array
     {
         $aPopoverOption = $oElement->getOption('popover');
         if (!$aPopoverOption) {
@@ -216,7 +216,7 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
         return $aPopoverAttributes;
     }
 
-    protected function defineButtonClasses(\Zend\Form\ElementInterface $oElement)
+    protected function defineButtonClasses(\Laminas\Form\ElementInterface $oElement)
     {
         if (!empty($oElement->getOption('disable_twbs'))) {
             return;
@@ -248,7 +248,7 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
         $this->setClassesToElement($oElement, $aClasses);
     }
 
-    protected function renderButtonContent(\Zend\Form\ElementInterface $oElement, string $sButtonContent = null)
+    protected function renderButtonContent(\Laminas\Form\ElementInterface $oElement, string $sButtonContent = null)
     {
         // Define button content
         if (null === $sButtonContent) {
@@ -268,7 +268,7 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
 
             if (
                 !$this->isHTML($sButtonContent)
-                && (!$oElement instanceof \Zend\Form\LabelAwareInterface
+                && (!$oElement instanceof \Laminas\Form\LabelAwareInterface
                     || !$oElement->getLabelOption('disable_html_escape'))
             ) {
                 $sButtonContent = $this->getEscapeHtmlHelper()($sButtonContent);
@@ -292,7 +292,7 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
         return $sButtonContent;
     }
 
-    protected function renderIconContent(\Zend\Form\ElementInterface $oElement, string $sButtonContent = null)
+    protected function renderIconContent(\Laminas\Form\ElementInterface $oElement, string $sButtonContent = null)
     {
         // Retrieve icon options
         $aIconOptions = $oElement->getOption('icon');
@@ -360,7 +360,7 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
             : $sIconContent;
     }
 
-    protected function renderSpinnerContent(\Zend\Form\ElementInterface $oElement, string $sButtonContent = null)
+    protected function renderSpinnerContent(\Laminas\Form\ElementInterface $oElement, string $sButtonContent = null)
     {
         // Retrieve spinner options
         $aSpinnerOptions = $oElement->getOption('spinner');
@@ -400,10 +400,10 @@ class FormButton extends \Zend\Form\View\Helper\FormButton
     /**
      * Determine button type to use
      *
-     * @param \Zend\Form\ElementInterface $element
+     * @param \Laminas\Form\ElementInterface $element
      * @return string
      */
-    protected function getType(\Zend\Form\ElementInterface $oElement)
+    protected function getType(\Laminas\Form\ElementInterface $oElement)
     {
         $sTag = $oElement->getOption('tag');
         if (!$sTag || $sTag === 'button') {

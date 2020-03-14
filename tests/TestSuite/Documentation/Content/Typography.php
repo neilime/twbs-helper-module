@@ -8,7 +8,7 @@ return [
         [
             'title' => 'Abbreviations',
             'url' => '%bootstrap-url%/content/typography/#abbreviations',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 // First abbreviation
                 echo '<p>' . $oView->abbreviation('attr', 'attribute') . '</p>' . PHP_EOL;
                 // Second abbreviation
@@ -20,7 +20,7 @@ return [
         [
             'title' => 'Blockquotes',
             'url' => '%bootstrap-url%/content/typography/#blockquotes',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->blockquote(
                     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.'
                 );
@@ -34,7 +34,7 @@ return [
                 [
                     'title' => 'Naming a source',
                     'url' => '%bootstrap-url%/content/typography/#naming-a-source',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->blockquote(
                             // Content
                             'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.',
@@ -54,7 +54,7 @@ return [
                 [
                     'title' => 'Alignment',
                     'url' => '%bootstrap-url%/content/typography/#alignment',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         // Center
                         echo $oView->blockquote(
                             // Content
@@ -99,7 +99,7 @@ return [
                 [
                     'title' => 'Unstyled',
                     'url' => '%bootstrap-url%/content/typography/#unstyled',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->htmlList(
                             // List items
                             [
@@ -143,7 +143,7 @@ return [
                 [
                     'title' => 'Inline',
                     'url' => '%bootstrap-url%/content/typography/#inline',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->htmlList(
                             // List items
                             ['Lorem ipsum', 'Phasellus iaculis', 'Nulla volutpat',],

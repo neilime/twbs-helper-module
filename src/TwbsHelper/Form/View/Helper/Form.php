@@ -2,7 +2,7 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
-class Form extends \Zend\Form\View\Helper\Form
+class Form extends \Laminas\Form\View\Helper\Form
 {
     use \TwbsHelper\View\Helper\HtmlTrait;
 
@@ -25,10 +25,10 @@ class Form extends \Zend\Form\View\Helper\Form
     }
 
     /**
-     * @param \Zend\Form\FormInterface $oForm
+     * @param \Laminas\Form\FormInterface $oForm
      * @return \TwbsHelper\Form\View\Helper\Form|string
      */
-    public function __invoke(\Zend\Form\FormInterface $oForm = null)
+    public function __invoke(\Laminas\Form\FormInterface $oForm = null)
     {
         // Add valid custom attributes
         if ($this->options->getValidTagAttributes()) {
@@ -52,10 +52,10 @@ class Form extends \Zend\Form\View\Helper\Form
     /**
      * Render a form from the provided $oForm,
      *
-     * @param \Zend\Form\FormInterface $oForm
+     * @param \Laminas\Form\FormInterface $oForm
      * @return string
      */
-    public function render(\Zend\Form\FormInterface $oForm): string
+    public function render(\Laminas\Form\FormInterface $oForm): string
     {
         // Prepare form if needed
         if (method_exists($oForm, 'prepare')) {
@@ -83,10 +83,10 @@ class Form extends \Zend\Form\View\Helper\Form
 
 
     /**
-     * @param \Zend\Form\FormInterface $oForm
+     * @param \Laminas\Form\FormInterface $oForm
      * @return string
      */
-    protected function renderElements(\Zend\Form\FormInterface $oForm): string
+    protected function renderElements(\Laminas\Form\FormInterface $oForm): string
     {
         // Store button groups
         $aButtonGroups = [];
@@ -128,7 +128,7 @@ class Form extends \Zend\Form\View\Helper\Form
 
             // Manage button group option
             if (
-                $oElement instanceof \Zend\Form\Element\Button
+                $oElement instanceof \Laminas\Form\Element\Button
                 && !empty($buttonGroupOptions = $oButtonGroupHelper->getButtonGroupOptions($aOptions))
             ) {
                 $sButtonGroupKey = $buttonGroupOptions['group_name'];
@@ -144,7 +144,7 @@ class Form extends \Zend\Form\View\Helper\Form
                     // Only the first occured options will be set, other are ignored.
                     $aButtonGroupsOptions[$sButtonGroupKey] = $buttonGroupOptions['group_options'];
                 }
-            } elseif ($oElement instanceof \Zend\Form\FieldsetInterface) {
+            } elseif ($oElement instanceof \Laminas\Form\FieldsetInterface) {
                 $this->setClassesToElement($oElement, ['form-group']);
                 $aElementsRendering[$iKey] = $oFormCollectionHelper->__invoke($oElement);
             } else {

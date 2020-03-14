@@ -5,19 +5,19 @@ namespace TwbsHelper\Form\View\Helper\Factory;
 /**
  * Factory to inject the ModuleOptions hard dependency
  */
-class FormElementFactory implements \Zend\ServiceManager\FactoryInterface
+class FormElementFactory implements \Laminas\ServiceManager\FactoryInterface
 {
 
     /**
      * Compatibility with ZF2 (>= 2.2) -> proxy to __invoke
      *
-     * @param \Zend\ServiceManager\ServiceLocatorInterface $oServiceLocator
+     * @param \Laminas\ServiceManager\ServiceLocatorInterface $oServiceLocator
      * @param mixed $sCanonicalName
      * @param mixed $sRequestedName
      * @return void
      */
     public function createService(
-        \Zend\ServiceManager\ServiceLocatorInterface $oServiceLocator,
+        \Laminas\ServiceManager\ServiceLocatorInterface $oServiceLocator,
         $sCanonicalName = null,
         $sRequestedName = null
     ) {
@@ -25,7 +25,7 @@ class FormElementFactory implements \Zend\ServiceManager\FactoryInterface
     }
 
     /**
-     * Compatibility with ZF3
+     * Compatibility with ZF3 and Laminas
      *
      * @param \Interop\Container\ContainerInterface $oContainer
      * @param mixed $sRequestedName

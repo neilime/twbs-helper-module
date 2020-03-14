@@ -12,7 +12,7 @@ return [
                 [
                     'title' => 'Basic',
                     'url' => '%bootstrap-url%/components/toasts/#basic',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->toast([
                             'header' => [
                                 'image' => [
@@ -43,7 +43,7 @@ return [
                 [
                     'title' => 'Translucent',
                     'url' => '%bootstrap-url%/components/toasts/#translucent',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
 
                         echo '<div class="bg-dark">';
 
@@ -81,7 +81,7 @@ return [
                 [
                     'title' => 'Stacking',
                     'url' => '%bootstrap-url%/components/toasts/#stacking',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
 
                         echo $oView->toast([
                             'header' => [
@@ -139,7 +139,7 @@ return [
                 [
                     'title' => 'Placement',
                     'url' => '%bootstrap-url%/components/toasts/#placement',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
 
                         echo '<div class="bg-dark" style="position:relative;min-height:200px;">';
 
@@ -216,7 +216,7 @@ return [
                 [
                     'title' => 'Accessibility',
                     'url' => '%bootstrap-url%/components/toasts/#accessibility',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->toast([
                             'autohide' => false,
                             'header' => [

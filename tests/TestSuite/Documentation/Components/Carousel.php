@@ -12,7 +12,7 @@ return [
                 [
                     'title' => 'Slides only',
                     'url' => '%bootstrap-url%/components/carousel/#slides-only',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->carousel([
                             [
                                 'src' => 'images/demo-sample.svg',
@@ -43,7 +43,7 @@ return [
                 [
                     'title' => 'With controls',
                     'url' => '%bootstrap-url%/components/carousel/#with-controls',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->carousel([
                             [
                                 'src' => 'images/demo-sample.svg',
@@ -84,7 +84,7 @@ return [
                 [
                     'title' => 'With indicators',
                     'url' => '%bootstrap-url%/components/carousel/#with-indicators',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->carousel([
                             [
                                 'src' => 'images/demo-sample.svg',
@@ -131,7 +131,7 @@ return [
                 [
                     'title' => 'With captions',
                     'url' => '%bootstrap-url%/components/carousel/#with-captions',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->carousel([
                             [
                                 'src' => 'images/demo-sample.svg',
@@ -219,7 +219,7 @@ return [
                 [
                     'title' => 'Crossfade',
                     'url' => '%bootstrap-url%/components/carousel/#crossfade',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->carousel([
                             [
                                 'src' => 'images/demo-sample.svg',
@@ -260,7 +260,7 @@ return [
                 [
                     'title' => 'Individual .carousel-item interval',
                     'url' => '%bootstrap-url%/components/carousel/#individual-carousel-item-interval',
-                    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->carousel([
                             ['src' => 'images/demo-sample.svg', 'optionsAndAttributes' => [
                                 'interval' => 10000,

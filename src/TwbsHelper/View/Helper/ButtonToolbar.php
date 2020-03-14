@@ -68,7 +68,7 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
     /**
      * Render toolbar item markup
      *
-     * @param array|\Zend\Form\ElementInterface $oItem
+     * @param array|\Laminas\Form\ElementInterface $oItem
      * @return string
      */
     protected function renderToolbarItem($oItem): string
@@ -77,11 +77,11 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
             if (isset($oItem['buttons'])) {
                 return   $this->getButtonGroupHelper()->__invoke($oItem['buttons'], $oItem['options'] ?? []);
             }
-            $oFactory = new \Zend\Form\Factory();
+            $oFactory = new \Laminas\Form\Factory();
             $oItem = $oFactory->create($oItem);
         }
 
-        if ($oItem instanceof \Zend\Form\ElementInterface) {
+        if ($oItem instanceof \Laminas\Form\ElementInterface) {
             return $this->getFormElementHelper()->__invoke($oItem);
         }
 

@@ -7,7 +7,7 @@ class Bootstrap
 {
 
     /**
-     * @var \Zend\ServiceManager\ServiceManager
+     * @var \Laminas\ServiceManager\ServiceManager
      */
     protected static $serviceManager;
 
@@ -37,8 +37,8 @@ class Bootstrap
 
         // Prepare the service manager
         static::$config = $aApplicationConfig;
-        $oServiceManager = new \Zend\ServiceManager\ServiceManager();
-        $oServiceManagerConfig = new \Zend\Mvc\Service\ServiceManagerConfig(static::$config['service_manager'] ??  []);
+        $oServiceManager = new \Laminas\ServiceManager\ServiceManager();
+        $oServiceManagerConfig = new \Laminas\Mvc\Service\ServiceManagerConfig(static::$config['service_manager'] ??  []);
         $oServiceManagerConfig->configureServiceManager($oServiceManager);
         $oServiceManager->setService('ApplicationConfig', static::$config);
 
@@ -49,7 +49,7 @@ class Bootstrap
     }
 
     /**
-     * @return \Zend\ServiceManager\ServiceManager
+     * @return \Laminas\ServiceManager\ServiceManager
      */
     public static function getServiceManager()
     {
