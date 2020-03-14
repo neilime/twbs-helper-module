@@ -91,8 +91,8 @@ class Form extends \Zend\Form\View\Helper\Form
         // Store button groups
         $aButtonGroups = [];
 
-        // Store button groups column from buttons
-        $aButtonGroupsColumns = [];
+        // Store button group options
+        $aButtonGroupsOptions = [];
 
         // Store elements rendering
         $aElementsRendering = [];
@@ -127,7 +127,24 @@ class Form extends \Zend\Form\View\Helper\Form
             }
 
             // Manage button group option
-            if ($oElement instanceof \Zend\Form\FieldsetInterface) {
+            if (
+                $oElement instanceof \Zend\Form\Element\Button
+                && !empty($buttonGroupOptions = $oButtonGroupHelper->getButtonGroupOptions($aOptions))
+            ) {
+                $sButtonGroupKey = $buttonGroupOptions['group_name'];
+
+                if (isset($aButtonGroups[$sButtonGroupKey])) {
+                    $aButtonGroups[$sButtonGroupKey][] = $oElement;
+                } else {
+                    $aButtonGroups[$sButtonGroupKey] = [$oElement];
+                    $aElementsRendering[$iKey] = $sButtonGroupKey;
+                }
+
+                if (!isset($aButtonGroupsOptions[$sButtonGroupKey])) {
+                    // Only the first occured options will be set, other are ignored.
+                    $aButtonGroupsOptions[$sButtonGroupKey] = $buttonGroupOptions['group_options'];
+                }
+            } elseif ($oElement instanceof \Zend\Form\FieldsetInterface) {
                 $this->setClassesToElement($oElement, ['form-group']);
                 $aElementsRendering[$iKey] = $oFormCollectionHelper->__invoke($oElement);
             } else {
@@ -139,6 +156,25 @@ class Form extends \Zend\Form\View\Helper\Form
         $sFormContent = '';
 
         foreach ($aElementsRendering as $sElementRendering) {
+            // Check if element rendering is a button group key
+            if (isset($aButtonGroups[$sElementRendering])) {
+                $aButtons = $aButtonGroups[$sElementRendering];
+                $aGroupOptions = $aButtonGroupsOptions[$sElementRendering];
+                $oElement = current($aButtons);
+
+                if (
+                    !empty($aGroupOptions['column'])
+                    && $sFormLayout == self::LAYOUT_HORIZONTAL
+                ) {
+                    // Make sure, that form row will also get actual row attribute
+                    $oElement->setOption('column', $aGroupOptions['column']);
+                }
+
+                $sElementRendering = $oFormRowHelper->renderFormRow(
+                    $oElement,
+                    $oButtonGroupHelper($aButtons, $aGroupOptions)
+                );
+            }
             if ($sElementRendering) {
                 $sFormContent .= ($sFormContent ? PHP_EOL : '') . $sElementRendering;
             }
