@@ -1,6 +1,6 @@
 theme: jekyll-theme-architect
-name: TwbsHelper - Zend Framework module
-tagline: Zend Framework module for easy integration of Twitter Bootstrap
+name: TwbsHelper - Laminas module
+tagline: Laminas (formerly Zend Framework) module for easy integration of Twitter Bootstrap
 owner: neilime
 repository: neilime/zf-twbs-helper-module
 exclude: ['nbproject']

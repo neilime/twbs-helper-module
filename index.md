@@ -14,7 +14,7 @@ title: Home
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![Sponsor](https://img.shields.io/badge/%E2%9D%A4-Sponsor-ff69b4)](https://github.com/sponsors/neilime) 
 
-📢 __TwbsHelper__ is a Zend Framework module for easy integration of the [Twitter Bootstrap v4](https://getbootstrap.com/).
+📢 __TwbsHelper__ is a Laminas (formerly Zend Framework) module for easy integration of the [Twitter Bootstrap v4](https://getbootstrap.com/).
 
 # Helping Project
 
