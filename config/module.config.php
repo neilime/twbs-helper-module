@@ -69,7 +69,6 @@ return [
             'formRadio'           => \TwbsHelper\Form\View\Helper\FormRadio::class,
             'formRange'           => \TwbsHelper\Form\View\Helper\FormRange::class,
             'formSelect'          => \TwbsHelper\Form\View\Helper\FormSelect::class,
-            'formErrors'          => \TwbsHelper\Form\View\Helper\FormErrors::class,
             'formLabel'           => \TwbsHelper\Form\View\Helper\FormLabel::class,
 
             // Laminas and ZF3
@@ -81,7 +80,6 @@ return [
             'form_label'          => \TwbsHelper\Form\View\Helper\FormLabel::class,
             'form_multi_checkbox' => \TwbsHelper\Form\View\Helper\FormMultiCheckbox::class,
             'form_radio'          => \TwbsHelper\Form\View\Helper\FormRadio::class,
-            'form_errors'         => \TwbsHelper\Form\View\Helper\FormErrors::class,
             'formaddon'           => \TwbsHelper\Form\View\Helper\FormAddOn::class,
             'formbutton'          => \TwbsHelper\Form\View\Helper\FormButton::class,
             'formsubmit'          => \TwbsHelper\Form\View\Helper\FormButton::class,
@@ -92,7 +90,6 @@ return [
             'formradio'           => \TwbsHelper\Form\View\Helper\FormRadio::class,
             'formrange'           => \TwbsHelper\Form\View\Helper\FormRange::class,
             'formselect'          => \TwbsHelper\Form\View\Helper\FormSelect::class,
-            'formerrors'          => \TwbsHelper\Form\View\Helper\FormErrors::class,
             'formlabel'           => \TwbsHelper\Form\View\Helper\FormLabel::class,
 
             // Zend
