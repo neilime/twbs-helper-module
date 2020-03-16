@@ -1,10 +1,10 @@
 {
     "name": "neilime/zf-twbs-helper-module",
     "type": "library",
-    "description": "Zend Framework/Laminas module for easy integration of Twitter Bootstrap",
+    "description": "Laminas (formerly Zend Framework) module for easy integration of Twitter Bootstrap",
     "keywords": [
-        "Zend Framework",
         "Laminas",
+        "Zend Framework",
         "Twitter Bootstrap",
         "module"
     ],

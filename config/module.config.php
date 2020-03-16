@@ -72,7 +72,7 @@ return [
             'formErrors'          => \TwbsHelper\Form\View\Helper\FormErrors::class,
             'formLabel'           => \TwbsHelper\Form\View\Helper\FormLabel::class,
 
-            // ZF3 and Laminas
+            // Laminas and ZF3
             'form_add_on'         => \TwbsHelper\Form\View\Helper\FormAddOn::class,
             'form_button'         => \TwbsHelper\Form\View\Helper\FormButton::class,
             'form_submit'         => \TwbsHelper\Form\View\Helper\FormButton::class,

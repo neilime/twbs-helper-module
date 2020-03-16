@@ -26,7 +26,7 @@ class FormFactory implements \Laminas\ServiceManager\FactoryInterface
     }
 
     /**
-     * Compatibility with ZF3 and Laminas
+     * Compatibility with Laminas and ZF3
      *
      * @param \Interop\Container\ContainerInterface $oContainer
      * @param mixed $sRequestedName
