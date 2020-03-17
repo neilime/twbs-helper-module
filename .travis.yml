@@ -10,6 +10,7 @@ matrix:
   include:
   - php: '7.2'
   - php: '7.3'
+  - php: '7.4'
     env:
     - EXECUTE_AFTER_SCRIPT=true
     - GH_PAGES_EXTRA_PROCESS="php ${TRAVIS_BUILD_DIR}/scripts/generateDemoFromDocumentationTestConfigs.php ${HOME}/gh-pages/demo.md ${HOME}/gh-pages/_includes/demo-menu.html"
