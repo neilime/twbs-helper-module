@@ -4,9 +4,9 @@
 return [
     'title' => 'Supported content',
     'url' => '%bootstrap-url%/components/navbar/#supported-content',
-    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
         echo $oView->navigation()->navbar()->render(
-            new \Zend\Navigation\Navigation([
+            new \Laminas\Navigation\Navigation([
                 ['label' => 'Home <span class="sr-only">(current)</span>', 'uri' => '#', 'active' => true],
                 ['label' => 'Link', 'uri' => '#'],
                 [

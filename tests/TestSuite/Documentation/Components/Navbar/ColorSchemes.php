@@ -4,9 +4,9 @@
 return [
     'title' => 'Color schemes',
     'url' => '%bootstrap-url%/components/navbar/#color-schemes',
-    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
 
-        $oNavigationContainer = new \Zend\Navigation\Navigation([
+        $oNavigationContainer = new \Laminas\Navigation\Navigation([
             ['label' => 'Home <span class="sr-only">(current)</span>', 'uri' => '#', 'active' => true],
             ['label' => 'Link', 'uri' => '#'],
             ['label' => 'Features', 'uri' => '#'],

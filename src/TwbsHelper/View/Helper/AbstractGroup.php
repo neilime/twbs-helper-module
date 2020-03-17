@@ -35,7 +35,7 @@ abstract class AbstractGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
         $oItemHelper = $this->getView()->plugin(static::$helperName);
 
         foreach ($aItems as $aItem) {
-            $aArguments = \Zend\Stdlib\ArrayUtils::isList($aItem) ?
+            $aArguments = \Laminas\Stdlib\ArrayUtils::isList($aItem) ?
                 [$aItem[0], $aItem[1] ?? [], $aItem[2] ??  $bEscape]
                 : [$aItem, [], $bEscape];
 
@@ -48,7 +48,7 @@ abstract class AbstractGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
     }
 
     protected function renderGroupItem(
-        \Zend\View\Helper\HelperInterface $oItemHelper,
+        \Laminas\View\Helper\HelperInterface $oItemHelper,
         array $aArguments
     ): string {
         return call_user_func_array([$oItemHelper, '__invoke'], $aArguments);

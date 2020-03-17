@@ -13,7 +13,7 @@ class ButtonGroupTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
     public function testRenderWithWrongButtonItem()
     {
         $this->expectExceptionMessage(
-            'Button expects an instanceof \Zend\Form\ElementInterface or an array / Traversable, "string" given'
+            'Button expects an instanceof \Laminas\Form\ElementInterface or an array / Traversable, "string" given'
         );
         $this->helper->render(['wrong']);
     }

@@ -4,8 +4,8 @@
 return [
     'title' => 'Help text',
     'url' => '%bootstrap-url%/components/forms/#help-text',
-    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-        $oFactory = new \Zend\Form\Factory();
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+        $oFactory = new \Laminas\Form\Factory();
 
         echo $oView->formRow($oFactory->create([
             'name' => 'password',

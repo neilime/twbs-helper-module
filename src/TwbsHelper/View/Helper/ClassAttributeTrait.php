@@ -41,10 +41,10 @@ trait ClassAttributeTrait
     }
 
     protected function setClassesToElement(
-        \Zend\Form\ElementInterface $oElement,
+        \Laminas\Form\ElementInterface $oElement,
         array $aAddClasses = [],
         array $aRemoveClasses = []
-    ): \Zend\Form\ElementInterface {
+    ): \Laminas\Form\ElementInterface {
         return $oElement->setAttributes(
             $this->setClassesToAttributes(
                 $oElement->getAttributes(),

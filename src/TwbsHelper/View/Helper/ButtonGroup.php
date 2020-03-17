@@ -88,20 +88,20 @@ class ButtonGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
             if (
                 is_array($oButton)
                 || ($oButton instanceof \Traversable
-                    && !($oButton instanceof \Zend\Form\ElementInterface))
+                    && !($oButton instanceof \Laminas\Form\ElementInterface))
             ) {
-                $oFactory = new \Zend\Form\Factory();
+                $oFactory = new \Laminas\Form\Factory();
                 $oButton = $oFactory->create($oButton);
-            } elseif (!($oButton instanceof \Zend\Form\ElementInterface)) {
+            } elseif (!($oButton instanceof \Laminas\Form\ElementInterface)) {
                 throw new \LogicException(sprintf(
-                    'Button expects an instanceof \Zend\Form\ElementInterface or an array / Traversable, "%s" given',
+                    'Button expects an instanceof \Laminas\Form\ElementInterface or an array / Traversable, "%s" given',
                     is_object($oButton) ? get_class($oButton) : gettype($oButton)
                 ));
             }
 
             $aDropdownOptions = $oButton->getOption('dropdown');
             if ($aDropdownOptions) {
-                if (\Zend\Stdlib\ArrayUtils::isList($aDropdownOptions)) {
+                if (\Laminas\Stdlib\ArrayUtils::isList($aDropdownOptions)) {
                     $aDropdownOptions = ['items' => $aDropdownOptions];
                 }
                 $aDropdownOptions['disable_container'] = true;

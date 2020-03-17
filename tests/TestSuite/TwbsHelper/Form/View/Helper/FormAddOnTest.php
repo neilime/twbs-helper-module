@@ -15,7 +15,7 @@ class FormAddOnTest extends \PHPUnit\Framework\TestCase
     public function setUp(): void
     {
         $oViewHelperPluginManager = \TestSuite\Bootstrap::getServiceManager()->get('ViewHelperManager');
-        $oRenderer = new \Zend\View\Renderer\PhpRenderer();
+        $oRenderer = new \Laminas\View\Renderer\PhpRenderer();
         $this->formAddOnHelper = $oViewHelperPluginManager
             ->get('formAddOn')
             ->setView($oRenderer->setHelperPluginManager($oViewHelperPluginManager));
@@ -39,7 +39,7 @@ class FormAddOnTest extends \PHPUnit\Framework\TestCase
             '        </div>'. PHP_EOL .
             '    </div>'. PHP_EOL .
             '</div>',
-            $this->formAddOnHelper->__invoke(new \Zend\Form\Element\Text(
+            $this->formAddOnHelper->__invoke(new \Laminas\Form\Element\Text(
                 'test',
                 ['add_on_prepend' => '@']
             ))
@@ -56,10 +56,10 @@ class FormAddOnTest extends \PHPUnit\Framework\TestCase
             '</button>' . PHP_EOL .
             '    </div>' . PHP_EOL .
             '</div>',
-            $this->formAddOnHelper->__invoke(new \Zend\Form\Element\Text(
+            $this->formAddOnHelper->__invoke(new \Laminas\Form\Element\Text(
                 'test',
                 [
-                    'add_on_prepend' => new \Zend\Form\Element\Button(
+                    'add_on_prepend' => new \Laminas\Form\Element\Button(
                         'add-on',
                         ['label' => 'Add-On']
                     )
@@ -73,7 +73,7 @@ class FormAddOnTest extends \PHPUnit\Framework\TestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Addon options expects an array or a scalar value, "stdClass" given');
         
-        $this->formAddOnHelper->__invoke(new \Zend\Form\Element\Text(
+        $this->formAddOnHelper->__invoke(new \Laminas\Form\Element\Text(
             'test',
             ['add_on_prepend' => new \stdClass()]
         ));
@@ -84,7 +84,7 @@ class FormAddOnTest extends \PHPUnit\Framework\TestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('"text" option expects a string, "stdClass" given');
         
-        $this->formAddOnHelper->__invoke(new \Zend\Form\Element\Text(
+        $this->formAddOnHelper->__invoke(new \Laminas\Form\Element\Text(
             'test',
             ['add_on_prepend' => ['text' => new \stdClass()]]
         ));
@@ -95,7 +95,7 @@ class FormAddOnTest extends \PHPUnit\Framework\TestCase
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('"label" option expects a string, "stdClass" given');
         
-        $this->formAddOnHelper->__invoke(new \Zend\Form\Element\Text(
+        $this->formAddOnHelper->__invoke(new \Laminas\Form\Element\Text(
             'test',
             ['add_on_prepend' => ['label' => new \stdClass()]]
         ));
@@ -105,10 +105,10 @@ class FormAddOnTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage(
-            '"element" option expects an instanceof \Zend\Form\ElementInterface, "stdClass" given'
+            '"element" option expects an instanceof \Laminas\Form\ElementInterface, "stdClass" given'
         );
         
-        $this->formAddOnHelper->__invoke(new \Zend\Form\Element\Text(
+        $this->formAddOnHelper->__invoke(new \Laminas\Form\Element\Text(
             'test',
             ['add_on_prepend' => ['element' => new \stdClass()]]
         ));
@@ -121,7 +121,7 @@ class FormAddOnTest extends \PHPUnit\Framework\TestCase
             'Addon options expects a text or an element to render, none given'
         );
         
-        $this->formAddOnHelper->__invoke(new \Zend\Form\Element\Text(
+        $this->formAddOnHelper->__invoke(new \Laminas\Form\Element\Text(
             'test',
             ['add_on_prepend' => ['wrong' => new \stdClass()]]
         ));

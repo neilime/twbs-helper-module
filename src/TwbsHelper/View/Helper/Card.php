@@ -62,7 +62,7 @@ class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
             $aBodyItems = [];
             foreach ($sContent as $sKey => $aContentData) {
-                if (\Zend\Stdlib\ArrayUtils::isList($aContentData)) {
+                if (\Laminas\Stdlib\ArrayUtils::isList($aContentData)) {
                     $aArguments = $aContentData;
                 } else {
                     $aArguments = [$aContentData];
@@ -125,11 +125,11 @@ class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
         $sContent = $aArguments[0];
         // Nav header
         $aOptions = [];
-        if (is_string($sContent) || $sContent instanceof \Zend\Navigation\Navigation) {
+        if (is_string($sContent) || $sContent instanceof \Laminas\Navigation\Navigation) {
             $oContainer = $sContent;
         } elseif (is_array($sContent)) {
-            if (\Zend\Stdlib\ArrayUtils::isList($sContent)) {
-                $oContainer = new \Zend\Navigation\Navigation($sContent);
+            if (\Laminas\Stdlib\ArrayUtils::isList($sContent)) {
+                $oContainer = new \Laminas\Navigation\Navigation($sContent);
             } else {
                 if (!isset($sContent['container'])) {
                     throw new \InvalidArgumentException('nav[\'container\'] is undefined');
@@ -140,8 +140,8 @@ class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
                 $oContainer = $sContent['container'];
 
-                if (\Zend\Stdlib\ArrayUtils::isList($oContainer)) {
-                    $oContainer = new \Zend\Navigation\Navigation($oContainer);
+                if (\Laminas\Stdlib\ArrayUtils::isList($oContainer)) {
+                    $oContainer = new \Laminas\Navigation\Navigation($oContainer);
                 }
             }
         }
@@ -267,7 +267,7 @@ class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
         }
 
         if (is_array($sTypeContent)) {
-            if (\Zend\Stdlib\ArrayUtils::isList($sTypeContent)) {
+            if (\Laminas\Stdlib\ArrayUtils::isList($sTypeContent)) {
                 $sCardBodyItemContent = '';
                 foreach ($sTypeContent as $sTypeContentItem) {
                     $sCardBodyItemContent .= ($sCardBodyItemContent ? PHP_EOL : '') . $this->renderCardItem(

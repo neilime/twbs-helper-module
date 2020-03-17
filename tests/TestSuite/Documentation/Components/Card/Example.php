@@ -4,7 +4,7 @@
 return [
     'title' => 'Example',
     'url' => '%bootstrap-url%/components/card/#example',
-    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
         echo $oView->card([
             'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
             'title' => 'Card title',

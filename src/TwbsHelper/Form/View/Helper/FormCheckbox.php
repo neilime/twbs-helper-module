@@ -2,17 +2,17 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
-class FormCheckbox extends \Zend\Form\View\Helper\FormCheckbox
+class FormCheckbox extends \Laminas\Form\View\Helper\FormCheckbox
 {
     use \TwbsHelper\View\Helper\ClassAttributeTrait;
 
     /**
      * Render a form <checkbox> element from the provided $oElement
      *
-     * @param \Zend\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface $oElement
      * @return string
      */
-    public function render(\Zend\Form\ElementInterface $oElement): string
+    public function render(\Laminas\Form\ElementInterface $oElement): string
     {
         if (!$oElement->getOption('disable_twbs')) {
             $this->setClassesToElement(

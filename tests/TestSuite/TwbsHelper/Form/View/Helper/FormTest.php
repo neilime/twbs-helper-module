@@ -15,7 +15,7 @@ class FormTest extends \PHPUnit\Framework\TestCase
     public function setUp(): void
     {
         $oViewHelperPluginManager = \TestSuite\Bootstrap::getServiceManager()->get('ViewHelperManager');
-        $oRenderer = new \Zend\View\Renderer\PhpRenderer();
+        $oRenderer = new \Laminas\View\Renderer\PhpRenderer();
         $this->formHelper = $oViewHelperPluginManager
             ->get('form')
             ->setView($oRenderer->setHelperPluginManager($oViewHelperPluginManager));

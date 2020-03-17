@@ -8,9 +8,9 @@ return [
         [
             'title' => 'Overview',
             'url' => '%bootstrap-url%/components/pagination/#overview',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 // Create a paginator with 4 pages
-                $oPaginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter(array_fill(
+                $oPaginator = new \Laminas\Paginator\Paginator(new \Laminas\Paginator\Adapter\ArrayAdapter(array_fill(
                     0,
                     30,
                     true
@@ -42,9 +42,9 @@ return [
         [
             'title' => 'Working with icons',
             'url' => '%bootstrap-url%/components/pagination/#working-with-icons',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 // Create a paginator with 4 pages
-                $oPaginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter(array_fill(
+                $oPaginator = new \Laminas\Paginator\Paginator(new \Laminas\Paginator\Adapter\ArrayAdapter(array_fill(
                     0,
                     30,
                     true
@@ -76,9 +76,9 @@ return [
         [
             'title' => 'Sizing',
             'url' => '%bootstrap-url%/components/pagination/#sizing',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 // Create a paginator with 4 pages
-                $oPaginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter(array_fill(
+                $oPaginator = new \Laminas\Paginator\Paginator(new \Laminas\Paginator\Adapter\ArrayAdapter(array_fill(
                     0,
                     30,
                     true
@@ -120,9 +120,9 @@ return [
         [
             'title' => 'Alignment',
             'url' => '%bootstrap-url%/components/pagination/#alignment',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 // Create a paginator with 4 pages
-                $oPaginator = new \Zend\Paginator\Paginator(new \Zend\Paginator\Adapter\ArrayAdapter(array_fill(
+                $oPaginator = new \Laminas\Paginator\Paginator(new \Laminas\Paginator\Adapter\ArrayAdapter(array_fill(
                     0,
                     30,
                     true

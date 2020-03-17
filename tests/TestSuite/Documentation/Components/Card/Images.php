@@ -8,7 +8,7 @@ return [
         [
             'title' => 'Image caps',
             'url' => '%bootstrap-url%/components/card/#image-caps',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->card([
                     'image_top' => ['images/demo/image-cap.svg', ['alt' => '...']],
                     'title' => 'Card title',
@@ -55,7 +55,7 @@ return [
         [
             'title' => 'Image overlays',
             'url' => '%bootstrap-url%/components/card/#image-overlays',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->card([
                     'overlay' => [
                         'img' => ['images/demo/image-cap.svg', ['alt' => '...']],

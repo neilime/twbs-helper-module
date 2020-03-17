@@ -5,17 +5,17 @@ namespace TwbsHelper\View\Helper\Navigation;
 /**
  * Helper for rendering navbar
  */
-class Navbar extends \Zend\View\Helper\Navigation\AbstractHelper
+class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
 {
+    use \Laminas\I18n\Translator\TranslatorAwareTrait;
     use \TwbsHelper\View\Helper\HtmlTrait;
-    use \Zend\I18n\Translator\TranslatorAwareTrait;
 
     /**
      * View helper entry point.
      *
      * Retrieves helper and optionally sets container to operate on.
      *
-     * @param \Zend\Navigation\AbstractContainer $oContainer [optional] container to operate on
+     * @param \Laminas\Navigation\AbstractContainer $oContainer [optional] container to operate on
      * @return self|string
      */
     public function __invoke($oContainer = null)
@@ -33,7 +33,7 @@ class Navbar extends \Zend\View\Helper\Navigation\AbstractHelper
      * Implements {@link HelperInterface::render()}.
      *
      * @see renderNavbar()
-     * @param \Zend\Navigation\AbstractContainer $oContainer [optional] container to render. Default is
+     * @param \Laminas\Navigation\AbstractContainer $oContainer [optional] container to render. Default is
      *     to render the container registered in the helper.
      * @param array $aOptions [optional] options for controlling rendering
      * @return string
@@ -51,7 +51,7 @@ class Navbar extends \Zend\View\Helper\Navigation\AbstractHelper
      *
      * Available $options:
      *
-     * @param \Zend\Navigation\AbstractContainer $oContainer [optional] container to create menu from.
+     * @param \Laminas\Navigation\AbstractContainer $oContainer [optional] container to create menu from.
      *     Default is to use the container retrieved from {@link getContainer()}.
      * @param array $aOptions [optional] options for controlling rendering
      * @return string
@@ -188,7 +188,7 @@ class Navbar extends \Zend\View\Helper\Navigation\AbstractHelper
             $aAttributes['aria-controls'] = $sId;
         }
 
-        return $this->getView()->plugin('formButton')->__invoke(\Zend\Stdlib\ArrayUtils::merge(
+        return $this->getView()->plugin('formButton')->__invoke(\Laminas\Stdlib\ArrayUtils::merge(
             [
                 'name' => 'navbar_toggler',
                 'options' => [
@@ -221,7 +221,7 @@ class Navbar extends \Zend\View\Helper\Navigation\AbstractHelper
             if ($sContent) {
                 $aImgAttributes['class'] = 'd-inline-block align-top';
             }
-            $aBrandOptions['img'][1] = \Zend\Stdlib\ArrayUtils::merge(
+            $aBrandOptions['img'][1] = \Laminas\Stdlib\ArrayUtils::merge(
                 $aImgAttributes,
                 $aBrandOptions['img'][1] ?? []
             );
@@ -246,7 +246,7 @@ class Navbar extends \Zend\View\Helper\Navigation\AbstractHelper
                 throw new \DomainException(__METHOD__ . ' doe snot support brand type "' . $sType . '"');
         }
 
-        $aAttributes = \Zend\Stdlib\ArrayUtils::merge(
+        $aAttributes = \Laminas\Stdlib\ArrayUtils::merge(
             $aAttributes,
             $aBrandOptions['attributes'] ?? []
         );
@@ -279,11 +279,11 @@ class Navbar extends \Zend\View\Helper\Navigation\AbstractHelper
         );
     }
 
-    public function renderNav(\Zend\Navigation\AbstractContainer $oContainer, array $aNavOptions = []): string
+    public function renderNav(\Laminas\Navigation\AbstractContainer $oContainer, array $aNavOptions = []): string
     {
         return $this->getView()->navigation()->menu()->renderMenu(
             $oContainer,
-            \Zend\Stdlib\ArrayUtils::merge([
+            \Laminas\Stdlib\ArrayUtils::merge([
                 'ulClass' => 'navbar-nav mr-auto',
             ], $aNavOptions)
         );
@@ -295,19 +295,19 @@ class Navbar extends \Zend\View\Helper\Navigation\AbstractHelper
         if (
             is_array($oForm)
             || ($oForm instanceof \Traversable
-                && !($oForm instanceof \Zend\Form\FormInterface))
+                && !($oForm instanceof \Laminas\Form\FormInterface))
         ) {
-            $oFactory = new \Zend\Form\Factory();
+            $oFactory = new \Laminas\Form\Factory();
 
             // Set default type if none given
             if (empty($oForm['type'])) {
-                $oForm['type'] = \Zend\Form\Form::class;
+                $oForm['type'] = \Laminas\Form\Form::class;
             }
 
             $oForm = $oFactory->create($oForm);
-        } elseif (!($oForm instanceof \Zend\Form\FormInterface)) {
+        } elseif (!($oForm instanceof \Laminas\Form\FormInterface)) {
             throw new \InvalidArgumentException(sprintf(
-                __METHOD__ . ' expects an instanceof \Zend\Form\FormInterface or an array / Traversable, "%s" given',
+                __METHOD__ . ' expects an instanceof \Laminas\Form\FormInterface or an array / Traversable, "%s" given',
                 is_object($oForm) ? get_class($oForm) : gettype($oForm)
             ));
         }

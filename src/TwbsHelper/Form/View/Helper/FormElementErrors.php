@@ -1,14 +1,14 @@
 <?php
 namespace TwbsHelper\Form\View\Helper;
 
-use Zend\Form\View\Helper\FormElementErrors as ZendFormElementErrorsViewHelper;
+use Laminas\Form\View\Helper\FormElementErrors as LaminasFormElementErrorsViewHelper;
 
 /**
  * FormElementErrors
  *
- * @uses ZendFormElementErrorsViewHelper
+ * @uses LaminasFormElementErrorsViewHelper
  */
-class FormElementErrors extends ZendFormElementErrorsViewHelper
+class FormElementErrors extends LaminasFormElementErrorsViewHelper
 {
 
     /**

@@ -8,7 +8,7 @@ return [
         [
             'title' => 'How it works',
             'url' => '%bootstrap-url%/components/progress/#example',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
 
                 // Display progressbar at 0%
                 echo $oView->progressBar(0, 100);
@@ -57,7 +57,7 @@ return [
         [
             'title' => 'Labels',
             'url' => '%bootstrap-url%/components/progress/#labels',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->progressBar([
                     'show_label' => true,
                     'min' => 0,
@@ -75,7 +75,7 @@ return [
         [
             'title' => 'Height',
             'url' => '%bootstrap-url%/components/progress/#height',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->progressBar([
                     'attributes' => ['style' => 'height:1px'],
                     'min' => 0,
@@ -105,7 +105,7 @@ return [
         [
             'title' => 'Backgrounds',
             'url' => '%bootstrap-url%/components/progress/#backgrounds',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 foreach ([
                     'success' => 25,
                     'info' => 50,
@@ -145,7 +145,7 @@ return [
         [
             'title' => 'Multiple bars',
             'url' => '%bootstrap-url%/components/progress/#multiple-bars',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->progressBarGroup([
                     ['min' => 0, 'max' => 100, 'current' => 15],
                     ['variant' => 'success', 'min' => 0, 'max' => 100, 'current' => 30],
@@ -166,7 +166,7 @@ return [
         [
             'title' => 'Striped',
             'url' => '%bootstrap-url%/components/progress/#striped',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 foreach ([
                     null => 10,
                     'success' => 25,
@@ -218,7 +218,7 @@ return [
         [
             'title' => 'Animated stripes',
             'url' => '%bootstrap-url%/components/progress/#animated-stripes',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->progressBar([
                     'striped' => true,
                     'animated' => true,

@@ -4,8 +4,8 @@
 return [
     'title' => 'Segmented buttons',
     'url' => '%bootstrap-url%/components/input-group/#segmented-buttons',
-    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-        $oFactory = new \Zend\Form\Factory();
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+        $oFactory = new \Laminas\Form\Factory();
 
         echo $oView->formRow($oFactory->create([
             'name' => 'segmented-dropdown-prepend',

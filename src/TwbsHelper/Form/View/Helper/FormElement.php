@@ -2,7 +2,7 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
-class FormElement extends \Zend\Form\View\Helper\FormElement
+class FormElement extends \Laminas\Form\View\Helper\FormElement
 {
     use \TwbsHelper\View\Helper\HtmlTrait;
 
@@ -11,13 +11,13 @@ class FormElement extends \Zend\Form\View\Helper\FormElement
 
     // Instance map to view helper
     protected $classMap = [
-        'Zend\Form\Element\Button'              => 'formbutton',
-        'Zend\Form\Element\Captcha'             => 'formcaptcha',
-        'Zend\Form\Element\Csrf'                => 'formhidden',
-        'Zend\Form\Element\Collection'          => 'formcollection',
-        'Zend\Form\Element\DateTimeSelect'      => 'formdatetimeselect',
-        'Zend\Form\Element\DateSelect'          => 'formdateselect',
-        'Zend\Form\Element\MonthSelect'         => 'formmonthselect',
+        'Laminas\Form\Element\Button'              => 'formbutton',
+        'Laminas\Form\Element\Captcha'             => 'formcaptcha',
+        'Laminas\Form\Element\Csrf'                => 'formhidden',
+        'Laminas\Form\Element\Collection'          => 'formcollection',
+        'Laminas\Form\Element\DateTimeSelect'      => 'formdatetimeselect',
+        'Laminas\Form\Element\DateSelect'          => 'formdateselect',
+        'Laminas\Form\Element\MonthSelect'         => 'formmonthselect',
     ];
 
     /**
@@ -43,10 +43,10 @@ class FormElement extends \Zend\Form\View\Helper\FormElement
     /**
      * Render an element
      *
-     * @param \Zend\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface $oElement
      * @return string
      */
-    public function render(\Zend\Form\ElementInterface $oElement): string
+    public function render(\Laminas\Form\ElementInterface $oElement): string
     {
         // Add form-control class
         $sElementType = $oElement->getAttribute('type');
@@ -55,7 +55,7 @@ class FormElement extends \Zend\Form\View\Helper\FormElement
 
         if (
             !in_array($sElementType, $this->options->getIgnoredViewHelpers())
-            && !($oElement instanceof \Zend\Form\Element\Collection)
+            && !($oElement instanceof \Laminas\Form\Element\Collection)
             && !$oElement->getOption('custom')
         ) {
             $aClasses[] = $oElement->getOption('plaintext') ? 'form-control-plaintext' : 'form-control';
@@ -79,10 +79,10 @@ class FormElement extends \Zend\Form\View\Helper\FormElement
      * Render element by helper name
      *
      * @param string $sName
-     * @param \Zend\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface $oElement
      * @return string
      */
-    protected function renderHelper($sName, \Zend\Form\ElementInterface $oElement): string
+    protected function renderHelper($sName, \Laminas\Form\ElementInterface $oElement): string
     {
         $oHelper = $this->getView()->plugin($sName);
 

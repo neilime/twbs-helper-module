@@ -4,8 +4,8 @@
 return [
             'title' => 'Basic example',
             'url' => '%bootstrap-url%/components/input-group/#basic-example',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-                $oFactory = new \Zend\Form\Factory();
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+                $oFactory = new \Laminas\Form\Factory();
 
                 echo $oView->formRow($oFactory->create([
                     'name' => 'username',

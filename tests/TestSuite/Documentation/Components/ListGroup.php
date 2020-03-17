@@ -8,7 +8,7 @@ return [
         [
             'title' => 'Basic example',
             'url' => '%bootstrap-url%/components/list-group/#basic-example',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->listGroup([
                     'Cras justo odio',
                     'Dapibus ac facilisis in',
@@ -28,7 +28,7 @@ return [
         [
             'title' => 'Active items',
             'url' => '%bootstrap-url%/components/list-group/#active-items',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->listGroup([
                     'Cras justo odio' => ['active' => true],
                     'Dapibus ac facilisis in',
@@ -48,7 +48,7 @@ return [
         [
             'title' => 'Disabled  items',
             'url' => '%bootstrap-url%/components/list-group/#disabled-items',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->listGroup([
                     'Cras justo odio' => ['disabled' => true],
                     'Dapibus ac facilisis in',
@@ -68,7 +68,7 @@ return [
         [
             'title' => 'Links and buttons',
             'url' => '%bootstrap-url%/components/list-group/#links-and-buttons',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->listGroup([
                     'Cras justo odio' => [
                         'active' => true,
@@ -123,7 +123,7 @@ return [
         [
             'title' => 'Flush',
             'url' => '%bootstrap-url%/components/list-group/#flush',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->listGroup(
                     [
                         'Cras justo odio',
@@ -146,7 +146,7 @@ return [
         [
             'title' => 'Horizontal',
             'url' => '%bootstrap-url%/components/list-group/#horizontal',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 // Add option 'horizontal' to change the layout of list group items from vertical to horizontal
                 echo $oView->listGroup(
                     [
@@ -205,7 +205,7 @@ return [
         [
             'title' => 'Contextual classes',
             'url' => '%bootstrap-url%/components/list-group/#contextual-classes',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 // Use option 'variant' to style list items with a stateful background and color
                 echo $oView->listGroup([
                     'Dapibus ac facilisis in',
@@ -321,7 +321,7 @@ return [
         [
             'title' => 'With badges',
             'url' => '%bootstrap-url%/components/list-group/#with-badges',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->listGroup(
                     [
                         'Cras justo odio' => [
@@ -366,7 +366,7 @@ return [
         [
             'title' => 'Custom content',
             'url' => '%bootstrap-url%/components/list-group/#custom-content',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->listGroup(
                     [
                         [

@@ -23,10 +23,10 @@ trait StyleAttributeTrait
     }
 
     protected function setStylesToElement(
-        \Zend\Form\ElementInterface $oElement,
+        \Laminas\Form\ElementInterface $oElement,
         array $aAddStyles = [],
         array $aRemoveStyles = []
-    ): \Zend\Form\ElementInterface {
+    ): \Laminas\Form\ElementInterface {
         return $oElement->setAttributes(
             $this->setStylesToAttributes(
                 $oElement->getAttributes(),

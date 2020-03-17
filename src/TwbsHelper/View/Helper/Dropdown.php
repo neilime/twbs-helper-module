@@ -55,7 +55,7 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
     ];
 
     /**
-     * @param \Zend\Form\ElementInterface|array $oDropdown
+     * @param \Laminas\Form\ElementInterface|array $oDropdown
      * @return \TwbsHelper\View\Helper\Dropdown|string
      */
     public function __invoke($oDropdown = null, bool $bEscape = true)
@@ -65,7 +65,7 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
     /**
      * Render dropdown markup
-     * @param \Zend\Form\ElementInterface|array $oDropdown
+     * @param \Laminas\Form\ElementInterface|array $oDropdown
      * @return string
      */
     public function render($oDropdown, bool $bEscape = true): string
@@ -73,20 +73,20 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
         if (
             is_array($oDropdown)
             || ($oDropdown instanceof \Traversable
-                && !($oDropdown instanceof \Zend\Form\ElementInterface))
+                && !($oDropdown instanceof \Laminas\Form\ElementInterface))
         ) {
-            $oFactory = new \Zend\Form\Factory();
+            $oFactory = new \Laminas\Form\Factory();
             $oDropdown = $oFactory->create($oDropdown);
-        } elseif (!($oDropdown instanceof \Zend\Form\ElementInterface)) {
+        } elseif (!($oDropdown instanceof \Laminas\Form\ElementInterface)) {
             throw new \InvalidArgumentException(sprintf(
                 'Argument "$oDropdown" expects %s, "%s" given',
-                'an instanceof \Zend\Form\ElementInterface or an array / Traversable',
+                'an instanceof \Laminas\Form\ElementInterface or an array / Traversable',
                 is_object($oDropdown) ? get_class($oDropdown) : gettype($oDropdown)
             ));
         }
 
         $aDropdownOptions = $oDropdown->getOption('dropdown');
-        if (\Zend\Stdlib\ArrayUtils::isList($aDropdownOptions)) {
+        if (\Laminas\Stdlib\ArrayUtils::isList($aDropdownOptions)) {
             $oDropdown->setOption('dropdown', $aDropdownOptions =  [
                 'items' => $aDropdownOptions,
             ]);
@@ -140,7 +140,7 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
      * @throws \InvalidArgumentException
      * @return string
      */
-    public function renderToggle(\Zend\Form\ElementInterface $oDropdown): string
+    public function renderToggle(\Laminas\Form\ElementInterface $oDropdown): string
     {
 
         $aDropdownOptions = $oDropdown->getOption('dropdown');
@@ -153,7 +153,7 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 $aOptions['label'] = $oDropdown->getLabel();
             }
             $aSplitElement = [
-                'type' => \Zend\Form\Element\Button::class,
+                'type' => \Laminas\Form\Element\Button::class,
                 'name' => $oDropdown->getName() . '-toggle',
                 'options' => $aOptions,
                 'attributes' => [
@@ -164,7 +164,7 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
             if (is_string($sSplitOption)) {
                 $aSplitElement['options']['label'] = $sSplitOption;
             } elseif (is_array($sSplitOption)) {
-                $aSplitElement = \Zend\Stdlib\ArrayUtils::merge($aSplitElement, $sSplitOption);
+                $aSplitElement = \Laminas\Stdlib\ArrayUtils::merge($aSplitElement, $sSplitOption);
             } elseif ($sSplitOption !== true) {
                 throw new \InvalidArgumentException(sprintf(
                     '"split" option expects a string an array or true, "%s" given',
@@ -173,7 +173,7 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
                         : gettype($sSplitOption)
                 ));
             }
-            $oFactory = new \Zend\Form\Factory();
+            $oFactory = new \Laminas\Form\Factory();
             $oToogleElement = $oFactory->create($aSplitElement);
 
 
@@ -226,14 +226,14 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
         if (
             is_array($oDropdown)
             || ($oDropdown instanceof \Traversable
-                && !($oDropdown instanceof \Zend\Form\ElementInterface))
+                && !($oDropdown instanceof \Laminas\Form\ElementInterface))
         ) {
-            $oFactory = new \Zend\Form\Factory();
+            $oFactory = new \Laminas\Form\Factory();
             $oDropdown = $oFactory->create($oDropdown);
-        } elseif (!($oDropdown instanceof \Zend\Form\ElementInterface)) {
+        } elseif (!($oDropdown instanceof \Laminas\Form\ElementInterface)) {
             throw new \InvalidArgumentException(sprintf(
                 'Argument "$oDropdown" expects %s, "%s" given',
-                'an instanceof \Zend\Form\ElementInterface or an array / Traversable',
+                'an instanceof \Laminas\Form\ElementInterface or an array / Traversable',
                 is_object($oDropdown) ? get_class($oDropdown) : gettype($oDropdown)
             ));
         }
@@ -304,7 +304,7 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
         $sItems = '';
         foreach ($aItems as $sKey => $aItemOptions) {
             switch (true) {
-                case $aItemOptions instanceof \Zend\Form\FormInterface:
+                case $aItemOptions instanceof \Laminas\Form\FormInterface:
                     // Free html
                     $aItemOptions = [
                         'type' => self::TYPE_ITEM_HTML,
@@ -412,7 +412,7 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
                         $aClasses[] = $sOption;
 
                         if (is_array($aOptionAttributes)) {
-                            $aDefaultAttributes = \Zend\Stdlib\ArrayUtils::merge(
+                            $aDefaultAttributes = \Laminas\Stdlib\ArrayUtils::merge(
                                 $aDefaultAttributes,
                                 $aOptionAttributes
                             );

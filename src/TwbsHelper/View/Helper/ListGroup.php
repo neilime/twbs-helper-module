@@ -86,7 +86,7 @@ class ListGroup extends \TwbsHelper\View\Helper\HtmlList
 
             // Custom attributes
             if (!empty($sItem['attributes'])) {
-                $aItemAttributes = \Zend\Stdlib\ArrayUtils::merge($aItemAttributes, $sItem['attributes']);
+                $aItemAttributes = \Laminas\Stdlib\ArrayUtils::merge($aItemAttributes, $sItem['attributes']);
             }
             unset($sItem['attributes']);
 

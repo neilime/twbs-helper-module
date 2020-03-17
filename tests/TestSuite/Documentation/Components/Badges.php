@@ -8,7 +8,7 @@ return [
         [
             'title' => 'Example',
             'url' => '%bootstrap-url%/components/badge/#example',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 // H1
                 echo '<h1>Example heading ' . $oView->badge('New') . '</h1>' . PHP_EOL;
                 // H2
@@ -48,7 +48,7 @@ return [
         [
             'title' => 'Contextual variations',
             'url' => '%bootstrap-url%/components/badge/#contextual-variations',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 foreach ([
                     'primary', 'secondary', 'success', 'danger',
                     'warning', 'info', 'light', 'dark',
@@ -68,7 +68,7 @@ return [
         [
             'title' => 'Pill badges',
             'url' => '%bootstrap-url%/components/badge/#pill-badges',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 foreach ([
                     'primary', 'secondary', 'success', 'danger',
                     'warning', 'info', 'light', 'dark',
@@ -94,7 +94,7 @@ return [
         [
             'title' => 'Links',
             'url' => '%bootstrap-url%/components/badge/#links',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 foreach ([
                     'primary', 'secondary', 'success', 'danger',
                     'warning', 'info', 'light', 'dark',

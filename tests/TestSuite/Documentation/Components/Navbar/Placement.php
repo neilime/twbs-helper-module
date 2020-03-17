@@ -4,7 +4,7 @@
 return [
     'title' => 'Placement',
     'url' => '%bootstrap-url%/components/navbar/#placement',
-    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
 
         foreach ([
             false => 'Default',
@@ -13,7 +13,7 @@ return [
             'sticky-top' => 'Sticky top',
         ] as $sPlacement => $sBrand) {
             echo $oView->navigation()->navbar()->render(
-                new \Zend\Navigation\Navigation(),
+                new \Laminas\Navigation\Navigation(),
                 [
                     'brand' => $sBrand,
                     'placement' => $sPlacement,

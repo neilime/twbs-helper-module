@@ -8,7 +8,7 @@ return [
         [
             'title' => 'Examples',
             'url' => '%bootstrap-url%/components/tooltips/#examples',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 foreach ([
                     'top' => 'Tooltip on top',
                     'right' => 'Tooltip on right',
@@ -60,7 +60,7 @@ return [
         [
             'title' => 'Disabled elements',
             'url' => '%bootstrap-url%/components/tooltips/#disabled-elements',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->formButton([
                     'name' => 'tooltip',
                     'options' => [

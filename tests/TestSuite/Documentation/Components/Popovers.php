@@ -8,7 +8,7 @@ return [
         [
             'title' => 'Example',
             'url' => '%bootstrap-url%/components/popovers/#example',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->formButton([
                     'name' => 'popover',
                     'options' => [
@@ -30,7 +30,7 @@ return [
         [
             'title' => 'Four directions',
             'url' => '%bootstrap-url%/components/popovers/#four-directions',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 foreach ([
                     'top' => 'Popover on top',
                     'right' => 'Popover on right',
@@ -77,7 +77,7 @@ return [
         [
             'title' => 'Dismiss on next click',
             'url' => '%bootstrap-url%/components/popovers/#dismiss-on-next-click',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->formButton([
                     'name' => 'popover',
                     'options' => [
@@ -103,7 +103,7 @@ return [
         [
             'title' => 'Disabled elements',
             'url' => '%bootstrap-url%/components/popovers/#disabled-elements',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->formButton([
                     'name' => 'popover',
                     'options' => [

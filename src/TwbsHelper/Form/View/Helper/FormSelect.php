@@ -2,19 +2,19 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
-class FormSelect extends \Zend\Form\View\Helper\FormSelect
+class FormSelect extends \Laminas\Form\View\Helper\FormSelect
 {
     use \TwbsHelper\View\Helper\HtmlTrait;
 
     /**
      * Render a form <select> element from the provided $element
      *
-     * @param \Zend\Form\ElementInterface $element
+     * @param \Laminas\Form\ElementInterface $element
      * @throws Exception\InvalidArgumentException
      * @throws Exception\DomainException
      * @return string
      */
-    public function render(\Zend\Form\ElementInterface $oElement): string
+    public function render(\Laminas\Form\ElementInterface $oElement): string
     {
         if ($bIsCustom = $oElement->getOption('custom')) {
             $this->setClassesToElement($oElement, ['custom-select']);

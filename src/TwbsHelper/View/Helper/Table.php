@@ -118,7 +118,7 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
         if (!isset($aHeadRows) && $aBodyRows) {
             // Define head from first row keys
             $aFirstRow = current($aBodyRows);
-            if (\Zend\Stdlib\ArrayUtils::hasStringKeys($aFirstRow)) {
+            if (\Laminas\Stdlib\ArrayUtils::hasStringKeys($aFirstRow)) {
                 $aHeadRows = array_keys($aFirstRow);
             }
         }

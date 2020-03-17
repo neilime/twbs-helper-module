@@ -4,8 +4,8 @@
 return [
     'title' => 'Inline forms',
     'url' => '%bootstrap-url%/components/forms/#inline-forms',
-    'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
-        $oFactory = new \Zend\Form\Factory();
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+        $oFactory = new \Laminas\Form\Factory();
 
         echo $oView->form($oFactory->create([
             'type' => 'form',

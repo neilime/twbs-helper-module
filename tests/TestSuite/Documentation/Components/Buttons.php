@@ -8,12 +8,12 @@ return [
         [
             'title' => 'Example',
             'url' => '%bootstrap-url%/components/buttons/#example',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 foreach ([
                     'primary', 'secondary', 'success', 'danger',
                     'warning', 'info', 'light', 'dark', 'link',
                 ] as $sVariant) {
-                    $oButton = new \Zend\Form\Element\Button($sVariant, [
+                    $oButton = new \Laminas\Form\Element\Button($sVariant, [
                         'label' => ucfirst($sVariant),
                         'variant' => $sVariant,
                     ]);
@@ -51,9 +51,9 @@ return [
         [
             'title' => 'Button tags',
             'url' => '%bootstrap-url%/components/buttons/#button-tags',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 // Link button
-                $oButton = new \Zend\Form\Element\Button('Link', [
+                $oButton = new \Laminas\Form\Element\Button('Link', [
                     'label' => 'Link',
                     'variant' => 'primary',
                     'tag' => 'a',
@@ -62,7 +62,7 @@ return [
                 echo $oView->formButton($oButton) . PHP_EOL;
 
                 // Submit button
-                $oButton = new \Zend\Form\Element\Submit('Button', [
+                $oButton = new \Laminas\Form\Element\Submit('Button', [
                     'label' => 'Button',
                     'variant' => 'primary',
                 ]);
@@ -74,12 +74,12 @@ return [
         [
             'title' => 'Outline buttons',
             'url' => '%bootstrap-url%/components/buttons/#outline-buttons',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 foreach ([
                     'primary', 'secondary', 'success', 'danger',
                     'warning', 'info', 'light', 'dark',
                 ] as $sVariant) {
-                    $oButton = new \Zend\Form\Element\Button($sVariant, [
+                    $oButton = new \Laminas\Form\Element\Button($sVariant, [
                         'label' => ucfirst($sVariant),
                         'variant' => 'outline-' . $sVariant,
                     ]);
@@ -115,17 +115,17 @@ return [
         [
             'title' => 'Sizes',
             'url' => '%bootstrap-url%/components/buttons/#sizes',
-            'rendering' => function (\Zend\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
 
                 // Large buttons
-                $oButton = new \Zend\Form\Element\Button('large-button', [
+                $oButton = new \Laminas\Form\Element\Button('large-button', [
                     'label' => 'Large button',
                     'variant' => 'primary',
                     'size' => 'lg',
                 ]);
                 echo $oView->formButton($oButton) . PHP_EOL;
 
-                $oButton = new \Zend\Form\Element\Button('large-button', [
+                $oButton = new \Laminas\Form\Element\Button('large-button', [
                     'label' => 'Large button',
                     'size' => 'lg',
                 ]);
@@ -134,14 +134,14 @@ return [
                 echo '<br><br>' . PHP_EOL;
 
                 // Small buttons
-                $oButton = new \Zend\Form\Element\Button('small-button', [
+                $oButton = new \Laminas\Form\Element\Button('small-button', [
                     'label' => 'Small button',
                     'variant' => 'primary',
                     'size' => 'sm',
                 ]);
                 echo $oView->formButton($oButton) . PHP_EOL;
 
-                $oButton = new \Zend\Form\Element\Button('small-button', [
+                $oButton = new \Laminas\Form\Element\Button('small-button', [
                     'label' => 'Small button',
                     'size' => 'sm',
                 ]);
@@ -150,7 +150,7 @@ return [
                 echo '<br><br>' . PHP_EOL;
 
                 // Block level buttons
-                $oButton = new \Zend\Form\Element\Button('block-level-button', [
+                $oButton = new \Laminas\Form\Element\Button('block-level-button', [
                     'label' => 'Block level button',
                     'variant' => 'primary',
                     'size' => 'lg',
@@ -158,7 +158,7 @@ return [
                 ]);
                 echo $oView->formButton($oButton) . PHP_EOL;
 
-                $oButton = new \Zend\Form\Element\Button('block-level-button', [
+                $oButton = new \Laminas\Form\Element\Button('block-level-button', [
                     'label' => 'Block level button',
                     'size' => 'lg',
                     'block' => true,

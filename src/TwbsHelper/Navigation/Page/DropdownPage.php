@@ -2,7 +2,7 @@
 
 namespace TwbsHelper\Navigation\Page;
 
-class DropdownPage extends \Zend\Navigation\Page\AbstractPage
+class DropdownPage extends \Laminas\Navigation\Page\AbstractPage
 {
     /**
      * Page dropdown options

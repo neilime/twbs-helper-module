@@ -2,7 +2,7 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
-class FormLabel extends \Zend\Form\View\Helper\FormLabel
+class FormLabel extends \Laminas\Form\View\Helper\FormLabel
 {
     use \TwbsHelper\View\Helper\HtmlTrait;
 
@@ -17,13 +17,13 @@ class FormLabel extends \Zend\Form\View\Helper\FormLabel
      * Always generates a "for" statement, as we cannot assume the form input
      * will be provided in the $labelContent.
      *
-     * @param \Zend\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface $oElement
      * @param  null|string $sLabelContent
      * @param string $sPosition
      * @return string|\TwbsHelper\Form\View\Helper\FormLabel
      */
     public function __invoke(
-        \Zend\Form\ElementInterface $oElement = null,
+        \Laminas\Form\ElementInterface $oElement = null,
         $sLabelContent = null,
         $sPosition = null
     ) {
@@ -33,13 +33,13 @@ class FormLabel extends \Zend\Form\View\Helper\FormLabel
 
         // Button element is a special case, because label is always rendered inside it
         if (
-            $oElement instanceof \Zend\Form\Element\Button
-            || $oElement instanceof \Zend\Form\Element\Submit
+            $oElement instanceof \Laminas\Form\Element\Button
+            || $oElement instanceof \Laminas\Form\Element\Submit
         ) {
             return $sLabelContent;
         }
 
-        $aLabelAttributes = $oElement instanceof \Zend\Form\LabelAwareInterface
+        $aLabelAttributes = $oElement instanceof \Laminas\Form\LabelAwareInterface
             ? $oElement->getLabelAttributes()
             : [];
 
@@ -66,7 +66,7 @@ class FormLabel extends \Zend\Form\View\Helper\FormLabel
             $sLabel .= $this->requiredFormat;
         }
 
-        if ($oElement instanceof \Zend\Form\Element\MultiCheckbox) {
+        if ($oElement instanceof \Laminas\Form\Element\MultiCheckbox) {
             return $this->htmlElement(
                 'div',
                 $aLabelAttributes,
@@ -81,10 +81,10 @@ class FormLabel extends \Zend\Form\View\Helper\FormLabel
     /**
      * Render element's label
      *
-     * @param \Zend\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface $oElement
      * @return string
      */
-    public function renderPartial(\Zend\Form\ElementInterface $oElement): string
+    public function renderPartial(\Laminas\Form\ElementInterface $oElement): string
     {
         $sLabel = $oElement->getLabel();
         if ($sLabel && ($oTranslator = $this->getTranslator())) {
@@ -94,7 +94,7 @@ class FormLabel extends \Zend\Form\View\Helper\FormLabel
         return $sLabel ?? '';
     }
 
-    protected function getLabelClasses(\Zend\Form\ElementInterface $oElement, array $aLabelAttributes): array
+    protected function getLabelClasses(\Laminas\Form\ElementInterface $oElement, array $aLabelAttributes): array
     {
         $aLabelClasses = [];
 
@@ -107,8 +107,8 @@ class FormLabel extends \Zend\Form\View\Helper\FormLabel
             && $oElement->getOption('layout') !== null
             && !$this->hasColumnClassAttribute($aLabelAttributes['class'] ?? '')
             && ! (
-                $oElement instanceof \Zend\Form\Element\Checkbox
-                && ! $oElement instanceof \Zend\Form\Element\MultiCheckbox
+                $oElement instanceof \Laminas\Form\Element\Checkbox
+                && ! $oElement instanceof \Laminas\Form\Element\MultiCheckbox
                 && $sLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL
             )
         ) {
@@ -120,7 +120,7 @@ class FormLabel extends \Zend\Form\View\Helper\FormLabel
             $aLabelClasses[] = $this->getSizeClass($sSize, 'col-form-label');
         }
 
-        if ($oElement instanceof \Zend\Form\Element\MultiCheckbox) {
+        if ($oElement instanceof \Laminas\Form\Element\MultiCheckbox) {
             return $aLabelClasses;
         }
 
