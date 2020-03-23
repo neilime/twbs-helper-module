@@ -42,6 +42,7 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           parallel: true
+          path-to-lcov: ./build/coverage/lcov.info
 
       - name: Coveralls Finished
         uses: coverallsapp/github-action@master
