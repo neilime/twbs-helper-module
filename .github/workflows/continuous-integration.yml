@@ -37,7 +37,14 @@ jobs:
       - name: Run tests
         run: composer test:ci
         
-      - name: Coveralls GitHub Action
-        uses: coverallsapp/github-action@v1.0.1
+      - name: Coveralls Parallel
+        uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          parallel: true
+
+      - name: Coveralls Finished
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          parallel-finished: true
