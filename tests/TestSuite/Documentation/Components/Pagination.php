@@ -28,7 +28,7 @@ return [
                 '<a class="page-link" href="&#x23;" tabindex="-1">Previous</a>' .
                 '</li>' . PHP_EOL .
                 '        <li class="active&#x20;page-item">' .
-                '<a class="page-link" href="&#x23;">1 <span class="sr-only">(current)</span></a>'.
+                '<a class="page-link" href="&#x23;">1 <span class="sr-only">(current)</span></a>' .
                 '</li>' . PHP_EOL .
                 '        <li class="page-item">' .
                 '<a class="page-link" href="&#x2F;test-route&#x2F;2">2</a></li>' . PHP_EOL .
@@ -62,7 +62,7 @@ return [
                 '<a class="page-link" href="&#x23;" tabindex="-1">«</a>' .
                 '</li>' . PHP_EOL .
                 '        <li class="active&#x20;page-item">' .
-                '<a class="page-link" href="&#x23;">1 <span class="sr-only">(current)</span></a>'.
+                '<a class="page-link" href="&#x23;">1 <span class="sr-only">(current)</span></a>' .
                 '</li>' . PHP_EOL .
                 '        <li class="page-item">' .
                 '<a class="page-link" href="&#x2F;test-route&#x2F;2">2</a></li>' . PHP_EOL .
@@ -97,7 +97,7 @@ return [
             'expected' => '<nav aria-label="Page&#x20;navigation&#x20;example">' . PHP_EOL .
                 '    <ul class="pagination&#x20;pagination-lg">' . PHP_EOL .
                 '        <li class="active&#x20;page-item">' .
-                '<a class="page-link" href="&#x23;">1 <span class="sr-only">(current)</span></a>'.
+                '<a class="page-link" href="&#x23;">1 <span class="sr-only">(current)</span></a>' .
                 '</li>' . PHP_EOL .
                 '        <li class="page-item">' .
                 '<a class="page-link" href="&#x2F;test-route&#x2F;2">2</a></li>' . PHP_EOL .
@@ -108,7 +108,7 @@ return [
                 '<nav aria-label="Page&#x20;navigation&#x20;example">' . PHP_EOL .
                 '    <ul class="pagination&#x20;pagination-sm">' . PHP_EOL .
                 '        <li class="active&#x20;page-item">' .
-                '<a class="page-link" href="&#x23;">1 <span class="sr-only">(current)</span></a>'.
+                '<a class="page-link" href="&#x23;">1 <span class="sr-only">(current)</span></a>' .
                 '</li>' . PHP_EOL .
                 '        <li class="page-item">' .
                 '<a class="page-link" href="&#x2F;test-route&#x2F;2">2</a></li>' . PHP_EOL .
@@ -148,7 +148,7 @@ return [
             '<a class="page-link" href="&#x23;" tabindex="-1">Previous</a>' .
             '</li>' . PHP_EOL .
             '        <li class="active&#x20;page-item">' .
-            '<a class="page-link" href="&#x23;">1 <span class="sr-only">(current)</span></a>'.
+            '<a class="page-link" href="&#x23;">1 <span class="sr-only">(current)</span></a>' .
             '</li>' . PHP_EOL .
             '        <li class="page-item">' .
             '<a class="page-link" href="&#x2F;test-route&#x2F;2">2</a></li>' . PHP_EOL .
@@ -164,7 +164,7 @@ return [
             '<a class="page-link" href="&#x23;" tabindex="-1">Previous</a>' .
             '</li>' . PHP_EOL .
             '        <li class="active&#x20;page-item">' .
-            '<a class="page-link" href="&#x23;">1 <span class="sr-only">(current)</span></a>'.
+            '<a class="page-link" href="&#x23;">1 <span class="sr-only">(current)</span></a>' .
             '</li>' . PHP_EOL .
             '        <li class="page-item">' .
             '<a class="page-link" href="&#x2F;test-route&#x2F;2">2</a></li>' . PHP_EOL .

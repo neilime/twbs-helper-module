@@ -116,7 +116,7 @@ return [
                 'Morbi leo risus</button>' . PHP_EOL .
                 '    <button class="list-group-item&#x20;list-group-item-action" type="button">' .
                 'Porta ac consectetur ac</button>' . PHP_EOL .
-                '    <button aria-disabled="true" class="list-group-item&#x20;list-group-item-action" '.
+                '    <button aria-disabled="true" class="list-group-item&#x20;list-group-item-action" ' .
                 'disabled="disabled" type="button">Vestibulum at eros</button>' . PHP_EOL .
                 '</div>',
         ],
@@ -285,35 +285,35 @@ return [
                 '    <a class="list-group-item&#x20;list-group-item-action" href="&#x23;">' .
                 'Dapibus ac facilisis in</a>' . PHP_EOL .
                 '    <a ' .
-                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-primary" '.
+                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-primary" ' .
                 'href="&#x23;">' .
                 'A simple primary list group item</a>' . PHP_EOL .
                 '    <a ' .
-                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-secondary" '.
+                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-secondary" ' .
                 'href="&#x23;">' .
                 'A simple secondary list group item</a>' . PHP_EOL .
                 '    <a ' .
-                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-success" '.
+                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-success" ' .
                 'href="&#x23;">' .
                 'A simple success list group item</a>' . PHP_EOL .
                 '    <a ' .
-                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-danger" '.
+                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-danger" ' .
                 'href="&#x23;">' .
                 'A simple danger list group item</a>' . PHP_EOL .
                 '    <a ' .
-                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-warning" '.
+                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-warning" ' .
                 'href="&#x23;">' .
                 'A simple warning list group item</a>' . PHP_EOL .
                 '    <a ' .
-                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-info" '.
+                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-info" ' .
                 'href="&#x23;">' .
                 'A simple info list group item</a>' . PHP_EOL .
                 '    <a ' .
-                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-light" '.
+                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-light" ' .
                 'href="&#x23;">' .
                 'A simple light list group item</a>' . PHP_EOL .
                 '    <a ' .
-                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-dark" '.
+                'class="list-group-item&#x20;list-group-item-action&#x20;list-group-item-dark" ' .
                 'href="&#x23;">' .
                 'A simple dark list group item</a>' . PHP_EOL .
                 '</div>',

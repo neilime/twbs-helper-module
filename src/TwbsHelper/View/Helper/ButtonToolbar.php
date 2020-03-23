@@ -21,7 +21,7 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
      *
      * @param  array $aItems
      * @param  array $aButtonToolbarOptions
-     * @return TwbsHelperButtonGroup|string
+     * @return ButtonGroup|string
      */
     public function __invoke(array $aItems = null, array $aButtonToolbarOptions = null)
     {

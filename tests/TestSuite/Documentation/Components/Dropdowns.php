@@ -39,10 +39,12 @@ return [
                         echo PHP_EOL . '<br>' . PHP_EOL;
 
                         // Variations
-                        foreach ([
+                        foreach (
+                            [
                             'primary', 'secondary', 'success', 'danger',
                             'warning', 'info', 'light', 'dark',
-                        ] as $sVariant) {
+                            ] as $sVariant
+                        ) {
                             echo $oView->formButton([
                                 'name' => 'dropdown',
                                 'options' => [
@@ -194,10 +196,12 @@ return [
                     'title' => 'Split button',
                     'url' => '%bootstrap-url%/components/dropdowns/#split-button',
                     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        foreach ([
+                        foreach (
+                            [
                             'primary', 'secondary', 'success', 'danger',
                             'warning', 'info', 'light', 'dark',
-                        ] as $sVariant) {
+                            ] as $sVariant
+                        ) {
                             echo $oView->formButton([
                                 'name' => 'dropdown',
                                 'options' => [

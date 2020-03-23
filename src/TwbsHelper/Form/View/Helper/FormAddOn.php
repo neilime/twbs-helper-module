@@ -6,8 +6,8 @@ class FormAddOn extends \Laminas\Form\View\Helper\AbstractHelper
 {
     use \TwbsHelper\View\Helper\HtmlTrait;
 
-    const POSITION_APPEND = 'append';
-    const POSITION_PREPEND = 'prepend';
+    public const POSITION_APPEND = 'append';
+    public const POSITION_PREPEND = 'prepend';
 
     /**
      * @var \Laminas\Form\Factory

@@ -73,7 +73,7 @@ return [
         '    </div>' . PHP_EOL .
         '    <div class="form-group">' . PHP_EOL .
         '        <div class="form-check">' . PHP_EOL .
-        '            <input type="checkbox" name="remember_me" id="exampleCheck1" '.
+        '            <input type="checkbox" name="remember_me" id="exampleCheck1" ' .
         'class="form-check-input" value="1">' . PHP_EOL .
         '            <label class="form-check-label" for="exampleCheck1">' .
         'Check me out</label>' . PHP_EOL .

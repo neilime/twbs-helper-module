@@ -10,8 +10,8 @@ class FormSelect extends \Laminas\Form\View\Helper\FormSelect
      * Render a form <select> element from the provided $element
      *
      * @param \Laminas\Form\ElementInterface $element
-     * @throws Exception\InvalidArgumentException
-     * @throws Exception\DomainException
+     * @throws \InvalidArgumentException
+     * @throws \DomainException
      * @return string
      */
     public function render(\Laminas\Form\ElementInterface $oElement): string

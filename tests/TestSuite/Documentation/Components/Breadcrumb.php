@@ -43,7 +43,7 @@ return [
                 '        <li class="breadcrumb-item"><a href="&#x2F;">Home</a></li>' . PHP_EOL .
                 '        <li class="breadcrumb-item active" aria-current="page">Library</li>' . PHP_EOL .
                 '    </ol>' . PHP_EOL .
-                '</nav>' . PHP_EOL.
+                '</nav>' . PHP_EOL .
                 '<nav aria-label="breadcrumb">' . PHP_EOL .
                 '    <ol class="breadcrumb">' . PHP_EOL .
                 '        <li class="breadcrumb-item"><a href="&#x2F;">Home</a></li>' . PHP_EOL .

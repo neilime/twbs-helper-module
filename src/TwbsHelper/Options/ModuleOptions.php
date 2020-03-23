@@ -1,4 +1,5 @@
 <?php
+
 namespace TwbsHelper\Options;
 
 use Laminas\Stdlib\AbstractOptions;

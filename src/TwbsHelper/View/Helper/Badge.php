@@ -8,9 +8,9 @@ namespace TwbsHelper\View\Helper;
 class Badge extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
 
-    const TYPE_SIMPLE = 'simple';
-    const TYPE_PILL   = 'pill';
-    const TYPE_LINK   = 'link';
+    public const TYPE_SIMPLE = 'simple';
+    public const TYPE_PILL   = 'pill';
+    public const TYPE_LINK   = 'link';
 
     /**
      * Generates a 'badge' element
@@ -24,7 +24,7 @@ class Badge extends \TwbsHelper\View\Helper\AbstractHtmlElement
     public function __invoke(
         string $sContent,
         $aOptionsAndAttributes = null,
-        bool  $bEscape = true
+        bool $bEscape = true
     ) {
 
         if (!$aOptionsAndAttributes) {

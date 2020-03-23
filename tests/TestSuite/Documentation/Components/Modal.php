@@ -358,7 +358,7 @@ return [
                             'class' => 'bd-example-modal-sm',
                         ]);
                     },
-                    'expected' => '<div class="bd-example-modal-xl&#x20;fade&#x20;modal" '.
+                    'expected' => '<div class="bd-example-modal-xl&#x20;fade&#x20;modal" ' .
                     'role="dialog" tabindex="-1">' . PHP_EOL .
                         '    <div class="modal-dialog&#x20;modal-xl" role="document">' . PHP_EOL .
                         '        <div class="modal-content">' . PHP_EOL .
@@ -373,7 +373,7 @@ return [
                         '        </div>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '</div>' . PHP_EOL .
-                        '<div class="bd-example-modal-lg&#x20;fade&#x20;modal" '.
+                        '<div class="bd-example-modal-lg&#x20;fade&#x20;modal" ' .
                         'role="dialog" tabindex="-1">' . PHP_EOL .
                         '    <div class="modal-dialog&#x20;modal-lg" role="document">' . PHP_EOL .
                         '        <div class="modal-content">' . PHP_EOL .
@@ -388,7 +388,7 @@ return [
                         '        </div>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '</div>' . PHP_EOL .
-                        '<div class="bd-example-modal-sm&#x20;fade&#x20;modal" '.
+                        '<div class="bd-example-modal-sm&#x20;fade&#x20;modal" ' .
                         'role="dialog" tabindex="-1">' . PHP_EOL .
                         '    <div class="modal-dialog&#x20;modal-sm" role="document">' . PHP_EOL .
                         '        <div class="modal-content">' . PHP_EOL .

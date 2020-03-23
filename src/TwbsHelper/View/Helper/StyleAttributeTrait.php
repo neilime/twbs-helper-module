@@ -7,19 +7,21 @@ trait StyleAttributeTrait
     protected function getStylesAttribute(string $sStyleAttribute, $bCleanStyles = true): array
     {
         $aStyles = [];
-        foreach (array_map(
-            function ($sStyle) {
-                return explode(':', $sStyle);
-            },
-            explode(';', $sStyleAttribute)
-        ) as $aStyle) {
+        foreach (
+            array_map(
+                function ($sStyle) {
+                    return explode(':', $sStyle);
+                },
+                explode(';', $sStyleAttribute)
+            ) as $aStyle
+        ) {
             if (count($aStyle) !== 2) {
                 continue;
             }
             $aStyles[$aStyle[0]] = $aStyle[1];
         }
 
-        return $bCleanStyles?$this->cleanStylesAttribute($aStyles) : $aStyles;
+        return $bCleanStyles ? $this->cleanStylesAttribute($aStyles) : $aStyles;
     }
 
     protected function setStylesToElement(
@@ -47,7 +49,7 @@ trait StyleAttributeTrait
 
             $sStyles = '';
             foreach ($aStyles as $sKey => $sStyle) {
-                $sStyles .= $sKey . ': '.$sStyle.';';
+                $sStyles .= $sKey . ': ' . $sStyle . ';';
             }
 
             $aAttributes['style'] = $sStyles;

@@ -15,7 +15,7 @@ class FormElementTest extends \PHPUnit\Framework\TestCase
     private $testform;
 
     /**
-     * @see \PHPUnit_Framework_TestCase::setUp()
+     * @see \PHPUnit\Framework\TestCase::setUp()
      */
     public function setUp(): void
     {

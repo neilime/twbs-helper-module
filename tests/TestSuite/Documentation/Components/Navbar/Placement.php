@@ -6,12 +6,14 @@ return [
     'url' => '%bootstrap-url%/components/navbar/#placement',
     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
 
-        foreach ([
+        foreach (
+            [
             false => 'Default',
             'fixed-top' => 'Fixed top',
             'fixed-bottom' => 'Fixed bottom',
             'sticky-top' => 'Sticky top',
-        ] as $sPlacement => $sBrand) {
+            ] as $sPlacement => $sBrand
+        ) {
             echo $oView->navigation()->navbar()->render(
                 new \Laminas\Navigation\Navigation(),
                 [

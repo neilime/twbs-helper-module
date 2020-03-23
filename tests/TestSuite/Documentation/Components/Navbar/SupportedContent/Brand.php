@@ -84,7 +84,7 @@ return [
         '<br>' . PHP_EOL .
         '<nav class="bg-light&#x20;navbar&#x20;navbar-light">' . PHP_EOL .
         '    <a class="navbar-brand" href="&#x23;">' . PHP_EOL .
-        '        <img alt="" class="align-top&#x20;d-inline-block" height="30" '.
+        '        <img alt="" class="align-top&#x20;d-inline-block" height="30" ' .
         'src="images&#x2F;demo&#x2F;bootstrap-solid.svg" width="30">' . PHP_EOL .
         '        Bootstrap' . PHP_EOL .
         '    </a>' . PHP_EOL .

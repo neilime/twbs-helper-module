@@ -10,7 +10,7 @@ class ProgressBar extends \TwbsHelper\View\Helper\AbstractHtmlElement
     /**
      * Generates a 'progressbar' element
      */
-    public function __invoke($iMin = 0, $iMax = 0, $iCurrent = 0) : string
+    public function __invoke($iMin = 0, $iMax = 0, $iCurrent = 0): string
     {
         if (is_array($iMin)) {
             $aOptions = $iMin;
@@ -21,7 +21,7 @@ class ProgressBar extends \TwbsHelper\View\Helper\AbstractHtmlElement
         return $this->render($aOptions);
     }
 
-    public function render(array $aOptions) : string
+    public function render(array $aOptions): string
     {
 
         $iCurrent = $aOptions['current'] ?? 0;
@@ -41,7 +41,7 @@ class ProgressBar extends \TwbsHelper\View\Helper\AbstractHtmlElement
             'aria-valuemax' => $iMax,
         ];
 
-        $sPercent = $iPercent.'%';
+        $sPercent = $iPercent . '%';
 
         $aProgressBarClasses = ['progress-bar'];
         if (!empty($aOptions['variant'])) {

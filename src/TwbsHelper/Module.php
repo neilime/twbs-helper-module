@@ -13,6 +13,6 @@ class Module implements \Laminas\ModuleManager\Feature\ConfigProviderInterface
      */
     public function getConfig()
     {
-        return include __DIR__.DIRECTORY_SEPARATOR.'/../../config/module.config.php';
+        return include __DIR__ . DIRECTORY_SEPARATOR . '/../../config/module.config.php';
     }
 }

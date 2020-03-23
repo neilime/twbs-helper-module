@@ -27,7 +27,7 @@ return [
                         'content' => 'Card subtitle',
                         'attributes' => ['class' => 'mb-2 text-muted'],
                     ],
-                    'text' => 'Some quick example text to build on the card title '.
+                    'text' => 'Some quick example text to build on the card title ' .
                     'and make up the bulk of the card\'s content.',
                     'link' => [
                         'Card link',
@@ -39,8 +39,8 @@ return [
                 '    <div class="card-body">' . PHP_EOL .
                 '        <h5 class="card-title">Card title</h5>' . PHP_EOL .
                 '        <h6 class="card-subtitle&#x20;mb-2&#x20;text-muted">Card subtitle</h6>' . PHP_EOL .
-                '        <p class="card-text">'.
-                'Some quick example text to build on the card title and make up the bulk of the card&#039;s content.'.
+                '        <p class="card-text">' .
+                'Some quick example text to build on the card title and make up the bulk of the card&#039;s content.' .
                 '</p>' . PHP_EOL .
                 '        <a class="card-link" href="&#x23;">Card link</a>' . PHP_EOL .
                 '        <a class="card-link" href="&#x23;">Another link</a>' . PHP_EOL .
@@ -53,15 +53,15 @@ return [
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->card([
                     'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
-                    'text' => 'Some quick example text to build on the card title '.
+                    'text' => 'Some quick example text to build on the card title ' .
                     'and make up the bulk of the card\'s content.',
                 ], ['style' => 'width: 18rem;']);
             },
             'expected' => '<div class="card" style="width&#x3A;&#x20;18rem&#x3B;">' . PHP_EOL .
                 '    <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
                 '    <div class="card-body">' . PHP_EOL .
-                '        <p class="card-text">'.
-                'Some quick example text to build on the card title and make up the bulk of the card&#039;s content.'.
+                '        <p class="card-text">' .
+                'Some quick example text to build on the card title and make up the bulk of the card&#039;s content.' .
                 '</p>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</div>',
@@ -100,7 +100,7 @@ return [
                 '        <li class="list-group-item">Vestibulum at eros</li>' . PHP_EOL .
                 '    </ul>' . PHP_EOL .
                 '</div>' . PHP_EOL .
-                '<br>'. PHP_EOL .
+                '<br>' . PHP_EOL .
                 '<div class="card" style="width&#x3A;&#x20;18rem&#x3B;">' . PHP_EOL .
                 '    <div class="card-header">' . PHP_EOL .
                 '        Featured' . PHP_EOL .
@@ -119,7 +119,7 @@ return [
                 echo $oView->card([
                     'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
                     'title' => 'Card title',
-                    'text' => 'Some quick example text to build on the card title '.
+                    'text' => 'Some quick example text to build on the card title ' .
                     'and make up the bulk of the card\'s content.',
                     'listGroup' => [
                         [
@@ -138,8 +138,8 @@ return [
                 '    <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
                 '    <div class="card-body">' . PHP_EOL .
                 '        <h5 class="card-title">Card title</h5>' . PHP_EOL .
-                '        <p class="card-text">'.
-                'Some quick example text to build on the card title and make up the bulk of the card&#039;s content.'.
+                '        <p class="card-text">' .
+                'Some quick example text to build on the card title and make up the bulk of the card&#039;s content.' .
                 '</p>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <ul class="list-group&#x20;list-group-flush">' . PHP_EOL .
@@ -194,37 +194,37 @@ return [
                 '    </div>' . PHP_EOL .
                 '    <div class="card-body">' . PHP_EOL .
                 '        <h5 class="card-title">Special title treatment</h5>' . PHP_EOL .
-                '        <p class="card-text">'.
-                'With supporting text below as a natural lead-in to additional content.'.
+                '        <p class="card-text">' .
+                'With supporting text below as a natural lead-in to additional content.' .
                 '</p>' . PHP_EOL .
                 '        <a href="#" class="btn btn-primary">Go somewhere</a>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</div>' . PHP_EOL .
-                '<br>'. PHP_EOL .
+                '<br>' . PHP_EOL .
                 '<div class="card">' . PHP_EOL .
                 '    <div class="card-header">' . PHP_EOL .
                 '        Quote' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card-body">' . PHP_EOL .
                 '        <blockquote class="blockquote&#x20;mb-0">' . PHP_EOL .
-                '            <p class="mb-0">'.
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.'.
+                '            <p class="mb-0">' .
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.' .
                 '</p>' . PHP_EOL .
-                '            <footer class="blockquote-footer">'.
-                'Someone famous in <cite title="Source Title">Source Title</cite>'.
+                '            <footer class="blockquote-footer">' .
+                'Someone famous in <cite title="Source Title">Source Title</cite>' .
                 '</footer>' . PHP_EOL .
                 '        </blockquote>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</div>' . PHP_EOL .
-                '<br>'. PHP_EOL .
+                '<br>' . PHP_EOL .
                 '<div class="card&#x20;text-center">' . PHP_EOL .
                 '    <div class="card-header">' . PHP_EOL .
                 '        Featured' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card-body">' . PHP_EOL .
                 '        <h5 class="card-title">Special title treatment</h5>' . PHP_EOL .
-                '        <p class="card-text">'.
-                'With supporting text below as a natural lead-in to additional content.'.
+                '        <p class="card-text">' .
+                'With supporting text below as a natural lead-in to additional content.' .
                 '</p>' . PHP_EOL .
                 '        <a href="#" class="btn btn-primary">Go somewhere</a>' . PHP_EOL .
                 '    </div>' . PHP_EOL .

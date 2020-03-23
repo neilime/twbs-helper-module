@@ -10,7 +10,7 @@ class Spinner extends \TwbsHelper\View\Helper\AbstractHtmlElement
     /**
      * Generates a 'spinner' element
      */
-    public function __invoke($sLabel = null) : string
+    public function __invoke($sLabel = null): string
     {
         if (is_array($sLabel)) {
             $aOptions = $sLabel;
@@ -23,7 +23,7 @@ class Spinner extends \TwbsHelper\View\Helper\AbstractHtmlElement
         return $this->render($aOptions);
     }
 
-    public function render(array $aOptions) : string
+    public function render(array $aOptions): string
     {
         $aAttributes = array_merge(
             ['role' => 'status'],

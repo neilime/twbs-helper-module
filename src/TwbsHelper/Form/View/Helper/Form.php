@@ -6,8 +6,8 @@ class Form extends \Laminas\Form\View\Helper\Form
 {
     use \TwbsHelper\View\Helper\HtmlTrait;
 
-    const LAYOUT_HORIZONTAL = 'horizontal';
-    const LAYOUT_INLINE     = 'inline';
+    public const LAYOUT_HORIZONTAL = 'horizontal';
+    public const LAYOUT_INLINE     = 'inline';
 
     // Hold configurable options
     protected $options;

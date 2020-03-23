@@ -9,10 +9,12 @@ return [
             'title' => 'Background and color',
             'url' => '%bootstrap-url%/components/card/#background-and-color',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                foreach ([
+                foreach (
+                    [
                     'primary', 'secondary', 'success', 'danger',
                     'warning', 'info', 'light', 'dark',
-                ] as $sVariant) {
+                    ] as $sVariant
+                ) {
                     echo $oView->card([
                         'header' => 'Header',
                         'title' => 'Primary card title',
@@ -117,10 +119,12 @@ return [
             'title' => 'Border',
             'url' => '%bootstrap-url%/components/card/#border',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                foreach ([
+                foreach (
+                    [
                     'primary', 'secondary', 'success', 'danger',
                     'warning', 'info', 'light', 'dark',
-                ] as $sVariant) {
+                    ] as $sVariant
+                ) {
                     echo $oView->card([
                         'header' => 'Header',
                         'title' => 'Primary card title',
