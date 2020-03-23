@@ -106,14 +106,14 @@ return [
                 '    </div>' . PHP_EOL .
                 '    <input type="text" name="url" id="basic-url" aria-describedby="basic-addon3" ' .
                 'class="form-control" value="">' . PHP_EOL .
-                '</div>' . PHP_EOL.
+                '</div>' . PHP_EOL .
                 '<div class="input-group&#x20;mb-3">' . PHP_EOL .
                 '    <div class="input-group-prepend">' . PHP_EOL .
                 '        <div class="input-group-text">' . PHP_EOL .
                 '            $' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
-                '    <input type="text" name="amount" '.
+                '    <input type="text" name="amount" ' .
                 'aria-label="Amount&#x20;&#x28;to&#x20;the&#x20;nearest&#x20;dollar&#x29;" ' .
                 'class="form-control" value="">' . PHP_EOL .
                 '    <div class="input-group-append">' . PHP_EOL .
@@ -128,7 +128,7 @@ return [
                 '            With textarea' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
-                '    <textarea name="textarea" aria-label="With&#x20;textarea" class="form-control">'.
+                '    <textarea name="textarea" aria-label="With&#x20;textarea" class="form-control">' .
                 '</textarea>' . PHP_EOL .
                 '</div>',
         ];

@@ -10,7 +10,7 @@ class ModuleOptionsFactoryTest extends \PHPUnit\Framework\TestCase
      */
     protected $moduleOptionsFactory;
 
-    public function setUp():void
+    public function setUp(): void
     {
         $this->moduleOptionsFactory = new \TwbsHelper\Options\Factory\ModuleOptionsFactory();
     }

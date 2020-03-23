@@ -269,10 +269,10 @@ return [
                 '            Upload' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
-                '</div>' . PHP_EOL.
+                '</div>' . PHP_EOL .
                 '<div class="input-group&#x20;mb-3">' . PHP_EOL .
                 '    <div class="input-group-prepend">' . PHP_EOL .
-                '        <button type="button" name="button" id="inputGroupFileAddon03" '.
+                '        <button type="button" name="button" id="inputGroupFileAddon03" ' .
                 'class="btn&#x20;btn-outline-secondary" value="">Button</button>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="custom-file">' . PHP_EOL .
@@ -280,7 +280,7 @@ return [
                 'aria-describedby="inputGroupFileAddon03" class="custom-file-input" value="">' . PHP_EOL .
                 '        <label class="custom-file-label" for="inputGroupFile03">Choose file</label>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
-                '</div>' . PHP_EOL.
+                '</div>' . PHP_EOL .
                 '<div class="input-group&#x20;mb-3">' . PHP_EOL .
                 '    <div class="custom-file">' . PHP_EOL .
                 '        <input type="file" name="custom_file_button_append" id="inputGroupFile04" ' .
@@ -288,7 +288,7 @@ return [
                 '        <label class="custom-file-label" for="inputGroupFile04">Choose file</label>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="input-group-append">' . PHP_EOL .
-                '        <button type="button" name="button" id="inputGroupFileAddon04" '.
+                '        <button type="button" name="button" id="inputGroupFileAddon04" ' .
                 'class="btn&#x20;btn-outline-secondary" value="">Button</button>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</div>',

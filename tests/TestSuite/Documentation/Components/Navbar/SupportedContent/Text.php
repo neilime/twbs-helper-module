@@ -39,13 +39,13 @@ return [
         '<br>' . PHP_EOL .
         '<nav class="bg-light&#x20;navbar&#x20;navbar-expand-lg&#x20;navbar-light">' . PHP_EOL .
         '    <a class="navbar-brand" href="&#x23;">Navbar w/ text</a>' . PHP_EOL .
-        '    <button type="button" name="navbar_toggler" class="navbar-toggler" data-toggle="collapse" '.
-        'aria-expanded="false" aria-label="Toggle&#x20;navigation" data-target="&#x23;navbarText" '.
+        '    <button type="button" name="navbar_toggler" class="navbar-toggler" data-toggle="collapse" ' .
+        'aria-expanded="false" aria-label="Toggle&#x20;navigation" data-target="&#x23;navbarText" ' .
         'aria-controls="navbarText" value=""><span class="navbar-toggler-icon"></span></button>' . PHP_EOL .
         '    <div class="collapse&#x20;navbar-collapse" id="navbarText">' . PHP_EOL .
         '        <ul class="mr-auto&#x20;nav&#x20;navbar-nav">' . PHP_EOL .
         '            <li class="&#x20;nav-item">' . PHP_EOL .
-        '                <a class="nav-link&#x20;active" href="&#x23;">'.
+        '                <a class="nav-link&#x20;active" href="&#x23;">' .
         'Home <span class="sr-only">(current)</span></a>' . PHP_EOL .
         '            </li>' . PHP_EOL .
         '            <li class="nav-item">' . PHP_EOL .

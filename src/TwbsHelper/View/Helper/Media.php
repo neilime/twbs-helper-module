@@ -8,10 +8,10 @@ namespace TwbsHelper\View\Helper;
 class Media extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
 
-    const MEDIA_IMAGE = 'img';
-    const MEDIA_TITLE = 'title';
-    const MEDIA_TEXT = 'text';
-    const MEDIA_MEDIA = 'media';
+    public const MEDIA_IMAGE = 'img';
+    public const MEDIA_TITLE = 'title';
+    public const MEDIA_TEXT = 'text';
+    public const MEDIA_MEDIA = 'media';
 
     /**
      * Generates a 'media' element

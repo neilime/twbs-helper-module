@@ -10,7 +10,7 @@ class FormAddOnTest extends \PHPUnit\Framework\TestCase
     protected $formAddOnHelper;
 
     /**
-     * @see \PHPUnit_Framework_TestCase::setUp()
+     * @see \PHPUnit\Framework\TestCase::setUp()
      */
     public function setUp(): void
     {
@@ -32,12 +32,12 @@ class FormAddOnTest extends \PHPUnit\Framework\TestCase
     public function testInvokeReturnAddOnMarkup()
     {
         $this->assertEquals(
-            '<div class="input-group">'. PHP_EOL .
-            '    <div class="input-group-prepend">'. PHP_EOL .
-            '        <div class="input-group-text">'. PHP_EOL .
-            '            @'. PHP_EOL .
-            '        </div>'. PHP_EOL .
-            '    </div>'. PHP_EOL .
+            '<div class="input-group">' . PHP_EOL .
+            '    <div class="input-group-prepend">' . PHP_EOL .
+            '        <div class="input-group-text">' . PHP_EOL .
+            '            @' . PHP_EOL .
+            '        </div>' . PHP_EOL .
+            '    </div>' . PHP_EOL .
             '</div>',
             $this->formAddOnHelper->__invoke(new \Laminas\Form\Element\Text(
                 'test',
@@ -49,8 +49,8 @@ class FormAddOnTest extends \PHPUnit\Framework\TestCase
     public function testRenderAddOnWithElementInstance()
     {
         $this->assertEquals(
-            '<div class="input-group">'. PHP_EOL .
-            '    <div class="input-group-prepend">'. PHP_EOL .
+            '<div class="input-group">' . PHP_EOL .
+            '    <div class="input-group-prepend">' . PHP_EOL .
             '        <button type="button" name="add-on" class="btn&#x20;btn-secondary" value="">' .
             'Add-On' .
             '</button>' . PHP_EOL .
@@ -72,7 +72,7 @@ class FormAddOnTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('Addon options expects an array or a scalar value, "stdClass" given');
-        
+
         $this->formAddOnHelper->__invoke(new \Laminas\Form\Element\Text(
             'test',
             ['add_on_prepend' => new \stdClass()]
@@ -83,7 +83,7 @@ class FormAddOnTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('"text" option expects a string, "stdClass" given');
-        
+
         $this->formAddOnHelper->__invoke(new \Laminas\Form\Element\Text(
             'test',
             ['add_on_prepend' => ['text' => new \stdClass()]]
@@ -94,7 +94,7 @@ class FormAddOnTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('"label" option expects a string, "stdClass" given');
-        
+
         $this->formAddOnHelper->__invoke(new \Laminas\Form\Element\Text(
             'test',
             ['add_on_prepend' => ['label' => new \stdClass()]]
@@ -107,7 +107,7 @@ class FormAddOnTest extends \PHPUnit\Framework\TestCase
         $this->expectExceptionMessage(
             '"element" option expects an instanceof \Laminas\Form\ElementInterface, "stdClass" given'
         );
-        
+
         $this->formAddOnHelper->__invoke(new \Laminas\Form\Element\Text(
             'test',
             ['add_on_prepend' => ['element' => new \stdClass()]]
@@ -120,7 +120,7 @@ class FormAddOnTest extends \PHPUnit\Framework\TestCase
         $this->expectExceptionMessage(
             'Addon options expects a text or an element to render, none given'
         );
-        
+
         $this->formAddOnHelper->__invoke(new \Laminas\Form\Element\Text(
             'test',
             ['add_on_prepend' => ['wrong' => new \stdClass()]]

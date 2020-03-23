@@ -8,12 +8,12 @@ namespace TwbsHelper\View\Helper;
 class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
 
-    const MODAL_TITLE = 'title';
-    const MODAL_SUBTITLE = 'subtitle';
-    const MODAL_TEXT = 'text';
-    const MODAL_DIVIDER = '---';
-    const MODAL_FOOTER = 'footer';
-    const MODAL_BUTTON = 'button';
+    public const MODAL_TITLE = 'title';
+    public const MODAL_SUBTITLE = 'subtitle';
+    public const MODAL_TEXT = 'text';
+    public const MODAL_DIVIDER = '---';
+    public const MODAL_FOOTER = 'footer';
+    public const MODAL_BUTTON = 'button';
 
     /**
      * Generates a 'modal' element

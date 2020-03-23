@@ -49,10 +49,12 @@ return [
             'title' => 'Contextual variations',
             'url' => '%bootstrap-url%/components/badge/#contextual-variations',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                foreach ([
+                foreach (
+                    [
                     'primary', 'secondary', 'success', 'danger',
                     'warning', 'info', 'light', 'dark',
-                ] as $sVariant) {
+                    ] as $sVariant
+                ) {
                     echo $oView->badge(ucfirst($sVariant), $sVariant) . PHP_EOL;
                 }
             },
@@ -63,16 +65,18 @@ return [
                 '<span class="badge&#x20;badge-warning">Warning</span>' . PHP_EOL .
                 '<span class="badge&#x20;badge-info">Info</span>' . PHP_EOL .
                 '<span class="badge&#x20;badge-light">Light</span>' . PHP_EOL .
-                '<span class="badge&#x20;badge-dark">Dark</span>'. PHP_EOL,
+                '<span class="badge&#x20;badge-dark">Dark</span>' . PHP_EOL,
         ],
         [
             'title' => 'Pill badges',
             'url' => '%bootstrap-url%/components/badge/#pill-badges',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                foreach ([
+                foreach (
+                    [
                     'primary', 'secondary', 'success', 'danger',
                     'warning', 'info', 'light', 'dark',
-                ] as $sVariant) {
+                    ] as $sVariant
+                ) {
                     echo $oView->badge(
                         ucfirst($sVariant),
                         [
@@ -89,16 +93,18 @@ return [
             '<span class="badge&#x20;badge-pill&#x20;badge-warning">Warning</span>' . PHP_EOL .
             '<span class="badge&#x20;badge-info&#x20;badge-pill">Info</span>' . PHP_EOL .
             '<span class="badge&#x20;badge-light&#x20;badge-pill">Light</span>' . PHP_EOL .
-            '<span class="badge&#x20;badge-dark&#x20;badge-pill">Dark</span>'. PHP_EOL,
+            '<span class="badge&#x20;badge-dark&#x20;badge-pill">Dark</span>' . PHP_EOL,
         ],
         [
             'title' => 'Links',
             'url' => '%bootstrap-url%/components/badge/#links',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                foreach ([
+                foreach (
+                    [
                     'primary', 'secondary', 'success', 'danger',
                     'warning', 'info', 'light', 'dark',
-                ] as $sVariant) {
+                    ] as $sVariant
+                ) {
                     echo $oView->badge(
                         ucfirst($sVariant),
                         [
@@ -117,7 +123,7 @@ return [
             '<a class="badge&#x20;badge-warning" href="&#x23;">Warning</a>' . PHP_EOL .
             '<a class="badge&#x20;badge-info" href="&#x23;">Info</a>' . PHP_EOL .
             '<a class="badge&#x20;badge-light" href="&#x23;">Light</a>' . PHP_EOL .
-            '<a class="badge&#x20;badge-dark" href="&#x23;">Dark</a>'. PHP_EOL,
+            '<a class="badge&#x20;badge-dark" href="&#x23;">Dark</a>' . PHP_EOL,
         ],
     ],
 ];

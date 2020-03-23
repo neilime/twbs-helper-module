@@ -19,10 +19,12 @@ return [
                     'title' => 'Colors',
                     'url' => '%bootstrap-url%/components/spinners/#colors',
                     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        foreach ([
+                        foreach (
+                            [
                             'primary', 'secondary', 'success', 'danger',
                             'warning', 'info', 'light', 'dark',
-                        ] as $sVariant) {
+                            ] as $sVariant
+                        ) {
                             echo $oView->spinner([
                                 'variant' => $sVariant,
                                 'label' => 'Loading...',
@@ -31,28 +33,28 @@ return [
                     },
                     'expected' => '<div class="spinner-border&#x20;text-primary" role="status">' . PHP_EOL .
                     '    <span class="sr-only">Loading...</span>' . PHP_EOL .
-                    '</div>'. PHP_EOL .
+                    '</div>' . PHP_EOL .
                     '<div class="spinner-border&#x20;text-secondary" role="status">' . PHP_EOL .
                     '    <span class="sr-only">Loading...</span>' . PHP_EOL .
-                    '</div>'. PHP_EOL.
+                    '</div>' . PHP_EOL .
                     '<div class="spinner-border&#x20;text-success" role="status">' . PHP_EOL .
                     '    <span class="sr-only">Loading...</span>' . PHP_EOL .
-                    '</div>'. PHP_EOL.
+                    '</div>' . PHP_EOL .
                     '<div class="spinner-border&#x20;text-danger" role="status">' . PHP_EOL .
                     '    <span class="sr-only">Loading...</span>' . PHP_EOL .
-                    '</div>'. PHP_EOL.
+                    '</div>' . PHP_EOL .
                     '<div class="spinner-border&#x20;text-warning" role="status">' . PHP_EOL .
                     '    <span class="sr-only">Loading...</span>' . PHP_EOL .
-                    '</div>'. PHP_EOL.
+                    '</div>' . PHP_EOL .
                     '<div class="spinner-border&#x20;text-info" role="status">' . PHP_EOL .
                     '    <span class="sr-only">Loading...</span>' . PHP_EOL .
-                    '</div>'. PHP_EOL.
+                    '</div>' . PHP_EOL .
                     '<div class="spinner-border&#x20;text-light" role="status">' . PHP_EOL .
                     '    <span class="sr-only">Loading...</span>' . PHP_EOL .
-                    '</div>'. PHP_EOL.
+                    '</div>' . PHP_EOL .
                     '<div class="spinner-border&#x20;text-dark" role="status">' . PHP_EOL .
                     '    <span class="sr-only">Loading...</span>' . PHP_EOL .
-                    '</div>'. PHP_EOL,
+                    '</div>' . PHP_EOL,
                 ],
             ],
         ],
@@ -64,10 +66,12 @@ return [
                 
                 echo PHP_EOL . '<br>' . PHP_EOL;
 
-                foreach ([
+                foreach (
+                    [
                     'primary', 'secondary', 'success', 'danger',
                     'warning', 'info', 'light', 'dark',
-                ] as $sVariant) {
+                    ] as $sVariant
+                ) {
                     echo $oView->spinner([
                         'variant' => $sVariant,
                         'type' => 'grow',
@@ -150,7 +154,7 @@ return [
                             '<br>' . PHP_EOL .
                             '<div class="align-items-center&#x20;d-flex">' . PHP_EOL .
                             '    <strong>Loading...</strong>' . PHP_EOL .
-                            '    <div aria-hidden="true" class="ml-auto&#x20;spinner-border" '.
+                            '    <div aria-hidden="true" class="ml-auto&#x20;spinner-border" ' .
                             'role="status"></div>' . PHP_EOL .
                             '</div>',
                         ],
@@ -206,7 +210,7 @@ return [
                         echo $oView->spinner([
                             'attributes' => ['style' => 'width: 3rem; height: 3rem;'],
                             'label' => 'Loading...',
-                        ]). PHP_EOL;
+                        ]) . PHP_EOL;
 
                         echo $oView->spinner([
                             'attributes' => ['style' => 'width: 3rem; height: 3rem;'],
@@ -221,11 +225,11 @@ return [
                     '    <span class="sr-only">Loading...</span>' . PHP_EOL .
                     '</div>' . PHP_EOL .
                     '<br><br>' . PHP_EOL .
-                    '<div class="spinner-border" role="status" '.
+                    '<div class="spinner-border" role="status" ' .
                     'style="height&#x3A;&#x20;3rem&#x3B;width&#x3A;&#x20;3rem&#x3B;">' . PHP_EOL .
                     '    <span class="sr-only">Loading...</span>' . PHP_EOL .
                     '</div>' . PHP_EOL .
-                    '<div class="spinner-grow" role="status" '.
+                    '<div class="spinner-grow" role="status" ' .
                     'style="height&#x3A;&#x20;3rem&#x3B;width&#x3A;&#x20;3rem&#x3B;">' . PHP_EOL .
                     '    <span class="sr-only">Loading...</span>' . PHP_EOL .
                     '</div>',
@@ -273,26 +277,26 @@ return [
                             'attributes' => ['disabled' => true],
                         ]);
                     },
-                    'expected' => '<button type="button" name="button" disabled="disabled" '.
+                    'expected' => '<button type="button" name="button" disabled="disabled" ' .
                     'class="btn&#x20;btn-primary" value="">' .
-                    '<span aria-hidden="true" class="spinner-border&#x20;spinner-border-sm" '.
+                    '<span aria-hidden="true" class="spinner-border&#x20;spinner-border-sm" ' .
                     'role="status"><span class="sr-only">Loading...</span></span>' .
                     '</button>' . PHP_EOL .
-                    '<button type="button" name="button" disabled="disabled" '.
+                    '<button type="button" name="button" disabled="disabled" ' .
                     'class="btn&#x20;btn-primary" value="">' . PHP_EOL .
-                    '    <span aria-hidden="true" class="spinner-border&#x20;spinner-border-sm" '.
+                    '    <span aria-hidden="true" class="spinner-border&#x20;spinner-border-sm" ' .
                     'role="status"></span>' . PHP_EOL .
                     '    Loading...' . PHP_EOL .
-                    '</button>'. PHP_EOL .
+                    '</button>' . PHP_EOL .
                     '<br><br>' . PHP_EOL .
-                    '<button type="button" name="button" disabled="disabled" '.
+                    '<button type="button" name="button" disabled="disabled" ' .
                     'class="btn&#x20;btn-primary" value="">' .
-                    '<span aria-hidden="true" class="spinner-grow&#x20;spinner-grow-sm" '.
+                    '<span aria-hidden="true" class="spinner-grow&#x20;spinner-grow-sm" ' .
                     'role="status"><span class="sr-only">Loading...</span></span>' .
                     '</button>' . PHP_EOL .
-                    '<button type="button" name="button" disabled="disabled" '.
+                    '<button type="button" name="button" disabled="disabled" ' .
                     'class="btn&#x20;btn-primary" value="">' . PHP_EOL .
-                    '    <span aria-hidden="true" class="spinner-grow&#x20;spinner-grow-sm" '.
+                    '    <span aria-hidden="true" class="spinner-grow&#x20;spinner-grow-sm" ' .
                     'role="status"></span>' . PHP_EOL .
                     '    Loading...' . PHP_EOL .
                     '</button>',

@@ -116,12 +116,12 @@ return [
                         'src="images&#x2F;demo-sample.svg">' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
-                        '    <a class="carousel-control-prev" data-slide="prev" '.
+                        '    <a class="carousel-control-prev" data-slide="prev" ' .
                         'href="&#x23;carouselExampleIndicators" role="button">' . PHP_EOL .
                         '        <span aria-hidden="true" class="carousel-control-prev-icon"></span>' . PHP_EOL .
                         '        <span class="sr-only">Previous</span>' . PHP_EOL .
                         '    </a>' . PHP_EOL .
-                        '    <a class="carousel-control-next" data-slide="next" '.
+                        '    <a class="carousel-control-next" data-slide="next" ' .
                         'href="&#x23;carouselExampleIndicators" role="button">' . PHP_EOL .
                         '        <span aria-hidden="true" class="carousel-control-next-icon"></span>' . PHP_EOL .
                         '        <span class="sr-only">Next</span>' . PHP_EOL .
@@ -229,7 +229,7 @@ return [
                             'images/demo-sample.svg' => ['alt' => 'Slide 3',],
                         ], ['id' => 'carouselExampleFade', 'controls' => true, 'crossfade' => true]);
                     },
-                    'expected' => '<div class="carousel&#x20;carousel-fade&#x20;slide" data-ride="carousel" '.
+                    'expected' => '<div class="carousel&#x20;carousel-fade&#x20;slide" data-ride="carousel" ' .
                     'id="carouselExampleFade">' . PHP_EOL .
                         '    <div class="carousel-inner">' . PHP_EOL .
                         '        <div class="active&#x20;carousel-item">' . PHP_EOL .

@@ -10,7 +10,7 @@ class ProgressBarGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
     /**
      * Generates a 'progressbar' element
      */
-    public function __invoke(array $aProgressBars, array $aOptions = []) : string
+    public function __invoke(array $aProgressBars, array $aOptions = []): string
     {
         return $this->htmlElement(
             'div',

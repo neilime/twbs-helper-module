@@ -8,27 +8,27 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
     /**
      * @var string
      */
-    const TYPE_ITEM_HEADER = 'header';
+    public const TYPE_ITEM_HEADER = 'header';
 
     /**
      * @var string
      */
-    const TYPE_ITEM_DIVIDER = '---';
+    public const TYPE_ITEM_DIVIDER = '---';
 
     /**
      * @var string
      */
-    const TYPE_ITEM_LINK = 'link';
+    public const TYPE_ITEM_LINK = 'link';
 
     /**
      * @var string
      */
-    const TYPE_ITEM_TEXT = 'text';
+    public const TYPE_ITEM_TEXT = 'text';
 
     /**
      * @var string
      */
-    const TYPE_ITEM_HTML = 'html';
+    public const TYPE_ITEM_HTML = 'html';
 
     /**
      * @var array
@@ -186,13 +186,15 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
         // Dropdown toggle default attributes
         $aToogleElementAttributes = $oToogleElement->getAttributes();
-        foreach ([
+        foreach (
+            [
             'data-toggle' => 'dropdown',
             'role' => 'button',
             'aria-haspopup' => 'true',
             'aria-expanded' => 'false',
             'data-offset' => $aDropdownOptions['offset'] ?? null,
-        ] as $sAttributeName => $sDefaultValue) {
+            ] as $sAttributeName => $sDefaultValue
+        ) {
             if ($sDefaultValue !== null && !isset($aToogleElementAttributes[$sAttributeName])) {
                 $aToogleElementAttributes[$sAttributeName] =  $sDefaultValue;
             }
@@ -404,10 +406,12 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 $aClasses[] = 'dropdown-item';
                 $aDefaultAttributes = ['href' => '#'];
 
-                foreach ([
+                foreach (
+                    [
                     'active' => true,
                     'disabled' => ['tabindex' => '-1', 'aria-disabled' => 'true'],
-                ] as $sOption => $aOptionAttributes) {
+                    ] as $sOption => $aOptionAttributes
+                ) {
                     if (!empty($aItemOptions[$sOption])) {
                         $aClasses[] = $sOption;
 

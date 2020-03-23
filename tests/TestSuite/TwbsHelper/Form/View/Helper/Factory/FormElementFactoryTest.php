@@ -10,7 +10,7 @@ class FormElementFactory extends \PHPUnit\Framework\TestCase
     protected $formElementFactory;
 
     /**
-     * @see \PHPUnit_Framework_TestCase::setUp()
+     * @see \PHPUnit\Framework\TestCase::setUp()
      */
     public function setUp(): void
     {

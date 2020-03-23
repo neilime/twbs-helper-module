@@ -13,7 +13,7 @@ return [
                     'image_top' => ['images/demo/image-cap.svg', ['alt' => '...']],
                     'title' => 'Card title',
                     'text' => [
-                        'This is a wider card with supporting text below as a natural lead-in to additional content. '.
+                        'This is a wider card with supporting text below as a natural lead-in to additional content. ' .
                         'This content is a little bit longer.',
                         '<small class="text-muted">Last updated 3 mins ago</small>',
                     ],
@@ -22,7 +22,7 @@ return [
                 echo $oView->card([
                     'title' => 'Card title',
                     'text' => [
-                        'This is a wider card with supporting text below as a natural lead-in to additional content. '.
+                        'This is a wider card with supporting text below as a natural lead-in to additional content. ' .
                         'This content is a little bit longer.',
                         '<small class="text-muted">Last updated 3 mins ago</small>'
                     ],
@@ -33,9 +33,9 @@ return [
                 '    <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
                 '    <div class="card-body">' . PHP_EOL .
                 '        <h5 class="card-title">Card title</h5>' . PHP_EOL .
-                '        <p class="card-text">'.
-                'This is a wider card with supporting text below as a natural lead-in to additional content. '.
-                'This content is a little bit longer.'.
+                '        <p class="card-text">' .
+                'This is a wider card with supporting text below as a natural lead-in to additional content. ' .
+                'This content is a little bit longer.' .
                 '</p>' . PHP_EOL .
                 '        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
@@ -43,9 +43,9 @@ return [
                 '<div class="card">' . PHP_EOL .
                 '    <div class="card-body">' . PHP_EOL .
                 '        <h5 class="card-title">Card title</h5>' . PHP_EOL .
-                '        <p class="card-text">'.
-                'This is a wider card with supporting text below as a natural lead-in to additional content. '.
-                'This content is a little bit longer.'.
+                '        <p class="card-text">' .
+                'This is a wider card with supporting text below as a natural lead-in to additional content. ' .
+                'This content is a little bit longer.' .
                 '</p>' . PHP_EOL .
                 '        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
@@ -61,8 +61,8 @@ return [
                         'img' => ['images/demo/image-cap.svg', ['alt' => '...']],
                         'title' => 'Card title',
                         'text' => [
-                            'This is a wider card with supporting text below as a natural '.
-                            'lead-in to additional content. '.
+                            'This is a wider card with supporting text below as a natural ' .
+                            'lead-in to additional content. ' .
                             'This content is a little bit longer.',
                             'Last updated 3 mins ago',
                         ],
@@ -73,9 +73,9 @@ return [
                 '    <img alt="..." class="card-img" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
                 '    <div class="card-img-overlay">' . PHP_EOL .
                 '        <h5 class="card-title">Card title</h5>' . PHP_EOL .
-                '        <p class="card-text">'.
-                'This is a wider card with supporting text below as a natural lead-in to additional content. '.
-                'This content is a little bit longer.'.
+                '        <p class="card-text">' .
+                'This is a wider card with supporting text below as a natural lead-in to additional content. ' .
+                'This content is a little bit longer.' .
                 '</p>' . PHP_EOL .
                 '        <p class="card-text">Last updated 3 mins ago</p>' . PHP_EOL .
                 '    </div>' . PHP_EOL .

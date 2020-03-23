@@ -9,10 +9,12 @@ return [
             'title' => 'Example',
             'url' => '%bootstrap-url%/components/alerts/#examples',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                foreach ([
+                foreach (
+                    [
                     'primary', 'secondary', 'success', 'danger',
                     'warning', 'info', 'light', 'dark',
-                ] as $sVariant) {
+                    ] as $sVariant
+                ) {
                     echo $oView->alert(
                         'A simple ' . $sVariant . ' alert—check it out!',
                         $sVariant
@@ -48,10 +50,12 @@ return [
                     'title' => 'Link color',
                     'url' => '%bootstrap-url%/components/alerts/#link-color',
                     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        foreach ([
+                        foreach (
+                            [
                             'primary', 'secondary', 'success', 'danger',
                             'warning', 'info', 'light', 'dark',
-                        ] as $sVariant) {
+                            ] as $sVariant
+                        ) {
                             echo $oView->alert(
                                 'A simple ' . $sVariant . ' alert with ' .
                                     '<a href="#" class="alert-link">an example link</a>. ' .

@@ -8,8 +8,8 @@ namespace TwbsHelper\View\Helper;
 class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
 
-    const CONTROL_PREVIOUS = 'prev';
-    const CONTROL_NEXT = 'next';
+    public const CONTROL_PREVIOUS = 'prev';
+    public const CONTROL_NEXT = 'next';
 
     /**
      * Generates a 'carousel' element
@@ -22,7 +22,7 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
     public function __invoke(
         array $aSlides,
         array $aOptionsAndAttributes = [],
-        bool  $bEscape = true
+        bool $bEscape = true
     ): string {
 
 
@@ -110,7 +110,7 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
         return $aParsedSlides;
     }
 
-    protected function renderSlides(array $aSlides, bool  $bEscape = true)
+    protected function renderSlides(array $aSlides, bool $bEscape = true)
     {
         $sSlidesContent = '';
         foreach ($aSlides as $aSlide) {
@@ -123,7 +123,7 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
         return $sSlidesContent;
     }
 
-    protected function renderSlide($aSlide, bool  $bEscape = true)
+    protected function renderSlide($aSlide, bool $bEscape = true)
     {
         $aClasses = ['carousel-item'];
         $aAttributes = [];
@@ -166,7 +166,7 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
         );
     }
 
-    protected function renderSlideCaption($sCaptionContent, bool  $bEscape = true)
+    protected function renderSlideCaption($sCaptionContent, bool $bEscape = true)
     {
         if (is_array($sCaptionContent)) {
             $sContent = '';
@@ -200,7 +200,7 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
         );
     }
 
-    protected function renderIndicators(string $sId, array $aSlides, $aIndicators, bool  $bEscape = true): string
+    protected function renderIndicators(string $sId, array $aSlides, $aIndicators, bool $bEscape = true): string
     {
         switch (true) {
             case $aIndicators === true:
@@ -231,7 +231,7 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
         );
     }
 
-    protected function renderIndicator(string $sId, int $iIterator, $aSlide, bool  $bEscape = true): string
+    protected function renderIndicator(string $sId, int $iIterator, $aSlide, bool $bEscape = true): string
     {
         return $this->htmlElement(
             'li',
@@ -244,7 +244,7 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
         );
     }
 
-    protected function renderControls(string $sId, $aControls, bool  $bEscape = true): string
+    protected function renderControls(string $sId, $aControls, bool $bEscape = true): string
     {
         switch (true) {
             case $aControls === true:
@@ -273,7 +273,7 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
         return $sControlsContent;
     }
 
-    protected function renderControl(string $sId, string $sControl, string $sLabel, bool  $bEscape = true): string
+    protected function renderControl(string $sId, string $sControl, string $sLabel, bool $bEscape = true): string
     {
 
         $sControlContent =

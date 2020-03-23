@@ -23,7 +23,7 @@ return [
                     'href' => '#',
                 ]
             ],
-        ]).PHP_EOL;
+        ]) . PHP_EOL;
 
         // To make the jumbotron full width, and without rounded corners, add the option fluid
         echo $oView->jumbotron(
@@ -42,11 +42,11 @@ return [
         '    <p>It uses utility classes for typography and spacing to space ' .
         'content out within the larger container.</p>' . PHP_EOL .
         '    <a href="&#x23;" class="btn&#x20;btn-lg&#x20;btn-primary" role="button">Learn more</a>' . PHP_EOL .
-        '</div>'.PHP_EOL.
+        '</div>' . PHP_EOL .
         '<div class="jumbotron&#x20;jumbotron-fluid">' . PHP_EOL .
         '    <div class="container">' . PHP_EOL .
         '        <h1 class="display-4">Fluid jumbotron</h1>' . PHP_EOL .
-        '        <p class="lead">This is a modified jumbotron that occupies '.
+        '        <p class="lead">This is a modified jumbotron that occupies ' .
         'the entire horizontal space of its parent.</p>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '</div>',

@@ -19,7 +19,7 @@ class Breadcrumbs extends \Laminas\View\Helper\Navigation\Breadcrumbs
      * Renders breadcrumbs by chaining 'a' elements with the separator
      * registered in the helper.
      *
-     * @param  AbstractContainer $oContainer [optional] container to render.
+     * @param  \Laminas\Navigation\AbstractContainer $oContainer [optional] container to render.
      * Default is to render the container registered in the helper.
      * @return string
      */

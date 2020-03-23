@@ -8,17 +8,17 @@ namespace TwbsHelper\View\Helper;
 class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
 
-    const CARD_HEADER = 'header';
-    const CARD_HEADER_NAV_TABS = 'nav';
-    const CARD_FOOTER = 'footer';
-    const CARD_IMG_TOP = 'image_top';
-    const CARD_OVERLAY = 'overlay';
-    const CARD_LIST_GROUP = 'listGroup';
-    const CARD_BODY_TITLE = 'title';
-    const CARD_BODY_SUBTITLE = 'subtitle';
-    const CARD_BODY_TEXT = 'text';
-    const CARD_BODY_LINK = 'link';
-    const CARD_BODY_BLOCKQUOTE = 'blockquote';
+    public const CARD_HEADER = 'header';
+    public const CARD_HEADER_NAV_TABS = 'nav';
+    public const CARD_FOOTER = 'footer';
+    public const CARD_IMG_TOP = 'image_top';
+    public const CARD_OVERLAY = 'overlay';
+    public const CARD_LIST_GROUP = 'listGroup';
+    public const CARD_BODY_TITLE = 'title';
+    public const CARD_BODY_SUBTITLE = 'subtitle';
+    public const CARD_BODY_TEXT = 'text';
+    public const CARD_BODY_LINK = 'link';
+    public const CARD_BODY_BLOCKQUOTE = 'blockquote';
 
     protected static $cardParts = [
         self::CARD_HEADER => 'renderCardHeader',

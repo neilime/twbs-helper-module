@@ -145,14 +145,16 @@ class ButtonGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
      */
     public function getButtonGroupOptions(array $options): ?array
     {
-        if (isset($options['button_group'])
+        if (
+            isset($options['button_group'])
             && is_array($options['button_group'])
             && isset($options['button_group']['group_name'])
             && is_string($options['button_group']['group_name'])
         ) {
             $buttonGroupOptions = [];
             $buttonGroupOptions['group_name'] = $options['button_group']['group_name'];
-            if (isset($options['button_group']['group_options'])
+            if (
+                isset($options['button_group']['group_options'])
                 && is_array($options['button_group']['group_options'])
             ) {
                 $buttonGroupOptions['group_options'] = $options['button_group']['group_options'];

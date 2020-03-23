@@ -6,8 +6,8 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
 {
     use \TwbsHelper\View\Helper\HtmlTrait;
 
-    const POSITION_PREPEND = 'prepend';
-    const POSITION_APPEND  = 'append';
+    public const POSITION_PREPEND = 'prepend';
+    public const POSITION_APPEND  = 'append';
 
     protected static $dropdownContainerFormat = '<div %s>%s</div>';
 
@@ -104,7 +104,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
                 $oElement->setAttribute('role', 'button');
             }
         }
-        
+
         // Popover
         $aPopoverAttributes = $this->getPopoverAttributes($oElement);
 
@@ -157,7 +157,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
         return $sMarkup;
     }
 
-    protected function getTooltipAttributes(\Laminas\Form\ElementInterface $oElement) : array
+    protected function getTooltipAttributes(\Laminas\Form\ElementInterface $oElement): array
     {
         // Retrieve tooltip options
         $aTooltipOptions = $oElement->getOption('tooltip');
@@ -173,7 +173,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
             'title' => $aTooltipOptions['content'],
             'data-toggle' => 'tooltip',
         ];
-        
+
         if ($this->isHTML($aTooltipOptions['content'])) {
             $aTooltipAttributes['data-html'] = 'true';
         }
@@ -184,7 +184,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
         return $aTooltipAttributes;
     }
 
-    protected function getPopoverAttributes(\Laminas\Form\ElementInterface $oElement) : array
+    protected function getPopoverAttributes(\Laminas\Form\ElementInterface $oElement): array
     {
         $aPopoverOption = $oElement->getOption('popover');
         if (!$aPopoverOption) {

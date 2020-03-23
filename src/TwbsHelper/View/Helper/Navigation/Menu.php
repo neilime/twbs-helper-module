@@ -49,7 +49,8 @@ class Menu extends \Laminas\View\Helper\Navigation\Menu
         $aUlClasses = [$this->ulClass];
         $aItemClasses = [];
 
-        foreach ([
+        foreach (
+            [
             'tabs' => 'nav-tabs',
             'pills' => 'nav-pills',
             'fill' => 'nav-fill',
@@ -57,7 +58,8 @@ class Menu extends \Laminas\View\Helper\Navigation\Menu
             'centered' => 'justify-content-center',
             'right_aligned' => 'justify-content-end',
             'vertical' => 'flex-column',
-        ] as $sOption => $sClassName) {
+            ] as $sOption => $sClassName
+        ) {
             if (!empty($aOptions[$sOption])) {
                 $aUlClasses[] = $sClassName;
             }

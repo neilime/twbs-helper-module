@@ -104,7 +104,7 @@ return [
         '    <div class="collapse&#x20;navbar-collapse">' . PHP_EOL .
         '        <ul class="mr-auto&#x20;nav&#x20;navbar-nav">' . PHP_EOL .
         '            <li class="&#x20;nav-item">' . PHP_EOL .
-        '                <a class="nav-link&#x20;active" href="&#x23;">'.
+        '                <a class="nav-link&#x20;active" href="&#x23;">' .
         'Home <span class="sr-only">(current)</span></a>' . PHP_EOL .
         '            </li>' . PHP_EOL .
         '            <li class="nav-item">' . PHP_EOL .
@@ -121,15 +121,15 @@ return [
         '            </li>' . PHP_EOL .
         '        </ul>' . PHP_EOL .
         '        <form method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
-        '            <input name="search" type="search" placeholder="Search" aria-label="Search" '.
+        '            <input name="search" type="search" placeholder="Search" aria-label="Search" ' .
         'class="form-control&#x20;mr-sm-2" value="">' . PHP_EOL .
-        '            <button type="submit" name="submit" class="btn&#x20;btn-outline-success" value="">'.
+        '            <button type="submit" name="submit" class="btn&#x20;btn-outline-success" value="">' .
         'Search</button>' . PHP_EOL .
         '        </form>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '</nav>' . PHP_EOL .
         '<br>' . PHP_EOL .
-        '<nav class="navbar&#x20;navbar-dark&#x20;navbar-expand-lg" '.
+        '<nav class="navbar&#x20;navbar-dark&#x20;navbar-expand-lg" ' .
         'style="background-color&#x3A;&#x20;&#x23;e3f2fd&#x3B;">' . PHP_EOL .
         '    <a class="navbar-brand" href="&#x23;">Navbar</a>' . PHP_EOL .
         '    <button type="button" name="navbar_toggler" class="navbar-toggler" data-toggle="collapse" ' .

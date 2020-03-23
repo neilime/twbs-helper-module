@@ -232,13 +232,13 @@ return [
                 ]));
             },
             'expected' => '<div class="form-check">' . PHP_EOL .
-                '    <input type="checkbox" name="blankCheckbox&#x5B;&#x5D;" '.
-                'class="form-check-input&#x20;position-static" '.
+                '    <input type="checkbox" name="blankCheckbox&#x5B;&#x5D;" ' .
+                'class="form-check-input&#x20;position-static" ' .
                 'id="blankCheckbox" aria-label="..." value="option1">' . PHP_EOL .
                 '</div>' . PHP_EOL .
                 '<div class="form-check">' . PHP_EOL .
-                '    <input type="radio" name="blankRadio" '.
-                'class="form-check-input&#x20;position-static" '.
+                '    <input type="radio" name="blankRadio" ' .
+                'class="form-check-input&#x20;position-static" ' .
                 'id="blankRadio1" aria-label="..." value="option1">' . PHP_EOL .
                 '</div>',
         ],

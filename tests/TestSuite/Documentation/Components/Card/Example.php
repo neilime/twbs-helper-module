@@ -16,8 +16,8 @@ return [
         '    <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
         '    <div class="card-body">' . PHP_EOL .
         '        <h5 class="card-title">Card title</h5>' . PHP_EOL .
-        '        <p class="card-text">'.
-        'Some quick example text to build on the card title and make up the bulk of the card&#039;s content.'.
+        '        <p class="card-text">' .
+        'Some quick example text to build on the card title and make up the bulk of the card&#039;s content.' .
         '</p>' . PHP_EOL .
         '        <a href="&#x23;" class="btn btn-primary">Go somewhere</a>' . PHP_EOL .
         '    </div>' . PHP_EOL .

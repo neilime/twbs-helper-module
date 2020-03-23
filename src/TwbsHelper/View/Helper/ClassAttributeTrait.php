@@ -89,7 +89,7 @@ trait ClassAttributeTrait
         return $aClasses;
     }
 
-    public function getPrefixedClass(string $sClass, string $sPrefix) : string
+    public function getPrefixedClass(string $sClass, string $sPrefix): string
     {
         if (!strstr($sPrefix, '%s')) {
             return $sPrefix . '-' . $sClass;

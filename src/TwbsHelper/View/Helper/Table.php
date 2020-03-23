@@ -8,11 +8,11 @@ namespace TwbsHelper\View\Helper;
 class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
 
-    const TABLE_HEAD = 'thead';
-    const TABLE_BODY = 'tbody';
-    const TABLE_ROW  = 'tr';
-    const TABLE_H    = 'th';
-    const TABLE_DATA = 'td';
+    public const TABLE_HEAD = 'thead';
+    public const TABLE_BODY = 'tbody';
+    public const TABLE_ROW  = 'tr';
+    public const TABLE_H    = 'th';
+    public const TABLE_DATA = 'td';
 
     /**
      * Generates a 'table' element
@@ -184,7 +184,7 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
     /**
      * Generate table "<thead>" rows elements
      *
-     * @param arra $aHeadRows
+     * @param array $aHeadRows
      * @param bool $bEscape true espace html content of cells. Default True
      * @return string The "<thead>" rows XHTML.
      * @throws \InvalidArgumentException
@@ -301,7 +301,7 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
     /**
      * Generate table cell element "<th>" or "<td>"
      *
-     * @param scalar|array $sCell the cell data
+     * @param int|float|string|bool|array $sCell the cell data
      * @param string $sDefaultCellType the default cell element
      * (th or td) to be used
      * @param boolean $bEscape true espace html content of cells. Default True

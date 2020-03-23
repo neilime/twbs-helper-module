@@ -25,8 +25,8 @@ return [
             'expected' => '<div class="card&#x20;w-75">' . PHP_EOL .
                 '    <div class="card-body">' . PHP_EOL .
                 '        <h5 class="card-title">Card title</h5>' . PHP_EOL .
-                '        <p class="card-text">'.
-                'With supporting text below as a natural lead-in to additional content.'.
+                '        <p class="card-text">' .
+                'With supporting text below as a natural lead-in to additional content.' .
                 '</p>' . PHP_EOL .
                 '        <a href="#" class="btn btn-primary">Button</a>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
@@ -34,8 +34,8 @@ return [
                 '<div class="card&#x20;w-50">' . PHP_EOL .
                 '    <div class="card-body">' . PHP_EOL .
                 '        <h5 class="card-title">Card title</h5>' . PHP_EOL .
-                '        <p class="card-text">'.
-                'With supporting text below as a natural lead-in to additional content.'.
+                '        <p class="card-text">' .
+                'With supporting text below as a natural lead-in to additional content.' .
                 '</p>' . PHP_EOL .
                 '        <a href="#" class="btn btn-primary">Button</a>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
@@ -54,8 +54,8 @@ return [
             'expected' => '<div class="card" style="width&#x3A;&#x20;18rem&#x3B;">' . PHP_EOL .
                 '    <div class="card-body">' . PHP_EOL .
                 '        <h5 class="card-title">Special title treatment</h5>' . PHP_EOL .
-                '        <p class="card-text">'.
-                'With supporting text below as a natural lead-in to additional content.'.
+                '        <p class="card-text">' .
+                'With supporting text below as a natural lead-in to additional content.' .
                 '</p>' . PHP_EOL .
                 '        <a href="#" class="btn btn-primary">Go somewhere</a>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
