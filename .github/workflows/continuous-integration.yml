@@ -36,3 +36,6 @@ jobs:
       
       - name: Run tests
         run: composer test:ci
+        
+      - name: Coveralls GitHub Action
+        uses: coverallsapp/github-action@v1.0.1
