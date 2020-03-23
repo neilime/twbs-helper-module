@@ -39,6 +39,7 @@ jobs:
           composer test:ci
       
       - name: Upload coverage results to Coveralls
+        if: github.event_name == 'push' && github.event.branch == 'master'
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
