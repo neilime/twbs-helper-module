@@ -2,6 +2,7 @@
   <a href="https://github.com/neilime/easy-win-setup" target="_blank"><img src="https://repository-images.githubusercontent.com/80362393/0286f600-fab3-11e9-9d0a-d76983616175" width="600"></a>
 </p>
 
+![Continuous integration](https://github.com/neilime/zf-twbs-helper-module/workflows/Continuous%20integration/badge.svg)
 [![Build Status](https://travis-ci.org/neilime/zf-twbs-helper-module.svg?branch=master)](https://travis-ci.org/neilime/zf-twbs-helper-module)
 [![Coverage Status](https://coveralls.io/repos/github/neilime/zf-twbs-helper-module/badge.svg)](https://coveralls.io/github/neilime/zf-twbs-helper-module)
 [![Latest Stable Version](https://poser.pugx.org/neilime/zf-twbs-helper-module/v/stable)](https://packagist.org/packages/neilime/zf-twbs-helper-module)
