@@ -39,4 +39,4 @@ jobs:
           COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           composer global require cedx/coveralls
-          coveralls --verbose build/coverage/coverage.xml
+          coveralls --verbose build/logs/clover.xml
