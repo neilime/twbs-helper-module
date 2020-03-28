@@ -8,7 +8,7 @@
         "Twitter Bootstrap",
         "module"
     ],
-    "homepage": "http://neilime.github.io/zf-twbs-helper-module/",
+    "homepage": "http://neilime.github.io/twbs-helper-module/",
     "license": "MIT",
     "minimum-stability": "stable",
     "authors": [
@@ -24,7 +24,7 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/neilime/zf-twbs-helper-module/issues"
+        "issues": "https://github.com/neilime/twbs-helper-module/issues"
     },
     "suggest": {
         "neilime/zf2-assets-bundle": "Bundling & caching Twitter Bootstrap assets",
