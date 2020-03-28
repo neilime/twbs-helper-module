@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/neilime/zf-twbs-helper-module" target="_blank"><img src="https://repository-images.githubusercontent.com/80362393/0286f600-fab3-11e9-9d0a-d76983616175" width="600"></a>
+  <a href="https://github.com/neilime/zf-twbs-helper-module" target="_blank"><img src="https://repository-images.githubusercontent.com/80362393/425f1180-7115-11ea-96d4-75646c99df22" width="600"></a>
 </p>
 
 ![Continuous integration](https://github.com/neilime/zf-twbs-helper-module/workflows/Continuous%20integration/badge.svg)
