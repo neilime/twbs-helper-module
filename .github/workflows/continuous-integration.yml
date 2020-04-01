@@ -26,7 +26,7 @@ jobs:
         with:
           php-version: ${{ matrix.php-versions }}
           extensions: mbstring
-          coverage: xdebug
+          coverage: pcov
 
       - name: Get composer cache directory
         id: composer-cache
