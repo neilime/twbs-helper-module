@@ -16,6 +16,6 @@ jobs:
         wiki_github_update_token: "${{ secrets.GITHUB_TOKEN }}"
         wiki_github_update_user: github.context.actor
         engine: clean/phpdoc-md
-        class_root_namespace: My Project
+        class_root_namespace: TwbsHelper
         include: |
-          MyProject\**:  
+          TwbsHelper\**:  
