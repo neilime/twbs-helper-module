@@ -1,0 +1,21 @@
+name: Publish
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  wiki:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@master
+    - name: Php documentation
+      uses: impresscms-dev/phpdocs-wiki-update-action@master
+      with:
+        wiki_github_update_token: "${{ secrets.GITHUB_TOKEN }}"
+        wiki_github_update_user: github.context.actor
+        engine: clean/phpdoc-md
+        class_root_namespace: My Project
+        include: |
+          MyProject\**:  
