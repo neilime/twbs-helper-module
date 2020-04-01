@@ -85,7 +85,7 @@ class Bootstrap
 }
 
 error_reporting(E_ALL | E_STRICT);
-chdir(__DIR__);
+
 // Composer autoloading
 if (!file_exists($sComposerAutoloadPath = __DIR__ . '/../vendor/autoload.php')) {
     throw new \LogicException('Composer autoload file "' . $sComposerAutoloadPath . '" does not exist');
@@ -97,4 +97,4 @@ if (false === (include $sComposerAutoloadPath)) {
     ));
 }
 
-Bootstrap::init();
+\TestSuite\Bootstrap::init();

@@ -74,7 +74,7 @@ class Form extends \Laminas\Form\View\Helper\Form
             $this->setClassesToElement($oForm, ['form-inline']);
         }
 
-        $sElementsContent = $this->renderElements($oForm, $sFormLayout);
+        $sElementsContent = $this->renderElements($oForm);
 
         return $this->openTag($oForm)
             . ($sElementsContent ? $this->addProperIndentation($sElementsContent, true) : '') .

@@ -43,10 +43,7 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
         $aAttributes = $this->setClassesToAttributes($aButtonToolbarOptions['attributes'] ?? [], $aClasses);
 
         // Render button group
-        return $this->htmlElement('div', $aAttributes, $this->renderToolbarItems(
-            $aItems,
-            strpos($aAttributes['class'], 'btn-group-justified') !== false
-        ));
+        return $this->htmlElement('div', $aAttributes, $this->renderToolbarItems($aItems));
     }
 
 
