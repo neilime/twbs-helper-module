@@ -1,0 +1,45 @@
+name: Publish
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  homepage:
+    runs-on: ubuntu-latest 
+
+    steps:   
+    - uses: actions/checkout@master
+    - run: mkdir ./site
+    - run: cp README.md ./site/index.md   
+    - run: echo -e "---\nlayout: default\ntitle: Home\n---\n" > ./site/index.md;
+    - uses: actions/upload-artifact@v1
+      with:
+        name: site
+        path: ./site
+  wiki:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@master
+    - name: Php documentation
+      uses: impresscms-dev/phpdocs-wiki-update-action@master
+      with:
+        wiki_github_update_token: "${{ secrets.GITHUB_TOKEN }}"
+        wiki_github_update_user: "${{ github.actor }}"
+        engine: clean/phpdoc-md
+        class_root_namespace: TwbsHelper
+        include: |
+          TwbsHelper\**
+          
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    needs: homepage
+    steps: 
+      - uses: actions/download-artifact@v1
+        with:
+          name: site
+      - uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
