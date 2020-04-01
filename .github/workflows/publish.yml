@@ -38,8 +38,8 @@ jobs:
       - uses: actions/download-artifact@v1
         with:
           name: site
-      - uses: peaceiris/actions-gh-pages@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
-          enable_jekyll: true
+      - uses: Cecilapp/GitHub-Pages-deploy@master
+        env:
+          EMAIL: ${{ github.actor }} 
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BUILD_DIR: ./site
