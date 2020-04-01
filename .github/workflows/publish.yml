@@ -14,8 +14,19 @@ jobs:
       uses: impresscms-dev/phpdocs-wiki-update-action@master
       with:
         wiki_github_update_token: "${{ secrets.GITHUB_TOKEN }}"
-        wiki_github_update_user: github.context.actor
+        wiki_github_update_user: "${{ github.actor }}"
         engine: clean/phpdoc-md
         class_root_namespace: TwbsHelper
         include: |
           TwbsHelper\**
+          
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Build & Deploy to GitHub Pages
+        uses: BryanSchuetz/jekyll-deploy-gh-pages@master
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: "${{ github.repository }}"
+          GITHUB_ACTOR: "${{ github.actor }}"
