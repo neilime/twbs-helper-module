@@ -62,17 +62,26 @@ jobs:
       - name: Configure phpdoc-md
         run: |
           mkdir -p ./site/phpdoc;
-          php -d display_errors=0 -d error_reporting=0 -r "file_put_contents('.phpdoc-md', '
-            <?php
+
+          php -d display_errors=0 -d error_reporting=0 -r "file_put_contents('.phpdoc-md','<?php
               return (object)[
                 \'rootNamespace\' => \'TwbsHelper\', 
                 \'destDirectory\' => \'./site/phpdoc\',
                 \'format\' => \'github\',
-                \'classes\' => '.json_encode(array_filter(array_keys(require('./vendor/composer/autoload_classmap.php')))).',
+                \'classes\' => '.var_export (array_values(array_filter(
+                    array_keys(require('./vendor/composer/autoload_classmap.php')),
+                    function(\$className) {
+                      return strpos(\$className, 'TwbsHelper') === 0;
+                    }                                  
+                )), true).'
               ];
-          ');"
+            ');
+          ";
 
-      - run: composer exec phpdoc-md -v
+      - name: Execute phpdoc-md
+        run: |
+          vendor/bin/phpdoc-md -v
+          mv ./site/phpdoc/README.md ./site/phpdoc/index.md
 
       - uses: actions/upload-artifact@v1
         with:
