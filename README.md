@@ -4,7 +4,7 @@
 
 [![Continuous integration](https://github.com/neilime/twbs-helper-module/workflows/Continuous%20integration/badge.svg)](https://github.com/neilime/twbs-helper-module/actions?query=workflow%3A%22Continuous+integration%22)
 [![Build Status](https://travis-ci.org/neilime/twbs-helper-module.svg?branch=master)](https://travis-ci.org/neilime/twbs-helper-module)
-[![Coverage Status](https://coveralls.io/repos/github/neilime/twbs-helper-module/badge.svg)](https://coveralls.io/github/neilime/twbs-helper-module)
+[![codecov](https://codecov.io/gh/neilime/twbs-helper-module/branch/master/graph/badge.svg)](https://codecov.io/gh/neilime/twbs-helper-module)
 [![Latest Stable Version](https://poser.pugx.org/neilime/twbs-helper-module/v/stable)](https://packagist.org/packages/neilime/twbs-helper-module)
 [![Total Downloads](https://poser.pugx.org/neilime/twbs-helper-module/downloads)](https://packagist.org/packages/neilime/twbs-helper-module)
 [![License](https://poser.pugx.org/neilime/twbs-helper-module/license)](https://packagist.org/packages/neilime/twbs-helper-module)
