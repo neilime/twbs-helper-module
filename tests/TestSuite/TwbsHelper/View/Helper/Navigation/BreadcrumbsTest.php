@@ -1,6 +1,6 @@
 <?php
 
-namespace TestSuite\TwbsHelper\View\Helper;
+namespace TestSuite\TwbsHelper\View\Helper\Navigation;
 
 class BreadcrumbsTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
 {

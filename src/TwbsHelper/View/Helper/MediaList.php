@@ -9,7 +9,7 @@ class MediaList extends \TwbsHelper\View\Helper\AbstractGroup
 {
     protected static $groupClass = 'list-unstyled';
     protected static $groupTag = 'ul';
-    protected static $helperName = 'media';
+    protected static string $helperName = 'media';
 
     protected function renderGroupItem(
         \Laminas\View\Helper\HelperInterface $oItemHelper,

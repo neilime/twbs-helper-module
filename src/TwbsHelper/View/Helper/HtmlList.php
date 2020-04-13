@@ -12,8 +12,7 @@ class HtmlList extends \TwbsHelper\View\Helper\AbstractHtmlElement
      * Generates a 'List' element. Manage indentation of Xhtml markup
      *
      * @param  array   $aItems      Array with the elements of the list
-     * @param  boolean $bOrdered    Specifies ordered/unordered list; default unordered
-     * @param  array   $aAttributes Attributes for the ol/ul tag.
+     * @param  array   $aOptionsAndAttributes Attributes for the ol/ul tag.
      * If class attributes contains "list-inline", so the li will have the class "list-inline-item"
      * @param  boolean $bEscape     Escape the items.
      * @throws \InvalidArgumentException

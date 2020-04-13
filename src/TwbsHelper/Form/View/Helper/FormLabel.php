@@ -39,14 +39,16 @@ class FormLabel extends \Laminas\Form\View\Helper\FormLabel
             return $sLabelContent;
         }
 
-        $aLabelAttributes = $oElement instanceof \Laminas\Form\LabelAwareInterface
-            ? $oElement->getLabelAttributes()
-            : [];
+        if ($oElement instanceof \Laminas\Form\LabelAwareInterface) {
+            $aLabelAttributes = $oElement->getLabelAttributes();
 
-        $oElement->setLabelAttributes($aLabelAttributes = $this->setClassesToAttributes(
-            $aLabelAttributes,
-            $this->getLabelClasses($oElement, $aLabelAttributes)
-        ));
+            $oElement->setLabelAttributes($aLabelAttributes = $this->setClassesToAttributes(
+                $aLabelAttributes,
+                $this->getLabelClasses($oElement, $aLabelAttributes)
+            ));
+        } else {
+            $aLabelAttributes = [];
+        }
 
         $sMarkup = parent::__invoke($oElement, $sLabelContent, $sPosition);
         if (!preg_match('/(<label[^>]*>)([\s\S]*)(<\/label[^>]*>)/imU', $sMarkup, $aMatches)) {
@@ -86,6 +88,10 @@ class FormLabel extends \Laminas\Form\View\Helper\FormLabel
      */
     public function renderPartial(\Laminas\Form\ElementInterface $oElement): string
     {
+        if (!$oElement instanceof \Laminas\Form\LabelAwareInterface) {
+            return '';
+        }
+
         $sLabel = $oElement->getLabel();
         if ($sLabel && ($oTranslator = $this->getTranslator())) {
             $sLabel = $oTranslator->translate($sLabel, $this->getTranslatorTextDomain());

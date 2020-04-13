@@ -11,7 +11,7 @@ trait HtmlTrait
 
     public function htmlElement(
         string $sTag,
-        array $aAttributes = [],
+        iterable $aAttributes = [],
         string $sContent = null,
         bool $bEscape = true
     ): string {
@@ -89,7 +89,7 @@ trait HtmlTrait
         return $sString !== strip_tags($sString);
     }
 
-    public function attributesToString(array $aAttributes, string $sTag): string
+    public function attributesToString(iterable $aAttributes, string $sTag): string
     {
         // Clean attributes
         if (!empty($aAttributes['class'])) {
@@ -97,6 +97,9 @@ trait HtmlTrait
         }
         if (!empty($aAttributes['style'])) {
             $aAttributes = $this->setStylesToAttributes($aAttributes);
+        }
+        if (!is_array($aAttributes)) {
+            $aAttributes = iterator_to_array($aAttributes);
         }
         ksort($aAttributes);
 

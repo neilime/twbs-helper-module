@@ -94,7 +94,7 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
 
         // Brand
         if (isset($aOptions['brand'])) {
-            $sContent .= ($sContent ? PHP_EOL : '') . $this->renderBrand($aOptions['brand']);
+            $sContent .= $this->renderBrand($aOptions['brand']);
         }
 
         // Toggler
@@ -281,7 +281,8 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
 
     public function renderNav(\Laminas\Navigation\AbstractContainer $oContainer, array $aNavOptions = []): string
     {
-        return $this->getView()->navigation()->menu()->renderMenu(
+        $oNavigationHelper = $this->getView()->plugin('navigation');
+        return $oNavigationHelper->menu()->renderMenu(
             $oContainer,
             \Laminas\Stdlib\ArrayUtils::merge([
                 'ulClass' => 'navbar-nav mr-auto',
@@ -289,14 +290,9 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
         );
     }
 
-
     public function renderForm($oForm): string
     {
-        if (
-            is_array($oForm)
-            || ($oForm instanceof \Traversable
-                && !($oForm instanceof \Laminas\Form\FormInterface))
-        ) {
+        if (is_iterable($oForm) && !($oForm instanceof \Laminas\Form\FormInterface)) {
             $oFactory = new \Laminas\Form\Factory();
 
             // Set default type if none given
@@ -305,9 +301,16 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
             }
 
             $oForm = $oFactory->create($oForm);
+
+            if (!($oForm instanceof \Laminas\Form\FormInterface)) {
+                throw new \InvalidArgumentException(sprintf(
+                    __METHOD__ . ' expects options to create an instance of \Laminas\Form\FormInterface, "%s" given',
+                    get_class($oForm)
+                ));
+            }
         } elseif (!($oForm instanceof \Laminas\Form\FormInterface)) {
             throw new \InvalidArgumentException(sprintf(
-                __METHOD__ . ' expects an instanceof \Laminas\Form\FormInterface or an array / Traversable, "%s" given',
+                __METHOD__ . ' expects an instance of \Laminas\Form\FormInterface or an iterable, "%s" given',
                 is_object($oForm) ? get_class($oForm) : gettype($oForm)
             ));
         }
@@ -326,7 +329,7 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
      *
      * Overrides {@link View\Helper\AbstractHtmlElement::normalizeId()}.
      *
-     * @param string $value
+     * @param string $sValue
      * @return string
      */
     protected function normalizeId($sValue)

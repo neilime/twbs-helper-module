@@ -33,11 +33,9 @@ class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
      * Generates an 'alert' element
      *
      * @param  string  $sContent     The content of the alert
-     * @param  string  $sVariation        The type of the alert (success, info, warning, danger). Default : empty
-     * @param  boolean $bDismissible True if the alert can be dismissable. Default : false
      * @param  array   $aAttributes  Html attributes of the "<div>" element
      * @param  boolean $bEscape      True espace html content '$sContent'. Default True
-     * @return string The alert XHTML.
+     * @return string The card XHTML.
      */
     public function __invoke(
         $sContent,
@@ -144,7 +142,14 @@ class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
                     $oContainer = new \Laminas\Navigation\Navigation($oContainer);
                 }
             }
+        } else {
+            throw new \InvalidArgumentException(sprintf(
+                'Content argument expects a string, an array or an instance of "%s", "%s" given',
+                '\Laminas\Navigation\Navigation',
+                is_object($sContent) ? get_class($sContent) : gettype($sContent)
+            ));
         }
+
 
         if (empty($aOptions['tabs']) && empty($aOptions['pills'])) {
             $aOptions['tabs'] = true;

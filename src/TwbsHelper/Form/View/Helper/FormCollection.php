@@ -111,65 +111,12 @@ class FormCollection extends \Laminas\Form\View\Helper\FormCollection
         }
 
         return $aMatches[1] . $this->addProperIndentation($sMarkup) . $aMatches[3];
-
-        $oRenderer = $this->getView();
-
-        if (!is_callable([$oRenderer, 'plugin'])) {
-            return '';
-        }
-
-        $bShouldWrap = $this->shouldWrap;
-        $sMarkup = '';
-        $sElementLayout = $oElement->getOption('layout');
-
-        if ($oElement instanceof \IteratorAggregate) {
-            $oElementHelper  = $this->getElementHelper();
-            $oFieldsetHelper = $this->getFieldsetHelper();
-
-            foreach ($oElement->getIterator() as $oElementOrFieldset) {
-                $aOptions = $oElementOrFieldset->getOptions();
-
-                if ($sElementLayout && empty($aOptions['layout'])) {
-                    $aOptions['layout'] = $sElementLayout;
-                    $oElementOrFieldset->setOptions($aOptions);
-                }
-
-                if ($oElementOrFieldset instanceof \Laminas\Form\FieldsetInterface) {
-                    $sMarkup .= $oFieldsetHelper($oElementOrFieldset);
-                }
-            }
-
-            if ($oElement instanceof \Laminas\Form\Element\Collection && $oElement->shouldCreateTemplate()) {
-                $sMarkup .= $this->renderTemplate($oElement);
-            }
-        }
-
-        if ($bShouldWrap) {
-            if ($sLabel = $oElement->getLabel()) {
-                if (null !== ($oTranslator = $this->getTranslator())) {
-                    $sLabel = $oTranslator->translate($sLabel, $this->getTranslatorTextDomain());
-                }
-
-                $sMarkup = $this->htmlElement('legend', $oElement->getLabelAttributes(), $sLabel);
-            }
-
-            // Set form layout class
-            if ($sElementLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE) {
-                $this->setClassesToElement($oElement, ['form-' . $sElementLayout]);
-            } elseif ($sElementLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL) {
-                $sMarkup = $this->htmlElement('div', ['class' => 'row'], $sMarkup);
-            }
-
-            $sMarkup = $this->htmlElement('fieldset', $oElement->getAttributes(), $sMarkup);
-        }
-
-        return $sMarkup;
     }
 
     /**
      * Only render a template
      *
-     * @param \Laminas\Form\Element\Collection $collection
+     * @param \Laminas\Form\Element\Collection $oCollection
      * @return string
      */
     public function renderTemplate(\Laminas\Form\Element\Collection $oCollection): string

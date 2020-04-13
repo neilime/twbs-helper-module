@@ -18,8 +18,8 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
     /**
      * Generates a 'modal' element
      *
-     * @param string|array  $sContent The content of the alert
-     * @param array  $aAttributes Options & Html attributes
+     * @param string|array $sContent The content of the alert
+     * @param array $aOptionsAndAttributes Options & Html attributes
      * @param boolean $bEscape True espace html content '$sContent'. Default True
      * @return string The jumbotron XHTML.
      */
@@ -42,9 +42,11 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
             }
             unset($aOptionsAndAttributes[$sModalOption]);
         }
+
         if (!empty($aOptionsAndAttributes['size'])) {
             $aDialogClasses[] = $this->getSizeClass($aOptionsAndAttributes['size'], 'modal');
         }
+
         unset($aOptionsAndAttributes['size']);
 
         $sContent = $this->renderParts(
@@ -89,6 +91,7 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
         $sFooterPart = '';
         foreach ($aParts as $sKey => $sPartContent) {
             $sType = is_numeric($sKey) ? self::MODAL_TEXT : $sKey;
+
             if (is_array($sPartContent)) {
                 $aOptions = $sPartContent;
                 if (empty($aOptions['type'])) {
@@ -106,7 +109,7 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
             }
 
             $sPartContent = $this->renderPart(
-                $aOptions,
+                $aOptions ?? [],
                 $bEscape
             );
 

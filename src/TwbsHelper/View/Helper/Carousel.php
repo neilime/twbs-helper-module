@@ -15,7 +15,7 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
      * Generates a 'carousel' element
      *
      * @param array $aSlides    The slides of the carousel
-     * @param array  $aAttributes Html attributes of the "<div>" element
+     * @param array  $aOptionsAndAttributes Html attributes of the "<div>" element
      * @param boolean $bEscape     True espace html content. Default True
      * @return string The carousel XHTML.
      */
@@ -27,7 +27,7 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
 
         if (empty($aOptionsAndAttributes['id'])) {
-            $aOptionsAndAttributes['id'] = uniqid('twbs-carousel');
+            $aOptionsAndAttributes['id'] = uniqid('twbs-carousel-');
         }
         if (!isset($aOptionsAndAttributes['data-ride'])) {
             $aOptionsAndAttributes['data-ride'] = 'carousel';
@@ -45,7 +45,6 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 $sContent = $this->renderIndicators(
                     $aOptionsAndAttributes['id'],
                     $aSlides,
-                    $aOptionsAndAttributes['controls'],
                     $bEscape
                 ) . PHP_EOL . $sContent;
             }
@@ -77,9 +76,9 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
         foreach ($aSlides as $sKey => $aSlide) {
             if (is_string($aSlide)) {
                 if (is_string($sKey)) {
-                    $aSlide = ['src' => $sKey, 'optionsAndAttributes' => ['caption' => $sKey]];
+                    $aSlide = ['src' => $sKey, 'optionsAndAttributes' => ['caption' => $aSlide]];
                 } else {
-                    $aSlide = ['src' => $sKey, 'optionsAndAttributes' => []];
+                    $aSlide = ['src' => $aSlide, 'optionsAndAttributes' => []];
                 }
             } elseif (is_array($aSlide)) {
                 if (is_string($sKey)) {
@@ -93,12 +92,14 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
                                 $aSlide['optionsAndAttributes'] ?? [],
                                 $aSlide['options']
                             );
+                            unset($aSlide['options']);
                         }
                         if (isset($aSlide['attributes'])) {
                             $aSlide['optionsAndAttributes'] = array_merge(
                                 $aSlide['optionsAndAttributes'] ?? [],
                                 $aSlide['attributes']
                             );
+                            unset($aSlide['attributes']);
                         }
                     }
                 }
@@ -200,18 +201,8 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
         );
     }
 
-    protected function renderIndicators(string $sId, array $aSlides, $aIndicators, bool $bEscape = true): string
+    protected function renderIndicators(string $sId, array $aSlides, bool $bEscape = true): string
     {
-        switch (true) {
-            case $aIndicators === true:
-                break;
-            default:
-                throw new \InvalidArgumentException(sprintf(
-                    'Option "controls" of type "%s" is not supported',
-                    gettype($aIndicators)
-                ));
-        }
-
         $sIndicatorsContent = '';
         $iIterator = -1;
         foreach ($aSlides as $aSlide) {
@@ -247,6 +238,8 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
     protected function renderControls(string $sId, $aControls, bool $bEscape = true): string
     {
         switch (true) {
+            case is_iterable($aControls):
+                break;
             case $aControls === true:
                 $aControls = [
                     self::CONTROL_PREVIOUS => 'Previous',

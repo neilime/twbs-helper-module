@@ -2,7 +2,7 @@
 
 namespace TestSuite\TwbsHelper\Form\View\Helper\Factory;
 
-class FormElementFactory extends \PHPUnit\Framework\TestCase
+class FormElementFactoryTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var \TwbsHelper\Form\View\Helper\Factory\FormElementFactory

@@ -111,7 +111,7 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
 
     public function testRenderTableCellWithWrongTypeCellData()
     {
-        $this->expectExceptionMessage('Argument "$sCell[\'data\']" expects a scalar value, "array" given');
+        $this->expectExceptionMessage('Argument "$sCell[\'data\']" expects a string value, "array" given');
         $this->helper->renderTableCell([
             'data' => [],
         ], 'td', true);

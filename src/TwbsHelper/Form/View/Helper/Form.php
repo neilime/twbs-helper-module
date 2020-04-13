@@ -97,6 +97,7 @@ class Form extends \Laminas\Form\View\Helper\Form
         // Store elements rendering
         $aElementsRendering = [];
 
+        
         // Retrieve view helper plugin manager
         $oHelperPluginManager = $this->getView()->getHelperPluginManager();
 
@@ -123,9 +124,9 @@ class Form extends \Laminas\Form\View\Helper\Form
 
             // Define layout option to form elements if not already defined
             if ($sFormLayout && empty($aOptions['layout'])) {
-                $oElement->setOption('layout', $sFormLayout);
+                $aOptions = $oElement->setOption('layout', $sFormLayout)->getOptions();
             }
-
+            
             // Manage button group option
             if (
                 $oElement instanceof \Laminas\Form\Element\Button
@@ -167,7 +168,7 @@ class Form extends \Laminas\Form\View\Helper\Form
                     && $sFormLayout == self::LAYOUT_HORIZONTAL
                 ) {
                     // Make sure, that form row will also get actual row attribute
-                    $oElement->setOption('column', $aGroupOptions['column']);
+                    $aOptions = $oElement->setOption('column', $aGroupOptions['column'])->getOptions();
                 }
 
                 $sElementRendering = $oFormRowHelper->renderFormRow(

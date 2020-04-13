@@ -124,7 +124,7 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
         }
 
         if (isset($sCaption)) {
-            $sMarkup .= ($sMarkup ? PHP_EOL : '') . $this->renderTableCation($sCaption, $bEscape);
+            $sMarkup .= $this->renderTableCation($sCaption, $bEscape);
         }
 
         if (isset($aHeadRows)) {
@@ -333,7 +333,7 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
         } else {
             throw new \InvalidArgumentException(sprintf(
                 'Argument "$sCell" expects an array or a scalar value, "%s" given',
-                is_object($sCell) ? get_class($sCell) : gettype($sCell)
+                get_class($sCell)
             ));
         }
 
@@ -361,25 +361,27 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
         }
 
         $sCellData = $aCell['data'];
-        if (!is_scalar($sCellData)) {
+        if (!is_string($sCellData)) {
             throw new \InvalidArgumentException(sprintf(
-                'Argument "$sCell[\'data\']" expects a scalar value, "%s" given',
+                'Argument "$sCell[\'data\']" expects a string value, "%s" given',
                 is_object($sCellData)
                     ? get_class($sCellData)
                     : gettype($sCellData)
             ));
         }
 
-        if (isset($aCell['type'])) {
-            $sCellType = $aCell['type'];
-            if (!is_string($sCellType)) {
-                throw new \InvalidArgumentException(sprintf(
-                    'Argument "$sCell[\'type\']" expects a string, "%s" given',
-                    is_object($sCellType)
-                        ? get_class($sCellType)
-                        : gettype($sCellType)
-                ));
-            }
+        if (!isset($aCell['type'])) {
+            throw new \InvalidArgumentException('Argument "$sCell[\'type\']" is undefined');
+        }
+
+        $sCellType = $aCell['type'];
+        if (!is_string($sCellType)) {
+            throw new \InvalidArgumentException(sprintf(
+                'Argument "$sCell[\'type\']" expects a string, "%s" given',
+                is_object($sCellType)
+                    ? get_class($sCellType)
+                    : gettype($sCellType)
+            ));
         }
 
         $aAttributes = [];

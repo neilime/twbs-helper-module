@@ -68,17 +68,6 @@ class FormAddOnTest extends \PHPUnit\Framework\TestCase
         );
     }
 
-    public function testRenderAddOnWithWrongTypeAsOptionThrowsAnException()
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('Addon options expects an array or a scalar value, "stdClass" given');
-
-        $this->formAddOnHelper->__invoke(new \Laminas\Form\Element\Text(
-            'test',
-            ['add_on_prepend' => new \stdClass()]
-        ));
-    }
-
     public function testRenderAddOnWithWrongTextOptionThrowsAnException()
     {
         $this->expectException(\InvalidArgumentException::class);
@@ -98,19 +87,6 @@ class FormAddOnTest extends \PHPUnit\Framework\TestCase
         $this->formAddOnHelper->__invoke(new \Laminas\Form\Element\Text(
             'test',
             ['add_on_prepend' => ['label' => new \stdClass()]]
-        ));
-    }
-
-    public function testRenderAddOnWithWrongElementOptionThrowsAnException()
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage(
-            '"element" option expects an instanceof \Laminas\Form\ElementInterface, "stdClass" given'
-        );
-
-        $this->formAddOnHelper->__invoke(new \Laminas\Form\Element\Text(
-            'test',
-            ['add_on_prepend' => ['element' => new \stdClass()]]
         ));
     }
 

@@ -8,12 +8,12 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
 
     /**
-     * @var \TwbsHelper\View\Helper\ButtonGroup
+     * @var \TwbsHelper\View\Helper\ButtonGroup|null
      */
     protected $buttonGroupHelper;
 
     /**
-     * @var \TwbsHelper\Form\View\Helper\FormElement
+     * @var \TwbsHelper\Form\View\Helper\FormElement|null
      */
     protected $formElementHelper;
 
@@ -46,11 +46,10 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
         return $this->htmlElement('div', $aAttributes, $this->renderToolbarItems($aItems));
     }
 
-
     /**
      * Render toolbar items markup
      *
-     * @param array $aButtons
+     * @param array $aItems
      * @return string
      */
     protected function renderToolbarItems(array $aItems): string
@@ -81,12 +80,6 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
         if ($oItem instanceof \Laminas\Form\ElementInterface) {
             return $this->getFormElementHelper()->__invoke($oItem);
         }
-
-        throw new \InvalidArgumentException(sprintf(
-            '"%s" does not support item of type "%s"',
-            __METHOD__,
-            is_object($oItem) ? get_class($oItem) : gettype($oItem)
-        ));
     }
 
     /**

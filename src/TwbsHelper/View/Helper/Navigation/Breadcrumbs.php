@@ -7,6 +7,7 @@ namespace TwbsHelper\View\Helper\Navigation;
  */
 class Breadcrumbs extends \Laminas\View\Helper\Navigation\Breadcrumbs
 {
+
     protected static $navFormat =
     '<nav aria-label="breadcrumb">' . PHP_EOL .
         '    <ol class="breadcrumb">%s</ol>' . PHP_EOL . '</nav>';
@@ -31,22 +32,23 @@ class Breadcrumbs extends \Laminas\View\Helper\Navigation\Breadcrumbs
         }
 
         // Find deepest active
-        if (!$bActive = $this->findActive($oContainer)) {
+        $oActivePage = $this->findActive($oContainer);
+        if (!$oActivePage) {
             return sprintf(static::$navFormat, '');
         }
 
-        $bActive = $bActive['page'];
+        $oActivePage = $oActivePage['page'];
 
         // Put the deepest active page last in breadcrumbs
         if ($this->getLinkLast()) {
-            $sHtml = $this->htmlify($bActive);
+            $sHtml = $this->htmlify($oActivePage);
         } else {
-            $oEscapeHtml = $this->view->plugin('escapeHtml');
-            $sHtml    = $this->renderBreadcrumbItem(
+            $oEscapeHtml = $this->getView()->plugin('escapeHtml');
+            $sHtml = $this->renderBreadcrumbItem(
                 $oEscapeHtml(
                     $this->translate(
-                        $bActive->getLabel(),
-                        $bActive->getTextDomain()
+                        $oActivePage->getLabel(),
+                        $oActivePage->getTextDomain()
                     )
                 ),
                 true
@@ -54,7 +56,7 @@ class Breadcrumbs extends \Laminas\View\Helper\Navigation\Breadcrumbs
         }
 
         // Walk back to root
-        while ($parent = $bActive->getParent()) {
+        while ($parent = $oActivePage->getParent()) {
             if ($parent instanceof \Laminas\Navigation\Page\AbstractPage) {
                 // Prepend crumb to html
                 $sHtml = $this->htmlify($parent) . PHP_EOL . $sHtml;
@@ -65,12 +67,13 @@ class Breadcrumbs extends \Laminas\View\Helper\Navigation\Breadcrumbs
                 break;
             }
 
-            $bActive = $parent;
+            $oActivePage = $parent;
         }
 
-        return sprintf(static::$navFormat, $sHtml
-            ? PHP_EOL . $sHtml . PHP_EOL . '    '
-            : '');
+        return sprintf(
+            static::$navFormat,
+            $sHtml ? PHP_EOL . $sHtml . PHP_EOL . '    ' : ''
+        );
     }
 
 

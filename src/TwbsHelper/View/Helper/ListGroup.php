@@ -165,8 +165,10 @@ class ListGroup extends \TwbsHelper\View\Helper\HtmlList
             $sItemLabel = $this->getView()->plugin('escapeHtml')->__invoke($sItemLabel);
         }
 
+        $oBadgeHelper = $this->getView()->plugin('badge');
+
         $sBadgeContent =  call_user_func_array(
-            [$this->getView()->plugin('badge'), '__invoke'],
+            [$oBadgeHelper,'__invoke'],
             is_array($aBadgeOptions) ? $aBadgeOptions : [$aBadgeOptions]
         );
 

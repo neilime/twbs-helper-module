@@ -9,9 +9,7 @@ class FormSelect extends \Laminas\Form\View\Helper\FormSelect
     /**
      * Render a form <select> element from the provided $element
      *
-     * @param \Laminas\Form\ElementInterface $element
-     * @throws \InvalidArgumentException
-     * @throws \DomainException
+     * @param \Laminas\Form\ElementInterface $oElement
      * @return string
      */
     public function render(\Laminas\Form\ElementInterface $oElement): string
@@ -44,8 +42,8 @@ class FormSelect extends \Laminas\Form\View\Helper\FormSelect
      * )
      * </code>
      *
-     * @param  array $options
-     * @param  array $selectedOptions Option values that should be marked as selected
+     * @param  array $aOptions
+     * @param  array $aSelectedOptions Option values that should be marked as selected
      * @return string
      */
     public function renderOptions(array $aOptions, array $aSelectedOptions = [])

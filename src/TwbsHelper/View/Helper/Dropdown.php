@@ -56,6 +56,7 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
     /**
      * @param \Laminas\Form\ElementInterface|array $oDropdown
+     * @param boolean $bEscape     Escape the dropdown.
      * @return \TwbsHelper\View\Helper\Dropdown|string
      */
     public function __invoke($oDropdown = null, bool $bEscape = true)
@@ -65,22 +66,22 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
     /**
      * Render dropdown markup
-     * @param \Laminas\Form\ElementInterface|array $oDropdown
+     * @param \Laminas\Form\ElementInterface|iterable $oDropdown
+     * @param boolean $bEscape     Escape the dropdown.
      * @return string
      */
     public function render($oDropdown, bool $bEscape = true): string
     {
         if (
-            is_array($oDropdown)
-            || ($oDropdown instanceof \Traversable
-                && !($oDropdown instanceof \Laminas\Form\ElementInterface))
+            is_iterable($oDropdown)
+            && !($oDropdown instanceof \Laminas\Form\ElementInterface)
         ) {
             $oFactory = new \Laminas\Form\Factory();
             $oDropdown = $oFactory->create($oDropdown);
         } elseif (!($oDropdown instanceof \Laminas\Form\ElementInterface)) {
             throw new \InvalidArgumentException(sprintf(
                 'Argument "$oDropdown" expects %s, "%s" given',
-                'an instanceof \Laminas\Form\ElementInterface or an array / Traversable',
+                'an instanceof \Laminas\Form\ElementInterface or an iterable',
                 is_object($oDropdown) ? get_class($oDropdown) : gettype($oDropdown)
             ));
         }
@@ -136,7 +137,7 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
     /**
      * Render dropdown toggle markup
-     * @param array $aDropdownOptions
+     * @param \Laminas\Form\ElementInterface $oDropdown
      * @throws \InvalidArgumentException
      * @return string
      */
@@ -176,9 +177,10 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
             $oFactory = new \Laminas\Form\Factory();
             $oToogleElement = $oFactory->create($aSplitElement);
 
-
-            $oToogleElement->setLabel('<span class="sr-only">' . $oToogleElement->getLabel() . '</span>');
-            $oToogleElement->setLabelOption('disable_html_escape', true);
+            if ($oToogleElement instanceof \Laminas\Form\LabelAwareInterface) {
+                $oToogleElement->setLabel('<span class="sr-only">' . $oToogleElement->getLabel() . '</span>');
+                $oToogleElement->setLabelOption('disable_html_escape', true);
+            }
         } else {
             $oToogleElement = clone $oDropdown;
             $oToogleElement->setOption('dropdown', null);
@@ -210,7 +212,7 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
             $aToogleElementAttributes,
             ['dropdown-toggle']
         ));
-        $sToogleMarkup = $this->getView()->formButton()->render($oToogleElement);
+        $sToogleMarkup = $this->getView()->plugin('formButton')->render($oToogleElement);
 
         if (!$sSplitOption) {
             return $sToogleMarkup;
@@ -218,7 +220,7 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
         // Render button without dropdown
         $oDropdown->setOption('dropdown', null);
-        $sToogleMarkup = $this->getView()->formButton()->render($oDropdown) . PHP_EOL . $sToogleMarkup;
+        $sToogleMarkup = $this->getView()->plugin('formButton')->render($oDropdown) . PHP_EOL . $sToogleMarkup;
         $oDropdown->setOption('dropdown', $aDropdownOptions);
         return  $sToogleMarkup;
     }
@@ -290,7 +292,9 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
     /**
      * Render dropdown menu markup
-     * @param array $aDropdownOptions
+     * @param array $aItems Dropdown menu items
+     * @param array $aAttributes Dropdown menu attributes
+     * @param boolean $bEscape     Escape the dropdown menu.
      * @throws \InvalidArgumentException
      * @return string
      */

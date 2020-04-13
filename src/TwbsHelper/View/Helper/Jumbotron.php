@@ -19,7 +19,7 @@ class Jumbotron extends \TwbsHelper\View\Helper\AbstractHtmlElement
      * Generates a 'jumbotron' element
      *
      * @param string|array  $sContent The content of the alert
-     * @param array  $aAttributes Options & Html attributes
+     * @param array  $aOptionsAndAttributes Options & Html attributes
      * @param boolean $bEscape True espace html content '$sContent'. Default True
      * @return string The jumbotron XHTML.
      */
@@ -74,7 +74,7 @@ class Jumbotron extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
             $sContent .= ($sContent ? PHP_EOL : '') . $this->renderJumbotronPart(
                 $sType,
-                $aOptions,
+                $aOptions ?? [],
                 $bEscape
             );
         }

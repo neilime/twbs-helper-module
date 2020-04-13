@@ -10,7 +10,7 @@ class FormAddOn extends \Laminas\Form\View\Helper\AbstractHelper
     public const POSITION_PREPEND = 'prepend';
 
     /**
-     * @var \Laminas\Form\Factory
+     * @var \Laminas\Form\Factory|null
      */
     protected $formFactory;
 
@@ -81,7 +81,7 @@ class FormAddOn extends \Laminas\Form\View\Helper\AbstractHelper
      * Render add-on markup
      *
      * @param \Laminas\Form\ElementInterface|array|string $aAddOnOptions
-     * @param  string $sPosition
+     * @param \Laminas\Form\ElementInterface $oElement
      * @throws \InvalidArgumentException
      * @throws \LogicException
      * @return string
@@ -93,13 +93,8 @@ class FormAddOn extends \Laminas\Form\View\Helper\AbstractHelper
     ): string {
         if ($aAddOnOptions instanceof \Laminas\Form\ElementInterface) {
             $aAddOnOptions = ['element' => $aAddOnOptions];
-        } elseif (is_scalar($aAddOnOptions)) {
+        } elseif (is_string($aAddOnOptions)) {
             $aAddOnOptions = ['text' => $aAddOnOptions];
-        } elseif (!is_array($aAddOnOptions)) {
-            throw new \InvalidArgumentException(sprintf(
-                'Addon options expects an array or a scalar value, "%s" given',
-                is_object($aAddOnOptions) ? get_class($aAddOnOptions) : gettype($aAddOnOptions)
-            ));
         }
 
         if (\Laminas\Stdlib\ArrayUtils::isList($aAddOnOptions)) {
@@ -158,18 +153,12 @@ class FormAddOn extends \Laminas\Form\View\Helper\AbstractHelper
 
             case isset($aAddOnOptions['element']):
                 if (
-                    is_array($aAddOnOptions['element'])
+                    is_iterable($aAddOnOptions['element'])
                     && !($aAddOnOptions['element'] instanceof \Laminas\Form\ElementInterface)
                 ) {
                     $aAddOnOptions['element'] = $this->createFormElement($aAddOnOptions['element']);
-                } elseif (!($aAddOnOptions['element'] instanceof \Laminas\Form\ElementInterface)) {
-                    throw new \InvalidArgumentException(sprintf(
-                        '"element" option expects an instanceof \Laminas\Form\ElementInterface, "%s" given',
-                        is_object($aAddOnOptions['element'])
-                            ? get_class($aAddOnOptions['element'])
-                            : gettype($aAddOnOptions['element'])
-                    ));
                 }
+
                 return $this->renderElement(
                     $aAddOnOptions['element'],
                     $aAttributes
@@ -210,6 +199,10 @@ class FormAddOn extends \Laminas\Form\View\Helper\AbstractHelper
         ]));
     }
 
+    /**
+     * @param \Laminas\Form\ElementInterface $oElement
+     * @return string
+     */
     protected function renderElement(\Laminas\Form\ElementInterface $oElement, array $aAttributes): string
     {
         // Set options to improve rendering
@@ -232,10 +225,7 @@ class FormAddOn extends \Laminas\Form\View\Helper\AbstractHelper
 
         $oHelper = $this->getView()->plugin('formElement');
 
-        if (
-            $oElement instanceof \Laminas\Form\Element\Checkbox
-            || $oElement instanceof \Laminas\Form\Element\Radio
-        ) {
+        if ($oElement instanceof \Laminas\Form\Element\Checkbox) {
             $oElement->setOption('disable_twbs', true);
             return $this->renderAddOnElement(
                 $oHelper->render($oElement),

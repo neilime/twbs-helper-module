@@ -17,7 +17,7 @@ class Media extends \TwbsHelper\View\Helper\AbstractHtmlElement
      * Generates a 'media' element
      *
      * @param string|array  $sContent The content of the alert
-     * @param array  $aAttributes Options & Html attributes
+     * @param array $aOptionsAndAttributes Options & Html attributes
      * @param boolean $bEscape True espace html content '$sContent'. Default True
      * @return string The jumbotron XHTML.
      */
@@ -56,7 +56,7 @@ class Media extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
             $sPartContent = $this->renderPart(
                 $sType,
-                $aOptions,
+                $aOptions ?? [],
                 $bEscape
             );
 

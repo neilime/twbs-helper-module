@@ -52,18 +52,14 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
      * * bool block
      *
      * @see FormButton::render()
-     * @param array|\Laminas\Form\ElementInterface $oElement
+     * @param iterable|\Laminas\Form\ElementInterface $oElement
      * @param string $sButtonContent
      * @throws \InvalidArgumentException
      * @return string
      */
     public function render($oElement, $sButtonContent = null)
     {
-        if (
-            is_array($oElement)
-            || ($oElement instanceof \Traversable
-                && !($oElement instanceof \Laminas\Form\ElementInterface))
-        ) {
+        if (is_iterable($oElement) && !($oElement instanceof \Laminas\Form\ElementInterface)) {
             $oFactory = new \Laminas\Form\Factory();
 
             // Set default type if none given
@@ -81,7 +77,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
 
         // Dropdown button
         if ($oElement->getOption('dropdown')) {
-            return $this->getView()->dropdown()->render($oElement);
+            return $this->getView()->plugin('dropdown')->render($oElement);
         }
 
         $this->defineButtonClasses($oElement);
@@ -400,8 +396,8 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
     /**
      * Determine button type to use
      *
-     * @param \Laminas\Form\ElementInterface $element
-     * @return string
+     * @param \Laminas\Form\ElementInterface $oElement
+     * @return string|boolean
      */
     protected function getType(\Laminas\Form\ElementInterface $oElement)
     {

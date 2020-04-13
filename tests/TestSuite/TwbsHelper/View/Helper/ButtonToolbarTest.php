@@ -10,14 +10,6 @@ class ButtonToolbarTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
      */
     protected $helper = 'buttonToolbar';
 
-    public function testRenderWithWrongToolbarItem()
-    {
-        $this->expectExceptionMessage(
-            'TwbsHelper\View\Helper\ButtonToolbar::renderToolbarItem" does not support item of type "string"'
-        );
-        $this->helper->render(['wrong']);
-    }
-
     public function testGetButtonGroupHelperLazyLoad()
     {
 

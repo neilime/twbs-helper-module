@@ -26,7 +26,7 @@ class FormFile extends \Laminas\Form\View\Helper\FormInput
             if ($sLabel = $oElement->getOption('custom_label')) {
                 $sLabelTmp = $oElement->getLabel();
                 $oElement->setLabel($sLabel);
-                $sLabel = $this->view->plugin('form_label')->__invoke($oElement);
+                $sLabel = $this->getView()->plugin('form_label')->__invoke($oElement);
                 $oElement->setLabel($sLabelTmp ?? '');
                 if ($sLabel) {
                     $sElementContent .= PHP_EOL . $sLabel;

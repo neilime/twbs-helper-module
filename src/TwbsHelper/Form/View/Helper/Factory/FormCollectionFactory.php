@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Copyright (c) 2019.
- *
- * @author Syber
- */
-
 namespace TwbsHelper\Form\View\Helper\Factory;
 
 class FormCollectionFactory implements \Laminas\ServiceManager\FactoryInterface
@@ -16,13 +10,13 @@ class FormCollectionFactory implements \Laminas\ServiceManager\FactoryInterface
      * @param \Laminas\ServiceManager\ServiceLocatorInterface $oServiceLocator
      * @param mixed $sCanonicalName
      * @param mixed $sRequestedName
-     * @return void
+     * @return \TwbsHelper\Form\View\Helper\FormCollection
      */
     public function createService(
         \Laminas\ServiceManager\ServiceLocatorInterface $oServiceLocator,
         $sCanonicalName = null,
         $sRequestedName = null
-    ) {
+    ): \TwbsHelper\Form\View\Helper\FormCollection {
         return $this($oServiceLocator, $sRequestedName);
     }
 
@@ -32,10 +26,13 @@ class FormCollectionFactory implements \Laminas\ServiceManager\FactoryInterface
      * @param \Interop\Container\ContainerInterface $oContainer
      * @param mixed $sRequestedName
      * @param array $aOptions
-     * @return void
+     * @return \TwbsHelper\Form\View\Helper\FormCollection
      */
-    public function __invoke(\Interop\Container\ContainerInterface $oContainer, $sRequestedName, array $aOptions = null)
-    {
+    public function __invoke(
+        \Interop\Container\ContainerInterface $oContainer,
+        $sRequestedName,
+        array $aOptions = null
+    ): \TwbsHelper\Form\View\Helper\FormCollection {
         $oOptions = $oContainer->get(\TwbsHelper\Options\ModuleOptions::class);
 
         return new \TwbsHelper\Form\View\Helper\FormCollection($oOptions);

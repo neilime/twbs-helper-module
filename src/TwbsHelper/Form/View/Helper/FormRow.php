@@ -46,13 +46,26 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
         // Retrieve expected layout
         $sLayout = $oElement->getOption('layout');
 
+        if (is_null($sLabelPosition)) {
+            $sLabelPosition = $this->labelPosition;
+        }
+
         // Partial rendering
         if ($this->partial) {
+            $sLabel = $oElement->getLabel();
+            
+            if (!empty($sLabel)) {
+                // Translate the label
+                if (null !== ($oTranslator = $this->getTranslator())) {
+                    $sLabel = $oTranslator->translate($sLabel, $this->getTranslatorTextDomain());
+                }
+            }
+
             return $this->view->render(
                 $this->partial,
                 [
                     'element'         => $oElement,
-                    'label'           => $this->getLabelHelper()->renderPartial($oElement),
+                    'label'           => $sLabel,
                     'labelAttributes' => $this->labelAttributes,
                     'labelPosition'   => $sLabelPosition,
                     'renderErrors'    => $this->renderErrors,

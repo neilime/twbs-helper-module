@@ -19,14 +19,13 @@ class Image extends \TwbsHelper\View\Helper\AbstractHtmlElement
      * Generates a 'image' element
      *
      * @param string $sImageSrc   The path to the image
-     * @param array  $aOptions    Image options. Default : empty. Allowed options:
+     * @param array  $aOptionsAndAttributes  Image options and Html attributes. Default : empty. Allowed options:
      *     - boolean fluid: responsive image
      *     - boolean thumbnail: thumbnail image
      *     - boolean rounded: rounded image
      *     - boolean figure: figure image
      *     - [srcset => type] sources: list of sources for <picture element>
      *
-     * @param  array  $aAttributes Html attributes of the "<img>" element. Default : empty
      * @return string The image XHTML.
      * @throws \InvalidArgumentException
      */

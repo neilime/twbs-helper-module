@@ -124,7 +124,7 @@ class Toast extends \TwbsHelper\View\Helper\AbstractHtmlElement
         $sToastHeader = '';
 
         if (!empty($aHeaderOptions['image'])) {
-            $sToastHeader .= ($sToastHeader ? PHP_EOL : '') . $this->getView()->plugin('image')->__invoke(
+            $sToastHeader .= $this->getView()->plugin('image')->__invoke(
                 ...$aHeaderOptions['image']
             );
         }

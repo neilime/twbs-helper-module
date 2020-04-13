@@ -23,21 +23,20 @@ class FormElement extends \Laminas\Form\View\Helper\FormElement
     /**
      * Constructor
      *
-     * @param \TwbsHelper\Options\ModuleOptions $options
-     * @access public
+     * @param \TwbsHelper\Options\ModuleOptions $oOptions
      * @return void
      */
-    public function __construct(\TwbsHelper\Options\ModuleOptions $options)
+    public function __construct(\TwbsHelper\Options\ModuleOptions $oOptions)
     {
-        if (is_array($options->getTypeMap())) {
-            $this->typeMap = array_merge($this->typeMap, $options->getTypeMap());
+        if (is_array($oOptions->getTypeMap())) {
+            $this->typeMap = array_merge($this->typeMap, $oOptions->getTypeMap());
         }
 
-        if (is_array($options->getClassMap())) {
-            $this->classMap = array_merge($this->classMap, $options->getClassMap());
+        if (is_array($oOptions->getClassMap())) {
+            $this->classMap = array_merge($this->classMap, $oOptions->getClassMap());
         }
 
-        $this->options = $options;
+        $this->options = $oOptions;
     }
 
     /**
@@ -82,19 +81,19 @@ class FormElement extends \Laminas\Form\View\Helper\FormElement
      * @param \Laminas\Form\ElementInterface $oElement
      * @return string
      */
-    protected function renderHelper($sName, \Laminas\Form\ElementInterface $oElement): string
+    protected function renderHelper($sName, \Laminas\Form\ElementInterface $oElement)
     {
         $oHelper = $this->getView()->plugin($sName);
 
         if ($this->options->getValidTagAttributes()) {
-            foreach ($this->options->getValidTagAttributes() as $attribute) {
-                $oHelper->addValidAttribute($attribute);
+            foreach ($this->options->getValidTagAttributes() as $aAttribute) {
+                $oHelper->addValidAttribute($aAttribute);
             }
         }
 
         if ($this->options->getValidTagAttributePrefixes()) {
-            foreach ($this->options->getValidTagAttributePrefixes() as $prefix) {
-                $oHelper->addValidAttributePrefix($prefix);
+            foreach ($this->options->getValidTagAttributePrefixes() as $sPrefix) {
+                $oHelper->addValidAttributePrefix($sPrefix);
             }
         }
 

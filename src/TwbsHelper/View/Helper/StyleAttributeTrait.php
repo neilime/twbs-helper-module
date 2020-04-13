@@ -26,8 +26,8 @@ trait StyleAttributeTrait
 
     protected function setStylesToElement(
         \Laminas\Form\ElementInterface $oElement,
-        array $aAddStyles = [],
-        array $aRemoveStyles = []
+        iterable $aAddStyles = [],
+        iterable $aRemoveStyles = []
     ): \Laminas\Form\ElementInterface {
         return $oElement->setAttributes(
             $this->setStylesToAttributes(
@@ -39,13 +39,16 @@ trait StyleAttributeTrait
     }
 
     public function setStylesToAttributes(
-        array $aAttributes,
-        array $aAddStyles = [],
-        array $aRemoveStyles = []
-    ): array {
+        iterable $aAttributes,
+        iterable $aAddStyles = [],
+        iterable $aRemoveStyles = []
+    ): iterable {
         $aStyles = $this->addStylesAttribute($aAttributes['style'] ?? '', $aAddStyles);
         if ($aStyles) {
-            $aStyles = array_diff_key($aStyles, $aRemoveStyles);
+            $aStyles = array_diff_key(
+                $aStyles,
+                is_array($aRemoveStyles) ? $aRemoveStyles : iterator_to_array($aRemoveStyles)
+            );
 
             $sStyles = '';
             foreach ($aStyles as $sKey => $sStyle) {
@@ -57,7 +60,7 @@ trait StyleAttributeTrait
         return $aAttributes;
     }
 
-    protected function addStylesAttribute(string $sStyleAttribute, array $aStyles): array
+    protected function addStylesAttribute(string $sStyleAttribute, iterable $aStyles): array
     {
         return array_merge(
             $this->getStylesAttribute($sStyleAttribute),
@@ -65,7 +68,7 @@ trait StyleAttributeTrait
         );
     }
 
-    protected function cleanStylesAttribute(array $aStyles): array
+    protected function cleanStylesAttribute(iterable $aStyles): array
     {
         $aCleanedStyles = [];
         foreach ($aStyles as $sKey => $sValue) {

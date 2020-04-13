@@ -14,6 +14,12 @@ trait MultiCheckboxTrait
      */
     public function render(\Laminas\Form\ElementInterface $oElement): string
     {
+        if (! $oElement instanceof \Laminas\Form\Element\MultiCheckbox) {
+            throw new \InvalidArgumentException(sprintf(
+                '%s requires that the element is of type \Laminas\Form\Element\MultiCheckbox',
+                __METHOD__
+            ));
+        }
 
         $this->prepareElement($oElement);
         $bIsCustom = $oElement->getOption('custom');
@@ -50,7 +56,7 @@ trait MultiCheckboxTrait
         return $sContent;
     }
 
-    protected function prepareElement(\Laminas\Form\ElementInterface $oElement)
+    protected function prepareElement(\Laminas\Form\Element\MultiCheckbox $oElement)
     {
         if ($oElement->getOption('disable_twbs')) {
             return;

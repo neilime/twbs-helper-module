@@ -11,7 +11,7 @@ class ButtonGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
 
     /**
-     * @var \TwbsHelper\Form\View\Helper\FormElement
+     * @var \TwbsHelper\Form\View\Helper\FormElement|null
      */
     protected $formElementHelper;
 

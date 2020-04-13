@@ -28,4 +28,47 @@ class FormTest extends \PHPUnit\Framework\TestCase
             $this->formHelper->__invoke()
         );
     }
+
+    public function testnitiliazeAnHorizontalFormClass()
+    {
+
+        $horizontalFormClass = new class () extends \Laminas\Form\Form {
+            public function prepare()
+            {
+                $this->setName('form');
+                $this->setOption('layout', \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL);
+
+                $this->add([
+                    'name' => 'email',
+                    'options' => [
+                        'label' => 'Email',
+                        'column' => 'sm-10',
+                    ],
+                    'attributes' => [
+                        'type' => 'email',
+                        'id' => 'inputEmail3',
+                        'placeholder' => 'Email',
+                    ],
+                ]);
+                parent::prepare();
+            }
+        };
+
+        $oNewHorizontalForm = new $horizontalFormClass();
+
+        $this->assertEquals(
+            '<form method="POST" name="form" role="form" id="form">' . PHP_EOL .
+            '    <div class="form-group&#x20;row">' . PHP_EOL .
+            '        <label class="col-form-label&#x20;col-sm-2" for="inputEmail3">' .
+            'Email' .
+            '</label>' . PHP_EOL .
+            '        <div class="col-sm-10">' . PHP_EOL .
+            '            <input name="email" type="email" id="inputEmail3" ' .
+            'placeholder="Email" class="form-control" value="">' . PHP_EOL .
+            '        </div>' . PHP_EOL .
+            '    </div>' . PHP_EOL .
+            '</form>',
+            $this->formHelper->__invoke($oNewHorizontalForm)
+        );
+    }
 }

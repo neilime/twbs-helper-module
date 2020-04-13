@@ -42,8 +42,8 @@ trait ClassAttributeTrait
 
     protected function setClassesToElement(
         \Laminas\Form\ElementInterface $oElement,
-        array $aAddClasses = [],
-        array $aRemoveClasses = []
+        iterable $aAddClasses = [],
+        iterable $aRemoveClasses = []
     ): \Laminas\Form\ElementInterface {
         return $oElement->setAttributes(
             $this->setClassesToAttributes(
@@ -55,19 +55,22 @@ trait ClassAttributeTrait
     }
 
     public function setClassesToAttributes(
-        array $aAttributes,
-        array $aAddClasses = [],
-        array $aRemoveClasses = []
+        iterable $aAttributes,
+        iterable $aAddClasses = [],
+        iterable $aRemoveClasses = []
     ): array {
         $aClasses = $this->addClassesAttribute($aAttributes['class'] ?? '', $aAddClasses);
         if ($aClasses) {
-            $aClasses = array_diff($aClasses, $aRemoveClasses);
+            $aClasses = array_diff(
+                $aClasses,
+                is_array($aRemoveClasses) ? $aRemoveClasses : iterator_to_array($aRemoveClasses)
+            );
             $aAttributes['class'] = join(' ', $aClasses);
         }
         return $aAttributes;
     }
 
-    protected function addClassesAttribute(string $sClassAttribute, array $aClasses): array
+    protected function addClassesAttribute(string $sClassAttribute, iterable $aClasses): array
     {
         return $this->cleanClassesAttribute(array_merge(
             $this->getClassesAttribute($sClassAttribute, false),
@@ -75,7 +78,7 @@ trait ClassAttributeTrait
         ));
     }
 
-    protected function cleanClassesAttribute(array $aClasses): array
+    protected function cleanClassesAttribute(iterable $aClasses): array
     {
         $aClasses = array_unique(
             array_filter(

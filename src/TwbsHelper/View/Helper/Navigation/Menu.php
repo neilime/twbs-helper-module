@@ -82,9 +82,20 @@ class Menu extends \Laminas\View\Helper\Navigation\Menu
             ], $aOptions)
         );
 
+        if (!$sContent) {
+            return '';
+        }
+
         if (isset($aOptions['list']) && $aOptions['list'] === false) {
             $sContent = preg_replace('/(<)ul([^>]*>[\s\S]*<\/)ul([^>]*>)/imU', '$1nav$2nav$3', $sContent);
+            if (!$sContent) {
+                return '';
+            }
+
             $sContent = preg_replace('/<li[^>]*>\s*(\S(.*\S)?)\s*<\/li[^>]*>/imU', '$1', $sContent);
+            if (!$sContent) {
+                return '';
+            }
 
             // When using a <nav>-based navigation, include .nav-item on the anchors
             // For nav-fill & nav-justified
@@ -109,7 +120,7 @@ class Menu extends \Laminas\View\Helper\Navigation\Menu
             );
         }
 
-        return $sContent;
+        return $sContent ?? '';
     }
 
     /**
@@ -138,8 +149,7 @@ class Menu extends \Laminas\View\Helper\Navigation\Menu
             $aClasses[] = 'disabled';
         }
 
-        $bIsDropdownPage = $oPage instanceof \TwbsHelper\Navigation\Page\DropdownPage;
-        if ($bIsDropdownPage) {
+        if ($oPage instanceof \TwbsHelper\Navigation\Page\DropdownPage) {
             $aClasses[] = 'dropdown-toggle';
             $aDropdownOptions = $oPage->getDropdown();
             $aDropdownAttributes = [];
@@ -185,7 +195,7 @@ class Menu extends \Laminas\View\Helper\Navigation\Menu
      *
      * Overloads {@link View\Helper\AbstractHtmlElement::htmlAttribs()}.
      *
-     * @param  array $attribs  an array where each key-value pair is converted
+     * @param  array $aAttributes  an array where each key-value pair is converted
      *                         to an attribute name and value
      * @return string
      */
