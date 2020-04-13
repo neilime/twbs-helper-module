@@ -13,6 +13,9 @@ class Module implements \Laminas\ModuleManager\Feature\ConfigProviderInterface
      */
     public function getConfig()
     {
-        return include __DIR__ . DIRECTORY_SEPARATOR . '/../../config/module.config.php';
+        $oConfigProvider = new \TwbsHelper\ConfigProvider();
+        $aConfig = $oConfigProvider->__invoke();
+        $aConfig['service_manager'] = $aConfig['dependencies'];
+        return $aConfig;
     }
 }

@@ -9,7 +9,7 @@ abstract class AbstractGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
     protected static $groupClass;
     protected static $groupTag;
-    protected static string $helperName;
+    protected static $helperName;
 
     /**
      * Render a group

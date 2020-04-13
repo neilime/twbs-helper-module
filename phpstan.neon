@@ -1,0 +1,5 @@
+parameters:
+    ignoreErrors:
+        - '/Call to an undefined method Laminas\\View\\Helper\\AbstractHelper::/'
+    laminasframework:
+       serviceManagerLoader: tests/phpstan.php
