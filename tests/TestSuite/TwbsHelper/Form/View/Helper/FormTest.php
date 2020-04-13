@@ -29,7 +29,7 @@ class FormTest extends \PHPUnit\Framework\TestCase
         );
     }
 
-    public function testnitiliazeAnHorizontalFormClass()
+    public function testInitializeAnHorizontalFormClass()
     {
 
         $horizontalFormClass = new class () extends \Laminas\Form\Form {
