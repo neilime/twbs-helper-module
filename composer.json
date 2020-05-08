@@ -45,7 +45,7 @@
         "laminas/laminas-progressbar": "^2.5",
         "laminas/laminas-serializer": "^2.9",
         "laminas/laminas-servicemanager": "^3.1",
-        "laminas/laminas-stdlib": "^3.0",
+        "laminas/laminas-stdlib": "^3.2",
         "laminas/laminas-view": "^2.11"
     },
     "require-dev": {
