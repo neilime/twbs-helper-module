@@ -12,7 +12,7 @@ class CarouselTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
 
     public function testShouldRenderAUniqueIdIfNoneDefined()
     {
-        $this->assertRegExp(
+        $this->assertMatchesRegularExpression(
             // Expected
             '/<div class="carousel&#x20;slide" data-ride="carousel" id="twbs-carousel-[a-z0-9]{13}"><\/div>/',
             // Rendering

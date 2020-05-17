@@ -68,12 +68,27 @@ trait HtmlTrait
             $sIndentation = $this->indentation;
         }
 
-        // Add proper indentation
-        $sContent = join(PHP_EOL, array_map(function ($sValue) use ($sIndentation) {
-            return $sIndentation . $sValue;
-        }, $aLines));
+        $sContent = '';
+        $bShouldIndent = true;
+        foreach ($aLines as $sLine) {
+            if ($sLine && $bShouldIndent) {
+                $sLine = $sIndentation . $sLine;
+            }
+           
+            $bIsStartOfTextArea = !!preg_match('/<textarea[^>]*>/i', $sLine);
+            if ($bIsStartOfTextArea) {
+                $bShouldIndent = false;
+            }
+            
+            $bIsEndOfTextArea = !!preg_match('/<\/textarea[^>]*>/i', $sLine);
+            if ($bIsEndOfTextArea) {
+                $bShouldIndent = true;
+            }
 
-        return PHP_EOL . $sContent . PHP_EOL;
+            $sContent .= $sLine . PHP_EOL;
+        }
+
+        return PHP_EOL . $sContent;
     }
 
     public function removeIndentation(string $sContent): string
