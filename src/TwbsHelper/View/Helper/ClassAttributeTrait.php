@@ -58,11 +58,11 @@ trait ClassAttributeTrait
         iterable $aAttributes,
         iterable $aAddClasses = [],
         iterable $aRemoveClasses = []
-    ): array {
+    ): iterable {
         $aClasses = $this->addClassesAttribute($aAttributes['class'] ?? '', $aAddClasses);
         if ($aClasses) {
             $aClasses = array_diff(
-                $aClasses,
+                is_array($aClasses) ? $aClasses : iterator_to_array($aClasses),
                 is_array($aRemoveClasses) ? $aRemoveClasses : iterator_to_array($aRemoveClasses)
             );
             $aAttributes['class'] = join(' ', $aClasses);
@@ -74,7 +74,7 @@ trait ClassAttributeTrait
     {
         return $this->cleanClassesAttribute(array_merge(
             $this->getClassesAttribute($sClassAttribute, false),
-            $aClasses
+            is_array($aClasses) ? $aClasses : iterator_to_array($aClasses)
         ));
     }
 
@@ -82,7 +82,7 @@ trait ClassAttributeTrait
     {
         $aClasses = array_unique(
             array_filter(
-                $aClasses,
+                is_array($aClasses) ? $aClasses : iterator_to_array($aClasses),
                 function ($sClass) {
                     return !!trim($sClass);
                 }

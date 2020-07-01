@@ -112,7 +112,11 @@ class FormCollection extends \Laminas\Form\View\Helper\FormCollection
         }
 
         if ($sColumSize) {
-            $sMarkup = $this->htmlElement('div', ['class' => $this->getColumnClass($sColumSize)], $sMarkup);
+            $sMarkup = $this->htmlElement(
+                'div', 
+                $this->setClassesToAttributes([], [$this->getColumnClass($sColumSize)]),
+                $sMarkup
+            );
         }
 
         $sMarkup = $sLegendContent . $sMarkup;
