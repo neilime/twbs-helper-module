@@ -118,10 +118,6 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
             $aRowClasses[]  = 'has-error';
         }
 
-        if ($oElement->getOption('feedback')) {
-            $aRowClasses[]  = 'has-feedback';
-        }
-
         // Column
         $sColum = $oElement->getOption('column');
         if ($sColum) {
@@ -211,18 +207,18 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
             case null:
             case \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE:
                 $aRenderingOrder = [
-                    'renderFeedback' => [],
                     'renderLabel' =>  [$sLabelPosition],
                     'renderHelpBlock' => [],
                     'renderErrors' => [],
+                    'renderValidFeedback' => [],
                     'renderDedicatedContainer' => [],
                 ];
                 break;
             case \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL:
                 $aRenderingOrder = [
-                    'renderFeedback' => [],
                     'renderHelpBlock' => [],
                     'renderErrors' => [],
+                    'renderValidFeedback' => [],
                     'renderDedicatedContainer' => [],
                 ];
                 break;
@@ -381,6 +377,22 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
      * @param \Laminas\Form\ElementInterface $oElement
      * @return string
      */
+    protected function renderValidFeedback(\Laminas\Form\ElementInterface $oElement, string $sElementContent): string
+    {
+        $sValidFeedback = $oElement->getOption('valid_feedback');
+        if ($sValidFeedback) {
+            $sValidFeedbackContent = $this->htmlElement('div',['class' => 'valid-feedback'], $sValidFeedback);
+            $sElementContent .= PHP_EOL . $sValidFeedbackContent;
+        }
+        return $sElementContent;
+    }
+
+    /**
+     * Render element's errors
+     *
+     * @param \Laminas\Form\ElementInterface $oElement
+     * @return string
+     */
     protected function renderErrors(\Laminas\Form\ElementInterface $oElement, string $sElementContent): string
     {
         if ($this->renderErrors) {
@@ -388,28 +400,6 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
             if ($sElementErrorsContent) {
                 $sElementContent .= PHP_EOL . $sElementErrorsContent;
             }
-        }
-        return $sElementContent;
-    }
-
-    /**
-     * Render element's feedback
-     *
-     * @param \Laminas\Form\ElementInterface $oElement
-     * @param string $sElementContent
-     * @return string
-     */
-    protected function renderFeedback(\Laminas\Form\ElementInterface $oElement, string $sElementContent): string
-    {
-        $sFeedback = $oElement->getOption('feedback');
-        if ($sFeedback) {
-            if (!is_string($sFeedback)) {
-                throw new \InvalidArgumentException(sprintf(
-                    'Argument "$sFeedbackElement" expects a string, "%s" given',
-                    is_object($sFeedback) ? get_class($sFeedback) : gettype($sFeedback)
-                ));
-            }
-            $sElementContent .= '<i class="' . $sFeedback . ' form-control-feedback"></i>';
         }
         return $sElementContent;
     }
