@@ -22,6 +22,17 @@ class FormCollection extends \Laminas\Form\View\Helper\FormCollection
      */
     protected $wrapper = '<fieldset%4$s>%2$s%1$s%3$s</fieldset>';
 
+      /**
+     * Attributes valid for the tag represented by this helper
+     *
+     * This should be overridden in extending classes
+     *
+     * @var array
+     */
+    protected $validTagAttributes = [
+        'disabled' => true,
+    ];
+
 
     /**
      * Constructor

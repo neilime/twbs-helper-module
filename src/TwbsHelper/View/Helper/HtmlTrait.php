@@ -55,6 +55,9 @@ trait HtmlTrait
             return $sContent;
         }
 
+        // Divs must start on  new line
+        $sContent = preg_replace('/<\/div>([^\s].*)/', '</div>'.PHP_EOL.'$1', $sContent);
+
         $aLines = explode(
             PHP_EOL,
             $sContent
