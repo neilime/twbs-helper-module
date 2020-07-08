@@ -13,6 +13,13 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
      */
     protected $inputErrorClass = 'is-invalid';
 
+    /**
+     * The class that is added to element that are valid or have valid feedback
+     *
+     * @var string
+     */
+    protected $inputValidClass = 'is-valid';
+
     // Hold configurable options
     protected $options;
 
@@ -53,7 +60,7 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
         // Partial rendering
         if ($this->partial) {
             $sLabel = $oElement->getLabel();
-            
+
             if (!empty($sLabel)) {
                 // Translate the label
                 if (null !== ($oTranslator = $this->getTranslator())) {
@@ -71,20 +78,6 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
                     'renderErrors'    => $this->renderErrors,
                 ]
             );
-        }
-
-        // "has-error" validation state case
-        if ($oElement->getMessages()) {
-            // Element have errors
-            if ($sInputErrorClass = $this->getInputErrorClass()) {
-                if ($sElementClass = $oElement->getAttribute('class')) {
-                    if (!$this->hasClassAttribute($sElementClass, $sInputErrorClass)) {
-                        $oElement->setAttribute('class', trim($sElementClass . ' ' . $sInputErrorClass));
-                    }
-                } else {
-                    $oElement->setAttribute('class', $sInputErrorClass);
-                }
-            }
         }
 
         // Render element
@@ -164,7 +157,7 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
 
         // Additional row attributes
         if ($aRowAdditionalAttributes = $oElement->getOption('row-attributes')) {
-             $aAttributes = array_merge($aAttributes, $aRowAdditionalAttributes);
+            $aAttributes = array_merge($aAttributes, $aRowAdditionalAttributes);
         }
 
         // Render element into form group
@@ -186,13 +179,28 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
         // Retrieve expected layout
         $sLayout = $oElement->getOption('layout');
 
+        // "is-invalid" validation state case
+        if ($oElement->getMessages()) {
+            // Element have errors
+            if ($sInputErrorClass = $this->getInputErrorClass()) {
+                $this->setClassesToElement($oElement, [$sInputErrorClass]);
+            }
+        }
+        // "is-valid" validation state case
+        elseif ($oElement->getOption('valid_feedback')) {
+            // Element have errors
+            if ($sInputValidClass = $this->getInputValidClass()) {
+                $this->setClassesToElement($oElement, [$sInputValidClass]);
+            }
+        }
+
         // Render element
         $sElementContent = $this->getElementHelper()->render($oElement);
 
         $checkBoxHorizontalLogic = false;
         if (
             $oElement instanceof \Laminas\Form\Element\Checkbox
-            && ! $oElement instanceof \Laminas\Form\Element\MultiCheckbox
+            && !$oElement instanceof \Laminas\Form\Element\MultiCheckbox
             && $sLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL
         ) {
             $checkBoxHorizontalLogic = true;
@@ -381,7 +389,7 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
     {
         $sValidFeedback = $oElement->getOption('valid_feedback');
         if ($sValidFeedback) {
-            $sValidFeedbackContent = $this->htmlElement('div',['class' => 'valid-feedback'], $sValidFeedback);
+            $sValidFeedbackContent = $this->htmlElement('div', ['class' => 'valid-feedback'], $sValidFeedback);
             $sElementContent .= PHP_EOL . $sValidFeedbackContent;
         }
         return $sElementContent;
@@ -441,5 +449,15 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
                 break;
         }
         return $sElementContent;
+    }
+
+    /**
+     * The class that is added to element that are valid or have valid feedback
+     *
+     * @return string
+     */
+    public function getInputValidClass()
+    {
+        return $this->inputValidClass;
     }
 }

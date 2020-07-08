@@ -107,7 +107,7 @@ return [
                                 'name' => 'termsAndConditions',
                                 'type' => 'checkbox',
                                 'options' => [
-                                    'label' => 'Agree to terms and conditions', 
+                                    'label' => 'Agree to terms and conditions',
                                     'use_hidden_element' => false,
                                     'row_name' => 'thirdRow',
                                 ],
@@ -144,14 +144,14 @@ return [
                 '    <div class="form-row">' . PHP_EOL .
                 '        <div class="col-md-6&#x20;mb-3">' . PHP_EOL .
                 '            <label for="validationServer01">First name</label>' . PHP_EOL .
-                '            <input name="firstName" type="text" id="validationServer01" required="required" class="form-control" value="Mark">' . PHP_EOL .
+                '            <input name="firstName" type="text" id="validationServer01" required="required" class="form-control&#x20;is-valid" value="Mark">' . PHP_EOL .
                 '            <div class="valid-feedback">' . PHP_EOL .
                 '                Looks good!' . PHP_EOL .
                 '            </div>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '        <div class="col-md-6&#x20;mb-3">' . PHP_EOL .
                 '            <label for="validationServer02">Last name</label>' . PHP_EOL .
-                '            <input name="lastName" type="text" id="validationServer02" required="required" class="form-control" value="Otto">' . PHP_EOL .
+                '            <input name="lastName" type="text" id="validationServer02" required="required" class="form-control&#x20;is-valid" value="Otto">' . PHP_EOL .
                 '            <div class="valid-feedback">' . PHP_EOL .
                 '                Looks good!' . PHP_EOL .
                 '            </div>' . PHP_EOL .
@@ -165,9 +165,9 @@ return [
                 '        </div>' . PHP_EOL .
                 '        <div class="col-md-3&#x20;has-error&#x20;mb-3">' . PHP_EOL .
                 '            <label class="col-form-label" for="validationServer04">State</label>' . PHP_EOL .
-                '            <select name="state" id="validationServer04" required="required" class="custom-select&#x20;is-invalid">'.PHP_EOL .
-                '                <option value="" selected="selected" disabled="disabled">Choose...</option>' .PHP_EOL .
-                '                <option value="0">...</option>' .PHP_EOL .
+                '            <select name="state" id="validationServer04" required="required" class="custom-select&#x20;is-invalid">' . PHP_EOL .
+                '                <option value="" selected="selected" disabled="disabled">Choose...</option>' . PHP_EOL .
+                '                <option value="0">...</option>' . PHP_EOL .
                 '            </select>' . PHP_EOL .
                 '            <div class="invalid-feedback">Please select a valid state.</div>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
