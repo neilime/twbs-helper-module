@@ -26,6 +26,42 @@
 
 # Documentation
 
-1. [Installation](https://github.com/neilime/twbs-helper-module/wiki/Installation)
-2. [Code coverage](https://codecov.io/gh/neilime/twbs-helper-module)
-3. [PHP Doc](https://neilime.github.io/twbs-helper-module/phpdoc)
+## 1. Installation
+
+### Install this library using composer:
+
+`composer require neilime/twbs-helper-module`
+
+### Include Twitter Bootstrap assets
+
+#### With __AssetsBundle__ module (easy way)
+
+* Install the [AssetsBundle module](https://github.com/neilime/zf-assets-bundle/wiki/Installation)
+* Install [Twitter Bootstrap](https://github.com/twbs/bootstrap#quick-start): `composer require twbs/bootstrap`
+* Edit the application module configuration file `module/Application/config/module.config.php`, adding the configuration fragment below:
+ 
+    ```php
+    return [
+        //...
+         'assets_bundle' => [
+             'assets' => [
+                 'less' => ['@zfRootPath/vendor/twitter/bootstrap/less/bootstrap.less'],
+             ],
+         ],
+         //...
+     ];
+     ```
+* Edit layout file `module/Application/view/layout/layout.phtml`, to render head scripts :
+ 
+    ```php
+    //...
+    echo $this->headScript();
+    //...
+    ```
+
+#### Manually
+
+* Copy `bootstrap.css` file (available on [Twitter Bootstrap website](https://github.com/twbs/bootstrap/archive/v3.0.0.zip)) into your assets folder and add it in your head scripts
+
+## 2. [Code coverage](https://codecov.io/gh/neilime/twbs-helper-module)
+## 3. [PHP Doc](https://neilime.github.io/twbs-helper-module/phpdoc)
