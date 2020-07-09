@@ -3,14 +3,14 @@
 </p>
 
 [![Continuous integration](https://github.com/neilime/twbs-helper-module/workflows/Continuous%20integration/badge.svg)](https://github.com/neilime/twbs-helper-module/actions?query=workflow%3A%22Continuous+integration%22)
-[![codecov](https://codecov.io/gh/neilime/twbs-helper-module/branch/master/graph/badge.svg)](https://codecov.io/gh/neilime/twbs-helper-module)
+[![Coverage Status](https://codecov.io/gh/neilime/twbs-helper-module/branch/master/graph/badge.svg)](https://codecov.io/gh/neilime/twbs-helper-module)
 [![Latest Stable Version](https://poser.pugx.org/neilime/twbs-helper-module/v/stable)](https://packagist.org/packages/neilime/twbs-helper-module)
 [![Total Downloads](https://poser.pugx.org/neilime/twbs-helper-module/downloads)](https://packagist.org/packages/neilime/twbs-helper-module)
 [![License](https://poser.pugx.org/neilime/twbs-helper-module/license)](https://packagist.org/packages/neilime/twbs-helper-module)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![Sponsor](https://img.shields.io/badge/%E2%9D%A4-Sponsor-ff69b4)](https://github.com/sponsors/neilime) 
+[![Sponsor](https://img.shields.io/badge/%E2%9D%A4-Sponsor-ff69b4)](https://github.com/sponsors/neilime)
 
-📢 __TwbsHelper__ is a Laminas (formerly Zend Framework) module for easy integration of the [Twitter Bootstrap v4](https://getbootstrap.com/).
+📢 **TwbsHelper** is a Laminas (formerly Zend Framework) module for easy integration of the [Twitter Bootstrap v4](https://getbootstrap.com/).
 
 # Helping Project
 
@@ -22,10 +22,10 @@
 
 # Demonstration / example
 
-🚀 Render __ALL__ of the [Twitter Bootstrap v4](https://getbootstrap.com/) elements with TwbsHelper : [see it in action, on-line](https://neilime.github.io/twbs-helper-module/demo.html).
+🚀 Render **ALL** of the [Twitter Bootstrap v4](https://getbootstrap.com/) elements with TwbsHelper : [see it in action, on-line](https://neilime.github.io/twbs-helper-module/demo.html).
 
 # Documentation
 
-  1. [Installation](https://github.com/neilime/twbs-helper-module/wiki/Installation)
-  3. [Code coverage](https://coveralls.io/github/neilime/twbs-helper-module)
-  3. [PHP Doc](https://neilime.github.io/twbs-helper-module/phpdoc)
+1. [Installation](https://github.com/neilime/twbs-helper-module/wiki/Installation)
+2. [Code coverage](https://codecov.io/gh/neilime/twbs-helper-module)
+3. [PHP Doc](https://neilime.github.io/twbs-helper-module/phpdoc)
