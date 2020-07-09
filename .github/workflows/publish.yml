@@ -92,7 +92,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [homepage, demo, phpdoc]
     steps: 
-      - uses: actions/download-artifact@v1
+      - uses: actions/download-artifact@v2
         with:
           name: site
       - uses: peaceiris/actions-gh-pages@v3
