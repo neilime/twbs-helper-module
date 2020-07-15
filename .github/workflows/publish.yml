@@ -2,35 +2,34 @@ name: Publish
 
 on:
   push:
-    branches: [ master ]
+    tags: [v*]
 
 jobs:
   homepage:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
 
-    steps:   
-    - uses: actions/checkout@master
-    - run: mkdir ./site  
-    - run: 'echo -e "---\nlayout: default\ntitle: Home\n---\n" > ./site/index.md'
-    - run: 'echo "$(sed -r s"/(\{%[^%]+%\})/{% raw %}\1{% endraw %}/g" ./README.md)" >> ./site/index.md'
-    - uses: actions/upload-artifact@v2.0.1
-      with:
-        name: site
-        path: ./site
+    steps:
+      - uses: actions/checkout@master
+      - run: mkdir ./site
+      - run: 'echo -e "---\nlayout: default\ntitle: Home\n---\n" > ./site/index.md'
+      - run: 'echo "$(sed -r s"/(\{%[^%]+%\})/{% raw %}\1{% endraw %}/g" ./README.md)" >> ./site/index.md'
+      - uses: actions/upload-artifact@v2.0.1
+        with:
+          name: site
+          path: ./site
 
   demo:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
 
-    steps:   
-    - uses: actions/checkout@master
-    - run: 'mkdir -p ./site/_includes && touch ./site/demo.md && touch ./site/_includes/demo-menu.html'
-    - run: 'php ./scripts/generateDemoFromDocumentationTestConfigs.php ./site/demo.md ./site/_includes/demo-menu.html'
-    - uses: actions/upload-artifact@v2.0.1
-      with:
-        name: site
-        path: ./site
+    steps:
+      - uses: actions/checkout@master
+      - run: "mkdir -p ./site/_includes && touch ./site/demo.md && touch ./site/_includes/demo-menu.html"
+      - run: "php ./scripts/generateDemoFromDocumentationTestConfigs.php ./site/demo.md ./site/_includes/demo-menu.html"
+      - uses: actions/upload-artifact@v2.0.1
+        with:
+          name: site
+          path: ./site
 
-  
   phpdoc:
     runs-on: ubuntu-latest
 
@@ -46,7 +45,7 @@ jobs:
       - name: Get composer cache directory
         id: composer-cache
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
-      
+
       - name: Cache composer dependencies
         uses: actions/cache@v2
         with:
@@ -58,7 +57,7 @@ jobs:
         run: |
           composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
           composer require clean/phpdoc-md --dev;
-      
+
       - name: Configure phpdoc-md
         run: |
           mkdir -p ./site/phpdoc;
@@ -87,11 +86,11 @@ jobs:
         with:
           name: site
           path: ./site
-          
+
   build_and_deploy:
     runs-on: ubuntu-latest
     needs: [homepage, demo, phpdoc]
-    steps: 
+    steps:
       - uses: actions/download-artifact@v2
         with:
           name: site
@@ -101,5 +100,3 @@ jobs:
           publish_dir: ./site
           enable_jekyll: true
           keep_files: true
-          
-
