@@ -88,63 +88,17 @@ class Form extends \Laminas\Form\View\Helper\Form
      */
     protected function renderElements(\Laminas\Form\FormInterface $oForm): string
     {
-
-
-        // Retrieve view helper plugin manager
-        $oHelperPluginManager = $this->getView()->getHelperPluginManager();
-
-        // Retrieve form row helper
-        $oFormRowHelper = $oHelperPluginManager->get('formRow');
-
-        // Retrieve form collection helper
-        $oFormCollectionHelper = $oHelperPluginManager->get('formCollection');
-
-        // Store column option
-        $bHasColumn = false;
-
         $sRowClass = $oForm->getOption('row_class') ?? 'row';
+        $sFormLayout = $oForm->getOption('layout');
 
         // Store element rows rendering
         $aRowsRendering = [];
-
-        // Prepare options
-        $sFormLayout = $oForm->getOption('layout');
         foreach ($oForm as $oElement) {
-            $aOptions = $oElement->getOptions();
-
-            if (!$bHasColumn && !empty($aOptions['column'])) {
-                $bHasColumn = true;
-            }
-
             // Define layout option to form elements if not already defined
-            if ($sFormLayout && empty($aOptions['layout'])) {
-                $aOptions = $oElement->setOption('layout', $sFormLayout)->getOptions();
+            if ($sFormLayout && !$oElement->getOption('layout')) {
+                $oElement->setOption('layout', $sFormLayout);
             }
-
-            $sRowRenderingKey = $aOptions['row_name'] ?? $sRowClass;
-
-            if ($oElement instanceof \Laminas\Form\FieldsetInterface) {
-                $this->setClassesToElement($oElement, ['form-group']);
-                $sElementMarkup = $oFormCollectionHelper->__invoke($oElement);
-            } else {
-                $sElementMarkup = $oFormRowHelper->__invoke($oElement);
-            }
-
-            if ($sElementMarkup) {
-                if(isset($aRowsRendering[$sRowRenderingKey])){
-                    $aRowsRendering[$sRowRenderingKey]['content'] .= PHP_EOL . $sElementMarkup;
-                    if(!empty($aOptions['column'])){
-                        $aRowsRendering[$sRowRenderingKey]['hasColumn'] = true;
-                    }
-                }
-                else{
-                    $aRowsRendering[$sRowRenderingKey] = [
-                        'hasColumn' => !empty($aOptions['column']),
-                        'attributes' => $this->setClassesToAttributes([], [$sRowClass]),
-                        'content' => $sElementMarkup,
-                    ];
-                }
-            }
+            $aRowsRendering = $this->renderElement($oElement, $sRowClass, $aRowsRendering);
         }
 
         // Assemble rows rendering
@@ -152,17 +106,88 @@ class Form extends \Laminas\Form\View\Helper\Form
 
         foreach ($aRowsRendering as $aRowRendering) {
             $sRowContent = $aRowRendering['content'];
-            if ($aRowRendering['hasColumn'] && self::LAYOUT_HORIZONTAL !== $sFormLayout) {
-                $sRowContent = $this->htmlElement(
-                    'div',
-                    $aRowRendering['attributes'],
-                    $sRowContent
-                );
+            if (!empty($aRowRendering['helper'])) {
+                $aHelperParams = $aRowRendering['options'] ?? [];
+                array_push($aHelperParams, $sRowContent);
+                $sRowContent = call_user_func_array($aRowRendering['helper'], $aHelperParams);
             }
 
             $sFormContent .= ($sFormContent ? PHP_EOL : '') . $sRowContent;
         }
 
         return $sFormContent;
+    }
+
+    /**
+     * Retrieve element rendering
+     */
+    protected function renderElement(\Laminas\Form\ElementInterface $oElement, string $sRowClass, array $aRowsRendering): array
+    {
+
+        if ($oElement instanceof \Laminas\Form\Element\Button && $oElement->getOption('row_name')) {
+            return $this->renderButtonGroup($oElement, $sRowClass, $aRowsRendering);
+        }
+
+        $oHelperPluginManager = $this->getView()->getHelperPluginManager();
+
+        if ($oElement instanceof \Laminas\Form\FieldsetInterface) {
+            $this->setClassesToElement($oElement, ['form-group']);
+            $sElementMarkup = $oHelperPluginManager->get('formCollection')->__invoke($oElement);
+        } else {
+            $sElementMarkup = $oHelperPluginManager->get('formRow')->__invoke($oElement);
+        }
+
+        if (!$sElementMarkup) {
+            return $aRowsRendering;
+        }
+
+        $aOptions = $oElement->getOptions();
+
+        $sRowRenderingKey = $aOptions['row_name'] ?? $sRowClass;
+
+        if (isset($aRowsRendering[$sRowRenderingKey])) {
+            $aRowsRendering[$sRowRenderingKey]['content'] .= PHP_EOL . $sElementMarkup;
+        } else {
+            $aRowsRendering[$sRowRenderingKey] = ['content' => $sElementMarkup];
+
+
+            $bIsNotLayoutHorizontal = empty($aOptions['layout']) || self::LAYOUT_HORIZONTAL !== $aOptions['layout'];
+
+            if (!empty($aOptions['column']) && $bIsNotLayoutHorizontal) {
+                $aRowsRendering[$sRowRenderingKey]['helper'] = [$this, 'htmlElement'];
+                $aRowsRendering[$sRowRenderingKey]['options'] = ['div', $this->setClassesToAttributes([], [$sRowClass])];
+            }
+        }
+
+        return $aRowsRendering;
+    }
+
+
+    /**
+     * Retrieve button group element rendering
+     */
+    protected function renderButtonGroup(\Laminas\Form\Element\Button $oElement, string $sRowClass, array $aRowsRendering): array
+    {
+
+        $aOptions = $oElement->getOptions();
+
+        $sRowRenderingKey = $aOptions['row_name'] ?? $sRowClass;
+
+        if (isset($aRowsRendering[$sRowRenderingKey])) {
+            $aRowsRendering[$sRowRenderingKey]['content'][] = $oElement;
+        } else {
+            $aRowsRendering[$sRowRenderingKey] = ['content' => [$oElement]];
+
+
+            $bIsNotLayoutHorizontal = empty($aOptions['layout']) || self::LAYOUT_HORIZONTAL !== $aOptions['layout'];
+
+            if (!empty($aOptions['column']) && $bIsNotLayoutHorizontal) {
+                $aRowsRendering[$sRowRenderingKey]['helper'] = [
+                    $this->getView()->getHelperPluginManager()->get('buttonGroup'),
+                    '__invoke'
+                ];
+            }
+        }
+        return $aRowsRendering;
     }
 }
