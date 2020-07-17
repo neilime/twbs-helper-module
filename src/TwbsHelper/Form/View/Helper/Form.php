@@ -103,12 +103,18 @@ class Form extends \Laminas\Form\View\Helper\Form
 
         // Assemble rows rendering
         $sFormContent = '';
+        ksort($aRowsRendering, SORT_STRING);
 
         foreach ($aRowsRendering as $aRowRendering) {
             $sRowContent = $aRowRendering['content'];
             if (!empty($aRowRendering['helper'])) {
-                $aHelperParams = $aRowRendering['options'] ?? [];
-                array_push($aHelperParams, $sRowContent);
+                $aHelperParams = $aRowRendering['helper_params'];
+                foreach ($aHelperParams as $sKey => $sValue) {
+                    if ($sValue === '%content%') {
+                        $aHelperParams[$sKey] = $sRowContent;
+                        break;
+                    }
+                }
                 $sRowContent = call_user_func_array($aRowRendering['helper'], $aHelperParams);
             }
 
@@ -143,7 +149,7 @@ class Form extends \Laminas\Form\View\Helper\Form
 
         $aOptions = $oElement->getOptions();
 
-        $sRowRenderingKey = $aOptions['row_name'] ?? $sRowClass;
+        $sRowRenderingKey = $this->generateRowRenderingKey($oElement, $aRowsRendering);
 
         if (isset($aRowsRendering[$sRowRenderingKey])) {
             $aRowsRendering[$sRowRenderingKey]['content'] .= PHP_EOL . $sElementMarkup;
@@ -155,7 +161,7 @@ class Form extends \Laminas\Form\View\Helper\Form
 
             if (!empty($aOptions['column']) && $bIsNotLayoutHorizontal) {
                 $aRowsRendering[$sRowRenderingKey]['helper'] = [$this, 'htmlElement'];
-                $aRowsRendering[$sRowRenderingKey]['options'] = ['div', $this->setClassesToAttributes([], [$sRowClass])];
+                $aRowsRendering[$sRowRenderingKey]['helper_params'] = ['div', $this->setClassesToAttributes([], [$sRowClass]), '%content%'];
             }
         }
 
@@ -168,26 +174,67 @@ class Form extends \Laminas\Form\View\Helper\Form
      */
     protected function renderButtonGroup(\Laminas\Form\Element\Button $oElement, string $sRowClass, array $aRowsRendering): array
     {
-
-        $aOptions = $oElement->getOptions();
-
-        $sRowRenderingKey = $aOptions['row_name'] ?? $sRowClass;
+        $sRowRenderingKey = $this->generateRowRenderingKey($oElement, $aRowsRendering);
 
         if (isset($aRowsRendering[$sRowRenderingKey])) {
             $aRowsRendering[$sRowRenderingKey]['content'][] = $oElement;
         } else {
-            $aRowsRendering[$sRowRenderingKey] = ['content' => [$oElement]];
-
 
             $bIsNotLayoutHorizontal = empty($aOptions['layout']) || self::LAYOUT_HORIZONTAL !== $aOptions['layout'];
 
-            if (!empty($aOptions['column']) && $bIsNotLayoutHorizontal) {
-                $aRowsRendering[$sRowRenderingKey]['helper'] = [
+            if (empty($aOptions['column']) || !$bIsNotLayoutHorizontal) {
+                $sRowClass = 'form-group';
+            }
+
+            $aRowsRendering[$sRowRenderingKey] = [
+                'content' => [$oElement],
+                'helper' => [
                     $this->getView()->getHelperPluginManager()->get('buttonGroup'),
                     '__invoke'
-                ];
-            }
+                ],
+                'helper_params' => [
+                    '%content%',
+                    ['attributes' => ['class' => $sRowClass]]
+                ]
+            ];
         }
         return $aRowsRendering;
+    }
+
+    /**
+     * Generate 
+     */
+    private function generateRowRenderingKey(\Laminas\Form\ElementInterface $oElement, array $aRowsRendering): string
+    {
+        $aExistingKeys = array_keys($aRowsRendering);
+        $aOptions = $oElement->getOptions();
+
+        $sRowName = $aOptions['row_name'] ?? '';
+
+        if (!$aExistingKeys) {
+            return '0_' . $sRowName;
+        }
+
+        if ($sRowName) {
+            foreach ($aExistingKeys as $sExistingKey) {
+                if (preg_match('/^[0-9]+_' . preg_quote($sRowName) . '$/', $sExistingKey)) {
+                    return $sExistingKey;
+                }
+            }
+
+            $sLastKey = array_pop($aExistingKeys);
+            $sRowRenderingKeyPrefix = explode('_', $sLastKey)[0] + 1 . '_';
+
+            return $sRowRenderingKeyPrefix . $sRowName;
+        }
+
+        $sLastKey = array_pop($aExistingKeys);
+        if (preg_match('/^[0-9]+_$/', $sLastKey)) {
+            return $sLastKey;
+        }
+
+        $sRowRenderingKeyPrefix = explode('_', $sLastKey)[0] + 1 . '_';
+
+        return $sRowRenderingKeyPrefix;
     }
 }
