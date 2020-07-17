@@ -13,7 +13,7 @@ jobs:
       - run: mkdir ./site
       - run: 'echo -e "---\nlayout: default\ntitle: Home\n---\n" > ./site/index.md'
       - run: 'echo "$(sed -r s"/(\{%[^%]+%\})/{% raw %}\1{% endraw %}/g" ./README.md)" >> ./site/index.md'
-      - uses: actions/upload-artifact@v2.0.1
+      - uses: actions/upload-artifact@2.1.0
         with:
           name: site
           path: ./site
@@ -25,7 +25,7 @@ jobs:
       - uses: actions/checkout@master
       - run: "mkdir -p ./site/_includes && touch ./site/demo.md && touch ./site/_includes/demo-menu.html"
       - run: "php ./scripts/generateDemoFromDocumentationTestConfigs.php ./site/demo.md ./site/_includes/demo-menu.html"
-      - uses: actions/upload-artifact@v2.0.1
+      - uses: actions/upload-artifact@2.1.0
         with:
           name: site
           path: ./site
@@ -82,7 +82,7 @@ jobs:
           vendor/bin/phpdoc-md -v
           mv ./site/phpdoc/README.md ./site/phpdoc/index.md
 
-      - uses: actions/upload-artifact@v2.0.1
+      - uses: actions/upload-artifact@2.1.0
         with:
           name: site
           path: ./site
