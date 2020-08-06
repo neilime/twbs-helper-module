@@ -14,5 +14,6 @@ return [
         include __DIR__ . DIRECTORY_SEPARATOR . 'Forms/DisabledForms.php',
         include __DIR__ . DIRECTORY_SEPARATOR . 'Forms/Validation.php',
         include __DIR__ . DIRECTORY_SEPARATOR . 'Forms/CustomForms.php',
+        include __DIR__ . DIRECTORY_SEPARATOR . 'Forms/ButtonGroups.php',
     ],
 ];
