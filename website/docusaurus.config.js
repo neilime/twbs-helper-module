@@ -2,8 +2,8 @@ module.exports = {
   title: "TwbsHelper",
   tagline:
     "TwbsHelper is a Laminas (formerly Zend Framework) module for easy integration of the Twitter Bootstrap v4",
-  url: "https://neilime.github.io/twbs-helper-module",
-  baseUrl: "/",
+  url: "https://neilime.github.io",
+  baseUrl: "/twbs-helper-module/",
   onBrokenLinks: "throw",
   favicon: "img/favicon.ico",
   organizationName: "neilime",
