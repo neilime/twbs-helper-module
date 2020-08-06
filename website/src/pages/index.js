@@ -28,11 +28,13 @@ const readmeContent = `<p align="center">
 
 # Demonstration / example
 
-🚀 Render **ALL** of the [Twitter Bootstrap v4](https://getbootstrap.com/) elements with TwbsHelper : [see it in action, on-line](https://neilime.github.io/twbs-helper-module/demo.html).
+🚀 Render **ALL** of the [Twitter Bootstrap v4](https://getbootstrap.com/) elements with TwbsHelper : [see it in action, on-line](https://neilime.github.io/twbs-helper-module/docs/rendering).
 
 # Documentation
 
 ## [Installation](https://neilime.github.io/twbs-helper-module/docs/installation)
+
+## [Usage](https://neilime.github.io/twbs-helper-module/docs/rendering)
 
 ## [Code coverage](https://codecov.io/gh/neilime/twbs-helper-module)
 `;
