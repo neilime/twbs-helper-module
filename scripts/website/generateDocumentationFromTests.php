@@ -2,12 +2,13 @@
 
 const BOOTSTRAP_VERSION = '4.5';
 const BOOTSTRAP_URL = 'https://getbootstrap.com/docs/' . BOOTSTRAP_VERSION;
-const DOCUMENTATION_DIR = __DIR__ . '/../../website/docs';
+const ROOT_DIR = __DIR__ . '/../..';
+const DOCUMENTATION_DIR = ROOT_DIR . '/website/docs';
 $sSidebarFilepath = DOCUMENTATION_DIR . '/sidebars.js';
 
 $aDocumentationFiles = [];
 $aSidebarItems = [];
-foreach (new \DirectoryIterator(__DIR__ . '/../tests/TestSuite/Documentation') as $oFileInfo) {
+foreach (new \DirectoryIterator(ROOT_DIR . '/tests/TestSuite/Documentation') as $oFileInfo) {
     // Ignore non php filesand current class file
     if (!$oFileInfo->isFile() || $oFileInfo->getExtension() !== 'php' || $oFileInfo->getFilename() === 'DocumentationTest.php') {
         continue;
