@@ -1,0 +1,105 @@
+---
+id: images
+title: Images
+---
+
+import ReactHtmlParser from 'react-html-parser';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/images/)
+## Responsive images
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/images/#responsive-images)
+<Tabs
+    defaultValue="result"
+    values={[
+      {label: 'Result', value: 'result'},
+      {label: 'Source', value: 'source'},
+    ]}>
+<TabItem value="result">{ ReactHtmlParser(`<img alt="Responsive&#x20;image" class="img-fluid" src="images&#x2F;demo&#x2F;responsive.svg" />`) }</TabItem>
+<TabItem value="source">
+
+```php
+echo $this->image('images/demo/responsive.svg', ['fluid' => true, 'alt' => 'Responsive image',]);
+```
+
+</TabItem>
+</Tabs>
+
+## Image thumbnails
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/images/#image-thumbnails)
+<Tabs
+    defaultValue="result"
+    values={[
+      {label: 'Result', value: 'result'},
+      {label: 'Source', value: 'source'},
+    ]}>
+<TabItem value="result">{ ReactHtmlParser(`<img alt="Image&#x20;thumbnail" class="img-thumbnail" src="images&#x2F;demo&#x2F;200x200.svg" />`) }</TabItem>
+<TabItem value="source">
+
+```php
+echo $this->image('images/demo/200x200.svg', ['thumbnail' => true, 'alt' => 'Image thumbnail',]);
+```
+
+</TabItem>
+</Tabs>
+
+## Aligning images
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/images/#aligning-images)
+<Tabs
+    defaultValue="result"
+    values={[
+      {label: 'Result', value: 'result'},
+      {label: 'Source', value: 'source'},
+    ]}>
+<TabItem value="result">{ ReactHtmlParser(`<img alt="Image&#x20;aligned&#x20;left" class="float-left&#x20;rounded" src="images&#x2F;demo&#x2F;200x200.svg" />
+<img alt="Image&#x20;aligned&#x20;right" class="float-right&#x20;rounded" src="images&#x2F;demo&#x2F;200x200.svg" />
+<img alt="Image&#x20;aligned&#x20;block" class="d-block&#x20;mx-auto&#x20;rounded" src="images&#x2F;demo&#x2F;200x200.svg" />`) }</TabItem>
+<TabItem value="source">
+
+```php
+echo $this->image(
+    'images/demo/200x200.svg',
+['rounded' => true, 'alt' => 'Image aligned left', 'class' => 'float-left']
+)  . PHP_EOL;
+
+echo $this->image(
+    'images/demo/200x200.svg',
+['rounded' => true, 'alt' => 'Image aligned right', 'class' => 'float-right']
+) . PHP_EOL;
+
+echo $this->image(
+    'images/demo/200x200.svg',
+['rounded' => true, 'alt' => 'Image aligned block', 'class' => 'mx-auto d-block']
+);
+```
+
+</TabItem>
+</Tabs>
+
+## Picture
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/images/#picture)
+<Tabs
+    defaultValue="result"
+    values={[
+      {label: 'Result', value: 'result'},
+      {label: 'Source', value: 'source'},
+    ]}>
+<TabItem value="result">{ ReactHtmlParser(`<picture>
+    <source srcset="images&#x2F;demo&#x2F;200x200.svg" type="image&#x2F;svg&#x2B;xml" />
+    <img alt="Picture&#x20;image" class="img-fluid&#x20;img-thumbnail" src="images&#x2F;demo&#x2F;200x200.svg" />
+</picture>`) }</TabItem>
+<TabItem value="source">
+
+```php
+echo $this->image('images/demo/200x200.svg', [
+    'thumbnail' => true,
+    'fluid' => true,
+    'alt' => 'Picture image',
+    'sources' => ['images/demo/200x200.svg' => 'image/svg+xml'],
+]);
+```
+
+</TabItem>
+</Tabs>
+

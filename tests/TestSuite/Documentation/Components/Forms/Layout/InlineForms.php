@@ -75,7 +75,7 @@ return [
             ],
         ]));
 
-        echo PHP_EOL . '<br>' . PHP_EOL;
+        echo PHP_EOL . '<br/>' . PHP_EOL;
 
         // Custom form controls and selects are also supported
         echo $oView->form($oFactory->create([
@@ -139,11 +139,11 @@ return [
             ],
         ]));
     },
-    'expected' => '<form method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
+    'expected' => '<form action="" method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
         '    <label class="sr-only" for="inlineFormInputName2">Name</label>'
         . PHP_EOL .
         '    <input name="name" type="text" id="inlineFormInputName2" ' .
-        'placeholder="Jane&#x20;Doe" class="form-control&#x20;mb-2&#x20;mr-sm-2" value="">' . PHP_EOL .
+        'placeholder="Jane&#x20;Doe" class="form-control&#x20;mb-2&#x20;mr-sm-2" value=""/>' . PHP_EOL .
         '    <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>'
         . PHP_EOL .
         '    <div class="input-group&#x20;mb-2&#x20;mr-sm-2">' . PHP_EOL .
@@ -153,19 +153,19 @@ return [
         '            </div>' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '        <input name="username" type="text" id="inlineFormInputGroupUsername2" ' .
-        'placeholder="Username" class="form-control" value="">' . PHP_EOL .
+        'placeholder="Username" class="form-control" value=""/>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '    <div class="form-check&#x20;mb-2&#x20;mr-sm-2">' . PHP_EOL .
         '        <input type="checkbox" name="remember_me" id="inlineFormCheck" ' .
-        'class="form-check-input" value="1">' . PHP_EOL .
+        'class="form-check-input" value="1"/>' . PHP_EOL .
         '        <label class="form-check-label" for="inlineFormCheck">' .
         'Remember me</label>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '    <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">' .
         'Submit</button>' . PHP_EOL .
         '</form>' . PHP_EOL .
-        '<br>' . PHP_EOL .
-        '<form method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
+        '<br/>' . PHP_EOL .
+        '<form action="" method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
         '    <label class="mr-2&#x20;my-1" for="inlineFormCustomSelectPref">Preference</label>'
         . PHP_EOL .
         '    <select name="preference" id="inlineFormCustomSelectPref" ' .
@@ -177,7 +177,7 @@ return [
         '    </select>' . PHP_EOL .
         '    <div class="custom-checkbox&#x20;custom-control&#x20;mr-sm-2&#x20;my-1">' . PHP_EOL .
         '        <input type="checkbox" name="remember_my_preference" id="customControlInline" ' .
-        'class="custom-control-input" value="1">' . PHP_EOL .
+        'class="custom-control-input" value="1"/>' . PHP_EOL .
         '        <label class="custom-control-label" for="customControlInline">' .
         'Remember my preference</label>' . PHP_EOL .
         '    </div>' . PHP_EOL .

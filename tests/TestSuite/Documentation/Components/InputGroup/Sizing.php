@@ -60,7 +60,7 @@ return [
         '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '    <input type="text" name="small" aria-label="Sizing&#x20;example&#x20;input" ' .
-        'aria-describedby="inputGroup-sizing-sm" class="form-control&#x20;form-control-sm" value="">' . PHP_EOL .
+        'aria-describedby="inputGroup-sizing-sm" class="form-control&#x20;form-control-sm" value=""/>' . PHP_EOL .
         '</div>' . PHP_EOL .
         '<div class="input-group&#x20;mb-3">' . PHP_EOL .
         '    <div class="input-group-prepend">' . PHP_EOL .
@@ -69,7 +69,7 @@ return [
         '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '    <input type="text" name="default" aria-label="Sizing&#x20;example&#x20;input" ' .
-        'aria-describedby="inputGroup-sizing-default" class="form-control" value="">' . PHP_EOL .
+        'aria-describedby="inputGroup-sizing-default" class="form-control" value=""/>' . PHP_EOL .
         '</div>' . PHP_EOL .
         '<div class="input-group&#x20;input-group-lg">' . PHP_EOL .
         '    <div class="input-group-prepend">' . PHP_EOL .
@@ -78,6 +78,6 @@ return [
         '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '    <input type="text" name="large" aria-label="Sizing&#x20;example&#x20;input" ' .
-        'aria-describedby="inputGroup-sizing-lg" class="form-control&#x20;form-control-lg" value="">' . PHP_EOL .
+        'aria-describedby="inputGroup-sizing-lg" class="form-control&#x20;form-control-lg" value=""/>' . PHP_EOL .
         '</div>',
 ];

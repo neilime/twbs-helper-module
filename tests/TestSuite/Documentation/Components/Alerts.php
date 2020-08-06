@@ -9,12 +9,10 @@ return [
             'title' => 'Example',
             'url' => '%bootstrap-url%/components/alerts/#examples',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                foreach (
-                    [
-                    'primary', 'secondary', 'success', 'danger',
-                    'warning', 'info', 'light', 'dark',
-                    ] as $sVariant
-                ) {
+                foreach ([
+                        'primary', 'secondary', 'success', 'danger',
+                        'warning', 'info', 'light', 'dark',
+                    ] as $sVariant) {
                     echo $oView->alert(
                         'A simple ' . $sVariant . ' alert—check it out!',
                         $sVariant
@@ -50,12 +48,10 @@ return [
                     'title' => 'Link color',
                     'url' => '%bootstrap-url%/components/alerts/#link-color',
                     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        foreach (
-                            [
-                            'primary', 'secondary', 'success', 'danger',
-                            'warning', 'info', 'light', 'dark',
-                            ] as $sVariant
-                        ) {
+                        foreach ([
+                                'primary', 'secondary', 'success', 'danger',
+                                'warning', 'info', 'light', 'dark',
+                            ] as $sVariant) {
                             echo $oView->alert(
                                 'A simple ' . $sVariant . ' alert with ' .
                                     '<a href="#" class="alert-link">an example link</a>. ' .
@@ -106,7 +102,7 @@ return [
                             '<p>Aww yeah, you successfully read this important alert message. ' .
                                 'This example text is going to run a bit longer so that you can see ' .
                                 'how spacing within an alert works with this kind of content.</p>' . PHP_EOL .
-                                '<hr>' . PHP_EOL .
+                                '<hr/>' . PHP_EOL .
                                 '<p class="mb-0">' .
                                 'Whenever you need to, be sure to use margin utilities to keep things nice and tidy.' .
                                 '</p>',
@@ -121,7 +117,7 @@ return [
                         '    <p>Aww yeah, you successfully read this important alert message. ' .
                         'This example text is going to run a bit longer so that you can see ' .
                         'how spacing within an alert works with this kind of content.</p>' . PHP_EOL .
-                        '    <hr>' . PHP_EOL .
+                        '    <hr/>' . PHP_EOL .
                         '    <p class="mb-0">' .
                         'Whenever you need to, be sure to use margin utilities to keep things nice and tidy.' .
                         '</p>' . PHP_EOL .

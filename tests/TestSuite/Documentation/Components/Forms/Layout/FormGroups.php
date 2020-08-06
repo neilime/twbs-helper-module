@@ -39,16 +39,16 @@ return [
             ]
         ]));
     },
-    'expected' => '<form method="POST" name="form" role="form" id="form">' . PHP_EOL .
+    'expected' => '<form action="" method="POST" name="form" role="form" id="form">' . PHP_EOL .
         '    <div class="form-group">' . PHP_EOL .
         '        <label for="formGroupExampleInput">Example label</label>' . PHP_EOL .
         '        <input name="exampleInput" type="text" id="formGroupExampleInput" ' .
-        'placeholder="Example&#x20;input" class="form-control" value="">' . PHP_EOL .
+        'placeholder="Example&#x20;input" class="form-control" value=""/>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '    <div class="form-group">' . PHP_EOL .
         '        <label for="formGroupExampleInput2">Another label</label>' . PHP_EOL .
         '        <input name="exampleInput2" type="text" id="formGroupExampleInput2" ' .
-        'placeholder="Another&#x20;input" class="form-control" value="">' . PHP_EOL .
+        'placeholder="Another&#x20;input" class="form-control" value=""/>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '</form>',
 ];

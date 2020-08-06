@@ -20,7 +20,7 @@ return [
                 ]);
             },
             'expected' => '<div class="media">' . PHP_EOL .
-                '    <img alt="..." class="mr-3" src="images&#x2F;demo&#x2F;64x64.svg">' . PHP_EOL .
+                '    <img alt="..." class="mr-3" src="images&#x2F;demo&#x2F;64x64.svg" />' . PHP_EOL .
                 '    <div class="media-body">' . PHP_EOL .
                 '        <h5 class="mt-0">Media heading</h5>' . PHP_EOL .
                 '        <p>Cras sit amet nibh libero, in gravida nulla. ' .
@@ -57,7 +57,7 @@ return [
                 ]);
             },
             'expected' => '<div class="media">' . PHP_EOL .
-                '    <img alt="..." class="mr-3" src="images&#x2F;demo&#x2F;64x64.svg">' . PHP_EOL .
+                '    <img alt="..." class="mr-3" src="images&#x2F;demo&#x2F;64x64.svg" />' . PHP_EOL .
                 '    <div class="media-body">' . PHP_EOL .
                 '        <h5 class="mt-0">Media heading</h5>' . PHP_EOL .
                 '        <p>Cras sit amet nibh libero, in gravida nulla. ' .
@@ -66,7 +66,7 @@ return [
                 'Fusce condimentum nunc ac nisi vulputate fringilla. ' .
                 'Donec lacinia congue felis in faucibus.</p>' . PHP_EOL .
                 '        <div class="media">' . PHP_EOL .
-                '            <img alt="..." class="mr-3" src="images&#x2F;demo&#x2F;64x64.svg">' . PHP_EOL .
+                '            <img alt="..." class="mr-3" src="images&#x2F;demo&#x2F;64x64.svg" />' . PHP_EOL .
                 '            <div class="media-body">' . PHP_EOL .
                 '                <h5 class="mt-0">Media heading</h5>' . PHP_EOL .
                 '                <p>Cras sit amet nibh libero, in gravida nulla. ' .
@@ -136,7 +136,7 @@ return [
             },
             'expected' => '<div class="media">' . PHP_EOL .
                 '    <img alt="..." class="align-self-start&#x20;mr-3" ' .
-                'src="images&#x2F;demo&#x2F;64x64.svg">' . PHP_EOL .
+                'src="images&#x2F;demo&#x2F;64x64.svg" />' . PHP_EOL .
                 '    <div class="media-body">' . PHP_EOL .
                 '        <h5 class="mt-0">Top-aligned media</h5>' . PHP_EOL .
                 '        <p>Cras sit amet nibh libero, in gravida nulla. ' .
@@ -150,7 +150,7 @@ return [
                 '</div>' . PHP_EOL .
                 '<div class="media">' . PHP_EOL .
                 '    <img alt="..." class="align-self-center&#x20;mr-3" ' .
-                'src="images&#x2F;demo&#x2F;64x64.svg">' . PHP_EOL .
+                'src="images&#x2F;demo&#x2F;64x64.svg" />' . PHP_EOL .
                 '    <div class="media-body">' . PHP_EOL .
                 '        <h5 class="mt-0">Top-aligned media</h5>' . PHP_EOL .
                 '        <p>Cras sit amet nibh libero, in gravida nulla. ' .
@@ -164,7 +164,7 @@ return [
                 '</div>' . PHP_EOL .
                 '<div class="media">' . PHP_EOL .
                 '    <img alt="..." class="align-self-end&#x20;mr-3" ' .
-                'src="images&#x2F;demo&#x2F;64x64.svg">' . PHP_EOL .
+                'src="images&#x2F;demo&#x2F;64x64.svg" />' . PHP_EOL .
                 '    <div class="media-body">' . PHP_EOL .
                 '        <h5 class="mt-0">Top-aligned media</h5>' . PHP_EOL .
                 '        <p>Cras sit amet nibh libero, in gravida nulla. ' .
@@ -200,7 +200,7 @@ return [
                 'Fusce condimentum nunc ac nisi vulputate fringilla. ' .
                 'Donec lacinia congue felis in faucibus.</p>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
-                '    <img alt="..." class="ml-3" src="images&#x2F;demo&#x2F;64x64.svg">' . PHP_EOL .
+                '    <img alt="..." class="ml-3" src="images&#x2F;demo&#x2F;64x64.svg" />' . PHP_EOL .
                 '</div>',
         ],
         [
@@ -239,7 +239,7 @@ return [
             },
             'expected' => '<ul class="list-unstyled">' . PHP_EOL .
                 '    <li class="media">' . PHP_EOL .
-                '        <img alt="..." class="mr-3" src="images&#x2F;demo&#x2F;64x64.svg">' . PHP_EOL .
+                '        <img alt="..." class="mr-3" src="images&#x2F;demo&#x2F;64x64.svg" />' . PHP_EOL .
                 '        <div class="media-body">' . PHP_EOL .
                 '            <h5 class="mb-1&#x20;mt-0">List-based media object</h5>' . PHP_EOL .
                 '            <p>Cras sit amet nibh libero, in gravida nulla. ' .
@@ -250,7 +250,7 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </li>' . PHP_EOL .
                 '    <li class="media">' . PHP_EOL .
-                '        <img alt="..." class="mr-3" src="images&#x2F;demo&#x2F;64x64.svg">' . PHP_EOL .
+                '        <img alt="..." class="mr-3" src="images&#x2F;demo&#x2F;64x64.svg" />' . PHP_EOL .
                 '        <div class="media-body">' . PHP_EOL .
                 '            <h5 class="mb-1&#x20;mt-0">List-based media object</h5>' . PHP_EOL .
                 '            <p>Cras sit amet nibh libero, in gravida nulla. ' .
@@ -261,7 +261,7 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </li>' . PHP_EOL .
                 '    <li class="media">' . PHP_EOL .
-                '        <img alt="..." class="mr-3" src="images&#x2F;demo&#x2F;64x64.svg">' . PHP_EOL .
+                '        <img alt="..." class="mr-3" src="images&#x2F;demo&#x2F;64x64.svg" />' . PHP_EOL .
                 '        <div class="media-body">' . PHP_EOL .
                 '            <h5 class="mb-1&#x20;mt-0">List-based media object</h5>' . PHP_EOL .
                 '            <p>Cras sit amet nibh libero, in gravida nulla. ' .

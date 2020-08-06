@@ -46,7 +46,7 @@ class FormElementTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals(
             $this->formElementHelper->render($oElement),
-            '<input type="email" name="email" maxlength="254" class="form-control" value="">'
+            '<input type="email" name="email" maxlength="254" class="form-control" value=""/>'
         );
     }
 }

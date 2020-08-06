@@ -22,7 +22,7 @@ return [
                 // H6
                 echo '<h6>Example heading ' . $oView->badge('New') . '</h6>';
 
-                echo PHP_EOL . '<br>' . PHP_EOL;
+                echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Button
                 echo $oView->formButton([
@@ -39,7 +39,7 @@ return [
                 '<h4>Example heading <span class="badge&#x20;badge-secondary">New</span></h4>' . PHP_EOL .
                 '<h5>Example heading <span class="badge&#x20;badge-secondary">New</span></h5>' . PHP_EOL .
                 '<h6>Example heading <span class="badge&#x20;badge-secondary">New</span></h6>' . PHP_EOL .
-                '<br>' . PHP_EOL .
+                '<br/>' . PHP_EOL .
                 '<button type="button" name="button" class="btn&#x20;btn-primary" value="">' . PHP_EOL .
                 '    Profile <span class="badge&#x20;badge-light">9</span>' . PHP_EOL .
                 '    <span class="sr-only">unread messages</span>' . PHP_EOL .
@@ -49,12 +49,10 @@ return [
             'title' => 'Contextual variations',
             'url' => '%bootstrap-url%/components/badge/#contextual-variations',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                foreach (
-                    [
+                foreach ([
                     'primary', 'secondary', 'success', 'danger',
                     'warning', 'info', 'light', 'dark',
-                    ] as $sVariant
-                ) {
+                ] as $sVariant) {
                     echo $oView->badge(ucfirst($sVariant), $sVariant) . PHP_EOL;
                 }
             },
@@ -71,12 +69,10 @@ return [
             'title' => 'Pill badges',
             'url' => '%bootstrap-url%/components/badge/#pill-badges',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                foreach (
-                    [
+                foreach ([
                     'primary', 'secondary', 'success', 'danger',
                     'warning', 'info', 'light', 'dark',
-                    ] as $sVariant
-                ) {
+                ] as $sVariant) {
                     echo $oView->badge(
                         ucfirst($sVariant),
                         [
@@ -87,24 +83,22 @@ return [
                 }
             },
             'expected' => '<span class="badge&#x20;badge-pill&#x20;badge-primary">Primary</span>' . PHP_EOL .
-            '<span class="badge&#x20;badge-pill&#x20;badge-secondary">Secondary</span>' . PHP_EOL .
-            '<span class="badge&#x20;badge-pill&#x20;badge-success">Success</span>' . PHP_EOL .
-            '<span class="badge&#x20;badge-danger&#x20;badge-pill">Danger</span>' . PHP_EOL .
-            '<span class="badge&#x20;badge-pill&#x20;badge-warning">Warning</span>' . PHP_EOL .
-            '<span class="badge&#x20;badge-info&#x20;badge-pill">Info</span>' . PHP_EOL .
-            '<span class="badge&#x20;badge-light&#x20;badge-pill">Light</span>' . PHP_EOL .
-            '<span class="badge&#x20;badge-dark&#x20;badge-pill">Dark</span>' . PHP_EOL,
+                '<span class="badge&#x20;badge-pill&#x20;badge-secondary">Secondary</span>' . PHP_EOL .
+                '<span class="badge&#x20;badge-pill&#x20;badge-success">Success</span>' . PHP_EOL .
+                '<span class="badge&#x20;badge-danger&#x20;badge-pill">Danger</span>' . PHP_EOL .
+                '<span class="badge&#x20;badge-pill&#x20;badge-warning">Warning</span>' . PHP_EOL .
+                '<span class="badge&#x20;badge-info&#x20;badge-pill">Info</span>' . PHP_EOL .
+                '<span class="badge&#x20;badge-light&#x20;badge-pill">Light</span>' . PHP_EOL .
+                '<span class="badge&#x20;badge-dark&#x20;badge-pill">Dark</span>' . PHP_EOL,
         ],
         [
             'title' => 'Links',
             'url' => '%bootstrap-url%/components/badge/#links',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                foreach (
-                    [
+                foreach ([
                     'primary', 'secondary', 'success', 'danger',
                     'warning', 'info', 'light', 'dark',
-                    ] as $sVariant
-                ) {
+                ] as $sVariant) {
                     echo $oView->badge(
                         ucfirst($sVariant),
                         [
@@ -117,13 +111,13 @@ return [
                 }
             },
             'expected' => '<a class="badge&#x20;badge-primary" href="&#x23;">Primary</a>' . PHP_EOL .
-            '<a class="badge&#x20;badge-secondary" href="&#x23;">Secondary</a>' . PHP_EOL .
-            '<a class="badge&#x20;badge-success" href="&#x23;">Success</a>' . PHP_EOL .
-            '<a class="badge&#x20;badge-danger" href="&#x23;">Danger</a>' . PHP_EOL .
-            '<a class="badge&#x20;badge-warning" href="&#x23;">Warning</a>' . PHP_EOL .
-            '<a class="badge&#x20;badge-info" href="&#x23;">Info</a>' . PHP_EOL .
-            '<a class="badge&#x20;badge-light" href="&#x23;">Light</a>' . PHP_EOL .
-            '<a class="badge&#x20;badge-dark" href="&#x23;">Dark</a>' . PHP_EOL,
+                '<a class="badge&#x20;badge-secondary" href="&#x23;">Secondary</a>' . PHP_EOL .
+                '<a class="badge&#x20;badge-success" href="&#x23;">Success</a>' . PHP_EOL .
+                '<a class="badge&#x20;badge-danger" href="&#x23;">Danger</a>' . PHP_EOL .
+                '<a class="badge&#x20;badge-warning" href="&#x23;">Warning</a>' . PHP_EOL .
+                '<a class="badge&#x20;badge-info" href="&#x23;">Info</a>' . PHP_EOL .
+                '<a class="badge&#x20;badge-light" href="&#x23;">Light</a>' . PHP_EOL .
+                '<a class="badge&#x20;badge-dark" href="&#x23;">Dark</a>' . PHP_EOL,
         ],
     ],
 ];

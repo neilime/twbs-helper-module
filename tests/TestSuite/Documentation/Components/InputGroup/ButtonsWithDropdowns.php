@@ -77,11 +77,11 @@ return [
         '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '    <input type="text" name="dropdown-prepend" ' .
-        'aria-label="Text&#x20;input&#x20;with&#x20;dropdown&#x20;button" class="form-control" value="">' . PHP_EOL .
+        'aria-label="Text&#x20;input&#x20;with&#x20;dropdown&#x20;button" class="form-control" value=""/>' . PHP_EOL .
         '</div>' . PHP_EOL .
         '<div class="input-group">' . PHP_EOL .
         '    <input type="text" name="dropdown-append" ' .
-        'aria-label="Text&#x20;input&#x20;with&#x20;dropdown&#x20;button" class="form-control" value="">' . PHP_EOL .
+        'aria-label="Text&#x20;input&#x20;with&#x20;dropdown&#x20;button" class="form-control" value=""/>' . PHP_EOL .
         '    <div class="input-group-append">' . PHP_EOL .
         '        <button type="button" name="button" data-toggle="dropdown" role="button" aria-haspopup="true" ' .
         'aria-expanded="false" class="btn&#x20;btn-outline-secondary&#x20;dropdown-toggle" value="">' .

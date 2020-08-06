@@ -77,7 +77,7 @@ return [
             ],
         ]));
 
-        echo PHP_EOL . '<br>' . PHP_EOL;
+        echo PHP_EOL . '<br/>' . PHP_EOL;
 
         // Remix that once again with size-specific column classes.
         echo $oView->form($oFactory->create([
@@ -154,7 +154,7 @@ return [
             ],
         ]));
 
-        echo PHP_EOL . '<br>' . PHP_EOL;
+        echo PHP_EOL . '<br/>' . PHP_EOL;
 
         // And of course custom form controls are supported.
         echo $oView->form($oFactory->create([
@@ -218,13 +218,13 @@ return [
             ],
         ]));
     },
-    'expected' => '<form method="POST" name="form" role="form" id="form">' . PHP_EOL .
+    'expected' => '<form action="" method="POST" name="form" role="form" id="form">' . PHP_EOL .
         '    <div class="align-items-center&#x20;form-row">' . PHP_EOL .
         '        <div class="col-auto">' . PHP_EOL .
         '            <label class="sr-only" for="inlineFormInput">Name</label>'
         . PHP_EOL .
         '            <input name="name" type="text" id="inlineFormInput" ' .
-        'placeholder="Jane&#x20;Doe" class="form-control&#x20;mb-2" value="">' . PHP_EOL .
+        'placeholder="Jane&#x20;Doe" class="form-control&#x20;mb-2" value=""/>' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '        <div class="col-auto">' . PHP_EOL .
         '            <label class="sr-only" for="inlineFormInputGroup">Username</label>'
@@ -236,13 +236,13 @@ return [
         '                    </div>' . PHP_EOL .
         '                </div>' . PHP_EOL .
         '                <input name="username" type="text" id="inlineFormInputGroup" ' .
-        'placeholder="Username" class="form-control" value="">' . PHP_EOL .
+        'placeholder="Username" class="form-control" value=""/>' . PHP_EOL .
         '            </div>' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '        <div class="col-auto">' . PHP_EOL .
         '            <div class="form-check&#x20;mb-2">' . PHP_EOL .
         '                <input type="checkbox" name="remember_me" id="autoSizingCheck" ' .
-        'class="form-check-input" value="1">' . PHP_EOL .
+        'class="form-check-input" value="1"/>' . PHP_EOL .
         '                <label class="form-check-label" for="autoSizingCheck">' .
         'Remember me</label>' . PHP_EOL .
         '            </div>' . PHP_EOL .
@@ -253,14 +253,14 @@ return [
         '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '</form>' . PHP_EOL .
-        '<br>' . PHP_EOL .
-        '<form method="POST" name="form" role="form" id="form">' . PHP_EOL .
+        '<br/>' . PHP_EOL .
+        '<form action="" method="POST" name="form" role="form" id="form">' . PHP_EOL .
         '    <div class="align-items-center&#x20;form-row">' . PHP_EOL .
         '        <div class="col-sm-3&#x20;my-1">' . PHP_EOL .
         '            <label class="sr-only" for="inlineFormInput">Name</label>'
         . PHP_EOL .
         '            <input name="name" type="text" id="inlineFormInput" ' .
-        'placeholder="Jane&#x20;Doe" class="form-control&#x20;mb-2" value="">' . PHP_EOL .
+        'placeholder="Jane&#x20;Doe" class="form-control&#x20;mb-2" value=""/>' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '        <div class="col-sm-3&#x20;my-1">' . PHP_EOL .
         '            <label class="sr-only" for="inlineFormInputGroup">Username</label>'
@@ -272,13 +272,13 @@ return [
         '                    </div>' . PHP_EOL .
         '                </div>' . PHP_EOL .
         '                <input name="username" type="text" id="inlineFormInputGroup" ' .
-        'placeholder="Username" class="form-control" value="">' . PHP_EOL .
+        'placeholder="Username" class="form-control" value=""/>' . PHP_EOL .
         '            </div>' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '        <div class="col-auto&#x20;my-1">' . PHP_EOL .
         '            <div class="form-check&#x20;mb-2">' . PHP_EOL .
         '                <input type="checkbox" name="remember_me" id="autoSizingCheck" ' .
-        'class="form-check-input" value="1">' . PHP_EOL .
+        'class="form-check-input" value="1"/>' . PHP_EOL .
         '                <label class="form-check-label" for="autoSizingCheck">' .
         'Remember me</label>' . PHP_EOL .
         '            </div>' . PHP_EOL .
@@ -289,8 +289,8 @@ return [
         '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '</form>' . PHP_EOL .
-        '<br>' . PHP_EOL .
-        '<form method="POST" name="form" role="form" id="form">' . PHP_EOL .
+        '<br/>' . PHP_EOL .
+        '<form action="" method="POST" name="form" role="form" id="form">' . PHP_EOL .
         '    <div class="align-items-center&#x20;form-row">' . PHP_EOL .
         '        <div class="col-sm-3&#x20;my-1">' . PHP_EOL .
         '            <label class="mr-sm-2&#x20;sr-only" for="inlineFormCustomSelect">Preference</label>'
@@ -306,7 +306,7 @@ return [
         '        <div class="col-auto&#x20;my-1">' . PHP_EOL .
         '            <div class="custom-checkbox&#x20;custom-control&#x20;mr-sm-2">' . PHP_EOL .
         '                <input type="checkbox" name="remember_my_preference" id="customControlAutosizing" ' .
-        'class="custom-control-input" value="1">' . PHP_EOL .
+        'class="custom-control-input" value="1"/>' . PHP_EOL .
         '                <label class="custom-control-label" for="customControlAutosizing">' .
         'Remember my preference</label>' . PHP_EOL .
         '            </div>' . PHP_EOL .

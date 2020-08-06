@@ -22,7 +22,7 @@ return [
             ]
         );
 
-        echo PHP_EOL . '<br>' . PHP_EOL;
+        echo PHP_EOL . '<br/>' . PHP_EOL;
 
         // Avoid the list-based approach
         echo $oView->navigation()->navbar()->render(
@@ -43,7 +43,7 @@ return [
             ]
         );
 
-        echo PHP_EOL . '<br>' . PHP_EOL;
+        echo PHP_EOL . '<br/>' . PHP_EOL;
 
         echo $oView->navigation()->navbar()->render(
             new \Laminas\Navigation\Navigation([
@@ -98,7 +98,7 @@ return [
         '        </ul>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '</nav>' . PHP_EOL .
-        '<br>' . PHP_EOL .
+        '<br/>' . PHP_EOL .
         '<nav class="bg-light&#x20;navbar&#x20;navbar-expand-lg&#x20;navbar-light">' . PHP_EOL .
         '    <a class="navbar-brand" href="&#x23;">Navbar</a>' . PHP_EOL .
         '    <button type="button" name="navbar_toggler" class="navbar-toggler" ' .
@@ -116,7 +116,7 @@ return [
         '        </nav>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '</nav>' . PHP_EOL .
-        '<br>' . PHP_EOL .
+        '<br/>' . PHP_EOL .
         '<nav class="bg-light&#x20;navbar&#x20;navbar-expand-lg&#x20;navbar-light">' . PHP_EOL .
         '    <a class="navbar-brand" href="&#x23;">Navbar</a>' . PHP_EOL .
         '    <button type="button" name="navbar_toggler" class="navbar-toggler" ' .

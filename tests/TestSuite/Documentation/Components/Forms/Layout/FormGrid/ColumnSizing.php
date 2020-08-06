@@ -50,19 +50,19 @@ return [
             ]
         ]));
     },
-    'expected' => '<form method="POST" name="form" role="form" id="form">' . PHP_EOL .
+    'expected' => '<form action="" method="POST" name="form" role="form" id="form">' . PHP_EOL .
         '    <div class="form-row">' . PHP_EOL .
         '        <div class="col-7">' . PHP_EOL .
         '            <input name="city" type="text" placeholder="City" ' .
-        'class="form-control" value="">' . PHP_EOL .
+        'class="form-control" value=""/>' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '        <div class="col">' . PHP_EOL .
         '            <input name="state" type="text" placeholder="State" ' .
-        'class="form-control" value="">' . PHP_EOL .
+        'class="form-control" value=""/>' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '        <div class="col">' . PHP_EOL .
         '            <input name="zip" type="text" placeholder="Zip" ' .
-        'class="form-control" value="">' . PHP_EOL .
+        'class="form-control" value=""/>' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '</form>',

@@ -1,0 +1,69 @@
+---
+id: figures
+title: Figures
+---
+
+import ReactHtmlParser from 'react-html-parser';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/figures/)
+## Basic
+<Tabs
+    defaultValue="result"
+    values={[
+      {label: 'Result', value: 'result'},
+      {label: 'Source', value: 'source'},
+    ]}>
+<TabItem value="result">{ ReactHtmlParser(`<figure class="figure">
+    <img alt="A&#x20;generic&#x20;square&#x20;placeholder&#x20;image&#x20;with&#x20;rounded&#x20;corners&#x20;in&#x20;a&#x20;figure." class="figure-img&#x20;img-fluid&#x20;rounded" src="images&#x2F;demo-sample.svg" />
+    <figcaption class="figure-caption">A caption for the above image.</figcaption>
+</figure>`) }</TabItem>
+<TabItem value="source">
+
+```php
+echo $this->figure(
+    'images/demo-sample.svg',
+    'A caption for the above image.',
+    [],
+    [
+        'fluid' => true,
+        'rounded' => true,
+        'alt' => 'A generic square placeholder image with rounded corners in a figure.',
+    ]
+);
+```
+
+</TabItem>
+</Tabs>
+
+## Aligning figure's caption
+<Tabs
+    defaultValue="result"
+    values={[
+      {label: 'Result', value: 'result'},
+      {label: 'Source', value: 'source'},
+    ]}>
+<TabItem value="result">{ ReactHtmlParser(`<figure class="figure">
+    <img alt="A&#x20;generic&#x20;square&#x20;placeholder&#x20;image&#x20;with&#x20;rounded&#x20;corners&#x20;in&#x20;a&#x20;figure." class="figure-img&#x20;img-fluid&#x20;rounded" src="images&#x2F;demo-sample.svg" />
+    <figcaption class="figure-caption&#x20;text-right">A caption for the above image.</figcaption>
+</figure>`) }</TabItem>
+<TabItem value="source">
+
+```php
+echo $this->figure(
+    'images/demo-sample.svg',
+    'A caption for the above image.',
+    [],
+    [
+        'fluid' => true,
+        'rounded' => true,
+        'alt' => 'A generic square placeholder image with rounded corners in a figure.',
+    ],
+['class' => 'text-right']
+);
+```
+
+</TabItem>
+</Tabs>
+

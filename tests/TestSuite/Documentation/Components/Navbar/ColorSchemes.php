@@ -47,14 +47,14 @@ return [
         $aOptions['background'] = 'dark';
 
         echo $oView->navigation()->navbar()->render($oNavigationContainer, $aOptions);
-        echo PHP_EOL . '<br>' . PHP_EOL;
+        echo PHP_EOL . '<br/>' . PHP_EOL;
 
         // Navbar dark, background primary
         $aOptions['variant'] = 'dark';
         $aOptions['background'] = 'primary';
 
         echo $oView->navigation()->navbar()->render($oNavigationContainer, $aOptions);
-        echo PHP_EOL . '<br>' . PHP_EOL;
+        echo PHP_EOL . '<br/>' . PHP_EOL;
 
         // Navbar light, custom background-color
         $aOptions['variant'] = 'dark';
@@ -87,15 +87,15 @@ return [
         '                <a class="nav-link" href="&#x23;">About</a>' . PHP_EOL .
         '            </li>' . PHP_EOL .
         '        </ul>' . PHP_EOL .
-        '        <form method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
+        '        <form action="" method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
         '            <input name="search" type="search" placeholder="Search" aria-label="Search" ' .
-        'class="form-control&#x20;mr-sm-2" value="">' . PHP_EOL .
+        'class="form-control&#x20;mr-sm-2" value=""/>' . PHP_EOL .
         '            <button type="submit" name="submit" class="btn&#x20;btn-outline-success" value="">' .
         'Search</button>' . PHP_EOL .
         '        </form>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '</nav>' . PHP_EOL .
-        '<br>' . PHP_EOL .
+        '<br/>' . PHP_EOL .
         '<nav class="bg-primary&#x20;navbar&#x20;navbar-dark&#x20;navbar-expand-lg">' . PHP_EOL .
         '    <a class="navbar-brand" href="&#x23;">Navbar</a>' . PHP_EOL .
         '    <button type="button" name="navbar_toggler" class="navbar-toggler" data-toggle="collapse" ' .
@@ -120,15 +120,15 @@ return [
         '                <a class="nav-link" href="&#x23;">About</a>' . PHP_EOL .
         '            </li>' . PHP_EOL .
         '        </ul>' . PHP_EOL .
-        '        <form method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
+        '        <form action="" method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
         '            <input name="search" type="search" placeholder="Search" aria-label="Search" ' .
-        'class="form-control&#x20;mr-sm-2" value="">' . PHP_EOL .
+        'class="form-control&#x20;mr-sm-2" value=""/>' . PHP_EOL .
         '            <button type="submit" name="submit" class="btn&#x20;btn-outline-success" value="">' .
         'Search</button>' . PHP_EOL .
         '        </form>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '</nav>' . PHP_EOL .
-        '<br>' . PHP_EOL .
+        '<br/>' . PHP_EOL .
         '<nav class="navbar&#x20;navbar-dark&#x20;navbar-expand-lg" ' .
         'style="background-color&#x3A;&#x20;&#x23;e3f2fd&#x3B;">' . PHP_EOL .
         '    <a class="navbar-brand" href="&#x23;">Navbar</a>' . PHP_EOL .
@@ -154,9 +154,9 @@ return [
         '                <a class="nav-link" href="&#x23;">About</a>' . PHP_EOL .
         '            </li>' . PHP_EOL .
         '        </ul>' . PHP_EOL .
-        '        <form method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
+        '        <form action="" method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
         '            <input name="search" type="search" placeholder="Search" aria-label="Search" ' .
-        'class="form-control&#x20;mr-sm-2" value="">' . PHP_EOL .
+        'class="form-control&#x20;mr-sm-2" value=""/>' . PHP_EOL .
         '            <button type="submit" name="submit" class="btn&#x20;btn-outline-success" value="">' .
         'Search</button>' . PHP_EOL .
         '        </form>' . PHP_EOL .

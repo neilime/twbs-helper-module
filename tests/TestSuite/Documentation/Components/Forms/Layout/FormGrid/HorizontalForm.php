@@ -102,7 +102,7 @@ return [
                             ],
                         ],
                     ],
-                ],               
+                ],
                 [
                     'spec' => [
                         'type' => 'submit',
@@ -116,14 +116,14 @@ return [
             ]
         ]));
     },
-    'expected' => '<form method="POST" name="form" role="form" id="form">' . PHP_EOL .
+    'expected' => '<form action="" method="POST" name="form" role="form" id="form">' . PHP_EOL .
         '    <div class="form-group&#x20;row">' . PHP_EOL .
         '        <label class="col-form-label&#x20;col-sm-2" for="inputEmail3">' .
         'Email' .
         '</label>' . PHP_EOL .
         '        <div class="col-sm-10">' . PHP_EOL .
         '            <input name="email" type="email" id="inputEmail3" ' .
-        'placeholder="Email" class="form-control" value="">' . PHP_EOL .
+        'placeholder="Email" class="form-control" value=""/>' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '    <div class="form-group&#x20;row">' . PHP_EOL .
@@ -132,7 +132,7 @@ return [
         '</label>' . PHP_EOL .
         '        <div class="col-sm-10">' . PHP_EOL .
         '            <input name="password" type="password" id="inputPassword3" ' .
-        'placeholder="Password" class="form-control" value="">' . PHP_EOL .
+        'placeholder="Password" class="form-control" value=""/>' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '    </div>'  . PHP_EOL .
         '    <fieldset class="form-group">'  . PHP_EOL .
@@ -143,21 +143,21 @@ return [
         '            <div class="col-sm-10">'  . PHP_EOL .
         '                <div class="form-check">'  . PHP_EOL .
         '                    <input type="radio" name="fieldset&#x5B;gridRadios&#x5D;" ' .
-        'class="form-check-input" id="gridRadios1" value="option1">'  . PHP_EOL .
+        'class="form-check-input" id="gridRadios1" value="option1"/>'  . PHP_EOL .
         '                    <label class="form-check-label" for="gridRadios1">' .
         'First radio' .
         '</label>'  . PHP_EOL .
         '                </div>'  . PHP_EOL .
         '                <div class="form-check">'  . PHP_EOL .
         '                    <input type="radio" name="fieldset&#x5B;gridRadios&#x5D;" ' .
-        'class="form-check-input" id="gridRadios2" value="option2">'  . PHP_EOL .
+        'class="form-check-input" id="gridRadios2" value="option2"/>'  . PHP_EOL .
         '                    <label class="form-check-label" for="gridRadios2">' .
         'Second radio' .
         '</label>'  . PHP_EOL .
         '                </div>'  . PHP_EOL .
         '                <div class="form-check">'  . PHP_EOL .
         '                    <input type="radio" name="fieldset&#x5B;gridRadios&#x5D;" ' .
-        'class="form-check-input" id="gridRadios3" value="option3" disabled="disabled">'  . PHP_EOL .
+        'class="form-check-input" id="gridRadios3" value="option3" disabled="disabled"/>'  . PHP_EOL .
         '                    <label class="form-check-label" for="gridRadios3">' .
         'Third disabled radio' .
         '</label>'  . PHP_EOL .
@@ -168,8 +168,8 @@ return [
         '    <div class="form-group&#x20;row">' . PHP_EOL .
         '        <div class="col-sm-10&#x20;offset-sm-2">' . PHP_EOL .
         '            <div class="form-check">' . PHP_EOL .
-        '                <input type="hidden" name="checkbox" value="0">' .
-        '<input type="checkbox" name="checkbox" class="form-check-input" value="1">' . PHP_EOL .
+        '                <input type="hidden" name="checkbox" value="0"/>' .
+        '<input type="checkbox" name="checkbox" class="form-check-input" value="1"/>' . PHP_EOL .
         '                <label class="form-check-label" for="checkbox">' .
         'Checkbox</label>' . PHP_EOL .
         '            </div>' . PHP_EOL .
@@ -182,7 +182,7 @@ return [
         '        <div class="col-sm-10">' . PHP_EOL .
         '            <div class="form-check">' . PHP_EOL .
         '                <input type="checkbox" name="multicheckbox&#x5B;&#x5D;" ' .
-        'class="form-check-input" id="gridCheck1" value="1">' . PHP_EOL .
+        'class="form-check-input" id="gridCheck1" value="1"/>' . PHP_EOL .
         '                <label class="form-check-label" for="gridCheck1">' .
         'Example checkbox</label>' . PHP_EOL .
         '            </div>' . PHP_EOL .
@@ -254,7 +254,7 @@ return [
                     ],
                 ]));
             },
-            'expected' => '<form method="POST" name="form" role="form" id="form">' . PHP_EOL .
+            'expected' => '<form action="" method="POST" name="form" role="form" id="form">' . PHP_EOL .
                 '    <div class="form-group&#x20;row">' . PHP_EOL .
                 '        <label class="col-form-label&#x20;col-form-label-sm&#x20;col-sm-2" ' .
                 'for="colFormLabelSm">' .
@@ -263,7 +263,7 @@ return [
                 '        <div class="col-sm-10">' . PHP_EOL .
                 '            <input name="emailSm" type="email" id="colFormLabelSm" ' .
                 'placeholder="col-form-label-sm" class="form-control&#x20;form-control-sm" ' .
-                'value="">' . PHP_EOL .
+                'value=""/>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="form-group&#x20;row">' . PHP_EOL .
@@ -274,7 +274,7 @@ return [
                 '        <div class="col-sm-10">' . PHP_EOL .
                 '            <input name="email" type="email" id="colFormLabel" ' .
                 'placeholder="col-form-label" class="form-control" ' .
-                'value="">' . PHP_EOL .
+                'value=""/>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="form-group&#x20;row">' . PHP_EOL .
@@ -285,7 +285,7 @@ return [
                 '        <div class="col-sm-10">' . PHP_EOL .
                 '            <input name="emailLg" type="email" id="colFormLabelLg" ' .
                 'placeholder="col-form-label-lg" class="form-control&#x20;form-control-lg" ' .
-                'value="">' . PHP_EOL .
+                'value=""/>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</form>',

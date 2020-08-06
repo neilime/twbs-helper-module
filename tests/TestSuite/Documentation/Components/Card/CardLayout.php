@@ -40,7 +40,7 @@ return [
                 ]);
 
 
-                echo PHP_EOL . '<br>' . PHP_EOL;
+                echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // With footers
                 echo $oView->cardGroup([
@@ -69,7 +69,7 @@ return [
             },
             'expected' => '<div class="card-group">' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -82,7 +82,7 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -94,7 +94,7 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -107,10 +107,10 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</div>' . PHP_EOL .
-                '<br>' . PHP_EOL .
+                '<br/>' . PHP_EOL .
                 '<div class="card-group">' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -123,7 +123,7 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -135,7 +135,7 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -184,7 +184,7 @@ return [
                     ],
                 ]);
 
-                echo PHP_EOL . '<br>' . PHP_EOL;
+                echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // With footers
                 echo $oView->cardDeck([
@@ -213,7 +213,7 @@ return [
             },
             'expected' => '<div class="card-deck">' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -226,7 +226,7 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -238,7 +238,7 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -251,10 +251,10 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</div>' . PHP_EOL .
-                '<br>' . PHP_EOL .
+                '<br/>' . PHP_EOL .
                 '<div class="card-deck">' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -267,7 +267,7 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -279,7 +279,7 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -370,7 +370,7 @@ return [
             },
             'expected' => '<div class="card-columns">' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">'
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />'
                 . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">' .
@@ -396,7 +396,7 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">'
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />'
                 . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Card title</h5>' . PHP_EOL .
@@ -433,7 +433,7 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">'
+                '        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />'
                 . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card&#x20;p-3&#x20;text-right">' . PHP_EOL .

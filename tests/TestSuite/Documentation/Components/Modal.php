@@ -310,7 +310,7 @@ return [
                         'This <a href="#" role="button" class="btn btn-secondary popover-test" title="Popover title" ' .
                         'data-content="Popover body content is set in this attribute.">button</a> ' .
                         'triggers a popover on click.</p>' . PHP_EOL .
-                        '                <hr>' . PHP_EOL .
+                        '                <hr />' . PHP_EOL .
                         '                <h5>Tooltips in a modal</h5>' . PHP_EOL .
                         '                <p>' .
                         '<a href="#" class="tooltip-test" title="Tooltip">This link</a> and ' .
@@ -359,7 +359,7 @@ return [
                         ]);
                     },
                     'expected' => '<div class="bd-example-modal-xl&#x20;fade&#x20;modal" ' .
-                    'role="dialog" tabindex="-1">' . PHP_EOL .
+                        'role="dialog" tabindex="-1">' . PHP_EOL .
                         '    <div class="modal-dialog&#x20;modal-xl" role="document">' . PHP_EOL .
                         '        <div class="modal-content">' . PHP_EOL .
                         '            <div class="modal-header">' . PHP_EOL .

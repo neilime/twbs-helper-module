@@ -14,7 +14,7 @@ return [
                     'title' => 'Card title',
                     'text' => [
                         'This is a wider card with supporting text below as a natural lead-in to additional content. ' .
-                        'This content is a little bit longer.',
+                            'This content is a little bit longer.',
                         '<small class="text-muted">Last updated 3 mins ago</small>',
                     ],
                 ], ['class' => 'mb-3']) . PHP_EOL;
@@ -23,14 +23,14 @@ return [
                     'title' => 'Card title',
                     'text' => [
                         'This is a wider card with supporting text below as a natural lead-in to additional content. ' .
-                        'This content is a little bit longer.',
+                            'This content is a little bit longer.',
                         '<small class="text-muted">Last updated 3 mins ago</small>'
                     ],
                     'image_top' => ['images/demo/image-cap.svg', ['alt' => '...']],
                 ]);
             },
             'expected' => '<div class="card&#x20;mb-3">' . PHP_EOL .
-                '    <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
+                '    <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />' . PHP_EOL .
                 '    <div class="card-body">' . PHP_EOL .
                 '        <h5 class="card-title">Card title</h5>' . PHP_EOL .
                 '        <p class="card-text">' .
@@ -49,7 +49,7 @@ return [
                 '</p>' . PHP_EOL .
                 '        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
-                '    <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
+                '    <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />' . PHP_EOL .
                 '</div>',
         ],
         [
@@ -62,15 +62,15 @@ return [
                         'title' => 'Card title',
                         'text' => [
                             'This is a wider card with supporting text below as a natural ' .
-                            'lead-in to additional content. ' .
-                            'This content is a little bit longer.',
+                                'lead-in to additional content. ' .
+                                'This content is a little bit longer.',
                             'Last updated 3 mins ago',
                         ],
                     ],
                 ], ['bgVariant' => 'dark', 'class' => 'text-white']);
             },
             'expected' => '<div class="bg-dark&#x20;card&#x20;text-white">' . PHP_EOL .
-                '    <img alt="..." class="card-img" src="images&#x2F;demo&#x2F;image-cap.svg">' . PHP_EOL .
+                '    <img alt="..." class="card-img" src="images&#x2F;demo&#x2F;image-cap.svg" />' . PHP_EOL .
                 '    <div class="card-img-overlay">' . PHP_EOL .
                 '        <h5 class="card-title">Card title</h5>' . PHP_EOL .
                 '        <p class="card-text">' .

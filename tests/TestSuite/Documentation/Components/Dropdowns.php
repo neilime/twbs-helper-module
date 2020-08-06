@@ -23,7 +23,7 @@ return [
                         ]);
 
 
-                        echo PHP_EOL . '<br>' . PHP_EOL;
+                        echo PHP_EOL . '<br/>' . PHP_EOL;
 
                         // With <a> elements
                         echo $oView->formButton([
@@ -36,15 +36,13 @@ return [
                             'attributes' => ['id' => 'dropdownMenuButton'],
                         ]);
 
-                        echo PHP_EOL . '<br>' . PHP_EOL;
+                        echo PHP_EOL . '<br/>' . PHP_EOL;
 
                         // Variations
-                        foreach (
-                            [
+                        foreach ([
                             'primary', 'secondary', 'success', 'danger',
                             'warning', 'info', 'light', 'dark',
-                            ] as $sVariant
-                        ) {
+                        ] as $sVariant) {
                             echo $oView->formButton([
                                 'name' => 'dropdown',
                                 'options' => [
@@ -75,7 +73,7 @@ return [
                         '        <a class="dropdown-item" href="&#x23;">Something else here</a>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '</div>' . PHP_EOL .
-                        '<br>' . PHP_EOL .
+                        '<br/>' . PHP_EOL .
                         '<div class="dropdown">' . PHP_EOL .
                         '    <a id="dropdownMenuButton" data-toggle="dropdown" role="button" aria-haspopup="true" ' .
                         'aria-expanded="false" href="&#x23;" class="btn&#x20;btn-secondary&#x20;dropdown-toggle">' .
@@ -86,7 +84,7 @@ return [
                         '        <a class="dropdown-item" href="&#x23;">Something else here</a>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '</div>' . PHP_EOL .
-                        '<br>' . PHP_EOL .
+                        '<br/>' . PHP_EOL .
                         '<div class="btn-group&#x20;dropdown">' . PHP_EOL .
                         '    <button type="button" name="dropdown" ' .
                         'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
@@ -196,12 +194,10 @@ return [
                     'title' => 'Split button',
                     'url' => '%bootstrap-url%/components/dropdowns/#split-button',
                     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        foreach (
-                            [
+                        foreach ([
                             'primary', 'secondary', 'success', 'danger',
                             'warning', 'info', 'light', 'dark',
-                            ] as $sVariant
-                        ) {
+                        ] as $sVariant) {
                             echo $oView->formButton([
                                 'name' => 'dropdown',
                                 'options' => [
@@ -376,7 +372,7 @@ return [
                     ],
                 ]);
 
-                echo PHP_EOL . '<br><br>' . PHP_EOL;
+                echo PHP_EOL . '<br/><br/>' . PHP_EOL;
 
                 // Small button
                 echo $oView->formButton([
@@ -432,7 +428,7 @@ return [
                 '        <a class="dropdown-item" href="&#x23;">Separated link</a>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</div>' . PHP_EOL .
-                '<br><br>' . PHP_EOL .
+                '<br/><br/>' . PHP_EOL .
                 '<div class="btn-group&#x20;dropdown">' . PHP_EOL .
                 '    <button type="button" name="dropdown" ' .
                 'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
@@ -627,7 +623,7 @@ return [
                     'attributes' => ['id' => 'dropdownMenu2'],
                 ]);
 
-                echo PHP_EOL . '<br>' . PHP_EOL;
+                echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Non-interactive dropdown items
                 echo $oView->dropdown()->renderMenu([
@@ -648,7 +644,7 @@ return [
                 '        <a class="dropdown-item" href="&#x23;">Something else here</a>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</div>' . PHP_EOL .
-                '<br>' . PHP_EOL .
+                '<br/>' . PHP_EOL .
                 '<div class="dropdown-menu">' . PHP_EOL .
                 '    <span class="dropdown-item-text">Dropdown item text</span>' . PHP_EOL .
                 '    <a class="dropdown-item" href="&#x23;">Action</a>' . PHP_EOL .
@@ -733,7 +729,7 @@ return [
                             ],
                         ]);
 
-                        echo PHP_EOL . '<br>' . PHP_EOL;
+                        echo PHP_EOL . '<br/>' . PHP_EOL;
 
                         echo $oView->formButton([
                             'name' => 'dropdown',
@@ -757,7 +753,7 @@ return [
                         '        <a class="dropdown-item" href="&#x23;">Something else here</a>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '</div>' . PHP_EOL .
-                        '<br>' . PHP_EOL .
+                        '<br/>' . PHP_EOL .
                         '<div class="dropdown">' . PHP_EOL .
                         '    <button type="button" name="dropdown" ' .
                         'data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ' .
@@ -889,21 +885,21 @@ return [
                         ]);
                     },
                     'expected' => '<div class="dropdown-menu">' . PHP_EOL .
-                        '    <form method="POST" name="dropdown" id="dropdown" role="form">' . PHP_EOL .
+                        '    <form action="" method="POST" name="dropdown" id="dropdown" role="form">' . PHP_EOL .
                         '        <div class="form-group">' . PHP_EOL .
                         '            <label for="exampleDropdownFormEmail1">Email address</label>' . PHP_EOL .
                         '            <input name="email" type="email" id="exampleDropdownFormEmail1" ' .
-                        'placeholder="email&#x40;example.com" class="form-control" value="">' . PHP_EOL .
+                        'placeholder="email&#x40;example.com" class="form-control" value=""/>' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '        <div class="form-group">' . PHP_EOL .
                         '            <label for="exampleDropdownFormPassword1">Password</label>' . PHP_EOL .
                         '            <input name="password" type="password" id="exampleDropdownFormPassword1" ' .
-                        'placeholder="Password" class="form-control" value="">' . PHP_EOL .
+                        'placeholder="Password" class="form-control" value=""/>' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '        <div class="form-group">' . PHP_EOL .
                         '            <div class="form-check">' . PHP_EOL .
                         '                <input type="checkbox" name="remember_me" id="dropdownCheck" ' .
-                        'class="form-check-input" value="1">' . PHP_EOL .
+                        'class="form-check-input" value="1"/>' . PHP_EOL .
                         '                <label class="form-check-label" for="dropdownCheck">' .
                         'Remember me</label>' . PHP_EOL .
                         '            </div>' . PHP_EOL .

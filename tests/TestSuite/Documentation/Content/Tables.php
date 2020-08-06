@@ -18,7 +18,7 @@ return [
                     ],
                 ]);
 
-                echo PHP_EOL . '<br>' . PHP_EOL;
+                echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 echo $oView->table([
                     'head' => ['#', 'First', 'Last', 'Handle'],
@@ -59,7 +59,7 @@ return [
                 '        </tr>' . PHP_EOL .
                 '    </tbody>' . PHP_EOL .
                 '</table>' . PHP_EOL .
-                '<br>' . PHP_EOL .
+                '<br/>' . PHP_EOL .
                 '<table class="table&#x20;table-dark">' . PHP_EOL .
                 '    <thead>' . PHP_EOL .
                 '        <tr>' . PHP_EOL .
@@ -108,7 +108,7 @@ return [
                     ],
                 ]);
 
-                echo PHP_EOL . '<br>' . PHP_EOL;
+                echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Second table (head light)
                 echo $oView->table([
@@ -153,7 +153,7 @@ return [
                 '        </tr>' . PHP_EOL .
                 '    </tbody>' . PHP_EOL .
                 '</table>' . PHP_EOL .
-                '<br>' . PHP_EOL .
+                '<br/>' . PHP_EOL .
                 '<table class="table">' . PHP_EOL .
                 '    <thead class="thead-light">' . PHP_EOL .
                 '        <tr>' . PHP_EOL .
@@ -200,7 +200,7 @@ return [
                 ], ['class' => 'table-striped']);
 
 
-                echo PHP_EOL . '<br>' . PHP_EOL;
+                echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Second table (head striped & dark)
                 echo $oView->table([
@@ -242,7 +242,7 @@ return [
                 '        </tr>' . PHP_EOL .
                 '    </tbody>' . PHP_EOL .
                 '</table>' . PHP_EOL .
-                '<br>' . PHP_EOL .
+                '<br/>' . PHP_EOL .
                 '<table class="table&#x20;table-dark&#x20;table-striped">' . PHP_EOL .
                 '    <thead>' . PHP_EOL .
                 '        <tr>' . PHP_EOL .
@@ -288,7 +288,7 @@ return [
                     ],
                 ], ['class' => 'table-bordered']);
 
-                echo PHP_EOL . '<br>' . PHP_EOL;
+                echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // First table (bordered & dark)
                 echo $oView->table([
@@ -329,7 +329,7 @@ return [
                 '        </tr>' . PHP_EOL .
                 '    </tbody>' . PHP_EOL .
                 '</table>' . PHP_EOL .
-                '<br>' . PHP_EOL .
+                '<br/>' . PHP_EOL .
                 '<table class="table&#x20;table-bordered&#x20;table-dark">' . PHP_EOL .
                 '    <thead>' . PHP_EOL .
                 '        <tr>' . PHP_EOL .
@@ -375,7 +375,7 @@ return [
                     ],
                 ], ['class' => 'table-borderless']);
 
-                echo PHP_EOL . '<br>' . PHP_EOL;
+                echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Second table (borderless & dark)
                 echo $oView->table([
@@ -416,7 +416,7 @@ return [
                 '        </tr>' . PHP_EOL .
                 '    </tbody>' . PHP_EOL .
                 '</table>' . PHP_EOL .
-                '<br>' . PHP_EOL .
+                '<br/>' . PHP_EOL .
                 '<table class="table&#x20;table-borderless&#x20;table-dark">' . PHP_EOL .
                 '    <thead>' . PHP_EOL .
                 '        <tr>' . PHP_EOL .
@@ -461,7 +461,7 @@ return [
                     ],
                 ], ['class' => 'table-hover']);
 
-                echo PHP_EOL . '<br>' . PHP_EOL;
+                echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Second table (hoverable & dark)
                 echo $oView->table([
@@ -502,7 +502,7 @@ return [
                 '        </tr>' . PHP_EOL .
                 '    </tbody>' . PHP_EOL .
                 '</table>' . PHP_EOL .
-                '<br>' . PHP_EOL .
+                '<br/>' . PHP_EOL .
                 '<table class="table&#x20;table-dark&#x20;table-hover">' . PHP_EOL .
                 '    <thead>' . PHP_EOL .
                 '        <tr>' . PHP_EOL .
@@ -547,7 +547,7 @@ return [
                     ],
                 ], ['class' => 'table-sm']);
 
-                echo PHP_EOL . '<br>' . PHP_EOL;
+                echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Second table (small & dark)
                 echo $oView->table([
@@ -588,7 +588,7 @@ return [
                 '        </tr>' . PHP_EOL .
                 '    </tbody>' . PHP_EOL .
                 '</table>' . PHP_EOL .
-                '<br>' . PHP_EOL .
+                '<br/>' . PHP_EOL .
                 '<table class="table&#x20;table-dark&#x20;table-sm">' . PHP_EOL .
                 '    <thead>' . PHP_EOL .
                 '        <tr>' . PHP_EOL .
@@ -667,7 +667,7 @@ return [
                     ],
                 ]);
 
-                echo PHP_EOL . '<br>' . PHP_EOL;
+                echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Second table (dark)
                 echo $oView->table([
@@ -774,7 +774,7 @@ return [
                 '        </tr>' . PHP_EOL .
                 '    </tbody>' . PHP_EOL .
                 '</table>' . PHP_EOL .
-                '<br>' . PHP_EOL .
+                '<br/>' . PHP_EOL .
                 '<table class="table&#x20;table-dark">' . PHP_EOL .
                 '    <thead>' . PHP_EOL .
                 '        <tr>' . PHP_EOL .
@@ -968,7 +968,7 @@ return [
                     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         foreach (['sm', 'md', 'lg', 'xl'] as $iKey => $sSize) {
                             if ($iKey) {
-                                echo PHP_EOL . '<br>' . PHP_EOL;
+                                echo PHP_EOL . '<br/>' . PHP_EOL;
                             }
 
                             echo $oView->table([
@@ -1042,7 +1042,7 @@ return [
                         '        </tbody>' . PHP_EOL .
                         '    </table>' . PHP_EOL .
                         '</div>' . PHP_EOL .
-                        '<br>' . PHP_EOL .
+                        '<br/>' . PHP_EOL .
                         '<div class="table-responsive-md">' . PHP_EOL .
                         '    <table class="table">' . PHP_EOL .
                         '        <thead>' . PHP_EOL .
@@ -1099,7 +1099,7 @@ return [
                         '        </tbody>' . PHP_EOL .
                         '    </table>' . PHP_EOL .
                         '</div>' . PHP_EOL .
-                        '<br>' . PHP_EOL .
+                        '<br/>' . PHP_EOL .
                         '<div class="table-responsive-lg">' . PHP_EOL .
                         '    <table class="table">' . PHP_EOL .
                         '        <thead>' . PHP_EOL .
@@ -1156,7 +1156,7 @@ return [
                         '        </tbody>' . PHP_EOL .
                         '    </table>' . PHP_EOL .
                         '</div>' . PHP_EOL .
-                        '<br>' . PHP_EOL .
+                        '<br/>' . PHP_EOL .
                         '<div class="table-responsive-xl">' . PHP_EOL .
                         '    <table class="table">' . PHP_EOL .
                         '        <thead>' . PHP_EOL .

@@ -90,11 +90,11 @@ return [
             ],
         ]));
     },
-    'expected' => '<form method="POST" name="form" role="form" id="form">' . PHP_EOL .
+    'expected' => '<form action="" method="POST" name="form" role="form" id="form">' . PHP_EOL .
         '    <div class="form-group">' . PHP_EOL .
         '        <label for="exampleFormControlInput1">Email address</label>' . PHP_EOL .
         '        <input name="email" type="email" id="exampleFormControlInput1" ' .
-        'placeholder="name&#x40;example.com" class="form-control" value="">' . PHP_EOL .
+        'placeholder="name&#x40;example.com" class="form-control" value=""/>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '    <div class="form-group">' . PHP_EOL .
         '        <label for="exampleFormControlSelect1">Example select</label>' . PHP_EOL .
@@ -124,7 +124,7 @@ return [
         '    </div>' . PHP_EOL .
         '    <div class="form-group">' . PHP_EOL .
         '        <label for="exampleFormControlFile1">Example file input</label>' . PHP_EOL .
-        '        <input name="file_input" type="file" id="exampleFormControlFile1" class="form-control-file" value="">'
+        '        <input name="file_input" type="file" id="exampleFormControlFile1" class="form-control-file" value=""/>'
         . PHP_EOL .
         '    </div>' . PHP_EOL .
         '</form>',
@@ -143,7 +143,7 @@ return [
                     'options' => ['size' => 'lg'],
                     'attributes' => ['placeholder' => '.form-control-lg'],
                 ]);
-                echo $oView->formElement($oElement) . PHP_EOL . '<br>' . PHP_EOL;
+                echo $oView->formElement($oElement) . PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Render default input
                 $oElement = $oFactory->create([
@@ -151,7 +151,7 @@ return [
                     'type' => 'text',
                     'attributes' => ['placeholder' => 'Default input'],
                 ]);
-                echo $oView->formElement($oElement) . PHP_EOL . '<br>' . PHP_EOL;
+                echo $oView->formElement($oElement) . PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Render small input
                 $oElement = $oFactory->create([
@@ -160,7 +160,7 @@ return [
                     'options' => ['size' => 'sm'],
                     'attributes' => ['placeholder' => '.form-control-sm'],
                 ]);
-                echo $oView->formElement($oElement) . PHP_EOL . '<br>' . PHP_EOL;
+                echo $oView->formElement($oElement) . PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Render large select
                 $oElement = $oFactory->create([
@@ -169,7 +169,7 @@ return [
                     'options' => ['size' => 'lg', 'value_options' => ['Large select']],
                     'attributes' => ['placeholder' => '.form-control-lg'],
                 ]);
-                echo $oView->formElement($oElement) . PHP_EOL . '<br>' . PHP_EOL;
+                echo $oView->formElement($oElement) . PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Render default select
                 $oElement = $oFactory->create([
@@ -178,7 +178,7 @@ return [
                     'options' => ['value_options' => ['Default select']],
                     'attributes' => ['placeholder' => 'Default input'],
                 ]);
-                echo $oView->formElement($oElement) . PHP_EOL . '<br>' . PHP_EOL;
+                echo $oView->formElement($oElement) . PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Render small select
                 $oElement = $oFactory->create([
@@ -187,30 +187,30 @@ return [
                     'options' => ['size' => 'sm', 'value_options' => ['Small select']],
                     'attributes' => ['placeholder' => '.form-control-sm'],
                 ]);
-                echo $oView->formElement($oElement) . PHP_EOL . '<br>' . PHP_EOL;
+                echo $oView->formElement($oElement) . PHP_EOL . '<br/>' . PHP_EOL;
             },
             'expected' =>
             '<input type="text" name="lg" placeholder=".form-control-lg" ' .
-                'class="form-control&#x20;form-control-lg" value="">' . PHP_EOL .
-                '<br>' . PHP_EOL .
+                'class="form-control&#x20;form-control-lg" value=""/>' . PHP_EOL .
+                '<br/>' . PHP_EOL .
                 '<input type="text" name="default" placeholder="Default&#x20;input" ' .
-                'class="form-control" value="">' . PHP_EOL .
-                '<br>' . PHP_EOL .
+                'class="form-control" value=""/>' . PHP_EOL .
+                '<br/>' . PHP_EOL .
                 '<input type="text" name="sm" placeholder=".form-control-sm" ' .
-                'class="form-control&#x20;form-control-sm" value="">' . PHP_EOL .
-                '<br>' . PHP_EOL .
+                'class="form-control&#x20;form-control-sm" value=""/>' . PHP_EOL .
+                '<br/>' . PHP_EOL .
                 '<select name="lg" class="form-control&#x20;form-control-lg">' .
                 '<option value="0">Large select</option>' .
                 '</select>' . PHP_EOL .
-                '<br>' . PHP_EOL .
+                '<br/>' . PHP_EOL .
                 '<select name="default" class="form-control">' .
                 '<option value="0">Default select</option>' .
                 '</select>' . PHP_EOL .
-                '<br>' . PHP_EOL .
+                '<br/>' . PHP_EOL .
                 '<select name="sm" class="form-control&#x20;form-control-sm">' .
                 '<option value="0">Small select</option>' .
                 '</select>' . PHP_EOL .
-                '<br>' . PHP_EOL,
+                '<br/>' . PHP_EOL,
         ],
         [
             'title' => 'Readonly',
@@ -227,7 +227,7 @@ return [
             },
             'expected' =>
             '<input type="text" name="readonly-input" readonly="readonly" ' .
-                'placeholder="Readonly&#x20;input&#x20;here..." class="form-control" value="">',
+                'placeholder="Readonly&#x20;input&#x20;here..." class="form-control" value=""/>',
         ],
         [
             'title' => 'Readonly plain text',
@@ -274,7 +274,7 @@ return [
 
                 echo $oView->form($oForm);
 
-                echo PHP_EOL . '<br>' . PHP_EOL;
+                echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Render inline form
                 echo $oView->form($oFactory->create([
@@ -322,35 +322,35 @@ return [
                 ]));
             },
             'expected' =>
-            '<form method="POST" name="form" role="form" id="form">' . PHP_EOL .
+            '<form action="" method="POST" name="form" role="form" id="form">' . PHP_EOL .
                 '    <div class="form-group&#x20;row">' . PHP_EOL .
                 '        <label class="col-form-label&#x20;col-sm-2" for="staticEmail">Email</label>'
                 . PHP_EOL .
                 '        <div class="col-sm-10">' . PHP_EOL .
                 '            <input name="email" type="email" id="staticEmail" readonly="readonly" ' .
-                'class="form-control-plaintext" value="email&#x40;example.com">' . PHP_EOL .
+                'class="form-control-plaintext" value="email&#x40;example.com"/>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="form-group&#x20;row">' . PHP_EOL .
                 '        <label class="col-form-label&#x20;col-sm-2" for="inputPassword">Password</label>' . PHP_EOL .
                 '        <div class="col-sm-10">' . PHP_EOL .
                 '            <input name="password" type="password" id="inputPassword" ' .
-                'placeholder="Password" class="form-control" value="">' . PHP_EOL .
+                'placeholder="Password" class="form-control" value=""/>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</form>' . PHP_EOL .
-                '<br>' . PHP_EOL .
-                '<form method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
+                '<br/>' . PHP_EOL .
+                '<form action="" method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
                 '    <div class="form-group&#x20;mb-2">' . PHP_EOL .
                 '        <label class="sr-only" for="staticEmail2">Email</label>'
                 . PHP_EOL .
                 '        <input name="email" type="email" id="staticEmail2" readonly="readonly" ' .
-                'class="form-control-plaintext" value="email&#x40;example.com">' . PHP_EOL .
+                'class="form-control-plaintext" value="email&#x40;example.com"/>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="form-group&#x20;mb-2&#x20;mx-sm-3">' . PHP_EOL .
                 '        <label class="sr-only" for="inputPassword2">Password</label>' . PHP_EOL .
                 '        <input name="password" type="password" id="inputPassword2" ' .
-                'placeholder="Password" class="form-control" value="">' . PHP_EOL .
+                'placeholder="Password" class="form-control" value=""/>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">' .
                 'Confirm identity</button>' . PHP_EOL .

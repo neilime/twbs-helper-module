@@ -2,101 +2,38 @@ name: Publish
 
 on:
   push:
+    branches:
+      - master
     tags: [v*]
 
 jobs:
-  homepage:
+  gh-release:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@master
-      - run: mkdir ./site
-      - run: 'echo -e "---\nlayout: default\ntitle: Home\n---\n" > ./site/index.md'
-      - run: 'echo "$(sed -r s"/(\{%[^%]+%\})/{% raw %}\1{% endraw %}/g" ./README.md)" >> ./site/index.md'
-      - uses: actions/upload-artifact@2.1.0
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
         with:
-          name: site
-          path: ./site
-
-  demo:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@master
-      - run: "mkdir -p ./site/_includes && touch ./site/demo.md && touch ./site/_includes/demo-menu.html"
-      - run: "php ./scripts/generateDemoFromDocumentationTestConfigs.php ./site/demo.md ./site/_includes/demo-menu.html"
-      - uses: actions/upload-artifact@2.1.0
-        with:
-          name: site
-          path: ./site
-
-  phpdoc:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@master
-      - name: Setup PHP, with composer and extensions
-        uses: shivammathur/setup-php@master #https://github.com/shivammathur/setup-php
-        with:
-          php-version: 7.4
-          extensions: mbstring
-          coverage: pcov
-
-      - name: Get composer cache directory
-        id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
-
-      - name: Cache composer dependencies
-        uses: actions/cache@v2
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
-          restore-keys: ${{ runner.os }}-composer-
-
-      - name: Install dependencies
+          node-version: "12.x"
+      - name: Add key to allow access to repository
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run: |
-          composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
-          composer require clean/phpdoc-md --dev;
-
-      - name: Configure phpdoc-md
+          mkdir -p ~/.ssh
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          echo "${{ secrets.GH_PAGES_DEPLOY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          cat <<EOT >> ~/.ssh/config
+          Host github.com
+          HostName github.com
+          IdentityFile ~/.ssh/id_rsa
+          EOT
+      - name: Release to GitHub Pages
+        env:
+          USE_SSH: true
+          GIT_USER: git
         run: |
-          mkdir -p ./site/phpdoc;
-
-          php -d display_errors=0 -d error_reporting=0 -r "file_put_contents('.phpdoc-md','<?php
-              return (object)[
-                \'rootNamespace\' => \'TwbsHelper\', 
-                \'destDirectory\' => \'./site/phpdoc\',
-                \'format\' => \'github\',
-                \'classes\' => '.var_export (array_values(array_filter(
-                    array_keys(require('./vendor/composer/autoload_classmap.php')),
-                    function(\$className) {
-                      return strpos(\$className, 'TwbsHelper') === 0;
-                    }                                  
-                )), true).'
-              ];
-            ');
-          ";
-
-      - name: Execute phpdoc-md
-        run: |
-          vendor/bin/phpdoc-md -v
-          mv ./site/phpdoc/README.md ./site/phpdoc/index.md
-
-      - uses: actions/upload-artifact@2.1.0
-        with:
-          name: site
-          path: ./site
-
-  build_and_deploy:
-    runs-on: ubuntu-latest
-    needs: [homepage, demo, phpdoc]
-    steps:
-      - uses: actions/download-artifact@v2
-        with:
-          name: site
-      - uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
-          enable_jekyll: true
-          keep_files: true
+          git config --global user.email "actions@gihub.com"
+          git config --global user.name "GitHub Actions"
+          cd website
+          yarn install --frozen-lockfile
+          npx docusaurus deploy

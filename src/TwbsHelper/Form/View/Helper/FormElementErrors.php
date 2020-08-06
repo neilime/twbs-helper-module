@@ -13,7 +13,6 @@ class FormElementErrors extends LaminasFormElementErrorsViewHelper
 {
 
     /**
-     * @+
      * @var string Templates for the open/close/separators for message tags
      */
     protected $messageCloseString = '</div>';

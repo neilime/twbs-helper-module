@@ -27,15 +27,15 @@ return [
                         '    <div class="carousel-inner">' . PHP_EOL .
                         '        <div class="active&#x20;carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;1" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '        <div class="carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;2" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '        <div class="carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;3" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '</div>',
@@ -58,15 +58,15 @@ return [
                         '    <div class="carousel-inner">' . PHP_EOL .
                         '        <div class="active&#x20;carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;1" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '        <div class="carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;2" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '        <div class="carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;3" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '    <a class="carousel-control-prev" data-slide="prev" href="&#x23;carouselExampleControls" ' .
@@ -105,15 +105,15 @@ return [
                         '    <div class="carousel-inner">' . PHP_EOL .
                         '        <div class="active&#x20;carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;1" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '        <div class="carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;2" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '        <div class="carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;3" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '    <a class="carousel-control-prev" data-slide="prev" ' .
@@ -178,7 +178,7 @@ return [
                         '    <div class="carousel-inner">' . PHP_EOL .
                         '        <div class="active&#x20;carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;1" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
                         '            <div class="carousel-caption&#x20;d-md-block&#x20;d-none">' . PHP_EOL .
                         '                <h5>First slide label</h5>' . PHP_EOL .
                         '                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>' . PHP_EOL .
@@ -187,7 +187,7 @@ return [
                         '        </div>' . PHP_EOL .
                         '        <div class="carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;2" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
                         '            <div class="carousel-caption&#x20;d-md-block&#x20;d-none">' . PHP_EOL .
                         '                <h5>Second slide label</h5>' . PHP_EOL .
                         '                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>' . PHP_EOL .
@@ -195,7 +195,7 @@ return [
                         '        </div>' . PHP_EOL .
                         '        <div class="carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;3" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
                         '            <div class="carousel-caption&#x20;d-md-block&#x20;d-none">' . PHP_EOL .
                         '                <h5>Third slide label</h5>' . PHP_EOL .
                         '                <p>' .
@@ -230,19 +230,19 @@ return [
                         ], ['id' => 'carouselExampleFade', 'controls' => true, 'crossfade' => true]);
                     },
                     'expected' => '<div class="carousel&#x20;carousel-fade&#x20;slide" data-ride="carousel" ' .
-                    'id="carouselExampleFade">' . PHP_EOL .
+                        'id="carouselExampleFade">' . PHP_EOL .
                         '    <div class="carousel-inner">' . PHP_EOL .
                         '        <div class="active&#x20;carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;1" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '        <div class="carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;2" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '        <div class="carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;3" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '    <a class="carousel-control-prev" data-slide="prev" href="&#x23;carouselExampleFade" ' .
@@ -276,15 +276,15 @@ return [
                         '    <div class="carousel-inner">' . PHP_EOL .
                         '        <div class="active&#x20;carousel-item" data-interval="10000">' . PHP_EOL .
                         '            <img alt="Slide&#x20;1" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '        <div class="carousel-item" data-interval="2000">' . PHP_EOL .
                         '            <img alt="Slide&#x20;2" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '        <div class="carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;3" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '    <a class="carousel-control-prev" data-slide="prev" href="&#x23;carouselExampleControls" ' .

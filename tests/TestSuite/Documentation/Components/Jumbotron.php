@@ -38,7 +38,7 @@ return [
         '    <h1 class="display-4">Hello, world!</h1>' . PHP_EOL .
         '    <p class="lead">This is a simple hero unit, a simple jumbotron-style component ' .
         'for calling extra attention to featured content or information.</p>' . PHP_EOL .
-        '    <hr class="my-4">' . PHP_EOL .
+        '    <hr class="my-4" />' . PHP_EOL .
         '    <p>It uses utility classes for typography and spacing to space ' .
         'content out within the larger container.</p>' . PHP_EOL .
         '    <a href="&#x23;" class="btn&#x20;btn-lg&#x20;btn-primary" role="button">Learn more</a>' . PHP_EOL .

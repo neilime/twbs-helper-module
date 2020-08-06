@@ -15,7 +15,7 @@ return [
             ]
         );
 
-        echo PHP_EOL . '<br>' . PHP_EOL;
+        echo PHP_EOL . '<br/>' . PHP_EOL;
 
         // As a heading
         echo $oView->navigation()->navbar()->render(
@@ -31,7 +31,7 @@ return [
             ]
         );
 
-        echo PHP_EOL . '<br>' . PHP_EOL;
+        echo PHP_EOL . '<br/>' . PHP_EOL;
 
         // Just an image
         echo $oView->navigation()->navbar()->render(
@@ -47,7 +47,7 @@ return [
             ]
         );
 
-        echo PHP_EOL . '<br>' . PHP_EOL;
+        echo PHP_EOL . '<br/>' . PHP_EOL;
 
         // Image and text
         echo $oView->navigation()->navbar()->render(
@@ -72,20 +72,20 @@ return [
     'expected' => '<nav class="bg-light&#x20;navbar&#x20;navbar-light">' . PHP_EOL .
         '    <a class="navbar-brand" href="&#x23;">Navbar</a>' . PHP_EOL .
         '</nav>' . PHP_EOL .
-        '<br>' . PHP_EOL .
+        '<br/>' . PHP_EOL .
         '<nav class="bg-light&#x20;navbar&#x20;navbar-light">' . PHP_EOL .
         '    <span class="h1&#x20;mb-0&#x20;navbar-brand">Navbar</span>' . PHP_EOL .
         '</nav>' . PHP_EOL .
-        '<br>' . PHP_EOL .
+        '<br/>' . PHP_EOL .
         '<nav class="bg-light&#x20;navbar&#x20;navbar-light">' . PHP_EOL .
         '    <a class="navbar-brand" href="&#x23;">' .
-        '<img alt="" height="30" src="images&#x2F;demo&#x2F;bootstrap-solid.svg" width="30"></a>' . PHP_EOL .
+        '<img alt="" height="30" src="images&#x2F;demo&#x2F;bootstrap-solid.svg" width="30" /></a>' . PHP_EOL .
         '</nav>' . PHP_EOL .
-        '<br>' . PHP_EOL .
+        '<br/>' . PHP_EOL .
         '<nav class="bg-light&#x20;navbar&#x20;navbar-light">' . PHP_EOL .
         '    <a class="navbar-brand" href="&#x23;">' . PHP_EOL .
         '        <img alt="" class="align-top&#x20;d-inline-block" height="30" ' .
-        'src="images&#x2F;demo&#x2F;bootstrap-solid.svg" width="30">' . PHP_EOL .
+        'src="images&#x2F;demo&#x2F;bootstrap-solid.svg" width="30" />' . PHP_EOL .
         '        Bootstrap' . PHP_EOL .
         '    </a>' . PHP_EOL .
         '</nav>',

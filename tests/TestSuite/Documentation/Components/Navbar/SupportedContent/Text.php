@@ -14,7 +14,7 @@ return [
             ]
         );
 
-        echo PHP_EOL . '<br>' . PHP_EOL;
+        echo PHP_EOL . '<br/>' . PHP_EOL;
 
         echo $oView->navigation()->navbar()->render(
             new \Laminas\Navigation\Navigation([
@@ -36,7 +36,7 @@ return [
     'expected' => '<nav class="bg-light&#x20;navbar&#x20;navbar-light">' . PHP_EOL .
         '    <span class="navbar-text">Navbar text with an inline element</span>' . PHP_EOL .
         '</nav>' . PHP_EOL .
-        '<br>' . PHP_EOL .
+        '<br/>' . PHP_EOL .
         '<nav class="bg-light&#x20;navbar&#x20;navbar-expand-lg&#x20;navbar-light">' . PHP_EOL .
         '    <a class="navbar-brand" href="&#x23;">Navbar w/ text</a>' . PHP_EOL .
         '    <button type="button" name="navbar_toggler" class="navbar-toggler" data-toggle="collapse" ' .

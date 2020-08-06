@@ -58,14 +58,14 @@ class FormTest extends \PHPUnit\Framework\TestCase
         $oNewHorizontalForm = new $horizontalFormClass();
 
         $this->assertEquals(
-            '<form method="POST" name="form" role="form" id="form">' . PHP_EOL .
+            '<form action="" method="POST" name="form" role="form" id="form">' . PHP_EOL .
                 '    <div class="form-group&#x20;row">' . PHP_EOL .
                 '        <label class="col-form-label&#x20;col-sm-2" for="inputEmail3">' .
                 'Email' .
                 '</label>' . PHP_EOL .
                 '        <div class="col-sm-10">' . PHP_EOL .
                 '            <input name="email" type="email" id="inputEmail3" ' .
-                'placeholder="Email" class="form-control" value="">' . PHP_EOL .
+                'placeholder="Email" class="form-control" value=""/>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</form>',
@@ -111,10 +111,10 @@ class FormTest extends \PHPUnit\Framework\TestCase
         $oNewButtonGroupForm = new $buttonGroupFormClass();
 
         $this->assertEquals(
-            '<form method="POST" name="form" role="form" id="form">' . PHP_EOL .
+            '<form action="" method="POST" name="form" role="form" id="form">' . PHP_EOL .
                 '    <div class="form-group">' . PHP_EOL .
                 '        <label for="email">Email</label>' . PHP_EOL .
-                '        <input name="email" type="email" class="form-control" value="">' . PHP_EOL .
+                '        <input name="email" type="email" class="form-control" value=""/>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="btn-group&#x20;form-group">' . PHP_EOL .
                 '        <button type="button" name="button1" class="btn&#x20;btn-secondary" value="">Button 1</button>' . PHP_EOL .

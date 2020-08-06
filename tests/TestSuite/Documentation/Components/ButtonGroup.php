@@ -162,7 +162,7 @@ return [
                         );
                     },
                     'expected' => '<div aria-label="Toolbar&#x20;with&#x20;button&#x20;groups" ' .
-                    'class="btn-toolbar&#x20;mb-3" role="toolbar">' . PHP_EOL .
+                        'class="btn-toolbar&#x20;mb-3" role="toolbar">' . PHP_EOL .
                         '    <div aria-label="First&#x20;group" class="btn-group&#x20;mr-2" role="group">' . PHP_EOL .
                         '        <button type="button" name="1" class="btn&#x20;btn-secondary" value="">1</button>'
                         . PHP_EOL .
@@ -181,7 +181,7 @@ return [
                         '        </div>' . PHP_EOL .
                         '        <input type="text" name="input-group-example" ' .
                         'placeholder="Input&#x20;group&#x20;example" aria-label="Input&#x20;group&#x20;example" ' .
-                        'aria-describedby="btnGroupAddon" class="form-control" value="">' . PHP_EOL .
+                        'aria-describedby="btnGroupAddon" class="form-control" value=""/>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '</div>' . PHP_EOL .
                         '<div aria-label="Toolbar&#x20;with&#x20;button&#x20;groups" ' .
@@ -205,7 +205,7 @@ return [
                         '        </div>' . PHP_EOL .
                         '        <input type="text" name="input-group-example" ' .
                         'placeholder="Input&#x20;group&#x20;example" aria-label="Input&#x20;group&#x20;example" ' .
-                        'aria-describedby="btnGroupAddon" class="form-control" value="">' . PHP_EOL .
+                        'aria-describedby="btnGroupAddon" class="form-control" value=""/>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '</div>',
                 ],

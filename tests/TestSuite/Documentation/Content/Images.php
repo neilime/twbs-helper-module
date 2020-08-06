@@ -12,7 +12,7 @@ return [
                 echo $oView->image('images/demo/responsive.svg', ['fluid' => true, 'alt' => 'Responsive image',]);
             },
             'expected' =>
-            '<img alt="Responsive&#x20;image" class="img-fluid" src="images&#x2F;demo&#x2F;responsive.svg">',
+            '<img alt="Responsive&#x20;image" class="img-fluid" src="images&#x2F;demo&#x2F;responsive.svg" />',
         ],
         [
             'title' => 'Image thumbnails',
@@ -21,7 +21,7 @@ return [
                 echo $oView->image('images/demo/200x200.svg', ['thumbnail' => true, 'alt' => 'Image thumbnail',]);
             },
             'expected' =>
-            '<img alt="Image&#x20;thumbnail" class="img-thumbnail" src="images&#x2F;demo&#x2F;200x200.svg">',
+            '<img alt="Image&#x20;thumbnail" class="img-thumbnail" src="images&#x2F;demo&#x2F;200x200.svg" />',
         ],
         [
             'title' => 'Aligning images',
@@ -43,11 +43,11 @@ return [
                 );
             },
             'expected' => '<img alt="Image&#x20;aligned&#x20;left" class="float-left&#x20;rounded" ' .
-                'src="images&#x2F;demo&#x2F;200x200.svg">'  . PHP_EOL .
+                'src="images&#x2F;demo&#x2F;200x200.svg" />'  . PHP_EOL .
                 '<img alt="Image&#x20;aligned&#x20;right" class="float-right&#x20;rounded" ' .
-                'src="images&#x2F;demo&#x2F;200x200.svg">' . PHP_EOL .
+                'src="images&#x2F;demo&#x2F;200x200.svg" />' . PHP_EOL .
                 '<img alt="Image&#x20;aligned&#x20;block" ' .
-                'class="d-block&#x20;mx-auto&#x20;rounded" src="images&#x2F;demo&#x2F;200x200.svg">',
+                'class="d-block&#x20;mx-auto&#x20;rounded" src="images&#x2F;demo&#x2F;200x200.svg" />',
         ],
         [
             'title' => 'Picture',
@@ -62,9 +62,9 @@ return [
             },
             'expected' =>
             '<picture>' . PHP_EOL .
-                '    <source srcset="images&#x2F;demo&#x2F;200x200.svg" type="image&#x2F;svg&#x2B;xml">' . PHP_EOL .
+                '    <source srcset="images&#x2F;demo&#x2F;200x200.svg" type="image&#x2F;svg&#x2B;xml" />' . PHP_EOL .
                 '    <img alt="Picture&#x20;image" ' .
-                'class="img-fluid&#x20;img-thumbnail" src="images&#x2F;demo&#x2F;200x200.svg">' . PHP_EOL .
+                'class="img-fluid&#x20;img-thumbnail" src="images&#x2F;demo&#x2F;200x200.svg" />' . PHP_EOL .
                 '</picture>',
         ],
     ],

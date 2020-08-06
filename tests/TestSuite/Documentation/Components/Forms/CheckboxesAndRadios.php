@@ -40,7 +40,7 @@ return [
                     ],
                 ]));
 
-                echo PHP_EOL . '<br>' . PHP_EOL;
+                echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Render radio
                 echo $oView->formRow($oFactory->create([
@@ -71,28 +71,28 @@ return [
             },
             'expected' => '<div class="form-check">' . PHP_EOL .
                 '    <input type="checkbox" name="default-checkbox" id="defaultCheck1" ' .
-                'class="form-check-input" value="1">' . PHP_EOL .
+                'class="form-check-input" value="1"/>' . PHP_EOL .
                 '    <label class="form-check-label" for="defaultCheck1">Default checkbox</label>' . PHP_EOL .
                 '</div>' . PHP_EOL .
                 '<div class="form-check">' . PHP_EOL .
                 '    <input type="checkbox" name="disabled-checkbox" id="defaultCheck2" ' .
-                'disabled="disabled" class="form-check-input" value="1">' . PHP_EOL .
+                'disabled="disabled" class="form-check-input" value="1"/>' . PHP_EOL .
                 '    <label class="form-check-label" for="defaultCheck2">Disabled checkbox</label>' . PHP_EOL .
                 '</div>' . PHP_EOL .
-                '<br>' . PHP_EOL .
+                '<br/>' . PHP_EOL .
                 '<div class="form-check">' . PHP_EOL .
                 '    <input type="radio" name="exampleRadios" class="form-check-input" ' .
-                'id="exampleRadios1" value="option1">' . PHP_EOL .
+                'id="exampleRadios1" value="option1"/>' . PHP_EOL .
                 '    <label class="form-check-label" for="exampleRadios1">Default radio</label>' . PHP_EOL .
                 '</div>' . PHP_EOL .
                 '<div class="form-check">' . PHP_EOL .
                 '    <input type="radio" name="exampleRadios" class="form-check-input" ' .
-                'id="exampleRadios2" value="option2">' . PHP_EOL .
+                'id="exampleRadios2" value="option2"/>' . PHP_EOL .
                 '    <label class="form-check-label" for="exampleRadios2">Second default radio</label>' . PHP_EOL .
                 '</div>' . PHP_EOL .
                 '<div class="form-check">' . PHP_EOL .
                 '    <input type="radio" name="exampleRadios" class="form-check-input" ' .
-                'id="exampleRadios3" value="option1" disabled="disabled">' . PHP_EOL .
+                'id="exampleRadios3" value="option1" disabled="disabled"/>' . PHP_EOL .
                 '    <label class="form-check-label" for="exampleRadios3">Disabled radio</label>' . PHP_EOL .
                 '</div>',
         ],
@@ -130,7 +130,7 @@ return [
                     ],
                 ]));
 
-                echo PHP_EOL . '<br>' . PHP_EOL;
+                echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Render radio
                 echo $oView->formRow($oFactory->create([
@@ -162,33 +162,33 @@ return [
             },
             'expected' => '<div class="form-check&#x20;form-check-inline">' . PHP_EOL .
                 '    <input type="checkbox" name="inlineCheckboxOptions&#x5B;&#x5D;" class="form-check-input" ' .
-                'id="inlineCheckbox1" value="option1">' . PHP_EOL .
+                'id="inlineCheckbox1" value="option1"/>' . PHP_EOL .
                 '    <label class="form-check-label" for="inlineCheckbox1">1</label>' . PHP_EOL .
                 '</div>' . PHP_EOL .
                 '<div class="form-check&#x20;form-check-inline">' . PHP_EOL .
                 '    <input type="checkbox" name="inlineCheckboxOptions&#x5B;&#x5D;" class="form-check-input" ' .
-                'id="inlineCheckbox2" value="option2">' . PHP_EOL .
+                'id="inlineCheckbox2" value="option2"/>' . PHP_EOL .
                 '    <label class="form-check-label" for="inlineCheckbox2">2</label>' . PHP_EOL .
                 '</div>' . PHP_EOL .
                 '<div class="form-check&#x20;form-check-inline">' . PHP_EOL .
                 '    <input type="checkbox" name="inlineCheckboxOptions&#x5B;&#x5D;" class="form-check-input" ' .
-                'id="inlineCheckbox3" value="option3" disabled="disabled">' . PHP_EOL .
+                'id="inlineCheckbox3" value="option3" disabled="disabled"/>' . PHP_EOL .
                 '    <label class="form-check-label" for="inlineCheckbox3">3 (disabled)</label>' . PHP_EOL .
                 '</div>' . PHP_EOL .
-                '<br>' . PHP_EOL .
+                '<br/>' . PHP_EOL .
                 '<div class="form-check&#x20;form-check-inline">' . PHP_EOL .
                 '    <input type="radio" name="inlineRadioOptions" class="form-check-input" ' .
-                'id="inlineRadio1" value="option1">' . PHP_EOL .
+                'id="inlineRadio1" value="option1"/>' . PHP_EOL .
                 '    <label class="form-check-label" for="inlineRadio1">1</label>' . PHP_EOL .
                 '</div>' . PHP_EOL .
                 '<div class="form-check&#x20;form-check-inline">' . PHP_EOL .
                 '    <input type="radio" name="inlineRadioOptions" class="form-check-input" ' .
-                'id="inlineRadio2" value="option2">' . PHP_EOL .
+                'id="inlineRadio2" value="option2"/>' . PHP_EOL .
                 '    <label class="form-check-label" for="inlineRadio2">2</label>' . PHP_EOL .
                 '</div>' . PHP_EOL .
                 '<div class="form-check&#x20;form-check-inline">' . PHP_EOL .
                 '    <input type="radio" name="inlineRadioOptions" class="form-check-input" ' .
-                'id="inlineRadio3" value="option3" disabled="disabled">' . PHP_EOL .
+                'id="inlineRadio3" value="option3" disabled="disabled"/>' . PHP_EOL .
                 '    <label class="form-check-label" for="inlineRadio3">3 (disabled)</label>' . PHP_EOL .
                 '</div>',
         ],
@@ -234,12 +234,12 @@ return [
             'expected' => '<div class="form-check">' . PHP_EOL .
                 '    <input type="checkbox" name="blankCheckbox&#x5B;&#x5D;" ' .
                 'class="form-check-input&#x20;position-static" ' .
-                'id="blankCheckbox" aria-label="..." value="option1">' . PHP_EOL .
+                'id="blankCheckbox" aria-label="..." value="option1"/>' . PHP_EOL .
                 '</div>' . PHP_EOL .
                 '<div class="form-check">' . PHP_EOL .
                 '    <input type="radio" name="blankRadio" ' .
                 'class="form-check-input&#x20;position-static" ' .
-                'id="blankRadio1" aria-label="..." value="option1">' . PHP_EOL .
+                'id="blankRadio1" aria-label="..." value="option1"/>' . PHP_EOL .
                 '</div>',
         ],
     ],

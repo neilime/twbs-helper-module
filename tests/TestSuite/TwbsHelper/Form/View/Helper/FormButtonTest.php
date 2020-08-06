@@ -52,8 +52,8 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
         $this->expectException(\DomainException::class);
         $this->expectExceptionMessage(
             'TwbsHelper\Form\View\Helper\FormButton::renderButtonContent expects either button content ' .
-            'as the second argument, or that the element provided has a label value, a glyphicon option, ' .
-            'or a fontAwesome option; none found'
+                'as the second argument, or that the element provided has a label value, a glyphicon option, ' .
+                'or a fontAwesome option; none found'
         );
 
         $this->formButtonHelper->render(new \Laminas\Form\Element\Button('test', []));
@@ -63,8 +63,8 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
     {
         $this->assertEquals(
             '<button type="button" name="test" class="btn&#x20;btn-secondary" value="">' .
-            '<i class="fa-bootstrap&#x20;fab"></i>' .
-            '</button>',
+                '<i class="fa-bootstrap&#x20;fab"></i>' .
+                '</button>',
             $this->formButtonHelper->render(new \Laminas\Form\Element\Button(
                 'test',
                 [
@@ -78,15 +78,15 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
     {
         $this->assertEquals(
             '<button type="button" name="test" class="btn&#x20;btn-secondary" value="">' .
-            '<i class="fa-bootstrap&#x20;fab"></i> test' .
-            '</button>',
+                '<i class="fa-bootstrap&#x20;fab"></i> test' .
+                '</button>',
             $this->formButtonHelper->render(new \Laminas\Form\Element\Button(
                 'test',
                 [
                     'label' => 'test',
                     'icon' => [
-                       'class' => 'fab fa-bootstrap',
-                       'position' => 'prepend',
+                        'class' => 'fab fa-bootstrap',
+                        'position' => 'prepend',
                     ],
                 ]
             ))
@@ -94,15 +94,15 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals(
             '<button type="button" name="test" class="btn&#x20;btn-secondary" value="">' .
-            'test <i class="fa-bootstrap&#x20;fab"></i>' .
-            '</button>',
+                'test <i class="fa-bootstrap&#x20;fab"></i>' .
+                '</button>',
             $this->formButtonHelper->render(new \Laminas\Form\Element\Button(
                 'test',
                 [
                     'label' => 'test',
                     'icon' => [
-                       'class' => 'fab fa-bootstrap',
-                       'position' => 'append',
+                        'class' => 'fab fa-bootstrap',
+                        'position' => 'append',
                     ],
                 ]
             ))

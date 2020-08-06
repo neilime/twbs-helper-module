@@ -1,0 +1,167 @@
+---
+id: badges
+title: Badges
+---
+
+import ReactHtmlParser from 'react-html-parser';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/badge/)
+## Example
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/badge/#example)
+<Tabs
+    defaultValue="result"
+    values={[
+      {label: 'Result', value: 'result'},
+      {label: 'Source', value: 'source'},
+    ]}>
+<TabItem value="result">{ ReactHtmlParser(`<h1>Example heading <span class="badge&#x20;badge-secondary">New</span></h1>
+<h2>Example heading <span class="badge&#x20;badge-secondary">New</span></h2>
+<h3>Example heading <span class="badge&#x20;badge-secondary">New</span></h3>
+<h4>Example heading <span class="badge&#x20;badge-secondary">New</span></h4>
+<h5>Example heading <span class="badge&#x20;badge-secondary">New</span></h5>
+<h6>Example heading <span class="badge&#x20;badge-secondary">New</span></h6>
+<br/>
+<button type="button" name="button" class="btn&#x20;btn-primary" value="">
+    Profile <span class="badge&#x20;badge-light">9</span>
+    <span class="sr-only">unread messages</span>
+</button>`) }</TabItem>
+<TabItem value="source">
+
+```php
+// H1
+echo '<h1>Example heading ' . $this->badge('New') . '</h1>' . PHP_EOL;
+// H2
+echo '<h2>Example heading ' . $this->badge('New') . '</h2>' . PHP_EOL;
+// H3
+echo '<h3>Example heading ' . $this->badge('New') . '</h3>' . PHP_EOL;
+// H4
+echo '<h4>Example heading ' . $this->badge('New') . '</h4>' . PHP_EOL;
+// H5
+echo '<h5>Example heading ' . $this->badge('New') . '</h5>' . PHP_EOL;
+// H6
+echo '<h6>Example heading ' . $this->badge('New') . '</h6>';
+
+echo PHP_EOL . '<br/>' . PHP_EOL;
+
+// Button
+echo $this->formButton([
+    'options' => [
+        'label' => 'Profile ' . $this->badge('9', 'light') . PHP_EOL .
+        '<span class="sr-only">unread messages</span>',
+        'variant' => 'primary',
+    ],
+]);
+```
+
+</TabItem>
+</Tabs>
+
+## Contextual variations
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/badge/#contextual-variations)
+<Tabs
+    defaultValue="result"
+    values={[
+      {label: 'Result', value: 'result'},
+      {label: 'Source', value: 'source'},
+    ]}>
+<TabItem value="result">{ ReactHtmlParser(`<span class="badge&#x20;badge-primary">Primary</span>
+<span class="badge&#x20;badge-secondary">Secondary</span>
+<span class="badge&#x20;badge-success">Success</span>
+<span class="badge&#x20;badge-danger">Danger</span>
+<span class="badge&#x20;badge-warning">Warning</span>
+<span class="badge&#x20;badge-info">Info</span>
+<span class="badge&#x20;badge-light">Light</span>
+<span class="badge&#x20;badge-dark">Dark</span>
+`) }</TabItem>
+<TabItem value="source">
+
+```php
+foreach ([
+    'primary', 'secondary', 'success', 'danger',
+    'warning', 'info', 'light', 'dark',
+] as $sVariant) {
+    echo $this->badge(ucfirst($sVariant), $sVariant) . PHP_EOL;
+}
+```
+
+</TabItem>
+</Tabs>
+
+## Pill badges
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/badge/#pill-badges)
+<Tabs
+    defaultValue="result"
+    values={[
+      {label: 'Result', value: 'result'},
+      {label: 'Source', value: 'source'},
+    ]}>
+<TabItem value="result">{ ReactHtmlParser(`<span class="badge&#x20;badge-pill&#x20;badge-primary">Primary</span>
+<span class="badge&#x20;badge-pill&#x20;badge-secondary">Secondary</span>
+<span class="badge&#x20;badge-pill&#x20;badge-success">Success</span>
+<span class="badge&#x20;badge-danger&#x20;badge-pill">Danger</span>
+<span class="badge&#x20;badge-pill&#x20;badge-warning">Warning</span>
+<span class="badge&#x20;badge-info&#x20;badge-pill">Info</span>
+<span class="badge&#x20;badge-light&#x20;badge-pill">Light</span>
+<span class="badge&#x20;badge-dark&#x20;badge-pill">Dark</span>
+`) }</TabItem>
+<TabItem value="source">
+
+```php
+foreach ([
+    'primary', 'secondary', 'success', 'danger',
+    'warning', 'info', 'light', 'dark',
+] as $sVariant) {
+    echo $this->badge(
+        ucfirst($sVariant),
+        [
+            'type' => 'pill',
+            'variant' => $sVariant,
+        ]
+    ) . PHP_EOL;
+}
+```
+
+</TabItem>
+</Tabs>
+
+## Links
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/badge/#links)
+<Tabs
+    defaultValue="result"
+    values={[
+      {label: 'Result', value: 'result'},
+      {label: 'Source', value: 'source'},
+    ]}>
+<TabItem value="result">{ ReactHtmlParser(`<a class="badge&#x20;badge-primary" href="&#x23;">Primary</a>
+<a class="badge&#x20;badge-secondary" href="&#x23;">Secondary</a>
+<a class="badge&#x20;badge-success" href="&#x23;">Success</a>
+<a class="badge&#x20;badge-danger" href="&#x23;">Danger</a>
+<a class="badge&#x20;badge-warning" href="&#x23;">Warning</a>
+<a class="badge&#x20;badge-info" href="&#x23;">Info</a>
+<a class="badge&#x20;badge-light" href="&#x23;">Light</a>
+<a class="badge&#x20;badge-dark" href="&#x23;">Dark</a>
+`) }</TabItem>
+<TabItem value="source">
+
+```php
+foreach ([
+    'primary', 'secondary', 'success', 'danger',
+    'warning', 'info', 'light', 'dark',
+] as $sVariant) {
+    echo $this->badge(
+        ucfirst($sVariant),
+        [
+            'type' => 'link',
+            'href' => '#',
+            'variant' => $sVariant,
+            
+        ]
+    ) . PHP_EOL;
+}
+```
+
+</TabItem>
+</Tabs>
+

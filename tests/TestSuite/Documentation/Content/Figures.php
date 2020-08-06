@@ -23,7 +23,7 @@ return [
                 '    <img ' .
                 'alt="A&#x20;generic&#x20;square&#x20;placeholder&#x20;' .
                 'image&#x20;with&#x20;rounded&#x20;corners&#x20;in&#x20;a&#x20;figure." ' .
-                'class="figure-img&#x20;img-fluid&#x20;rounded" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                'class="figure-img&#x20;img-fluid&#x20;rounded" src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
                 '    <figcaption class="figure-caption">A caption for the above image.</figcaption>' . PHP_EOL .
                 '</figure>',
         ],
@@ -46,7 +46,7 @@ return [
                 '    <img ' .
                 'alt="A&#x20;generic&#x20;square&#x20;placeholder&#x20;image&#x20;with&#x20;' .
                 'rounded&#x20;corners&#x20;in&#x20;a&#x20;figure." ' .
-                'class="figure-img&#x20;img-fluid&#x20;rounded" src="images&#x2F;demo-sample.svg">' . PHP_EOL .
+                'class="figure-img&#x20;img-fluid&#x20;rounded" src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
                 '    <figcaption class="figure-caption&#x20;text-right">A caption for the above image.</figcaption>' .
                 PHP_EOL .
                 '</figure>',

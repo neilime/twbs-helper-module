@@ -31,7 +31,7 @@ return [
                     },
                     'expected' => '<div class="custom-checkbox&#x20;custom-control">' . PHP_EOL .
                         '    <input type="checkbox" name="custom_checkbox" id="customCheck1" ' .
-                        'class="custom-control-input" value="1">' . PHP_EOL .
+                        'class="custom-control-input" value="1"/>' . PHP_EOL .
                         '    <label class="custom-control-label" for="customCheck1">' .
                         'Check this custom checkbox' .
                         '</label>' . PHP_EOL .
@@ -65,14 +65,14 @@ return [
                     },
                     'expected' => '<div class="custom-control&#x20;custom-radio">' . PHP_EOL .
                         '    <input type="radio" name="customRadio" class="custom-control-input" ' .
-                        'id="customRadio1" value="1">' . PHP_EOL .
+                        'id="customRadio1" value="1"/>' . PHP_EOL .
                         '    <label class="custom-control-label" for="customRadio1">' .
                         'Toggle this custom radio' .
                         '</label>' . PHP_EOL .
                         '</div>' . PHP_EOL .
                         '<div class="custom-control&#x20;custom-radio">' . PHP_EOL .
                         '    <input type="radio" name="customRadio" class="custom-control-input" ' .
-                        'id="customRadio2" value="2">' . PHP_EOL .
+                        'id="customRadio2" value="2"/>' . PHP_EOL .
                         '    <label class="custom-control-label" for="customRadio2">' .
                         'Or toggle this other custom radio' .
                         '</label>' . PHP_EOL .
@@ -108,14 +108,14 @@ return [
                     'expected' => '<div class="custom-control&#x20;custom-control-inline&#x20;custom-radio">' .
                         PHP_EOL .
                         '    <input type="radio" name="customRadioInline1" class="custom-control-input" ' .
-                        'id="customRadioInline1" value="1">' . PHP_EOL .
+                        'id="customRadioInline1" value="1"/>' . PHP_EOL .
                         '    <label class="custom-control-label" for="customRadioInline1">' .
                         'Toggle this custom radio' .
                         '</label>' . PHP_EOL .
                         '</div>' . PHP_EOL .
                         '<div class="custom-control&#x20;custom-control-inline&#x20;custom-radio">' . PHP_EOL .
                         '    <input type="radio" name="customRadioInline1" class="custom-control-input" ' .
-                        'id="customRadioInline2" value="2">' . PHP_EOL .
+                        'id="customRadioInline2" value="2"/>' . PHP_EOL .
                         '    <label class="custom-control-label" for="customRadioInline2">' .
                         'Or toggle this other custom radio' .
                         '</label>' . PHP_EOL .
@@ -161,14 +161,14 @@ return [
                     'expected' =>
                     '<div class="custom-checkbox&#x20;custom-control">' . PHP_EOL .
                         '    <input type="checkbox" name="custom_checkbox_disabled" id="customCheckDisabled1" ' .
-                        'disabled="disabled" class="custom-control-input" value="1">' . PHP_EOL .
+                        'disabled="disabled" class="custom-control-input" value="1"/>' . PHP_EOL .
                         '    <label class="custom-control-label" for="customCheckDisabled1">' .
                         'Check this custom checkbox' .
                         '</label>' . PHP_EOL .
                         '</div>' . PHP_EOL .
                         '<div class="custom-control&#x20;custom-radio">' . PHP_EOL .
                         '    <input type="radio" name="radioDisabled" disabled="disabled" ' .
-                        'class="custom-control-input" id="customRadioDisabled2" value="1">' . PHP_EOL .
+                        'class="custom-control-input" id="customRadioDisabled2" value="1"/>' . PHP_EOL .
                         '    <label class="custom-control-label" for="customRadioDisabled2">' .
                         'Toggle this custom radio' .
                         '</label>' . PHP_EOL .
@@ -213,14 +213,14 @@ return [
             },
             'expected' => '<div class="custom-control&#x20;custom-switch">' . PHP_EOL .
                 '    <input type="checkbox" name="custom_switch" id="customSwitch1" ' .
-                'class="custom-control-input" value="1">' . PHP_EOL .
+                'class="custom-control-input" value="1"/>' . PHP_EOL .
                 '    <label class="custom-control-label" for="customSwitch1">' .
                 'Toggle this switch element' .
                 '</label>' . PHP_EOL .
                 '</div>' . PHP_EOL .
                 '<div class="custom-control&#x20;custom-switch">' . PHP_EOL .
                 '    <input type="checkbox" name="custom_switch" id="customSwitch2" ' .
-                'disabled="disabled" class="custom-control-input" value="1">' . PHP_EOL .
+                'disabled="disabled" class="custom-control-input" value="1"/>' . PHP_EOL .
                 '    <label class="custom-control-label" for="customSwitch2">' .
                 'Disabled switch element' .
                 '</label>' . PHP_EOL .
@@ -246,7 +246,7 @@ return [
                     ],
                 ])->setValue('')) . PHP_EOL;
 
-                echo '<br><br>' . PHP_EOL;
+                echo '<br/><br/>' . PHP_EOL;
 
                 // You may also choose from small and large custom selects to match our similarly sized text inputs.
                 echo $oView->formElement($oFactory->create([
@@ -265,7 +265,7 @@ return [
                     'attributes' => ['class' => 'mb-3'],
                 ])->setValue('')) . PHP_EOL;
 
-                echo '<br><br>' . PHP_EOL;
+                echo '<br/><br/>' . PHP_EOL;
 
                 echo $oView->formElement($oFactory->create([
                     'name' => 'custom_select_sm',
@@ -282,7 +282,7 @@ return [
                     ],
                 ])->setValue('')) . PHP_EOL;
 
-                echo '<br><br>' . PHP_EOL;
+                echo '<br/><br/>' . PHP_EOL;
 
                 // The multiple attribute is also supported
                 echo $oView->formElement($oFactory->create([
@@ -300,7 +300,7 @@ return [
                     'attributes' => ['multiple' => true],
                 ])->setValue('')) . PHP_EOL;
 
-                echo '<br><br>' . PHP_EOL;
+                echo '<br/><br/>' . PHP_EOL;
 
                 // As is the size attribute
                 echo $oView->formElement($oFactory->create([
@@ -324,7 +324,7 @@ return [
                 '    <option value="2">Two</option>' . PHP_EOL .
                 '    <option value="3">Three</option>' . PHP_EOL .
                 '</select>' . PHP_EOL .
-                '<br><br>' . PHP_EOL .
+                '<br/><br/>' . PHP_EOL .
                 '<select name="custom_select_lg" ' .
                 'class="custom-select&#x20;custom-select-lg&#x20;mb-3">' . PHP_EOL .
                 '    <option value="" selected="selected">Open this select menu</option>' . PHP_EOL .
@@ -332,14 +332,14 @@ return [
                 '    <option value="2">Two</option>' . PHP_EOL .
                 '    <option value="3">Three</option>' . PHP_EOL .
                 '</select>' . PHP_EOL .
-                '<br><br>' . PHP_EOL .
+                '<br/><br/>' . PHP_EOL .
                 '<select name="custom_select_sm" class="custom-select&#x20;custom-select-sm">' . PHP_EOL .
                 '    <option value="" selected="selected">Open this select menu</option>' . PHP_EOL .
                 '    <option value="1">One</option>' . PHP_EOL .
                 '    <option value="2">Two</option>' . PHP_EOL .
                 '    <option value="3">Three</option>' . PHP_EOL .
                 '</select>' . PHP_EOL .
-                '<br><br>' . PHP_EOL .
+                '<br/><br/>' . PHP_EOL .
                 '<select name="custom_select_multiple&#x5B;&#x5D;" multiple="multiple" ' .
                 'class="custom-select">' . PHP_EOL .
                 '    <option value="" selected="selected">Open this select menu</option>' . PHP_EOL .
@@ -347,7 +347,7 @@ return [
                 '    <option value="2">Two</option>' . PHP_EOL .
                 '    <option value="3">Three</option>' . PHP_EOL .
                 '</select>' . PHP_EOL .
-                '<br><br>' . PHP_EOL .
+                '<br/><br/>' . PHP_EOL .
                 '<select name="custom_select_size" size="3" class="custom-select">' . PHP_EOL .
                 '    <option value="" selected="selected">Open this select menu</option>' . PHP_EOL .
                 '    <option value="1">One</option>' . PHP_EOL .
@@ -373,7 +373,7 @@ return [
                 ]));
             },
             'expected' => '<label for="customRange1">Example range</label>' . PHP_EOL .
-                '<input type="range" name="custom_range" id="customRange1" class="custom-range" value="">',
+                '<input type="range" name="custom_range" id="customRange1" class="custom-range" value=""/>',
         ],
         [
             'title' => 'File browser',
@@ -393,7 +393,7 @@ return [
                 ]));
             },
             'expected' => '<div class="custom-file">' . PHP_EOL .
-                '    <input type="file" name="custom_file" id="customFile" class="custom-file-input" value="">'
+                '    <input type="file" name="custom_file" id="customFile" class="custom-file-input" value=""/>'
                 . PHP_EOL .
                 '    <label class="custom-file-label" for="customFile">Choose file</label>' . PHP_EOL .
                 '</div>',
@@ -420,7 +420,7 @@ return [
                     },
                     'expected' => '<div class="custom-file">' . PHP_EOL .
                         '    <input type="file" name="custom_file" id="customFileLangHTML" ' .
-                        'class="custom-file-input" value="">'
+                        'class="custom-file-input" value=""/>'
                         . PHP_EOL .
                         '    <label data-browse="Bestand&#x20;kiezen" class="custom-file-label" ' .
                         'for="customFileLangHTML">Voeg je document toe</label>' . PHP_EOL .

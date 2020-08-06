@@ -254,14 +254,14 @@ return [
                 '    </div>' . PHP_EOL .
                 '    <div class="custom-file">' . PHP_EOL .
                 '        <input type="file" name="custom_file_label_prepend" id="inputGroupFile01" ' .
-                'aria-describedby="inputGroupFileAddon01" class="custom-file-input" value="">' . PHP_EOL .
+                'aria-describedby="inputGroupFileAddon01" class="custom-file-input" value=""/>' . PHP_EOL .
                 '        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</div>' . PHP_EOL .
                 '<div class="input-group&#x20;mb-3">' . PHP_EOL .
                 '    <div class="custom-file">' . PHP_EOL .
                 '        <input type="file" name="custom_file_label_append" id="inputGroupFile02" ' .
-                'aria-describedby="inputGroupFileAddon02" class="custom-file-input" value="">' . PHP_EOL .
+                'aria-describedby="inputGroupFileAddon02" class="custom-file-input" value=""/>' . PHP_EOL .
                 '        <label class="custom-file-label" for="inputGroupFile02">Choose file</label>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="input-group-append">' . PHP_EOL .
@@ -277,14 +277,14 @@ return [
                 '    </div>' . PHP_EOL .
                 '    <div class="custom-file">' . PHP_EOL .
                 '        <input type="file" name="custom_file_button_prepend" id="inputGroupFile03" ' .
-                'aria-describedby="inputGroupFileAddon03" class="custom-file-input" value="">' . PHP_EOL .
+                'aria-describedby="inputGroupFileAddon03" class="custom-file-input" value=""/>' . PHP_EOL .
                 '        <label class="custom-file-label" for="inputGroupFile03">Choose file</label>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</div>' . PHP_EOL .
                 '<div class="input-group&#x20;mb-3">' . PHP_EOL .
                 '    <div class="custom-file">' . PHP_EOL .
                 '        <input type="file" name="custom_file_button_append" id="inputGroupFile04" ' .
-                'aria-describedby="inputGroupFileAddon04" class="custom-file-input" value="">' . PHP_EOL .
+                'aria-describedby="inputGroupFileAddon04" class="custom-file-input" value=""/>' . PHP_EOL .
                 '        <label class="custom-file-label" for="inputGroupFile04">Choose file</label>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="input-group-append">' . PHP_EOL .

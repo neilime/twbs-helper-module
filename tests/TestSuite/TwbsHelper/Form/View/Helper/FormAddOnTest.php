@@ -33,12 +33,12 @@ class FormAddOnTest extends \PHPUnit\Framework\TestCase
     {
         $this->assertEquals(
             '<div class="input-group">' . PHP_EOL .
-            '    <div class="input-group-prepend">' . PHP_EOL .
-            '        <div class="input-group-text">' . PHP_EOL .
-            '            @' . PHP_EOL .
-            '        </div>' . PHP_EOL .
-            '    </div>' . PHP_EOL .
-            '</div>',
+                '    <div class="input-group-prepend">' . PHP_EOL .
+                '        <div class="input-group-text">' . PHP_EOL .
+                '            @' . PHP_EOL .
+                '        </div>' . PHP_EOL .
+                '    </div>' . PHP_EOL .
+                '</div>',
             $this->formAddOnHelper->__invoke(new \Laminas\Form\Element\Text(
                 'test',
                 ['add_on_prepend' => '@']
@@ -50,12 +50,12 @@ class FormAddOnTest extends \PHPUnit\Framework\TestCase
     {
         $this->assertEquals(
             '<div class="input-group">' . PHP_EOL .
-            '    <div class="input-group-prepend">' . PHP_EOL .
-            '        <button type="button" name="add-on" class="btn&#x20;btn-secondary" value="">' .
-            'Add-On' .
-            '</button>' . PHP_EOL .
-            '    </div>' . PHP_EOL .
-            '</div>',
+                '    <div class="input-group-prepend">' . PHP_EOL .
+                '        <button type="button" name="add-on" class="btn&#x20;btn-secondary" value="">' .
+                'Add-On' .
+                '</button>' . PHP_EOL .
+                '    </div>' . PHP_EOL .
+                '</div>',
             $this->formAddOnHelper->__invoke(new \Laminas\Form\Element\Text(
                 'test',
                 [

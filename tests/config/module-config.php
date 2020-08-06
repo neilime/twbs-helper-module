@@ -2,7 +2,7 @@
 
 return [
     'view_manager' => [
-        'doctype' => 'HTML5',
+        'doctype' => \Laminas\View\Helper\Doctype::XHTML11,
     ],
     'router' => [
         'router_class' => \Laminas\Router\Http\TreeRouteStack::class,

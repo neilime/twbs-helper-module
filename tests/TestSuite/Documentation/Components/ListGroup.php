@@ -83,7 +83,7 @@ return [
                     ],
                 ], ['type' => 'action']) . PHP_EOL;
 
-                echo '<br>' . PHP_EOL;
+                echo '<br/>' . PHP_EOL;
 
                 echo $oView->listGroup([
                     'Cras justo odio' => ['active' => true],
@@ -106,7 +106,7 @@ return [
                 'class="disabled&#x20;list-group-item&#x20;list-group-item-action" ' .
                 'href="&#x23;" tabindex="-1">Vestibulum at eros</a>' . PHP_EOL .
                 '</div>' . PHP_EOL .
-                '<br>' . PHP_EOL .
+                '<br/>' . PHP_EOL .
                 '<div class="list-group">' . PHP_EOL .
                 '    <button class="active&#x20;list-group-item&#x20;list-group-item-action" type="button">' .
                 'Cras justo odio</button>' . PHP_EOL .
@@ -160,7 +160,7 @@ return [
                 // Alternatively, choose a responsive variant `sm|md|lg|xl`
                 // to make a list group horizontal starting at that breakpoint’s
                 foreach (['sm', 'md', 'lg', 'xl'] as $sBreakpoint) {
-                    echo PHP_EOL . '<br>' . PHP_EOL;
+                    echo PHP_EOL . '<br/>' . PHP_EOL;
 
                     echo $oView->listGroup(
                         [
@@ -177,25 +177,25 @@ return [
                 '    <li class="list-group-item">Dapibus ac facilisis in</li>' . PHP_EOL .
                 '    <li class="list-group-item">Morbi leo risus</li>' . PHP_EOL .
                 '</ul>' . PHP_EOL .
-                '<br>' . PHP_EOL .
+                '<br/>' . PHP_EOL .
                 '<ul class="list-group&#x20;list-group-horizontal-sm">' . PHP_EOL .
                 '    <li class="list-group-item">Cras justo odio</li>' . PHP_EOL .
                 '    <li class="list-group-item">Dapibus ac facilisis in</li>' . PHP_EOL .
                 '    <li class="list-group-item">Morbi leo risus</li>' . PHP_EOL .
                 '</ul>' . PHP_EOL .
-                '<br>' . PHP_EOL .
+                '<br/>' . PHP_EOL .
                 '<ul class="list-group&#x20;list-group-horizontal-md">' . PHP_EOL .
                 '    <li class="list-group-item">Cras justo odio</li>' . PHP_EOL .
                 '    <li class="list-group-item">Dapibus ac facilisis in</li>' . PHP_EOL .
                 '    <li class="list-group-item">Morbi leo risus</li>' . PHP_EOL .
                 '</ul>' . PHP_EOL .
-                '<br>' . PHP_EOL .
+                '<br/>' . PHP_EOL .
                 '<ul class="list-group&#x20;list-group-horizontal-lg">' . PHP_EOL .
                 '    <li class="list-group-item">Cras justo odio</li>' . PHP_EOL .
                 '    <li class="list-group-item">Dapibus ac facilisis in</li>' . PHP_EOL .
                 '    <li class="list-group-item">Morbi leo risus</li>' . PHP_EOL .
                 '</ul>' . PHP_EOL .
-                '<br>' . PHP_EOL .
+                '<br/>' . PHP_EOL .
                 '<ul class="list-group&#x20;list-group-horizontal-xl">' . PHP_EOL .
                 '    <li class="list-group-item">Cras justo odio</li>' . PHP_EOL .
                 '    <li class="list-group-item">Dapibus ac facilisis in</li>' . PHP_EOL .
@@ -219,7 +219,7 @@ return [
                     'A simple dark list group item' => ['variant' => 'dark'],
                 ]);
 
-                echo '<br>' . PHP_EOL;
+                echo '<br/>' . PHP_EOL;
 
                 // Contextual classes also work with .list-group-item-action
                 echo $oView->listGroup(
@@ -280,7 +280,7 @@ return [
                 '    <li class="list-group-item&#x20;list-group-item-dark">' .
                 'A simple dark list group item</li>' . PHP_EOL .
                 '</ul>' .
-                '<br>' . PHP_EOL .
+                '<br/>' . PHP_EOL .
                 '<div class="list-group">' . PHP_EOL .
                 '    <a class="list-group-item&#x20;list-group-item-action" href="&#x23;">' .
                 'Dapibus ac facilisis in</a>' . PHP_EOL .

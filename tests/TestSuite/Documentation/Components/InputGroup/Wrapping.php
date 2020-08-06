@@ -29,6 +29,6 @@ return [
         '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '    <input type="text" name="username" placeholder="Username" aria-label="Username" ' .
-        'aria-describedby="addon-wrapping" class="form-control" value="">' . PHP_EOL .
+        'aria-describedby="addon-wrapping" class="form-control" value=""/>' . PHP_EOL .
         '</div>',
 ];

@@ -87,12 +87,12 @@ return [
         '    </div>' . PHP_EOL .
         '    <input type="text" name="segmented-dropdown-prepend" ' .
         'aria-label="Text&#x20;input&#x20;with&#x20;segmented&#x20;dropdown&#x20;button" ' .
-        'class="form-control" value="">' . PHP_EOL .
+        'class="form-control" value=""/>' . PHP_EOL .
         '</div>' . PHP_EOL .
         '<div class="input-group">' . PHP_EOL .
         '    <input type="text" name="segmented-dropdown-append" ' .
         'aria-label="Text&#x20;input&#x20;with&#x20;segmented&#x20;dropdown&#x20;button" ' .
-        'class="form-control" value="">' . PHP_EOL .
+        'class="form-control" value=""/>' . PHP_EOL .
         '    <div class="input-group-append">' . PHP_EOL .
         '        <button type="button" name="button" class="btn&#x20;btn-outline-secondary" value="">' .
         'Action</button>' . PHP_EOL .
