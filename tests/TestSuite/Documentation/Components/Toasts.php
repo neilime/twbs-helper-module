@@ -16,7 +16,7 @@ return [
                         echo $oView->toast([
                             'header' => [
                                 'image' => [
-                                    'images/demo/rounded-blue.svg',
+                                    '/twbs-helper-module/img/docs/rounded-blue.svg',
                                     ['alt' => '...', 'class' => 'rounded mr-2'],
                                 ],
                                 'title' => 'Bootstrap',
@@ -29,7 +29,7 @@ return [
                         'role="alert">' . PHP_EOL .
                         '    <div class="toast-header">' . PHP_EOL .
                         '        <img alt="..." class="mr-2&#x20;rounded" ' .
-                        'src="images&#x2F;demo&#x2F;rounded-blue.svg" />' . PHP_EOL .
+                        'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;rounded-blue.svg" />' . PHP_EOL .
                         '        <strong class="mr-auto">Bootstrap</strong>' . PHP_EOL .
                         '        <small class="text-muted">11 mins ago</small>' . PHP_EOL .
                         '        <button aria-label="Close" class="close&#x20;mb-1&#x20;ml-2" data-dismiss="toast" ' .
@@ -50,7 +50,7 @@ return [
                         echo $oView->toast([
                             'header' => [
                                 'image' => [
-                                    'images/demo/rounded-blue.svg',
+                                    '/twbs-helper-module/img/docs/rounded-blue.svg',
                                     ['alt' => '...', 'class' => 'rounded mr-2'],
                                 ],
                                 'title' => 'Bootstrap',
@@ -66,7 +66,7 @@ return [
                         'role="alert">' . PHP_EOL .
                         '    <div class="toast-header">' . PHP_EOL .
                         '        <img alt="..." class="mr-2&#x20;rounded" ' .
-                        'src="images&#x2F;demo&#x2F;rounded-blue.svg" />' . PHP_EOL .
+                        'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;rounded-blue.svg" />' . PHP_EOL .
                         '        <strong class="mr-auto">Bootstrap</strong>' . PHP_EOL .
                         '        <small class="text-muted">11 mins ago</small>' . PHP_EOL .
                         '        <button aria-label="Close" class="close&#x20;mb-1&#x20;ml-2" data-dismiss="toast" ' .
@@ -86,7 +86,7 @@ return [
                         echo $oView->toast([
                             'header' => [
                                 'image' => [
-                                    'images/demo/rounded-blue.svg',
+                                    '/twbs-helper-module/img/docs/rounded-blue.svg',
                                     ['alt' => '...', 'class' => 'rounded mr-2'],
                                 ],
                                 'title' => 'Bootstrap',
@@ -98,7 +98,7 @@ return [
                         echo $oView->toast([
                             'header' => [
                                 'image' => [
-                                    'images/demo/rounded-blue.svg',
+                                    '/twbs-helper-module/img/docs/rounded-blue.svg',
                                     ['alt' => '...', 'class' => 'rounded mr-2'],
                                 ],
                                 'title' => 'Bootstrap',
@@ -111,7 +111,7 @@ return [
                         'role="alert">' . PHP_EOL .
                         '    <div class="toast-header">' . PHP_EOL .
                         '        <img alt="..." class="mr-2&#x20;rounded" ' .
-                        'src="images&#x2F;demo&#x2F;rounded-blue.svg" />' . PHP_EOL .
+                        'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;rounded-blue.svg" />' . PHP_EOL .
                         '        <strong class="mr-auto">Bootstrap</strong>' . PHP_EOL .
                         '        <small class="text-muted">just now</small>' . PHP_EOL .
                         '        <button aria-label="Close" class="close&#x20;mb-1&#x20;ml-2" data-dismiss="toast" ' .
@@ -125,7 +125,7 @@ return [
                         'role="alert">' . PHP_EOL .
                         '    <div class="toast-header">' . PHP_EOL .
                         '        <img alt="..." class="mr-2&#x20;rounded" ' .
-                        'src="images&#x2F;demo&#x2F;rounded-blue.svg" />' . PHP_EOL .
+                        'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;rounded-blue.svg" />' . PHP_EOL .
                         '        <strong class="mr-auto">Bootstrap</strong>' . PHP_EOL .
                         '        <small class="text-muted">2 seconds ago</small>' . PHP_EOL .
                         '        <button aria-label="Close" class="close&#x20;mb-1&#x20;ml-2" data-dismiss="toast" ' .
@@ -147,7 +147,7 @@ return [
                             'placement' => 'top-right',
                             'header' => [
                                 'image' => [
-                                    'images/demo/rounded-blue.svg',
+                                    '/twbs-helper-module/img/docs/rounded-blue.svg',
                                     ['alt' => '...', 'class' => 'rounded mr-2'],
                                 ],
                                 'title' => 'Bootstrap',
@@ -166,7 +166,7 @@ return [
                             'placement' => 'top-center',
                             'header' => [
                                 'image' => [
-                                    'images/demo/rounded-blue.svg',
+                                    '/twbs-helper-module/img/docs/rounded-blue.svg',
                                     ['alt' => '...', 'class' => 'rounded mr-2'],
                                 ],
                                 'title' => 'Bootstrap',
@@ -183,7 +183,7 @@ return [
                         '>' . PHP_EOL .
                         '    <div class="toast-header">' . PHP_EOL .
                         '        <img alt="..." class="mr-2&#x20;rounded" ' .
-                        'src="images&#x2F;demo&#x2F;rounded-blue.svg" />' . PHP_EOL .
+                        'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;rounded-blue.svg" />' . PHP_EOL .
                         '        <strong class="mr-auto">Bootstrap</strong>' . PHP_EOL .
                         '        <small class="text-muted">11 mins ago</small>' . PHP_EOL .
                         '        <button aria-label="Close" class="close&#x20;mb-1&#x20;ml-2" data-dismiss="toast" ' .
@@ -202,7 +202,7 @@ return [
                         PHP_EOL .
                         '    <div class="toast-header">' . PHP_EOL .
                         '        <img alt="..." class="mr-2&#x20;rounded" ' .
-                        'src="images&#x2F;demo&#x2F;rounded-blue.svg" />' . PHP_EOL .
+                        'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;rounded-blue.svg" />' . PHP_EOL .
                         '        <strong class="mr-auto">Bootstrap</strong>' . PHP_EOL .
                         '        <small class="text-muted">11 mins ago</small>' . PHP_EOL .
                         '        <button aria-label="Close" class="close&#x20;mb-1&#x20;ml-2" data-dismiss="toast" ' .
@@ -222,7 +222,7 @@ return [
                             'autohide' => false,
                             'header' => [
                                 'image' => [
-                                    'images/demo/rounded-blue.svg',
+                                    '/twbs-helper-module/img/docs/rounded-blue.svg',
                                     ['alt' => '...', 'class' => 'rounded mr-2'],
                                 ],
                                 'title' => 'Bootstrap',
@@ -235,7 +235,7 @@ return [
                         'data-autohide="false" role="alert">' . PHP_EOL .
                         '    <div class="toast-header">' . PHP_EOL .
                         '        <img alt="..." class="mr-2&#x20;rounded" ' .
-                        'src="images&#x2F;demo&#x2F;rounded-blue.svg" />' . PHP_EOL .
+                        'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;rounded-blue.svg" />' . PHP_EOL .
                         '        <strong class="mr-auto">Bootstrap</strong>' . PHP_EOL .
                         '        <small class="text-muted">11 mins ago</small>' . PHP_EOL .
                         '        <button aria-label="Close" class="close&#x20;mb-1&#x20;ml-2" data-dismiss="toast" ' .

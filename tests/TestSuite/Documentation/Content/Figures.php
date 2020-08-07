@@ -9,7 +9,7 @@ return [
             'title' => 'Basic',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->figure(
-                    'images/demo-sample.svg',
+                    '/twbs-helper-module/img/docs/400x300.svg',
                     'A caption for the above image.',
                     [],
                     [
@@ -23,7 +23,7 @@ return [
                 '    <img ' .
                 'alt="A&#x20;generic&#x20;square&#x20;placeholder&#x20;' .
                 'image&#x20;with&#x20;rounded&#x20;corners&#x20;in&#x20;a&#x20;figure." ' .
-                'class="figure-img&#x20;img-fluid&#x20;rounded" src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
+                'class="figure-img&#x20;img-fluid&#x20;rounded" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;400x300.svg" />' . PHP_EOL .
                 '    <figcaption class="figure-caption">A caption for the above image.</figcaption>' . PHP_EOL .
                 '</figure>',
         ],
@@ -31,7 +31,7 @@ return [
             'title' => 'Aligning figure\'s caption',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->figure(
-                    'images/demo-sample.svg',
+                    '/twbs-helper-module/img/docs/400x300.svg',
                     'A caption for the above image.',
                     [],
                     [
@@ -46,7 +46,7 @@ return [
                 '    <img ' .
                 'alt="A&#x20;generic&#x20;square&#x20;placeholder&#x20;image&#x20;with&#x20;' .
                 'rounded&#x20;corners&#x20;in&#x20;a&#x20;figure." ' .
-                'class="figure-img&#x20;img-fluid&#x20;rounded" src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
+                'class="figure-img&#x20;img-fluid&#x20;rounded" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;400x300.svg" />' . PHP_EOL .
                 '    <figcaption class="figure-caption&#x20;text-right">A caption for the above image.</figcaption>' .
                 PHP_EOL .
                 '</figure>',

@@ -15,11 +15,11 @@ return [
                     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->carousel([
                             [
-                                'src' => 'images/demo-sample.svg',
+                                'src' => '/twbs-helper-module/img/docs/400x300.svg',
                                 'optionsAndAttributes' => ['active' => true, 'alt' => 'Slide 1'],
                             ],
-                            ['images/demo-sample.svg', ['alt' => 'Slide 2',]],
-                            'images/demo-sample.svg' => ['alt' => 'Slide 3',],
+                            ['/twbs-helper-module/img/docs/400x300.svg', ['alt' => 'Slide 2',]],
+                            '/twbs-helper-module/img/docs/400x300.svg' => ['alt' => 'Slide 3',],
                         ], ['id' => 'carouselExampleSlidesOnly']);
                     },
                     'expected' =>
@@ -27,15 +27,15 @@ return [
                         '    <div class="carousel-inner">' . PHP_EOL .
                         '        <div class="active&#x20;carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;1" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
+                        'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;400x300.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '        <div class="carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;2" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
+                        'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;400x300.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '        <div class="carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;3" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
+                        'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;400x300.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '</div>',
@@ -46,11 +46,11 @@ return [
                     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->carousel([
                             [
-                                'src' => 'images/demo-sample.svg',
+                                'src' => '/twbs-helper-module/img/docs/400x300.svg',
                                 'optionsAndAttributes' => ['active' => true, 'alt' => 'Slide 1'],
                             ],
-                            ['images/demo-sample.svg', ['alt' => 'Slide 2',]],
-                            'images/demo-sample.svg' => ['alt' => 'Slide 3',],
+                            ['/twbs-helper-module/img/docs/400x300.svg', ['alt' => 'Slide 2',]],
+                            '/twbs-helper-module/img/docs/400x300.svg' => ['alt' => 'Slide 3',],
                         ], ['id' => 'carouselExampleControls', 'controls' => true]);
                     },
                     'expected' =>
@@ -58,15 +58,15 @@ return [
                         '    <div class="carousel-inner">' . PHP_EOL .
                         '        <div class="active&#x20;carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;1" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
+                        'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;400x300.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '        <div class="carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;2" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
+                        'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;400x300.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '        <div class="carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;3" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
+                        'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;400x300.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '    <a class="carousel-control-prev" data-slide="prev" href="&#x23;carouselExampleControls" ' .
@@ -87,11 +87,11 @@ return [
                     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->carousel([
                             [
-                                'src' => 'images/demo-sample.svg',
+                                'src' => '/twbs-helper-module/img/docs/400x300.svg',
                                 'optionsAndAttributes' => ['active' => true, 'alt' => 'Slide 1'],
                             ],
-                            ['images/demo-sample.svg', ['alt' => 'Slide 2',]],
-                            'images/demo-sample.svg' => ['alt' => 'Slide 3',],
+                            ['/twbs-helper-module/img/docs/400x300.svg', ['alt' => 'Slide 2',]],
+                            '/twbs-helper-module/img/docs/400x300.svg' => ['alt' => 'Slide 3',],
                         ], ['id' => 'carouselExampleIndicators', 'controls' => true, 'indicators' => true]);
                     },
                     'expected' =>
@@ -105,15 +105,15 @@ return [
                         '    <div class="carousel-inner">' . PHP_EOL .
                         '        <div class="active&#x20;carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;1" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
+                        'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;400x300.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '        <div class="carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;2" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
+                        'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;400x300.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '        <div class="carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;3" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
+                        'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;400x300.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '    <a class="carousel-control-prev" data-slide="prev" ' .
@@ -134,7 +134,7 @@ return [
                     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->carousel([
                             [
-                                'src' => 'images/demo-sample.svg',
+                                'src' => '/twbs-helper-module/img/docs/400x300.svg',
                                 'optionsAndAttributes' => [
                                     'active' => true,
                                     'alt' => 'Slide 1',
@@ -145,7 +145,7 @@ return [
                                 ]
                             ],
                             [
-                                'images/demo-sample.svg',
+                                '/twbs-helper-module/img/docs/400x300.svg',
                                 [
                                     'alt' => 'Slide 2',
                                     'caption' => [
@@ -154,7 +154,7 @@ return [
                                     ],
                                 ],
                             ],
-                            'images/demo-sample.svg' => [
+                            '/twbs-helper-module/img/docs/400x300.svg' => [
                                 'alt' => 'Slide 3',
                                 'caption' => [
                                     'title' => 'Third slide label',
@@ -178,7 +178,7 @@ return [
                         '    <div class="carousel-inner">' . PHP_EOL .
                         '        <div class="active&#x20;carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;1" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
+                        'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;400x300.svg" />' . PHP_EOL .
                         '            <div class="carousel-caption&#x20;d-md-block&#x20;d-none">' . PHP_EOL .
                         '                <h5>First slide label</h5>' . PHP_EOL .
                         '                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>' . PHP_EOL .
@@ -187,7 +187,7 @@ return [
                         '        </div>' . PHP_EOL .
                         '        <div class="carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;2" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
+                        'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;400x300.svg" />' . PHP_EOL .
                         '            <div class="carousel-caption&#x20;d-md-block&#x20;d-none">' . PHP_EOL .
                         '                <h5>Second slide label</h5>' . PHP_EOL .
                         '                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>' . PHP_EOL .
@@ -195,7 +195,7 @@ return [
                         '        </div>' . PHP_EOL .
                         '        <div class="carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;3" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
+                        'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;400x300.svg" />' . PHP_EOL .
                         '            <div class="carousel-caption&#x20;d-md-block&#x20;d-none">' . PHP_EOL .
                         '                <h5>Third slide label</h5>' . PHP_EOL .
                         '                <p>' .
@@ -222,11 +222,11 @@ return [
                     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->carousel([
                             [
-                                'src' => 'images/demo-sample.svg',
+                                'src' => '/twbs-helper-module/img/docs/400x300.svg',
                                 'optionsAndAttributes' => ['active' => true, 'alt' => 'Slide 1'],
                             ],
-                            ['images/demo-sample.svg', ['alt' => 'Slide 2',]],
-                            'images/demo-sample.svg' => ['alt' => 'Slide 3',],
+                            ['/twbs-helper-module/img/docs/400x300.svg', ['alt' => 'Slide 2',]],
+                            '/twbs-helper-module/img/docs/400x300.svg' => ['alt' => 'Slide 3',],
                         ], ['id' => 'carouselExampleFade', 'controls' => true, 'crossfade' => true]);
                     },
                     'expected' => '<div class="carousel&#x20;carousel-fade&#x20;slide" data-ride="carousel" ' .
@@ -234,15 +234,15 @@ return [
                         '    <div class="carousel-inner">' . PHP_EOL .
                         '        <div class="active&#x20;carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;1" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
+                        'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;400x300.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '        <div class="carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;2" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
+                        'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;400x300.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '        <div class="carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;3" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
+                        'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;400x300.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '    <a class="carousel-control-prev" data-slide="prev" href="&#x23;carouselExampleFade" ' .
@@ -262,13 +262,13 @@ return [
                     'url' => '%bootstrap-url%/components/carousel/#individual-carousel-item-interval',
                     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         echo $oView->carousel([
-                            ['src' => 'images/demo-sample.svg', 'optionsAndAttributes' => [
+                            ['src' => '/twbs-helper-module/img/docs/400x300.svg', 'optionsAndAttributes' => [
                                 'interval' => 10000,
                                 'active' => true,
                                 'alt' => 'Slide 1',
                             ]],
-                            ['images/demo-sample.svg', ['interval' => 2000, 'alt' => 'Slide 2',]],
-                            'images/demo-sample.svg' => ['alt' => 'Slide 3',],
+                            ['/twbs-helper-module/img/docs/400x300.svg', ['interval' => 2000, 'alt' => 'Slide 2',]],
+                            '/twbs-helper-module/img/docs/400x300.svg' => ['alt' => 'Slide 3',],
                         ], ['id' => 'carouselExampleControls', 'controls' => true]);
                     },
                     'expected' => '<div class="carousel&#x20;slide" data-ride="carousel" ' .
@@ -276,15 +276,15 @@ return [
                         '    <div class="carousel-inner">' . PHP_EOL .
                         '        <div class="active&#x20;carousel-item" data-interval="10000">' . PHP_EOL .
                         '            <img alt="Slide&#x20;1" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
+                        'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;400x300.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '        <div class="carousel-item" data-interval="2000">' . PHP_EOL .
                         '            <img alt="Slide&#x20;2" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
+                        'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;400x300.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '        <div class="carousel-item">' . PHP_EOL .
                         '            <img alt="Slide&#x20;3" class="d-block&#x20;w-100" ' .
-                        'src="images&#x2F;demo-sample.svg" />' . PHP_EOL .
+                        'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;400x300.svg" />' . PHP_EOL .
                         '        </div>' . PHP_EOL .
                         '    </div>' . PHP_EOL .
                         '    <a class="carousel-control-prev" data-slide="prev" href="&#x23;carouselExampleControls" ' .

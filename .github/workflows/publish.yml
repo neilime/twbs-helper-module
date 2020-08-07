@@ -39,6 +39,9 @@ jobs:
           IdentityFile ~/.ssh/id_rsa
           EOT
 
+      - id: get_version
+        uses: battila7/get-version-action@v2
+
       - name: Release to GitHub Pages
         env:
           USE_SSH: true
@@ -48,4 +51,7 @@ jobs:
           git config --global user.name "GitHub Actions"
           cd website
           yarn install --frozen-lockfile
+          npx docusaurus docs:version ${{ steps.get_version.outputs.version }}
+          echo `git add -A && git commit -m "docs: release new version"`
+          git push --follow-tags origin master
           npx docusaurus deploy

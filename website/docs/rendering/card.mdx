@@ -17,7 +17,7 @@ import TabItem from '@theme/TabItem';
       {label: 'Source', value: 'source'},
     ]}>
 <TabItem value="result">{ ReactHtmlParser(`<div class="card" style="width&#x3A;&#x20;18rem&#x3B;">
-    <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />
+    <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />
     <div class="card-body">
         <h5 class="card-title">Card title</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card&#039;s content.</p>
@@ -28,7 +28,7 @@ import TabItem from '@theme/TabItem';
 
 ```php
 echo $this->card([
-    'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+    'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
     'title' => 'Card title',
     'text' => 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
     '<a href="&#x23;" class="btn btn-primary">Go somewhere</a>',
@@ -109,7 +109,7 @@ echo $this->card([
       {label: 'Source', value: 'source'},
     ]}>
 <TabItem value="result">{ ReactHtmlParser(`<div class="card" style="width&#x3A;&#x20;18rem&#x3B;">
-    <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />
+    <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />
     <div class="card-body">
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card&#039;s content.</p>
     </div>
@@ -118,7 +118,7 @@ echo $this->card([
 
 ```php
 echo $this->card([
-    'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+    'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
     'text' => 'Some quick example text to build on the card title ' .
     'and make up the bulk of the card\'s content.',
 ], ['style' => 'width: 18rem;']);
@@ -192,7 +192,7 @@ echo $this->card([
       {label: 'Source', value: 'source'},
     ]}>
 <TabItem value="result">{ ReactHtmlParser(`<div class="card" style="width&#x3A;&#x20;18rem&#x3B;">
-    <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />
+    <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />
     <div class="card-body">
         <h5 class="card-title">Card title</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card&#039;s content.</p>
@@ -211,7 +211,7 @@ echo $this->card([
 
 ```php
 echo $this->card([
-    'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+    'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
     'title' => 'Card title',
     'text' => 'Some quick example text to build on the card title ' .
     'and make up the bulk of the card\'s content.',
@@ -552,7 +552,7 @@ echo $this->card([
       {label: 'Source', value: 'source'},
     ]}>
 <TabItem value="result">{ ReactHtmlParser(`<div class="card&#x20;mb-3">
-    <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />
+    <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />
     <div class="card-body">
         <h5 class="card-title">Card title</h5>
         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -565,13 +565,13 @@ echo $this->card([
         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
-    <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />
+    <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />
 </div>`) }</TabItem>
 <TabItem value="source">
 
 ```php
 echo $this->card([
-    'image_top' => ['images/demo/image-cap.svg', ['alt' => '...']],
+    'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...']],
     'title' => 'Card title',
     'text' => [
         'This is a wider card with supporting text below as a natural lead-in to additional content. ' .
@@ -587,7 +587,7 @@ echo $this->card([
         'This content is a little bit longer.',
         '<small class="text-muted">Last updated 3 mins ago</small>'
     ],
-    'image_top' => ['images/demo/image-cap.svg', ['alt' => '...']],
+    'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...']],
 ]);
 ```
 
@@ -603,7 +603,7 @@ echo $this->card([
       {label: 'Source', value: 'source'},
     ]}>
 <TabItem value="result">{ ReactHtmlParser(`<div class="bg-dark&#x20;card&#x20;text-white">
-    <img alt="..." class="card-img" src="images&#x2F;demo&#x2F;image-cap.svg" />
+    <img alt="..." class="card-img" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />
     <div class="card-img-overlay">
         <h5 class="card-title">Card title</h5>
         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -615,7 +615,7 @@ echo $this->card([
 ```php
 echo $this->card([
     'overlay' => [
-        'img' => ['images/demo/image-cap.svg', ['alt' => '...']],
+        'img' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...']],
         'title' => 'Card title',
         'text' => [
             'This is a wider card with supporting text below as a natural ' .
@@ -894,7 +894,7 @@ echo $this->card([
     ]}>
 <TabItem value="result">{ ReactHtmlParser(`<div class="card-group">
     <div class="card">
-        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />
+        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />
         <div class="card-body">
             <h5 class="card-title">Primary card title</h5>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -902,7 +902,7 @@ echo $this->card([
         </div>
     </div>
     <div class="card">
-        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />
+        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />
         <div class="card-body">
             <h5 class="card-title">Primary card title</h5>
             <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -910,7 +910,7 @@ echo $this->card([
         </div>
     </div>
     <div class="card">
-        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />
+        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />
         <div class="card-body">
             <h5 class="card-title">Primary card title</h5>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
@@ -921,7 +921,7 @@ echo $this->card([
 <br/>
 <div class="card-group">
     <div class="card">
-        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />
+        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />
         <div class="card-body">
             <h5 class="card-title">Primary card title</h5>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -931,7 +931,7 @@ echo $this->card([
         </div>
     </div>
     <div class="card">
-        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />
+        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />
         <div class="card-body">
             <h5 class="card-title">Primary card title</h5>
             <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -941,7 +941,7 @@ echo $this->card([
         </div>
     </div>
     <div class="card">
-        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />
+        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />
         <div class="card-body">
             <h5 class="card-title">Primary card title</h5>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
@@ -956,7 +956,7 @@ echo $this->card([
 ```php
 echo $this->cardGroup([
     [
-        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+        'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
         'title' => 'Primary card title',
         'text' => [
             'This is a wider card with supporting text below as a natural lead-in to additional ' .
@@ -965,7 +965,7 @@ echo $this->cardGroup([
         ],
     ],
     [
-        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+        'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
         'title' => 'Primary card title',
         'text' => [
             'This card has supporting text below as a natural lead-in to additional content.',
@@ -973,7 +973,7 @@ echo $this->cardGroup([
         ],
     ],
     [
-        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+        'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
         'title' => 'Primary card title',
         'text' => [
             'This is a wider card with supporting text below as a natural lead-in ' .
@@ -990,20 +990,20 @@ echo PHP_EOL . '<br/>' . PHP_EOL;
 // With footers
 echo $this->cardGroup([
     [
-        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+        'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
         'title' => 'Primary card title',
         'text' => 'This is a wider card with supporting text below as a natural lead-in to ' .
         'additional content. This content is a little bit longer.',
         'footer' => '<small class="text-muted">Last updated 3 mins ago</small>',
     ],
     [
-        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+        'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
         'title' => 'Primary card title',
         'text' => 'This card has supporting text below as a natural lead-in to additional content.',
         'footer' => '<small class="text-muted">Last updated 3 mins ago</small>',
     ],
     [
-        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+        'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
         'title' => 'Primary card title',
         'text' => 'This is a wider card with supporting text below ' .
         'as a natural lead-in to additional content. ' .
@@ -1026,7 +1026,7 @@ echo $this->cardGroup([
     ]}>
 <TabItem value="result">{ ReactHtmlParser(`<div class="card-deck">
     <div class="card">
-        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />
+        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />
         <div class="card-body">
             <h5 class="card-title">Primary card title</h5>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -1034,7 +1034,7 @@ echo $this->cardGroup([
         </div>
     </div>
     <div class="card">
-        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />
+        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />
         <div class="card-body">
             <h5 class="card-title">Primary card title</h5>
             <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -1042,7 +1042,7 @@ echo $this->cardGroup([
         </div>
     </div>
     <div class="card">
-        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />
+        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />
         <div class="card-body">
             <h5 class="card-title">Primary card title</h5>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
@@ -1053,7 +1053,7 @@ echo $this->cardGroup([
 <br/>
 <div class="card-deck">
     <div class="card">
-        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />
+        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />
         <div class="card-body">
             <h5 class="card-title">Primary card title</h5>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -1063,7 +1063,7 @@ echo $this->cardGroup([
         </div>
     </div>
     <div class="card">
-        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />
+        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />
         <div class="card-body">
             <h5 class="card-title">Primary card title</h5>
             <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -1073,7 +1073,7 @@ echo $this->cardGroup([
         </div>
     </div>
     <div class="card">
-        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />
+        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />
         <div class="card-body">
             <h5 class="card-title">Primary card title</h5>
             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
@@ -1088,7 +1088,7 @@ echo $this->cardGroup([
 ```php
 echo $this->cardDeck([
     [
-        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+        'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
         'title' => 'Primary card title',
         'text' => [
             'This is a wider card with supporting text below ' .
@@ -1098,7 +1098,7 @@ echo $this->cardDeck([
         ],
     ],
     [
-        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+        'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
         'title' => 'Primary card title',
         'text' => [
             'This card has supporting text below as a natural lead-in to additional content.',
@@ -1106,7 +1106,7 @@ echo $this->cardDeck([
         ],
     ],
     [
-        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+        'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
         'title' => 'Primary card title',
         'text' => [
             'This is a wider card with supporting text below as a ' .
@@ -1122,20 +1122,20 @@ echo PHP_EOL . '<br/>' . PHP_EOL;
 // With footers
 echo $this->cardDeck([
     [
-        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+        'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
         'title' => 'Primary card title',
         'text' => 'This is a wider card with supporting text below as a ' .
         'natural lead-in to additional content. This content is a little bit longer.',
         'footer' => '<small class="text-muted">Last updated 3 mins ago</small>',
     ],
     [
-        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+        'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
         'title' => 'Primary card title',
         'text' => 'This card has supporting text below as a natural lead-in to additional content.',
         'footer' => '<small class="text-muted">Last updated 3 mins ago</small>',
     ],
     [
-        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+        'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
         'title' => 'Primary card title',
         'text' => 'This is a wider card with supporting text below as a natural ' .
         'lead-in to additional content. This card has even longer content than ' .
@@ -1158,7 +1158,7 @@ echo $this->cardDeck([
     ]}>
 <TabItem value="result">{ ReactHtmlParser(`<div class="card-columns">
     <div class="card">
-        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />
+        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />
         <div class="card-body">
             <h5 class="card-title">Card title that wraps to a new line</h5>
             <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -1173,7 +1173,7 @@ echo $this->cardDeck([
         </div>
     </div>
     <div class="card">
-        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />
+        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />
         <div class="card-body">
             <h5 class="card-title">Card title</h5>
             <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -1196,7 +1196,7 @@ echo $this->cardDeck([
         </div>
     </div>
     <div class="card">
-        <img alt="..." class="card-img-top" src="images&#x2F;demo&#x2F;image-cap.svg" />
+        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />
     </div>
     <div class="card&#x20;p-3&#x20;text-right">
         <div class="card-body">
@@ -1219,7 +1219,7 @@ echo $this->cardDeck([
 ```php
 echo $this->cardColumns([
     [
-        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+        'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
         'title' => 'Card title that wraps to a new line',
         'text' => 'This is a longer card with supporting text below as ' .
         'a natural lead-in to additional content. This content is a little bit longer.',
@@ -1235,7 +1235,7 @@ echo $this->cardColumns([
         ['class' => 'p-3'],
     ],
     [
-        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+        'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
         'title' => 'Card title',
         'text' => [
             'This card has supporting text below as a natural lead-in to additional content.',
@@ -1265,7 +1265,7 @@ echo $this->cardColumns([
         ['class' => 'text-center'],
     ],
     [
-        'image_top' => ['images/demo/image-cap.svg', ['alt' => '...',]],
+        'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
     ],
     [
         [

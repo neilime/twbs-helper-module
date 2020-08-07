@@ -26,6 +26,6 @@
 
 .main {
   padding: 2rem;
-  width: 966px;
+  max-width: 966px;
   margin: 0 auto;
 }
