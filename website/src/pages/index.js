@@ -32,11 +32,11 @@ const readmeContent = `<p align="center">
 
 # Documentation
 
-## [Installation](https://neilime.github.io/twbs-helper-module/docs/installation)
+### [Installation](https://neilime.github.io/twbs-helper-module/docs/installation)
 
-## [Usage](https://neilime.github.io/twbs-helper-module/docs/rendering)
+### [Usage](https://neilime.github.io/twbs-helper-module/docs/rendering)
 
-## [Code coverage](https://codecov.io/gh/neilime/twbs-helper-module)
+### [Code coverage](https://codecov.io/gh/neilime/twbs-helper-module)
 `;
 
 function Home() {
