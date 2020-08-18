@@ -9,11 +9,10 @@ module.exports = {
   organizationName: "neilime",
   projectName: "twbs-helper-module",
   themeConfig: {
-    // algolia: {
-    //   apiKey: "YOUR_API_KEY",
-    //   indexName: "YOUR_INDEX_NAME",
-    //   searchParameters: {}, // Optional (if provided by Algolia)
-    // },
+    algolia: {
+      apiKey: "daf4659aed5c21d5d7d3ef1da32b76a5",
+      indexName: "laminas_twbs-helper",
+    },
     navbar: {
       title: "TwbsHelper",
       logo: {
