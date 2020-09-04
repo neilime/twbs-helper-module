@@ -7,17 +7,15 @@ updates:
     schedule:
       interval: weekly
       day: friday
-  - package-ecosystem: github-actions
-    open-pull-requests-limit: 20
-    versioning-strategy: increase
-    directory: "/"
-    schedule:
-      interval: weekly
-      day: friday
   - package-ecosystem: npm
     open-pull-requests-limit: 20
     versioning-strategy: increase
     directory: "/website"
+    schedule:
+      interval: weekly
+      day: friday
+  - package-ecosystem: github-actions
+    directory: "/"
     schedule:
       interval: weekly
       day: friday
