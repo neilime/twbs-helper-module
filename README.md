@@ -12,22 +12,36 @@
 
 📢 **TwbsHelper** is a Laminas (formerly Zend Framework) module for easy integration of the [Twitter Bootstrap v4](https://getbootstrap.com/).
 
-# Helping Project
+## Helping Project
 
 ❤️ If this project helps you reduce time to develop and/or you want to help the maintainer of this project. You can [sponsor](https://github.com/sponsors/neilime) him. Thank you !
 
-# Contributing
+## Contributing
 
 👍 If you wish to contribute to TwbsHelper, PRs are welcome! Please read the [CONTRIBUTING.md](CONTRIBUTING.md) file.
 
-# Demonstration / example
+## Demonstration / example
 
 🚀 Render **ALL** of the [Twitter Bootstrap v4](https://getbootstrap.com/) elements with TwbsHelper : [see it in action, on-line](https://neilime.github.io/twbs-helper-module/docs/rendering).
 
-# Documentation
+## Documentation
 
 ### [Installation](https://neilime.github.io/twbs-helper-module/docs/installation)
 
 ### [Usage](https://neilime.github.io/twbs-helper-module/docs/rendering)
 
 ### [Code coverage](https://codecov.io/gh/neilime/twbs-helper-module)
+
+## Author
+
+👤 **ESCEMI <contact@escemi.com>**
+
+- Website: https://www.escemi.com
+- Sponsor: https://github.com/sponsors/neilime
+- Github: [@neilime](https://github.com/neilime)
+- LinkedIn: [@https:\/\/www.linkedin.com\/company\/escemi](https://linkedin.com/in/https://www.linkedin.com/company/escemi)
+
+## 📝 License
+
+Copyright © 2020 [ESCEMI <contact@escemi.com>](https://www.escemi.com).<br />
+This project is [MIT](https://github.com/neilime/twbs-helper-module/blob/master/LICENSE) licensed.
