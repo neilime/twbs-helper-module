@@ -32,7 +32,7 @@
     "laminas/laminas-form": "^2.15",
     "laminas/laminas-i18n": "^2.11",
     "laminas/laminas-loader": "^2.6",
-    "laminas/laminas-log": "^2.12",
+    "laminas/laminas-log": "^2.13",
     "laminas/laminas-modulemanager": "^2.10",
     "laminas/laminas-mvc": "^3.1",
     "laminas/laminas-navigation": "^2.10",
