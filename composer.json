@@ -46,7 +46,7 @@
   "require-dev": {
     "laminas/laminas-component-installer": "^2.4",
     "pcov/clobber": "^2.0",
-    "phpstan/extension-installer": "^1.0",
+    "phpstan/extension-installer": "^1.1",
     "phpstan/phpstan": "^0.12",
     "phpstan/phpstan-phpunit": "^0.12",
     "phpunit/phpunit": "^9.5.0",
