@@ -34,7 +34,7 @@
     "laminas/laminas-loader": "^2.6",
     "laminas/laminas-log": "^2.13",
     "laminas/laminas-modulemanager": "^2.10",
-    "laminas/laminas-mvc": "^3.1",
+    "laminas/laminas-mvc": "^3.2",
     "laminas/laminas-navigation": "^2.10",
     "laminas/laminas-paginator": "^2.9",
     "laminas/laminas-progressbar": "^2.7",
