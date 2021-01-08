@@ -41,7 +41,7 @@
     "laminas/laminas-serializer": "^2.9",
     "laminas/laminas-servicemanager": "^3.5",
     "laminas/laminas-stdlib": "^3.3",
-    "laminas/laminas-view": "^2.11"
+    "laminas/laminas-view": "^2.12"
   },
   "require-dev": {
     "laminas/laminas-component-installer": "^2.4",
