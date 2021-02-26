@@ -36,7 +36,7 @@
     "laminas/laminas-modulemanager": "^2.10",
     "laminas/laminas-mvc": "^3.2",
     "laminas/laminas-navigation": "^2.10",
-    "laminas/laminas-paginator": "^2.9",
+    "laminas/laminas-paginator": "^2.10",
     "laminas/laminas-progressbar": "^2.8",
     "laminas/laminas-serializer": "^2.10",
     "laminas/laminas-servicemanager": "^3.6",
