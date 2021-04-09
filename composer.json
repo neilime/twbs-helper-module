@@ -51,7 +51,7 @@
     "phpstan/phpstan-phpunit": "^0.12",
     "phpunit/phpunit": "^9.5.4",
     "slam/phpstan-laminas-framework": "^0.12",
-    "squizlabs/php_codesniffer": "^3.5"
+    "squizlabs/php_codesniffer": "^3.6"
   },
   "autoload": {
     "psr-4": {
