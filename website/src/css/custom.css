@@ -28,3 +28,7 @@ div[role="tabpanel"] nav.navbar.fixed-top,
 div[role="tabpanel"] nav.navbar.fixed-bottom {
   position: static;
 }
+
+#__docusaurus > div > div > div {
+  width: 100vw !important;
+}

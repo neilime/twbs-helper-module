@@ -1,7 +1,9 @@
 import React from "react";
 import Layout from "@theme/Layout";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import ReactMarkdown from "react-markdown/with-html";
+import ReactMarkdown from "react-markdown";
+import gfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 import styles from "./styles.module.css";
 
 const readmeContent = `<p align="center">
@@ -32,7 +34,7 @@ const readmeContent = `<p align="center">
 
 ## Documentation
 
-### [Installation](https://neilime.github.io/twbs-helper-module/docs/installation)
+### [Installation](https://neilime.github.io/twbs-helper-module/docs/)
 
 ### [Usage](https://neilime.github.io/twbs-helper-module/docs/rendering)
 
@@ -62,7 +64,12 @@ function Home() {
       description="Description will go into a meta tag in <head />"
     >
       <main className={styles.main}>
-        <ReactMarkdown source={readmeContent} escapeHtml={false} />
+        <ReactMarkdown
+          children={readmeContent}
+          skipHtml={false}
+          remarkPlugins={[gfm]}
+          rehypePlugins={[rehypeRaw]}
+        />
       </main>
     </Layout>
   );

@@ -26,7 +26,7 @@
 
 ## Documentation
 
-### [Installation](https://neilime.github.io/twbs-helper-module/docs/installation)
+### [Installation](https://neilime.github.io/twbs-helper-module/docs/)
 
 ### [Usage](https://neilime.github.io/twbs-helper-module/docs/rendering)
 

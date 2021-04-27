@@ -67,34 +67,31 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2.1.5
-        with:
-          node-version: "12.x"
 
-      - name: Get yarn cache directory path
+      - name: ♻️ Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
-      - uses: actions/cache@v2.1.5
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+      - name: ♻️ Yarn packages cache
+        id: yarn-cache
+        uses: actions/cache@v2.1.5
         with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          path: |
+            ${{ steps.yarn-cache-dir-path.outputs.dir }}
+            website/node_modules
           key: ${{ runner.os }}-yarn-${{ hashFiles('website/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: Add key to allow access to repository
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+      - name: ⚙️ Install Dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
-          echo "${{ secrets.GH_PAGES_DEPLOY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          cat <<EOT >> ~/.ssh/config
-          Host github.com
-          HostName github.com
-          IdentityFile ~/.ssh/id_rsa
-          EOT
+          cd website
+          yarn install --frozen-lockfile
+
+      - uses: webfactory/ssh-agent@v0.5.0
+        with:
+          ssh-private-key: ${{ secrets.GH_PAGES_DEPLOY }}
 
       - name: Release to GitHub Pages
         env:
@@ -104,5 +101,4 @@ jobs:
           git config --global user.email "actions@gihub.com"
           git config --global user.name "GitHub Actions"
           cd website
-          yarn install --frozen-lockfile
           npx docusaurus deploy
