@@ -89,7 +89,7 @@ jobs:
           cd website
           yarn install --frozen-lockfile
 
-      - uses: webfactory/ssh-agent@v0.5.0
+      - uses: webfactory/ssh-agent@v0.5.2
         with:
           ssh-private-key: ${{ secrets.GH_PAGES_DEPLOY }}
 
