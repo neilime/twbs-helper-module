@@ -1,17 +1,14 @@
----
-id: installation
-title: Installation
----
+# Installation
 
-### Install this library using composer
+## Install this library using composer
 
 ```shell-session
 composer require neilime/twbs-helper-module
 ```
 
-### Include Twitter Bootstrap assets
+## Include Twitter Bootstrap assets
 
-#### With **AssetsBundle** module (easy way)
+### With **AssetsBundle** module (easy way)
 
 - Install the [AssetsBundle module](https://github.com/neilime/zf-assets-bundle/wiki/Installation)
 - Install [Twitter Bootstrap](https://github.com/twbs/bootstrap#quick-start):
@@ -42,6 +39,6 @@ composer require neilime/twbs-helper-module
   //...
   ```
 
-#### Manually
+### Manually
 
 - Copy `bootstrap.css` file (available on [Twitter Bootstrap website](https://github.com/twbs/bootstrap/archive/v3.0.0.zip)) into your assets folder and add it in your head scripts.

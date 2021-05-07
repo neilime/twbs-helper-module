@@ -1,12 +1,4 @@
-import React from "react";
-import Layout from "@theme/Layout";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import ReactMarkdown from "react-markdown";
-import gfm from "remark-gfm";
-import rehypeRaw from "rehype-raw";
-import styles from "./styles.module.css";
-
-const readmeContent = `<p align="center">
+<p align="center">
   <a href="https://github.com/neilime/twbs-helper-module" target="_blank"><img src="https://repository-images.githubusercontent.com/80362393/425f1180-7115-11ea-96d4-75646c99df22" width="600"></a>
 </p>
 
@@ -53,26 +45,3 @@ const readmeContent = `<p align="center">
 
 Copyright © 2020 [ESCEMI <contact@escemi.com>](https://www.escemi.com).<br />
 This project is [MIT](https://github.com/neilime/twbs-helper-module/blob/master/LICENSE) licensed.
-`;
-
-function Home() {
-  const context = useDocusaurusContext();
-  const { siteConfig = {} } = context;
-  return (
-    <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />"
-    >
-      <main className={styles.main}>
-        <ReactMarkdown
-          children={readmeContent}
-          skipHtml={false}
-          remarkPlugins={[gfm]}
-          rehypePlugins={[rehypeRaw]}
-        />
-      </main>
-    </Layout>
-  );
-}
-
-export default Home;

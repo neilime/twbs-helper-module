@@ -51,54 +51,11 @@ jobs:
       - name: Generate website
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'  && matrix.php-versions == '7.4'
         run: |
-          php scripts/website/generateIndexPage.php
-          php scripts/website/generateDocumentationFromTests.php
+          cp README.md docs/README.md
+          php scripts/generateDocumentationFromTests.php
           git config user.email "${{ github.actor }}@users.noreply.github.com"
           git config user.name "${{ github.actor }}"  
           echo `git add -A && git commit -m "docs: update documentation"`
           git push --follow-tags origin master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  gh-release:
-    runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-    needs: [build]
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2.1.5
-
-      - name: ♻️ Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      - name: ♻️ Yarn packages cache
-        id: yarn-cache
-        uses: actions/cache@v2.1.5
-        with:
-          path: |
-            ${{ steps.yarn-cache-dir-path.outputs.dir }}
-            website/node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('website/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - name: ⚙️ Install Dependencies
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: |
-          cd website
-          yarn install --frozen-lockfile
-
-      - uses: webfactory/ssh-agent@v0.5.2
-        with:
-          ssh-private-key: ${{ secrets.GH_PAGES_DEPLOY }}
-
-      - name: Release to GitHub Pages
-        env:
-          USE_SSH: true
-          GIT_USER: git
-        run: |
-          git config --global user.email "actions@gihub.com"
-          git config --global user.name "GitHub Actions"
-          cd website
-          npx docusaurus deploy

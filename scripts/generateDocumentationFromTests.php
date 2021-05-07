@@ -2,12 +2,20 @@
 
 const BOOTSTRAP_VERSION = '4.5';
 const BOOTSTRAP_URL = 'https://getbootstrap.com/docs/' . BOOTSTRAP_VERSION;
-const ROOT_DIR = __DIR__ . '/../..';
-const DOCUMENTATION_DIR = ROOT_DIR . '/website/docs';
-$sSidebarFilepath = DOCUMENTATION_DIR . '/sidebars.js';
+const ROOT_DIR = __DIR__ . '/..';
+const USAGE_FILEPATH = ROOT_DIR . '/docs/usage/README.md';
+
+file_put_contents(USAGE_FILEPATH, '# Usage
+
+## Introduction
+
+The following docs page shows how to render Twitter Boostrap elements. For each elements, you can see how to do it in "Source" tabs. These are supposed to be run into a view file.
+
+## Rendering
+
+');
 
 $aDocumentationFiles = [];
-$aSidebarItems = [];
 foreach (new \DirectoryIterator(ROOT_DIR . '/tests/TestSuite/Documentation') as $oFileInfo) {
     // Ignore non php filesand current class file
     if (!$oFileInfo->isFile() || $oFileInfo->getExtension() !== 'php' || $oFileInfo->getFilename() === 'DocumentationTest.php') {
@@ -17,6 +25,8 @@ foreach (new \DirectoryIterator(ROOT_DIR . '/tests/TestSuite/Documentation') as 
 }
 natsort($aDocumentationFiles);
 
+
+
 foreach ($aDocumentationFiles as $sFilePath) {
     if (false === ($aTestsConfig = include $sFilePath)) {
         throw new \LogicException('An error occured while including documentation test config file "' . $sFilePath . '"');
@@ -25,63 +35,19 @@ foreach ($aDocumentationFiles as $sFilePath) {
         throw new \LogicException('Documentation test config file "' . $sFilePath . '" expects returning an array, "' . (is_object($aTestsConfig) ? get_class($aTestsConfig) : gettype($aTestsConfig)) . '" retrieved');
     }
     try {
-        $aSidebarItems = parseTestsConfig($aTestsConfig, 1, $aSidebarItems);
+        parseTestsConfig($aTestsConfig, 4);
     } catch (\Exception $oException) {
         throw new \LogicException('An error occured while extracting test cases from documentation test config file "' . $sFilePath . '"', $oException->getCode(), $oException);
     }
 }
 
-$sSidebarContent = file_get_contents($sSidebarFilepath);
-$sNewSidebarContent = preg_replace('/(const generatedSidebar = )\[.*\](;)/is', '$1' . json_encode($aSidebarItems) . '$2', $sSidebarContent);
-file_put_contents($sSidebarFilepath, $sNewSidebarContent);
-
-
-class GeneratedPage
-{
-    public string $slug;
-    public string $path;
-}
-
-function generatePage(string $sTitle): GeneratedPage
-{
-    $oGeneratedPage = new GeneratedPage();
-    $oGeneratedPage->slug = slugify($sTitle);
-    $oGeneratedPage->path = DOCUMENTATION_DIR . '/rendering/' . $oGeneratedPage->slug . '.mdx';
-
-    file_put_contents($oGeneratedPage->path, '---
-id: ' . $oGeneratedPage->slug . '
-title: ' . $sTitle . '
----
-
-import ReactHtmlParser from \'react-html-parser\';
-import Tabs from \'@theme/Tabs\';
-import TabItem from \'@theme/TabItem\';' . PHP_EOL . PHP_EOL);
-
-    return $oGeneratedPage;
-}
-
 /** 
  * Extract test cases values for a given tests configuration
  */
-function parseTestsConfig(array $aTestsConfig, int $iHeading, array $aSidebarItems, string $sPagePath = null): array
+function parseTestsConfig(array $aTestsConfig, int $iHeading)
 {
-    switch ($iHeading) {
-        case 1:
-            $aSidebarItems[] = [
-                'type' => 'category',
-                'label' => $aTestsConfig['title'],
-                'items' => [],
-            ];
-            break;
-        case 2:
-            $oGeneratedPage = generatePage($aTestsConfig['title']);
-            $sPagePath = $oGeneratedPage->path;
-            $aSidebarItems[count($aSidebarItems) - 1]['items'][] = 'rendering/' . $oGeneratedPage->slug;
 
-        default:
-            generateDocPageFromTest($sPagePath, $aTestsConfig, $iHeading);
-    }
-
+    generateDocPageFromTest($aTestsConfig, $iHeading);
 
     if (isset($aTestsConfig['tests'])) {
         if (!is_array($aTestsConfig)) {
@@ -89,33 +55,30 @@ function parseTestsConfig(array $aTestsConfig, int $iHeading, array $aSidebarIte
         }
         $iHeading++;
         foreach ($aTestsConfig['tests'] as $aNestedTestsConfig) {
-            $aSidebarItems = parseTestsConfig($aNestedTestsConfig, $iHeading, $aSidebarItems, $sPagePath);
+            parseTestsConfig($aNestedTestsConfig, $iHeading);
         }
     }
-    return $aSidebarItems;
 }
 
 /**
  * Write the test content for the given params into the given demo page file
  */
-function generateDocPageFromTest(string $sPagePath, array $aTestConfig, int $iHeading)
+function generateDocPageFromTest(array $aTestConfig, int $iHeading)
 {
     $sTitle = $aTestConfig['title'];
 
-    // Print title for sub sections
-    if ($iHeading > 2) {
-        file_put_contents(
-            $sPagePath,
-            str_repeat('#', $iHeading - 1) . ' ' . $sTitle . PHP_EOL,
-            FILE_APPEND
-        );
-    }
+    // Print title
+    file_put_contents(
+        USAGE_FILEPATH,
+        str_repeat('#', $iHeading - 1) . ' ' . $sTitle . PHP_EOL,
+        FILE_APPEND
+    );
 
     // Print Twitter bootstrap Documentation url if any
     $sUrl = $aTestConfig['url'] ?? '';
     if ($sUrl) {
         $sPageDoc = '[Twitter bootstrap Documentation](' . str_replace('%bootstrap-url%', BOOTSTRAP_URL, $sUrl) . ')' . PHP_EOL;
-        file_put_contents($sPagePath,        $sPageDoc,        FILE_APPEND);
+        file_put_contents(USAGE_FILEPATH, $sPageDoc, FILE_APPEND);
     }
 
     if (isset($aTestConfig['rendering'])) {
@@ -127,7 +90,6 @@ function generateDocPageFromTest(string $sPagePath, array $aTestConfig, int $iHe
     } else {
         return;
     }
-
 
     $oRendering = $aTestConfig['rendering'];
     $sExpected = $aTestConfig['expected'];
@@ -166,49 +128,23 @@ function generateDocPageFromTest(string $sPagePath, array $aTestConfig, int $iHe
     $sSource = str_replace(array('$oView'), array('$this'), $sRenderingContent);
 
     file_put_contents(
-        $sPagePath,
-        '<Tabs
-    defaultValue="result"
-    values={[
-      {label: \'Result\', value: \'result\'},
-      {label: \'Source\', value: \'source\'},
-    ]}>
-<TabItem value="result">{ ReactHtmlParser(`' . $sExpected . '`) }</TabItem>
-<TabItem value="source">
+        USAGE_FILEPATH,
+        '<!-- tabs:start -->
+
+' . str_repeat('#', $iHeading) . ' **Result**
+
+' . $sExpected . '
+
+' . str_repeat('#', $iHeading) . ' **Source**
 
 ```php
 ' . $sSource . '
 ```
 
-</TabItem>
-</Tabs>' . PHP_EOL . PHP_EOL,
+<!-- tabs:end -->
+
+
+',
         FILE_APPEND
     );
-}
-
-function slugify($text)
-{
-    // replace non letter or digits by -
-    $text = preg_replace('~[^\pL\d]+~u', '-', $text);
-
-    // transliterate
-    $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
-
-    // remove unwanted characters
-    $text = preg_replace('~[^-\w]+~', '', $text);
-
-    // trim
-    $text = trim($text, '-');
-
-    // remove duplicate -
-    $text = preg_replace('~-+~', '-', $text);
-
-    // lowercase
-    $text = strtolower($text);
-
-    if (empty($text)) {
-        return 'n-a';
-    }
-
-    return $text;
 }

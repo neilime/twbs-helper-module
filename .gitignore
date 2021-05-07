@@ -9,6 +9,4 @@ nb-configuration.xml
 .idea/
 composer.lock
 *.swp
-tests/.phpunit.result.cache
-website/versioned_sidebars
-website/versioned_docs
+/node_modules
