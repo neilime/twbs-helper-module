@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "docsify serve",
+    "dev": "docsify serve docs",
     "generate": "php scripts/generateDocumentationFromTests.php"
   },
   "devDependencies": {

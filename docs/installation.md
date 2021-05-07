@@ -2,7 +2,7 @@
 
 ## Install this library using composer
 
-```shell-session
+```bash
 composer require neilime/twbs-helper-module
 ```
 
@@ -13,13 +13,13 @@ composer require neilime/twbs-helper-module
 - Install the [AssetsBundle module](https://github.com/neilime/zf-assets-bundle/wiki/Installation)
 - Install [Twitter Bootstrap](https://github.com/twbs/bootstrap#quick-start):
 
-  ```shell-session
+  ```bash
   composer require twbs/bootstrap
   ```
 
 - Edit the application module configuration file `module/Application/config/module.config.php`, adding the configuration fragment below:
 
-  ```php title="module/Application/config/module.config.php" {3-7}
+  ```php
   return [
     //...
     'assets_bundle' => [
@@ -33,7 +33,7 @@ composer require neilime/twbs-helper-module
 
 - Edit layout file `module/Application/view/layout/layout.phtml`, to render head scripts:
 
-  ```php title="module/Application/view/layout/layout.phtml" {2}
+  ```php
   //...
   echo $this->headScript();
   //...
