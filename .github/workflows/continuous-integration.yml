@@ -44,12 +44,13 @@ jobs:
         run: composer test:ci
 
       - name: Upload coverage results to Coveralls
+        if: matrix.php-versions == '8.0'
         uses: codecov/codecov-action@master
         with:
           file: ./build/logs/clover.xml
 
       - name: Generate website
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'  && matrix.php-versions == '7.4'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'  && matrix.php-versions == '8.0'
         run: |
           cp README.md docs/README.md
           php scripts/generateDocumentationFromTests.php
