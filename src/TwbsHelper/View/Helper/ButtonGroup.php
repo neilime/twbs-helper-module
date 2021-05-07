@@ -128,7 +128,7 @@ class ButtonGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
             return $this->formElementHelper;
         }
 
-        if (method_exists($this->view, 'plugin')) {
+        if ($this->view && method_exists($this->view, 'plugin')) {
             return $this->formElementHelper = $this->view->plugin('form_element');
         }
 
