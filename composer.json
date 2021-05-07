@@ -26,7 +26,7 @@
     "twitter/bootstrap": "Twitter bootstrap assets"
   },
   "require": {
-    "php": "^7.2",
+    "php": "^7.3 | ^8.0",
     "laminas/laminas-config": "^3.5.0",
     "laminas/laminas-escaper": "^2.7",
     "laminas/laminas-form": "^2.16",
