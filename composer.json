@@ -44,7 +44,7 @@
     "laminas/laminas-view": "^2.12"
   },
   "require-dev": {
-    "laminas/laminas-component-installer": "^2.4",
+    "laminas/laminas-component-installer": "^2.5",
     "pcov/clobber": "^2.0",
     "phpstan/extension-installer": "^1.1",
     "phpstan/phpstan": "^0.12",
