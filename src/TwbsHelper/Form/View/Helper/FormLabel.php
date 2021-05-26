@@ -40,7 +40,11 @@ class FormLabel extends \Laminas\Form\View\Helper\FormLabel
         }
 
         if ($oElement instanceof \Laminas\Form\LabelAwareInterface) {
+
             $aLabelAttributes = $oElement->getLabelAttributes();
+            if (!$oElement instanceof \Laminas\Form\Element\Checkbox) {
+                $aLabelAttributes = array_merge(['class' => 'form-label'], $aLabelAttributes);
+            }
 
             $oElement->setLabelAttributes($aLabelAttributes = $this->setClassesToAttributes(
                 $aLabelAttributes,
@@ -133,15 +137,7 @@ class FormLabel extends \Laminas\Form\View\Helper\FormLabel
         switch ($oElement->getAttribute('type')) {
             case 'checkbox':
             case 'radio':
-                $aLabelClasses[] = $oElement->getOption('custom')
-                    ? 'custom-control-label'
-                    : 'form-check-label';
-                break;
-
-            case 'file':
-                if ($oElement->getOption('custom')) {
-                    $aLabelClasses[] = 'custom-file-label';
-                }
+                $aLabelClasses[] = 'form-check-label';
                 break;
 
             default:

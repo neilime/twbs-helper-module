@@ -14,14 +14,13 @@ class FormSelect extends \Laminas\Form\View\Helper\FormSelect
      */
     public function render(\Laminas\Form\ElementInterface $oElement): string
     {
-        if ($bIsCustom = $oElement->getOption('custom')) {
-            $this->setClassesToElement($oElement, ['custom-select']);
-        }
+        $this->setClassesToElement($oElement, ['form-select'], ['form-control']);
+
 
         if ($sSizeOption = $oElement->getOption('size')) {
             $this->setClassesToElement($oElement, [$this->getSizeClass(
                 $sSizeOption,
-                $bIsCustom ? 'custom-select' : 'form-control'
+                'form-select'
             )]);
         }
 
