@@ -7,6 +7,13 @@ namespace TwbsHelper\View\Helper;
  */
 class Alert extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
+    protected static $allowedOptions = [
+        'heading',
+        'dismissible',
+        'icon',
+        'variant',
+    ];
+
     /**
      * Generates an 'alert' element
      *
@@ -29,43 +36,99 @@ class Alert extends \TwbsHelper\View\Helper\AbstractHtmlElement
             ];
         }
 
-        $variantClass = $this->getVariantClass(
-            $optionsAndAttributes['variant'] ?? 'secondary',
-            'alert'
-        );
-        unset($optionsAndAttributes['variant']);
-
-        $classes = ['alert', $variantClass];
-
         // Heading
         $heading = $optionsAndAttributes['heading'] ?? null;
-        unset($optionsAndAttributes['heading']);
         if ($heading) {
-            $content = $this->htmlElement(
-                'h4',
-                ['class' => 'alert-heading'],
-                $heading
-            ) . ($content ? PHP_EOL . $content : '');
+            $content = $this->renderHeading($heading, $escape) . ($content ? PHP_EOL . $content : '');
         }
 
         // Dismissible
         $dismissible = $optionsAndAttributes['dismissible'] ?? false;
-        unset($optionsAndAttributes['dismissible']);
         if ($dismissible) {
-            $classes = array_merge($classes, ['alert-dismissible', 'fade', 'show']);
-            $content .= ($content ? PHP_EOL : '') . $this->htmlElement(
-                'button',
-                ['type' => 'button', 'class' => 'close', 'data-dismiss' => 'alert', 'aria-label' => 'Close'],
-                $this->htmlElement('span', ['aria-hidden' => 'true'], '&times;', false),
-                $escape
+            $content .= ($content ? PHP_EOL : '') . $this->renderDismissible(
+                $dismissible
             );
         }
 
-        $attributes = $this->setClassesToAttributes($optionsAndAttributes, $classes);
-        if (!isset($attributes['role'])) {
-            $attributes['role'] = 'alert';
+        // Icon
+        $icon = $optionsAndAttributes['icon'] ?? null;
+        if ($icon) {
+            $content = $icon . ($content ? PHP_EOL . $this->getView()->plugin('htmlElement')->__invoke(
+                'div',
+                [],
+                $content
+            ) : '');
         }
 
-        return $this->htmlElement('div', $attributes, $content, $escape);
+        $attributes = $this->prepareAttributes($optionsAndAttributes);
+
+        return $this->getView()->plugin('htmlElement')->__invoke(
+            'div',
+            $attributes,
+            $content,
+            $escape
+        );
+    }
+
+    protected function prepareAttributes(iterable $optionsAndAttributes): \TwbsHelper\View\HtmlAttributesSet
+    {
+
+
+        $attributes = $this->getView()->plugin('htmlattributes')
+            ->__invoke($optionsAndAttributes)
+            ->offsetsUnset(static::$allowedOptions)
+            ->merge([
+                'role' => 'alert',
+                'class' => ['alert'],
+            ]);
+
+
+        // Dismissible
+        $dismissible = $optionsAndAttributes['dismissible'] ?? false;
+        if ($dismissible) {
+            $attributes['class']->merge([
+                'alert-dismissible',
+                'fade',
+                'show',
+            ]);
+        }
+
+        // Icon
+        $icon = $optionsAndAttributes['icon'] ?? null;
+        if ($icon) {
+            $attributes['class']->merge(['d-flex', 'align-items-center']);
+        }
+
+        $attributes['class']->merge(
+            $this->getView()->plugin('htmlClass')->plugin('variant')->getClassesFromOption(
+                $optionsAndAttributes['variant'] ?? 'secondary',
+                'alert'
+            )
+        );
+
+        return $attributes;
+    }
+
+    protected function renderHeading(string $heading, bool $escape): string
+    {
+        return $this->getView()->plugin('htmlElement')->__invoke(
+            'h4',
+            ['class' => 'alert-heading'],
+            $heading,
+            $escape
+        );
+    }
+
+    protected function renderDismissible($close): string
+    {
+        return $this->getView()->plugin('formButton')->renderSpec(
+            [
+                'options' => ['close' => $close],
+                'attributes' => [
+                    'data-bs-dismiss' => 'alert',
+                ],
+            ],
+            ''
+        );
     }
 }

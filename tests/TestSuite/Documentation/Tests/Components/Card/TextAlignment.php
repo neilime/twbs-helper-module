@@ -22,11 +22,11 @@ return [
 
         echo '<br/>' . PHP_EOL;
 
-        // Text right
+        // Text end
         echo $view->card([
             'title' => 'Special title treatment',
             'text' => 'With supporting text below as a natural lead-in to additional content.',
             '<a href="#" class="btn btn-primary">Go somewhere</a>',
-        ], ['class' => 'text-right', 'style' => 'width: 18rem;']);
+        ], ['class' => 'text-end', 'style' => 'width: 18rem;']);
     },
 ];

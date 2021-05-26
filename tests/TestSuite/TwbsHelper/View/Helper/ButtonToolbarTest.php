@@ -15,12 +15,12 @@ class ButtonToolbarTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
         $this->assertInstanceOf(\TwbsHelper\View\Helper\ButtonGroup::class, $buttonToolbar->getButtonGroupHelper());
     }
 
-    public function testGetFormElementHelperLazyLoad()
+    public function testGetFormRowHelperLazyLoad()
     {
         $buttonToolbar = new \TwbsHelper\View\Helper\ButtonToolbar();
         $this->assertInstanceOf(
-            \TwbsHelper\Form\View\Helper\FormElement::class,
-            $buttonToolbar->getFormElementHelper()
+            \TwbsHelper\Form\View\Helper\FormRow::class,
+            $buttonToolbar->getFormRowHelper()
         );
     }
 

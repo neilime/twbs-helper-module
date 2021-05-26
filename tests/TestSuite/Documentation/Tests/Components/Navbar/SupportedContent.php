@@ -6,36 +6,45 @@ return [
     'url' => '%bootstrap-url%/components/navbar/#supported-content',
     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
         echo $view->navigation()->navbar()->render(
-            new \Laminas\Navigation\Navigation([
-                ['label' => 'Home <span class="sr-only">(current)</span>', 'uri' => '#', 'active' => true],
-                ['label' => 'Link', 'uri' => '#'],
+            new \Laminas\Navigation\Navigation(
                 [
-                    'type' => \TwbsHelper\Navigation\Page\DropdownPage::class,
-                    'label' => 'Dropdown',
-                    'dropdown' => [
-                        'items' => [
-                            'Action',
-                            'Another action',
-                            '---',
-                            'Something else here',
+                    ['label' => 'Home', 'uri' => '#', 'active' => true],
+                    ['label' => 'Link', 'uri' => '#'],
+                    [
+                        'type' => \TwbsHelper\Navigation\Page\DropdownPage::class,
+                        'label' => 'Dropdown',
+                        'dropdown' => [
+                            'items' => [
+                                'Action',
+                                'Another action',
+                                '---',
+                                'Something else here',
+                            ],
+                            'attributes' => ['id' => 'navbarDropdown'],
                         ],
-                        'attributes' => ['id' => 'navbarDropdown'],
+                    ],
+                    [
+                        'label' => 'Disabled',
+                        'uri' => '#',
+                        'visible' => false,
                     ],
                 ],
-                ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
-            ]),
+            ),
             [
+                'container' => 'fluid',
                 'brand' => 'Navbar',
+                'nav' => [
+                    'ulClass' => 'mb-2 mb-lg-0 me-auto',
+                ],
                 'form' => [
                     'elements' => [
                         [
                             'spec' => [
-                                'name' => 'search',
+                                'type' => 'search',
                                 'attributes' => [
-                                    'type' => 'search',
                                     'placeholder' => 'Search',
                                     'aria-label' => 'Search',
-                                    'class' => 'mr-sm-2',
+                                    'class' => 'me-2',
                                 ],
                             ],
                         ],
@@ -46,22 +55,19 @@ return [
                                     'label' => 'Search',
                                     'variant' => 'outline-success',
                                 ],
-                                'attributes' => [
-                                    'class' => 'my-2 my-sm-0',
-                                ],
                             ],
                         ],
                     ],
-                    'attributes' => ['class' => 'my-2 my-lg-0'],
+                    'attributes' => ['class' => 'd-flex'],
                 ],
                 'attributes' => ['id' => 'navbarSupportedContent'],
             ]
         );
     },
     'tests' => [
-        include __DIR__ . DIRECTORY_SEPARATOR . 'SupportedContent/Brand.php',
-        include __DIR__ . DIRECTORY_SEPARATOR . 'SupportedContent/Nav.php',
-        include __DIR__ . DIRECTORY_SEPARATOR . 'SupportedContent/Forms.php',
-        include __DIR__ . DIRECTORY_SEPARATOR . 'SupportedContent/Text.php',
+        include __DIR__ . '/SupportedContent/Brand.php',
+        include __DIR__ . '/SupportedContent/Nav.php',
+        include __DIR__ . '/SupportedContent/Forms.php',
+        include __DIR__ . '/SupportedContent/Text.php',
     ],
 ];

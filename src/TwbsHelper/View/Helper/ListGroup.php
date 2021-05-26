@@ -7,170 +7,222 @@ namespace TwbsHelper\View\Helper;
  */
 class ListGroup extends \TwbsHelper\View\Helper\HtmlList
 {
+    protected static $allowedOptions = [
+        'type',
+        'flush',
+        'horizontal',
+        'tag',
+        'inline',
+        'unstyled',
+        'numbered',
+    ];
+
     /**
      * Generates a 'List' element. Manage indentation of Xhtml markup
      *
-     * @param  array   $items      Array with the elements of the list
-     * @param  array   $optionsAndAttributes Attributes for the ul tag.
+     * @param  iterable   $items      Array with the elements of the list
+     * @param  iterable   $optionsAndAttributes Attributes for the ul tag.
      * @param  boolean $escape     Escape the items.
      * @return string The list XHTML.
      */
-    public function __invoke(array $items, array $optionsAndAttributes = [], bool $escape = true)
+    public function __invoke(iterable $items, iterable $optionsAndAttributes = [], bool $escape = true): string
     {
+        $attributes = $this->getView()->plugin('htmlattributes')
+            ->__invoke($optionsAndAttributes)
+            ->merge(['class' => ['list-group']]);
 
         return parent::__invoke(
             $items,
-            $this->setClassesToAttributes($optionsAndAttributes, ['list-group']),
+            $attributes,
             $escape
         );
     }
 
     protected function renderContainer(
-        string $tag,
-        array $optionsAndAttributes,
+        iterable $optionsAndAttributes,
         string $listContent,
-        bool $escape = true
-    ) {
-        if (isset($optionsAndAttributes['type'])) {
-            $tag = 'div';
-        }
-        unset($optionsAndAttributes['type']);
+        bool $escape
+    ): string {
 
-        if (isset($optionsAndAttributes['flush'])) {
-            $optionsAndAttributes = $this->setClassesToAttributes($optionsAndAttributes, ['list-group-flush']);
+        $optionsAndAttributes = $this->getView()->plugin('htmlattributes')->__invoke($optionsAndAttributes);
+
+        if (isset($optionsAndAttributes['type'])) {
+            $optionsAndAttributes['tag'] = 'div';
         }
-        unset($optionsAndAttributes['flush']);
+        if (isset($optionsAndAttributes['flush'])) {
+            $optionsAndAttributes->merge(['class' => ['list-group-flush']]);
+        }
 
         if (isset($optionsAndAttributes['horizontal'])) {
-            $optionsAndAttributes = $this->setClassesToAttributes(
-                $optionsAndAttributes,
-                [
-                    $optionsAndAttributes['horizontal'] === true
-                        ? 'list-group-horizontal'
-                        : $this->getSizeClass(
-                            $optionsAndAttributes['horizontal'],
-                            'list-group-horizontal'
-                        ),
-                ]
-            );
+            if ($optionsAndAttributes['horizontal'] === true) {
+                $optionsAndAttributes->merge(['class' => ['list-group-horizontal']]);
+            } else {
+                $optionsAndAttributes->merge([
+                    'class' => $this->getView()->plugin('htmlClass')->plugin('size')->getClassesFromOption(
+                        $optionsAndAttributes['horizontal'],
+                        'list-group-horizontal'
+                    ),
+                ]);
+            }
         }
-        unset($optionsAndAttributes['horizontal']);
 
         return parent::renderContainer(
-            $tag,
             $optionsAndAttributes,
             $listContent,
             $escape
         );
     }
 
-    protected function renderListItem(
-        $item,
-        string $itemLabel = '',
-        array $optionsAndAttributes = [],
-        array $itemAttributes = [],
-        bool $escape = true,
-        string $tag = 'li'
-    ): string {
+    protected function prepareItemSpec($item, iterable $optionsAndAttributes): iterable
+    {
 
-        $disabled = false;
+        $item = parent::prepareItemSpec($item, $optionsAndAttributes);
 
-        // Item with options
-        if (is_array($item)) {
-            // Content
-            if (!empty($item['content'])) {
-                $itemLabel = $item['content'];
-            }
-            unset($item['content']);
+        $item['attributes'] = $this->getView()->plugin('htmlattributes')
+            ->__invoke($item['attributes'] ?? [])
+            ->merge(['class' => ['list-group-item']]);
 
-            // Custom attributes
-            if (!empty($item['attributes'])) {
-                $itemAttributes = \Laminas\Stdlib\ArrayUtils::merge($itemAttributes, $item['attributes']);
-            }
-            unset($item['attributes']);
-
-            // Disabled state
-            $disabled =  !empty($item['disabled']);
-            unset($item['disabled']);
-            if ($disabled) {
-                $itemAttributes['aria-disabled'] = 'true';
-                $itemAttributes = $this->setClassesToAttributes($itemAttributes, ['disabled']);
-            }
-
-            // Active state
-            if (!empty($item['active'])) {
-                $itemAttributes = $this->setClassesToAttributes($itemAttributes, ['active']);
-            }
-            unset($item['active']);
-
-            // Variant
-            if (!empty($item['variant'])) {
-                $itemAttributes = $this->setClassesToAttributes(
-                    $itemAttributes,
-                    [$this->getVariantClass($item['variant'], 'list-group-item')]
-                );
-            }
-            unset($item['variant']);
-
-            // Badge
-            if (!empty($item['badge'])) {
-                $itemAttributes = $this->setClassesToAttributes(
-                    $itemAttributes,
-                    ['d-flex', 'justify-content-between', 'align-items-center']
-                );
-                $itemLabel = $this->renderBadge($item['badge'], $itemLabel, $escape);
-            }
-            unset($item['badge']);
+        // Disabled state
+        $disabled = !empty($item['disabled']);
+        unset($item['disabled']);
+        if ($disabled) {
+            $item['attributes']['aria-disabled'] = 'true';
+            $item['attributes']->merge(['class' => ['disabled']]);
         }
+
+        // Active state
+        if (!empty($item['active'])) {
+            $item['attributes']['aria-current'] = 'true';
+            $item['attributes']->merge(['class' => ['active']]);
+        }
+        unset($item['active']);
+
+        // Variant
+        if (!empty($item['variant'])) {
+            $item['attributes']['class']->merge(
+                $this->getView()->plugin('htmlClass')->plugin('variant')->getClassesFromOption(
+                    $item['variant'],
+                    'list-group-item'
+                )
+            );
+        }
+        unset($item['variant']);
 
         // Item type
         if (!empty($optionsAndAttributes['type'])) {
             switch ($optionsAndAttributes['type']) {
                 case 'action':
-                    $tag = 'a';
-                    $itemAttributes = $this->setClassesToAttributes($itemAttributes, ['list-group-item-action']);
+                    $item['tag'] = 'a';
+                    $item['attributes']->merge(['class' => ['list-group-item-action']]);
+
                     if ($disabled) {
-                        $itemAttributes['tabindex'] = -1;
+                        $item['attributes']['tabindex'] = -1;
                     }
                     break;
                 case 'button':
-                    $tag = 'button';
-                    $itemAttributes = $this->setClassesToAttributes($itemAttributes, ['list-group-item-action']);
-                    $itemAttributes['type'] = 'button';
+                    $item['tag'] = 'button';
+                    $item['attributes']->merge(['class' => ['list-group-item-action']]);
+                    $item['attributes']['type'] = 'button';
+
                     if ($disabled) {
-                        $itemAttributes = $this->setClassesToAttributes($itemAttributes, [], ['disabled']);
-                        $itemAttributes['disabled'] = true;
+                        $item['attributes']->offsetGet('class')->remove('disabled');
+                        $item['attributes']['disabled'] = true;
                     }
                     break;
 
                 default:
-                    throw new \DomainException('Item "type" option "' . $item['type'] . '" is not supported');
+                    throw new \DomainException(
+                        'Item "type" option "' . $optionsAndAttributes['type'] . '" is not supported'
+                    );
             }
         }
 
-        return parent::renderListItem(
-            $item,
-            $itemLabel,
-            $optionsAndAttributes,
-            $this->setClassesToAttributes($itemAttributes, ['list-group-item']),
-            $escape,
-            $tag
-        );
-    }
-
-    protected function renderBadge($badgeOptions, string $itemLabel, bool $escape): string
-    {
-        if ($itemLabel && $escape && !$this->isHTML($itemLabel)) {
-            $itemLabel = $this->getView()->plugin('escapeHtml')->__invoke($itemLabel);
+        if (!empty($item['badge'])) {
+            $isNumbered = !empty($optionsAndAttributes['numbered']);
+            $item['attributes']->merge([
+                'class' => [
+                    'd-flex',
+                    'justify-content-between',
+                    $isNumbered ? 'align-items-start' : 'align-items-center'
+                ],
+            ]);
         }
 
+        if (!empty($item['checkbox']['label'])) {
+            $item['tag'] = 'label';
+        }
+
+        return $item;
+    }
+
+    protected function renderListItemContent(iterable $item, string $itemContent, bool $escape): string
+    {
+        $itemContent = parent::renderListItemContent($item, $itemContent, $escape);
+
+        // Badge
+        if (!empty($item['badge'])) {
+            $itemContent = $this->renderBadge(
+                $item['badge'],
+                $itemContent,
+                $escape
+            );
+        }
+
+        // Checkbox
+        if (!empty($item['checkbox'])) {
+            $itemContent = $this->renderCheckbox(
+                $item['checkbox'],
+                $itemContent
+            );
+        }
+
+        return $itemContent;
+    }
+
+    protected function renderBadge($badgeOptions, string $itemContent, bool $escape): string
+    {
         $badgeHelper = $this->getView()->plugin('badge');
 
-        $badgeContent =  call_user_func_array(
+        $badgeContent = call_user_func_array(
             [$badgeHelper, '__invoke'],
-            is_array($badgeOptions) ? $badgeOptions : [$badgeOptions]
+            is_array($badgeOptions) ? $badgeOptions : [$badgeOptions, [], $escape]
         );
 
-        return ($itemLabel ? $itemLabel . PHP_EOL : '') . $badgeContent;
+        $itemContent = ($itemContent ? $itemContent . PHP_EOL : '') . $badgeContent;
+
+        return $itemContent;
+    }
+
+    protected function renderCheckbox($elementSpec, string $itemContent): string
+    {
+        $factory = new \Laminas\Form\Factory();
+
+        // Set default type if none given
+        if (empty($elementSpec['type'])) {
+            $elementSpec['type'] = \Laminas\Form\Element\Checkbox::class;
+        }
+
+        $element = $factory->create($elementSpec);
+
+        if (!$element instanceof \Laminas\Form\Element\Checkbox) {
+            throw new \InvalidArgumentException(sprintf(
+                'Invalid checkbox type specified, %s does not inherit from %s.',
+                get_class($element),
+                \Laminas\Form\Element\Checkbox::class
+            ));
+        }
+
+        $element->setAttributes(
+            $this->getView()->plugin('htmlattributes')
+                ->__invoke($element->getAttributes())
+                ->merge(['class' => ['me-1']])
+        );
+
+        $checkboxContent = $this->getView()->plugin('formElement')->render($element);
+
+        $itemContent = $checkboxContent . ($itemContent ? PHP_EOL . $itemContent : '');
+
+
+        return $itemContent;
     }
 }

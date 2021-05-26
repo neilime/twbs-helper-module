@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<?xml encoding="utf-8" ?><html><body><form action="" class="needs-validation" id="form" method="POST" name="form" novalidate="1" role="form">
+    <div class="g-3 row">
+        <div class="col-md-4 position-relative">
+            <label class="form-label" for="validationTooltip01">First name</label>
+            <input class="form-control is-valid" id="validationTooltip01" name="firstName" required="required" type="text" value="Mark">
+            <div class="valid-tooltip">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 position-relative">
+            <label class="form-label" for="validationTooltip02">Last name</label>
+            <input class="form-control is-valid" id="validationTooltip02" name="lastName" required="required" type="text" value="Otto">
+            <div class="valid-tooltip">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 has-error position-relative">
+            <label class="col-form-label form-label" for="validationTooltipUsername">Username</label>
+            <div class="has-validation input-group">
+                <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+                <input aria-describedby="validationTooltipUsernamePrepend" class="form-control is-invalid" id="validationTooltipUsername" name="username" placeholder="Username" required="required" type="text" value="">
+                <div class="invalid-tooltip">Please choose a unique and valid username.</div>
+            </div>
+        </div>
+        <div class="col-md-6 has-error position-relative">
+            <label class="col-form-label form-label" for="validationTooltip03">City</label>
+            <input class="form-control is-invalid" id="validationTooltip03" name="city" required="required" type="text" value="">
+            <div class="invalid-tooltip">Please provide a valid city.</div>
+        </div>
+        <div class="col-md-3 has-error position-relative">
+            <label class="col-form-label form-label" for="validationTooltip04">State</label>
+            <select class="form-select is-invalid" id="validationTooltip04" name="state" required="required">
+                <option selected value="">Choose...</option>
+                <option value="0">...</option>
+            </select>
+            <div class="invalid-tooltip">Please select a valid state.</div>
+        </div>
+        <div class="col-md-3 has-error position-relative">
+            <label class="col-form-label form-label" for="validationTooltip05">Zip</label>
+            <input class="form-control is-invalid" id="validationTooltip05" name="zip" required="required" type="text" value="">
+            <div class="invalid-tooltip">Please select a valid zip.</div>
+        </div>
+        <div class="col-12 position-relative">
+            <button class="btn btn-primary" name="submit" type="submit" value="">Submit form</button>
+        </div>
+    </div>
+</form></body></html>

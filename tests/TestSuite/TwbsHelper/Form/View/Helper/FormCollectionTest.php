@@ -35,9 +35,11 @@ class FormCollectionTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals(
             '<fieldset class="form-inline">' .
-                '<span data-template="&lt;button&#x20;type&#x3D;&quot;button&quot;&#x20;name&#x3D;&quot;' .
-                '__index__&quot;&#x20;class&#x3D;&quot;btn&amp;&#x23;x20&#x3B;btn-secondary&quot;&#x20;' .
-                'value&#x3D;&quot;&quot;&gt;test&lt;&#x2F;button&gt;"></span></fieldset>',
+                '<span data-template="&lt;div&#x20;class&#x3D;&quot;col-auto&quot;&gt;&#x0A;&#x20;&#x20;&#x20;' .
+                '&#x20;&lt;button&#x20;class&#x3D;&quot;btn&amp;&#x23;x20&#x3B;btn-secondary&quot;&#x20;name&#x3D;' .
+                '&quot;__index__&quot;&#x20;type&#x3D;&quot;button&quot;&#x20;value&#x3D;&quot;&quot;&gt;test&lt;' .
+                '&#x2F;button&gt;&#x0A;&lt;&#x2F;div&gt;"></span>' .
+                '</fieldset>',
             $this->formCollectionHelper->render($collection)
         );
     }
@@ -55,9 +57,10 @@ class FormCollectionTest extends \PHPUnit\Framework\TestCase
         ]);
 
         $this->assertEquals(
-            '<span data-template="&lt;button&#x20;type&#x3D;&quot;button&quot;&#x20;name&#x3D;&quot;' .
-                '__index__&quot;&#x20;class&#x3D;&quot;btn&amp;&#x23;x20&#x3B;btn-secondary&quot;&#x20;' .
-                'value&#x3D;&quot;&quot;&gt;test&lt;&#x2F;button&gt;"></span>',
+            '<span data-template="&lt;div&#x20;class&#x3D;&quot;col-auto&quot;&gt;&#x0A;&#x20;&#x20;&#x20;&#x20;' .
+                '&lt;button&#x20;class&#x3D;&quot;btn&amp;&#x23;x20&#x3B;btn-secondary&quot;&#x20;name&#x3D;&quot;' .
+                '__index__&quot;&#x20;type&#x3D;&quot;button&quot;&#x20;value&#x3D;&quot;&quot;&gt;test&lt;&#x2F;' .
+                'button&gt;&#x0A;&lt;&#x2F;div&gt;"></span>',
             $this->formCollectionHelper->renderTemplate($collection)
         );
     }

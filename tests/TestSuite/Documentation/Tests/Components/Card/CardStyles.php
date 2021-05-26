@@ -11,18 +11,25 @@ return [
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                 foreach (
                     [
-                    'primary', 'secondary', 'success', 'danger',
-                    'warning', 'info', 'light', 'dark',
-                    ] as $variant
+                    ['primary', 'white'],
+                    ['secondary', 'white'],
+                    ['success', 'white'],
+                    ['danger', 'white'],
+                    ['warning', 'dark'],
+                    ['info', 'dark'],
+                    ['light', 'dark'],
+                    ['dark', 'white'],
+                    ] as [$variant, $text]
                 ) {
                     echo $view->card([
                         'header' => 'Header',
-                        'title' => 'Primary card title',
+                        'title' => ucfirst($variant) . ' card title',
                         'text' => "Some quick example text to build on the card title" .
                             " and make up the bulk of the card's content.",
                     ], [
-                        'bgVariant' => $variant,
-                        'class' => ($variant !== 'light' ? 'text-white ' : '') . 'mb-3',
+                        'bg_variant' => $variant,
+                        'class' => 'text-' . $text . ' mb-3',
+                        'style' => 'max-width: 18rem;',
                     ]) . PHP_EOL;
                 }
             },
@@ -33,23 +40,32 @@ return [
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                 foreach (
                     [
-                    'primary', 'secondary', 'success', 'danger',
-                    'warning', 'info', 'light', 'dark',
-                    ] as $variant
+                    ['primary', 'primary'],
+                    ['secondary', 'secondary'],
+                    ['success', 'success'],
+                    ['danger', 'danger'],
+                    ['warning', null],
+                    ['info', null],
+                    ['light', null],
+                    ['dark', 'dark'],
+                    ] as [$variant, $body_variant]
                 ) {
-                    echo $view->card([
-                        'header' => 'Header',
-                        'title' => 'Primary card title',
-                        'text' => "Some quick example text to build on the card title" .
-                            " and make up the bulk of the card's content.",
-                    ], [
-                        'borderVariant' => $variant,
-                        'bodyVariant' => $variant !== 'light' ?  $variant : null,
-                        'class' => 'mb-3'
-                    ]) . PHP_EOL;
+                    echo $view->card(
+                        [
+                            'header' => 'Header',
+                            'title' => ucfirst($variant) . 'Primary card title',
+                            'text' => "Some quick example text to build on the card title" .
+                                " and make up the bulk of the card's content.",
+                        ],
+                        [
+                            'border_variant' => $variant,
+                            'body_variant' => $body_variant,
+                            'class' => 'mb-3',
+                            'style' => 'max-width: 18rem;',
+                        ]
+                    ) . PHP_EOL;
                 }
             },
-
         ],
         [
             'title' => 'Mixins utilities',
@@ -60,11 +76,12 @@ return [
                     'title' => 'Success card title',
                     'text' => "Some quick example text to build on the card title" .
                         " and make up the bulk of the card's content.",
-                    'footer' => ['Footer', ['class' => 'card-footer bg-transparent border-success']],
+                    'footer' => ['Footer', ['class' => 'bg-transparent border-success']],
                 ], [
-                    'borderVariant' => 'success',
-                    'bodyVariant' => 'success',
-                    'class' => 'mb-3'
+                    'border_variant' => 'success',
+                    'body_variant' => 'success',
+                    'class' => 'mb-3',
+                    'style' => 'max-width: 18rem;',
                 ]);
             },
         ],

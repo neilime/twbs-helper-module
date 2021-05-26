@@ -8,6 +8,7 @@ return [
         echo $view->navigation()->navbar()->render(
             new \Laminas\Navigation\Navigation(),
             [
+                'container' => 'fluid',
                 'text' => 'Navbar text with an inline element',
                 'expand' => false,
                 'toggler' => false,
@@ -19,7 +20,7 @@ return [
         echo $view->navigation()->navbar()->render(
             new \Laminas\Navigation\Navigation([
                 [
-                    'label' => 'Home <span class="sr-only">(current)</span>',
+                    'label' => 'Home',
                     'uri' => '#',
                     'active' => true,
                 ],
@@ -27,11 +28,14 @@ return [
                 ['label' => 'Pricing', 'uri' => '#'],
             ]),
             [
+                'container' => 'fluid',
                 'brand' => 'Navbar w/ text',
                 'text' => 'Navbar text with an inline element',
                 'attributes' => ['id' => 'navbarText'],
+                'nav' => [
+                    'ulClass' => 'mb-2 mb-lg-0 me-auto',
+                ],
             ]
         );
     },
-
 ];

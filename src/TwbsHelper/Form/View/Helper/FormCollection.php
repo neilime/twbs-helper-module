@@ -7,7 +7,7 @@ namespace TwbsHelper\Form\View\Helper;
  */
 class FormCollection extends \Laminas\Form\View\Helper\FormCollection
 {
-    use \TwbsHelper\View\Helper\HtmlTrait;
+    use \TwbsHelper\Form\View\ElementHelperTrait;
 
     protected static $fieldsetRegex = '/(<fieldset[^>]*>)([\s\S]*)(<\/fieldset[^>]*>)$/imU';
 
@@ -87,35 +87,46 @@ class FormCollection extends \Laminas\Form\View\Helper\FormCollection
         $markup = $matches[2];
 
         // Define legend class
-        $labelAttributes = $element instanceof \Laminas\Form\LabelAwareInterface
-            ? $element->getLabelAttributes()
-            : [];
-        $legendClasses = ['col-form-label'];
+        $labelAttributes = $this->getView()->plugin('htmlattributes')->__invoke(
+            $element instanceof \Laminas\Form\LabelAwareInterface
+                ? $element->getLabelAttributes()
+                : []
+        );
 
         // Define legend column classes
+        $legendClasses = [];
         $columSize = $element->getOption('column');
-        if ($columSize && !$this->hasColumnClassAttribute($labelAttributes['class'] ?? '')) {
-            $legendClasses[] = $this->getColumnCounterpartClass($columSize);
+
+        /** @var \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Column $columnClassHelper **/
+        $columnClassHelper = $this->getView()->plugin('htmlClass')->plugin('column');
+        if (
+            $columSize
+            && $columnClassHelper->classesIncludeColumn($labelAttributes['class'])
+        ) {
+            $legendClasses = array_merge(
+                $legendClasses,
+                $this->getView()->plugin('htmlClass')->plugin('columnCounterpart')->getClassesFromOption($columSize)
+            );
         }
 
         // Extract legend
         $legendContent = '';
         if (preg_match(self::$legendRegex, $markup, $legendMatches)) {
-            $legendContent = sprintf(
-                '<legend%s>%s</legend>',
-                $this->attributesToString($this->setClassesToAttributes(
-                    $labelAttributes,
-                    $legendClasses
-                ), 'legend'),
+            $labelAttributes->merge(['class' => $legendClasses]);
+
+            $this->getView()->plugin('htmlElement')->__invoke(
+                'legend',
+                $labelAttributes,
                 $legendMatches[1]
             ) . PHP_EOL;
+
             $markup = str_replace($legendMatches[0], '', $markup);
         }
 
         if ($columSize) {
-            $markup = $this->htmlElement(
+            $markup = $this->getView()->plugin('htmlElement')->__invoke(
                 'div',
-                $this->setClassesToAttributes([], [$this->getColumnClass($columSize)]),
+                ['class' => $this->getView()->plugin('htmlClass')->plugin('column')->getClassesFromOption($columSize)],
                 $markup
             );
         }
@@ -123,10 +134,10 @@ class FormCollection extends \Laminas\Form\View\Helper\FormCollection
         $markup = $legendContent . $markup;
 
         if ($elementLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL) {
-            $markup = $this->htmlElement('div', ['class' => 'row'], $markup);
+            $markup = $this->getView()->plugin('htmlElement')->__invoke('div', ['class' => 'row'], $markup);
         }
 
-        return $matches[1] . $this->addProperIndentation($markup) . $matches[3];
+        return $matches[1] . $this->getView()->plugin('htmlElement')->addProperIndentation($markup) . $matches[3];
     }
 
     /**

@@ -10,6 +10,24 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
     public const CONTROL_PREVIOUS = 'prev';
     public const CONTROL_NEXT = 'next';
 
+    protected static $allowedOptions = [
+        'controls',
+        'crossfade',
+        'indicators',
+        'interval',
+        'swiping',
+        'variant',
+    ];
+
+    protected static $allowedSlideOptions = [
+        'active',
+        'caption',
+        'indicator',
+        'interval',
+        'src',
+    ];
+
+
     /**
      * Generates a 'carousel' element
      *
@@ -24,23 +42,55 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
         bool $escape = true
     ): string {
 
-
         if (empty($optionsAndAttributes['id'])) {
             $optionsAndAttributes['id'] = uniqid('twbs-carousel-');
         }
-        if (!isset($optionsAndAttributes['data-ride'])) {
-            $optionsAndAttributes['data-ride'] = 'carousel';
+
+        $attributes = $this->getView()->plugin('htmlattributes')
+            ->__invoke($optionsAndAttributes)
+            ->offsetsUnset(static::$allowedOptions)
+            ->merge([
+                'data-bs-ride' => 'carousel',
+                'class' => ['carousel', 'slide'],
+            ]);
+
+        if (!empty($optionsAndAttributes['crossfade'])) {
+            $attributes['class']->merge(['carousel-fade']);
         }
 
-        $classes = ['carousel', 'slide'];
-        if (!empty($optionsAndAttributes['crossfade'])) {
-            $classes[] = 'carousel-fade';
+        if (!empty($optionsAndAttributes['variant'])) {
+            $attributes['class']->merge($this->getView()->plugin('htmlClass')->plugin('variant')->getClassesFromOption(
+                $optionsAndAttributes['variant'],
+                'carousel'
+            ));
         }
 
         $slides = $this->parseSlides($slides);
+        $hasIndicators = !empty($optionsAndAttributes['indicators'])
+            || array_reduce($slides, function ($hasIndicators, $slide) {
+                return $hasIndicators || !empty($slide['indicator']);
+            });
+
+        $disableInterval = isset($optionsAndAttributes['interval'])
+            && $optionsAndAttributes['interval'] === false
+            && !isset($optionsAndAttributes['data-bs-interval']);
+
+        if ($disableInterval) {
+            $attributes['data-bs-interval'] = 'false';
+        }
+
+        $disableSwipe = isset($optionsAndAttributes['swiping'])
+            && $optionsAndAttributes['swiping'] === false
+            && !isset($optionsAndAttributes['data-bs-touch']);
+
+        if ($disableSwipe) {
+            $attributes['data-bs-touch'] = 'false';
+        }
+
         $content = $this->renderSlides($slides, $escape);
+
         if ($content) {
-            if (!empty($optionsAndAttributes['indicators'])) {
+            if ($hasIndicators) {
                 $content = $this->renderIndicators(
                     $optionsAndAttributes['id'],
                     $slides,
@@ -55,55 +105,32 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 );
             }
         }
-        unset(
-            $optionsAndAttributes['indicators'],
-            $optionsAndAttributes['controls'],
-            $optionsAndAttributes['crossfade']
-        );
 
-        return $this->htmlElement(
+        return $this->getView()->plugin('htmlElement')->__invoke(
             'div',
-            $this->setClassesToAttributes($optionsAndAttributes, $classes),
+            $attributes,
             $content,
             $escape
         );
     }
 
-    protected function parseSlides(array $slides)
+    protected function parseSlides(iterable $slides)
     {
         $parsedSlides = [];
         foreach ($slides as $key => $slide) {
             if (is_string($slide)) {
                 if (is_string($key)) {
-                    $slide = ['src' => $key, 'optionsAndAttributes' => ['caption' => $slide]];
+                    $slide = ['src' => $key, 'caption' => $slide];
                 } else {
-                    $slide = ['src' => $slide, 'optionsAndAttributes' => []];
+                    $slide = ['src' => $slide];
                 }
-            } elseif (is_array($slide)) {
+            } elseif (is_iterable($slide)) {
                 if (is_string($key)) {
-                    $slide = ['src' => $key, 'optionsAndAttributes' => $slide];
-                } else {
-                    if (\Laminas\Stdlib\ArrayUtils::isList($slide)) {
-                        $slide = ['src' => $slide[0], 'optionsAndAttributes' => $slide[1] ?? []];
-                    } else {
-                        if (isset($slide['options'])) {
-                            $slide['optionsAndAttributes'] = array_merge(
-                                $slide['optionsAndAttributes'] ?? [],
-                                $slide['options']
-                            );
-                            unset($slide['options']);
-                        }
-                        if (isset($slide['attributes'])) {
-                            $slide['optionsAndAttributes'] = array_merge(
-                                $slide['optionsAndAttributes'] ?? [],
-                                $slide['attributes']
-                            );
-                            unset($slide['attributes']);
-                        }
+                    if (!isset($slide['src'])) {
+                        $slide['src'] = $key;
                     }
                 }
             }
-
 
             $parsedSlides[] = $slide;
         }
@@ -118,52 +145,41 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
         }
 
         if ($slidesContent) {
-            $slidesContent = $this->htmlElement('div', ['class' => 'carousel-inner'], $slidesContent, $escape);
+            $slidesContent = $this->getView()->plugin('htmlElement')->__invoke(
+                'div',
+                ['class' => 'carousel-inner'],
+                $slidesContent,
+                $escape
+            );
         }
         return $slidesContent;
     }
 
-    protected function renderSlide($slide, bool $escape = true)
+    protected function renderSlide(iterable $slide, bool $escape = true)
     {
-        $classes = ['carousel-item'];
-        $attributes = [];
-
-        $slide['optionsAndAttributes'] = $this->setClassesToAttributes(
-            $slide['optionsAndAttributes'] ?? [],
-            ['d-block', 'w-100']
-        );
-
-        if (!empty($slide['optionsAndAttributes']['active'])) {
-            $classes[] = 'active';
-        }
-        unset($slide['optionsAndAttributes']['active']);
-
-        if (!empty($slide['optionsAndAttributes']['interval'])) {
-            $attributes['data-interval'] = $slide['optionsAndAttributes']['interval'];
-        }
-        unset($slide['optionsAndAttributes']['interval']);
-
         $slideContent = '';
-        if (!empty($slide['optionsAndAttributes']['caption'])) {
+        if (!empty($slide['caption'])) {
             $slideContent = $this->renderSlideCaption(
-                $slide['optionsAndAttributes']['caption'],
+                $slide['caption'],
                 $escape
             );
         }
-        unset($slide['optionsAndAttributes']['caption']);
 
         // Generate image
+        $src = $slide['src'] ?? '';
+
+        $attributes = $this->getView()->plugin('htmlattributes')
+            ->__invoke($slide)
+            ->offsetsUnset(static::$allowedSlideOptions)
+            ->merge(['class' => ['d-block', 'w-100']]);
+
         $slideContent = $this->getView()->plugin('image')->__invoke(
-            $slide['src'],
-            $slide['optionsAndAttributes']
+            $src,
+            $attributes,
         ) . ($slideContent ? PHP_EOL . $slideContent : '');
 
-        return $this->htmlElement(
-            'div',
-            $this->setClassesToAttributes($attributes, $classes),
-            $slideContent,
-            $escape
-        );
+
+        return $this->renderSlideContainer($slide, $slideContent, $escape);
     }
 
     protected function renderSlideCaption($captionContent, bool $escape = true)
@@ -173,10 +189,18 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
             foreach ($captionContent as $key => $captionPartContent) {
                 switch (true) {
                     case $key === 'title':
-                        $captionPartContent = $this->htmlElement('h5', [], $captionPartContent);
+                        $captionPartContent = $this->getView()->plugin('htmlElement')->__invoke(
+                            'h5',
+                            [],
+                            $captionPartContent
+                        );
                         break;
                     case $key === 'text':
-                        $captionPartContent = $this->htmlElement('p', [], $captionPartContent);
+                        $captionPartContent = $this->getView()->plugin('htmlElement')->__invoke(
+                            'p',
+                            [],
+                            $captionPartContent
+                        );
                         break;
                     case is_int($key):
                         break;
@@ -192,10 +216,33 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
             $captionContent = $content;
         }
 
-        return $this->htmlElement(
+        return $this->getView()->plugin('htmlElement')->__invoke(
             'div',
-            $this->setClassesToAttributes([], ['carousel-caption', 'd-none', 'd-md-block']),
+            ['class' => ['carousel-caption', 'd-none', 'd-md-block']],
             $captionContent,
+            $escape
+        );
+    }
+
+    protected function renderSlideContainer(iterable $slide, string $slideContent, bool $escape): string
+    {
+        $attributes = $this->getView()->plugin('htmlattributes')->__invoke([]);
+        $classes = ['carousel-item'];
+
+        if (!empty($slide['active'])) {
+            $classes[] = 'active';
+        }
+
+        if (!empty($slide['interval'])) {
+            $attributes['data-bs-interval'] = $slide['interval'];
+        }
+
+        $attributes->merge(['class' => $classes]);
+
+        return $this->getView()->plugin('htmlElement')->__invoke(
+            'div',
+            $attributes,
+            $slideContent,
             $escape
         );
     }
@@ -213,9 +260,9 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
             );
         }
 
-        return $this->htmlElement(
+        return $this->getView()->plugin('htmlElement')->__invoke(
             'ol',
-            $this->setClassesToAttributes([], ['carousel-indicators']),
+            ['class' => ['carousel-indicators']],
             $indicatorsContent,
             $escape
         );
@@ -223,15 +270,30 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
     protected function renderIndicator(string $id, int $iterator, $slide, bool $escape = true): string
     {
-        return $this->htmlElement(
-            'li',
-            $this->setClassesToAttributes([
-                'data-target' => '#' . $id,
-                'data-slide-to' => $iterator,
-            ], !empty($slide['optionsAndAttributes']['active']) ? ['active'] : []),
-            '',
-            $escape
-        );
+        $active = !empty($slide['active']);
+        $label = $slide['indicator'] ?? '';
+        if ($label && $this->hasTranslator()) {
+            $label = $this->getTranslator()->translate($label);
+        }
+
+        $attributes = $this->getView()->plugin('htmlattributes')->__invoke([
+            'data-bs-target' => '#' . $id,
+            'data-bs-slide-to' => $iterator,
+            'aria-label' => $label,
+        ]);
+
+        if ($active) {
+            $attributes->merge(['class' => ['active']]);
+            $attributes['aria-current'] = "true";
+        }
+
+        return $this->getView()->plugin('formButton')->renderSpec([
+            'name' => 'carousel-indicator-' . $iterator,
+            'options' => [
+                'disable_twbs' => true,
+            ],
+            'attributes' => $attributes,
+        ], '');
     }
 
     protected function renderControls(string $id, $controls, bool $escape = true): string
@@ -268,24 +330,27 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
     protected function renderControl(string $id, string $control, string $label, bool $escape = true): string
     {
 
+        $htmlElementHelper = $this->getView()->plugin('htmlElement');
         $controlContent =
-            $this->htmlElement(
+            $htmlElementHelper->__invoke(
                 'span',
                 ['class' => 'carousel-control-' . $control . '-icon', 'aria-hidden' => 'true'],
                 ''
             ) . PHP_EOL .
-            $this->htmlElement('span', ['class' => 'sr-only'], $label, $escape);
+            $htmlElementHelper->__invoke('span', ['class' => 'visually-hidden'], $label, $escape);
 
-        return $this->htmlElement(
-            'a',
-            [
-                'class' => 'carousel-control-' . $control,
-                'href' => '#' . $id,
-                'role' => 'button',
-                'data-slide' => $control,
+
+        return $this->getView()->plugin('formButton')->renderSpec([
+            'name' => 'carousel-control-' . $control,
+            'options' => [
+                'label' => $controlContent,
+                'disable_twbs' => true,
             ],
-            $controlContent,
-            $escape
-        );
+            'attributes' =>  [
+                'class' => 'carousel-control-' . $control,
+                'data-bs-slide' => $control,
+                'data-bs-target' => '#' . $id,
+            ],
+        ]);
     }
 }

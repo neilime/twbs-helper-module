@@ -4,7 +4,7 @@ namespace TwbsHelper\Form\View\Helper;
 
 class FormCheckbox extends \Laminas\Form\View\Helper\FormCheckbox
 {
-    use \TwbsHelper\View\Helper\ClassAttributeTrait;
+    use \TwbsHelper\Form\View\ElementHelperTrait;
 
     /**
      * Render a form <checkbox> element from the provided $element
@@ -12,11 +12,20 @@ class FormCheckbox extends \Laminas\Form\View\Helper\FormCheckbox
     public function render(\Laminas\Form\ElementInterface $element): string
     {
         if (!$element->getOption('disable_twbs')) {
-            $this->setClassesToElement(
-                $element,
-                [$element->getOption('custom') ? 'custom-control-input' : 'form-check-input'],
-                ['form-control']
-            );
+            if ($element->getOption('switch') && !$element->getAttribute('role')) {
+                $element->setAttribute('role', 'switch');
+            }
+            if ($element->getOption('button')) {
+                $this->setClassesToElement(
+                    $element,
+                    ['btn-check']
+                );
+            } else {
+                $this->setClassesToElement(
+                    $element,
+                    ['form-check-input']
+                );
+            }
         }
 
         return parent::render($element);

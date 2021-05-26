@@ -1,5 +1,5 @@
 ---
-sidebar_position: 18
+sidebar_position: 19
 label: Popovers
 ---
 
@@ -10,16 +10,16 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 
 # Popovers
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/popovers/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/popovers/)
 
 ## Example
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/popovers/#example)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/popovers/#example)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
-      <div dangerouslySetInnerHTML={{ __html: `<button type="button" name="popover" title="Popover title" class="btn btn-danger btn-lg" data-toggle="popover" data-content="And here's some amazing content. It's very engaging. Right?" value="">Click to toggle popover</button>` }}></div>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<button class="btn btn-danger btn-lg" data-bs-content="And here's some amazing content. It's very engaging. Right?" data-bs-original-title="Popover title" data-bs-toggle="popover" name="button" title="" type="button" value="">Click to toggle popover</button>` }}></div>
   </HtmlCode>
 </TabItem>
 <TabItem value="source" label="Source">
@@ -29,7 +29,6 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 
 echo $this->formButton()->renderSpec(
     [
-        'name'       => 'popover',
         'options'    => [
             'label'   => 'Click to toggle popover',
             'variant' => 'danger',
@@ -45,17 +44,17 @@ echo $this->formButton()->renderSpec(
 </TabItem>
 </Tabs>
 
-## Four directions
+### Four directions
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/popovers/#four-directions)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/popovers/#four-directions)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
-      <div dangerouslySetInnerHTML={{ __html: `<button type="button" name="popover" class="btn btn-secondary" data-toggle="popover" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-placement="top" data-container="body" value="">Popover on top</button>
-<button type="button" name="popover" class="btn btn-secondary" data-toggle="popover" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-placement="right" data-container="body" value="">Popover on right</button>
-<button type="button" name="popover" class="btn btn-secondary" data-toggle="popover" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-placement="bottom" data-container="body" value="">Popover on bottom</button>
-<button type="button" name="popover" class="btn btn-secondary" data-toggle="popover" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-placement="left" data-container="body" value="">Popover on left</button>` }}></div>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<button class="btn btn-secondary" data-bs-container="body" data-bs-content="Top popover" data-bs-original-title="" data-bs-placement="top" data-bs-toggle="popover" name="button" title="" type="button" value="">Popover on top</button>
+<button class="btn btn-secondary" data-bs-container="body" data-bs-content="Right popover" data-bs-original-title="" data-bs-placement="right" data-bs-toggle="popover" name="button" title="" type="button" value="">Popover on right</button>
+<button class="btn btn-secondary" data-bs-container="body" data-bs-content="Bottom popover" data-bs-original-title="" data-bs-placement="bottom" data-bs-toggle="popover" name="button" title="" type="button" value="">Popover on bottom</button>
+<button class="btn btn-secondary" data-bs-container="body" data-bs-content="Left popover" data-bs-original-title="" data-bs-placement="left" data-bs-toggle="popover" name="button" title="" type="button" value="">Popover on left</button>` }}></div>
   </HtmlCode>
 </TabItem>
 <TabItem value="source" label="Source">
@@ -63,39 +62,71 @@ echo $this->formButton()->renderSpec(
 ```php
 <?php
 
-foreach ([
-    'top'    => 'Popover on top',
-    'right'  => 'Popover on right',
-    'bottom' => 'Popover on bottom',
-    'left'   => 'Popover on left',
-] as $placement => $buttonLabel) {
-    echo $this->formButton()->renderSpec(
-        [
-            'name'    => 'popover',
-            'options' => [
-                'label'   => $buttonLabel,
-                'popover' => [
-                    'placement' => $placement,
-                    'content'   => 'Vivamus sagittis lacus vel augue laoreet rutrum faucibus.',
-                ],
+echo $this->formButton()->renderSpec(
+    [
+        'options'    => [
+            'label'   => 'Popover on top',
+            'popover' => [
+                'placement' => 'top',
+                'content'   => 'Top popover',
             ],
-        ]
-    );
-}
+        ],
+        'attributes' => ['title' => ''],
+    ]
+);
+
+echo $this->formButton()->renderSpec(
+    [
+        'options'    => [
+            'label'   => 'Popover on right',
+            'popover' => [
+                'placement' => 'right',
+                'content'   => 'Right popover',
+            ],
+        ],
+        'attributes' => ['title' => ''],
+    ]
+);
+
+echo $this->formButton()->renderSpec(
+    [
+        'options'    => [
+            'label'   => 'Popover on bottom',
+            'popover' => [
+                'placement' => 'bottom',
+                'content'   => 'Bottom popover',
+            ],
+        ],
+        'attributes' => ['title' => ''],
+    ]
+);
+
+echo $this->formButton()->renderSpec(
+    [
+        'options'    => [
+            'label'   => 'Popover on left',
+            'popover' => [
+                'placement' => 'left',
+                'content'   => 'Left popover',
+            ],
+        ],
+        'attributes' => ['title' => ''],
+    ]
+);
 
 ```
 
 </TabItem>
 </Tabs>
 
-## Dismiss on next click
+### Dismiss on next click
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/popovers/#dismiss-on-next-click)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/popovers/#dismiss-on-next-click)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
-      <div dangerouslySetInnerHTML={{ __html: `<a title="Dismissible popover" tabindex="0" class="btn btn-danger btn-lg" role="button" data-toggle="popover" data-content="And here's some amazing content. It's very engaging. Right?" data-trigger="focus">Dismissible popover</a>` }}></div>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<a class="btn btn-danger btn-lg" data-bs-content="And here's some amazing content. It's very engaging. Right?" data-bs-original-title="Dismissible popover" data-bs-toggle="popover" data-bs-trigger="focus" role="button" tabindex="0" title="">Dismissible popover</a>` }}></div>
   </HtmlCode>
 </TabItem>
 <TabItem value="source" label="Source">
@@ -128,15 +159,15 @@ echo $this->formButton()->renderSpec(
 </TabItem>
 </Tabs>
 
-## Disabled elements
+### Disabled elements
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/popovers/#disabled-elements)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/popovers/#disabled-elements)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
-      <div dangerouslySetInnerHTML={{ __html: `<span class="d-inline-block" data-content="Disabled popover" data-toggle="popover" tabindex="0">
-  <button type="button" name="popover" disabled="disabled" class="btn btn-primary" style="pointer-events: none;" value="">Disabled button</button>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<span class="d-inline-block" data-bs-content="Disabled popover" data-bs-original-title="" data-bs-toggle="popover" data-bs-trigger="hover focus" tabindex="0" title="">
+  <button class="btn btn-primary" disabled="disabled" name="button" type="button" value="">Disabled button</button>
 </span>` }}></div>
   </HtmlCode>
 </TabItem>
@@ -147,11 +178,13 @@ echo $this->formButton()->renderSpec(
 
 echo $this->formButton()->renderSpec(
     [
-        'name'       => 'popover',
         'options'    => [
             'label'   => 'Disabled button',
             'variant' => 'primary',
-            'popover' => 'Disabled popover',
+            'popover' => [
+                'content' => 'Disabled popover',
+                'trigger' => 'hover focus',
+            ],
         ],
         'attributes' => ['disabled' => true],
     ]

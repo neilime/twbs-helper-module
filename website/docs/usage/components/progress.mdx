@@ -1,5 +1,5 @@
 ---
-sidebar_position: 19
+sidebar_position: 20
 label: Progress
 ---
 
@@ -10,31 +10,27 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 
 # Progress
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/progress/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/progress/)
 
 ## How it works
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/progress/#example)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/progress/#how-it-works)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
+  <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<div class="progress">
     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="progress-bar" role="progressbar"></div>
 </div>
-<br></br>
 <div class="progress">
     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar" role="progressbar" style="width: 25%;"></div>
 </div>
-<br></br>
 <div class="progress">
     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" class="progress-bar" role="progressbar" style="width: 50%;"></div>
 </div>
-<br></br>
 <div class="progress">
     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="75" class="progress-bar" role="progressbar" style="width: 75%;"></div>
 </div>
-<br></br>
 <div class="progress">
     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" class="progress-bar" role="progressbar" style="width: 100%;"></div>
 </div>` }}></div>
@@ -48,19 +44,15 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 
 // Display progressbar at 0%
 echo $this->progressBar(0, 100);
-echo PHP_EOL.'<br/>';
 
 // Display progress bar at 25%
 echo $this->progressBar(0, 100, 25);
-echo PHP_EOL.'<br/>';
 
 // Display progress bar at 50%
 echo $this->progressBar(0, 100, 50);
-echo PHP_EOL.'<br/>';
 
 // Display progress bar at 75%
 echo $this->progressBar(0, 100, 75);
-echo PHP_EOL.'<br/>';
 
 // Display progress bar at 100%
 echo $this->progressBar(0, 100, 100);
@@ -72,11 +64,11 @@ echo $this->progressBar(0, 100, 100);
 
 ## Labels
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/progress/#labels)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/progress/#labels)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
+  <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<div class="progress">
     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar" role="progressbar" style="width: 25%;">
         25%
@@ -105,15 +97,14 @@ echo $this->progressBar(
 
 ## Height
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/progress/#height)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/progress/#height)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
+  <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<div class="progress" style="height: 1px;">
     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar" role="progressbar" style="width: 25%;"></div>
 </div>
-<br></br>
 <div class="progress" style="height: 20px;">
     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar" role="progressbar" style="width: 25%;"></div>
 </div>` }}></div>
@@ -133,8 +124,6 @@ echo $this->progressBar(
     ]
 );
 
-echo PHP_EOL.'<br/>';
-
 echo $this->progressBar(
     [
         'attributes' => ['style' => 'height:20px'],
@@ -151,27 +140,23 @@ echo $this->progressBar(
 
 ## Backgrounds
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/progress/#backgrounds)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/progress/#backgrounds)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
+  <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<div class="progress">
     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="bg-success progress-bar" role="progressbar" style="width: 25%;"></div>
 </div>
-<br></br>
 <div class="progress">
     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" class="bg-info progress-bar" role="progressbar" style="width: 50%;"></div>
 </div>
-<br></br>
 <div class="progress">
     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="75" class="bg-warning progress-bar" role="progressbar" style="width: 75%;"></div>
 </div>
-<br></br>
 <div class="progress">
     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" class="bg-danger progress-bar" role="progressbar" style="width: 100%;"></div>
-</div>
-<br></br>` }}></div>
+</div>` }}></div>
   </HtmlCode>
 </TabItem>
 <TabItem value="source" label="Source">
@@ -193,7 +178,6 @@ foreach ([
             'current' => $current,
         ]
     );
-    echo PHP_EOL.'<br/>';
 }
 
 ```
@@ -203,11 +187,11 @@ foreach ([
 
 ## Multiple bars
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/progress/#multiple-bars)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/progress/#multiple-bars)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
+  <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<div class="progress">
     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="15" class="progress-bar" role="progressbar" style="width: 15%;"></div>
     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="30" class="bg-success progress-bar" role="progressbar" style="width: 30%;"></div>
@@ -249,31 +233,26 @@ echo $this->progressBarGroup(
 
 ## Striped
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/progress/#striped)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/progress/#striped)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
+  <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<div class="progress">
     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="10" class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%;"></div>
 </div>
-<br></br>
 <div class="progress">
     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="bg-success progress-bar progress-bar-striped" role="progressbar" style="width: 25%;"></div>
 </div>
-<br></br>
 <div class="progress">
     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" class="bg-info progress-bar progress-bar-striped" role="progressbar" style="width: 50%;"></div>
 </div>
-<br></br>
 <div class="progress">
     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="75" class="bg-warning progress-bar progress-bar-striped" role="progressbar" style="width: 75%;"></div>
 </div>
-<br></br>
 <div class="progress">
     <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" class="bg-danger progress-bar progress-bar-striped" role="progressbar" style="width: 100%;"></div>
-</div>
-<br></br>` }}></div>
+</div>` }}></div>
   </HtmlCode>
 </TabItem>
 <TabItem value="source" label="Source">
@@ -297,7 +276,6 @@ foreach ([
             'max'     => 100,
         ]
     );
-    echo PHP_EOL.'<br/>';
 }
 
 ```
@@ -307,13 +285,13 @@ foreach ([
 
 ## Animated stripes
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/progress/#animated-stripes)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/progress/#animated-stripes)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
+  <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<div class="progress">
-    <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" style="width: 25%;"></div>
+    <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="75" class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" style="width: 75%;"></div>
 </div>` }}></div>
   </HtmlCode>
 </TabItem>
@@ -326,7 +304,7 @@ echo $this->progressBar(
     [
         'striped'  => true,
         'animated' => true,
-        'current'  => 25,
+        'current'  => 75,
         'min'      => 0,
         'max'      => 100,
     ]

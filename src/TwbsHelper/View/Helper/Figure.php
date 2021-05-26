@@ -22,16 +22,22 @@ class Figure extends \TwbsHelper\View\Helper\AbstractHtmlElement
     public function __invoke(
         string $imageSrc,
         string $caption = '',
-        array $attributes = [],
-        array $imageOptionsAndAttributes = [],
-        array $captionAttributes = [],
+        iterable $attributes = [],
+        iterable $imageOptionsAndAttributes = [],
+        iterable $captionAttributes = [],
         bool $escape = true
     ) {
 
+        $htmlElementHelper = $this->getView()->plugin('htmlElement');
+
         // Handle caption
-        $captionContent = $caption ? PHP_EOL . $this->htmlElement(
+        $captionAttributes = $this->getView()->plugin('htmlattributes')
+            ->__invoke($captionAttributes)
+            ->merge(['class' => ['figure-caption']]);
+
+        $captionContent = $caption ? PHP_EOL . $htmlElementHelper->__invoke(
             'figcaption',
-            $this->setClassesToAttributes($captionAttributes, ['figure-caption']),
+            $captionAttributes,
             $caption,
             $escape
         ) : '';
@@ -40,9 +46,14 @@ class Figure extends \TwbsHelper\View\Helper\AbstractHtmlElement
         $imageOptionsAndAttributes['figure'] = true;
         $imageContent = $this->getView()->plugin('image')->__invoke($imageSrc, $imageOptionsAndAttributes);
 
-        return $this->htmlElement(
+        // Container
+        $attributes = $this->getView()->plugin('htmlattributes')
+            ->__invoke($attributes)
+            ->merge(['class' => ['figure']]);
+
+        return $htmlElementHelper->__invoke(
             'figure',
-            $this->setClassesToAttributes($attributes, ['figure']),
+            $attributes,
             $imageContent . $captionContent,
             false
         );

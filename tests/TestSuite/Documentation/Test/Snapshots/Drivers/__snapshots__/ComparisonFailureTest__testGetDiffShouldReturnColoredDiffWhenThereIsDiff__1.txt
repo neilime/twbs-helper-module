@@ -1,0 +1,8 @@
+
+--- Expected
++++ Actual
+[35;1m@@ -1 +1 @@
+[0m[31;1m-[100mtest[49m
+[0m\ No newline at end of file
+[32;1m+[100mdiff[49m
+[0m\ No newline at end of file

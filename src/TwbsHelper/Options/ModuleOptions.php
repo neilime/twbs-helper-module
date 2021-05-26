@@ -13,144 +13,131 @@ use Laminas\Stdlib\AbstractOptions;
 class ModuleOptions extends AbstractOptions
 {
     // @var array
-    protected $ignoredViewHelpers;
+    protected $ignoredViewHelpers = [];
 
     // @var array
-    protected $validTagAttributes;
+    protected $validTagAttributes = [];
 
     // @var array
-    protected $validTagAttributePrefixes;
+    protected $validTagAttributePrefixes = [];
 
     // @var array
-    protected $classMap;
+    protected $classMap = [];
 
     // @var array
-    protected $typeMap;
+    protected $typeMap = [];
 
+    // @var string
+    protected $defaultRowSpacingClass;
 
     /**
-     * getIgnoredViewHelpers
-     *
-     * @access public
+     * @return string
+     */
+    public function getDefaultRowSpacingClass(): string
+    {
+        return $this->defaultRowSpacingClass;
+    }
+
+    /**
+     * @param string $defaultRowSpacingClass
+     * @return \TwbsHelper\Options\ModuleOptions
+     */
+    public function setDefaultRowSpacingClass(string $defaultRowSpacingClass): \TwbsHelper\Options\ModuleOptions
+    {
+        $this->defaultRowSpacingClass = $defaultRowSpacingClass;
+
+        return $this;
+    }
+
+    /**
      * @return array
      */
-    public function getIgnoredViewHelpers()
+    public function getIgnoredViewHelpers(): array
     {
         return $this->ignoredViewHelpers;
     }
 
-
     /**
-     * setIgnoredViewHelpers
-     *
-     * @access public
+     * @param  array $ignoredViewHelpers
      * @return \TwbsHelper\Options\ModuleOptions
      */
-    public function setIgnoredViewHelpers(array $ignoredViewHelpers)
+    public function setIgnoredViewHelpers(array $ignoredViewHelpers): \TwbsHelper\Options\ModuleOptions
     {
         $this->ignoredViewHelpers = $ignoredViewHelpers;
 
         return $this;
     }
 
-
     /**
-     * getValidTagAttributes
-     *
-     * @access public
      * @return array
      */
-    public function getValidTagAttributes()
+    public function getValidTagAttributes(): array
     {
         return $this->validTagAttributes;
     }
 
-
     /**
-     * setIgnoredViewHelpers
-     *
-     * @access public
+     * @param  array $validTagAttributes
      * @return \TwbsHelper\Options\ModuleOptions
      */
-    public function setValidTagAttributes(array $validTagAttributes)
+    public function setValidTagAttributes(array $validTagAttributes): \TwbsHelper\Options\ModuleOptions
     {
         $this->validTagAttributes = $validTagAttributes;
 
         return $this;
     }
 
-
     /**
-     * getValidTagAttributePrefixes
-     *
-     * @access public
      * @return array
      */
-    public function getValidTagAttributePrefixes()
+    public function getValidTagAttributePrefixes(): array
     {
         return $this->validTagAttributePrefixes;
     }
 
-
     /**
-     * setValidTagAttributePrefixes
-     *
-     * @access public
+     * @param  array $validTagAttributePrefixes
      * @return \TwbsHelper\Options\ModuleOptions
      */
-    public function setValidTagAttributePrefixes(array $validTagAttributePrefixes)
+    public function setValidTagAttributePrefixes(array $validTagAttributePrefixes): \TwbsHelper\Options\ModuleOptions
     {
         $this->validTagAttributePrefixes = $validTagAttributePrefixes;
 
         return $this;
     }
 
-
     /**
-     * getClassMap
-     *
-     * @access public
      * @return array
      */
-    public function getClassMap()
+    public function getClassMap(): array
     {
         return $this->classMap;
     }
 
-
     /**
-     * setClassMap
-     *
-     * @access public
+     * @param  array $classMap
      * @return \TwbsHelper\Options\ModuleOptions
      */
-    public function setClassMap(array $classMap)
+    public function setClassMap(array $classMap): \TwbsHelper\Options\ModuleOptions
     {
         $this->classMap = $classMap;
 
         return $this;
     }
 
-
     /**
-     * getTypeMap
-     *
-     * @access public
      * @return array
      */
-    public function getTypeMap()
+    public function getTypeMap(): array
     {
         return $this->typeMap;
     }
 
-
     /**
-     * setTypeMap
-     *
-     * @access public
+     * @param  array $typeMap
      * @return \TwbsHelper\Options\ModuleOptions
      */
-    public function setTypeMap(array $typeMap)
+    public function setTypeMap(array $typeMap): \TwbsHelper\Options\ModuleOptions
     {
         $this->typeMap = $typeMap;
 

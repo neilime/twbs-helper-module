@@ -4,28 +4,10 @@ namespace TwbsHelper\Form\View\Helper;
 
 class FormButton extends \Laminas\Form\View\Helper\FormButton
 {
-    use \TwbsHelper\View\Helper\HtmlTrait;
+    use \TwbsHelper\Form\View\ElementHelperTrait;
 
     public const POSITION_PREPEND = 'prepend';
     public const POSITION_APPEND  = 'append';
-
-    protected static $dropdownContainerFormat = '<div %s>%s</div>';
-
-    // Allowed variants
-    protected static $variants = [
-        'danger',
-        'dark',
-        // Added in BS4
-        'info',
-        'light',
-        // Added in BS4
-        'link',
-        'primary',
-        'secondary',
-        // BS4 Renamed .btn-default to .btn-secondary
-        'success',
-        'warning',
-    ];
 
     /**
      * Invoke helper as functor
@@ -52,6 +34,13 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
      */
     public function renderSpec(array $elementSpec, ?string $buttonContent = null): string
     {
+        $element = $this->getElementFromSpec($elementSpec);
+
+        return $this->render($element, $buttonContent);
+    }
+
+    protected function getElementFromSpec(array $elementSpec): \Laminas\Form\ElementInterface
+    {
         $factory = new \Laminas\Form\Factory();
 
         // Set default type if none given
@@ -68,8 +57,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
                 \Laminas\Form\Element\Button::class
             ));
         }
-
-        return $this->render($element, $buttonContent);
+        return $element;
     }
 
     /**
@@ -87,168 +75,283 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
             return $this->getView()->plugin('dropdown')->render($element);
         }
 
-        $this->defineButtonClasses($element);
-        $buttonContent = $this->renderButtonContent($element, $buttonContent);
+        // Checkbox or radio button
+        if ($element->getAttribute('type') === 'checkbox' || $element->getAttribute('type') === 'radio') {
+            $element->setOption('button', $element->getOption('variant') ?? true);
+            $element->setOption('form_check_group', false);
+            $element->setAttribute('autocomplete', 'off');
+            return $this->getView()->plugin('form_row_element')->__invoke($element);
+        }
 
-        $tag = $element->getOption('tag');
+        $this->prepareElementAttributes($element);
 
         $validTagAttributes = $this->validTagAttributes;
-        if ($tag === 'a') {
-            $this->validTagAttributes['href'] = true;
+        $this->prepareElementValidTagAttributes($element);
 
-            unset($this->validTagAttributes['type']);
-            unset($this->validTagAttributes['value']);
-            unset($this->validTagAttributes['name']);
+        $buttonContent = $this->renderButtonContent($element, $buttonContent);
 
-            $element->setAttribute('type', null);
-            $element->setAttribute('name', 'dummy');
+        $buttonContent = $this->renderButton($element, $buttonContent);
 
-            if (!$element->getAttribute('role')) {
-                $element->setAttribute('role', 'button');
-            }
-        }
+        $buttonContent = $this->renderPopoverAndTooltip($element, $buttonContent);
 
-        // Popover
-        $popoverAttributes = $this->getPopoverAttributes($element);
-
-        // Tooltip
-        $tooltipAttributes = $this->getTooltipAttributes($element);
-
-        $isDisabled = $element->getAttribute('disabled');
-        if ($popoverAttributes || $tooltipAttributes) {
-            if ($isDisabled) {
-                $this->setStylesToElement($element, [
-                    'pointer-events' => 'none',
-                ]);
-            } else {
-                $element->setAttributes(array_merge(
-                    $popoverAttributes,
-                    $tooltipAttributes,
-                    $element->getAttributes()
-                ));
-            }
-        }
-
-        $markup =  $this->openTag($element) . $this->addProperIndentation($buttonContent) . $this->closeTag();
         $this->validTagAttributes = $validTagAttributes;
 
-        if ($tag && $tag !== 'button') {
-            unset($this->booleanAttributes['type'], $this->booleanAttributes['value']);
-
-            $markup = str_replace(
-                ['<button', '</button>'],
-                ['<' . $tag,  '</' . $tag . '>'],
-                $markup
-            );
-        }
-
-        if ($isDisabled && ($popoverAttributes || $tooltipAttributes)) {
-            $markup = $this->htmlElement(
-                'span',
-                $this->setClassesToAttributes(
-                    array_merge(
-                        $popoverAttributes,
-                        $tooltipAttributes,
-                        ['tabindex' => '0']
-                    ),
-                    ['d-inline-block']
-                ),
-                $markup
-            );
-        }
-
-        return $markup;
+        return $buttonContent;
     }
 
-    protected function getTooltipAttributes(\Laminas\Form\ElementInterface $element): array
+    protected function prepareElementAttributes(\Laminas\Form\ElementInterface $element)
     {
+        if (!empty($element->getOption('disable_twbs'))) {
+            return;
+        }
+
+        $this->prepareElementAttributesForToggle($element);
+        $this->prepareElementAttributesForPopover($element);
+        $this->prepareElementAttributesForTooltip($element);
+        $this->prepareElementAttributesForClose($element);
+        $this->prepareElementAttributesForTag($element);
+        $this->prepareElementClassAttributes($element);
+    }
+
+    protected function prepareElementClassAttributes(\Laminas\Form\ElementInterface $element)
+    {
+        if ($element->getOption('disable_twbs')) {
+            return;
+        }
+
+        if ($element->getOption('close')) {
+            return;
+        }
+
+        $attributes = $this->getView()->plugin('htmlattributes')
+            ->__invoke($element->getAttributes())
+            ->merge(['class' => ['btn']]);
+
+        // Size option
+        if ($size = $element->getOption('size')) {
+            $attributes['class']->merge(
+                $this->getView()->plugin('htmlClass')->plugin('size')->getClassesFromOption($size, 'btn')
+            );
+        }
+
+        // Positioned badge
+        $badge = $element->getOption('badge');
+        if (!empty($badge[1]['positioned'])) {
+            $attributes['class']->merge(['position-relative']);
+        }
+
+        // Variant option
+        /** @var \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Variant $variantClassHelper **/
+        $variantClassHelper = $this->getView()->plugin('htmlClass')->plugin('variant');
+        if ($variant = $element->getOption('variant')) {
+            $attributes['class']->merge($variantClassHelper->getClassesFromOption(
+                $variant,
+                'btn',
+                'outline'
+            ));
+        }
+        if (!$variantClassHelper->classesIncludeVariant($attributes['class'], 'btn', 'outline')) {
+            $attributes['class']->merge($variantClassHelper->getClassesFromOption('secondary', 'btn'));
+        }
+
+        $classes = $attributes['class']->getArrayCopy();
+        $this->setClassesToElement($element, $classes);
+    }
+
+    protected function prepareElementAttributesForClose(\Laminas\Form\ElementInterface $element)
+    {
+        $close = $element->getOption('close');
+        if (!$close) {
+            return;
+        }
+
+        $this->setClassesToElement($element, ['btn-close']);
+
+        if (
+            !$element->getOption('label') &&
+            !$element->hasAttribute('aria-label')
+        ) {
+            if ($close === true) {
+                $close = 'Close';
+            }
+            if ($this->hasTranslator()) {
+                $close = $this->getTranslator()->translate($close);
+            }
+            $element->setAttribute('aria-label', $close);
+        }
+    }
+
+    protected function prepareElementAttributesForToggle(\Laminas\Form\ElementInterface $element)
+    {
+        $toggle = $element->getOption('toggle');
+        if ($toggle === null) {
+            return;
+        }
+
+        $attributes = [
+            'data-bs-toggle' => 'button',
+            'autocomplete' => 'off',
+        ];
+
+        if ($toggle) {
+            $this->setClassesToElement($element, ['active']);
+            $attributes['aria-pressed'] = 'true';
+        }
+
+        $element->setAttributes(
+            $this->getView()->plugin('htmlattributes')->__invoke($element->getAttributes())->merge($attributes)
+        );
+    }
+
+    protected function prepareElementAttributesForPopover(\Laminas\Form\ElementInterface $element)
+    {
+        $isDisabled = $element->getAttribute('disabled');
+        if ($isDisabled) {
+            return;
+        }
+
+        $popoverAttributes = $this->getElementPopoverAttributes($element);
+        if (!$popoverAttributes) {
+            return;
+        }
+
+        $element->setAttributes(
+            $this->getView()->plugin('htmlattributes')->__invoke($element->getAttributes())->merge($popoverAttributes)
+        );
+    }
+
+    protected function getElementPopoverAttributes(
+        \Laminas\Form\ElementInterface $element
+    ): ?\TwbsHelper\View\HtmlAttributesSet {
+        $popoverOption = $element->getOption('popover');
+        if (!$popoverOption) {
+            return null;
+        }
+
+        if (is_string($popoverOption)) {
+            $popoverOption = ['content' => $popoverOption];
+        } elseif (!is_iterable($popoverOption)) {
+            throw new \InvalidArgumentException(sprintf(
+                'Option "popover" expects a string or an iterable, "%s" given',
+                is_object($popoverOption) ? get_class($popoverOption) : gettype($popoverOption)
+            ));
+        }
+
+        $attributes = $this->getView()->plugin('htmlattributes')->__invoke([
+            'data-bs-toggle' => 'popover',
+            'data-bs-content' => $popoverOption['content'],
+        ]);
+
+        $title = $element->getAttribute('title');
+        $attributes['data-bs-original-title'] = $title ?? '';
+        if ($title) {
+            $element->setAttribute('title', '');
+        }
+
+        if (isset($popoverOption['placement'])) {
+            $attributes['data-bs-placement'] = $popoverOption['placement'];
+            $attributes['data-bs-container'] = 'body';
+        }
+
+        if (isset($popoverOption['trigger'])) {
+            $attributes['data-bs-trigger'] = $popoverOption['trigger'];
+        }
+
+        return $attributes;
+    }
+
+    protected function prepareElementAttributesForTooltip(\Laminas\Form\ElementInterface $element)
+    {
+        $isDisabled = $element->getAttribute('disabled');
+        if ($isDisabled) {
+            return;
+        }
+
+        $tooltipAttributes = $this->getElementTooltipAttributes($element);
+        if (!$tooltipAttributes) {
+            return;
+        }
+
+        $element->setAttributes(
+            $this->getView()->plugin('htmlattributes')
+                ->__invoke($element->getAttributes())
+                ->merge($tooltipAttributes)
+        );
+    }
+
+    protected function getElementTooltipAttributes(
+        \Laminas\Form\ElementInterface $element
+    ): ?\TwbsHelper\View\HtmlAttributesSet {
+        $this->getView()->plugin('htmlattributes');
         // Retrieve tooltip options
         $tooltipOptions = $element->getOption('tooltip');
         if (!$tooltipOptions) {
-            return [];
+            return null;
         }
 
         if (is_string($tooltipOptions)) {
             $tooltipOptions = ['content' => $tooltipOptions];
         }
 
-        $tooltipAttributes = [
-            'title' => $tooltipOptions['content'],
-            'data-toggle' => 'tooltip',
-        ];
+        $attributes = $this->getView()->plugin('htmlattributes')->__invoke([
+            'title' => '',
+            'data-bs-original-title' => $tooltipOptions['content'],
+            'data-bs-toggle' => 'tooltip',
+        ]);
 
-        if ($this->isHTML($tooltipOptions['content'])) {
-            $tooltipAttributes['data-html'] = 'true';
+        if ($this->getView()->plugin('htmlElement')->isHTML($tooltipOptions['content'])) {
+            $attributes['data-bs-html'] = 'true';
         }
 
         if (isset($tooltipOptions['placement'])) {
-            $tooltipAttributes['data-placement'] = $tooltipOptions['placement'];
+            $attributes['data-bs-placement'] = $tooltipOptions['placement'];
         }
-        return $tooltipAttributes;
+
+        return $attributes;
     }
 
-    protected function getPopoverAttributes(\Laminas\Form\ElementInterface $element): array
+    protected function prepareElementAttributesForTag(\Laminas\Form\ElementInterface $element)
     {
-        $popoverOption = $element->getOption('popover');
-        if (!$popoverOption) {
-            return [];
-        }
+        switch ($element->getOption('tag')) {
+            case 'a':
+                $disabled = $element->getAttribute('disabled');
+                if ($disabled) {
+                    $this->setClassesToElement($element, ['disabled']);
 
-        if (is_string($popoverOption)) {
-            $popoverOption = ['content' => $popoverOption];
-        } elseif (!is_array($popoverOption)) {
-            throw new \InvalidArgumentException(sprintf(
-                'Option "popover" expects a string or an array, "%s" given',
-                is_object($popoverOption) ? get_class($popoverOption) : gettype($popoverOption)
-            ));
-        }
+                    if (!$element->hasAttribute('aria-disabled')) {
+                        $element->setAttribute('aria-disabled', 'true');
+                    }
 
-        $popoverAttributes = [
-            'data-toggle' => 'popover',
-            'data-content' => $popoverOption['content'],
-        ];
+                    if ($element->getAttribute('href') && !$element->hasAttribute('tabindex')) {
+                        $element->setAttribute('tabindex', '-1');
+                    }
+                }
 
-        if (isset($popoverOption['placement'])) {
-            $popoverAttributes['data-placement'] = $popoverOption['placement'];
-            $popoverAttributes['data-container'] = 'body';
-        }
+                $element->setAttribute('type', null);
 
-        if (isset($popoverOption['trigger'])) {
-            $popoverAttributes['data-trigger'] = $popoverOption['trigger'];
+                if (!$element->getAttribute('role')) {
+                    $element->setAttribute('role', 'button');
+                }
+                break;
+            default:
+                // Nothing to prepare for default tag
         }
-        return $popoverAttributes;
     }
 
-    protected function defineButtonClasses(\Laminas\Form\ElementInterface $element)
+    protected function prepareElementValidTagAttributes(\Laminas\Form\ElementInterface $element)
     {
-        if (!empty($element->getOption('disable_twbs'))) {
-            return;
+        switch ($element->getOption('tag')) {
+            case 'a':
+                $this->validTagAttributes['href'] = true;
+
+                unset($this->validTagAttributes['type']);
+                unset($this->validTagAttributes['value']);
+                unset($this->validTagAttributes['name']);
+                unset($this->validTagAttributes['disabled']);
+                break;
+            default:
+                $this->validTagAttributes['autocomplete'] = true;
         }
-
-        $classesToAdd = ['btn'];
-
-        // Variant option
-        if ($variant = $element->getOption('variant')) {
-            $classesToAdd[] = $this->getVariantClass($variant, 'btn', 'outline');
-        }
-
-        // Size option
-        if ($size = $element->getOption('size')) {
-            $classesToAdd[] = $this->getSizeClass($size, 'btn');
-        }
-
-        // Block option
-        if ($element->getOption('block')) {
-            $classesToAdd[] = 'btn-block';
-        }
-
-        $classes = $this->addClassesAttribute(($element->getAttribute('class') ?? ''), $classesToAdd);
-
-        if (!preg_grep('/^btn-.*(' . join('|', static::$variants) . ')$/', $classes)) {
-            $classes[] = 'btn-secondary';
-        }
-
-        $this->setClassesToElement($element, $classes);
     }
 
     protected function renderButtonContent(\Laminas\Form\ElementInterface $element, string $buttonContent = null)
@@ -270,11 +373,19 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
             }
 
             if (
-                !$this->isHTML($buttonContent)
+                !$this->getView()->plugin('htmlElement')->isHTML($buttonContent)
                 && (!$element instanceof \Laminas\Form\LabelAwareInterface
                     || !$element->getLabelOption('disable_html_escape'))
             ) {
                 $buttonContent = $this->getEscapeHtmlHelper()($buttonContent);
+            }
+
+            if ($element->getOption('show_label') === false) {
+                $buttonContent = $this->getView()->plugin('htmlElement')->__invoke(
+                    'span',
+                    ['class' => 'visually-hidden'],
+                    $buttonContent
+                );
             }
         }
 
@@ -283,6 +394,9 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
 
         // Render spinner
         $buttonContent = $this->renderSpinnerContent($element, $buttonContent);
+
+        // Render badge
+        $buttonContent = $this->renderBadgeContent($element, $buttonContent);
 
         if (null === $buttonContent) {
             throw new \DomainException(sprintf(
@@ -348,7 +462,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
             ));
         }
 
-        $iconContent = $this->htmlElement('i', ['class' => $iconOptions['class']], '');
+        $iconContent = $this->getView()->plugin('htmlElement')->__invoke('i', ['class' => $iconOptions['class']], '');
 
         // No button content provided, set icon as button content
         if (!$buttonContent) {
@@ -383,10 +497,9 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
         $spinnerOptions['tag'] = 'span';
         $spinnerOptions['size'] = 'sm';
 
-        $spinnerOptions['attributes'] = array_merge(
-            $spinnerOptions['attributes'] ?? [],
-            ['aria-hidden' => 'true']
-        );
+        $spinnerOptions['attributes'] = $this->getView()->plugin('htmlattributes')
+            ->__invoke($spinnerOptions['attributes'] ?? [])
+            ->merge(['aria-hidden' => 'true']);
 
         $spinnerContent = $this->getView()->plugin('spinner')->__invoke($spinnerOptions);
 
@@ -407,6 +520,95 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
         }
     }
 
+    protected function renderBadgeContent(\Laminas\Form\ElementInterface $element, string $buttonContent = null)
+    {
+        $badgeOptions = $element->getOption('badge');
+        if (!$badgeOptions) {
+            return $buttonContent;
+        }
+
+        if (is_string($badgeOptions)) {
+            $arguments = [$badgeOptions];
+        } else {
+            $arguments = $badgeOptions;
+        }
+
+        $badgeContent = call_user_func_array([$this->getView()->plugin('badge'), '__invoke'], $arguments);
+
+        // No button content provided, set badge as button content
+        if (!$buttonContent) {
+            return $badgeContent;
+        }
+        return $buttonContent . PHP_EOL . $badgeContent;
+    }
+
+    protected function renderButton(\Laminas\Form\ElementInterface $element, string $buttonContent = null): string
+    {
+        $htmlElementHelper = $this->getView()->plugin('htmlElement');
+        $tag = $element->getOption('tag');
+        switch ($tag) {
+            case 'a':
+                return $htmlElementHelper->__invoke(
+                    $tag,
+                    $this->prepareAttributes($element->getAttributes()),
+                    $buttonContent
+                );
+            case 'input':
+                return $htmlElementHelper->__invoke(
+                    $tag,
+                    $this->getView()->plugin('htmlattributes')
+                        ->__invoke($this->prepareAttributes($element->getAttributes()))
+                        ->merge(['value' => $buttonContent])
+                );
+            default:
+                return $this->openTag($element)
+                    . $htmlElementHelper->addProperIndentation($buttonContent)
+                    . $this->closeTag();
+        }
+    }
+
+
+    protected function renderPopoverAndTooltip(
+        \Laminas\Form\ElementInterface $element,
+        string $buttonContent = null
+    ): string {
+
+        $isDisabled = $element->getAttribute('disabled');
+        if (!$isDisabled) {
+            return $buttonContent;
+        }
+
+        $attributes = $this->getView()->plugin('htmlattributes')->__invoke([]);
+
+        $popoverAttributes = $this->getElementPopoverAttributes($element);
+        if ($popoverAttributes) {
+            $attributes = $popoverAttributes->merge($attributes);
+        }
+
+        $tooltipAttributes = $this->getElementTooltipAttributes($element);
+        if ($tooltipAttributes) {
+            $attributes = $tooltipAttributes->merge($attributes);
+        }
+
+        if (!$attributes->count()) {
+            return $buttonContent;
+        }
+
+        $attributes->merge([
+            'class' => ['d-inline-block'],
+            'tabindex' => '0',
+            'title' => isset($attributes['data-bs-original-title']) ? '' : null,
+        ]);
+
+        $buttonContent = $this->getView()->plugin('htmlElement')->__invoke(
+            'span',
+            $attributes,
+            $buttonContent
+        );
+
+        return $buttonContent;
+    }
+
     /**
      * Determine button type to use
      *
@@ -416,9 +618,10 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
     protected function getType(\Laminas\Form\ElementInterface $element): string
     {
         $tag = $element->getOption('tag');
-        if (!$tag || $tag === 'button') {
+        if (!$tag || $tag === 'button' ||  $tag === 'input') {
             return parent::getType($element);
         }
+
         return '';
     }
 }

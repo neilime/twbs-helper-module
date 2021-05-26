@@ -45,4 +45,4 @@ composer require neilime/twbs-helper-module
 
 ### Manually
 
-- Copy `bootstrap.css` file (available on [Twitter Bootstrap website](https://github.com/twbs/bootstrap/archive/v3.0.0.zip)) into your assets folder and add it in your head scripts.
+- Copy `bootstrap.css` file (available on [Twitter Bootstrap website](https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css)) into your assets folder and add it in your head scripts.

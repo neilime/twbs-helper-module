@@ -7,70 +7,83 @@ namespace TwbsHelper\View\Helper;
  */
 abstract class AbstractGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
-    // @var string
+    /**
+     * @var string
+     */
     protected static $groupClass;
 
-    // @var string
+    /**
+     * @var string
+     */
     protected static $groupTag;
 
-    // @var string
-    protected static $helperName;
+    protected static $allowedOptions = [];
 
     /**
      * Render a group
-     * @param array $items Array with the elements of the group
-     * @param array $optionsAndAttributes Attributes for the group tag.
+     * @param iterable $items Array with the elements of the group
+     * @param iterable $optionsAndAttributes Attributes for the group tag.
      * @param boolean $escape Escape the items.
      * @return string The group XHTML.
      */
-    public function __invoke(array $items, array $optionsAndAttributes = [], bool $escape = true): string
+    public function __invoke(iterable $items, iterable $optionsAndAttributes = [], bool $escape = true): string
     {
-        return $this->htmlElement(
+        $content = $this->renderGroupItems($items, $optionsAndAttributes, $escape);
+        return $this->renderGroupContainer($content, $optionsAndAttributes, $escape);
+    }
+
+    protected function renderGroupContainer(string $content, iterable $optionsAndAttributes, bool $escape): string
+    {
+        $attributes = $this->prepareAttributes($optionsAndAttributes);
+        return $this->getView()->plugin('htmlElement')->__invoke(
             static::$groupTag,
-            $this->setClassesToAttributes($optionsAndAttributes, [static::$groupClass]),
-            $this->renderGroupItems($items, $escape),
+            $attributes,
+            $content,
             $escape
         );
     }
 
-    protected function renderGroupItems(array $items, bool $escape = true): string
+    protected function prepareAttributes(iterable $optionsAndAttributes): \TwbsHelper\View\HtmlAttributesSet
+    {
+        $attributes = $this->getView()->plugin('htmlattributes')
+            ->__invoke($optionsAndAttributes)
+            ->offsetsUnset(static::$allowedOptions)
+            ->merge(['class' => [static::$groupClass]]);
+
+        return $attributes;
+    }
+
+    protected function renderGroupItems(iterable $items, iterable $optionsAndAttributes, bool $escape = true): string
     {
         $content = '';
-
-        $itemHelper = $this->getViewHelper(static::$helperName);
-
-        foreach ($items as $item) {
-            $arguments = \Laminas\Stdlib\ArrayUtils::isList($item) ?
-                [$item[0], $item[1] ?? [], $item[2] ??  $escape]
-                : [$item, [], $escape];
+        foreach ($items as $itemKey => $item) {
+            if (\Laminas\Stdlib\ArrayUtils::isList($item)) {
+                $itemSpec = $item[0];
+                $itemAttributes = $item[1] ?? [];
+                $itemEscape = $item[2] ??  $escape;
+            } else {
+                $itemSpec = $item;
+                $itemAttributes = [];
+                $itemEscape =  $escape;
+            }
 
             $content .= ($content ? PHP_EOL : '') . $this->renderGroupItem(
-                $itemHelper,
-                $arguments
+                $itemKey,
+                $itemSpec,
+                $itemAttributes,
+                $optionsAndAttributes,
+                $itemEscape,
             );
         }
 
         return $content;
     }
 
-    protected function renderGroupItem(
-        \Laminas\View\Helper\HelperInterface $itemHelper,
-        array $arguments
-    ): string {
-        return call_user_func_array([$itemHelper, '__invoke'], $arguments);
-    }
-
-    /**
-     * @param string $helperName the name of the helper to retrieve
-     * @throws \LogicException if the view or plugin method is unavailable in the current context
-     */
-    public function getViewHelper(string $helperName): \Laminas\View\Helper\HelperInterface
-    {
-        $phpRenderer = $this->getView();
-        if ($phpRenderer !== null && method_exists($phpRenderer, 'plugin')) {
-            return $phpRenderer->plugin($helperName);
-        }
-
-        throw new \LogicException('Unable to retrieve helper "' . $helperName . '"');
-    }
+    abstract protected function renderGroupItem(
+        $itemKey,
+        $itemSpec,
+        iterable $attributes,
+        iterable $options,
+        bool $escape
+    ): string;
 }

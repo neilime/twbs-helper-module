@@ -4,7 +4,9 @@ namespace TwbsHelper\Form\View\Helper;
 
 trait MultiCheckboxTrait
 {
-    use \TwbsHelper\View\Helper\HtmlTrait;
+    use \TwbsHelper\Form\View\ElementHelperTrait;
+
+    private static $TMP_SEPARATOR = '[SEPARATOR]';
 
     /**
      * Render a form <input type="radio"> element from the provided $element
@@ -18,15 +20,13 @@ trait MultiCheckboxTrait
             ));
         }
 
-        $this->prepareElement($element);
-        $isCustom = $element->getOption('custom');
+        $originalLabelAttributes = $this->labelAttributes;
+        $this->labelAttributes = [];
 
         $originalSeparator = $this->getSeparator();
-        $tmpSeparator = '[SEPARATOR]';
-        $this->setSeparator($tmpSeparator);
+        $this->setSeparator(self::$TMP_SEPARATOR);
 
-        $originalLabelAttributes = $this->labelAttributes;
-        $this->labelAttributes = ['class' => $isCustom ? 'custom-control-label' : 'form-check-label'];
+        $this->prepareElement($element);
 
         $tmpContent = parent::render($element);
 
@@ -36,7 +36,7 @@ trait MultiCheckboxTrait
 
         $content = '';
 
-        foreach (explode($tmpSeparator, $tmpContent) as $optionContent) {
+        foreach (explode(self::$TMP_SEPARATOR, $tmpContent) as $optionContent) {
             // Retrieve input content
             if (preg_match('/(<label[^>]*>.*)(<input[^>]+>)(.*<\/label[^>]*>)/', $optionContent, $matches)) {
                 $labelContent = $matches[1] . $matches[3];
@@ -44,9 +44,11 @@ trait MultiCheckboxTrait
                     $labelContent = '';
                 }
 
+                $optionContent = $matches[2] . ($labelContent ? PHP_EOL . $labelContent : '');
+
                 $content .= ($content ? PHP_EOL : '') . $this->renderElementOption(
                     $element,
-                    $matches[2] . ($labelContent ? PHP_EOL . $labelContent : '')
+                    $optionContent,
                 );
             }
         }
@@ -60,58 +62,105 @@ trait MultiCheckboxTrait
             return;
         }
 
-        $isCustom = $multiCheckbox->getOption('custom');
-
         $this->setClassesToElement(
             $multiCheckbox,
-            [$isCustom ? 'custom-control-input' : 'form-check-input'],
+            [$multiCheckbox->getOption('button') ? 'btn-check' : 'form-check-input'],
             ['form-control']
         );
 
-        // Handle label attributes for options
+        $this->prepareValueOptions($multiCheckbox);
+    }
+
+    protected function prepareValueOptions(\Laminas\Form\Element\MultiCheckbox $multiCheckbox)
+    {
         $valueOptions = $multiCheckbox->getValueOptions();
         foreach ($valueOptions as &$valueOption) {
-            if (!is_array($valueOption)) {
-                continue;
+            if (!$valueOption) {
+                $valueOption = [];
+            }
+
+            // Input attributes
+            $inputAttributes = $this->getView()->plugin('htmlattributes')->__invoke($valueOption['attributes'] ?? []);
+
+            $buttonOption = $valueOption['button'] ?? $multiCheckbox->getOption('button');
+            if ($buttonOption) {
+                $inputAttributes
+                    ->merge(['class' => ['btn-check']])
+                    ->offsetGet('class')->remove('form-check-input');
             }
 
             if (empty($valueOption['label'])) {
-                $valueOption['attributes'] = $this->setClassesToAttributes(
-                    $valueOption['attributes'] ?? [],
-                    ['position-static', 'form-check-input']
-                );
+                $inputAttributes = $inputAttributes->merge(['class' => ['position-static', 'form-check-input']]);
             }
 
+            $valueOption['attributes'] = $inputAttributes->getArrayCopy();
+
+            // Label attributes
+            $labelAttributes = $this->getView()->plugin('htmlattributes')->__invoke(
+                $valueOption['label_attributes'] ?? []
+            );
+
+            $labelAttributes->merge(['class' => $this->getValueOptionLabelClasses($multiCheckbox, $valueOption)]);
+
             if (isset($valueOption['attributes']['id'])) {
-                $valueOption['label_attributes'] = \Laminas\Stdlib\ArrayUtils::merge(
-                    $valueOption['label_attributes'] ?? [],
-                    [
-                        'for' => $valueOption['attributes']['id'],
-                    ]
-                );
+                $labelAttributes->merge(['for' => $valueOption['attributes']['id']]);
             }
+
+            $valueOption['label_attributes'] = $labelAttributes->getArrayCopy();
         }
 
         $multiCheckbox->setValueOptions($valueOptions);
     }
 
+    protected function getValueOptionLabelClasses(
+        \Laminas\Form\Element\MultiCheckbox $multiCheckbox,
+        iterable $valueOption
+    ): array {
+        $labelClasses = [];
+        $buttonOption = $valueOption['button'] ?? $multiCheckbox->getOption('button');
+        if ($buttonOption) {
+            $labelClasses[] = 'btn';
+
+            /** @var \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Variant $variantClassHelper **/
+            $variantClassHelper = $this->getView()->plugin('htmlClass')->plugin('variant');
+
+            $labelClasses[] = 'btn';
+            if (is_string($buttonOption)) {
+                $labelClasses = array_merge(
+                    $labelClasses,
+                    $variantClassHelper->getClassesFromOption($buttonOption, 'btn', 'outline')
+                );
+            }
+            if (!$variantClassHelper->classesIncludeVariant($labelClasses, 'btn', 'outline')) {
+                $labelClasses = array_merge(
+                    $labelClasses,
+                    $variantClassHelper->getClassesFromOption('secondary', 'btn')
+                );
+            }
+        } else {
+            $labelClasses[] = 'form-check-label';
+        }
+
+        return $labelClasses;
+    }
+
+
     protected function renderElementOption(\Laminas\Form\ElementInterface $element, string $optionContent): string
     {
 
-        if ($element->getOption('disable_twbs')) {
+        if ($element->getOption('disable_twbs') || $element->getOption('form_check_group') === false) {
             return $optionContent;
         }
 
-        $isCustom = $element->getOption('custom');
-        $groupClasses = $isCustom ? ['custom-control', 'custom-radio'] : ['form-check'];
+        $groupClasses = ['form-check'];
 
         if ($element->getOption('layout') === \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE) {
-            $groupClasses[] = $isCustom ? 'custom-control-inline' : 'form-check-inline';
+            $groupClasses[] = 'form-check-inline';
         }
 
-        return $this->htmlElement(
+        return $this->getView()->plugin('htmlElement')->__invoke(
             'div',
-            $this->setClassesToAttributes([], $groupClasses),
+            ['class' => $groupClasses],
             $optionContent
         );
     }

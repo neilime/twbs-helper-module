@@ -4,7 +4,7 @@ namespace TwbsHelper\Form\View\Helper;
 
 class FormLabel extends \Laminas\Form\View\Helper\FormLabel
 {
-    use \TwbsHelper\View\Helper\HtmlTrait;
+    use \TwbsHelper\Form\View\ElementHelperTrait;
 
     /**
      * @var string
@@ -39,18 +39,16 @@ class FormLabel extends \Laminas\Form\View\Helper\FormLabel
             return $labelContent;
         }
 
-        if ($element instanceof \Laminas\Form\LabelAwareInterface) {
-            $labelAttributes = $element->getLabelAttributes();
-            $labelAttributes = $this->setClassesToAttributes(
-                $labelAttributes,
-                $this->getLabelClasses($element, $labelAttributes)
-            );
-            $element->setLabelAttributes($labelAttributes);
-        } else {
-            $labelAttributes = [];
+
+
+        $labelAttributes = $this->prepareLabelAttributes($element);
+        $markup = parent::__invoke($element, $labelContent, $position);
+
+        $disableTwbs = $element->getOption('disable_twbs');
+        if ($disableTwbs) {
+            return $markup;
         }
 
-        $markup = parent::__invoke($element, $labelContent, $position);
         if (!preg_match('/(<label[^>]*>)([\s\S]*)(<\/label[^>]*>)/imU', $markup, $matches)) {
             return $markup;
         }
@@ -69,7 +67,7 @@ class FormLabel extends \Laminas\Form\View\Helper\FormLabel
         }
 
         if ($element instanceof \Laminas\Form\Element\MultiCheckbox) {
-            return $this->htmlElement(
+            return $this->getView()->plugin('htmlElement')->__invoke(
                 'div',
                 $labelAttributes,
                 $label,
@@ -100,47 +98,95 @@ class FormLabel extends \Laminas\Form\View\Helper\FormLabel
         return $label ?? '';
     }
 
-    protected function getLabelClasses(\Laminas\Form\ElementInterface $element, array $labelAttributes): array
+    protected function prepareLabelAttributes(\Laminas\Form\ElementInterface $element): iterable
     {
-        $labelClasses = [];
+        $disableTwbs = $element->getOption('disable_twbs');
+
+        if ($disableTwbs || !$element instanceof \Laminas\Form\LabelAwareInterface) {
+            return [];
+        }
+
+        $labelAttributes = $this->getView()->plugin('htmlattributes')->__invoke($element->getLabelAttributes());
+
+        $labelAttributes->merge(['class' => $this->getLabelClasses($element, $labelAttributes)]);
+
+        $element->setLabelAttributes($labelAttributes->getArrayCopy());
+
+        return $labelAttributes;
+    }
+
+    protected function getLabelClasses(
+        \Laminas\Form\ElementInterface $element,
+        \TwbsHelper\View\HtmlAttributesSet $labelAttributes
+    ): iterable {
+        $labelClasses = $labelAttributes['class'];
+
+        if ($element->getOption('show_label') === false) {
+            $labelClasses[] = 'visually-hidden';
+            return $labelClasses;
+        }
 
         $layout = $element->getOption('layout');
 
         // Define label column class
         $columSize = $element->getOption('column');
+
+        $isCheckboxWithLayout = $element->getAttribute('type') === 'checkbox'
+            && $layout;
+
+        /** @var \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Column $columnClassHelper **/
+        $columnClassHelper = $this->getView()->plugin('htmlClass')->plugin('column');
+
+        $shouldAddColumnCounterpartClass = $columSize
+            && $layout !== null
+            && !$columnClassHelper->classesIncludeColumn($labelClasses)
+            && !$isCheckboxWithLayout;
         if (
-            $columSize
-            && $element->getOption('layout') !== null
-            && !$this->hasColumnClassAttribute($labelAttributes['class'] ?? '')
-            && !($element instanceof \Laminas\Form\Element\Checkbox
-                && !$element instanceof \Laminas\Form\Element\MultiCheckbox
-                && $layout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL)
+            $shouldAddColumnCounterpartClass
         ) {
-            $labelClasses[] = $this->getColumnCounterpartClass($columSize);
+            $labelClasses->merge(
+                $this->getView()->plugin('htmlClass')->plugin('columnCounterpart')->getClassesFromOption($columSize)
+            );
         }
 
         // Define label size class
         if ($size = $element->getOption('size')) {
-            $labelClasses[] = $this->getSizeClass($size, 'col-form-label');
+            $labelClasses->merge(
+                $this->getView()->plugin('htmlClass')->plugin('size')->getClassesFromOption($size, 'col-form-label')
+            );
         }
 
         if ($element instanceof \Laminas\Form\Element\MultiCheckbox) {
             return $labelClasses;
         }
 
+        if ($element->getOption('floating_label')) {
+            return $labelClasses;
+        }
+
         switch ($element->getAttribute('type')) {
             case 'checkbox':
             case 'radio':
-                $labelClasses[] = $element->getOption('custom')
-                    ? 'custom-control-label'
-                    : 'form-check-label';
-                break;
+                $buttonOption = $element->getOption('button');
+                if ($buttonOption) {
+                    /** @var \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Variant $variantClassHelper **/
+                    $variantClassHelper = $this->getView()->plugin('htmlClass')->plugin('variant');
 
-            case 'file':
-                if ($element->getOption('custom')) {
-                    $labelClasses[] = 'custom-file-label';
+                    $labelClasses[] = 'btn';
+                    if (is_string($buttonOption)) {
+                        $labelClasses->merge($variantClassHelper->getClassesFromOption(
+                            $buttonOption,
+                            'btn',
+                            'outline'
+                        ));
+                    }
+
+                    if (!$variantClassHelper->classesIncludeVariant($labelClasses, 'btn', 'outline')) {
+                        $labelClasses->merge($variantClassHelper->getClassesFromOption('secondary', 'btn'));
+                    }
+                } else {
+                    $labelClasses[] = 'form-check-label';
                 }
-
                 break;
 
             default:
@@ -150,22 +196,13 @@ class FormLabel extends \Laminas\Form\View\Helper\FormLabel
                 }
 
                 switch ($layout) {
-                        // Hide label for "inline" layout
                     case \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE:
-                        if ($element->getOption('show_label') !== true) {
-                            $labelClasses[] = 'sr-only';
-                        }
-
-                        break;
-
                     case \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL:
                         $labelClasses[] = 'col-form-label';
                         break;
-                    case null:
-                        if ($element->getOption('show_label') === false) {
-                            $labelClasses[] = 'sr-only';
-                        }
 
+                    case null:
+                        $labelClasses[] = 'form-label';
                         break;
                 }
         }

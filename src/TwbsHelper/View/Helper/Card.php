@@ -7,10 +7,13 @@ namespace TwbsHelper\View\Helper;
  */
 class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
+    public const CARD_ROW = 'row';
     public const CARD_HEADER = 'header';
     public const CARD_HEADER_NAV_TABS = 'nav';
     public const CARD_FOOTER = 'footer';
+    public const CARD_IMG = 'image';
     public const CARD_IMG_TOP = 'image_top';
+    public const CARD_IMG_BOTTOM = 'image_bottom';
     public const CARD_OVERLAY = 'overlay';
     public const CARD_LIST_GROUP = 'listGroup';
     public const CARD_BODY_TITLE = 'title';
@@ -19,11 +22,20 @@ class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
     public const CARD_BODY_LINK = 'link';
     public const CARD_BODY_BLOCKQUOTE = 'blockquote';
 
+    protected static $allowedOptions = [
+        'body_variant',
+        'bg_variant',
+        'border_variant',
+    ];
+
     protected static $cardParts = [
+        self::CARD_ROW => 'renderCardRow',
         self::CARD_HEADER => 'renderCardHeader',
         self::CARD_HEADER_NAV_TABS => 'renderCardHeaderNav',
         self::CARD_FOOTER => 'renderCardFooter',
+        self::CARD_IMG => 'renderCardImg',
         self::CARD_IMG_TOP => 'renderCardImgTop',
+        self::CARD_IMG_BOTTOM => 'renderCardImgBottom',
         self::CARD_OVERLAY => 'renderCardOverlay',
         self::CARD_LIST_GROUP => 'renderCardListGroup'
     ];
@@ -32,91 +44,177 @@ class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
      * Generates an 'alert' element
      *
      * @param  string  $content     The content of the alert
-     * @param  array   $attributes  Html attributes of the "<div>" element
+     * @param  iterable   $optionsAndAttributes  Html attributes of the "<div>" element
      * @param  boolean $escape      True espace html content '$content'. Default True
      * @return string The card XHTML.
      */
     public function __invoke(
         $content,
-        array $attributes = [],
+        iterable $optionsAndAttributes = [],
         bool $escape = true
     ) {
-        return $this->renderCardContainer($content, $attributes, $escape);
+        return $this->renderCardContainer($content, $optionsAndAttributes, $escape);
     }
 
-    protected function renderCardContainer($content, array $attributes = [], bool $escape = true): string
+    protected function renderCardContainer($content, iterable $optionsAndAttributes, bool $escape): string
     {
-        $bodyAttributes = [];
-        if (!empty($attributes['bodyVariant'])) {
-            $bodyAttributes['class'] = $this->getVariantClass($attributes['bodyVariant'], 'text');
-        }
-        unset($attributes['bodyVariant']);
+        $content = $this->renderCardContainerContent($content, $optionsAndAttributes, $escape);
 
-        if (is_string($content)) {
-            $content = $this->renderCardBody($content, $bodyAttributes);
-        } elseif (is_array($content)) {
-            $tmpContent = '';
+        $attributes = $this->getView()->plugin('htmlattributes')->__invoke($optionsAndAttributes)
+            ->offsetsUnset(static::$allowedOptions)
+            ->merge(['class' => ['card']]);
 
-            $bodyItems = [];
-            foreach ($content as $key => $contentData) {
-                if (\Laminas\Stdlib\ArrayUtils::isList($contentData)) {
-                    $arguments = $contentData;
-                } else {
-                    $arguments = [$contentData];
-                }
-                if (isset(self::$cardParts[$key])) {
-                    // Close body item
-                    if ($bodyItems) {
-                        $tmpContent .= ($tmpContent ? PHP_EOL : '') . $this->renderCardBody(
-                            $bodyItems,
-                            $bodyAttributes
-                        );
-                        $bodyItems = [];
-                    }
-
-                    $tmpContent .= ($tmpContent ? PHP_EOL : '') . call_user_func_array(
-                        [$this, self::$cardParts[$key]],
-                        [$arguments, $escape]
-                    );
-                } else {
-                    $bodyItems[$key] = $contentData;
-                }
-            }
-
-            if ($bodyItems) {
-                $tmpContent .= ($tmpContent ? PHP_EOL : '') . $this->renderCardBody($bodyItems, $bodyAttributes);
-            }
-
-            $content = $tmpContent;
+        if (!empty($optionsAndAttributes['bg_variant'])) {
+            $attributes['class']->merge($this->getView()->plugin('htmlClass')->plugin('variant')->getClassesFromOption(
+                $optionsAndAttributes['bg_variant'],
+                'bg'
+            ));
         }
 
-        $classes = ['card'];
-        if (!empty($attributes['bgVariant'])) {
-            $classes[] = $this->getVariantClass($attributes['bgVariant'], 'bg');
+        if (!empty($optionsAndAttributes['border_variant'])) {
+            $attributes['class']->merge($this->getView()->plugin('htmlClass')->plugin('variant')->getClassesFromOption(
+                $optionsAndAttributes['border_variant'],
+                'border'
+            ));
         }
-        unset($attributes['bgVariant']);
 
-        if (!empty($attributes['borderVariant'])) {
-            $classes[] = $this->getVariantClass($attributes['borderVariant'], 'border');
-        }
-        unset($attributes['borderVariant']);
-
-        return $this->htmlElement(
+        return $this->getView()->plugin('htmlElement')->__invoke(
             'div',
-            $this->setClassesToAttributes($attributes, $classes),
+            $attributes,
             $content,
-            false
+            $escape
         );
     }
 
-    protected function renderCardHeader(array $arguments, bool $escape = true): string
+    protected function renderCardContainerContent($content, iterable $optionsAndAttributes, bool $escape): string
     {
-        $attributes = $this->setClassesToAttributes($arguments[1] ?? [], ['card-header']);
-        $content = $arguments[0];
-        return $this->htmlElement('div', $attributes, $content, $escape);
+        $bodyAttributes = $this->getView()->plugin('htmlattributes')->__invoke([]);
+
+        if (!empty($optionsAndAttributes['body_variant'])) {
+            $bodyAttributes['class']->merge(
+                $this->getView()->plugin('htmlClass')->plugin('variant')->getClassesFromOption(
+                    $optionsAndAttributes['body_variant'],
+                    'text'
+                )
+            );
+        }
+
+        if (is_string($content)) {
+            return $this->renderCardBody($content, $bodyAttributes, $escape);
+        }
+
+        if (!is_iterable($content)) {
+            throw new \InvalidArgumentException(sprintf(
+                '"$content" argument expects a string or an iterable value, "%s" given',
+                is_object($content)
+                    ? get_class($content)
+                    : gettype($content)
+            ));
+        }
+
+        $renderedContent = '';
+
+        $bodyItems = [];
+        foreach ($content as $key => $contentData) {
+            if (\Laminas\Stdlib\ArrayUtils::isList($contentData)) {
+                $arguments = $contentData;
+            } else {
+                $arguments = [$contentData];
+            }
+
+            if (isset(self::$cardParts[$key])) {
+                // Close body item
+                if ($bodyItems) {
+                    $renderedContent .= ($renderedContent ? PHP_EOL : '') . $this->renderCardBody(
+                        $bodyItems,
+                        $bodyAttributes,
+                        $escape
+                    );
+                    $bodyItems = [];
+                }
+
+                $renderedContent .= ($renderedContent ? PHP_EOL : '') . call_user_func_array(
+                    [$this, self::$cardParts[$key]],
+                    [$arguments, $escape]
+                );
+            } else {
+                $bodyItems[$key] = $contentData;
+            }
+        }
+
+        if ($bodyItems) {
+            if ($renderedContent) {
+                $renderedContent .= PHP_EOL;
+            }
+            $renderedContent .= $this->renderCardBody($bodyItems, $bodyAttributes, $escape);
+        }
+
+        return $renderedContent;
     }
 
-    protected function renderCardHeaderNav(array $arguments, bool $escape = true): string
+    protected function renderCardRow(iterable $arguments, bool $escape): string
+    {
+        $columns = $arguments[0];
+
+        $attributes = $arguments[1] ?? [];
+        $tag = $attributes['tag'] ?? 'div';
+        unset($attributes['tag']);
+
+        $attributes = $this->getView()->plugin('htmlattributes')
+            ->__invoke($attributes)
+            ->merge(['class' => ['row']]);
+
+        $content = '';
+        foreach ($columns as $column) {
+            $columnContent = $column[0] ?? '';
+            $columnAttributes = $column[1] ?? '';
+            $columnEscape = $column[2] ?? $escape;
+            $renderedColumn = $this->renderCardColumn($columnContent, $columnAttributes, $columnEscape);
+
+            if ($content) {
+                $content .= PHP_EOL;
+            }
+            $content .= $renderedColumn;
+        }
+
+        return $this->getView()->plugin('htmlElement')->__invoke($tag, $attributes, $content, $escape);
+    }
+
+    protected function renderCardColumn($content, iterable $attributes, bool $escape): string
+    {
+        $tag = $attributes['tag'] ?? 'div';
+        unset($attributes['tag']);
+
+        $column = $attributes['column'] ?? true;
+        unset($attributes['column']);
+
+        $attributes = $this->getView()->plugin('htmlattributes')
+            ->__invoke($attributes)
+            ->merge([
+                'class' => $this->getView()->plugin('htmlClass')->plugin('column')->getClassesFromOption($column)
+            ]);
+
+        $content = $this->renderCardContainerContent($content, [], $escape);
+
+        return $this->getView()->plugin('htmlElement')->__invoke($tag, $attributes, $content, $escape);
+    }
+
+    protected function renderCardHeader(iterable $arguments, bool $escape): string
+    {
+        $content = $arguments[0];
+
+        $attributes = $arguments[1] ?? [];
+        $tag = $attributes['tag'] ?? 'div';
+        unset($attributes['tag']);
+
+        $attributes = $this->getView()->plugin('htmlattributes')
+            ->__invoke($attributes)
+            ->merge(['class' => ['card-header']]);
+
+        return $this->getView()->plugin('htmlElement')->__invoke($tag, $attributes, $content, $escape);
+    }
+
+    protected function renderCardHeaderNav(iterable $arguments, bool $escape): string
     {
         $attributes = $arguments[1] ?? [];
         $content = $arguments[0];
@@ -163,29 +261,79 @@ class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
         return $this->renderCardHeader([$content, $attributes], $escape);
     }
 
-    protected function renderCardFooter(array $arguments, bool $escape = true): string
+    protected function renderCardFooter(iterable $arguments, bool $escape = true): string
     {
-        $arguments[1] = $this->setClassesToAttributes($arguments[1] ?? [], ['card-footer']);
-        return $this->htmlElement('div', $arguments[1], $arguments[0], $escape);
+        $content = $arguments[0];
+
+        $attributes = $arguments[1] ?? [];
+        $tag = $attributes['tag'] ?? 'div';
+        unset($attributes['tag']);
+
+        $attributes = $this->getView()->plugin('htmlattributes')
+            ->__invoke($attributes)
+            ->merge(['class' => ['card-footer']]);
+
+        return $this->getView()->plugin('htmlElement')->__invoke(
+            $tag,
+            $attributes,
+            $content,
+            $escape
+        );
     }
 
-    protected function renderCardImgTop(array $arguments, bool $escape = true): string
+    protected function renderCardImg(iterable $arguments, bool $escape): string
     {
-        $arguments[1] = $this->setClassesToAttributes($arguments[1] ?? [], ['card-img-top']);
-        return $this->getView()->plugin('image')->__invoke(...$arguments);
+        $imageSrc = $arguments[0] ?? '';
+        $attributes = $arguments[1] ?? [];
+        $escape = $arguments[2] ?? $escape;
+
+        return $this->renderImage($imageSrc, $attributes, $escape);
     }
 
-    protected function renderCardOverlay(array $arguments, bool $escape = true): string
+    protected function renderCardImgTop(iterable $arguments, bool $escape): string
     {
-        $attributes = $this->setClassesToAttributes($arguments[1] ?? [], ['card-img-overlay']);
+        $imageSrc = $arguments[0] ?? '';
+
+        $attributes = $this->getView()->plugin('htmlattributes')
+            ->__invoke($arguments[1] ?? [])
+            ->merge(['class' => ['card-img-top']]);
+
+        $escape = $arguments[2] ?? $escape;
+
+        return $this->renderImage($imageSrc, $attributes, $escape);
+    }
+
+    protected function renderCardImgBottom(iterable $arguments, bool $escape): string
+    {
+        $imageSrc = $arguments[0] ?? '';
+
+        $attributes = $this->getView()->plugin('htmlattributes')
+            ->__invoke($arguments[1] ?? [])
+            ->merge(['class' => ['card-img-bottom']]);
+
+        $escape = $arguments[2] ?? $escape;
+
+        return $this->renderImage($imageSrc, $attributes, $escape);
+    }
+
+    protected function renderCardOverlay(iterable $arguments, bool $escape): string
+    {
         $items = $arguments[0];
 
         // Render image
         if (!isset($items['img'])) {
             throw new \InvalidArgumentException('overlay[\'img\'] is undefined');
         }
-        $items['img'][1] = $this->setClassesToAttributes($items['img'][1] ?? [], ['card-img']);
-        $imgContent = $this->getView()->plugin('image')->__invoke(...$items['img']);
+
+        $imageSrc = $items['img'][0] ?? '';
+
+        $imageAttributes = $this->getView()->plugin('htmlattributes')
+            ->__invoke($items['img'][1] ?? [])
+            ->merge(['class' => ['card-img']]);
+
+        $imageEscape = $items['img'][2] ?? $escape;
+
+        $imgContent = $this->renderImage($imageSrc, $imageAttributes, $imageEscape);
         unset($items['img']);
 
         $content = '';
@@ -193,48 +341,70 @@ class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
             $content .= ($content ? PHP_EOL : '') . $this->renderCardItem($type, $typeContent, $escape);
         }
 
-        return $imgContent . PHP_EOL . $this->htmlElement(
+        $attributes = $this->getView()->plugin('htmlattributes')
+            ->__invoke($arguments[1] ?? [])
+            ->merge(['class' => ['card-img-overlay']]);
+
+        return $imgContent . PHP_EOL . $this->getView()->plugin('htmlElement')->__invoke(
             'div',
             $attributes,
             $content,
-            false
+            $escape
         );
     }
 
-    protected function renderCardListGroup(array $arguments, bool $escape = true): string
+
+    protected function renderImage(string $imageSrc, iterable $attributes, bool $escape): string
     {
-        $arguments[1] = $this->setClassesToAttributes($arguments[1] ?? [], ['list-group-flush']);
+        return $this->getView()->plugin('image')->__invoke(
+            $imageSrc,
+            $attributes,
+            $escape
+        );
+    }
+
+
+    protected function renderCardListGroup(iterable $arguments, bool $escape): string
+    {
+        $arguments[1] = $this->getView()->plugin('htmlattributes')
+            ->__invoke($arguments[1] ?? [])
+            ->merge(['class' => ['list-group-flush']])->getArrayCopy();
+
+        $arguments[2] = $arguments[2] ?? $escape;
+
         return $this->getView()->plugin('listGroup')->__invoke(...$arguments);
     }
 
-    protected function renderCardBody($content, array $attributes = [], bool $escape = true): string
+    protected function renderCardBody($content, iterable $attributes, bool $escape): string
     {
-        if (is_array($content)) {
-            $tmpContent = '';
+        if (is_iterable($content)) {
+            $renderedContent = '';
 
             foreach ($content as $type => $typeContent) {
-                $tmpContent .= ($tmpContent ? PHP_EOL : '') . $this->renderCardItem($type, $typeContent, $escape);
+                if ($renderedContent) {
+                    $renderedContent .= PHP_EOL;
+                }
+                $renderedContent .= $this->renderCardItem($type, $typeContent, $escape);
             }
 
-            $content = trim($tmpContent);
-        } else {
-            // Content
-            if ($escape) {
-                $content = $this->getView()->plugin('escapeHtml')->__invoke($content);
-            }
+            $content = trim($renderedContent);
         }
 
-        return $this->htmlElement(
+        $attributes = $this->getView()->plugin('htmlattributes')
+            ->__invoke($attributes)
+            ->merge(['class' => ['card-body']]);
+
+        return $this->getView()->plugin('htmlElement')->__invoke(
             'div',
-            $this->setClassesToAttributes($attributes, ['card-body']),
+            $attributes,
             $content,
-            false
+            $escape
         );
     }
 
-    protected function renderCardItem($type, $typeContent, bool $escape = true): string
+    protected function renderCardItem($type, $typeContent, bool $escape): string
     {
-        $typeAttributes = [];
+        $typeAttributes = $this->getView()->plugin('htmlattributes')->__invoke([]);
         switch (true) {
             case $type === self::CARD_BODY_TITLE:
                 $tag = 'h5';
@@ -254,23 +424,32 @@ class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 $typeAttributes['href'] = '#';
                 break;
             case $type === self::CARD_BODY_BLOCKQUOTE:
-                $arguments = [
-                    $typeContent[0],
-                    $typeContent[1] ?? '',
-                    $typeContent[2] ?? [],
-                    $typeContent[3] ?? [],
-                    $typeContent[4] ?? [],
-                    $typeContent[5] ?? $escape,
-                ];
+                $blockquoteContent = $typeContent[0] ?? '';
+                $blockquoteFooter = $typeContent[1] ?? '';
+                $blockquoteAttributes = $typeContent[2] ?? ['class' => 'mb-0'];
+                $blockquoteContentAttributes = $typeContent[3] ?? [];
+                $blockquoteFooterAttributes = $typeContent[4] ?? [];
+                $blockquoteFooterAttributes['tag'] = $blockquoteFooterAttributes['tag'] ?? 'footer';
+                $blockquoteFigureAttributes = $typeContent[5] ?? [];
+                $blockquoteEscape = $typeContent[6] ?? $escape;
+
                 $blockquoteHelper = $this->getView()->plugin('blockquote');
-                return call_user_func_array([$blockquoteHelper, '__invoke'], $arguments);
+                return call_user_func_array([$blockquoteHelper, '__invoke'], [
+                    $blockquoteContent,
+                    $blockquoteFooter,
+                    $blockquoteAttributes,
+                    $blockquoteContentAttributes,
+                    $blockquoteFooterAttributes,
+                    $blockquoteFigureAttributes,
+                    $blockquoteEscape,
+                ]);
             case is_int($type):
                 return $typeContent;
             default:
                 throw new \InvalidArgumentException('Card item "' . $type . '" is not supported');
         }
 
-        if (is_array($typeContent)) {
+        if (is_iterable($typeContent)) {
             if (\Laminas\Stdlib\ArrayUtils::isList($typeContent)) {
                 $cardBodyItemContent = '';
                 foreach ($typeContent as $typeContentItem) {
@@ -284,15 +463,23 @@ class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
             }
 
             if (isset($typeContent['attributes'])) {
-                $typeAttributes = array_merge($typeAttributes, $typeContent['attributes']);
+                $typeAttributes = $this->getView()->plugin('htmlattributes')
+                    ->__invoke($typeContent['attributes'])
+                    ->merge($typeAttributes);
+            }
+
+            if (isset($typeContent['tag'])) {
+                $tag = $typeContent['tag'];
             }
 
             $typeContent = $typeContent['content'] ?? '';
         }
 
-        return $this->htmlElement(
+        $typeAttributes->merge(['class' => $classes]);
+
+        return $this->getView()->plugin('htmlElement')->__invoke(
             $tag,
-            $this->setClassesToAttributes($typeAttributes, $classes),
+            $typeAttributes,
             $typeContent,
             $escape
         );

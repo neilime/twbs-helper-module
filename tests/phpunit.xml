@@ -12,8 +12,5 @@
     <testsuite name="TwbsHelper">
       <directory suffix=".php">./TestSuite/TwbsHelper/</directory>
     </testsuite>
-    <testsuite name="DocumentationGenerator">
-      <directory suffix=".php">./TestSuite/DocumentationGenerator/</directory>
-    </testsuite>
   </testsuites>
 </phpunit>

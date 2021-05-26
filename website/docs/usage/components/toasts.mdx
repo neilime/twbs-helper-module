@@ -1,5 +1,5 @@
 ---
-sidebar_position: 21
+sidebar_position: 23
 label: Toasts
 ---
 
@@ -10,25 +10,25 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 
 # Toasts
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/toasts/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/toasts/)
 
 ## Examples
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/toasts/#examples)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/toasts/#examples)
 
 ### Basic
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/toasts/#basic)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/toasts/#basic)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
-      <div dangerouslySetInnerHTML={{ __html: `<div aria-atomic="true" aria-live="assertive" class="toast" role="alert">
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div aria-atomic="true" aria-live="assertive" class="fade show toast" role="alert">
     <div class="toast-header">
-        <img alt="..." class="mr-2 rounded" src="/twbs-helper-module/img/docs/rounded-blue.svg"></img>
-        <strong class="mr-auto">Bootstrap</strong>
-        <small class="text-muted">11 mins ago</small>
-        <button aria-label="Close" class="close mb-1 ml-2" data-dismiss="toast" type="button"><span aria-hidden="true">×</span></button>
+        <img alt="..." class="me-2 rounded" src="/twbs-helper-module/img/docs/rounded-blue.svg"></img>
+        <strong class="me-auto">Bootstrap</strong>
+        <small>11 mins ago</small>
+        <button aria-label="Close" class="btn-close" data-bs-dismiss="toast" name="button" type="button" value=""></button>
     </div>
     <div class="toast-body">
         Hello, world! This is a toast message.
@@ -43,12 +43,14 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 
 echo $this->toast(
     [
+        'fade'   => true,
+        'show'   => true,
         'header' => [
             'image'    => [
                 '/twbs-helper-module/img/docs/rounded-blue.svg',
                 [
                     'alt'   => '...',
-                    'class' => 'rounded mr-2',
+                    'class' => 'rounded me-2',
                 ],
             ],
             'title'    => 'Bootstrap',
@@ -63,20 +65,80 @@ echo $this->toast(
 </TabItem>
 </Tabs>
 
-### Translucent
+### Live example
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/toasts/#translucent)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/toasts/#live-example)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
-      <div dangerouslySetInnerHTML={{ __html: `<div class="bg-dark">
-  <div aria-atomic="true" aria-live="assertive" class="toast" role="alert">
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<button class="btn btn-primary" id="liveToastBtn" name="button" type="button" value="">Show live toast</button>
+<div aria-atomic="true" aria-live="assertive" class="bottom-0 end-0 p-3 position-fixed toast" id="liveToast" role="alert">
     <div class="toast-header">
-        <img alt="..." class="mr-2 rounded" src="/twbs-helper-module/img/docs/rounded-blue.svg"></img>
-        <strong class="mr-auto">Bootstrap</strong>
-        <small class="text-muted">11 mins ago</small>
-        <button aria-label="Close" class="close mb-1 ml-2" data-dismiss="toast" type="button"><span aria-hidden="true">×</span></button>
+        <img alt="..." class="me-2 rounded" src="/twbs-helper-module/img/docs/rounded-blue.svg"></img>
+        <strong class="me-auto">Bootstrap</strong>
+        <small>11 mins ago</small>
+        <button aria-label="Close" class="btn-close" data-bs-dismiss="toast" name="button" type="button" value=""></button>
+    </div>
+    <div class="toast-body">
+        Hello, world! This is a toast message.
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->formButton()->renderSpec(
+    [
+        'options'    => [
+            'label'   => 'Show live toast',
+            'variant' => 'primary',
+        ],
+        'attributes' => [    'id' => 'liveToastBtn'    ],
+    ]
+);
+
+echo $this->toast(
+    [
+        'placement'  => 'bottom-right',
+        'header'     => [
+            'image'    => [
+                '/twbs-helper-module/img/docs/rounded-blue.svg',
+                [
+                    'alt'   => '...',
+                    'class' => 'rounded me-2',
+                ],
+            ],
+            'title'    => 'Bootstrap',
+            'subtitle' => '11 mins ago',
+        ],
+        'body'       => 'Hello, world! This is a toast message.',
+        'attributes' => ['id' => 'liveToast'],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+### Translucent
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/toasts/#translucent)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="bg-dark">
+  <div aria-atomic="true" aria-live="assertive" class="fade show toast" role="alert">
+    <div class="toast-header">
+        <img alt="..." class="me-2 rounded" src="/twbs-helper-module/img/docs/rounded-blue.svg"></img>
+        <strong class="me-auto">Bootstrap</strong>
+        <small>11 mins ago</small>
+        <button aria-label="Close" class="btn-close" data-bs-dismiss="toast" name="button" type="button" value=""></button>
     </div>
     <div class="toast-body">
         Hello, world! This is a toast message.
@@ -90,17 +152,18 @@ echo $this->toast(
 ```php
 <?php
 
-
 echo '<div class="bg-dark">';
 
 echo $this->toast(
     [
+        'fade'   => true,
+        'show'   => true,
         'header' => [
             'image'    => [
                 '/twbs-helper-module/img/docs/rounded-blue.svg',
                 [
                     'alt'   => '...',
-                    'class' => 'rounded mr-2',
+                    'class' => 'rounded me-2',
                 ],
             ],
             'title'    => 'Bootstrap',
@@ -119,31 +182,33 @@ echo '</div>';
 
 ### Stacking
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/toasts/#stacking)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/toasts/#stacking)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
-      <div dangerouslySetInnerHTML={{ __html: `<div aria-atomic="true" aria-live="assertive" class="toast" role="alert">
-    <div class="toast-header">
-        <img alt="..." class="mr-2 rounded" src="/twbs-helper-module/img/docs/rounded-blue.svg"></img>
-        <strong class="mr-auto">Bootstrap</strong>
-        <small class="text-muted">just now</small>
-        <button aria-label="Close" class="close mb-1 ml-2" data-dismiss="toast" type="button"><span aria-hidden="true">×</span></button>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="toast-container">
+    <div aria-atomic="true" aria-live="assertive" class="fade show toast" role="alert">
+        <div class="toast-header">
+            <img alt="..." class="me-2 rounded" src="/twbs-helper-module/img/docs/rounded-blue.svg"></img>
+            <strong class="me-auto">Bootstrap</strong>
+            <small>just now</small>
+            <button aria-label="Close" class="btn-close" data-bs-dismiss="toast" name="button" type="button" value=""></button>
+        </div>
+        <div class="toast-body">
+            See? Just like this.
+        </div>
     </div>
-    <div class="toast-body">
-        See? Just like this.
-    </div>
-</div>
-<div aria-atomic="true" aria-live="assertive" class="toast" role="alert">
-    <div class="toast-header">
-        <img alt="..." class="mr-2 rounded" src="/twbs-helper-module/img/docs/rounded-blue.svg"></img>
-        <strong class="mr-auto">Bootstrap</strong>
-        <small class="text-muted">2 seconds ago</small>
-        <button aria-label="Close" class="close mb-1 ml-2" data-dismiss="toast" type="button"><span aria-hidden="true">×</span></button>
-    </div>
-    <div class="toast-body">
-        Heads up, toasts will stack automatically
+    <div aria-atomic="true" aria-live="assertive" class="fade show toast" role="alert">
+        <div class="toast-header">
+            <img alt="..." class="me-2 rounded" src="/twbs-helper-module/img/docs/rounded-blue.svg"></img>
+            <strong class="me-auto">Bootstrap</strong>
+            <small>2 seconds ago</small>
+            <button aria-label="Close" class="btn-close" data-bs-dismiss="toast" name="button" type="button" value=""></button>
+        </div>
+        <div class="toast-body">
+            Heads up, toasts will stack automatically
+        </div>
     </div>
 </div>` }}></div>
   </HtmlCode>
@@ -153,38 +218,40 @@ echo '</div>';
 ```php
 <?php
 
-
-echo $this->toast(
+echo $this->toastStack(
     [
-        'header' => [
-            'image'    => [
-                '/twbs-helper-module/img/docs/rounded-blue.svg',
-                [
-                    'alt'   => '...',
-                    'class' => 'rounded mr-2',
+        [
+            'fade'   => true,
+            'show'   => true,
+            'header' => [
+                'image'    => [
+                    '/twbs-helper-module/img/docs/rounded-blue.svg',
+                    [
+                        'alt'   => '...',
+                        'class' => 'rounded me-2',
+                    ],
                 ],
+                'title'    => 'Bootstrap',
+                'subtitle' => 'just now',
             ],
-            'title'    => 'Bootstrap',
-            'subtitle' => 'just now',
+            'body'   => 'See? Just like this.',
         ],
-        'body'   => 'See? Just like this.',
-    ]
-);
-
-echo $this->toast(
-    [
-        'header' => [
-            'image'    => [
-                '/twbs-helper-module/img/docs/rounded-blue.svg',
-                [
-                    'alt'   => '...',
-                    'class' => 'rounded mr-2',
+        [
+            'fade'   => true,
+            'show'   => true,
+            'header' => [
+                'image'    => [
+                    '/twbs-helper-module/img/docs/rounded-blue.svg',
+                    [
+                        'alt'   => '...',
+                        'class' => 'rounded me-2',
+                    ],
                 ],
+                'title'    => 'Bootstrap',
+                'subtitle' => '2 seconds ago',
             ],
-            'title'    => 'Bootstrap',
-            'subtitle' => '2 seconds ago',
+            'body'   => 'Heads up, toasts will stack automatically',
         ],
-        'body'   => 'Heads up, toasts will stack automatically',
     ]
 );
 
@@ -193,34 +260,264 @@ echo $this->toast(
 </TabItem>
 </Tabs>
 
-### Placement
+### Custom content
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/toasts/#placement)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/toasts/#custom-content)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
-      <div dangerouslySetInnerHTML={{ __html: `<div class="bg-dark" style="position:relative;min-height:200px;">
-  <div aria-atomic="true" aria-live="assertive" class="toast" role="alert" style="position: absolute;right: 0;top: 0;">
-    <div class="toast-header">
-        <img alt="..." class="mr-2 rounded" src="/twbs-helper-module/img/docs/rounded-blue.svg"></img>
-        <strong class="mr-auto">Bootstrap</strong>
-        <small class="text-muted">11 mins ago</small>
-        <button aria-label="Close" class="close mb-1 ml-2" data-dismiss="toast" type="button"><span aria-hidden="true">×</span></button>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div aria-atomic="true" aria-live="assertive" class="align-items-center fade show toast" role="alert">
+    <div class="d-flex">
+        <div class="toast-body">
+            Hello, world! This is a toast message.
+        </div>
+        <button aria-label="Close" class="btn-close m-auto me-2" data-bs-dismiss="toast" name="button" type="button" value=""></button>
     </div>
+</div>
+<div aria-atomic="true" aria-live="assertive" class="fade show toast" role="alert">
     <div class="toast-body">
         Hello, world! This is a toast message.
+        <div class="border-top mt-2 pt-2">
+            <button class="btn btn-primary btn-sm" name="button" type="button" value="">Take action</button>
+            <button class="btn btn-secondary btn-sm" data-bs-dismiss="toast" name="button" type="button" value="">Close</button>
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->toast(
+    [
+        'fade' => true,
+        'show' => true,
+        'body' => 'Hello, world! This is a toast message.',
+    ]
+);
+
+echo $this->toast(
+    [
+        'fade'  => true,
+        'show'  => true,
+        'close' => false,
+        'body'  => [
+            'content' => 'Hello, world! This is a toast message.',
+            'buttons' => [
+                [
+                    'options' => [
+                        'variant' => 'primary',
+                        'size'    => 'sm',
+                        'label'   => 'Take action',
+                    ],
+                ],
+                [
+                    'options'    => [
+                        'size'  => 'sm',
+                        'label' => 'Close',
+                    ],
+                    'attributes' => [    'data-bs-dismiss' => 'toast'    ],
+                ],
+            ],
+        ],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+### Color schemes
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/toasts/#custom-content)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div aria-atomic="true" aria-live="assertive" class="align-items-center bg-primary border-0 fade show text-white toast" role="alert">
+    <div class="d-flex">
+        <div class="toast-body">
+            Hello, world! This is a toast message.
+        </div>
+        <button aria-label="Close" class="btn-close btn-close-white m-auto me-2" data-bs-dismiss="toast" name="button" type="button" value=""></button>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->toast(
+    [
+        'fade'       => true,
+        'show'       => true,
+        'body'       => 'Hello, world! This is a toast message.',
+        'close'      => ['attributes' => ['class' => 'btn-close-white']],
+        'attributes' => [    'class' => 'text-white bg-primary border-0'    ],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+## Placement
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/toasts/#placement)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div aria-atomic="true" aria-live="polite" class="bg-dark position-relative">
+<div class="p-3 position-absolute start-0 toast-container top-0" id="toastPlacement">
+    <div aria-atomic="true" aria-live="assertive" class="fade show toast" role="alert">
+        <div class="toast-header">
+            <img alt="..." class="me-2 rounded" src="/twbs-helper-module/img/docs/rounded-blue.svg"></img>
+            <strong class="me-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+        </div>
+        <div class="toast-body">
+            Hello, world! This is a toast message.
+        </div>
+    </div>
+</div>
+<div class="p-3 position-absolute start-50 toast-container top-0 translate-middle-x" id="toastPlacement">
+    <div aria-atomic="true" aria-live="assertive" class="fade show toast" role="alert">
+        <div class="toast-header">
+            <img alt="..." class="me-2 rounded" src="/twbs-helper-module/img/docs/rounded-blue.svg"></img>
+            <strong class="me-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+        </div>
+        <div class="toast-body">
+            Hello, world! This is a toast message.
+        </div>
+    </div>
+</div>
+<div class="end-0 p-3 position-absolute toast-container top-0" id="toastPlacement">
+    <div aria-atomic="true" aria-live="assertive" class="fade show toast" role="alert">
+        <div class="toast-header">
+            <img alt="..." class="me-2 rounded" src="/twbs-helper-module/img/docs/rounded-blue.svg"></img>
+            <strong class="me-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+        </div>
+        <div class="toast-body">
+            Hello, world! This is a toast message.
+        </div>
+    </div>
+</div>
+<div class="p-3 position-absolute start-0 toast-container top-50 translate-middle-y" id="toastPlacement">
+    <div aria-atomic="true" aria-live="assertive" class="fade show toast" role="alert">
+        <div class="toast-header">
+            <img alt="..." class="me-2 rounded" src="/twbs-helper-module/img/docs/rounded-blue.svg"></img>
+            <strong class="me-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+        </div>
+        <div class="toast-body">
+            Hello, world! This is a toast message.
+        </div>
+    </div>
+</div>
+<div class="p-3 position-absolute start-50 toast-container top-50 translate-middle" id="toastPlacement">
+    <div aria-atomic="true" aria-live="assertive" class="fade show toast" role="alert">
+        <div class="toast-header">
+            <img alt="..." class="me-2 rounded" src="/twbs-helper-module/img/docs/rounded-blue.svg"></img>
+            <strong class="me-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+        </div>
+        <div class="toast-body">
+            Hello, world! This is a toast message.
+        </div>
+    </div>
+</div>
+<div class="end-0 p-3 position-absolute toast-container top-50 translate-middle-y" id="toastPlacement">
+    <div aria-atomic="true" aria-live="assertive" class="fade show toast" role="alert">
+        <div class="toast-header">
+            <img alt="..." class="me-2 rounded" src="/twbs-helper-module/img/docs/rounded-blue.svg"></img>
+            <strong class="me-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+        </div>
+        <div class="toast-body">
+            Hello, world! This is a toast message.
+        </div>
+    </div>
+</div>
+<div class="bottom-0 p-3 position-absolute start-0 toast-container" id="toastPlacement">
+    <div aria-atomic="true" aria-live="assertive" class="fade show toast" role="alert">
+        <div class="toast-header">
+            <img alt="..." class="me-2 rounded" src="/twbs-helper-module/img/docs/rounded-blue.svg"></img>
+            <strong class="me-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+        </div>
+        <div class="toast-body">
+            Hello, world! This is a toast message.
+        </div>
+    </div>
+</div>
+<div class="bottom-0 p-3 position-absolute start-50 toast-container translate-middle-x" id="toastPlacement">
+    <div aria-atomic="true" aria-live="assertive" class="fade show toast" role="alert">
+        <div class="toast-header">
+            <img alt="..." class="me-2 rounded" src="/twbs-helper-module/img/docs/rounded-blue.svg"></img>
+            <strong class="me-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+        </div>
+        <div class="toast-body">
+            Hello, world! This is a toast message.
+        </div>
+    </div>
+</div>
+<div class="bottom-0 end-0 p-3 position-absolute toast-container" id="toastPlacement">
+    <div aria-atomic="true" aria-live="assertive" class="fade show toast" role="alert">
+        <div class="toast-header">
+            <img alt="..." class="me-2 rounded" src="/twbs-helper-module/img/docs/rounded-blue.svg"></img>
+            <strong class="me-auto">Bootstrap</strong>
+            <small>11 mins ago</small>
+        </div>
+        <div class="toast-body">
+            Hello, world! This is a toast message.
+        </div>
     </div>
 </div>
 </div>
-<br></br><br></br>
-<div class="bg-dark" style="position:relative;min-height:200px;">
-  <div aria-atomic="true" aria-live="assertive" class="toast" role="alert" style="left: 0;margin-left: auto;margin-right: auto;position: absolute;right: 0;top: 0;">
+<div aria-atomic="true" aria-live="polite" class="position-relative">
+<div class="end-0 p-3 position-absolute toast-container top-0">
+    <div aria-atomic="true" aria-live="assertive" class="fade show toast" role="alert">
+        <div class="toast-header">
+            <img alt="..." class="me-2 rounded" src="/twbs-helper-module/img/docs/rounded-blue.svg"></img>
+            <strong class="me-auto">Bootstrap</strong>
+            <small>just now</small>
+            <button aria-label="Close" class="btn-close" data-bs-dismiss="toast" name="button" type="button" value=""></button>
+        </div>
+        <div class="toast-body">
+            See? Just like this.
+        </div>
+    </div>
+    <div aria-atomic="true" aria-live="assertive" class="fade show toast" role="alert">
+        <div class="toast-header">
+            <img alt="..." class="me-2 rounded" src="/twbs-helper-module/img/docs/rounded-blue.svg"></img>
+            <strong class="me-auto">Bootstrap</strong>
+            <small>2 seconds ago</small>
+            <button aria-label="Close" class="btn-close" data-bs-dismiss="toast" name="button" type="button" value=""></button>
+        </div>
+        <div class="toast-body">
+            Heads up, toasts will stack automatically
+        </div>
+    </div>
+</div>
+</div>
+<div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center w-100">
+<div aria-atomic="true" aria-live="assertive" class="fade show toast" role="alert">
     <div class="toast-header">
-        <img alt="..." class="mr-2 rounded" src="/twbs-helper-module/img/docs/rounded-blue.svg"></img>
-        <strong class="mr-auto">Bootstrap</strong>
-        <small class="text-muted">11 mins ago</small>
-        <button aria-label="Close" class="close mb-1 ml-2" data-dismiss="toast" type="button"><span aria-hidden="true">×</span></button>
+        <img alt="..." class="me-2 rounded" src="/twbs-helper-module/img/docs/rounded-blue.svg"></img>
+        <strong class="me-auto">Bootstrap</strong>
+        <small>11 mins ago</small>
+        <button aria-label="Close" class="btn-close" data-bs-dismiss="toast" name="button" type="button" value=""></button>
     </div>
     <div class="toast-body">
         Hello, world! This is a toast message.
@@ -234,48 +531,112 @@ echo $this->toast(
 ```php
 <?php
 
+echo '<div aria-atomic="true" aria-live="polite" class="bg-dark position-relative">';
+foreach ([
+    'top-left',
+    'top-center',
+    'top-right',
+    'middle-left',
+    'middle-center',
+    'middle-right',
+    'bottom-left',
+    'bottom-center',
+    'bottom-right',
+] as $placement) {
+    echo $this->toastStack(
+        [
+            [
+                'fade'   => true,
+                'show'   => true,
+                'close'  => false,
+                'header' => [
+                    'image'    => [
+                        '/twbs-helper-module/img/docs/rounded-blue.svg',
+                        [
+                            'alt'   => '...',
+                            'class' => 'rounded me-2',
+                        ],
+                    ],
+                    'title'    => 'Bootstrap',
+                    'subtitle' => '11 mins ago',
+                ],
+                'body'   => 'Hello, world! This is a toast message.',
+            ],
+        ],
+        [
+            'id'        => 'toastPlacement',
+            'placement' => $placement,
+        ]
+    );
+}//end foreach
 
-echo '<div class="bg-dark" style="position:relative;min-height:200px;">';
+echo '</div>';
 
-echo $this->toast(
+// For systems that generate more notifications, consider using a wrapping element so they can easily stack.
+echo '<div aria-atomic="true" aria-live="polite" class="position-relative">';
+
+echo $this->toastStack(
+    [
+        [
+            'fade'   => true,
+            'show'   => true,
+            'header' => [
+                'image'    => [
+                    '/twbs-helper-module/img/docs/rounded-blue.svg',
+                    [
+                        'alt'   => '...',
+                        'class' => 'rounded me-2',
+                    ],
+                ],
+                'title'    => 'Bootstrap',
+                'subtitle' => 'just now',
+            ],
+            'body'   => 'See? Just like this.',
+        ],
+        [
+            'fade'   => true,
+            'show'   => true,
+            'header' => [
+                'image'    => [
+                    '/twbs-helper-module/img/docs/rounded-blue.svg',
+                    [
+                        'alt'   => '...',
+                        'class' => 'rounded me-2',
+                    ],
+                ],
+                'title'    => 'Bootstrap',
+                'subtitle' => '2 seconds ago',
+            ],
+            'body'   => 'Heads up, toasts will stack automatically',
+        ],
+    ],
     [
         'placement' => 'top-right',
-        'header'    => [
-            'image'    => [
-                '/twbs-helper-module/img/docs/rounded-blue.svg',
-                [
-                    'alt'   => '...',
-                    'class' => 'rounded mr-2',
-                ],
-            ],
-            'title'    => 'Bootstrap',
-            'subtitle' => '11 mins ago',
-        ],
-        'body'      => 'Hello, world! This is a toast message.',
+        'class'     => 'position-absolute',
     ]
 );
 
 echo '</div>';
 
-echo PHP_EOL.'<br/><br/>';
-
-echo '<div class="bg-dark" style="position:relative;min-height:200px;">';
+// You can also get fancy with flexbox utilities to align toasts horizontally and/or vertically.
+echo '<div aria-live="polite" aria-atomic="true" '.'class="d-flex justify-content-center align-items-center w-100">';
 
 echo $this->toast(
     [
-        'placement' => 'top-center',
-        'header'    => [
+        'fade'   => true,
+        'show'   => true,
+        'header' => [
             'image'    => [
                 '/twbs-helper-module/img/docs/rounded-blue.svg',
                 [
                     'alt'   => '...',
-                    'class' => 'rounded mr-2',
+                    'class' => 'rounded me-2',
                 ],
             ],
             'title'    => 'Bootstrap',
             'subtitle' => '11 mins ago',
         ],
-        'body'      => 'Hello, world! This is a toast message.',
+        'body'   => 'Hello, world! This is a toast message.',
     ]
 );
 
@@ -286,19 +647,19 @@ echo '</div>';
 </TabItem>
 </Tabs>
 
-### Accessibility
+## Accessibility
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/toasts/#accessibility)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/toasts/#accessibility)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
-      <div dangerouslySetInnerHTML={{ __html: `<div aria-atomic="true" aria-live="assertive" class="toast" data-autohide="false" role="alert">
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div aria-atomic="true" aria-live="assertive" class="fade show toast" data-bs-autohide="false" role="alert">
     <div class="toast-header">
-        <img alt="..." class="mr-2 rounded" src="/twbs-helper-module/img/docs/rounded-blue.svg"></img>
-        <strong class="mr-auto">Bootstrap</strong>
-        <small class="text-muted">11 mins ago</small>
-        <button aria-label="Close" class="close mb-1 ml-2" data-dismiss="toast" type="button"><span aria-hidden="true">×</span></button>
+        <img alt="..." class="me-2 rounded" src="/twbs-helper-module/img/docs/rounded-blue.svg"></img>
+        <strong class="me-auto">Bootstrap</strong>
+        <small>11 mins ago</small>
+        <button aria-label="Close" class="btn-close" data-bs-dismiss="toast" name="button" type="button" value=""></button>
     </div>
     <div class="toast-body">
         Hello, world! This is a toast message.
@@ -313,13 +674,15 @@ echo '</div>';
 
 echo $this->toast(
     [
+        'fade'     => true,
+        'show'     => true,
         'autohide' => false,
         'header'   => [
             'image'    => [
                 '/twbs-helper-module/img/docs/rounded-blue.svg',
                 [
                     'alt'   => '...',
-                    'class' => 'rounded mr-2',
+                    'class' => 'rounded me-2',
                 ],
             ],
             'title'    => 'Bootstrap',

@@ -15,11 +15,10 @@ return [
                     [
                         'fluid' => true,
                         'rounded' => true,
-                        'alt' => 'A generic square placeholder image with rounded corners in a figure.',
+                        'alt' => '...',
                     ]
                 );
             },
-
         ],
         [
             'title' => "Aligning figure's caption",
@@ -31,12 +30,11 @@ return [
                     [
                         'fluid' => true,
                         'rounded' => true,
-                        'alt' => 'A generic square placeholder image with rounded corners in a figure.',
+                        'alt' => '...',
                     ],
-                    ['class' => 'text-right']
+                    ['class' => 'text-end']
                 );
             },
-
         ],
     ],
 ];

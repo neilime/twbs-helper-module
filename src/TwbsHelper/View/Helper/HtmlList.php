@@ -3,61 +3,85 @@
 namespace TwbsHelper\View\Helper;
 
 /**
- * Helper for ordered and unordered lists
+ * Helper for numbered and unnumbered lists
  */
 class HtmlList extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
+    protected static $allowedOptions = ['tag', 'inline', 'unstyled', 'numbered'];
+
     /**
      * Generates a 'List' element. Manage indentation of Xhtml markup
      *
-     * @param  array   $items      Array with the elements of the list
-     * @param  array   $optionsAndAttributes Attributes for the ol/ul tag.
+     * @param  iterable   $items      Array with the elements of the list
+     * @param  iterable   $optionsAndAttributes Attributes for the ol/ul tag.
      * If class attributes contains "list-inline", so the li will have the class "list-inline-item"
      * @param  boolean $escape     Escape the items.
      * @throws \InvalidArgumentException
      * @return string The list XHTML.
      */
-    public function __invoke(array $items, array $optionsAndAttributes = [], bool $escape = true)
+    public function __invoke(iterable $items, iterable $optionsAndAttributes = [], bool $escape = true): string
     {
         if (empty($items)) {
             throw new \InvalidArgumentException('Argument "$items" must not be empty');
         }
 
-        $itemAttributes = isset($optionsAndAttributes['class'])
-            && strpos($optionsAndAttributes['class'], 'list-inline') !== false
-            ? $this->setClassesToAttributes([], ['list-inline-item'])
-            : [];
-
         $listContent = '';
         foreach ($items as $key => $item) {
-            $listContent .= ($listContent ? PHP_EOL : '') . $this->renderListItem(
+            $listItemContent = $this->renderListItem(
                 $item,
                 is_string($key) ? $key : '',
                 $optionsAndAttributes,
-                $itemAttributes,
-                $escape
+                $escape,
             );
+            if ($listItemContent) {
+                $listContent .= ($listContent ? PHP_EOL : '') . $listItemContent;
+            }
         }
 
-        $ordered = isset($optionsAndAttributes['ordered']) ? $optionsAndAttributes['ordered'] : false;
-        unset($optionsAndAttributes['ordered']);
         return $this->renderContainer(
-            $ordered ? 'ol' : 'ul',
             $optionsAndAttributes,
             $listContent,
             $escape
         );
     }
 
+    protected function getContainerClassesFromOptionsAndAttributes(iterable $optionsAndAttributes): array
+    {
+        $classes = [];
+        if (!empty($optionsAndAttributes['inline'])) {
+            $classes[] = 'list-inline';
+        }
+
+        if (!empty($optionsAndAttributes['unstyled'])) {
+            $classes[] = 'list-unstyled';
+        }
+
+        if (!empty($optionsAndAttributes['numbered'])) {
+            $classes[] = 'list-group-numbered';
+        }
+
+        return $classes;
+    }
+
     protected function renderContainer(
-        string $tag,
-        array $optionsAndAttributes,
+        iterable $optionsAndAttributes,
         string $listContent,
-        bool $escape = true
-    ) {
-        return $this->htmlElement(
+        bool $escape
+    ): string {
+        if (isset($optionsAndAttributes['tag'])) {
+            $tag = $optionsAndAttributes['tag'];
+        } else {
+            $tag = empty($optionsAndAttributes['numbered']) ? 'ul' : 'ol';
+        }
+
+        $attributes = $this->getView()->plugin('htmlattributes')
+            ->__invoke($optionsAndAttributes)
+            ->offsetsUnset(static::$allowedOptions)
+            ->merge(['class' => $this->getContainerClassesFromOptionsAndAttributes($optionsAndAttributes)]);
+
+        return $this->getView()->plugin('htmlElement')->__invoke(
             $tag,
-            $optionsAndAttributes,
+            $attributes,
             $listContent,
             $escape
         );
@@ -65,37 +89,104 @@ class HtmlList extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
     protected function renderListItem(
         $item,
-        string $itemLabel = '',
-        array $optionsAndAttributes = [],
-        array $itemAttributes = [],
-        bool $escape = true,
-        string $tag = 'li'
+        string $itemContent,
+        iterable $optionsAndAttributes,
+        bool $escape
     ): string {
 
-        if (is_array($item)) {
-            if ($itemLabel && ($escape && !$this->isHTML($itemLabel))) {
-                $itemLabel = $this->getView()->plugin('escapeHtml')->__invoke($itemLabel);
-            }
 
-            if ($item !== []) {
-                // Generate nested list
-                $item = ($itemLabel ? $itemLabel . PHP_EOL : '') . $this(
-                    $item,
-                    $optionsAndAttributes,
-                    $escape
-                );
-            } else {
-                $item = $itemLabel;
-            }
-        } elseif ($escape && !$this->isHTML($item)) {
-            $item = $this->getView()->plugin('escapeHtml')->__invoke($item);
+        if (\Laminas\Stdlib\ArrayUtils::isList($item)) {
+            $itemContent = $this->renderNestedListItem(
+                $item,
+                $itemContent,
+                $optionsAndAttributes,
+                $escape
+            );
+            $item = [];
+        } else {
+            $item = $this->prepareItemSpec($item, $optionsAndAttributes);
+            $itemContent = $this->renderListItemContent($item, $itemContent, $escape);
         }
 
-        return $this->htmlElement(
-            $tag,
-            $itemAttributes,
-            $item,
+        return $this->getView()->plugin('htmlElement')->__invoke(
+            $item['tag'] ?? 'li',
+            $item['attributes'] ?? [],
+            $itemContent,
             $escape
         );
+    }
+
+    protected function renderNestedListItem(
+        iterable $item,
+        string $itemContent,
+        iterable $optionsAndAttributes,
+        bool $escape
+    ): string {
+        // Generate nested list
+        $nestedListContent = $this(
+            $item,
+            $optionsAndAttributes,
+            $escape
+        );
+
+        if ($itemContent) {
+            if ($escape && !$this->getView()->plugin('htmlElement')->isHTML($itemContent)) {
+                $itemContent = $this->getView()->plugin('escapeHtml')->__invoke($itemContent);
+            }
+
+            $itemContent .= PHP_EOL . $nestedListContent;
+        } else {
+            $itemContent = $nestedListContent;
+        }
+
+        return $itemContent;
+    }
+
+    protected function renderListItemContent(iterable $item, string $itemContent, bool $escape): string
+    {
+        $itemContent = implode(
+            PHP_EOL,
+            array_filter([$item['content'] ?? '', $itemContent])
+        );
+
+        if ($itemContent) {
+            if ($escape && !$this->getView()->plugin('htmlElement')->isHTML($itemContent)) {
+                $itemContent = $this->getView()->plugin('escapeHtml')->__invoke($itemContent);
+            }
+        }
+        return $itemContent;
+    }
+
+    protected function prepareItemSpec($item, iterable $optionsAndAttributes): iterable
+    {
+        if (is_scalar($item)) {
+            $item = ['content' => $item];
+        } elseif (!is_iterable($item)) {
+            throw new \InvalidArgumentException(sprintf(
+                '"$item" expects a scalar or an iterable value, "%s" given',
+                is_object($item)
+                    ? get_class($item)
+                    : gettype($item)
+            ));
+        }
+
+        $item['attributes'] = $this->getView()->plugin('htmlattributes')
+            ->__invoke($item['attributes'] ?? [])
+            ->merge([
+                'class' => $this->getListItemClassesFromOptionsAndAttributes($optionsAndAttributes)
+            ]);
+
+        return $item;
+    }
+
+    protected function getListItemClassesFromOptionsAndAttributes(iterable $optionsAndAttributes): array
+    {
+        $classes = [];
+        $inline = isset($optionsAndAttributes['inline']) ? $optionsAndAttributes['inline'] : false;
+        if ($inline) {
+            $classes[] = 'list-inline-item';
+        }
+
+        return $classes;
     }
 }

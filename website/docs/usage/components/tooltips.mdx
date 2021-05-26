@@ -1,5 +1,5 @@
 ---
-sidebar_position: 22
+sidebar_position: 24
 label: Tooltips
 ---
 
@@ -10,20 +10,20 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 
 # Tooltips
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/tooltips/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/tooltips/)
 
 ## Examples
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/tooltips/#examples)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/tooltips/#examples)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
-      <div dangerouslySetInnerHTML={{ __html: `<button type="button" name="tooltip" class="btn btn-secondary" title="Tooltip on top" data-toggle="tooltip" data-placement="top" value="">Tooltip on top</button>
-<button type="button" name="tooltip" class="btn btn-secondary" title="Tooltip on right" data-toggle="tooltip" data-placement="right" value="">Tooltip on right</button>
-<button type="button" name="tooltip" class="btn btn-secondary" title="Tooltip on bottom" data-toggle="tooltip" data-placement="bottom" value="">Tooltip on bottom</button>
-<button type="button" name="tooltip" class="btn btn-secondary" title="Tooltip on left" data-toggle="tooltip" data-placement="left" value="">Tooltip on left</button>
-<button type="button" name="tooltip" class="btn btn-secondary" title="&lt;em&gt;Tooltip&lt;/em&gt; &lt;u&gt;with&lt;/u&gt; &lt;b&gt;HTML&lt;/b&gt;" data-toggle="tooltip" data-html="true" value="">Tooltip with HTML</button>` }}></div>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<button class="btn btn-secondary" data-bs-original-title="Tooltip on top" data-bs-placement="top" data-bs-toggle="tooltip" name="button" title="" type="button" value="">Tooltip on top</button>
+<button class="btn btn-secondary" data-bs-original-title="Tooltip on right" data-bs-placement="right" data-bs-toggle="tooltip" name="button" title="" type="button" value="">Tooltip on right</button>
+<button class="btn btn-secondary" data-bs-original-title="Tooltip on bottom" data-bs-placement="bottom" data-bs-toggle="tooltip" name="button" title="" type="button" value="">Tooltip on bottom</button>
+<button class="btn btn-secondary" data-bs-original-title="Tooltip on left" data-bs-placement="left" data-bs-toggle="tooltip" name="button" title="" type="button" value="">Tooltip on left</button>
+<button class="btn btn-secondary" data-bs-html="true" data-bs-original-title="&lt;em&gt;Tooltip&lt;/em&gt; &lt;u&gt;with&lt;/u&gt; &lt;b&gt;HTML&lt;/b&gt;" data-bs-toggle="tooltip" name="button" title="" type="button" value="">Tooltip with HTML</button>` }}></div>
   </HtmlCode>
 </TabItem>
 <TabItem value="source" label="Source">
@@ -39,7 +39,6 @@ foreach ([
 ] as $placement => $label) {
     echo $this->formButton()->renderSpec(
         [
-            'name'    => 'tooltip',
             'options' => [
                 'label'   => $label,
                 'tooltip' => [
@@ -51,9 +50,9 @@ foreach ([
     );
 }
 
+// With custom HTML added:
 echo $this->formButton()->renderSpec(
     [
-        'name'    => 'tooltip',
         'options' => [
             'label'   => 'Tooltip with HTML',
             'tooltip' => '<em>Tooltip</em> <u>with</u> <b>HTML</b>',
@@ -66,15 +65,19 @@ echo $this->formButton()->renderSpec(
 </TabItem>
 </Tabs>
 
-## Disabled elements
+## Usage
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/tooltips/#disabled-elements)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/tooltips/#usage)
+
+### Disabled elements
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/tooltips/#disabled-elements)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
-      <div dangerouslySetInnerHTML={{ __html: `<span class="d-inline-block" data-toggle="tooltip" tabindex="0" title="Disabled tooltip">
-  <button type="button" name="tooltip" disabled="disabled" class="btn btn-primary" style="pointer-events: none;" value="">Disabled button</button>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<span class="d-inline-block" data-bs-original-title="Disabled tooltip" data-bs-toggle="tooltip" tabindex="0" title="">
+  <button class="btn btn-primary" disabled="disabled" name="button" type="button" value="">Disabled button</button>
 </span>` }}></div>
   </HtmlCode>
 </TabItem>
@@ -85,13 +88,12 @@ echo $this->formButton()->renderSpec(
 
 echo $this->formButton()->renderSpec(
     [
-        'name'       => 'tooltip',
         'options'    => [
             'label'   => 'Disabled button',
             'tooltip' => 'Disabled tooltip',
             'variant' => 'primary',
         ],
-        'attributes' => [    'disabled' => true    ],
+        'attributes' => ['disabled' => true],
     ]
 );
 

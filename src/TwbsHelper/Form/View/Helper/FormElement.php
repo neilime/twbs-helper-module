@@ -4,13 +4,14 @@ namespace TwbsHelper\Form\View\Helper;
 
 class FormElement extends \Laminas\Form\View\Helper\FormElement
 {
-    use \TwbsHelper\View\Helper\HtmlTrait;
+    use \TwbsHelper\Form\View\ElementHelperTrait;
 
     // Hold configurable options
     protected $options;
 
     // Instance map to view helper
     protected $classMap = [
+        'Laminas\Form\Element\File'                => 'formfile',
         'Laminas\Form\Element\Button'              => 'formbutton',
         'Laminas\Form\Element\Captcha'             => 'formcaptcha',
         'Laminas\Form\Element\Csrf'                => 'formhidden',
@@ -55,23 +56,33 @@ class FormElement extends \Laminas\Form\View\Helper\FormElement
         if (
             !in_array($elementType, $this->options->getIgnoredViewHelpers())
             && !($element instanceof \Laminas\Form\Element\Collection)
-            && !$element->getOption('custom')
         ) {
             $classes[] = $element->getOption('plaintext') ? 'form-control-plaintext' : 'form-control';
 
             // Set size class except for select element
             $sizeOption = $element->getOption('size');
             if ($elementType !== 'select' && $sizeOption) {
-                $classes[] = $this->getSizeClass($sizeOption, 'form-control');
+                $classes = array_merge(
+                    $classes,
+                    $this->getView()->plugin('htmlClass')->plugin('size')->getClassesFromOption(
+                        $sizeOption,
+                        'form-control'
+                    )
+                );
             }
 
             $this->setClassesToElement($element, $classes);
         }
 
-        $markup = parent::render($element);
+        // Add describedby if help block has an id
+        if (!$element->getAttribute('aria-describedby')) {
+            $helpBlockOption = $element->getOption('help_block');
+            if (is_array($helpBlockOption) && isset($helpBlockOption['attributes']['id'])) {
+                $element->setAttribute('aria-describedby', $helpBlockOption['attributes']['id']);
+            }
+        }
 
-        // Render element's add-on
-        return $this->getView()->plugin('formAddOn')->render($element, $markup);
+        return parent::render($element);
     }
 
     /**

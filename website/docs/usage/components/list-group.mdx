@@ -10,21 +10,21 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 
 # List group
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/list-group/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/list-group/)
 
 ## Basic example
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/list-group/#basic-example)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/list-group/#basic-example)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
+  <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<ul class="list-group">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Morbi leo risus</li>
-    <li class="list-group-item">Porta ac consectetur ac</li>
-    <li class="list-group-item">Vestibulum at eros</li>
+    <li class="list-group-item">An item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
+    <li class="list-group-item">A fourth item</li>
+    <li class="list-group-item">And a fifth one</li>
 </ul>` }}></div>
   </HtmlCode>
 </TabItem>
@@ -35,11 +35,11 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 
 echo $this->listGroup(
     [
-        'Cras justo odio',
-        'Dapibus ac facilisis in',
-        'Morbi leo risus',
-        'Porta ac consectetur ac',
-        'Vestibulum at eros',
+        'An item',
+        'A second item',
+        'A third item',
+        'A fourth item',
+        'And a fifth one',
     ]
 );
 
@@ -50,17 +50,17 @@ echo $this->listGroup(
 
 ## Active items
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/list-group/#active-items)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/list-group/#active-items)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
+  <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<ul class="list-group">
-    <li class="active list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Morbi leo risus</li>
-    <li class="list-group-item">Porta ac consectetur ac</li>
-    <li class="list-group-item">Vestibulum at eros</li>
+    <li aria-current="true" class="active list-group-item">An active item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
+    <li class="list-group-item">A fourth item</li>
+    <li class="list-group-item">And a fifth one</li>
 </ul>` }}></div>
   </HtmlCode>
 </TabItem>
@@ -71,11 +71,11 @@ echo $this->listGroup(
 
 echo $this->listGroup(
     [
-        'Cras justo odio' => ['active' => true],
-        'Dapibus ac facilisis in',
-        'Morbi leo risus',
-        'Porta ac consectetur ac',
-        'Vestibulum at eros',
+        'An active item' => ['active' => true],
+        'A second item',
+        'A third item',
+        'A fourth item',
+        'And a fifth one',
     ]
 );
 
@@ -84,19 +84,19 @@ echo $this->listGroup(
 </TabItem>
 </Tabs>
 
-## Disabled  items
+## Disabled items
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/list-group/#disabled-items)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/list-group/#disabled-items)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
+  <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<ul class="list-group">
-    <li aria-disabled="true" class="disabled list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Morbi leo risus</li>
-    <li class="list-group-item">Porta ac consectetur ac</li>
-    <li class="list-group-item">Vestibulum at eros</li>
+    <li aria-disabled="true" class="disabled list-group-item">A disabled item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
+    <li class="list-group-item">A fourth item</li>
+    <li class="list-group-item">And a fifth one</li>
 </ul>` }}></div>
   </HtmlCode>
 </TabItem>
@@ -107,11 +107,11 @@ echo $this->listGroup(
 
 echo $this->listGroup(
     [
-        'Cras justo odio' => ['disabled' => true],
-        'Dapibus ac facilisis in',
-        'Morbi leo risus',
-        'Porta ac consectetur ac',
-        'Vestibulum at eros',
+        'A disabled item' => ['disabled' => true],
+        'A second item',
+        'A third item',
+        'A fourth item',
+        'And a fifth one',
     ]
 );
 
@@ -122,25 +122,25 @@ echo $this->listGroup(
 
 ## Links and buttons
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/list-group/#links-and-buttons)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/list-group/#links-and-buttons)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
+  <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<div class="list-group">
-    <a class="active list-group-item list-group-item-action" href="#">Cras justo odio</a>
-    <a class="list-group-item list-group-item-action" href="#">Dapibus ac facilisis in</a>
-    <a class="list-group-item list-group-item-action" href="#">Morbi leo risus</a>
-    <a class="list-group-item list-group-item-action" href="#">Porta ac consectetur ac</a>
-    <a aria-disabled="true" class="disabled list-group-item list-group-item-action" href="#" tabindex="-1">Vestibulum at eros</a>
+    <a aria-current="true" class="active list-group-item list-group-item-action" href="#">The current link item</a>
+    <a class="list-group-item list-group-item-action" href="#">A second item</a>
+    <a class="list-group-item list-group-item-action" href="#">A third item</a>
+    <a class="list-group-item list-group-item-action" href="#">A fourth item</a>
+    <a aria-disabled="true" class="disabled list-group-item list-group-item-action" href="#" tabindex="-1">A disabled link item</a>
 </div>
 <br></br>
 <div class="list-group">
-    <button class="active list-group-item list-group-item-action" type="button">Cras justo odio</button>
-    <button class="list-group-item list-group-item-action" type="button">Dapibus ac facilisis in</button>
-    <button class="list-group-item list-group-item-action" type="button">Morbi leo risus</button>
-    <button class="list-group-item list-group-item-action" type="button">Porta ac consectetur ac</button>
-    <button aria-disabled="true" class="list-group-item list-group-item-action" disabled="disabled" type="button">Vestibulum at eros</button>
+    <button aria-current="true" class="active list-group-item list-group-item-action" type="button">The current button</button>
+    <button class="list-group-item list-group-item-action" type="button">A second item</button>
+    <button class="list-group-item list-group-item-action" type="button">A third button item</button>
+    <button class="list-group-item list-group-item-action" type="button">A fourth button item</button>
+    <button aria-disabled="true" class="list-group-item list-group-item-action" disabled="disabled" type="button">A disabled button item</button>
 </div>` }}></div>
   </HtmlCode>
 </TabItem>
@@ -151,14 +151,14 @@ echo $this->listGroup(
 
 echo $this->listGroup(
     [
-        'Cras justo odio'         => [
+        'The current link item' => [
             'active'     => true,
             'attributes' => ['href' => '#'],
         ],
-        'Dapibus ac facilisis in' => ['attributes' => ['href' => '#']],
-        'Morbi leo risus'         => ['attributes' => ['href' => '#']],
-        'Porta ac consectetur ac' => ['attributes' => ['href' => '#']],
-        'Vestibulum at eros'      => [
+        'A second item'         => ['attributes' => ['href' => '#']],
+        'A third item'          => ['attributes' => ['href' => '#']],
+        'A fourth item'         => ['attributes' => ['href' => '#']],
+        'A disabled link item'  => [
             'disabled'   => true,
             'attributes' => ['href' => '#'],
         ],
@@ -166,15 +166,15 @@ echo $this->listGroup(
     ['type' => 'action']
 );
 
-echo '<br/>';
+echo PHP_EOL.'<br/>';
 
 echo $this->listGroup(
     [
-        'Cras justo odio' => ['active' => true],
-        'Dapibus ac facilisis in',
-        'Morbi leo risus',
-        'Porta ac consectetur ac',
-        'Vestibulum at eros' => ['disabled' => true],
+        'The current button' => ['active' => true],
+        'A second item',
+        'A third button item',
+        'A fourth button item',
+        'A disabled button item' => ['disabled' => true],
     ],
     ['type' => 'button']
 );
@@ -186,17 +186,17 @@ echo $this->listGroup(
 
 ## Flush
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/list-group/#flush)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/list-group/#flush)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
+  <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Morbi leo risus</li>
-    <li class="list-group-item">Porta ac consectetur ac</li>
-    <li class="list-group-item">Vestibulum at eros</li>
+    <li class="list-group-item">An item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
+    <li class="list-group-item">A fourth item</li>
+    <li class="list-group-item">And a fifth one</li>
 </ul>` }}></div>
   </HtmlCode>
 </TabItem>
@@ -207,11 +207,11 @@ echo $this->listGroup(
 
 echo $this->listGroup(
     [
-        'Cras justo odio',
-        'Dapibus ac facilisis in',
-        'Morbi leo risus',
-        'Porta ac consectetur ac',
-        'Vestibulum at eros',
+        'An item',
+        'A second item',
+        'A third item',
+        'A fourth item',
+        'And a fifth one',
     ],
     ['flush' => true]
 );
@@ -221,41 +221,142 @@ echo $this->listGroup(
 </TabItem>
 </Tabs>
 
-## Horizontal
+## Numbered
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/list-group/#horizontal)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/list-group/#numbered)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<ol class="list-group list-group-numbered">
+    <li class="list-group-item">A list item</li>
+    <li class="list-group-item">A list item</li>
+    <li class="list-group-item">A list item</li>
+</ol>
+<br></br>
+<ol class="list-group list-group-numbered">
+    <li class="align-items-start d-flex justify-content-between list-group-item">
+        <div class="ms-2 me-auto">
+        <div class="fw-bold">Subheading</div>
+        Content for list item
+        </div>
+        <span class="badge bg-primary rounded-pill">14</span>
+    </li>
+    <li class="align-items-start d-flex justify-content-between list-group-item">
+        <div class="ms-2 me-auto">
+        <div class="fw-bold">Subheading</div>
+        Content for list item
+        </div>
+        <span class="badge bg-primary rounded-pill">14</span>
+    </li>
+    <li class="align-items-start d-flex justify-content-between list-group-item">
+        <div class="ms-2 me-auto">
+        <div class="fw-bold">Subheading</div>
+        Content for list item
+        </div>
+        <span class="badge bg-primary rounded-pill">14</span>
+    </li>
+</ol>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->listGroup(
+    [
+        'A list item',
+        'A list item',
+        'A list item',
+    ],
+    ['numbered' => true]
+);
+
+echo PHP_EOL.'<br/>';
+
+echo $this->listGroup(
+    [
+        [
+            'content' => '<div class="ms-2 me-auto">'.'<div class="fw-bold">Subheading</div>'.'Content for list item'.'</div>',
+            'badge'   => [
+                14,
+                [
+                    'type'    => 'pill',
+                    'variant' => 'primary',
+                ],
+            ],
+        ],
+        [
+            'content' => '<div class="ms-2 me-auto">'.'<div class="fw-bold">Subheading</div>'.'Content for list item'.'</div>',
+            'badge'   => [
+                14,
+                [
+                    'type'    => 'pill',
+                    'variant' => 'primary',
+                ],
+            ],
+        ],
+        [
+            'content' => '<div class="ms-2 me-auto">'.'<div class="fw-bold">Subheading</div>'.'Content for list item'.'</div>',
+            'badge'   => [
+                14,
+                [
+                    'type'    => 'pill',
+                    'variant' => 'primary',
+                ],
+            ],
+        ],
+    ],
+    ['numbered' => true]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+## Horizontal
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/list-group/#horizontal)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<ul class="list-group list-group-horizontal">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Morbi leo risus</li>
+    <li class="list-group-item">An item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
 </ul>
 <br></br>
 <ul class="list-group list-group-horizontal-sm">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Morbi leo risus</li>
+    <li class="list-group-item">An item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
 </ul>
 <br></br>
 <ul class="list-group list-group-horizontal-md">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Morbi leo risus</li>
+    <li class="list-group-item">An item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
 </ul>
 <br></br>
 <ul class="list-group list-group-horizontal-lg">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Morbi leo risus</li>
+    <li class="list-group-item">An item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
 </ul>
 <br></br>
 <ul class="list-group list-group-horizontal-xl">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Morbi leo risus</li>
+    <li class="list-group-item">An item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
+</ul>
+<br></br>
+<ul class="list-group list-group-horizontal-xxl">
+    <li class="list-group-item">An item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
 </ul>` }}></div>
   </HtmlCode>
 </TabItem>
@@ -267,23 +368,23 @@ echo $this->listGroup(
 // Add option 'horizontal' to change the layout of list group items from vertical to horizontal
 echo $this->listGroup(
     [
-        'Cras justo odio',
-        'Dapibus ac facilisis in',
-        'Morbi leo risus',
+        'An item',
+        'A second item',
+        'A third item',
     ],
     ['horizontal' => true]
 );
 
-// Alternatively, choose a responsive variant `sm|md|lg|xl`
+// Alternatively, choose a responsive variant `sm|md|lg|xl|xxl`
 // to make a list group horizontal starting at that breakpoint’s
-foreach (['sm', 'md', 'lg', 'xl'] as $breakpoint) {
+foreach (['sm', 'md', 'lg', 'xl', 'xxl'] as $breakpoint) {
     echo PHP_EOL.'<br/>';
 
     echo $this->listGroup(
         [
-            'Cras justo odio',
-            'Dapibus ac facilisis in',
-            'Morbi leo risus',
+            'An item',
+            'A second item',
+            'A third item',
         ],
         ['horizontal' => $breakpoint]
     );
@@ -296,13 +397,13 @@ foreach (['sm', 'md', 'lg', 'xl'] as $breakpoint) {
 
 ## Contextual classes
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/list-group/#contextual-classes)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/list-group/#contextual-classes)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
+  <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<ul class="list-group">
-    <li class="list-group-item">Dapibus ac facilisis in</li>
+    <li class="list-group-item">A simple default list group item</li>
     <li class="list-group-item list-group-item-primary">A simple primary list group item</li>
     <li class="list-group-item list-group-item-secondary">A simple secondary list group item</li>
     <li class="list-group-item list-group-item-success">A simple success list group item</li>
@@ -314,7 +415,7 @@ foreach (['sm', 'md', 'lg', 'xl'] as $breakpoint) {
 </ul>
 <br></br>
 <div class="list-group">
-    <a class="list-group-item list-group-item-action" href="#">Dapibus ac facilisis in</a>
+    <a class="list-group-item list-group-item-action" href="#">A simple default list group item</a>
     <a class="list-group-item list-group-item-action list-group-item-primary" href="#">A simple primary list group item</a>
     <a class="list-group-item list-group-item-action list-group-item-secondary" href="#">A simple secondary list group item</a>
     <a class="list-group-item list-group-item-action list-group-item-success" href="#">A simple success list group item</a>
@@ -334,7 +435,7 @@ foreach (['sm', 'md', 'lg', 'xl'] as $breakpoint) {
 // Use option 'variant' to style list items with a stateful background and color
 echo $this->listGroup(
     [
-        'Dapibus ac facilisis in',
+        'A simple default list group item',
         'A simple primary list group item' => ['variant' => 'primary'],
         'A simple secondary list group item' => ['variant' => 'secondary'],
         'A simple success list group item' => ['variant' => 'success'],
@@ -346,12 +447,12 @@ echo $this->listGroup(
     ]
 );
 
-echo '<br/>';
+echo PHP_EOL.'<br/>';
 
 // Contextual classes also work with .list-group-item-action
 echo $this->listGroup(
     [
-        'Dapibus ac facilisis in'            => ['attributes' => ['href' => '#']],
+        'A simple default list group item'   => ['attributes' => ['href' => '#']],
         'A simple primary list group item'   => [
             'variant'    => 'primary',
             'attributes' => ['href' => '#'],
@@ -395,23 +496,23 @@ echo $this->listGroup(
 
 ## With badges
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/list-group/#with-badges)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/list-group/#with-badges)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
+  <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<ul class="list-group">
     <li class="align-items-center d-flex justify-content-between list-group-item">
-        Cras justo odio
-        <span class="badge badge-pill badge-primary">14</span>
+        A list item
+        <span class="badge bg-primary rounded-pill">14</span>
     </li>
     <li class="align-items-center d-flex justify-content-between list-group-item">
-        Dapibus ac facilisis in
-        <span class="badge badge-pill badge-primary">2</span>
+        A second list item
+        <span class="badge bg-primary rounded-pill">2</span>
     </li>
     <li class="align-items-center d-flex justify-content-between list-group-item">
-        Morbi leo risus
-        <span class="badge badge-pill badge-primary">1</span>
+        A third list item
+        <span class="badge bg-primary rounded-pill">1</span>
     </li>
 </ul>` }}></div>
   </HtmlCode>
@@ -423,7 +524,7 @@ echo $this->listGroup(
 
 echo $this->listGroup(
     [
-        'Cras justo odio'         => [
+        'A list item'        => [
             'badge' => [
                 14,
                 [
@@ -432,7 +533,7 @@ echo $this->listGroup(
                 ],
             ],
         ],
-        'Dapibus ac facilisis in' => [
+        'A second list item' => [
             'badge' => [
                 2,
                 [
@@ -441,7 +542,7 @@ echo $this->listGroup(
                 ],
             ],
         ],
-        'Morbi leo risus'         => [
+        'A third list item'  => [
             'badge' => [
                 1,
                 [
@@ -460,27 +561,27 @@ echo $this->listGroup(
 
 ## Custom content
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/list-group/#custom-content)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/list-group/#custom-content)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
+  <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<div class="list-group">
-    <a class="active list-group-item list-group-item-action" href="#">
+    <a aria-current="true" class="active list-group-item list-group-item-action" href="#">
         <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">List group item heading</h5>
             <small>3 days ago</small>
         </div>
-        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-        <small>Donec id elit non mi porta.</small>
+        <p class="mb-1">Some placeholder content in a paragraph.</p>
+        <small>And some small print.</small>
     </a>
     <a class="list-group-item list-group-item-action" href="#">
         <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">List group item heading</h5>
             <small>3 days ago</small>
         </div>
-        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-        <small>Donec id elit non mi porta.</small>
+        <p class="mb-1">Some placeholder content in a paragraph.</p>
+        <small>And some small print.</small>
     </a>
     <a class="list-group-item list-group-item-action" href="#">
         <div class="d-flex w-100 justify-content-between">
@@ -501,12 +602,12 @@ echo $this->listGroup(
 echo $this->listGroup(
     [
         [
-            'content'    => '<div class="d-flex w-100 justify-content-between">'.'    <h5 class="mb-1">List group item heading</h5>'.'    <small>3 days ago</small>'.'</div>'.'<p class="mb-1">Donec id elit non mi porta gravida at eget metus. '.'Maecenas sed diam eget risus varius blandit.</p>'.'<small>Donec id elit non mi porta.</small>',
+            'content'    => '<div class="d-flex w-100 justify-content-between">'.'    <h5 class="mb-1">List group item heading</h5>'.'    <small>3 days ago</small>'.'</div>'.'<p class="mb-1">Some placeholder content in a paragraph.</p>'.'<small>And some small print.</small>',
             'attributes' => ['href' => '#'],
             'active'     => true,
         ],
         [
-            'content'    => '<div class="d-flex w-100 justify-content-between">'.'    <h5 class="mb-1">List group item heading</h5>'.'    <small>3 days ago</small>'.'</div>'.'<p class="mb-1">Donec id elit non mi porta gravida at eget metus. '.'Maecenas sed diam eget risus varius blandit.</p>'.'<small>Donec id elit non mi porta.</small>',
+            'content'    => '<div class="d-flex w-100 justify-content-between">'.'    <h5 class="mb-1">List group item heading</h5>'.'    <small>3 days ago</small>'.'</div>'.'<p class="mb-1">Some placeholder content in a paragraph.</p>'.'<small>And some small print.</small>',
             'attributes' => ['href' => '#'],
         ],
         [
@@ -515,6 +616,104 @@ echo $this->listGroup(
         ],
     ],
     ['type' => 'action']
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+## Checkboxes and radios
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/list-group/#checkboxes-and-radios)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<ul class="list-group">
+    <li class="list-group-item">
+        <input type="hidden" name="checkbox" value="0"></input><input aria-label="..." class="form-check-input me-1" name="checkbox" type="checkbox" value="1"></input>
+        First checkbox
+    </li>
+    <li class="list-group-item">
+        <input type="hidden" name="checkbox" value="0"></input><input aria-label="..." class="form-check-input me-1" name="checkbox" type="checkbox" value="1"></input>
+        Second checkbox
+    </li>
+    <li class="list-group-item">
+        <input type="hidden" name="checkbox" value="0"></input><input aria-label="..." class="form-check-input me-1" name="checkbox" type="checkbox" value="1"></input>
+        Third checkbox
+    </li>
+    <li class="list-group-item">
+        <input type="hidden" name="checkbox" value="0"></input><input aria-label="..." class="form-check-input me-1" name="checkbox" type="checkbox" value="1"></input>
+        Fourth checkbox
+    </li>
+</ul>
+<br></br>
+<ul class="list-group">
+    <label class="list-group-item">
+        <input type="hidden" name="checkbox" value="0"></input><input class="form-check-input me-1" name="checkbox" type="checkbox" value="1"></input>
+        First checkbox
+    </label>
+    <label class="list-group-item">
+        <input type="hidden" name="checkbox" value="0"></input><input class="form-check-input me-1" name="checkbox" type="checkbox" value="1"></input>
+        Second checkbox
+    </label>
+    <label class="list-group-item">
+        <input type="hidden" name="checkbox" value="0"></input><input class="form-check-input me-1" name="checkbox" type="checkbox" value="1"></input>
+        Third checkbox
+    </label>
+    <label class="list-group-item">
+        <input type="hidden" name="checkbox" value="0"></input><input class="form-check-input me-1" name="checkbox" type="checkbox" value="1"></input>
+        Fourth checkbox
+    </label>
+</ul>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->listGroup(
+    [
+        'First checkbox'  => [
+            'checkbox' => ['attributes' => ['aria-label' => '...']],
+        ],
+        'Second checkbox' => [
+            'checkbox' => ['attributes' => ['aria-label' => '...']],
+        ],
+        'First checkbox'  => [
+            'checkbox' => ['attributes' => ['aria-label' => '...']],
+        ],
+        'Third checkbox'  => [
+            'checkbox' => ['attributes' => ['aria-label' => '...']],
+        ],
+        'Fourth checkbox' => [
+            'checkbox' => ['attributes' => ['aria-label' => '...']],
+        ],
+    ],
+);
+
+echo PHP_EOL.'<br/>';
+
+echo $this->listGroup(
+    [
+        'First checkbox'  => [
+            'checkbox' => ['label' => true],
+        ],
+        'Second checkbox' => [
+            'checkbox' => ['label' => true],
+        ],
+        'First checkbox'  => [
+            'checkbox' => ['label' => true],
+        ],
+        'Third checkbox'  => [
+            'checkbox' => ['label' => true],
+        ],
+        'Fourth checkbox' => [
+            'checkbox' => ['label' => true],
+        ],
+    ],
 );
 
 ```

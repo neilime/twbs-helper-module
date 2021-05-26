@@ -9,6 +9,5 @@ nb-configuration.xml
 .idea/
 composer.lock
 *.swp
-/node_modules
-/tests/.phpunit.result.cache
-/.docz
+/website/node_modules
+tests/.phpunit.result.cache

@@ -10,10 +10,9 @@ namespace TwbsHelper\View\Helper;
 class ButtonGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
     /**
-     * @var \TwbsHelper\Form\View\Helper\FormElement|null
+     * @var \TwbsHelper\Form\View\Helper\FormButton|null
      */
-    protected $formElementHelper;
-
+    protected $formButtonHelper;
 
     /**
      * @return \TwbsHelper\View\Helper\ButtonGroup|string
@@ -35,33 +34,35 @@ class ButtonGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
         // Size option
         if (!empty($buttonGroupOptions['size'])) {
-            $classes[] = $this->getSizeClass($buttonGroupOptions['size'], 'btn-group');
+            $classes = array_merge(
+                $classes,
+                $this->getView()->plugin('htmlClass')->plugin('size')->getClassesFromOption(
+                    $buttonGroupOptions['size'],
+                    'btn-group'
+                )
+            );
         }
 
-        $attributes = $this->setClassesToAttributes(
-            $buttonGroupOptions['attributes'] ?? [],
-            $classes
-        );
+        $attributes = $this->getView()->plugin('htmlattributes')
+            ->__invoke($buttonGroupOptions['attributes'] ?? [])
+            ->merge(['class' => $classes]);
 
         $markup = $this->renderButtons(
             $buttons,
-            strpos($attributes['class'], 'btn-group-justified') !== false
+            $buttonGroupOptions ?? []
         );
 
         // Render button group
-        $markup = $this->htmlElement('div', $attributes, $markup);
+        $markup = $this->getView()->plugin('htmlElement')->__invoke('div', $attributes, $markup);
 
         if (!empty($buttonGroupOptions['column'])) {
-            $classes = [];
-            $classes[] = $this->getColumnClass($buttonGroupOptions['column']);
+            $classes = $this->getView()->plugin('htmlClass')->plugin('column')->getClassesFromOption(
+                $buttonGroupOptions['column']
+            );
 
-            if ($buttons[0]->getOption('layout') == \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL) {
-                $classes[] = $this->getOffsetCounterpartClass($buttonGroupOptions['column']);
-            }
-
-            $markup = $this->htmlElement(
+            $markup = $this->getView()->plugin('htmlElement')->__invoke(
                 'div',
-                $this->setClassesToAttributes([], $classes),
+                ['class' => $classes],
                 $markup
             );
         }
@@ -72,14 +73,13 @@ class ButtonGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
     /**
      * Render buttons markup
      */
-    protected function renderButtons(array $buttons, bool $justified = false): string
+    protected function renderButtons(array $buttons, array $buttonGroupOptions): string
     {
         $markup = '';
         foreach ($buttons as $button) {
             if (
-                is_array($button)
-                || ($button instanceof \Traversable
-                    && !($button instanceof \Laminas\Form\ElementInterface))
+                is_iterable($button)
+                && !($button instanceof \Laminas\Form\ElementInterface)
             ) {
                 $factory = new \Laminas\Form\Factory();
                 $button = $factory->create($button);
@@ -90,40 +90,53 @@ class ButtonGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 ));
             }
 
-            $dropdownOptions = $button->getOption('dropdown');
-            if ($dropdownOptions) {
-                if (\Laminas\Stdlib\ArrayUtils::isList($dropdownOptions)) {
-                    $dropdownOptions = ['items' => $dropdownOptions];
-                }
-
-                $dropdownOptions['disable_container'] = true;
-                $button->setOption('dropdown', $dropdownOptions);
+            if (isset($buttonGroupOptions['variant']) && $button->getOption('variant') === null) {
+                $button->setOption('variant', $buttonGroupOptions['variant']);
             }
 
-            $buttonMarkup = $this->getFormElementHelper()->__invoke($button);
-
-            if ($justified || $dropdownOptions) {
-                $buttonMarkup = $this->htmlElement('div', ['class' => 'btn-group', 'role' => 'group'], $buttonMarkup);
-            }
-
+            $buttonMarkup = $this->renderButton($button);
             $markup .= ($markup ? PHP_EOL : '') . $buttonMarkup;
         }
 
         return $markup;
     }
 
-    public function getFormElementHelper(): \TwbsHelper\Form\View\Helper\FormElement
+    protected function renderButton(\Laminas\Form\ElementInterface $button): string
     {
-        if ($this->formElementHelper instanceof \TwbsHelper\Form\View\Helper\FormElement) {
-            return $this->formElementHelper;
+        $dropdownOptions = $button->getOption('dropdown');
+        if ($dropdownOptions) {
+            if (\Laminas\Stdlib\ArrayUtils::isList($dropdownOptions)) {
+                $dropdownOptions = ['items' => $dropdownOptions];
+            }
+
+            $dropdownOptions['disable_container'] = true;
+            $button->setOption('dropdown', $dropdownOptions);
+        }
+
+        $button->setOption('form_group', false);
+        $buttonMarkup = $this->getFormButtonHelper()->__invoke($button);
+
+        if ($dropdownOptions) {
+            $buttonMarkup = $this->getView()->plugin('htmlElement')->__invoke(
+                'div',
+                ['class' => 'btn-group', 'role' => 'group'],
+                $buttonMarkup
+            );
+        }
+
+        return $buttonMarkup;
+    }
+
+    public function getFormButtonHelper(): \TwbsHelper\Form\View\Helper\FormButton
+    {
+        if ($this->formButtonHelper instanceof \TwbsHelper\Form\View\Helper\FormButton) {
+            return $this->formButtonHelper;
         }
 
         if ($this->view !== null && method_exists($this->view, 'plugin')) {
-            return $this->formElementHelper = $this->view->plugin('form_element');
+            return $this->formButtonHelper = $this->view->plugin('form_button');
         }
 
-        return $this->formElementHelper = new \TwbsHelper\Form\View\Helper\FormElement(
-            new \TwbsHelper\Options\ModuleOptions()
-        );
+        return $this->formButtonHelper = new \TwbsHelper\Form\View\Helper\FormButton();
     }
 }

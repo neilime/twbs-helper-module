@@ -5,55 +5,7 @@ return [
     'title' => 'Tooltips',
     'url' => '%bootstrap-url%/components/tooltips/',
     'tests' => [
-        [
-            'title' => 'Examples',
-            'url' => '%bootstrap-url%/components/tooltips/#examples',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
-                foreach (
-                    [
-                    'top' => 'Tooltip on top',
-                    'right' => 'Tooltip on right',
-                    'bottom' => 'Tooltip on bottom',
-                    'left' => 'Tooltip on left',
-                    ] as $placement => $label
-                ) {
-                    echo $view->formButton()->renderSpec([
-                        'name' => 'tooltip',
-                        'options' => [
-                            'label' => $label,
-                            'tooltip' => [
-                                'placement' => $placement,
-                                'content' => $label,
-                            ],
-                        ],
-                    ]) . PHP_EOL;
-                }
-
-                echo $view->formButton()->renderSpec([
-                    'name' => 'tooltip',
-                    'options' => [
-                        'label' => 'Tooltip with HTML',
-                        'tooltip' => '<em>Tooltip</em> <u>with</u> <b>HTML</b>',
-                    ],
-                ]);
-            },
-        ],
-        [
-            'title' => 'Disabled elements',
-            'url' => '%bootstrap-url%/components/tooltips/#disabled-elements',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
-                echo $view->formButton()->renderSpec([
-                    'name' => 'tooltip',
-                    'options' => [
-                        'label' => 'Disabled button',
-                        'tooltip' => 'Disabled tooltip',
-                        'variant' => 'primary',
-                    ],
-                    'attributes' => [
-                        'disabled' => true,
-                    ],
-                ]);
-            },
-        ],
+        include __DIR__ . '/Tooltips/Examples.php',
+        include __DIR__ . '/Tooltips/Usage.php',
     ],
 ];

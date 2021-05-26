@@ -8,6 +8,7 @@ return [
         echo $view->navigation()->navbar()->render(
             new \Laminas\Navigation\Navigation(),
             [
+                'container' => 'fluid',
                 'expand' => false,
                 'toggler' => false,
                 'collapse' => false,
@@ -20,7 +21,7 @@ return [
                                     'type' => 'search',
                                     'placeholder' => 'Search',
                                     'aria-label' => 'Search',
-                                    'class' => 'mr-sm-2',
+                                    'class' => 'me-2',
                                 ],
                             ],
                         ],
@@ -31,9 +32,11 @@ return [
                                     'label' => 'Search',
                                     'variant' => 'outline-success',
                                 ],
-                                'attributes' => ['class' => 'my-2 my-sm-0'],
                             ],
                         ],
+                    ],
+                    'attributes' => [
+                        'class' => 'd-flex',
                     ],
                 ],
             ]
@@ -44,6 +47,7 @@ return [
         echo $view->navigation()->navbar()->render(
             new \Laminas\Navigation\Navigation(),
             [
+                'container' => 'fluid',
                 'expand' => false,
                 'toggler' => false,
                 'collapse' => false,
@@ -52,12 +56,11 @@ return [
                     'elements' => [
                         [
                             'spec' => [
-                                'name' => 'search',
                                 'attributes' => [
                                     'type' => 'search',
                                     'placeholder' => 'Search',
                                     'aria-label' => 'Search',
-                                    'class' => 'mr-sm-2',
+                                    'class' => 'me-2',
                                 ],
                             ],
                         ],
@@ -68,9 +71,11 @@ return [
                                     'label' => 'Search',
                                     'variant' => 'outline-success',
                                 ],
-                                'attributes' => ['class' => 'my-2 my-sm-0'],
                             ],
                         ],
+                    ],
+                    'attributes' => [
+                        'class' => 'd-flex',
                     ],
                 ],
             ]
@@ -89,7 +94,6 @@ return [
                     'elements' => [
                         [
                             'spec' => [
-                                'name' => 'username',
                                 'options' => [
                                     'add_on_prepend' => '@',
                                 ],
@@ -101,6 +105,9 @@ return [
                                 ],
                             ],
                         ],
+                    ],
+                    'attributes' => [
+                        'class' => 'container-fluid',
                     ],
                 ],
             ]
@@ -126,6 +133,9 @@ return [
                                     'label' => 'Main button',
                                     'variant' => 'outline-success',
                                 ],
+                                'attributes' => [
+                                    'class' => 'me-2',
+                                ]
                             ],
                         ],
                         [
@@ -140,9 +150,11 @@ return [
                             ],
                         ],
                     ],
+                    'attributes' => [
+                        'class' => 'container-fluid justify-content-start',
+                    ],
                 ],
             ]
         );
     },
-
 ];

@@ -33,11 +33,7 @@ class FormAddOnTest extends \PHPUnit\Framework\TestCase
     {
         $this->assertEquals(
             '<div class="input-group">' . PHP_EOL .
-                '    <div class="input-group-prepend">' . PHP_EOL .
-                '        <div class="input-group-text">' . PHP_EOL .
-                '            @' . PHP_EOL .
-                '        </div>' . PHP_EOL .
-                '    </div>' . PHP_EOL .
+                '    <span class="input-group-text">@</span>' . PHP_EOL .
                 '</div>',
             $this->formAddOnHelper->__invoke(new \Laminas\Form\Element\Text(
                 'test',
@@ -50,11 +46,9 @@ class FormAddOnTest extends \PHPUnit\Framework\TestCase
     {
         $this->assertEquals(
             '<div class="input-group">' . PHP_EOL .
-                '    <div class="input-group-prepend">' . PHP_EOL .
-                '        <button type="button" name="add-on" class="btn&#x20;btn-secondary" value="">' .
+                '    <button class="btn&#x20;btn-secondary" name="add-on" type="button" value="">' .
                 'Add-On' .
                 '</button>' . PHP_EOL .
-                '    </div>' . PHP_EOL .
                 '</div>',
             $this->formAddOnHelper->__invoke(new \Laminas\Form\Element\Text(
                 'test',

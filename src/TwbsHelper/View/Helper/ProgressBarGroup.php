@@ -12,9 +12,13 @@ class ProgressBarGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
      */
     public function __invoke(array $progressBars, array $options = []): string
     {
-        return $this->htmlElement(
+        $attributes = $this->getView()->plugin('htmlattributes')
+            ->__invoke($options['attributes'] ?? [])
+            ->merge(['class' => ['progress']]);
+
+        return $this->getView()->plugin('htmlElement')->__invoke(
             'div',
-            $this->setClassesToAttributes($options['attributes'] ?? [], ['progress']),
+            $attributes,
             join(PHP_EOL, array_map(function ($progressBar) {
                 $progressBar['container'] = false;
                 return $this->getView()->plugin('progressBar')->__invoke($progressBar);
