@@ -105,7 +105,7 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
      */
     public function renderFormRow(\Laminas\Form\ElementInterface $oElement, $sElementContent): string
     {
-        $aRowClasses = ['form-group'];
+        $aRowClasses = ['mb-3'];
 
         if ($oElement->getMessages()) {
             $aRowClasses[]  = 'has-error';

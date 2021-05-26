@@ -22,14 +22,13 @@ trait MultiCheckboxTrait
         }
 
         $this->prepareElement($oElement);
-        $bIsCustom = $oElement->getOption('custom');
 
         $sOriginalSeparator = $this->getSeparator();
         $sTmpSeparator = '[SEPARATOR]';
         $this->setSeparator($sTmpSeparator);
 
         $aOriginalLabelAttributes = $this->labelAttributes;
-        $this->labelAttributes = ['class' => $bIsCustom ? 'custom-control-label' : 'form-check-label'];
+        $this->labelAttributes = ['class' => 'form-check-label'];
 
         $sTmpContent = parent::render($oElement);
 
@@ -62,11 +61,9 @@ trait MultiCheckboxTrait
             return;
         }
 
-        $bIsCustom = $oElement->getOption('custom');
-
         $this->setClassesToElement(
             $oElement,
-            [$bIsCustom ? 'custom-control-input' : 'form-check-input'],
+            ['form-check-input'],
             ['form-control']
         );
 
@@ -103,11 +100,10 @@ trait MultiCheckboxTrait
             return $sOptionContent;
         }
 
-        $bIsCustom = $oElement->getOption('custom');
-        $aGroupClasses = $bIsCustom ? ['custom-control', 'custom-radio'] : ['form-check'];
+        $aGroupClasses = ['form-check'];
 
         if ($oElement->getOption('layout') === \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE) {
-            $aGroupClasses[] = $bIsCustom ? 'custom-control-inline' : 'form-check-inline';
+            $aGroupClasses[] = 'form-check-inline';
         }
         return $this->htmlElement(
             'div',
