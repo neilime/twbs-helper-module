@@ -28,6 +28,34 @@ class ModuleOptions extends AbstractOptions
     // @var array
     protected $typeMap;
 
+    // @var string
+    protected $defaultRowSpacingClass;
+
+    /**
+     * getDefaultRowSpacingClass
+     *
+     * @access public
+     * @return array
+     */
+    public function getDefaultRowSpacingClass()
+    {
+        return $this->defaultRowSpacingClass;
+    }
+
+    /**
+     * setDefaultRowSpacingClass
+     *
+     * @param  strgin $sDefaultRowSpacingClass
+     * @access public
+     * @return \TwbsHelper\Options\ModuleOptions
+     */
+    public function setDefaultRowSpacingClass(string $sDefaultRowSpacingClass)
+    {
+        $this->defaultRowSpacingClass = $sDefaultRowSpacingClass;
+        
+        return $this;
+    }
+
 
     /**
      * getIgnoredViewHelpers

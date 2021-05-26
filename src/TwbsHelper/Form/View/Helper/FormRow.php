@@ -105,7 +105,7 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
      */
     public function renderFormRow(\Laminas\Form\ElementInterface $oElement, $sElementContent): string
     {
-        $aRowClasses = ['mb-3'];
+        $aRowClasses = [$this->options->getDefaultRowSpacingClass()];
 
         if ($oElement->getMessages()) {
             $aRowClasses[]  = 'has-error';
