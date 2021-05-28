@@ -309,7 +309,6 @@ return [
                             'blockquote' => [
                                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.',
                                 'Someone famous in <cite title="Source Title">Source Title</cite>',
-                                ['class' => 'mb-0'],
                             ],
                         ],
                         ['class' => 'p-3'],
@@ -327,7 +326,6 @@ return [
                             'blockquote' => [
                                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.',
                                 'Someone famous in <cite title="Source Title">Source Title</cite>',
-                                ['class' => 'mb-0'],
                                 [],
                                 ['class' => 'text-white'],
                             ],
@@ -353,7 +351,6 @@ return [
                                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ' .
                                     'Integer posuere erat a ante.',
                                 'Someone famous in <cite title="Source Title">Source Title</cite>',
-                                ['class' => 'mb-0'],
                             ],
                         ],
                         ['class' => 'p-3 text-right'],
@@ -384,15 +381,12 @@ return [
                 '    </div>' . PHP_EOL .
                 '    <div class="card&#x20;p-3">' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
-                '            <blockquote class="blockquote&#x20;mb-0">' . PHP_EOL .
-                '                <p class="mb-0">' .
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ' .
-                'Integer posuere erat a ante.' .
-                '</p>' . PHP_EOL .
-                '                <footer class="blockquote-footer">' .
-                'Someone famous in <cite title="Source Title">Source Title</cite>' .
-                '</footer>' . PHP_EOL .
-                '            </blockquote>' . PHP_EOL .
+                '            <figure>' . PHP_EOL .
+                '                <blockquote class="blockquote">' . PHP_EOL .
+                '                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>' . PHP_EOL .
+                '                </blockquote>' . PHP_EOL .
+                '                <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></figcaption>' . PHP_EOL .
+                '            </figure>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
@@ -411,14 +405,12 @@ return [
                 '    <div class="bg-primary&#x20;card&#x20;p-3&#x20;text-center&#x20;text-white">'
                 . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
-                '            <blockquote class="blockquote&#x20;mb-0">' . PHP_EOL .
-                '                <p class="mb-0">' .
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.' .
-                '</p>' . PHP_EOL .
-                '                <footer class="blockquote-footer&#x20;text-white">' .
-                'Someone famous in <cite title="Source Title">Source Title</cite>' .
-                '</footer>' . PHP_EOL .
-                '            </blockquote>' . PHP_EOL .
+                '            <figure>' . PHP_EOL .
+                '                <blockquote class="blockquote">' . PHP_EOL .
+                '                    <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>' . PHP_EOL .
+                '                </blockquote>' . PHP_EOL .
+                '                <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></figcaption>' . PHP_EOL .
+                '            </figure>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card&#x20;text-center">' . PHP_EOL .
@@ -438,15 +430,12 @@ return [
                 '    </div>' . PHP_EOL .
                 '    <div class="card&#x20;p-3&#x20;text-right">' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
-                '            <blockquote class="blockquote&#x20;mb-0">' . PHP_EOL .
-                '                <p class="mb-0">' .
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ' .
-                'Integer posuere erat a ante.' .
-                '</p>' . PHP_EOL .
-                '                <footer class="blockquote-footer">' .
-                'Someone famous in <cite title="Source Title">Source Title</cite>' .
-                '</footer>' . PHP_EOL .
-                '            </blockquote>' . PHP_EOL .
+                '            <figure>' . PHP_EOL .
+                '                <blockquote class="blockquote">' . PHP_EOL .
+                '                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>' . PHP_EOL .
+                '                </blockquote>' . PHP_EOL .
+                '                <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></figcaption>' . PHP_EOL .
+                '            </figure>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .

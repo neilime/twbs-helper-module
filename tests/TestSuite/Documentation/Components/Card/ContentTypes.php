@@ -173,7 +173,6 @@ return [
                     'blockquote' => [
                         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.',
                         'Someone famous in <cite title="Source Title">Source Title</cite>',
-                        ['class' => 'mb-0'],
                     ],
                 ]);
 
@@ -206,14 +205,12 @@ return [
                 '        Quote' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card-body">' . PHP_EOL .
-                '        <blockquote class="blockquote&#x20;mb-0">' . PHP_EOL .
-                '            <p class="mb-0">' .
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.' .
-                '</p>' . PHP_EOL .
-                '            <footer class="blockquote-footer">' .
-                'Someone famous in <cite title="Source Title">Source Title</cite>' .
-                '</footer>' . PHP_EOL .
-                '        </blockquote>' . PHP_EOL .
+                '        <figure>' . PHP_EOL .
+                '            <blockquote class="blockquote">' . PHP_EOL .
+                '                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>' . PHP_EOL .
+                '            </blockquote>' . PHP_EOL .
+                '            <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></figcaption>' . PHP_EOL .
+                '        </figure>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</div>' . PHP_EOL .
                 '<br/>' . PHP_EOL .
