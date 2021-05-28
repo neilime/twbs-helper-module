@@ -10,6 +10,7 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
     public const TABLE_HEAD = 'thead';
     public const TABLE_BODY = 'tbody';
+    public const TABLE_FOOTER = 'tfoot';
     public const TABLE_ROW  = 'tr';
     public const TABLE_H    = 'th';
     public const TABLE_DATA = 'td';
@@ -31,11 +32,28 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
     ) {
 
         $sResponsiveOption = $aRows['responsive'] ?? null;
-        unset($aRows['responsive']);
+
+        $aTableClasses = [
+            'table',
+            isset($aRows['align']) ? $this->getAlignmentClass($aRows['align']) : null,
+            empty($aRows['borderless']) ? null : 'table-borderless',
+            empty($aRows['captionTop']) ? null : 'caption-top',
+            empty($aRows['hover']) ? null : 'table-hover',
+            isset($aRows['size']) ? $this->getSizeClass($aRows['size'], 'table') : null,
+            empty($aRows['striped']) ? null : 'table-striped',
+            isset($aRows['variant']) ? $this->getVariantClass($aRows['variant'], 'table') : null,
+        ];
+
+        if (isset($aRows['bordered'])) {
+            $aTableClasses[] = 'table-bordered';
+            if (is_string($aRows['bordered'])) {
+                $aTableClasses[] = $this->getVariantClass($aRows['bordered'], 'border');
+            }
+        }
 
         $sTableContent = $this->htmlElement(
             'table',
-            $this->setClassesToAttributes($aAttributes, ['table']),
+            $this->setClassesToAttributes($aAttributes, $aTableClasses),
             $this->renderTableRows($aRows, $bEscape),
             $bEscape
         );
@@ -64,7 +82,7 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
      * @return string The rows XHTML.
      * @throws \InvalidArgumentException
      */
-    public function renderTableRows(array $aRows, bool $bEscape = true): string
+    protected function renderTableRows(array $aRows, bool $bEscape = true): string
     {
         $sMarkup = '';
         if (!$aRows) {
@@ -76,6 +94,10 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
             unset($aRows['caption']);
         }
 
+        if (isset($aRows['captionTop'])) {
+            $sCaption = $aRows['captionTop'];
+            unset($aRows['captionTop']);
+        }
 
         if (isset($aRows['head'])) {
             if (!is_array($aRows['head'])) {
@@ -111,16 +133,25 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
             unset($aRows['body']);
         }
 
-        if (!isset($aBodyRows)) {
-            $aBodyRows = $aRows;
+        if (isset($aRows['footer'])) {
+            if (!is_array($aRows['footer'])) {
+                throw new \InvalidArgumentException(
+                    sprintf(
+                        'Argument "%s" expects an array, "%s" given',
+                        '$aRows[\'footer\']',
+                        is_object($aRows['footer'])
+                            ? get_class($aRows['footer'])
+                            : gettype($aRows['footer'])
+                    )
+                );
+            }
+
+            $aFooterRows = $aRows['footer'];
+            unset($aRows['footer']);
         }
 
-        if (!isset($aHeadRows) && $aBodyRows) {
-            // Define head from first row keys
-            $aFirstRow = current($aBodyRows);
-            if (\Laminas\Stdlib\ArrayUtils::hasStringKeys($aFirstRow)) {
-                $aHeadRows = array_keys($aFirstRow);
-            }
+        if (!isset($aBodyRows)) {
+            $aBodyRows = $aRows;
         }
 
         if (isset($sCaption)) {
@@ -128,30 +159,19 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
         }
 
         if (isset($aHeadRows)) {
-            $sMarkup .= ($sMarkup ? PHP_EOL : '') . $this->renderHeadRows($aHeadRows, $bEscape);
+            $sMarkup .= ($sMarkup ? PHP_EOL : '') . $this->renderTableGroupRows(self::TABLE_HEAD, $aHeadRows, $bEscape);
         }
 
         if (!empty($aBodyRows)) {
-            $sRowsContent = '';
-            foreach ($aBodyRows as $iKey => $aBodyRow) {
-                if (!is_array($aBodyRow)) {
-                    throw new \InvalidArgumentException(sprintf(
-                        'Body row "%s" expects an array, "%s" given',
-                        $iKey,
-                        is_object($aBodyRow)
-                            ? get_class($aBodyRow)
-                            : gettype($aBodyRow)
-                    ));
-                }
+            $sMarkup .= ($sMarkup ? PHP_EOL : '') . $this->renderTableGroupRows(self::TABLE_BODY, $aBodyRows, $bEscape);
+        }
 
-                $sRowsContent .= ($sRowsContent ? PHP_EOL : '') . $this->renderTableRow(
-                    $aBodyRow,
-                    self::TABLE_DATA,
-                    $bEscape
-                );
-            }
-
-            $sMarkup .= ($sMarkup ? PHP_EOL : '') . $this->htmlElement(self::TABLE_BODY, [], $sRowsContent, $bEscape);
+        if (isset($aFooterRows)) {
+            $sMarkup .= ($sMarkup ? PHP_EOL : '') . $this->renderTableGroupRows(
+                self::TABLE_FOOTER,
+                $aFooterRows,
+                $bEscape
+            );
         }
 
         return $sMarkup;
@@ -180,66 +200,100 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
         );
     }
 
-
     /**
-     * Generate table "<thead>" rows elements
+     * Generate table group rows elements
      *
-     * @param array $aHeadRows
+     * @param string $sGroupType the row group type to be rendered.
+     * Can be TABLE_HEAD, TABLE_BODY or TABLE_FOOTER
+     * @param array $aGroupRows the rows to be rendered
      * @param bool $bEscape true espace html content of cells. Default True
-     * @return string The "<thead>" rows XHTML.
+     * @return string The grouped rows XHTML.
      * @throws \InvalidArgumentException
      */
-    public function renderHeadRows(array $aHeadRows, bool $bEscape = true): string
+    protected function renderTableGroupRows(string $sGroupType, array $aGroupRows, bool $bEscape = true): string
     {
-        if (!$aHeadRows) {
+        if (!$aGroupRows) {
             return '';
         }
 
-        if (isset($aHeadRows['attributes'])) {
-            $aHeadAttributes = $aHeadRows['attributes'];
-            if (!is_array($aHeadAttributes)) {
+        if (isset($aGroupRows['attributes'])) {
+            $aGroupAttributes = $aGroupRows['attributes'];
+            if (!is_array($aGroupAttributes)) {
                 throw new \InvalidArgumentException(
                     sprintf(
-                        'Head "[\'attributes\']" expects an array, "%s" given',
-                        is_object($aHeadAttributes)
-                            ? get_class($aHeadAttributes)
-                            : gettype($aHeadAttributes)
+                        '"$aGroupRows[\'attributes\']" expects an array, "%s" given',
+                        is_object($aGroupAttributes)
+                            ? get_class($aGroupAttributes)
+                            : gettype($aGroupAttributes)
                     )
                 );
             }
-            unset($aHeadRows['attributes']);
+            unset($aGroupRows['attributes']);
         } else {
-            $aHeadAttributes = [];
+            $aGroupAttributes = [];
         }
 
-        if (isset($aHeadRows['rows'])) {
-            $aHeadRows = $aHeadRows['rows'];
-            if (!is_array($aHeadRows)) {
+        $aGroupClasses = [
+            isset($aGroupRows['variant']) ? $this->getVariantClass($aGroupRows['variant'], 'table') : null,
+        ];
+        unset($aGroupRows['variant']);
+
+        if (isset($aGroupRows['rows'])) {
+            $aGroupRows = $aGroupRows['rows'];
+            if (!is_array($aGroupRows)) {
                 throw new \InvalidArgumentException(
                     sprintf(
-                        'Head "[\'rows\']" expects an array, "%s" given',
-                        is_object($aHeadRows)
-                            ? get_class($aHeadRows)
-                            : gettype($aHeadRows)
+                        '"$aGroupRows[\'rows\']" expects an array, "%s" given',
+                        is_object($aGroupRows)
+                            ? get_class($aGroupRows)
+                            : gettype($aGroupRows)
                     )
                 );
             }
+        } else {
+            // Rows can be a list of cells
+            $bRowsAreListOfcells = !in_array(false, array_map(function ($sValue) {
+                return is_scalar($sValue) || !\Laminas\Stdlib\ArrayUtils::isList($sValue);
+            }, $aGroupRows));
+
+            if ($bRowsAreListOfcells) {
+                $aGroupRows = [$aGroupRows];
+            }
         }
 
-        if (!is_array(current($aHeadRows))) {
-            $aHeadRows = [$aHeadRows];
+        $sDefaultCellType = null;
+        switch ($sGroupType) {
+            case self::TABLE_HEAD:
+                $sDefaultCellType = self::TABLE_H;
+                break;
+            case self::TABLE_BODY:
+                break;
+            case self::TABLE_FOOTER:
+                $sDefaultCellType = self::TABLE_DATA;
+                break;
+            default:
+                throw new \DomainException(sprintf(
+                    'Argument "%s" "%s" is not supported',
+                    '$sGroupType',
+                    $sGroupType,
+                ));
         }
 
-        $sHeadRowsContent = '';
-        foreach ($aHeadRows as $aHeadRow) {
-            $sHeadRowsContent .= ($sHeadRowsContent ? PHP_EOL : '') . $this->renderTableRow(
-                $aHeadRow,
-                self::TABLE_H,
+        $sGroupRowsContent = '';
+        foreach ($aGroupRows as $aGroupRow) {
+            $sGroupRowsContent .= ($sGroupRowsContent ? PHP_EOL : '') . $this->renderTableRow(
+                $aGroupRow,
+                $sDefaultCellType,
                 $bEscape
             );
         }
 
-        return $this->htmlElement(self::TABLE_HEAD, $aHeadAttributes, $sHeadRowsContent, false);
+        return $this->htmlElement(
+            $sGroupType,
+            $this->setClassesToAttributes($aGroupAttributes, $aGroupClasses),
+            $sGroupRowsContent,
+            false
+        );
     }
 
     /**
@@ -251,11 +305,12 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
      * @param boolean $bEscape true espace html content of cells. Default True
      * @return string The row XHTML.
      */
-    public function renderTableRow(
+    protected function renderTableRow(
         array $aRow,
-        string $sDefaultCellType,
+        string $sDefaultCellType = null,
         bool $bEscape = true
     ): string {
+
         if (isset($aRow['attributes'])) {
             $aRowAttributes = $aRow['attributes'];
             if (!is_array($aRowAttributes)) {
@@ -271,6 +326,14 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
         } else {
             $aRowAttributes = [];
         }
+
+        $aRowClasses = [
+            empty($aRow['active']) ? null : 'table-active',
+            isset($aRow['align']) ? $this->getAlignmentClass($aRow['align']) : null,
+            isset($aRow['variant']) ? $this->getVariantClass($aRow['variant'], 'table') : null,
+        ];
+        unset($aRow['active'], $aRow['align'], $aRow['variant']);
+
 
         if (isset($aRow['cells'])) {
             $aRow = $aRow['cells'];
@@ -295,89 +358,59 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
             $bIsFirstCol = false;
         }
 
-        return $this->htmlElement(self::TABLE_ROW, $aRowAttributes, $sRowsContent, false);
+        return $this->htmlElement(
+            self::TABLE_ROW,
+            $this->setClassesToAttributes($aRowAttributes, $aRowClasses),
+            $sRowsContent,
+            false
+        );
     }
 
     /**
      * Generate table cell element "<th>" or "<td>"
      *
-     * @param int|float|string|bool|array $sCell the cell data
-     * @param string $sDefaultCellType the default cell element
+     * @param int|float|string|bool|array $aCell the cell data
+     * @param string|null $sDefaultCellType the default cell element
      * (th or td) to be used
+     * @param boolean $bIsFirstCol weither the given cell is the first cell in the row
      * @param boolean $bEscape true espace html content of cells. Default True
      * @return string The cell XHTML.
      * @throws \InvalidArgumentException
      */
     public function renderTableCell(
-        $sCell,
-        string $sDefaultCellType,
+        $aCell,
+        string $sDefaultCellType = null,
         bool $bIsFirstCol,
         bool $bEscape = true
     ): string {
-        if (is_scalar($sCell)) {
-            $sCell = [
-                'data' => $sCell,
-                'attributes' => [],
-            ];
-        } elseif (is_array($sCell)) {
-            if (!isset($sCell['attributes'])) {
-                $sCell['attributes'] = [];
-            } elseif (!is_array($sCell['attributes'])) {
-                throw new \InvalidArgumentException(sprintf(
-                    'Argument "$sCell[\'attributes\']" expects an array, "%s" given',
-                    is_object($sCell['attributes'])
-                        ? get_class($sCell['attributes'])
-                        : gettype($sCell['attributes'])
-                ));
-            }
+
+        $aCell = $this->defineCellStructure($aCell, $sDefaultCellType, $bIsFirstCol);
+
+        if (!isset($aCell['data'])) {
+            throw new \InvalidArgumentException('Argument "$aCell[\'data\']" is undefined');
+        }
+
+        if (is_array($aCell['data'])) {
+            $sCellData = $this->__invoke($aCell['data'], ['class' => 'mb-0'], $bEscape);
+        } elseif (is_scalar($aCell['data'])) {
+            $sCellData = $aCell['data'];
         } else {
             throw new \InvalidArgumentException(sprintf(
-                'Argument "$sCell" expects an array or a scalar value, "%s" given',
-                get_class($sCell)
-            ));
-        }
-
-        if ($sDefaultCellType === self::TABLE_H && !isset($sCell['attributes']['scope'])) {
-            $sCell['attributes']['scope'] = 'col';
-        } elseif (
-            $sDefaultCellType === self::TABLE_DATA
-            && $bIsFirstCol
-            && !isset($sCell['attributes']['scope'])
-        ) {
-            $sCell['attributes']['scope'] = 'row';
-        }
-
-        if (!isset($sCell['type'])) {
-            $sCell['type'] = $bIsFirstCol ? self::TABLE_H : $sDefaultCellType;
-        }
-
-        return $this->renderTableCellFromArray($sCell, $bEscape);
-    }
-
-    protected function renderTableCellFromArray(array $aCell, bool $bEscape): string
-    {
-        if (!isset($aCell['data'])) {
-            throw new \InvalidArgumentException('Argument "$sCell[\'data\']" is undefined');
-        }
-
-        $sCellData = $aCell['data'];
-        if (!is_string($sCellData)) {
-            throw new \InvalidArgumentException(sprintf(
-                'Argument "$sCell[\'data\']" expects a string value, "%s" given',
-                is_object($sCellData)
-                    ? get_class($sCellData)
-                    : gettype($sCellData)
+                'Argument "$aCell[\'data\']" expects an array or a scalar value, "%s" given',
+                is_object($aCell['data'])
+                    ? get_class($aCell['data'])
+                    : gettype($aCell['data'])
             ));
         }
 
         if (!isset($aCell['type'])) {
-            throw new \InvalidArgumentException('Argument "$sCell[\'type\']" is undefined');
+            throw new \InvalidArgumentException('Argument "$aCell[\'type\']" is undefined');
         }
 
         $sCellType = $aCell['type'];
         if (!is_string($sCellType)) {
             throw new \InvalidArgumentException(sprintf(
-                'Argument "$sCell[\'type\']" expects a string, "%s" given',
+                'Argument "$aCell[\'type\']" expects a string, "%s" given',
                 is_object($sCellType)
                     ? get_class($sCellType)
                     : gettype($sCellType)
@@ -389,7 +422,7 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
             $aAttributes = $aCell['attributes'];
             if (!is_array($aAttributes)) {
                 throw new \InvalidArgumentException(sprintf(
-                    'Argument "$sCell[\'attributes\']" expects an array, ' .
+                    'Argument "$aCell[\'attributes\']" expects an array, ' .
                         '"%s" given',
                     is_object($aAttributes)
                         ? get_class($aAttributes)
@@ -398,6 +431,94 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
             }
         }
 
+
+        $sAlignOption = $aCell['align'] ?? null;
+        unset($aCell['align']);
+        if ($sAlignOption) {
+            $aAttributes = $this->setClassesToAttributes($aAttributes, [$this->getAlignmentClass($sAlignOption)]);
+        }
+
+        if (!empty($aCell['active'])) {
+            $aAttributes = $this->setClassesToAttributes($aAttributes, ['table-active']);
+        }
+        unset($aCell['active']);
+
         return $this->htmlElement($sCellType, $aAttributes, $sCellData, $bEscape);
+    }
+
+    protected function defineCellStructure(
+        $aCell,
+        string $sDefaultCellType = null,
+        bool $bIsFirstCol
+    ): array {
+        if (is_scalar($aCell)) {
+            $aCell = [
+                'data' => $aCell,
+                'attributes' => [],
+            ];
+        } elseif (is_array($aCell)) {
+            if (!isset($aCell['data'])) {
+                throw new \InvalidArgumentException('Argument "$aCell[\'data\']" is undefined');
+            }
+
+            if (!isset($aCell['attributes'])) {
+                $aCell['attributes'] = [];
+            } elseif (!is_array($aCell['attributes'])) {
+                throw new \InvalidArgumentException(sprintf(
+                    'Argument "$aCell[\'attributes\']" expects an array, "%s" given',
+                    is_object($aCell['attributes'])
+                        ? get_class($aCell['attributes'])
+                        : gettype($aCell['attributes'])
+                ));
+            }
+        } else {
+            throw new \InvalidArgumentException(sprintf(
+                'Argument "$aCell" expects an array or a scalar value, "%s" given',
+                get_class($aCell)
+            ));
+        }
+
+
+
+        if (is_array($aCell['data'])) {
+            $aCell['type'] = self::TABLE_DATA;
+            return $aCell;
+        }
+        $sHasCellScope = array_key_exists('scope', $aCell['attributes']);
+        if ($sHasCellScope && is_null($aCell['attributes']['scope'])) {
+            unset($aCell['attributes']['scope']);
+        }
+
+        switch ($sDefaultCellType) {
+            case self::TABLE_H:
+                if (!$sHasCellScope) {
+                    $aCell['attributes']['scope'] = 'col';
+                }
+                break;
+            case self::TABLE_DATA:
+                break;
+            case null:
+                if (
+                    $bIsFirstCol
+                    && !$sHasCellScope
+                ) {
+                    $aCell['attributes']['scope'] = 'row';
+                }
+                $sDefaultCellType = $bIsFirstCol ? self::TABLE_H : self::TABLE_DATA;
+                break;
+            default:
+                throw new \DomainException(sprintf(
+                    'Argument "%s" "%s" is not supported',
+                    '$sDefaultCellType',
+                    $sDefaultCellType,
+                ));
+        }
+
+
+
+        if (!isset($aCell['type'])) {
+            $aCell['type'] = $sDefaultCellType;
+        }
+        return $aCell;
     }
 }

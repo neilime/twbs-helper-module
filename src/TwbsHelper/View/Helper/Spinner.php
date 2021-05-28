@@ -19,7 +19,7 @@ class Spinner extends \TwbsHelper\View\Helper\AbstractHtmlElement
         } else {
             $aOptions = [];
         }
-        
+
         return $this->render($aOptions);
     }
 
@@ -46,8 +46,8 @@ class Spinner extends \TwbsHelper\View\Helper\AbstractHtmlElement
         $sLabelContent = $aOptions['label'] ?? '';
         $bShowLabel = !empty($aOptions['show_label']);
 
-        $sLabelMarkup = $sLabelContent
-            ? $bShowLabel
+        if ($sLabelContent) {
+            $sLabelMarkup = $bShowLabel
                 ? $this->htmlElement(
                     'strong',
                     [],
@@ -57,8 +57,10 @@ class Spinner extends \TwbsHelper\View\Helper\AbstractHtmlElement
                     'span',
                     ['class' => 'sr-only'],
                     $sLabelContent
-                )
-            : '';
+                );
+        } else {
+            $sLabelMarkup = '';
+        }
 
         $sPlacement = $aOptions['placement'] ?? null;
 
@@ -76,7 +78,7 @@ class Spinner extends \TwbsHelper\View\Helper\AbstractHtmlElement
         if (!$sLabelMarkup || ($sPlacement === 'center' && $bShowLabel)) {
             $aAttributes['aria-hidden'] = 'true';
         }
-           
+
         $sSpinnerMarkup = $this->htmlElement(
             $aOptions['tag'] ?? 'div',
             $this->setClassesToAttributes($aAttributes, $aClasses),

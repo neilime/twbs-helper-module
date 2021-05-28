@@ -25,29 +25,41 @@ class Blockquote extends \TwbsHelper\View\Helper\AbstractHtmlElement
         array $aAttributes = [],
         array $aContentAttributes = [],
         array $aFooterAttributes = [],
+        array $aFigureAttributes = [],
         bool $bEscape = true
     ) {
 
         // Handle content
         $sBlockquoteContent = $this->htmlElement(
             'p',
-            $this->setClassesToAttributes($aContentAttributes, ['mb-0']),
+            $aContentAttributes,
             $sContent,
             $bEscape
         );
 
+        $sRenderedBlockquote = $this->htmlElement(
+            'blockquote',
+            $this->setClassesToAttributes($aAttributes, ['blockquote']),
+            $sBlockquoteContent,
+            $bEscape
+        );
+
+        if (!$sFooter) {
+            return $sRenderedBlockquote;
+        }
+
         // Handle footer
-        $sFooterContent = $sFooter ?  PHP_EOL . $this->htmlElement(
-            'footer',
+        $sFooterContent = $this->htmlElement(
+            'figcaption',
             $this->setClassesToAttributes($aFooterAttributes, ['blockquote-footer']),
             $sFooter,
             $bEscape
-        ) : '';
+        );
 
         return $this->htmlElement(
-            'blockquote',
-            $this->setClassesToAttributes($aAttributes, ['blockquote']),
-            $sBlockquoteContent . $sFooterContent,
+            'figure',
+            $aFigureAttributes,
+            $sRenderedBlockquote . PHP_EOL . $sFooterContent,
             $bEscape
         );
     }

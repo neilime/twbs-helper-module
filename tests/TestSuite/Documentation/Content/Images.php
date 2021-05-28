@@ -9,19 +9,20 @@ return [
             'title' => 'Responsive images',
             'url' => '%bootstrap-url%/content/images/#responsive-images',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->image('/twbs-helper-module/img/docs/responsive.svg', ['fluid' => true, 'alt' => 'Responsive image',]);
+                echo $oView->image('/twbs-helper-module/img/docs/responsive.svg', ['fluid' => true, 'alt' => '...',]);
             },
             'expected' =>
-            '<img alt="Responsive&#x20;image" class="img-fluid" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;responsive.svg" />',
+            '<img alt="..." class="img-fluid" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;responsive.svg" />',
         ],
         [
             'title' => 'Image thumbnails',
             'url' => '%bootstrap-url%/content/images/#image-thumbnails',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->image('/twbs-helper-module/img/docs/200x200.svg', ['thumbnail' => true, 'alt' => 'Image thumbnail',]);
+                echo $oView->image('/twbs-helper-module/img/docs/200x200.svg', ['thumbnail' => true, 'alt' => '...',]);
             },
             'expected' =>
-            '<img alt="Image&#x20;thumbnail" class="img-thumbnail" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;200x200.svg" />',
+            '<img alt="..." class="img-thumbnail" ' .
+                'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;200x200.svg" />',
         ],
         [
             'title' => 'Aligning images',
@@ -29,25 +30,26 @@ return [
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 echo $oView->image(
                     '/twbs-helper-module/img/docs/200x200.svg',
-                    ['rounded' => true, 'alt' => 'Image aligned left', 'class' => 'float-left']
+                    ['rounded' => true, 'alt' => '...', 'class' => 'float-start']
                 )  . PHP_EOL;
 
                 echo $oView->image(
                     '/twbs-helper-module/img/docs/200x200.svg',
-                    ['rounded' => true, 'alt' => 'Image aligned right', 'class' => 'float-right']
+                    ['rounded' => true, 'alt' => '...', 'class' => 'float-end']
                 ) . PHP_EOL;
 
                 echo $oView->image(
                     '/twbs-helper-module/img/docs/200x200.svg',
-                    ['rounded' => true, 'alt' => 'Image aligned block', 'class' => 'mx-auto d-block']
+                    ['rounded' => true, 'alt' => '...', 'class' => 'mx-auto d-block']
                 );
             },
-            'expected' => '<img alt="Image&#x20;aligned&#x20;left" class="float-left&#x20;rounded" ' .
+            'expected' => '<img alt="..." class="float-start&#x20;rounded" ' .
                 'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;200x200.svg" />'  . PHP_EOL .
-                '<img alt="Image&#x20;aligned&#x20;right" class="float-right&#x20;rounded" ' .
+                '<img alt="..." class="float-end&#x20;rounded" ' .
                 'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;200x200.svg" />' . PHP_EOL .
-                '<img alt="Image&#x20;aligned&#x20;block" ' .
-                'class="d-block&#x20;mx-auto&#x20;rounded" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;200x200.svg" />',
+                '<img alt="..." ' .
+                'class="d-block&#x20;mx-auto&#x20;rounded" ' .
+                'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;200x200.svg" />',
         ],
         [
             'title' => 'Picture',
@@ -56,15 +58,17 @@ return [
                 echo $oView->image('/twbs-helper-module/img/docs/200x200.svg', [
                     'thumbnail' => true,
                     'fluid' => true,
-                    'alt' => 'Picture image',
+                    'alt' => '...',
                     'sources' => ['/twbs-helper-module/img/docs/200x200.svg' => 'image/svg+xml'],
                 ]);
             },
             'expected' =>
             '<picture>' . PHP_EOL .
-                '    <source srcset="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;200x200.svg" type="image&#x2F;svg&#x2B;xml" />' . PHP_EOL .
-                '    <img alt="Picture&#x20;image" ' .
-                'class="img-fluid&#x20;img-thumbnail" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;200x200.svg" />' . PHP_EOL .
+                '    <source srcset="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;200x200.svg" ' .
+                'type="image&#x2F;svg&#x2B;xml" />' . PHP_EOL .
+                '    <img alt="..." ' .
+                'class="img-fluid&#x20;img-thumbnail" ' .
+                'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;200x200.svg" />' . PHP_EOL .
                 '</picture>',
         ],
     ],
