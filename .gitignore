@@ -10,3 +10,4 @@ nb-configuration.xml
 composer.lock
 *.swp
 /node_modules
+tests/.phpunit.result.cache

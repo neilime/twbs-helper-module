@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="Bootstrap.php"
-         colors="true"
-         verbose="true"
-         backupGlobals="false"
-         backupStaticAttributes="false"
-         stopOnFailure="true">
-    <testsuites>
-        <testsuite name="Documentation">
-            <directory suffix=".php">./TestSuite/Documentation/</directory>
-        </testsuite>
-        <testsuite name="TwbsHelper">
-            <directory suffix=".php">./TestSuite/TwbsHelper/</directory>
-        </testsuite>
-    </testsuites>
-    <filter>
-        <whitelist>
-            <directory suffix=".php">../src/</directory>
-        </whitelist>
-    </filter>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="Bootstrap.php" colors="true" verbose="true" backupGlobals="false" backupStaticAttributes="false" stopOnFailure="true" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+  <coverage>
+    <include>
+      <directory suffix=".php">../src/</directory>
+    </include>
+  </coverage>
+  <testsuites>
+    <testsuite name="Documentation">
+      <directory suffix=".php">./TestSuite/Documentation/</directory>
+    </testsuite>
+    <testsuite name="TwbsHelper">
+      <directory suffix=".php">./TestSuite/TwbsHelper/</directory>
+    </testsuite>
+  </testsuites>
 </phpunit>
