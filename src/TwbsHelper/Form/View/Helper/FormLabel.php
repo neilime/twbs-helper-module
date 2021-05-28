@@ -40,7 +40,6 @@ class FormLabel extends \Laminas\Form\View\Helper\FormLabel
         }
 
         if ($oElement instanceof \Laminas\Form\LabelAwareInterface) {
-
             $aLabelAttributes = $oElement->getLabelAttributes();
             if (!$oElement instanceof \Laminas\Form\Element\Checkbox) {
                 $aLabelAttributes = array_merge(['class' => 'form-label'], $aLabelAttributes);

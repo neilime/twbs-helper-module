@@ -185,9 +185,7 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
             if ($sInputErrorClass = $this->getInputErrorClass()) {
                 $this->setClassesToElement($oElement, [$sInputErrorClass]);
             }
-        }
-        // "is-valid" validation state case
-        elseif ($oElement->getOption('valid_feedback')) {
+        } elseif ($oElement->getOption('valid_feedback')) { // "is-valid" validation state case
             // Element have errors
             if ($sInputValidClass = $this->getInputValidClass()) {
                 $this->setClassesToElement($oElement, [$sInputValidClass]);

@@ -59,8 +59,8 @@ class FormTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals(
             '<form action="" method="POST" name="form" role="form" id="form">' . PHP_EOL .
-                '    <div class="form-group&#x20;row">' . PHP_EOL .
-                '        <label class="col-form-label&#x20;col-sm-2" for="inputEmail3">' .
+                '    <div class="mb-3&#x20;row">' . PHP_EOL .
+                '        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="inputEmail3">' .
                 'Email' .
                 '</label>' . PHP_EOL .
                 '        <div class="col-sm-10">' . PHP_EOL .

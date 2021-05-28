@@ -127,8 +127,11 @@ class Form extends \Laminas\Form\View\Helper\Form
     /**
      * Retrieve element rendering
      */
-    protected function renderElement(\Laminas\Form\ElementInterface $oElement, string $sRowClass, array $aRowsRendering): array
-    {
+    protected function renderElement(
+        \Laminas\Form\ElementInterface $oElement,
+        string $sRowClass,
+        array $aRowsRendering
+    ): array {
 
         if ($oElement instanceof \Laminas\Form\Element\Button && $oElement->getOption('row_name')) {
             return $this->renderButtonGroup($oElement, $sRowClass, $aRowsRendering);
@@ -161,7 +164,11 @@ class Form extends \Laminas\Form\View\Helper\Form
 
             if (!empty($aOptions['column']) && $bIsNotLayoutHorizontal) {
                 $aRowsRendering[$sRowRenderingKey]['helper'] = [$this, 'htmlElement'];
-                $aRowsRendering[$sRowRenderingKey]['helper_params'] = ['div', $this->setClassesToAttributes([], [$sRowClass]), '%content%'];
+                $aRowsRendering[$sRowRenderingKey]['helper_params'] = [
+                    'div',
+                    $this->setClassesToAttributes([], [$sRowClass]),
+                    '%content%'
+                ];
             }
         }
 
@@ -172,13 +179,17 @@ class Form extends \Laminas\Form\View\Helper\Form
     /**
      * Retrieve button group element rendering
      */
-    protected function renderButtonGroup(\Laminas\Form\Element\Button $oElement, string $sRowClass, array $aRowsRendering): array
-    {
+    protected function renderButtonGroup(
+        \Laminas\Form\Element\Button $oElement,
+        string $sRowClass,
+        array $aRowsRendering
+    ): array {
         $sRowRenderingKey = $this->generateRowRenderingKey($oElement, $aRowsRendering);
 
         if (isset($aRowsRendering[$sRowRenderingKey])) {
             $aRowsRendering[$sRowRenderingKey]['content'][] = $oElement;
         } else {
+            $aOptions = $oElement->getOptions();
 
             $bIsNotLayoutHorizontal = empty($aOptions['layout']) || self::LAYOUT_HORIZONTAL !== $aOptions['layout'];
 
@@ -202,7 +213,7 @@ class Form extends \Laminas\Form\View\Helper\Form
     }
 
     /**
-     * Generate 
+     * Generate
      */
     private function generateRowRenderingKey(\Laminas\Form\ElementInterface $oElement, array $aRowsRendering): string
     {
@@ -223,7 +234,8 @@ class Form extends \Laminas\Form\View\Helper\Form
             }
 
             $sLastKey = array_pop($aExistingKeys);
-            $sRowRenderingKeyPrefix = explode('_', $sLastKey)[0] + 1 . '_';
+            $iKey = intval(explode('_', $sLastKey)[0]) + 1;
+            $sRowRenderingKeyPrefix = $iKey . '_';
 
             return $sRowRenderingKeyPrefix . $sRowName;
         }
@@ -233,7 +245,8 @@ class Form extends \Laminas\Form\View\Helper\Form
             return $sLastKey;
         }
 
-        $sRowRenderingKeyPrefix = explode('_', $sLastKey)[0] + 1 . '_';
+        $iKey = intval(explode('_', $sLastKey)[0]) + 1;
+        $sRowRenderingKeyPrefix = $iKey . '_';
 
         return $sRowRenderingKeyPrefix;
     }
