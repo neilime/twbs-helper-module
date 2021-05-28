@@ -220,14 +220,14 @@ return [
     },
     'expected' => '<form action="" method="POST" name="form" role="form" id="form">' . PHP_EOL .
         '    <div class="align-items-center&#x20;form-row">' . PHP_EOL .
-        '        <div class="col-auto">' . PHP_EOL .
-        '            <label class="sr-only" for="inlineFormInput">Name</label>'
+        '        <div class="col-auto&#x20;mb-3">' . PHP_EOL .
+        '            <label class="form-label&#x20;sr-only" for="inlineFormInput">Name</label>'
         . PHP_EOL .
         '            <input name="name" type="text" id="inlineFormInput" ' .
         'placeholder="Jane&#x20;Doe" class="form-control&#x20;mb-2" value=""/>' . PHP_EOL .
         '        </div>' . PHP_EOL .
-        '        <div class="col-auto">' . PHP_EOL .
-        '            <label class="sr-only" for="inlineFormInputGroup">Username</label>'
+        '        <div class="col-auto&#x20;mb-3">' . PHP_EOL .
+        '            <label class="form-label&#x20;sr-only" for="inlineFormInputGroup">Username</label>'
         . PHP_EOL .
         '            <div class="input-group&#x20;mb-2">' . PHP_EOL .
         '                <div class="input-group-prepend">' . PHP_EOL .
@@ -239,7 +239,7 @@ return [
         'placeholder="Username" class="form-control" value=""/>' . PHP_EOL .
         '            </div>' . PHP_EOL .
         '        </div>' . PHP_EOL .
-        '        <div class="col-auto">' . PHP_EOL .
+        '        <div class="col-auto&#x20;mb-3">' . PHP_EOL .
         '            <div class="form-check&#x20;mb-2">' . PHP_EOL .
         '                <input type="checkbox" name="remember_me" id="autoSizingCheck" ' .
         'class="form-check-input" value="1"/>' . PHP_EOL .
@@ -247,7 +247,7 @@ return [
         'Remember me</label>' . PHP_EOL .
         '            </div>' . PHP_EOL .
         '        </div>' . PHP_EOL .
-        '        <div class="col-auto">' . PHP_EOL .
+        '        <div class="col-auto&#x20;mb-3">' . PHP_EOL .
         '            <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">' .
         'Submit</button>' . PHP_EOL .
         '        </div>' . PHP_EOL .
@@ -256,14 +256,14 @@ return [
         '<br/>' . PHP_EOL .
         '<form action="" method="POST" name="form" role="form" id="form">' . PHP_EOL .
         '    <div class="align-items-center&#x20;form-row">' . PHP_EOL .
-        '        <div class="col-sm-3&#x20;my-1">' . PHP_EOL .
-        '            <label class="sr-only" for="inlineFormInput">Name</label>'
+        '        <div class="col-sm-3&#x20;mb-3&#x20;my-1">' . PHP_EOL .
+        '            <label class="form-label&#x20;sr-only" for="inlineFormInput">Name</label>'
         . PHP_EOL .
         '            <input name="name" type="text" id="inlineFormInput" ' .
         'placeholder="Jane&#x20;Doe" class="form-control&#x20;mb-2" value=""/>' . PHP_EOL .
         '        </div>' . PHP_EOL .
-        '        <div class="col-sm-3&#x20;my-1">' . PHP_EOL .
-        '            <label class="sr-only" for="inlineFormInputGroup">Username</label>'
+        '        <div class="col-sm-3&#x20;mb-3&#x20;my-1">' . PHP_EOL .
+        '            <label class="form-label&#x20;sr-only" for="inlineFormInputGroup">Username</label>'
         . PHP_EOL .
         '            <div class="input-group&#x20;mb-2">' . PHP_EOL .
         '                <div class="input-group-prepend">' . PHP_EOL .
@@ -275,7 +275,7 @@ return [
         'placeholder="Username" class="form-control" value=""/>' . PHP_EOL .
         '            </div>' . PHP_EOL .
         '        </div>' . PHP_EOL .
-        '        <div class="col-auto&#x20;my-1">' . PHP_EOL .
+        '        <div class="col-auto&#x20;mb-3&#x20;my-1">' . PHP_EOL .
         '            <div class="form-check&#x20;mb-2">' . PHP_EOL .
         '                <input type="checkbox" name="remember_me" id="autoSizingCheck" ' .
         'class="form-check-input" value="1"/>' . PHP_EOL .
@@ -283,7 +283,7 @@ return [
         'Remember me</label>' . PHP_EOL .
         '            </div>' . PHP_EOL .
         '        </div>' . PHP_EOL .
-        '        <div class="col-auto&#x20;my-1">' . PHP_EOL .
+        '        <div class="col-auto&#x20;mb-3&#x20;my-1">' . PHP_EOL .
         '            <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">' .
         'Submit</button>' . PHP_EOL .
         '        </div>' . PHP_EOL .
@@ -292,26 +292,26 @@ return [
         '<br/>' . PHP_EOL .
         '<form action="" method="POST" name="form" role="form" id="form">' . PHP_EOL .
         '    <div class="align-items-center&#x20;form-row">' . PHP_EOL .
-        '        <div class="col-sm-3&#x20;my-1">' . PHP_EOL .
+        '        <div class="col-sm-3&#x20;mb-3&#x20;my-1">' . PHP_EOL .
         '            <label class="mr-sm-2&#x20;sr-only" for="inlineFormCustomSelect">Preference</label>'
         . PHP_EOL .
         '            <select name="preference" id="inlineFormCustomSelect" ' .
-        'class="custom-select&#x20;mr-sm-2">' . PHP_EOL .
+        'class="form-select&#x20;mr-sm-2">' . PHP_EOL .
         '                <option value="">Choose...</option>' . PHP_EOL .
         '                <option value="1">One</option>' . PHP_EOL .
         '                <option value="2">Two</option>' . PHP_EOL .
         '                <option value="3">Three</option>' . PHP_EOL .
         '            </select>' . PHP_EOL .
         '        </div>' . PHP_EOL .
-        '        <div class="col-auto&#x20;my-1">' . PHP_EOL .
+        '        <div class="col-auto&#x20;mb-3&#x20;my-1">' . PHP_EOL .
         '            <div class="custom-checkbox&#x20;custom-control&#x20;mr-sm-2">' . PHP_EOL .
         '                <input type="checkbox" name="remember_my_preference" id="customControlAutosizing" ' .
-        'class="custom-control-input" value="1"/>' . PHP_EOL .
-        '                <label class="custom-control-label" for="customControlAutosizing">' .
+        'class="form-check-input" value="1"/>' . PHP_EOL .
+        '                <label class="form-check-label" for="customControlAutosizing">' .
         'Remember my preference</label>' . PHP_EOL .
         '            </div>' . PHP_EOL .
         '        </div>' . PHP_EOL .
-        '        <div class="col-auto&#x20;my-1">' . PHP_EOL .
+        '        <div class="col-auto&#x20;mb-3&#x20;my-1">' . PHP_EOL .
         '            <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">' .
         'Submit</button>' . PHP_EOL .
         '        </div>' . PHP_EOL .

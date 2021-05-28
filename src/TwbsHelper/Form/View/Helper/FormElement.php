@@ -11,6 +11,7 @@ class FormElement extends \Laminas\Form\View\Helper\FormElement
 
     // Instance map to view helper
     protected $classMap = [
+        'Laminas\Form\Element\File'                => 'formfile',
         'Laminas\Form\Element\Button'              => 'formbutton',
         'Laminas\Form\Element\Captcha'             => 'formcaptcha',
         'Laminas\Form\Element\Csrf'                => 'formhidden',

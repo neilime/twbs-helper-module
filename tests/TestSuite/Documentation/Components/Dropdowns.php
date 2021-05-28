@@ -886,17 +886,17 @@ return [
                     },
                     'expected' => '<div class="dropdown-menu">' . PHP_EOL .
                         '    <form action="" method="POST" name="dropdown" id="dropdown" role="form">' . PHP_EOL .
-                        '        <div class="form-group">' . PHP_EOL .
-                        '            <label for="exampleDropdownFormEmail1">Email address</label>' . PHP_EOL .
+                        '        <div class="mb-3">' . PHP_EOL .
+                        '            <label class="form-label" for="exampleDropdownFormEmail1">Email address</label>' . PHP_EOL .
                         '            <input name="email" type="email" id="exampleDropdownFormEmail1" ' .
                         'placeholder="email&#x40;example.com" class="form-control" value=""/>' . PHP_EOL .
                         '        </div>' . PHP_EOL .
-                        '        <div class="form-group">' . PHP_EOL .
-                        '            <label for="exampleDropdownFormPassword1">Password</label>' . PHP_EOL .
+                        '        <div class="mb-3">' . PHP_EOL .
+                        '            <label class="form-label" for="exampleDropdownFormPassword1">Password</label>' . PHP_EOL .
                         '            <input name="password" type="password" id="exampleDropdownFormPassword1" ' .
                         'placeholder="Password" class="form-control" value=""/>' . PHP_EOL .
                         '        </div>' . PHP_EOL .
-                        '        <div class="form-group">' . PHP_EOL .
+                        '        <div class="mb-3">' . PHP_EOL .
                         '            <div class="form-check">' . PHP_EOL .
                         '                <input type="checkbox" name="remember_me" id="dropdownCheck" ' .
                         'class="form-check-input" value="1"/>' . PHP_EOL .
@@ -904,7 +904,7 @@ return [
                         'Remember me</label>' . PHP_EOL .
                         '            </div>' . PHP_EOL .
                         '        </div>' . PHP_EOL .
-                        '        <div class="form-group">' . PHP_EOL .
+                        '        <div class="mb-3">' . PHP_EOL .
                         '            <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">' .
                         'Sign in</button>' . PHP_EOL .
                         '        </div>' . PHP_EOL .

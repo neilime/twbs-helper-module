@@ -26,8 +26,8 @@ return [
         ]));
     },
     'expected' => '<form action="" method="POST" name="form" role="form" id="form">' . PHP_EOL .
-        '    <div class="form-group">' . PHP_EOL .
-        '        <label for="formControlRange">Example Range input</label>' . PHP_EOL .
+        '    <div class="mb-3">' . PHP_EOL .
+        '        <label class="form-label" for="formControlRange">Example Range input</label>' . PHP_EOL .
         '        <input name="range" type="range" id="formControlRange" ' .
         'class="form-control-range" value=""/>' . PHP_EOL .
         '    </div>' . PHP_EOL .

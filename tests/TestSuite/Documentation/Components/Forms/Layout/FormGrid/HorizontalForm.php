@@ -117,8 +117,8 @@ return [
         ]));
     },
     'expected' => '<form action="" method="POST" name="form" role="form" id="form">' . PHP_EOL .
-        '    <div class="form-group&#x20;row">' . PHP_EOL .
-        '        <label class="col-form-label&#x20;col-sm-2" for="inputEmail3">' .
+        '    <div class="mb-3&#x20;row">' . PHP_EOL .
+        '        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="inputEmail3">' .
         'Email' .
         '</label>' . PHP_EOL .
         '        <div class="col-sm-10">' . PHP_EOL .
@@ -126,8 +126,8 @@ return [
         'placeholder="Email" class="form-control" value=""/>' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .
-        '    <div class="form-group&#x20;row">' . PHP_EOL .
-        '        <label class="col-form-label&#x20;col-sm-2" for="inputPassword3">' .
+        '    <div class="mb-3&#x20;row">' . PHP_EOL .
+        '        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="inputPassword3">' .
         'Password' .
         '</label>' . PHP_EOL .
         '        <div class="col-sm-10">' . PHP_EOL .
@@ -165,7 +165,7 @@ return [
         '            </div>'  . PHP_EOL .
         '        </div>'  . PHP_EOL .
         '    </fieldset>'  . PHP_EOL .
-        '    <div class="form-group&#x20;row">' . PHP_EOL .
+        '    <div class="mb-3&#x20;row">' . PHP_EOL .
         '        <div class="col-sm-10&#x20;offset-sm-2">' . PHP_EOL .
         '            <div class="form-check">' . PHP_EOL .
         '                <input type="hidden" name="checkbox" value="0"/>' .
@@ -175,7 +175,7 @@ return [
         '            </div>' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .
-        '    <div class="form-group&#x20;row">' . PHP_EOL .
+        '    <div class="mb-3&#x20;row">' . PHP_EOL .
         '        <div class="col-sm-2">' . PHP_EOL .
         '            Multicheckbox' . PHP_EOL .
         '        </div>' . PHP_EOL .
@@ -188,7 +188,7 @@ return [
         '            </div>' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .
-        '    <div class="form-group&#x20;row">' . PHP_EOL .
+        '    <div class="mb-3&#x20;row">' . PHP_EOL .
         '        <div class="col-sm-10">' . PHP_EOL .
         '            <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">' .
         'Sign in</button>' . PHP_EOL .
@@ -255,8 +255,8 @@ return [
                 ]));
             },
             'expected' => '<form action="" method="POST" name="form" role="form" id="form">' . PHP_EOL .
-                '    <div class="form-group&#x20;row">' . PHP_EOL .
-                '        <label class="col-form-label&#x20;col-form-label-sm&#x20;col-sm-2" ' .
+                '    <div class="mb-3&#x20;row">' . PHP_EOL .
+                '        <label class="col-form-label&#x20;col-form-label-sm&#x20;col-sm-2&#x20;form-label" ' .
                 'for="colFormLabelSm">' .
                 'Email' .
                 '</label>' . PHP_EOL .
@@ -266,8 +266,8 @@ return [
                 'value=""/>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
-                '    <div class="form-group&#x20;row">' . PHP_EOL .
-                '        <label class="col-form-label&#x20;col-sm-2" ' .
+                '    <div class="mb-3&#x20;row">' . PHP_EOL .
+                '        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" ' .
                 'for="colFormLabel">' .
                 'Email' .
                 '</label>' . PHP_EOL .
@@ -277,8 +277,8 @@ return [
                 'value=""/>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
-                '    <div class="form-group&#x20;row">' . PHP_EOL .
-                '        <label class="col-form-label&#x20;col-form-label-lg&#x20;col-sm-2" ' .
+                '    <div class="mb-3&#x20;row">' . PHP_EOL .
+                '        <label class="col-form-label&#x20;col-form-label-lg&#x20;col-sm-2&#x20;form-label" ' .
                 'for="colFormLabelLg">' .
                 'Email' .
                 '</label>' . PHP_EOL .
