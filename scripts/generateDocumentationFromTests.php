@@ -1,6 +1,6 @@
 <?php
 
-const BOOTSTRAP_VERSION = '4.5';
+const BOOTSTRAP_VERSION = '5.0';
 const BOOTSTRAP_URL = 'https://getbootstrap.com/docs/' . BOOTSTRAP_VERSION;
 const ROOT_DIR = __DIR__ . '/..';
 const USAGE_FILEPATH = ROOT_DIR . '/docs/usage/README.md';
