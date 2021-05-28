@@ -20,36 +20,44 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Setup PHP, with composer and extensions
-        uses: shivammathur/setup-php@master #https://github.com/shivammathur/setup-php
+        uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-versions }}
           extensions: mbstring
           coverage: pcov
 
-      - name: Get composer cache directory
+      - name: ♻️ Get composer cache directory
         id: composer-cache
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
 
-      - name: Cache composer dependencies
+      - name: ♻️ Cache composer dependencies
         uses: actions/cache@v2.1.6
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
           restore-keys: ${{ runner.os }}-composer-
 
-      - name: Install dependencies
+      - name: ⚙️ Install dependencies
         run: composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
 
-      - name: Run tests
+      - name: ♻️ Test cache
+        uses: actions/cache@v2.1.6
+        with:
+          path: tests/.phpunit.result.cache
+          key: ${{ runner.os }}-test-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-test-
+
+      - name: 🧪 Run tests
         run: composer test:ci
 
-      - name: Upload coverage results to Coveralls
+      - name: 📊 Upload coverage results to Coveralls
         if: matrix.php-versions == '8.0'
         uses: codecov/codecov-action@v1
         with:
           file: ./build/logs/clover.xml
 
-      - name: Generate website
+      - name: 📃 Generate documentation
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'  && matrix.php-versions == '8.0'
         run: |
           cp README.md docs/README.md
