@@ -261,7 +261,8 @@ echo $this->htmlList(
 echo $this->descriptionList(
     [
         'Description lists' => 'A description list is perfect for defining terms.',
-        'Term' => '<p>Definition for the term.</p>' . PHP_EOL . '<p>And some more placeholder definition text.</p>',
+        'Term' => '<p>Definition for the term.</p>' . PHP_EOL .
+        '<p>And some more placeholder definition text.</p>',
         'Another term' => 'This definition is short, so no extra paragraphs or anything.',
         'Truncated term is truncated' => [
             'term' => [
@@ -271,13 +272,14 @@ echo $this->descriptionList(
         ],
         'Nesting' => [
             'detail' => [
-                'label' => [
+                'data' => [
                     'Nested definition list' => [
                         'term' => [
                             'column' => 'sm-4'
                         ],
                         'detail' => [
-                            'label' => 'I heard you like definition lists. Let me put a definition list inside your definition list.',
+                            'data' => 'I heard you like definition lists. ' .
+                            'Let me put a definition list inside your definition list.',
                             'column' => 'sm-8'
                         ]
                     ]
@@ -879,7 +881,11 @@ echo $this->table([
     'body' => [
         ['active' => true, 'cells' => ['1', 'Mark', 'Otto', '@mdo']],
         ['2', 'Jacob', 'Thornton', '@fat'],
-        ['3', ['data' => 'Larry the Bird', 'active' => true, 'attributes' => ['colspan' => 2]], '@twitter'],
+        [
+            '3',
+            ['data' => 'Larry the Bird', 'active' => true, 'attributes' => ['colspan' => 2]],
+            '@twitter'
+        ],
     ],
 ]);
 ```
@@ -1243,7 +1249,8 @@ echo $this->table([
             ],
             'This cell inherits <code>vertical-align: middle;</code> from the table',
             'This cell inherits <code>vertical-align: middle;</code> from the table',
-            'This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.'
+            'This here is some placeholder text, intended to take up quite a bit of vertical space, ' .
+            'to demonstrate how the vertical alignment works in the preceding cells.'
         ],
         [
             'align' => 'bottom',
@@ -1254,7 +1261,8 @@ echo $this->table([
             ],
             'This cell inherits <code>vertical-align: bottom;</code> from the table row',
             'This cell inherits <code>vertical-align: bottom;</code> from the table row',
-            'This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.'
+            'This here is some placeholder text, intended to take up quite a bit of vertical space, ' .
+            'to demonstrate how the vertical alignment works in the preceding cells.'
         ],
         [
             [
@@ -1267,7 +1275,8 @@ echo $this->table([
                 'align' => 'top',
                 'data' => 'This cell is aligned to the top.',
             ],
-            'This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.'
+            'This here is some placeholder text, intended to take up quite a bit of vertical space, ' .
+            'to demonstrate how the vertical alignment works in the preceding cells.'
         ],
     ],
 ]);
@@ -1438,7 +1447,7 @@ echo $this->table([
 ####### **Source**
 
 ```php
-// Similar to tables and dark tables, use the option "variant" to make <thead>s appear light or dark gray.
+// Use the option "variant" to make <thead>s appear light or dark gray.
 echo $this->table([
     'head' => [
         'variant' => 'light',
@@ -2132,10 +2141,12 @@ echo $this->figure(
 ###### **Source**
 
 ```php
-foreach ([
-    'primary', 'secondary', 'success', 'danger',
-    'warning', 'info', 'light', 'dark',
-] as $sVariant) {
+foreach (
+    [
+        'primary', 'secondary', 'success', 'danger',
+        'warning', 'info', 'light', 'dark',
+    ] as $sVariant
+) {
     echo $this->alert(
         'A simple ' . $sVariant . ' alert—check it out!',
         $sVariant
@@ -2181,10 +2192,12 @@ foreach ([
 ####### **Source**
 
 ```php
-foreach ([
-    'primary', 'secondary', 'success', 'danger',
-    'warning', 'info', 'light', 'dark',
-] as $sVariant) {
+foreach (
+    [
+        'primary', 'secondary', 'success', 'danger',
+        'warning', 'info', 'light', 'dark',
+    ] as $sVariant
+) {
     echo $this->alert(
         'A simple ' . $sVariant . ' alert with ' .
         '<a href="#" class="alert-link">an example link</a>. ' .
@@ -2328,10 +2341,12 @@ echo $this->formButton([
 ###### **Source**
 
 ```php
-foreach ([
-    'primary', 'secondary', 'success', 'danger',
-    'warning', 'info', 'light', 'dark',
-] as $sVariant) {
+foreach (
+    [
+        'primary', 'secondary', 'success', 'danger',
+        'warning', 'info', 'light', 'dark',
+    ] as $sVariant
+) {
     echo $this->badge(ucfirst($sVariant), $sVariant) . PHP_EOL;
 }
 ```
@@ -2358,10 +2373,12 @@ foreach ([
 ###### **Source**
 
 ```php
-foreach ([
-    'primary', 'secondary', 'success', 'danger',
-    'warning', 'info', 'light', 'dark',
-] as $sVariant) {
+foreach (
+    [
+        'primary', 'secondary', 'success', 'danger',
+        'warning', 'info', 'light', 'dark',
+    ] as $sVariant
+) {
     echo $this->badge(
         ucfirst($sVariant),
         [
@@ -2394,10 +2411,12 @@ foreach ([
 ###### **Source**
 
 ```php
-foreach ([
-    'primary', 'secondary', 'success', 'danger',
-    'warning', 'info', 'light', 'dark',
-] as $sVariant) {
+foreach (
+    [
+        'primary', 'secondary', 'success', 'danger',
+        'warning', 'info', 'light', 'dark',
+    ] as $sVariant
+) {
     echo $this->badge(
         ucfirst($sVariant),
         [
@@ -2494,10 +2513,12 @@ echo $this->breadcrumbs(new \Laminas\Navigation\Navigation([
 ###### **Source**
 
 ```php
-foreach ([
-    'primary', 'secondary', 'success', 'danger',
-    'warning', 'info', 'light', 'dark', 'link',
-] as $sVariant) {
+foreach (
+    [
+        'primary', 'secondary', 'success', 'danger',
+        'warning', 'info', 'light', 'dark', 'link',
+    ] as $sVariant
+) {
     $oButton = new \Laminas\Form\Element\Button($sVariant, [
         'label' => ucfirst($sVariant),
         'variant' => $sVariant,
@@ -2561,10 +2582,12 @@ echo $this->formButton($oButton) . PHP_EOL;
 ###### **Source**
 
 ```php
-foreach ([
-    'primary', 'secondary', 'success', 'danger',
-    'warning', 'info', 'light', 'dark',
-] as $sVariant) {
+foreach (
+    [
+        'primary', 'secondary', 'success', 'danger',
+        'warning', 'info', 'light', 'dark',
+    ] as $sVariant
+) {
     $oButton = new \Laminas\Form\Element\Button($sVariant, [
         'label' => ucfirst($sVariant),
         'variant' => 'outline-' . $sVariant,
@@ -4717,7 +4740,6 @@ echo $this->formButton([
     'attributes' => ['id' => 'dropdownMenuButton'],
 ]);
 
-
 echo PHP_EOL . '<br/>' . PHP_EOL;
 
 // With <a> elements
@@ -4734,10 +4756,12 @@ echo $this->formButton([
 echo PHP_EOL . '<br/>' . PHP_EOL;
 
 // Variations
-foreach ([
-    'primary', 'secondary', 'success', 'danger',
-    'warning', 'info', 'light', 'dark',
-] as $sVariant) {
+foreach (
+    [
+        'primary', 'secondary', 'success', 'danger',
+        'warning', 'info', 'light', 'dark',
+    ] as $sVariant
+) {
     echo $this->formButton([
         'name' => 'dropdown',
         'options' => [
@@ -4860,10 +4884,12 @@ foreach ([
 ####### **Source**
 
 ```php
-foreach ([
-    'primary', 'secondary', 'success', 'danger',
-    'warning', 'info', 'light', 'dark',
-] as $sVariant) {
+foreach (
+    [
+        'primary', 'secondary', 'success', 'danger',
+        'warning', 'info', 'light', 'dark',
+    ] as $sVariant
+) {
     echo $this->formButton([
         'name' => 'dropdown',
         'options' => [
@@ -8377,7 +8403,6 @@ $oForm->get('state')->setMessages(['Please select a valid state.']);
 $oForm->get('zip')->setMessages(['Please provide a valid zip.']);
 $oForm->get('termsAndConditions')->setMessages(['You must agree before submitting.']);
 
-
 // Render form
 echo $this->form($oForm);
 ```
@@ -10587,53 +10612,62 @@ echo $this->media([
 ```php
 // Top-aligned media
 echo $this->media([
-    'img' => ['/twbs-helper-module/img/docs/64x64.svg', ['alt' => '...', 'class' => 'align-self-start mr-3']],
-    'title' => 'Top-aligned media',
-    'text' => [
-        'Cras sit amet nibh libero, in gravida nulla. ' .
-        'Nulla vel metus scelerisque ante sollicitudin. ' .
-        'Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. ' .
-        'Fusce condimentum nunc ac nisi vulputate fringilla. ' .
-        'Donec lacinia congue felis in faucibus.',
-        'Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. ' .
-        'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
-    ],
+    'img' => [
+        '/twbs-helper-module/img/docs/64x64.svg',
+    ['alt' => '...', 'class' => 'align-self-start mr-3']
+],
+'title' => 'Top-aligned media',
+'text' => [
+    'Cras sit amet nibh libero, in gravida nulla. ' .
+    'Nulla vel metus scelerisque ante sollicitudin. ' .
+    'Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. ' .
+    'Fusce condimentum nunc ac nisi vulputate fringilla. ' .
+    'Donec lacinia congue felis in faucibus.',
+    'Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. ' .
+    'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
+],
 ]) . PHP_EOL;
 
 // Center-aligned media
 echo $this->media([
-    'img' => ['/twbs-helper-module/img/docs/64x64.svg', ['alt' => '...', 'class' => 'align-self-center mr-3']],
-    'title' => 'Top-aligned media',
-    'text' => [
-        'Cras sit amet nibh libero, in gravida nulla. ' .
-        'Nulla vel metus scelerisque ante sollicitudin. ' .
-        'Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. ' .
-        'Fusce condimentum nunc ac nisi vulputate fringilla. ' .
-        'Donec lacinia congue felis in faucibus.',
-        [
-            'content' => 'Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. ' .
-            'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
-            'attributes' => ['class' => 'mb-0'],
-        ],
+    'img' => [
+        '/twbs-helper-module/img/docs/64x64.svg',
+    ['alt' => '...', 'class' => 'align-self-center mr-3']
+],
+'title' => 'Top-aligned media',
+'text' => [
+    'Cras sit amet nibh libero, in gravida nulla. ' .
+    'Nulla vel metus scelerisque ante sollicitudin. ' .
+    'Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. ' .
+    'Fusce condimentum nunc ac nisi vulputate fringilla. ' .
+    'Donec lacinia congue felis in faucibus.',
+    [
+        'content' => 'Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. ' .
+        'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
+        'attributes' => ['class' => 'mb-0'],
     ],
+],
 ]) . PHP_EOL;
 
 // Bottom-aligned media
 echo $this->media([
-    'img' => ['/twbs-helper-module/img/docs/64x64.svg', ['alt' => '...', 'class' => 'align-self-end mr-3']],
-    'title' => 'Top-aligned media',
-    'text' => [
-        'Cras sit amet nibh libero, in gravida nulla. ' .
-        'Nulla vel metus scelerisque ante sollicitudin. ' .
-        'Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. ' .
-        'Fusce condimentum nunc ac nisi vulputate fringilla. ' .
-        'Donec lacinia congue felis in faucibus.',
-        [
-            'content' => 'Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. ' .
-            'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
-            'attributes' => ['class' => 'mb-0'],
-        ],
+    'img' => [
+        '/twbs-helper-module/img/docs/64x64.svg',
+    ['alt' => '...', 'class' => 'align-self-end mr-3']
+],
+'title' => 'Top-aligned media',
+'text' => [
+    'Cras sit amet nibh libero, in gravida nulla. ' .
+    'Nulla vel metus scelerisque ante sollicitudin. ' .
+    'Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. ' .
+    'Fusce condimentum nunc ac nisi vulputate fringilla. ' .
+    'Donec lacinia congue felis in faucibus.',
+    [
+        'content' => 'Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. ' .
+        'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
+        'attributes' => ['class' => 'mb-0'],
     ],
+],
 ]);
 ```
 
@@ -12406,12 +12440,14 @@ echo $this->navigation()->navbar()->render(
 ###### **Source**
 
 ```php
-foreach ([
-    false => 'Default',
-    'fixed-top' => 'Fixed top',
-    'fixed-bottom' => 'Fixed bottom',
-    'sticky-top' => 'Sticky top',
-] as $sPlacement => $sBrand) {
+foreach (
+    [
+        false => 'Default',
+        'fixed-top' => 'Fixed top',
+        'fixed-bottom' => 'Fixed bottom',
+        'sticky-top' => 'Sticky top',
+    ] as $sPlacement => $sBrand
+) {
     echo $this->navigation()->navbar()->render(
         new \Laminas\Navigation\Navigation(),
         [
@@ -12643,12 +12679,14 @@ echo $this->formButton([
 ###### **Source**
 
 ```php
-foreach ([
-    'top' => 'Popover on top',
-    'right' => 'Popover on right',
-    'bottom' => 'Popover on bottom',
-    'left' => 'Popover on left',
-] as $sPlacement => $sButtonLabel) {
+foreach (
+    [
+        'top' => 'Popover on top',
+        'right' => 'Popover on right',
+        'bottom' => 'Popover on bottom',
+        'left' => 'Popover on left',
+    ] as $sPlacement => $sButtonLabel
+) {
     echo $this->formButton([
         'name' => 'popover',
         'options' => [
@@ -12864,12 +12902,14 @@ echo $this->progressBar([
 ###### **Source**
 
 ```php
-foreach ([
-    'success' => 25,
-    'info' => 50,
-    'warning' => 75,
-    'danger' => 100,
-] as $sVariant => $iCurrent) {
+foreach (
+    [
+        'success' => 25,
+        'info' => 50,
+        'warning' => 75,
+        'danger' => 100,
+    ] as $sVariant => $iCurrent
+) {
     echo $this->progressBar([
         'variant' => $sVariant,
         'min' => 0,
@@ -12939,13 +12979,15 @@ echo $this->progressBarGroup([
 ###### **Source**
 
 ```php
-foreach ([
-    null => 10,
-    'success' => 25,
-    'info' => 50,
-    'warning' => 75,
-    'danger' => 100,
-] as $sVariant => $iCurrent) {
+foreach (
+    [
+        null => 10,
+        'success' => 25,
+        'info' => 50,
+        'warning' => 75,
+        'danger' => 100,
+    ] as $sVariant => $iCurrent
+) {
     echo $this->progressBar([
         'striped' => true,
         'variant' => $sVariant,
@@ -13041,10 +13083,12 @@ echo $this->spinner('Loading...');
 ####### **Source**
 
 ```php
-foreach ([
-    'primary', 'secondary', 'success', 'danger',
-    'warning', 'info', 'light', 'dark',
-] as $sVariant) {
+foreach (
+    [
+        'primary', 'secondary', 'success', 'danger',
+        'warning', 'info', 'light', 'dark',
+    ] as $sVariant
+) {
     echo $this->spinner([
         'variant' => $sVariant,
         'label' => 'Loading...',
@@ -13098,10 +13142,12 @@ echo $this->spinner(['type' => 'grow', 'label' => 'Loading...']);
 
 echo PHP_EOL . '<br/>' . PHP_EOL;
 
-foreach ([
-    'primary', 'secondary', 'success', 'danger',
-    'warning', 'info', 'light', 'dark',
-] as $sVariant) {
+foreach (
+    [
+        'primary', 'secondary', 'success', 'danger',
+        'warning', 'info', 'light', 'dark',
+    ] as $sVariant
+) {
     echo $this->spinner([
         'variant' => $sVariant,
         'type' => 'grow',
@@ -13609,12 +13655,14 @@ echo $this->toast([
 ###### **Source**
 
 ```php
-foreach ([
-    'top' => 'Tooltip on top',
-    'right' => 'Tooltip on right',
-    'bottom' => 'Tooltip on bottom',
-    'left' => 'Tooltip on left',
-] as $sPlacement => $sLabel) {
+foreach (
+    [
+        'top' => 'Tooltip on top',
+        'right' => 'Tooltip on right',
+        'bottom' => 'Tooltip on bottom',
+        'left' => 'Tooltip on left',
+    ] as $sPlacement => $sLabel
+) {
     echo $this->formButton([
         'name' => 'tooltip',
         'options' => [
