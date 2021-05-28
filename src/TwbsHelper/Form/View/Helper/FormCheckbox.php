@@ -17,8 +17,7 @@ class FormCheckbox extends \Laminas\Form\View\Helper\FormCheckbox
         if (!$oElement->getOption('disable_twbs')) {
             $this->setClassesToElement(
                 $oElement,
-                [$oElement->getOption('custom') ? 'custom-control-input' : 'form-check-input'],
-                ['form-control']
+                ['form-check-input']
             );
         }
         return parent::render($oElement);

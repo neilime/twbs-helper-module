@@ -7,7 +7,6 @@ return [
         'ignoredViewHelpers'        => [
             'button',
             'checkbox',
-            'file',
             'hidden',
             'multi_checkbox',
             'radio',
@@ -16,6 +15,7 @@ return [
             'static',
             'add_on',
         ],
+        'defaultRowSpacingClass'    => 'mb-3',
         'validTagAttributes'        => [],
         'validTagAttributePrefixes' => [],
         'type_map'                  => [],
@@ -85,7 +85,6 @@ return [
             'formsubmit'          => \TwbsHelper\Form\View\Helper\FormButton::class,
             'formcheckbox'        => \TwbsHelper\Form\View\Helper\FormCheckbox::class,
             'formelement_errors'  => \TwbsHelper\Form\View\Helper\FormElementErrors::class,
-            'formfile'            => \TwbsHelper\Form\View\Helper\FormFile::class,
             'formmulticheckbox'   => \TwbsHelper\Form\View\Helper\FormMultiCheckbox::class,
             'formradio'           => \TwbsHelper\Form\View\Helper\FormRadio::class,
             'formrange'           => \TwbsHelper\Form\View\Helper\FormRange::class,
