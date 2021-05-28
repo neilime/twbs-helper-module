@@ -47,6 +47,7 @@ return [
             'figure'              => \TwbsHelper\View\Helper\Figure::class,
             'htmlList'            => \TwbsHelper\View\Helper\HtmlList::class,
             'image'               => \TwbsHelper\View\Helper\Image::class,
+            'lead'                => \TwbsHelper\View\Helper\Lead::class,
             'listGroup'           => \TwbsHelper\View\Helper\ListGroup::class,
             'table'               => \TwbsHelper\View\Helper\Table::class,
             'jumbotron'           => \TwbsHelper\View\Helper\Jumbotron::class,
@@ -90,6 +91,8 @@ return [
             'formrange'           => \TwbsHelper\Form\View\Helper\FormRange::class,
             'formselect'          => \TwbsHelper\Form\View\Helper\FormSelect::class,
             'formlabel'           => \TwbsHelper\Form\View\Helper\FormLabel::class,
+            'formfile'            => \TwbsHelper\Form\View\Helper\FormFile::class,
+            'form_file'            => \TwbsHelper\Form\View\Helper\FormFile::class,
 
             // Zend
             'formemail'           => \Laminas\Form\View\Helper\FormEmail::class,
