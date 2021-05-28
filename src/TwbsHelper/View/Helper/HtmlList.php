@@ -24,26 +24,29 @@ class HtmlList extends \TwbsHelper\View\Helper\AbstractHtmlElement
             throw new \InvalidArgumentException('Argument "$aItems" must not be empty');
         }
 
-        $aItemAttributes = isset($aOptionsAndAttributes['class'])
-            && strpos($aOptionsAndAttributes['class'], 'list-inline') !== false
-            ? $this->setClassesToAttributes([], ['list-inline-item'])
-            : [];
-
         $sListContent = '';
         foreach ($aItems as $sKey => $sItem) {
             $sListContent .= ($sListContent ? PHP_EOL : '') . $this->renderListItem(
                 $sItem,
                 is_string($sKey) ? $sKey : '',
                 $aOptionsAndAttributes,
-                $aItemAttributes,
-                $bEscape
+                [],
+                $bEscape,
             );
         }
 
         $bOrdered = isset($aOptionsAndAttributes['ordered']) ? $aOptionsAndAttributes['ordered'] : false;
         unset($aOptionsAndAttributes['ordered']);
+        $sTag = $bOrdered ? 'ol' : 'ul';
+
+        $bInline = isset($aOptionsAndAttributes['inline']) ? $aOptionsAndAttributes['inline'] : false;
+        unset($aOptionsAndAttributes['inline']);
+        if ($bInline) {
+            $aOptionsAndAttributes = $this->setClassesToAttributes($aOptionsAndAttributes, ['list-inline']);
+        }
+
         return $this->renderContainer(
-            $bOrdered ? 'ol' : 'ul',
+            $sTag,
             $aOptionsAndAttributes,
             $sListContent,
             $bEscape
@@ -94,9 +97,11 @@ class HtmlList extends \TwbsHelper\View\Helper\AbstractHtmlElement
             $sItem = $this->getView()->plugin('escapeHtml')->__invoke($sItem);
         }
 
+        $bInline = isset($aOptionsAndAttributes['inline']) ? $aOptionsAndAttributes['inline'] : false;
+
         return $this->htmlElement(
             $sTag,
-            $aItemAttributes,
+            $this->setClassesToAttributes($aItemAttributes, $bInline ? ['list-inline-item'] : []),
             $sItem,
             $bEscape
         );

@@ -261,7 +261,8 @@ class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
                     $sTypeContent[2] ?? [],
                     $sTypeContent[3] ?? [],
                     $sTypeContent[4] ?? [],
-                    $sTypeContent[5] ?? $bEscape,
+                    $sTypeContent[5] ?? [],
+                    $sTypeContent[6] ?? $bEscape,
                 ];
                 $oBlockquoteHelper = $this->getView()->plugin('blockquote');
                 return call_user_func_array([$oBlockquoteHelper, '__invoke'], $aArguments);

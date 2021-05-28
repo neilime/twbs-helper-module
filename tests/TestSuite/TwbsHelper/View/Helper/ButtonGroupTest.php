@@ -23,4 +23,18 @@ class ButtonGroupTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
         $oHelper = new \TwbsHelper\View\Helper\ButtonGroup();
         $this->assertInstanceOf('\TwbsHelper\Form\View\Helper\FormElement', $oHelper->getFormElementHelper());
     }
+
+    public function testInvokeWithColumnOption()
+    {
+        $this->assertSame(
+            '<div class="col-sm-2">' . PHP_EOL .
+                '    <div class="btn-group">' . PHP_EOL .
+                '        <input name="element" class="form-control" type="text" value=""/>' . PHP_EOL .
+                '    </div>' . PHP_EOL .
+                '</div>',
+            $this->helper->__invoke([
+                ['label' => 'test']
+            ], ['column' => 'sm-2'])
+        );
+    }
 }

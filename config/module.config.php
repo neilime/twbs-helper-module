@@ -43,6 +43,7 @@ return [
             'cardDeck'            => \TwbsHelper\View\Helper\CardDeck::class,
             'cardGroup'           => \TwbsHelper\View\Helper\CardGroup::class,
             'carousel'            => \TwbsHelper\View\Helper\Carousel::class,
+            'descriptionList'     => \TwbsHelper\View\Helper\DescriptionList::class,
             'dropdown'            => \TwbsHelper\View\Helper\Dropdown::class,
             'figure'              => \TwbsHelper\View\Helper\Figure::class,
             'htmlList'            => \TwbsHelper\View\Helper\HtmlList::class,
@@ -91,8 +92,8 @@ return [
             'formrange'           => \TwbsHelper\Form\View\Helper\FormRange::class,
             'formselect'          => \TwbsHelper\Form\View\Helper\FormSelect::class,
             'formlabel'           => \TwbsHelper\Form\View\Helper\FormLabel::class,
-            'formfile'            => \TwbsHelper\Form\View\Helper\FormFile::class,
-            'form_file'            => \TwbsHelper\Form\View\Helper\FormFile::class,
+            'formfile'            => \Laminas\Form\View\Helper\FormFile::class,
+            'formFile'            => \Laminas\Form\View\Helper\FormFile::class,
 
             // Zend
             'formemail'           => \Laminas\Form\View\Helper\FormEmail::class,

@@ -80,9 +80,9 @@ echo $this->blockquote(
 
 <figure>
     <blockquote class="blockquote">
-        <p>A well-known quote, contained in a blockquote element.        </p>
+        <p>A well-known quote, contained in a blockquote element.</p>
     </blockquote>
-    <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite>    </figcaption>
+    <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></figcaption>
 </figure>
 
 ####### **Source**
@@ -107,15 +107,15 @@ echo $this->blockquote(
 
 <figure class="text-center">
     <blockquote class="blockquote">
-        <p>A well-known quote, contained in a blockquote element.        </p>
+        <p>A well-known quote, contained in a blockquote element.</p>
     </blockquote>
-    <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite>    </figcaption>
+    <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></figcaption>
 </figure>
 <figure class="text-end">
     <blockquote class="blockquote">
-        <p>A well-known quote, contained in a blockquote element.        </p>
+        <p>A well-known quote, contained in a blockquote element.</p>
     </blockquote>
-    <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite>    </figcaption>
+    <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></figcaption>
 </figure>
 
 ####### **Source**
@@ -164,7 +164,7 @@ echo $this->blockquote(
 <ul class="list-unstyled">
     <li>This is a list.</li>
     <li>It appears completely unstyled.</li>
-    <li>Structurally, it's still a list.</li>
+    <li>Structurally, it&amp;#039;s still a list.</li>
     <li>However, this style only applies to immediate child elements.</li>
     <li>
         Nested lists:
@@ -211,7 +211,7 @@ echo $this->htmlList(
 <ul class="list-inline">
     <li class="list-inline-item">This is a list item.</li>
     <li class="list-inline-item">And another one.</li>
-    <li class="list-inline-item">But they're displayed inline.</li>
+    <li class="list-inline-item">But they&amp;#039;re displayed inline.</li>
 </ul>
 
 ####### **Source**
@@ -220,8 +220,8 @@ echo $this->htmlList(
 echo $this->htmlList(
     // List items
     ['This is a list item.', 'And another one.', 'But they\'re displayed inline.'],
-    // Add "list-inline" class
-['class' => 'list-inline']
+    // Set "inline" flag
+['inline' => true]
 );
 ```
 
@@ -244,7 +244,7 @@ echo $this->htmlList(
     </dd>
     <dt class="col-sm-3">Another term</dt>
     <dd class="col-sm-9">This definition is short, so no extra paragraphs or anything.</dd>
-    <dt class="col-sm-3 text-truncate">Truncated term is truncated</dt>
+    <dt class="col-sm-3&#x20;text-truncate">Truncated term is truncated</dt>
     <dd class="col-sm-9">This can be useful when space is tight. Adds an ellipsis at the end.</dd>
     <dt class="col-sm-3">Nesting</dt>
     <dd class="col-sm-9">
@@ -255,15 +255,36 @@ echo $this->htmlList(
     </dd>
 </dl>
 
-
 ####### **Source**
 
 ```php
-echo $this->htmlList(
-    // List items
-    ['This is a list item.', 'And another one.', 'But they\'re displayed inline.'],
-    // Add "list-inline" class
-['class' => 'list-inline']
+echo $this->descriptionList(
+    [
+        'Description lists' => 'A description list is perfect for defining terms.',
+        'Term' => '<p>Definition for the term.</p>' . PHP_EOL . '<p>And some more placeholder definition text.</p>',
+        'Another term' => 'This definition is short, so no extra paragraphs or anything.',
+        'Truncated term is truncated' => [
+            'term' => [
+                'class' => 'text-truncate'
+            ],
+            'detail' => 'This can be useful when space is tight. Adds an ellipsis at the end.',
+        ],
+        'Nesting' => [
+            'detail' => [
+                'label' => [
+                    'Nested definition list' => [
+                        'term' => [
+                            'column' => 'sm-4'
+                        ],
+                        'detail' => [
+                            'label' => 'I heard you like definition lists. Let me put a definition list inside your definition list.',
+                            'column' => 'sm-8'
+                        ]
+                    ]
+                ],
+            ]
+        ],
+    ],
 );
 ```
 
@@ -395,8 +416,7 @@ echo $this->image('/twbs-helper-module/img/docs/200x200.svg', [
         </tr>
         <tr>
             <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
+            <td colspan="2">Larry the Bird</td>
             <td>@twitter</td>
         </tr>
     </tbody>
@@ -410,7 +430,7 @@ echo $this->table([
     'body' => [
         ['1', 'Mark', 'Otto', '@mdo'],
         ['2', 'Jacob', 'Thornton', '@fat'],
-        ['3', 'Larry', 'the Bird', '@twitter'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
     ],
 ]);
 ```
@@ -484,41 +504,41 @@ echo $this->table([
 ###### **Source**
 
 ```php
-// First table
+// Use "variant" option to color tables, table rows or individual cells.
 echo $this->table([
     'head' => ['Class', 'Heading', 'Heading'],
     'body' => [
         ['Default', 'Cell', 'Cell'],
         [
-            'attributes' => ['class' => 'table-primary'],
+            'variant' => 'primary',
             'cells' => ['Primary', 'Cell', 'Cell'],
         ],
         [
-            'attributes' => ['class' => 'table-secondary'],
+            'variant' => 'secondary',
             'cells' => ['Secondary', 'Cell', 'Cell'],
         ],
         [
-            'attributes' => ['class' => 'table-success'],
+            'variant' => 'success',
             'cells' => ['Success', 'Cell', 'Cell'],
         ],
         [
-            'attributes' => ['class' => 'table-danger'],
+            'variant' => 'danger',
             'cells' => ['Danger', 'Cell', 'Cell'],
         ],
         [
-            'attributes' => ['class' => 'table-warning'],
+            'variant' => 'warning',
             'cells' => ['Warning', 'Cell', 'Cell'],
         ],
         [
-            'attributes' => ['class' => 'table-info'],
+            'variant' => 'info',
             'cells' => ['Info', 'Cell', 'Cell'],
         ],
         [
-            'attributes' => ['class' => 'table-light'],
+            'variant' => 'light',
             'cells' => ['Light', 'Cell', 'Cell'],
         ],
         [
-            'attributes' => ['class' => 'table-dark'],
+            'variant' => 'dark',
             'cells' => ['Dark', 'Cell', 'Cell'],
         ],
     ],
@@ -560,8 +580,7 @@ echo $this->table([
         </tr>
         <tr>
             <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
+            <td colspan="2">Larry the Bird</td>
             <td>@twitter</td>
         </tr>
     </tbody>
@@ -591,14 +610,13 @@ echo $this->table([
         </tr>
         <tr>
             <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
+            <td colspan="2">Larry the Bird</td>
             <td>@twitter</td>
         </tr>
     </tbody>
 </table>
 <br/>
-<table class="table&#x20;table-success&#x20;table-striped">
+<table class="table&#x20;table-striped&#x20;table-success">
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -622,8 +640,7 @@ echo $this->table([
         </tr>
         <tr>
             <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
+            <td colspan="2">Larry the Bird</td>
             <td>@twitter</td>
         </tr>
     </tbody>
@@ -632,39 +649,44 @@ echo $this->table([
 ####### **Source**
 
 ```php
-// Use "table-striped" class attribute to add zebra-striping to any table row within the <tbody>.
+// Use "striped" option to add zebra-striping to any table row within the <tbody>.
 echo $this->table([
+    'striped' => true,
     'head' => ['#', 'First', 'Last', 'Handle'],
     'body' => [
         ['1', 'Mark', 'Otto', '@mdo'],
         ['2', 'Jacob', 'Thornton', '@fat'],
-        ['3', 'Larry', 'the Bird', '@twitter'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
     ],
-], ['class' => 'table-striped']);
+]);
 
 echo PHP_EOL . '<br/>' . PHP_EOL;
 
-// This class can also be added to table variants
+// This option can also be added to table variants
 
 echo $this->table([
+    'striped' => true,
+    'variant' => 'dark',
     'head' => ['#', 'First', 'Last', 'Handle'],
     'body' => [
         ['1', 'Mark', 'Otto', '@mdo'],
         ['2', 'Jacob', 'Thornton', '@fat'],
-        ['3', 'Larry', 'the Bird', '@twitter'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
     ],
-], ['class' => 'table-dark table-striped']);
+]);
 
 echo PHP_EOL . '<br/>' . PHP_EOL;
 
 echo $this->table([
+    'striped' => true,
+    'variant' => 'success',
     'head' => ['#', 'First', 'Last', 'Handle'],
     'body' => [
         ['1', 'Mark', 'Otto', '@mdo'],
         ['2', 'Jacob', 'Thornton', '@fat'],
-        ['3', 'Larry', 'the Bird', '@twitter'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
     ],
-], ['class' => 'table-success table-striped']);
+]);
 ```
 
 <!-- tabs:end -->
@@ -700,8 +722,7 @@ echo $this->table([
         </tr>
         <tr>
             <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
+            <td colspan="2">Larry the Bird</td>
             <td>@twitter</td>
         </tr>
     </tbody>
@@ -731,8 +752,7 @@ echo $this->table([
         </tr>
         <tr>
             <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
+            <td colspan="2">Larry the Bird</td>
             <td>@twitter</td>
         </tr>
     </tbody>
@@ -740,6 +760,652 @@ echo $this->table([
 <br/>
 <table class="table&#x20;table-hover&#x20;table-striped">
     <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+
+####### **Source**
+
+```php
+// Use "hover" option to add zebra-striping to any table row within the <tbody>.
+echo $this->table([
+    'hover' => true,
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
+
+echo PHP_EOL . '<br/>' . PHP_EOL;
+
+echo $this->table([
+    'variant' => 'dark',
+    'hover' => true,
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
+
+echo PHP_EOL . '<br/>' . PHP_EOL;
+
+// This option can also be combined with the striped option
+
+echo $this->table([
+    'hover' => true,
+    'striped' => true,
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
+```
+
+<!-- tabs:end -->
+
+
+###### Active tables
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#active-tables)
+<!-- tabs:start -->
+
+####### **Result**
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="table-active">
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td class="table-active" colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+
+####### **Source**
+
+```php
+// Highlight a table row or cell by adding the "active" option.
+echo $this->table([
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['active' => true, 'cells' => ['1', 'Mark', 'Otto', '@mdo']],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'active' => true, 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
+```
+
+<!-- tabs:end -->
+
+
+##### Table borders
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#table-borders)
+###### Bordered tables
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#bordered-tables)
+<!-- tabs:start -->
+
+####### **Result**
+
+<table class="table&#x20;table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+<br/>
+<table class="border-primary&#x20;table&#x20;table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+
+####### **Source**
+
+```php
+// Add "bordered" option for borders on all sides of the table and cells
+echo $this->table([
+    'bordered' => true,
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
+
+echo PHP_EOL . '<br/>' . PHP_EOL;
+
+// "bordered" option can be a variant to change colors
+echo $this->table([
+    'bordered' => 'primary',
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
+```
+
+<!-- tabs:end -->
+
+
+###### Tables without borders
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#tables-without-borders)
+<!-- tabs:start -->
+
+####### **Result**
+
+<table class="table&#x20;table-borderless">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+<br/>
+<table class="table&#x20;table-borderless&#x20;table-dark">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+
+####### **Source**
+
+```php
+// Add "borderless" option for a table without borders
+echo $this->table([
+    'borderless' => true,
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
+
+echo PHP_EOL . '<br/>' . PHP_EOL;
+
+// This option can also be combined with the "variant" option
+echo $this->table([
+    'borderless' => true,
+    'variant' => 'dark',
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
+```
+
+<!-- tabs:end -->
+
+
+##### Small Tables
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#small-tables)
+<!-- tabs:start -->
+
+###### **Result**
+
+<table class="table&#x20;table-sm">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+<br/>
+<table class="table&#x20;table-dark&#x20;table-sm">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+
+###### **Source**
+
+```php
+// Add "size" option to make any table more compact by cutting all cell padding in half.
+echo $this->table([
+    'size' => 'sm',
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
+
+echo PHP_EOL . '<br/>' . PHP_EOL;
+
+// This option can also be combined with the "variant" option
+echo $this->table([
+    'size' => 'sm',
+    'variant' => 'dark',
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
+```
+
+<!-- tabs:end -->
+
+
+##### Vertical alignment
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#vertical-alignment)
+<!-- tabs:start -->
+
+###### **Result**
+
+<div class="table-responsive">
+    <table class="align-middle&#x20;table">
+        <thead>
+            <tr>
+                <th class="w-25" scope="col">Heading 1</th>
+                <th class="w-25" scope="col">Heading 2</th>
+                <th class="w-25" scope="col">Heading 3</th>
+                <th class="w-25" scope="col">Heading 4</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
+                <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
+                <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
+                <td>This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.</td>
+            </tr>
+            <tr class="align-bottom">
+                <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
+                <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
+                <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
+                <td>This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.</td>
+            </tr>
+            <tr>
+                <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
+                <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
+                <td class="align-top">This cell is aligned to the top.</td>
+                <td>This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+###### **Source**
+
+```php
+// Use the align option to re-align where needed
+echo $this->table([
+    'responsive' => true,
+    'align' => 'middle',
+    'head' => [
+        ['data' => 'Heading 1', 'attributes' => ['class' => 'w-25']],
+        ['data' => 'Heading 2', 'attributes' => ['class' => 'w-25']],
+        ['data' => 'Heading 3', 'attributes' => ['class' => 'w-25']],
+        ['data' => 'Heading 4', 'attributes' => ['class' => 'w-25']],
+    ],
+    'body' => [
+        [
+            [
+                'type' => \TwbsHelper\View\Helper\Table::TABLE_DATA,
+                'attributes' => ['scope' => null],
+                'data' => 'This cell inherits <code>vertical-align: middle;</code> from the table'
+            ],
+            'This cell inherits <code>vertical-align: middle;</code> from the table',
+            'This cell inherits <code>vertical-align: middle;</code> from the table',
+            'This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.'
+        ],
+        [
+            'align' => 'bottom',
+            [
+                'type' => \TwbsHelper\View\Helper\Table::TABLE_DATA,
+                'attributes' => ['scope' => null],
+                'data' => 'This cell inherits <code>vertical-align: bottom;</code> from the table row'
+            ],
+            'This cell inherits <code>vertical-align: bottom;</code> from the table row',
+            'This cell inherits <code>vertical-align: bottom;</code> from the table row',
+            'This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.'
+        ],
+        [
+            [
+                'type' => \TwbsHelper\View\Helper\Table::TABLE_DATA,
+                'attributes' => ['scope' => null],
+                'data' => 'This cell inherits <code>vertical-align: middle;</code> from the table'
+            ],
+            'This cell inherits <code>vertical-align: middle;</code> from the table',
+            [
+                'align' => 'top',
+                'data' => 'This cell is aligned to the top.',
+            ],
+            'This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.'
+        ],
+    ],
+]);
+```
+
+<!-- tabs:end -->
+
+
+##### Nesting
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#nesting)
+<!-- tabs:start -->
+
+###### **Result**
+
+<table class="table&#x20;table-bordered&#x20;table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <table class="mb-0&#x20;table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Header</th>
+                            <th scope="col">Header</th>
+                            <th scope="col">Header</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">A</th>
+                            <td>First</td>
+                            <td>Last</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">B</th>
+                            <td>First</td>
+                            <td>Last</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">C</th>
+                            <td>First</td>
+                            <td>Last</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+
+###### **Source**
+
+```php
+echo $this->table([
+    'striped' => true,
+    'bordered' => true,
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        [[
+            'data' => [
+                'head' => ['Header', 'Header', 'Header'],
+                'body' => [
+                    ['A', 'First', 'Last'],
+                    ['B', 'First', 'Last'],
+                    ['C', 'First', 'Last'],
+                ],
+            ],
+        'attributes' => ['colspan' => 4]
+    ]],
+    ['3', 'Larry', 'the Bird', '@twitter'],
+],
+]);
+```
+
+<!-- tabs:end -->
+
+
+##### Anatomy
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#anatomy)
+###### Table head
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#table-head)
+<!-- tabs:start -->
+
+####### **Result**
+
+<table class="table">
+    <thead class="table-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+<br/>
+<table class="table">
+    <thead class="table-dark">
         <tr>
             <th scope="col">#</th>
             <th scope="col">First</th>
@@ -772,39 +1438,597 @@ echo $this->table([
 ####### **Source**
 
 ```php
-// Use "table-hover" class attribute to add zebra-striping to any table row within the <tbody>.
+// Similar to tables and dark tables, use the option "variant" to make <thead>s appear light or dark gray.
 echo $this->table([
-    'head' => ['#', 'First', 'Last', 'Handle'],
+    'head' => [
+        'variant' => 'light',
+        'cells' => ['#', 'First', 'Last', 'Handle'],
+    ],
     'body' => [
         ['1', 'Mark', 'Otto', '@mdo'],
         ['2', 'Jacob', 'Thornton', '@fat'],
         ['3', 'Larry', 'the Bird', '@twitter'],
     ],
-], ['class' => 'table-hover']);
+]);
 
 echo PHP_EOL . '<br/>' . PHP_EOL;
 
 echo $this->table([
-    'head' => ['#', 'First', 'Last', 'Handle'],
+    'head' => [
+        'variant' => 'dark',
+        'cells' => ['#', 'First', 'Last', 'Handle'],
+    ],
     'body' => [
         ['1', 'Mark', 'Otto', '@mdo'],
         ['2', 'Jacob', 'Thornton', '@fat'],
         ['3', 'Larry', 'the Bird', '@twitter'],
     ],
-], ['class' => 'table-dark table-hover']);
+]);
+```
+
+<!-- tabs:end -->
+
+
+###### Table foot
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#table-foot)
+<!-- tabs:start -->
+
+####### **Result**
+
+<table class="table">
+    <thead class="table-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Footer</td>
+            <td>Footer</td>
+            <td>Footer</td>
+            <td>Footer</td>
+        </tr>
+    </tfoot>
+</table>
+
+####### **Source**
+
+```php
+echo $this->table([
+    'head' => [
+        'variant' => 'light',
+        'cells' => ['#', 'First', 'Last', 'Handle'],
+    ],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', 'Larry', 'the Bird', '@twitter'],
+    ],
+    'footer' => ['Footer', 'Footer', 'Footer', 'Footer'],
+]);
+```
+
+<!-- tabs:end -->
+
+
+###### Captions
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#captions)
+<!-- tabs:start -->
+
+####### **Result**
+
+<table class="table">
+    <caption>List of users</caption>
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+<br/>
+<table class="caption-top&#x20;table">
+    <caption>List of users</caption>
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+
+####### **Source**
+
+```php
+echo $this->table([
+    'caption' => 'List of users',
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
 
 echo PHP_EOL . '<br/>' . PHP_EOL;
 
-// This class can also be combined with the striped variant
-
+// You can also put the <caption> on the top of the table with the "captionTop" option
 echo $this->table([
+    'captionTop' => 'List of users',
     'head' => ['#', 'First', 'Last', 'Handle'],
     'body' => [
         ['1', 'Mark', 'Otto', '@mdo'],
         ['2', 'Jacob', 'Thornton', '@fat'],
-        ['3', 'Larry', 'the Bird', '@twitter'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
     ],
-], ['class' => 'table-hover table-striped']);
+]);
+```
+
+<!-- tabs:end -->
+
+
+##### Responsive classes
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#responsive-tables)
+###### Always responsive
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#always-responsive)
+<!-- tabs:start -->
+
+####### **Result**
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+####### **Source**
+
+```php
+echo $this->table([
+    'responsive' => true,
+    'head' => [
+        '#', 'Heading', 'Heading', 'Heading', 'Heading',
+        'Heading', 'Heading', 'Heading', 'Heading', 'Heading',
+    ],
+    'body' => [
+        ['1', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell'],
+        ['2', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell'],
+        ['3', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell'],
+    ],
+]);
+```
+
+<!-- tabs:end -->
+
+
+###### Breakpoint specific
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#breakpoint-specific)
+<!-- tabs:start -->
+
+####### **Result**
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br/>
+<div class="table-responsive-sm">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br/>
+<div class="table-responsive-md">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br/>
+<div class="table-responsive-lg">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br/>
+<div class="table-responsive-xl">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+####### **Source**
+
+```php
+foreach ([true, 'sm', 'md', 'lg', 'xl'] as $iKey => $sSize) {
+    if ($iKey) {
+        echo PHP_EOL . '<br/>' . PHP_EOL;
+    }
+    
+    echo $this->table([
+        'responsive' => $sSize,
+        'head' => [
+            '#', 'Heading', 'Heading', 'Heading', 'Heading',
+            'Heading', 'Heading', 'Heading', 'Heading', 'Heading',
+        ],
+        'body' => [
+            ['1', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell'],
+            ['2', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell'],
+            ['3', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell'],
+        ],
+    ]);
+}
 ```
 
 <!-- tabs:end -->
@@ -818,7 +2042,7 @@ echo $this->table([
 ###### **Result**
 
 <figure class="figure">
-    <img alt="A&#x20;generic&#x20;square&#x20;placeholder&#x20;image&#x20;with&#x20;rounded&#x20;corners&#x20;in&#x20;a&#x20;figure." class="figure-img&#x20;img-fluid&#x20;rounded" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;400x300.svg" />
+    <img alt="..." class="figure-img&#x20;img-fluid&#x20;rounded" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;400x300.svg" />
     <figcaption class="figure-caption">A caption for the above image.</figcaption>
 </figure>
 
@@ -832,7 +2056,7 @@ echo $this->figure(
     [
         'fluid' => true,
         'rounded' => true,
-        'alt' => 'A generic square placeholder image with rounded corners in a figure.',
+        'alt' => '...',
     ]
 );
 ```
@@ -846,8 +2070,8 @@ echo $this->figure(
 ###### **Result**
 
 <figure class="figure">
-    <img alt="A&#x20;generic&#x20;square&#x20;placeholder&#x20;image&#x20;with&#x20;rounded&#x20;corners&#x20;in&#x20;a&#x20;figure." class="figure-img&#x20;img-fluid&#x20;rounded" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;400x300.svg" />
-    <figcaption class="figure-caption&#x20;text-right">A caption for the above image.</figcaption>
+    <img alt="..." class="figure-img&#x20;img-fluid&#x20;rounded" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;400x300.svg" />
+    <figcaption class="figure-caption&#x20;text-end">A caption for the above image.</figcaption>
 </figure>
 
 ###### **Source**
@@ -860,9 +2084,9 @@ echo $this->figure(
     [
         'fluid' => true,
         'rounded' => true,
-        'alt' => 'A generic square placeholder image with rounded corners in a figure.',
+        'alt' => '...',
     ],
-['class' => 'text-right']
+['class' => 'text-end']
 );
 ```
 
@@ -2932,10 +4156,12 @@ echo $this->cardDeck([
     </div>
     <div class="card&#x20;p-3">
         <div class="card-body">
-            <blockquote class="blockquote&#x20;mb-0">
-                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-            </blockquote>
+            <figure>
+                <blockquote class="blockquote">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                </blockquote>
+                <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></figcaption>
+            </figure>
         </div>
     </div>
     <div class="card">
@@ -2948,10 +4174,12 @@ echo $this->cardDeck([
     </div>
     <div class="bg-primary&#x20;card&#x20;p-3&#x20;text-center&#x20;text-white">
         <div class="card-body">
-            <blockquote class="blockquote&#x20;mb-0">
-                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-                <footer class="blockquote-footer&#x20;text-white">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-            </blockquote>
+            <figure>
+                <blockquote class="blockquote">
+                    <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
+                </blockquote>
+                <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></figcaption>
+            </figure>
         </div>
     </div>
     <div class="card&#x20;text-center">
@@ -2966,10 +4194,12 @@ echo $this->cardDeck([
     </div>
     <div class="card&#x20;p-3&#x20;text-right">
         <div class="card-body">
-            <blockquote class="blockquote&#x20;mb-0">
-                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-            </blockquote>
+            <figure>
+                <blockquote class="blockquote">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                </blockquote>
+                <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></figcaption>
+            </figure>
         </div>
     </div>
     <div class="card">
@@ -2996,7 +4226,6 @@ echo $this->cardColumns([
             'blockquote' => [
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.',
                 'Someone famous in <cite title="Source Title">Source Title</cite>',
-                ['class' => 'mb-0'],
             ],
         ],
         ['class' => 'p-3'],
@@ -3014,7 +4243,6 @@ echo $this->cardColumns([
             'blockquote' => [
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.',
                 'Someone famous in <cite title="Source Title">Source Title</cite>',
-                ['class' => 'mb-0'],
                 [],
                 ['class' => 'text-white'],
             ],
@@ -3040,7 +4268,6 @@ echo $this->cardColumns([
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ' .
                 'Integer posuere erat a ante.',
                 'Someone famous in <cite title="Source Title">Source Title</cite>',
-                ['class' => 'mb-0'],
             ],
         ],
         ['class' => 'p-3 text-right'],
@@ -4196,21 +5423,21 @@ echo $this->dropdown()->renderMenu([
 
 <div class="dropdown-menu">
     <form action="" method="POST" name="dropdown" id="dropdown" role="form">
-        <div class="form-group">
-            <label for="exampleDropdownFormEmail1">Email address</label>
+        <div class="mb-3">
+            <label class="form-label" for="exampleDropdownFormEmail1">Email address</label>
             <input name="email" type="email" id="exampleDropdownFormEmail1" placeholder="email&#x40;example.com" class="form-control" value=""/>
         </div>
-        <div class="form-group">
-            <label for="exampleDropdownFormPassword1">Password</label>
+        <div class="mb-3">
+            <label class="form-label" for="exampleDropdownFormPassword1">Password</label>
             <input name="password" type="password" id="exampleDropdownFormPassword1" placeholder="Password" class="form-control" value=""/>
         </div>
-        <div class="form-group">
+        <div class="mb-3">
             <div class="form-check">
                 <input type="checkbox" name="remember_me" id="dropdownCheck" class="form-check-input" value="1"/>
                 <label class="form-check-label" for="dropdownCheck">Remember me</label>
             </div>
         </div>
-        <div class="form-group">
+        <div class="mb-3">
             <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Sign in</button>
         </div>
     </form>
@@ -4353,22 +5580,22 @@ echo PHP_EOL . '</div>';
 ###### **Result**
 
 <form action="" method="POST" name="form" role="form" id="form">
-    <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
+    <div class="mb-3">
+        <label class="form-label" for="exampleInputEmail1">Email address</label>
         <input name="email" type="email" id="exampleInputEmail1" placeholder="Enter&#x20;email" class="form-control" value=""/>
         <small class="form-text&#x20;text-muted" id="emailHelp">We&#039;ll never share your email with anyone else.</small>
     </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
+    <div class="mb-3">
+        <label class="form-label" for="exampleInputPassword1">Password</label>
         <input name="password" type="password" id="exampleInputPassword1" placeholder="Password" class="form-control" value=""/>
     </div>
-    <div class="form-group">
+    <div class="mb-3">
         <div class="form-check">
             <input type="checkbox" name="remember_me" id="exampleCheck1" class="form-check-input" value="1"/>
             <label class="form-check-label" for="exampleCheck1">Check me out</label>
         </div>
     </div>
-    <div class="form-group">
+    <div class="mb-3">
         <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Submit</button>
     </div>
 </form>
@@ -4439,13 +5666,13 @@ echo $this->form($oFactory->create([
 ###### **Result**
 
 <form action="" method="POST" name="form" role="form" id="form">
-    <div class="form-group">
-        <label for="exampleFormControlInput1">Email address</label>
+    <div class="mb-3">
+        <label class="form-label" for="exampleFormControlInput1">Email address</label>
         <input name="email" type="email" id="exampleFormControlInput1" placeholder="name&#x40;example.com" class="form-control" value=""/>
     </div>
-    <div class="form-group">
-        <label for="exampleFormControlSelect1">Example select</label>
-        <select name="select" id="exampleFormControlSelect1" class="form-control">
+    <div class="mb-3">
+        <label class="form-label" for="exampleFormControlSelect1">Example select</label>
+        <select name="select" id="exampleFormControlSelect1" class="form-select">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -4453,9 +5680,9 @@ echo $this->form($oFactory->create([
             <option value="5">5</option>
         </select>
     </div>
-    <div class="form-group">
-        <label for="exampleFormControlSelect2">Example multiple select</label>
-        <select name="multiple_select&#x5B;&#x5D;" id="exampleFormControlSelect2" multiple="multiple" class="form-control">
+    <div class="mb-3">
+        <label class="form-label" for="exampleFormControlSelect2">Example multiple select</label>
+        <select name="multiple_select&#x5B;&#x5D;" id="exampleFormControlSelect2" multiple="multiple" class="form-select">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -4463,13 +5690,13 @@ echo $this->form($oFactory->create([
             <option value="5">5</option>
         </select>
     </div>
-    <div class="form-group">
-        <label for="exampleFormControlTextarea1">Example textarea</label>
+    <div class="mb-3">
+        <label class="form-label" for="exampleFormControlTextarea1">Example textarea</label>
         <textarea name="textarea" id="exampleFormControlTextarea1" rows="3" class="form-control"></textarea>
     </div>
-    <div class="form-group">
-        <label for="exampleFormControlFile1">Example file input</label>
-        <input name="file_input" type="file" id="exampleFormControlFile1" class="form-control-file"/>
+    <div class="mb-3">
+        <label class="form-label" for="exampleFormControlFile1">Example file input</label>
+        <input name="file_input" type="file" id="exampleFormControlFile1" class="form-control"/>
     </div>
 </form>
 
@@ -4577,11 +5804,11 @@ echo $this->form($oFactory->create([
 <br/>
 <input type="text" name="sm" placeholder=".form-control-sm" class="form-control&#x20;form-control-sm" value=""/>
 <br/>
-<select name="lg" class="form-control&#x20;form-control-lg"><option value="0">Large select</option></select>
+<select name="lg" class="form-select&#x20;form-select-lg"><option value="0">Large select</option></select>
 <br/>
-<select name="default" class="form-control"><option value="0">Default select</option></select>
+<select name="default" class="form-select"><option value="0">Default select</option></select>
 <br/>
-<select name="sm" class="form-control&#x20;form-control-sm"><option value="0">Small select</option></select>
+<select name="sm" class="form-select&#x20;form-select-sm"><option value="0">Small select</option></select>
 <br/>
 
 
@@ -4678,14 +5905,14 @@ echo $this->formElement($oElement);
 ####### **Result**
 
 <form action="" method="POST" name="form" role="form" id="form">
-    <div class="form-group&#x20;row">
-        <label class="col-form-label&#x20;col-sm-2" for="staticEmail">Email</label>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="staticEmail">Email</label>
         <div class="col-sm-10">
             <input name="email" type="email" id="staticEmail" readonly="readonly" class="form-control-plaintext" value="email&#x40;example.com"/>
         </div>
     </div>
-    <div class="form-group&#x20;row">
-        <label class="col-form-label&#x20;col-sm-2" for="inputPassword">Password</label>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="inputPassword">Password</label>
         <div class="col-sm-10">
             <input name="password" type="password" id="inputPassword" placeholder="Password" class="form-control" value=""/>
         </div>
@@ -4693,12 +5920,12 @@ echo $this->formElement($oElement);
 </form>
 <br/>
 <form action="" method="POST" name="form" role="form" class="form-inline" id="form">
-    <div class="form-group&#x20;mb-2">
-        <label class="sr-only" for="staticEmail2">Email</label>
+    <div class="mb-3">
+        <label class="form-label&#x20;sr-only" for="staticEmail2">Email</label>
         <input name="email" type="email" id="staticEmail2" readonly="readonly" class="form-control-plaintext" value="email&#x40;example.com"/>
     </div>
-    <div class="form-group&#x20;mb-2&#x20;mx-sm-3">
-        <label class="sr-only" for="inputPassword2">Password</label>
+    <div class="mb-3&#x20;mx-sm-3">
+        <label class="form-label&#x20;sr-only" for="inputPassword2">Password</label>
         <input name="password" type="password" id="inputPassword2" placeholder="Password" class="form-control" value=""/>
     </div>
     <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">Confirm identity</button>
@@ -4761,7 +5988,6 @@ echo $this->form($oFactory->create([
                 'options' => [
                     'plaintext' => true,
                     'label' => 'Email',
-                    'row_class' => 'mb-2',
                 ],
                 'attributes' => [
                     'type' => 'email',
@@ -4776,7 +6002,7 @@ echo $this->form($oFactory->create([
                 'name' => 'password',
                 'options' => [
                     'label' => 'Password',
-                    'row_class' => 'mx-sm-3 mb-2',
+                    'row_class' => 'mx-sm-3',
                 ],
                 'attributes' => [
                     'type' => 'password',
@@ -4806,8 +6032,8 @@ echo $this->form($oFactory->create([
 ###### **Result**
 
 <form action="" method="POST" name="form" role="form" id="form">
-    <div class="form-group">
-        <label for="formControlRange">Example Range input</label>
+    <div class="mb-3">
+        <label class="form-label" for="formControlRange">Example Range input</label>
         <input name="range" type="range" id="formControlRange" class="form-control-range" value=""/>
     </div>
 </form>
@@ -5092,18 +6318,18 @@ echo $this->formRow($oFactory->create([
 ##### Layout
 [Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#layout)
 ###### Form groups
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#form-groups)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#mb-3s)
 <!-- tabs:start -->
 
 ####### **Result**
 
 <form action="" method="POST" name="form" role="form" id="form">
-    <div class="form-group">
-        <label for="formGroupExampleInput">Example label</label>
+    <div class="mb-3">
+        <label class="form-label" for="formGroupExampleInput">Example label</label>
         <input name="exampleInput" type="text" id="formGroupExampleInput" placeholder="Example&#x20;input" class="form-control" value=""/>
     </div>
-    <div class="form-group">
-        <label for="formGroupExampleInput2">Another label</label>
+    <div class="mb-3">
+        <label class="form-label" for="formGroupExampleInput2">Another label</label>
         <input name="exampleInput2" type="text" id="formGroupExampleInput2" placeholder="Another&#x20;input" class="form-control" value=""/>
     </div>
 </form>
@@ -5157,10 +6383,10 @@ echo $this->form($oFactory->create([
 
 <form action="" method="POST" name="form" role="form" id="form">
     <div class="row">
-        <div class="col">
+        <div class="col&#x20;mb-3">
             <input name="firstName" type="text" placeholder="First&#x20;name" class="form-control" value=""/>
         </div>
-        <div class="col">
+        <div class="col&#x20;mb-3">
             <input name="lastName" type="text" placeholder="Last&#x20;name" class="form-control" value=""/>
         </div>
     </div>
@@ -5213,10 +6439,10 @@ echo $this->form($oFactory->create([
 
 <form action="" method="POST" name="form" role="form" id="form">
     <div class="form-row">
-        <div class="col">
+        <div class="col&#x20;mb-3">
             <input name="firstName" type="text" placeholder="First&#x20;name" class="form-control" value=""/>
         </div>
-        <div class="col">
+        <div class="col&#x20;mb-3">
             <input name="lastName" type="text" placeholder="Last&#x20;name" class="form-control" value=""/>
         </div>
     </div>
@@ -5269,14 +6495,14 @@ echo $this->form($oFactory->create([
 ######## **Result**
 
 <form action="" method="POST" name="form" role="form" id="form">
-    <div class="form-group&#x20;row">
-        <label class="col-form-label&#x20;col-sm-2" for="inputEmail3">Email</label>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="inputEmail3">Email</label>
         <div class="col-sm-10">
             <input name="email" type="email" id="inputEmail3" placeholder="Email" class="form-control" value=""/>
         </div>
     </div>
-    <div class="form-group&#x20;row">
-        <label class="col-form-label&#x20;col-sm-2" for="inputPassword3">Password</label>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="inputPassword3">Password</label>
         <div class="col-sm-10">
             <input name="password" type="password" id="inputPassword3" placeholder="Password" class="form-control" value=""/>
         </div>
@@ -5300,7 +6526,7 @@ echo $this->form($oFactory->create([
             </div>
         </div>
     </fieldset>
-    <div class="form-group&#x20;row">
+    <div class="mb-3&#x20;row">
         <div class="col-sm-10&#x20;offset-sm-2">
             <div class="form-check">
                 <input type="hidden" name="checkbox" value="0"/><input type="checkbox" name="checkbox" class="form-check-input" value="1"/>
@@ -5308,7 +6534,7 @@ echo $this->form($oFactory->create([
             </div>
         </div>
     </div>
-    <div class="form-group&#x20;row">
+    <div class="mb-3&#x20;row">
         <div class="col-sm-2">
             Multicheckbox
         </div>
@@ -5319,7 +6545,7 @@ echo $this->form($oFactory->create([
             </div>
         </div>
     </div>
-    <div class="form-group&#x20;row">
+    <div class="mb-3&#x20;row">
         <div class="col-sm-10">
             <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Sign in</button>
         </div>
@@ -5451,20 +6677,20 @@ echo $this->form($oFactory->create([
 ######### **Result**
 
 <form action="" method="POST" name="form" role="form" id="form">
-    <div class="form-group&#x20;row">
-        <label class="col-form-label&#x20;col-form-label-sm&#x20;col-sm-2" for="colFormLabelSm">Email</label>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-form-label-sm&#x20;col-sm-2&#x20;form-label" for="colFormLabelSm">Email</label>
         <div class="col-sm-10">
             <input name="emailSm" type="email" id="colFormLabelSm" placeholder="col-form-label-sm" class="form-control&#x20;form-control-sm" value=""/>
         </div>
     </div>
-    <div class="form-group&#x20;row">
-        <label class="col-form-label&#x20;col-sm-2" for="colFormLabel">Email</label>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="colFormLabel">Email</label>
         <div class="col-sm-10">
             <input name="email" type="email" id="colFormLabel" placeholder="col-form-label" class="form-control" value=""/>
         </div>
     </div>
-    <div class="form-group&#x20;row">
-        <label class="col-form-label&#x20;col-form-label-lg&#x20;col-sm-2" for="colFormLabelLg">Email</label>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-form-label-lg&#x20;col-sm-2&#x20;form-label" for="colFormLabelLg">Email</label>
         <div class="col-sm-10">
             <input name="emailLg" type="email" id="colFormLabelLg" placeholder="col-form-label-lg" class="form-control&#x20;form-control-lg" value=""/>
         </div>
@@ -5539,13 +6765,13 @@ echo $this->form($oFactory->create([
 
 <form action="" method="POST" name="form" role="form" id="form">
     <div class="form-row">
-        <div class="col-7">
+        <div class="col-7&#x20;mb-3">
             <input name="city" type="text" placeholder="City" class="form-control" value=""/>
         </div>
-        <div class="col">
+        <div class="col&#x20;mb-3">
             <input name="state" type="text" placeholder="State" class="form-control" value=""/>
         </div>
-        <div class="col">
+        <div class="col&#x20;mb-3">
             <input name="zip" type="text" placeholder="Zip" class="form-control" value=""/>
         </div>
     </div>
@@ -5611,12 +6837,12 @@ echo $this->form($oFactory->create([
 
 <form action="" method="POST" name="form" role="form" id="form">
     <div class="align-items-center&#x20;form-row">
-        <div class="col-auto">
-            <label class="sr-only" for="inlineFormInput">Name</label>
+        <div class="col-auto&#x20;mb-3">
+            <label class="form-label&#x20;sr-only" for="inlineFormInput">Name</label>
             <input name="name" type="text" id="inlineFormInput" placeholder="Jane&#x20;Doe" class="form-control&#x20;mb-2" value=""/>
         </div>
-        <div class="col-auto">
-            <label class="sr-only" for="inlineFormInputGroup">Username</label>
+        <div class="col-auto&#x20;mb-3">
+            <label class="form-label&#x20;sr-only" for="inlineFormInputGroup">Username</label>
             <div class="input-group&#x20;mb-2">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
@@ -5626,13 +6852,13 @@ echo $this->form($oFactory->create([
                 <input name="username" type="text" id="inlineFormInputGroup" placeholder="Username" class="form-control" value=""/>
             </div>
         </div>
-        <div class="col-auto">
+        <div class="col-auto&#x20;mb-3">
             <div class="form-check&#x20;mb-2">
                 <input type="checkbox" name="remember_me" id="autoSizingCheck" class="form-check-input" value="1"/>
                 <label class="form-check-label" for="autoSizingCheck">Remember me</label>
             </div>
         </div>
-        <div class="col-auto">
+        <div class="col-auto&#x20;mb-3">
             <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">Submit</button>
         </div>
     </div>
@@ -5640,12 +6866,12 @@ echo $this->form($oFactory->create([
 <br/>
 <form action="" method="POST" name="form" role="form" id="form">
     <div class="align-items-center&#x20;form-row">
-        <div class="col-sm-3&#x20;my-1">
-            <label class="sr-only" for="inlineFormInput">Name</label>
+        <div class="col-sm-3&#x20;mb-3&#x20;my-1">
+            <label class="form-label&#x20;sr-only" for="inlineFormInput">Name</label>
             <input name="name" type="text" id="inlineFormInput" placeholder="Jane&#x20;Doe" class="form-control&#x20;mb-2" value=""/>
         </div>
-        <div class="col-sm-3&#x20;my-1">
-            <label class="sr-only" for="inlineFormInputGroup">Username</label>
+        <div class="col-sm-3&#x20;mb-3&#x20;my-1">
+            <label class="form-label&#x20;sr-only" for="inlineFormInputGroup">Username</label>
             <div class="input-group&#x20;mb-2">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
@@ -5655,13 +6881,13 @@ echo $this->form($oFactory->create([
                 <input name="username" type="text" id="inlineFormInputGroup" placeholder="Username" class="form-control" value=""/>
             </div>
         </div>
-        <div class="col-auto&#x20;my-1">
+        <div class="col-auto&#x20;mb-3&#x20;my-1">
             <div class="form-check&#x20;mb-2">
                 <input type="checkbox" name="remember_me" id="autoSizingCheck" class="form-check-input" value="1"/>
                 <label class="form-check-label" for="autoSizingCheck">Remember me</label>
             </div>
         </div>
-        <div class="col-auto&#x20;my-1">
+        <div class="col-auto&#x20;mb-3&#x20;my-1">
             <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">Submit</button>
         </div>
     </div>
@@ -5669,22 +6895,22 @@ echo $this->form($oFactory->create([
 <br/>
 <form action="" method="POST" name="form" role="form" id="form">
     <div class="align-items-center&#x20;form-row">
-        <div class="col-sm-3&#x20;my-1">
+        <div class="col-sm-3&#x20;mb-3&#x20;my-1">
             <label class="mr-sm-2&#x20;sr-only" for="inlineFormCustomSelect">Preference</label>
-            <select name="preference" id="inlineFormCustomSelect" class="custom-select&#x20;mr-sm-2">
+            <select name="preference" id="inlineFormCustomSelect" class="form-select&#x20;mr-sm-2">
                 <option value="">Choose...</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
             </select>
         </div>
-        <div class="col-auto&#x20;my-1">
+        <div class="col-auto&#x20;mb-3&#x20;my-1">
             <div class="custom-checkbox&#x20;custom-control&#x20;mr-sm-2">
-                <input type="checkbox" name="remember_my_preference" id="customControlAutosizing" class="custom-control-input" value="1"/>
-                <label class="custom-control-label" for="customControlAutosizing">Remember my preference</label>
+                <input type="checkbox" name="remember_my_preference" id="customControlAutosizing" class="form-check-input" value="1"/>
+                <label class="form-check-label" for="customControlAutosizing">Remember my preference</label>
             </div>
         </div>
-        <div class="col-auto&#x20;my-1">
+        <div class="col-auto&#x20;mb-3&#x20;my-1">
             <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Submit</button>
         </div>
     </div>
@@ -5917,9 +7143,9 @@ echo $this->form($oFactory->create([
 ####### **Result**
 
 <form action="" method="POST" name="form" role="form" class="form-inline" id="form">
-    <label class="sr-only" for="inlineFormInputName2">Name</label>
+    <label class="form-label&#x20;sr-only" for="inlineFormInputName2">Name</label>
     <input name="name" type="text" id="inlineFormInputName2" placeholder="Jane&#x20;Doe" class="form-control&#x20;mb-2&#x20;mr-sm-2" value=""/>
-    <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
+    <label class="form-label&#x20;sr-only" for="inlineFormInputGroupUsername2">Username</label>
     <div class="input-group&#x20;mb-2&#x20;mr-sm-2">
         <div class="input-group-prepend">
             <div class="input-group-text">
@@ -5937,15 +7163,15 @@ echo $this->form($oFactory->create([
 <br/>
 <form action="" method="POST" name="form" role="form" class="form-inline" id="form">
     <label class="mr-2&#x20;my-1" for="inlineFormCustomSelectPref">Preference</label>
-    <select name="preference" id="inlineFormCustomSelectPref" class="custom-select&#x20;mr-sm-2&#x20;my-1">
+    <select name="preference" id="inlineFormCustomSelectPref" class="form-select&#x20;mr-sm-2&#x20;my-1">
         <option value="">Choose...</option>
         <option value="1">One</option>
         <option value="2">Two</option>
         <option value="3">Three</option>
     </select>
     <div class="custom-checkbox&#x20;custom-control&#x20;mr-sm-2&#x20;my-1">
-        <input type="checkbox" name="remember_my_preference" id="customControlInline" class="custom-control-input" value="1"/>
-        <label class="custom-control-label" for="customControlInline">Remember my preference</label>
+        <input type="checkbox" name="remember_my_preference" id="customControlInline" class="form-check-input" value="1"/>
+        <label class="form-check-label" for="customControlInline">Remember my preference</label>
     </div>
     <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">Submit</button>
 </form>
@@ -6099,10 +7325,10 @@ echo $this->form($oFactory->create([
 
 <form action="" method="POST" name="form" role="form" id="form">
     <div class="form-row">
-        <div class="col">
+        <div class="col&#x20;mb-3">
             <input name="firstName" type="text" placeholder="First&#x20;name" class="form-control" value=""/>
         </div>
-        <div class="col">
+        <div class="col&#x20;mb-3">
             <input name="lastName" type="text" placeholder="Last&#x20;name" class="form-control" value=""/>
         </div>
     </div>
@@ -6155,14 +7381,14 @@ echo $this->form($oFactory->create([
 ######## **Result**
 
 <form action="" method="POST" name="form" role="form" id="form">
-    <div class="form-group&#x20;row">
-        <label class="col-form-label&#x20;col-sm-2" for="inputEmail3">Email</label>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="inputEmail3">Email</label>
         <div class="col-sm-10">
             <input name="email" type="email" id="inputEmail3" placeholder="Email" class="form-control" value=""/>
         </div>
     </div>
-    <div class="form-group&#x20;row">
-        <label class="col-form-label&#x20;col-sm-2" for="inputPassword3">Password</label>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="inputPassword3">Password</label>
         <div class="col-sm-10">
             <input name="password" type="password" id="inputPassword3" placeholder="Password" class="form-control" value=""/>
         </div>
@@ -6186,7 +7412,7 @@ echo $this->form($oFactory->create([
             </div>
         </div>
     </fieldset>
-    <div class="form-group&#x20;row">
+    <div class="mb-3&#x20;row">
         <div class="col-sm-10&#x20;offset-sm-2">
             <div class="form-check">
                 <input type="hidden" name="checkbox" value="0"/><input type="checkbox" name="checkbox" class="form-check-input" value="1"/>
@@ -6194,7 +7420,7 @@ echo $this->form($oFactory->create([
             </div>
         </div>
     </div>
-    <div class="form-group&#x20;row">
+    <div class="mb-3&#x20;row">
         <div class="col-sm-2">
             Multicheckbox
         </div>
@@ -6205,7 +7431,7 @@ echo $this->form($oFactory->create([
             </div>
         </div>
     </div>
-    <div class="form-group&#x20;row">
+    <div class="mb-3&#x20;row">
         <div class="col-sm-10">
             <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Sign in</button>
         </div>
@@ -6337,20 +7563,20 @@ echo $this->form($oFactory->create([
 ######### **Result**
 
 <form action="" method="POST" name="form" role="form" id="form">
-    <div class="form-group&#x20;row">
-        <label class="col-form-label&#x20;col-form-label-sm&#x20;col-sm-2" for="colFormLabelSm">Email</label>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-form-label-sm&#x20;col-sm-2&#x20;form-label" for="colFormLabelSm">Email</label>
         <div class="col-sm-10">
             <input name="emailSm" type="email" id="colFormLabelSm" placeholder="col-form-label-sm" class="form-control&#x20;form-control-sm" value=""/>
         </div>
     </div>
-    <div class="form-group&#x20;row">
-        <label class="col-form-label&#x20;col-sm-2" for="colFormLabel">Email</label>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="colFormLabel">Email</label>
         <div class="col-sm-10">
             <input name="email" type="email" id="colFormLabel" placeholder="col-form-label" class="form-control" value=""/>
         </div>
     </div>
-    <div class="form-group&#x20;row">
-        <label class="col-form-label&#x20;col-form-label-lg&#x20;col-sm-2" for="colFormLabelLg">Email</label>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-form-label-lg&#x20;col-sm-2&#x20;form-label" for="colFormLabelLg">Email</label>
         <div class="col-sm-10">
             <input name="emailLg" type="email" id="colFormLabelLg" placeholder="col-form-label-lg" class="form-control&#x20;form-control-lg" value=""/>
         </div>
@@ -6425,13 +7651,13 @@ echo $this->form($oFactory->create([
 
 <form action="" method="POST" name="form" role="form" id="form">
     <div class="form-row">
-        <div class="col-7">
+        <div class="col-7&#x20;mb-3">
             <input name="city" type="text" placeholder="City" class="form-control" value=""/>
         </div>
-        <div class="col">
+        <div class="col&#x20;mb-3">
             <input name="state" type="text" placeholder="State" class="form-control" value=""/>
         </div>
-        <div class="col">
+        <div class="col&#x20;mb-3">
             <input name="zip" type="text" placeholder="Zip" class="form-control" value=""/>
         </div>
     </div>
@@ -6497,12 +7723,12 @@ echo $this->form($oFactory->create([
 
 <form action="" method="POST" name="form" role="form" id="form">
     <div class="align-items-center&#x20;form-row">
-        <div class="col-auto">
-            <label class="sr-only" for="inlineFormInput">Name</label>
+        <div class="col-auto&#x20;mb-3">
+            <label class="form-label&#x20;sr-only" for="inlineFormInput">Name</label>
             <input name="name" type="text" id="inlineFormInput" placeholder="Jane&#x20;Doe" class="form-control&#x20;mb-2" value=""/>
         </div>
-        <div class="col-auto">
-            <label class="sr-only" for="inlineFormInputGroup">Username</label>
+        <div class="col-auto&#x20;mb-3">
+            <label class="form-label&#x20;sr-only" for="inlineFormInputGroup">Username</label>
             <div class="input-group&#x20;mb-2">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
@@ -6512,13 +7738,13 @@ echo $this->form($oFactory->create([
                 <input name="username" type="text" id="inlineFormInputGroup" placeholder="Username" class="form-control" value=""/>
             </div>
         </div>
-        <div class="col-auto">
+        <div class="col-auto&#x20;mb-3">
             <div class="form-check&#x20;mb-2">
                 <input type="checkbox" name="remember_me" id="autoSizingCheck" class="form-check-input" value="1"/>
                 <label class="form-check-label" for="autoSizingCheck">Remember me</label>
             </div>
         </div>
-        <div class="col-auto">
+        <div class="col-auto&#x20;mb-3">
             <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">Submit</button>
         </div>
     </div>
@@ -6526,12 +7752,12 @@ echo $this->form($oFactory->create([
 <br/>
 <form action="" method="POST" name="form" role="form" id="form">
     <div class="align-items-center&#x20;form-row">
-        <div class="col-sm-3&#x20;my-1">
-            <label class="sr-only" for="inlineFormInput">Name</label>
+        <div class="col-sm-3&#x20;mb-3&#x20;my-1">
+            <label class="form-label&#x20;sr-only" for="inlineFormInput">Name</label>
             <input name="name" type="text" id="inlineFormInput" placeholder="Jane&#x20;Doe" class="form-control&#x20;mb-2" value=""/>
         </div>
-        <div class="col-sm-3&#x20;my-1">
-            <label class="sr-only" for="inlineFormInputGroup">Username</label>
+        <div class="col-sm-3&#x20;mb-3&#x20;my-1">
+            <label class="form-label&#x20;sr-only" for="inlineFormInputGroup">Username</label>
             <div class="input-group&#x20;mb-2">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
@@ -6541,13 +7767,13 @@ echo $this->form($oFactory->create([
                 <input name="username" type="text" id="inlineFormInputGroup" placeholder="Username" class="form-control" value=""/>
             </div>
         </div>
-        <div class="col-auto&#x20;my-1">
+        <div class="col-auto&#x20;mb-3&#x20;my-1">
             <div class="form-check&#x20;mb-2">
                 <input type="checkbox" name="remember_me" id="autoSizingCheck" class="form-check-input" value="1"/>
                 <label class="form-check-label" for="autoSizingCheck">Remember me</label>
             </div>
         </div>
-        <div class="col-auto&#x20;my-1">
+        <div class="col-auto&#x20;mb-3&#x20;my-1">
             <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">Submit</button>
         </div>
     </div>
@@ -6555,22 +7781,22 @@ echo $this->form($oFactory->create([
 <br/>
 <form action="" method="POST" name="form" role="form" id="form">
     <div class="align-items-center&#x20;form-row">
-        <div class="col-sm-3&#x20;my-1">
+        <div class="col-sm-3&#x20;mb-3&#x20;my-1">
             <label class="mr-sm-2&#x20;sr-only" for="inlineFormCustomSelect">Preference</label>
-            <select name="preference" id="inlineFormCustomSelect" class="custom-select&#x20;mr-sm-2">
+            <select name="preference" id="inlineFormCustomSelect" class="form-select&#x20;mr-sm-2">
                 <option value="">Choose...</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
             </select>
         </div>
-        <div class="col-auto&#x20;my-1">
+        <div class="col-auto&#x20;mb-3&#x20;my-1">
             <div class="custom-checkbox&#x20;custom-control&#x20;mr-sm-2">
-                <input type="checkbox" name="remember_my_preference" id="customControlAutosizing" class="custom-control-input" value="1"/>
-                <label class="custom-control-label" for="customControlAutosizing">Remember my preference</label>
+                <input type="checkbox" name="remember_my_preference" id="customControlAutosizing" class="form-check-input" value="1"/>
+                <label class="form-check-label" for="customControlAutosizing">Remember my preference</label>
             </div>
         </div>
-        <div class="col-auto&#x20;my-1">
+        <div class="col-auto&#x20;mb-3&#x20;my-1">
             <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Submit</button>
         </div>
     </div>
@@ -6802,13 +8028,13 @@ echo $this->form($oFactory->create([
 
 ###### **Result**
 
-<label for="inputPassword5">Password</label>
+<label class="form-label" for="inputPassword5">Password</label>
 <input name="password" id="inputPassword5" type="password" aria-describedby="passwordHelpBlock" class="form-control" value=""/>
 <small class="form-text&#x20;text-muted" id="passwordHelpBlock">Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.</small>
 <br/>
 <form action="" method="POST" name="form" role="form" class="form-inline" id="form">
-    <div class="form-group">
-        <label for="inputPassword6">Password</label>
+    <div class="mb-3">
+        <label class="form-label" for="inputPassword6">Password</label>
         <input name="password" id="inputPassword6" type="password" aria-describedby="passwordHelpInline" class="form-control&#x20;mx-sm-3" value=""/>
         <small class="text-muted" id="passwordHelpInline">Must be 8-20 characters long.</small>
     </div>
@@ -6882,21 +8108,21 @@ echo $this->form($oFactory->create([
 
 <form action="" method="POST" name="form" role="form" id="form">
     <fieldset disabled="disabled" class="form-group">
-        <div class="form-group">
-            <label for="disabledTextInput">Disabled input</label>
+        <div class="mb-3">
+            <label class="form-label" for="disabledTextInput">Disabled input</label>
             <input name="fieldset&#x5B;disabled-input&#x5D;" type="text" id="disabledTextInput" placeholder="Disabled&#x20;input" class="form-control" value=""/>
         </div>
-        <div class="form-group">
-            <label for="disabledSelect">Disabled select menu</label>
-            <select name="fieldset&#x5B;disabled-select&#x5D;" id="disabledSelect" class="form-control"><option value="">Disabled select</option></select>
+        <div class="mb-3">
+            <label class="form-label" for="disabledSelect">Disabled select menu</label>
+            <select name="fieldset&#x5B;disabled-select&#x5D;" id="disabledSelect" class="form-select"><option value="">Disabled select</option></select>
         </div>
-        <div class="form-group">
+        <div class="mb-3">
             <div class="form-check">
                 <input type="checkbox" name="fieldset&#x5B;disabled-fieldset-check&#x5D;" id="disabledFieldsetCheck" disabled="disabled" class="form-check-input" value="1"/>
                 <label class="form-check-label" for="disabledFieldsetCheck">Can&#039;t check this</label>
             </div>
         </div>
-        <div class="form-group">
+        <div class="mb-3">
             <button type="submit" name="fieldset&#x5B;submit&#x5D;" class="btn&#x20;btn-primary" value="">Submit</button>
         </div>
     </fieldset>
@@ -6977,14 +8203,14 @@ echo $this->form($oFactory->create([
 <form action="" method="POST" name="form" role="form" id="form">
     <div class="form-row">
         <div class="col-md-6&#x20;mb-3">
-            <label for="validationServer01">First name</label>
+            <label class="form-label" for="validationServer01">First name</label>
             <input name="firstName" type="text" id="validationServer01" required="required" class="form-control&#x20;is-valid" value="Mark"/>
             <div class="valid-feedback">
                 Looks good!
             </div>
         </div>
         <div class="col-md-6&#x20;mb-3">
-            <label for="validationServer02">Last name</label>
+            <label class="form-label" for="validationServer02">Last name</label>
             <input name="lastName" type="text" id="validationServer02" required="required" class="form-control&#x20;is-valid" value="Otto"/>
             <div class="valid-feedback">
                 Looks good!
@@ -6993,25 +8219,25 @@ echo $this->form($oFactory->create([
     </div>
     <div class="form-row">
         <div class="col-md-6&#x20;has-error&#x20;mb-3">
-            <label class="col-form-label" for="validationServer03">City</label>
+            <label class="col-form-label&#x20;form-label" for="validationServer03">City</label>
             <input name="city" type="text" id="validationServer03" required="required" class="form-control&#x20;is-invalid" value=""/>
             <div class="invalid-feedback">Please provide a valid city.</div>
         </div>
         <div class="col-md-3&#x20;has-error&#x20;mb-3">
-            <label class="col-form-label" for="validationServer04">State</label>
-            <select name="state" id="validationServer04" required="required" class="custom-select&#x20;is-invalid">
+            <label class="col-form-label&#x20;form-label" for="validationServer04">State</label>
+            <select name="state" id="validationServer04" required="required" class="form-select&#x20;is-invalid">
                 <option value="" selected="selected" disabled="disabled">Choose...</option>
                 <option value="0">...</option>
             </select>
             <div class="invalid-feedback">Please select a valid state.</div>
         </div>
         <div class="col-md-3&#x20;has-error&#x20;mb-3">
-            <label class="col-form-label" for="validationServer05">Zip</label>
+            <label class="col-form-label&#x20;form-label" for="validationServer05">Zip</label>
             <input name="zip" type="text" id="validationServer05" required="required" class="form-control&#x20;is-invalid" value=""/>
             <div class="invalid-feedback">Please provide a valid zip.</div>
         </div>
     </div>
-    <div class="form-group&#x20;has-error">
+    <div class="has-error&#x20;mb-3">
         <div class="form-check">
             <input type="checkbox" name="termsAndConditions" id="invalidCheck3" required="required" class="form-check-input&#x20;is-invalid" value="1"/>
             <label class="form-check-label" for="invalidCheck3">Agree to terms and conditions</label>
@@ -7170,8 +8396,8 @@ echo $this->form($oForm);
 ######## **Result**
 
 <div class="custom-checkbox&#x20;custom-control">
-    <input type="checkbox" name="custom_checkbox" id="customCheck1" class="custom-control-input" value="1"/>
-    <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
+    <input type="checkbox" name="custom_checkbox" id="customCheck1" class="form-check-input" value="1"/>
+    <label class="form-check-label" for="customCheck1">Check this custom checkbox</label>
 </div>
 
 ######## **Source**
@@ -7203,13 +8429,13 @@ echo $this->formRow($oFactory->create([
 
 ######## **Result**
 
-<div class="custom-control&#x20;custom-radio">
-    <input type="radio" name="customRadio" class="custom-control-input" id="customRadio1" value="1"/>
-    <label class="custom-control-label" for="customRadio1">Toggle this custom radio</label>
+<div class="form-check">
+    <input type="radio" name="customRadio" class="form-check-input" id="customRadio1" value="1"/>
+    <label class="form-check-label" for="customRadio1">Toggle this custom radio</label>
 </div>
-<div class="custom-control&#x20;custom-radio">
-    <input type="radio" name="customRadio" class="custom-control-input" id="customRadio2" value="2"/>
-    <label class="custom-control-label" for="customRadio2">Or toggle this other custom radio</label>
+<div class="form-check">
+    <input type="radio" name="customRadio" class="form-check-input" id="customRadio2" value="2"/>
+    <label class="form-check-label" for="customRadio2">Or toggle this other custom radio</label>
 </div>
 
 ######## **Source**
@@ -7247,13 +8473,13 @@ echo $this->formRow($oFactory->create([
 
 ######## **Result**
 
-<div class="custom-control&#x20;custom-control-inline&#x20;custom-radio">
-    <input type="radio" name="customRadioInline1" class="custom-control-input" id="customRadioInline1" value="1"/>
-    <label class="custom-control-label" for="customRadioInline1">Toggle this custom radio</label>
+<div class="form-check&#x20;form-check-inline">
+    <input type="radio" name="customRadioInline1" class="form-check-input" id="customRadioInline1" value="1"/>
+    <label class="form-check-label" for="customRadioInline1">Toggle this custom radio</label>
 </div>
-<div class="custom-control&#x20;custom-control-inline&#x20;custom-radio">
-    <input type="radio" name="customRadioInline1" class="custom-control-input" id="customRadioInline2" value="2"/>
-    <label class="custom-control-label" for="customRadioInline2">Or toggle this other custom radio</label>
+<div class="form-check&#x20;form-check-inline">
+    <input type="radio" name="customRadioInline1" class="form-check-input" id="customRadioInline2" value="2"/>
+    <label class="form-check-label" for="customRadioInline2">Or toggle this other custom radio</label>
 </div>
 
 ######## **Source**
@@ -7293,12 +8519,12 @@ echo $this->formRow($oFactory->create([
 ######## **Result**
 
 <div class="custom-checkbox&#x20;custom-control">
-    <input type="checkbox" name="custom_checkbox_disabled" id="customCheckDisabled1" disabled="disabled" class="custom-control-input" value="1"/>
-    <label class="custom-control-label" for="customCheckDisabled1">Check this custom checkbox</label>
+    <input type="checkbox" name="custom_checkbox_disabled" id="customCheckDisabled1" disabled="disabled" class="form-check-input" value="1"/>
+    <label class="form-check-label" for="customCheckDisabled1">Check this custom checkbox</label>
 </div>
-<div class="custom-control&#x20;custom-radio">
-    <input type="radio" name="radioDisabled" disabled="disabled" class="custom-control-input" id="customRadioDisabled2" value="1"/>
-    <label class="custom-control-label" for="customRadioDisabled2">Toggle this custom radio</label>
+<div class="form-check">
+    <input type="radio" name="radioDisabled" disabled="disabled" class="form-check-input" id="customRadioDisabled2" value="1"/>
+    <label class="form-check-label" for="customRadioDisabled2">Toggle this custom radio</label>
 </div>
 
 ######## **Source**
@@ -7348,12 +8574,12 @@ echo $this->formRow($oFactory->create([
 ####### **Result**
 
 <div class="custom-control&#x20;custom-switch">
-    <input type="checkbox" name="custom_switch" id="customSwitch1" class="custom-control-input" value="1"/>
-    <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
+    <input type="checkbox" name="custom_switch" id="customSwitch1" class="form-check-input" value="1"/>
+    <label class="form-check-label" for="customSwitch1">Toggle this switch element</label>
 </div>
 <div class="custom-control&#x20;custom-switch">
-    <input type="checkbox" name="custom_switch" id="customSwitch2" disabled="disabled" class="custom-control-input" value="1"/>
-    <label class="custom-control-label" for="customSwitch2">Disabled switch element</label>
+    <input type="checkbox" name="custom_switch" id="customSwitch2" disabled="disabled" class="form-check-input" value="1"/>
+    <label class="form-check-label" for="customSwitch2">Disabled switch element</label>
 </div>
 
 ####### **Source**
@@ -7400,35 +8626,35 @@ echo $this->formRow($oFactory->create([
 
 ####### **Result**
 
-<select name="custom_select" class="custom-select">
+<select name="custom_select" class="form-select">
     <option value="" selected="selected">Open this select menu</option>
     <option value="1">One</option>
     <option value="2">Two</option>
     <option value="3">Three</option>
 </select>
 <br/><br/>
-<select name="custom_select_lg" class="custom-select&#x20;custom-select-lg&#x20;mb-3">
+<select name="custom_select_lg" class="form-select&#x20;form-select-lg&#x20;mb-3">
     <option value="" selected="selected">Open this select menu</option>
     <option value="1">One</option>
     <option value="2">Two</option>
     <option value="3">Three</option>
 </select>
 <br/><br/>
-<select name="custom_select_sm" class="custom-select&#x20;custom-select-sm">
+<select name="custom_select_sm" class="form-select&#x20;form-select-sm">
     <option value="" selected="selected">Open this select menu</option>
     <option value="1">One</option>
     <option value="2">Two</option>
     <option value="3">Three</option>
 </select>
 <br/><br/>
-<select name="custom_select_multiple&#x5B;&#x5D;" multiple="multiple" class="custom-select">
+<select name="custom_select_multiple&#x5B;&#x5D;" multiple="multiple" class="form-select">
     <option value="" selected="selected">Open this select menu</option>
     <option value="1">One</option>
     <option value="2">Two</option>
     <option value="3">Three</option>
 </select>
 <br/><br/>
-<select name="custom_select_size" size="3" class="custom-select">
+<select name="custom_select_size" size="3" class="form-select">
     <option value="" selected="selected">Open this select menu</option>
     <option value="1">One</option>
     <option value="2">Two</option>
@@ -7536,7 +8762,7 @@ echo $this->formElement($oFactory->create([
 
 ####### **Result**
 
-<label for="customRange1">Example range</label>
+<label class="form-label" for="customRange1">Example range</label>
 <input type="range" name="custom_range" id="customRange1" class="custom-range" value=""/>
 
 ####### **Source**
@@ -7565,10 +8791,7 @@ echo $this->formRow($oFactory->create([
 
 ####### **Result**
 
-<div class="custom-file">
-    <input type="file" name="custom_file" id="customFile" class="custom-file-input"/>
-    <label class="custom-file-label" for="customFile">Choose file</label>
-</div>
+<input type="file" name="custom_file" id="customFile"/>
 
 ####### **Source**
 
@@ -7596,10 +8819,7 @@ echo $this->formRow($oFactory->create([
 
 ######## **Result**
 
-<div class="custom-file">
-    <input type="file" name="custom_file" id="customFileLangHTML" class="custom-file-input"/>
-    <label data-browse="Bestand&#x20;kiezen" class="custom-file-label" for="customFileLangHTML">Voeg je document toe</label>
-</div>
+<input type="file" name="custom_file" id="customFileLangHTML"/>
 
 ######## **Source**
 
@@ -7630,15 +8850,15 @@ echo $this->formRow($oFactory->create([
 ###### **Result**
 
 <form action="" method="POST" name="form" role="form" id="form">
-    <div class="form-group">
-        <label for="email">Email</label>
+    <div class="mb-3">
+        <label class="form-label" for="email">Email</label>
         <input name="email" type="email" class="form-control" value=""/>
     </div>
     <div class="btn-group&#x20;form-group">
         <button type="button" name="button1" class="btn&#x20;btn-secondary" value="">Button 1</button>
         <button type="button" name="button2" class="btn&#x20;btn-secondary" value="">Button 2</button>
     </div>
-    <div class="form-group">
+    <div class="mb-3">
         <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Submit</button>
     </div>
 </form>
@@ -7710,7 +8930,7 @@ echo $this->form($oFactory->create([
         </div>
     </div>
 </div>
-<label for="basic-url">Your vanity URL</label>
+<label class="form-label" for="basic-url">Your vanity URL</label>
 <div class="input-group&#x20;mb-3">
     <div class="input-group-prepend">
         <div class="input-group-text" id="basic-addon3">
@@ -8451,7 +9671,7 @@ echo $this->formRow($oFactory->create([
 ##### Custom forms
 [Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/input-group/#custom-forms)
 ###### Custom select
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/input-group/#custom-select)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/input-group/#form-select)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -8460,7 +9680,7 @@ echo $this->formRow($oFactory->create([
     <div class="input-group-prepend">
         <label class="input-group-text" for="inputGroupSelect01">Options</label>
     </div>
-    <select name="select_label_prepend" id="inputGroupSelect01" class="custom-select">
+    <select name="select_label_prepend" id="inputGroupSelect01" class="form-select">
         <option value="" selected="selected">Choose...</option>
         <option value="1">One</option>
         <option value="2">Two</option>
@@ -8468,7 +9688,7 @@ echo $this->formRow($oFactory->create([
     </select>
 </div>
 <div class="input-group&#x20;mb-3">
-    <select name="select_label_append" id="inputGroupSelect02" class="custom-select">
+    <select name="select_label_append" id="inputGroupSelect02" class="form-select">
         <option value="" selected="selected">Choose...</option>
         <option value="1">One</option>
         <option value="2">Two</option>
@@ -8482,7 +9702,7 @@ echo $this->formRow($oFactory->create([
     <div class="input-group-prepend">
         <button type="button" name="button" class="btn&#x20;btn-outline-secondary" value="">Button</button>
     </div>
-    <select name="select_button_prepend" id="inputGroupSelect03" aria-label="Example&#x20;select&#x20;with&#x20;button&#x20;addon" class="custom-select">
+    <select name="select_button_prepend" id="inputGroupSelect03" aria-label="Example&#x20;select&#x20;with&#x20;button&#x20;addon" class="form-select">
         <option value="" selected="selected">Choose...</option>
         <option value="1">One</option>
         <option value="2">Two</option>
@@ -8490,7 +9710,7 @@ echo $this->formRow($oFactory->create([
     </select>
 </div>
 <div class="input-group">
-    <select name="select_button_append" id="inputGroupSelect04" aria-label="Example&#x20;select&#x20;with&#x20;button&#x20;addon" class="custom-select">
+    <select name="select_button_append" id="inputGroupSelect04" aria-label="Example&#x20;select&#x20;with&#x20;button&#x20;addon" class="form-select">
         <option value="" selected="selected">Choose...</option>
         <option value="1">One</option>
         <option value="2">Two</option>
@@ -8620,16 +9840,10 @@ echo $this->formElement($oFactory->create([
             Upload
         </div>
     </div>
-    <div class="custom-file">
-        <input type="file" name="custom_file_label_prepend" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" class="custom-file-input"/>
-        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-    </div>
+    <input type="file" name="custom_file_label_prepend" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"/>
 </div>
 <div class="input-group&#x20;mb-3">
-    <div class="custom-file">
-        <input type="file" name="custom_file_label_append" id="inputGroupFile02" aria-describedby="inputGroupFileAddon02" class="custom-file-input"/>
-        <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
-    </div>
+    <input type="file" name="custom_file_label_append" id="inputGroupFile02" aria-describedby="inputGroupFileAddon02"/>
     <div class="input-group-append">
         <div class="input-group-text" id="inputGroupFileAddon02">
             Upload
@@ -8640,16 +9854,10 @@ echo $this->formElement($oFactory->create([
     <div class="input-group-prepend">
         <button type="button" name="button" id="inputGroupFileAddon03" class="btn&#x20;btn-outline-secondary" value="">Button</button>
     </div>
-    <div class="custom-file">
-        <input type="file" name="custom_file_button_prepend" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" class="custom-file-input"/>
-        <label class="custom-file-label" for="inputGroupFile03">Choose file</label>
-    </div>
+    <input type="file" name="custom_file_button_prepend" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03"/>
 </div>
 <div class="input-group&#x20;mb-3">
-    <div class="custom-file">
-        <input type="file" name="custom_file_button_append" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" class="custom-file-input"/>
-        <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
-    </div>
+    <input type="file" name="custom_file_button_append" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04"/>
     <div class="input-group-append">
         <button type="button" name="button" id="inputGroupFileAddon04" class="btn&#x20;btn-outline-secondary" value="">Button</button>
     </div>
