@@ -143,14 +143,14 @@ return [
             'expected' => '<form action="" method="POST" name="form" role="form" id="form">' . PHP_EOL .
                 '    <div class="form-row">' . PHP_EOL .
                 '        <div class="col-md-6&#x20;mb-3">' . PHP_EOL .
-                '            <label for="validationServer01">First name</label>' . PHP_EOL .
+                '            <label class="form-label" for="validationServer01">First name</label>' . PHP_EOL .
                 '            <input name="firstName" type="text" id="validationServer01" required="required" class="form-control&#x20;is-valid" value="Mark"/>' . PHP_EOL .
                 '            <div class="valid-feedback">' . PHP_EOL .
                 '                Looks good!' . PHP_EOL .
                 '            </div>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '        <div class="col-md-6&#x20;mb-3">' . PHP_EOL .
-                '            <label for="validationServer02">Last name</label>' . PHP_EOL .
+                '            <label class="form-label" for="validationServer02">Last name</label>' . PHP_EOL .
                 '            <input name="lastName" type="text" id="validationServer02" required="required" class="form-control&#x20;is-valid" value="Otto"/>' . PHP_EOL .
                 '            <div class="valid-feedback">' . PHP_EOL .
                 '                Looks good!' . PHP_EOL .
@@ -177,7 +177,7 @@ return [
                 '            <div class="invalid-feedback">Please provide a valid zip.</div>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
-                '    <div class="form-group&#x20;has-error">' . PHP_EOL .
+                '    <div class="mb-3&#x20;has-error">' . PHP_EOL .
                 '        <div class="form-check">' . PHP_EOL .
                 '            <input type="checkbox" name="termsAndConditions" id="invalidCheck3" required="required" class="form-check-input&#x20;is-invalid" value="1"/>' . PHP_EOL .
                 '            <label class="form-check-label" for="invalidCheck3">Agree to terms and conditions</label>' . PHP_EOL .

@@ -58,7 +58,7 @@ return [
             ],
         ]));
     },
-    'expected' => '<label for="inputPassword5">Password</label>' . PHP_EOL .
+    'expected' => '<label class="form-label" for="inputPassword5">Password</label>' . PHP_EOL .
         '<input name="password" id="inputPassword5" type="password" aria-describedby="passwordHelpBlock" ' .
         'class="form-control" value=""/>' . PHP_EOL .
         '<small class="form-text&#x20;text-muted" id="passwordHelpBlock">' .
@@ -67,8 +67,8 @@ return [
         '</small>' . PHP_EOL .
         '<br/>' . PHP_EOL .
         '<form action="" method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
-        '    <div class="form-group">' . PHP_EOL .
-        '        <label for="inputPassword6">Password</label>' . PHP_EOL .
+        '    <div class="mb-3">' . PHP_EOL .
+        '        <label class="form-label" for="inputPassword6">Password</label>' . PHP_EOL .
         '        <input name="password" id="inputPassword6" type="password" aria-describedby="passwordHelpInline" ' .
         'class="form-control&#x20;mx-sm-3" value=""/>' . PHP_EOL .
         '        <small class="text-muted" id="passwordHelpInline">Must be 8-20 characters long.</small>' . PHP_EOL .

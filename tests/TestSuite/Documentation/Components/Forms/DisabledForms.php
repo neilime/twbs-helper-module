@@ -63,24 +63,24 @@ return [
         ]));
     },
     'expected' => '<form action="" method="POST" name="form" role="form" id="form">' . PHP_EOL .
-        '    <fieldset disabled="disabled" class="form-group">' . PHP_EOL .
-        '        <div class="form-group">' . PHP_EOL .
-        '            <label for="disabledTextInput">Disabled input</label>' . PHP_EOL .
+        '    <fieldset disabled="disabled" class="mb-3">' . PHP_EOL .
+        '        <div class="mb-3">' . PHP_EOL .
+        '            <label class="form-label" for="disabledTextInput">Disabled input</label>' . PHP_EOL .
         '            <input name="fieldset&#x5B;disabled-input&#x5D;" type="text" id="disabledTextInput" placeholder="Disabled&#x20;input" class="form-control" value=""/>' . PHP_EOL .
         '        </div>' . PHP_EOL .
-        '        <div class="form-group">' . PHP_EOL .
-        '            <label for="disabledSelect">Disabled select menu</label>' . PHP_EOL .
+        '        <div class="mb-3">' . PHP_EOL .
+        '            <label class="form-label" for="disabledSelect">Disabled select menu</label>' . PHP_EOL .
         '            <select name="fieldset&#x5B;disabled-select&#x5D;" id="disabledSelect" class="form-control">' .
         '<option value="">Disabled select</option>' .
         '</select>' . PHP_EOL .
         '        </div>' . PHP_EOL .
-        '        <div class="form-group">' . PHP_EOL .
+        '        <div class="mb-3">' . PHP_EOL .
         '            <div class="form-check">' . PHP_EOL .
         '                <input type="checkbox" name="fieldset&#x5B;disabled-fieldset-check&#x5D;" id="disabledFieldsetCheck" disabled="disabled" class="form-check-input" value="1"/>' . PHP_EOL .
         '                <label class="form-check-label" for="disabledFieldsetCheck">Can&#039;t check this</label>' . PHP_EOL .
         '            </div>' . PHP_EOL .
         '        </div>' . PHP_EOL .
-        '        <div class="form-group">' . PHP_EOL .
+        '        <div class="mb-3">' . PHP_EOL .
         '            <button type="submit" name="fieldset&#x5B;submit&#x5D;" class="btn&#x20;btn-primary" value="">Submit</button>' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '    </fieldset>' . PHP_EOL .

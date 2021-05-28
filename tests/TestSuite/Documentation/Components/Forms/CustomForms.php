@@ -372,7 +372,7 @@ return [
                     'attributes' => ['id' => 'customRange1'],
                 ]));
             },
-            'expected' => '<label for="customRange1">Example range</label>' . PHP_EOL .
+            'expected' => '<label class="form-label" for="customRange1">Example range</label>' . PHP_EOL .
                 '<input type="range" name="custom_range" id="customRange1" class="custom-range" value=""/>',
         ],
         [

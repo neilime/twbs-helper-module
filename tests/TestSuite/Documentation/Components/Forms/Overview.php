@@ -58,20 +58,20 @@ return [
         ]));
     },
     'expected' => '<form action="" method="POST" name="form" role="form" id="form">' . PHP_EOL .
-        '    <div class="form-group">' . PHP_EOL .
-        '        <label for="exampleInputEmail1">Email address</label>' . PHP_EOL .
+        '    <div class="mb-3">' . PHP_EOL .
+        '        <label class="form-label" for="exampleInputEmail1">Email address</label>' . PHP_EOL .
         '        <input name="email" type="email" id="exampleInputEmail1" ' .
         'placeholder="Enter&#x20;email" class="form-control" value=""/>' . PHP_EOL .
         '        <small class="form-text&#x20;text-muted" id="emailHelp">' .
         'We&#039;ll never share your email with anyone else.' .
         '</small>' . PHP_EOL .
         '    </div>' . PHP_EOL .
-        '    <div class="form-group">' . PHP_EOL .
-        '        <label for="exampleInputPassword1">Password</label>' . PHP_EOL .
+        '    <div class="mb-3">' . PHP_EOL .
+        '        <label class="form-label" for="exampleInputPassword1">Password</label>' . PHP_EOL .
         '        <input name="password" type="password" id="exampleInputPassword1" ' .
         'placeholder="Password" class="form-control" value=""/>' . PHP_EOL .
         '    </div>' . PHP_EOL .
-        '    <div class="form-group">' . PHP_EOL .
+        '    <div class="mb-3">' . PHP_EOL .
         '        <div class="form-check">' . PHP_EOL .
         '            <input type="checkbox" name="remember_me" id="exampleCheck1" ' .
         'class="form-check-input" value="1"/>' . PHP_EOL .
@@ -79,7 +79,7 @@ return [
         'Check me out</label>' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .
-        '    <div class="form-group">' . PHP_EOL .
+        '    <div class="mb-3">' . PHP_EOL .
         '        <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">' .
         'Submit</button>' . PHP_EOL .
         '    </div>' . PHP_EOL .
