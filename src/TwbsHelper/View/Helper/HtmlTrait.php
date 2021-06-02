@@ -56,7 +56,7 @@ trait HtmlTrait
         }
 
         // Divs must start on  new line
-        $sContent = preg_replace('/<\/div>([^\s].*)/', '</div>'.PHP_EOL.'$1', $sContent);
+        $sContent = preg_replace('/<\/div>([^\s].*)/', '</div>' . PHP_EOL . '$1', $sContent);
 
         $aLines = explode(
             PHP_EOL,
@@ -77,12 +77,12 @@ trait HtmlTrait
             if ($sLine && $bShouldIndent) {
                 $sLine = $sIndentation . $sLine;
             }
-           
+
             $bIsStartOfTextArea = !!preg_match('/<textarea[^>]*>/i', $sLine);
             if ($bIsStartOfTextArea) {
                 $bShouldIndent = false;
             }
-            
+
             $bIsEndOfTextArea = !!preg_match('/<\/textarea[^>]*>/i', $sLine);
             if ($bIsEndOfTextArea) {
                 $bShouldIndent = true;

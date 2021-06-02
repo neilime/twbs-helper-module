@@ -107,7 +107,9 @@ class DescriptionList extends \TwbsHelper\View\Helper\AbstractHtmlElement
                         sprintf(
                             'Argument "%s" expects a string or an array, "%s" given',
                             '$aItems[' . $sItemKey . '][term]',
-                            is_object($sItemValue['term']) ? get_class($sItemValue['term']) : gettype($sItemValue['term'])
+                            is_object($sItemValue['term'])
+                                ? get_class($sItemValue['term'])
+                                : gettype($sItemValue['term'])
                         )
                     );
                 }
@@ -128,7 +130,9 @@ class DescriptionList extends \TwbsHelper\View\Helper\AbstractHtmlElement
                         sprintf(
                             'Argument "%s" expects a string or an array, "%s" given',
                             '$aItems[' . $sItemKey . '][detail]',
-                            is_object($sItemValue['detail']) ? get_class($sItemValue['detail']) : gettype($sItemValue['detail'])
+                            is_object($sItemValue['detail'])
+                                ? get_class($sItemValue['detail'])
+                                : gettype($sItemValue['detail'])
                         )
                     );
                 }

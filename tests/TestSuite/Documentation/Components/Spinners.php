@@ -19,10 +19,12 @@ return [
                     'title' => 'Colors',
                     'url' => '%bootstrap-url%/components/spinners/#colors',
                     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        foreach ([
+                        foreach (
+                            [
                             'primary', 'secondary', 'success', 'danger',
                             'warning', 'info', 'light', 'dark',
-                        ] as $sVariant) {
+                            ] as $sVariant
+                        ) {
                             echo $oView->spinner([
                                 'variant' => $sVariant,
                                 'label' => 'Loading...',
@@ -64,10 +66,12 @@ return [
 
                 echo PHP_EOL . '<br/>' . PHP_EOL;
 
-                foreach ([
+                foreach (
+                    [
                     'primary', 'secondary', 'success', 'danger',
                     'warning', 'info', 'light', 'dark',
-                ] as $sVariant) {
+                    ] as $sVariant
+                ) {
                     echo $oView->spinner([
                         'variant' => $sVariant,
                         'type' => 'grow',
