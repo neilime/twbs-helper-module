@@ -49,10 +49,12 @@ return [
             'title' => 'Contextual variations',
             'url' => '%bootstrap-url%/components/badge/#contextual-variations',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                foreach ([
+                foreach (
+                    [
                     'primary', 'secondary', 'success', 'danger',
                     'warning', 'info', 'light', 'dark',
-                ] as $sVariant) {
+                    ] as $sVariant
+                ) {
                     echo $oView->badge(ucfirst($sVariant), $sVariant) . PHP_EOL;
                 }
             },
@@ -69,10 +71,12 @@ return [
             'title' => 'Pill badges',
             'url' => '%bootstrap-url%/components/badge/#pill-badges',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                foreach ([
+                foreach (
+                    [
                     'primary', 'secondary', 'success', 'danger',
                     'warning', 'info', 'light', 'dark',
-                ] as $sVariant) {
+                    ] as $sVariant
+                ) {
                     echo $oView->badge(
                         ucfirst($sVariant),
                         [
@@ -95,10 +99,12 @@ return [
             'title' => 'Links',
             'url' => '%bootstrap-url%/components/badge/#links',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                foreach ([
+                foreach (
+                    [
                     'primary', 'secondary', 'success', 'danger',
                     'warning', 'info', 'light', 'dark',
-                ] as $sVariant) {
+                    ] as $sVariant
+                ) {
                     echo $oView->badge(
                         ucfirst($sVariant),
                         [

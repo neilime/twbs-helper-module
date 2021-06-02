@@ -106,12 +106,14 @@ return [
             'title' => 'Backgrounds',
             'url' => '%bootstrap-url%/components/progress/#backgrounds',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                foreach ([
-                        'success' => 25,
-                        'info' => 50,
-                        'warning' => 75,
-                        'danger' => 100,
-                    ] as $sVariant => $iCurrent) {
+                foreach (
+                    [
+                    'success' => 25,
+                    'info' => 50,
+                    'warning' => 75,
+                    'danger' => 100,
+                    ] as $sVariant => $iCurrent
+                ) {
                     echo $oView->progressBar([
                         'variant' => $sVariant,
                         'min' => 0,
@@ -122,23 +124,27 @@ return [
                 }
             },
             'expected' => '<div class="progress">' . PHP_EOL .
-                '    <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="bg-success&#x20;progress-bar" ' .
-                'role="progressbar" style="width&#x3A;&#x20;25&#x25;&#x3B;"></div>' . PHP_EOL .
+                '    <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" ' .
+                'class="bg-success&#x20;progress-bar" role="progressbar" ' .
+                'style="width&#x3A;&#x20;25&#x25;&#x3B;"></div>' . PHP_EOL .
                 '</div>' . PHP_EOL .
                 '<br/>' . PHP_EOL .
                 '<div class="progress">' . PHP_EOL .
-                '    <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" class="bg-info&#x20;progress-bar" ' .
-                'role="progressbar" style="width&#x3A;&#x20;50&#x25;&#x3B;"></div>' . PHP_EOL .
+                '    <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="50" ' .
+                'class="bg-info&#x20;progress-bar" role="progressbar" ' .
+                'style="width&#x3A;&#x20;50&#x25;&#x3B;"></div>' . PHP_EOL .
                 '</div>' . PHP_EOL .
                 '<br/>' . PHP_EOL .
                 '<div class="progress">' . PHP_EOL .
-                '    <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="75" class="bg-warning&#x20;progress-bar" ' .
-                'role="progressbar" style="width&#x3A;&#x20;75&#x25;&#x3B;"></div>' . PHP_EOL .
+                '    <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="75" ' .
+                'class="bg-warning&#x20;progress-bar" role="progressbar" ' .
+                'style="width&#x3A;&#x20;75&#x25;&#x3B;"></div>' . PHP_EOL .
                 '</div>' . PHP_EOL .
                 '<br/>' . PHP_EOL .
                 '<div class="progress">' . PHP_EOL .
-                '    <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" class="bg-danger&#x20;progress-bar" ' .
-                'role="progressbar" style="width&#x3A;&#x20;100&#x25;&#x3B;"></div>' . PHP_EOL .
+                '    <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" ' .
+                'class="bg-danger&#x20;progress-bar" role="progressbar" ' .
+                'style="width&#x3A;&#x20;100&#x25;&#x3B;"></div>' . PHP_EOL .
                 '</div>' . PHP_EOL .
                 '<br/>' . PHP_EOL,
         ],
@@ -167,13 +173,15 @@ return [
             'title' => 'Striped',
             'url' => '%bootstrap-url%/components/progress/#striped',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                foreach ([
-                        null => 10,
-                        'success' => 25,
-                        'info' => 50,
-                        'warning' => 75,
-                        'danger' => 100,
-                    ] as $sVariant => $iCurrent) {
+                foreach (
+                    [
+                    null => 10,
+                    'success' => 25,
+                    'info' => 50,
+                    'warning' => 75,
+                    'danger' => 100,
+                    ] as $sVariant => $iCurrent
+                ) {
                     echo $oView->progressBar([
                         'striped' => true,
                         'variant' => $sVariant,

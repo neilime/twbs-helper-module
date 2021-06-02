@@ -9,12 +9,14 @@ return [
             'title' => 'Examples',
             'url' => '%bootstrap-url%/components/tooltips/#examples',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                foreach ([
+                foreach (
+                    [
                     'top' => 'Tooltip on top',
                     'right' => 'Tooltip on right',
                     'bottom' => 'Tooltip on bottom',
                     'left' => 'Tooltip on left',
-                ] as $sPlacement => $sLabel) {
+                    ] as $sPlacement => $sLabel
+                ) {
                     echo $oView->formButton([
                         'name' => 'tooltip',
                         'options' => [

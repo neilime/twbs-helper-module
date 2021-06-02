@@ -24,7 +24,7 @@ class ConfigProvider
      * @var array
      */
     protected $moduleConfig;
-    
+
     /**
      * Returns the configuration array
      *

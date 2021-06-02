@@ -69,7 +69,8 @@ return [
             },
             'expected' => '<div class="card-group">' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" ' .
+                'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -82,7 +83,8 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" ' .
+                'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -94,7 +96,8 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" ' .
+                'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -110,7 +113,8 @@ return [
                 '<br/>' . PHP_EOL .
                 '<div class="card-group">' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" ' .
+                'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -123,7 +127,8 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" ' .
+                'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -135,7 +140,8 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" ' .
+                'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -213,7 +219,8 @@ return [
             },
             'expected' => '<div class="card-deck">' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" ' .
+                'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -226,7 +233,8 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" ' .
+                'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -238,7 +246,8 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" ' .
+                'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -254,7 +263,8 @@ return [
                 '<br/>' . PHP_EOL .
                 '<div class="card-deck">' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" ' .
+                'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -267,7 +277,8 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" ' .
+                'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -279,7 +290,8 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
+                '        <img alt="..." class="card-img-top" ' .
+                'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Primary card title</h5>' . PHP_EOL .
                 '            <p class="card-text">' .
@@ -367,7 +379,8 @@ return [
             },
             'expected' => '<div class="card-columns">' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />'
+                '        <img alt="..." class="card-img-top" ' .
+                'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />'
                 . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">' .
@@ -383,14 +396,17 @@ return [
                 '        <div class="card-body">' . PHP_EOL .
                 '            <figure>' . PHP_EOL .
                 '                <blockquote class="blockquote">' . PHP_EOL .
-                '                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>' . PHP_EOL .
+                '                    <p>' .
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>' . PHP_EOL .
                 '                </blockquote>' . PHP_EOL .
-                '                <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></figcaption>' . PHP_EOL .
+                '                <figcaption class="blockquote-footer">' .
+                'Someone famous in <cite title="Source Title">Source Title</cite></figcaption>' . PHP_EOL .
                 '            </figure>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />'
+                '        <img alt="..." class="card-img-top" ' .
+                'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />'
                 . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <h5 class="card-title">Card title</h5>' . PHP_EOL .
@@ -407,9 +423,11 @@ return [
                 '        <div class="card-body">' . PHP_EOL .
                 '            <figure>' . PHP_EOL .
                 '                <blockquote class="blockquote">' . PHP_EOL .
-                '                    <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>' . PHP_EOL .
+                '                    <p class="text-white">' .
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>' . PHP_EOL .
                 '                </blockquote>' . PHP_EOL .
-                '                <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></figcaption>' . PHP_EOL .
+                '                <figcaption class="blockquote-footer">' .
+                'Someone famous in <cite title="Source Title">Source Title</cite></figcaption>' . PHP_EOL .
                 '            </figure>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
@@ -425,16 +443,19 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card">' . PHP_EOL .
-                '        <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />'
+                '        <img alt="..." class="card-img-top" ' .
+                'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />'
                 . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '    <div class="card&#x20;p-3&#x20;text-right">' . PHP_EOL .
                 '        <div class="card-body">' . PHP_EOL .
                 '            <figure>' . PHP_EOL .
                 '                <blockquote class="blockquote">' . PHP_EOL .
-                '                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>' . PHP_EOL .
+                '                    <p>' .
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>' . PHP_EOL .
                 '                </blockquote>' . PHP_EOL .
-                '                <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></figcaption>' . PHP_EOL .
+                '                <figcaption class="blockquote-footer">' .
+                'Someone famous in <cite title="Source Title">Source Title</cite></figcaption>' . PHP_EOL .
                 '            </figure>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .

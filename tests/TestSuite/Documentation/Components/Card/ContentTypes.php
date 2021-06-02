@@ -58,7 +58,8 @@ return [
                 ], ['style' => 'width: 18rem;']);
             },
             'expected' => '<div class="card" style="width&#x3A;&#x20;18rem&#x3B;">' . PHP_EOL .
-                '    <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
+                '    <img alt="..." class="card-img-top" ' .
+                'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
                 '    <div class="card-body">' . PHP_EOL .
                 '        <p class="card-text">' .
                 'Some quick example text to build on the card title and make up the bulk of the card&#039;s content.' .
@@ -135,7 +136,8 @@ return [
                 ], ['style' => 'width: 18rem;']);
             },
             'expected' => '<div class="card" style="width&#x3A;&#x20;18rem&#x3B;">' . PHP_EOL .
-                '    <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
+                '    <img alt="..." class="card-img-top" ' .
+                'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
                 '    <div class="card-body">' . PHP_EOL .
                 '        <h5 class="card-title">Card title</h5>' . PHP_EOL .
                 '        <p class="card-text">' .
@@ -207,9 +209,11 @@ return [
                 '    <div class="card-body">' . PHP_EOL .
                 '        <figure>' . PHP_EOL .
                 '            <blockquote class="blockquote">' . PHP_EOL .
-                '                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>' . PHP_EOL .
+                '                <p>' .
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>' . PHP_EOL .
                 '            </blockquote>' . PHP_EOL .
-                '            <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></figcaption>' . PHP_EOL .
+                '            <figcaption class="blockquote-footer">' .
+                'Someone famous in <cite title="Source Title">Source Title</cite></figcaption>' . PHP_EOL .
                 '        </figure>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</div>' . PHP_EOL .

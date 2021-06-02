@@ -14,13 +14,5 @@ if (false === ($aApplicationConfig = include $sApplicationConfigPath)) {
     ));
 }
 
-// Prepare the service manager
-$oServiceManager = new \Laminas\ServiceManager\ServiceManager();
-$oServiceManagerConfig = new \Laminas\Mvc\Service\ServiceManagerConfig($aApplicationConfig['service_manager'] ??  []);
-$oServiceManagerConfig->configureServiceManager($oServiceManager);
-$oServiceManager->setService('ApplicationConfig', $aApplicationConfig);
-
-// Load modules
-$oServiceManager->get('ModuleManager')->loadModules();
-
-return $oServiceManager;
+$oApplication = \Laminas\Mvc\Application::init($aApplicationConfig);
+return $oApplication->getServiceManager();
