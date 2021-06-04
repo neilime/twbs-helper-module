@@ -135,9 +135,9 @@ return [
         'placeholder="Password" class="form-control" value=""/>' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '    </div>'  . PHP_EOL .
-        '    <fieldset class="form-group">'  . PHP_EOL .
+        '    <fieldset>'  . PHP_EOL .
         '        <div class="row">'  . PHP_EOL .
-        '            <legend class="col-form-label&#x20;col-sm-2&#x20;pt-0">' .
+        '            <legend class="col-sm-2&#x20;pt-0">' .
         'Radios' .
         '</legend>'  . PHP_EOL .
         '            <div class="col-sm-10">'  . PHP_EOL .
@@ -188,11 +188,9 @@ return [
         '            </div>' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .
-        '    <div class="mb-3&#x20;row">' . PHP_EOL .
-        '        <div class="col-sm-10">' . PHP_EOL .
-        '            <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">' .
+        '    <div class="col-sm-10">' . PHP_EOL .
+        '        <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">' .
         'Sign in</button>' . PHP_EOL .
-        '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '</form>',
     'tests' => [

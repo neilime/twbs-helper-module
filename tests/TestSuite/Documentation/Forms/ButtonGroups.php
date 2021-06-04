@@ -51,8 +51,6 @@ return [
         '        <button type="button" name="button2" class="btn&#x20;btn-secondary" value="">Button 2</button>'
         . PHP_EOL .
         '    </div>' . PHP_EOL .
-        '    <div class="mb-3">' . PHP_EOL .
-        '        <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Submit</button>' . PHP_EOL .
-        '    </div>' . PHP_EOL .
+        '    <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Submit</button>' . PHP_EOL .
         '</form>',
 ];

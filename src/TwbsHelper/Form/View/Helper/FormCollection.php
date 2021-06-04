@@ -22,7 +22,7 @@ class FormCollection extends \Laminas\Form\View\Helper\FormCollection
      */
     protected $wrapper = '<fieldset%4$s>%2$s%1$s%3$s</fieldset>';
 
-      /**
+    /**
      * Attributes valid for the tag represented by this helper
      *
      * This should be overridden in extending classes
@@ -89,7 +89,7 @@ class FormCollection extends \Laminas\Form\View\Helper\FormCollection
         $aLabelAttributes = $oElement instanceof \Laminas\Form\LabelAwareInterface
             ? $oElement->getLabelAttributes()
             : [];
-        $aLegendClasses = ['col-form-label'];
+        $aLegendClasses = [];
 
         // Define legend column classes
         $sColumSize = $oElement->getOption('column');

@@ -3,136 +3,63 @@
 // Documentation test config file for "Components / Forms / Form controls" part
 return [
     'title' => 'Form controls',
-    'url' => '%bootstrap-url%/components/forms/#form-controls',
-    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-        $oFactory = new \Laminas\Form\Factory();
-
-        echo $oView->form($oFactory->create([
-            'type' => 'form',
-            'elements' => [
-                [
-                    'spec' => [
-                        'name' => 'email',
-                        'options' => [
-                            'label' => 'Email address'
-                        ],
-                        'attributes' => [
-                            'type' => 'email',
-                            'id' => 'exampleFormControlInput1',
-                            'placeholder' => 'name@example.com',
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name' => 'select',
-                        'type' => 'select',
-                        'options' => [
-                            'label' => 'Example select',
-                            'value_options' => [
-                                1 => 1,
-                                2 => 2,
-                                3 => 3,
-                                4 => 4,
-                                5 => 5,
-                            ],
-                        ],
-                        'attributes' => [
-                            'id' => 'exampleFormControlSelect1',
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name' => 'multiple_select',
-                        'type' => 'select',
-                        'options' => [
-                            'label' => 'Example multiple select',
-                            'value_options' => [
-                                1 => 1,
-                                2 => 2,
-                                3 => 3,
-                                4 => 4,
-                                5 => 5,
-                            ],
-                        ],
-                        'attributes' => [
-                            'id' => 'exampleFormControlSelect2',
-                            'multiple' => true,
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name' => 'textarea',
-                        'options' => [
-                            'label' => 'Example textarea'
-                        ],
-                        'attributes' => [
-                            'type' => 'textarea',
-                            'id' => 'exampleFormControlTextarea1',
-                            'rows' => 3,
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name' => 'file_input',
-                        'options' => [
-                            'label' => 'Example file input'
-                        ],
-                        'attributes' => [
-                            'type' => 'file',
-                            'id' => 'exampleFormControlFile1',
-                        ],
-                    ],
-                ],
-            ],
-        ]));
-    },
-    'expected' => '<form action="" method="POST" name="form" role="form" id="form">' . PHP_EOL .
-        '    <div class="mb-3">' . PHP_EOL .
-        '        <label class="form-label" for="exampleFormControlInput1">Email address</label>' . PHP_EOL .
-        '        <input name="email" type="email" id="exampleFormControlInput1" ' .
-        'placeholder="name&#x40;example.com" class="form-control" value=""/>' . PHP_EOL .
-        '    </div>' . PHP_EOL .
-        '    <div class="mb-3">' . PHP_EOL .
-        '        <label class="form-label" for="exampleFormControlSelect1">Example select</label>' . PHP_EOL .
-        '        <select name="select" id="exampleFormControlSelect1" class="form-select">' . PHP_EOL .
-        '            <option value="1">1</option>' . PHP_EOL .
-        '            <option value="2">2</option>' . PHP_EOL .
-        '            <option value="3">3</option>' . PHP_EOL .
-        '            <option value="4">4</option>' . PHP_EOL .
-        '            <option value="5">5</option>' . PHP_EOL .
-        '        </select>' . PHP_EOL .
-        '    </div>' . PHP_EOL .
-        '    <div class="mb-3">' . PHP_EOL .
-        '        <label class="form-label" for="exampleFormControlSelect2">Example multiple select</label>' . PHP_EOL .
-        '        <select name="multiple_select&#x5B;&#x5D;" id="exampleFormControlSelect2" ' .
-        'multiple="multiple" class="form-select">' . PHP_EOL .
-        '            <option value="1">1</option>' . PHP_EOL .
-        '            <option value="2">2</option>' . PHP_EOL .
-        '            <option value="3">3</option>' . PHP_EOL .
-        '            <option value="4">4</option>' . PHP_EOL .
-        '            <option value="5">5</option>' . PHP_EOL .
-        '        </select>' . PHP_EOL .
-        '    </div>' . PHP_EOL .
-        '    <div class="mb-3">' . PHP_EOL .
-        '        <label class="form-label" for="exampleFormControlTextarea1">Example textarea</label>' . PHP_EOL .
-        '        <textarea name="textarea" id="exampleFormControlTextarea1" rows="3" class="form-control">' .
-        '</textarea>' . PHP_EOL .
-        '    </div>' . PHP_EOL .
-        '    <div class="mb-3">' . PHP_EOL .
-        '        <label class="form-label" for="exampleFormControlFile1">Example file input</label>' . PHP_EOL .
-        '        <input name="file_input" type="file" id="exampleFormControlFile1" class="form-control"/>'
-        . PHP_EOL .
-        '    </div>' . PHP_EOL .
-        '</form>',
-
+    'url' => '%bootstrap-url%/components/forms/form-control',
     'tests' => [
         [
+            'title' => 'Example',
+            'url' => '%bootstrap-url%/components/forms/form-control/#example',
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+                $oFactory = new \Laminas\Form\Factory();
+
+                echo $oView->form($oFactory->create([
+                    'type' => 'form',
+                    'elements' => [
+                        [
+                            'spec' => [
+                                'name' => 'email',
+                                'options' => [
+                                    'label' => 'Email address'
+                                ],
+                                'attributes' => [
+                                    'type' => 'email',
+                                    'id' => 'exampleFormControlInput1',
+                                    'placeholder' => 'name@example.com',
+                                ],
+                            ],
+                        ],
+                        [
+                            'spec' => [
+                                'name' => 'textarea',
+                                'options' => [
+                                    'label' => 'Example textarea'
+                                ],
+                                'attributes' => [
+                                    'type' => 'textarea',
+                                    'id' => 'exampleFormControlTextarea1',
+                                    'rows' => 3,
+                                ],
+                            ],
+                        ],
+                    ],
+                ]));
+            },
+            'expected' => '<form action="" method="POST" name="form" role="form" id="form">' . PHP_EOL .
+                '    <div class="mb-3">' . PHP_EOL .
+                '        <label class="form-label" for="exampleFormControlInput1">Email address</label>' . PHP_EOL .
+                '        <input name="email" type="email" id="exampleFormControlInput1" ' .
+                'placeholder="name&#x40;example.com" class="form-control" value=""/>' . PHP_EOL .
+                '    </div>' . PHP_EOL .
+                '    <div class="mb-3">' . PHP_EOL .
+                '        <label class="form-label" for="exampleFormControlTextarea1">Example textarea</label>'
+                . PHP_EOL .
+                '        <textarea name="textarea" id="exampleFormControlTextarea1" rows="3" class="form-control">' .
+                '</textarea>' . PHP_EOL .
+                '    </div>' . PHP_EOL .
+                '</form>',
+        ],
+        [
             'title' => 'Sizing',
-            'url' => '%bootstrap-url%/components/forms/#sizing',
+            'url' => '%bootstrap-url%/components/forms/form-control/#sizing',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 $oFactory = new \Laminas\Form\Factory();
 
@@ -143,7 +70,9 @@ return [
                     'options' => ['size' => 'lg'],
                     'attributes' => ['placeholder' => '.form-control-lg'],
                 ]);
-                echo $oView->formElement($oElement) . PHP_EOL . '<br/>' . PHP_EOL;
+                echo $oView->formElement($oElement);
+
+                echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Render default input
                 $oElement = $oFactory->create([
@@ -151,7 +80,9 @@ return [
                     'type' => 'text',
                     'attributes' => ['placeholder' => 'Default input'],
                 ]);
-                echo $oView->formElement($oElement) . PHP_EOL . '<br/>' . PHP_EOL;
+                echo $oView->formElement($oElement);
+
+                echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Render small input
                 $oElement = $oFactory->create([
@@ -160,34 +91,7 @@ return [
                     'options' => ['size' => 'sm'],
                     'attributes' => ['placeholder' => '.form-control-sm'],
                 ]);
-                echo $oView->formElement($oElement) . PHP_EOL . '<br/>' . PHP_EOL;
-
-                // Render large select
-                $oElement = $oFactory->create([
-                    'name' => 'lg',
-                    'type' => 'select',
-                    'options' => ['size' => 'lg', 'value_options' => ['Large select']],
-                    'attributes' => ['placeholder' => '.form-control-lg'],
-                ]);
-                echo $oView->formElement($oElement) . PHP_EOL . '<br/>' . PHP_EOL;
-
-                // Render default select
-                $oElement = $oFactory->create([
-                    'name' => 'default',
-                    'type' => 'select',
-                    'options' => ['value_options' => ['Default select']],
-                    'attributes' => ['placeholder' => 'Default input'],
-                ]);
-                echo $oView->formElement($oElement) . PHP_EOL . '<br/>' . PHP_EOL;
-
-                // Render small select
-                $oElement = $oFactory->create([
-                    'name' => 'sm',
-                    'type' => 'select',
-                    'options' => ['size' => 'sm', 'value_options' => ['Small select']],
-                    'attributes' => ['placeholder' => '.form-control-sm'],
-                ]);
-                echo $oView->formElement($oElement) . PHP_EOL . '<br/>' . PHP_EOL;
+                echo $oView->formElement($oElement);
             },
             'expected' =>
             '<input type="text" name="lg" placeholder=".form-control-lg" ' .
@@ -197,24 +101,11 @@ return [
                 'class="form-control" value=""/>' . PHP_EOL .
                 '<br/>' . PHP_EOL .
                 '<input type="text" name="sm" placeholder=".form-control-sm" ' .
-                'class="form-control&#x20;form-control-sm" value=""/>' . PHP_EOL .
-                '<br/>' . PHP_EOL .
-                '<select name="lg" class="form-select&#x20;form-select-lg">' .
-                '<option value="0">Large select</option>' .
-                '</select>' . PHP_EOL .
-                '<br/>' . PHP_EOL .
-                '<select name="default" class="form-select">' .
-                '<option value="0">Default select</option>' .
-                '</select>' . PHP_EOL .
-                '<br/>' . PHP_EOL .
-                '<select name="sm" class="form-select&#x20;form-select-sm">' .
-                '<option value="0">Small select</option>' .
-                '</select>' . PHP_EOL .
-                '<br/>' . PHP_EOL,
+                'class="form-control&#x20;form-control-sm" value=""/>',
         ],
         [
             'title' => 'Readonly',
-            'url' => '%bootstrap-url%/components/forms/#readonly',
+            'url' => '%bootstrap-url%/components/forms/form-control/#readonly',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 // Render element
                 $oFactory = new \Laminas\Form\Factory();

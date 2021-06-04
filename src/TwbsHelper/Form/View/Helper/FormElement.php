@@ -69,6 +69,14 @@ class FormElement extends \Laminas\Form\View\Helper\FormElement
             $this->setClassesToElement($oElement, $aClasses);
         }
 
+        // Add describedby if help block has an id
+        if (!$oElement->getAttribute('aria-describedby')) {
+            $aHelpBlockOption = $oElement->getOption('help_block');
+            if (is_array($aHelpBlockOption) && isset($aHelpBlockOption['attributes']['id'])) {
+                $oElement->setAttribute('aria-describedby', $aHelpBlockOption['attributes']['id']);
+            }
+        }
+
         $sMarkup = parent::render($oElement);
 
         // Render element's add-on

@@ -13,7 +13,6 @@ return [
         'Card'        => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Card.php',
         'Carousel'    => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Carousel.php',
         'Dropdowns'   => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Dropdowns.php',
-        'Forms'       => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Forms.php',
         'InputGroup'  => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/InputGroup.php',
         'Jumbotron'   => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/Jumbotron.php',
         'ListGroup'   => include __DIR__ . DIRECTORY_SEPARATOR . 'Components/ListGroup.php',

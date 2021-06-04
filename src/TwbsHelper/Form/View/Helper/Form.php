@@ -140,7 +140,6 @@ class Form extends \Laminas\Form\View\Helper\Form
         $oHelperPluginManager = $this->getView()->getHelperPluginManager();
 
         if ($oElement instanceof \Laminas\Form\FieldsetInterface) {
-            $this->setClassesToElement($oElement, ['form-group']);
             $sElementMarkup = $oHelperPluginManager->get('formCollection')->__invoke($oElement);
         } else {
             $sElementMarkup = $oHelperPluginManager->get('formRow')->__invoke($oElement);
