@@ -89,8 +89,8 @@ return [
         'Disabled</a>' . PHP_EOL .
         '            </li>' . PHP_EOL .
         '        </ul>' . PHP_EOL .
-        '        <form action="" method="POST" name="form" class="form-inline&#x20;my-2&#x20;my-lg-0" role="form" ' .
-        'id="form">' . PHP_EOL .
+        '        <form action="" method="POST" name="form" class="align-items-center&#x20;my-2&#x20;my-lg-0" ' .
+        'role="form" id="form">' . PHP_EOL .
         '            <input name="search" type="search" placeholder="Search" aria-label="Search" ' .
         'class="form-control&#x20;mr-sm-2" value=""/>' . PHP_EOL .
         '            <button type="submit" name="submit" ' .

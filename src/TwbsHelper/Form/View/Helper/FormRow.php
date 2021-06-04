@@ -90,8 +90,7 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
                 // Radio elements
             case in_array($sElementType, ['radio'], true):
                 // All "button" elements in inline form
-            case in_array($sElementType, ['submit', 'button', 'reset'], true)
-                && $sLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE:
+            case in_array($sElementType, ['submit', 'button', 'reset'], true):
                 return $sElementContent;
 
             default:
@@ -105,33 +104,10 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
      */
     public function renderFormRow(\Laminas\Form\ElementInterface $oElement, $sElementContent): string
     {
-        $aRowClasses = [$this->options->getDefaultRowSpacingClass()];
-
-        if ($oElement->getMessages()) {
-            $aRowClasses[]  = 'has-error';
-        }
-
-        // Column
-        $sColum = $oElement->getOption('column');
-        if ($sColum) {
-            if ($oElement->getOption('layout') ===  \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL) {
-                $aRowClasses[] = 'row';
-            } else {
-                $aColumSizes = is_array($sColum) ? $sColum : [$sColum];
-                foreach ($aColumSizes as $sColumSize) {
-                    $aRowClasses[] = $this->getColumnClass($sColumSize);
-                }
-            }
-        }
-
-        // Additional row class
-        if ($sAddRowClass = $oElement->getOption('row_class')) {
-            $aRowClasses = array_merge($aRowClasses, explode(' ', $sAddRowClass));
-        }
 
         $aAttributes = $this->setClassesToAttributes(
             [],
-            $aRowClasses
+            $this->getElementRowClasses($oElement)
         );
 
         if ($this->hasColumnClassAttribute($aAttributes['class'] ?? '')) {
@@ -166,6 +142,39 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
             $aAttributes,
             $sElementContent
         );
+    }
+
+    /**
+     * @param \Laminas\Form\ElementInterface $oElement
+     * @return array
+     */
+    protected function getElementRowClasses(\Laminas\Form\ElementInterface $oElement): array
+    {
+        $aRowClasses = [$this->options->getDefaultRowSpacingClass()];
+
+        if ($oElement->getMessages()) {
+            $aRowClasses[]  = 'has-error';
+        }
+
+        // Column
+        $sColum = $oElement->getOption('column');
+        if ($sColum) {
+            if ($oElement->getOption('layout') ===  \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL) {
+                $aRowClasses[] = 'row';
+            } else {
+                $aColumSizes = is_array($sColum) ? $sColum : [$sColum];
+                foreach ($aColumSizes as $sColumSize) {
+                    $aRowClasses[] = $this->getColumnClass($sColumSize);
+                }
+            }
+        }
+
+        // Additional row class
+        if ($sAddRowClass = $oElement->getOption('row_class')) {
+            $aRowClasses = array_merge($aRowClasses, explode(' ', $sAddRowClass));
+        }
+
+        return $aRowClasses;
     }
 
     /**
@@ -365,16 +374,23 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
             $sContent = $oTranslator->translate($sContent, $this->getTranslatorTextDomain());
         }
 
-        $aClasses = ['text-muted'];
-        if ($oElement->getOption('layout') !== \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE) {
-            $aClasses[] = 'form-text';
-        }
+        $bIsLayoutInline = $oElement->getOption('layout') === \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE;
 
-        return $sElementContent . PHP_EOL . $this->htmlElement(
-            'small',
-            $this->setClassesToAttributes($aAttributes, $aClasses),
+        $sHelpBlockContent = $this->htmlElement(
+            $bIsLayoutInline ? 'span' : 'div',
+            $this->setClassesToAttributes($aAttributes, ['form-text']),
             $sContent
         );
+
+        if ($bIsLayoutInline) {
+            $sHelpBlockContent = $this->htmlElement(
+                'div',
+                $this->setClassesToAttributes([], ['col-auto']),
+                $sHelpBlockContent
+            );
+        }
+
+        return $sElementContent . PHP_EOL . $sHelpBlockContent;
     }
 
     /**
@@ -423,18 +439,22 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
     ): string {
         switch ($oElement->getAttribute('type')) {
             case 'checkbox':
-                $aClassesToAdd =  $oElement->getOption('custom')
+                $bIsCustom = $oElement->getOption('custom');
+                if ($bIsCustom) {
+                    $bIsSwitch = $oElement->getOption('switch');
+
                     // Custom checkbox classes
-                    ? [
+                    $aClassesToAdd = [
                         'custom-control',
-                        $oElement->getOption('switch')
-                            // Switch custom checkbox
-                            ? 'custom-switch'
+
+                        // Switch custom checkbox
+                        $bIsSwitch  ? 'custom-switch'
                             // Regular custom checkbox
                             : 'custom-checkbox',
-                    ]
-                    // Regular checkbox class
-                    : ['form-check'];
+                    ];
+                } else {
+                    $aClassesToAdd = ['form-check'];
+                }
 
                 $sElementContent = $this->htmlElement(
                     'div',

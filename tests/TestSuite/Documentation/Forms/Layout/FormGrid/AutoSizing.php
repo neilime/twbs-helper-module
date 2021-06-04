@@ -3,7 +3,7 @@
 // Documentation test config file for "Components / Forms / Layout / Form grid / Auto-sizing" part
 return [
     'title' => 'Auto-sizing',
-    'url' => '%bootstrap-url%/components/forms/#auto-sizing',
+    'url' => '%bootstrap-url%/forms/#auto-sizing',
     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
         $oFactory = new \Laminas\Form\Factory();
 
@@ -247,10 +247,8 @@ return [
         'Remember me</label>' . PHP_EOL .
         '            </div>' . PHP_EOL .
         '        </div>' . PHP_EOL .
-        '        <div class="col-auto&#x20;mb-3">' . PHP_EOL .
-        '            <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">' .
+        '        <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">' .
         'Submit</button>' . PHP_EOL .
-        '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '</form>' . PHP_EOL .
         '<br/>' . PHP_EOL .
@@ -283,10 +281,8 @@ return [
         'Remember me</label>' . PHP_EOL .
         '            </div>' . PHP_EOL .
         '        </div>' . PHP_EOL .
-        '        <div class="col-auto&#x20;mb-3&#x20;my-1">' . PHP_EOL .
-        '            <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">' .
+        '        <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">' .
         'Submit</button>' . PHP_EOL .
-        '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '</form>' . PHP_EOL .
         '<br/>' . PHP_EOL .
@@ -311,10 +307,8 @@ return [
         'Remember my preference</label>' . PHP_EOL .
         '            </div>' . PHP_EOL .
         '        </div>' . PHP_EOL .
-        '        <div class="col-auto&#x20;mb-3&#x20;my-1">' . PHP_EOL .
-        '            <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">' .
+        '        <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">' .
         'Submit</button>' . PHP_EOL .
-        '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '</form>',
 ];

@@ -145,7 +145,7 @@ return [
         );
     },
     'expected' => '<nav class="bg-light&#x20;navbar&#x20;navbar-light">' . PHP_EOL .
-        '    <form action="" method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
+        '    <form action="" method="POST" name="form" role="form" class="align-items-center" id="form">' . PHP_EOL .
         '        <input name="search" type="search" placeholder="Search" aria-label="Search" ' .
         'class="form-control&#x20;mr-sm-2" value=""/>' . PHP_EOL .
         '        <button type="submit" name="submit" class="btn&#x20;btn-outline-success&#x20;my-2&#x20;my-sm-0" ' .
@@ -155,7 +155,7 @@ return [
         '<br/>' . PHP_EOL .
         '<nav class="bg-light&#x20;navbar&#x20;navbar-light">' . PHP_EOL .
         '    <a class="navbar-brand" href="&#x23;">Navbar</a>' . PHP_EOL .
-        '    <form action="" method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
+        '    <form action="" method="POST" name="form" role="form" class="align-items-center" id="form">' . PHP_EOL .
         '        <input name="search" type="search" placeholder="Search" aria-label="Search" ' .
         'class="form-control&#x20;mr-sm-2" value=""/>' . PHP_EOL .
         '        <button type="submit" name="submit" class="btn&#x20;btn-outline-success&#x20;my-2&#x20;my-sm-0" ' .
@@ -164,7 +164,7 @@ return [
         '</nav>' . PHP_EOL .
         '<br/>' . PHP_EOL .
         '<nav class="bg-light&#x20;navbar&#x20;navbar-light">' . PHP_EOL .
-        '    <form action="" method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
+        '    <form action="" method="POST" name="form" role="form" class="align-items-center" id="form">' . PHP_EOL .
         '        <div class="input-group">' . PHP_EOL .
         '            <div class="input-group-prepend">' . PHP_EOL .
         '                <div class="input-group-text" id="basic-addon1">' . PHP_EOL .
@@ -178,7 +178,7 @@ return [
         '</nav>' . PHP_EOL .
         '<br/>' . PHP_EOL .
         '<nav class="bg-light&#x20;navbar&#x20;navbar-light">' . PHP_EOL .
-        '    <form action="" method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
+        '    <form action="" method="POST" name="form" role="form" class="align-items-center" id="form">' . PHP_EOL .
         '        <button type="button" name="main_button" class="btn&#x20;btn-outline-success" value="">' .
         'Main button</button>' . PHP_EOL .
         '        <button type="button" name="smaller_button" class="btn&#x20;btn-outline-secondary&#x20;btn-sm" ' .

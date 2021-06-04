@@ -3,11 +3,11 @@
 // Documentation test config file for "Components / Forms / Validation" part
 return [
     'title' => 'Validation',
-    'url' => '%bootstrap-url%/components/forms/#validation',
+    'url' => '%bootstrap-url%/forms/#validation',
     'tests' => [
         [
             'title' => 'Server side',
-            'url' => '%bootstrap-url%/components/forms/#server-side',
+            'url' => '%bootstrap-url%/forms/#server-side',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 $oFactory = new \Laminas\Form\Factory();
 

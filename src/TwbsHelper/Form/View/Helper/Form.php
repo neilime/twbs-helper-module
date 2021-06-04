@@ -71,7 +71,7 @@ class Form extends \Laminas\Form\View\Helper\Form
 
         // Set inline class
         if ($sFormLayout === self::LAYOUT_INLINE) {
-            $this->setClassesToElement($oForm, ['form-inline']);
+            $this->setClassesToElement($oForm, ['align-items-center']);
         }
 
         $sElementsContent = $this->renderElements($oForm);
@@ -140,7 +140,6 @@ class Form extends \Laminas\Form\View\Helper\Form
         $oHelperPluginManager = $this->getView()->getHelperPluginManager();
 
         if ($oElement instanceof \Laminas\Form\FieldsetInterface) {
-            $this->setClassesToElement($oElement, ['form-group']);
             $sElementMarkup = $oHelperPluginManager->get('formCollection')->__invoke($oElement);
         } else {
             $sElementMarkup = $oHelperPluginManager->get('formRow')->__invoke($oElement);

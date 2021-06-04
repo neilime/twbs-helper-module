@@ -3,7 +3,7 @@
 // Documentation test config file for "Components / Forms / Layout / Form groups" part
 return [
     'title' => 'Form groups',
-    'url' => '%bootstrap-url%/components/forms/#mb-3s',
+    'url' => '%bootstrap-url%/forms/#mb-3s',
     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
         $oFactory = new \Laminas\Form\Factory();
 

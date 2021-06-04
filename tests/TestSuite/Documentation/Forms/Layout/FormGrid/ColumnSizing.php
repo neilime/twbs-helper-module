@@ -1,36 +1,49 @@
 <?php
 
-// Documentation test config file for "Components / Forms / Layout / Form grid" part
+// Documentation test config file for "Components / Forms / Layout / Form grid / Column sizing" part
 return [
-    'title' => 'Form grid',
-    'url' => '%bootstrap-url%/components/forms/#form-grid',
+    'title' => 'Column sizing',
+    'url' => '%bootstrap-url%/forms/#column-sizing',
     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
         $oFactory = new \Laminas\Form\Factory();
 
         echo $oView->form($oFactory->create([
             'type' => 'form',
+            'options' => ['row_class' => 'form-row'],
             'elements' => [
                 [
                     'spec' => [
-                        'name' => 'firstName',
+                        'name' => 'city',
                         'options' => [
-                            'column' => true,
+                            'column' => 7,
                         ],
                         'attributes' => [
                             'type' => 'text',
-                            'placeholder' => 'First name',
+                            'placeholder' => 'City',
                         ],
                     ],
                 ],
                 [
                     'spec' => [
-                        'name' => 'lastName',
+                        'name' => 'state',
                         'options' => [
                             'column' => true,
                         ],
                         'attributes' => [
                             'type' => 'text',
-                            'placeholder' => 'Last name',
+                            'placeholder' => 'State',
+                        ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'name' => 'zip',
+                        'options' => [
+                            'column' => true,
+                        ],
+                        'attributes' => [
+                            'type' => 'text',
+                            'placeholder' => 'Zip',
                         ],
                     ],
                 ],
@@ -38,21 +51,19 @@ return [
         ]));
     },
     'expected' => '<form action="" method="POST" name="form" role="form" id="form">' . PHP_EOL .
-        '    <div class="row">' . PHP_EOL .
-        '        <div class="col&#x20;mb-3">' . PHP_EOL .
-        '            <input name="firstName" type="text" placeholder="First&#x20;name" ' .
+        '    <div class="form-row">' . PHP_EOL .
+        '        <div class="col-7&#x20;mb-3">' . PHP_EOL .
+        '            <input name="city" type="text" placeholder="City" ' .
         'class="form-control" value=""/>' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '        <div class="col&#x20;mb-3">' . PHP_EOL .
-        '            <input name="lastName" type="text" placeholder="Last&#x20;name" ' .
+        '            <input name="state" type="text" placeholder="State" ' .
+        'class="form-control" value=""/>' . PHP_EOL .
+        '        </div>' . PHP_EOL .
+        '        <div class="col&#x20;mb-3">' . PHP_EOL .
+        '            <input name="zip" type="text" placeholder="Zip" ' .
         'class="form-control" value=""/>' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '</form>',
-    'tests' => [
-        include __DIR__ . DIRECTORY_SEPARATOR . 'FormGrid/FormRow.php',
-        include __DIR__ . DIRECTORY_SEPARATOR . 'FormGrid/HorizontalForm.php',
-        include __DIR__ . DIRECTORY_SEPARATOR . 'FormGrid/ColumnSizing.php',
-        include __DIR__ . DIRECTORY_SEPARATOR . 'FormGrid/AutoSizing.php',
-    ],
 ];

@@ -1,9 +1,10 @@
 <?php
 
-// Documentation test config file for "Components / Forms / Layout / Form grid / Column sizing" part
+// Documentation test config file for "Components / Forms / Layout / Form grid / Form row" part
 return [
-    'title' => 'Column sizing',
-    'url' => '%bootstrap-url%/components/forms/#column-sizing',
+    'title' => 'Form row',
+    'url' => '%bootstrap-url%/forms/#form-row',
+
     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
         $oFactory = new \Laminas\Form\Factory();
 
@@ -13,37 +14,25 @@ return [
             'elements' => [
                 [
                     'spec' => [
-                        'name' => 'city',
-                        'options' => [
-                            'column' => 7,
-                        ],
-                        'attributes' => [
-                            'type' => 'text',
-                            'placeholder' => 'City',
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name' => 'state',
+                        'name' => 'firstName',
                         'options' => [
                             'column' => true,
                         ],
                         'attributes' => [
                             'type' => 'text',
-                            'placeholder' => 'State',
+                            'placeholder' => 'First name',
                         ],
                     ],
                 ],
                 [
                     'spec' => [
-                        'name' => 'zip',
+                        'name' => 'lastName',
                         'options' => [
                             'column' => true,
                         ],
                         'attributes' => [
                             'type' => 'text',
-                            'placeholder' => 'Zip',
+                            'placeholder' => 'Last name',
                         ],
                     ],
                 ],
@@ -52,16 +41,12 @@ return [
     },
     'expected' => '<form action="" method="POST" name="form" role="form" id="form">' . PHP_EOL .
         '    <div class="form-row">' . PHP_EOL .
-        '        <div class="col-7&#x20;mb-3">' . PHP_EOL .
-        '            <input name="city" type="text" placeholder="City" ' .
+        '        <div class="col&#x20;mb-3">' . PHP_EOL .
+        '            <input name="firstName" type="text" placeholder="First&#x20;name" ' .
         'class="form-control" value=""/>' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '        <div class="col&#x20;mb-3">' . PHP_EOL .
-        '            <input name="state" type="text" placeholder="State" ' .
-        'class="form-control" value=""/>' . PHP_EOL .
-        '        </div>' . PHP_EOL .
-        '        <div class="col&#x20;mb-3">' . PHP_EOL .
-        '            <input name="zip" type="text" placeholder="Zip" ' .
+        '            <input name="lastName" type="text" placeholder="Last&#x20;name" ' .
         'class="form-control" value=""/>' . PHP_EOL .
         '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .

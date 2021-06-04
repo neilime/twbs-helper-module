@@ -3,15 +3,15 @@
 // Documentation test config file for "Components / Forms / Custom forms" part
 return [
     'title' => 'Custom forms',
-    'url' => '%bootstrap-url%/components/forms/#custom-forms',
+    'url' => '%bootstrap-url%/forms/#custom-forms',
     'tests' => [
         [
             'title' => 'Checkboxes and radios',
-            'url' => '%bootstrap-url%/components/forms/#checkboxes-and-radios-1',
+            'url' => '%bootstrap-url%/forms/#checkboxes-and-radios-1',
             'tests' => [
                 [
                     'title' => 'Checkboxes',
-                    'url' => '%bootstrap-url%/components/forms/#checkboxes',
+                    'url' => '%bootstrap-url%/forms/#checkboxes',
                     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         $oFactory = new \Laminas\Form\Factory();
 
@@ -39,7 +39,7 @@ return [
                 ],
                 [
                     'title' => 'Radios',
-                    'url' => '%bootstrap-url%/components/forms/#checkboxes',
+                    'url' => '%bootstrap-url%/forms/#checkboxes',
                     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         $oFactory = new \Laminas\Form\Factory();
 
@@ -80,7 +80,7 @@ return [
                 ],
                 [
                     'title' => 'Inline',
-                    'url' => '%bootstrap-url%/components/forms/#inline-1',
+                    'url' => '%bootstrap-url%/forms/#inline-1',
                     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         $oFactory = new \Laminas\Form\Factory();
 
@@ -123,7 +123,7 @@ return [
                 ],
                 [
                     'title' => 'Disabled',
-                    'url' => '%bootstrap-url%/components/forms/#disabled',
+                    'url' => '%bootstrap-url%/forms/#disabled',
                     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         $oFactory = new \Laminas\Form\Factory();
 
@@ -178,7 +178,7 @@ return [
         ],
         [
             'title' => 'Switches',
-            'url' => '%bootstrap-url%/components/forms/#switches',
+            'url' => '%bootstrap-url%/forms/#switches',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 $oFactory = new \Laminas\Form\Factory();
 
@@ -228,7 +228,7 @@ return [
         ],
         [
             'title' => 'Select menu',
-            'url' => '%bootstrap-url%/components/forms/#select-menu',
+            'url' => '%bootstrap-url%/forms/#select-menu',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 $oFactory = new \Laminas\Form\Factory();
 
@@ -357,7 +357,7 @@ return [
         ],
         [
             'title' => 'Range',
-            'url' => '%bootstrap-url%/components/forms/#range',
+            'url' => '%bootstrap-url%/forms/#range',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 $oFactory = new \Laminas\Form\Factory();
 
@@ -377,7 +377,7 @@ return [
         ],
         [
             'title' => 'File browser',
-            'url' => '%bootstrap-url%/components/forms/#file-browser',
+            'url' => '%bootstrap-url%/forms/#file-browser',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 $oFactory = new \Laminas\Form\Factory();
 
@@ -396,7 +396,7 @@ return [
             'tests' => [
                 [
                     'title' => 'Translating or customizing the strings with HTML',
-                    'url' => '%bootstrap-url%/components/forms/#translating-or-customizing-the-strings-with-html',
+                    'url' => '%bootstrap-url%/forms/#translating-or-customizing-the-strings-with-html',
                     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                         $oFactory = new \Laminas\Form\Factory();
 

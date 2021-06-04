@@ -2102,6 +2102,3382 @@ echo $this->figure(
 <!-- tabs:end -->
 
 
+### Forms
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/)
+#### Overview
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/overview)
+##### Overview
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/overview/#overview)
+<!-- tabs:start -->
+
+###### **Result**
+
+<form action="" method="POST" name="form" role="form" id="form">
+    <div class="mb-3">
+        <label class="form-label" for="exampleInputEmail1">Email address</label>
+        <input name="email" type="email" id="exampleInputEmail1" class="form-control" aria-describedby="emailHelp" value=""/>
+        <div class="form-text" id="emailHelp">
+            We&#039;ll never share your email with anyone else.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="exampleInputPassword1">Password</label>
+        <input name="password" type="password" id="exampleInputPassword1" class="form-control" value=""/>
+    </div>
+    <div class="mb-3">
+        <div class="form-check">
+            <input type="checkbox" name="remember_me" id="exampleCheck1" class="form-check-input" value="1"/>
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+    </div>
+    <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Submit</button>
+</form>
+
+###### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->form($oFactory->create([
+    'type' => 'form',
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'email',
+                'options' => [
+                    'label' => 'Email address',
+                    'help_block' => [
+                        'content' => 'We\'ll never share your email with anyone else.',
+                        'attributes' => ['id' => 'emailHelp'],
+                    ]
+                ],
+                'attributes' => [
+                    'type' => 'email',
+                    'id' => 'exampleInputEmail1',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'password',
+                'options' => ['label' => 'Password'],
+                'attributes' => [
+                    'type' => 'password',
+                    'id' => 'exampleInputPassword1',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'checkbox',
+                'name' => 'remember_me',
+                'options' => ['label' => 'Check me out', 'use_hidden_element' => false],
+                'attributes' => [
+                    'id' => 'exampleCheck1',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'submit',
+                'options' => ['label' => 'Submit', 'variant' => 'primary'],
+            ],
+        ],
+    ]
+]));
+```
+
+<!-- tabs:end -->
+
+
+##### Form text
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/overview/#form-text)
+<!-- tabs:start -->
+
+###### **Result**
+
+<label class="form-label" for="inputPassword5">Password</label>
+<input name="password" id="inputPassword5" type="password" class="form-control" aria-describedby="passwordHelpBlock" value=""/>
+<div class="form-text" id="passwordHelpBlock">
+    Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+</div>
+<br/>
+<form action="" method="POST" name="form" role="form" class="align-items-center" id="form">
+    <div class="mb-3">
+        <label class="form-label" for="inputPassword6">Password</label>
+        <input name="password" id="inputPassword6" type="password" class="form-control&#x20;mx-sm-3" aria-describedby="passwordHelpInline" value=""/>
+        <div class="col-auto">
+            <span class="form-text" id="passwordHelpInline">Must be 8-20 characters long.</span>
+        </div>
+    </div>
+</form>
+
+###### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->formRow($oFactory->create([
+    'name' => 'password',
+    'options' => [
+        'label' => 'Password',
+        'form_group' => false,
+        'help_block' => [
+            'content' => 'Your password must be 8-20 characters long, contain letters and numbers, ' .
+            'and must not contain spaces, special characters, or emoji.',
+            'attributes' => ['id' => 'passwordHelpBlock'],
+        ]
+    ],
+    'attributes' => [
+        'id' => 'inputPassword5',
+        'type' => 'password',
+    ],
+]));
+
+echo PHP_EOL . '<br/>' . PHP_EOL;
+
+// Inline text can use any typical inline HTML element
+// (be it a <small>, <span>, or something else)
+// with nothing more than a utility class
+echo $this->form($oFactory->create([
+    'type' => 'form',
+    'options' => [
+        'layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE,
+    ],
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'password',
+                'options' => [
+                    'label' => 'Password',
+                    'show_label' => true,
+                    'help_block' => [
+                        'content' => 'Must be 8-20 characters long.',
+                        'attributes' => ['id' => 'passwordHelpInline'],
+                    ],
+                ],
+                'attributes' => [
+                    'id' => 'inputPassword6',
+                    'type' => 'password',
+                    'class' => 'mx-sm-3',
+                ],
+            ],
+        ],
+    ],
+]));
+```
+
+<!-- tabs:end -->
+
+
+##### Disabled forms
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/overview/#disabled-forms)
+<!-- tabs:start -->
+
+###### **Result**
+
+<form action="" method="POST" name="form" role="form" id="form">
+    <fieldset disabled="disabled">
+        <legend>Disabled fieldset example</legend>
+        <div class="mb-3">
+            <label class="form-label" for="disabledTextInput">Disabled input</label>
+            <input name="fieldset&#x5B;disabled-input&#x5D;" type="text" id="disabledTextInput" placeholder="Disabled&#x20;input" class="form-control" value=""/>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="disabledSelect">Disabled select menu</label>
+            <select name="fieldset&#x5B;disabled-select&#x5D;" id="disabledSelect" class="form-select"><option value="">Disabled select</option></select>
+        </div>
+        <div class="mb-3">
+            <div class="form-check">
+                <input type="checkbox" name="fieldset&#x5B;disabled-fieldset-check&#x5D;" id="disabledFieldsetCheck" disabled="disabled" class="form-check-input" value="1"/>
+                <label class="form-check-label" for="disabledFieldsetCheck">Can&#039;t check this</label>
+            </div>
+        </div>
+        <button type="submit" name="fieldset&#x5B;submit&#x5D;" class="btn&#x20;btn-primary" value="">Submit</button>
+    </fieldset>
+</form>
+
+###### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->form($oFactory->create([
+    'type' => 'form',
+    'elements' => [
+        [
+            'spec' => [
+                'type' => 'fieldset',
+                'options' => [
+                    'label' => 'Disabled fieldset example',
+                ],
+                'attributes' => [
+                    'disabled' => true,
+                ],
+                'elements' => [
+                    [
+                        'spec' => [
+                            'name' => 'disabled-input',
+                            'options' => ['label' => 'Disabled input'],
+                            'attributes' => [
+                                'type' => 'text',
+                                'id' => 'disabledTextInput',
+                                'placeholder' => 'Disabled input',
+                            ],
+                        ],
+                    ],
+                    [
+                        'spec' => [
+                            'name' => 'disabled-select',
+                            'type' => 'select',
+                            'attributes' => ['id' => 'disabledSelect',],
+                            'options' => [
+                                'label' => 'Disabled select menu',
+                                'empty_option' => 'Disabled select',
+                            ],
+                        ],
+                    ],
+                    [
+                        'spec' => [
+                            'type' => 'checkbox',
+                            'name' => 'disabled-fieldset-check',
+                            'options' => [
+                                'label' => 'Can\'t check this',
+                                'use_hidden_element' => false
+                            ],
+                            'attributes' => [
+                                'id' => 'disabledFieldsetCheck',
+                                'disabled' => true,
+                            ],
+                        ],
+                    ],
+                    [
+                        'spec' => [
+                            'type' => 'submit',
+                            'options' => ['label' => 'Submit', 'variant' => 'primary'],
+                        ],
+                    ],
+                ],
+            ],
+        ],
+    ],
+]));
+```
+
+<!-- tabs:end -->
+
+
+#### Form controls
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/form-control)
+##### Example
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/form-control/#example)
+<!-- tabs:start -->
+
+###### **Result**
+
+<form action="" method="POST" name="form" role="form" id="form">
+    <div class="mb-3">
+        <label class="form-label" for="exampleFormControlInput1">Email address</label>
+        <input name="email" type="email" id="exampleFormControlInput1" placeholder="name&#x40;example.com" class="form-control" value=""/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="exampleFormControlTextarea1">Example textarea</label>
+        <textarea name="textarea" id="exampleFormControlTextarea1" rows="3" class="form-control"></textarea>
+    </div>
+</form>
+
+###### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->form($oFactory->create([
+    'type' => 'form',
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'email',
+                'options' => [
+                    'label' => 'Email address'
+                ],
+                'attributes' => [
+                    'type' => 'email',
+                    'id' => 'exampleFormControlInput1',
+                    'placeholder' => 'name@example.com',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'textarea',
+                'options' => [
+                    'label' => 'Example textarea'
+                ],
+                'attributes' => [
+                    'type' => 'textarea',
+                    'id' => 'exampleFormControlTextarea1',
+                    'rows' => 3,
+                ],
+            ],
+        ],
+    ],
+]));
+```
+
+<!-- tabs:end -->
+
+
+##### Sizing
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/form-control/#sizing)
+<!-- tabs:start -->
+
+###### **Result**
+
+<input type="text" name="lg" placeholder=".form-control-lg" aria-label=".form-control-lg&#x20;example" class="form-control&#x20;form-control-lg" value=""/>
+<br/>
+<input type="text" name="default" placeholder="Default&#x20;input" aria-label="default&#x20;input&#x20;example" class="form-control" value=""/>
+<br/>
+<input type="text" name="sm" placeholder=".form-control-sm" aria-label=".form-control-sm&#x20;example" class="form-control&#x20;form-control-sm" value=""/>
+
+###### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+// Render large input
+$oElement = $oFactory->create([
+    'name' => 'lg',
+    'type' => 'text',
+    'options' => ['size' => 'lg'],
+    'attributes' => ['placeholder' => '.form-control-lg', 'aria-label' => '.form-control-lg example'],
+]);
+echo $this->formElement($oElement);
+
+echo PHP_EOL . '<br/>' . PHP_EOL;
+
+// Render default input
+$oElement = $oFactory->create([
+    'name' => 'default',
+    'type' => 'text',
+    'attributes' => ['placeholder' => 'Default input', 'aria-label' => 'default input example'],
+]);
+echo $this->formElement($oElement);
+
+echo PHP_EOL . '<br/>' . PHP_EOL;
+
+// Render small input
+$oElement = $oFactory->create([
+    'name' => 'sm',
+    'type' => 'text',
+    'options' => ['size' => 'sm'],
+    'attributes' => ['placeholder' => '.form-control-sm', 'aria-label' => '.form-control-sm example'],
+]);
+echo $this->formElement($oElement);
+```
+
+<!-- tabs:end -->
+
+
+##### Disabled
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/form-control/#disabled)
+<!-- tabs:start -->
+
+###### **Result**
+
+<input type="text" name="disabled-input" disabled="disabled" placeholder="Disabled&#x20;input" aria-label="Disabled&#x20;input&#x20;example" class="form-control" value=""/>
+<br/>
+<input type="text" name="disabled-readonly-input" disabled="disabled" readonly="readonly" placeholder="Disabled&#x20;readonly&#x20;input" aria-label="Disabled&#x20;input&#x20;example" class="form-control" value=""/>
+
+###### **Source**
+
+```php
+// Render disabled input
+$oFactory = new \Laminas\Form\Factory();
+$oElement = $oFactory->create([
+    'name' => 'disabled-input',
+    'type' => 'text',
+    'attributes' => [
+        'disabled' => true,
+        'placeholder' => 'Disabled input',
+        'aria-label' => 'Disabled input example'
+    ],
+]);
+echo $this->formElement($oElement);
+
+echo PHP_EOL . '<br/>' . PHP_EOL;
+
+// Render disabled and readonly input
+$oElement = $oFactory->create([
+    'name' => 'disabled-readonly-input',
+    'type' => 'text',
+    'attributes' => [
+        'disabled' => true,
+        'readonly' => true,
+        'placeholder' => 'Disabled readonly input',
+        'aria-label' => 'Disabled input example'
+    ],
+]);
+echo $this->formElement($oElement);
+```
+
+<!-- tabs:end -->
+
+
+##### Readonly
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/form-control/#readonly)
+<!-- tabs:start -->
+
+###### **Result**
+
+<input type="text" name="readonly-input" readonly="readonly" placeholder="Readonly&#x20;input&#x20;here..." aria-label="readonly&#x20;input&#x20;example" class="form-control" value=""/>
+
+###### **Source**
+
+```php
+// Render element
+$oFactory = new \Laminas\Form\Factory();
+$oElement = $oFactory->create([
+    'name' => 'readonly-input',
+    'type' => 'text',
+    'attributes' => [
+        'readonly' => true,
+        'placeholder' => 'Readonly input here...',
+        'aria-label' => 'readonly input example'
+    ],
+]);
+echo $this->formElement($oElement);
+```
+
+<!-- tabs:end -->
+
+
+##### Readonly plain text
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#readonly-plain-text)
+<!-- tabs:start -->
+
+###### **Result**
+
+<form action="" method="POST" name="form" role="form" id="form">
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="staticEmail">Email</label>
+        <div class="col-sm-10">
+            <input name="email" type="email" id="staticEmail" readonly="readonly" class="form-control-plaintext" value="email&#x40;example.com"/>
+        </div>
+    </div>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="inputPassword">Password</label>
+        <div class="col-sm-10">
+            <input name="password" type="password" id="inputPassword" class="form-control" value=""/>
+        </div>
+    </div>
+</form>
+<br/>
+<form action="" method="POST" name="form" role="form" class="align-items-center" id="form">
+    <div class="mb-3">
+        <label class="form-label&#x20;sr-only" for="staticEmail2">Email</label>
+        <input name="email" type="email" id="staticEmail2" readonly="readonly" class="form-control-plaintext" value="email&#x40;example.com"/>
+    </div>
+    <div class="mb-3&#x20;mx-sm-3">
+        <label class="form-label&#x20;sr-only" for="inputPassword2">Password</label>
+        <input name="password" type="password" id="inputPassword2" placeholder="Password" class="form-control" value=""/>
+    </div>
+    <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">Confirm identity</button>
+</form>
+
+###### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+// Render horizontal form
+$oForm = $oFactory->create([
+    'type' => 'form',
+    'options' => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL],
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'email',
+                'options' => [
+                    'plaintext' => true,
+                    'column' => 'sm-10',
+                    'label' => 'Email',
+                ],
+                'attributes' => [
+                    'type' => 'email',
+                    'id' => 'staticEmail',
+                    'value' => 'email@example.com',
+                    'readonly' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'password',
+                'options' => [
+                    'column' => 'sm-10',
+                    'label' => 'Password',
+                ],
+                'attributes' => [
+                    'type' => 'password',
+                    'id' => 'inputPassword',
+                ],
+            ],
+        ],
+    ],
+]);
+
+echo $this->form($oForm);
+
+echo PHP_EOL . '<br/>' . PHP_EOL;
+
+// Render inline form
+echo $this->form($oFactory->create([
+    'type' => 'form',
+    'options' => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE],
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'email',
+                'options' => [
+                    'plaintext' => true,
+                    'label' => 'Email',
+                ],
+                'attributes' => [
+                    'type' => 'email',
+                    'id' => 'staticEmail2',
+                    'value' => 'email@example.com',
+                    'readonly' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'password',
+                'options' => [
+                    'label' => 'Password',
+                    'row_class' => 'mx-sm-3',
+                ],
+                'attributes' => [
+                    'type' => 'password',
+                    'id' => 'inputPassword2',
+                    'placeholder' => 'Password',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'submit',
+                'options' => ['label' => 'Confirm identity', 'variant' => 'primary'],
+                'attributes' => ['class' => 'mb-2'],
+            ],
+        ],
+    ],
+]));
+```
+
+<!-- tabs:end -->
+
+
+##### File input
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/form-control/#file-input)
+<!-- tabs:start -->
+
+###### **Result**
+
+<form action="" method="POST" name="form" role="form" id="form">
+    <div class="mb-3">
+        <label class="form-label" for="formFile">Default file input example</label>
+        <input name="default-file" type="file" id="formFile" class="form-control"/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="formFileMultiple">Multiple files input example</label>
+        <input name="file-multiple&#x5B;&#x5D;" multiple="multiple" type="file" id="formFileMultiple" class="form-control"/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="formFileDisabled">Disabled file input example</label>
+        <input name="file-disabled" disabled="disabled" type="file" id="formFileDisabled" class="form-control"/>
+    </div>
+    <div class="mb-3">
+        <label class="col-form-label-sm&#x20;form-label" for="formFileSm">Small file input example</label>
+        <input name="file-sm" type="file" id="formFileSm" class="form-control&#x20;form-control-sm"/>
+    </div>
+    <div class="mb-3">
+        <label class="col-form-label-lg&#x20;form-label" for="formFileLg">Large file input example</label>
+        <input name="file-lg" type="file" id="formFileLg" class="form-control&#x20;form-control-lg"/>
+    </div>
+</form>
+
+###### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+// Render inline form
+echo $this->form($oFactory->create([
+    'type' => 'form',
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'default-file',
+                'options' => [
+                    'label' => 'Default file input example',
+                ],
+                'attributes' => [
+                    'type' => 'file',
+                    'id' => 'formFile',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'file-multiple',
+                'options' => [
+                    'label' => 'Multiple files input example',
+                ],
+                'attributes' => [
+                    'multiple' => true,
+                    'type' => 'file',
+                    'id' => 'formFileMultiple',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'file-disabled',
+                'options' => [
+                    'label' => 'Disabled file input example',
+                ],
+                'attributes' => [
+                    'disabled' => true,
+                    'type' => 'file',
+                    'id' => 'formFileDisabled',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'file-sm',
+                'options' => [
+                    'size' => 'sm',
+                    'label' => 'Small file input example',
+                ],
+                'attributes' => [
+                    'type' => 'file',
+                    'id' => 'formFileSm',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'file-lg',
+                'options' => [
+                    'size' => 'lg',
+                    'label' => 'Large file input example',
+                ],
+                'attributes' => [
+                    'type' => 'file',
+                    'id' => 'formFileLg',
+                ],
+            ],
+        ],
+    ],
+]));
+```
+
+<!-- tabs:end -->
+
+
+#### Range Inputs
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#range-inputs)
+<!-- tabs:start -->
+
+##### **Result**
+
+<form action="" method="POST" name="form" role="form" id="form">
+    <div class="mb-3">
+        <label class="form-label" for="formControlRange">Example Range input</label>
+        <input name="range" type="range" id="formControlRange" class="form-control-range" value=""/>
+    </div>
+</form>
+
+##### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->form($oFactory->create([
+    'type' => 'form',
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'range',
+                'options' => [
+                    'label' => 'Example Range input'
+                ],
+                'attributes' => [
+                    'type' => 'range',
+                    'id' => 'formControlRange',
+                ],
+            ],
+        ],
+    ]
+]));
+```
+
+<!-- tabs:end -->
+
+
+#### Checkboxes and radios
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#checkboxes-and-radios)
+##### Default (stacked)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#default-stacked)
+<!-- tabs:start -->
+
+###### **Result**
+
+<div class="form-check">
+    <input type="checkbox" name="default-checkbox" id="defaultCheck1" class="form-check-input" value="1"/>
+    <label class="form-check-label" for="defaultCheck1">Default checkbox</label>
+</div>
+<div class="form-check">
+    <input type="checkbox" name="disabled-checkbox" id="defaultCheck2" disabled="disabled" class="form-check-input" value="1"/>
+    <label class="form-check-label" for="defaultCheck2">Disabled checkbox</label>
+</div>
+<br/>
+<div class="form-check">
+    <input type="radio" name="exampleRadios" class="form-check-input" id="exampleRadios1" value="option1"/>
+    <label class="form-check-label" for="exampleRadios1">Default radio</label>
+</div>
+<div class="form-check">
+    <input type="radio" name="exampleRadios" class="form-check-input" id="exampleRadios2" value="option2"/>
+    <label class="form-check-label" for="exampleRadios2">Second default radio</label>
+</div>
+<div class="form-check">
+    <input type="radio" name="exampleRadios" class="form-check-input" id="exampleRadios3" value="option1" disabled="disabled"/>
+    <label class="form-check-label" for="exampleRadios3">Disabled radio</label>
+</div>
+
+###### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+// Render Default checkbox
+echo $this->formRow($oFactory->create([
+    'name' => 'default-checkbox',
+    'type' => 'checkbox',
+    'options' => [
+        'label' => 'Default checkbox',
+        'use_hidden_element' => false,
+        'form_group' => false,
+    ],
+    'attributes' => [
+        'id' => 'defaultCheck1',
+    ],
+])) . PHP_EOL;
+
+// Render Disabled checkbox
+echo $this->formRow($oFactory->create([
+    'name' => 'disabled-checkbox',
+    'type' => 'checkbox',
+    'options' => [
+        'label' => 'Disabled checkbox',
+        'use_hidden_element' => false,
+        'form_group' => false,
+    ],
+    'attributes' => [
+        'id' => 'defaultCheck2',
+        'disabled' => true,
+    ],
+]));
+
+echo PHP_EOL . '<br/>' . PHP_EOL;
+
+// Render radio
+echo $this->formRow($oFactory->create([
+    'name' => 'exampleRadios',
+    'type' => 'radio',
+    'options' => [
+        'form_group' => false,
+        'value_options' => [
+            [
+                'label' => 'Default radio',
+                'value' => 'option1',
+                'attributes' => ['id' => 'exampleRadios1'],
+            ],
+            [
+                'label' => 'Second default radio',
+                'value' => 'option2',
+                'attributes' => ['id' => 'exampleRadios2'],
+            ],
+            [
+                'label' => 'Disabled radio',
+                'value' => 'option1',
+                'disabled' => true,
+                'attributes' => ['id' => 'exampleRadios3'],
+            ],
+        ],
+    ],
+]));
+```
+
+<!-- tabs:end -->
+
+
+##### Inline
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#inline)
+<!-- tabs:start -->
+
+###### **Result**
+
+<div class="form-check&#x20;form-check-inline">
+    <input type="checkbox" name="inlineCheckboxOptions&#x5B;&#x5D;" class="form-check-input" id="inlineCheckbox1" value="option1"/>
+    <label class="form-check-label" for="inlineCheckbox1">1</label>
+</div>
+<div class="form-check&#x20;form-check-inline">
+    <input type="checkbox" name="inlineCheckboxOptions&#x5B;&#x5D;" class="form-check-input" id="inlineCheckbox2" value="option2"/>
+    <label class="form-check-label" for="inlineCheckbox2">2</label>
+</div>
+<div class="form-check&#x20;form-check-inline">
+    <input type="checkbox" name="inlineCheckboxOptions&#x5B;&#x5D;" class="form-check-input" id="inlineCheckbox3" value="option3" disabled="disabled"/>
+    <label class="form-check-label" for="inlineCheckbox3">3 (disabled)</label>
+</div>
+<br/>
+<div class="form-check&#x20;form-check-inline">
+    <input type="radio" name="inlineRadioOptions" class="form-check-input" id="inlineRadio1" value="option1"/>
+    <label class="form-check-label" for="inlineRadio1">1</label>
+</div>
+<div class="form-check&#x20;form-check-inline">
+    <input type="radio" name="inlineRadioOptions" class="form-check-input" id="inlineRadio2" value="option2"/>
+    <label class="form-check-label" for="inlineRadio2">2</label>
+</div>
+<div class="form-check&#x20;form-check-inline">
+    <input type="radio" name="inlineRadioOptions" class="form-check-input" id="inlineRadio3" value="option3" disabled="disabled"/>
+    <label class="form-check-label" for="inlineRadio3">3 (disabled)</label>
+</div>
+
+###### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+// Render checkbox
+echo $this->formRow($oFactory->create([
+    'name' => 'inlineCheckboxOptions',
+    'type' => 'multicheckbox',
+    'options' => [
+        'layout' => 'inline',
+        'form_group' => false,
+        'value_options' => [
+            [
+                'label' => '1',
+                'value' => 'option1',
+                'attributes' => ['id' => 'inlineCheckbox1'],
+            ],
+            [
+                'label' => '2',
+                'value' => 'option2',
+                'attributes' => ['id' => 'inlineCheckbox2'],
+            ],
+            [
+                'label' => '3 (disabled)',
+                'value' => 'option3',
+                'disabled' => true,
+                'attributes' => ['id' => 'inlineCheckbox3'],
+            ],
+        ],
+    ],
+]));
+
+echo PHP_EOL . '<br/>' . PHP_EOL;
+
+// Render radio
+echo $this->formRow($oFactory->create([
+    'name' => 'inlineRadioOptions',
+    'type' => 'radio',
+    'options' => [
+        'layout' => 'inline',
+        'form_group' => false,
+        'value_options' => [
+            [
+                'label' => '1',
+                'value' => 'option1',
+                'attributes' => ['id' => 'inlineRadio1'],
+            ],
+            [
+                'label' => '2',
+                'value' => 'option2',
+                'attributes' => ['id' => 'inlineRadio2'],
+            ],
+            [
+                'label' => '3 (disabled)',
+                'value' => 'option3',
+                'disabled' => true,
+                'attributes' => ['id' => 'inlineRadio3'],
+            ],
+        ],
+    ],
+]));
+```
+
+<!-- tabs:end -->
+
+
+##### Without labels
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#without-labels)
+<!-- tabs:start -->
+
+###### **Result**
+
+<div class="form-check">
+    <input type="checkbox" name="blankCheckbox&#x5B;&#x5D;" class="form-check-input&#x20;position-static" id="blankCheckbox" aria-label="..." value="option1"/>
+</div>
+<div class="form-check">
+    <input type="radio" name="blankRadio" class="form-check-input&#x20;position-static" id="blankRadio1" aria-label="..." value="option1"/>
+</div>
+
+###### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+// Render checkbox
+echo $this->formRow($oFactory->create([
+    'name' => 'blankCheckbox',
+    'type' => 'multicheckbox',
+    'options' => [
+        'form_group' => false,
+        'value_options' => [
+            [
+                'label' => '',
+                'value' => 'option1',
+                'attributes' => ['id' => 'blankCheckbox', 'aria-label' => '...'],
+            ],
+        ],
+    ],
+])) . PHP_EOL;
+
+// Render radio
+echo $this->formRow($oFactory->create([
+    'name' => 'blankRadio',
+    'type' => 'radio',
+    'options' => [
+        'form_group' => false,
+        'value_options' => [
+            [
+                'label' => '',
+                'value' => 'option1',
+                'attributes' => ['id' => 'blankRadio1', 'aria-label' => '...'],
+            ],
+        ],
+    ],
+]));
+```
+
+<!-- tabs:end -->
+
+
+#### Layout
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#layout)
+##### Form groups
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#mb-3s)
+<!-- tabs:start -->
+
+###### **Result**
+
+<form action="" method="POST" name="form" role="form" id="form">
+    <div class="mb-3">
+        <label class="form-label" for="formGroupExampleInput">Example label</label>
+        <input name="exampleInput" type="text" id="formGroupExampleInput" placeholder="Example&#x20;input" class="form-control" value=""/>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="formGroupExampleInput2">Another label</label>
+        <input name="exampleInput2" type="text" id="formGroupExampleInput2" placeholder="Another&#x20;input" class="form-control" value=""/>
+    </div>
+</form>
+
+###### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->form($oFactory->create([
+    'type' => 'form',
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'exampleInput',
+                'options' => [
+                    'label' => 'Example label',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'formGroupExampleInput',
+                    'placeholder' => 'Example input',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'exampleInput2',
+                'options' => [
+                    'label' => 'Another label',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'formGroupExampleInput2',
+                    'placeholder' => 'Another input',
+                ],
+            ],
+        ],
+    ]
+]));
+```
+
+<!-- tabs:end -->
+
+
+##### Form grid
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#form-grid)
+<!-- tabs:start -->
+
+###### **Result**
+
+<form action="" method="POST" name="form" role="form" id="form">
+    <div class="row">
+        <div class="col&#x20;mb-3">
+            <input name="firstName" type="text" placeholder="First&#x20;name" class="form-control" value=""/>
+        </div>
+        <div class="col&#x20;mb-3">
+            <input name="lastName" type="text" placeholder="Last&#x20;name" class="form-control" value=""/>
+        </div>
+    </div>
+</form>
+
+###### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->form($oFactory->create([
+    'type' => 'form',
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'firstName',
+                'options' => [
+                    'column' => true,
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'placeholder' => 'First name',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'lastName',
+                'options' => [
+                    'column' => true,
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'placeholder' => 'Last name',
+                ],
+            ],
+        ],
+    ]
+]));
+```
+
+<!-- tabs:end -->
+
+
+###### Form row
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#form-row)
+<!-- tabs:start -->
+
+####### **Result**
+
+<form action="" method="POST" name="form" role="form" id="form">
+    <div class="form-row">
+        <div class="col&#x20;mb-3">
+            <input name="firstName" type="text" placeholder="First&#x20;name" class="form-control" value=""/>
+        </div>
+        <div class="col&#x20;mb-3">
+            <input name="lastName" type="text" placeholder="Last&#x20;name" class="form-control" value=""/>
+        </div>
+    </div>
+</form>
+
+####### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->form($oFactory->create([
+    'type' => 'form',
+    'options' => ['row_class' => 'form-row'],
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'firstName',
+                'options' => [
+                    'column' => true,
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'placeholder' => 'First name',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'lastName',
+                'options' => [
+                    'column' => true,
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'placeholder' => 'Last name',
+                ],
+            ],
+        ],
+    ]
+]));
+```
+
+<!-- tabs:end -->
+
+
+###### Horizontal form
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#horizontal-form)
+<!-- tabs:start -->
+
+####### **Result**
+
+<form action="" method="POST" name="form" role="form" id="form">
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="inputEmail3">Email</label>
+        <div class="col-sm-10">
+            <input name="email" type="email" id="inputEmail3" placeholder="Email" class="form-control" value=""/>
+        </div>
+    </div>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="inputPassword3">Password</label>
+        <div class="col-sm-10">
+            <input name="password" type="password" id="inputPassword3" placeholder="Password" class="form-control" value=""/>
+        </div>
+    </div>
+    <fieldset>
+        <div class="row">
+            <legend class="col-sm-2&#x20;pt-0">Radios</legend>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input type="radio" name="fieldset&#x5B;gridRadios&#x5D;" class="form-check-input" id="gridRadios1" value="option1"/>
+                    <label class="form-check-label" for="gridRadios1">First radio</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" name="fieldset&#x5B;gridRadios&#x5D;" class="form-check-input" id="gridRadios2" value="option2"/>
+                    <label class="form-check-label" for="gridRadios2">Second radio</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" name="fieldset&#x5B;gridRadios&#x5D;" class="form-check-input" id="gridRadios3" value="option3" disabled="disabled"/>
+                    <label class="form-check-label" for="gridRadios3">Third disabled radio</label>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <div class="mb-3&#x20;row">
+        <div class="col-sm-10&#x20;offset-sm-2">
+            <div class="form-check">
+                <input type="hidden" name="checkbox" value="0"/><input type="checkbox" name="checkbox" class="form-check-input" value="1"/>
+                <label class="form-check-label" for="checkbox">Checkbox</label>
+            </div>
+        </div>
+    </div>
+    <div class="mb-3&#x20;row">
+        <div class="col-sm-2">
+            Multicheckbox
+        </div>
+        <div class="col-sm-10">
+            <div class="form-check">
+                <input type="checkbox" name="multicheckbox&#x5B;&#x5D;" class="form-check-input" id="gridCheck1" value="1"/>
+                <label class="form-check-label" for="gridCheck1">Example checkbox</label>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-10">
+        <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Sign in</button>
+    </div>
+</form>
+
+####### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->form($oFactory->create([
+    'type' => 'form',
+    'options' => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL],
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'email',
+                'options' => [
+                    'label' => 'Email',
+                    'column' => 'sm-10',
+                ],
+                'attributes' => [
+                    'type' => 'email',
+                    'id' => 'inputEmail3',
+                    'placeholder' => 'Email',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'password',
+                'options' => [
+                    'label' => 'Password',
+                    'column' => 'sm-10',
+                ],
+                'attributes' => [
+                    'type' => 'password',
+                    'id' => 'inputPassword3',
+                    'placeholder' => 'Password',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'fieldset',
+                'options' => [
+                    'label' => 'Radios',
+                    'label_attributes' => ['class' => 'pt-0'],
+                    'column' => 'sm-10',
+                ],
+                'elements' => [
+                    [
+                        'spec' => [
+                            'type' => 'radio',
+                            'name' => 'gridRadios',
+                            'options' => [
+                                'column' => 'sm-10',
+                                'value_options' => [
+                                    [
+                                        'label' => 'First radio',
+                                        'attributes' => ['id' => 'gridRadios1'],
+                                        'value' => 'option1',
+                                    ],
+                                    [
+                                        'label' => 'Second radio',
+                                        'attributes' => ['id' => 'gridRadios2'],
+                                        'value' => 'option2',
+                                    ],
+                                    [
+                                        'label' => 'Third disabled radio',
+                                        'disabled' => true,
+                                        'attributes' => ['id' => 'gridRadios3'],
+                                        'value' => 'option3',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'checkbox',
+                'options' => [
+                    'label' => 'Checkbox',
+                    'column' => 'sm-10',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'multicheckbox',
+                'options' => [
+                    'label' => 'Multicheckbox',
+                    'column' => 'sm-10',
+                    'value_options' => [
+                        [
+                            'label' => 'Example checkbox',
+                            'attributes' => ['id' => 'gridCheck1'],
+                            'value' => 1,
+                        ],
+                    ],
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'submit',
+                'options' => [
+                    'label' => 'Sign in',
+                    'variant' => 'primary',
+                    'column' => 'sm-10',
+                ],
+            ],
+        ],
+    ]
+]));
+```
+
+<!-- tabs:end -->
+
+
+####### Horizontal form label sizing
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#horizontal-form-label-sizing)
+<!-- tabs:start -->
+
+######## **Result**
+
+<form action="" method="POST" name="form" role="form" id="form">
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-form-label-sm&#x20;col-sm-2&#x20;form-label" for="colFormLabelSm">Email</label>
+        <div class="col-sm-10">
+            <input name="emailSm" type="email" id="colFormLabelSm" placeholder="col-form-label-sm" class="form-control&#x20;form-control-sm" value=""/>
+        </div>
+    </div>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="colFormLabel">Email</label>
+        <div class="col-sm-10">
+            <input name="email" type="email" id="colFormLabel" placeholder="col-form-label" class="form-control" value=""/>
+        </div>
+    </div>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-form-label-lg&#x20;col-sm-2&#x20;form-label" for="colFormLabelLg">Email</label>
+        <div class="col-sm-10">
+            <input name="emailLg" type="email" id="colFormLabelLg" placeholder="col-form-label-lg" class="form-control&#x20;form-control-lg" value=""/>
+        </div>
+    </div>
+</form>
+
+######## **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->form($oFactory->create([
+    'type' => 'form',
+    'options' => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL],
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'emailSm',
+                'options' => [
+                    'label' => 'Email',
+                    'column' => 'sm-10',
+                    'size' => 'sm',
+                ],
+                'attributes' => [
+                    'type' => 'email',
+                    'id' => 'colFormLabelSm',
+                    'placeholder' => 'col-form-label-sm',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'email',
+                'options' => [
+                    'label' => 'Email',
+                    'column' => 'sm-10',
+                ],
+                'attributes' => [
+                    'type' => 'email',
+                    'id' => 'colFormLabel',
+                    'placeholder' => 'col-form-label',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'emailLg',
+                'options' => [
+                    'label' => 'Email',
+                    'column' => 'sm-10',
+                    'size' => 'lg',
+                ],
+                'attributes' => [
+                    'type' => 'email',
+                    'id' => 'colFormLabelLg',
+                    'placeholder' => 'col-form-label-lg',
+                ],
+            ],
+        ],
+    ],
+]));
+```
+
+<!-- tabs:end -->
+
+
+###### Column sizing
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#column-sizing)
+<!-- tabs:start -->
+
+####### **Result**
+
+<form action="" method="POST" name="form" role="form" id="form">
+    <div class="form-row">
+        <div class="col-7&#x20;mb-3">
+            <input name="city" type="text" placeholder="City" class="form-control" value=""/>
+        </div>
+        <div class="col&#x20;mb-3">
+            <input name="state" type="text" placeholder="State" class="form-control" value=""/>
+        </div>
+        <div class="col&#x20;mb-3">
+            <input name="zip" type="text" placeholder="Zip" class="form-control" value=""/>
+        </div>
+    </div>
+</form>
+
+####### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->form($oFactory->create([
+    'type' => 'form',
+    'options' => ['row_class' => 'form-row'],
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'city',
+                'options' => [
+                    'column' => 7,
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'placeholder' => 'City',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'state',
+                'options' => [
+                    'column' => true,
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'placeholder' => 'State',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'zip',
+                'options' => [
+                    'column' => true,
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'placeholder' => 'Zip',
+                ],
+            ],
+        ],
+    ]
+]));
+```
+
+<!-- tabs:end -->
+
+
+###### Auto-sizing
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#auto-sizing)
+<!-- tabs:start -->
+
+####### **Result**
+
+<form action="" method="POST" name="form" role="form" id="form">
+    <div class="align-items-center&#x20;form-row">
+        <div class="col-auto&#x20;mb-3">
+            <label class="form-label&#x20;sr-only" for="inlineFormInput">Name</label>
+            <input name="name" type="text" id="inlineFormInput" placeholder="Jane&#x20;Doe" class="form-control&#x20;mb-2" value=""/>
+        </div>
+        <div class="col-auto&#x20;mb-3">
+            <label class="form-label&#x20;sr-only" for="inlineFormInputGroup">Username</label>
+            <div class="input-group&#x20;mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        @
+                    </div>
+                </div>
+                <input name="username" type="text" id="inlineFormInputGroup" placeholder="Username" class="form-control" value=""/>
+            </div>
+        </div>
+        <div class="col-auto&#x20;mb-3">
+            <div class="form-check&#x20;mb-2">
+                <input type="checkbox" name="remember_me" id="autoSizingCheck" class="form-check-input" value="1"/>
+                <label class="form-check-label" for="autoSizingCheck">Remember me</label>
+            </div>
+        </div>
+        <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">Submit</button>
+    </div>
+</form>
+<br/>
+<form action="" method="POST" name="form" role="form" id="form">
+    <div class="align-items-center&#x20;form-row">
+        <div class="col-sm-3&#x20;mb-3&#x20;my-1">
+            <label class="form-label&#x20;sr-only" for="inlineFormInput">Name</label>
+            <input name="name" type="text" id="inlineFormInput" placeholder="Jane&#x20;Doe" class="form-control&#x20;mb-2" value=""/>
+        </div>
+        <div class="col-sm-3&#x20;mb-3&#x20;my-1">
+            <label class="form-label&#x20;sr-only" for="inlineFormInputGroup">Username</label>
+            <div class="input-group&#x20;mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        @
+                    </div>
+                </div>
+                <input name="username" type="text" id="inlineFormInputGroup" placeholder="Username" class="form-control" value=""/>
+            </div>
+        </div>
+        <div class="col-auto&#x20;mb-3&#x20;my-1">
+            <div class="form-check&#x20;mb-2">
+                <input type="checkbox" name="remember_me" id="autoSizingCheck" class="form-check-input" value="1"/>
+                <label class="form-check-label" for="autoSizingCheck">Remember me</label>
+            </div>
+        </div>
+        <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">Submit</button>
+    </div>
+</form>
+<br/>
+<form action="" method="POST" name="form" role="form" id="form">
+    <div class="align-items-center&#x20;form-row">
+        <div class="col-sm-3&#x20;mb-3&#x20;my-1">
+            <label class="mr-sm-2&#x20;sr-only" for="inlineFormCustomSelect">Preference</label>
+            <select name="preference" id="inlineFormCustomSelect" class="form-select&#x20;mr-sm-2">
+                <option value="">Choose...</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+        <div class="col-auto&#x20;mb-3&#x20;my-1">
+            <div class="custom-checkbox&#x20;custom-control&#x20;mr-sm-2">
+                <input type="checkbox" name="remember_my_preference" id="customControlAutosizing" class="form-check-input" value="1"/>
+                <label class="form-check-label" for="customControlAutosizing">Remember my preference</label>
+            </div>
+        </div>
+        <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Submit</button>
+    </div>
+</form>
+
+####### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->form($oFactory->create([
+    'type' => 'form',
+    'options' => [
+        'row_class' => 'align-items-center form-row',
+    ],
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'name',
+                'options' => [
+                    'label' => 'Name',
+                    'show_label' => false,
+                    'column' => 'auto',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'inlineFormInput',
+                    'placeholder' => 'Jane Doe',
+                    'class' => 'mb-2',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'username',
+                'options' => [
+                    'label' => 'Username',
+                    'show_label' => false,
+                    'column' => 'auto',
+                    'add_on_prepend' => '@',
+                    'input_group_class' => 'mb-2',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'inlineFormInputGroup',
+                    'placeholder' => 'Username',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'checkbox',
+                'name' => 'remember_me',
+                'options' => [
+                    'label' => 'Remember me',
+                    'use_hidden_element' => false,
+                    'column' => 'auto',
+                    'form_check_class' => 'mb-2',
+                ],
+                'attributes' => [
+                    'id' => 'autoSizingCheck',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'submit',
+                'options' => [
+                    'label' => 'Submit',
+                    'variant' => 'primary',
+                    'column' => 'auto',
+                ],
+                'attributes' => [
+                    'class' => 'mb-2',
+                ],
+            ],
+        ],
+    ],
+]));
+
+echo PHP_EOL . '<br/>' . PHP_EOL;
+
+// Remix that once again with size-specific column classes.
+echo $this->form($oFactory->create([
+    'type' => 'form',
+    'options' => [
+        'row_class' => 'align-items-center form-row',
+    ],
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'name',
+                'options' => [
+                    'label' => 'Name',
+                    'show_label' => false,
+                    'column' => 'sm-3',
+                    'row_class' => 'my-1',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'inlineFormInput',
+                    'placeholder' => 'Jane Doe',
+                    'class' => 'mb-2',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'username',
+                'options' => [
+                    'label' => 'Username',
+                    'show_label' => false,
+                    'column' => 'sm-3',
+                    'row_class' => 'my-1',
+                    'add_on_prepend' => '@',
+                    'input_group_class' => 'mb-2',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'inlineFormInputGroup',
+                    'placeholder' => 'Username',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'checkbox',
+                'name' => 'remember_me',
+                'options' => [
+                    'label' => 'Remember me',
+                    'use_hidden_element' => false,
+                    'column' => 'auto',
+                    'row_class' => 'my-1',
+                    'form_check_class' => 'mb-2',
+                ],
+                'attributes' => [
+                    'id' => 'autoSizingCheck',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'submit',
+                'options' => [
+                    'label' => 'Submit',
+                    'variant' => 'primary',
+                    'column' => 'auto',
+                    'row_class' => 'my-1',
+                ],
+                'attributes' => [
+                    'class' => 'mb-2',
+                ],
+            ],
+        ],
+    ],
+]));
+
+echo PHP_EOL . '<br/>' . PHP_EOL;
+
+// And of course custom form controls are supported.
+echo $this->form($oFactory->create([
+    'type' => 'form',
+    'options' => [
+        'row_class' => 'align-items-center form-row',
+    ],
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'preference',
+                'type' => 'select',
+                'options' => [
+                    'label' => 'Preference',
+                    'show_label' => false,
+                    'label_attributes' => ['class' => 'mr-sm-2'],
+                    'column' => 'sm-3',
+                    'row_class' => 'my-1',
+                    'empty_option' => 'Choose...',
+                    'value_options' => [
+                        1 => 'One',
+                        2 => 'Two',
+                        3 => 'Three',
+                    ],
+                    'custom' => true,
+                ],
+                'attributes' => [
+                    'id' => 'inlineFormCustomSelect',
+                    'class' => 'mr-sm-2',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'checkbox',
+                'name' => 'remember_my_preference',
+                'options' => [
+                    'label' => 'Remember my preference',
+                    'use_hidden_element' => false,
+                    'column' => 'auto',
+                    'row_class' => 'my-1',
+                    'form_check_class' => 'mr-sm-2',
+                    'custom' => true,
+                ],
+                'attributes' => [
+                    'id' => 'customControlAutosizing',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'submit',
+                'options' => [
+                    'label' => 'Submit',
+                    'variant' => 'primary',
+                    'column' => 'auto',
+                    'row_class' => 'my-1',
+                ],
+            ],
+        ],
+    ],
+]));
+```
+
+<!-- tabs:end -->
+
+
+##### Inline forms
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#inline-forms)
+<!-- tabs:start -->
+
+###### **Result**
+
+<form action="" method="POST" name="form" role="form" class="align-items-center" id="form">
+    <label class="form-label&#x20;sr-only" for="inlineFormInputName2">Name</label>
+    <input name="name" type="text" id="inlineFormInputName2" placeholder="Jane&#x20;Doe" class="form-control&#x20;mb-2&#x20;mr-sm-2" value=""/>
+    <label class="form-label&#x20;sr-only" for="inlineFormInputGroupUsername2">Username</label>
+    <div class="input-group&#x20;mb-2&#x20;mr-sm-2">
+        <div class="input-group-prepend">
+            <div class="input-group-text">
+                @
+            </div>
+        </div>
+        <input name="username" type="text" id="inlineFormInputGroupUsername2" placeholder="Username" class="form-control" value=""/>
+    </div>
+    <div class="form-check&#x20;mb-2&#x20;mr-sm-2">
+        <input type="checkbox" name="remember_me" id="inlineFormCheck" class="form-check-input" value="1"/>
+        <label class="form-check-label" for="inlineFormCheck">Remember me</label>
+    </div>
+    <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">Submit</button>
+</form>
+<br/>
+<form action="" method="POST" name="form" role="form" class="align-items-center" id="form">
+    <label class="mr-2&#x20;my-1" for="inlineFormCustomSelectPref">Preference</label>
+    <select name="preference" id="inlineFormCustomSelectPref" class="form-select&#x20;mr-sm-2&#x20;my-1">
+        <option value="">Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+    </select>
+    <div class="custom-checkbox&#x20;custom-control&#x20;mr-sm-2&#x20;my-1">
+        <input type="checkbox" name="remember_my_preference" id="customControlInline" class="form-check-input" value="1"/>
+        <label class="form-check-label" for="customControlInline">Remember my preference</label>
+    </div>
+    <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">Submit</button>
+</form>
+
+###### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->form($oFactory->create([
+    'type' => 'form',
+    'options' => [
+        'layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE,
+    ],
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'name',
+                'options' => [
+                    'label' => 'Name',
+                    'form_group' => false,
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'inlineFormInputName2',
+                    'placeholder' => 'Jane Doe',
+                    'class' => 'mb-2 mr-sm-2',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'username',
+                'options' => [
+                    'label' => 'Username',
+                    'show_label' => false,
+                    'add_on_prepend' => '@',
+                    'input_group_class' => 'mb-2 mr-sm-2',
+                    'form_group' => false,
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'inlineFormInputGroupUsername2',
+                    'placeholder' => 'Username',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'checkbox',
+                'name' => 'remember_me',
+                'options' => [
+                    'label' => 'Remember me',
+                    'use_hidden_element' => false,
+                    'form_check_class' => 'mb-2 mr-sm-2',
+                    'form_group' => false,
+                ],
+                'attributes' => [
+                    'id' => 'inlineFormCheck',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'submit',
+                'options' => [
+                    'label' => 'Submit',
+                    'variant' => 'primary',
+                ],
+                'attributes' => [
+                    'class' => 'mb-2',
+                ],
+            ],
+        ],
+    ],
+]));
+
+echo PHP_EOL . '<br/>' . PHP_EOL;
+
+// Custom form controls and selects are also supported
+echo $this->form($oFactory->create([
+    'type' => 'form',
+    'options' => [
+        'layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE,
+    ],
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'preference',
+                'type' => 'select',
+                'options' => [
+                    'label' => 'Preference',
+                    'show_label' => true,
+                    'label_attributes' => ['class' => 'mr-2 my-1'],
+                    'row_class' => 'my-1',
+                    'empty_option' => 'Choose...',
+                    'value_options' => [
+                        1 => 'One',
+                        2 => 'Two',
+                        3 => 'Three',
+                    ],
+                    'form_group' => false,
+                    'custom' => true,
+                ],
+                'attributes' => [
+                    'id' => 'inlineFormCustomSelectPref',
+                    'class' => 'mr-sm-2 my-1',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'checkbox',
+                'name' => 'remember_my_preference',
+                'options' => [
+                    'label' => 'Remember my preference',
+                    'use_hidden_element' => false,
+                    'form_check_class' => 'mr-sm-2 my-1',
+                    'form_group' => false,
+                    'custom' => true,
+                ],
+                'attributes' => [
+                    'id' => 'customControlInline',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'submit',
+                'options' => [
+                    'label' => 'Submit',
+                    'variant' => 'primary',
+                ],
+                'attributes' => [
+                    'class' => 'mb-2',
+                ],
+            ],
+        ],
+    ],
+]));
+```
+
+<!-- tabs:end -->
+
+
+###### Form row
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#form-row)
+<!-- tabs:start -->
+
+####### **Result**
+
+<form action="" method="POST" name="form" role="form" id="form">
+    <div class="form-row">
+        <div class="col&#x20;mb-3">
+            <input name="firstName" type="text" placeholder="First&#x20;name" class="form-control" value=""/>
+        </div>
+        <div class="col&#x20;mb-3">
+            <input name="lastName" type="text" placeholder="Last&#x20;name" class="form-control" value=""/>
+        </div>
+    </div>
+</form>
+
+####### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->form($oFactory->create([
+    'type' => 'form',
+    'options' => ['row_class' => 'form-row'],
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'firstName',
+                'options' => [
+                    'column' => true,
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'placeholder' => 'First name',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'lastName',
+                'options' => [
+                    'column' => true,
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'placeholder' => 'Last name',
+                ],
+            ],
+        ],
+    ]
+]));
+```
+
+<!-- tabs:end -->
+
+
+###### Horizontal form
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#horizontal-form)
+<!-- tabs:start -->
+
+####### **Result**
+
+<form action="" method="POST" name="form" role="form" id="form">
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="inputEmail3">Email</label>
+        <div class="col-sm-10">
+            <input name="email" type="email" id="inputEmail3" placeholder="Email" class="form-control" value=""/>
+        </div>
+    </div>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="inputPassword3">Password</label>
+        <div class="col-sm-10">
+            <input name="password" type="password" id="inputPassword3" placeholder="Password" class="form-control" value=""/>
+        </div>
+    </div>
+    <fieldset>
+        <div class="row">
+            <legend class="col-sm-2&#x20;pt-0">Radios</legend>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input type="radio" name="fieldset&#x5B;gridRadios&#x5D;" class="form-check-input" id="gridRadios1" value="option1"/>
+                    <label class="form-check-label" for="gridRadios1">First radio</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" name="fieldset&#x5B;gridRadios&#x5D;" class="form-check-input" id="gridRadios2" value="option2"/>
+                    <label class="form-check-label" for="gridRadios2">Second radio</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" name="fieldset&#x5B;gridRadios&#x5D;" class="form-check-input" id="gridRadios3" value="option3" disabled="disabled"/>
+                    <label class="form-check-label" for="gridRadios3">Third disabled radio</label>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <div class="mb-3&#x20;row">
+        <div class="col-sm-10&#x20;offset-sm-2">
+            <div class="form-check">
+                <input type="hidden" name="checkbox" value="0"/><input type="checkbox" name="checkbox" class="form-check-input" value="1"/>
+                <label class="form-check-label" for="checkbox">Checkbox</label>
+            </div>
+        </div>
+    </div>
+    <div class="mb-3&#x20;row">
+        <div class="col-sm-2">
+            Multicheckbox
+        </div>
+        <div class="col-sm-10">
+            <div class="form-check">
+                <input type="checkbox" name="multicheckbox&#x5B;&#x5D;" class="form-check-input" id="gridCheck1" value="1"/>
+                <label class="form-check-label" for="gridCheck1">Example checkbox</label>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-10">
+        <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Sign in</button>
+    </div>
+</form>
+
+####### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->form($oFactory->create([
+    'type' => 'form',
+    'options' => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL],
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'email',
+                'options' => [
+                    'label' => 'Email',
+                    'column' => 'sm-10',
+                ],
+                'attributes' => [
+                    'type' => 'email',
+                    'id' => 'inputEmail3',
+                    'placeholder' => 'Email',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'password',
+                'options' => [
+                    'label' => 'Password',
+                    'column' => 'sm-10',
+                ],
+                'attributes' => [
+                    'type' => 'password',
+                    'id' => 'inputPassword3',
+                    'placeholder' => 'Password',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'fieldset',
+                'options' => [
+                    'label' => 'Radios',
+                    'label_attributes' => ['class' => 'pt-0'],
+                    'column' => 'sm-10',
+                ],
+                'elements' => [
+                    [
+                        'spec' => [
+                            'type' => 'radio',
+                            'name' => 'gridRadios',
+                            'options' => [
+                                'column' => 'sm-10',
+                                'value_options' => [
+                                    [
+                                        'label' => 'First radio',
+                                        'attributes' => ['id' => 'gridRadios1'],
+                                        'value' => 'option1',
+                                    ],
+                                    [
+                                        'label' => 'Second radio',
+                                        'attributes' => ['id' => 'gridRadios2'],
+                                        'value' => 'option2',
+                                    ],
+                                    [
+                                        'label' => 'Third disabled radio',
+                                        'disabled' => true,
+                                        'attributes' => ['id' => 'gridRadios3'],
+                                        'value' => 'option3',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'checkbox',
+                'options' => [
+                    'label' => 'Checkbox',
+                    'column' => 'sm-10',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'multicheckbox',
+                'options' => [
+                    'label' => 'Multicheckbox',
+                    'column' => 'sm-10',
+                    'value_options' => [
+                        [
+                            'label' => 'Example checkbox',
+                            'attributes' => ['id' => 'gridCheck1'],
+                            'value' => 1,
+                        ],
+                    ],
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'submit',
+                'options' => [
+                    'label' => 'Sign in',
+                    'variant' => 'primary',
+                    'column' => 'sm-10',
+                ],
+            ],
+        ],
+    ]
+]));
+```
+
+<!-- tabs:end -->
+
+
+####### Horizontal form label sizing
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#horizontal-form-label-sizing)
+<!-- tabs:start -->
+
+######## **Result**
+
+<form action="" method="POST" name="form" role="form" id="form">
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-form-label-sm&#x20;col-sm-2&#x20;form-label" for="colFormLabelSm">Email</label>
+        <div class="col-sm-10">
+            <input name="emailSm" type="email" id="colFormLabelSm" placeholder="col-form-label-sm" class="form-control&#x20;form-control-sm" value=""/>
+        </div>
+    </div>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="colFormLabel">Email</label>
+        <div class="col-sm-10">
+            <input name="email" type="email" id="colFormLabel" placeholder="col-form-label" class="form-control" value=""/>
+        </div>
+    </div>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-form-label-lg&#x20;col-sm-2&#x20;form-label" for="colFormLabelLg">Email</label>
+        <div class="col-sm-10">
+            <input name="emailLg" type="email" id="colFormLabelLg" placeholder="col-form-label-lg" class="form-control&#x20;form-control-lg" value=""/>
+        </div>
+    </div>
+</form>
+
+######## **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->form($oFactory->create([
+    'type' => 'form',
+    'options' => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL],
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'emailSm',
+                'options' => [
+                    'label' => 'Email',
+                    'column' => 'sm-10',
+                    'size' => 'sm',
+                ],
+                'attributes' => [
+                    'type' => 'email',
+                    'id' => 'colFormLabelSm',
+                    'placeholder' => 'col-form-label-sm',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'email',
+                'options' => [
+                    'label' => 'Email',
+                    'column' => 'sm-10',
+                ],
+                'attributes' => [
+                    'type' => 'email',
+                    'id' => 'colFormLabel',
+                    'placeholder' => 'col-form-label',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'emailLg',
+                'options' => [
+                    'label' => 'Email',
+                    'column' => 'sm-10',
+                    'size' => 'lg',
+                ],
+                'attributes' => [
+                    'type' => 'email',
+                    'id' => 'colFormLabelLg',
+                    'placeholder' => 'col-form-label-lg',
+                ],
+            ],
+        ],
+    ],
+]));
+```
+
+<!-- tabs:end -->
+
+
+###### Column sizing
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#column-sizing)
+<!-- tabs:start -->
+
+####### **Result**
+
+<form action="" method="POST" name="form" role="form" id="form">
+    <div class="form-row">
+        <div class="col-7&#x20;mb-3">
+            <input name="city" type="text" placeholder="City" class="form-control" value=""/>
+        </div>
+        <div class="col&#x20;mb-3">
+            <input name="state" type="text" placeholder="State" class="form-control" value=""/>
+        </div>
+        <div class="col&#x20;mb-3">
+            <input name="zip" type="text" placeholder="Zip" class="form-control" value=""/>
+        </div>
+    </div>
+</form>
+
+####### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->form($oFactory->create([
+    'type' => 'form',
+    'options' => ['row_class' => 'form-row'],
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'city',
+                'options' => [
+                    'column' => 7,
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'placeholder' => 'City',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'state',
+                'options' => [
+                    'column' => true,
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'placeholder' => 'State',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'zip',
+                'options' => [
+                    'column' => true,
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'placeholder' => 'Zip',
+                ],
+            ],
+        ],
+    ]
+]));
+```
+
+<!-- tabs:end -->
+
+
+###### Auto-sizing
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#auto-sizing)
+<!-- tabs:start -->
+
+####### **Result**
+
+<form action="" method="POST" name="form" role="form" id="form">
+    <div class="align-items-center&#x20;form-row">
+        <div class="col-auto&#x20;mb-3">
+            <label class="form-label&#x20;sr-only" for="inlineFormInput">Name</label>
+            <input name="name" type="text" id="inlineFormInput" placeholder="Jane&#x20;Doe" class="form-control&#x20;mb-2" value=""/>
+        </div>
+        <div class="col-auto&#x20;mb-3">
+            <label class="form-label&#x20;sr-only" for="inlineFormInputGroup">Username</label>
+            <div class="input-group&#x20;mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        @
+                    </div>
+                </div>
+                <input name="username" type="text" id="inlineFormInputGroup" placeholder="Username" class="form-control" value=""/>
+            </div>
+        </div>
+        <div class="col-auto&#x20;mb-3">
+            <div class="form-check&#x20;mb-2">
+                <input type="checkbox" name="remember_me" id="autoSizingCheck" class="form-check-input" value="1"/>
+                <label class="form-check-label" for="autoSizingCheck">Remember me</label>
+            </div>
+        </div>
+        <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">Submit</button>
+    </div>
+</form>
+<br/>
+<form action="" method="POST" name="form" role="form" id="form">
+    <div class="align-items-center&#x20;form-row">
+        <div class="col-sm-3&#x20;mb-3&#x20;my-1">
+            <label class="form-label&#x20;sr-only" for="inlineFormInput">Name</label>
+            <input name="name" type="text" id="inlineFormInput" placeholder="Jane&#x20;Doe" class="form-control&#x20;mb-2" value=""/>
+        </div>
+        <div class="col-sm-3&#x20;mb-3&#x20;my-1">
+            <label class="form-label&#x20;sr-only" for="inlineFormInputGroup">Username</label>
+            <div class="input-group&#x20;mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        @
+                    </div>
+                </div>
+                <input name="username" type="text" id="inlineFormInputGroup" placeholder="Username" class="form-control" value=""/>
+            </div>
+        </div>
+        <div class="col-auto&#x20;mb-3&#x20;my-1">
+            <div class="form-check&#x20;mb-2">
+                <input type="checkbox" name="remember_me" id="autoSizingCheck" class="form-check-input" value="1"/>
+                <label class="form-check-label" for="autoSizingCheck">Remember me</label>
+            </div>
+        </div>
+        <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">Submit</button>
+    </div>
+</form>
+<br/>
+<form action="" method="POST" name="form" role="form" id="form">
+    <div class="align-items-center&#x20;form-row">
+        <div class="col-sm-3&#x20;mb-3&#x20;my-1">
+            <label class="mr-sm-2&#x20;sr-only" for="inlineFormCustomSelect">Preference</label>
+            <select name="preference" id="inlineFormCustomSelect" class="form-select&#x20;mr-sm-2">
+                <option value="">Choose...</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+        <div class="col-auto&#x20;mb-3&#x20;my-1">
+            <div class="custom-checkbox&#x20;custom-control&#x20;mr-sm-2">
+                <input type="checkbox" name="remember_my_preference" id="customControlAutosizing" class="form-check-input" value="1"/>
+                <label class="form-check-label" for="customControlAutosizing">Remember my preference</label>
+            </div>
+        </div>
+        <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Submit</button>
+    </div>
+</form>
+
+####### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->form($oFactory->create([
+    'type' => 'form',
+    'options' => [
+        'row_class' => 'align-items-center form-row',
+    ],
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'name',
+                'options' => [
+                    'label' => 'Name',
+                    'show_label' => false,
+                    'column' => 'auto',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'inlineFormInput',
+                    'placeholder' => 'Jane Doe',
+                    'class' => 'mb-2',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'username',
+                'options' => [
+                    'label' => 'Username',
+                    'show_label' => false,
+                    'column' => 'auto',
+                    'add_on_prepend' => '@',
+                    'input_group_class' => 'mb-2',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'inlineFormInputGroup',
+                    'placeholder' => 'Username',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'checkbox',
+                'name' => 'remember_me',
+                'options' => [
+                    'label' => 'Remember me',
+                    'use_hidden_element' => false,
+                    'column' => 'auto',
+                    'form_check_class' => 'mb-2',
+                ],
+                'attributes' => [
+                    'id' => 'autoSizingCheck',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'submit',
+                'options' => [
+                    'label' => 'Submit',
+                    'variant' => 'primary',
+                    'column' => 'auto',
+                ],
+                'attributes' => [
+                    'class' => 'mb-2',
+                ],
+            ],
+        ],
+    ],
+]));
+
+echo PHP_EOL . '<br/>' . PHP_EOL;
+
+// Remix that once again with size-specific column classes.
+echo $this->form($oFactory->create([
+    'type' => 'form',
+    'options' => [
+        'row_class' => 'align-items-center form-row',
+    ],
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'name',
+                'options' => [
+                    'label' => 'Name',
+                    'show_label' => false,
+                    'column' => 'sm-3',
+                    'row_class' => 'my-1',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'inlineFormInput',
+                    'placeholder' => 'Jane Doe',
+                    'class' => 'mb-2',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'username',
+                'options' => [
+                    'label' => 'Username',
+                    'show_label' => false,
+                    'column' => 'sm-3',
+                    'row_class' => 'my-1',
+                    'add_on_prepend' => '@',
+                    'input_group_class' => 'mb-2',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'inlineFormInputGroup',
+                    'placeholder' => 'Username',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'checkbox',
+                'name' => 'remember_me',
+                'options' => [
+                    'label' => 'Remember me',
+                    'use_hidden_element' => false,
+                    'column' => 'auto',
+                    'row_class' => 'my-1',
+                    'form_check_class' => 'mb-2',
+                ],
+                'attributes' => [
+                    'id' => 'autoSizingCheck',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'submit',
+                'options' => [
+                    'label' => 'Submit',
+                    'variant' => 'primary',
+                    'column' => 'auto',
+                    'row_class' => 'my-1',
+                ],
+                'attributes' => [
+                    'class' => 'mb-2',
+                ],
+            ],
+        ],
+    ],
+]));
+
+echo PHP_EOL . '<br/>' . PHP_EOL;
+
+// And of course custom form controls are supported.
+echo $this->form($oFactory->create([
+    'type' => 'form',
+    'options' => [
+        'row_class' => 'align-items-center form-row',
+    ],
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'preference',
+                'type' => 'select',
+                'options' => [
+                    'label' => 'Preference',
+                    'show_label' => false,
+                    'label_attributes' => ['class' => 'mr-sm-2'],
+                    'column' => 'sm-3',
+                    'row_class' => 'my-1',
+                    'empty_option' => 'Choose...',
+                    'value_options' => [
+                        1 => 'One',
+                        2 => 'Two',
+                        3 => 'Three',
+                    ],
+                    'custom' => true,
+                ],
+                'attributes' => [
+                    'id' => 'inlineFormCustomSelect',
+                    'class' => 'mr-sm-2',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'checkbox',
+                'name' => 'remember_my_preference',
+                'options' => [
+                    'label' => 'Remember my preference',
+                    'use_hidden_element' => false,
+                    'column' => 'auto',
+                    'row_class' => 'my-1',
+                    'form_check_class' => 'mr-sm-2',
+                    'custom' => true,
+                ],
+                'attributes' => [
+                    'id' => 'customControlAutosizing',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'submit',
+                'options' => [
+                    'label' => 'Submit',
+                    'variant' => 'primary',
+                    'column' => 'auto',
+                    'row_class' => 'my-1',
+                ],
+            ],
+        ],
+    ],
+]));
+```
+
+<!-- tabs:end -->
+
+
+#### Validation
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#validation)
+##### Server side
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#server-side)
+<!-- tabs:start -->
+
+###### **Result**
+
+<form action="" method="POST" name="form" role="form" id="form">
+    <div class="form-row">
+        <div class="col-md-6&#x20;mb-3">
+            <label class="form-label" for="validationServer01">First name</label>
+            <input name="firstName" type="text" id="validationServer01" required="required" class="form-control&#x20;is-valid" value="Mark"/>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-6&#x20;mb-3">
+            <label class="form-label" for="validationServer02">Last name</label>
+            <input name="lastName" type="text" id="validationServer02" required="required" class="form-control&#x20;is-valid" value="Otto"/>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-6&#x20;has-error&#x20;mb-3">
+            <label class="col-form-label&#x20;form-label" for="validationServer03">City</label>
+            <input name="city" type="text" id="validationServer03" required="required" class="form-control&#x20;is-invalid" value=""/>
+            <div class="invalid-feedback">Please provide a valid city.</div>
+        </div>
+        <div class="col-md-3&#x20;has-error&#x20;mb-3">
+            <label class="col-form-label&#x20;form-label" for="validationServer04">State</label>
+            <select name="state" id="validationServer04" required="required" class="form-select&#x20;is-invalid">
+                <option value="" selected="selected" disabled="disabled">Choose...</option>
+                <option value="0">...</option>
+            </select>
+            <div class="invalid-feedback">Please select a valid state.</div>
+        </div>
+        <div class="col-md-3&#x20;has-error&#x20;mb-3">
+            <label class="col-form-label&#x20;form-label" for="validationServer05">Zip</label>
+            <input name="zip" type="text" id="validationServer05" required="required" class="form-control&#x20;is-invalid" value=""/>
+            <div class="invalid-feedback">Please provide a valid zip.</div>
+        </div>
+    </div>
+    <div class="has-error&#x20;mb-3">
+        <div class="form-check">
+            <input type="checkbox" name="termsAndConditions" id="invalidCheck3" required="required" class="form-check-input&#x20;is-invalid" value="1"/>
+            <label class="form-check-label" for="invalidCheck3">Agree to terms and conditions</label>
+            <div class="invalid-feedback">You must agree before submitting.</div>
+        </div>
+    </div>
+    <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Submit</button>
+</form>
+
+###### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+$oForm = $oFactory->create([
+    'type' => 'form',
+    'options' => ['row_class' => 'form-row'],
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'firstName',
+                'options' => [
+                    'column' => 'md-6',
+                    'row_class' => 'mb-3',
+                    'label' => 'First name',
+                    'valid_feedback' => 'Looks good!',
+                    'row_name' => 'firstRow',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'value' => 'Mark',
+                    'id' => 'validationServer01',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'lastName',
+                'options' => [
+                    'column' => 'md-6',
+                    'row_class' => 'mb-3',
+                    'label' => 'Last name',
+                    'valid_feedback' => 'Looks good!',
+                    'row_name' => 'firstRow',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'value' => 'Otto',
+                    'id' => 'validationServer02',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'city',
+                'options' => [
+                    'column' => 'md-6',
+                    'row_class' => 'mb-3',
+                    'label' => 'City',
+                    'row_name' => 'secondRow',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationServer03',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'state',
+                'type' => 'select',
+                'options' => [
+                    'custom' => true,
+                    'empty_option' => ['label' => 'Choose...', 'selected' => true, 'disabled' => true],
+                    'value_options' => ['...'],
+                    'column' => 'md-3',
+                    'row_class' => 'mb-3',
+                    'label' => 'State',
+                    'row_name' => 'secondRow',
+                ],
+                'attributes' => [
+                    'id' => 'validationServer04',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'zip',
+                'options' => [
+                    'column' => 'md-3',
+                    'row_class' => 'mb-3',
+                    'label' => 'Zip',
+                    'row_name' => 'secondRow',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationServer05',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'termsAndConditions',
+                'type' => 'checkbox',
+                'options' => [
+                    'label' => 'Agree to terms and conditions',
+                    'use_hidden_element' => false,
+                    'row_name' => 'thirdRow',
+                ],
+                'attributes' => [
+                    'id' => 'invalidCheck3',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'submit',
+                'options' => [
+                    'label' => 'Submit', 'variant' => 'primary',
+                    'row_name' => 'lastRow',
+                    'form_group' => false,
+                ],
+            ],
+        ],
+    ],
+]);
+
+// Set error messages
+$oForm->get('city')->setMessages(['Please provide a valid city.']);
+$oForm->get('state')->setMessages(['Please select a valid state.']);
+$oForm->get('zip')->setMessages(['Please provide a valid zip.']);
+$oForm->get('termsAndConditions')->setMessages(['You must agree before submitting.']);
+
+// Render form
+echo $this->form($oForm);
+```
+
+<!-- tabs:end -->
+
+
+#### Custom forms
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#custom-forms)
+##### Checkboxes and radios
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#checkboxes-and-radios-1)
+###### Checkboxes
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#checkboxes)
+<!-- tabs:start -->
+
+####### **Result**
+
+<div class="custom-checkbox&#x20;custom-control">
+    <input type="checkbox" name="custom_checkbox" id="customCheck1" class="form-check-input" value="1"/>
+    <label class="form-check-label" for="customCheck1">Check this custom checkbox</label>
+</div>
+
+####### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->formRow($oFactory->create([
+    'name' => 'custom_checkbox',
+    'type' => 'checkbox',
+    'options' => [
+        'label' => 'Check this custom checkbox',
+        'use_hidden_element' => false,
+        'form_group' => false,
+        'custom' => true,
+    ],
+    'attributes' => [
+        'id' => 'customCheck1',
+    ],
+]));
+```
+
+<!-- tabs:end -->
+
+
+###### Radios
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#checkboxes)
+<!-- tabs:start -->
+
+####### **Result**
+
+<div class="form-check">
+    <input type="radio" name="customRadio" class="form-check-input" id="customRadio1" value="1"/>
+    <label class="form-check-label" for="customRadio1">Toggle this custom radio</label>
+</div>
+<div class="form-check">
+    <input type="radio" name="customRadio" class="form-check-input" id="customRadio2" value="2"/>
+    <label class="form-check-label" for="customRadio2">Or toggle this other custom radio</label>
+</div>
+
+####### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->formRow($oFactory->create([
+    'name' => 'customRadio',
+    'type' => 'radio',
+    'options' => [
+        'custom' => true,
+        'value_options' => [
+            [
+                'label' => 'Toggle this custom radio',
+                'value' => '1',
+                'attributes' => ['id' => 'customRadio1'],
+            ],
+            [
+                'label' => 'Or toggle this other custom radio',
+                'value' => '2',
+                'attributes' => ['id' => 'customRadio2'],
+            ],
+        ],
+    ],
+]));
+```
+
+<!-- tabs:end -->
+
+
+###### Inline
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#inline-1)
+<!-- tabs:start -->
+
+####### **Result**
+
+<div class="form-check&#x20;form-check-inline">
+    <input type="radio" name="customRadioInline1" class="form-check-input" id="customRadioInline1" value="1"/>
+    <label class="form-check-label" for="customRadioInline1">Toggle this custom radio</label>
+</div>
+<div class="form-check&#x20;form-check-inline">
+    <input type="radio" name="customRadioInline1" class="form-check-input" id="customRadioInline2" value="2"/>
+    <label class="form-check-label" for="customRadioInline2">Or toggle this other custom radio</label>
+</div>
+
+####### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->formRow($oFactory->create([
+    'name' => 'customRadioInline1',
+    'type' => 'radio',
+    'options' => [
+        'layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE,
+        'custom' => true,
+        'value_options' => [
+            [
+                'label' => 'Toggle this custom radio',
+                'value' => '1',
+                'attributes' => ['id' => 'customRadioInline1'],
+            ],
+            [
+                'label' => 'Or toggle this other custom radio',
+                'value' => '2',
+                'attributes' => ['id' => 'customRadioInline2'],
+            ],
+        ],
+    ],
+]));
+```
+
+<!-- tabs:end -->
+
+
+###### Disabled
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#disabled)
+<!-- tabs:start -->
+
+####### **Result**
+
+<div class="custom-checkbox&#x20;custom-control">
+    <input type="checkbox" name="custom_checkbox_disabled" id="customCheckDisabled1" disabled="disabled" class="form-check-input" value="1"/>
+    <label class="form-check-label" for="customCheckDisabled1">Check this custom checkbox</label>
+</div>
+<div class="form-check">
+    <input type="radio" name="radioDisabled" disabled="disabled" class="form-check-input" id="customRadioDisabled2" value="1"/>
+    <label class="form-check-label" for="customRadioDisabled2">Toggle this custom radio</label>
+</div>
+
+####### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->formRow($oFactory->create([
+    'name' => 'custom_checkbox_disabled',
+    'type' => 'checkbox',
+    'options' => [
+        'label' => 'Check this custom checkbox',
+        'use_hidden_element' => false,
+        'form_group' => false,
+        'custom' => true,
+    ],
+    'attributes' => [
+        'id' => 'customCheckDisabled1',
+        'disabled' => true,
+    ],
+])) . PHP_EOL;
+
+echo $this->formRow($oFactory->create([
+    'name' => 'radioDisabled',
+    'type' => 'radio',
+    'options' => [
+        'custom' => true,
+        'value_options' => [
+            [
+                'label' => 'Toggle this custom radio',
+                'value' => '1',
+                'attributes' => ['id' => 'customRadioDisabled2'],
+            ],
+        ],
+    ],
+    'attributes' => ['disabled' => true],
+]));
+```
+
+<!-- tabs:end -->
+
+
+##### Switches
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#switches)
+<!-- tabs:start -->
+
+###### **Result**
+
+<div class="custom-control&#x20;custom-switch">
+    <input type="checkbox" name="custom_switch" id="customSwitch1" class="form-check-input" value="1"/>
+    <label class="form-check-label" for="customSwitch1">Toggle this switch element</label>
+</div>
+<div class="custom-control&#x20;custom-switch">
+    <input type="checkbox" name="custom_switch" id="customSwitch2" disabled="disabled" class="form-check-input" value="1"/>
+    <label class="form-check-label" for="customSwitch2">Disabled switch element</label>
+</div>
+
+###### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->formRow($oFactory->create([
+    'name' => 'custom_switch',
+    'type' => 'checkbox',
+    'options' => [
+        'label' => 'Toggle this switch element',
+        'use_hidden_element' => false,
+        'form_group' => false,
+        'custom' => true,
+        'switch' => true,
+    ],
+    'attributes' => ['id' => 'customSwitch1'],
+])) . PHP_EOL;
+
+echo $this->formRow($oFactory->create([
+    'name' => 'custom_switch',
+    'type' => 'checkbox',
+    'options' => [
+        'label' => 'Disabled switch element',
+        'use_hidden_element' => false,
+        'form_group' => false,
+        'custom' => true,
+        'switch' => true,
+    ],
+    'attributes' => [
+        'id' => 'customSwitch2',
+        'disabled' => true,
+    ],
+]));
+```
+
+<!-- tabs:end -->
+
+
+##### Select menu
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#select-menu)
+<!-- tabs:start -->
+
+###### **Result**
+
+<select name="custom_select" class="form-select">
+    <option value="" selected="selected">Open this select menu</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+</select>
+<br/><br/>
+<select name="custom_select_lg" class="form-select&#x20;form-select-lg&#x20;mb-3">
+    <option value="" selected="selected">Open this select menu</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+</select>
+<br/><br/>
+<select name="custom_select_sm" class="form-select&#x20;form-select-sm">
+    <option value="" selected="selected">Open this select menu</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+</select>
+<br/><br/>
+<select name="custom_select_multiple&#x5B;&#x5D;" multiple="multiple" class="form-select">
+    <option value="" selected="selected">Open this select menu</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+</select>
+<br/><br/>
+<select name="custom_select_size" size="3" class="form-select">
+    <option value="" selected="selected">Open this select menu</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+</select>
+
+###### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->formElement($oFactory->create([
+    'name' => 'custom_select',
+    'type' => 'select',
+    'options' => [
+        'custom' => true,
+        'empty_option' => 'Open this select menu',
+        'value_options' => [
+            1 => 'One',
+            2 => 'Two',
+            3 => 'Three',
+        ],
+    ],
+    ])->setValue('')) . PHP_EOL;
+    
+    echo '<br/><br/>' . PHP_EOL;
+    
+    // You may also choose from small and large custom selects to match our similarly sized text inputs.
+    echo $this->formElement($oFactory->create([
+        'name' => 'custom_select_lg',
+        'type' => 'select',
+        'options' => [
+            'size' => 'lg',
+            'custom' => true,
+            'empty_option' => 'Open this select menu',
+            'value_options' => [
+                1 => 'One',
+                2 => 'Two',
+                3 => 'Three',
+            ],
+        ],
+        'attributes' => ['class' => 'mb-3'],
+        ])->setValue('')) . PHP_EOL;
+        
+        echo '<br/><br/>' . PHP_EOL;
+        
+        echo $this->formElement($oFactory->create([
+            'name' => 'custom_select_sm',
+            'type' => 'select',
+            'options' => [
+                'size' => 'sm',
+                'custom' => true,
+                'empty_option' => 'Open this select menu',
+                'value_options' => [
+                    1 => 'One',
+                    2 => 'Two',
+                    3 => 'Three',
+                ],
+            ],
+            ])->setValue('')) . PHP_EOL;
+            
+            echo '<br/><br/>' . PHP_EOL;
+            
+            // The multiple attribute is also supported
+            echo $this->formElement($oFactory->create([
+                'name' => 'custom_select_multiple',
+                'type' => 'select',
+                'options' => [
+                    'custom' => true,
+                    'empty_option' => 'Open this select menu',
+                    'value_options' => [
+                        1 => 'One',
+                        2 => 'Two',
+                        3 => 'Three',
+                    ],
+                ],
+                'attributes' => ['multiple' => true],
+                ])->setValue('')) . PHP_EOL;
+                
+                echo '<br/><br/>' . PHP_EOL;
+                
+                // As is the size attribute
+                echo $this->formElement($oFactory->create([
+                    'name' => 'custom_select_size',
+                    'type' => 'select',
+                    'options' => [
+                        'custom' => true,
+                        'empty_option' => 'Open this select menu',
+                        'value_options' => [
+                            1 => 'One',
+                            2 => 'Two',
+                            3 => 'Three',
+                        ],
+                    ],
+                    'attributes' => ['size' => 3],
+                    ])->setValue(''));
+```
+
+<!-- tabs:end -->
+
+
+##### Range
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#range)
+<!-- tabs:start -->
+
+###### **Result**
+
+<label class="form-label" for="customRange1">Example range</label>
+<input type="range" name="custom_range" id="customRange1" class="custom-range" value=""/>
+
+###### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->formRow($oFactory->create([
+    'name' => 'custom_range',
+    'type' => 'range',
+    'options' => [
+        'custom' => true,
+        'label' => 'Example range',
+        'form_group' => false,
+    ],
+    'attributes' => ['id' => 'customRange1'],
+]));
+```
+
+<!-- tabs:end -->
+
+
+##### File browser
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#file-browser)
+<!-- tabs:start -->
+
+###### **Result**
+
+<input type="file" name="custom_file" id="customFile"/>
+
+###### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->formRow($oFactory->create([
+    'name' => 'custom_file',
+    'type' => 'file',
+    'options' => [
+        'custom' => true,
+        'custom_label' => 'Choose file',
+        'form_group' => false,
+    ],
+    'attributes' => ['id' => 'customFile'],
+]));
+```
+
+<!-- tabs:end -->
+
+
+###### Translating or customizing the strings with HTML
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/forms/#translating-or-customizing-the-strings-with-html)
+<!-- tabs:start -->
+
+####### **Result**
+
+<input type="file" name="custom_file" id="customFileLangHTML"/>
+
+####### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->formRow($oFactory->create([
+    'name' => 'custom_file',
+    'type' => 'file',
+    'options' => [
+        'custom' => true,
+        'custom_label' => 'Voeg je document toe',
+        'form_group' => false,
+        'label_attributes' => [
+            'data-browse' => 'Bestand kiezen',
+        ],
+    ],
+    'attributes' => ['id' => 'customFileLangHTML'],
+]));
+```
+
+<!-- tabs:end -->
+
+
+#### Button groups
+<!-- tabs:start -->
+
+##### **Result**
+
+<form action="" method="POST" name="form" role="form" id="form">
+    <div class="mb-3">
+        <label class="form-label" for="email">Email</label>
+        <input name="email" type="email" class="form-control" value=""/>
+    </div>
+    <div class="btn-group&#x20;form-group">
+        <button type="button" name="button1" class="btn&#x20;btn-secondary" value="">Button 1</button>
+        <button type="button" name="button2" class="btn&#x20;btn-secondary" value="">Button 2</button>
+    </div>
+    <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Submit</button>
+</form>
+
+##### **Source**
+
+```php
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->form($oFactory->create([
+    'type' => 'form',
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'email',
+                'options' => ['label' => 'Email'],
+                'attributes' => ['type' => 'email'],
+            ]
+        ],
+        [
+            'spec' => [
+                'type' => \Laminas\Form\Element\Button::class,
+                'name' => 'button1',
+            'options' => ['label' => 'Button 1', 'row_name' => 'my-button-group']
+        ]
+    ],
+    [
+        'spec' => [
+            'type' => \Laminas\Form\Element\Button::class,
+            'name' => 'button2',
+        'options' => ['label' => 'Button 2', 'row_name' => 'my-button-group']
+    ]
+],
+
+[
+    'spec' => [
+        'type' => 'submit',
+        'options' => ['label' => 'Submit', 'variant' => 'primary'],
+    ]
+],
+],
+]));
+```
+
+<!-- tabs:end -->
+
+
 ### Components
 [Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/)
 #### Alerts
@@ -5463,9 +8839,7 @@ echo $this->dropdown()->renderMenu([
                 <label class="form-check-label" for="dropdownCheck">Remember me</label>
             </div>
         </div>
-        <div class="mb-3">
-            <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Sign in</button>
-        </div>
+        <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Sign in</button>
     </form>
     <a class="dropdown-item" href="&#x23;">New around here? Sign up</a>
     <a class="dropdown-item" href="&#x23;">Forgot password?</a>
@@ -5592,3340 +8966,6 @@ echo $this->formButton([
 
 
 echo PHP_EOL . '</div>';
-```
-
-<!-- tabs:end -->
-
-
-#### Forms
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/)
-##### Overview
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#overview)
-<!-- tabs:start -->
-
-###### **Result**
-
-<form action="" method="POST" name="form" role="form" id="form">
-    <div class="mb-3">
-        <label class="form-label" for="exampleInputEmail1">Email address</label>
-        <input name="email" type="email" id="exampleInputEmail1" placeholder="Enter&#x20;email" class="form-control" value=""/>
-        <small class="form-text&#x20;text-muted" id="emailHelp">We&#039;ll never share your email with anyone else.</small>
-    </div>
-    <div class="mb-3">
-        <label class="form-label" for="exampleInputPassword1">Password</label>
-        <input name="password" type="password" id="exampleInputPassword1" placeholder="Password" class="form-control" value=""/>
-    </div>
-    <div class="mb-3">
-        <div class="form-check">
-            <input type="checkbox" name="remember_me" id="exampleCheck1" class="form-check-input" value="1"/>
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-    </div>
-    <div class="mb-3">
-        <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Submit</button>
-    </div>
-</form>
-
-###### **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-echo $this->form($oFactory->create([
-    'type' => 'form',
-    'elements' => [
-        [
-            'spec' => [
-                'name' => 'email',
-                'options' => [
-                    'label' => 'Email address',
-                    'help_block' => [
-                        'content' => 'We\'ll never share your email with anyone else.',
-                        'attributes' => ['id' => 'emailHelp'],
-                    ]
-                ],
-                'attributes' => [
-                    'type' => 'email',
-                    'id' => 'exampleInputEmail1',
-                    'placeholder' => 'Enter email',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'password',
-                'options' => ['label' => 'Password'],
-                'attributes' => [
-                    'type' => 'password',
-                    'id' => 'exampleInputPassword1',
-                    'placeholder' => 'Password',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'type' => 'checkbox',
-                'name' => 'remember_me',
-                'options' => ['label' => 'Check me out', 'use_hidden_element' => false],
-                'attributes' => [
-                    'id' => 'exampleCheck1',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'type' => 'submit',
-                'options' => ['label' => 'Submit', 'variant' => 'primary'],
-            ],
-        ],
-    ]
-]));
-```
-
-<!-- tabs:end -->
-
-
-##### Form controls
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#form-controls)
-<!-- tabs:start -->
-
-###### **Result**
-
-<form action="" method="POST" name="form" role="form" id="form">
-    <div class="mb-3">
-        <label class="form-label" for="exampleFormControlInput1">Email address</label>
-        <input name="email" type="email" id="exampleFormControlInput1" placeholder="name&#x40;example.com" class="form-control" value=""/>
-    </div>
-    <div class="mb-3">
-        <label class="form-label" for="exampleFormControlSelect1">Example select</label>
-        <select name="select" id="exampleFormControlSelect1" class="form-select">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-    </div>
-    <div class="mb-3">
-        <label class="form-label" for="exampleFormControlSelect2">Example multiple select</label>
-        <select name="multiple_select&#x5B;&#x5D;" id="exampleFormControlSelect2" multiple="multiple" class="form-select">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-    </div>
-    <div class="mb-3">
-        <label class="form-label" for="exampleFormControlTextarea1">Example textarea</label>
-        <textarea name="textarea" id="exampleFormControlTextarea1" rows="3" class="form-control"></textarea>
-    </div>
-    <div class="mb-3">
-        <label class="form-label" for="exampleFormControlFile1">Example file input</label>
-        <input name="file_input" type="file" id="exampleFormControlFile1" class="form-control"/>
-    </div>
-</form>
-
-###### **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-echo $this->form($oFactory->create([
-    'type' => 'form',
-    'elements' => [
-        [
-            'spec' => [
-                'name' => 'email',
-                'options' => [
-                    'label' => 'Email address'
-                ],
-                'attributes' => [
-                    'type' => 'email',
-                    'id' => 'exampleFormControlInput1',
-                    'placeholder' => 'name@example.com',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'select',
-                'type' => 'select',
-                'options' => [
-                    'label' => 'Example select',
-                    'value_options' => [
-                        1 => 1,
-                        2 => 2,
-                        3 => 3,
-                        4 => 4,
-                        5 => 5,
-                    ],
-                ],
-                'attributes' => [
-                    'id' => 'exampleFormControlSelect1',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'multiple_select',
-                'type' => 'select',
-                'options' => [
-                    'label' => 'Example multiple select',
-                    'value_options' => [
-                        1 => 1,
-                        2 => 2,
-                        3 => 3,
-                        4 => 4,
-                        5 => 5,
-                    ],
-                ],
-                'attributes' => [
-                    'id' => 'exampleFormControlSelect2',
-                    'multiple' => true,
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'textarea',
-                'options' => [
-                    'label' => 'Example textarea'
-                ],
-                'attributes' => [
-                    'type' => 'textarea',
-                    'id' => 'exampleFormControlTextarea1',
-                    'rows' => 3,
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'file_input',
-                'options' => [
-                    'label' => 'Example file input'
-                ],
-                'attributes' => [
-                    'type' => 'file',
-                    'id' => 'exampleFormControlFile1',
-                ],
-            ],
-        ],
-    ],
-]));
-```
-
-<!-- tabs:end -->
-
-
-###### Sizing
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#sizing)
-<!-- tabs:start -->
-
-####### **Result**
-
-<input type="text" name="lg" placeholder=".form-control-lg" class="form-control&#x20;form-control-lg" value=""/>
-<br/>
-<input type="text" name="default" placeholder="Default&#x20;input" class="form-control" value=""/>
-<br/>
-<input type="text" name="sm" placeholder=".form-control-sm" class="form-control&#x20;form-control-sm" value=""/>
-<br/>
-<select name="lg" class="form-select&#x20;form-select-lg"><option value="0">Large select</option></select>
-<br/>
-<select name="default" class="form-select"><option value="0">Default select</option></select>
-<br/>
-<select name="sm" class="form-select&#x20;form-select-sm"><option value="0">Small select</option></select>
-<br/>
-
-
-####### **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-// Render large input
-$oElement = $oFactory->create([
-    'name' => 'lg',
-    'type' => 'text',
-    'options' => ['size' => 'lg'],
-    'attributes' => ['placeholder' => '.form-control-lg'],
-]);
-echo $this->formElement($oElement) . PHP_EOL . '<br/>' . PHP_EOL;
-
-// Render default input
-$oElement = $oFactory->create([
-    'name' => 'default',
-    'type' => 'text',
-    'attributes' => ['placeholder' => 'Default input'],
-]);
-echo $this->formElement($oElement) . PHP_EOL . '<br/>' . PHP_EOL;
-
-// Render small input
-$oElement = $oFactory->create([
-    'name' => 'sm',
-    'type' => 'text',
-    'options' => ['size' => 'sm'],
-    'attributes' => ['placeholder' => '.form-control-sm'],
-]);
-echo $this->formElement($oElement) . PHP_EOL . '<br/>' . PHP_EOL;
-
-// Render large select
-$oElement = $oFactory->create([
-    'name' => 'lg',
-    'type' => 'select',
-    'options' => ['size' => 'lg', 'value_options' => ['Large select']],
-    'attributes' => ['placeholder' => '.form-control-lg'],
-]);
-echo $this->formElement($oElement) . PHP_EOL . '<br/>' . PHP_EOL;
-
-// Render default select
-$oElement = $oFactory->create([
-    'name' => 'default',
-    'type' => 'select',
-    'options' => ['value_options' => ['Default select']],
-    'attributes' => ['placeholder' => 'Default input'],
-]);
-echo $this->formElement($oElement) . PHP_EOL . '<br/>' . PHP_EOL;
-
-// Render small select
-$oElement = $oFactory->create([
-    'name' => 'sm',
-    'type' => 'select',
-    'options' => ['size' => 'sm', 'value_options' => ['Small select']],
-    'attributes' => ['placeholder' => '.form-control-sm'],
-]);
-echo $this->formElement($oElement) . PHP_EOL . '<br/>' . PHP_EOL;
-```
-
-<!-- tabs:end -->
-
-
-###### Readonly
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#readonly)
-<!-- tabs:start -->
-
-####### **Result**
-
-<input type="text" name="readonly-input" readonly="readonly" placeholder="Readonly&#x20;input&#x20;here..." class="form-control" value=""/>
-
-####### **Source**
-
-```php
-// Render element
-$oFactory = new \Laminas\Form\Factory();
-$oElement = $oFactory->create([
-    'name' => 'readonly-input',
-    'type' => 'text',
-    'attributes' => ['readonly' => true, 'placeholder' => 'Readonly input here...'],
-]);
-echo $this->formElement($oElement);
-```
-
-<!-- tabs:end -->
-
-
-###### Readonly plain text
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#readonly-plain-text)
-<!-- tabs:start -->
-
-####### **Result**
-
-<form action="" method="POST" name="form" role="form" id="form">
-    <div class="mb-3&#x20;row">
-        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="staticEmail">Email</label>
-        <div class="col-sm-10">
-            <input name="email" type="email" id="staticEmail" readonly="readonly" class="form-control-plaintext" value="email&#x40;example.com"/>
-        </div>
-    </div>
-    <div class="mb-3&#x20;row">
-        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="inputPassword">Password</label>
-        <div class="col-sm-10">
-            <input name="password" type="password" id="inputPassword" placeholder="Password" class="form-control" value=""/>
-        </div>
-    </div>
-</form>
-<br/>
-<form action="" method="POST" name="form" role="form" class="form-inline" id="form">
-    <div class="mb-3">
-        <label class="form-label&#x20;sr-only" for="staticEmail2">Email</label>
-        <input name="email" type="email" id="staticEmail2" readonly="readonly" class="form-control-plaintext" value="email&#x40;example.com"/>
-    </div>
-    <div class="mb-3&#x20;mx-sm-3">
-        <label class="form-label&#x20;sr-only" for="inputPassword2">Password</label>
-        <input name="password" type="password" id="inputPassword2" placeholder="Password" class="form-control" value=""/>
-    </div>
-    <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">Confirm identity</button>
-</form>
-
-####### **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-// Render horizontal form
-$oForm = $oFactory->create([
-    'type' => 'form',
-    'options' => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL],
-    'elements' => [
-        [
-            'spec' => [
-                'name' => 'email',
-                'options' => [
-                    'plaintext' => true,
-                    'column' => 'sm-10',
-                    'label' => 'Email',
-                ],
-                'attributes' => [
-                    'type' => 'email',
-                    'id' => 'staticEmail',
-                    'value' => 'email@example.com',
-                    'readonly' => true,
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'password',
-                'options' => [
-                    'column' => 'sm-10',
-                    'label' => 'Password',
-                ],
-                'attributes' => [
-                    'type' => 'password',
-                    'id' => 'inputPassword',
-                    'placeholder' => 'Password',
-                ],
-            ],
-        ],
-    ],
-]);
-
-echo $this->form($oForm);
-
-echo PHP_EOL . '<br/>' . PHP_EOL;
-
-// Render inline form
-echo $this->form($oFactory->create([
-    'type' => 'form',
-    'options' => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE],
-    'elements' => [
-        [
-            'spec' => [
-                'name' => 'email',
-                'options' => [
-                    'plaintext' => true,
-                    'label' => 'Email',
-                ],
-                'attributes' => [
-                    'type' => 'email',
-                    'id' => 'staticEmail2',
-                    'value' => 'email@example.com',
-                    'readonly' => true,
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'password',
-                'options' => [
-                    'label' => 'Password',
-                    'row_class' => 'mx-sm-3',
-                ],
-                'attributes' => [
-                    'type' => 'password',
-                    'id' => 'inputPassword2',
-                    'placeholder' => 'Password',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'type' => 'submit',
-                'options' => ['label' => 'Confirm identity', 'variant' => 'primary'],
-                'attributes' => ['class' => 'mb-2'],
-            ],
-        ],
-    ],
-]));
-```
-
-<!-- tabs:end -->
-
-
-##### Range Inputs
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#range-inputs)
-<!-- tabs:start -->
-
-###### **Result**
-
-<form action="" method="POST" name="form" role="form" id="form">
-    <div class="mb-3">
-        <label class="form-label" for="formControlRange">Example Range input</label>
-        <input name="range" type="range" id="formControlRange" class="form-control-range" value=""/>
-    </div>
-</form>
-
-###### **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-echo $this->form($oFactory->create([
-    'type' => 'form',
-    'elements' => [
-        [
-            'spec' => [
-                'name' => 'range',
-                'options' => [
-                    'label' => 'Example Range input'
-                ],
-                'attributes' => [
-                    'type' => 'range',
-                    'id' => 'formControlRange',
-                ],
-            ],
-        ],
-    ]
-]));
-```
-
-<!-- tabs:end -->
-
-
-##### Checkboxes and radios
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#checkboxes-and-radios)
-###### Default (stacked)
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#default-stacked)
-<!-- tabs:start -->
-
-####### **Result**
-
-<div class="form-check">
-    <input type="checkbox" name="default-checkbox" id="defaultCheck1" class="form-check-input" value="1"/>
-    <label class="form-check-label" for="defaultCheck1">Default checkbox</label>
-</div>
-<div class="form-check">
-    <input type="checkbox" name="disabled-checkbox" id="defaultCheck2" disabled="disabled" class="form-check-input" value="1"/>
-    <label class="form-check-label" for="defaultCheck2">Disabled checkbox</label>
-</div>
-<br/>
-<div class="form-check">
-    <input type="radio" name="exampleRadios" class="form-check-input" id="exampleRadios1" value="option1"/>
-    <label class="form-check-label" for="exampleRadios1">Default radio</label>
-</div>
-<div class="form-check">
-    <input type="radio" name="exampleRadios" class="form-check-input" id="exampleRadios2" value="option2"/>
-    <label class="form-check-label" for="exampleRadios2">Second default radio</label>
-</div>
-<div class="form-check">
-    <input type="radio" name="exampleRadios" class="form-check-input" id="exampleRadios3" value="option1" disabled="disabled"/>
-    <label class="form-check-label" for="exampleRadios3">Disabled radio</label>
-</div>
-
-####### **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-// Render Default checkbox
-echo $this->formRow($oFactory->create([
-    'name' => 'default-checkbox',
-    'type' => 'checkbox',
-    'options' => [
-        'label' => 'Default checkbox',
-        'use_hidden_element' => false,
-        'form_group' => false,
-    ],
-    'attributes' => [
-        'id' => 'defaultCheck1',
-    ],
-])) . PHP_EOL;
-
-// Render Disabled checkbox
-echo $this->formRow($oFactory->create([
-    'name' => 'disabled-checkbox',
-    'type' => 'checkbox',
-    'options' => [
-        'label' => 'Disabled checkbox',
-        'use_hidden_element' => false,
-        'form_group' => false,
-    ],
-    'attributes' => [
-        'id' => 'defaultCheck2',
-        'disabled' => true,
-    ],
-]));
-
-echo PHP_EOL . '<br/>' . PHP_EOL;
-
-// Render radio
-echo $this->formRow($oFactory->create([
-    'name' => 'exampleRadios',
-    'type' => 'radio',
-    'options' => [
-        'form_group' => false,
-        'value_options' => [
-            [
-                'label' => 'Default radio',
-                'value' => 'option1',
-                'attributes' => ['id' => 'exampleRadios1'],
-            ],
-            [
-                'label' => 'Second default radio',
-                'value' => 'option2',
-                'attributes' => ['id' => 'exampleRadios2'],
-            ],
-            [
-                'label' => 'Disabled radio',
-                'value' => 'option1',
-                'disabled' => true,
-                'attributes' => ['id' => 'exampleRadios3'],
-            ],
-        ],
-    ],
-]));
-```
-
-<!-- tabs:end -->
-
-
-###### Inline
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#inline)
-<!-- tabs:start -->
-
-####### **Result**
-
-<div class="form-check&#x20;form-check-inline">
-    <input type="checkbox" name="inlineCheckboxOptions&#x5B;&#x5D;" class="form-check-input" id="inlineCheckbox1" value="option1"/>
-    <label class="form-check-label" for="inlineCheckbox1">1</label>
-</div>
-<div class="form-check&#x20;form-check-inline">
-    <input type="checkbox" name="inlineCheckboxOptions&#x5B;&#x5D;" class="form-check-input" id="inlineCheckbox2" value="option2"/>
-    <label class="form-check-label" for="inlineCheckbox2">2</label>
-</div>
-<div class="form-check&#x20;form-check-inline">
-    <input type="checkbox" name="inlineCheckboxOptions&#x5B;&#x5D;" class="form-check-input" id="inlineCheckbox3" value="option3" disabled="disabled"/>
-    <label class="form-check-label" for="inlineCheckbox3">3 (disabled)</label>
-</div>
-<br/>
-<div class="form-check&#x20;form-check-inline">
-    <input type="radio" name="inlineRadioOptions" class="form-check-input" id="inlineRadio1" value="option1"/>
-    <label class="form-check-label" for="inlineRadio1">1</label>
-</div>
-<div class="form-check&#x20;form-check-inline">
-    <input type="radio" name="inlineRadioOptions" class="form-check-input" id="inlineRadio2" value="option2"/>
-    <label class="form-check-label" for="inlineRadio2">2</label>
-</div>
-<div class="form-check&#x20;form-check-inline">
-    <input type="radio" name="inlineRadioOptions" class="form-check-input" id="inlineRadio3" value="option3" disabled="disabled"/>
-    <label class="form-check-label" for="inlineRadio3">3 (disabled)</label>
-</div>
-
-####### **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-// Render checkbox
-echo $this->formRow($oFactory->create([
-    'name' => 'inlineCheckboxOptions',
-    'type' => 'multicheckbox',
-    'options' => [
-        'layout' => 'inline',
-        'form_group' => false,
-        'value_options' => [
-            [
-                'label' => '1',
-                'value' => 'option1',
-                'attributes' => ['id' => 'inlineCheckbox1'],
-            ],
-            [
-                'label' => '2',
-                'value' => 'option2',
-                'attributes' => ['id' => 'inlineCheckbox2'],
-            ],
-            [
-                'label' => '3 (disabled)',
-                'value' => 'option3',
-                'disabled' => true,
-                'attributes' => ['id' => 'inlineCheckbox3'],
-            ],
-        ],
-    ],
-]));
-
-echo PHP_EOL . '<br/>' . PHP_EOL;
-
-// Render radio
-echo $this->formRow($oFactory->create([
-    'name' => 'inlineRadioOptions',
-    'type' => 'radio',
-    'options' => [
-        'layout' => 'inline',
-        'form_group' => false,
-        'value_options' => [
-            [
-                'label' => '1',
-                'value' => 'option1',
-                'attributes' => ['id' => 'inlineRadio1'],
-            ],
-            [
-                'label' => '2',
-                'value' => 'option2',
-                'attributes' => ['id' => 'inlineRadio2'],
-            ],
-            [
-                'label' => '3 (disabled)',
-                'value' => 'option3',
-                'disabled' => true,
-                'attributes' => ['id' => 'inlineRadio3'],
-            ],
-        ],
-    ],
-]));
-```
-
-<!-- tabs:end -->
-
-
-###### Without labels
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#without-labels)
-<!-- tabs:start -->
-
-####### **Result**
-
-<div class="form-check">
-    <input type="checkbox" name="blankCheckbox&#x5B;&#x5D;" class="form-check-input&#x20;position-static" id="blankCheckbox" aria-label="..." value="option1"/>
-</div>
-<div class="form-check">
-    <input type="radio" name="blankRadio" class="form-check-input&#x20;position-static" id="blankRadio1" aria-label="..." value="option1"/>
-</div>
-
-####### **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-// Render checkbox
-echo $this->formRow($oFactory->create([
-    'name' => 'blankCheckbox',
-    'type' => 'multicheckbox',
-    'options' => [
-        'form_group' => false,
-        'value_options' => [
-            [
-                'label' => '',
-                'value' => 'option1',
-                'attributes' => ['id' => 'blankCheckbox', 'aria-label' => '...'],
-            ],
-        ],
-    ],
-])) . PHP_EOL;
-
-// Render radio
-echo $this->formRow($oFactory->create([
-    'name' => 'blankRadio',
-    'type' => 'radio',
-    'options' => [
-        'form_group' => false,
-        'value_options' => [
-            [
-                'label' => '',
-                'value' => 'option1',
-                'attributes' => ['id' => 'blankRadio1', 'aria-label' => '...'],
-            ],
-        ],
-    ],
-]));
-```
-
-<!-- tabs:end -->
-
-
-##### Layout
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#layout)
-###### Form groups
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#mb-3s)
-<!-- tabs:start -->
-
-####### **Result**
-
-<form action="" method="POST" name="form" role="form" id="form">
-    <div class="mb-3">
-        <label class="form-label" for="formGroupExampleInput">Example label</label>
-        <input name="exampleInput" type="text" id="formGroupExampleInput" placeholder="Example&#x20;input" class="form-control" value=""/>
-    </div>
-    <div class="mb-3">
-        <label class="form-label" for="formGroupExampleInput2">Another label</label>
-        <input name="exampleInput2" type="text" id="formGroupExampleInput2" placeholder="Another&#x20;input" class="form-control" value=""/>
-    </div>
-</form>
-
-####### **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-echo $this->form($oFactory->create([
-    'type' => 'form',
-    'elements' => [
-        [
-            'spec' => [
-                'name' => 'exampleInput',
-                'options' => [
-                    'label' => 'Example label',
-                ],
-                'attributes' => [
-                    'type' => 'text',
-                    'id' => 'formGroupExampleInput',
-                    'placeholder' => 'Example input',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'exampleInput2',
-                'options' => [
-                    'label' => 'Another label',
-                ],
-                'attributes' => [
-                    'type' => 'text',
-                    'id' => 'formGroupExampleInput2',
-                    'placeholder' => 'Another input',
-                ],
-            ],
-        ],
-    ]
-]));
-```
-
-<!-- tabs:end -->
-
-
-###### Form grid
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#form-grid)
-<!-- tabs:start -->
-
-####### **Result**
-
-<form action="" method="POST" name="form" role="form" id="form">
-    <div class="row">
-        <div class="col&#x20;mb-3">
-            <input name="firstName" type="text" placeholder="First&#x20;name" class="form-control" value=""/>
-        </div>
-        <div class="col&#x20;mb-3">
-            <input name="lastName" type="text" placeholder="Last&#x20;name" class="form-control" value=""/>
-        </div>
-    </div>
-</form>
-
-####### **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-echo $this->form($oFactory->create([
-    'type' => 'form',
-    'elements' => [
-        [
-            'spec' => [
-                'name' => 'firstName',
-                'options' => [
-                    'column' => true,
-                ],
-                'attributes' => [
-                    'type' => 'text',
-                    'placeholder' => 'First name',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'lastName',
-                'options' => [
-                    'column' => true,
-                ],
-                'attributes' => [
-                    'type' => 'text',
-                    'placeholder' => 'Last name',
-                ],
-            ],
-        ],
-    ]
-]));
-```
-
-<!-- tabs:end -->
-
-
-####### Form row
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#form-row)
-<!-- tabs:start -->
-
-######## **Result**
-
-<form action="" method="POST" name="form" role="form" id="form">
-    <div class="form-row">
-        <div class="col&#x20;mb-3">
-            <input name="firstName" type="text" placeholder="First&#x20;name" class="form-control" value=""/>
-        </div>
-        <div class="col&#x20;mb-3">
-            <input name="lastName" type="text" placeholder="Last&#x20;name" class="form-control" value=""/>
-        </div>
-    </div>
-</form>
-
-######## **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-echo $this->form($oFactory->create([
-    'type' => 'form',
-    'options' => ['row_class' => 'form-row'],
-    'elements' => [
-        [
-            'spec' => [
-                'name' => 'firstName',
-                'options' => [
-                    'column' => true,
-                ],
-                'attributes' => [
-                    'type' => 'text',
-                    'placeholder' => 'First name',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'lastName',
-                'options' => [
-                    'column' => true,
-                ],
-                'attributes' => [
-                    'type' => 'text',
-                    'placeholder' => 'Last name',
-                ],
-            ],
-        ],
-    ]
-]));
-```
-
-<!-- tabs:end -->
-
-
-####### Horizontal form
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#horizontal-form)
-<!-- tabs:start -->
-
-######## **Result**
-
-<form action="" method="POST" name="form" role="form" id="form">
-    <div class="mb-3&#x20;row">
-        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="inputEmail3">Email</label>
-        <div class="col-sm-10">
-            <input name="email" type="email" id="inputEmail3" placeholder="Email" class="form-control" value=""/>
-        </div>
-    </div>
-    <div class="mb-3&#x20;row">
-        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="inputPassword3">Password</label>
-        <div class="col-sm-10">
-            <input name="password" type="password" id="inputPassword3" placeholder="Password" class="form-control" value=""/>
-        </div>
-    </div>
-    <fieldset class="form-group">
-        <div class="row">
-            <legend class="col-form-label&#x20;col-sm-2&#x20;pt-0">Radios</legend>
-            <div class="col-sm-10">
-                <div class="form-check">
-                    <input type="radio" name="fieldset&#x5B;gridRadios&#x5D;" class="form-check-input" id="gridRadios1" value="option1"/>
-                    <label class="form-check-label" for="gridRadios1">First radio</label>
-                </div>
-                <div class="form-check">
-                    <input type="radio" name="fieldset&#x5B;gridRadios&#x5D;" class="form-check-input" id="gridRadios2" value="option2"/>
-                    <label class="form-check-label" for="gridRadios2">Second radio</label>
-                </div>
-                <div class="form-check">
-                    <input type="radio" name="fieldset&#x5B;gridRadios&#x5D;" class="form-check-input" id="gridRadios3" value="option3" disabled="disabled"/>
-                    <label class="form-check-label" for="gridRadios3">Third disabled radio</label>
-                </div>
-            </div>
-        </div>
-    </fieldset>
-    <div class="mb-3&#x20;row">
-        <div class="col-sm-10&#x20;offset-sm-2">
-            <div class="form-check">
-                <input type="hidden" name="checkbox" value="0"/><input type="checkbox" name="checkbox" class="form-check-input" value="1"/>
-                <label class="form-check-label" for="checkbox">Checkbox</label>
-            </div>
-        </div>
-    </div>
-    <div class="mb-3&#x20;row">
-        <div class="col-sm-2">
-            Multicheckbox
-        </div>
-        <div class="col-sm-10">
-            <div class="form-check">
-                <input type="checkbox" name="multicheckbox&#x5B;&#x5D;" class="form-check-input" id="gridCheck1" value="1"/>
-                <label class="form-check-label" for="gridCheck1">Example checkbox</label>
-            </div>
-        </div>
-    </div>
-    <div class="mb-3&#x20;row">
-        <div class="col-sm-10">
-            <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Sign in</button>
-        </div>
-    </div>
-</form>
-
-######## **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-echo $this->form($oFactory->create([
-    'type' => 'form',
-    'options' => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL],
-    'elements' => [
-        [
-            'spec' => [
-                'name' => 'email',
-                'options' => [
-                    'label' => 'Email',
-                    'column' => 'sm-10',
-                ],
-                'attributes' => [
-                    'type' => 'email',
-                    'id' => 'inputEmail3',
-                    'placeholder' => 'Email',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'password',
-                'options' => [
-                    'label' => 'Password',
-                    'column' => 'sm-10',
-                ],
-                'attributes' => [
-                    'type' => 'password',
-                    'id' => 'inputPassword3',
-                    'placeholder' => 'Password',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'type' => 'fieldset',
-                'options' => [
-                    'label' => 'Radios',
-                    'label_attributes' => ['class' => 'pt-0'],
-                    'column' => 'sm-10',
-                ],
-                'elements' => [
-                    [
-                        'spec' => [
-                            'type' => 'radio',
-                            'name' => 'gridRadios',
-                            'options' => [
-                                'column' => 'sm-10',
-                                'value_options' => [
-                                    [
-                                        'label' => 'First radio',
-                                        'attributes' => ['id' => 'gridRadios1'],
-                                        'value' => 'option1',
-                                    ],
-                                    [
-                                        'label' => 'Second radio',
-                                        'attributes' => ['id' => 'gridRadios2'],
-                                        'value' => 'option2',
-                                    ],
-                                    [
-                                        'label' => 'Third disabled radio',
-                                        'disabled' => true,
-                                        'attributes' => ['id' => 'gridRadios3'],
-                                        'value' => 'option3',
-                                    ],
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'type' => 'checkbox',
-                'options' => [
-                    'label' => 'Checkbox',
-                    'column' => 'sm-10',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'type' => 'multicheckbox',
-                'options' => [
-                    'label' => 'Multicheckbox',
-                    'column' => 'sm-10',
-                    'value_options' => [
-                        [
-                            'label' => 'Example checkbox',
-                            'attributes' => ['id' => 'gridCheck1'],
-                            'value' => 1,
-                        ],
-                    ],
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'type' => 'submit',
-                'options' => [
-                    'label' => 'Sign in',
-                    'variant' => 'primary',
-                    'column' => 'sm-10',
-                ],
-            ],
-        ],
-    ]
-]));
-```
-
-<!-- tabs:end -->
-
-
-######## Horizontal form label sizing
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#horizontal-form-label-sizing)
-<!-- tabs:start -->
-
-######### **Result**
-
-<form action="" method="POST" name="form" role="form" id="form">
-    <div class="mb-3&#x20;row">
-        <label class="col-form-label&#x20;col-form-label-sm&#x20;col-sm-2&#x20;form-label" for="colFormLabelSm">Email</label>
-        <div class="col-sm-10">
-            <input name="emailSm" type="email" id="colFormLabelSm" placeholder="col-form-label-sm" class="form-control&#x20;form-control-sm" value=""/>
-        </div>
-    </div>
-    <div class="mb-3&#x20;row">
-        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="colFormLabel">Email</label>
-        <div class="col-sm-10">
-            <input name="email" type="email" id="colFormLabel" placeholder="col-form-label" class="form-control" value=""/>
-        </div>
-    </div>
-    <div class="mb-3&#x20;row">
-        <label class="col-form-label&#x20;col-form-label-lg&#x20;col-sm-2&#x20;form-label" for="colFormLabelLg">Email</label>
-        <div class="col-sm-10">
-            <input name="emailLg" type="email" id="colFormLabelLg" placeholder="col-form-label-lg" class="form-control&#x20;form-control-lg" value=""/>
-        </div>
-    </div>
-</form>
-
-######### **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-echo $this->form($oFactory->create([
-    'type' => 'form',
-    'options' => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL],
-    'elements' => [
-        [
-            'spec' => [
-                'name' => 'emailSm',
-                'options' => [
-                    'label' => 'Email',
-                    'column' => 'sm-10',
-                    'size' => 'sm',
-                ],
-                'attributes' => [
-                    'type' => 'email',
-                    'id' => 'colFormLabelSm',
-                    'placeholder' => 'col-form-label-sm',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'email',
-                'options' => [
-                    'label' => 'Email',
-                    'column' => 'sm-10',
-                ],
-                'attributes' => [
-                    'type' => 'email',
-                    'id' => 'colFormLabel',
-                    'placeholder' => 'col-form-label',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'emailLg',
-                'options' => [
-                    'label' => 'Email',
-                    'column' => 'sm-10',
-                    'size' => 'lg',
-                ],
-                'attributes' => [
-                    'type' => 'email',
-                    'id' => 'colFormLabelLg',
-                    'placeholder' => 'col-form-label-lg',
-                ],
-            ],
-        ],
-    ],
-]));
-```
-
-<!-- tabs:end -->
-
-
-####### Column sizing
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#column-sizing)
-<!-- tabs:start -->
-
-######## **Result**
-
-<form action="" method="POST" name="form" role="form" id="form">
-    <div class="form-row">
-        <div class="col-7&#x20;mb-3">
-            <input name="city" type="text" placeholder="City" class="form-control" value=""/>
-        </div>
-        <div class="col&#x20;mb-3">
-            <input name="state" type="text" placeholder="State" class="form-control" value=""/>
-        </div>
-        <div class="col&#x20;mb-3">
-            <input name="zip" type="text" placeholder="Zip" class="form-control" value=""/>
-        </div>
-    </div>
-</form>
-
-######## **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-echo $this->form($oFactory->create([
-    'type' => 'form',
-    'options' => ['row_class' => 'form-row'],
-    'elements' => [
-        [
-            'spec' => [
-                'name' => 'city',
-                'options' => [
-                    'column' => 7,
-                ],
-                'attributes' => [
-                    'type' => 'text',
-                    'placeholder' => 'City',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'state',
-                'options' => [
-                    'column' => true,
-                ],
-                'attributes' => [
-                    'type' => 'text',
-                    'placeholder' => 'State',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'zip',
-                'options' => [
-                    'column' => true,
-                ],
-                'attributes' => [
-                    'type' => 'text',
-                    'placeholder' => 'Zip',
-                ],
-            ],
-        ],
-    ]
-]));
-```
-
-<!-- tabs:end -->
-
-
-####### Auto-sizing
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#auto-sizing)
-<!-- tabs:start -->
-
-######## **Result**
-
-<form action="" method="POST" name="form" role="form" id="form">
-    <div class="align-items-center&#x20;form-row">
-        <div class="col-auto&#x20;mb-3">
-            <label class="form-label&#x20;sr-only" for="inlineFormInput">Name</label>
-            <input name="name" type="text" id="inlineFormInput" placeholder="Jane&#x20;Doe" class="form-control&#x20;mb-2" value=""/>
-        </div>
-        <div class="col-auto&#x20;mb-3">
-            <label class="form-label&#x20;sr-only" for="inlineFormInputGroup">Username</label>
-            <div class="input-group&#x20;mb-2">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">
-                        @
-                    </div>
-                </div>
-                <input name="username" type="text" id="inlineFormInputGroup" placeholder="Username" class="form-control" value=""/>
-            </div>
-        </div>
-        <div class="col-auto&#x20;mb-3">
-            <div class="form-check&#x20;mb-2">
-                <input type="checkbox" name="remember_me" id="autoSizingCheck" class="form-check-input" value="1"/>
-                <label class="form-check-label" for="autoSizingCheck">Remember me</label>
-            </div>
-        </div>
-        <div class="col-auto&#x20;mb-3">
-            <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">Submit</button>
-        </div>
-    </div>
-</form>
-<br/>
-<form action="" method="POST" name="form" role="form" id="form">
-    <div class="align-items-center&#x20;form-row">
-        <div class="col-sm-3&#x20;mb-3&#x20;my-1">
-            <label class="form-label&#x20;sr-only" for="inlineFormInput">Name</label>
-            <input name="name" type="text" id="inlineFormInput" placeholder="Jane&#x20;Doe" class="form-control&#x20;mb-2" value=""/>
-        </div>
-        <div class="col-sm-3&#x20;mb-3&#x20;my-1">
-            <label class="form-label&#x20;sr-only" for="inlineFormInputGroup">Username</label>
-            <div class="input-group&#x20;mb-2">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">
-                        @
-                    </div>
-                </div>
-                <input name="username" type="text" id="inlineFormInputGroup" placeholder="Username" class="form-control" value=""/>
-            </div>
-        </div>
-        <div class="col-auto&#x20;mb-3&#x20;my-1">
-            <div class="form-check&#x20;mb-2">
-                <input type="checkbox" name="remember_me" id="autoSizingCheck" class="form-check-input" value="1"/>
-                <label class="form-check-label" for="autoSizingCheck">Remember me</label>
-            </div>
-        </div>
-        <div class="col-auto&#x20;mb-3&#x20;my-1">
-            <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">Submit</button>
-        </div>
-    </div>
-</form>
-<br/>
-<form action="" method="POST" name="form" role="form" id="form">
-    <div class="align-items-center&#x20;form-row">
-        <div class="col-sm-3&#x20;mb-3&#x20;my-1">
-            <label class="mr-sm-2&#x20;sr-only" for="inlineFormCustomSelect">Preference</label>
-            <select name="preference" id="inlineFormCustomSelect" class="form-select&#x20;mr-sm-2">
-                <option value="">Choose...</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
-        </div>
-        <div class="col-auto&#x20;mb-3&#x20;my-1">
-            <div class="custom-checkbox&#x20;custom-control&#x20;mr-sm-2">
-                <input type="checkbox" name="remember_my_preference" id="customControlAutosizing" class="form-check-input" value="1"/>
-                <label class="form-check-label" for="customControlAutosizing">Remember my preference</label>
-            </div>
-        </div>
-        <div class="col-auto&#x20;mb-3&#x20;my-1">
-            <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Submit</button>
-        </div>
-    </div>
-</form>
-
-######## **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-echo $this->form($oFactory->create([
-    'type' => 'form',
-    'options' => [
-        'row_class' => 'align-items-center form-row',
-    ],
-    'elements' => [
-        [
-            'spec' => [
-                'name' => 'name',
-                'options' => [
-                    'label' => 'Name',
-                    'show_label' => false,
-                    'column' => 'auto',
-                ],
-                'attributes' => [
-                    'type' => 'text',
-                    'id' => 'inlineFormInput',
-                    'placeholder' => 'Jane Doe',
-                    'class' => 'mb-2',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'username',
-                'options' => [
-                    'label' => 'Username',
-                    'show_label' => false,
-                    'column' => 'auto',
-                    'add_on_prepend' => '@',
-                    'input_group_class' => 'mb-2',
-                ],
-                'attributes' => [
-                    'type' => 'text',
-                    'id' => 'inlineFormInputGroup',
-                    'placeholder' => 'Username',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'type' => 'checkbox',
-                'name' => 'remember_me',
-                'options' => [
-                    'label' => 'Remember me',
-                    'use_hidden_element' => false,
-                    'column' => 'auto',
-                    'form_check_class' => 'mb-2',
-                ],
-                'attributes' => [
-                    'id' => 'autoSizingCheck',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'type' => 'submit',
-                'options' => [
-                    'label' => 'Submit',
-                    'variant' => 'primary',
-                    'column' => 'auto',
-                ],
-                'attributes' => [
-                    'class' => 'mb-2',
-                ],
-            ],
-        ],
-    ],
-]));
-
-echo PHP_EOL . '<br/>' . PHP_EOL;
-
-// Remix that once again with size-specific column classes.
-echo $this->form($oFactory->create([
-    'type' => 'form',
-    'options' => [
-        'row_class' => 'align-items-center form-row',
-    ],
-    'elements' => [
-        [
-            'spec' => [
-                'name' => 'name',
-                'options' => [
-                    'label' => 'Name',
-                    'show_label' => false,
-                    'column' => 'sm-3',
-                    'row_class' => 'my-1',
-                ],
-                'attributes' => [
-                    'type' => 'text',
-                    'id' => 'inlineFormInput',
-                    'placeholder' => 'Jane Doe',
-                    'class' => 'mb-2',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'username',
-                'options' => [
-                    'label' => 'Username',
-                    'show_label' => false,
-                    'column' => 'sm-3',
-                    'row_class' => 'my-1',
-                    'add_on_prepend' => '@',
-                    'input_group_class' => 'mb-2',
-                ],
-                'attributes' => [
-                    'type' => 'text',
-                    'id' => 'inlineFormInputGroup',
-                    'placeholder' => 'Username',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'type' => 'checkbox',
-                'name' => 'remember_me',
-                'options' => [
-                    'label' => 'Remember me',
-                    'use_hidden_element' => false,
-                    'column' => 'auto',
-                    'row_class' => 'my-1',
-                    'form_check_class' => 'mb-2',
-                ],
-                'attributes' => [
-                    'id' => 'autoSizingCheck',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'type' => 'submit',
-                'options' => [
-                    'label' => 'Submit',
-                    'variant' => 'primary',
-                    'column' => 'auto',
-                    'row_class' => 'my-1',
-                ],
-                'attributes' => [
-                    'class' => 'mb-2',
-                ],
-            ],
-        ],
-    ],
-]));
-
-echo PHP_EOL . '<br/>' . PHP_EOL;
-
-// And of course custom form controls are supported.
-echo $this->form($oFactory->create([
-    'type' => 'form',
-    'options' => [
-        'row_class' => 'align-items-center form-row',
-    ],
-    'elements' => [
-        [
-            'spec' => [
-                'name' => 'preference',
-                'type' => 'select',
-                'options' => [
-                    'label' => 'Preference',
-                    'show_label' => false,
-                    'label_attributes' => ['class' => 'mr-sm-2'],
-                    'column' => 'sm-3',
-                    'row_class' => 'my-1',
-                    'empty_option' => 'Choose...',
-                    'value_options' => [
-                        1 => 'One',
-                        2 => 'Two',
-                        3 => 'Three',
-                    ],
-                    'custom' => true,
-                ],
-                'attributes' => [
-                    'id' => 'inlineFormCustomSelect',
-                    'class' => 'mr-sm-2',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'type' => 'checkbox',
-                'name' => 'remember_my_preference',
-                'options' => [
-                    'label' => 'Remember my preference',
-                    'use_hidden_element' => false,
-                    'column' => 'auto',
-                    'row_class' => 'my-1',
-                    'form_check_class' => 'mr-sm-2',
-                    'custom' => true,
-                ],
-                'attributes' => [
-                    'id' => 'customControlAutosizing',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'type' => 'submit',
-                'options' => [
-                    'label' => 'Submit',
-                    'variant' => 'primary',
-                    'column' => 'auto',
-                    'row_class' => 'my-1',
-                ],
-            ],
-        ],
-    ],
-]));
-```
-
-<!-- tabs:end -->
-
-
-###### Inline forms
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#inline-forms)
-<!-- tabs:start -->
-
-####### **Result**
-
-<form action="" method="POST" name="form" role="form" class="form-inline" id="form">
-    <label class="form-label&#x20;sr-only" for="inlineFormInputName2">Name</label>
-    <input name="name" type="text" id="inlineFormInputName2" placeholder="Jane&#x20;Doe" class="form-control&#x20;mb-2&#x20;mr-sm-2" value=""/>
-    <label class="form-label&#x20;sr-only" for="inlineFormInputGroupUsername2">Username</label>
-    <div class="input-group&#x20;mb-2&#x20;mr-sm-2">
-        <div class="input-group-prepend">
-            <div class="input-group-text">
-                @
-            </div>
-        </div>
-        <input name="username" type="text" id="inlineFormInputGroupUsername2" placeholder="Username" class="form-control" value=""/>
-    </div>
-    <div class="form-check&#x20;mb-2&#x20;mr-sm-2">
-        <input type="checkbox" name="remember_me" id="inlineFormCheck" class="form-check-input" value="1"/>
-        <label class="form-check-label" for="inlineFormCheck">Remember me</label>
-    </div>
-    <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">Submit</button>
-</form>
-<br/>
-<form action="" method="POST" name="form" role="form" class="form-inline" id="form">
-    <label class="mr-2&#x20;my-1" for="inlineFormCustomSelectPref">Preference</label>
-    <select name="preference" id="inlineFormCustomSelectPref" class="form-select&#x20;mr-sm-2&#x20;my-1">
-        <option value="">Choose...</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-    </select>
-    <div class="custom-checkbox&#x20;custom-control&#x20;mr-sm-2&#x20;my-1">
-        <input type="checkbox" name="remember_my_preference" id="customControlInline" class="form-check-input" value="1"/>
-        <label class="form-check-label" for="customControlInline">Remember my preference</label>
-    </div>
-    <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">Submit</button>
-</form>
-
-####### **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-echo $this->form($oFactory->create([
-    'type' => 'form',
-    'options' => [
-        'layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE,
-    ],
-    'elements' => [
-        [
-            'spec' => [
-                'name' => 'name',
-                'options' => [
-                    'label' => 'Name',
-                    'form_group' => false,
-                ],
-                'attributes' => [
-                    'type' => 'text',
-                    'id' => 'inlineFormInputName2',
-                    'placeholder' => 'Jane Doe',
-                    'class' => 'mb-2 mr-sm-2',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'username',
-                'options' => [
-                    'label' => 'Username',
-                    'show_label' => false,
-                    'add_on_prepend' => '@',
-                    'input_group_class' => 'mb-2 mr-sm-2',
-                    'form_group' => false,
-                ],
-                'attributes' => [
-                    'type' => 'text',
-                    'id' => 'inlineFormInputGroupUsername2',
-                    'placeholder' => 'Username',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'type' => 'checkbox',
-                'name' => 'remember_me',
-                'options' => [
-                    'label' => 'Remember me',
-                    'use_hidden_element' => false,
-                    'form_check_class' => 'mb-2 mr-sm-2',
-                    'form_group' => false,
-                ],
-                'attributes' => [
-                    'id' => 'inlineFormCheck',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'type' => 'submit',
-                'options' => [
-                    'label' => 'Submit',
-                    'variant' => 'primary',
-                ],
-                'attributes' => [
-                    'class' => 'mb-2',
-                ],
-            ],
-        ],
-    ],
-]));
-
-echo PHP_EOL . '<br/>' . PHP_EOL;
-
-// Custom form controls and selects are also supported
-echo $this->form($oFactory->create([
-    'type' => 'form',
-    'options' => [
-        'layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE,
-    ],
-    'elements' => [
-        [
-            'spec' => [
-                'name' => 'preference',
-                'type' => 'select',
-                'options' => [
-                    'label' => 'Preference',
-                    'show_label' => true,
-                    'label_attributes' => ['class' => 'mr-2 my-1'],
-                    'row_class' => 'my-1',
-                    'empty_option' => 'Choose...',
-                    'value_options' => [
-                        1 => 'One',
-                        2 => 'Two',
-                        3 => 'Three',
-                    ],
-                    'form_group' => false,
-                    'custom' => true,
-                ],
-                'attributes' => [
-                    'id' => 'inlineFormCustomSelectPref',
-                    'class' => 'mr-sm-2 my-1',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'type' => 'checkbox',
-                'name' => 'remember_my_preference',
-                'options' => [
-                    'label' => 'Remember my preference',
-                    'use_hidden_element' => false,
-                    'form_check_class' => 'mr-sm-2 my-1',
-                    'form_group' => false,
-                    'custom' => true,
-                ],
-                'attributes' => [
-                    'id' => 'customControlInline',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'type' => 'submit',
-                'options' => [
-                    'label' => 'Submit',
-                    'variant' => 'primary',
-                ],
-                'attributes' => [
-                    'class' => 'mb-2',
-                ],
-            ],
-        ],
-    ],
-]));
-```
-
-<!-- tabs:end -->
-
-
-####### Form row
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#form-row)
-<!-- tabs:start -->
-
-######## **Result**
-
-<form action="" method="POST" name="form" role="form" id="form">
-    <div class="form-row">
-        <div class="col&#x20;mb-3">
-            <input name="firstName" type="text" placeholder="First&#x20;name" class="form-control" value=""/>
-        </div>
-        <div class="col&#x20;mb-3">
-            <input name="lastName" type="text" placeholder="Last&#x20;name" class="form-control" value=""/>
-        </div>
-    </div>
-</form>
-
-######## **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-echo $this->form($oFactory->create([
-    'type' => 'form',
-    'options' => ['row_class' => 'form-row'],
-    'elements' => [
-        [
-            'spec' => [
-                'name' => 'firstName',
-                'options' => [
-                    'column' => true,
-                ],
-                'attributes' => [
-                    'type' => 'text',
-                    'placeholder' => 'First name',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'lastName',
-                'options' => [
-                    'column' => true,
-                ],
-                'attributes' => [
-                    'type' => 'text',
-                    'placeholder' => 'Last name',
-                ],
-            ],
-        ],
-    ]
-]));
-```
-
-<!-- tabs:end -->
-
-
-####### Horizontal form
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#horizontal-form)
-<!-- tabs:start -->
-
-######## **Result**
-
-<form action="" method="POST" name="form" role="form" id="form">
-    <div class="mb-3&#x20;row">
-        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="inputEmail3">Email</label>
-        <div class="col-sm-10">
-            <input name="email" type="email" id="inputEmail3" placeholder="Email" class="form-control" value=""/>
-        </div>
-    </div>
-    <div class="mb-3&#x20;row">
-        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="inputPassword3">Password</label>
-        <div class="col-sm-10">
-            <input name="password" type="password" id="inputPassword3" placeholder="Password" class="form-control" value=""/>
-        </div>
-    </div>
-    <fieldset class="form-group">
-        <div class="row">
-            <legend class="col-form-label&#x20;col-sm-2&#x20;pt-0">Radios</legend>
-            <div class="col-sm-10">
-                <div class="form-check">
-                    <input type="radio" name="fieldset&#x5B;gridRadios&#x5D;" class="form-check-input" id="gridRadios1" value="option1"/>
-                    <label class="form-check-label" for="gridRadios1">First radio</label>
-                </div>
-                <div class="form-check">
-                    <input type="radio" name="fieldset&#x5B;gridRadios&#x5D;" class="form-check-input" id="gridRadios2" value="option2"/>
-                    <label class="form-check-label" for="gridRadios2">Second radio</label>
-                </div>
-                <div class="form-check">
-                    <input type="radio" name="fieldset&#x5B;gridRadios&#x5D;" class="form-check-input" id="gridRadios3" value="option3" disabled="disabled"/>
-                    <label class="form-check-label" for="gridRadios3">Third disabled radio</label>
-                </div>
-            </div>
-        </div>
-    </fieldset>
-    <div class="mb-3&#x20;row">
-        <div class="col-sm-10&#x20;offset-sm-2">
-            <div class="form-check">
-                <input type="hidden" name="checkbox" value="0"/><input type="checkbox" name="checkbox" class="form-check-input" value="1"/>
-                <label class="form-check-label" for="checkbox">Checkbox</label>
-            </div>
-        </div>
-    </div>
-    <div class="mb-3&#x20;row">
-        <div class="col-sm-2">
-            Multicheckbox
-        </div>
-        <div class="col-sm-10">
-            <div class="form-check">
-                <input type="checkbox" name="multicheckbox&#x5B;&#x5D;" class="form-check-input" id="gridCheck1" value="1"/>
-                <label class="form-check-label" for="gridCheck1">Example checkbox</label>
-            </div>
-        </div>
-    </div>
-    <div class="mb-3&#x20;row">
-        <div class="col-sm-10">
-            <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Sign in</button>
-        </div>
-    </div>
-</form>
-
-######## **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-echo $this->form($oFactory->create([
-    'type' => 'form',
-    'options' => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL],
-    'elements' => [
-        [
-            'spec' => [
-                'name' => 'email',
-                'options' => [
-                    'label' => 'Email',
-                    'column' => 'sm-10',
-                ],
-                'attributes' => [
-                    'type' => 'email',
-                    'id' => 'inputEmail3',
-                    'placeholder' => 'Email',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'password',
-                'options' => [
-                    'label' => 'Password',
-                    'column' => 'sm-10',
-                ],
-                'attributes' => [
-                    'type' => 'password',
-                    'id' => 'inputPassword3',
-                    'placeholder' => 'Password',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'type' => 'fieldset',
-                'options' => [
-                    'label' => 'Radios',
-                    'label_attributes' => ['class' => 'pt-0'],
-                    'column' => 'sm-10',
-                ],
-                'elements' => [
-                    [
-                        'spec' => [
-                            'type' => 'radio',
-                            'name' => 'gridRadios',
-                            'options' => [
-                                'column' => 'sm-10',
-                                'value_options' => [
-                                    [
-                                        'label' => 'First radio',
-                                        'attributes' => ['id' => 'gridRadios1'],
-                                        'value' => 'option1',
-                                    ],
-                                    [
-                                        'label' => 'Second radio',
-                                        'attributes' => ['id' => 'gridRadios2'],
-                                        'value' => 'option2',
-                                    ],
-                                    [
-                                        'label' => 'Third disabled radio',
-                                        'disabled' => true,
-                                        'attributes' => ['id' => 'gridRadios3'],
-                                        'value' => 'option3',
-                                    ],
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'type' => 'checkbox',
-                'options' => [
-                    'label' => 'Checkbox',
-                    'column' => 'sm-10',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'type' => 'multicheckbox',
-                'options' => [
-                    'label' => 'Multicheckbox',
-                    'column' => 'sm-10',
-                    'value_options' => [
-                        [
-                            'label' => 'Example checkbox',
-                            'attributes' => ['id' => 'gridCheck1'],
-                            'value' => 1,
-                        ],
-                    ],
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'type' => 'submit',
-                'options' => [
-                    'label' => 'Sign in',
-                    'variant' => 'primary',
-                    'column' => 'sm-10',
-                ],
-            ],
-        ],
-    ]
-]));
-```
-
-<!-- tabs:end -->
-
-
-######## Horizontal form label sizing
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#horizontal-form-label-sizing)
-<!-- tabs:start -->
-
-######### **Result**
-
-<form action="" method="POST" name="form" role="form" id="form">
-    <div class="mb-3&#x20;row">
-        <label class="col-form-label&#x20;col-form-label-sm&#x20;col-sm-2&#x20;form-label" for="colFormLabelSm">Email</label>
-        <div class="col-sm-10">
-            <input name="emailSm" type="email" id="colFormLabelSm" placeholder="col-form-label-sm" class="form-control&#x20;form-control-sm" value=""/>
-        </div>
-    </div>
-    <div class="mb-3&#x20;row">
-        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="colFormLabel">Email</label>
-        <div class="col-sm-10">
-            <input name="email" type="email" id="colFormLabel" placeholder="col-form-label" class="form-control" value=""/>
-        </div>
-    </div>
-    <div class="mb-3&#x20;row">
-        <label class="col-form-label&#x20;col-form-label-lg&#x20;col-sm-2&#x20;form-label" for="colFormLabelLg">Email</label>
-        <div class="col-sm-10">
-            <input name="emailLg" type="email" id="colFormLabelLg" placeholder="col-form-label-lg" class="form-control&#x20;form-control-lg" value=""/>
-        </div>
-    </div>
-</form>
-
-######### **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-echo $this->form($oFactory->create([
-    'type' => 'form',
-    'options' => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL],
-    'elements' => [
-        [
-            'spec' => [
-                'name' => 'emailSm',
-                'options' => [
-                    'label' => 'Email',
-                    'column' => 'sm-10',
-                    'size' => 'sm',
-                ],
-                'attributes' => [
-                    'type' => 'email',
-                    'id' => 'colFormLabelSm',
-                    'placeholder' => 'col-form-label-sm',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'email',
-                'options' => [
-                    'label' => 'Email',
-                    'column' => 'sm-10',
-                ],
-                'attributes' => [
-                    'type' => 'email',
-                    'id' => 'colFormLabel',
-                    'placeholder' => 'col-form-label',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'emailLg',
-                'options' => [
-                    'label' => 'Email',
-                    'column' => 'sm-10',
-                    'size' => 'lg',
-                ],
-                'attributes' => [
-                    'type' => 'email',
-                    'id' => 'colFormLabelLg',
-                    'placeholder' => 'col-form-label-lg',
-                ],
-            ],
-        ],
-    ],
-]));
-```
-
-<!-- tabs:end -->
-
-
-####### Column sizing
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#column-sizing)
-<!-- tabs:start -->
-
-######## **Result**
-
-<form action="" method="POST" name="form" role="form" id="form">
-    <div class="form-row">
-        <div class="col-7&#x20;mb-3">
-            <input name="city" type="text" placeholder="City" class="form-control" value=""/>
-        </div>
-        <div class="col&#x20;mb-3">
-            <input name="state" type="text" placeholder="State" class="form-control" value=""/>
-        </div>
-        <div class="col&#x20;mb-3">
-            <input name="zip" type="text" placeholder="Zip" class="form-control" value=""/>
-        </div>
-    </div>
-</form>
-
-######## **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-echo $this->form($oFactory->create([
-    'type' => 'form',
-    'options' => ['row_class' => 'form-row'],
-    'elements' => [
-        [
-            'spec' => [
-                'name' => 'city',
-                'options' => [
-                    'column' => 7,
-                ],
-                'attributes' => [
-                    'type' => 'text',
-                    'placeholder' => 'City',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'state',
-                'options' => [
-                    'column' => true,
-                ],
-                'attributes' => [
-                    'type' => 'text',
-                    'placeholder' => 'State',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'zip',
-                'options' => [
-                    'column' => true,
-                ],
-                'attributes' => [
-                    'type' => 'text',
-                    'placeholder' => 'Zip',
-                ],
-            ],
-        ],
-    ]
-]));
-```
-
-<!-- tabs:end -->
-
-
-####### Auto-sizing
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#auto-sizing)
-<!-- tabs:start -->
-
-######## **Result**
-
-<form action="" method="POST" name="form" role="form" id="form">
-    <div class="align-items-center&#x20;form-row">
-        <div class="col-auto&#x20;mb-3">
-            <label class="form-label&#x20;sr-only" for="inlineFormInput">Name</label>
-            <input name="name" type="text" id="inlineFormInput" placeholder="Jane&#x20;Doe" class="form-control&#x20;mb-2" value=""/>
-        </div>
-        <div class="col-auto&#x20;mb-3">
-            <label class="form-label&#x20;sr-only" for="inlineFormInputGroup">Username</label>
-            <div class="input-group&#x20;mb-2">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">
-                        @
-                    </div>
-                </div>
-                <input name="username" type="text" id="inlineFormInputGroup" placeholder="Username" class="form-control" value=""/>
-            </div>
-        </div>
-        <div class="col-auto&#x20;mb-3">
-            <div class="form-check&#x20;mb-2">
-                <input type="checkbox" name="remember_me" id="autoSizingCheck" class="form-check-input" value="1"/>
-                <label class="form-check-label" for="autoSizingCheck">Remember me</label>
-            </div>
-        </div>
-        <div class="col-auto&#x20;mb-3">
-            <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">Submit</button>
-        </div>
-    </div>
-</form>
-<br/>
-<form action="" method="POST" name="form" role="form" id="form">
-    <div class="align-items-center&#x20;form-row">
-        <div class="col-sm-3&#x20;mb-3&#x20;my-1">
-            <label class="form-label&#x20;sr-only" for="inlineFormInput">Name</label>
-            <input name="name" type="text" id="inlineFormInput" placeholder="Jane&#x20;Doe" class="form-control&#x20;mb-2" value=""/>
-        </div>
-        <div class="col-sm-3&#x20;mb-3&#x20;my-1">
-            <label class="form-label&#x20;sr-only" for="inlineFormInputGroup">Username</label>
-            <div class="input-group&#x20;mb-2">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">
-                        @
-                    </div>
-                </div>
-                <input name="username" type="text" id="inlineFormInputGroup" placeholder="Username" class="form-control" value=""/>
-            </div>
-        </div>
-        <div class="col-auto&#x20;mb-3&#x20;my-1">
-            <div class="form-check&#x20;mb-2">
-                <input type="checkbox" name="remember_me" id="autoSizingCheck" class="form-check-input" value="1"/>
-                <label class="form-check-label" for="autoSizingCheck">Remember me</label>
-            </div>
-        </div>
-        <div class="col-auto&#x20;mb-3&#x20;my-1">
-            <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">Submit</button>
-        </div>
-    </div>
-</form>
-<br/>
-<form action="" method="POST" name="form" role="form" id="form">
-    <div class="align-items-center&#x20;form-row">
-        <div class="col-sm-3&#x20;mb-3&#x20;my-1">
-            <label class="mr-sm-2&#x20;sr-only" for="inlineFormCustomSelect">Preference</label>
-            <select name="preference" id="inlineFormCustomSelect" class="form-select&#x20;mr-sm-2">
-                <option value="">Choose...</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
-        </div>
-        <div class="col-auto&#x20;mb-3&#x20;my-1">
-            <div class="custom-checkbox&#x20;custom-control&#x20;mr-sm-2">
-                <input type="checkbox" name="remember_my_preference" id="customControlAutosizing" class="form-check-input" value="1"/>
-                <label class="form-check-label" for="customControlAutosizing">Remember my preference</label>
-            </div>
-        </div>
-        <div class="col-auto&#x20;mb-3&#x20;my-1">
-            <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Submit</button>
-        </div>
-    </div>
-</form>
-
-######## **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-echo $this->form($oFactory->create([
-    'type' => 'form',
-    'options' => [
-        'row_class' => 'align-items-center form-row',
-    ],
-    'elements' => [
-        [
-            'spec' => [
-                'name' => 'name',
-                'options' => [
-                    'label' => 'Name',
-                    'show_label' => false,
-                    'column' => 'auto',
-                ],
-                'attributes' => [
-                    'type' => 'text',
-                    'id' => 'inlineFormInput',
-                    'placeholder' => 'Jane Doe',
-                    'class' => 'mb-2',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'username',
-                'options' => [
-                    'label' => 'Username',
-                    'show_label' => false,
-                    'column' => 'auto',
-                    'add_on_prepend' => '@',
-                    'input_group_class' => 'mb-2',
-                ],
-                'attributes' => [
-                    'type' => 'text',
-                    'id' => 'inlineFormInputGroup',
-                    'placeholder' => 'Username',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'type' => 'checkbox',
-                'name' => 'remember_me',
-                'options' => [
-                    'label' => 'Remember me',
-                    'use_hidden_element' => false,
-                    'column' => 'auto',
-                    'form_check_class' => 'mb-2',
-                ],
-                'attributes' => [
-                    'id' => 'autoSizingCheck',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'type' => 'submit',
-                'options' => [
-                    'label' => 'Submit',
-                    'variant' => 'primary',
-                    'column' => 'auto',
-                ],
-                'attributes' => [
-                    'class' => 'mb-2',
-                ],
-            ],
-        ],
-    ],
-]));
-
-echo PHP_EOL . '<br/>' . PHP_EOL;
-
-// Remix that once again with size-specific column classes.
-echo $this->form($oFactory->create([
-    'type' => 'form',
-    'options' => [
-        'row_class' => 'align-items-center form-row',
-    ],
-    'elements' => [
-        [
-            'spec' => [
-                'name' => 'name',
-                'options' => [
-                    'label' => 'Name',
-                    'show_label' => false,
-                    'column' => 'sm-3',
-                    'row_class' => 'my-1',
-                ],
-                'attributes' => [
-                    'type' => 'text',
-                    'id' => 'inlineFormInput',
-                    'placeholder' => 'Jane Doe',
-                    'class' => 'mb-2',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'username',
-                'options' => [
-                    'label' => 'Username',
-                    'show_label' => false,
-                    'column' => 'sm-3',
-                    'row_class' => 'my-1',
-                    'add_on_prepend' => '@',
-                    'input_group_class' => 'mb-2',
-                ],
-                'attributes' => [
-                    'type' => 'text',
-                    'id' => 'inlineFormInputGroup',
-                    'placeholder' => 'Username',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'type' => 'checkbox',
-                'name' => 'remember_me',
-                'options' => [
-                    'label' => 'Remember me',
-                    'use_hidden_element' => false,
-                    'column' => 'auto',
-                    'row_class' => 'my-1',
-                    'form_check_class' => 'mb-2',
-                ],
-                'attributes' => [
-                    'id' => 'autoSizingCheck',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'type' => 'submit',
-                'options' => [
-                    'label' => 'Submit',
-                    'variant' => 'primary',
-                    'column' => 'auto',
-                    'row_class' => 'my-1',
-                ],
-                'attributes' => [
-                    'class' => 'mb-2',
-                ],
-            ],
-        ],
-    ],
-]));
-
-echo PHP_EOL . '<br/>' . PHP_EOL;
-
-// And of course custom form controls are supported.
-echo $this->form($oFactory->create([
-    'type' => 'form',
-    'options' => [
-        'row_class' => 'align-items-center form-row',
-    ],
-    'elements' => [
-        [
-            'spec' => [
-                'name' => 'preference',
-                'type' => 'select',
-                'options' => [
-                    'label' => 'Preference',
-                    'show_label' => false,
-                    'label_attributes' => ['class' => 'mr-sm-2'],
-                    'column' => 'sm-3',
-                    'row_class' => 'my-1',
-                    'empty_option' => 'Choose...',
-                    'value_options' => [
-                        1 => 'One',
-                        2 => 'Two',
-                        3 => 'Three',
-                    ],
-                    'custom' => true,
-                ],
-                'attributes' => [
-                    'id' => 'inlineFormCustomSelect',
-                    'class' => 'mr-sm-2',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'type' => 'checkbox',
-                'name' => 'remember_my_preference',
-                'options' => [
-                    'label' => 'Remember my preference',
-                    'use_hidden_element' => false,
-                    'column' => 'auto',
-                    'row_class' => 'my-1',
-                    'form_check_class' => 'mr-sm-2',
-                    'custom' => true,
-                ],
-                'attributes' => [
-                    'id' => 'customControlAutosizing',
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'type' => 'submit',
-                'options' => [
-                    'label' => 'Submit',
-                    'variant' => 'primary',
-                    'column' => 'auto',
-                    'row_class' => 'my-1',
-                ],
-            ],
-        ],
-    ],
-]));
-```
-
-<!-- tabs:end -->
-
-
-##### Help text
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#help-text)
-<!-- tabs:start -->
-
-###### **Result**
-
-<label class="form-label" for="inputPassword5">Password</label>
-<input name="password" id="inputPassword5" type="password" aria-describedby="passwordHelpBlock" class="form-control" value=""/>
-<small class="form-text&#x20;text-muted" id="passwordHelpBlock">Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.</small>
-<br/>
-<form action="" method="POST" name="form" role="form" class="form-inline" id="form">
-    <div class="mb-3">
-        <label class="form-label" for="inputPassword6">Password</label>
-        <input name="password" id="inputPassword6" type="password" aria-describedby="passwordHelpInline" class="form-control&#x20;mx-sm-3" value=""/>
-        <small class="text-muted" id="passwordHelpInline">Must be 8-20 characters long.</small>
-    </div>
-</form>
-
-###### **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-echo $this->formRow($oFactory->create([
-    'name' => 'password',
-    'options' => [
-        'label' => 'Password',
-        'form_group' => false,
-        'help_block' => [
-            'content' => 'Your password must be 8-20 characters long, contain letters and numbers, ' .
-            'and must not contain spaces, special characters, or emoji.',
-            'attributes' => ['id' => 'passwordHelpBlock'],
-        ]
-    ],
-    'attributes' => [
-        'id' => 'inputPassword5',
-        'type' => 'password',
-        'aria-describedby' => 'passwordHelpBlock',
-    ],
-]));
-
-echo PHP_EOL . '<br/>' . PHP_EOL;
-
-// Inline text can use any typical inline HTML element
-// (be it a <small>, <span>, or something else)
-// with nothing more than a utility class
-echo $this->form($oFactory->create([
-    'type' => 'form',
-    'options' => [
-        'layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE,
-    ],
-    'elements' => [
-        [
-            'spec' => [
-                'name' => 'password',
-                'options' => [
-                    'label' => 'Password',
-                    'show_label' => true,
-                    'help_block' => [
-                        'content' => 'Must be 8-20 characters long.',
-                        'attributes' => ['id' => 'passwordHelpInline'],
-                    ],
-                ],
-                'attributes' => [
-                    'id' => 'inputPassword6',
-                    'type' => 'password',
-                    'aria-describedby' => 'passwordHelpInline',
-                    'class' => 'mx-sm-3',
-                ],
-            ],
-        ],
-    ],
-]));
-```
-
-<!-- tabs:end -->
-
-
-##### Disabled forms
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#disabled-forms)
-<!-- tabs:start -->
-
-###### **Result**
-
-<form action="" method="POST" name="form" role="form" id="form">
-    <fieldset disabled="disabled" class="form-group">
-        <div class="mb-3">
-            <label class="form-label" for="disabledTextInput">Disabled input</label>
-            <input name="fieldset&#x5B;disabled-input&#x5D;" type="text" id="disabledTextInput" placeholder="Disabled&#x20;input" class="form-control" value=""/>
-        </div>
-        <div class="mb-3">
-            <label class="form-label" for="disabledSelect">Disabled select menu</label>
-            <select name="fieldset&#x5B;disabled-select&#x5D;" id="disabledSelect" class="form-select"><option value="">Disabled select</option></select>
-        </div>
-        <div class="mb-3">
-            <div class="form-check">
-                <input type="checkbox" name="fieldset&#x5B;disabled-fieldset-check&#x5D;" id="disabledFieldsetCheck" disabled="disabled" class="form-check-input" value="1"/>
-                <label class="form-check-label" for="disabledFieldsetCheck">Can&#039;t check this</label>
-            </div>
-        </div>
-        <div class="mb-3">
-            <button type="submit" name="fieldset&#x5B;submit&#x5D;" class="btn&#x20;btn-primary" value="">Submit</button>
-        </div>
-    </fieldset>
-</form>
-
-###### **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-echo $this->form($oFactory->create([
-    'type' => 'form',
-    'elements' => [
-        [
-            'spec' => [
-                'type' => 'fieldset',
-                'attributes' => [
-                    'disabled' => true,
-                ],
-                'elements' => [
-                    [
-                        'spec' => [
-                            'name' => 'disabled-input',
-                            'options' => ['label' => 'Disabled input'],
-                            'attributes' => [
-                                'type' => 'text',
-                                'id' => 'disabledTextInput',
-                                'placeholder' => 'Disabled input',
-                            ],
-                        ],
-                    ],
-                    [
-                        'spec' => [
-                            'name' => 'disabled-select',
-                            'type' => 'select',
-                            'attributes' => ['id' => 'disabledSelect',],
-                            'options' => [
-                                'label' => 'Disabled select menu',
-                                'empty_option' => 'Disabled select',
-                            ],
-                        ],
-                    ],
-                    [
-                        'spec' => [
-                            'type' => 'checkbox',
-                            'name' => 'disabled-fieldset-check',
-                            'options' => ['label' => 'Can\'t check this', 'use_hidden_element' => false],
-                            'attributes' => [
-                                'id' => 'disabledFieldsetCheck',
-                                'disabled' => true,
-                            ],
-                        ],
-                    ],
-                    [
-                        'spec' => [
-                            'type' => 'submit',
-                            'options' => ['label' => 'Submit', 'variant' => 'primary'],
-                        ],
-                    ],
-                ],
-            ],
-        ],
-    ],
-]));
-```
-
-<!-- tabs:end -->
-
-
-##### Validation
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#validation)
-###### Server side
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#server-side)
-<!-- tabs:start -->
-
-####### **Result**
-
-<form action="" method="POST" name="form" role="form" id="form">
-    <div class="form-row">
-        <div class="col-md-6&#x20;mb-3">
-            <label class="form-label" for="validationServer01">First name</label>
-            <input name="firstName" type="text" id="validationServer01" required="required" class="form-control&#x20;is-valid" value="Mark"/>
-            <div class="valid-feedback">
-                Looks good!
-            </div>
-        </div>
-        <div class="col-md-6&#x20;mb-3">
-            <label class="form-label" for="validationServer02">Last name</label>
-            <input name="lastName" type="text" id="validationServer02" required="required" class="form-control&#x20;is-valid" value="Otto"/>
-            <div class="valid-feedback">
-                Looks good!
-            </div>
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="col-md-6&#x20;has-error&#x20;mb-3">
-            <label class="col-form-label&#x20;form-label" for="validationServer03">City</label>
-            <input name="city" type="text" id="validationServer03" required="required" class="form-control&#x20;is-invalid" value=""/>
-            <div class="invalid-feedback">Please provide a valid city.</div>
-        </div>
-        <div class="col-md-3&#x20;has-error&#x20;mb-3">
-            <label class="col-form-label&#x20;form-label" for="validationServer04">State</label>
-            <select name="state" id="validationServer04" required="required" class="form-select&#x20;is-invalid">
-                <option value="" selected="selected" disabled="disabled">Choose...</option>
-                <option value="0">...</option>
-            </select>
-            <div class="invalid-feedback">Please select a valid state.</div>
-        </div>
-        <div class="col-md-3&#x20;has-error&#x20;mb-3">
-            <label class="col-form-label&#x20;form-label" for="validationServer05">Zip</label>
-            <input name="zip" type="text" id="validationServer05" required="required" class="form-control&#x20;is-invalid" value=""/>
-            <div class="invalid-feedback">Please provide a valid zip.</div>
-        </div>
-    </div>
-    <div class="has-error&#x20;mb-3">
-        <div class="form-check">
-            <input type="checkbox" name="termsAndConditions" id="invalidCheck3" required="required" class="form-check-input&#x20;is-invalid" value="1"/>
-            <label class="form-check-label" for="invalidCheck3">Agree to terms and conditions</label>
-            <div class="invalid-feedback">You must agree before submitting.</div>
-        </div>
-    </div>
-    <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Submit</button>
-</form>
-
-####### **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-$oForm = $oFactory->create([
-    'type' => 'form',
-    'options' => ['row_class' => 'form-row'],
-    'elements' => [
-        [
-            'spec' => [
-                'name' => 'firstName',
-                'options' => [
-                    'column' => 'md-6',
-                    'row_class' => 'mb-3',
-                    'label' => 'First name',
-                    'valid_feedback' => 'Looks good!',
-                    'row_name' => 'firstRow',
-                ],
-                'attributes' => [
-                    'type' => 'text',
-                    'value' => 'Mark',
-                    'id' => 'validationServer01',
-                    'required' => true,
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'lastName',
-                'options' => [
-                    'column' => 'md-6',
-                    'row_class' => 'mb-3',
-                    'label' => 'Last name',
-                    'valid_feedback' => 'Looks good!',
-                    'row_name' => 'firstRow',
-                ],
-                'attributes' => [
-                    'type' => 'text',
-                    'value' => 'Otto',
-                    'id' => 'validationServer02',
-                    'required' => true,
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'city',
-                'options' => [
-                    'column' => 'md-6',
-                    'row_class' => 'mb-3',
-                    'label' => 'City',
-                    'row_name' => 'secondRow',
-                ],
-                'attributes' => [
-                    'type' => 'text',
-                    'id' => 'validationServer03',
-                    'required' => true,
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'state',
-                'type' => 'select',
-                'options' => [
-                    'custom' => true,
-                    'empty_option' => ['label' => 'Choose...', 'selected' => true, 'disabled' => true],
-                    'value_options' => ['...'],
-                    'column' => 'md-3',
-                    'row_class' => 'mb-3',
-                    'label' => 'State',
-                    'row_name' => 'secondRow',
-                ],
-                'attributes' => [
-                    'id' => 'validationServer04',
-                    'required' => true,
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'zip',
-                'options' => [
-                    'column' => 'md-3',
-                    'row_class' => 'mb-3',
-                    'label' => 'Zip',
-                    'row_name' => 'secondRow',
-                ],
-                'attributes' => [
-                    'type' => 'text',
-                    'id' => 'validationServer05',
-                    'required' => true,
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'name' => 'termsAndConditions',
-                'type' => 'checkbox',
-                'options' => [
-                    'label' => 'Agree to terms and conditions',
-                    'use_hidden_element' => false,
-                    'row_name' => 'thirdRow',
-                ],
-                'attributes' => [
-                    'id' => 'invalidCheck3',
-                    'required' => true,
-                ],
-            ],
-        ],
-        [
-            'spec' => [
-                'type' => 'submit',
-                'options' => [
-                    'label' => 'Submit', 'variant' => 'primary',
-                    'row_name' => 'lastRow',
-                    'form_group' => false,
-                ],
-            ],
-        ],
-    ],
-]);
-
-// Set error messages
-$oForm->get('city')->setMessages(['Please provide a valid city.']);
-$oForm->get('state')->setMessages(['Please select a valid state.']);
-$oForm->get('zip')->setMessages(['Please provide a valid zip.']);
-$oForm->get('termsAndConditions')->setMessages(['You must agree before submitting.']);
-
-// Render form
-echo $this->form($oForm);
-```
-
-<!-- tabs:end -->
-
-
-##### Custom forms
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#custom-forms)
-###### Checkboxes and radios
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#checkboxes-and-radios-1)
-####### Checkboxes
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#checkboxes)
-<!-- tabs:start -->
-
-######## **Result**
-
-<div class="custom-checkbox&#x20;custom-control">
-    <input type="checkbox" name="custom_checkbox" id="customCheck1" class="form-check-input" value="1"/>
-    <label class="form-check-label" for="customCheck1">Check this custom checkbox</label>
-</div>
-
-######## **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-echo $this->formRow($oFactory->create([
-    'name' => 'custom_checkbox',
-    'type' => 'checkbox',
-    'options' => [
-        'label' => 'Check this custom checkbox',
-        'use_hidden_element' => false,
-        'form_group' => false,
-        'custom' => true,
-    ],
-    'attributes' => [
-        'id' => 'customCheck1',
-    ],
-]));
-```
-
-<!-- tabs:end -->
-
-
-####### Radios
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#checkboxes)
-<!-- tabs:start -->
-
-######## **Result**
-
-<div class="form-check">
-    <input type="radio" name="customRadio" class="form-check-input" id="customRadio1" value="1"/>
-    <label class="form-check-label" for="customRadio1">Toggle this custom radio</label>
-</div>
-<div class="form-check">
-    <input type="radio" name="customRadio" class="form-check-input" id="customRadio2" value="2"/>
-    <label class="form-check-label" for="customRadio2">Or toggle this other custom radio</label>
-</div>
-
-######## **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-echo $this->formRow($oFactory->create([
-    'name' => 'customRadio',
-    'type' => 'radio',
-    'options' => [
-        'custom' => true,
-        'value_options' => [
-            [
-                'label' => 'Toggle this custom radio',
-                'value' => '1',
-                'attributes' => ['id' => 'customRadio1'],
-            ],
-            [
-                'label' => 'Or toggle this other custom radio',
-                'value' => '2',
-                'attributes' => ['id' => 'customRadio2'],
-            ],
-        ],
-    ],
-]));
-```
-
-<!-- tabs:end -->
-
-
-####### Inline
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#inline-1)
-<!-- tabs:start -->
-
-######## **Result**
-
-<div class="form-check&#x20;form-check-inline">
-    <input type="radio" name="customRadioInline1" class="form-check-input" id="customRadioInline1" value="1"/>
-    <label class="form-check-label" for="customRadioInline1">Toggle this custom radio</label>
-</div>
-<div class="form-check&#x20;form-check-inline">
-    <input type="radio" name="customRadioInline1" class="form-check-input" id="customRadioInline2" value="2"/>
-    <label class="form-check-label" for="customRadioInline2">Or toggle this other custom radio</label>
-</div>
-
-######## **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-echo $this->formRow($oFactory->create([
-    'name' => 'customRadioInline1',
-    'type' => 'radio',
-    'options' => [
-        'layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE,
-        'custom' => true,
-        'value_options' => [
-            [
-                'label' => 'Toggle this custom radio',
-                'value' => '1',
-                'attributes' => ['id' => 'customRadioInline1'],
-            ],
-            [
-                'label' => 'Or toggle this other custom radio',
-                'value' => '2',
-                'attributes' => ['id' => 'customRadioInline2'],
-            ],
-        ],
-    ],
-]));
-```
-
-<!-- tabs:end -->
-
-
-####### Disabled
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#disabled)
-<!-- tabs:start -->
-
-######## **Result**
-
-<div class="custom-checkbox&#x20;custom-control">
-    <input type="checkbox" name="custom_checkbox_disabled" id="customCheckDisabled1" disabled="disabled" class="form-check-input" value="1"/>
-    <label class="form-check-label" for="customCheckDisabled1">Check this custom checkbox</label>
-</div>
-<div class="form-check">
-    <input type="radio" name="radioDisabled" disabled="disabled" class="form-check-input" id="customRadioDisabled2" value="1"/>
-    <label class="form-check-label" for="customRadioDisabled2">Toggle this custom radio</label>
-</div>
-
-######## **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-echo $this->formRow($oFactory->create([
-    'name' => 'custom_checkbox_disabled',
-    'type' => 'checkbox',
-    'options' => [
-        'label' => 'Check this custom checkbox',
-        'use_hidden_element' => false,
-        'form_group' => false,
-        'custom' => true,
-    ],
-    'attributes' => [
-        'id' => 'customCheckDisabled1',
-        'disabled' => true,
-    ],
-])) . PHP_EOL;
-
-echo $this->formRow($oFactory->create([
-    'name' => 'radioDisabled',
-    'type' => 'radio',
-    'options' => [
-        'custom' => true,
-        'value_options' => [
-            [
-                'label' => 'Toggle this custom radio',
-                'value' => '1',
-                'attributes' => ['id' => 'customRadioDisabled2'],
-            ],
-        ],
-    ],
-    'attributes' => ['disabled' => true],
-]));
-```
-
-<!-- tabs:end -->
-
-
-###### Switches
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#switches)
-<!-- tabs:start -->
-
-####### **Result**
-
-<div class="custom-control&#x20;custom-switch">
-    <input type="checkbox" name="custom_switch" id="customSwitch1" class="form-check-input" value="1"/>
-    <label class="form-check-label" for="customSwitch1">Toggle this switch element</label>
-</div>
-<div class="custom-control&#x20;custom-switch">
-    <input type="checkbox" name="custom_switch" id="customSwitch2" disabled="disabled" class="form-check-input" value="1"/>
-    <label class="form-check-label" for="customSwitch2">Disabled switch element</label>
-</div>
-
-####### **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-echo $this->formRow($oFactory->create([
-    'name' => 'custom_switch',
-    'type' => 'checkbox',
-    'options' => [
-        'label' => 'Toggle this switch element',
-        'use_hidden_element' => false,
-        'form_group' => false,
-        'custom' => true,
-        'switch' => true,
-    ],
-    'attributes' => ['id' => 'customSwitch1'],
-])) . PHP_EOL;
-
-echo $this->formRow($oFactory->create([
-    'name' => 'custom_switch',
-    'type' => 'checkbox',
-    'options' => [
-        'label' => 'Disabled switch element',
-        'use_hidden_element' => false,
-        'form_group' => false,
-        'custom' => true,
-        'switch' => true,
-    ],
-    'attributes' => [
-        'id' => 'customSwitch2',
-        'disabled' => true,
-    ],
-]));
-```
-
-<!-- tabs:end -->
-
-
-###### Select menu
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#select-menu)
-<!-- tabs:start -->
-
-####### **Result**
-
-<select name="custom_select" class="form-select">
-    <option value="" selected="selected">Open this select menu</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-</select>
-<br/><br/>
-<select name="custom_select_lg" class="form-select&#x20;form-select-lg&#x20;mb-3">
-    <option value="" selected="selected">Open this select menu</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-</select>
-<br/><br/>
-<select name="custom_select_sm" class="form-select&#x20;form-select-sm">
-    <option value="" selected="selected">Open this select menu</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-</select>
-<br/><br/>
-<select name="custom_select_multiple&#x5B;&#x5D;" multiple="multiple" class="form-select">
-    <option value="" selected="selected">Open this select menu</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-</select>
-<br/><br/>
-<select name="custom_select_size" size="3" class="form-select">
-    <option value="" selected="selected">Open this select menu</option>
-    <option value="1">One</option>
-    <option value="2">Two</option>
-    <option value="3">Three</option>
-</select>
-
-####### **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-echo $this->formElement($oFactory->create([
-    'name' => 'custom_select',
-    'type' => 'select',
-    'options' => [
-        'custom' => true,
-        'empty_option' => 'Open this select menu',
-        'value_options' => [
-            1 => 'One',
-            2 => 'Two',
-            3 => 'Three',
-        ],
-    ],
-    ])->setValue('')) . PHP_EOL;
-    
-    echo '<br/><br/>' . PHP_EOL;
-    
-    // You may also choose from small and large custom selects to match our similarly sized text inputs.
-    echo $this->formElement($oFactory->create([
-        'name' => 'custom_select_lg',
-        'type' => 'select',
-        'options' => [
-            'size' => 'lg',
-            'custom' => true,
-            'empty_option' => 'Open this select menu',
-            'value_options' => [
-                1 => 'One',
-                2 => 'Two',
-                3 => 'Three',
-            ],
-        ],
-        'attributes' => ['class' => 'mb-3'],
-        ])->setValue('')) . PHP_EOL;
-        
-        echo '<br/><br/>' . PHP_EOL;
-        
-        echo $this->formElement($oFactory->create([
-            'name' => 'custom_select_sm',
-            'type' => 'select',
-            'options' => [
-                'size' => 'sm',
-                'custom' => true,
-                'empty_option' => 'Open this select menu',
-                'value_options' => [
-                    1 => 'One',
-                    2 => 'Two',
-                    3 => 'Three',
-                ],
-            ],
-            ])->setValue('')) . PHP_EOL;
-            
-            echo '<br/><br/>' . PHP_EOL;
-            
-            // The multiple attribute is also supported
-            echo $this->formElement($oFactory->create([
-                'name' => 'custom_select_multiple',
-                'type' => 'select',
-                'options' => [
-                    'custom' => true,
-                    'empty_option' => 'Open this select menu',
-                    'value_options' => [
-                        1 => 'One',
-                        2 => 'Two',
-                        3 => 'Three',
-                    ],
-                ],
-                'attributes' => ['multiple' => true],
-                ])->setValue('')) . PHP_EOL;
-                
-                echo '<br/><br/>' . PHP_EOL;
-                
-                // As is the size attribute
-                echo $this->formElement($oFactory->create([
-                    'name' => 'custom_select_size',
-                    'type' => 'select',
-                    'options' => [
-                        'custom' => true,
-                        'empty_option' => 'Open this select menu',
-                        'value_options' => [
-                            1 => 'One',
-                            2 => 'Two',
-                            3 => 'Three',
-                        ],
-                    ],
-                    'attributes' => ['size' => 3],
-                    ])->setValue(''));
-```
-
-<!-- tabs:end -->
-
-
-###### Range
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#range)
-<!-- tabs:start -->
-
-####### **Result**
-
-<label class="form-label" for="customRange1">Example range</label>
-<input type="range" name="custom_range" id="customRange1" class="custom-range" value=""/>
-
-####### **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-echo $this->formRow($oFactory->create([
-    'name' => 'custom_range',
-    'type' => 'range',
-    'options' => [
-        'custom' => true,
-        'label' => 'Example range',
-        'form_group' => false,
-    ],
-    'attributes' => ['id' => 'customRange1'],
-]));
-```
-
-<!-- tabs:end -->
-
-
-###### File browser
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#file-browser)
-<!-- tabs:start -->
-
-####### **Result**
-
-<input type="file" name="custom_file" id="customFile"/>
-
-####### **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-echo $this->formRow($oFactory->create([
-    'name' => 'custom_file',
-    'type' => 'file',
-    'options' => [
-        'custom' => true,
-        'custom_label' => 'Choose file',
-        'form_group' => false,
-    ],
-    'attributes' => ['id' => 'customFile'],
-]));
-```
-
-<!-- tabs:end -->
-
-
-####### Translating or customizing the strings with HTML
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#translating-or-customizing-the-strings-with-html)
-<!-- tabs:start -->
-
-######## **Result**
-
-<input type="file" name="custom_file" id="customFileLangHTML"/>
-
-######## **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-echo $this->formRow($oFactory->create([
-    'name' => 'custom_file',
-    'type' => 'file',
-    'options' => [
-        'custom' => true,
-        'custom_label' => 'Voeg je document toe',
-        'form_group' => false,
-        'label_attributes' => [
-            'data-browse' => 'Bestand kiezen',
-        ],
-    ],
-    'attributes' => ['id' => 'customFileLangHTML'],
-]));
-```
-
-<!-- tabs:end -->
-
-
-##### Button groups
-<!-- tabs:start -->
-
-###### **Result**
-
-<form action="" method="POST" name="form" role="form" id="form">
-    <div class="mb-3">
-        <label class="form-label" for="email">Email</label>
-        <input name="email" type="email" class="form-control" value=""/>
-    </div>
-    <div class="btn-group&#x20;form-group">
-        <button type="button" name="button1" class="btn&#x20;btn-secondary" value="">Button 1</button>
-        <button type="button" name="button2" class="btn&#x20;btn-secondary" value="">Button 2</button>
-    </div>
-    <div class="mb-3">
-        <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Submit</button>
-    </div>
-</form>
-
-###### **Source**
-
-```php
-$oFactory = new \Laminas\Form\Factory();
-
-echo $this->form($oFactory->create([
-    'type' => 'form',
-    'elements' => [
-        [
-            'spec' => [
-                'name' => 'email',
-                'options' => ['label' => 'Email'],
-                'attributes' => ['type' => 'email'],
-            ]
-        ],
-        [
-            'spec' => [
-                'type' => \Laminas\Form\Element\Button::class,
-                'name' => 'button1',
-            'options' => ['label' => 'Button 1', 'row_name' => 'my-button-group']
-        ]
-    ],
-    [
-        'spec' => [
-            'type' => \Laminas\Form\Element\Button::class,
-            'name' => 'button2',
-        'options' => ['label' => 'Button 2', 'row_name' => 'my-button-group']
-    ]
-],
-
-[
-    'spec' => [
-        'type' => 'submit',
-        'options' => ['label' => 'Submit', 'variant' => 'primary'],
-    ]
-],
-],
-]));
 ```
 
 <!-- tabs:end -->
@@ -11659,7 +11699,7 @@ echo $this->navigation()->menu()->renderMenu(
                 <a class="nav-link&#x20;disabled" href="&#x23;" tabindex="-1" aria-disabled="true">Disabled</a>
             </li>
         </ul>
-        <form action="" method="POST" name="form" class="form-inline&#x20;my-2&#x20;my-lg-0" role="form" id="form">
+        <form action="" method="POST" name="form" class="align-items-center&#x20;my-2&#x20;my-lg-0" role="form" id="form">
             <input name="search" type="search" placeholder="Search" aria-label="Search" class="form-control&#x20;mr-sm-2" value=""/>
             <button type="submit" name="submit" class="btn&#x20;btn-outline-success&#x20;my-2&#x20;my-sm-0" value="">Search</button>
         </form>
@@ -11970,7 +12010,7 @@ echo $this->navigation()->navbar()->render(
 ####### **Result**
 
 <nav class="bg-light&#x20;navbar&#x20;navbar-light">
-    <form action="" method="POST" name="form" role="form" class="form-inline" id="form">
+    <form action="" method="POST" name="form" role="form" class="align-items-center" id="form">
         <input name="search" type="search" placeholder="Search" aria-label="Search" class="form-control&#x20;mr-sm-2" value=""/>
         <button type="submit" name="submit" class="btn&#x20;btn-outline-success&#x20;my-2&#x20;my-sm-0" value="">Search</button>
     </form>
@@ -11978,14 +12018,14 @@ echo $this->navigation()->navbar()->render(
 <br/>
 <nav class="bg-light&#x20;navbar&#x20;navbar-light">
     <a class="navbar-brand" href="&#x23;">Navbar</a>
-    <form action="" method="POST" name="form" role="form" class="form-inline" id="form">
+    <form action="" method="POST" name="form" role="form" class="align-items-center" id="form">
         <input name="search" type="search" placeholder="Search" aria-label="Search" class="form-control&#x20;mr-sm-2" value=""/>
         <button type="submit" name="submit" class="btn&#x20;btn-outline-success&#x20;my-2&#x20;my-sm-0" value="">Search</button>
     </form>
 </nav>
 <br/>
 <nav class="bg-light&#x20;navbar&#x20;navbar-light">
-    <form action="" method="POST" name="form" role="form" class="form-inline" id="form">
+    <form action="" method="POST" name="form" role="form" class="align-items-center" id="form">
         <div class="input-group">
             <div class="input-group-prepend">
                 <div class="input-group-text" id="basic-addon1">
@@ -11998,7 +12038,7 @@ echo $this->navigation()->navbar()->render(
 </nav>
 <br/>
 <nav class="bg-light&#x20;navbar&#x20;navbar-light">
-    <form action="" method="POST" name="form" role="form" class="form-inline" id="form">
+    <form action="" method="POST" name="form" role="form" class="align-items-center" id="form">
         <button type="button" name="main_button" class="btn&#x20;btn-outline-success" value="">Main button</button>
         <button type="button" name="smaller_button" class="btn&#x20;btn-outline-secondary&#x20;btn-sm" value="">Smaller button</button>
     </form>
@@ -12241,7 +12281,7 @@ echo $this->navigation()->navbar()->render(
                 <a class="nav-link" href="&#x23;">About</a>
             </li>
         </ul>
-        <form action="" method="POST" name="form" role="form" class="form-inline" id="form">
+        <form action="" method="POST" name="form" role="form" class="align-items-center" id="form">
             <input name="search" type="search" placeholder="Search" aria-label="Search" class="form-control&#x20;mr-sm-2" value=""/>
             <button type="submit" name="submit" class="btn&#x20;btn-outline-success" value="">Search</button>
         </form>
@@ -12269,7 +12309,7 @@ echo $this->navigation()->navbar()->render(
                 <a class="nav-link" href="&#x23;">About</a>
             </li>
         </ul>
-        <form action="" method="POST" name="form" role="form" class="form-inline" id="form">
+        <form action="" method="POST" name="form" role="form" class="align-items-center" id="form">
             <input name="search" type="search" placeholder="Search" aria-label="Search" class="form-control&#x20;mr-sm-2" value=""/>
             <button type="submit" name="submit" class="btn&#x20;btn-outline-success" value="">Search</button>
         </form>
@@ -12297,7 +12337,7 @@ echo $this->navigation()->navbar()->render(
                 <a class="nav-link" href="&#x23;">About</a>
             </li>
         </ul>
-        <form action="" method="POST" name="form" role="form" class="form-inline" id="form">
+        <form action="" method="POST" name="form" role="form" class="align-items-center" id="form">
             <input name="search" type="search" placeholder="Search" aria-label="Search" class="form-control&#x20;mr-sm-2" value=""/>
             <button type="submit" name="submit" class="btn&#x20;btn-outline-success" value="">Search</button>
         </form>

@@ -3,7 +3,7 @@
 // Documentation test config file for "Components / Forms / Layout / Inline forms" part
 return [
     'title' => 'Inline forms',
-    'url' => '%bootstrap-url%/components/forms/#inline-forms',
+    'url' => '%bootstrap-url%/forms/#inline-forms',
     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
         $oFactory = new \Laminas\Form\Factory();
 
@@ -139,7 +139,8 @@ return [
             ],
         ]));
     },
-    'expected' => '<form action="" method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
+    'expected' => '<form action="" method="POST" name="form" role="form" class="align-items-center" id="form">' .
+        PHP_EOL .
         '    <label class="form-label&#x20;sr-only" for="inlineFormInputName2">Name</label>'
         . PHP_EOL .
         '    <input name="name" type="text" id="inlineFormInputName2" ' .
@@ -165,7 +166,7 @@ return [
         'Submit</button>' . PHP_EOL .
         '</form>' . PHP_EOL .
         '<br/>' . PHP_EOL .
-        '<form action="" method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
+        '<form action="" method="POST" name="form" role="form" class="align-items-center" id="form">' . PHP_EOL .
         '    <label class="mr-2&#x20;my-1" for="inlineFormCustomSelectPref">Preference</label>'
         . PHP_EOL .
         '    <select name="preference" id="inlineFormCustomSelectPref" ' .

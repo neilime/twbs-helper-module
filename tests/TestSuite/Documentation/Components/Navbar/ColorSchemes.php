@@ -87,7 +87,8 @@ return [
         '                <a class="nav-link" href="&#x23;">About</a>' . PHP_EOL .
         '            </li>' . PHP_EOL .
         '        </ul>' . PHP_EOL .
-        '        <form action="" method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
+        '        <form action="" method="POST" name="form" role="form" class="align-items-center" id="form">' .
+        PHP_EOL .
         '            <input name="search" type="search" placeholder="Search" aria-label="Search" ' .
         'class="form-control&#x20;mr-sm-2" value=""/>' . PHP_EOL .
         '            <button type="submit" name="submit" class="btn&#x20;btn-outline-success" value="">' .
@@ -120,7 +121,8 @@ return [
         '                <a class="nav-link" href="&#x23;">About</a>' . PHP_EOL .
         '            </li>' . PHP_EOL .
         '        </ul>' . PHP_EOL .
-        '        <form action="" method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
+        '        <form action="" method="POST" name="form" role="form" class="align-items-center" id="form">' .
+        PHP_EOL .
         '            <input name="search" type="search" placeholder="Search" aria-label="Search" ' .
         'class="form-control&#x20;mr-sm-2" value=""/>' . PHP_EOL .
         '            <button type="submit" name="submit" class="btn&#x20;btn-outline-success" value="">' .
@@ -154,7 +156,8 @@ return [
         '                <a class="nav-link" href="&#x23;">About</a>' . PHP_EOL .
         '            </li>' . PHP_EOL .
         '        </ul>' . PHP_EOL .
-        '        <form action="" method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
+        '        <form action="" method="POST" name="form" role="form" class="align-items-center" id="form">' .
+        PHP_EOL .
         '            <input name="search" type="search" placeholder="Search" aria-label="Search" ' .
         'class="form-control&#x20;mr-sm-2" value=""/>' . PHP_EOL .
         '            <button type="submit" name="submit" class="btn&#x20;btn-outline-success" value="">' .

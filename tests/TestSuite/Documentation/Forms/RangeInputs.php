@@ -3,7 +3,7 @@
 // Documentation test config file for "Components / Forms / Range Inputs" part
 return [
     'title' => 'Range Inputs',
-    'url' => '%bootstrap-url%/components/forms/#range-inputs',
+    'url' => '%bootstrap-url%/forms/#range-inputs',
     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
         $oFactory = new \Laminas\Form\Factory();
 

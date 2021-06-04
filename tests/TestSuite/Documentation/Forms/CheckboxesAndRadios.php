@@ -3,11 +3,11 @@
 // Documentation test config file for "Components / Forms / Range Inputs" part
 return [
     'title' => 'Checkboxes and radios',
-    'url' => '%bootstrap-url%/components/forms/#checkboxes-and-radios',
+    'url' => '%bootstrap-url%/forms/#checkboxes-and-radios',
     'tests' => [
         [
             'title' => 'Default (stacked)',
-            'url' => '%bootstrap-url%/components/forms/#default-stacked',
+            'url' => '%bootstrap-url%/forms/#default-stacked',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 $oFactory = new \Laminas\Form\Factory();
 
@@ -98,7 +98,7 @@ return [
         ],
         [
             'title' => 'Inline',
-            'url' => '%bootstrap-url%/components/forms/#inline',
+            'url' => '%bootstrap-url%/forms/#inline',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 $oFactory = new \Laminas\Form\Factory();
 
@@ -194,7 +194,7 @@ return [
         ],
         [
             'title' => 'Without labels',
-            'url' => '%bootstrap-url%/components/forms/#without-labels',
+            'url' => '%bootstrap-url%/forms/#without-labels',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
 
                 $oFactory = new \Laminas\Form\Factory();
