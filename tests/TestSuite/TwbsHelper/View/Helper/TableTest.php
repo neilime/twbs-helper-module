@@ -10,128 +10,220 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
      */
     protected $helper = 'table';
 
-    public function testRenderTableRowsWithEmptyRows()
+    public function testInvokeWithEmptyRows()
     {
-        $this->assertSame('', $this->helper->renderTableRows([]));
+        $this->assertSame('<table class="table"></table>', $this->helper->__invoke([]));
     }
 
-    public function testRenderTableRowsWithWrongArgumentHead()
+    public function testInvokeWithEmptyHeadRows()
+    {
+        $this->assertSame('<table class="table"></table>', $this->helper->__invoke([
+            'head' => []
+        ]));
+    }
+
+    public function testInvokeWithHeadAttributesRows()
+    {
+        $this->assertSame(
+            '<table class="table"><thead class="test"><tr></tr></thead></table>',
+            $this->helper->__invoke([
+                'head' => [
+                    'attributes' => ['class' => 'test']
+                ]
+            ])
+        );
+    }
+
+    public function testInvokeWithHeadRows()
+    {
+        $this->assertSame(
+            '<table class="table"><thead><tr><th scope="col">test</th></tr></thead></table>',
+            $this->helper->__invoke([
+                'head' => [
+                    'rows' => [['test']]
+                ]
+            ])
+        );
+    }
+
+    public function testInvokeWithRowAttributes()
+    {
+        $this->assertSame(
+            '<table class="table"><thead><tr class="test"><th scope="col">test</th></tr></thead></table>',
+            $this->helper->__invoke([
+                'head' => [
+                    "rows" => [
+                        [
+                            "attributes" => ["class" => "test"],
+                            "cells" => ["test"]
+                        ]
+                    ]
+                ]
+            ])
+        );
+    }
+
+    public function testInvokeWithWrongArgumentHead()
     {
         $this->expectExceptionMessage('Argument "$aRows[\'head\']" expects an array, "string" given');
-        $this->helper->renderTableRows([
+        $this->helper->__invoke([
             'head' => 'wrong'
         ]);
     }
 
-    public function testRenderTableRowsWithWrongArgumentBody()
+    public function testInvokeWithWrongArgumentBody()
     {
         $this->expectExceptionMessage('Argument "$aRows[\'body\']" expects an array, "string" given');
-        $this->helper->renderTableRows([
+        $this->helper->__invoke([
             'body' => 'wrong'
         ]);
     }
 
-    public function testRenderTableRowsWithWrongRowType()
+    public function testInvokeWithWrongTypeForRow()
     {
-        $this->expectExceptionMessage('Body row "0" expects an array, "string" given');
-        $this->helper->renderTableRows([
-            'wrong'
+        $this->expectExceptionMessage('Argument "$aCell" expects an array or a scalar value, "stdClass" given');
+        $this->helper->__invoke([
+            new \stdClass()
         ]);
     }
 
-    public function testRenderTableRowsWithHeadDefinedInFirstBodyRow()
+    public function testInvokeWithWrongTypeForHead()
     {
-        $sExpectedMarkup = '<thead>' . PHP_EOL .
-            '    <tr>' . PHP_EOL .
-            '        <th scope="col">head 1</th>' . PHP_EOL .
-            '        <th scope="col">head 2</th>' . PHP_EOL .
-            '    </tr>' . PHP_EOL .
-            '</thead>' . PHP_EOL .
-            '<tbody>' . PHP_EOL .
-            '    <tr>' . PHP_EOL .
-            '        <th scope="row">value 1</th>' . PHP_EOL .
-            '        <td>value 2</td>' . PHP_EOL .
-            '    </tr>' . PHP_EOL .
-            '</tbody>';
-        $this->assertSame($sExpectedMarkup, $this->helper->renderTableRows([
-            ['head 1' => 'value 1', 'head 2' => 'value 2'],
-        ]));
-    }
-
-    public function testRenderHeadRowsWithWrongAttributesType()
-    {
-        $this->expectExceptionMessage('Head "[\'attributes\']" expects an array, "string" given');
-        $this->helper->renderHeadRows([
-            'attributes' => 'wrong'
+        $this->expectExceptionMessage('Argument "$aRows[\'head\']" expects an array, "stdClass" given');
+        $this->helper->__invoke([
+            'head' => new \stdClass()
         ]);
     }
 
-    public function testRenderHeadRowsWithWrongRowType()
+    public function testInvokeWithTypeForWrongBody()
     {
-        $this->expectExceptionMessage('Head "[\'rows\']" expects an array, "string" given');
-        $this->helper->renderHeadRows([
-            'rows' => 'wrong'
+        $this->expectExceptionMessage('Argument "$aRows[\'body\']" expects an array, "stdClass" given');
+        $this->helper->__invoke([
+            'body' => new \stdClass()
         ]);
     }
 
-    public function testRenderHeadRowsWithEmptyRows()
+    public function testInvokeWithWrongFooterType()
     {
-        $this->assertSame('', $this->helper->renderHeadRows([]));
+        $this->expectExceptionMessage('Argument "$aRows[\'footer\']" expects an array, "stdClass" given');
+        $this->helper->__invoke([
+            'footer' => new \stdClass()
+        ]);
     }
 
-    public function testRenderTableRowWithWrongAttributesType()
+    public function testInvokeWithWrongTypeForCaption()
     {
-        $this->expectExceptionMessage('Argument "$aRow[\'attributes\']" expects an array, "string" given');
-        $this->helper->renderTableRow([
-            'attributes' => 'wrong'
-        ], 'td');
+        $this->expectExceptionMessage('Argument "$sCaption" expects an array or a scalar value, "stdClass" given');
+        $this->helper->__invoke([
+            'caption' => new \stdClass()
+        ]);
     }
 
-    public function testRenderTableRowWithWrongCellsType()
+    public function testInvokeWithWrongTypeForGroupRowAttributes()
     {
-        $this->expectExceptionMessage('Argument "$aRow[\'cells\']" expects an array, "string" given');
-        $this->helper->renderTableRow([
-            'cells' => 'wrong'
-        ], 'td');
+        $this->expectExceptionMessage('"$aGroupRows[\'attributes\']" expects an array, "stdClass" given');
+        $this->helper->__invoke([
+            'head' => [
+                'attributes' => new \stdClass()
+            ]
+        ]);
     }
 
-    public function testRenderTableCellWithEmptyArgumentCell()
+    public function testInvokeWithWrongGroupTypeForRowRows()
     {
-        $this->expectExceptionMessage('Argument "$sCell" expects an array or a scalar value, "stdClass" given');
-        $this->helper->renderTableCell(new \stdClass(), 'td', true);
+        $this->expectExceptionMessage('"$aGroupRows[\'rows\']" expects an array, "stdClass" given');
+        $this->helper->__invoke([
+            'head' => [
+                'rows' => new \stdClass()
+            ]
+        ]);
     }
 
-    public function testRenderTableCellWithUndefinedCellData()
+    public function testInvokeWithWrongTypeForRowAttributes()
     {
-        $this->expectExceptionMessage('Argument "$sCell[\'data\']" is undefined');
-        $this->helper->renderTableCell([
-            'data' => null,
-        ], 'td', true);
+        $this->expectExceptionMessage('Argument "$aRow[\'attributes\']" expects an array, "stdClass" given');
+        $this->helper->__invoke([
+            'head' => [
+                "rows" => [
+                    [
+                        "attributes" => new \stdclass(),
+                        "cells" => ["test"]
+                    ]
+                ]
+            ]
+        ]);
     }
 
-    public function testRenderTableCellWithWrongTypeCellData()
+    public function testInvokeWithWrongTypeForRowCells()
     {
-        $this->expectExceptionMessage('Argument "$sCell[\'data\']" expects a string value, "array" given');
-        $this->helper->renderTableCell([
-            'data' => [],
-        ], 'td', true);
+        $this->expectExceptionMessage('Argument "$aRow[\'cells\']" expects an array, "stdClass" given');
+        $this->helper->__invoke([
+            'head' => [
+                "rows" => [
+                    [
+                        "cells" => new \stdclass(),
+                    ]
+                ]
+            ]
+        ]);
     }
 
-    public function testRenderTableCellWithWrongTypeCellType()
+    public function testInvokeWithUndefinedForRowCellData()
     {
-        $this->expectExceptionMessage('Argument "$sCell[\'type\']" expects a string, "array" given');
-        $this->helper->renderTableCell([
-            'data' => 'test',
-            'type' => [],
-        ], 'td', true);
+        $this->expectExceptionMessage('Argument "$aCell[\'data\']" is undefined');
+        $this->helper->__invoke([
+            'head' => [
+                "rows" => [
+                    [
+                        "cells" => [[]],
+                    ]
+                ]
+            ]
+        ]);
     }
 
-    public function testRenderTableCellWithWrongTypeCellAttributes()
+    public function testInvokeWithWrongTypeForRowCellData()
     {
-        $this->expectExceptionMessage('Argument "$sCell[\'attributes\']" expects an array, "string" given');
-        $this->helper->renderTableCell([
-            'data' => 'test',
-            'attributes' => 'wrong',
-        ], 'td', true);
+        $this->expectExceptionMessage(
+            'Argument "$aCell[\'data\']" expects an array or a scalar value, "stdClass" given'
+        );
+
+        $this->helper->__invoke([
+            'head' => [
+                "rows" => [
+                    [
+                        "cells" => [["data" => new \stdclass()]],
+                    ]
+                ]
+            ]
+        ]);
+    }
+
+    public function testInvokeWithWrongTypeForRowCellType()
+    {
+        $this->expectExceptionMessage('Argument "$aCell[\'type\']" expects a string, "stdClass" given');
+        $this->helper->__invoke([
+            'head' => [
+                "rows" => [
+                    [
+                        "cells" => [["type" => new \stdclass(), "data" => "test"]],
+                    ]
+                ]
+            ]
+        ]);
+    }
+
+    public function testInvokeWithWrongTypeForRowCellAttributes()
+    {
+        $this->expectExceptionMessage('Argument "$aCell[\'attributes\']" expects an array, "stdClass" given');
+        $this->helper->__invoke([
+            'head' => [
+                "rows" => [
+                    [
+                        "cells" => [["attributes" => new \stdclass(), "data" => "test"]],
+                    ]
+                ]
+            ]
+        ]);
     }
 }

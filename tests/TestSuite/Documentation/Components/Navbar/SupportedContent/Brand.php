@@ -79,7 +79,8 @@ return [
         '<br/>' . PHP_EOL .
         '<nav class="bg-light&#x20;navbar&#x20;navbar-light">' . PHP_EOL .
         '    <a class="navbar-brand" href="&#x23;">' .
-        '<img alt="" height="30" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;bootstrap-solid.svg" width="30" /></a>' . PHP_EOL .
+        '<img alt="" height="30" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;bootstrap-solid.svg" ' .
+        'width="30" /></a>' . PHP_EOL .
         '</nav>' . PHP_EOL .
         '<br/>' . PHP_EOL .
         '<nav class="bg-light&#x20;navbar&#x20;navbar-light">' . PHP_EOL .

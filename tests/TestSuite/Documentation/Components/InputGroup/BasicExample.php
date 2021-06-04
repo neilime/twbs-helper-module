@@ -97,7 +97,7 @@ return [
         '        </div>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '</div>' . PHP_EOL .
-        '<label for="basic-url">Your vanity URL</label>' . PHP_EOL .
+        '<label class="form-label" for="basic-url">Your vanity URL</label>' . PHP_EOL .
         '<div class="input-group&#x20;mb-3">' . PHP_EOL .
         '    <div class="input-group-prepend">' . PHP_EOL .
         '        <div class="input-group-text" id="basic-addon3">' . PHP_EOL .

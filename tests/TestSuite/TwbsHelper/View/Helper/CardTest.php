@@ -41,7 +41,7 @@ class CardTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
             ]])
         );
     }
-    
+
     public function testRenderCardOverlayWithoutImg()
     {
         $this->expectExceptionMessage(

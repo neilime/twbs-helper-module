@@ -9,10 +9,12 @@ return [
             'title' => 'Example',
             'url' => '%bootstrap-url%/components/buttons/#example',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                foreach ([
+                foreach (
+                    [
                     'primary', 'secondary', 'success', 'danger',
                     'warning', 'info', 'light', 'dark', 'link',
-                ] as $sVariant) {
+                    ] as $sVariant
+                ) {
                     $oButton = new \Laminas\Form\Element\Button($sVariant, [
                         'label' => ucfirst($sVariant),
                         'variant' => $sVariant,
@@ -75,10 +77,12 @@ return [
             'title' => 'Outline buttons',
             'url' => '%bootstrap-url%/components/buttons/#outline-buttons',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                foreach ([
+                foreach (
+                    [
                     'primary', 'secondary', 'success', 'danger',
                     'warning', 'info', 'light', 'dark',
-                ] as $sVariant) {
+                    ] as $sVariant
+                ) {
                     $oButton = new \Laminas\Form\Element\Button($sVariant, [
                         'label' => ucfirst($sVariant),
                         'variant' => 'outline-' . $sVariant,

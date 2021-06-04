@@ -29,6 +29,16 @@ trait ClassAttributeTrait
         'xl',
     ];
 
+    // Allowed alignment
+    protected static $alignments = [
+        'baseline',
+        'top',
+        'middle',
+        'bottom',
+        'text-top',
+        'text-bottom',
+    ];
+
     protected function hasClassAttribute(string $sClassAttribute, string $sClass): bool
     {
         return preg_match('/(\s|^)' . preg_quote($sClass, '/') . '(\s|$)/', $sClassAttribute);
@@ -62,7 +72,7 @@ trait ClassAttributeTrait
         $aClasses = $this->addClassesAttribute($aAttributes['class'] ?? '', $aAddClasses);
         if ($aClasses) {
             $aClasses = array_diff(
-                is_array($aClasses) ? $aClasses : iterator_to_array($aClasses),
+                $aClasses,
                 is_array($aRemoveClasses) ? $aRemoveClasses : iterator_to_array($aRemoveClasses)
             );
             $aAttributes['class'] = join(' ', $aClasses);
@@ -207,5 +217,18 @@ trait ClassAttributeTrait
             );
         }
         throw new \InvalidArgumentException('Column class "' . $sColumn . '" is not valid');
+    }
+
+    protected function getAlignments(): array
+    {
+        return static::$alignments;
+    }
+
+    protected function getAlignmentClass(string $sAlignment): string
+    {
+        if (!in_array($sAlignment, $this->getAlignments())) {
+            throw new \InvalidArgumentException('Alignment "' . $sAlignment . '" does not exist');
+        }
+        return $this->getPrefixedClass($sAlignment, 'align');
     }
 }

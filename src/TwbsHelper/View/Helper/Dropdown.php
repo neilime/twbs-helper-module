@@ -72,19 +72,8 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
      */
     public function render($oDropdown, bool $bEscape = true): string
     {
-        if (
-            is_iterable($oDropdown)
-            && !($oDropdown instanceof \Laminas\Form\ElementInterface)
-        ) {
-            $oFactory = new \Laminas\Form\Factory();
-            $oDropdown = $oFactory->create($oDropdown);
-        } elseif (!($oDropdown instanceof \Laminas\Form\ElementInterface)) {
-            throw new \InvalidArgumentException(sprintf(
-                'Argument "$oDropdown" expects %s, "%s" given',
-                'an instanceof \Laminas\Form\ElementInterface or an iterable',
-                is_object($oDropdown) ? get_class($oDropdown) : gettype($oDropdown)
-            ));
-        }
+
+        $oDropdown = $this->createDropdown($oDropdown);
 
         $aDropdownOptions = $oDropdown->getOption('dropdown');
         if (\Laminas\Stdlib\ArrayUtils::isList($aDropdownOptions)) {
@@ -104,6 +93,28 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
         }
 
         return $this->renderContainer($aDropdownOptions, $sDropdownContent);
+    }
+
+    /**
+     * @param \Laminas\Form\ElementInterface|iterable $oDropdown
+     * @return \Laminas\Form\ElementInterface
+     */
+    protected function createDropdown($oDropdown)
+    {
+        if (
+            is_iterable($oDropdown)
+            && !($oDropdown instanceof \Laminas\Form\ElementInterface)
+        ) {
+            $oFactory = new \Laminas\Form\Factory();
+            $oDropdown = $oFactory->create($oDropdown);
+        } elseif (!($oDropdown instanceof \Laminas\Form\ElementInterface)) {
+            throw new \InvalidArgumentException(sprintf(
+                'Argument "$oDropdown" expects %s, "%s" given',
+                'an instanceof \Laminas\Form\ElementInterface or an iterable',
+                is_object($oDropdown) ? get_class($oDropdown) : gettype($oDropdown)
+            ));
+        }
+        return $oDropdown;
     }
 
     protected function renderContainer(array $aDropdownOptions, string $sDropdownContent): string
@@ -190,11 +201,11 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
         $aToogleElementAttributes = $oToogleElement->getAttributes();
         foreach (
             [
-            'data-toggle' => 'dropdown',
-            'role' => 'button',
-            'aria-haspopup' => 'true',
-            'aria-expanded' => 'false',
-            'data-offset' => $aDropdownOptions['offset'] ?? null,
+                'data-toggle' => 'dropdown',
+                'role' => 'button',
+                'aria-haspopup' => 'true',
+                'aria-expanded' => 'false',
+                'data-offset' => $aDropdownOptions['offset'] ?? null,
             ] as $sAttributeName => $sDefaultValue
         ) {
             if ($sDefaultValue !== null && !isset($aToogleElementAttributes[$sAttributeName])) {
@@ -225,23 +236,8 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
         return  $sToogleMarkup;
     }
 
-    public function renderMenuFromElement($oDropdown, bool $bEscape = true)
+    protected function renderMenuFromElement(\Laminas\Form\ElementInterface $oDropdown, bool $bEscape = true)
     {
-        if (
-            is_array($oDropdown)
-            || ($oDropdown instanceof \Traversable
-                && !($oDropdown instanceof \Laminas\Form\ElementInterface))
-        ) {
-            $oFactory = new \Laminas\Form\Factory();
-            $oDropdown = $oFactory->create($oDropdown);
-        } elseif (!($oDropdown instanceof \Laminas\Form\ElementInterface)) {
-            throw new \InvalidArgumentException(sprintf(
-                'Argument "$oDropdown" expects %s, "%s" given',
-                'an instanceof \Laminas\Form\ElementInterface or an array / Traversable',
-                is_object($oDropdown) ? get_class($oDropdown) : gettype($oDropdown)
-            ));
-        }
-
         $aDropdownOptions = $oDropdown->getOption('dropdown');
         if (!isset($aDropdownOptions['items'])) {
             throw new \InvalidArgumentException(__METHOD__ . ' expects "items" option');
@@ -317,16 +313,15 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
                         'label' =>  $this->getView()->plugin('form')->__invoke($aItemOptions),
                     ];
                     break;
-                case !is_array($aItemOptions):
-                    if (!is_scalar($aItemOptions)) {
-                        throw new \LogicException(sprintf(
-                            '"item" option expects an array or a scalar value, "%s" given',
-                            is_object($aItemOptions)
-                                ? get_class($aItemOptions)
-                                : gettype($aItemOptions)
-                        ));
+                case is_array($aItemOptions):
+                    if (!isset($aItemOptions['label'])) {
+                        $aItemOptions['label'] = is_string($sKey) ? $sKey : null;
                     }
-
+                    if (!isset($aItemOptions['type'])) {
+                        $aItemOptions['type'] = self::TYPE_ITEM_LINK;
+                    }
+                    break;
+                case is_scalar($aItemOptions):
                     if (isset(static::$dropdownItemTags[$aItemOptions])) {
                         $aItemOptions = ['type' => $aItemOptions];
                         if (is_string($sKey)) {
@@ -350,12 +345,13 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
                     }
                     break;
                 default:
-                    if (!isset($aItemOptions['label'])) {
-                        $aItemOptions['label'] = is_string($sKey) ? $sKey : null;
-                    }
-                    if (!isset($aItemOptions['type'])) {
-                        $aItemOptions['type'] = self::TYPE_ITEM_LINK;
-                    }
+                    throw new \LogicException(sprintf(
+                        '"item" option expects an array, an instance of "\Laminas\Form\FormInterface" ' .
+                            'or a scalar value, "%s" given',
+                        is_object($aItemOptions)
+                            ? get_class($aItemOptions)
+                            : gettype($aItemOptions)
+                    ));
             }
 
             $sItems .= ($sItems ? PHP_EOL : '') . $this->renderItem($aItemOptions, $bEscape);
@@ -372,7 +368,7 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
     protected function renderItem(array $aItemOptions, bool $bEscape): string
     {
         if (empty($aItemOptions['type'])) {
-            throw new \InvalidArgumentException(__METHOD__ . ' expects "type" option');
+            throw new \InvalidArgumentException(__METHOD__ . ' expects a "type" option');
         }
 
         $sItemContent = '';
@@ -385,11 +381,12 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
                 // Header label
                 if (empty($aItemOptions['label'])) {
-                    throw new \LogicException('"' . $aItemOptions['type'] . '" item expects "label" option');
+                    throw new \LogicException('"' . $aItemOptions['type'] . '" item expects a "label" option');
                 }
                 if (!is_scalar($aItemOptions['label'])) {
                     throw new \LogicException(sprintf(
-                        '"label" option expect scalar value, "%s" given',
+                        '"%s" item "label" option expect a scalar value, "%s" given',
+                        $aItemOptions['type'],
                         is_object($aItemOptions['label'])
                             ? get_class($aItemOptions['label'])
                             : gettype($aItemOptions['label'])
@@ -412,8 +409,8 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
                 foreach (
                     [
-                    'active' => true,
-                    'disabled' => ['tabindex' => '-1', 'aria-disabled' => 'true'],
+                        'active' => true,
+                        'disabled' => ['tabindex' => '-1', 'aria-disabled' => 'true'],
                     ] as $sOption => $aOptionAttributes
                 ) {
                     if (!empty($aItemOptions[$sOption])) {
@@ -429,11 +426,11 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 }
 
                 if (empty($aItemOptions['label'])) {
-                    throw new \LogicException('"' . $aItemOptions['type'] . '" item expects "label" option');
+                    throw new \LogicException('"' . $aItemOptions['type'] . '" item expects a "label" option');
                 }
                 if (!is_scalar($aItemOptions['label'])) {
                     throw new \LogicException(sprintf(
-                        '"label" option expect scalar value, "%s" given',
+                        '"label" option expect a scalar value, "%s" given',
                         is_object($aItemOptions['label'])
                             ? get_class($aItemOptions['label'])
                             : gettype($aItemOptions['label'])
@@ -454,11 +451,11 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 // Define item container "item-text" class
                 $aClasses[] = 'dropdown-item-text';
                 if (empty($aItemOptions['label'])) {
-                    throw new \LogicException('"' . $aItemOptions['type'] . '" item expects "label" option');
+                    throw new \LogicException('"' . $aItemOptions['type'] . '" item expects a "label" option');
                 }
                 if (!is_scalar($aItemOptions['label'])) {
                     throw new \LogicException(sprintf(
-                        '"label" option expect scalar value, "%s" given',
+                        '"label" option expect a scalar value, "%s" given',
                         is_object($aItemOptions['label'])
                             ? get_class($aItemOptions['label'])
                             : gettype($aItemOptions['label'])
@@ -468,11 +465,11 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 break;
             case self::TYPE_ITEM_HTML:
                 if (empty($aItemOptions['label'])) {
-                    throw new \LogicException('"' . $aItemOptions['type'] . '" item expects "label" option');
+                    throw new \LogicException('"' . $aItemOptions['type'] . '" item expects a "label" option');
                 }
                 if (!is_scalar($aItemOptions['label'])) {
                     throw new \LogicException(sprintf(
-                        '"label" option expect scalar value, "%s" given',
+                        '"label" option expect a scalar value, "%s" given',
                         is_object($aItemOptions['label'])
                             ? get_class($aItemOptions['label'])
                             : gettype($aItemOptions['label'])
@@ -496,6 +493,7 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
             $sItemContent,
             $bEscape
         );
+
         return $sItemMarkup;
     }
 }

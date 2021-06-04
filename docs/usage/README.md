@@ -7,11 +7,28 @@ The following docs page shows how to render Twitter Boostrap elements. For each 
 ## Rendering
 
 ### Content
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/)
 #### Typography
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/typography/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/typography/)
+##### Lead
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/typography/#lead)
+<!-- tabs:start -->
+
+###### **Result**
+
+<p class="lead">This is a lead paragraph. It stands out from regular paragraphs.</p>
+
+###### **Source**
+
+```php
+echo $this->lead('This is a lead paragraph. It stands out from regular paragraphs.');
+```
+
+<!-- tabs:end -->
+
+
 ##### Abbreviations
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/typography/#abbreviations)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/typography/#abbreviations)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -23,7 +40,10 @@ The following docs page shows how to render Twitter Boostrap elements. For each 
 
 ```php
 // First abbreviation
-echo '<p>' . $this->abbreviation('attr', 'attribute') . '</p>' . PHP_EOL;
+echo '<p>' . $this->abbreviation('attr', 'attribute') . '</p>';
+
+echo PHP_EOL;
+
 // Second abbreviation
 echo '<p>' . $this->abbreviation('HTML', 'HyperText Markup Language', true) . '</p>';
 ```
@@ -32,20 +52,20 @@ echo '<p>' . $this->abbreviation('HTML', 'HyperText Markup Language', true) . '<
 
 
 ##### Blockquotes
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/typography/#blockquotes)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/typography/#blockquotes)
 <!-- tabs:start -->
 
 ###### **Result**
 
 <blockquote class="blockquote">
-    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+    <p>A well-known quote, contained in a blockquote element.</p>
 </blockquote>
 
 ###### **Source**
 
 ```php
 echo $this->blockquote(
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.'
+    'A well-known quote, contained in a blockquote element.'
 );
 ```
 
@@ -53,22 +73,24 @@ echo $this->blockquote(
 
 
 ###### Naming a source
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/typography/#naming-a-source)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/typography/#naming-a-source)
 <!-- tabs:start -->
 
 ####### **Result**
 
-<blockquote class="blockquote">
-    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-    <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-</blockquote>
+<figure>
+    <blockquote class="blockquote">
+        <p>A well-known quote, contained in a blockquote element.</p>
+    </blockquote>
+    <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></figcaption>
+</figure>
 
 ####### **Source**
 
 ```php
 echo $this->blockquote(
     // Content
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.',
+    'A well-known quote, contained in a blockquote element.',
     // Footer content
     'Someone famous in <cite title="Source Title">Source Title</cite>'
 );
@@ -78,20 +100,23 @@ echo $this->blockquote(
 
 
 ###### Alignment
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/typography/#alignment)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/typography/#alignment)
 <!-- tabs:start -->
 
 ####### **Result**
 
-<blockquote class="blockquote&#x20;text-center">
-    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-    <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-</blockquote>
-<blockquote class="blockquote&#x20;text-right">
-    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-    <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-</blockquote>
-
+<figure class="text-center">
+    <blockquote class="blockquote">
+        <p>A well-known quote, contained in a blockquote element.</p>
+    </blockquote>
+    <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></figcaption>
+</figure>
+<figure class="text-end">
+    <blockquote class="blockquote">
+        <p>A well-known quote, contained in a blockquote element.</p>
+    </blockquote>
+    <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></figcaption>
+</figure>
 
 ####### **Source**
 
@@ -99,50 +124,57 @@ echo $this->blockquote(
 // Center
 echo $this->blockquote(
     // Content
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.',
+    'A well-known quote, contained in a blockquote element.',
     // Footer content
     'Someone famous in <cite title="Source Title">Source Title</cite>',
-['class' => 'text-center']
-) . PHP_EOL;
+    [],
+    [],
+    [],
+    // Class for figure wrapper
+["class" => "text-center"]
+);
+
+echo PHP_EOL;
 
 // Right
 echo $this->blockquote(
     // Content
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.',
+    'A well-known quote, contained in a blockquote element.',
     // Footer content
     'Someone famous in <cite title="Source Title">Source Title</cite>',
-['class' => 'text-right']
-) . PHP_EOL;
+    [],
+    [],
+    [],
+    // Class for figure wrapper
+['class' => 'text-end']
+);
 ```
 
 <!-- tabs:end -->
 
 
 ##### List
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/typography/#lists)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/typography/#lists)
 ###### Unstyled
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/typography/#unstyled)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/typography/#unstyled)
 <!-- tabs:start -->
 
 ####### **Result**
 
 <ul class="list-unstyled">
-    <li>Lorem ipsum dolor sit amet</li>
-    <li>Consectetur adipiscing elit</li>
-    <li>Integer molestie lorem at massa</li>
-    <li>Facilisis in pretium nisl aliquet</li>
+    <li>This is a list.</li>
+    <li>It appears completely unstyled.</li>
+    <li>Structurally, it&amp;#039;s still a list.</li>
+    <li>However, this style only applies to immediate child elements.</li>
     <li>
-        Nulla volutpat aliquam velit
+        Nested lists:
         <ul class="list-unstyled">
-            <li>Phasellus iaculis neque</li>
-            <li>Purus sodales ultricies</li>
-            <li>Vestibulum laoreet porttitor sem</li>
-            <li>Ac tristique libero volutpat at</li>
+            <li>are unaffected by this style</li>
+            <li>will still show a bullet</li>
+            <li>and have appropriate left margin</li>
         </ul>
     </li>
-    <li>Faucibus porta lacus fringilla vel</li>
-    <li>Aenean sit amet erat nunc</li>
-    <li>Eget porttitor lorem</li>
+    <li>This may still come in handy in some situations.</li>
 </ul>
 
 ####### **Source**
@@ -151,19 +183,16 @@ echo $this->blockquote(
 echo $this->htmlList(
     // List items
     [
-        'Lorem ipsum dolor sit amet',
-        'Consectetur adipiscing elit',
-        'Integer molestie lorem at massa',
-        'Facilisis in pretium nisl aliquet',
-        'Nulla volutpat aliquam velit' => [
-            'Phasellus iaculis neque',
-            'Purus sodales ultricies',
-            'Vestibulum laoreet porttitor sem',
-            'Ac tristique libero volutpat at',
+        'This is a list.',
+        'It appears completely unstyled.',
+        'Structurally, it\'s still a list.',
+        'However, this style only applies to immediate child elements.',
+        'Nested lists:' => [
+            'are unaffected by this style',
+            'will still show a bullet',
+            'and have appropriate left margin',
         ],
-        'Faucibus porta lacus fringilla vel',
-        'Aenean sit amet erat nunc',
-        'Eget porttitor lorem',
+        'This may still come in handy in some situations.',
     ],
     // Add "list-unstyled" class
 ['class' => 'list-unstyled']
@@ -174,15 +203,15 @@ echo $this->htmlList(
 
 
 ###### Inline
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/typography/#inline)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/typography/#inline)
 <!-- tabs:start -->
 
 ####### **Result**
 
 <ul class="list-inline">
-    <li class="list-inline-item">Lorem ipsum</li>
-    <li class="list-inline-item">Phasellus iaculis</li>
-    <li class="list-inline-item">Nulla volutpat</li>
+    <li class="list-inline-item">This is a list item.</li>
+    <li class="list-inline-item">And another one.</li>
+    <li class="list-inline-item">But they&amp;#039;re displayed inline.</li>
 </ul>
 
 ####### **Source**
@@ -190,9 +219,72 @@ echo $this->htmlList(
 ```php
 echo $this->htmlList(
     // List items
-    ['Lorem ipsum', 'Phasellus iaculis', 'Nulla volutpat',],
-    // Add "list-inline" class
-['class' => 'list-inline']
+    ['This is a list item.', 'And another one.', 'But they\'re displayed inline.'],
+    // Set "inline" flag
+['inline' => true]
+);
+```
+
+<!-- tabs:end -->
+
+
+###### Description list alignment
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/typography/#description-list-alignment)
+<!-- tabs:start -->
+
+####### **Result**
+
+<dl class="row">
+    <dt class="col-sm-3">Description lists</dt>
+    <dd class="col-sm-9">A description list is perfect for defining terms.</dd>
+    <dt class="col-sm-3">Term</dt>
+    <dd class="col-sm-9">
+        <p>Definition for the term.</p>
+        <p>And some more placeholder definition text.</p>
+    </dd>
+    <dt class="col-sm-3">Another term</dt>
+    <dd class="col-sm-9">This definition is short, so no extra paragraphs or anything.</dd>
+    <dt class="col-sm-3&#x20;text-truncate">Truncated term is truncated</dt>
+    <dd class="col-sm-9">This can be useful when space is tight. Adds an ellipsis at the end.</dd>
+    <dt class="col-sm-3">Nesting</dt>
+    <dd class="col-sm-9">
+        <dl class="row">
+            <dt class="col-sm-4">Nested definition list</dt>
+            <dd class="col-sm-8">I heard you like definition lists. Let me put a definition list inside your definition list.</dd>
+        </dl>
+    </dd>
+</dl>
+
+####### **Source**
+
+```php
+echo $this->descriptionList(
+    [
+        'Description lists' => 'A description list is perfect for defining terms.',
+        'Term' => '<p>Definition for the term.</p>' . PHP_EOL . '<p>And some more placeholder definition text.</p>',
+        'Another term' => 'This definition is short, so no extra paragraphs or anything.',
+        'Truncated term is truncated' => [
+            'term' => [
+                'class' => 'text-truncate'
+            ],
+            'detail' => 'This can be useful when space is tight. Adds an ellipsis at the end.',
+        ],
+        'Nesting' => [
+            'detail' => [
+                'label' => [
+                    'Nested definition list' => [
+                        'term' => [
+                            'column' => 'sm-4'
+                        ],
+                        'detail' => [
+                            'label' => 'I heard you like definition lists. Let me put a definition list inside your definition list.',
+                            'column' => 'sm-8'
+                        ]
+                    ]
+                ],
+            ]
+        ],
+    ],
 );
 ```
 
@@ -200,67 +292,67 @@ echo $this->htmlList(
 
 
 #### Images
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/images/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/images/)
 ##### Responsive images
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/images/#responsive-images)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/images/#responsive-images)
 <!-- tabs:start -->
 
 ###### **Result**
 
-<img alt="Responsive&#x20;image" class="img-fluid" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;responsive.svg" />
+<img alt="..." class="img-fluid" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;responsive.svg" />
 
 ###### **Source**
 
 ```php
-echo $this->image('/twbs-helper-module/img/docs/responsive.svg', ['fluid' => true, 'alt' => 'Responsive image',]);
+echo $this->image('/twbs-helper-module/img/docs/responsive.svg', ['fluid' => true, 'alt' => '...',]);
 ```
 
 <!-- tabs:end -->
 
 
 ##### Image thumbnails
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/images/#image-thumbnails)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/images/#image-thumbnails)
 <!-- tabs:start -->
 
 ###### **Result**
 
-<img alt="Image&#x20;thumbnail" class="img-thumbnail" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;200x200.svg" />
+<img alt="..." class="img-thumbnail" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;200x200.svg" />
 
 ###### **Source**
 
 ```php
-echo $this->image('/twbs-helper-module/img/docs/200x200.svg', ['thumbnail' => true, 'alt' => 'Image thumbnail',]);
+echo $this->image('/twbs-helper-module/img/docs/200x200.svg', ['thumbnail' => true, 'alt' => '...',]);
 ```
 
 <!-- tabs:end -->
 
 
 ##### Aligning images
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/images/#aligning-images)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/images/#aligning-images)
 <!-- tabs:start -->
 
 ###### **Result**
 
-<img alt="Image&#x20;aligned&#x20;left" class="float-left&#x20;rounded" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;200x200.svg" />
-<img alt="Image&#x20;aligned&#x20;right" class="float-right&#x20;rounded" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;200x200.svg" />
-<img alt="Image&#x20;aligned&#x20;block" class="d-block&#x20;mx-auto&#x20;rounded" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;200x200.svg" />
+<img alt="..." class="float-start&#x20;rounded" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;200x200.svg" />
+<img alt="..." class="float-end&#x20;rounded" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;200x200.svg" />
+<img alt="..." class="d-block&#x20;mx-auto&#x20;rounded" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;200x200.svg" />
 
 ###### **Source**
 
 ```php
 echo $this->image(
     '/twbs-helper-module/img/docs/200x200.svg',
-['rounded' => true, 'alt' => 'Image aligned left', 'class' => 'float-left']
+['rounded' => true, 'alt' => '...', 'class' => 'float-start']
 )  . PHP_EOL;
 
 echo $this->image(
     '/twbs-helper-module/img/docs/200x200.svg',
-['rounded' => true, 'alt' => 'Image aligned right', 'class' => 'float-right']
+['rounded' => true, 'alt' => '...', 'class' => 'float-end']
 ) . PHP_EOL;
 
 echo $this->image(
     '/twbs-helper-module/img/docs/200x200.svg',
-['rounded' => true, 'alt' => 'Image aligned block', 'class' => 'mx-auto d-block']
+['rounded' => true, 'alt' => '...', 'class' => 'mx-auto d-block']
 );
 ```
 
@@ -268,14 +360,14 @@ echo $this->image(
 
 
 ##### Picture
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/images/#picture)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/images/#picture)
 <!-- tabs:start -->
 
 ###### **Result**
 
 <picture>
     <source srcset="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;200x200.svg" type="image&#x2F;svg&#x2B;xml" />
-    <img alt="Picture&#x20;image" class="img-fluid&#x20;img-thumbnail" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;200x200.svg" />
+    <img alt="..." class="img-fluid&#x20;img-thumbnail" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;200x200.svg" />
 </picture>
 
 ###### **Source**
@@ -284,7 +376,7 @@ echo $this->image(
 echo $this->image('/twbs-helper-module/img/docs/200x200.svg', [
     'thumbnail' => true,
     'fluid' => true,
-    'alt' => 'Picture image',
+    'alt' => '...',
     'sources' => ['/twbs-helper-module/img/docs/200x200.svg' => 'image/svg+xml'],
 ]);
 ```
@@ -293,9 +385,9 @@ echo $this->image('/twbs-helper-module/img/docs/200x200.svg', [
 
 
 #### Tables
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/tables/)
-##### Examples
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/tables/#examples)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/)
+##### Overview
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#overview)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -324,40 +416,87 @@ echo $this->image('/twbs-helper-module/img/docs/200x200.svg', [
         </tr>
         <tr>
             <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
+            <td colspan="2">Larry the Bird</td>
             <td>@twitter</td>
         </tr>
     </tbody>
 </table>
-<br/>
-<table class="table&#x20;table-dark">
+
+###### **Source**
+
+```php
+echo $this->table([
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
+```
+
+<!-- tabs:end -->
+
+
+##### Variants
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#variants)
+<!-- tabs:start -->
+
+###### **Result**
+
+<table class="table">
     <thead>
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Class</th>
+            <th scope="col">Heading</th>
+            <th scope="col">Heading</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <th scope="row">Default</th>
+            <td>Cell</td>
+            <td>Cell</td>
         </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
+        <tr class="table-primary">
+            <th scope="row">Primary</th>
+            <td>Cell</td>
+            <td>Cell</td>
         </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
+        <tr class="table-secondary">
+            <th scope="row">Secondary</th>
+            <td>Cell</td>
+            <td>Cell</td>
+        </tr>
+        <tr class="table-success">
+            <th scope="row">Success</th>
+            <td>Cell</td>
+            <td>Cell</td>
+        </tr>
+        <tr class="table-danger">
+            <th scope="row">Danger</th>
+            <td>Cell</td>
+            <td>Cell</td>
+        </tr>
+        <tr class="table-warning">
+            <th scope="row">Warning</th>
+            <td>Cell</td>
+            <td>Cell</td>
+        </tr>
+        <tr class="table-info">
+            <th scope="row">Info</th>
+            <td>Cell</td>
+            <td>Cell</td>
+        </tr>
+        <tr class="table-light">
+            <th scope="row">Light</th>
+            <td>Cell</td>
+            <td>Cell</td>
+        </tr>
+        <tr class="table-dark">
+            <th scope="row">Dark</th>
+            <td>Cell</td>
+            <td>Cell</td>
         </tr>
     </tbody>
 </table>
@@ -365,126 +504,43 @@ echo $this->image('/twbs-helper-module/img/docs/200x200.svg', [
 ###### **Source**
 
 ```php
+// Use "variant" option to color tables, table rows or individual cells.
 echo $this->table([
-    'head' => ['#', 'First', 'Last', 'Handle'],
+    'head' => ['Class', 'Heading', 'Heading'],
     'body' => [
-        ['1', 'Mark', 'Otto', '@mdo'],
-        ['2', 'Jacob', 'Thornton', '@fat'],
-        ['3', 'Larry', 'the Bird', '@twitter'],
-    ],
-]);
-
-echo PHP_EOL . '<br/>' . PHP_EOL;
-
-echo $this->table([
-    'head' => ['#', 'First', 'Last', 'Handle'],
-    'body' => [
-        ['1', 'Mark', 'Otto', '@mdo'],
-        ['2', 'Jacob', 'Thornton', '@fat'],
-        ['3', 'Larry', 'the Bird', '@twitter'],
-    ],
-], ['class' => 'table-dark']);
-```
-
-<!-- tabs:end -->
-
-
-##### Table head options
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/tables/#table-head-options)
-<!-- tabs:start -->
-
-###### **Result**
-
-<table class="table">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-        </tr>
-    </tbody>
-</table>
-<br/>
-<table class="table">
-    <thead class="thead-light">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-        </tr>
-    </tbody>
-</table>
-
-###### **Source**
-
-```php
-// First table (head dark)
-echo $this->table([
-    'head' => [
-        'attributes' => ['class' => 'thead-dark'],
-        'rows' => ['#', 'First', 'Last', 'Handle'],
-    ],
-    'body' => [
-        ['1', 'Mark', 'Otto', '@mdo'],
-        ['2', 'Jacob', 'Thornton', '@fat'],
-        ['3', 'Larry', 'the Bird', '@twitter'],
-    ],
-]);
-
-echo PHP_EOL . '<br/>' . PHP_EOL;
-
-// Second table (head light)
-echo $this->table([
-    'head' => [
-        'attributes' => ['class' => 'thead-light'],
-        'rows' => ['#', 'First', 'Last', 'Handle'],
-    ],
-    'body' => [
-        ['1', 'Mark', 'Otto', '@mdo'],
-        ['2', 'Jacob', 'Thornton', '@fat'],
-        ['3', 'Larry', 'the Bird', '@twitter'],
+        ['Default', 'Cell', 'Cell'],
+        [
+            'variant' => 'primary',
+            'cells' => ['Primary', 'Cell', 'Cell'],
+        ],
+        [
+            'variant' => 'secondary',
+            'cells' => ['Secondary', 'Cell', 'Cell'],
+        ],
+        [
+            'variant' => 'success',
+            'cells' => ['Success', 'Cell', 'Cell'],
+        ],
+        [
+            'variant' => 'danger',
+            'cells' => ['Danger', 'Cell', 'Cell'],
+        ],
+        [
+            'variant' => 'warning',
+            'cells' => ['Warning', 'Cell', 'Cell'],
+        ],
+        [
+            'variant' => 'info',
+            'cells' => ['Info', 'Cell', 'Cell'],
+        ],
+        [
+            'variant' => 'light',
+            'cells' => ['Light', 'Cell', 'Cell'],
+        ],
+        [
+            'variant' => 'dark',
+            'cells' => ['Dark', 'Cell', 'Cell'],
+        ],
     ],
 ]);
 ```
@@ -492,11 +548,13 @@ echo $this->table([
 <!-- tabs:end -->
 
 
-##### Striped rows
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/tables/#striped-rows)
+##### Accented tables
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#accented-tables)
+###### Striped rows
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#striped-rows)
 <!-- tabs:start -->
 
-###### **Result**
+####### **Result**
 
 <table class="table&#x20;table-striped">
     <thead>
@@ -522,8 +580,7 @@ echo $this->table([
         </tr>
         <tr>
             <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
+            <td colspan="2">Larry the Bird</td>
             <td>@twitter</td>
         </tr>
     </tbody>
@@ -553,48 +610,290 @@ echo $this->table([
         </tr>
         <tr>
             <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+<br/>
+<table class="table&#x20;table-striped&#x20;table-success">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
             <td>@twitter</td>
         </tr>
     </tbody>
 </table>
 
-###### **Source**
+####### **Source**
 
 ```php
-// First table (head striped)
+// Use "striped" option to add zebra-striping to any table row within the <tbody>.
 echo $this->table([
+    'striped' => true,
     'head' => ['#', 'First', 'Last', 'Handle'],
     'body' => [
         ['1', 'Mark', 'Otto', '@mdo'],
         ['2', 'Jacob', 'Thornton', '@fat'],
-        ['3', 'Larry', 'the Bird', '@twitter'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
     ],
-], ['class' => 'table-striped']);
-
+]);
 
 echo PHP_EOL . '<br/>' . PHP_EOL;
 
-// Second table (head striped & dark)
+// This option can also be added to table variants
+
 echo $this->table([
+    'striped' => true,
+    'variant' => 'dark',
     'head' => ['#', 'First', 'Last', 'Handle'],
     'body' => [
         ['1', 'Mark', 'Otto', '@mdo'],
         ['2', 'Jacob', 'Thornton', '@fat'],
-        ['3', 'Larry', 'the Bird', '@twitter'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
     ],
-], ['class' => 'table-striped table-dark']);
+]);
+
+echo PHP_EOL . '<br/>' . PHP_EOL;
+
+echo $this->table([
+    'striped' => true,
+    'variant' => 'success',
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
 ```
 
 <!-- tabs:end -->
 
 
-##### Bordered table
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/tables/#bordered-table)
+###### Hoverable rows
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#hoverable-rows)
 <!-- tabs:start -->
 
-###### **Result**
+####### **Result**
+
+<table class="table&#x20;table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+<br/>
+<table class="table&#x20;table-dark&#x20;table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+<br/>
+<table class="table&#x20;table-hover&#x20;table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+
+####### **Source**
+
+```php
+// Use "hover" option to add zebra-striping to any table row within the <tbody>.
+echo $this->table([
+    'hover' => true,
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
+
+echo PHP_EOL . '<br/>' . PHP_EOL;
+
+echo $this->table([
+    'variant' => 'dark',
+    'hover' => true,
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
+
+echo PHP_EOL . '<br/>' . PHP_EOL;
+
+// This option can also be combined with the striped option
+
+echo $this->table([
+    'hover' => true,
+    'striped' => true,
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
+```
+
+<!-- tabs:end -->
+
+
+###### Active tables
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#active-tables)
+<!-- tabs:start -->
+
+####### **Result**
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="table-active">
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td class="table-active" colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+
+####### **Source**
+
+```php
+// Highlight a table row or cell by adding the "active" option.
+echo $this->table([
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['active' => true, 'cells' => ['1', 'Mark', 'Otto', '@mdo']],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'active' => true, 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
+```
+
+<!-- tabs:end -->
+
+
+##### Table borders
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#table-borders)
+###### Bordered tables
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#bordered-tables)
+<!-- tabs:start -->
+
+####### **Result**
 
 <table class="table&#x20;table-bordered">
     <thead>
@@ -626,7 +925,7 @@ echo $this->table([
     </tbody>
 </table>
 <br/>
-<table class="table&#x20;table-bordered&#x20;table-dark">
+<table class="border-primary&#x20;table&#x20;table-bordered">
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -656,40 +955,42 @@ echo $this->table([
     </tbody>
 </table>
 
-###### **Source**
+####### **Source**
 
 ```php
-// First table (bordered)
+// Add "bordered" option for borders on all sides of the table and cells
 echo $this->table([
+    'bordered' => true,
     'head' => ['#', 'First', 'Last', 'Handle'],
     'body' => [
         ['1', 'Mark', 'Otto', '@mdo'],
         ['2', 'Jacob', 'Thornton', '@fat'],
         ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
     ],
-], ['class' => 'table-bordered']);
+]);
 
 echo PHP_EOL . '<br/>' . PHP_EOL;
 
-// First table (bordered & dark)
+// "bordered" option can be a variant to change colors
 echo $this->table([
+    'bordered' => 'primary',
     'head' => ['#', 'First', 'Last', 'Handle'],
     'body' => [
         ['1', 'Mark', 'Otto', '@mdo'],
         ['2', 'Jacob', 'Thornton', '@fat'],
         ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
     ],
-], ['class' => 'table-bordered table-dark']);
+]);
 ```
 
 <!-- tabs:end -->
 
 
-##### Borderless table
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/tables/#borderless-table)
+###### Tables without borders
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#tables-without-borders)
 <!-- tabs:start -->
 
-###### **Result**
+####### **Result**
 
 <table class="table&#x20;table-borderless">
     <thead>
@@ -751,132 +1052,40 @@ echo $this->table([
     </tbody>
 </table>
 
-###### **Source**
+####### **Source**
 
 ```php
-// First table (borderless)
+// Add "borderless" option for a table without borders
 echo $this->table([
+    'borderless' => true,
     'head' => ['#', 'First', 'Last', 'Handle'],
     'body' => [
         ['1', 'Mark', 'Otto', '@mdo'],
         ['2', 'Jacob', 'Thornton', '@fat'],
         ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
     ],
-], ['class' => 'table-borderless']);
+]);
 
 echo PHP_EOL . '<br/>' . PHP_EOL;
 
-// Second table (borderless & dark)
+// This option can also be combined with the "variant" option
 echo $this->table([
+    'borderless' => true,
+    'variant' => 'dark',
     'head' => ['#', 'First', 'Last', 'Handle'],
     'body' => [
         ['1', 'Mark', 'Otto', '@mdo'],
         ['2', 'Jacob', 'Thornton', '@fat'],
         ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
     ],
-], ['class' => 'table-borderless table-dark']);
+]);
 ```
 
 <!-- tabs:end -->
 
 
-##### Hoverable rows
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/tables/#hoverable-rows)
-<!-- tabs:start -->
-
-###### **Result**
-
-<table class="table&#x20;table-hover">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-        </tr>
-    </tbody>
-</table>
-<br/>
-<table class="table&#x20;table-dark&#x20;table-hover">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-        </tr>
-    </tbody>
-</table>
-
-###### **Source**
-
-```php
-// First table (hoverable)
-echo $this->table([
-    'head' => ['#', 'First', 'Last', 'Handle'],
-    'body' => [
-        ['1', 'Mark', 'Otto', '@mdo'],
-        ['2', 'Jacob', 'Thornton', '@fat'],
-        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
-    ],
-], ['class' => 'table-hover']);
-
-echo PHP_EOL . '<br/>' . PHP_EOL;
-
-// Second table (hoverable & dark)
-echo $this->table([
-    'head' => ['#', 'First', 'Last', 'Handle'],
-    'body' => [
-        ['1', 'Mark', 'Otto', '@mdo'],
-        ['2', 'Jacob', 'Thornton', '@fat'],
-        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
-    ],
-], ['class' => 'table-hover table-dark']);
-```
-
-<!-- tabs:end -->
-
-
-##### Small Table
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/tables/#small-table)
+##### Small Tables
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#small-tables)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -944,158 +1153,186 @@ echo $this->table([
 ###### **Source**
 
 ```php
-// First table (small)
+// Add "size" option to make any table more compact by cutting all cell padding in half.
 echo $this->table([
+    'size' => 'sm',
     'head' => ['#', 'First', 'Last', 'Handle'],
     'body' => [
         ['1', 'Mark', 'Otto', '@mdo'],
         ['2', 'Jacob', 'Thornton', '@fat'],
         ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
     ],
-], ['class' => 'table-sm']);
+]);
 
 echo PHP_EOL . '<br/>' . PHP_EOL;
 
-// Second table (small & dark)
+// This option can also be combined with the "variant" option
 echo $this->table([
+    'size' => 'sm',
+    'variant' => 'dark',
     'head' => ['#', 'First', 'Last', 'Handle'],
     'body' => [
         ['1', 'Mark', 'Otto', '@mdo'],
         ['2', 'Jacob', 'Thornton', '@fat'],
         ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
     ],
-], ['class' => 'table-sm table-dark']);
+]);
 ```
 
 <!-- tabs:end -->
 
 
-##### Contextual classes
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/tables/#contextual-classes)
+##### Vertical alignment
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#vertical-alignment)
 <!-- tabs:start -->
 
 ###### **Result**
 
-<table class="table">
+<div class="table-responsive">
+    <table class="align-middle&#x20;table">
+        <thead>
+            <tr>
+                <th class="w-25" scope="col">Heading 1</th>
+                <th class="w-25" scope="col">Heading 2</th>
+                <th class="w-25" scope="col">Heading 3</th>
+                <th class="w-25" scope="col">Heading 4</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
+                <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
+                <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
+                <td>This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.</td>
+            </tr>
+            <tr class="align-bottom">
+                <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
+                <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
+                <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
+                <td>This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.</td>
+            </tr>
+            <tr>
+                <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
+                <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
+                <td class="align-top">This cell is aligned to the top.</td>
+                <td>This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+###### **Source**
+
+```php
+// Use the align option to re-align where needed
+echo $this->table([
+    'responsive' => true,
+    'align' => 'middle',
+    'head' => [
+        ['data' => 'Heading 1', 'attributes' => ['class' => 'w-25']],
+        ['data' => 'Heading 2', 'attributes' => ['class' => 'w-25']],
+        ['data' => 'Heading 3', 'attributes' => ['class' => 'w-25']],
+        ['data' => 'Heading 4', 'attributes' => ['class' => 'w-25']],
+    ],
+    'body' => [
+        [
+            [
+                'type' => \TwbsHelper\View\Helper\Table::TABLE_DATA,
+                'attributes' => ['scope' => null],
+                'data' => 'This cell inherits <code>vertical-align: middle;</code> from the table'
+            ],
+            'This cell inherits <code>vertical-align: middle;</code> from the table',
+            'This cell inherits <code>vertical-align: middle;</code> from the table',
+            'This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.'
+        ],
+        [
+            'align' => 'bottom',
+            [
+                'type' => \TwbsHelper\View\Helper\Table::TABLE_DATA,
+                'attributes' => ['scope' => null],
+                'data' => 'This cell inherits <code>vertical-align: bottom;</code> from the table row'
+            ],
+            'This cell inherits <code>vertical-align: bottom;</code> from the table row',
+            'This cell inherits <code>vertical-align: bottom;</code> from the table row',
+            'This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.'
+        ],
+        [
+            [
+                'type' => \TwbsHelper\View\Helper\Table::TABLE_DATA,
+                'attributes' => ['scope' => null],
+                'data' => 'This cell inherits <code>vertical-align: middle;</code> from the table'
+            ],
+            'This cell inherits <code>vertical-align: middle;</code> from the table',
+            [
+                'align' => 'top',
+                'data' => 'This cell is aligned to the top.',
+            ],
+            'This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.'
+        ],
+    ],
+]);
+```
+
+<!-- tabs:end -->
+
+
+##### Nesting
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#nesting)
+<!-- tabs:start -->
+
+###### **Result**
+
+<table class="table&#x20;table-bordered&#x20;table-striped">
     <thead>
         <tr>
-            <th scope="col">Class</th>
-            <th scope="col">Heading</th>
-            <th scope="col">Heading</th>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
         </tr>
     </thead>
     <tbody>
-        <tr class="table-active">
-            <th scope="row">Active</th>
-            <td>Cell</td>
-            <td>Cell</td>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
         </tr>
         <tr>
-            <th scope="row">Default</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="table-primary">
-            <th scope="row">Primary</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="table-secondary">
-            <th scope="row">Secondary</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="table-success">
-            <th scope="row">Success</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="table-danger">
-            <th scope="row">Danger</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="table-warning">
-            <th scope="row">Warning</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="table-info">
-            <th scope="row">Info</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="table-light">
-            <th scope="row">Light</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="table-dark">
-            <th scope="row">Dark</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-    </tbody>
-</table>
-<br/>
-<table class="table&#x20;table-dark">
-    <thead>
-        <tr>
-            <th scope="col">Class</th>
-            <th scope="col">Heading</th>
-            <th scope="col">Heading</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr class="bg-active">
-            <th scope="row">Active</th>
-            <td>Cell</td>
-            <td>Cell</td>
+            <td colspan="4">
+                <table class="mb-0&#x20;table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Header</th>
+                            <th scope="col">Header</th>
+                            <th scope="col">Header</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">A</th>
+                            <td>First</td>
+                            <td>Last</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">B</th>
+                            <td>First</td>
+                            <td>Last</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">C</th>
+                            <td>First</td>
+                            <td>Last</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
         </tr>
         <tr>
-            <th scope="row">Default</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="bg-primary">
-            <th scope="row">Primary</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="bg-secondary">
-            <th scope="row">Secondary</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="bg-success">
-            <th scope="row">Success</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="bg-danger">
-            <th scope="row">Danger</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="bg-warning">
-            <th scope="row">Warning</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="bg-info">
-            <th scope="row">Info</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="bg-light">
-            <th scope="row">Light</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="bg-dark">
-            <th scope="row">Dark</th>
-            <td>Cell</td>
-            <td>Cell</td>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
         </tr>
     </tbody>
 </table>
@@ -1103,109 +1340,72 @@ echo $this->table([
 ###### **Source**
 
 ```php
-// First table
 echo $this->table([
-    'head' => ['Class', 'Heading', 'Heading'],
+    'striped' => true,
+    'bordered' => true,
+    'head' => ['#', 'First', 'Last', 'Handle'],
     'body' => [
-        [
-            'attributes' => ['class' => 'table-active'],
-            'cells' => ['Active', 'Cell', 'Cell'],
-        ],
-        ['Default', 'Cell', 'Cell'],
-        [
-            'attributes' => ['class' => 'table-primary'],
-            'cells' => ['Primary', 'Cell', 'Cell'],
-        ],
-        [
-            'attributes' => ['class' => 'table-secondary'],
-            'cells' => ['Secondary', 'Cell', 'Cell'],
-        ],
-        [
-            'attributes' => ['class' => 'table-success'],
-            'cells' => ['Success', 'Cell', 'Cell'],
-        ],
-        [
-            'attributes' => ['class' => 'table-danger'],
-            'cells' => ['Danger', 'Cell', 'Cell'],
-        ],
-        [
-            'attributes' => ['class' => 'table-warning'],
-            'cells' => ['Warning', 'Cell', 'Cell'],
-        ],
-        [
-            'attributes' => ['class' => 'table-info'],
-            'cells' => ['Info', 'Cell', 'Cell'],
-        ],
-        [
-            'attributes' => ['class' => 'table-light'],
-            'cells' => ['Light', 'Cell', 'Cell'],
-        ],
-        [
-            'attributes' => ['class' => 'table-dark'],
-            'cells' => ['Dark', 'Cell', 'Cell'],
-        ],
-    ],
+        ['1', 'Mark', 'Otto', '@mdo'],
+        [[
+            'data' => [
+                'head' => ['Header', 'Header', 'Header'],
+                'body' => [
+                    ['A', 'First', 'Last'],
+                    ['B', 'First', 'Last'],
+                    ['C', 'First', 'Last'],
+                ],
+            ],
+        'attributes' => ['colspan' => 4]
+    ]],
+    ['3', 'Larry', 'the Bird', '@twitter'],
+],
 ]);
-
-echo PHP_EOL . '<br/>' . PHP_EOL;
-
-// Second table (dark)
-echo $this->table([
-    'head' => ['Class', 'Heading', 'Heading'],
-    'body' => [
-        [
-            'attributes' => ['class' => 'bg-active'],
-            'cells' => ['Active', 'Cell', 'Cell'],
-        ],
-        ['Default', 'Cell', 'Cell'],
-        [
-            'attributes' => ['class' => 'bg-primary'],
-            'cells' => ['Primary', 'Cell', 'Cell'],
-        ],
-        [
-            'attributes' => ['class' => 'bg-secondary'],
-            'cells' => ['Secondary', 'Cell', 'Cell'],
-        ],
-        [
-            'attributes' => ['class' => 'bg-success'],
-            'cells' => ['Success', 'Cell', 'Cell'],
-        ],
-        [
-            'attributes' => ['class' => 'bg-danger'],
-            'cells' => ['Danger', 'Cell', 'Cell'],
-        ],
-        [
-            'attributes' => ['class' => 'bg-warning'],
-            'cells' => ['Warning', 'Cell', 'Cell'],
-        ],
-        [
-            'attributes' => ['class' => 'bg-info'],
-            'cells' => ['Info', 'Cell', 'Cell'],
-        ],
-        [
-            'attributes' => ['class' => 'bg-light'],
-            'cells' => ['Light', 'Cell', 'Cell'],
-        ],
-        [
-            'attributes' => ['class' => 'bg-dark'],
-            'cells' => ['Dark', 'Cell', 'Cell'],
-        ],
-    ],
-], ['class' => 'table-dark']);
 ```
 
 <!-- tabs:end -->
 
 
-##### Captions
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/tables/#captions)
+##### Anatomy
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#anatomy)
+###### Table head
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#table-head)
 <!-- tabs:start -->
 
-###### **Result**
+####### **Result**
 
 <table class="table">
-    <caption>List of users</caption>
-    <thead>
+    <thead class="table-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+<br/>
+<table class="table">
+    <thead class="table-dark">
         <tr>
             <th scope="col">#</th>
             <th scope="col">First</th>
@@ -1235,12 +1435,29 @@ echo $this->table([
     </tbody>
 </table>
 
-###### **Source**
+####### **Source**
 
 ```php
+// Similar to tables and dark tables, use the option "variant" to make <thead>s appear light or dark gray.
 echo $this->table([
-    'caption' => 'List of users',
-    'head' => ['#', 'First', 'Last', 'Handle'],
+    'head' => [
+        'variant' => 'light',
+        'cells' => ['#', 'First', 'Last', 'Handle'],
+    ],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', 'Larry', 'the Bird', '@twitter'],
+    ],
+]);
+
+echo PHP_EOL . '<br/>' . PHP_EOL;
+
+echo $this->table([
+    'head' => [
+        'variant' => 'dark',
+        'cells' => ['#', 'First', 'Last', 'Handle'],
+    ],
     'body' => [
         ['1', 'Mark', 'Otto', '@mdo'],
         ['2', 'Jacob', 'Thornton', '@fat'],
@@ -1252,10 +1469,173 @@ echo $this->table([
 <!-- tabs:end -->
 
 
+###### Table foot
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#table-foot)
+<!-- tabs:start -->
+
+####### **Result**
+
+<table class="table">
+    <thead class="table-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Footer</td>
+            <td>Footer</td>
+            <td>Footer</td>
+            <td>Footer</td>
+        </tr>
+    </tfoot>
+</table>
+
+####### **Source**
+
+```php
+echo $this->table([
+    'head' => [
+        'variant' => 'light',
+        'cells' => ['#', 'First', 'Last', 'Handle'],
+    ],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', 'Larry', 'the Bird', '@twitter'],
+    ],
+    'footer' => ['Footer', 'Footer', 'Footer', 'Footer'],
+]);
+```
+
+<!-- tabs:end -->
+
+
+###### Captions
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#captions)
+<!-- tabs:start -->
+
+####### **Result**
+
+<table class="table">
+    <caption>List of users</caption>
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+<br/>
+<table class="caption-top&#x20;table">
+    <caption>List of users</caption>
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+
+####### **Source**
+
+```php
+echo $this->table([
+    'caption' => 'List of users',
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
+
+echo PHP_EOL . '<br/>' . PHP_EOL;
+
+// You can also put the <caption> on the top of the table with the "captionTop" option
+echo $this->table([
+    'captionTop' => 'List of users',
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
+```
+
+<!-- tabs:end -->
+
+
 ##### Responsive classes
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/tables/#responsive-tables)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#responsive-tables)
 ###### Always responsive
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/tables/#always-responsive)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#always-responsive)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -1338,11 +1718,68 @@ echo $this->table([
 
 
 ###### Breakpoint specific
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/tables/#breakpoint-specific)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/tables/#breakpoint-specific)
 <!-- tabs:start -->
 
 ####### **Result**
 
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br/>
 <div class="table-responsive-sm">
     <table class="table">
         <thead>
@@ -1574,7 +2011,7 @@ echo $this->table([
 ####### **Source**
 
 ```php
-foreach (['sm', 'md', 'lg', 'xl'] as $iKey => $sSize) {
+foreach ([true, 'sm', 'md', 'lg', 'xl'] as $iKey => $sSize) {
     if ($iKey) {
         echo PHP_EOL . '<br/>' . PHP_EOL;
     }
@@ -1598,14 +2035,14 @@ foreach (['sm', 'md', 'lg', 'xl'] as $iKey => $sSize) {
 
 
 #### Figures
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/figures/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/content/figures/)
 ##### Basic
 <!-- tabs:start -->
 
 ###### **Result**
 
 <figure class="figure">
-    <img alt="A&#x20;generic&#x20;square&#x20;placeholder&#x20;image&#x20;with&#x20;rounded&#x20;corners&#x20;in&#x20;a&#x20;figure." class="figure-img&#x20;img-fluid&#x20;rounded" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;400x300.svg" />
+    <img alt="..." class="figure-img&#x20;img-fluid&#x20;rounded" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;400x300.svg" />
     <figcaption class="figure-caption">A caption for the above image.</figcaption>
 </figure>
 
@@ -1619,7 +2056,7 @@ echo $this->figure(
     [
         'fluid' => true,
         'rounded' => true,
-        'alt' => 'A generic square placeholder image with rounded corners in a figure.',
+        'alt' => '...',
     ]
 );
 ```
@@ -1633,8 +2070,8 @@ echo $this->figure(
 ###### **Result**
 
 <figure class="figure">
-    <img alt="A&#x20;generic&#x20;square&#x20;placeholder&#x20;image&#x20;with&#x20;rounded&#x20;corners&#x20;in&#x20;a&#x20;figure." class="figure-img&#x20;img-fluid&#x20;rounded" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;400x300.svg" />
-    <figcaption class="figure-caption&#x20;text-right">A caption for the above image.</figcaption>
+    <img alt="..." class="figure-img&#x20;img-fluid&#x20;rounded" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;400x300.svg" />
+    <figcaption class="figure-caption&#x20;text-end">A caption for the above image.</figcaption>
 </figure>
 
 ###### **Source**
@@ -1647,9 +2084,9 @@ echo $this->figure(
     [
         'fluid' => true,
         'rounded' => true,
-        'alt' => 'A generic square placeholder image with rounded corners in a figure.',
+        'alt' => '...',
     ],
-['class' => 'text-right']
+['class' => 'text-end']
 );
 ```
 
@@ -1657,11 +2094,11 @@ echo $this->figure(
 
 
 ### Components
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/)
 #### Alerts
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/alerts/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/alerts/)
 ##### Example
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/alerts/#examples)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/alerts/#examples)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -1710,7 +2147,7 @@ foreach ([
 
 
 ###### Link color
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/alerts/#link-color)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/alerts/#link-color)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -1761,7 +2198,7 @@ foreach ([
 
 
 ###### Additional content
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/alerts/#additional-content)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/alerts/#additional-content)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -1796,7 +2233,7 @@ echo $this->alert(
 
 
 ###### Dismissing
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/alerts/#dismissing)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/alerts/#dismissing)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -1822,9 +2259,9 @@ echo $this->alert(
 
 
 #### Badges
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/badge/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/badge/)
 ##### Example
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/badge/#example)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/badge/#example)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -1873,7 +2310,7 @@ echo $this->formButton([
 
 
 ##### Contextual variations
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/badge/#contextual-variations)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/badge/#contextual-variations)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -1903,7 +2340,7 @@ foreach ([
 
 
 ##### Pill badges
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/badge/#pill-badges)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/badge/#pill-badges)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -1939,7 +2376,7 @@ foreach ([
 
 
 ##### Links
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/badge/#links)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/badge/#links)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -1977,9 +2414,9 @@ foreach ([
 
 
 #### Breadcrumb
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/breadcrumb/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/breadcrumb/)
 ##### Example
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/breadcrumb/#example)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/breadcrumb/#example)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -2036,9 +2473,9 @@ echo $this->breadcrumbs(new \Laminas\Navigation\Navigation([
 
 
 #### Buttons
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/buttons/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/buttons/)
 ##### Example
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/buttons/#example)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/buttons/#example)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -2073,7 +2510,7 @@ foreach ([
 
 
 ##### Button tags
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/buttons/#button-tags)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/buttons/#button-tags)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -2106,7 +2543,7 @@ echo $this->formButton($oButton) . PHP_EOL;
 
 
 ##### Outline buttons
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/buttons/#outline-buttons)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/buttons/#outline-buttons)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -2140,7 +2577,7 @@ foreach ([
 
 
 ##### Sizes
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/buttons/#sizes)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/buttons/#sizes)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -2211,9 +2648,9 @@ echo $this->formButton($oButton) . PHP_EOL;
 
 
 #### Button group
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/button-group/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/button-group/)
 ##### Basic example
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/button-group/#basic-example)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/button-group/#basic-example)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -2240,7 +2677,7 @@ echo $this->buttonGroup([
 
 
 ##### Button toolbar
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/button-group/#button-toolbar)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/button-group/#button-toolbar)
 ###### Combine sets of button groups
 <!-- tabs:start -->
 
@@ -2414,7 +2851,7 @@ echo $this->buttonToolbar(
 
 
 ##### Sizing
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/button-group/#sizing)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/button-group/#sizing)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -2452,7 +2889,7 @@ foreach (['lg', null, 'sm'] as $sSize) {
 
 
 ##### Nesting
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/button-group/#nesting)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/button-group/#nesting)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -2491,7 +2928,7 @@ echo $this->buttonGroup([
 
 
 ##### Vertical variation
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/button-group/#vertical-variation)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/button-group/#vertical-variation)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -2579,9 +3016,9 @@ echo $this->buttonGroup([
 
 
 #### Card
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/card/)
 ##### Example
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#example)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/card/#example)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -2610,9 +3047,9 @@ echo $this->card([
 
 
 ##### Content types
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#content-types)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/card/#content-types)
 ###### Body
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#body)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/card/#body)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -2633,7 +3070,7 @@ echo $this->card('This is some text within a card body.');
 
 
 ###### Titles, text, and links
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#titles-text-and-links)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/card/#titles-text-and-links)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -2670,7 +3107,7 @@ echo $this->card([
 
 
 ###### Images
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#images)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/card/#images)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -2696,7 +3133,7 @@ echo $this->card([
 
 
 ###### List groups
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#list-groups)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/card/#list-groups)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -2751,7 +3188,7 @@ echo $this->card([
 
 
 ###### Kitchen sink
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#kitchen-sink)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/card/#kitchen-sink)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -2799,7 +3236,7 @@ echo $this->card([
 
 
 ###### Header and footer
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#header-and-footer)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/card/#header-and-footer)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -2820,10 +3257,12 @@ echo $this->card([
         Quote
     </div>
     <div class="card-body">
-        <blockquote class="blockquote&#x20;mb-0">
-            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-        </blockquote>
+        <figure>
+            <blockquote class="blockquote">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            </blockquote>
+            <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></figcaption>
+        </figure>
     </div>
 </div>
 <br/>
@@ -2859,7 +3298,6 @@ echo $this->card([
     'blockquote' => [
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.',
         'Someone famous in <cite title="Source Title">Source Title</cite>',
-        ['class' => 'mb-0'],
     ],
 ]);
 
@@ -2879,9 +3317,9 @@ echo $this->card([
 
 
 ##### Sizing
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#sizing)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/card/#sizing)
 ###### Using utilities
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#using-utilities)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/card/#using-utilities)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -2921,7 +3359,7 @@ echo $this->card([
 
 
 ###### Using custom CSS
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#using-custom-css)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/card/#using-custom-css)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -2948,7 +3386,7 @@ echo $this->card([
 
 
 ##### Text alignment
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#text-alignment)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/card/#text-alignment)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -3009,7 +3447,7 @@ echo $this->card([
 
 
 ##### Navigation
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#navigation)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/card/#navigation)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -3103,9 +3541,9 @@ echo $this->card([
 
 
 ##### Images
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#images-1)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/card/#images-1)
 ###### Image caps
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#image-caps)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/card/#image-caps)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -3155,7 +3593,7 @@ echo $this->card([
 
 
 ###### Image overlays
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#image-overlays)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/card/#image-overlays)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -3190,9 +3628,9 @@ echo $this->card([
 
 
 ##### Card styles
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#card-styles)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/card/#card-styles)
 ###### Background and color
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#background-and-color)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/card/#background-and-color)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -3296,7 +3734,7 @@ foreach (
 
 
 ###### Border
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#border)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/card/#border)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -3401,7 +3839,7 @@ foreach (
 
 
 ###### Mixins utilities
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#mixins-utilities)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/card/#mixins-utilities)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -3439,9 +3877,9 @@ echo $this->card([
 
 
 ##### Card layout
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#card-layout)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/card/#card-layout)
 ###### Card groups
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#card-groups)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/card/#card-groups)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -3572,7 +4010,7 @@ echo $this->cardGroup([
 
 
 ###### Card decks
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#card-decks)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/card/#card-decks)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -3703,7 +4141,7 @@ echo $this->cardDeck([
 
 
 ###### Card columns
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#card-columns)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/card/#card-columns)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -3718,10 +4156,12 @@ echo $this->cardDeck([
     </div>
     <div class="card&#x20;p-3">
         <div class="card-body">
-            <blockquote class="blockquote&#x20;mb-0">
-                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-            </blockquote>
+            <figure>
+                <blockquote class="blockquote">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                </blockquote>
+                <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></figcaption>
+            </figure>
         </div>
     </div>
     <div class="card">
@@ -3734,10 +4174,12 @@ echo $this->cardDeck([
     </div>
     <div class="bg-primary&#x20;card&#x20;p-3&#x20;text-center&#x20;text-white">
         <div class="card-body">
-            <blockquote class="blockquote&#x20;mb-0">
-                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-                <footer class="blockquote-footer&#x20;text-white">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-            </blockquote>
+            <figure>
+                <blockquote class="blockquote">
+                    <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
+                </blockquote>
+                <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></figcaption>
+            </figure>
         </div>
     </div>
     <div class="card&#x20;text-center">
@@ -3752,10 +4194,12 @@ echo $this->cardDeck([
     </div>
     <div class="card&#x20;p-3&#x20;text-right">
         <div class="card-body">
-            <blockquote class="blockquote&#x20;mb-0">
-                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-            </blockquote>
+            <figure>
+                <blockquote class="blockquote">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                </blockquote>
+                <figcaption class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></figcaption>
+            </figure>
         </div>
     </div>
     <div class="card">
@@ -3782,7 +4226,6 @@ echo $this->cardColumns([
             'blockquote' => [
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.',
                 'Someone famous in <cite title="Source Title">Source Title</cite>',
-                ['class' => 'mb-0'],
             ],
         ],
         ['class' => 'p-3'],
@@ -3800,7 +4243,6 @@ echo $this->cardColumns([
             'blockquote' => [
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.',
                 'Someone famous in <cite title="Source Title">Source Title</cite>',
-                ['class' => 'mb-0'],
                 [],
                 ['class' => 'text-white'],
             ],
@@ -3826,7 +4268,6 @@ echo $this->cardColumns([
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ' .
                 'Integer posuere erat a ante.',
                 'Someone famous in <cite title="Source Title">Source Title</cite>',
-                ['class' => 'mb-0'],
             ],
         ],
         ['class' => 'p-3 text-right'],
@@ -3846,11 +4287,11 @@ echo $this->cardColumns([
 
 
 #### Carousel
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/carousel/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/carousel/)
 ##### Example
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/carousel/#example)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/carousel/#example)
 ###### Slides only
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/carousel/#slides-only)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/carousel/#slides-only)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -3886,7 +4327,7 @@ echo $this->carousel([
 
 
 ###### With controls
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/carousel/#with-controls)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/carousel/#with-controls)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -3930,7 +4371,7 @@ echo $this->carousel([
 
 
 ###### With indicators
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/carousel/#with-indicators)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/carousel/#with-indicators)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -3979,7 +4420,7 @@ echo $this->carousel([
 
 
 ###### With captions
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/carousel/#with-captions)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/carousel/#with-captions)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -4066,7 +4507,7 @@ echo $this->carousel([
 
 
 ###### Crossfade
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/carousel/#crossfade)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/carousel/#crossfade)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -4110,7 +4551,7 @@ echo $this->carousel([
 
 
 ###### Individual .carousel-item interval
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/carousel/#individual-carousel-item-interval)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/carousel/#individual-carousel-item-interval)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -4155,11 +4596,11 @@ echo $this->carousel([
 
 
 #### Dropdowns
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/dropdowns/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/dropdowns/)
 ##### Examples
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/dropdowns/#examples)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/dropdowns/#examples)
 ###### Single button
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/dropdowns/#single-button)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/dropdowns/#single-button)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -4321,7 +4762,7 @@ foreach ([
 
 
 ###### Split button
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/dropdowns/#split-button)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/dropdowns/#split-button)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -4447,7 +4888,7 @@ foreach ([
 
 
 ##### Sizing
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/dropdowns/#sizing)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/dropdowns/#sizing)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -4558,9 +4999,9 @@ echo $this->formButton([
 
 
 ##### Directions
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/dropdowns/#directions)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/dropdowns/#directions)
 ###### Dropup
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/dropdowns/#dropup)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/dropdowns/#dropup)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -4635,7 +5076,7 @@ echo $this->formButton([
 
 
 ###### Dropright
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/dropdowns/#dropright)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/dropdowns/#dropright)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -4710,7 +5151,7 @@ echo $this->formButton([
 
 
 ##### Menu items
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/dropdowns/#menu-items)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/dropdowns/#menu-items)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -4758,7 +5199,7 @@ echo $this->dropdown()->renderMenu([
 
 
 ###### Active
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/dropdowns/#active)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/dropdowns/#active)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -4783,7 +5224,7 @@ echo $this->dropdown()->renderMenu([
 
 
 ###### Disabled
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/dropdowns/#disabled)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/dropdowns/#disabled)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -4808,7 +5249,7 @@ echo $this->dropdown()->renderMenu([
 
 
 ##### Menu alignment
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/dropdowns/#menu-alignment)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/dropdowns/#menu-alignment)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -4841,7 +5282,7 @@ echo $this->formButton([
 
 
 ###### Responsive alignment
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/dropdowns/#responsive-alignment)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/dropdowns/#responsive-alignment)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -4896,9 +5337,9 @@ echo $this->formButton([
 
 
 ##### Menu content
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/dropdowns/#menu-content)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/dropdowns/#menu-content)
 ###### Headers
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/dropdowns/#headers)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/dropdowns/#headers)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -4923,7 +5364,7 @@ echo $this->dropdown()->renderMenu([
 
 
 ###### Dividers
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/dropdowns/#headers)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/dropdowns/#headers)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -4952,7 +5393,7 @@ echo $this->dropdown()->renderMenu([
 
 
 ###### Text
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/dropdowns/#headers)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/dropdowns/#headers)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -4975,28 +5416,28 @@ echo $this->dropdown()->renderMenu([
 
 
 ###### Forms
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/dropdowns/#forms)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/dropdowns/#forms)
 <!-- tabs:start -->
 
 ####### **Result**
 
 <div class="dropdown-menu">
     <form action="" method="POST" name="dropdown" id="dropdown" role="form">
-        <div class="form-group">
-            <label for="exampleDropdownFormEmail1">Email address</label>
+        <div class="mb-3">
+            <label class="form-label" for="exampleDropdownFormEmail1">Email address</label>
             <input name="email" type="email" id="exampleDropdownFormEmail1" placeholder="email&#x40;example.com" class="form-control" value=""/>
         </div>
-        <div class="form-group">
-            <label for="exampleDropdownFormPassword1">Password</label>
+        <div class="mb-3">
+            <label class="form-label" for="exampleDropdownFormPassword1">Password</label>
             <input name="password" type="password" id="exampleDropdownFormPassword1" placeholder="Password" class="form-control" value=""/>
         </div>
-        <div class="form-group">
+        <div class="mb-3">
             <div class="form-check">
                 <input type="checkbox" name="remember_me" id="dropdownCheck" class="form-check-input" value="1"/>
                 <label class="form-check-label" for="dropdownCheck">Remember me</label>
             </div>
         </div>
-        <div class="form-group">
+        <div class="mb-3">
             <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Sign in</button>
         </div>
     </form>
@@ -5066,7 +5507,7 @@ echo $this->dropdown()->renderMenu([
 
 
 ##### Dropdown options
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/dropdowns/#dropdown-options)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/dropdowns/#dropdown-options)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -5131,30 +5572,30 @@ echo PHP_EOL . '</div>';
 
 
 #### Forms
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/)
 ##### Overview
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#overview)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#overview)
 <!-- tabs:start -->
 
 ###### **Result**
 
 <form action="" method="POST" name="form" role="form" id="form">
-    <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
+    <div class="mb-3">
+        <label class="form-label" for="exampleInputEmail1">Email address</label>
         <input name="email" type="email" id="exampleInputEmail1" placeholder="Enter&#x20;email" class="form-control" value=""/>
         <small class="form-text&#x20;text-muted" id="emailHelp">We&#039;ll never share your email with anyone else.</small>
     </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
+    <div class="mb-3">
+        <label class="form-label" for="exampleInputPassword1">Password</label>
         <input name="password" type="password" id="exampleInputPassword1" placeholder="Password" class="form-control" value=""/>
     </div>
-    <div class="form-group">
+    <div class="mb-3">
         <div class="form-check">
             <input type="checkbox" name="remember_me" id="exampleCheck1" class="form-check-input" value="1"/>
             <label class="form-check-label" for="exampleCheck1">Check me out</label>
         </div>
     </div>
-    <div class="form-group">
+    <div class="mb-3">
         <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Submit</button>
     </div>
 </form>
@@ -5219,19 +5660,19 @@ echo $this->form($oFactory->create([
 
 
 ##### Form controls
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#form-controls)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#form-controls)
 <!-- tabs:start -->
 
 ###### **Result**
 
 <form action="" method="POST" name="form" role="form" id="form">
-    <div class="form-group">
-        <label for="exampleFormControlInput1">Email address</label>
+    <div class="mb-3">
+        <label class="form-label" for="exampleFormControlInput1">Email address</label>
         <input name="email" type="email" id="exampleFormControlInput1" placeholder="name&#x40;example.com" class="form-control" value=""/>
     </div>
-    <div class="form-group">
-        <label for="exampleFormControlSelect1">Example select</label>
-        <select name="select" id="exampleFormControlSelect1" class="form-control">
+    <div class="mb-3">
+        <label class="form-label" for="exampleFormControlSelect1">Example select</label>
+        <select name="select" id="exampleFormControlSelect1" class="form-select">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -5239,9 +5680,9 @@ echo $this->form($oFactory->create([
             <option value="5">5</option>
         </select>
     </div>
-    <div class="form-group">
-        <label for="exampleFormControlSelect2">Example multiple select</label>
-        <select name="multiple_select&#x5B;&#x5D;" id="exampleFormControlSelect2" multiple="multiple" class="form-control">
+    <div class="mb-3">
+        <label class="form-label" for="exampleFormControlSelect2">Example multiple select</label>
+        <select name="multiple_select&#x5B;&#x5D;" id="exampleFormControlSelect2" multiple="multiple" class="form-select">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -5249,13 +5690,13 @@ echo $this->form($oFactory->create([
             <option value="5">5</option>
         </select>
     </div>
-    <div class="form-group">
-        <label for="exampleFormControlTextarea1">Example textarea</label>
+    <div class="mb-3">
+        <label class="form-label" for="exampleFormControlTextarea1">Example textarea</label>
         <textarea name="textarea" id="exampleFormControlTextarea1" rows="3" class="form-control"></textarea>
     </div>
-    <div class="form-group">
-        <label for="exampleFormControlFile1">Example file input</label>
-        <input name="file_input" type="file" id="exampleFormControlFile1" class="form-control-file"/>
+    <div class="mb-3">
+        <label class="form-label" for="exampleFormControlFile1">Example file input</label>
+        <input name="file_input" type="file" id="exampleFormControlFile1" class="form-control"/>
     </div>
 </form>
 
@@ -5352,7 +5793,7 @@ echo $this->form($oFactory->create([
 
 
 ###### Sizing
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#sizing)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#sizing)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -5363,11 +5804,11 @@ echo $this->form($oFactory->create([
 <br/>
 <input type="text" name="sm" placeholder=".form-control-sm" class="form-control&#x20;form-control-sm" value=""/>
 <br/>
-<select name="lg" class="form-control&#x20;form-control-lg"><option value="0">Large select</option></select>
+<select name="lg" class="form-select&#x20;form-select-lg"><option value="0">Large select</option></select>
 <br/>
-<select name="default" class="form-control"><option value="0">Default select</option></select>
+<select name="default" class="form-select"><option value="0">Default select</option></select>
 <br/>
-<select name="sm" class="form-control&#x20;form-control-sm"><option value="0">Small select</option></select>
+<select name="sm" class="form-select&#x20;form-select-sm"><option value="0">Small select</option></select>
 <br/>
 
 
@@ -5434,7 +5875,7 @@ echo $this->formElement($oElement) . PHP_EOL . '<br/>' . PHP_EOL;
 
 
 ###### Readonly
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#readonly)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#readonly)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -5458,20 +5899,20 @@ echo $this->formElement($oElement);
 
 
 ###### Readonly plain text
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#readonly-plain-text)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#readonly-plain-text)
 <!-- tabs:start -->
 
 ####### **Result**
 
 <form action="" method="POST" name="form" role="form" id="form">
-    <div class="form-group&#x20;row">
-        <label class="col-form-label&#x20;col-sm-2" for="staticEmail">Email</label>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="staticEmail">Email</label>
         <div class="col-sm-10">
             <input name="email" type="email" id="staticEmail" readonly="readonly" class="form-control-plaintext" value="email&#x40;example.com"/>
         </div>
     </div>
-    <div class="form-group&#x20;row">
-        <label class="col-form-label&#x20;col-sm-2" for="inputPassword">Password</label>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="inputPassword">Password</label>
         <div class="col-sm-10">
             <input name="password" type="password" id="inputPassword" placeholder="Password" class="form-control" value=""/>
         </div>
@@ -5479,12 +5920,12 @@ echo $this->formElement($oElement);
 </form>
 <br/>
 <form action="" method="POST" name="form" role="form" class="form-inline" id="form">
-    <div class="form-group&#x20;mb-2">
-        <label class="sr-only" for="staticEmail2">Email</label>
+    <div class="mb-3">
+        <label class="form-label&#x20;sr-only" for="staticEmail2">Email</label>
         <input name="email" type="email" id="staticEmail2" readonly="readonly" class="form-control-plaintext" value="email&#x40;example.com"/>
     </div>
-    <div class="form-group&#x20;mb-2&#x20;mx-sm-3">
-        <label class="sr-only" for="inputPassword2">Password</label>
+    <div class="mb-3&#x20;mx-sm-3">
+        <label class="form-label&#x20;sr-only" for="inputPassword2">Password</label>
         <input name="password" type="password" id="inputPassword2" placeholder="Password" class="form-control" value=""/>
     </div>
     <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">Confirm identity</button>
@@ -5547,7 +5988,6 @@ echo $this->form($oFactory->create([
                 'options' => [
                     'plaintext' => true,
                     'label' => 'Email',
-                    'row_class' => 'mb-2',
                 ],
                 'attributes' => [
                     'type' => 'email',
@@ -5562,7 +6002,7 @@ echo $this->form($oFactory->create([
                 'name' => 'password',
                 'options' => [
                     'label' => 'Password',
-                    'row_class' => 'mx-sm-3 mb-2',
+                    'row_class' => 'mx-sm-3',
                 ],
                 'attributes' => [
                     'type' => 'password',
@@ -5586,14 +6026,14 @@ echo $this->form($oFactory->create([
 
 
 ##### Range Inputs
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#range-inputs)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#range-inputs)
 <!-- tabs:start -->
 
 ###### **Result**
 
 <form action="" method="POST" name="form" role="form" id="form">
-    <div class="form-group">
-        <label for="formControlRange">Example Range input</label>
+    <div class="mb-3">
+        <label class="form-label" for="formControlRange">Example Range input</label>
         <input name="range" type="range" id="formControlRange" class="form-control-range" value=""/>
     </div>
 </form>
@@ -5626,9 +6066,9 @@ echo $this->form($oFactory->create([
 
 
 ##### Checkboxes and radios
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#checkboxes-and-radios)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#checkboxes-and-radios)
 ###### Default (stacked)
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#default-stacked)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#default-stacked)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -5723,7 +6163,7 @@ echo $this->formRow($oFactory->create([
 
 
 ###### Inline
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#inline)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#inline)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -5822,7 +6262,7 @@ echo $this->formRow($oFactory->create([
 
 
 ###### Without labels
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#without-labels)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#without-labels)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -5876,20 +6316,20 @@ echo $this->formRow($oFactory->create([
 
 
 ##### Layout
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#layout)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#layout)
 ###### Form groups
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#form-groups)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#mb-3s)
 <!-- tabs:start -->
 
 ####### **Result**
 
 <form action="" method="POST" name="form" role="form" id="form">
-    <div class="form-group">
-        <label for="formGroupExampleInput">Example label</label>
+    <div class="mb-3">
+        <label class="form-label" for="formGroupExampleInput">Example label</label>
         <input name="exampleInput" type="text" id="formGroupExampleInput" placeholder="Example&#x20;input" class="form-control" value=""/>
     </div>
-    <div class="form-group">
-        <label for="formGroupExampleInput2">Another label</label>
+    <div class="mb-3">
+        <label class="form-label" for="formGroupExampleInput2">Another label</label>
         <input name="exampleInput2" type="text" id="formGroupExampleInput2" placeholder="Another&#x20;input" class="form-control" value=""/>
     </div>
 </form>
@@ -5936,17 +6376,17 @@ echo $this->form($oFactory->create([
 
 
 ###### Form grid
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#form-grid)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#form-grid)
 <!-- tabs:start -->
 
 ####### **Result**
 
 <form action="" method="POST" name="form" role="form" id="form">
     <div class="row">
-        <div class="col">
+        <div class="col&#x20;mb-3">
             <input name="firstName" type="text" placeholder="First&#x20;name" class="form-control" value=""/>
         </div>
-        <div class="col">
+        <div class="col&#x20;mb-3">
             <input name="lastName" type="text" placeholder="Last&#x20;name" class="form-control" value=""/>
         </div>
     </div>
@@ -5992,17 +6432,17 @@ echo $this->form($oFactory->create([
 
 
 ####### Form row
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#form-row)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#form-row)
 <!-- tabs:start -->
 
 ######## **Result**
 
 <form action="" method="POST" name="form" role="form" id="form">
     <div class="form-row">
-        <div class="col">
+        <div class="col&#x20;mb-3">
             <input name="firstName" type="text" placeholder="First&#x20;name" class="form-control" value=""/>
         </div>
-        <div class="col">
+        <div class="col&#x20;mb-3">
             <input name="lastName" type="text" placeholder="Last&#x20;name" class="form-control" value=""/>
         </div>
     </div>
@@ -6049,20 +6489,20 @@ echo $this->form($oFactory->create([
 
 
 ####### Horizontal form
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#horizontal-form)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#horizontal-form)
 <!-- tabs:start -->
 
 ######## **Result**
 
 <form action="" method="POST" name="form" role="form" id="form">
-    <div class="form-group&#x20;row">
-        <label class="col-form-label&#x20;col-sm-2" for="inputEmail3">Email</label>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="inputEmail3">Email</label>
         <div class="col-sm-10">
             <input name="email" type="email" id="inputEmail3" placeholder="Email" class="form-control" value=""/>
         </div>
     </div>
-    <div class="form-group&#x20;row">
-        <label class="col-form-label&#x20;col-sm-2" for="inputPassword3">Password</label>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="inputPassword3">Password</label>
         <div class="col-sm-10">
             <input name="password" type="password" id="inputPassword3" placeholder="Password" class="form-control" value=""/>
         </div>
@@ -6086,7 +6526,7 @@ echo $this->form($oFactory->create([
             </div>
         </div>
     </fieldset>
-    <div class="form-group&#x20;row">
+    <div class="mb-3&#x20;row">
         <div class="col-sm-10&#x20;offset-sm-2">
             <div class="form-check">
                 <input type="hidden" name="checkbox" value="0"/><input type="checkbox" name="checkbox" class="form-check-input" value="1"/>
@@ -6094,7 +6534,7 @@ echo $this->form($oFactory->create([
             </div>
         </div>
     </div>
-    <div class="form-group&#x20;row">
+    <div class="mb-3&#x20;row">
         <div class="col-sm-2">
             Multicheckbox
         </div>
@@ -6105,7 +6545,7 @@ echo $this->form($oFactory->create([
             </div>
         </div>
     </div>
-    <div class="form-group&#x20;row">
+    <div class="mb-3&#x20;row">
         <div class="col-sm-10">
             <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Sign in</button>
         </div>
@@ -6231,26 +6671,26 @@ echo $this->form($oFactory->create([
 
 
 ######## Horizontal form label sizing
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#horizontal-form-label-sizing)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#horizontal-form-label-sizing)
 <!-- tabs:start -->
 
 ######### **Result**
 
 <form action="" method="POST" name="form" role="form" id="form">
-    <div class="form-group&#x20;row">
-        <label class="col-form-label&#x20;col-form-label-sm&#x20;col-sm-2" for="colFormLabelSm">Email</label>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-form-label-sm&#x20;col-sm-2&#x20;form-label" for="colFormLabelSm">Email</label>
         <div class="col-sm-10">
             <input name="emailSm" type="email" id="colFormLabelSm" placeholder="col-form-label-sm" class="form-control&#x20;form-control-sm" value=""/>
         </div>
     </div>
-    <div class="form-group&#x20;row">
-        <label class="col-form-label&#x20;col-sm-2" for="colFormLabel">Email</label>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="colFormLabel">Email</label>
         <div class="col-sm-10">
             <input name="email" type="email" id="colFormLabel" placeholder="col-form-label" class="form-control" value=""/>
         </div>
     </div>
-    <div class="form-group&#x20;row">
-        <label class="col-form-label&#x20;col-form-label-lg&#x20;col-sm-2" for="colFormLabelLg">Email</label>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-form-label-lg&#x20;col-sm-2&#x20;form-label" for="colFormLabelLg">Email</label>
         <div class="col-sm-10">
             <input name="emailLg" type="email" id="colFormLabelLg" placeholder="col-form-label-lg" class="form-control&#x20;form-control-lg" value=""/>
         </div>
@@ -6318,20 +6758,20 @@ echo $this->form($oFactory->create([
 
 
 ####### Column sizing
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#column-sizing)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#column-sizing)
 <!-- tabs:start -->
 
 ######## **Result**
 
 <form action="" method="POST" name="form" role="form" id="form">
     <div class="form-row">
-        <div class="col-7">
+        <div class="col-7&#x20;mb-3">
             <input name="city" type="text" placeholder="City" class="form-control" value=""/>
         </div>
-        <div class="col">
+        <div class="col&#x20;mb-3">
             <input name="state" type="text" placeholder="State" class="form-control" value=""/>
         </div>
-        <div class="col">
+        <div class="col&#x20;mb-3">
             <input name="zip" type="text" placeholder="Zip" class="form-control" value=""/>
         </div>
     </div>
@@ -6390,19 +6830,19 @@ echo $this->form($oFactory->create([
 
 
 ####### Auto-sizing
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#auto-sizing)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#auto-sizing)
 <!-- tabs:start -->
 
 ######## **Result**
 
 <form action="" method="POST" name="form" role="form" id="form">
     <div class="align-items-center&#x20;form-row">
-        <div class="col-auto">
-            <label class="sr-only" for="inlineFormInput">Name</label>
+        <div class="col-auto&#x20;mb-3">
+            <label class="form-label&#x20;sr-only" for="inlineFormInput">Name</label>
             <input name="name" type="text" id="inlineFormInput" placeholder="Jane&#x20;Doe" class="form-control&#x20;mb-2" value=""/>
         </div>
-        <div class="col-auto">
-            <label class="sr-only" for="inlineFormInputGroup">Username</label>
+        <div class="col-auto&#x20;mb-3">
+            <label class="form-label&#x20;sr-only" for="inlineFormInputGroup">Username</label>
             <div class="input-group&#x20;mb-2">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
@@ -6412,13 +6852,13 @@ echo $this->form($oFactory->create([
                 <input name="username" type="text" id="inlineFormInputGroup" placeholder="Username" class="form-control" value=""/>
             </div>
         </div>
-        <div class="col-auto">
+        <div class="col-auto&#x20;mb-3">
             <div class="form-check&#x20;mb-2">
                 <input type="checkbox" name="remember_me" id="autoSizingCheck" class="form-check-input" value="1"/>
                 <label class="form-check-label" for="autoSizingCheck">Remember me</label>
             </div>
         </div>
-        <div class="col-auto">
+        <div class="col-auto&#x20;mb-3">
             <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">Submit</button>
         </div>
     </div>
@@ -6426,12 +6866,12 @@ echo $this->form($oFactory->create([
 <br/>
 <form action="" method="POST" name="form" role="form" id="form">
     <div class="align-items-center&#x20;form-row">
-        <div class="col-sm-3&#x20;my-1">
-            <label class="sr-only" for="inlineFormInput">Name</label>
+        <div class="col-sm-3&#x20;mb-3&#x20;my-1">
+            <label class="form-label&#x20;sr-only" for="inlineFormInput">Name</label>
             <input name="name" type="text" id="inlineFormInput" placeholder="Jane&#x20;Doe" class="form-control&#x20;mb-2" value=""/>
         </div>
-        <div class="col-sm-3&#x20;my-1">
-            <label class="sr-only" for="inlineFormInputGroup">Username</label>
+        <div class="col-sm-3&#x20;mb-3&#x20;my-1">
+            <label class="form-label&#x20;sr-only" for="inlineFormInputGroup">Username</label>
             <div class="input-group&#x20;mb-2">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
@@ -6441,13 +6881,13 @@ echo $this->form($oFactory->create([
                 <input name="username" type="text" id="inlineFormInputGroup" placeholder="Username" class="form-control" value=""/>
             </div>
         </div>
-        <div class="col-auto&#x20;my-1">
+        <div class="col-auto&#x20;mb-3&#x20;my-1">
             <div class="form-check&#x20;mb-2">
                 <input type="checkbox" name="remember_me" id="autoSizingCheck" class="form-check-input" value="1"/>
                 <label class="form-check-label" for="autoSizingCheck">Remember me</label>
             </div>
         </div>
-        <div class="col-auto&#x20;my-1">
+        <div class="col-auto&#x20;mb-3&#x20;my-1">
             <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">Submit</button>
         </div>
     </div>
@@ -6455,22 +6895,22 @@ echo $this->form($oFactory->create([
 <br/>
 <form action="" method="POST" name="form" role="form" id="form">
     <div class="align-items-center&#x20;form-row">
-        <div class="col-sm-3&#x20;my-1">
+        <div class="col-sm-3&#x20;mb-3&#x20;my-1">
             <label class="mr-sm-2&#x20;sr-only" for="inlineFormCustomSelect">Preference</label>
-            <select name="preference" id="inlineFormCustomSelect" class="custom-select&#x20;mr-sm-2">
+            <select name="preference" id="inlineFormCustomSelect" class="form-select&#x20;mr-sm-2">
                 <option value="">Choose...</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
             </select>
         </div>
-        <div class="col-auto&#x20;my-1">
+        <div class="col-auto&#x20;mb-3&#x20;my-1">
             <div class="custom-checkbox&#x20;custom-control&#x20;mr-sm-2">
-                <input type="checkbox" name="remember_my_preference" id="customControlAutosizing" class="custom-control-input" value="1"/>
-                <label class="custom-control-label" for="customControlAutosizing">Remember my preference</label>
+                <input type="checkbox" name="remember_my_preference" id="customControlAutosizing" class="form-check-input" value="1"/>
+                <label class="form-check-label" for="customControlAutosizing">Remember my preference</label>
             </div>
         </div>
-        <div class="col-auto&#x20;my-1">
+        <div class="col-auto&#x20;mb-3&#x20;my-1">
             <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Submit</button>
         </div>
     </div>
@@ -6697,15 +7137,15 @@ echo $this->form($oFactory->create([
 
 
 ###### Inline forms
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#inline-forms)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#inline-forms)
 <!-- tabs:start -->
 
 ####### **Result**
 
 <form action="" method="POST" name="form" role="form" class="form-inline" id="form">
-    <label class="sr-only" for="inlineFormInputName2">Name</label>
+    <label class="form-label&#x20;sr-only" for="inlineFormInputName2">Name</label>
     <input name="name" type="text" id="inlineFormInputName2" placeholder="Jane&#x20;Doe" class="form-control&#x20;mb-2&#x20;mr-sm-2" value=""/>
-    <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
+    <label class="form-label&#x20;sr-only" for="inlineFormInputGroupUsername2">Username</label>
     <div class="input-group&#x20;mb-2&#x20;mr-sm-2">
         <div class="input-group-prepend">
             <div class="input-group-text">
@@ -6723,15 +7163,15 @@ echo $this->form($oFactory->create([
 <br/>
 <form action="" method="POST" name="form" role="form" class="form-inline" id="form">
     <label class="mr-2&#x20;my-1" for="inlineFormCustomSelectPref">Preference</label>
-    <select name="preference" id="inlineFormCustomSelectPref" class="custom-select&#x20;mr-sm-2&#x20;my-1">
+    <select name="preference" id="inlineFormCustomSelectPref" class="form-select&#x20;mr-sm-2&#x20;my-1">
         <option value="">Choose...</option>
         <option value="1">One</option>
         <option value="2">Two</option>
         <option value="3">Three</option>
     </select>
     <div class="custom-checkbox&#x20;custom-control&#x20;mr-sm-2&#x20;my-1">
-        <input type="checkbox" name="remember_my_preference" id="customControlInline" class="custom-control-input" value="1"/>
-        <label class="custom-control-label" for="customControlInline">Remember my preference</label>
+        <input type="checkbox" name="remember_my_preference" id="customControlInline" class="form-check-input" value="1"/>
+        <label class="form-check-label" for="customControlInline">Remember my preference</label>
     </div>
     <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">Submit</button>
 </form>
@@ -6878,17 +7318,17 @@ echo $this->form($oFactory->create([
 
 
 ####### Form row
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#form-row)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#form-row)
 <!-- tabs:start -->
 
 ######## **Result**
 
 <form action="" method="POST" name="form" role="form" id="form">
     <div class="form-row">
-        <div class="col">
+        <div class="col&#x20;mb-3">
             <input name="firstName" type="text" placeholder="First&#x20;name" class="form-control" value=""/>
         </div>
-        <div class="col">
+        <div class="col&#x20;mb-3">
             <input name="lastName" type="text" placeholder="Last&#x20;name" class="form-control" value=""/>
         </div>
     </div>
@@ -6935,20 +7375,20 @@ echo $this->form($oFactory->create([
 
 
 ####### Horizontal form
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#horizontal-form)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#horizontal-form)
 <!-- tabs:start -->
 
 ######## **Result**
 
 <form action="" method="POST" name="form" role="form" id="form">
-    <div class="form-group&#x20;row">
-        <label class="col-form-label&#x20;col-sm-2" for="inputEmail3">Email</label>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="inputEmail3">Email</label>
         <div class="col-sm-10">
             <input name="email" type="email" id="inputEmail3" placeholder="Email" class="form-control" value=""/>
         </div>
     </div>
-    <div class="form-group&#x20;row">
-        <label class="col-form-label&#x20;col-sm-2" for="inputPassword3">Password</label>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="inputPassword3">Password</label>
         <div class="col-sm-10">
             <input name="password" type="password" id="inputPassword3" placeholder="Password" class="form-control" value=""/>
         </div>
@@ -6972,7 +7412,7 @@ echo $this->form($oFactory->create([
             </div>
         </div>
     </fieldset>
-    <div class="form-group&#x20;row">
+    <div class="mb-3&#x20;row">
         <div class="col-sm-10&#x20;offset-sm-2">
             <div class="form-check">
                 <input type="hidden" name="checkbox" value="0"/><input type="checkbox" name="checkbox" class="form-check-input" value="1"/>
@@ -6980,7 +7420,7 @@ echo $this->form($oFactory->create([
             </div>
         </div>
     </div>
-    <div class="form-group&#x20;row">
+    <div class="mb-3&#x20;row">
         <div class="col-sm-2">
             Multicheckbox
         </div>
@@ -6991,7 +7431,7 @@ echo $this->form($oFactory->create([
             </div>
         </div>
     </div>
-    <div class="form-group&#x20;row">
+    <div class="mb-3&#x20;row">
         <div class="col-sm-10">
             <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Sign in</button>
         </div>
@@ -7117,26 +7557,26 @@ echo $this->form($oFactory->create([
 
 
 ######## Horizontal form label sizing
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#horizontal-form-label-sizing)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#horizontal-form-label-sizing)
 <!-- tabs:start -->
 
 ######### **Result**
 
 <form action="" method="POST" name="form" role="form" id="form">
-    <div class="form-group&#x20;row">
-        <label class="col-form-label&#x20;col-form-label-sm&#x20;col-sm-2" for="colFormLabelSm">Email</label>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-form-label-sm&#x20;col-sm-2&#x20;form-label" for="colFormLabelSm">Email</label>
         <div class="col-sm-10">
             <input name="emailSm" type="email" id="colFormLabelSm" placeholder="col-form-label-sm" class="form-control&#x20;form-control-sm" value=""/>
         </div>
     </div>
-    <div class="form-group&#x20;row">
-        <label class="col-form-label&#x20;col-sm-2" for="colFormLabel">Email</label>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="colFormLabel">Email</label>
         <div class="col-sm-10">
             <input name="email" type="email" id="colFormLabel" placeholder="col-form-label" class="form-control" value=""/>
         </div>
     </div>
-    <div class="form-group&#x20;row">
-        <label class="col-form-label&#x20;col-form-label-lg&#x20;col-sm-2" for="colFormLabelLg">Email</label>
+    <div class="mb-3&#x20;row">
+        <label class="col-form-label&#x20;col-form-label-lg&#x20;col-sm-2&#x20;form-label" for="colFormLabelLg">Email</label>
         <div class="col-sm-10">
             <input name="emailLg" type="email" id="colFormLabelLg" placeholder="col-form-label-lg" class="form-control&#x20;form-control-lg" value=""/>
         </div>
@@ -7204,20 +7644,20 @@ echo $this->form($oFactory->create([
 
 
 ####### Column sizing
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#column-sizing)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#column-sizing)
 <!-- tabs:start -->
 
 ######## **Result**
 
 <form action="" method="POST" name="form" role="form" id="form">
     <div class="form-row">
-        <div class="col-7">
+        <div class="col-7&#x20;mb-3">
             <input name="city" type="text" placeholder="City" class="form-control" value=""/>
         </div>
-        <div class="col">
+        <div class="col&#x20;mb-3">
             <input name="state" type="text" placeholder="State" class="form-control" value=""/>
         </div>
-        <div class="col">
+        <div class="col&#x20;mb-3">
             <input name="zip" type="text" placeholder="Zip" class="form-control" value=""/>
         </div>
     </div>
@@ -7276,19 +7716,19 @@ echo $this->form($oFactory->create([
 
 
 ####### Auto-sizing
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#auto-sizing)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#auto-sizing)
 <!-- tabs:start -->
 
 ######## **Result**
 
 <form action="" method="POST" name="form" role="form" id="form">
     <div class="align-items-center&#x20;form-row">
-        <div class="col-auto">
-            <label class="sr-only" for="inlineFormInput">Name</label>
+        <div class="col-auto&#x20;mb-3">
+            <label class="form-label&#x20;sr-only" for="inlineFormInput">Name</label>
             <input name="name" type="text" id="inlineFormInput" placeholder="Jane&#x20;Doe" class="form-control&#x20;mb-2" value=""/>
         </div>
-        <div class="col-auto">
-            <label class="sr-only" for="inlineFormInputGroup">Username</label>
+        <div class="col-auto&#x20;mb-3">
+            <label class="form-label&#x20;sr-only" for="inlineFormInputGroup">Username</label>
             <div class="input-group&#x20;mb-2">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
@@ -7298,13 +7738,13 @@ echo $this->form($oFactory->create([
                 <input name="username" type="text" id="inlineFormInputGroup" placeholder="Username" class="form-control" value=""/>
             </div>
         </div>
-        <div class="col-auto">
+        <div class="col-auto&#x20;mb-3">
             <div class="form-check&#x20;mb-2">
                 <input type="checkbox" name="remember_me" id="autoSizingCheck" class="form-check-input" value="1"/>
                 <label class="form-check-label" for="autoSizingCheck">Remember me</label>
             </div>
         </div>
-        <div class="col-auto">
+        <div class="col-auto&#x20;mb-3">
             <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">Submit</button>
         </div>
     </div>
@@ -7312,12 +7752,12 @@ echo $this->form($oFactory->create([
 <br/>
 <form action="" method="POST" name="form" role="form" id="form">
     <div class="align-items-center&#x20;form-row">
-        <div class="col-sm-3&#x20;my-1">
-            <label class="sr-only" for="inlineFormInput">Name</label>
+        <div class="col-sm-3&#x20;mb-3&#x20;my-1">
+            <label class="form-label&#x20;sr-only" for="inlineFormInput">Name</label>
             <input name="name" type="text" id="inlineFormInput" placeholder="Jane&#x20;Doe" class="form-control&#x20;mb-2" value=""/>
         </div>
-        <div class="col-sm-3&#x20;my-1">
-            <label class="sr-only" for="inlineFormInputGroup">Username</label>
+        <div class="col-sm-3&#x20;mb-3&#x20;my-1">
+            <label class="form-label&#x20;sr-only" for="inlineFormInputGroup">Username</label>
             <div class="input-group&#x20;mb-2">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
@@ -7327,13 +7767,13 @@ echo $this->form($oFactory->create([
                 <input name="username" type="text" id="inlineFormInputGroup" placeholder="Username" class="form-control" value=""/>
             </div>
         </div>
-        <div class="col-auto&#x20;my-1">
+        <div class="col-auto&#x20;mb-3&#x20;my-1">
             <div class="form-check&#x20;mb-2">
                 <input type="checkbox" name="remember_me" id="autoSizingCheck" class="form-check-input" value="1"/>
                 <label class="form-check-label" for="autoSizingCheck">Remember me</label>
             </div>
         </div>
-        <div class="col-auto&#x20;my-1">
+        <div class="col-auto&#x20;mb-3&#x20;my-1">
             <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">Submit</button>
         </div>
     </div>
@@ -7341,22 +7781,22 @@ echo $this->form($oFactory->create([
 <br/>
 <form action="" method="POST" name="form" role="form" id="form">
     <div class="align-items-center&#x20;form-row">
-        <div class="col-sm-3&#x20;my-1">
+        <div class="col-sm-3&#x20;mb-3&#x20;my-1">
             <label class="mr-sm-2&#x20;sr-only" for="inlineFormCustomSelect">Preference</label>
-            <select name="preference" id="inlineFormCustomSelect" class="custom-select&#x20;mr-sm-2">
+            <select name="preference" id="inlineFormCustomSelect" class="form-select&#x20;mr-sm-2">
                 <option value="">Choose...</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
             </select>
         </div>
-        <div class="col-auto&#x20;my-1">
+        <div class="col-auto&#x20;mb-3&#x20;my-1">
             <div class="custom-checkbox&#x20;custom-control&#x20;mr-sm-2">
-                <input type="checkbox" name="remember_my_preference" id="customControlAutosizing" class="custom-control-input" value="1"/>
-                <label class="custom-control-label" for="customControlAutosizing">Remember my preference</label>
+                <input type="checkbox" name="remember_my_preference" id="customControlAutosizing" class="form-check-input" value="1"/>
+                <label class="form-check-label" for="customControlAutosizing">Remember my preference</label>
             </div>
         </div>
-        <div class="col-auto&#x20;my-1">
+        <div class="col-auto&#x20;mb-3&#x20;my-1">
             <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Submit</button>
         </div>
     </div>
@@ -7583,18 +8023,18 @@ echo $this->form($oFactory->create([
 
 
 ##### Help text
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#help-text)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#help-text)
 <!-- tabs:start -->
 
 ###### **Result**
 
-<label for="inputPassword5">Password</label>
+<label class="form-label" for="inputPassword5">Password</label>
 <input name="password" id="inputPassword5" type="password" aria-describedby="passwordHelpBlock" class="form-control" value=""/>
 <small class="form-text&#x20;text-muted" id="passwordHelpBlock">Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.</small>
 <br/>
 <form action="" method="POST" name="form" role="form" class="form-inline" id="form">
-    <div class="form-group">
-        <label for="inputPassword6">Password</label>
+    <div class="mb-3">
+        <label class="form-label" for="inputPassword6">Password</label>
         <input name="password" id="inputPassword6" type="password" aria-describedby="passwordHelpInline" class="form-control&#x20;mx-sm-3" value=""/>
         <small class="text-muted" id="passwordHelpInline">Must be 8-20 characters long.</small>
     </div>
@@ -7661,28 +8101,28 @@ echo $this->form($oFactory->create([
 
 
 ##### Disabled forms
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#disabled-forms)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#disabled-forms)
 <!-- tabs:start -->
 
 ###### **Result**
 
 <form action="" method="POST" name="form" role="form" id="form">
     <fieldset disabled="disabled" class="form-group">
-        <div class="form-group">
-            <label for="disabledTextInput">Disabled input</label>
+        <div class="mb-3">
+            <label class="form-label" for="disabledTextInput">Disabled input</label>
             <input name="fieldset&#x5B;disabled-input&#x5D;" type="text" id="disabledTextInput" placeholder="Disabled&#x20;input" class="form-control" value=""/>
         </div>
-        <div class="form-group">
-            <label for="disabledSelect">Disabled select menu</label>
-            <select name="fieldset&#x5B;disabled-select&#x5D;" id="disabledSelect" class="form-control"><option value="">Disabled select</option></select>
+        <div class="mb-3">
+            <label class="form-label" for="disabledSelect">Disabled select menu</label>
+            <select name="fieldset&#x5B;disabled-select&#x5D;" id="disabledSelect" class="form-select"><option value="">Disabled select</option></select>
         </div>
-        <div class="form-group">
+        <div class="mb-3">
             <div class="form-check">
                 <input type="checkbox" name="fieldset&#x5B;disabled-fieldset-check&#x5D;" id="disabledFieldsetCheck" disabled="disabled" class="form-check-input" value="1"/>
                 <label class="form-check-label" for="disabledFieldsetCheck">Can&#039;t check this</label>
             </div>
         </div>
-        <div class="form-group">
+        <div class="mb-3">
             <button type="submit" name="fieldset&#x5B;submit&#x5D;" class="btn&#x20;btn-primary" value="">Submit</button>
         </div>
     </fieldset>
@@ -7753,9 +8193,9 @@ echo $this->form($oFactory->create([
 
 
 ##### Validation
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#validation)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#validation)
 ###### Server side
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#server-side)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#server-side)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -7763,14 +8203,14 @@ echo $this->form($oFactory->create([
 <form action="" method="POST" name="form" role="form" id="form">
     <div class="form-row">
         <div class="col-md-6&#x20;mb-3">
-            <label for="validationServer01">First name</label>
+            <label class="form-label" for="validationServer01">First name</label>
             <input name="firstName" type="text" id="validationServer01" required="required" class="form-control&#x20;is-valid" value="Mark"/>
             <div class="valid-feedback">
                 Looks good!
             </div>
         </div>
         <div class="col-md-6&#x20;mb-3">
-            <label for="validationServer02">Last name</label>
+            <label class="form-label" for="validationServer02">Last name</label>
             <input name="lastName" type="text" id="validationServer02" required="required" class="form-control&#x20;is-valid" value="Otto"/>
             <div class="valid-feedback">
                 Looks good!
@@ -7779,25 +8219,25 @@ echo $this->form($oFactory->create([
     </div>
     <div class="form-row">
         <div class="col-md-6&#x20;has-error&#x20;mb-3">
-            <label class="col-form-label" for="validationServer03">City</label>
+            <label class="col-form-label&#x20;form-label" for="validationServer03">City</label>
             <input name="city" type="text" id="validationServer03" required="required" class="form-control&#x20;is-invalid" value=""/>
             <div class="invalid-feedback">Please provide a valid city.</div>
         </div>
         <div class="col-md-3&#x20;has-error&#x20;mb-3">
-            <label class="col-form-label" for="validationServer04">State</label>
-            <select name="state" id="validationServer04" required="required" class="custom-select&#x20;is-invalid">
+            <label class="col-form-label&#x20;form-label" for="validationServer04">State</label>
+            <select name="state" id="validationServer04" required="required" class="form-select&#x20;is-invalid">
                 <option value="" selected="selected" disabled="disabled">Choose...</option>
                 <option value="0">...</option>
             </select>
             <div class="invalid-feedback">Please select a valid state.</div>
         </div>
         <div class="col-md-3&#x20;has-error&#x20;mb-3">
-            <label class="col-form-label" for="validationServer05">Zip</label>
+            <label class="col-form-label&#x20;form-label" for="validationServer05">Zip</label>
             <input name="zip" type="text" id="validationServer05" required="required" class="form-control&#x20;is-invalid" value=""/>
             <div class="invalid-feedback">Please provide a valid zip.</div>
         </div>
     </div>
-    <div class="form-group&#x20;has-error">
+    <div class="has-error&#x20;mb-3">
         <div class="form-check">
             <input type="checkbox" name="termsAndConditions" id="invalidCheck3" required="required" class="form-check-input&#x20;is-invalid" value="1"/>
             <label class="form-check-label" for="invalidCheck3">Agree to terms and conditions</label>
@@ -7946,18 +8386,18 @@ echo $this->form($oForm);
 
 
 ##### Custom forms
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#custom-forms)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#custom-forms)
 ###### Checkboxes and radios
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#checkboxes-and-radios-1)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#checkboxes-and-radios-1)
 ####### Checkboxes
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#checkboxes)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#checkboxes)
 <!-- tabs:start -->
 
 ######## **Result**
 
 <div class="custom-checkbox&#x20;custom-control">
-    <input type="checkbox" name="custom_checkbox" id="customCheck1" class="custom-control-input" value="1"/>
-    <label class="custom-control-label" for="customCheck1">Check this custom checkbox</label>
+    <input type="checkbox" name="custom_checkbox" id="customCheck1" class="form-check-input" value="1"/>
+    <label class="form-check-label" for="customCheck1">Check this custom checkbox</label>
 </div>
 
 ######## **Source**
@@ -7984,18 +8424,18 @@ echo $this->formRow($oFactory->create([
 
 
 ####### Radios
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#checkboxes)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#checkboxes)
 <!-- tabs:start -->
 
 ######## **Result**
 
-<div class="custom-control&#x20;custom-radio">
-    <input type="radio" name="customRadio" class="custom-control-input" id="customRadio1" value="1"/>
-    <label class="custom-control-label" for="customRadio1">Toggle this custom radio</label>
+<div class="form-check">
+    <input type="radio" name="customRadio" class="form-check-input" id="customRadio1" value="1"/>
+    <label class="form-check-label" for="customRadio1">Toggle this custom radio</label>
 </div>
-<div class="custom-control&#x20;custom-radio">
-    <input type="radio" name="customRadio" class="custom-control-input" id="customRadio2" value="2"/>
-    <label class="custom-control-label" for="customRadio2">Or toggle this other custom radio</label>
+<div class="form-check">
+    <input type="radio" name="customRadio" class="form-check-input" id="customRadio2" value="2"/>
+    <label class="form-check-label" for="customRadio2">Or toggle this other custom radio</label>
 </div>
 
 ######## **Source**
@@ -8028,18 +8468,18 @@ echo $this->formRow($oFactory->create([
 
 
 ####### Inline
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#inline-1)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#inline-1)
 <!-- tabs:start -->
 
 ######## **Result**
 
-<div class="custom-control&#x20;custom-control-inline&#x20;custom-radio">
-    <input type="radio" name="customRadioInline1" class="custom-control-input" id="customRadioInline1" value="1"/>
-    <label class="custom-control-label" for="customRadioInline1">Toggle this custom radio</label>
+<div class="form-check&#x20;form-check-inline">
+    <input type="radio" name="customRadioInline1" class="form-check-input" id="customRadioInline1" value="1"/>
+    <label class="form-check-label" for="customRadioInline1">Toggle this custom radio</label>
 </div>
-<div class="custom-control&#x20;custom-control-inline&#x20;custom-radio">
-    <input type="radio" name="customRadioInline1" class="custom-control-input" id="customRadioInline2" value="2"/>
-    <label class="custom-control-label" for="customRadioInline2">Or toggle this other custom radio</label>
+<div class="form-check&#x20;form-check-inline">
+    <input type="radio" name="customRadioInline1" class="form-check-input" id="customRadioInline2" value="2"/>
+    <label class="form-check-label" for="customRadioInline2">Or toggle this other custom radio</label>
 </div>
 
 ######## **Source**
@@ -8073,18 +8513,18 @@ echo $this->formRow($oFactory->create([
 
 
 ####### Disabled
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#disabled)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#disabled)
 <!-- tabs:start -->
 
 ######## **Result**
 
 <div class="custom-checkbox&#x20;custom-control">
-    <input type="checkbox" name="custom_checkbox_disabled" id="customCheckDisabled1" disabled="disabled" class="custom-control-input" value="1"/>
-    <label class="custom-control-label" for="customCheckDisabled1">Check this custom checkbox</label>
+    <input type="checkbox" name="custom_checkbox_disabled" id="customCheckDisabled1" disabled="disabled" class="form-check-input" value="1"/>
+    <label class="form-check-label" for="customCheckDisabled1">Check this custom checkbox</label>
 </div>
-<div class="custom-control&#x20;custom-radio">
-    <input type="radio" name="radioDisabled" disabled="disabled" class="custom-control-input" id="customRadioDisabled2" value="1"/>
-    <label class="custom-control-label" for="customRadioDisabled2">Toggle this custom radio</label>
+<div class="form-check">
+    <input type="radio" name="radioDisabled" disabled="disabled" class="form-check-input" id="customRadioDisabled2" value="1"/>
+    <label class="form-check-label" for="customRadioDisabled2">Toggle this custom radio</label>
 </div>
 
 ######## **Source**
@@ -8128,18 +8568,18 @@ echo $this->formRow($oFactory->create([
 
 
 ###### Switches
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#switches)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#switches)
 <!-- tabs:start -->
 
 ####### **Result**
 
 <div class="custom-control&#x20;custom-switch">
-    <input type="checkbox" name="custom_switch" id="customSwitch1" class="custom-control-input" value="1"/>
-    <label class="custom-control-label" for="customSwitch1">Toggle this switch element</label>
+    <input type="checkbox" name="custom_switch" id="customSwitch1" class="form-check-input" value="1"/>
+    <label class="form-check-label" for="customSwitch1">Toggle this switch element</label>
 </div>
 <div class="custom-control&#x20;custom-switch">
-    <input type="checkbox" name="custom_switch" id="customSwitch2" disabled="disabled" class="custom-control-input" value="1"/>
-    <label class="custom-control-label" for="customSwitch2">Disabled switch element</label>
+    <input type="checkbox" name="custom_switch" id="customSwitch2" disabled="disabled" class="form-check-input" value="1"/>
+    <label class="form-check-label" for="customSwitch2">Disabled switch element</label>
 </div>
 
 ####### **Source**
@@ -8181,40 +8621,40 @@ echo $this->formRow($oFactory->create([
 
 
 ###### Select menu
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#select-menu)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#select-menu)
 <!-- tabs:start -->
 
 ####### **Result**
 
-<select name="custom_select" class="custom-select">
+<select name="custom_select" class="form-select">
     <option value="" selected="selected">Open this select menu</option>
     <option value="1">One</option>
     <option value="2">Two</option>
     <option value="3">Three</option>
 </select>
 <br/><br/>
-<select name="custom_select_lg" class="custom-select&#x20;custom-select-lg&#x20;mb-3">
+<select name="custom_select_lg" class="form-select&#x20;form-select-lg&#x20;mb-3">
     <option value="" selected="selected">Open this select menu</option>
     <option value="1">One</option>
     <option value="2">Two</option>
     <option value="3">Three</option>
 </select>
 <br/><br/>
-<select name="custom_select_sm" class="custom-select&#x20;custom-select-sm">
+<select name="custom_select_sm" class="form-select&#x20;form-select-sm">
     <option value="" selected="selected">Open this select menu</option>
     <option value="1">One</option>
     <option value="2">Two</option>
     <option value="3">Three</option>
 </select>
 <br/><br/>
-<select name="custom_select_multiple&#x5B;&#x5D;" multiple="multiple" class="custom-select">
+<select name="custom_select_multiple&#x5B;&#x5D;" multiple="multiple" class="form-select">
     <option value="" selected="selected">Open this select menu</option>
     <option value="1">One</option>
     <option value="2">Two</option>
     <option value="3">Three</option>
 </select>
 <br/><br/>
-<select name="custom_select_size" size="3" class="custom-select">
+<select name="custom_select_size" size="3" class="form-select">
     <option value="" selected="selected">Open this select menu</option>
     <option value="1">One</option>
     <option value="2">Two</option>
@@ -8317,12 +8757,12 @@ echo $this->formElement($oFactory->create([
 
 
 ###### Range
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#range)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#range)
 <!-- tabs:start -->
 
 ####### **Result**
 
-<label for="customRange1">Example range</label>
+<label class="form-label" for="customRange1">Example range</label>
 <input type="range" name="custom_range" id="customRange1" class="custom-range" value=""/>
 
 ####### **Source**
@@ -8346,15 +8786,12 @@ echo $this->formRow($oFactory->create([
 
 
 ###### File browser
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#file-browser)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#file-browser)
 <!-- tabs:start -->
 
 ####### **Result**
 
-<div class="custom-file">
-    <input type="file" name="custom_file" id="customFile" class="custom-file-input"/>
-    <label class="custom-file-label" for="customFile">Choose file</label>
-</div>
+<input type="file" name="custom_file" id="customFile"/>
 
 ####### **Source**
 
@@ -8377,15 +8814,12 @@ echo $this->formRow($oFactory->create([
 
 
 ####### Translating or customizing the strings with HTML
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#translating-or-customizing-the-strings-with-html)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/forms/#translating-or-customizing-the-strings-with-html)
 <!-- tabs:start -->
 
 ######## **Result**
 
-<div class="custom-file">
-    <input type="file" name="custom_file" id="customFileLangHTML" class="custom-file-input"/>
-    <label data-browse="Bestand&#x20;kiezen" class="custom-file-label" for="customFileLangHTML">Voeg je document toe</label>
-</div>
+<input type="file" name="custom_file" id="customFileLangHTML"/>
 
 ######## **Source**
 
@@ -8416,15 +8850,15 @@ echo $this->formRow($oFactory->create([
 ###### **Result**
 
 <form action="" method="POST" name="form" role="form" id="form">
-    <div class="form-group">
-        <label for="email">Email</label>
+    <div class="mb-3">
+        <label class="form-label" for="email">Email</label>
         <input name="email" type="email" class="form-control" value=""/>
     </div>
     <div class="btn-group&#x20;form-group">
         <button type="button" name="button1" class="btn&#x20;btn-secondary" value="">Button 1</button>
         <button type="button" name="button2" class="btn&#x20;btn-secondary" value="">Button 2</button>
     </div>
-    <div class="form-group">
+    <div class="mb-3">
         <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Submit</button>
     </div>
 </form>
@@ -8473,9 +8907,9 @@ echo $this->form($oFactory->create([
 
 
 #### Input group
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/input-group/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/input-group/)
 ##### Basic example
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/input-group/#basic-example)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/input-group/#basic-example)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -8496,7 +8930,7 @@ echo $this->form($oFactory->create([
         </div>
     </div>
 </div>
-<label for="basic-url">Your vanity URL</label>
+<label class="form-label" for="basic-url">Your vanity URL</label>
 <div class="input-group&#x20;mb-3">
     <div class="input-group-prepend">
         <div class="input-group-text" id="basic-addon3">
@@ -8608,7 +9042,7 @@ echo $this->formRow($oFactory->create([
 
 
 ##### Wrapping
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/input-group/#wrapping)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/input-group/#wrapping)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -8647,7 +9081,7 @@ echo $this->formRow($oFactory->create([
 
 
 ##### Sizing
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/input-group/#sizing)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/input-group/#sizing)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -8733,7 +9167,7 @@ echo $this->formRow($oFactory->create([
 
 
 ##### Checkboxes and radios
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/input-group/#checkboxes-and-radios)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/input-group/#checkboxes-and-radios)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -8814,7 +9248,7 @@ echo $this->formRow($oFactory->create([
 
 
 ##### Multiple addons
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/input-group/#multiple-addons)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/input-group/#multiple-addons)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -8878,7 +9312,7 @@ echo $this->formRow($oFactory->create([
 
 
 ##### Button addons
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/input-group/#button-addons)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/input-group/#button-addons)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -9033,7 +9467,7 @@ echo $this->formRow($oFactory->create([
 
 
 ##### Buttons with dropdowns
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/input-group/#buttons-with-dropdowns)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/input-group/#buttons-with-dropdowns)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -9130,7 +9564,7 @@ echo $this->formRow($oFactory->create([
 
 
 ##### Segmented buttons
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/input-group/#segmented-buttons)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/input-group/#segmented-buttons)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -9235,9 +9669,9 @@ echo $this->formRow($oFactory->create([
 
 
 ##### Custom forms
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/input-group/#custom-forms)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/input-group/#custom-forms)
 ###### Custom select
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/input-group/#custom-select)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/input-group/#form-select)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -9246,7 +9680,7 @@ echo $this->formRow($oFactory->create([
     <div class="input-group-prepend">
         <label class="input-group-text" for="inputGroupSelect01">Options</label>
     </div>
-    <select name="select_label_prepend" id="inputGroupSelect01" class="custom-select">
+    <select name="select_label_prepend" id="inputGroupSelect01" class="form-select">
         <option value="" selected="selected">Choose...</option>
         <option value="1">One</option>
         <option value="2">Two</option>
@@ -9254,7 +9688,7 @@ echo $this->formRow($oFactory->create([
     </select>
 </div>
 <div class="input-group&#x20;mb-3">
-    <select name="select_label_append" id="inputGroupSelect02" class="custom-select">
+    <select name="select_label_append" id="inputGroupSelect02" class="form-select">
         <option value="" selected="selected">Choose...</option>
         <option value="1">One</option>
         <option value="2">Two</option>
@@ -9268,7 +9702,7 @@ echo $this->formRow($oFactory->create([
     <div class="input-group-prepend">
         <button type="button" name="button" class="btn&#x20;btn-outline-secondary" value="">Button</button>
     </div>
-    <select name="select_button_prepend" id="inputGroupSelect03" aria-label="Example&#x20;select&#x20;with&#x20;button&#x20;addon" class="custom-select">
+    <select name="select_button_prepend" id="inputGroupSelect03" aria-label="Example&#x20;select&#x20;with&#x20;button&#x20;addon" class="form-select">
         <option value="" selected="selected">Choose...</option>
         <option value="1">One</option>
         <option value="2">Two</option>
@@ -9276,7 +9710,7 @@ echo $this->formRow($oFactory->create([
     </select>
 </div>
 <div class="input-group">
-    <select name="select_button_append" id="inputGroupSelect04" aria-label="Example&#x20;select&#x20;with&#x20;button&#x20;addon" class="custom-select">
+    <select name="select_button_append" id="inputGroupSelect04" aria-label="Example&#x20;select&#x20;with&#x20;button&#x20;addon" class="form-select">
         <option value="" selected="selected">Choose...</option>
         <option value="1">One</option>
         <option value="2">Two</option>
@@ -9395,7 +9829,7 @@ echo $this->formElement($oFactory->create([
 
 
 ###### Custom file input
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/input-group/#custom-file-input)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/input-group/#custom-file-input)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -9406,16 +9840,10 @@ echo $this->formElement($oFactory->create([
             Upload
         </div>
     </div>
-    <div class="custom-file">
-        <input type="file" name="custom_file_label_prepend" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" class="custom-file-input"/>
-        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-    </div>
+    <input type="file" name="custom_file_label_prepend" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"/>
 </div>
 <div class="input-group&#x20;mb-3">
-    <div class="custom-file">
-        <input type="file" name="custom_file_label_append" id="inputGroupFile02" aria-describedby="inputGroupFileAddon02" class="custom-file-input"/>
-        <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
-    </div>
+    <input type="file" name="custom_file_label_append" id="inputGroupFile02" aria-describedby="inputGroupFileAddon02"/>
     <div class="input-group-append">
         <div class="input-group-text" id="inputGroupFileAddon02">
             Upload
@@ -9426,16 +9854,10 @@ echo $this->formElement($oFactory->create([
     <div class="input-group-prepend">
         <button type="button" name="button" id="inputGroupFileAddon03" class="btn&#x20;btn-outline-secondary" value="">Button</button>
     </div>
-    <div class="custom-file">
-        <input type="file" name="custom_file_button_prepend" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" class="custom-file-input"/>
-        <label class="custom-file-label" for="inputGroupFile03">Choose file</label>
-    </div>
+    <input type="file" name="custom_file_button_prepend" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03"/>
 </div>
 <div class="input-group&#x20;mb-3">
-    <div class="custom-file">
-        <input type="file" name="custom_file_button_append" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" class="custom-file-input"/>
-        <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
-    </div>
+    <input type="file" name="custom_file_button_append" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04"/>
     <div class="input-group-append">
         <button type="button" name="button" id="inputGroupFileAddon04" class="btn&#x20;btn-outline-secondary" value="">Button</button>
     </div>
@@ -9531,7 +9953,7 @@ echo $this->formRow($oFactory->create([
 
 
 #### Jumbotron
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/jumbotron/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/jumbotron/)
 <!-- tabs:start -->
 
 ##### **Result**
@@ -9587,9 +10009,9 @@ echo $this->jumbotron(
 
 
 #### List group
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/list-group/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/list-group/)
 ##### Basic example
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/list-group/#basic-example)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/list-group/#basic-example)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -9618,7 +10040,7 @@ echo $this->listGroup([
 
 
 ##### Active items
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/list-group/#active-items)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/list-group/#active-items)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -9647,7 +10069,7 @@ echo $this->listGroup([
 
 
 ##### Disabled  items
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/list-group/#disabled-items)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/list-group/#disabled-items)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -9676,7 +10098,7 @@ echo $this->listGroup([
 
 
 ##### Links and buttons
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/list-group/#links-and-buttons)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/list-group/#links-and-buttons)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -9729,7 +10151,7 @@ echo $this->listGroup([
 
 
 ##### Flush
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/list-group/#flush)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/list-group/#flush)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -9761,7 +10183,7 @@ echo $this->listGroup(
 
 
 ##### Horizontal
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/list-group/#horizontal)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/list-group/#horizontal)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -9829,7 +10251,7 @@ foreach (['sm', 'md', 'lg', 'xl'] as $sBreakpoint) {
 
 
 ##### Contextual classes
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/list-group/#contextual-classes)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/list-group/#contextual-classes)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -9920,7 +10342,7 @@ echo $this->listGroup(
 
 
 ##### With badges
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/list-group/#with-badges)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/list-group/#with-badges)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -9971,7 +10393,7 @@ echo $this->listGroup(
 
 
 ##### Custom content
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/list-group/#custom-content)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/list-group/#custom-content)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -10048,9 +10470,9 @@ echo $this->listGroup(
 
 
 #### Media object
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/media-object/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/media-object/)
 ##### Example
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/media-object/#example)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/media-object/#example)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -10081,7 +10503,7 @@ echo $this->media([
 
 
 ##### Nesting
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/media-object/#nesting)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/media-object/#nesting)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -10130,7 +10552,7 @@ echo $this->media([
 
 
 ##### Alignment
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/media-object/#alignment)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/media-object/#alignment)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -10219,7 +10641,7 @@ echo $this->media([
 
 
 ##### Order
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/media-object/#order)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/media-object/#order)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -10250,7 +10672,7 @@ echo $this->media([
 
 
 ##### Media list
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/media-object/#media-list)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/media-object/#media-list)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -10317,11 +10739,11 @@ echo $this->mediaList([
 
 
 #### Modal
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/modal/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/modal/)
 ##### Examples
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/modal/#examples)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/modal/#examples)
 ###### Modal components
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/modal/#modal-components)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/modal/#modal-components)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -10376,7 +10798,7 @@ echo $this->modal([
 
 
 ###### Scrolling long content
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/modal/#scrolling-long-content)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/modal/#scrolling-long-content)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -10499,7 +10921,7 @@ echo $this->modal([
 
 
 ###### Vertically centered
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/modal/#vertically-centered)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/modal/#vertically-centered)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -10556,7 +10978,7 @@ echo $this->modal([
 
 
 ###### Tooltips and popovers
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/modal/#tooltips-and-popovers)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/modal/#tooltips-and-popovers)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -10622,7 +11044,7 @@ echo $this->modal([
 
 
 ###### Optional sizes
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/modal/#optional-sizes)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/modal/#optional-sizes)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -10702,9 +11124,9 @@ echo $this->modal([
 
 
 #### Navs
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/navs/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/navs/)
 ##### Base nav
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/navs/#base-nav)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/navs/#base-nav)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -10752,9 +11174,9 @@ echo $this->navigation()->menu()->renderMenu(new \Laminas\Navigation\Navigation(
 
 
 ##### Available styles
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/navs/#available-styles)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/navs/#available-styles)
 ###### Horizontal alignment
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/navs/#horizontal-alignment)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/navs/#horizontal-alignment)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -10812,7 +11234,7 @@ echo $this->navigation()->menu()->renderMenu(new \Laminas\Navigation\Navigation(
 
 
 ###### Vertical
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/navs/#vertical)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/navs/#vertical)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -10869,7 +11291,7 @@ echo $this->navigation()->menu()->renderMenu(
 
 
 ###### Tabs
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/navs/#tabs)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/navs/#tabs)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -10904,7 +11326,7 @@ echo $this->navigation()->menu()->renderMenu(new \Laminas\Navigation\Navigation(
 
 
 ###### Pills
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/navs/#pills)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/navs/#pills)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -10939,7 +11361,7 @@ echo $this->navigation()->menu()->renderMenu(new \Laminas\Navigation\Navigation(
 
 
 ###### Fill and justify
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/navs/#fill-and-justify)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/navs/#fill-and-justify)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -11026,7 +11448,7 @@ echo $this->navigation()->menu()->renderMenu(
 
 
 ###### Working with flex utilities
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/navs/#working-with-flex-utilities)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/navs/#working-with-flex-utilities)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -11060,9 +11482,9 @@ echo $this->navigation()->menu()->renderMenu(
 
 
 ##### Using dropdowns
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/navs/#using-dropdowns)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/navs/#using-dropdowns)
 ###### Tabs with dropdowns
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/navs/#tabs-with-dropdowns)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/navs/#tabs-with-dropdowns)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -11117,7 +11539,7 @@ echo $this->navigation()->menu()->renderMenu(
 
 
 ###### Pills with dropdowns
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/navs/#pills-with-dropdowns)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/navs/#pills-with-dropdowns)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -11172,9 +11594,9 @@ echo $this->navigation()->menu()->renderMenu(
 
 
 #### Navbar
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/navbar/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/navbar/)
 ##### Supported content
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/navbar/#supported-content)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/navbar/#supported-content)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -11271,7 +11693,7 @@ echo $this->navigation()->navbar()->render(
 
 
 ###### Brand
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/navbar/#brand)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/navbar/#brand)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -11367,7 +11789,7 @@ echo $this->navigation()->navbar()->render(
 
 
 ###### Nav
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/navbar/#nav)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/navbar/#nav)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -11508,7 +11930,7 @@ echo $this->navigation()->navbar()->render(
 
 
 ###### Forms
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/navbar/#forms)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/navbar/#forms)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -11695,7 +12117,7 @@ echo $this->navigation()->navbar()->render(
 
 
 ###### Text
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/navbar/#text)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/navbar/#text)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -11759,7 +12181,7 @@ echo $this->navigation()->navbar()->render(
 
 
 ##### Color schemes
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/navbar/#color-schemes)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/navbar/#color-schemes)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -11913,7 +12335,7 @@ echo $this->navigation()->navbar()->render($oNavigationContainer, $aOptions);
 
 
 ##### Containers
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/navbar/#containers)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/navbar/#containers)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -11958,7 +12380,7 @@ echo $this->navigation()->navbar()->render(
 
 
 ##### Placement
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/navbar/#placement)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/navbar/#placement)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -12007,9 +12429,9 @@ foreach ([
 
 
 #### Pagination
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/pagination/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/pagination/)
 ##### Overview
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/pagination/#overview)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/pagination/#overview)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -12045,7 +12467,7 @@ echo $this->paginationControl($oPaginator, null, null, [
 
 
 ##### Working with icons
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/pagination/#working-with-icons)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/pagination/#working-with-icons)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -12081,7 +12503,7 @@ echo $this->paginationControl($oPaginator, null, null, [
 
 
 ##### Sizing
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/pagination/#sizing)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/pagination/#sizing)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -12126,7 +12548,7 @@ echo $this->paginationControl($oPaginator, null, null, [
 
 
 ##### Alignment
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/pagination/#alignment)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/pagination/#alignment)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -12179,9 +12601,9 @@ echo $this->paginationControl($oPaginator, null, null, [
 
 
 #### Popovers
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/popovers/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/popovers/)
 ##### Example
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/popovers/#example)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/popovers/#example)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -12207,7 +12629,7 @@ echo $this->formButton([
 
 
 ##### Four directions
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/popovers/#four-directions)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/popovers/#four-directions)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -12244,7 +12666,7 @@ foreach ([
 
 
 ##### Dismiss on next click
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/popovers/#dismiss-on-next-click)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/popovers/#dismiss-on-next-click)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -12274,7 +12696,7 @@ echo $this->formButton([
 
 
 ##### Disabled elements
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/popovers/#disabled-elements)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/popovers/#disabled-elements)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -12299,9 +12721,9 @@ echo $this->formButton([
 
 
 #### Progress
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/progress/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/progress/)
 ##### How it works
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/progress/#example)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/progress/#example)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -12353,7 +12775,7 @@ echo $this->progressBar(0, 100, 100);
 
 
 ##### Labels
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/progress/#labels)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/progress/#labels)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -12379,7 +12801,7 @@ echo $this->progressBar([
 
 
 ##### Height
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/progress/#height)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/progress/#height)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -12416,7 +12838,7 @@ echo $this->progressBar([
 
 
 ##### Backgrounds
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/progress/#backgrounds)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/progress/#backgrounds)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -12462,7 +12884,7 @@ foreach ([
 
 
 ##### Multiple bars
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/progress/#multiple-bars)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/progress/#multiple-bars)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -12487,7 +12909,7 @@ echo $this->progressBarGroup([
 
 
 ##### Striped
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/progress/#striped)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/progress/#striped)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -12539,7 +12961,7 @@ foreach ([
 
 
 ##### Animated stripes
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/progress/#animated-stripes)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/progress/#animated-stripes)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -12564,9 +12986,9 @@ echo $this->progressBar([
 
 
 #### Spinners
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/spinners/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/spinners/)
 ##### Border spinner
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/spinners/#border-spinner)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/spinners/#border-spinner)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -12585,7 +13007,7 @@ echo $this->spinner('Loading...');
 
 
 ###### Colors
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/spinners/#colors)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/spinners/#colors)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -12634,7 +13056,7 @@ foreach ([
 
 
 ##### Growing spinner
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/spinners/#growing-spinner)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/spinners/#growing-spinner)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -12692,9 +13114,9 @@ foreach ([
 
 
 ##### Alignment
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/spinners/#alignment)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/spinners/#alignment)
 ###### Margin
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/spinners/#margin)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/spinners/#margin)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -12716,9 +13138,9 @@ echo $this->spinner([
 
 
 ###### Placement
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/spinners/#placement)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/spinners/#placement)
 ####### Flex
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/spinners/#flex)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/spinners/#flex)
 <!-- tabs:start -->
 
 ######## **Result**
@@ -12755,7 +13177,7 @@ echo $this->spinner([
 
 
 ####### Floats
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/spinners/#floats)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/spinners/#floats)
 <!-- tabs:start -->
 
 ######## **Result**
@@ -12779,7 +13201,7 @@ echo $this->spinner([
 
 
 ####### Text align
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/spinners/#text-align)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/spinners/#text-align)
 <!-- tabs:start -->
 
 ######## **Result**
@@ -12803,7 +13225,7 @@ echo $this->spinner([
 
 
 ###### Size
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/spinners/#size)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/spinners/#size)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -12854,7 +13276,7 @@ echo $this->spinner([
 
 
 ###### Buttons
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/spinners/#buttons)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/spinners/#buttons)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -12918,11 +13340,11 @@ echo $this->formButton([
 
 
 #### Toasts
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/toasts/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/toasts/)
 ##### Examples
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/toasts/#examples)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/toasts/#examples)
 ###### Basic
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/toasts/#basic)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/toasts/#basic)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -12959,7 +13381,7 @@ echo $this->toast([
 
 
 ###### Translucent
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/toasts/#translucent)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/toasts/#translucent)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -13000,7 +13422,7 @@ echo '</div>';
 
 
 ###### Stacking
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/toasts/#stacking)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/toasts/#stacking)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -13060,7 +13482,7 @@ echo $this->toast([
 
 
 ###### Placement
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/toasts/#placement)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/toasts/#placement)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -13133,7 +13555,7 @@ echo '</div>';
 
 
 ###### Accessibility
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/toasts/#accessibility)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/toasts/#accessibility)
 <!-- tabs:start -->
 
 ####### **Result**
@@ -13171,9 +13593,9 @@ echo $this->toast([
 
 
 #### Tooltips
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/tooltips/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/tooltips/)
 ##### Examples
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/tooltips/#examples)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/tooltips/#examples)
 <!-- tabs:start -->
 
 ###### **Result**
@@ -13218,7 +13640,7 @@ echo $this->formButton([
 
 
 ##### Disabled elements
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/tooltips/#disabled-elements)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.0/components/tooltips/#disabled-elements)
 <!-- tabs:start -->
 
 ###### **Result**

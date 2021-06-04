@@ -7,7 +7,7 @@ return [
     'tests' => [
         [
             'title' => 'Custom select',
-            'url' => '%bootstrap-url%/components/input-group/#custom-select',
+            'url' => '%bootstrap-url%/components/input-group/#form-select',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 $oFactory = new \Laminas\Form\Factory();
 
@@ -113,7 +113,7 @@ return [
                 '    <div class="input-group-prepend">' . PHP_EOL .
                 '        <label class="input-group-text" for="inputGroupSelect01">Options</label>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
-                '    <select name="select_label_prepend" id="inputGroupSelect01" class="custom-select">' . PHP_EOL .
+                '    <select name="select_label_prepend" id="inputGroupSelect01" class="form-select">' . PHP_EOL .
                 '        <option value="" selected="selected">Choose...</option>' . PHP_EOL .
                 '        <option value="1">One</option>' . PHP_EOL .
                 '        <option value="2">Two</option>' . PHP_EOL .
@@ -121,7 +121,7 @@ return [
                 '    </select>' . PHP_EOL .
                 '</div>' . PHP_EOL .
                 '<div class="input-group&#x20;mb-3">' . PHP_EOL .
-                '    <select name="select_label_append" id="inputGroupSelect02" class="custom-select">' . PHP_EOL .
+                '    <select name="select_label_append" id="inputGroupSelect02" class="form-select">' . PHP_EOL .
                 '        <option value="" selected="selected">Choose...</option>' . PHP_EOL .
                 '        <option value="1">One</option>' . PHP_EOL .
                 '        <option value="2">Two</option>' . PHP_EOL .
@@ -138,7 +138,7 @@ return [
                 '    </div>' . PHP_EOL .
                 '    <select name="select_button_prepend" id="inputGroupSelect03" ' .
                 'aria-label="Example&#x20;select&#x20;with&#x20;button&#x20;addon" ' .
-                'class="custom-select">' . PHP_EOL .
+                'class="form-select">' . PHP_EOL .
                 '        <option value="" selected="selected">Choose...</option>' . PHP_EOL .
                 '        <option value="1">One</option>' . PHP_EOL .
                 '        <option value="2">Two</option>' . PHP_EOL .
@@ -148,7 +148,7 @@ return [
                 '<div class="input-group">' . PHP_EOL .
                 '    <select name="select_button_append" id="inputGroupSelect04" ' .
                 'aria-label="Example&#x20;select&#x20;with&#x20;button&#x20;addon" ' .
-                'class="custom-select">' . PHP_EOL .
+                'class="form-select">' . PHP_EOL .
                 '        <option value="" selected="selected">Choose...</option>' . PHP_EOL .
                 '        <option value="1">One</option>' . PHP_EOL .
                 '        <option value="2">Two</option>' . PHP_EOL .
@@ -252,18 +252,12 @@ return [
                 '            Upload' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
-                '    <div class="custom-file">' . PHP_EOL .
-                '        <input type="file" name="custom_file_label_prepend" id="inputGroupFile01" ' .
-                'aria-describedby="inputGroupFileAddon01" class="custom-file-input"/>' . PHP_EOL .
-                '        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>' . PHP_EOL .
-                '    </div>' . PHP_EOL .
+                '    <input type="file" name="custom_file_label_prepend" id="inputGroupFile01" ' .
+                'aria-describedby="inputGroupFileAddon01"/>' . PHP_EOL .
                 '</div>' . PHP_EOL .
                 '<div class="input-group&#x20;mb-3">' . PHP_EOL .
-                '    <div class="custom-file">' . PHP_EOL .
-                '        <input type="file" name="custom_file_label_append" id="inputGroupFile02" ' .
-                'aria-describedby="inputGroupFileAddon02" class="custom-file-input"/>' . PHP_EOL .
-                '        <label class="custom-file-label" for="inputGroupFile02">Choose file</label>' . PHP_EOL .
-                '    </div>' . PHP_EOL .
+                '    <input type="file" name="custom_file_label_append" id="inputGroupFile02" ' .
+                'aria-describedby="inputGroupFileAddon02"/>' . PHP_EOL .
                 '    <div class="input-group-append">' . PHP_EOL .
                 '        <div class="input-group-text" id="inputGroupFileAddon02">' . PHP_EOL .
                 '            Upload' . PHP_EOL .
@@ -275,18 +269,12 @@ return [
                 '        <button type="button" name="button" id="inputGroupFileAddon03" ' .
                 'class="btn&#x20;btn-outline-secondary" value="">Button</button>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
-                '    <div class="custom-file">' . PHP_EOL .
-                '        <input type="file" name="custom_file_button_prepend" id="inputGroupFile03" ' .
-                'aria-describedby="inputGroupFileAddon03" class="custom-file-input"/>' . PHP_EOL .
-                '        <label class="custom-file-label" for="inputGroupFile03">Choose file</label>' . PHP_EOL .
-                '    </div>' . PHP_EOL .
+                '    <input type="file" name="custom_file_button_prepend" id="inputGroupFile03" ' .
+                'aria-describedby="inputGroupFileAddon03"/>' . PHP_EOL .
                 '</div>' . PHP_EOL .
                 '<div class="input-group&#x20;mb-3">' . PHP_EOL .
-                '    <div class="custom-file">' . PHP_EOL .
-                '        <input type="file" name="custom_file_button_append" id="inputGroupFile04" ' .
-                'aria-describedby="inputGroupFileAddon04" class="custom-file-input"/>' . PHP_EOL .
-                '        <label class="custom-file-label" for="inputGroupFile04">Choose file</label>' . PHP_EOL .
-                '    </div>' . PHP_EOL .
+                '    <input type="file" name="custom_file_button_append" id="inputGroupFile04" ' .
+                'aria-describedby="inputGroupFileAddon04"/>' . PHP_EOL .
                 '    <div class="input-group-append">' . PHP_EOL .
                 '        <button type="button" name="button" id="inputGroupFileAddon04" ' .
                 'class="btn&#x20;btn-outline-secondary" value="">Button</button>' . PHP_EOL .

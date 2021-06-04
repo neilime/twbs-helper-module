@@ -140,11 +140,11 @@ return [
         ]));
     },
     'expected' => '<form action="" method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
-        '    <label class="sr-only" for="inlineFormInputName2">Name</label>'
+        '    <label class="form-label&#x20;sr-only" for="inlineFormInputName2">Name</label>'
         . PHP_EOL .
         '    <input name="name" type="text" id="inlineFormInputName2" ' .
         'placeholder="Jane&#x20;Doe" class="form-control&#x20;mb-2&#x20;mr-sm-2" value=""/>' . PHP_EOL .
-        '    <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>'
+        '    <label class="form-label&#x20;sr-only" for="inlineFormInputGroupUsername2">Username</label>'
         . PHP_EOL .
         '    <div class="input-group&#x20;mb-2&#x20;mr-sm-2">' . PHP_EOL .
         '        <div class="input-group-prepend">' . PHP_EOL .
@@ -169,7 +169,7 @@ return [
         '    <label class="mr-2&#x20;my-1" for="inlineFormCustomSelectPref">Preference</label>'
         . PHP_EOL .
         '    <select name="preference" id="inlineFormCustomSelectPref" ' .
-        'class="custom-select&#x20;mr-sm-2&#x20;my-1">' . PHP_EOL .
+        'class="form-select&#x20;mr-sm-2&#x20;my-1">' . PHP_EOL .
         '        <option value="">Choose...</option>' . PHP_EOL .
         '        <option value="1">One</option>' . PHP_EOL .
         '        <option value="2">Two</option>' . PHP_EOL .
@@ -177,8 +177,8 @@ return [
         '    </select>' . PHP_EOL .
         '    <div class="custom-checkbox&#x20;custom-control&#x20;mr-sm-2&#x20;my-1">' . PHP_EOL .
         '        <input type="checkbox" name="remember_my_preference" id="customControlInline" ' .
-        'class="custom-control-input" value="1"/>' . PHP_EOL .
-        '        <label class="custom-control-label" for="customControlInline">' .
+        'class="form-check-input" value="1"/>' . PHP_EOL .
+        '        <label class="form-check-label" for="customControlInline">' .
         'Remember my preference</label>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '    <button type="submit" name="submit" class="btn&#x20;btn-primary&#x20;mb-2" value="">' .

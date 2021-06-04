@@ -71,7 +71,10 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
     {
         if (is_array($oItem)) {
             if (isset($oItem['buttons'])) {
-                return   $this->getButtonGroupHelper()->__invoke($oItem['buttons'], $oItem['options'] ?? []);
+                return $this->getButtonGroupHelper()->__invoke(
+                    $oItem['buttons'],
+                    $oItem['options'] ?? []
+                );
             }
             $oFactory = new \Laminas\Form\Factory();
             $oItem = $oFactory->create($oItem);
@@ -91,7 +94,7 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
             return $this->buttonGroupHelper;
         }
 
-        if ($this->view && method_exists($this->view, 'plugin')) {
+        if ($this->view !== null && method_exists($this->view, 'plugin')) {
             return $this->buttonGroupHelper = $this->view->plugin('buttonGroup');
         }
 
@@ -107,7 +110,7 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
             return $this->formElementHelper;
         }
 
-        if ($this->view && method_exists($this->view, 'plugin')) {
+        if ($this->view !== null && method_exists($this->view, 'plugin')) {
             return $this->formElementHelper = $this->view->plugin('form_element');
         }
 

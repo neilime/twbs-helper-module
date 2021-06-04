@@ -91,14 +91,14 @@ return [
         ]));
     },
     'expected' => '<form action="" method="POST" name="form" role="form" id="form">' . PHP_EOL .
-        '    <div class="form-group">' . PHP_EOL .
-        '        <label for="exampleFormControlInput1">Email address</label>' . PHP_EOL .
+        '    <div class="mb-3">' . PHP_EOL .
+        '        <label class="form-label" for="exampleFormControlInput1">Email address</label>' . PHP_EOL .
         '        <input name="email" type="email" id="exampleFormControlInput1" ' .
         'placeholder="name&#x40;example.com" class="form-control" value=""/>' . PHP_EOL .
         '    </div>' . PHP_EOL .
-        '    <div class="form-group">' . PHP_EOL .
-        '        <label for="exampleFormControlSelect1">Example select</label>' . PHP_EOL .
-        '        <select name="select" id="exampleFormControlSelect1" class="form-control">' . PHP_EOL .
+        '    <div class="mb-3">' . PHP_EOL .
+        '        <label class="form-label" for="exampleFormControlSelect1">Example select</label>' . PHP_EOL .
+        '        <select name="select" id="exampleFormControlSelect1" class="form-select">' . PHP_EOL .
         '            <option value="1">1</option>' . PHP_EOL .
         '            <option value="2">2</option>' . PHP_EOL .
         '            <option value="3">3</option>' . PHP_EOL .
@@ -106,10 +106,10 @@ return [
         '            <option value="5">5</option>' . PHP_EOL .
         '        </select>' . PHP_EOL .
         '    </div>' . PHP_EOL .
-        '    <div class="form-group">' . PHP_EOL .
-        '        <label for="exampleFormControlSelect2">Example multiple select</label>' . PHP_EOL .
+        '    <div class="mb-3">' . PHP_EOL .
+        '        <label class="form-label" for="exampleFormControlSelect2">Example multiple select</label>' . PHP_EOL .
         '        <select name="multiple_select&#x5B;&#x5D;" id="exampleFormControlSelect2" ' .
-        'multiple="multiple" class="form-control">' . PHP_EOL .
+        'multiple="multiple" class="form-select">' . PHP_EOL .
         '            <option value="1">1</option>' . PHP_EOL .
         '            <option value="2">2</option>' . PHP_EOL .
         '            <option value="3">3</option>' . PHP_EOL .
@@ -117,14 +117,14 @@ return [
         '            <option value="5">5</option>' . PHP_EOL .
         '        </select>' . PHP_EOL .
         '    </div>' . PHP_EOL .
-        '    <div class="form-group">' . PHP_EOL .
-        '        <label for="exampleFormControlTextarea1">Example textarea</label>' . PHP_EOL .
+        '    <div class="mb-3">' . PHP_EOL .
+        '        <label class="form-label" for="exampleFormControlTextarea1">Example textarea</label>' . PHP_EOL .
         '        <textarea name="textarea" id="exampleFormControlTextarea1" rows="3" class="form-control">' .
         '</textarea>' . PHP_EOL .
         '    </div>' . PHP_EOL .
-        '    <div class="form-group">' . PHP_EOL .
-        '        <label for="exampleFormControlFile1">Example file input</label>' . PHP_EOL .
-        '        <input name="file_input" type="file" id="exampleFormControlFile1" class="form-control-file"/>'
+        '    <div class="mb-3">' . PHP_EOL .
+        '        <label class="form-label" for="exampleFormControlFile1">Example file input</label>' . PHP_EOL .
+        '        <input name="file_input" type="file" id="exampleFormControlFile1" class="form-control"/>'
         . PHP_EOL .
         '    </div>' . PHP_EOL .
         '</form>',
@@ -199,15 +199,15 @@ return [
                 '<input type="text" name="sm" placeholder=".form-control-sm" ' .
                 'class="form-control&#x20;form-control-sm" value=""/>' . PHP_EOL .
                 '<br/>' . PHP_EOL .
-                '<select name="lg" class="form-control&#x20;form-control-lg">' .
+                '<select name="lg" class="form-select&#x20;form-select-lg">' .
                 '<option value="0">Large select</option>' .
                 '</select>' . PHP_EOL .
                 '<br/>' . PHP_EOL .
-                '<select name="default" class="form-control">' .
+                '<select name="default" class="form-select">' .
                 '<option value="0">Default select</option>' .
                 '</select>' . PHP_EOL .
                 '<br/>' . PHP_EOL .
-                '<select name="sm" class="form-control&#x20;form-control-sm">' .
+                '<select name="sm" class="form-select&#x20;form-select-sm">' .
                 '<option value="0">Small select</option>' .
                 '</select>' . PHP_EOL .
                 '<br/>' . PHP_EOL,
@@ -287,7 +287,6 @@ return [
                                 'options' => [
                                     'plaintext' => true,
                                     'label' => 'Email',
-                                    'row_class' => 'mb-2',
                                 ],
                                 'attributes' => [
                                     'type' => 'email',
@@ -302,7 +301,7 @@ return [
                                 'name' => 'password',
                                 'options' => [
                                     'label' => 'Password',
-                                    'row_class' => 'mx-sm-3 mb-2',
+                                    'row_class' => 'mx-sm-3',
                                 ],
                                 'attributes' => [
                                     'type' => 'password',
@@ -323,16 +322,17 @@ return [
             },
             'expected' =>
             '<form action="" method="POST" name="form" role="form" id="form">' . PHP_EOL .
-                '    <div class="form-group&#x20;row">' . PHP_EOL .
-                '        <label class="col-form-label&#x20;col-sm-2" for="staticEmail">Email</label>'
+                '    <div class="mb-3&#x20;row">' . PHP_EOL .
+                '        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="staticEmail">Email</label>'
                 . PHP_EOL .
                 '        <div class="col-sm-10">' . PHP_EOL .
                 '            <input name="email" type="email" id="staticEmail" readonly="readonly" ' .
                 'class="form-control-plaintext" value="email&#x40;example.com"/>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
-                '    <div class="form-group&#x20;row">' . PHP_EOL .
-                '        <label class="col-form-label&#x20;col-sm-2" for="inputPassword">Password</label>' . PHP_EOL .
+                '    <div class="mb-3&#x20;row">' . PHP_EOL .
+                '        <label class="col-form-label&#x20;col-sm-2&#x20;form-label" for="inputPassword">' .
+                'Password</label>' . PHP_EOL .
                 '        <div class="col-sm-10">' . PHP_EOL .
                 '            <input name="password" type="password" id="inputPassword" ' .
                 'placeholder="Password" class="form-control" value=""/>' . PHP_EOL .
@@ -341,14 +341,14 @@ return [
                 '</form>' . PHP_EOL .
                 '<br/>' . PHP_EOL .
                 '<form action="" method="POST" name="form" role="form" class="form-inline" id="form">' . PHP_EOL .
-                '    <div class="form-group&#x20;mb-2">' . PHP_EOL .
-                '        <label class="sr-only" for="staticEmail2">Email</label>'
+                '    <div class="mb-3">' . PHP_EOL .
+                '        <label class="form-label&#x20;sr-only" for="staticEmail2">Email</label>'
                 . PHP_EOL .
                 '        <input name="email" type="email" id="staticEmail2" readonly="readonly" ' .
                 'class="form-control-plaintext" value="email&#x40;example.com"/>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
-                '    <div class="form-group&#x20;mb-2&#x20;mx-sm-3">' . PHP_EOL .
-                '        <label class="sr-only" for="inputPassword2">Password</label>' . PHP_EOL .
+                '    <div class="mb-3&#x20;mx-sm-3">' . PHP_EOL .
+                '        <label class="form-label&#x20;sr-only" for="inputPassword2">Password</label>' . PHP_EOL .
                 '        <input name="password" type="password" id="inputPassword2" ' .
                 'placeholder="Password" class="form-control" value=""/>' . PHP_EOL .
                 '    </div>' . PHP_EOL .

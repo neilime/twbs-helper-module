@@ -61,10 +61,6 @@ class ButtonGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
             $aClasses = [];
             $aClasses[] = $this->getColumnClass($aButtonGroupOptions['column']);
 
-            if ($aButtons[0]->getOption('layout') == \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL) {
-                $aClasses[] = $this->getOffsetCounterpartClass($aButtonGroupOptions['column']);
-            }
-
             $sMarkup = $this->htmlElement(
                 'div',
                 $this->setClassesToAttributes([], $aClasses),
@@ -128,7 +124,7 @@ class ButtonGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
             return $this->formElementHelper;
         }
 
-        if ($this->view && method_exists($this->view, 'plugin')) {
+        if ($this->view !== null && method_exists($this->view, 'plugin')) {
             return $this->formElementHelper = $this->view->plugin('form_element');
         }
 

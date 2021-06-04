@@ -17,7 +17,7 @@ class ProgressBar extends \TwbsHelper\View\Helper\AbstractHtmlElement
         } else {
             $aOptions = ['min' => $iMin, 'max' => $iMax, 'current' => $iCurrent];
         }
-        
+
         return $this->render($aOptions);
     }
 

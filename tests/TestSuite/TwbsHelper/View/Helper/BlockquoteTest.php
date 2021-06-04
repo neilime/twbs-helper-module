@@ -14,10 +14,12 @@ class BlockquoteTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
     {
         $this->assertSame(
             // Expected
-            '<blockquote class="blockquote">' . PHP_EOL .
-                '    <p class="mb-0&#x20;test-class">content</p>' . PHP_EOL .
-                '    <footer class="blockquote-footer">footer</footer>' . PHP_EOL .
-                '</blockquote>',
+            '<figure>' . PHP_EOL .
+                '    <blockquote class="blockquote">' . PHP_EOL .
+                '        <p class="test-class">content</p>' . PHP_EOL .
+                '    </blockquote>' . PHP_EOL .
+                '    <figcaption class="blockquote-footer">footer</figcaption>' . PHP_EOL .
+                '</figure>',
             // Rendering
             $this->helper->__invoke('content', 'footer', [], ['class' => 'test-class'])
         );
@@ -27,9 +29,12 @@ class BlockquoteTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
     {
         $this->assertSame(
             // Expected
-            '<blockquote class="blockquote">' . PHP_EOL . '    <p class="mb-0">content</p>' . PHP_EOL .
-                '    <footer class="blockquote-footer&#x20;test-class">footer</footer>' . PHP_EOL .
-                '</blockquote>',
+            '<figure>' . PHP_EOL .
+                '    <blockquote class="blockquote">' . PHP_EOL .
+                '        <p>content</p>' . PHP_EOL .
+                '    </blockquote>' . PHP_EOL .
+                '    <figcaption class="blockquote-footer&#x20;test-class">footer</figcaption>' . PHP_EOL .
+                '</figure>',
             // Rendering
             $this->helper->__invoke('content', 'footer', [], [], ['class' => 'test-class'])
         );
@@ -39,9 +44,12 @@ class BlockquoteTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
     {
         $this->assertSame(
             // Expected
-            '<blockquote class="blockquote">' . PHP_EOL . '    <p class="mb-0">content</p>' . PHP_EOL .
-                '    <footer class="blockquote-footer">footer &amp; test</footer>' . PHP_EOL .
-                '</blockquote>',
+            '<figure>' . PHP_EOL .
+                '    <blockquote class="blockquote">' . PHP_EOL .
+                '        <p>content</p>' . PHP_EOL .
+                '    </blockquote>' . PHP_EOL .
+                '    <figcaption class="blockquote-footer">footer &amp; test</figcaption>' . PHP_EOL .
+                '</figure>',
             // Rendering
             $this->helper->__invoke('content', 'footer & test')
         );
