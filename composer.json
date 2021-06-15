@@ -29,7 +29,7 @@
     "php": "^7.3 | ^8.0",
     "laminas/laminas-config": "^3.5.0",
     "laminas/laminas-escaper": "^2.8",
-    "laminas/laminas-form": "^2.17",
+    "laminas/laminas-form": "^3.0",
     "laminas/laminas-i18n": "^2.11",
     "laminas/laminas-loader": "^2.7",
     "laminas/laminas-log": "^2.13",

@@ -42,7 +42,37 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
             return $this;
         }
 
-        return $this->render($oElement, $sButtonContent);
+        if (is_array($oElement)) {
+            return $this->renderSpec($oElement, $sButtonContent);
+        }
+
+        if ($oElement instanceof \Laminas\Form\ElementInterface) {
+            return $this->render($oElement, $sButtonContent);
+        }
+
+        throw new \InvalidArgumentException(sprintf(
+            'Button expects an instanceof \Laminas\Form\ElementInterface or an array, "%s" given',
+            is_object($oElement) ? get_class($oElement) : gettype($oElement)
+        ));
+    }
+    
+    /**
+     * Renders a button from an array specification
+     *
+     * @see FormButton::render()
+     */
+    public function renderSpec(array $oElementSpec, ?string $sButtonContent = null): string
+    {
+        $oFactory = new \Laminas\Form\Factory();
+
+        // Set default type if none given
+        if (empty($oElementSpec['type'])) {
+            $oElementSpec['type'] = \Laminas\Form\Element\Button::class;
+        }
+
+        $oElement = $oFactory->create($oElementSpec);
+
+        return $this->render($oElement);
     }
 
     /**
@@ -51,30 +81,10 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
      * * string size:  'sm', 'lg'
      * * bool block
      *
-     * @see FormButton::render()
-     * @param iterable|\Laminas\Form\ElementInterface $oElement
-     * @param string $sButtonContent
-     * @throws \InvalidArgumentException
-     * @return string
+     * @see \Laminas\Form\View\Helper\FormButton::render()
      */
-    public function render($oElement, $sButtonContent = null)
+    public function render(\Laminas\Form\ElementInterface $oElement, ?string $sButtonContent = null): string
     {
-        if (is_iterable($oElement) && !($oElement instanceof \Laminas\Form\ElementInterface)) {
-            $oFactory = new \Laminas\Form\Factory();
-
-            // Set default type if none given
-            if (empty($oElement['type'])) {
-                $oElement['type'] = \Laminas\Form\Element\Button::class;
-            }
-
-            $oElement = $oFactory->create($oElement);
-        } elseif (!($oElement instanceof \Laminas\Form\ElementInterface)) {
-            throw new \InvalidArgumentException(sprintf(
-                'Button expects an instanceof \Laminas\Form\ElementInterface or an array / Traversable, "%s" given',
-                is_object($oElement) ? get_class($oElement) : gettype($oElement)
-            ));
-        }
-
         // Dropdown button
         if ($oElement->getOption('dropdown')) {
             return $this->getView()->plugin('dropdown')->render($oElement);
@@ -94,7 +104,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
             unset($this->validTagAttributes['name']);
 
             $oElement->setAttribute('type', null);
-            $oElement->setAttribute('name', 0);
+            $oElement->setAttribute('name', 'dummy');
 
             if (!$oElement->getAttribute('role')) {
                 $oElement->setAttribute('role', 'button');
@@ -399,12 +409,12 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
      * @param \Laminas\Form\ElementInterface $oElement
      * @return string|boolean
      */
-    protected function getType(\Laminas\Form\ElementInterface $oElement)
+    protected function getType(\Laminas\Form\ElementInterface $oElement): string
     {
         $sTag = $oElement->getOption('tag');
         if (!$sTag || $sTag === 'button') {
             return parent::getType($oElement);
         }
-        return false;
+        return '';
     }
 }

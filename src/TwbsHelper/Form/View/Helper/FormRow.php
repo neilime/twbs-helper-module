@@ -40,7 +40,7 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
      * @param string|null $sLabelPosition
      * @return string
      */
-    public function render(\Laminas\Form\ElementInterface $oElement, $sLabelPosition = null): string
+    public function render(\Laminas\Form\ElementInterface $oElement, ?string $sLabelPosition = null): string
     {
         // Retrieve element type
         $sElementType = $oElement->getAttribute('type');
@@ -456,7 +456,7 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
      *
      * @return string
      */
-    public function getInputValidClass()
+    public function getInputValidClass(): string
     {
         return $this->inputValidClass;
     }
