@@ -9,23 +9,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2.1.5
+      - run: echo ::set-output name=NVMRC::$(cat .nvmrc)
+        id: nvm
+      - uses: actions/setup-node@v2.2.0
         with:
-          node-version: "12.x"
+          node-version: "${{ steps.nvm.outputs.NVMRC }}"
+          cache: yarn
 
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: ⚙️ Install Dependencies
+        run: yarn
 
-      - uses: actions/cache@v2.1.6
-        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('website/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - name: Add key to allow access to repository
+      - name: 🔑 Add key to allow access to repository
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run: |
@@ -42,7 +36,7 @@ jobs:
       - id: get_version
         uses: battila7/get-version-action@v2
 
-      - name: Release to GitHub Pages
+      - name: 🚀 Release to GitHub Pages
         env:
           USE_SSH: true
           GIT_USER: git
