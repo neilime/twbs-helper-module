@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v2
       - run: echo ::set-output name=NVMRC::$(cat .nvmrc)
         id: nvm
-      - uses: actions/setup-node@v2.4.0
+      - uses: actions/setup-node@v2.2.0
         with:
           node-version: "${{ steps.nvm.outputs.NVMRC }}"
           cache: yarn
@@ -41,8 +41,8 @@ jobs:
           USE_SSH: true
           GIT_USER: git
         run: |
-          git config --global user.email "actions@gihub.com"
-          git config --global user.name "GitHub Actions"
+          git config --local user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --local user.name "${{ github.actor }}"
           cd website
           yarn install --frozen-lockfile
           npx docusaurus docs:version ${{ steps.get_version.outputs.version }}
