@@ -20,7 +20,8 @@ return [
                 ]);
             },
             'expected' => '<div class="media">' . PHP_EOL .
-                '    <img alt="..." class="mr-3" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;64x64.svg" />' . PHP_EOL .
+                '    <img alt="..." class="mr-3" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;64x64.svg" />'
+                . PHP_EOL .
                 '    <div class="media-body">' . PHP_EOL .
                 '        <h5 class="mt-0">Media heading</h5>' . PHP_EOL .
                 '        <p>Cras sit amet nibh libero, in gravida nulla. ' .
@@ -57,7 +58,8 @@ return [
                 ]);
             },
             'expected' => '<div class="media">' . PHP_EOL .
-                '    <img alt="..." class="mr-3" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;64x64.svg" />' . PHP_EOL .
+                '    <img alt="..." class="mr-3" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;64x64.svg" />'
+                . PHP_EOL .
                 '    <div class="media-body">' . PHP_EOL .
                 '        <h5 class="mt-0">Media heading</h5>' . PHP_EOL .
                 '        <p>Cras sit amet nibh libero, in gravida nulla. ' .
@@ -66,7 +68,8 @@ return [
                 'Fusce condimentum nunc ac nisi vulputate fringilla. ' .
                 'Donec lacinia congue felis in faucibus.</p>' . PHP_EOL .
                 '        <div class="media">' . PHP_EOL .
-                '            <img alt="..." class="mr-3" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;64x64.svg" />' . PHP_EOL .
+                '            <img alt="..." class="mr-3" ' .
+                'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;64x64.svg" />' . PHP_EOL .
                 '            <div class="media-body">' . PHP_EOL .
                 '                <h5 class="mt-0">Media heading</h5>' . PHP_EOL .
                 '                <p>Cras sit amet nibh libero, in gravida nulla. ' .
@@ -85,7 +88,10 @@ return [
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 // Top-aligned media
                 echo $oView->media([
-                    'img' => ['/twbs-helper-module/img/docs/64x64.svg', ['alt' => '...', 'class' => 'align-self-start mr-3']],
+                    'img' => [
+                        '/twbs-helper-module/img/docs/64x64.svg',
+                        ['alt' => '...', 'class' => 'align-self-start mr-3']
+                    ],
                     'title' => 'Top-aligned media',
                     'text' => [
                         'Cras sit amet nibh libero, in gravida nulla. ' .
@@ -100,7 +106,10 @@ return [
 
                 // Center-aligned media
                 echo $oView->media([
-                    'img' => ['/twbs-helper-module/img/docs/64x64.svg', ['alt' => '...', 'class' => 'align-self-center mr-3']],
+                    'img' => [
+                        '/twbs-helper-module/img/docs/64x64.svg',
+                        ['alt' => '...', 'class' => 'align-self-center mr-3']
+                    ],
                     'title' => 'Top-aligned media',
                     'text' => [
                         'Cras sit amet nibh libero, in gravida nulla. ' .
@@ -118,7 +127,10 @@ return [
 
                 // Bottom-aligned media
                 echo $oView->media([
-                    'img' => ['/twbs-helper-module/img/docs/64x64.svg', ['alt' => '...', 'class' => 'align-self-end mr-3']],
+                    'img' => [
+                        '/twbs-helper-module/img/docs/64x64.svg',
+                        ['alt' => '...', 'class' => 'align-self-end mr-3']
+                    ],
                     'title' => 'Top-aligned media',
                     'text' => [
                         'Cras sit amet nibh libero, in gravida nulla. ' .
@@ -200,7 +212,8 @@ return [
                 'Fusce condimentum nunc ac nisi vulputate fringilla. ' .
                 'Donec lacinia congue felis in faucibus.</p>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
-                '    <img alt="..." class="ml-3" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;64x64.svg" />' . PHP_EOL .
+                '    <img alt="..." class="ml-3" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;64x64.svg" />'
+                . PHP_EOL .
                 '</div>',
         ],
         [
@@ -239,7 +252,8 @@ return [
             },
             'expected' => '<ul class="list-unstyled">' . PHP_EOL .
                 '    <li class="media">' . PHP_EOL .
-                '        <img alt="..." class="mr-3" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;64x64.svg" />' . PHP_EOL .
+                '        <img alt="..." class="mr-3" ' .
+                'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;64x64.svg" />' . PHP_EOL .
                 '        <div class="media-body">' . PHP_EOL .
                 '            <h5 class="mb-1&#x20;mt-0">List-based media object</h5>' . PHP_EOL .
                 '            <p>Cras sit amet nibh libero, in gravida nulla. ' .
@@ -250,7 +264,8 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </li>' . PHP_EOL .
                 '    <li class="media">' . PHP_EOL .
-                '        <img alt="..." class="mr-3" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;64x64.svg" />' . PHP_EOL .
+                '        <img alt="..." class="mr-3" ' .
+                'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;64x64.svg" />' . PHP_EOL .
                 '        <div class="media-body">' . PHP_EOL .
                 '            <h5 class="mb-1&#x20;mt-0">List-based media object</h5>' . PHP_EOL .
                 '            <p>Cras sit amet nibh libero, in gravida nulla. ' .
@@ -261,7 +276,8 @@ return [
                 '        </div>' . PHP_EOL .
                 '    </li>' . PHP_EOL .
                 '    <li class="media">' . PHP_EOL .
-                '        <img alt="..." class="mr-3" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;64x64.svg" />' . PHP_EOL .
+                '        <img alt="..." class="mr-3" ' .
+                'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;64x64.svg" />' . PHP_EOL .
                 '        <div class="media-body">' . PHP_EOL .
                 '            <h5 class="mb-1&#x20;mt-0">List-based media object</h5>' . PHP_EOL .
                 '            <p>Cras sit amet nibh libero, in gravida nulla. ' .

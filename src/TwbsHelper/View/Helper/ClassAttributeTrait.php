@@ -62,7 +62,7 @@ trait ClassAttributeTrait
         $aClasses = $this->addClassesAttribute($aAttributes['class'] ?? '', $aAddClasses);
         if ($aClasses) {
             $aClasses = array_diff(
-                is_array($aClasses) ? $aClasses : iterator_to_array($aClasses),
+                $aClasses,
                 is_array($aRemoveClasses) ? $aRemoveClasses : iterator_to_array($aRemoveClasses)
             );
             $aAttributes['class'] = join(' ', $aClasses);

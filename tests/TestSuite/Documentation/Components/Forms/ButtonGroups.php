@@ -46,8 +46,10 @@ return [
         '        <input name="email" type="email" class="form-control" value=""/>' . PHP_EOL .
         '    </div>' . PHP_EOL .
         '    <div class="btn-group&#x20;form-group">' . PHP_EOL .
-        '        <button type="button" name="button1" class="btn&#x20;btn-secondary" value="">Button 1</button>' . PHP_EOL .
-        '        <button type="button" name="button2" class="btn&#x20;btn-secondary" value="">Button 2</button>' . PHP_EOL .
+        '        <button type="button" name="button1" class="btn&#x20;btn-secondary" value="">Button 1</button>'
+        . PHP_EOL .
+        '        <button type="button" name="button2" class="btn&#x20;btn-secondary" value="">Button 2</button>'
+        . PHP_EOL .
         '    </div>' . PHP_EOL .
         '    <div class="form-group">' . PHP_EOL .
         '        <button type="submit" name="submit" class="btn&#x20;btn-primary" value="">Submit</button>' . PHP_EOL .

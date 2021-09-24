@@ -31,12 +31,14 @@ return [
             'title' => 'Four directions',
             'url' => '%bootstrap-url%/components/popovers/#four-directions',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                foreach ([
+                foreach (
+                    [
                     'top' => 'Popover on top',
                     'right' => 'Popover on right',
                     'bottom' => 'Popover on bottom',
                     'left' => 'Popover on left',
-                ] as $sPlacement => $sButtonLabel) {
+                    ] as $sPlacement => $sButtonLabel
+                ) {
                     echo $oView->formButton([
                         'name' => 'popover',
                         'options' => [

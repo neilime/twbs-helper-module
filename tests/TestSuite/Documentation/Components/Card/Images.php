@@ -30,7 +30,8 @@ return [
                 ]);
             },
             'expected' => '<div class="card&#x20;mb-3">' . PHP_EOL .
-                '    <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
+                '    <img alt="..." class="card-img-top" ' .
+                'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
                 '    <div class="card-body">' . PHP_EOL .
                 '        <h5 class="card-title">Card title</h5>' . PHP_EOL .
                 '        <p class="card-text">' .
@@ -49,7 +50,8 @@ return [
                 '</p>' . PHP_EOL .
                 '        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
-                '    <img alt="..." class="card-img-top" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
+                '    <img alt="..." class="card-img-top" ' .
+                'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
                 '</div>',
         ],
         [
@@ -70,7 +72,8 @@ return [
                 ], ['bgVariant' => 'dark', 'class' => 'text-white']);
             },
             'expected' => '<div class="bg-dark&#x20;card&#x20;text-white">' . PHP_EOL .
-                '    <img alt="..." class="card-img" src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
+                '    <img alt="..." class="card-img" ' .
+                'src="&#x2F;twbs-helper-module&#x2F;img&#x2F;docs&#x2F;image-cap.svg" />' . PHP_EOL .
                 '    <div class="card-img-overlay">' . PHP_EOL .
                 '        <h5 class="card-title">Card title</h5>' . PHP_EOL .
                 '        <p class="card-text">' .

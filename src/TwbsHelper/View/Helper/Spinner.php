@@ -19,7 +19,7 @@ class Spinner extends \TwbsHelper\View\Helper\AbstractHtmlElement
         } else {
             $aOptions = [];
         }
-        
+
         return $this->render($aOptions);
     }
 
@@ -76,7 +76,7 @@ class Spinner extends \TwbsHelper\View\Helper\AbstractHtmlElement
         if (!$sLabelMarkup || ($sPlacement === 'center' && $bShowLabel)) {
             $aAttributes['aria-hidden'] = 'true';
         }
-           
+
         $sSpinnerMarkup = $this->htmlElement(
             $aOptions['tag'] ?? 'div',
             $this->setClassesToAttributes($aAttributes, $aClasses),
