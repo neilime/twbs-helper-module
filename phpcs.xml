@@ -6,6 +6,12 @@
     <rule ref="PSR12">
         <exclude name="PSR12.ControlStructures.ControlStructureSpacing.SpacingAfterOpenBrace"/>
     </rule>
+    <rule ref="Generic.WhiteSpace.ScopeIndent">
+        <properties>
+            <property name="indent" value="4" />
+            <property name="tabIndent" value="false" />
+        </properties>
+    </rule>
 
     <!-- Paths to check -->
     <file>src</file>

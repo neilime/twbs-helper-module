@@ -1,0 +1,388 @@
+---
+sidebar_position: 0
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../../src/components/HtmlCode.tsx";
+
+# Supported content
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/navbar/#supported-content)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><nav class="bg-light navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button type="button" name="navbar_toggler" class="navbar-toggler" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" value=""><span class="navbar-toggler-icon"/></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="mr-auto nav navbar-nav">
+            <li class=" nav-item">
+                <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="dropdown nav-item">
+                <a id="navbarDropdown" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">Dropdown</a>
+                <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"/>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+        </ul>
+        <form action="" method="POST" name="form" class="form-inline my-2 my-lg-0" role="form" id="form">
+            <input name="search" type="search" placeholder="Search" aria-label="Search" class="form-control mr-sm-2" value=""/>
+            <button type="submit" name="submit" class="btn btn-outline-success my-2 my-sm-0" value="">Search</button>
+        </form>
+    </div>
+</nav></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->navigation()->navbar()->render(
+    new \Laminas\Navigation\Navigation(
+        [
+            [
+                'label'  => 'Home <span class="sr-only">(current)</span>',
+                'uri'    => '#',
+                'active' => true,
+            ],
+            [
+                'label' => 'Link',
+                'uri'   => '#',
+            ],
+            [
+                'type'     => '\TwbsHelper\Navigation\Page\DropdownPage',
+                'label'    => 'Dropdown',
+                'dropdown' => [
+                    'items'      => [
+                        'Action',
+                        'Another action',
+                        '---',
+                        'Something else here',
+                    ],
+                    'attributes' => ['id' => 'navbarDropdown'],
+                ],
+            ],
+            [
+                'label'   => 'Disabled',
+                'uri'     => '#',
+                'visible' => false,
+            ],
+        ]
+    ),
+    [
+        'brand'      => 'Navbar',
+        'form'       => [
+            'elements'   => [
+                [
+                    'spec' => [
+                        'name'       => 'search',
+                        'attributes' => [
+                            'type'        => 'search',
+                            'placeholder' => 'Search',
+                            'aria-label'  => 'Search',
+                            'class'       => 'mr-sm-2',
+                        ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'type'       => 'submit',
+                        'options'    => [
+                            'label'   => 'Search',
+                            'variant' => 'outline-success',
+                        ],
+                        'attributes' => [    'class' => 'my-2 my-sm-0'    ],
+                    ],
+                ],
+            ],
+            'attributes' => ['class' => 'my-2 my-lg-0'],
+        ],
+        'attributes' => ['id' => 'navbarSupportedContent'],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+# Color schemes
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/navbar/#color-schemes)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><nav class="bg-dark navbar navbar-dark navbar-expand-lg">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button type="button" name="navbar_toggler" class="navbar-toggler" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation" value=""><span class="navbar-toggler-icon"/></button>
+    <div class="collapse navbar-collapse">
+        <ul class="mr-auto nav navbar-nav">
+            <li class=" nav-item">
+                <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+        </ul>
+        <form action="" method="POST" name="form" role="form" class="form-inline" id="form">
+            <input name="search" type="search" placeholder="Search" aria-label="Search" class="form-control mr-sm-2" value=""/>
+            <button type="submit" name="submit" class="btn btn-outline-success" value="">Search</button>
+        </form>
+    </div>
+</nav>
+<br/>
+<nav class="bg-primary navbar navbar-dark navbar-expand-lg">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button type="button" name="navbar_toggler" class="navbar-toggler" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation" value=""><span class="navbar-toggler-icon"/></button>
+    <div class="collapse navbar-collapse">
+        <ul class="mr-auto nav navbar-nav">
+            <li class=" nav-item">
+                <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+        </ul>
+        <form action="" method="POST" name="form" role="form" class="form-inline" id="form">
+            <input name="search" type="search" placeholder="Search" aria-label="Search" class="form-control mr-sm-2" value=""/>
+            <button type="submit" name="submit" class="btn btn-outline-success" value="">Search</button>
+        </form>
+    </div>
+</nav>
+<br/>
+<nav class="navbar navbar-dark navbar-expand-lg" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button type="button" name="navbar_toggler" class="navbar-toggler" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation" value=""><span class="navbar-toggler-icon"/></button>
+    <div class="collapse navbar-collapse">
+        <ul class="mr-auto nav navbar-nav">
+            <li class=" nav-item">
+                <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Features</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+            </li>
+        </ul>
+        <form action="" method="POST" name="form" role="form" class="form-inline" id="form">
+            <input name="search" type="search" placeholder="Search" aria-label="Search" class="form-control mr-sm-2" value=""/>
+            <button type="submit" name="submit" class="btn btn-outline-success" value="">Search</button>
+        </form>
+    </div>
+</nav></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+
+$oNavigationContainer = new \Laminas\Navigation\Navigation(
+    [
+        [
+            'label'  => 'Home <span class="sr-only">(current)</span>',
+            'uri'    => '#',
+            'active' => true,
+        ],
+        [
+            'label' => 'Link',
+            'uri'   => '#',
+        ],
+        [
+            'label' => 'Features',
+            'uri'   => '#',
+        ],
+        [
+            'label' => 'Pricing',
+            'uri'   => '#',
+        ],
+        [
+            'label' => 'About',
+            'uri'   => '#',
+        ],
+    ]
+);
+
+$aOptions = [
+    'brand' => 'Navbar',
+    'form'  => [
+        'elements' => [
+            [
+                'spec' => [
+                    'name'       => 'search',
+                    'attributes' => [
+                        'type'        => 'search',
+                        'placeholder' => 'Search',
+                        'aria-label'  => 'Search',
+                        'class'       => 'mr-sm-2',
+                    ],
+                ],
+            ],
+            [
+                'spec' => [
+                    'type'    => 'submit',
+                    'options' => [
+                        'label'   => 'Search',
+                        'variant' => 'outline-success',
+                    ],
+                ],
+            ],
+        ],
+    ],
+];
+
+// Navbar dark, background dark
+$aOptions['variant']    = 'dark';
+$aOptions['background'] = 'dark';
+
+echo $this->navigation()->navbar()->render($oNavigationContainer, $aOptions);
+echo PHP_EOL.'<br/>'.PHP_EOL;
+
+// Navbar dark, background primary
+$aOptions['variant']    = 'dark';
+$aOptions['background'] = 'primary';
+
+echo $this->navigation()->navbar()->render($oNavigationContainer, $aOptions);
+echo PHP_EOL.'<br/>'.PHP_EOL;
+
+// Navbar light, custom background-color
+$aOptions['variant']    = 'dark';
+$aOptions['background'] = false;
+$aOptions['attributes'] = ['style' => 'background-color: #e3f2fd;'];
+
+echo $this->navigation()->navbar()->render($oNavigationContainer, $aOptions);
+
+```
+
+</TabItem>
+</Tabs>
+
+# Containers
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/navbar/#containers)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="container">
+    <nav class="bg-light navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+    </nav>
+</div>
+<br/>
+<nav class="bg-light navbar navbar-expand-lg navbar-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">Navbar</a>
+    </div>
+</nav></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+
+echo $this->navigation()->navbar()->render(
+    new \Laminas\Navigation\Navigation(),
+    [
+        'brand'     => 'Navbar',
+        'container' => 'wrap',
+        'toggler'   => false,
+    ]
+);
+
+echo PHP_EOL.'<br/>'.PHP_EOL;
+
+echo $this->navigation()->navbar()->render(
+    new \Laminas\Navigation\Navigation(),
+    [
+        'brand'     => 'Navbar',
+        'container' => 'within',
+        'toggler'   => false,
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+# Placement
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/navbar/#placement)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><nav class="bg-light navbar navbar-light">
+    <a class="navbar-brand" href="#">Default</a>
+</nav>
+<br/>
+<nav class="bg-light fixed-top navbar navbar-light">
+    <a class="navbar-brand" href="#">Fixed top</a>
+</nav>
+<br/>
+<nav class="bg-light fixed-bottom navbar navbar-light">
+    <a class="navbar-brand" href="#">Fixed bottom</a>
+</nav>
+<br/>
+<nav class="bg-light navbar navbar-light sticky-top">
+    <a class="navbar-brand" href="#">Sticky top</a>
+</nav>
+<br/></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+
+foreach ([
+    false          => 'Default',
+    'fixed-top'    => 'Fixed top',
+    'fixed-bottom' => 'Fixed bottom',
+    'sticky-top'   => 'Sticky top',
+] as $sPlacement => $sBrand) {
+    echo $this->navigation()->navbar()->render(
+        new \Laminas\Navigation\Navigation(),
+        [
+            'brand'     => $sBrand,
+            'placement' => $sPlacement,
+            'toggler'   => false,
+            'expand'    => false,
+        ]
+    );
+    echo PHP_EOL.'<br/>'.PHP_EOL;
+}
+
+```
+
+</TabItem>
+</Tabs>

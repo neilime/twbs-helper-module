@@ -9,10 +9,13 @@ class DocumentationTestConfigsLoader
     {
         $aDocumentationFiles = self::getDocumentationFiles();
         $aDocumentationTestConfigs = [];
+        $iPosition = 1;
         foreach ($aDocumentationFiles as $sFilePath) {
             $oDocumentationTestConfig = self::loadDocumentationTestConfigFromFile($sFilePath);
             if ($oDocumentationTestConfig) {
+                $oDocumentationTestConfig->position = $iPosition;
                 $aDocumentationTestConfigs[] = $oDocumentationTestConfig;
+                $iPosition++;
             }
         }
         return $aDocumentationTestConfigs;

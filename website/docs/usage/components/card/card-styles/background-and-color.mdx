@@ -1,0 +1,118 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../../../src/components/HtmlCode.tsx";
+
+# Background and color
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#background-and-color)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="bg-primary card mb-3 text-white">
+    <div class="card-header">
+        Header
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div>
+<div class="bg-secondary card mb-3 text-white">
+    <div class="card-header">
+        Header
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div>
+<div class="bg-success card mb-3 text-white">
+    <div class="card-header">
+        Header
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div>
+<div class="bg-danger card mb-3 text-white">
+    <div class="card-header">
+        Header
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div>
+<div class="bg-warning card mb-3 text-white">
+    <div class="card-header">
+        Header
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div>
+<div class="bg-info card mb-3 text-white">
+    <div class="card-header">
+        Header
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div>
+<div class="bg-light card mb-3">
+    <div class="card-header">
+        Header
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div>
+<div class="bg-dark card mb-3 text-white">
+    <div class="card-header">
+        Header
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+foreach ([
+    'primary',
+    'secondary',
+    'success',
+    'danger',
+    'warning',
+    'info',
+    'light',
+    'dark',
+] as $sVariant) {
+    echo $this->card(
+        [
+            'header' => 'Header',
+            'title'  => 'Primary card title',
+            'text'   => 'Some quick example text to build on the card title '.'and make up the bulk of the card\'s content.',
+        ],
+        [
+            'bgVariant' => $sVariant,
+            'class'     => ($sVariant !== 'light' ? 'text-white ' : '').'mb-3',
+        ]
+    ).PHP_EOL;
+}
+
+```
+
+</TabItem>
+</Tabs>

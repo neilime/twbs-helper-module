@@ -1,0 +1,70 @@
+---
+sidebar_position: 4
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../../../src/components/HtmlCode.tsx";
+
+# List groups
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#list-groups)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="card" style="width: 18rem;">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Vestibulum at eros</li>
+    </ul>
+</div>
+<br/>
+<div class="card" style="width: 18rem;">
+    <div class="card-header">
+        Featured
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Vestibulum at eros</li>
+    </ul>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->card(
+    [
+        'listGroup' => [
+            [
+                'Cras justo odio',
+                'Dapibus ac facilisis in',
+                'Vestibulum at eros',
+            ],
+        ],
+    ],
+    ['style' => 'width: 18rem;']
+);
+
+echo PHP_EOL.'<br/>'.PHP_EOL;
+
+echo $this->card(
+    [
+        'header'    => 'Featured',
+        'listGroup' => [
+            [
+                'Cras justo odio',
+                'Dapibus ac facilisis in',
+                'Vestibulum at eros',
+            ],
+        ],
+    ],
+    ['style' => 'width: 18rem;']
+);
+
+```
+
+</TabItem>
+</Tabs>

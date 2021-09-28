@@ -123,7 +123,7 @@ class DocumentationTest extends \PHPUnit\Framework\TestCase
         $sRendering = ob_get_contents();
         ob_end_clean();
 
-        $this->assertMatchesHtmlSnapshot($sRendering);
+        $this->assertMatchesHtmlSnapshot('<?xml encoding="utf-8" ?>' . $sRendering);
     }
 
     /*

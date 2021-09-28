@@ -1,0 +1,130 @@
+---
+sidebar_position: 0
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../../src/components/HtmlCode.tsx";
+
+# Responsive images
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/images/#responsive-images)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><img alt="Responsive image" class="img-fluid" src="/twbs-helper-module/img/docs/responsive.svg"/></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->image(
+    '/twbs-helper-module/img/docs/responsive.svg',
+    [
+        'fluid' => true,
+        'alt'   => 'Responsive image',
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+# Image thumbnails
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/images/#image-thumbnails)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><img alt="Image thumbnail" class="img-thumbnail" src="/twbs-helper-module/img/docs/200x200.svg"/></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->image(
+    '/twbs-helper-module/img/docs/200x200.svg',
+    [
+        'thumbnail' => true,
+        'alt'       => 'Image thumbnail',
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+# Aligning images
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/images/#aligning-images)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><img alt="Image aligned left" class="float-left rounded" src="/twbs-helper-module/img/docs/200x200.svg"/>
+<img alt="Image aligned right" class="float-right rounded" src="/twbs-helper-module/img/docs/200x200.svg"/>
+<img alt="Image aligned block" class="d-block mx-auto rounded" src="/twbs-helper-module/img/docs/200x200.svg"/></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->image(
+    '/twbs-helper-module/img/docs/200x200.svg',
+    [
+        'rounded' => true,
+        'alt'     => 'Image aligned left',
+        'class'   => 'float-left',
+    ]
+).PHP_EOL;
+
+echo $this->image(
+    '/twbs-helper-module/img/docs/200x200.svg',
+    [
+        'rounded' => true,
+        'alt'     => 'Image aligned right',
+        'class'   => 'float-right',
+    ]
+).PHP_EOL;
+
+echo $this->image(
+    '/twbs-helper-module/img/docs/200x200.svg',
+    [
+        'rounded' => true,
+        'alt'     => 'Image aligned block',
+        'class'   => 'mx-auto d-block',
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+# Picture
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/images/#picture)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><picture>
+    <source srcset="/twbs-helper-module/img/docs/200x200.svg" type="image/svg+xml"/>
+    <img alt="Picture image" class="img-fluid img-thumbnail" src="/twbs-helper-module/img/docs/200x200.svg"/>
+</picture></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->image(
+    '/twbs-helper-module/img/docs/200x200.svg',
+    [
+        'thumbnail' => true,
+        'fluid'     => true,
+        'alt'       => 'Picture image',
+        'sources'   => ['/twbs-helper-module/img/docs/200x200.svg' => 'image/svg+xml'],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>

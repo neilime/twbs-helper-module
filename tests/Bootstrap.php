@@ -97,4 +97,16 @@ if (false === (include $sComposerAutoloadPath)) {
     ));
 }
 
+// PHP Code Sniffer autoloading
+if (!file_exists($sPHPCodeSnifferAutoloadPath = __DIR__ . '/../vendor/squizlabs/php_codesniffer/autoload.php')) {
+    throw new \LogicException('PHP Code Sniffer autoload file "' . $sPHPCodeSnifferAutoloadPath . '" does not exist');
+}
+
+if (false === (include $sPHPCodeSnifferAutoloadPath)) {
+    throw new \LogicException(sprintf(
+        'An error occured while including PHP Code Sniffer autoload file "%s"',
+        $sPHPCodeSnifferAutoloadPath
+    ));
+}
+
 \TestSuite\Bootstrap::init();

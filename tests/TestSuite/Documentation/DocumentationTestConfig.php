@@ -8,6 +8,7 @@ class DocumentationTestConfig
     public $url;
     public $rendering;
     public $tests = [];
+    public $position = 1;
 
     public static function fromArray(
         array $aTestConfig,
@@ -16,12 +17,10 @@ class DocumentationTestConfig
 
         $oDocumentationTestConfig = new self();
 
-
         if (!isset($aTestConfig['title'])) {
             throw new \InvalidArgumentException('Argument "$aTestConfig" does not have a defined "title" key');
         }
         $oDocumentationTestConfig->title = $aTestConfig['title'];
-
 
         if ($oParentConfig) {
             $oDocumentationTestConfig->title = trim($oParentConfig->title . ' / ' . $oDocumentationTestConfig->title);
@@ -55,8 +54,14 @@ class DocumentationTestConfig
                 ));
             }
 
+            $iPosition = 1;
             foreach ($aTestConfig['tests'] as $aNestedTestsConfig) {
-                $oDocumentationTestConfig->tests[] = static::fromArray($aNestedTestsConfig, $oDocumentationTestConfig);
+                $oNestedTestsConfig = static::fromArray($aNestedTestsConfig, $oDocumentationTestConfig);
+                ;
+                $oNestedTestsConfig->position = $iPosition;
+                $iPosition++;
+
+                $oDocumentationTestConfig->tests[] = $oNestedTestsConfig;
             }
         }
 
