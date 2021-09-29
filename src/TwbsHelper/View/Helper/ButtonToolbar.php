@@ -91,7 +91,7 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
             return $this->buttonGroupHelper;
         }
 
-        if ($this->view && method_exists($this->view, 'plugin')) {
+        if ($this->view !== null && method_exists($this->view, 'plugin')) {
             return $this->buttonGroupHelper = $this->view->plugin('buttonGroup');
         }
 
@@ -107,7 +107,7 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
             return $this->formElementHelper;
         }
 
-        if ($this->view && method_exists($this->view, 'plugin')) {
+        if ($this->view !== null && method_exists($this->view, 'plugin')) {
             return $this->formElementHelper = $this->view->plugin('form_element');
         }
 

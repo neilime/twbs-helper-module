@@ -3,3 +3,6 @@ parameters:
         - '/Call to an undefined method Laminas\\View\\Helper\\AbstractHelper::/'
     laminasframework:
        serviceManagerLoader: tests/phpstan.php
+    excludePaths:
+        - src/DocumentationGenerator/UsagePage/Prettifier/SourceFile.php
+        - src/DocumentationGenerator/UsagePage/Prettifier/PhpPrettifier.php

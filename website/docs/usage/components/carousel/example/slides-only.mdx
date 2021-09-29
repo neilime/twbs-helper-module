@@ -1,0 +1,54 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../../../src/components/HtmlCode.tsx";
+
+# Slides only
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/carousel/#slides-only)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="carousel slide" data-ride="carousel" id="carouselExampleSlidesOnly">
+    <div class="carousel-inner">
+        <div class="active carousel-item">
+            <img alt="Slide 1" class="d-block w-100" src="/twbs-helper-module/img/docs/400x300.svg"/>
+        </div>
+        <div class="carousel-item">
+            <img alt="Slide 2" class="d-block w-100" src="/twbs-helper-module/img/docs/400x300.svg"/>
+        </div>
+        <div class="carousel-item">
+            <img alt="Slide 3" class="d-block w-100" src="/twbs-helper-module/img/docs/400x300.svg"/>
+        </div>
+    </div>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->carousel(
+    [
+        [
+            'src'                  => '/twbs-helper-module/img/docs/400x300.svg',
+            'optionsAndAttributes' => [
+                'active' => true,
+                'alt'    => 'Slide 1',
+            ],
+        ],
+        [
+            '/twbs-helper-module/img/docs/400x300.svg',
+            ['alt' => 'Slide 2'],
+        ],
+        '/twbs-helper-module/img/docs/400x300.svg' => ['alt' => 'Slide 3'],
+    ],
+    ['id' => 'carouselExampleSlidesOnly']
+);
+
+```
+
+</TabItem>
+</Tabs>

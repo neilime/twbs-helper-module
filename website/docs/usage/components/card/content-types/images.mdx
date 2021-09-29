@@ -1,0 +1,40 @@
+---
+sidebar_position: 3
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../../../src/components/HtmlCode.tsx";
+
+# Images
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#images)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="card" style="width: 18rem;">
+    <img alt="..." class="card-img-top" src="/twbs-helper-module/img/docs/image-cap.svg"/>
+    <div class="card-body">
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->card(
+    [
+        'image_top' => [
+            '/twbs-helper-module/img/docs/image-cap.svg',
+            ['alt' => '...'],
+        ],
+        'text'      => 'Some quick example text to build on the card title '.'and make up the bulk of the card\'s content.',
+    ],
+    ['style' => 'width: 18rem;']
+);
+
+```
+
+</TabItem>
+</Tabs>

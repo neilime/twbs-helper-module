@@ -1,0 +1,55 @@
+---
+sidebar_position: 3
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../../../src/components/HtmlCode.tsx";
+
+# Mixins utilities
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#mixins-utilities)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="border-success card mb-3">
+    <div class="bg-transparent border-success card-header">
+        Header
+    </div>
+    <div class="card-body text-success">
+        <h5 class="card-title">Success card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+    <div class="bg-transparent border-success card-footer">
+        Footer
+    </div>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->card(
+    [
+        'header' => [
+            'Header',
+            ['class' => 'bg-transparent border-success'],
+        ],
+        'title'  => 'Success card title',
+        'text'   => 'Some quick example text to build on the card title '.'and make up the bulk of the card\'s content.',
+        'footer' => [
+            'Footer',
+            ['class' => 'card-footer bg-transparent border-success'],
+        ],
+    ],
+    [
+        'borderVariant' => 'success',
+        'bodyVariant'   => 'success',
+        'class'         => 'mb-3',
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>

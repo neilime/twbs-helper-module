@@ -19,8 +19,6 @@ namespace TestSuite\Documentation;
  *             'rendering' => function(\Laminas\ServiceManager\ServiceManager $oViewHelperPluginManager){
  *                 return $oViewHelperPluginManager->get('sampleTestOneHelper')->render('sample test-one');
  *             },
- *             // The expected markup (as shown in the related documentation website page)
- *             'expected' => '<sample-test-one>sample test-one</sample-test-one>'
  *         ),
  *         array(
  *             'title' => 'Nested Tests for sample part',
@@ -33,7 +31,6 @@ namespace TestSuite\Documentation;
  *                     'rendering' => function(\Laminas\ServiceManager\ServiceManager $oViewHelperPluginManager){
  *                         // ...
  *                     },
- *                     'expected' => '...',
  *                 ),
  *             ),
  *         ),
@@ -42,6 +39,7 @@ namespace TestSuite\Documentation;
  */
 class DocumentationTest extends \PHPUnit\Framework\TestCase
 {
+    use \Spatie\Snapshots\MatchesSnapshots;
 
     /**
      * Provides test cases from existing documentation test config files
@@ -50,47 +48,19 @@ class DocumentationTest extends \PHPUnit\Framework\TestCase
      */
     public function getTestCasesProvider()
     {
-
         $oApplication = \TestSuite\Bootstrap::getServiceManager()->get('Application');
         $oApplication->bootstrap();
         $oRouteMatch = new \Laminas\Router\RouteMatch([]);
         $oRouteMatch->setMatchedRouteName('test-route');
         $oApplication->getMvcEvent()->setRouteMatch($oRouteMatch);
 
-        $aTestCases = [];
-        foreach (new \DirectoryIterator(__DIR__) as $oFileInfo) {
-            // Ignore non php files and current class file
-            if (
-                !$oFileInfo->isFile()
-                || $oFileInfo->getExtension() !== 'php'
-                || ($sFilePath = $oFileInfo->getRealPath()) === __FILE__
-            ) {
-                continue;
-            }
+        $aTestConfigs = \TestSuite\Documentation\DocumentationTestConfigsLoader::loadDocumentationTestConfigs();
 
-            if (false === ($aTestsConfig = include $sFilePath)) {
-                throw new \LogicException(sprintf(
-                    'An error occured while including documentation test config file "%s"',
-                    $sFilePath
-                ));
-            }
-            if (!is_array($aTestsConfig)) {
-                throw new \LogicException(sprintf(
-                    'Documentation test config file "%s" expects returning an array, "%s" retrieved',
-                    $sFilePath,
-                    is_object($aTestsConfig) ? get_class($aTestsConfig) : gettype($aTestsConfig)
-                ));
-            }
-            try {
-                $aTestCases = array_merge($aTestCases, $this->parseTestsConfig($aTestsConfig));
-            } catch (\Exception $oException) {
-                throw new \LogicException(sprintf(
-                    'An error occured while extracting test cases from documentation test config file "%s": %s',
-                    $sFilePath,
-                    $oException->getMessage()
-                ), $oException->getCode(), $oException);
-            }
+        $aTestCases = [];
+        foreach ($aTestConfigs as $oDocumentationTestConfig) {
+            $aTestCases = array_merge($aTestCases, $this->parseTestsConfig($oDocumentationTestConfig));
         }
+
         return $aTestCases;
     }
 
@@ -101,50 +71,24 @@ class DocumentationTest extends \PHPUnit\Framework\TestCase
      * @return array
      * @throws \InvalidArgumentException
      */
-    protected function parseTestsConfig(array $aTestsConfig, $sParentTitle = null)
+    protected function parseTestsConfig(\TestSuite\Documentation\DocumentationTestConfig $oTestConfig)
     {
-        if (!isset($aTestsConfig['title'])) {
-            throw new \InvalidArgumentException('Argument "$aTestsConfig" does not have a defined "title" key');
-        }
-        $sTitle = $aTestsConfig['title'];
-
-        if ($sParentTitle !== null) {
-            if (!is_string($sParentTitle)) {
-                throw new \InvalidArgumentException(sprintf(
-                    'Argument "$sParentTitle" expects a string or a null value, "%s" given',
-                    is_object($sParentTitle) ? get_class($sParentTitle) : gettype($sParentTitle)
-                ));
-            }
-            $sTitle = trim($sParentTitle . ' / ' . $sTitle);
-        }
-
         // Extract root tests for this tests config
-        $aTestCases = $this->extractTestCaseFromTestConfig($aTestsConfig, $sTitle);
+        $aTestCases = $this->extractTestCaseFromTestConfig($oTestConfig);
 
-        if (isset($aTestsConfig['tests'])) {
-            if (!is_array($aTestsConfig)) {
+        foreach ($oTestConfig->tests as $oNestedTestsConfig) {
+            $aParsedTestCase = $this->parseTestsConfig($oNestedTestsConfig);
+
+            // Assert that there are no duplicated tests title
+            $aSameKeys = array_intersect_key($aParsedTestCase, $aTestCases);
+            if ($aSameKeys) {
                 throw new \InvalidArgumentException(sprintf(
-                    'Argument "$aTestsConfig[\'tests\']" for "%s" expects an array, "%s" given',
-                    $sTitle,
-                    is_object($aTestsConfig['tests'])
-                        ? get_class($aTestsConfig['tests'])
-                        : gettype($aTestsConfig['tests'])
+                    'Argument "$aTestsConfig[\'tests\']" has duplicated test title: "%s"',
+                    join('", "', array_keys($aSameKeys))
                 ));
             }
-            foreach ($aTestsConfig['tests'] as $aNestedTestsConfig) {
-                $aParsedTestCase = $this->parseTestsConfig($aNestedTestsConfig, $sTitle);
 
-                // Assert that there are no duplicated tests title
-                $aSameKeys = array_intersect_key($aParsedTestCase, $aTestCases);
-                if ($aSameKeys) {
-                    throw new \InvalidArgumentException(sprintf(
-                        'Argument "$aTestsConfig[\'tests\']" has duplicated test title: "%s"',
-                        join('", "', array_keys($aSameKeys))
-                    ));
-                }
-
-                $aTestCases = array_merge($aTestCases, $aParsedTestCase);
-            }
+            $aTestCases = array_merge($aTestCases, $aParsedTestCase);
         }
 
         return $aTestCases;
@@ -152,47 +96,15 @@ class DocumentationTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Create a test case array for the given test config if tests params exist
-     * @param array $aTestConfig The test config array, expects ['rendering' => closure, 'expected' => string]
+     * @param array $aTestConfig The test config array, expects ['rendering' => closure]
      * @param string $sTitle The title of this test
      * @return array An empty array if no test was found, else [ $sTitle => [rendering, expected] ]
      * @throws \InvalidArgumentException
      */
-    protected function extractTestCaseFromTestConfig($aTestConfig, $sTitle)
+    protected function extractTestCaseFromTestConfig(\TestSuite\Documentation\DocumentationTestConfig $oTestConfig)
     {
-        if (isset($aTestConfig['rendering'])) {
-            if (!is_callable($aTestConfig['rendering'])) {
-                throw new \InvalidArgumentException(sprintf(
-                    'Argument "$aTestsConfig[\'rendering\']" expects a callable value for "%s" ", "%s" given',
-                    $sTitle,
-                    is_object($aTestConfig['rendering'])
-                        ? get_class($aTestConfig['rendering'])
-                        : gettype($aTestConfig['rendering'])
-                ));
-            }
-            if (!isset($aTestConfig['expected'])) {
-                throw new \InvalidArgumentException(sprintf(
-                    'Argument "$aTestsConfig" does not have a defined "expected" key for "%s"',
-                    $sTitle
-                ));
-            }
-            if (!is_string($aTestConfig['expected'])) {
-                throw new \InvalidArgumentException(sprintf(
-                    'Argument "$aTestsConfig[\'expected\']" expects a string for "%s", "%s" given',
-                    $sTitle,
-                    is_object($aTestConfig['expected'])
-                        ? get_class($aTestConfig['expected'])
-                        : gettype($aTestConfig['expected'])
-                ));
-            }
-            return [$sTitle => [
-                $aTestConfig['rendering'],
-                $aTestConfig['expected'],
-            ]];
-        } elseif (isset($aTestConfig['expected'])) {
-            throw new \InvalidArgumentException(sprintf(
-                'Argument "$aTestsConfig" does not have a defined "rendering" key for "%s"',
-                $sTitle
-            ));
+        if ($oTestConfig->rendering) {
+            return [$oTestConfig->title => [$oTestConfig->rendering]];
         }
         // No tests available
         return [];
@@ -201,7 +113,7 @@ class DocumentationTest extends \PHPUnit\Framework\TestCase
     /**
      * @dataProvider getTestCasesProvider
      */
-    public function testDocumentation($oRendering, $sExpected)
+    public function testDocumentation($oRendering)
     {
         $oRenderer = \TestSuite\Bootstrap::getServiceManager()->get('ViewPhpRenderer');
 
@@ -211,6 +123,31 @@ class DocumentationTest extends \PHPUnit\Framework\TestCase
         $sRendering = ob_get_contents();
         ob_end_clean();
 
-        $this->assertSame($sExpected, $sRendering);
+        $this->assertMatchesHtmlSnapshot('<?xml encoding="utf-8" ?>' . $sRendering);
+    }
+
+    /*
+     * Determines the directory where snapshots are stored. By default a
+     * `__snapshots__` directory is created at the same level as the test
+     * class.
+     */
+    protected function getSnapshotDirectory(): string
+    {
+        return dirname($this->getSnapshotPath());
+    }
+
+    /*
+     * Determines the snapshot's id. By default, the test case's class and
+     * method names are used.
+     */
+    protected function getSnapshotId(): string
+    {
+        return basename($this->getSnapshotPath()) . '__' .  $this->snapshotIncrementor;
+    }
+
+    protected function getSnapshotPath(): string
+    {
+        preg_match('/testDocumentation with data set "(.+)"/', $this->getName(), $aMatches);
+        return \TestSuite\Documentation\DocumentationTestSnapshot::getSnapshotPathFromTitle($aMatches[1]);
     }
 }

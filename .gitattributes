@@ -2,3 +2,4 @@ resources/ export-ignore
 scripts/ export-ignore
 tests/ export-ignore
 website/ export-ignore
+src/DocumentationGenerator/ export-ignore
