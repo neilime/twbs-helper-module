@@ -1,0 +1,48 @@
+---
+sidebar_position: 2
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../../../src/components/HtmlCode.tsx";
+
+# Titles, text, and links
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#titles-text-and-links)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a class="card-link" href="#">Card link</a>
+        <a class="card-link" href="#">Another link</a>
+    </div>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->card(
+    [
+        'title'    => 'Card title',
+        'subtitle' => [
+            'content'    => 'Card subtitle',
+            'attributes' => ['class' => 'mb-2 text-muted'],
+        ],
+        'text'     => 'Some quick example text to build on the card title '.'and make up the bulk of the card\'s content.',
+        'link'     => [
+            'Card link',
+            'Another link',
+        ],
+    ],
+    ['style' => 'width: 18rem;']
+);
+
+```
+
+</TabItem>
+</Tabs>

@@ -1,0 +1,109 @@
+---
+sidebar_position: 4
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../../../src/components/HtmlCode.tsx";
+
+# Forms
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/dropdowns/#forms)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="dropdown-menu">
+    <form action="" method="POST" name="dropdown" id="dropdown" role="form">
+        <div class="form-group">
+            <label for="exampleDropdownFormEmail1">Email address</label>
+            <input name="email" type="email" id="exampleDropdownFormEmail1" placeholder="email@example.com" class="form-control" value=""/>
+        </div>
+        <div class="form-group">
+            <label for="exampleDropdownFormPassword1">Password</label>
+            <input name="password" type="password" id="exampleDropdownFormPassword1" placeholder="Password" class="form-control" value=""/>
+        </div>
+        <div class="form-group">
+            <div class="form-check">
+                <input type="checkbox" name="remember_me" id="dropdownCheck" class="form-check-input" value="1"/>
+                <label class="form-check-label" for="dropdownCheck">Remember me</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" name="submit" class="btn btn-primary" value="">Sign in</button>
+        </div>
+    </form>
+    <a class="dropdown-item" href="#">New around here? Sign up</a>
+    <a class="dropdown-item" href="#">Forgot password?</a>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+
+// Create form
+$oFactory = new \Laminas\Form\Factory();
+$oForm    = $oFactory->create(
+    [
+        'type'       => 'form',
+        'name'       => 'dropdown',
+        'attributes' => ['id' => 'dropdown'],
+        'elements'   => [
+            [
+                'spec' => [
+                    'name'       => 'email',
+                    'options'    => ['label' => 'Email address'],
+                    'attributes' => [
+                        'type'        => 'email',
+                        'id'          => 'exampleDropdownFormEmail1',
+                        'placeholder' => 'email@example.com',
+                    ],
+                ],
+            ],
+            [
+                'spec' => [
+                    'name'       => 'password',
+                    'options'    => ['label' => 'Password'],
+                    'attributes' => [
+                        'type'        => 'password',
+                        'id'          => 'exampleDropdownFormPassword1',
+                        'placeholder' => 'Password',
+                    ],
+                ],
+            ],
+            [
+                'spec' => [
+                    'type'       => 'checkbox',
+                    'name'       => 'remember_me',
+                    'options'    => [
+                        'label'              => 'Remember me',
+                        'use_hidden_element' => false,
+                    ],
+                    'attributes' => [    'id' => 'dropdownCheck'    ],
+                ],
+            ],
+            [
+                'spec' => [
+                    'type'    => 'submit',
+                    'options' => [
+                        'label'   => 'Sign in',
+                        'variant' => 'primary',
+                    ],
+                ],
+            ],
+        ],
+    ]
+);
+
+echo $this->dropdown()->renderMenu(
+    [
+        $oForm,
+        'New around here? Sign up',
+        'Forgot password?',
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>

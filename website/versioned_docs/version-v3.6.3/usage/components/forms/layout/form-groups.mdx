@@ -1,0 +1,67 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../../../src/components/HtmlCode.tsx";
+
+# Form groups
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#form-groups)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><form action="" method="POST" name="form" role="form" id="form">
+    <div class="form-group">
+        <label for="formGroupExampleInput">Example label</label>
+        <input name="exampleInput" type="text" id="formGroupExampleInput" placeholder="Example input" class="form-control" value=""/>
+    </div>
+    <div class="form-group">
+        <label for="formGroupExampleInput2">Another label</label>
+        <input name="exampleInput2" type="text" id="formGroupExampleInput2" placeholder="Another input" class="form-control" value=""/>
+    </div>
+</form></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->form(
+    $oFactory->create(
+        [
+            'type'     => 'form',
+            'elements' => [
+                [
+                    'spec' => [
+                        'name'       => 'exampleInput',
+                        'options'    => [    'label' => 'Example label'    ],
+                        'attributes' => [
+                            'type'        => 'text',
+                            'id'          => 'formGroupExampleInput',
+                            'placeholder' => 'Example input',
+                        ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'name'       => 'exampleInput2',
+                        'options'    => [    'label' => 'Another label'    ],
+                        'attributes' => [
+                            'type'        => 'text',
+                            'id'          => 'formGroupExampleInput2',
+                            'placeholder' => 'Another input',
+                        ],
+                    ],
+                ],
+            ],
+        ]
+    )
+);
+
+```
+
+</TabItem>
+</Tabs>

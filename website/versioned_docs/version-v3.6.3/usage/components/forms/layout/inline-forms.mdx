@@ -1,0 +1,902 @@
+---
+sidebar_position: 3
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../../../src/components/HtmlCode.tsx";
+
+# Inline forms
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#inline-forms)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><form action="" method="POST" name="form" role="form" class="form-inline" id="form">
+    <label class="sr-only" for="inlineFormInputName2">Name</label>
+    <input name="name" type="text" id="inlineFormInputName2" placeholder="Jane Doe" class="form-control mb-2 mr-sm-2" value=""/>
+    <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
+    <div class="input-group mb-2 mr-sm-2">
+        <div class="input-group-prepend">
+            <div class="input-group-text">
+                @
+            </div>
+        </div>
+        <input name="username" type="text" id="inlineFormInputGroupUsername2" placeholder="Username" class="form-control" value=""/>
+    </div>
+    <div class="form-check mb-2 mr-sm-2">
+        <input type="checkbox" name="remember_me" id="inlineFormCheck" class="form-check-input" value="1"/>
+        <label class="form-check-label" for="inlineFormCheck">Remember me</label>
+    </div>
+    <button type="submit" name="submit" class="btn btn-primary mb-2" value="">Submit</button>
+</form>
+<br/>
+<form action="" method="POST" name="form" role="form" class="form-inline" id="form">
+    <label class="mr-2 my-1" for="inlineFormCustomSelectPref">Preference</label>
+    <select name="preference" id="inlineFormCustomSelectPref" class="custom-select mr-sm-2 my-1">
+        <option value="">Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+    </select>
+    <div class="custom-checkbox custom-control mr-sm-2 my-1">
+        <input type="checkbox" name="remember_my_preference" id="customControlInline" class="custom-control-input" value="1"/>
+        <label class="custom-control-label" for="customControlInline">Remember my preference</label>
+    </div>
+    <button type="submit" name="submit" class="btn btn-primary mb-2" value="">Submit</button>
+</form></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->form(
+    $oFactory->create(
+        [
+            'type'     => 'form',
+            'options'  => [
+                'layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE,
+            ],
+            'elements' => [
+                [
+                    'spec' => [
+                        'name'       => 'name',
+                        'options'    => [
+                            'label'      => 'Name',
+                            'form_group' => false,
+                        ],
+                        'attributes' => [
+                            'type'        => 'text',
+                            'id'          => 'inlineFormInputName2',
+                            'placeholder' => 'Jane Doe',
+                            'class'       => 'mb-2 mr-sm-2',
+                        ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'name'       => 'username',
+                        'options'    => [
+                            'label'             => 'Username',
+                            'show_label'        => false,
+                            'add_on_prepend'    => '@',
+                            'input_group_class' => 'mb-2 mr-sm-2',
+                            'form_group'        => false,
+                        ],
+                        'attributes' => [
+                            'type'        => 'text',
+                            'id'          => 'inlineFormInputGroupUsername2',
+                            'placeholder' => 'Username',
+                        ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'type'       => 'checkbox',
+                        'name'       => 'remember_me',
+                        'options'    => [
+                            'label'              => 'Remember me',
+                            'use_hidden_element' => false,
+                            'form_check_class'   => 'mb-2 mr-sm-2',
+                            'form_group'         => false,
+                        ],
+                        'attributes' => [    'id' => 'inlineFormCheck'    ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'type'       => 'submit',
+                        'options'    => [
+                            'label'   => 'Submit',
+                            'variant' => 'primary',
+                        ],
+                        'attributes' => [    'class' => 'mb-2'    ],
+                    ],
+                ],
+            ],
+        ]
+    )
+);
+
+echo PHP_EOL.'<br/>'.PHP_EOL;
+
+// Custom form controls and selects are also supported
+echo $this->form(
+    $oFactory->create(
+        [
+            'type'     => 'form',
+            'options'  => [
+                'layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE,
+            ],
+            'elements' => [
+                [
+                    'spec' => [
+                        'name'       => 'preference',
+                        'type'       => 'select',
+                        'options'    => [
+                            'label'            => 'Preference',
+                            'show_label'       => true,
+                            'label_attributes' => ['class' => 'mr-2 my-1'],
+                            'row_class'        => 'my-1',
+                            'empty_option'     => 'Choose...',
+                            'value_options'    => [
+                                1 => 'One',
+                                2 => 'Two',
+                                3 => 'Three',
+                            ],
+                            'form_group'       => false,
+                            'custom'           => true,
+                        ],
+                        'attributes' => [
+                            'id'    => 'inlineFormCustomSelectPref',
+                            'class' => 'mr-sm-2 my-1',
+                        ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'type'       => 'checkbox',
+                        'name'       => 'remember_my_preference',
+                        'options'    => [
+                            'label'              => 'Remember my preference',
+                            'use_hidden_element' => false,
+                            'form_check_class'   => 'mr-sm-2 my-1',
+                            'form_group'         => false,
+                            'custom'             => true,
+                        ],
+                        'attributes' => [    'id' => 'customControlInline'    ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'type'       => 'submit',
+                        'options'    => [
+                            'label'   => 'Submit',
+                            'variant' => 'primary',
+                        ],
+                        'attributes' => [    'class' => 'mb-2'    ],
+                    ],
+                ],
+            ],
+        ]
+    )
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+# Form row
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#form-row)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><form action="" method="POST" name="form" role="form" id="form">
+    <div class="form-row">
+        <div class="col">
+            <input name="firstName" type="text" placeholder="First name" class="form-control" value=""/>
+        </div>
+        <div class="col">
+            <input name="lastName" type="text" placeholder="Last name" class="form-control" value=""/>
+        </div>
+    </div>
+</form></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->form(
+    $oFactory->create(
+        [
+            'type'     => 'form',
+            'options'  => ['row_class' => 'form-row'],
+            'elements' => [
+                [
+                    'spec' => [
+                        'name'       => 'firstName',
+                        'options'    => [    'column' => true    ],
+                        'attributes' => [
+                            'type'        => 'text',
+                            'placeholder' => 'First name',
+                        ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'name'       => 'lastName',
+                        'options'    => [    'column' => true    ],
+                        'attributes' => [
+                            'type'        => 'text',
+                            'placeholder' => 'Last name',
+                        ],
+                    ],
+                ],
+            ],
+        ]
+    )
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+# Horizontal form
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#horizontal-form)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><form action="" method="POST" name="form" role="form" id="form">
+    <div class="form-group row">
+        <label class="col-form-label col-sm-2" for="inputEmail3">Email</label>
+        <div class="col-sm-10">
+            <input name="email" type="email" id="inputEmail3" placeholder="Email" class="form-control" value=""/>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-form-label col-sm-2" for="inputPassword3">Password</label>
+        <div class="col-sm-10">
+            <input name="password" type="password" id="inputPassword3" placeholder="Password" class="form-control" value=""/>
+        </div>
+    </div>
+    <fieldset class="form-group">
+        <div class="row">
+            <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input type="radio" name="fieldset[gridRadios]" class="form-check-input" id="gridRadios1" value="option1"/>
+                    <label class="form-check-label" for="gridRadios1">First radio</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" name="fieldset[gridRadios]" class="form-check-input" id="gridRadios2" value="option2"/>
+                    <label class="form-check-label" for="gridRadios2">Second radio</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" name="fieldset[gridRadios]" class="form-check-input" id="gridRadios3" value="option3" disabled="disabled"/>
+                    <label class="form-check-label" for="gridRadios3">Third disabled radio</label>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <div class="form-group row">
+        <div class="col-sm-10 offset-sm-2">
+            <div class="form-check">
+                <input type="hidden" name="checkbox" value="0"/><input type="checkbox" name="checkbox" class="form-check-input" value="1"/>
+                <label class="form-check-label" for="checkbox">Checkbox</label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            Multicheckbox
+        </div>
+        <div class="col-sm-10">
+            <div class="form-check">
+                <input type="checkbox" name="multicheckbox[]" class="form-check-input" id="gridCheck1" value="1"/>
+                <label class="form-check-label" for="gridCheck1">Example checkbox</label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <button type="submit" name="submit" class="btn btn-primary" value="">Sign in</button>
+        </div>
+    </div>
+</form></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->form(
+    $oFactory->create(
+        [
+            'type'     => 'form',
+            'options'  => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL],
+            'elements' => [
+                [
+                    'spec' => [
+                        'name'       => 'email',
+                        'options'    => [
+                            'label'  => 'Email',
+                            'column' => 'sm-10',
+                        ],
+                        'attributes' => [
+                            'type'        => 'email',
+                            'id'          => 'inputEmail3',
+                            'placeholder' => 'Email',
+                        ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'name'       => 'password',
+                        'options'    => [
+                            'label'  => 'Password',
+                            'column' => 'sm-10',
+                        ],
+                        'attributes' => [
+                            'type'        => 'password',
+                            'id'          => 'inputPassword3',
+                            'placeholder' => 'Password',
+                        ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'type'     => 'fieldset',
+                        'options'  => [
+                            'label'            => 'Radios',
+                            'label_attributes' => ['class' => 'pt-0'],
+                            'column'           => 'sm-10',
+                        ],
+                        'elements' => [
+                            [
+                                'spec' => [
+                                    'type'    => 'radio',
+                                    'name'    => 'gridRadios',
+                                    'options' => [
+                                        'column'        => 'sm-10',
+                                        'value_options' => [
+                                            [
+                                                'label'      => 'First radio',
+                                                'attributes' => ['id' => 'gridRadios1'],
+                                                'value'      => 'option1',
+                                            ],
+                                            [
+                                                'label'      => 'Second radio',
+                                                'attributes' => ['id' => 'gridRadios2'],
+                                                'value'      => 'option2',
+                                            ],
+                                            [
+                                                'label'      => 'Third disabled radio',
+                                                'disabled'   => true,
+                                                'attributes' => ['id' => 'gridRadios3'],
+                                                'value'      => 'option3',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'type'    => 'checkbox',
+                        'options' => [
+                            'label'  => 'Checkbox',
+                            'column' => 'sm-10',
+                        ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'type'    => 'multicheckbox',
+                        'options' => [
+                            'label'         => 'Multicheckbox',
+                            'column'        => 'sm-10',
+                            'value_options' => [
+                                [
+                                    'label'      => 'Example checkbox',
+                                    'attributes' => ['id' => 'gridCheck1'],
+                                    'value'      => 1,
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'type'    => 'submit',
+                        'options' => [
+                            'label'   => 'Sign in',
+                            'variant' => 'primary',
+                            'column'  => 'sm-10',
+                        ],
+                    ],
+                ],
+            ],
+        ]
+    )
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+# Horizontal form label sizing
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#horizontal-form-label-sizing)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><form action="" method="POST" name="form" role="form" id="form">
+    <div class="form-group row">
+        <label class="col-form-label col-form-label-sm col-sm-2" for="colFormLabelSm">Email</label>
+        <div class="col-sm-10">
+            <input name="emailSm" type="email" id="colFormLabelSm" placeholder="col-form-label-sm" class="form-control form-control-sm" value=""/>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-form-label col-sm-2" for="colFormLabel">Email</label>
+        <div class="col-sm-10">
+            <input name="email" type="email" id="colFormLabel" placeholder="col-form-label" class="form-control" value=""/>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-form-label col-form-label-lg col-sm-2" for="colFormLabelLg">Email</label>
+        <div class="col-sm-10">
+            <input name="emailLg" type="email" id="colFormLabelLg" placeholder="col-form-label-lg" class="form-control form-control-lg" value=""/>
+        </div>
+    </div>
+</form></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->form(
+    $oFactory->create(
+        [
+            'type'     => 'form',
+            'options'  => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL],
+            'elements' => [
+                [
+                    'spec' => [
+                        'name'       => 'emailSm',
+                        'options'    => [
+                            'label'  => 'Email',
+                            'column' => 'sm-10',
+                            'size'   => 'sm',
+                        ],
+                        'attributes' => [
+                            'type'        => 'email',
+                            'id'          => 'colFormLabelSm',
+                            'placeholder' => 'col-form-label-sm',
+                        ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'name'       => 'email',
+                        'options'    => [
+                            'label'  => 'Email',
+                            'column' => 'sm-10',
+                        ],
+                        'attributes' => [
+                            'type'        => 'email',
+                            'id'          => 'colFormLabel',
+                            'placeholder' => 'col-form-label',
+                        ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'name'       => 'emailLg',
+                        'options'    => [
+                            'label'  => 'Email',
+                            'column' => 'sm-10',
+                            'size'   => 'lg',
+                        ],
+                        'attributes' => [
+                            'type'        => 'email',
+                            'id'          => 'colFormLabelLg',
+                            'placeholder' => 'col-form-label-lg',
+                        ],
+                    ],
+                ],
+            ],
+        ]
+    )
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+# Column sizing
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#column-sizing)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><form action="" method="POST" name="form" role="form" id="form">
+    <div class="form-row">
+        <div class="col-7">
+            <input name="city" type="text" placeholder="City" class="form-control" value=""/>
+        </div>
+        <div class="col">
+            <input name="state" type="text" placeholder="State" class="form-control" value=""/>
+        </div>
+        <div class="col">
+            <input name="zip" type="text" placeholder="Zip" class="form-control" value=""/>
+        </div>
+    </div>
+</form></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->form(
+    $oFactory->create(
+        [
+            'type'     => 'form',
+            'options'  => ['row_class' => 'form-row'],
+            'elements' => [
+                [
+                    'spec' => [
+                        'name'       => 'city',
+                        'options'    => [    'column' => 7    ],
+                        'attributes' => [
+                            'type'        => 'text',
+                            'placeholder' => 'City',
+                        ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'name'       => 'state',
+                        'options'    => [    'column' => true    ],
+                        'attributes' => [
+                            'type'        => 'text',
+                            'placeholder' => 'State',
+                        ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'name'       => 'zip',
+                        'options'    => [    'column' => true    ],
+                        'attributes' => [
+                            'type'        => 'text',
+                            'placeholder' => 'Zip',
+                        ],
+                    ],
+                ],
+            ],
+        ]
+    )
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+# Auto-sizing
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#auto-sizing)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><form action="" method="POST" name="form" role="form" id="form">
+    <div class="align-items-center form-row">
+        <div class="col-auto">
+            <label class="sr-only" for="inlineFormInput">Name</label>
+            <input name="name" type="text" id="inlineFormInput" placeholder="Jane Doe" class="form-control mb-2" value=""/>
+        </div>
+        <div class="col-auto">
+            <label class="sr-only" for="inlineFormInputGroup">Username</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        @
+                    </div>
+                </div>
+                <input name="username" type="text" id="inlineFormInputGroup" placeholder="Username" class="form-control" value=""/>
+            </div>
+        </div>
+        <div class="col-auto">
+            <div class="form-check mb-2">
+                <input type="checkbox" name="remember_me" id="autoSizingCheck" class="form-check-input" value="1"/>
+                <label class="form-check-label" for="autoSizingCheck">Remember me</label>
+            </div>
+        </div>
+        <div class="col-auto">
+            <button type="submit" name="submit" class="btn btn-primary mb-2" value="">Submit</button>
+        </div>
+    </div>
+</form>
+<br/>
+<form action="" method="POST" name="form" role="form" id="form">
+    <div class="align-items-center form-row">
+        <div class="col-sm-3 my-1">
+            <label class="sr-only" for="inlineFormInput">Name</label>
+            <input name="name" type="text" id="inlineFormInput" placeholder="Jane Doe" class="form-control mb-2" value=""/>
+        </div>
+        <div class="col-sm-3 my-1">
+            <label class="sr-only" for="inlineFormInputGroup">Username</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        @
+                    </div>
+                </div>
+                <input name="username" type="text" id="inlineFormInputGroup" placeholder="Username" class="form-control" value=""/>
+            </div>
+        </div>
+        <div class="col-auto my-1">
+            <div class="form-check mb-2">
+                <input type="checkbox" name="remember_me" id="autoSizingCheck" class="form-check-input" value="1"/>
+                <label class="form-check-label" for="autoSizingCheck">Remember me</label>
+            </div>
+        </div>
+        <div class="col-auto my-1">
+            <button type="submit" name="submit" class="btn btn-primary mb-2" value="">Submit</button>
+        </div>
+    </div>
+</form>
+<br/>
+<form action="" method="POST" name="form" role="form" id="form">
+    <div class="align-items-center form-row">
+        <div class="col-sm-3 my-1">
+            <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
+            <select name="preference" id="inlineFormCustomSelect" class="custom-select mr-sm-2">
+                <option value="">Choose...</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+        <div class="col-auto my-1">
+            <div class="custom-checkbox custom-control mr-sm-2">
+                <input type="checkbox" name="remember_my_preference" id="customControlAutosizing" class="custom-control-input" value="1"/>
+                <label class="custom-control-label" for="customControlAutosizing">Remember my preference</label>
+            </div>
+        </div>
+        <div class="col-auto my-1">
+            <button type="submit" name="submit" class="btn btn-primary" value="">Submit</button>
+        </div>
+    </div>
+</form></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->form(
+    $oFactory->create(
+        [
+            'type'     => 'form',
+            'options'  => [    'row_class' => 'align-items-center form-row'    ],
+            'elements' => [
+                [
+                    'spec' => [
+                        'name'       => 'name',
+                        'options'    => [
+                            'label'      => 'Name',
+                            'show_label' => false,
+                            'column'     => 'auto',
+                        ],
+                        'attributes' => [
+                            'type'        => 'text',
+                            'id'          => 'inlineFormInput',
+                            'placeholder' => 'Jane Doe',
+                            'class'       => 'mb-2',
+                        ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'name'       => 'username',
+                        'options'    => [
+                            'label'             => 'Username',
+                            'show_label'        => false,
+                            'column'            => 'auto',
+                            'add_on_prepend'    => '@',
+                            'input_group_class' => 'mb-2',
+                        ],
+                        'attributes' => [
+                            'type'        => 'text',
+                            'id'          => 'inlineFormInputGroup',
+                            'placeholder' => 'Username',
+                        ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'type'       => 'checkbox',
+                        'name'       => 'remember_me',
+                        'options'    => [
+                            'label'              => 'Remember me',
+                            'use_hidden_element' => false,
+                            'column'             => 'auto',
+                            'form_check_class'   => 'mb-2',
+                        ],
+                        'attributes' => [    'id' => 'autoSizingCheck'    ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'type'       => 'submit',
+                        'options'    => [
+                            'label'   => 'Submit',
+                            'variant' => 'primary',
+                            'column'  => 'auto',
+                        ],
+                        'attributes' => [    'class' => 'mb-2'    ],
+                    ],
+                ],
+            ],
+        ]
+    )
+);
+
+echo PHP_EOL.'<br/>'.PHP_EOL;
+
+// Remix that once again with size-specific column classes.
+echo $this->form(
+    $oFactory->create(
+        [
+            'type'     => 'form',
+            'options'  => [    'row_class' => 'align-items-center form-row'    ],
+            'elements' => [
+                [
+                    'spec' => [
+                        'name'       => 'name',
+                        'options'    => [
+                            'label'      => 'Name',
+                            'show_label' => false,
+                            'column'     => 'sm-3',
+                            'row_class'  => 'my-1',
+                        ],
+                        'attributes' => [
+                            'type'        => 'text',
+                            'id'          => 'inlineFormInput',
+                            'placeholder' => 'Jane Doe',
+                            'class'       => 'mb-2',
+                        ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'name'       => 'username',
+                        'options'    => [
+                            'label'             => 'Username',
+                            'show_label'        => false,
+                            'column'            => 'sm-3',
+                            'row_class'         => 'my-1',
+                            'add_on_prepend'    => '@',
+                            'input_group_class' => 'mb-2',
+                        ],
+                        'attributes' => [
+                            'type'        => 'text',
+                            'id'          => 'inlineFormInputGroup',
+                            'placeholder' => 'Username',
+                        ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'type'       => 'checkbox',
+                        'name'       => 'remember_me',
+                        'options'    => [
+                            'label'              => 'Remember me',
+                            'use_hidden_element' => false,
+                            'column'             => 'auto',
+                            'row_class'          => 'my-1',
+                            'form_check_class'   => 'mb-2',
+                        ],
+                        'attributes' => [    'id' => 'autoSizingCheck'    ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'type'       => 'submit',
+                        'options'    => [
+                            'label'     => 'Submit',
+                            'variant'   => 'primary',
+                            'column'    => 'auto',
+                            'row_class' => 'my-1',
+                        ],
+                        'attributes' => [    'class' => 'mb-2'    ],
+                    ],
+                ],
+            ],
+        ]
+    )
+);
+
+echo PHP_EOL.'<br/>'.PHP_EOL;
+
+// And of course custom form controls are supported.
+echo $this->form(
+    $oFactory->create(
+        [
+            'type'     => 'form',
+            'options'  => [    'row_class' => 'align-items-center form-row'    ],
+            'elements' => [
+                [
+                    'spec' => [
+                        'name'       => 'preference',
+                        'type'       => 'select',
+                        'options'    => [
+                            'label'            => 'Preference',
+                            'show_label'       => false,
+                            'label_attributes' => ['class' => 'mr-sm-2'],
+                            'column'           => 'sm-3',
+                            'row_class'        => 'my-1',
+                            'empty_option'     => 'Choose...',
+                            'value_options'    => [
+                                1 => 'One',
+                                2 => 'Two',
+                                3 => 'Three',
+                            ],
+                            'custom'           => true,
+                        ],
+                        'attributes' => [
+                            'id'    => 'inlineFormCustomSelect',
+                            'class' => 'mr-sm-2',
+                        ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'type'       => 'checkbox',
+                        'name'       => 'remember_my_preference',
+                        'options'    => [
+                            'label'              => 'Remember my preference',
+                            'use_hidden_element' => false,
+                            'column'             => 'auto',
+                            'row_class'          => 'my-1',
+                            'form_check_class'   => 'mr-sm-2',
+                            'custom'             => true,
+                        ],
+                        'attributes' => [    'id' => 'customControlAutosizing'    ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'type'    => 'submit',
+                        'options' => [
+                            'label'     => 'Submit',
+                            'variant'   => 'primary',
+                            'column'    => 'auto',
+                            'row_class' => 'my-1',
+                        ],
+                    ],
+                ],
+            ],
+        ]
+    )
+);
+
+```
+
+</TabItem>
+</Tabs>

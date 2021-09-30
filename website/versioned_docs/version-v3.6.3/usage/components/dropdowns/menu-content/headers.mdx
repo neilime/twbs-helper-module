@@ -1,0 +1,36 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../../../src/components/HtmlCode.tsx";
+
+# Headers
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/dropdowns/#headers)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="dropdown-menu">
+    <h6 class="dropdown-header">Dropdown header</h6>
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->dropdown()->renderMenu(
+    [
+        'Dropdown header' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_HEADER,
+        'Action',
+        'Another action',
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>

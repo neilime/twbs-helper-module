@@ -1,0 +1,77 @@
+---
+sidebar_position: 2
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../../../src/components/HtmlCode.tsx";
+
+# Pills with dropdowns
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/navs/#pills-with-dropdowns)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><ul class="nav nav-pills">
+    <li class=" nav-item">
+        <a class="nav-link active" href="#">Active</a>
+    </li>
+    <li class="dropdown nav-item">
+        <a class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">Dropdown</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"/>
+            <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    </li>
+</ul></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->navigation()->menu()->renderMenu(
+    new \Laminas\Navigation\Navigation(
+        [
+            [
+                'label'  => 'Active',
+                'uri'    => '#',
+                'active' => true,
+            ],
+            [
+                'type'     => '\TwbsHelper\Navigation\Page\DropdownPage',
+                'label'    => 'Dropdown',
+                'dropdown' => [
+                    'Action',
+                    'Another action',
+                    'Something else here',
+                    '---',
+                    'Separated link',
+                ],
+            ],
+            [
+                'label' => 'Link',
+                'uri'   => '#',
+            ],
+            [
+                'label'   => 'Disabled',
+                'uri'     => '#',
+                'visible' => false,
+            ],
+        ]
+    ),
+    ['pills' => true]
+);
+
+```
+
+</TabItem>
+</Tabs>

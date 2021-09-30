@@ -1,0 +1,94 @@
+---
+sidebar_position: 0
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../../src/components/HtmlCode.tsx";
+
+# Border spinner
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/spinners/#border-spinner)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->spinner('Loading...');
+
+```
+
+</TabItem>
+</Tabs>
+
+# Growing spinner
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/spinners/#growing-spinner)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="spinner-grow" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+<br/>
+<div class="spinner-grow text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-grow text-secondary" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-grow text-success" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-grow text-danger" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-grow text-warning" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-grow text-info" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-grow text-light" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-grow text-dark" role="status">
+    <span class="sr-only">Loading...</span>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->spinner(['type' => 'grow', 'label' => 'Loading...']);
+
+echo PHP_EOL.'<br/>'.PHP_EOL;
+
+foreach ([
+    'primary',
+    'secondary',
+    'success',
+    'danger',
+    'warning',
+    'info',
+    'light',
+    'dark',
+] as $sVariant) {
+    echo $this->spinner(
+        [
+            'variant' => $sVariant,
+            'type'    => 'grow',
+            'label'   => 'Loading...',
+        ]
+    ).PHP_EOL;
+}
+
+```
+
+</TabItem>
+</Tabs>
