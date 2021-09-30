@@ -15,6 +15,7 @@ jobs:
         with:
           node-version: "${{ steps.nvm.outputs.NVMRC }}"
           cache: yarn
+          cache-dependency-path: website/package-lock.json
 
       - name: ⚙️ Install Dependencies
         working-directory: website
