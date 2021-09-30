@@ -17,6 +17,7 @@ jobs:
           cache: yarn
 
       - name: ⚙️ Install Dependencies
+        working-directory: website
         run: yarn
 
       - name: 🔑 Add key to allow access to repository
@@ -31,12 +32,9 @@ jobs:
         env:
           USE_SSH: true
           GIT_USER: git
+        working-directory: website
         run: |
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           git config --global user.name "${{ github.actor }}"
-
-          cd website
-          echo `git add -A && git commit -m "docs: release new version"`
-          git push origin HEAD:master --force
 
           npx docusaurus deploy
