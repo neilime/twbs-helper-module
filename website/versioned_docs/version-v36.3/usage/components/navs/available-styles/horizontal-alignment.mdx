@@ -1,0 +1,105 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../../../src/components/HtmlCode.tsx";
+
+# Horizontal alignment
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/navs/#horizontal-alignment)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><ul class="justify-content-center nav">
+    <li class=" nav-item">
+        <a class="nav-link active" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    </li>
+</ul>
+<ul class="justify-content-end nav">
+    <li class=" nav-item">
+        <a class="nav-link active" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    </li>
+</ul></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+// Centered with option 'center'
+echo $this->navigation()->menu()->renderMenu(
+    new \Laminas\Navigation\Navigation(
+        [
+            [
+                'label'  => 'Active',
+                'uri'    => '#',
+                'active' => true,
+            ],
+            [
+                'label' => 'Link',
+                'uri'   => '#',
+            ],
+            [
+                'label' => 'Link',
+                'uri'   => '#',
+            ],
+            [
+                'label'   => 'Disabled',
+                'uri'     => '#',
+                'visible' => false,
+            ],
+        ]
+    ),
+    ['centered' => true]
+).PHP_EOL;
+
+// Right-aligned with option 'right_aligned'
+echo $this->navigation()->menu()->renderMenu(
+    new \Laminas\Navigation\Navigation(
+        [
+            [
+                'label'  => 'Active',
+                'uri'    => '#',
+                'active' => true,
+            ],
+            [
+                'label' => 'Link',
+                'uri'   => '#',
+            ],
+            [
+                'label' => 'Link',
+                'uri'   => '#',
+            ],
+            [
+                'label'   => 'Disabled',
+                'uri'     => '#',
+                'visible' => false,
+            ],
+        ]
+    ),
+    ['right_aligned' => true]
+);
+
+```
+
+</TabItem>
+</Tabs>

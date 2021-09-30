@@ -1,0 +1,81 @@
+---
+sidebar_position: 5
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../../../src/components/HtmlCode.tsx";
+
+# File browser
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#file-browser)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="custom-file">
+    <input type="file" name="custom_file" id="customFile" class="custom-file-input"/>
+    <label class="custom-file-label" for="customFile">Choose file</label>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->formRow(
+    $oFactory->create(
+        [
+            'name'       => 'custom_file',
+            'type'       => 'file',
+            'options'    => [
+                'custom'       => true,
+                'custom_label' => 'Choose file',
+                'form_group'   => false,
+            ],
+            'attributes' => ['id' => 'customFile'],
+        ]
+    )
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+# Translating or customizing the strings with HTML
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/forms/#translating-or-customizing-the-strings-with-html)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="custom-file">
+    <input type="file" name="custom_file" id="customFileLangHTML" class="custom-file-input"/>
+    <label data-browse="Bestand kiezen" class="custom-file-label" for="customFileLangHTML">Voeg je document toe</label>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->formRow(
+    $oFactory->create(
+        [
+            'name'       => 'custom_file',
+            'type'       => 'file',
+            'options'    => [
+                'custom'           => true,
+                'custom_label'     => 'Voeg je document toe',
+                'form_group'       => false,
+                'label_attributes' => [    'data-browse' => 'Bestand kiezen'    ],
+            ],
+            'attributes' => ['id' => 'customFileLangHTML'],
+        ]
+    )
+);
+
+```
+
+</TabItem>
+</Tabs>

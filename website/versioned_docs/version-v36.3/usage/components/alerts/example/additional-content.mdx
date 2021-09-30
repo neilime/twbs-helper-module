@@ -1,0 +1,38 @@
+---
+sidebar_position: 2
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../../../src/components/HtmlCode.tsx";
+
+# Additional content
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/alerts/#additional-content)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">Well done!</h4>
+    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+    <hr/>
+    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+// Success
+echo $this->alert(
+    '<p>Aww yeah, you successfully read this important alert message. '.'This example text is going to run a bit longer so that you can see '.'how spacing within an alert works with this kind of content.</p>'.PHP_EOL.'<hr/>'.PHP_EOL.'<p class="mb-0">'.'Whenever you need to, be sure to use margin utilities to keep things nice and tidy.'.'</p>',
+    [
+        'heading' => 'Well done!',
+        'variant' => 'success',
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
