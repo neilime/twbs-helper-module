@@ -1,9 +1,0 @@
-{
-  "scripts": {
-    "dev": "docsify serve docs",
-    "generate": "php scripts/generateDocumentationFromTests.php"
-  },
-  "devDependencies": {
-    "docsify-cli": "^4.4.3"
-  }
-}

@@ -1,0 +1,38 @@
+---
+sidebar_position: 3
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../../../src/components/HtmlCode.tsx";
+
+# Text
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/dropdowns/#headers)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="dropdown-menu p-4 text-muted" style="max-width: 200px;">
+    <p>Some example text that's free-flowing within the dropdown menu.</p>
+    <p class="mb-0">And this is more example text.</p>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->dropdown()->renderMenu(
+    [
+        '<p>Some example text that\'s free-flowing within the dropdown menu.</p>',
+        '<p class="mb-0">And this is more example text.</p>',
+    ],
+    [
+        'class' => 'p-4 text-muted',
+        'style' => 'max-width: 200px;',
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>

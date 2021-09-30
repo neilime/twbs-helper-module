@@ -1,5 +1,0 @@
-- [Home](/)
-- **Documentation**
-- [Installation](/installation)
-- [Usage](/usage/)
-- [Code coverage](https://codecov.io/gh/neilime/twbs-helper-module)

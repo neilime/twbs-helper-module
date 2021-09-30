@@ -7,8 +7,11 @@ namespace TwbsHelper\View\Helper;
  */
 abstract class AbstractGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
+    // @var string
     protected static $groupClass;
+    // @var string
     protected static $groupTag;
+    // @var string
     protected static $helperName;
 
     /**
@@ -32,7 +35,7 @@ abstract class AbstractGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
     {
         $sContent = '';
 
-        $oItemHelper = $this->getView()->plugin(static::$helperName);
+        $oItemHelper = $this->getViewHelper(static::$helperName);
 
         foreach ($aItems as $aItem) {
             $aArguments = \Laminas\Stdlib\ArrayUtils::isList($aItem) ?
@@ -52,5 +55,19 @@ abstract class AbstractGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
         array $aArguments
     ): string {
         return call_user_func_array([$oItemHelper, '__invoke'], $aArguments);
+    }
+
+    /**
+     * @param string $sHelperName the name of the helper to retrieve
+     * @return \Laminas\View\Helper\HelperInterface
+     * @throws \LogicException if the view or plugin method is unavailable in the current context
+     */
+    public function getViewHelper(string $sHelperName): \Laminas\View\Helper\HelperInterface
+    {
+        $oView = $this->getView();
+        if ($oView !== null && method_exists($oView, 'plugin')) {
+            return $oView->plugin($sHelperName);
+        }
+        throw new \LogicException('Unable to retrieve helper "' . $sHelperName . '"');
     }
 }

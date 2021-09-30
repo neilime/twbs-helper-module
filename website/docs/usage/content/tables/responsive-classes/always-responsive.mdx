@@ -1,0 +1,135 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../../../src/components/HtmlCode.tsx";
+
+# Always responsive
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/tables/#always-responsive)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+        </tbody>
+    </table>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->table(
+    [
+        'responsive' => true,
+        'head'       => [
+            '#',
+            'Heading',
+            'Heading',
+            'Heading',
+            'Heading',
+            'Heading',
+            'Heading',
+            'Heading',
+            'Heading',
+            'Heading',
+        ],
+        'body'       => [
+            [
+                '1',
+                'Cell',
+                'Cell',
+                'Cell',
+                'Cell',
+                'Cell',
+                'Cell',
+                'Cell',
+                'Cell',
+                'Cell',
+            ],
+            [
+                '2',
+                'Cell',
+                'Cell',
+                'Cell',
+                'Cell',
+                'Cell',
+                'Cell',
+                'Cell',
+                'Cell',
+                'Cell',
+            ],
+            [
+                '3',
+                'Cell',
+                'Cell',
+                'Cell',
+                'Cell',
+                'Cell',
+                'Cell',
+                'Cell',
+                'Cell',
+                'Cell',
+            ],
+        ],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>

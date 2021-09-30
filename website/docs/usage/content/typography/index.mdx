@@ -1,0 +1,56 @@
+---
+sidebar_position: 0
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../../src/components/HtmlCode.tsx";
+
+# Abbreviations
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/typography/#abbreviations)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><p>
+  <abbr title="attribute">attr</abbr>
+</p>
+<p>
+  <abbr class="initialism" title="HyperText Markup Language">HTML</abbr>
+</p></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+// First abbreviation
+echo '<p>'.$this->abbreviation('attr', 'attribute').'</p>';
+// Second abbreviation
+echo '<p>'.$this->abbreviation('HTML', 'HyperText Markup Language', true).'</p>';
+
+```
+
+</TabItem>
+</Tabs>
+
+# Blockquotes
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/typography/#blockquotes)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><blockquote class="blockquote">
+    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+</blockquote></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->blockquote(
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.'
+);
+
+```
+
+</TabItem>
+</Tabs>

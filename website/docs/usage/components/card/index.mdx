@@ -1,0 +1,250 @@
+---
+sidebar_position: 0
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../../src/components/HtmlCode.tsx";
+
+# Example
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#example)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="card" style="width: 18rem;">
+    <img alt="..." class="card-img-top" src="/twbs-helper-module/img/docs/image-cap.svg"/>
+    <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->card(
+    [
+        'image_top' => [
+            '/twbs-helper-module/img/docs/image-cap.svg',
+            ['alt' => '...'],
+        ],
+        'title' => 'Card title',
+        'text' => 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
+        '<a href="&#x23;" class="btn btn-primary">Go somewhere</a>',
+    ],
+    ['style' => 'width: 18rem;']
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+# Text alignment
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#text-alignment)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+<br/>
+<div class="card text-center" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+<br/>
+<div class="card text-right" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->card(
+    [
+        'title' => 'Special title treatment',
+        'text' => 'With supporting text below as a natural lead-in to additional content.',
+        '<a href="#" class="btn btn-primary">Go somewhere</a>',
+    ],
+    ['style' => 'width: 18rem;']
+);
+
+echo '<br/>';
+
+// Text center
+echo $this->card(
+    [
+        'title' => 'Special title treatment',
+        'text' => 'With supporting text below as a natural lead-in to additional content.',
+        '<a href="#" class="btn btn-primary">Go somewhere</a>',
+    ],
+    [
+        'class' => 'text-center',
+        'style' => 'width: 18rem;',
+    ]
+);
+
+echo '<br/>';
+
+// Text right
+echo $this->card(
+    [
+        'title' => 'Special title treatment',
+        'text' => 'With supporting text below as a natural lead-in to additional content.',
+        '<a href="#" class="btn btn-primary">Go somewhere</a>',
+    ],
+    [
+        'class' => 'text-right',
+        'style' => 'width: 18rem;',
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+# Navigation
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#navigation)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="card text-center">
+    <div class="card-header">
+        <ul class="card-header-tabs nav nav-tabs">
+            <li class=" nav-item">
+                <a class="nav-link active" href="#">Active</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+        </ul>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+<br/>
+<div class="card text-center">
+    <div class="card-header">
+        <ul class="card-header-pills nav nav-pills">
+            <li class=" nav-item">
+                <a class="nav-link active" href="#">Active</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+        </ul>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+// Nav tabs (pages defined by a \Laminas\Navigation\Navigation object as container)
+echo $this->card(
+    [
+        'nav' => new \Laminas\Navigation\Navigation(
+            [
+                [
+                    'label'  => 'Active',
+                    'uri'    => '#',
+                    'active' => true,
+                ],
+                [
+                    'label' => 'Link',
+                    'uri'   => '#',
+                ],
+                [
+                    'label' => 'Link',
+                    'uri'   => '#',
+                ],
+                [
+                    'label'   => 'Disabled',
+                    'uri'     => '#',
+                    'visible' => false,
+                ],
+            ]
+        ),
+        'title' => 'Special title treatment',
+        'text' => 'With supporting text below as a natural lead-in to additional content.',
+        '<a href="#" class="btn btn-primary">Go somewhere</a>',
+    ],
+    ['class' => 'text-center']
+);
+
+echo PHP_EOL.'<br/>';
+
+// Nav pills (pages defined by an array as  container)
+echo $this->card(
+    [
+        'nav' => [
+            'options'   => ['pills' => true],
+            'container' => [
+                [
+                    'label'  => 'Active',
+                    'uri'    => '#',
+                    'active' => true,
+                ],
+                [
+                    'label' => 'Link',
+                    'uri'   => '#',
+                ],
+                [
+                    'label' => 'Link',
+                    'uri'   => '#',
+                ],
+                [
+                    'label'   => 'Disabled',
+                    'uri'     => '#',
+                    'visible' => false,
+                ],
+            ],
+        ],
+        'title' => 'Special title treatment',
+        'text' => 'With supporting text below as a natural lead-in to additional content.',
+        '<a href="#" class="btn btn-primary">Go somewhere</a>',
+    ],
+    ['class' => 'text-center']
+);
+
+```
+
+</TabItem>
+</Tabs>

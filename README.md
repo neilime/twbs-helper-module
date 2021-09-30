@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/neilime/twbs-helper-module" target="_blank"><img src="https://repository-images.githubusercontent.com/80362393/425f1180-7115-11ea-96d4-75646c99df22" width="600"></a>
+  <a href="https://github.com/neilime/twbs-helper-module" target="_blank"><img src="https://repository-images.githubusercontent.com/80362393/425f1180-7115-11ea-96d4-75646c99df22" width="600" /></a>
 </p>
 
 [![Continuous integration](https://github.com/neilime/twbs-helper-module/workflows/Continuous%20integration/badge.svg)](https://github.com/neilime/twbs-helper-module/actions?query=workflow%3A%22Continuous+integration%22)
@@ -39,7 +39,7 @@
 - Website: https://www.escemi.com
 - Sponsor: https://github.com/sponsors/neilime
 - Github: [@neilime](https://github.com/neilime)
-- LinkedIn: [@https:\/\/www.linkedin.com\/company\/escemi](https://linkedin.com/in/https://www.linkedin.com/company/escemi)
+- LinkedIn: [@escemi](https://www.linkedin.com/company/escemi)
 
 ## 📝 License
 

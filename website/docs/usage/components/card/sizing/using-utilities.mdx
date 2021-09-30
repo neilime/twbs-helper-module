@@ -1,0 +1,56 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../../../src/components/HtmlCode.tsx";
+
+# Using utilities
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#using-utilities)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="card w-75">
+    <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Button</a>
+    </div>
+</div>
+<div class="card w-50">
+    <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Button</a>
+    </div>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+
+echo $this->card(
+    [
+        'title' => 'Card title',
+        'text' => 'With supporting text below as a natural lead-in to additional content.',
+        '<a href="#" class="btn btn-primary">Button</a>',
+    ],
+    ['class' => 'w-75']
+);
+
+echo $this->card(
+    [
+        'title' => 'Card title',
+        'text' => 'With supporting text below as a natural lead-in to additional content.',
+        '<a href="#" class="btn btn-primary">Button</a>',
+    ],
+    ['class' => 'w-50']
+);
+
+```
+
+</TabItem>
+</Tabs>

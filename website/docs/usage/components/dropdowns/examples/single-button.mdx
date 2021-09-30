@@ -1,0 +1,190 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../../../src/components/HtmlCode.tsx";
+
+# Single button
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/dropdowns/#single-button)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="dropdown">
+    <button type="button" name="dropdown" id="dropdownMenuButton" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="btn btn-secondary dropdown-toggle" value="">Dropdown</button>
+    <div aria-labelledby="dropdownMenuButton" class="dropdown-menu">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+    </div>
+</div>
+<br/>
+<div class="dropdown">
+    <a id="dropdownMenuButton" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#" class="btn btn-secondary dropdown-toggle">Dropdown</a>
+    <div aria-labelledby="dropdownMenuButton" class="dropdown-menu">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+    </div>
+</div>
+<br/>
+<div class="btn-group dropdown">
+    <button type="button" name="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="btn btn-primary dropdown-toggle" value="">Dropdown</button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+        <div class="dropdown-divider"/>
+        <a class="dropdown-item" href="#">Separated link</a>
+    </div>
+</div>
+<div class="btn-group dropdown">
+    <button type="button" name="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="btn btn-secondary dropdown-toggle" value="">Dropdown</button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+        <div class="dropdown-divider"/>
+        <a class="dropdown-item" href="#">Separated link</a>
+    </div>
+</div>
+<div class="btn-group dropdown">
+    <button type="button" name="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="btn btn-success dropdown-toggle" value="">Dropdown</button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+        <div class="dropdown-divider"/>
+        <a class="dropdown-item" href="#">Separated link</a>
+    </div>
+</div>
+<div class="btn-group dropdown">
+    <button type="button" name="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="btn btn-danger dropdown-toggle" value="">Dropdown</button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+        <div class="dropdown-divider"/>
+        <a class="dropdown-item" href="#">Separated link</a>
+    </div>
+</div>
+<div class="btn-group dropdown">
+    <button type="button" name="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="btn btn-warning dropdown-toggle" value="">Dropdown</button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+        <div class="dropdown-divider"/>
+        <a class="dropdown-item" href="#">Separated link</a>
+    </div>
+</div>
+<div class="btn-group dropdown">
+    <button type="button" name="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="btn btn-info dropdown-toggle" value="">Dropdown</button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+        <div class="dropdown-divider"/>
+        <a class="dropdown-item" href="#">Separated link</a>
+    </div>
+</div>
+<div class="btn-group dropdown">
+    <button type="button" name="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="btn btn-light dropdown-toggle" value="">Dropdown</button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+        <div class="dropdown-divider"/>
+        <a class="dropdown-item" href="#">Separated link</a>
+    </div>
+</div>
+<div class="btn-group dropdown">
+    <button type="button" name="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="btn btn-dark dropdown-toggle" value="">Dropdown</button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+        <div class="dropdown-divider"/>
+        <a class="dropdown-item" href="#">Separated link</a>
+    </div>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->formButton(
+    [
+        'name'       => 'dropdown',
+        'options'    => [
+            'label'    => 'Dropdown',
+            'dropdown' => [
+                'Action',
+                'Another action',
+                'Something else here',
+            ],
+        ],
+        'attributes' => ['id' => 'dropdownMenuButton'],
+    ]
+);
+
+
+echo PHP_EOL.'<br/>';
+
+// With <a> elements
+echo $this->formButton(
+    [
+        'name'       => 'dropdown',
+        'options'    => [
+            'tag'      => 'a',
+            'label'    => 'Dropdown',
+            'dropdown' => [
+                'Action',
+                'Another action',
+                'Something else here',
+            ],
+        ],
+        'attributes' => ['id' => 'dropdownMenuButton'],
+    ]
+);
+
+echo PHP_EOL.'<br/>';
+
+// Variations
+foreach ([
+    'primary',
+    'secondary',
+    'success',
+    'danger',
+    'warning',
+    'info',
+    'light',
+    'dark',
+] as $sVariant) {
+    echo $this->formButton(
+        [
+            'name'    => 'dropdown',
+            'options' => [
+                'variant'  => $sVariant,
+                'label'    => 'Dropdown',
+                'dropdown' => [
+                    'attributes' => ['class' => 'btn-group'],
+                    'items'      => [
+                        'Action',
+                        'Another action',
+                        'Something else here',
+                        '---',
+                        'Separated link',
+                    ],
+                ],
+            ],
+        ]
+    );
+}//end foreach
+
+```
+
+</TabItem>
+</Tabs>

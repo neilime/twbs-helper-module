@@ -27,11 +27,11 @@
   },
   "require": {
     "php": "^7.3 | ^8.0",
-    "laminas/laminas-config": "^3.5.0",
-    "laminas/laminas-escaper": "^2.8",
+    "laminas/laminas-config": "^3.6.0",
+    "laminas/laminas-escaper": "^2.9",
     "laminas/laminas-form": "^3.0",
     "laminas/laminas-i18n": "^2.11",
-    "laminas/laminas-loader": "^2.7",
+    "laminas/laminas-loader": "^2.8",
     "laminas/laminas-log": "^2.13",
     "laminas/laminas-modulemanager": "^2.10",
     "laminas/laminas-mvc": "^3.2",
@@ -39,18 +39,20 @@
     "laminas/laminas-paginator": "^2.10",
     "laminas/laminas-progressbar": "^2.8",
     "laminas/laminas-serializer": "^2.10",
-    "laminas/laminas-servicemanager": "^3.6",
-    "laminas/laminas-stdlib": "^3.4",
+    "laminas/laminas-servicemanager": "^3.7",
+    "laminas/laminas-stdlib": "^3.6",
     "laminas/laminas-view": "^2.12"
   },
   "require-dev": {
     "laminas/laminas-component-installer": "^2.5",
+    "mikey179/vfsstream": "^1.6",
     "pcov/clobber": "^2.0",
     "phpstan/extension-installer": "^1.1",
     "phpstan/phpstan": "^0.12",
     "phpstan/phpstan-phpunit": "^0.12",
-    "phpunit/phpunit": "^9.5.6",
+    "phpunit/phpunit": "^9.5.9",
     "slam/phpstan-laminas-framework": "^0.12",
+    "spatie/phpunit-snapshot-assertions": "^4.2",
     "squizlabs/php_codesniffer": "^3.6"
   },
   "autoload": {
@@ -60,12 +62,14 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "TestSuite\\": "tests/TestSuite"
+      "TestSuite\\": "tests/TestSuite",
+      "DocumentationGenerator\\": "src/DocumentationGenerator"
     }
   },
   "scripts": {
     "test": "phpunit --colors --configuration tests/phpunit.xml",
-    "test:ci": "phpunit --colors --configuration tests/phpunit.xml -d pcov.enabled=1 -d max_execution_time=0 --coverage-text --coverage-clover ./build/logs/clover.xml --coverage-html ./build/coverage/",
+    "test:update-snapshot": "@test -d --update-snapshots",
+    "test:ci": "@test -d pcov.enabled=1 -d max_execution_time=0 --coverage-text --coverage-clover ./build/logs/clover.xml --coverage-html ./build/coverage/",
     "cs": "phpcs",
     "cbf": "phpcbf",
     "stan": "phpstan analyse --level 5 src",

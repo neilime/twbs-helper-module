@@ -1,0 +1,323 @@
+---
+sidebar_position: 0
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../../src/components/HtmlCode.tsx";
+
+# Example
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/media-object/#example)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="media">
+    <img alt="..." class="mr-3" src="/twbs-helper-module/img/docs/64x64.svg"/>
+    <div class="media-body">
+        <h5 class="mt-0">Media heading</h5>
+        <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+    </div>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->media(
+    [
+        'img'   => [
+            '/twbs-helper-module/img/docs/64x64.svg',
+            [
+                'alt'   => '...',
+                'class' => 'mr-3',
+            ],
+        ],
+        'title' => 'Media heading',
+        'text'  => 'Cras sit amet nibh libero, in gravida nulla. '.'Nulla vel metus scelerisque ante sollicitudin. '.'Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. '.'Fusce condimentum nunc ac nisi vulputate fringilla. '.'Donec lacinia congue felis in faucibus.',
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+# Nesting
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/media-object/#nesting)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="media">
+    <img alt="..." class="mr-3" src="/twbs-helper-module/img/docs/64x64.svg"/>
+    <div class="media-body">
+        <h5 class="mt-0">Media heading</h5>
+        <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+        <div class="media">
+            <img alt="..." class="mr-3" src="/twbs-helper-module/img/docs/64x64.svg"/>
+            <div class="media-body">
+                <h5 class="mt-0">Media heading</h5>
+                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+            </div>
+        </div>
+    </div>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->media(
+    [
+        'img'   => [
+            '/twbs-helper-module/img/docs/64x64.svg',
+            [
+                'alt'   => '...',
+                'class' => 'mr-3',
+            ],
+        ],
+        'title' => 'Media heading',
+        'text'  => 'Cras sit amet nibh libero, in gravida nulla. '.'Nulla vel metus scelerisque ante sollicitudin. '.'Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. '.'Fusce condimentum nunc ac nisi vulputate fringilla. '.'Donec lacinia congue felis in faucibus.',
+        'media' => [
+            'content' => [
+                'img'   => [
+                    '/twbs-helper-module/img/docs/64x64.svg',
+                    [
+                        'alt'   => '...',
+                        'class' => 'mr-3',
+                    ],
+                ],
+                'title' => 'Media heading',
+                'text'  => 'Cras sit amet nibh libero, in gravida nulla. '.'Nulla vel metus scelerisque ante sollicitudin. '.'Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. '.'Fusce condimentum nunc ac nisi vulputate fringilla. '.'Donec lacinia congue felis in faucibus.',
+            ],
+        ],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+# Alignment
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/media-object/#alignment)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="media">
+    <img alt="..." class="align-self-start mr-3" src="/twbs-helper-module/img/docs/64x64.svg"/>
+    <div class="media-body">
+        <h5 class="mt-0">Top-aligned media</h5>
+        <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+        <p>Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+    </div>
+</div>
+<div class="media">
+    <img alt="..." class="align-self-center mr-3" src="/twbs-helper-module/img/docs/64x64.svg"/>
+    <div class="media-body">
+        <h5 class="mt-0">Top-aligned media</h5>
+        <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+        <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+    </div>
+</div>
+<div class="media">
+    <img alt="..." class="align-self-end mr-3" src="/twbs-helper-module/img/docs/64x64.svg"/>
+    <div class="media-body">
+        <h5 class="mt-0">Top-aligned media</h5>
+        <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+        <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+    </div>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+// Top-aligned media
+echo $this->media(
+    [
+        'img'   => [
+            '/twbs-helper-module/img/docs/64x64.svg',
+            [
+                'alt'   => '...',
+                'class' => 'align-self-start mr-3',
+            ],
+        ],
+        'title' => 'Top-aligned media',
+        'text'  => [
+            'Cras sit amet nibh libero, in gravida nulla. '.'Nulla vel metus scelerisque ante sollicitudin. '.'Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. '.'Fusce condimentum nunc ac nisi vulputate fringilla. '.'Donec lacinia congue felis in faucibus.',
+            'Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. '.'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
+        ],
+    ]
+);
+
+// Center-aligned media
+echo $this->media(
+    [
+        'img'   => [
+            '/twbs-helper-module/img/docs/64x64.svg',
+            [
+                'alt'   => '...',
+                'class' => 'align-self-center mr-3',
+            ],
+        ],
+        'title' => 'Top-aligned media',
+        'text'  => [
+            'Cras sit amet nibh libero, in gravida nulla. '.'Nulla vel metus scelerisque ante sollicitudin. '.'Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. '.'Fusce condimentum nunc ac nisi vulputate fringilla. '.'Donec lacinia congue felis in faucibus.',
+            [
+                'content'    => 'Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. '.'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
+                'attributes' => ['class' => 'mb-0'],
+            ],
+        ],
+    ]
+);
+
+// Bottom-aligned media
+echo $this->media(
+    [
+        'img'   => [
+            '/twbs-helper-module/img/docs/64x64.svg',
+            [
+                'alt'   => '...',
+                'class' => 'align-self-end mr-3',
+            ],
+        ],
+        'title' => 'Top-aligned media',
+        'text'  => [
+            'Cras sit amet nibh libero, in gravida nulla. '.'Nulla vel metus scelerisque ante sollicitudin. '.'Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. '.'Fusce condimentum nunc ac nisi vulputate fringilla. '.'Donec lacinia congue felis in faucibus.',
+            [
+                'content'    => 'Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. '.'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
+                'attributes' => ['class' => 'mb-0'],
+            ],
+        ],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+# Order
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/media-object/#order)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="media">
+    <div class="media-body">
+        <h5 class="mb-1 mt-0">Media object</h5>
+        <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+    </div>
+    <img alt="..." class="ml-3" src="/twbs-helper-module/img/docs/64x64.svg"/>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->media(
+    [
+        'title' => [
+            'content'    => 'Media object',
+            'attributes' => ['class' => 'mb-1'],
+        ],
+        'text'  => 'Cras sit amet nibh libero, in gravida nulla. '.'Nulla vel metus scelerisque ante sollicitudin. '.'Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. '.'Fusce condimentum nunc ac nisi vulputate fringilla. '.'Donec lacinia congue felis in faucibus.',
+        'img'   => [
+            '/twbs-helper-module/img/docs/64x64.svg',
+            [
+                'alt'   => '...',
+                'class' => 'ml-3',
+            ],
+        ],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+# Media list
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/media-object/#media-list)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><ul class="list-unstyled">
+    <li class="media">
+        <img alt="..." class="mr-3" src="/twbs-helper-module/img/docs/64x64.svg"/>
+        <div class="media-body">
+            <h5 class="mb-1 mt-0">List-based media object</h5>
+            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+        </div>
+    </li>
+    <li class="media">
+        <img alt="..." class="mr-3" src="/twbs-helper-module/img/docs/64x64.svg"/>
+        <div class="media-body">
+            <h5 class="mb-1 mt-0">List-based media object</h5>
+            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+        </div>
+    </li>
+    <li class="media">
+        <img alt="..." class="mr-3" src="/twbs-helper-module/img/docs/64x64.svg"/>
+        <div class="media-body">
+            <h5 class="mb-1 mt-0">List-based media object</h5>
+            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+        </div>
+    </li>
+</ul></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->mediaList(
+    [
+        [
+            'img'   => [
+                '/twbs-helper-module/img/docs/64x64.svg',
+                [
+                    'alt'   => '...',
+                    'class' => 'mr-3',
+                ],
+            ],
+            'title' => [
+                'content'    => 'List-based media object',
+                'attributes' => ['class' => 'mb-1'],
+            ],
+            'text'  => 'Cras sit amet nibh libero, in gravida nulla. '.'Nulla vel metus scelerisque ante sollicitudin. '.'Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. '.'Fusce condimentum nunc ac nisi vulputate fringilla. '.'Donec lacinia congue felis in faucibus.',
+        ],
+        [
+            'img'   => [
+                '/twbs-helper-module/img/docs/64x64.svg',
+                [
+                    'alt'   => '...',
+                    'class' => 'mr-3',
+                ],
+            ],
+            'title' => [
+                'content'    => 'List-based media object',
+                'attributes' => ['class' => 'mb-1'],
+            ],
+            'text'  => 'Cras sit amet nibh libero, in gravida nulla. '.'Nulla vel metus scelerisque ante sollicitudin. '.'Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. '.'Fusce condimentum nunc ac nisi vulputate fringilla. '.'Donec lacinia congue felis in faucibus.',
+        ],
+        [
+            'img'   => [
+                '/twbs-helper-module/img/docs/64x64.svg',
+                [
+                    'alt'   => '...',
+                    'class' => 'mr-3',
+                ],
+            ],
+            'title' => [
+                'content'    => 'List-based media object',
+                'attributes' => ['class' => 'mb-1'],
+            ],
+            'text'  => 'Cras sit amet nibh libero, in gravida nulla. '.'Nulla vel metus scelerisque ante sollicitudin. '.'Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. '.'Fusce condimentum nunc ac nisi vulputate fringilla. '.'Donec lacinia congue felis in faucibus.',
+        ],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>

@@ -1,0 +1,840 @@
+---
+sidebar_position: 0
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../../src/components/HtmlCode.tsx";
+
+# Basic example
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/input-group/#basic-example)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <div class="input-group-text" id="basic-addon1">
+            @
+        </div>
+    </div>
+    <input type="text" name="username" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" class="form-control" value=""/>
+</div>
+<div class="input-group mb-3">
+    <input type="text" name="recipient_username" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" class="form-control" value=""/>
+    <div class="input-group-append">
+        <div class="input-group-text" id="basic-addon2">
+            @example.com
+        </div>
+    </div>
+</div>
+<label for="basic-url">Your vanity URL</label>
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <div class="input-group-text" id="basic-addon3">
+            https://example.com/users/
+        </div>
+    </div>
+    <input type="text" name="url" id="basic-url" aria-describedby="basic-addon3" class="form-control" value=""/>
+</div>
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <div class="input-group-text">
+            $
+        </div>
+    </div>
+    <input type="text" name="amount" aria-label="Amount (to the nearest dollar)" class="form-control" value=""/>
+    <div class="input-group-append">
+        <div class="input-group-text">
+            .00
+        </div>
+    </div>
+</div>
+<div class="input-group">
+    <div class="input-group-prepend">
+        <div class="input-group-text">
+            With textarea
+        </div>
+    </div>
+    <textarea name="textarea" aria-label="With textarea" class="form-control"/>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->formRow(
+    $oFactory->create(
+        [
+            'name'       => 'username',
+            'type'       => 'text',
+            'options'    => [
+                'form_group'        => false,
+                'input_group_class' => 'mb-3',
+                'add_on_prepend'    => '@',
+            ],
+            'attributes' => [
+                'placeholder'      => 'Username',
+                'aria-label'       => 'Username',
+                'aria-describedby' => 'basic-addon1',
+            ],
+        ]
+    )
+);
+
+echo $this->formRow(
+    $oFactory->create(
+        [
+            'name'       => 'recipient_username',
+            'type'       => 'text',
+            'options'    => [
+                'form_group'        => false,
+                'input_group_class' => 'mb-3',
+                'add_on_append'     => '@example.com',
+            ],
+            'attributes' => [
+                'placeholder'      => 'Recipient\'s username',
+                'aria-label'       => 'Recipient\'s username',
+                'aria-describedby' => 'basic-addon2',
+            ],
+        ]
+    )
+);
+
+echo $this->formRow(
+    $oFactory->create(
+        [
+            'name'       => 'url',
+            'type'       => 'text',
+            'options'    => [
+                'label'             => 'Your vanity URL',
+                'form_group'        => false,
+                'input_group_class' => 'mb-3',
+                'add_on_prepend'    => 'https://example.com/users/',
+            ],
+            'attributes' => [
+                'id'               => 'basic-url',
+                'aria-describedby' => 'basic-addon3',
+            ],
+        ]
+    )
+);
+
+echo $this->formRow(
+    $oFactory->create(
+        [
+            'name'       => 'amount',
+            'type'       => 'text',
+            'options'    => [
+                'form_group'        => false,
+                'input_group_class' => 'mb-3',
+                'add_on_prepend'    => '$',
+                'add_on_append'     => '.00',
+            ],
+            'attributes' => [    'aria-label' => 'Amount (to the nearest dollar)'    ],
+        ]
+    )
+);
+
+echo $this->formRow(
+    $oFactory->create(
+        [
+            'name'       => 'textarea',
+            'type'       => 'textarea',
+            'options'    => [
+                'form_group'     => false,
+                'add_on_prepend' => 'With textarea',
+            ],
+            'attributes' => [    'aria-label' => 'With textarea'    ],
+        ]
+    )
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+# Wrapping
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/input-group/#wrapping)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="flex-nowrap input-group">
+    <div class="input-group-prepend">
+        <div class="input-group-text" id="addon-wrapping">
+            @
+        </div>
+    </div>
+    <input type="text" name="username" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping" class="form-control" value=""/>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->formRow(
+    $oFactory->create(
+        [
+            'name'       => 'username',
+            'type'       => 'text',
+            'options'    => [
+                'form_group'        => false,
+                'input_group_class' => 'flex-nowrap',
+                'add_on_prepend'    => '@',
+            ],
+            'attributes' => [
+                'placeholder'      => 'Username',
+                'aria-label'       => 'Username',
+                'aria-describedby' => 'addon-wrapping',
+            ],
+        ]
+    )
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+# Sizing
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/input-group/#sizing)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="input-group input-group-sm mb-3">
+    <div class="input-group-prepend">
+        <div class="input-group-text" id="inputGroup-sizing-sm">
+            Small
+        </div>
+    </div>
+    <input type="text" name="small" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" class="form-control form-control-sm" value=""/>
+</div>
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <div class="input-group-text" id="inputGroup-sizing-default">
+            Default
+        </div>
+    </div>
+    <input type="text" name="default" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" class="form-control" value=""/>
+</div>
+<div class="input-group input-group-lg">
+    <div class="input-group-prepend">
+        <div class="input-group-text" id="inputGroup-sizing-lg">
+            Large
+        </div>
+    </div>
+    <input type="text" name="large" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" class="form-control form-control-lg" value=""/>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$oFactory = new \Laminas\Form\Factory();
+
+// Small
+echo $this->formRow(
+    $oFactory->create(
+        [
+            'name'       => 'small',
+            'type'       => 'text',
+            'options'    => [
+                'form_group'        => false,
+                'input_group_class' => 'mb-3',
+                'add_on_prepend'    => 'Small',
+                'size'              => 'sm',
+            ],
+            'attributes' => [
+                'aria-label'       => 'Sizing example input',
+                'aria-describedby' => 'inputGroup-sizing-sm',
+            ],
+        ]
+    )
+);
+
+// Default
+echo $this->formRow(
+    $oFactory->create(
+        [
+            'name'       => 'default',
+            'type'       => 'text',
+            'options'    => [
+                'form_group'        => false,
+                'input_group_class' => 'mb-3',
+                'add_on_prepend'    => 'Default',
+            ],
+            'attributes' => [
+                'aria-label'       => 'Sizing example input',
+                'aria-describedby' => 'inputGroup-sizing-default',
+            ],
+        ]
+    )
+);
+
+// Large
+echo $this->formRow(
+    $oFactory->create(
+        [
+            'name'       => 'large',
+            'type'       => 'text',
+            'options'    => [
+                'form_group'     => false,
+                'add_on_prepend' => 'Large',
+                'size'           => 'lg',
+            ],
+            'attributes' => [
+                'aria-label'       => 'Sizing example input',
+                'aria-describedby' => 'inputGroup-sizing-lg',
+            ],
+        ]
+    )
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+# Checkboxes and radios
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/input-group/#checkboxes-and-radios)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <div class="input-group-text">
+            <input type="checkbox" name="checkbox" aria-label="Checkbox for following text input" value="1"/>
+        </div>
+    </div>
+    <input type="text" name="checkbox-text" aria-label="Text input with checkbox" class="form-control" value=""/>
+</div>
+<div class="input-group">
+    <div class="input-group-prepend">
+        <div class="input-group-text">
+            <input type="radio" name="radio" aria-label="Radio button for following text input" value=""/>
+        </div>
+    </div>
+    <input type="text" name="radio-text" aria-label="Text input with radio button" class="form-control" value=""/>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->formRow(
+    $oFactory->create(
+        [
+            'name'       => 'checkbox-text',
+            'type'       => 'text',
+            'options'    => [
+                'form_group'        => false,
+                'input_group_class' => 'mb-3',
+                'add_on_prepend'    => [
+                    'element' => [
+                        'type'       => 'checkbox',
+                        'options'    => [    'use_hidden_element' => false    ],
+                        'attributes' => [    'aria-label' => 'Checkbox for following text input'    ],
+                    ],
+                ],
+            ],
+            'attributes' => [    'aria-label' => 'Text input with checkbox'    ],
+        ]
+    )
+);
+
+echo $this->formRow(
+    $oFactory->create(
+        [
+            'name'       => 'radio-text',
+            'type'       => 'text',
+            'options'    => [
+                'form_group'     => false,
+                'add_on_prepend' => [
+                    'element' => [
+                        'type'    => 'radio',
+                        'options' => [
+                            'value_options' => [
+                                [
+                                    'label'      => '',
+                                    'attributes' => [    'aria-label' => 'Radio button for following text input'    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'attributes' => [    'aria-label' => 'Text input with radio button'    ],
+        ]
+    )
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+# Multiple addons
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/input-group/#multiple-addons)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <div class="input-group-text">
+            $
+        </div>
+        <div class="input-group-text">
+            0.00
+        </div>
+    </div>
+    <input type="text" name="multiple-addons-prepend" aria-label="Dollar amount (with dot and two decimal places)" class="form-control" value=""/>
+</div>
+<div class="input-group mb-3">
+    <input type="text" name="multiple-addons-append" aria-label="Dollar amount (with dot and two decimal places)" class="form-control" value=""/>
+    <div class="input-group-append">
+        <div class="input-group-text">
+            $
+        </div>
+        <div class="input-group-text">
+            0.00
+        </div>
+    </div>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->formRow(
+    $oFactory->create(
+        [
+            'name'       => 'multiple-addons-prepend',
+            'type'       => 'text',
+            'options'    => [
+                'form_group'        => false,
+                'input_group_class' => 'mb-3',
+                'add_on_prepend'    => [
+                    '$',
+                    '0.00',
+                ],
+            ],
+            'attributes' => [    'aria-label' => 'Dollar amount (with dot and two decimal places)'    ],
+        ]
+    )
+);
+
+echo $this->formRow(
+    $oFactory->create(
+        [
+            'name'       => 'multiple-addons-append',
+            'type'       => 'text',
+            'options'    => [
+                'form_group'        => false,
+                'input_group_class' => 'mb-3',
+                'add_on_append'     => [
+                    '$',
+                    '0.00',
+                ],
+            ],
+            'attributes' => [    'aria-label' => 'Dollar amount (with dot and two decimal places)'    ],
+        ]
+    )
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+# Button addons
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/input-group/#button-addons)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <button type="button" name="button" id="button-addon1" class="btn btn-outline-secondary" value="">Button</button>
+    </div>
+    <input type="text" name="button-prepend" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" class="form-control" value=""/>
+</div>
+<div class="input-group mb-3">
+    <input type="text" name="button-append" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" class="form-control" value=""/>
+    <div class="input-group-append">
+        <button type="button" name="button" id="button-addon2" class="btn btn-outline-secondary" value="">Button</button>
+    </div>
+</div>
+<div class="input-group mb-3">
+    <div class="input-group-prepend" id="button-addon3">
+        <button type="button" name="button" class="btn btn-outline-secondary" value="">Button</button>
+        <button type="button" name="button" class="btn btn-outline-secondary" value="">Button</button>
+    </div>
+    <input type="text" name="buttons-prepend" placeholder="" aria-label="Example text with two button addons" aria-describedby="button-addon3" class="form-control" value=""/>
+</div>
+<div class="input-group">
+    <input type="text" name="button-append" placeholder="Recipient's username" aria-label="Recipient's username with two button addons" aria-describedby="button-addon4" class="form-control" value=""/>
+    <div class="input-group-append" id="button-addon4">
+        <button type="button" name="button" class="btn btn-outline-secondary" value="">Button</button>
+        <button type="button" name="button" class="btn btn-outline-secondary" value="">Button</button>
+    </div>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->formRow(
+    $oFactory->create(
+        [
+            'name'       => 'button-prepend',
+            'type'       => 'text',
+            'options'    => [
+                'form_group'        => false,
+                'input_group_class' => 'mb-3',
+                'add_on_prepend'    => [
+                    'element' => [
+                        'type'    => 'button',
+                        'options' => [
+                            'label'   => 'Button',
+                            'variant' => 'outline-secondary',
+                        ],
+                    ],
+                ],
+            ],
+            'attributes' => [
+                'placeholder'      => '',
+                'aria-label'       => 'Example text with button addon',
+                'aria-describedby' => 'button-addon1',
+            ],
+        ]
+    )
+);
+
+echo $this->formRow(
+    $oFactory->create(
+        [
+            'name'       => 'button-append',
+            'type'       => 'text',
+            'options'    => [
+                'form_group'        => false,
+                'input_group_class' => 'mb-3',
+                'add_on_append'     => [
+                    'element' => [
+                        'type'    => 'button',
+                        'options' => [
+                            'label'   => 'Button',
+                            'variant' => 'outline-secondary',
+                        ],
+                    ],
+                ],
+            ],
+            'attributes' => [
+                'placeholder'      => 'Recipient\'s username',
+                'aria-label'       => 'Recipient\'s username',
+                'aria-describedby' => 'button-addon2',
+            ],
+        ]
+    )
+);
+
+echo $this->formRow(
+    $oFactory->create(
+        [
+            'name'       => 'buttons-prepend',
+            'type'       => 'text',
+            'options'    => [
+                'form_group'        => false,
+                'input_group_class' => 'mb-3',
+                'add_on_prepend'    => [
+                    [
+                        'element' => [
+                            'type'    => 'button',
+                            'options' => [
+                                'label'   => 'Button',
+                                'variant' => 'outline-secondary',
+                            ],
+                        ],
+                    ],
+                    [
+                        'element' => [
+                            'type'    => 'button',
+                            'options' => [
+                                'label'   => 'Button',
+                                'variant' => 'outline-secondary',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'attributes' => [
+                'placeholder'      => '',
+                'aria-label'       => 'Example text with two button addons',
+                'aria-describedby' => 'button-addon3',
+            ],
+        ]
+    )
+);
+
+echo $this->formRow(
+    $oFactory->create(
+        [
+            'name'       => 'button-append',
+            'type'       => 'text',
+            'options'    => [
+                'form_group'    => false,
+                'add_on_append' => [
+                    [
+                        'element' => [
+                            'type'    => 'button',
+                            'options' => [
+                                'label'   => 'Button',
+                                'variant' => 'outline-secondary',
+                            ],
+                        ],
+                    ],
+                    [
+                        'element' => [
+                            'type'    => 'button',
+                            'options' => [
+                                'label'   => 'Button',
+                                'variant' => 'outline-secondary',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'attributes' => [
+                'placeholder'      => 'Recipient\'s username',
+                'aria-label'       => 'Recipient\'s username with two button addons',
+                'aria-describedby' => 'button-addon4',
+            ],
+        ]
+    )
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+# Buttons with dropdowns
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/input-group/#buttons-with-dropdowns)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <button type="button" name="button" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="btn btn-outline-secondary dropdown-toggle" value="">Dropdown</button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"/>
+            <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+    </div>
+    <input type="text" name="dropdown-prepend" aria-label="Text input with dropdown button" class="form-control" value=""/>
+</div>
+<div class="input-group">
+    <input type="text" name="dropdown-append" aria-label="Text input with dropdown button" class="form-control" value=""/>
+    <div class="input-group-append">
+        <button type="button" name="button" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="btn btn-outline-secondary dropdown-toggle" value="">Dropdown</button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"/>
+            <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+    </div>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->formRow(
+    $oFactory->create(
+        [
+            'name'       => 'dropdown-prepend',
+            'type'       => 'text',
+            'options'    => [
+                'form_group'        => false,
+                'input_group_class' => 'mb-3',
+                'add_on_prepend'    => [
+                    'element' => [
+                        'type'    => 'button',
+                        'options' => [
+                            'label'    => 'Dropdown',
+                            'variant'  => 'outline-secondary',
+                            'dropdown' => [
+                                'Action',
+                                'Another action',
+                                'Something else here',
+                                '---',
+                                'Separated link',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'attributes' => [    'aria-label' => 'Text input with dropdown button'    ],
+        ]
+    )
+);
+
+echo $this->formRow(
+    $oFactory->create(
+        [
+            'name'       => 'dropdown-append',
+            'type'       => 'text',
+            'options'    => [
+                'form_group'    => false,
+                'add_on_append' => [
+                    'element' => [
+                        'type'    => 'button',
+                        'options' => [
+                            'label'    => 'Dropdown',
+                            'variant'  => 'outline-secondary',
+                            'dropdown' => [
+                                'Action',
+                                'Another action',
+                                'Something else here',
+                                '---',
+                                'Separated link',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'attributes' => [    'aria-label' => 'Text input with dropdown button'    ],
+        ]
+    )
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+# Segmented buttons
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/input-group/#segmented-buttons)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <button type="button" name="button" class="btn btn-outline-secondary" value="">Action</button>
+        <button type="button" name="button-toggle" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" value=""><span class="sr-only">Toggle Dropdown</span></button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"/>
+            <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+    </div>
+    <input type="text" name="segmented-dropdown-prepend" aria-label="Text input with segmented dropdown button" class="form-control" value=""/>
+</div>
+<div class="input-group">
+    <input type="text" name="segmented-dropdown-append" aria-label="Text input with segmented dropdown button" class="form-control" value=""/>
+    <div class="input-group-append">
+        <button type="button" name="button" class="btn btn-outline-secondary" value="">Action</button>
+        <button type="button" name="button-toggle" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" value=""><span class="sr-only">Toggle Dropdown</span></button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+            <div class="dropdown-divider"/>
+            <a class="dropdown-item" href="#">Separated link</a>
+        </div>
+    </div>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->formRow(
+    $oFactory->create(
+        [
+            'name'       => 'segmented-dropdown-prepend',
+            'type'       => 'text',
+            'options'    => [
+                'form_group'        => false,
+                'input_group_class' => 'mb-3',
+                'add_on_prepend'    => [
+                    'element' => [
+                        'type'    => 'button',
+                        'options' => [
+                            'label'    => 'Action',
+                            'variant'  => 'outline-secondary',
+                            'dropdown' => [
+                                'split' => 'Toggle Dropdown',
+                                'items' => [
+                                    'Action',
+                                    'Another action',
+                                    'Something else here',
+                                    '---',
+                                    'Separated link',
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'attributes' => [    'aria-label' => 'Text input with segmented dropdown button'    ],
+        ]
+    )
+);
+
+echo $this->formRow(
+    $oFactory->create(
+        [
+            'name'       => 'segmented-dropdown-append',
+            'type'       => 'text',
+            'options'    => [
+                'form_group'    => false,
+                'add_on_append' => [
+                    'element' => [
+                        'type'    => 'button',
+                        'options' => [
+                            'label'    => 'Action',
+                            'variant'  => 'outline-secondary',
+                            'dropdown' => [
+                                'split' => 'Toggle Dropdown',
+                                'items' => [
+                                    'Action',
+                                    'Another action',
+                                    'Something else here',
+                                    '---',
+                                    'Separated link',
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'attributes' => [    'aria-label' => 'Text input with segmented dropdown button'    ],
+        ]
+    )
+);
+
+```
+
+</TabItem>
+</Tabs>

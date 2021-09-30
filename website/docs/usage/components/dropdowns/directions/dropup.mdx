@@ -1,0 +1,88 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../../../src/components/HtmlCode.tsx";
+
+# Dropup
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/dropdowns/#dropup)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="btn-group dropup">
+    <button type="button" name="dropup" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="btn btn-lg btn-secondary dropdown-toggle" value="">Dropup</button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+        <div class="dropdown-divider"/>
+        <a class="dropdown-item" href="#">Separated link</a>
+    </div>
+</div>
+<div class="btn-group dropup">
+    <button type="button" name="split-dropup" class="btn btn-lg btn-secondary" value="">Split dropup</button>
+    <button type="button" name="split-dropup-toggle" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" value=""><span class="sr-only">Toggle Dropdown</span></button>
+    <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+        <div class="dropdown-divider"/>
+        <a class="dropdown-item" href="#">Separated link</a>
+    </div>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+// Dropup button
+echo $this->formButton(
+    [
+        'name'    => 'dropup',
+        'options' => [
+            'label'    => 'Dropup',
+            'size'     => 'lg',
+            'dropdown' => [
+                'direction'  => 'up',
+                'attributes' => ['class' => 'btn-group'],
+                'items'      => [
+                    'Action',
+                    'Another action',
+                    'Something else here',
+                    '---',
+                    'Separated link',
+                ],
+            ],
+        ],
+    ]
+);
+
+// Dropup split button
+echo $this->formButton(
+    [
+        'name'    => 'split-dropup',
+        'options' => [
+            'label'    => 'Split dropup',
+            'size'     => 'lg',
+            'dropdown' => [
+                'direction' => 'up',
+                'split'     => 'Toggle Dropdown',
+                'items'     => [
+                    'Action',
+                    'Another action',
+                    'Something else here',
+                    '---',
+                    'Separated link',
+                ],
+            ],
+        ],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>

@@ -1,0 +1,179 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../../../src/components/HtmlCode.tsx";
+
+# Custom select
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/input-group/#custom-select)
+
+<Tabs>
+<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="4.5"><div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <label class="input-group-text" for="inputGroupSelect01">Options</label>
+    </div>
+    <select name="select_label_prepend" id="inputGroupSelect01" class="custom-select">
+        <option value="" selected="selected">Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+    </select>
+</div>
+<div class="input-group mb-3">
+    <select name="select_label_append" id="inputGroupSelect02" class="custom-select">
+        <option value="" selected="selected">Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+    </select>
+    <div class="input-group-append">
+        <label class="input-group-text" for="inputGroupSelect02">Options</label>
+    </div>
+</div>
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+        <button type="button" name="button" class="btn btn-outline-secondary" value="">Button</button>
+    </div>
+    <select name="select_button_prepend" id="inputGroupSelect03" aria-label="Example select with button addon" class="custom-select">
+        <option value="" selected="selected">Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+    </select>
+</div>
+<div class="input-group">
+    <select name="select_button_append" id="inputGroupSelect04" aria-label="Example select with button addon" class="custom-select">
+        <option value="" selected="selected">Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+    </select>
+    <div class="input-group-append">
+        <button type="button" name="button" class="btn btn-outline-secondary" value="">Button</button>
+    </div>
+</div></HtmlCode></TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$oFactory = new \Laminas\Form\Factory();
+
+echo $this->formElement(
+    $oFactory->create(
+        [
+            'name'       => 'select_label_prepend',
+            'type'       => 'select',
+            'options'    => [
+                'form_group'        => false,
+                'input_group_class' => 'mb-3',
+                'custom'            => true,
+                'empty_option'      => 'Choose...',
+                'value_options'     => [
+                    1 => 'One',
+                    2 => 'Two',
+                    3 => 'Three',
+                ],
+                'add_on_prepend'    => ['label' => 'Options'],
+            ],
+            'attributes' => [    'id' => 'inputGroupSelect01'    ],
+        ]
+    )->setValue('')
+);
+
+echo $this->formElement(
+    $oFactory->create(
+        [
+            'name'       => 'select_label_append',
+            'type'       => 'select',
+            'options'    => [
+                'form_group'        => false,
+                'input_group_class' => 'mb-3',
+                'custom'            => true,
+                'empty_option'      => 'Choose...',
+                'value_options'     => [
+                    1 => 'One',
+                    2 => 'Two',
+                    3 => 'Three',
+                ],
+                'add_on_append'     => ['label' => 'Options'],
+            ],
+            'attributes' => [    'id' => 'inputGroupSelect02'    ],
+        ]
+    )->setValue('')
+);
+
+echo $this->formElement(
+    $oFactory->create(
+        [
+            'name'       => 'select_button_prepend',
+            'type'       => 'select',
+            'options'    => [
+                'form_group'        => false,
+                'input_group_class' => 'mb-3',
+                'custom'            => true,
+                'empty_option'      => 'Choose...',
+                'value_options'     => [
+                    1 => 'One',
+                    2 => 'Two',
+                    3 => 'Three',
+                ],
+                'add_on_prepend'    => [
+                    'element' => [
+                        'type'    => 'button',
+                        'options' => [
+                            'label'   => 'Button',
+                            'variant' => 'outline-secondary',
+                        ],
+                    ],
+                ],
+            ],
+            'attributes' => [
+                'id'         => 'inputGroupSelect03',
+                'aria-label' => 'Example select with button addon',
+            ],
+        ]
+    )->setValue('')
+);
+
+
+echo $this->formElement(
+    $oFactory->create(
+        [
+            'name'       => 'select_button_append',
+            'type'       => 'select',
+            'options'    => [
+                'form_group'    => false,
+                'custom'        => true,
+                'empty_option'  => 'Choose...',
+                'value_options' => [
+                    1 => 'One',
+                    2 => 'Two',
+                    3 => 'Three',
+                ],
+                'add_on_append' => [
+                    'element' => [
+                        'type'    => 'button',
+                        'options' => [
+                            'label'   => 'Button',
+                            'variant' => 'outline-secondary',
+                        ],
+                    ],
+                ],
+            ],
+            'attributes' => [
+                'id'         => 'inputGroupSelect04',
+                'aria-label' => 'Example select with button addon',
+            ],
+        ]
+    )->setValue('')
+);
+
+```
+
+</TabItem>
+</Tabs>

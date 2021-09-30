@@ -1,0 +1,19 @@
+<?php
+
+$oFactory = new \Laminas\Form\Factory();
+
+// Render Default checkbox
+echo $this->formRow(
+    $oFactory->create(
+        [
+            'name'       => 'default-checkbox',
+            'type'       => 'checkbox',
+            'options'    => [
+                'label'              => 'Default checkbox',
+                'use_hidden_element' => false,
+                'form_group'         => false,
+            ],
+            'attributes' => [    'id' => 'defaultCheck1'    ],
+        ]
+    )
+).PHP_EOL;
