@@ -36,8 +36,6 @@ jobs:
           git config --global user.name "${{ github.actor }}"
 
           cd website
-          yarn install --frozen-lockfile
-          npx docusaurus docs:version ${{ steps.get_version.outputs.version }}
           echo `git add -A && git commit -m "docs: release new version"`
           git push
           npx docusaurus deploy
