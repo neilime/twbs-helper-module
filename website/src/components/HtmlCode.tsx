@@ -15,15 +15,23 @@ const HtmlCode: FunctionComponent<IProps> = ({
   children,
   bootstrapVersion,
 }) => {
-  const [height, setHeight] = useState(Children.count(children) * 75);
+  const [height, setHeight] = useState(100);
   const iframeRef: RefObject<IFrame> = createRef();
   const handleResize = (iframe: RefObject<IFrame>) => {
-    if (
-      iframe.current &&
-      iframe.current.node.contentDocument &&
-      iframe.current.node.contentDocument.body.scrollHeight !== 0
-    ) {
-      setHeight(iframe.current.node.contentDocument.body.scrollHeight * 1.5);
+    const doc = iframe?.current?.node?.contentDocument;
+    const body_ = doc?.body;
+    const html_ = doc?.documentElement;
+
+    const height = Math.max(
+      body_?.scrollHeight,
+      body_?.offsetHeight,
+      html_?.clientHeight,
+      html_?.scrollHeight,
+      html_?.offsetHeight
+    );
+
+    if (height !== 0) {
+      setHeight(height);
     }
   };
   useEffect(() => handleResize(iframeRef), [children]);

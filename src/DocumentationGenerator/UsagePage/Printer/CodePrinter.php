@@ -45,7 +45,7 @@ class CodePrinter extends \DocumentationGenerator\UsagePage\Printer\AbstractPrin
             $sLine = trim($aLines[$iLine]);
             $sSource .=  $sLine . PHP_EOL;
         }
-        $sSource = '<?php' . PHP_EOL . PHP_EOL . str_replace(['$oView'], ['$this'], $sSource);
+        $sSource = '<?php' . PHP_EOL . PHP_EOL . str_replace(['$oView', ' . PHP_EOL'], ['$this', ''], $sSource);
 
         $oSourcePrettifier = new \DocumentationGenerator\UsagePage\Prettifier\PhpPrettifier();
         return $oSourcePrettifier->prettify($sSource);

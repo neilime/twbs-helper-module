@@ -9,6 +9,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
     "Laminas (formerly Zend Framework) module for easy integration of the Twitter Bootstrap v4+",
   url: "https://neilime.github.io",
   baseUrl: "/twbs-helper-module/",
+  trailingSlash: true,
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
