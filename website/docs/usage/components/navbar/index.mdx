@@ -269,14 +269,14 @@ $aOptions['variant']    = 'dark';
 $aOptions['background'] = 'dark';
 
 echo $this->navigation()->navbar()->render($oNavigationContainer, $aOptions);
-echo PHP_EOL.'<br/>'.PHP_EOL;
+echo PHP_EOL.'<br/>';
 
 // Navbar dark, background primary
 $aOptions['variant']    = 'dark';
 $aOptions['background'] = 'primary';
 
 echo $this->navigation()->navbar()->render($oNavigationContainer, $aOptions);
-echo PHP_EOL.'<br/>'.PHP_EOL;
+echo PHP_EOL.'<br/>';
 
 // Navbar light, custom background-color
 $aOptions['variant']    = 'dark';
@@ -321,7 +321,7 @@ echo $this->navigation()->navbar()->render(
     ]
 );
 
-echo PHP_EOL.'<br/>'.PHP_EOL;
+echo PHP_EOL.'<br/>';
 
 echo $this->navigation()->navbar()->render(
     new \Laminas\Navigation\Navigation(),
@@ -379,7 +379,7 @@ foreach ([
             'expand'    => false,
         ]
     );
-    echo PHP_EOL.'<br/>'.PHP_EOL;
+    echo PHP_EOL.'<br/>';
 }
 
 ```

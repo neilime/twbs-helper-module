@@ -44,7 +44,7 @@ foreach ([
             'variant' => $sVariant,
         ]
     );
-    echo $this->formButton($oButton).PHP_EOL;
+    echo $this->formButton($oButton);
 }
 
 ```
@@ -74,7 +74,7 @@ $oButton = new \Laminas\Form\Element\Button(
     ]
 );
 $oButton->setAttribute('href', '#');
-echo $this->formButton($oButton).PHP_EOL;
+echo $this->formButton($oButton);
 
 // Submit button
 $oButton = new \Laminas\Form\Element\Submit(
@@ -84,7 +84,7 @@ $oButton = new \Laminas\Form\Element\Submit(
         'variant' => 'primary',
     ]
 );
-echo $this->formButton($oButton).PHP_EOL;
+echo $this->formButton($oButton);
 
 ```
 
@@ -126,7 +126,7 @@ foreach ([
             'variant' => 'outline-'.$sVariant,
         ]
     );
-    echo $this->formButton($oButton).PHP_EOL;
+    echo $this->formButton($oButton);
 }
 
 ```
@@ -162,7 +162,7 @@ $oButton = new \Laminas\Form\Element\Button(
         'size'    => 'lg',
     ]
 );
-echo $this->formButton($oButton).PHP_EOL;
+echo $this->formButton($oButton);
 
 $oButton = new \Laminas\Form\Element\Button(
     'large-button',
@@ -171,9 +171,9 @@ $oButton = new \Laminas\Form\Element\Button(
         'size'  => 'lg',
     ]
 );
-echo $this->formButton($oButton).PHP_EOL;
+echo $this->formButton($oButton);
 
-echo '<br/><br/>'.PHP_EOL;
+echo '<br/><br/>';
 
 // Small buttons
 $oButton = new \Laminas\Form\Element\Button(
@@ -184,7 +184,7 @@ $oButton = new \Laminas\Form\Element\Button(
         'size'    => 'sm',
     ]
 );
-echo $this->formButton($oButton).PHP_EOL;
+echo $this->formButton($oButton);
 
 $oButton = new \Laminas\Form\Element\Button(
     'small-button',
@@ -193,9 +193,9 @@ $oButton = new \Laminas\Form\Element\Button(
         'size'  => 'sm',
     ]
 );
-echo $this->formButton($oButton).PHP_EOL;
+echo $this->formButton($oButton);
 
-echo '<br/><br/>'.PHP_EOL;
+echo '<br/><br/>';
 
 // Block level buttons
 $oButton = new \Laminas\Form\Element\Button(
@@ -207,7 +207,7 @@ $oButton = new \Laminas\Form\Element\Button(
         'block'   => true,
     ]
 );
-echo $this->formButton($oButton).PHP_EOL;
+echo $this->formButton($oButton);
 
 $oButton = new \Laminas\Form\Element\Button(
     'block-level-button',
@@ -217,7 +217,7 @@ $oButton = new \Laminas\Form\Element\Button(
         'block' => true,
     ]
 );
-echo $this->formButton($oButton).PHP_EOL;
+echo $this->formButton($oButton);
 
 ```
 
