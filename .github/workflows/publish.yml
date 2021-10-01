@@ -22,7 +22,7 @@ jobs:
         run: yarn
 
       - name: 🔑 Add key to allow access to repository
-        uses: webfactory/ssh-agent@v0.5.0
+        uses: webfactory/ssh-agent@v0.5.3
         with:
           ssh-private-key: ${{ secrets.GH_PAGES_DEPLOY }}
 
