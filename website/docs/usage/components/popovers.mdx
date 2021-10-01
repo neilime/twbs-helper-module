@@ -1,0 +1,164 @@
+---
+sidebar_position: 18
+label: Popovers
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../src/components/HtmlCode.tsx";
+
+# Popovers
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/popovers/)
+
+## Example
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/popovers/#example)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<button type="button" name="popover" title="Popover title" class="btn btn-danger btn-lg" data-toggle="popover" data-content="And here's some amazing content. It's very engaging. Right?" value="">Click to toggle popover</button>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->formButton(
+    [
+        'name'       => 'popover',
+        'options'    => [
+            'label'   => 'Click to toggle popover',
+            'variant' => 'danger',
+            'popover' => 'And here\'s some amazing content. It\'s very engaging. Right?',
+            'size'    => 'lg',
+        ],
+        'attributes' => ['title' => 'Popover title'],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+## Four directions
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/popovers/#four-directions)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<button type="button" name="popover" class="btn btn-secondary" data-toggle="popover" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-placement="top" data-container="body" value="">Popover on top</button>
+<button type="button" name="popover" class="btn btn-secondary" data-toggle="popover" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-placement="right" data-container="body" value="">Popover on right</button>
+<button type="button" name="popover" class="btn btn-secondary" data-toggle="popover" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-placement="bottom" data-container="body" value="">Popover on bottom</button>
+<button type="button" name="popover" class="btn btn-secondary" data-toggle="popover" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-placement="left" data-container="body" value="">Popover on left</button>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+foreach ([
+    'top'    => 'Popover on top',
+    'right'  => 'Popover on right',
+    'bottom' => 'Popover on bottom',
+    'left'   => 'Popover on left',
+] as $sPlacement => $sButtonLabel) {
+    echo $this->formButton(
+        [
+            'name'    => 'popover',
+            'options' => [
+                'label'   => $sButtonLabel,
+                'popover' => [
+                    'placement' => $sPlacement,
+                    'content'   => 'Vivamus sagittis lacus vel augue laoreet rutrum faucibus.',
+                ],
+            ],
+        ]
+    );
+}
+
+```
+
+</TabItem>
+</Tabs>
+
+## Dismiss on next click
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/popovers/#dismiss-on-next-click)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<a title="Dismissible popover" tabindex="0" class="btn btn-danger btn-lg" role="button" data-toggle="popover" data-content="And here's some amazing content. It's very engaging. Right?" data-trigger="focus">Dismissible popover</a>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->formButton(
+    [
+        'name'       => 'popover',
+        'options'    => [
+            'tag'     => 'a',
+            'label'   => 'Dismissible popover',
+            'variant' => 'danger',
+            'popover' => [
+                'trigger' => 'focus',
+                'content' => 'And here\'s some amazing content. It\'s very engaging. Right?',
+            ],
+            'size'    => 'lg',
+        ],
+        'attributes' => [
+            'title'    => 'Dismissible popover',
+            'tabindex' => '0',
+        ],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+## Disabled elements
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/popovers/#disabled-elements)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<span class="d-inline-block" data-content="Disabled popover" data-toggle="popover" tabindex="0">
+  <button type="button" name="popover" disabled="disabled" class="btn btn-primary" style="pointer-events: none;" value="">Disabled button</button>
+</span>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->formButton(
+    [
+        'name'       => 'popover',
+        'options'    => [
+            'label'   => 'Disabled button',
+            'variant' => 'primary',
+            'popover' => 'Disabled popover',
+        ],
+        'attributes' => ['disabled' => true],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+

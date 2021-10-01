@@ -26,12 +26,23 @@ if (false === (include $sPHPCodeSnifferAutoloadPath)) {
     ));
 }
 
-putenv('BOOTSTRAP_VERSION=4.5');
 
-$oHomePageGenerator = new \DocumentationGenerator\HomePageGenerator(
+$sRootDirPath = dirname(__DIR__);
+$sBootstrapVersion = '4.5';
+$iMaxNestedDir = 2;
+
+$oConfiguration = new \DocumentationGenerator\Configuration(
+    $sRootDirPath,
+    $sBootstrapVersion,
+    $iMaxNestedDir,
     new \DocumentationGenerator\FileSystem\Local\File()
 );
+
+$oHomePageGenerator = new \DocumentationGenerator\HomePageGenerator($oConfiguration);
 $oHomePageGenerator->generate();
 
-$oUsagePagesGenerator = new \DocumentationGenerator\UsagePage\UsagePagesGenerator();
+$oUsagePagesGenerator = new \DocumentationGenerator\UsagePage\UsagePagesGenerator(
+    $oConfiguration,
+    \TestSuite\Documentation\DocumentationTestConfigsLoader::loadDocumentationTestConfigs(),
+);
 $oUsagePagesGenerator->generate();

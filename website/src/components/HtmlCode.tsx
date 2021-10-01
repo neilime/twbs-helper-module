@@ -45,15 +45,17 @@ const HtmlCode: FunctionComponent<IProps> = ({
         crossorigin="anonymous"
       />
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@${bootstrapVersion}/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-      <script type="text/javascript">
-        $(function () {
-          $('[data-toggle="popover"]').popover();
-        })
-      </script>
-    </head>
-    <body><div></div></body>
+      </head>
+      <body>
+        <div></div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@${bootstrapVersion}/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+          $(function () {
+            $('[data-toggle="popover"]').popover();
+          })
+        </script>
+    </body>
   </html>`;
 
   return (

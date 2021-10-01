@@ -70,6 +70,7 @@
     "test": "phpunit --colors --configuration tests/phpunit.xml",
     "test:update-snapshot": "@test -d --update-snapshots",
     "test:ci": "@test -d pcov.enabled=1 -d max_execution_time=0 --coverage-text --coverage-clover ./build/logs/clover.xml --coverage-html ./build/coverage/",
+    "generate-docs": "php scripts/generateDocumentation.php",
     "cs": "phpcs",
     "cbf": "phpcbf",
     "stan": "phpstan analyse --level 5 src",

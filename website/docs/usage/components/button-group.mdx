@@ -1,0 +1,488 @@
+---
+sidebar_position: 5
+label: Button group
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../src/components/HtmlCode.tsx";
+
+# Button group
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/button-group/)
+
+## Basic example
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/button-group/#basic-example)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div aria-label="Basic example" class="btn-group" role="group">
+    <button type="button" name="left" class="btn btn-secondary" value="">Left</button>
+    <button type="button" name="middle" class="btn btn-secondary" value="">Middle</button>
+    <button type="button" name="right" class="btn btn-secondary" value="">Right</button>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->buttonGroup(
+    [
+    // Create button via \Laminas\Form\Factory
+        [
+            'type'    => 'button',
+            'name'    => 'left',
+            'options' => ['label' => 'Left'],
+        ],
+        // Button object
+        new \Laminas\Form\Element\Button('middle', ['label' => 'Middle']),
+        [
+            'type'    => 'button',
+            'name'    => 'right',
+            'options' => ['label' => 'Right'],
+        ],
+    ],
+    [
+        'attributes' => [
+            'role'       => 'group',
+            'aria-label' => 'Basic example',
+        ],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+## Button toolbar
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/button-group/#button-toolbar)
+
+### Combine sets of button groups
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div aria-label="Toolbar with button groups" class="btn-toolbar" role="toolbar">
+    <div aria-label="First group" class="btn-group mr-2" role="group">
+        <button type="button" name="1" class="btn btn-secondary" value="">1</button>
+        <button type="button" name="2" class="btn btn-secondary" value="">2</button>
+        <button type="button" name="3" class="btn btn-secondary" value="">3</button>
+        <button type="button" name="4" class="btn btn-secondary" value="">4</button>
+    </div>
+    <div aria-label="Second group" class="btn-group mr-2" role="group">
+        <button type="button" name="5" class="btn btn-secondary" value="">5</button>
+        <button type="button" name="6" class="btn btn-secondary" value="">6</button>
+        <button type="button" name="7" class="btn btn-secondary" value="">7</button>
+    </div>
+    <div aria-label="Third group" class="btn-group mr-2" role="group">
+        <button type="button" name="8" class="btn btn-secondary" value="">8</button>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->buttonToolbar(
+    [
+        [
+            'buttons' => [
+                new \Laminas\Form\Element\Button('1', ['label' => '1']),
+                new \Laminas\Form\Element\Button('2', ['label' => '2']),
+                new \Laminas\Form\Element\Button('3', ['label' => '3']),
+                new \Laminas\Form\Element\Button('4', ['label' => '4']),
+            ],
+            'options' => [
+                'attributes' => [
+                    'role'       => 'group',
+                    'aria-label' => 'First group',
+                    'class'      => 'mr-2',
+                ],
+            ],
+        ],
+        [
+            'buttons' => [
+                new \Laminas\Form\Element\Button('5', ['label' => '5']),
+                new \Laminas\Form\Element\Button('6', ['label' => '6']),
+                new \Laminas\Form\Element\Button('7', ['label' => '7']),
+            ],
+            'options' => [
+                'attributes' => [
+                    'role'       => 'group',
+                    'aria-label' => 'Second group',
+                    'class'      => 'mr-2',
+                ],
+            ],
+        ],
+        [
+            'buttons' => [
+                new \Laminas\Form\Element\Button('8', ['label' => '8']),
+            ],
+            'options' => [
+                'attributes' => [
+                    'role'       => 'group',
+                    'aria-label' => 'Third group',
+                    'class'      => 'mr-2',
+                ],
+            ],
+        ],
+    ],
+    [
+        'attributes' => [
+            'role'       => 'toolbar',
+            'aria-label' => 'Toolbar with button groups',
+        ],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+### Mix input groups with button groups
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div aria-label="Toolbar with button groups" class="btn-toolbar mb-3" role="toolbar">
+    <div aria-label="First group" class="btn-group mr-2" role="group">
+        <button type="button" name="1" class="btn btn-secondary" value="">1</button>
+        <button type="button" name="2" class="btn btn-secondary" value="">2</button>
+        <button type="button" name="3" class="btn btn-secondary" value="">3</button>
+        <button type="button" name="4" class="btn btn-secondary" value="">4</button>
+    </div>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <div class="input-group-text" id="btnGroupAddon">
+                @
+            </div>
+        </div>
+        <input type="text" name="input-group-example" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon" class="form-control" value=""></input>
+    </div>
+</div>
+<div aria-label="Toolbar with button groups" class="btn-toolbar justify-content-between" role="toolbar">
+    <div aria-label="First group" class="btn-group mr-2" role="group">
+        <button type="button" name="1" class="btn btn-secondary" value="">1</button>
+        <button type="button" name="2" class="btn btn-secondary" value="">2</button>
+        <button type="button" name="3" class="btn btn-secondary" value="">3</button>
+        <button type="button" name="4" class="btn btn-secondary" value="">4</button>
+    </div>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <div class="input-group-text" id="btnGroupAddon">
+                @
+            </div>
+        </div>
+        <input type="text" name="input-group-example" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon" class="form-control" value=""></input>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$aToolbarItems = [
+    [
+        'buttons' => [
+            new \Laminas\Form\Element\Button('1', ['label' => '1']),
+            new \Laminas\Form\Element\Button('2', ['label' => '2']),
+            new \Laminas\Form\Element\Button('3', ['label' => '3']),
+            new \Laminas\Form\Element\Button('4', ['label' => '4']),
+        ],
+        'options' => [
+            'attributes' => [
+                'role'       => 'group',
+                'aria-label' => 'First group',
+                'class'      => 'mr-2',
+            ],
+        ],
+    ],
+    [
+        'type'       => \Laminas\Form\Element\Text::class,
+        'name'       => 'input-group-example',
+        'options'    => ['add_on_prepend' => '@'],
+        'attributes' => [
+            'placeholder'      => 'Input group example',
+            'aria-label'       => 'Input group example',
+            'aria-describedby' => 'btnGroupAddon',
+        ],
+    ],
+];
+
+echo $this->buttonToolbar(
+    $aToolbarItems,
+    [
+        'attributes' => [
+            'role'       => 'toolbar',
+            'aria-label' => 'Toolbar with button groups',
+            'class'      => 'mb-3',
+        ],
+    ]
+);
+
+// Justified content
+echo $this->buttonToolbar(
+    $aToolbarItems,
+    [
+        'attributes' => [
+            'role'       => 'toolbar',
+            'aria-label' => 'Toolbar with button groups',
+            'class'      => 'justify-content-between',
+        ],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+## Sizing
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/button-group/#sizing)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div aria-label="..." class="btn-group btn-group-lg" role="group">
+    <button type="button" name="left" class="btn btn-secondary" value="">Left</button>
+    <button type="button" name="middle" class="btn btn-secondary" value="">Middle</button>
+    <button type="button" name="right" class="btn btn-secondary" value="">Right</button>
+</div>
+<div aria-label="..." class="btn-group" role="group">
+    <button type="button" name="left" class="btn btn-secondary" value="">Left</button>
+    <button type="button" name="middle" class="btn btn-secondary" value="">Middle</button>
+    <button type="button" name="right" class="btn btn-secondary" value="">Right</button>
+</div>
+<div aria-label="..." class="btn-group btn-group-sm" role="group">
+    <button type="button" name="left" class="btn btn-secondary" value="">Left</button>
+    <button type="button" name="middle" class="btn btn-secondary" value="">Middle</button>
+    <button type="button" name="right" class="btn btn-secondary" value="">Right</button>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+foreach (['lg', null, 'sm'] as $sSize) {
+    echo $this->buttonGroup(
+        [
+            new \Laminas\Form\Element\Button('left', ['label' => 'Left']),
+            new \Laminas\Form\Element\Button('middle', ['label' => 'Middle']),
+            new \Laminas\Form\Element\Button('right', ['label' => 'Right']),
+        ],
+        [
+            'size'       => $sSize,
+            'attributes' => [
+                'role'       => 'group',
+                'aria-label' => '...',
+            ],
+        ]
+    );
+}
+
+```
+
+</TabItem>
+</Tabs>
+
+## Nesting
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/button-group/#nesting)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div aria-label="Button group with nested dropdown" class="btn-group" role="group">
+    <button type="button" name="1" class="btn btn-secondary" value="">1</button>
+    <button type="button" name="2" class="btn btn-secondary" value="">2</button>
+    <div class="btn-group" role="group">
+        <button type="button" name="dropdown" id="btnGroupDrop1" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="btn btn-secondary dropdown-toggle" value="">Dropdown</button>
+        <div aria-labelledby="btnGroupDrop1" class="dropdown-menu">
+            <a class="dropdown-item" href="#">Dropdown link</a>
+            <a class="dropdown-item" href="#">Dropdown link</a>
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->buttonGroup(
+    [
+        [
+            'type'    => \Laminas\Form\Element\Button::class,
+            'name'    => '1',
+            'options' => ['label' => '1'],
+        ],
+        [
+            'type'    => \Laminas\Form\Element\Button::class,
+            'name'    => '2',
+            'options' => ['label' => '2'],
+        ],
+        [
+            'type'       => \Laminas\Form\Element\Button::class,
+            'name'       => 'dropdown',
+            'options'    => [
+                'label'    => 'Dropdown',
+                'dropdown' => [
+                    'Dropdown link',
+                    'Dropdown link',
+                ],
+            ],
+            'attributes' => ['id' => 'btnGroupDrop1'],
+        ],
+    ],
+    [
+        'attributes' => [
+            'role'       => 'group',
+            'aria-label' => 'Button group with nested dropdown',
+        ],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+## Vertical variation
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/button-group/#vertical-variation)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="btn-group-vertical">
+    <button type="button" name="button" class="btn btn-secondary" value="">Button</button>
+    <button type="button" name="button" class="btn btn-secondary" value="">Button</button>
+    <button type="button" name="button" class="btn btn-secondary" value="">Button</button>
+    <button type="button" name="button" class="btn btn-secondary" value="">Button</button>
+    <button type="button" name="button" class="btn btn-secondary" value="">Button</button>
+    <button type="button" name="button" class="btn btn-secondary" value="">Button</button>
+</div>
+<div class="btn-group-vertical">
+    <button type="button" name="button" class="btn btn-secondary" value="">Button</button>
+    <button type="button" name="button" class="btn btn-secondary" value="">Button</button>
+    <div class="btn-group" role="group">
+        <button type="button" name="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="btn btn-secondary dropdown-toggle" value="">Dropdown</button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Dropdown link</a>
+            <a class="dropdown-item" href="#">Dropdown link</a>
+        </div>
+    </div>
+    <button type="button" name="button" class="btn btn-secondary" value="">Button</button>
+    <button type="button" name="button" class="btn btn-secondary" value="">Button</button>
+    <div class="btn-group" role="group">
+        <button type="button" name="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="btn btn-secondary dropdown-toggle" value="">Dropdown</button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Dropdown link</a>
+            <a class="dropdown-item" href="#">Dropdown link</a>
+        </div>
+    </div>
+    <div class="btn-group" role="group">
+        <button type="button" name="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="btn btn-secondary dropdown-toggle" value="">Dropdown</button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Dropdown link</a>
+            <a class="dropdown-item" href="#">Dropdown link</a>
+        </div>
+    </div>
+    <div class="btn-group" role="group">
+        <button type="button" name="dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="btn btn-secondary dropdown-toggle" value="">Dropdown</button>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Dropdown link</a>
+            <a class="dropdown-item" href="#">Dropdown link</a>
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->buttonGroup(
+    [
+        new \Laminas\Form\Element\Button('button', ['label' => 'Button']),
+        new \Laminas\Form\Element\Button('button', ['label' => 'Button']),
+        new \Laminas\Form\Element\Button('button', ['label' => 'Button']),
+        new \Laminas\Form\Element\Button('button', ['label' => 'Button']),
+        new \Laminas\Form\Element\Button('button', ['label' => 'Button']),
+        new \Laminas\Form\Element\Button('button', ['label' => 'Button']),
+    ],
+    ['vertical' => true]
+);
+
+echo $this->buttonGroup(
+    [
+        new \Laminas\Form\Element\Button('button', ['label' => 'Button']),
+        new \Laminas\Form\Element\Button('button', ['label' => 'Button']),
+        new \Laminas\Form\Element\Button(
+            'dropdown',
+            [
+                'label'    => 'Dropdown',
+                'dropdown' => [
+                    'Dropdown link',
+                    'Dropdown link',
+                ],
+            ]
+        ),
+        new \Laminas\Form\Element\Button('button', ['label' => 'Button']),
+        new \Laminas\Form\Element\Button('button', ['label' => 'Button']),
+        new \Laminas\Form\Element\Button(
+            'dropdown',
+            [
+                'label'    => 'Dropdown',
+                'dropdown' => [
+                    'Dropdown link',
+                    'Dropdown link',
+                ],
+            ]
+        ),
+        new \Laminas\Form\Element\Button(
+            'dropdown',
+            [
+                'label'    => 'Dropdown',
+                'dropdown' => [
+                    'Dropdown link',
+                    'Dropdown link',
+                ],
+            ]
+        ),
+        new \Laminas\Form\Element\Button(
+            'dropdown',
+            [
+                'label'    => 'Dropdown',
+                'dropdown' => [
+                    'Dropdown link',
+                    'Dropdown link',
+                ],
+            ]
+        ),
+    ],
+    ['vertical' => true]
+);
+
+```
+
+</TabItem>
+</Tabs>
+

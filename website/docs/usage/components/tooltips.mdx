@@ -1,0 +1,102 @@
+---
+sidebar_position: 22
+label: Tooltips
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../src/components/HtmlCode.tsx";
+
+# Tooltips
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/tooltips/)
+
+## Examples
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/tooltips/#examples)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<button type="button" name="tooltip" class="btn btn-secondary" title="Tooltip on top" data-toggle="tooltip" data-placement="top" value="">Tooltip on top</button>
+<button type="button" name="tooltip" class="btn btn-secondary" title="Tooltip on right" data-toggle="tooltip" data-placement="right" value="">Tooltip on right</button>
+<button type="button" name="tooltip" class="btn btn-secondary" title="Tooltip on bottom" data-toggle="tooltip" data-placement="bottom" value="">Tooltip on bottom</button>
+<button type="button" name="tooltip" class="btn btn-secondary" title="Tooltip on left" data-toggle="tooltip" data-placement="left" value="">Tooltip on left</button>
+<button type="button" name="tooltip" class="btn btn-secondary" title="&lt;em&gt;Tooltip&lt;/em&gt; &lt;u&gt;with&lt;/u&gt; &lt;b&gt;HTML&lt;/b&gt;" data-toggle="tooltip" data-html="true" value="">Tooltip with HTML</button>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+foreach ([
+    'top'    => 'Tooltip on top',
+    'right'  => 'Tooltip on right',
+    'bottom' => 'Tooltip on bottom',
+    'left'   => 'Tooltip on left',
+] as $sPlacement => $sLabel) {
+    echo $this->formButton(
+        [
+            'name'    => 'tooltip',
+            'options' => [
+                'label'   => $sLabel,
+                'tooltip' => [
+                    'placement' => $sPlacement,
+                    'content'   => $sLabel,
+                ],
+            ],
+        ]
+    );
+}
+
+echo $this->formButton(
+    [
+        'name'    => 'tooltip',
+        'options' => [
+            'label'   => 'Tooltip with HTML',
+            'tooltip' => '<em>Tooltip</em> <u>with</u> <b>HTML</b>',
+        ],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+## Disabled elements
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/tooltips/#disabled-elements)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<span class="d-inline-block" data-toggle="tooltip" tabindex="0" title="Disabled tooltip">
+  <button type="button" name="tooltip" disabled="disabled" class="btn btn-primary" style="pointer-events: none;" value="">Disabled button</button>
+</span>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->formButton(
+    [
+        'name'       => 'tooltip',
+        'options'    => [
+            'label'   => 'Disabled button',
+            'tooltip' => 'Disabled tooltip',
+            'variant' => 'primary',
+        ],
+        'attributes' => [    'disabled' => true    ],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+

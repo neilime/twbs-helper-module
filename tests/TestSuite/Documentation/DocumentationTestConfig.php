@@ -4,11 +4,28 @@ namespace TestSuite\Documentation;
 
 class DocumentationTestConfig
 {
+    public static $TITLE_SEPARATOR = ' / ';
     public $title;
     public $url;
     public $rendering;
     public $tests = [];
     public $position = 1;
+
+    public function getShortTitle()
+    {
+        $aTitleParts = $this->getTitleParts();
+        return array_pop($aTitleParts);
+    }
+
+    public function getNestedPosition()
+    {
+        return count($this->getTitleParts());
+    }
+
+    public function getTitleParts()
+    {
+        return explode(self::$TITLE_SEPARATOR, $this->title);
+    }
 
     public static function fromArray(
         array $aTestConfig,
@@ -23,7 +40,8 @@ class DocumentationTestConfig
         $oDocumentationTestConfig->title = $aTestConfig['title'];
 
         if ($oParentConfig) {
-            $oDocumentationTestConfig->title = trim($oParentConfig->title . ' / ' . $oDocumentationTestConfig->title);
+            $sTitle = trim($oParentConfig->title . self::$TITLE_SEPARATOR . $oDocumentationTestConfig->title);
+            $oDocumentationTestConfig->title = $sTitle;
         }
 
         if (isset($aTestConfig['url'])) {
@@ -57,7 +75,6 @@ class DocumentationTestConfig
             $iPosition = 1;
             foreach ($aTestConfig['tests'] as $aNestedTestsConfig) {
                 $oNestedTestsConfig = static::fromArray($aNestedTestsConfig, $oDocumentationTestConfig);
-                ;
                 $oNestedTestsConfig->position = $iPosition;
                 $iPosition++;
 

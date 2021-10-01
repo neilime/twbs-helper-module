@@ -4,35 +4,43 @@ namespace DocumentationGenerator\UsagePage;
 
 class UsagePageGenerator
 {
-    private $printers = [];
+    /**
+     * @var array
+     */
+    private $printers = [
+        \DocumentationGenerator\UsagePage\Printer\HeadPrinter::class,
+        \DocumentationGenerator\UsagePage\Printer\TitlePrinter::class,
+        \DocumentationGenerator\UsagePage\Printer\UrlPrinter::class,
+        \DocumentationGenerator\UsagePage\Printer\CodePrinter::class,
+    ];
+
+    /**
+     * @var \DocumentationGenerator\Configuration
+     */
+    private $configuration;
 
     /**
      * @var \TestSuite\Documentation\DocumentationTestConfig
      */
     private $testConfig;
-
-    public function __construct(\TestSuite\Documentation\DocumentationTestConfig $oTestConfig)
-    {
+    public function __construct(
+        \DocumentationGenerator\Configuration $oConfiguration,
+        \TestSuite\Documentation\DocumentationTestConfig $oTestConfig
+    ) {
+        $this->configuration = $oConfiguration;
         $this->testConfig = $oTestConfig;
-
-        $this->printers = [
-            \DocumentationGenerator\UsagePage\Printer\HeadPrinter::class,
-            \DocumentationGenerator\UsagePage\Printer\TitlePrinter::class,
-            \DocumentationGenerator\UsagePage\Printer\UrlPrinter::class,
-            \DocumentationGenerator\UsagePage\Printer\CodePrinter::class,
-        ];
     }
 
     public function generate()
     {
         $sPagePath = $this->createPageFile();
 
-        if (!$sPagePath || !$this->testConfig->rendering) {
+        if (!$sPagePath) {
             return;
         }
 
         foreach ($this->printers as $sPrinterClass) {
-            $oPrinter = new $sPrinterClass($this->testConfig, $sPagePath);
+            $oPrinter = new $sPrinterClass($this->configuration, $this->testConfig, $sPagePath);
             $oPrinter->printContentToPage();
         }
     }
@@ -40,6 +48,7 @@ class UsagePageGenerator
     private function createPageFile()
     {
         $oUsagePageDirectoryGenerator = new \DocumentationGenerator\UsagePage\UsagePageFileGenerator(
+            $this->configuration,
             $this->testConfig
         );
         return $oUsagePageDirectoryGenerator->generate();

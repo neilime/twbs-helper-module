@@ -13,7 +13,16 @@ class PhpPrettifierTest extends \PHPUnit\Framework\TestCase
 
     public function setUp(): void
     {
-        $this->phpPrettifier = new \DocumentationGenerator\UsagePage\Prettifier\PhpPrettifier();
+
+        $this->file = $this->createMock(\DocumentationGenerator\FileSystem\File::class);
+        $oConfiguration = new \DocumentationGenerator\Configuration(
+            __DIR__ . '/../../../../..',
+            'x.x',
+            2,
+            $this->file
+        );
+
+        $this->phpPrettifier = \DocumentationGenerator\UsagePage\Prettifier\PhpPrettifier::getInstance($oConfiguration);
     }
 
     public function testPrettifyShouldSetProperIndentation()

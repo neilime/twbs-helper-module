@@ -4,13 +4,29 @@ namespace DocumentationGenerator\UsagePage;
 
 class UsagePagesGenerator
 {
-    private static $USAGE_DIR_PATH = __DIR__ . '/../../../website/docs/usage';
+    private static $USAGE_DIR_PATH = 'website/docs/usage';
+
+    /**
+     * @var \DocumentationGenerator\Configuration
+     */
+    private $configuration;
+
+    /**
+     * @var \TestSuite\Documentation\DocumentationTestConfig[]
+     */
+    private $testConfigs;
+
+    public function __construct(\DocumentationGenerator\Configuration $oConfiguration, $aTestConfigs)
+    {
+        $this->configuration = $oConfiguration;
+        $this->testConfigs = $aTestConfigs;
+    }
 
     public function generate()
     {
         $this->cleanUsagePages();
-        $aTestConfigs = \TestSuite\Documentation\DocumentationTestConfigsLoader::loadDocumentationTestConfigs();
-        foreach ($aTestConfigs as $oTestConfig) {
+
+        foreach ($this->testConfigs as $oTestConfig) {
             try {
                 $this->parseTestsConfig($oTestConfig);
             } catch (\Exception $oException) {
@@ -25,8 +41,26 @@ class UsagePagesGenerator
 
     private function cleanUsagePages()
     {
-        $this->rrmdir(self::$USAGE_DIR_PATH . DIRECTORY_SEPARATOR . 'components');
-        $this->rrmdir(self::$USAGE_DIR_PATH . DIRECTORY_SEPARATOR . 'content');
+        $sUsageDirPath = $this->getUsageDirPath();
+        $aUsageDirectories = array_diff(scandir($sUsageDirPath), ['..', '.']);
+
+        foreach ($aUsageDirectories as $sDirectoryName) {
+            $sDirectoryPath = $sUsageDirPath . DIRECTORY_SEPARATOR . $sDirectoryName;
+            if (is_dir($sDirectoryPath)) {
+                $this->rrmdir($sDirectoryPath);
+            }
+        }
+    }
+
+    private function getUsageDirPath()
+    {
+        $sUsageDirPath = $this->configuration->getRootDirPath() . DIRECTORY_SEPARATOR . self::$USAGE_DIR_PATH;
+
+        if (!is_dir($sUsageDirPath)) {
+            throw new \LogicException('Usage dir path "' . $sUsageDirPath . '" does not exist');
+        }
+
+        return realpath($sUsageDirPath);
     }
 
     private function rrmdir($path)
@@ -56,7 +90,10 @@ class UsagePagesGenerator
      */
     private function generateDocPageFromTest(\TestSuite\Documentation\DocumentationTestConfig $oTestConfig)
     {
-        $oUsagePageGenerator = new \DocumentationGenerator\UsagePage\UsagePageGenerator($oTestConfig);
+        $oUsagePageGenerator = new \DocumentationGenerator\UsagePage\UsagePageGenerator(
+            $this->configuration,
+            $oTestConfig
+        );
         $oUsagePageGenerator->generate();
     }
 }

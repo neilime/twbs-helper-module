@@ -4,12 +4,14 @@ namespace DocumentationGenerator\UsagePage\Prettifier;
 
 class PhpPrettifier
 {
-    private static $CONFIGURATION_PATH = __DIR__ . '/../../../../phpcs.xml';
+    private static $instance = null;
+
+    private static $CONFIGURATION_PATH = 'phpcs.xml';
 
     private $config;
     private $ruleset;
 
-    public function __construct()
+    private function __construct(\DocumentationGenerator\Configuration $oConfiguration)
     {
         if (defined('PHP_CODESNIFFER_VERBOSITY') === false) {
             define('PHP_CODESNIFFER_VERBOSITY', false);
@@ -18,18 +20,33 @@ class PhpPrettifier
             define('PHP_CODESNIFFER_CBF', true);
         }
 
-        $this->config = new \PHP_CodeSniffer\Config([
-            self::$CONFIGURATION_PATH
+        $oConfig = new \PHP_CodeSniffer\Config([
+            $oConfiguration->getRootDirPath() . DIRECTORY_SEPARATOR . self::$CONFIGURATION_PATH
         ]);
-        $this->config->stdin = true;
-        $this->config->standards = ['Squiz'];
+        $oConfig->stdin = true;
+        $oConfig->standards = ['Squiz'];
 
         $oRunner = new \PHP_CodeSniffer\Runner();
-        $oRunner->config = $this->config;
+        $oRunner->config = $oConfig;
         $oRunner->init();
 
+        $this->config = $oConfig;
         $this->ruleset = $oRunner->ruleset;
     }
+
+    /**
+     * gets the instance via lazy initialization (created on first usage)
+     */
+    public static function getInstance(
+        \DocumentationGenerator\Configuration $oConfiguration
+    ): \DocumentationGenerator\UsagePage\Prettifier\PhpPrettifier {
+        if (static::$instance === null) {
+            static::$instance = new static($oConfiguration);
+        }
+
+        return static::$instance;
+    }
+
 
     public function prettify($sSource)
     {
