@@ -6,11 +6,27 @@ class UsagePagesGenerator
 {
     private static $USAGE_DIR_PATH = __DIR__ . '/../../../website/docs/usage';
 
+    /**
+     * @var \DocumentationGenerator\Configuration
+     */
+    private $configuration;
+
+    /**
+     * @var \TestSuite\Documentation\DocumentationTestConfig[]
+     */
+    private $testConfigs;
+
+    public function __construct(\DocumentationGenerator\Configuration $oConfiguration, $aTestConfigs)
+    {
+        $this->configuration = $oConfiguration;
+        $this->testConfigs = $aTestConfigs;
+    }
+
     public function generate()
     {
         $this->cleanUsagePages();
-        $aTestConfigs = \TestSuite\Documentation\DocumentationTestConfigsLoader::loadDocumentationTestConfigs();
-        foreach ($aTestConfigs as $oTestConfig) {
+
+        foreach ($this->testConfigs as $oTestConfig) {
             try {
                 $this->parseTestsConfig($oTestConfig);
             } catch (\Exception $oException) {
@@ -56,7 +72,7 @@ class UsagePagesGenerator
      */
     private function generateDocPageFromTest(\TestSuite\Documentation\DocumentationTestConfig $oTestConfig)
     {
-        $oUsagePageGenerator = new \DocumentationGenerator\UsagePage\UsagePageGenerator($oTestConfig);
+        $oUsagePageGenerator = new \DocumentationGenerator\UsagePage\UsagePageGenerator($this->configuration, $oTestConfig);
         $oUsagePageGenerator->generate();
     }
 }

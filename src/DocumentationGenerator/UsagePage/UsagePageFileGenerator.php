@@ -4,14 +4,17 @@ namespace DocumentationGenerator\UsagePage;
 
 class UsagePageFileGenerator
 {
-
-    private static $MAX_NESTED_DIR = 3;
     private static $USAGE_PAGE_DIRECTORY_TEMPLATE = '{
     "label": "%s",
     "position": %d
 }';
 
     private static $USAGE_DIR_PATH = __DIR__ . '/../../../website/docs/usage';
+
+    /**
+     * @var \DocumentationGenerator\Configuration
+     */
+    private $configuration;
 
     /**
      * @var \TestSuite\Documentation\DocumentationTestConfig
@@ -23,15 +26,17 @@ class UsagePageFileGenerator
      */
     private $pagePathInfo;
 
-    public function __construct(\TestSuite\Documentation\DocumentationTestConfig $oTestConfig)
+
+    public function __construct(\DocumentationGenerator\Configuration $oConfiguration, \TestSuite\Documentation\DocumentationTestConfig $oTestConfig)
     {
+        $this->configuration = $oConfiguration;
         $this->testConfig = $oTestConfig;
         $this->pagePathInfo = $this->getPagePathInfo();
     }
 
     private function getPagePathInfo()
     {
-        $aTitleParts = explode(' / ', $this->testConfig->title);
+        $aTitleParts = $this->testConfig->getTitleParts();
 
         if (!is_dir(self::$USAGE_DIR_PATH)) {
             throw new \LogicException('Usage dir path "' . self::$USAGE_DIR_PATH . '" does not exist');
@@ -39,7 +44,8 @@ class UsagePageFileGenerator
 
         $sDirName = $sPageDirPath = realpath(self::$USAGE_DIR_PATH);
 
-        for ($iIterator = 0; $iIterator < self::$MAX_NESTED_DIR; $iIterator++) {
+        $iMaxNestedDir = $this->configuration->getMaxNestedDir();
+        for ($iIterator = 1; $iIterator < $iMaxNestedDir; $iIterator++) {
             if (!empty($aTitleParts)) {
                 $sDirName = array_shift($aTitleParts);
                 $sPageDirPath = $sPageDirPath . DIRECTORY_SEPARATOR . $this->sanitizePath($sDirName);
@@ -51,17 +57,9 @@ class UsagePageFileGenerator
         $oPageInfo = new \DocumentationGenerator\UsagePage\PagePathInfo();
         $oPageInfo->dirName = $sDirName;
         $oPageInfo->dirPath = $sPageDirPath;
-
-        if (!empty($aTitleParts)) {
-            $oPageInfo->pageName = array_shift($aTitleParts);
-            $sPageFileName = $this->sanitizePath($oPageInfo->pageName) . '.mdx';
-            $oPageInfo->pagePath = $oPageInfo->dirPath . DIRECTORY_SEPARATOR . $sPageFileName;
-        } else {
-            $oPageInfo->pageName = $oPageInfo->dirName;
-            $oPageInfo->pagePath = dirname($oPageInfo->dirPath) . DIRECTORY_SEPARATOR . 'index.mdx';
-        }
-
-
+        $oPageInfo->pageName = array_shift($aTitleParts);
+        $sPageFileName = $this->sanitizePath($oPageInfo->pageName) . '.mdx';
+        $oPageInfo->pagePath = $oPageInfo->dirPath . DIRECTORY_SEPARATOR . $sPageFileName;
 
         return $oPageInfo;
     }

@@ -4,10 +4,12 @@ namespace DocumentationGenerator\UsagePage\Printer;
 
 class CodePrinter extends \DocumentationGenerator\UsagePage\Printer\AbstractPrinter
 {
-    use \DocumentationGenerator\BootstrapVersionTrait;
-
     private static $CODE_TEMPLATE = '<Tabs>
-<TabItem value="result" label="Result" default><HtmlCode bootstrapVersion="%s">%s</HtmlCode></TabItem>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="%s">
+      <div dangerouslySetInnerHTML={{ __html: `%s` }}></div>
+  </HtmlCode>
+</TabItem>
 <TabItem value="source" label="Source">
 
 ```php
@@ -23,7 +25,7 @@ class CodePrinter extends \DocumentationGenerator\UsagePage\Printer\AbstractPrin
             return;
         }
 
-        $sBootstrapVersion = $this->getBootstrapVersion();
+        $sBootstrapVersion = $this->configuration->getBootstrapVersion();
         $sSource = $this->getRenderingSource();
         $sRenderResult = $this->getRenderResult();
 

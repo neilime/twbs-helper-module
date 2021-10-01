@@ -9,4 +9,9 @@ class File implements \DocumentationGenerator\FileSystem\File
     {
         file_put_contents($sFilePath, $sFileContent);
     }
+
+    public function appendFile($sFilePath, $sFileContent)
+    {
+        file_put_contents($sFilePath, $sFileContent, FILE_APPEND);
+    }
 }

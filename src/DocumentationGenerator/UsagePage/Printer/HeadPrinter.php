@@ -4,13 +4,12 @@ namespace DocumentationGenerator\UsagePage\Printer;
 
 class HeadPrinter extends \DocumentationGenerator\UsagePage\Printer\AbstractPrinter
 {
-    use \DocumentationGenerator\BootstrapVersionTrait;
-
     private static $WEBSITE_PATH = __DIR__ . '/../../../../website/';
     private static $HTML_CODE_PATH = 'src/components/HtmlCode.tsx';
 
     private static $CODE_TEMPLATE = '---
 sidebar_position: %d
+label: %s
 ---
 
 import Tabs from "@theme/Tabs";
@@ -20,7 +19,7 @@ import HtmlCode from "%s";';
 
     public function getContentToPrint()
     {
-        if ($this->pageExists()) {
+        if (!$this->shouldWriteHead()) {
             return;
         }
 
@@ -28,13 +27,23 @@ import HtmlCode from "%s";';
 
         $sHtmlCodeRelativePath = $this->getHtmlCodeRelativePath();
 
-        $iSidebarPosition = $this->getSidebarPosition();
-
         return sprintf(
             self::$CODE_TEMPLATE,
-            $iSidebarPosition,
+            $this->testConfig->position,
+            $this->testConfig->getShortTitle(),
             $sHtmlCodeRelativePath,
         ) . PHP_EOL;
+    }
+
+    private function shouldWriteHead()
+    {
+        $bPageExists = file_exists($this->pagePath);
+        if ($bPageExists) {
+            return false;
+        }
+
+        $bIsNestedPage = $this->testConfig->getNestedPosition() >= $this->configuration->getMaxNestedDir();
+        return $bIsNestedPage;
     }
 
     private function getHtmlCodeRelativePath()
@@ -58,13 +67,5 @@ import HtmlCode from "%s";';
         ) . implode(DIRECTORY_SEPARATOR, $aFilePathParts);
 
         return $sWebsiteRelativePath . self::$HTML_CODE_PATH;
-    }
-
-    private function getSidebarPosition()
-    {
-
-        $bIsIndexPage = basename($this->pagePath) === 'index.mdx';
-
-        return $bIsIndexPage ? 0 : $this->testConfig->position;
     }
 }

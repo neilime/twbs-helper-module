@@ -1,0 +1,251 @@
+---
+sidebar_position: 17
+label: Pagination
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../src/components/HtmlCode.tsx";
+
+# Pagination
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/pagination/)
+
+
+
+## Overview
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/pagination/#overview)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="disabled page-item"><a class="page-link" href="#" tabindex="-1">Previous</a></li>
+        <li class="active page-item"><a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>
+        <li class="page-item"><a class="page-link" href="/test-route/2">2</a></li>
+        <li class="page-item"><a class="page-link" href="/test-route/3">3</a></li>
+        <li class="page-item"><a class="page-link" href="/test-route/2">Next</a></li>
+    </ul>
+</nav>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+// Create a paginator with 4 pages
+$oPaginator = new \Laminas\Paginator\Paginator(
+    new \Laminas\Paginator\Adapter\ArrayAdapter(
+        array_fill(
+            0,
+            30,
+            true
+        )
+    )
+);
+
+echo $this->paginationControl(
+    $oPaginator,
+    null,
+    null,
+    [
+        'attributes'   => ['aria-label' => 'Page navigation example'],
+        'previousLink' => 'Previous',
+        'nextLink'     => 'Next',
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+## Working with icons
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/pagination/#working-with-icons)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="disabled page-item"><a class="page-link" href="#" tabindex="-1">«</a></li>
+        <li class="active page-item"><a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>
+        <li class="page-item"><a class="page-link" href="/test-route/2">2</a></li>
+        <li class="page-item"><a class="page-link" href="/test-route/3">3</a></li>
+        <li class="page-item"><a class="page-link" href="/test-route/2">»</a></li>
+    </ul>
+</nav>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+// Create a paginator with 4 pages
+$oPaginator = new \Laminas\Paginator\Paginator(
+    new \Laminas\Paginator\Adapter\ArrayAdapter(
+        array_fill(
+            0,
+            30,
+            true
+        )
+    )
+);
+
+echo $this->paginationControl(
+    $oPaginator,
+    null,
+    null,
+    [
+        'previousLink' => '«',
+        'nextLink'     => '»',
+        'attributes'   => ['aria-label' => 'Page navigation example'],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+## Sizing
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/pagination/#sizing)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<nav aria-label="Page navigation example">
+    <ul class="pagination pagination-lg">
+        <li class="active page-item"><a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>
+        <li class="page-item"><a class="page-link" href="/test-route/2">2</a></li>
+        <li class="page-item"><a class="page-link" href="/test-route/3">3</a></li>
+    </ul>
+</nav>
+<nav aria-label="Page navigation example">
+    <ul class="pagination pagination-sm">
+        <li class="active page-item"><a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>
+        <li class="page-item"><a class="page-link" href="/test-route/2">2</a></li>
+        <li class="page-item"><a class="page-link" href="/test-route/3">3</a></li>
+    </ul>
+</nav>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+// Create a paginator with 4 pages
+$oPaginator = new \Laminas\Paginator\Paginator(
+    new \Laminas\Paginator\Adapter\ArrayAdapter(
+        array_fill(
+            0,
+            30,
+            true
+        )
+    )
+);
+
+echo $this->paginationControl(
+    $oPaginator,
+    null,
+    null,
+    [
+        'size'       => 'lg',
+        'attributes' => ['aria-label' => 'Page navigation example'],
+    ]
+);
+
+echo $this->paginationControl(
+    $oPaginator,
+    null,
+    null,
+    [
+        'size'       => 'sm',
+        'attributes' => ['aria-label' => 'Page navigation example'],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+## Alignment
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/pagination/#alignment)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<nav aria-label="Page navigation example">
+    <ul class="justify-content-center pagination">
+        <li class="disabled page-item"><a class="page-link" href="#" tabindex="-1">Previous</a></li>
+        <li class="active page-item"><a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>
+        <li class="page-item"><a class="page-link" href="/test-route/2">2</a></li>
+        <li class="page-item"><a class="page-link" href="/test-route/3">3</a></li>
+        <li class="page-item"><a class="page-link" href="/test-route/2">Next</a></li>
+    </ul>
+</nav>
+<nav aria-label="Page navigation example">
+    <ul class="justify-content-end pagination">
+        <li class="disabled page-item"><a class="page-link" href="#" tabindex="-1">Previous</a></li>
+        <li class="active page-item"><a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>
+        <li class="page-item"><a class="page-link" href="/test-route/2">2</a></li>
+        <li class="page-item"><a class="page-link" href="/test-route/3">3</a></li>
+        <li class="page-item"><a class="page-link" href="/test-route/2">Next</a></li>
+    </ul>
+</nav>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+// Create a paginator with 4 pages
+$oPaginator = new \Laminas\Paginator\Paginator(
+    new \Laminas\Paginator\Adapter\ArrayAdapter(
+        array_fill(
+            0,
+            30,
+            true
+        )
+    )
+);
+
+echo $this->paginationControl(
+    $oPaginator,
+    null,
+    null,
+    [
+        'alignment'    => 'center',
+        'previousLink' => 'Previous',
+        'nextLink'     => 'Next',
+        'attributes'   => ['aria-label' => 'Page navigation example'],
+    ]
+);
+
+echo $this->paginationControl(
+    $oPaginator,
+    null,
+    null,
+    [
+        'alignment'    => 'end',
+        'previousLink' => 'Previous',
+        'nextLink'     => 'Next',
+        'attributes'   => ['aria-label' => 'Page navigation example'],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>

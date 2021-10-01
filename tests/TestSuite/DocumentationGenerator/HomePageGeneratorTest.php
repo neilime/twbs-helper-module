@@ -6,7 +6,6 @@ class HomePageGeneratorTest extends \PHPUnit\Framework\TestCase
 {
     use \Spatie\Snapshots\MatchesSnapshots;
 
-
     /**
      * @var \MockObject
      */
@@ -20,7 +19,12 @@ class HomePageGeneratorTest extends \PHPUnit\Framework\TestCase
     public function setUp(): void
     {
         $this->file = $this->createMock(\DocumentationGenerator\FileSystem\File::class);
-        $this->homePageGenerator = new \DocumentationGenerator\HomePageGenerator($this->file);
+        $oConfiguration = new \DocumentationGenerator\Configuration(
+            'x.x',
+            2,
+            $this->file
+        );
+        $this->homePageGenerator = new \DocumentationGenerator\HomePageGenerator($oConfiguration);
     }
 
     public function testGenerate()

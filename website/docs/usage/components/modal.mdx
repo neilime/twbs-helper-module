@@ -1,0 +1,410 @@
+---
+sidebar_position: 14
+label: Modal
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../src/components/HtmlCode.tsx";
+
+# Modal
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/modal/)
+
+
+
+## Examples
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/modal/#examples)
+
+
+
+### Modal components
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/modal/#modal-components)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="modal" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" name="button" data-dismiss="modal" class="btn btn-secondary" value="">Close</button>
+                <button type="button" name="button" class="btn btn-primary" value="">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->modal(
+    [
+        'title' => 'Modal title',
+        'Modal body text goes here.',
+        'footer' => [
+            'button' => [
+                [
+                    'options'    => [
+                        'label'   => 'Close',
+                        'variant' => 'secondary',
+                    ],
+                    'attributes' => [    'data-dismiss' => 'modal'    ],
+                ],
+                [
+                    'options' => [
+                        'label'   => 'Save changes',
+                        'variant' => 'primary',
+                    ],
+                ],
+            ],
+        ]
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+### Scrolling long content
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/modal/#scrolling-long-content)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="modal" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
+                <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" name="button" data-dismiss="modal" class="btn btn-secondary" value="">Close</button>
+                <button type="button" name="button" class="btn btn-primary" value="">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+// You can also create a scrollable modal that allows scroll the modal body
+// by adding the option 'scrollable'
+echo $this->modal(
+    [
+        'title'  => 'Modal title',
+        'text'   => [
+            'Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac '.'facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, '.'vestibulum at eros.',
+            'Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sa'.'gittis lacus vel augue laoreet rutrum faucibus dolor auctor.',
+            'Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, '.'vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper '.'nulla non metus auctor fringilla.',
+            'Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac '.'facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, '.'vestibulum at eros.',
+            'Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sa'.'gittis lacus vel augue laoreet rutrum faucibus dolor auctor.',
+            'Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, '.'vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper '.'nulla non metus auctor fringilla.',
+            'Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac '.'facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, '.'vestibulum at eros.',
+            'Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sa'.'gittis lacus vel augue laoreet rutrum faucibus dolor auctor.',
+            'Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, '.'vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper '.'nulla non metus auctor fringilla.',
+            'Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac '.'facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, '.'vestibulum at eros.',
+            'Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sa'.'gittis lacus vel augue laoreet rutrum faucibus dolor auctor.',
+            'Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, '.'vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper '.'nulla non metus auctor fringilla.',
+            'Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac '.'facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, '.'vestibulum at eros.',
+            'Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sa'.'gittis lacus vel augue laoreet rutrum faucibus dolor auctor.',
+            'Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, '.'vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper '.'nulla non metus auctor fringilla.',
+            'Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac '.'facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, '.'vestibulum at eros.',
+            'Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sa'.'gittis lacus vel augue laoreet rutrum faucibus dolor auctor.',
+            'Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, '.'vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper '.'nulla non metus auctor fringilla.',
+        ],
+        'footer' => [
+            'button' => [
+                [
+                    'options'    => [
+                        'label'   => 'Close',
+                        'variant' => 'secondary',
+                    ],
+                    'attributes' => [    'data-dismiss' => 'modal'    ],
+                ],
+                [
+                    'options' => [
+                        'label'   => 'Save changes',
+                        'variant' => 'primary',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    ['scrollable' => true]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+### Vertically centered
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/modal/#vertically-centered)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="modal" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" name="button" data-dismiss="modal" class="btn btn-secondary" value="">Close</button>
+                <button type="button" name="button" class="btn btn-primary" value="">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->modal(
+    [
+        'title' => 'Modal title',
+        'Cras mattis consectetur purus sit amet fermentum. Cras justo odio, '.'dapibus ac facilisis in, egestas eget quam. Morbi leo risus, '.'porta ac consectetur ac, vestibulum at eros.',
+        'footer' => [
+            'button' => [
+                [
+                    'options'    => [
+                        'label'   => 'Close',
+                        'variant' => 'secondary',
+                    ],
+                    'attributes' => [    'data-dismiss' => 'modal'    ],
+                ],
+                [
+                    'options' => [
+                        'label'   => 'Save changes',
+                        'variant' => 'primary',
+                    ],
+                ],
+            ],
+        ]
+    ],
+    ['centered' => true]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+### Tooltips and popovers
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/modal/#tooltips-and-popovers)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="modal" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <h5>Popover in a modal</h5>
+                <p>This <a href="#" role="button" class="btn btn-secondary popover-test" title="Popover title" data-content="Popover body content is set in this attribute.">button</a> triggers a popover on click.</p>
+                <hr/>
+                <h5>Tooltips in a modal</h5>
+                <p><a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> have tooltips on hover.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" name="button" data-dismiss="modal" class="btn btn-secondary" value="">Close</button>
+                <button type="button" name="button" class="btn btn-primary" value="">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->modal(
+    [
+        'title' => 'Modal title',
+        [
+            'type'    => 'subtitle',
+            'content' => 'Popover in a modal',
+        ],
+        'This <a href="#" role="button" class="btn btn-secondary popover-test" '.'title="Popover title" data-content="Popover body content is set in this attribute.">'.'button</a> triggers a popover on click.',
+        '---',
+        [
+            'type'    => 'subtitle',
+            'content' => 'Tooltips in a modal',
+        ],
+        '<a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" '.'class="tooltip-test" title="Tooltip">that link</a> have tooltips on hover.',
+        'footer' => [
+            'button' => [
+                [
+                    'options'    => [
+                        'label'   => 'Close',
+                        'variant' => 'secondary',
+                    ],
+                    'attributes' => [    'data-dismiss' => 'modal'    ],
+                ],
+                [
+                    'options' => [
+                        'label'   => 'Save changes',
+                        'variant' => 'primary',
+                    ],
+                ],
+            ],
+        ]
+    ],
+    ['centered' => true]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+### Optional sizes
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/modal/#optional-sizes)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="bd-example-modal-xl fade modal" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Extra large modal</h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <p>...</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bd-example-modal-lg fade modal" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Large modal</h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <p>...</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bd-example-modal-sm fade modal" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Small modal</h5>
+                <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <p>...</p>
+            </div>
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->modal(
+    [
+        'title' => 'Extra large modal',
+        '...',
+    ],
+    [
+        'fade'  => true,
+        'size'  => 'xl',
+        'class' => 'bd-example-modal-xl',
+    ]
+);
+
+echo $this->modal(
+    [
+        'title' => 'Large modal',
+        '...',
+    ],
+    [
+        'fade'  => true,
+        'size'  => 'lg',
+        'class' => 'bd-example-modal-lg',
+    ]
+);
+
+echo $this->modal(
+    [
+        'title' => 'Small modal',
+        '...',
+    ],
+    [
+        'fade'  => true,
+        'size'  => 'sm',
+        'class' => 'bd-example-modal-sm',
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>

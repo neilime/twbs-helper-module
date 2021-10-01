@@ -7,18 +7,21 @@ class HomePageGenerator
     private static $README_FILEPATH = __DIR__ . '/../../README.md';
     private static $HOMEPAGE_FILEPATH = __DIR__ . '/../../website/src/pages/index.mdx';
 
-    private $file;
+    /**
+     * @var \DocumentationGenerator\Configuration
+     */
+    private $configuration;
 
-    public function __construct(\DocumentationGenerator\FileSystem\File $oFile)
+    public function __construct(\DocumentationGenerator\Configuration $oConfiguration)
     {
-        $this->file = $oFile;
+        $this->configuration = $oConfiguration;
     }
 
     public function generate()
     {
         $sReadmeContent = file_get_contents(self::$README_FILEPATH);
 
-        $this->file->writeFile(self::$HOMEPAGE_FILEPATH, '---
+        $this->configuration->getFile()->writeFile(self::$HOMEPAGE_FILEPATH, '---
 title: Home
 ---
 
