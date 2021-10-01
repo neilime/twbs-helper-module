@@ -40,7 +40,8 @@ class DocumentationTestConfig
         $oDocumentationTestConfig->title = $aTestConfig['title'];
 
         if ($oParentConfig) {
-            $oDocumentationTestConfig->title = trim($oParentConfig->title . self::$TITLE_SEPARATOR . $oDocumentationTestConfig->title);
+            $sTitle = trim($oParentConfig->title . self::$TITLE_SEPARATOR . $oDocumentationTestConfig->title);
+            $oDocumentationTestConfig->title = $sTitle;
         }
 
         if (isset($aTestConfig['url'])) {
@@ -73,7 +74,7 @@ class DocumentationTestConfig
 
             $iPosition = 1;
             foreach ($aTestConfig['tests'] as $aNestedTestsConfig) {
-                $oNestedTestsConfig = static::fromArray($aNestedTestsConfig, $oDocumentationTestConfig);;
+                $oNestedTestsConfig = static::fromArray($aNestedTestsConfig, $oDocumentationTestConfig);
                 $oNestedTestsConfig->position = $iPosition;
                 $iPosition++;
 

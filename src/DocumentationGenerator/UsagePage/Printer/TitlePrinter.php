@@ -4,8 +4,13 @@ namespace DocumentationGenerator\UsagePage\Printer;
 
 class TitlePrinter extends \DocumentationGenerator\UsagePage\Printer\AbstractPrinter
 {
+
     public function getContentToPrint()
     {
+        if (!$this->pageExists()) {
+            return "";
+        }
+
         $sHeadings = $this->getHeadings();
         $sTitle = $this->getDisplayTitle();
         return $sHeadings . ' ' . $sTitle . PHP_EOL;

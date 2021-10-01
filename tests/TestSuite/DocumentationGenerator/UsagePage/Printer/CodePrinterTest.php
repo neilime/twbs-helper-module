@@ -23,6 +23,7 @@ class CodePrinterTest extends \PHPUnit\Framework\TestCase
     {
         $this->file = $this->createMock(\DocumentationGenerator\FileSystem\File::class);
         $this->configuration = new \DocumentationGenerator\Configuration(
+            '/tmp/test-dir',
             'x.x',
             2,
             $this->file
@@ -31,6 +32,7 @@ class CodePrinterTest extends \PHPUnit\Framework\TestCase
 
     public function testPrintContentToPageWithoutRendering()
     {
+        $this->file->method("fileExists")->willReturn(true);
 
         $this->codePrinter = new \DocumentationGenerator\UsagePage\Printer\CodePrinter(
             $this->configuration,
@@ -41,10 +43,7 @@ class CodePrinterTest extends \PHPUnit\Framework\TestCase
             'test-page.mdx'
         );
 
-        $this->file->expects($this->once())->method('appendFile')->with(
-            "test-page.mdx",
-            PHP_EOL
-        );
+        $this->file->expects($this->never())->method('appendFile');
 
         $this->codePrinter->printContentToPage();
     }

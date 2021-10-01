@@ -9,7 +9,7 @@ class UsagePageFileGenerator
     "position": %d
 }';
 
-    private static $USAGE_DIR_PATH = __DIR__ . '/../../../website/docs/usage';
+    private static $USAGE_DIR_PATH = 'website/docs/usage';
 
     /**
      * @var \DocumentationGenerator\Configuration
@@ -27,22 +27,25 @@ class UsagePageFileGenerator
     private $pagePathInfo;
 
 
-    public function __construct(\DocumentationGenerator\Configuration $oConfiguration, \TestSuite\Documentation\DocumentationTestConfig $oTestConfig)
-    {
+    public function __construct(
+        \DocumentationGenerator\Configuration $oConfiguration,
+        \TestSuite\Documentation\DocumentationTestConfig $oTestConfig
+    ) {
         $this->configuration = $oConfiguration;
         $this->testConfig = $oTestConfig;
         $this->pagePathInfo = $this->getPagePathInfo();
     }
 
+    public function generate()
+    {
+        $this->createPageDir();
+        return $this->pagePathInfo->pagePath;
+    }
+
     private function getPagePathInfo()
     {
         $aTitleParts = $this->testConfig->getTitleParts();
-
-        if (!is_dir(self::$USAGE_DIR_PATH)) {
-            throw new \LogicException('Usage dir path "' . self::$USAGE_DIR_PATH . '" does not exist');
-        }
-
-        $sDirName = $sPageDirPath = realpath(self::$USAGE_DIR_PATH);
+        $sDirName = $sPageDirPath = $this->getUsageDirPath();
 
         $iMaxNestedDir = $this->configuration->getMaxNestedDir();
         for ($iIterator = 1; $iIterator < $iMaxNestedDir; $iIterator++) {
@@ -62,6 +65,17 @@ class UsagePageFileGenerator
         $oPageInfo->pagePath = $oPageInfo->dirPath . DIRECTORY_SEPARATOR . $sPageFileName;
 
         return $oPageInfo;
+    }
+
+    private function getUsageDirPath()
+    {
+        $sUsageDirPath = $this->configuration->getRootDirPath() . DIRECTORY_SEPARATOR . self::$USAGE_DIR_PATH;
+
+        if (!is_dir($sUsageDirPath)) {
+            throw new \LogicException('Usage dir path "' . $sUsageDirPath . '" does not exist');
+        }
+
+        return realpath($sUsageDirPath);
     }
 
     private function sanitizePath($sPath)
@@ -93,16 +107,13 @@ class UsagePageFileGenerator
         return $sSafePath;
     }
 
-    public function generate()
-    {
-        $this->createPageDir();
-        return $this->pagePathInfo->pagePath;
-    }
-
     private function createPageDir()
     {
         $sPageDirPath = $this->pagePathInfo->dirPath;
 
+        if (empty($sPageDirPath)) {
+            throw new \LogicException('Page directory path is undefined');
+        }
         if (!is_dir($sPageDirPath)) {
             mkdir($sPageDirPath);
             $this->generateCategoryFile();
@@ -111,7 +122,7 @@ class UsagePageFileGenerator
 
     private function generateCategoryFile()
     {
-        file_put_contents(
+        $this->configuration->getFile()->writeFile(
             $this->pagePathInfo->dirPath . DIRECTORY_SEPARATOR . '_category_.json',
             sprintf(
                 self::$USAGE_PAGE_DIRECTORY_TEMPLATE,

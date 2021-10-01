@@ -5,7 +5,7 @@ namespace DocumentationGenerator\UsagePage;
 class UsagePageGenerator
 {
     /**
-     * @var \DocumentationGenerator\UsagePage\Printer\AbstractPrinter[]
+     * @var array
      */
     private $printers = [
         \DocumentationGenerator\UsagePage\Printer\HeadPrinter::class,

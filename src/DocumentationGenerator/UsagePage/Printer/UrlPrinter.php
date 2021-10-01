@@ -8,10 +8,14 @@ class UrlPrinter extends \DocumentationGenerator\UsagePage\Printer\AbstractPrint
 
     public function getContentToPrint()
     {
+        if (!$this->pageExists()) {
+            return "";
+        }
+
         $sUrl = $this->testConfig->url;
 
         if (!$sUrl) {
-            return;
+            return "";
         }
 
         $sBootstrapUrl = self::$BOOTSTRAP_URL . $this->configuration->getBootstrapVersion();

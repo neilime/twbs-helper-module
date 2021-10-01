@@ -4,7 +4,7 @@ namespace DocumentationGenerator\UsagePage\Printer;
 
 class HeadPrinter extends \DocumentationGenerator\UsagePage\Printer\AbstractPrinter
 {
-    private static $WEBSITE_PATH = __DIR__ . '/../../../../website/';
+    private static $WEBSITE_PATH = 'website/';
     private static $HTML_CODE_PATH = 'src/components/HtmlCode.tsx';
 
     private static $CODE_TEMPLATE = '---
@@ -20,10 +20,8 @@ import HtmlCode from "%s";';
     public function getContentToPrint()
     {
         if (!$this->shouldWriteHead()) {
-            return;
+            return "";
         }
-
-        touch($this->pagePath);
 
         $sHtmlCodeRelativePath = $this->getHtmlCodeRelativePath();
 
@@ -37,7 +35,7 @@ import HtmlCode from "%s";';
 
     private function shouldWriteHead()
     {
-        $bPageExists = file_exists($this->pagePath);
+        $bPageExists = $this->pageExists();
         if ($bPageExists) {
             return false;
         }
@@ -48,8 +46,9 @@ import HtmlCode from "%s";';
 
     private function getHtmlCodeRelativePath()
     {
+        $this->configuration->getFile()->writeFile($this->pagePath, '');
         $sPagePath = realpath($this->pagePath);
-        $sWebsitePath = realpath(self::$WEBSITE_PATH);
+        $sWebsitePath = realpath($this->configuration->getRootDirPath() . DIRECTORY_SEPARATOR . self::$WEBSITE_PATH);
 
         $aDirectoryPathParts = explode(DIRECTORY_SEPARATOR, is_file($sPagePath)
             ? dirname($sPagePath)

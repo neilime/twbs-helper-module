@@ -27,10 +27,12 @@ if (false === (include $sPHPCodeSnifferAutoloadPath)) {
 }
 
 
+$sRootDirPath = dirname(__DIR__);
 $sBootstrapVersion = '4.5';
 $iMaxNestedDir = 2;
 
 $oConfiguration = new \DocumentationGenerator\Configuration(
+    $sRootDirPath,
     $sBootstrapVersion,
     $iMaxNestedDir,
     new \DocumentationGenerator\FileSystem\Local\File()

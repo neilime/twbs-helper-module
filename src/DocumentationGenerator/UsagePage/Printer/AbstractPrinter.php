@@ -36,9 +36,17 @@ abstract class AbstractPrinter
 
     public function printContentToPage()
     {
-        $this->configuration->getFile()->appendFile(
-            $this->pagePath,
-            $this->getContentToPrint() . PHP_EOL,
-        );
+        $sContent = $this->getContentToPrint();
+        if ($sContent) {
+            $this->configuration->getFile()->appendFile(
+                $this->pagePath,
+                $sContent . PHP_EOL,
+            );
+        }
+    }
+
+    protected function pageExists()
+    {
+        return $this->configuration->getFile()->fileExists($this->pagePath);
     }
 }

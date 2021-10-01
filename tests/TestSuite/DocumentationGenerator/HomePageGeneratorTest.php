@@ -20,6 +20,7 @@ class HomePageGeneratorTest extends \PHPUnit\Framework\TestCase
     {
         $this->file = $this->createMock(\DocumentationGenerator\FileSystem\File::class);
         $oConfiguration = new \DocumentationGenerator\Configuration(
+            '/tmp/test-dir',
             'x.x',
             2,
             $this->file
@@ -29,7 +30,14 @@ class HomePageGeneratorTest extends \PHPUnit\Framework\TestCase
 
     public function testGenerate()
     {
-        $this->file->expects($this->once())->method('writeFile');
+
+        $sContent = 'test content';
+        $this->file->method("readFile")->willReturn($sContent);
+
+        $this->file->expects($this->once())->method('writeFile')->with(
+            'website/src/pages/index.mdx',
+            '---' . PHP_EOL . 'title: Home' . PHP_EOL . '---' . PHP_EOL . PHP_EOL . $sContent
+        );
         $this->homePageGenerator->generate();
     }
 }

@@ -22,7 +22,7 @@ class CodePrinter extends \DocumentationGenerator\UsagePage\Printer\AbstractPrin
     public function getContentToPrint()
     {
         if (!$this->testConfig->rendering) {
-            return;
+            return "";
         }
 
         $sBootstrapVersion = $this->configuration->getBootstrapVersion();
@@ -34,7 +34,7 @@ class CodePrinter extends \DocumentationGenerator\UsagePage\Printer\AbstractPrin
             $sBootstrapVersion,
             $sRenderResult,
             $sSource
-        );
+        ) . PHP_EOL;
     }
 
     private function getRenderingSource()
@@ -49,7 +49,9 @@ class CodePrinter extends \DocumentationGenerator\UsagePage\Printer\AbstractPrin
         }
         $sSource = '<?php' . PHP_EOL . PHP_EOL . str_replace(['$oView', ' . PHP_EOL'], ['$this', ''], $sSource);
 
-        $oSourcePrettifier = new \DocumentationGenerator\UsagePage\Prettifier\PhpPrettifier();
+        $oSourcePrettifier = \DocumentationGenerator\UsagePage\Prettifier\PhpPrettifier::getInstance(
+            $this->configuration
+        );
         return $oSourcePrettifier->prettify($sSource);
     }
 
@@ -72,7 +74,7 @@ class CodePrinter extends \DocumentationGenerator\UsagePage\Printer\AbstractPrin
         $sRenderResult = '';
         $aChildren = $oBodyNode->childNodes;
         foreach ($aChildren as $oChildNode) {
-            $sChildNodeContent = $oChildNode->ownerDocument->saveXML($oChildNode);
+            $sChildNodeContent = $oChildNode->ownerDocument->saveXML($oChildNode, LIBXML_NOEMPTYTAG);
             $sRenderResult .= $sChildNodeContent;
         }
 

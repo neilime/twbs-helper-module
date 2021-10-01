@@ -2,7 +2,7 @@
 
 namespace TestSuite\DocumentationGenerator\UsagePage\Printer;
 
-class TitlePrinterTest extends \PHPUnit\Framework\TestCase
+class UrlPrinterTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var \DocumentationGenerator\Configuration
@@ -15,9 +15,9 @@ class TitlePrinterTest extends \PHPUnit\Framework\TestCase
     protected $file;
 
     /**
-     * @var \DocumentationGenerator\UsagePage\Printer\TitlePrinter
+     * @var \DocumentationGenerator\UsagePage\Printer\UrlPrinter
      */
-    protected $titlePrinter;
+    protected $urlPrinter;
 
     public function setUp(): void
     {
@@ -30,11 +30,11 @@ class TitlePrinterTest extends \PHPUnit\Framework\TestCase
         );
     }
 
-    public function testPrintContentToPageForFirstLevelTitle()
+    public function testPrintContentToPageWithUrl()
     {
         $this->file->method("fileExists")->willReturn(true);
 
-        $this->titlePrinter = new \DocumentationGenerator\UsagePage\Printer\TitlePrinter(
+        $this->urlPrinter = new \DocumentationGenerator\UsagePage\Printer\UrlPrinter(
             $this->configuration,
             \TestSuite\Documentation\DocumentationTestConfig::fromArray([
                 'title' => 'Component',
@@ -45,30 +45,26 @@ class TitlePrinterTest extends \PHPUnit\Framework\TestCase
 
         $this->file->expects($this->once())->method('appendFile')->with(
             "test-page.mdx",
-            "# Component" . PHP_EOL . PHP_EOL
+            "[Twitter bootstrap Documentation](https://getbootstrap.com/docs/x.x/test)" . PHP_EOL . PHP_EOL
         );
 
-        $this->titlePrinter->printContentToPage();
+        $this->urlPrinter->printContentToPage();
     }
 
-    public function testPrintContentToPageForThirdLevelTitle()
+    public function testPrintContentToPageWithoutUrl()
     {
         $this->file->method("fileExists")->willReturn(true);
 
-        $this->titlePrinter = new \DocumentationGenerator\UsagePage\Printer\TitlePrinter(
+        $this->urlPrinter = new \DocumentationGenerator\UsagePage\Printer\UrlPrinter(
             $this->configuration,
             \TestSuite\Documentation\DocumentationTestConfig::fromArray([
-                'title' => 'Component / Alert / Exemples',
-                'url' => '%bootstrap-url%/test',
+                'title' => 'Component',
             ]),
             'test-page.mdx'
         );
 
-        $this->file->expects($this->once())->method('appendFile')->with(
-            "test-page.mdx",
-            "## Exemples" . PHP_EOL . PHP_EOL
-        );
+        $this->file->expects($this->never())->method('appendFile');
 
-        $this->titlePrinter->printContentToPage();
+        $this->urlPrinter->printContentToPage();
     }
 }

@@ -12,8 +12,6 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 
 [Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/images/)
 
-
-
 ## Responsive images
 
 [Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/images/#responsive-images)
@@ -21,7 +19,7 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 <Tabs>
 <TabItem value="result" label="Result" default>
   <HtmlCode bootstrapVersion="4.5">
-      <div dangerouslySetInnerHTML={{ __html: `<img alt="Responsive image" class="img-fluid" src="/twbs-helper-module/img/docs/responsive.svg"/>` }}></div>
+      <div dangerouslySetInnerHTML={{ __html: `<img alt="Responsive image" class="img-fluid" src="/twbs-helper-module/img/docs/responsive.svg"></img>` }}></div>
   </HtmlCode>
 </TabItem>
 <TabItem value="source" label="Source">
@@ -49,7 +47,7 @@ echo $this->image(
 <Tabs>
 <TabItem value="result" label="Result" default>
   <HtmlCode bootstrapVersion="4.5">
-      <div dangerouslySetInnerHTML={{ __html: `<img alt="Image thumbnail" class="img-thumbnail" src="/twbs-helper-module/img/docs/200x200.svg"/>` }}></div>
+      <div dangerouslySetInnerHTML={{ __html: `<img alt="Image thumbnail" class="img-thumbnail" src="/twbs-helper-module/img/docs/200x200.svg"></img>` }}></div>
   </HtmlCode>
 </TabItem>
 <TabItem value="source" label="Source">
@@ -77,9 +75,9 @@ echo $this->image(
 <Tabs>
 <TabItem value="result" label="Result" default>
   <HtmlCode bootstrapVersion="4.5">
-      <div dangerouslySetInnerHTML={{ __html: `<img alt="Image aligned left" class="float-left rounded" src="/twbs-helper-module/img/docs/200x200.svg"/>
-<img alt="Image aligned right" class="float-right rounded" src="/twbs-helper-module/img/docs/200x200.svg"/>
-<img alt="Image aligned block" class="d-block mx-auto rounded" src="/twbs-helper-module/img/docs/200x200.svg"/>` }}></div>
+      <div dangerouslySetInnerHTML={{ __html: `<img alt="Image aligned left" class="float-left rounded" src="/twbs-helper-module/img/docs/200x200.svg"></img>
+<img alt="Image aligned right" class="float-right rounded" src="/twbs-helper-module/img/docs/200x200.svg"></img>
+<img alt="Image aligned block" class="d-block mx-auto rounded" src="/twbs-helper-module/img/docs/200x200.svg"></img>` }}></div>
   </HtmlCode>
 </TabItem>
 <TabItem value="source" label="Source">
@@ -127,8 +125,8 @@ echo $this->image(
 <TabItem value="result" label="Result" default>
   <HtmlCode bootstrapVersion="4.5">
       <div dangerouslySetInnerHTML={{ __html: `<picture>
-    <source srcset="/twbs-helper-module/img/docs/200x200.svg" type="image/svg+xml"/>
-    <img alt="Picture image" class="img-fluid img-thumbnail" src="/twbs-helper-module/img/docs/200x200.svg"/>
+    <source srcset="/twbs-helper-module/img/docs/200x200.svg" type="image/svg+xml"></source>
+    <img alt="Picture image" class="img-fluid img-thumbnail" src="/twbs-helper-module/img/docs/200x200.svg"></img>
 </picture>` }}></div>
   </HtmlCode>
 </TabItem>
@@ -151,3 +149,4 @@ echo $this->image(
 
 </TabItem>
 </Tabs>
+

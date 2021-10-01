@@ -1,18 +1,9 @@
-const bootstrapVersion = "4.5";
 const lightCodeTheme = require("prism-react-renderer/themes/github");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 // With JSDoc @type annotations, IDEs can provide config autocompletion
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 (module.exports = {
-  scripts: [
-    "https://code.jquery.com/jquery-3.5.1.slim.min.js",
-    `https://cdn.jsdelivr.net/npm/bootstrap@${bootstrapVersion}/dist/js/bootstrap.bundle.min.js`,
-  ],
-  // stylesheets: [
-  //   `https://cdn.jsdelivr.net/npm/bootstrap@${bootstrapVersion}/dist/css/bootstrap.min.css`,
-  //   "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css",
-  // ],
   title: "TwbsHelper",
   tagline:
     "Laminas (formerly Zend Framework) module for easy integration of the Twitter Bootstrap v4+",
