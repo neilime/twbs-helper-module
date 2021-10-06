@@ -1,4 +1,5 @@
 parameters:
+    treatPhpDocTypesAsCertain: false
     ignoreErrors:
         - '/Call to an undefined method Laminas\\View\\Helper\\AbstractHelper::/'
     laminasframework:

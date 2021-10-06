@@ -407,7 +407,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
      * Determine button type to use
      *
      * @param \Laminas\Form\ElementInterface $oElement
-     * @return string|boolean
+     * @return string
      */
     protected function getType(\Laminas\Form\ElementInterface $oElement): string
     {

@@ -80,6 +80,8 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
         if ($oItem instanceof \Laminas\Form\ElementInterface) {
             return $this->getFormElementHelper()->__invoke($oItem);
         }
+
+        return '';
     }
 
     /**
