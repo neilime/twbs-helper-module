@@ -55,7 +55,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
             is_object($oElement) ? get_class($oElement) : gettype($oElement)
         ));
     }
-    
+
     /**
      * Renders a button from an array specification
      *
