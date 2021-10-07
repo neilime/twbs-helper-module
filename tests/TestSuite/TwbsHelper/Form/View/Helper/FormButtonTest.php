@@ -21,16 +21,6 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
             ->setView($oRenderer->setHelperPluginManager($oViewHelperPluginManager));
     }
 
-    public function testInvokeWithWrongTypeElementThrowsAnException()
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage(
-            'Button expects an instanceof \Laminas\Form\ElementInterface or an array, "stdClass" given'
-        );
-
-        $this->formButtonHelper->__invoke(new \stdClass());
-    }
-
     public function testRenderWithWrongPopoverOptionThrowsAnException()
     {
         $this->expectException(\InvalidArgumentException::class);

@@ -17,7 +17,7 @@ return [
                     'left' => 'Tooltip on left',
                     ] as $sPlacement => $sLabel
                 ) {
-                    echo $oView->formButton([
+                    echo $oView->formButton()->renderSpec([
                         'name' => 'tooltip',
                         'options' => [
                             'label' => $sLabel,
@@ -29,7 +29,7 @@ return [
                     ]) . PHP_EOL;
                 }
 
-                echo $oView->formButton([
+                echo $oView->formButton()->renderSpec([
                     'name' => 'tooltip',
                     'options' => [
                         'label' => 'Tooltip with HTML',
@@ -42,7 +42,7 @@ return [
             'title' => 'Disabled elements',
             'url' => '%bootstrap-url%/components/tooltips/#disabled-elements',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->formButton([
+                echo $oView->formButton()->renderSpec([
                     'name' => 'tooltip',
                     'options' => [
                         'label' => 'Disabled button',

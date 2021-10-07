@@ -32,28 +32,17 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
      *
      * Proxies to {@link render()}.
      *
-     * @param array|\Laminas\Form\ElementInterface|null $oElement
+     * @param \Laminas\Form\ElementInterface|null $oElement
      * @param null|string           $sButtonContent
      * @return string|FormButton
      */
-    public function __invoke($oElement = null, $sButtonContent = null)
+    public function __invoke(?\Laminas\Form\ElementInterface $oElement = null, $sButtonContent = null)
     {
         if (!$oElement) {
             return $this;
         }
 
-        if (is_array($oElement)) {
-            return $this->renderSpec($oElement, $sButtonContent);
-        }
-
-        if ($oElement instanceof \Laminas\Form\ElementInterface) {
-            return $this->render($oElement, $sButtonContent);
-        }
-
-        throw new \InvalidArgumentException(sprintf(
-            'Button expects an instanceof \Laminas\Form\ElementInterface or an array, "%s" given',
-            is_object($oElement) ? get_class($oElement) : gettype($oElement)
-        ));
+        return $this->render($oElement, $sButtonContent);
     }
 
     /**
@@ -72,7 +61,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
 
         $oElement = $oFactory->create($oElementSpec);
 
-        return $this->render($oElement);
+        return $this->render($oElement, $sButtonContent);
     }
 
     /**
@@ -351,19 +340,22 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
             ));
         }
 
-        // Define icon position
-        $sIconPosition = $aIconOptions['position'] ?? self::POSITION_PREPEND;
-
         $sIconContent = $this->htmlElement('i', ['class' => $aIconOptions['class']], '');
 
-        return $sButtonContent
-            ? $sIconPosition === self::POSITION_PREPEND
+        // No button content provided, set icon as button content
+        if (!$sButtonContent) {
+            return $sIconContent;
+        }
+
+        // Define icon position
+        $sIconPosition = $aIconOptions['position'] ?? self::POSITION_PREPEND;
+        if ($sIconPosition === self::POSITION_PREPEND) {
             // Append icon to button content
-            ? $sIconContent . ' ' . $sButtonContent
+            return $sIconContent . ' ' . $sButtonContent;
+        } else {
             // Prepend icon to button content
-            : $sButtonContent . ' ' . $sIconContent
-            // No button content provided, set icon as button content
-            : $sIconContent;
+            return $sButtonContent . ' ' . $sIconContent;
+        }
     }
 
     protected function renderSpinnerContent(\Laminas\Form\ElementInterface $oElement, string $sButtonContent = null)
@@ -388,19 +380,23 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
             ['aria-hidden' => 'true']
         );
 
+        $sSpinnerContent = $this->getView()->plugin('spinner')->__invoke($aSpinnerOptions);
+
+        // No button content provided, set spinner as button content
+        if (!$sButtonContent) {
+            return $sSpinnerContent;
+        }
+
         // Define spinner position
         $sSpinnerPosition = $aSpinnerOptions['position'] ?? self::POSITION_PREPEND;
 
-        $sSpinnerContent = $this->getView()->plugin('spinner')->__invoke($aSpinnerOptions);
-
-        return $sButtonContent
-            ? $sSpinnerPosition === self::POSITION_PREPEND
+        if ($sSpinnerPosition === self::POSITION_PREPEND) {
             // Append spinner to button content
-            ? $sSpinnerContent . PHP_EOL . $sButtonContent
+            return $sSpinnerContent . PHP_EOL . $sButtonContent;
+        } else {
             // Prepend spinner to button content
-            : $sButtonContent . PHP_EOL . $sSpinnerContent
-            // No button content provided, set spinner as button content
-            : $sSpinnerContent;
+            return $sButtonContent . PHP_EOL . $sSpinnerContent;
+        }
     }
 
     /**

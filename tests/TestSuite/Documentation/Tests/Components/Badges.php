@@ -25,7 +25,7 @@ return [
                 echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Button
-                echo $oView->formButton([
+                echo $oView->formButton()->renderSpec([
                     'options' => [
                         'label' => 'Profile ' . $oView->badge('9', 'light') . PHP_EOL .
                             '<span class="sr-only">unread messages</span>',
@@ -40,8 +40,8 @@ return [
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 foreach (
                     [
-                    'primary', 'secondary', 'success', 'danger',
-                    'warning', 'info', 'light', 'dark',
+                        'primary', 'secondary', 'success', 'danger',
+                        'warning', 'info', 'light', 'dark',
                     ] as $sVariant
                 ) {
                     echo $oView->badge(ucfirst($sVariant), $sVariant) . PHP_EOL;
@@ -54,8 +54,8 @@ return [
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 foreach (
                     [
-                    'primary', 'secondary', 'success', 'danger',
-                    'warning', 'info', 'light', 'dark',
+                        'primary', 'secondary', 'success', 'danger',
+                        'warning', 'info', 'light', 'dark',
                     ] as $sVariant
                 ) {
                     echo $oView->badge(
@@ -74,8 +74,8 @@ return [
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
                 foreach (
                     [
-                    'primary', 'secondary', 'success', 'danger',
-                    'warning', 'info', 'light', 'dark',
+                        'primary', 'secondary', 'success', 'danger',
+                        'warning', 'info', 'light', 'dark',
                     ] as $sVariant
                 ) {
                     echo $oView->badge(
