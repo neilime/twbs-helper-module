@@ -17,6 +17,6 @@ class ModuleTest extends \PHPUnit\Framework\TestCase
 
     public function testGetConfig()
     {
-        $this->assertTrue(is_array($this->module->getConfig()));
+        $this->assertIsArray($this->module->getConfig());
     }
 }
