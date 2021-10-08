@@ -2,7 +2,7 @@
 
 namespace TwbsHelper;
 
-class Module implements \Laminas\ModuleManager\Feature\ConfigProviderInterface
+class Module
 {
 
 
