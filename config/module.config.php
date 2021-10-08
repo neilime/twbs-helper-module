@@ -104,10 +104,10 @@ return [
         ],
 
         'factories' => [
-            \TwbsHelper\Form\View\Helper\Form::class           => \TwbsHelper\Form\View\Helper\Factory\FormFactory::class,
-            \TwbsHelper\Form\View\Helper\FormElement::class    => \TwbsHelper\Form\View\Helper\Factory\FormElementFactory::class,
-            \TwbsHelper\Form\View\Helper\FormRow::class        => \TwbsHelper\Form\View\Helper\Factory\FormRowFactory::class,
-            \TwbsHelper\Form\View\Helper\FormCollection::class => \TwbsHelper\Form\View\Helper\Factory\FormCollectionFactory::class,
+            \TwbsHelper\Form\View\Helper\Form::class           => \TwbsHelper\Form\View\Helper\Factory\FormModuleOptionsFactory::class,
+            \TwbsHelper\Form\View\Helper\FormElement::class    => \TwbsHelper\Form\View\Helper\Factory\FormModuleOptionsFactory::class,
+            \TwbsHelper\Form\View\Helper\FormRow::class        => \TwbsHelper\Form\View\Helper\Factory\FormModuleOptionsFactory::class,
+            \TwbsHelper\Form\View\Helper\FormCollection::class => \TwbsHelper\Form\View\Helper\Factory\FormModuleOptionsFactory::class,
         ],
 
         'aliases' => [

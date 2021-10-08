@@ -2,26 +2,55 @@
 
 namespace TestSuite\TwbsHelper\Form\View\Helper\Factory;
 
-class FormElementFactoryTest extends \PHPUnit\Framework\TestCase
+use PHPUnit\Framework\TestCase;
+use TestSuite\Bootstrap;
+use TwbsHelper\Form\View\Helper\Factory\FormModuleOptionsFactory;
+use TwbsHelper\Form\View\Helper\Form;
+use TwbsHelper\Form\View\Helper\FormCollection;
+use TwbsHelper\Form\View\Helper\FormElement;
+use TwbsHelper\Form\View\Helper\FormRow;
+
+class FormElementFactoryTest extends TestCase
 {
     /**
-     * @var \TwbsHelper\Form\View\Helper\Factory\FormElementFactory
+     * @var FormModuleOptionsFactory
      */
-    protected $formElementFactory;
+    protected $formModuleOptionsFactory;
 
-    /**
-     * @see \PHPUnit\Framework\TestCase::setUp()
-     */
     public function setUp(): void
     {
-        $this->formElementFactory = new \TwbsHelper\Form\View\Helper\Factory\FormElementFactory();
+        $this->formElementFactory = new FormModuleOptionsFactory();
     }
 
-    public function testRenderElement()
+    /**
+     * @dataProvider formElementProvider
+     */
+    public function testRenderElement(string $formElement)
     {
         $this->assertInstanceOf(
-            \TwbsHelper\Form\View\Helper\FormElement::class,
-            $this->formElementFactory->createService(\TestSuite\Bootstrap::getServiceManager())
+            $formElement,
+            ($this->formElementFactory)(
+                Bootstrap::getServiceManager(),
+                $formElement
+            )
         );
+    }
+
+    public function formElementProvider(): array
+    {
+        return [
+            Form::class           => [
+                Form::class,
+            ],
+            FormElement::class    => [
+                FormElement::class,
+            ],
+            FormRow::class        => [
+                FormRow::class,
+            ],
+            FormCollection::class => [
+                FormCollection::class,
+            ],
+        ];
     }
 }
