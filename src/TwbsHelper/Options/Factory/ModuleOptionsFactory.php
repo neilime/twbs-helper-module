@@ -2,56 +2,16 @@
 
 namespace TwbsHelper\Options\Factory;
 
-use Interop\Container\ContainerInterface;
-use Laminas\ServiceManager\FactoryInterface;
-use Laminas\ServiceManager\ServiceLocatorInterface;
+use Psr\Container\ContainerInterface;
+use TwbsHelper\Options\ModuleOptions;
 
-/**
- * ModuleOptionsFactory
- *
- * @uses FactoryInterface
- */
-class ModuleOptionsFactory implements FactoryInterface
+class ModuleOptionsFactory
 {
-
-
-    /**
-     * createService
-     *
-     * @param  ServiceLocatorInterface $oServiceLocator
-     * @access public
-     * @return \TwbsHelper\Options\ModuleOptions
-     */
-    public function createService(ServiceLocatorInterface $oServiceLocator)
+    public function __invoke(ContainerInterface $container): ModuleOptions
     {
-        return $this->createServiceWithConfig($oServiceLocator->get('config'));
-    }
+        /** @var array $config */
+        $config = $container->get('config');
 
-
-    /**
-     * __invoke
-     *
-     * @param  ContainerInterface $oContainer
-     * @param  string             $sRequestedName
-     * @param  array              $aOptions
-     * @access public
-     * @return \TwbsHelper\Options\ModuleOptions
-     */
-    public function __invoke(ContainerInterface $oContainer, $sRequestedName, array $aOptions = null)
-    {
-        return $this->createServiceWithConfig($oContainer->get('config'));
-    }
-
-
-    /**
-     * createServiceWithConfig
-     *
-     * @param  array $aConfig
-     * @access protected
-     * @return \TwbsHelper\Options\ModuleOptions
-     */
-    protected function createServiceWithConfig(array $aConfig)
-    {
-        return new \TwbsHelper\Options\ModuleOptions($aConfig['twbshelper']);
+        return new ModuleOptions($config['twbshelper']);
     }
 }
