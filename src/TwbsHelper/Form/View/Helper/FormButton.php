@@ -61,6 +61,14 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
 
         $oElement = $oFactory->create($oElementSpec);
 
+        if (!$oElement instanceof \Laminas\Form\Element\Button) {
+            throw new \InvalidArgumentException(sprintf(
+                'Invalid button type specified, %s does not inherit from %s.',
+                get_class($oElement),
+                \Laminas\Form\Element\Button::class
+            ));
+        }
+
         return $this->render($oElement, $sButtonContent);
     }
 

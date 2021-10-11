@@ -176,4 +176,18 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
             ]
         ));
     }
+
+    public function testRenderSpecWithInvalidTypeThrowsAnException()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage(
+            'Invalid button type specified, Laminas\Form\Element\Text '
+                . 'does not inherit from Laminas\Form\Element\Button.'
+        );
+
+        $this->formButtonHelper->renderSpec([
+            'type' => \Laminas\Form\Element\Text::class,
+            'name' => 'test'
+        ]);
+    }
 }
