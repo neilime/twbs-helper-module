@@ -39,7 +39,7 @@
   "require-dev": {
     "laminas/laminas-component-installer": "^2.5",
     "laminas/laminas-modulemanager": "^2.10",
-    "laminas/laminas-mvc": "^3.2",
+    "laminas/laminas-mvc": "^3.3",
     "mikey179/vfsstream": "^1.6",
     "pcov/clobber": "^2.0",
     "phpstan/extension-installer": "^1.1",
