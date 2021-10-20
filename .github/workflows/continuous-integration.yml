@@ -3,7 +3,7 @@ name: Continuous integration
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     paths-ignore:
       - "**.md"
@@ -63,7 +63,7 @@ jobs:
           file: ./build/logs/clover.xml
 
       - name: 📃 Generate documentation
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master' && matrix.php-versions == '8.0'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && matrix.php-versions == '8.0'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -72,4 +72,4 @@ jobs:
           git config user.email "${{ github.actor }}@users.noreply.github.com"
           git config user.name "${{ github.actor }}"
           echo `git add -A && git commit -m "docs: update documentation"`
-          git push --follow-tags origin master
+          git push --follow-tags origin main
