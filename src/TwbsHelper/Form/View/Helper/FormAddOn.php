@@ -156,7 +156,7 @@ class FormAddOn extends \Laminas\Form\View\Helper\AbstractHelper
                     is_iterable($aAddOnOptions['element'])
                     && !($aAddOnOptions['element'] instanceof \Laminas\Form\ElementInterface)
                 ) {
-                    $aAddOnOptions['element'] = $this->createFormElement($aAddOnOptions['element']);
+                    $aAddOnOptions['element'] = $this->createElement($aAddOnOptions['element']);
                 }
 
                 return $this->renderElement(
@@ -186,7 +186,7 @@ class FormAddOn extends \Laminas\Form\View\Helper\AbstractHelper
         array $aAttributes,
         \Laminas\Form\ElementInterface $oElement
     ): string {
-        return $this->getView()->plugin('formLabel')->__invoke($this->createFormElement([
+        return $this->getView()->plugin('formLabel')->__invoke($this->createElement([
             'name' => $oElement->getName(),
             'options' => [
                 'label' => $sAddonLabel,
@@ -244,7 +244,7 @@ class FormAddOn extends \Laminas\Form\View\Helper\AbstractHelper
         );
     }
 
-    protected function createFormElement(array $aElement): \Laminas\Form\ElementInterface
+    protected function createElement(array $aElement): \Laminas\Form\ElementInterface
     {
         if (!$this->formFactory) {
             $this->formFactory = new \Laminas\Form\Factory();

@@ -144,7 +144,7 @@ return [
                     'title' => 'Buttons',
                     'url' => '%bootstrap-url%/components/spinners/#buttons',
                     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        echo $oView->formButton([
+                        echo $oView->formButton()->renderSpec([
                             'options' => [
                                 'spinner' => 'Loading...',
                                 'variant' => 'primary',
@@ -152,7 +152,7 @@ return [
                             'attributes' => ['disabled' => true],
                         ]) . PHP_EOL;
 
-                        echo $oView->formButton([
+                        echo $oView->formButton()->renderSpec([
                             'options' => [
                                 'label' => 'Loading...',
                                 'spinner' => true,
@@ -163,7 +163,7 @@ return [
 
                         echo PHP_EOL . '<br/><br/>' . PHP_EOL;
 
-                        echo $oView->formButton([
+                        echo $oView->formButton()->renderSpec([
                             'options' => [
                                 'spinner' => [
                                     'type' => 'grow',
@@ -174,7 +174,7 @@ return [
                             'attributes' => ['disabled' => true],
                         ]) . PHP_EOL;
 
-                        echo $oView->formButton([
+                        echo $oView->formButton()->renderSpec([
                             'options' => [
                                 'label' => 'Loading...',
                                 'spinner' => ['type' => 'grow'],

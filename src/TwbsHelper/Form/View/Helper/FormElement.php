@@ -81,7 +81,7 @@ class FormElement extends \Laminas\Form\View\Helper\FormElement
      * @param \Laminas\Form\ElementInterface $oElement
      * @return string
      */
-    protected function renderHelper($sName, \Laminas\Form\ElementInterface $oElement)
+    protected function renderHelper(string $sName, \Laminas\Form\ElementInterface $oElement): string
     {
         $oHelper = $this->getView()->plugin($sName);
 

@@ -9,7 +9,7 @@ return [
             'title' => 'Example',
             'url' => '%bootstrap-url%/components/popovers/#example',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->formButton([
+                echo $oView->formButton()->renderSpec([
                     'name' => 'popover',
                     'options' => [
                         'label' => 'Click to toggle popover',
@@ -33,7 +33,7 @@ return [
                     'left' => 'Popover on left',
                     ] as $sPlacement => $sButtonLabel
                 ) {
-                    echo $oView->formButton([
+                    echo $oView->formButton()->renderSpec([
                         'name' => 'popover',
                         'options' => [
                             'label' => $sButtonLabel,
@@ -50,7 +50,7 @@ return [
             'title' => 'Dismiss on next click',
             'url' => '%bootstrap-url%/components/popovers/#dismiss-on-next-click',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->formButton([
+                echo $oView->formButton()->renderSpec([
                     'name' => 'popover',
                     'options' => [
                         'tag' => 'a',
@@ -70,7 +70,7 @@ return [
             'title' => 'Disabled elements',
             'url' => '%bootstrap-url%/components/popovers/#disabled-elements',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->formButton([
+                echo $oView->formButton()->renderSpec([
                     'name' => 'popover',
                     'options' => [
                         'label' => 'Disabled button',

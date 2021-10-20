@@ -32,14 +32,41 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
      *
      * Proxies to {@link render()}.
      *
-     * @param array|\Laminas\Form\ElementInterface|null $oElement
+     * @param \Laminas\Form\ElementInterface|null $oElement
      * @param null|string           $sButtonContent
      * @return string|FormButton
      */
-    public function __invoke($oElement = null, $sButtonContent = null)
+    public function __invoke(?\Laminas\Form\ElementInterface $oElement = null, $sButtonContent = null)
     {
         if (!$oElement) {
             return $this;
+        }
+
+        return $this->render($oElement, $sButtonContent);
+    }
+
+    /**
+     * Renders a button from an array specification
+     *
+     * @see FormButton::render()
+     */
+    public function renderSpec(array $oElementSpec, ?string $sButtonContent = null): string
+    {
+        $oFactory = new \Laminas\Form\Factory();
+
+        // Set default type if none given
+        if (empty($oElementSpec['type'])) {
+            $oElementSpec['type'] = \Laminas\Form\Element\Button::class;
+        }
+
+        $oElement = $oFactory->create($oElementSpec);
+
+        if (!$oElement instanceof \Laminas\Form\Element\Button) {
+            throw new \InvalidArgumentException(sprintf(
+                'Invalid button type specified, %s does not inherit from %s.',
+                get_class($oElement),
+                \Laminas\Form\Element\Button::class
+            ));
         }
 
         return $this->render($oElement, $sButtonContent);
@@ -51,30 +78,10 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
      * * string size:  'sm', 'lg'
      * * bool block
      *
-     * @see FormButton::render()
-     * @param iterable|\Laminas\Form\ElementInterface $oElement
-     * @param string $sButtonContent
-     * @throws \InvalidArgumentException
-     * @return string
+     * @see \Laminas\Form\View\Helper\FormButton::render()
      */
-    public function render($oElement, $sButtonContent = null)
+    public function render(\Laminas\Form\ElementInterface $oElement, ?string $sButtonContent = null): string
     {
-        if (is_iterable($oElement) && !($oElement instanceof \Laminas\Form\ElementInterface)) {
-            $oFactory = new \Laminas\Form\Factory();
-
-            // Set default type if none given
-            if (empty($oElement['type'])) {
-                $oElement['type'] = \Laminas\Form\Element\Button::class;
-            }
-
-            $oElement = $oFactory->create($oElement);
-        } elseif (!($oElement instanceof \Laminas\Form\ElementInterface)) {
-            throw new \InvalidArgumentException(sprintf(
-                'Button expects an instanceof \Laminas\Form\ElementInterface or an array / Traversable, "%s" given',
-                is_object($oElement) ? get_class($oElement) : gettype($oElement)
-            ));
-        }
-
         // Dropdown button
         if ($oElement->getOption('dropdown')) {
             return $this->getView()->plugin('dropdown')->render($oElement);
@@ -94,7 +101,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
             unset($this->validTagAttributes['name']);
 
             $oElement->setAttribute('type', null);
-            $oElement->setAttribute('name', 0);
+            $oElement->setAttribute('name', 'dummy');
 
             if (!$oElement->getAttribute('role')) {
                 $oElement->setAttribute('role', 'button');
@@ -341,19 +348,22 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
             ));
         }
 
-        // Define icon position
-        $sIconPosition = $aIconOptions['position'] ?? self::POSITION_PREPEND;
-
         $sIconContent = $this->htmlElement('i', ['class' => $aIconOptions['class']], '');
 
-        return $sButtonContent
-            ? $sIconPosition === self::POSITION_PREPEND
+        // No button content provided, set icon as button content
+        if (!$sButtonContent) {
+            return $sIconContent;
+        }
+
+        // Define icon position
+        $sIconPosition = $aIconOptions['position'] ?? self::POSITION_PREPEND;
+        if ($sIconPosition === self::POSITION_PREPEND) {
             // Append icon to button content
-            ? $sIconContent . ' ' . $sButtonContent
+            return $sIconContent . ' ' . $sButtonContent;
+        } else {
             // Prepend icon to button content
-            : $sButtonContent . ' ' . $sIconContent
-            // No button content provided, set icon as button content
-            : $sIconContent;
+            return $sButtonContent . ' ' . $sIconContent;
+        }
     }
 
     protected function renderSpinnerContent(\Laminas\Form\ElementInterface $oElement, string $sButtonContent = null)
@@ -378,33 +388,37 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
             ['aria-hidden' => 'true']
         );
 
+        $sSpinnerContent = $this->getView()->plugin('spinner')->__invoke($aSpinnerOptions);
+
+        // No button content provided, set spinner as button content
+        if (!$sButtonContent) {
+            return $sSpinnerContent;
+        }
+
         // Define spinner position
         $sSpinnerPosition = $aSpinnerOptions['position'] ?? self::POSITION_PREPEND;
 
-        $sSpinnerContent = $this->getView()->plugin('spinner')->__invoke($aSpinnerOptions);
-
-        return $sButtonContent
-            ? $sSpinnerPosition === self::POSITION_PREPEND
+        if ($sSpinnerPosition === self::POSITION_PREPEND) {
             // Append spinner to button content
-            ? $sSpinnerContent . PHP_EOL . $sButtonContent
+            return $sSpinnerContent . PHP_EOL . $sButtonContent;
+        } else {
             // Prepend spinner to button content
-            : $sButtonContent . PHP_EOL . $sSpinnerContent
-            // No button content provided, set spinner as button content
-            : $sSpinnerContent;
+            return $sButtonContent . PHP_EOL . $sSpinnerContent;
+        }
     }
 
     /**
      * Determine button type to use
      *
      * @param \Laminas\Form\ElementInterface $oElement
-     * @return string|boolean
+     * @return string
      */
-    protected function getType(\Laminas\Form\ElementInterface $oElement)
+    protected function getType(\Laminas\Form\ElementInterface $oElement): string
     {
         $sTag = $oElement->getOption('tag');
         if (!$sTag || $sTag === 'button') {
             return parent::getType($oElement);
         }
-        return false;
+        return '';
     }
 }

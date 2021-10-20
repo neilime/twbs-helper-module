@@ -24,8 +24,8 @@ class FormLabel extends \Laminas\Form\View\Helper\FormLabel
      */
     public function __invoke(
         \Laminas\Form\ElementInterface $oElement = null,
-        $sLabelContent = null,
-        $sPosition = null
+        ?string $sLabelContent = null,
+        string $sPosition = null
     ) {
         if (!$oElement) {
             return $this;

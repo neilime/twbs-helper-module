@@ -46,7 +46,7 @@ class FormSelect extends \Laminas\Form\View\Helper\FormSelect
      * @param  array $aSelectedOptions Option values that should be marked as selected
      * @return string
      */
-    public function renderOptions(array $aOptions, array $aSelectedOptions = [])
+    public function renderOptions(array $aOptions, array $aSelectedOptions = []): string
     {
         $sOptionsContent = parent::renderOptions($aOptions, $aSelectedOptions);
         if (PHP_EOL !==  "\n") {

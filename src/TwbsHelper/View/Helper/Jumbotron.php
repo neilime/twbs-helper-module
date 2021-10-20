@@ -108,7 +108,7 @@ class Jumbotron extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 break;
 
             case self::JUMBOTRON_BUTTON:
-                return $this->getView()->plugin('formButton')->__invoke($aOptions);
+                return $this->getView()->plugin('formButton')->renderSpec($aOptions);
 
             case self::JUMBOTRON_DIVIDER:
                 $sTag = 'hr';

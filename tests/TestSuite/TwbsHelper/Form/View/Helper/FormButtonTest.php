@@ -21,16 +21,6 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
             ->setView($oRenderer->setHelperPluginManager($oViewHelperPluginManager));
     }
 
-    public function testRenderWithWrongTypeElementThrowsAnException()
-    {
-        $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage(
-            'Button expects an instanceof \Laminas\Form\ElementInterface or an array / Traversable, "stdClass" given'
-        );
-
-        $this->formButtonHelper->render(new \stdClass());
-    }
-
     public function testRenderWithWrongPopoverOptionThrowsAnException()
     {
         $this->expectException(\InvalidArgumentException::class);
@@ -185,5 +175,19 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
                 ],
             ]
         ));
+    }
+
+    public function testRenderSpecWithInvalidTypeThrowsAnException()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage(
+            'Invalid button type specified, Laminas\Form\Element\Text '
+                . 'does not inherit from Laminas\Form\Element\Button.'
+        );
+
+        $this->formButtonHelper->renderSpec([
+            'type' => \Laminas\Form\Element\Text::class,
+            'name' => 'test'
+        ]);
     }
 }

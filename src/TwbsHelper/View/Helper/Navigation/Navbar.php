@@ -188,7 +188,7 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
             $aAttributes['aria-controls'] = $sId;
         }
 
-        return $this->getView()->plugin('formButton')->__invoke(\Laminas\Stdlib\ArrayUtils::merge(
+        return $this->getView()->plugin('formButton')->renderSpec(\Laminas\Stdlib\ArrayUtils::merge(
             [
                 'name' => 'navbar_toggler',
                 'options' => [

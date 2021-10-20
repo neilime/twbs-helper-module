@@ -241,7 +241,7 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 break;
 
             case self::MODAL_BUTTON:
-                return $this->getView()->plugin('formButton')->__invoke($aOptions);
+                return $this->getView()->plugin('formButton')->renderSpec($aOptions);
 
             case self::MODAL_FOOTER:
                 $sFooterContent = '';
