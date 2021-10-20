@@ -59,7 +59,7 @@ echo '<h6>Example heading '.$this->badge('New').'</h6>';
 echo PHP_EOL.'<br/>';
 
 // Button
-echo $this->formButton(
+echo $this->formButton()->renderSpec(
     [
         'options' => [
             'label'   => 'Profile '.$this->badge('9', 'light').'<span class="sr-only">unread messages</span>',

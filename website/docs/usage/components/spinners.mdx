@@ -409,7 +409,7 @@ echo $this->spinner(
 ```php
 <?php
 
-echo $this->formButton(
+echo $this->formButton()->renderSpec(
     [
         'options'    => [
             'spinner' => 'Loading...',
@@ -419,7 +419,7 @@ echo $this->formButton(
     ]
 );
 
-echo $this->formButton(
+echo $this->formButton()->renderSpec(
     [
         'options'    => [
             'label'   => 'Loading...',
@@ -432,7 +432,7 @@ echo $this->formButton(
 
 echo PHP_EOL.'<br/><br/>';
 
-echo $this->formButton(
+echo $this->formButton()->renderSpec(
     [
         'options'    => [
             'spinner' => [
@@ -445,7 +445,7 @@ echo $this->formButton(
     ]
 );
 
-echo $this->formButton(
+echo $this->formButton()->renderSpec(
     [
         'options'    => [
             'label'   => 'Loading...',

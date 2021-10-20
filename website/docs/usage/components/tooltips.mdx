@@ -37,7 +37,7 @@ foreach ([
     'bottom' => 'Tooltip on bottom',
     'left'   => 'Tooltip on left',
 ] as $sPlacement => $sLabel) {
-    echo $this->formButton(
+    echo $this->formButton()->renderSpec(
         [
             'name'    => 'tooltip',
             'options' => [
@@ -51,7 +51,7 @@ foreach ([
     );
 }
 
-echo $this->formButton(
+echo $this->formButton()->renderSpec(
     [
         'name'    => 'tooltip',
         'options' => [
@@ -83,7 +83,7 @@ echo $this->formButton(
 ```php
 <?php
 
-echo $this->formButton(
+echo $this->formButton()->renderSpec(
     [
         'name'       => 'tooltip',
         'options'    => [

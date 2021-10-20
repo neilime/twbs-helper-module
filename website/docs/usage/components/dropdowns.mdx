@@ -128,7 +128,7 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 ```php
 <?php
 
-echo $this->formButton(
+echo $this->formButton()->renderSpec(
     [
         'name'       => 'dropdown',
         'options'    => [
@@ -147,7 +147,7 @@ echo $this->formButton(
 echo PHP_EOL.'<br/>';
 
 // With <a> elements
-echo $this->formButton(
+echo $this->formButton()->renderSpec(
     [
         'name'       => 'dropdown',
         'options'    => [
@@ -176,7 +176,7 @@ foreach ([
     'light',
     'dark',
 ] as $sVariant) {
-    echo $this->formButton(
+    echo $this->formButton()->renderSpec(
         [
             'name'    => 'dropdown',
             'options' => [
@@ -314,7 +314,7 @@ foreach ([
     'light',
     'dark',
 ] as $sVariant) {
-    echo $this->formButton(
+    echo $this->formButton()->renderSpec(
         [
             'name'    => 'dropdown',
             'options' => [
@@ -398,7 +398,7 @@ foreach ([
 <?php
 
 // Large button
-echo $this->formButton(
+echo $this->formButton()->renderSpec(
     [
         'name'    => 'dropdown',
         'options' => [
@@ -419,7 +419,7 @@ echo $this->formButton(
 );
 
 // Large split button
-echo $this->formButton(
+echo $this->formButton()->renderSpec(
     [
         'name'    => 'dropdown',
         'options' => [
@@ -442,7 +442,7 @@ echo $this->formButton(
 echo PHP_EOL.'<br/><br/>';
 
 // Small button
-echo $this->formButton(
+echo $this->formButton()->renderSpec(
     [
         'name'    => 'dropdown',
         'options' => [
@@ -463,7 +463,7 @@ echo $this->formButton(
 );
 
 // Small split button
-echo $this->formButton(
+echo $this->formButton()->renderSpec(
     [
         'name'    => 'dropdown',
         'options' => [
@@ -528,7 +528,7 @@ echo $this->formButton(
 <?php
 
 // Dropup button
-echo $this->formButton(
+echo $this->formButton()->renderSpec(
     [
         'name'    => 'dropup',
         'options' => [
@@ -550,7 +550,7 @@ echo $this->formButton(
 );
 
 // Dropup split button
-echo $this->formButton(
+echo $this->formButton()->renderSpec(
     [
         'name'    => 'split-dropup',
         'options' => [
@@ -612,7 +612,7 @@ echo $this->formButton(
 <?php
 
 // Dropright button
-echo $this->formButton(
+echo $this->formButton()->renderSpec(
     [
         'name'    => 'dropright',
         'options' => [
@@ -634,7 +634,7 @@ echo $this->formButton(
 );
 
 // Dropright split button
-echo $this->formButton(
+echo $this->formButton()->renderSpec(
     [
         'name'    => 'split-dropright',
         'options' => [
@@ -689,7 +689,7 @@ echo $this->formButton(
 ```php
 <?php
 
-echo $this->formButton(
+echo $this->formButton()->renderSpec(
     [
         'name'       => 'dropdown',
         'options'    => [
@@ -807,7 +807,7 @@ echo $this->dropdown()->renderMenu(
 ```php
 <?php
 
-echo $this->formButton(
+echo $this->formButton()->renderSpec(
     [
         'name'    => 'dropdown',
         'options' => [
@@ -860,7 +860,7 @@ echo $this->formButton(
 ```php
 <?php
 
-echo $this->formButton(
+echo $this->formButton()->renderSpec(
     [
         'name'    => 'dropdown',
         'options' => [
@@ -879,7 +879,7 @@ echo $this->formButton(
 
 echo PHP_EOL.'<br/>';
 
-echo $this->formButton(
+echo $this->formButton()->renderSpec(
     [
         'name'    => 'dropdown',
         'options' => [
@@ -1151,7 +1151,7 @@ echo $this->dropdown()->renderMenu(
 
 echo '<div class="d-flex">';
 
-echo $this->formButton(
+echo $this->formButton()->renderSpec(
     [
         'name'       => 'dropdown',
         'options'    => [
@@ -1170,7 +1170,7 @@ echo $this->formButton(
     ]
 );
 
-echo $this->formButton(
+echo $this->formButton()->renderSpec(
     [
         'name'       => 'dropdown',
         'options'    => [

@@ -27,7 +27,7 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 ```php
 <?php
 
-echo $this->formButton(
+echo $this->formButton()->renderSpec(
     [
         'name'       => 'popover',
         'options'    => [
@@ -69,7 +69,7 @@ foreach ([
     'bottom' => 'Popover on bottom',
     'left'   => 'Popover on left',
 ] as $sPlacement => $sButtonLabel) {
-    echo $this->formButton(
+    echo $this->formButton()->renderSpec(
         [
             'name'    => 'popover',
             'options' => [
@@ -103,7 +103,7 @@ foreach ([
 ```php
 <?php
 
-echo $this->formButton(
+echo $this->formButton()->renderSpec(
     [
         'name'       => 'popover',
         'options'    => [
@@ -145,7 +145,7 @@ echo $this->formButton(
 ```php
 <?php
 
-echo $this->formButton(
+echo $this->formButton()->renderSpec(
     [
         'name'       => 'popover',
         'options'    => [
