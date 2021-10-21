@@ -16,141 +16,141 @@ class Media extends \TwbsHelper\View\Helper\AbstractHtmlElement
     /**
      * Generates a 'media' element
      *
-     * @param string|array  $sContent The content of the alert
-     * @param array $aOptionsAndAttributes Options & Html attributes
-     * @param boolean $bEscape True espace html content '$sContent'. Default True
+     * @param string|array  $content The content of the alert
+     * @param array $optionsAndAttributes Options & Html attributes
+     * @param boolean $escape True espace html content '$content'. Default True
      * @return string The jumbotron XHTML.
      */
     public function __invoke(
-        $sContent,
-        array $aOptionsAndAttributes = [],
-        bool $bEscape = true
+        $content,
+        array $optionsAndAttributes = [],
+        bool $escape = true
     ): string {
 
-        $sTag = $aOptionsAndAttributes['tag'] ?? 'div';
-        unset($aOptionsAndAttributes['tag']);
+        $tag = $optionsAndAttributes['tag'] ?? 'div';
+        unset($optionsAndAttributes['tag']);
 
-        if (is_array($sContent)) {
-            $sContent = $this->renderParts($sContent, $bEscape);
+        if (is_array($content)) {
+            $content = $this->renderParts($content, $escape);
         }
 
         return $this->htmlElement(
-            $sTag,
-            $this->setClassesToAttributes($aOptionsAndAttributes, ['media']),
-            $sContent,
-            $bEscape
+            $tag,
+            $this->setClassesToAttributes($optionsAndAttributes, ['media']),
+            $content,
+            $escape
         );
     }
 
-    protected function renderParts(array $aParts = [], bool $bEscape = true): string
+    protected function renderParts(array $parts = [], bool $escape = true): string
     {
-        $sContent = '';
-        $sBodyPart = '';
-        foreach ($aParts as $sKey => $sPartContent) {
-            $sType = is_numeric($sKey) ? self::MEDIA_TEXT : $sKey;
-            if (is_array($sPartContent)) {
-                $aOptions = $sPartContent;
-            } elseif (is_string($sPartContent)) {
-                $aOptions = ['content' => $sPartContent];
+        $content = '';
+        $bodyPart = '';
+        foreach ($parts as $key => $partContent) {
+            $type = is_numeric($key) ? self::MEDIA_TEXT : $key;
+            if (is_array($partContent)) {
+                $options = $partContent;
+            } elseif (is_string($partContent)) {
+                $options = ['content' => $partContent];
             }
 
-            $sPartContent = $this->renderPart(
-                $sType,
-                $aOptions ?? [],
-                $bEscape
+            $partContent = $this->renderPart(
+                $type,
+                $options ?? [],
+                $escape
             );
 
             // Every part except image are wrapped in a body element
-            if ($sType !== self::MEDIA_IMAGE) {
-                $sBodyPart .= ($sBodyPart ? PHP_EOL : '') . $sPartContent;
+            if ($type !== self::MEDIA_IMAGE) {
+                $bodyPart .= ($bodyPart ? PHP_EOL : '') . $partContent;
             } else {
-                if ($sBodyPart) {
-                    $sBodyPart = $this->htmlElement(
+                if ($bodyPart) {
+                    $bodyPart = $this->htmlElement(
                         'div',
                         ['class' => 'media-body'],
-                        $sBodyPart,
-                        $bEscape
+                        $bodyPart,
+                        $escape
                     );
-                    $sContent .= ($sContent ? PHP_EOL : '') . $sBodyPart;
-                    $sBodyPart = '';
+                    $content .= ($content ? PHP_EOL : '') . $bodyPart;
+                    $bodyPart = '';
                 }
-                $sContent .= ($sContent ? PHP_EOL : '') . $sPartContent;
+                $content .= ($content ? PHP_EOL : '') . $partContent;
             }
         }
-        if ($sBodyPart) {
-            $sContent .= ($sContent ? PHP_EOL : '') . $this->htmlElement(
+        if ($bodyPart) {
+            $content .= ($content ? PHP_EOL : '') . $this->htmlElement(
                 'div',
                 ['class' => 'media-body'],
-                $sBodyPart,
-                $bEscape
+                $bodyPart,
+                $escape
             );
         }
 
-        return $sContent;
+        return $content;
     }
 
     protected function renderPart(
-        string $sType,
-        array $aOptions = [],
-        bool $bEscape = true
+        string $type,
+        array $options = [],
+        bool $escape = true
     ): string {
 
         if (
-            $sType !== self::MEDIA_IMAGE
-            && \Laminas\Stdlib\ArrayUtils::isList($aOptions)
+            $type !== self::MEDIA_IMAGE
+            && \Laminas\Stdlib\ArrayUtils::isList($options)
         ) {
             $that = $this;
             return join(
                 PHP_EOL,
-                array_map(function ($aOptionsItem) use ($that, $sType, $bEscape) {
-                    if (is_string($aOptionsItem)) {
-                        $aOptionsItem = [
-                            'content' => $aOptionsItem,
+                array_map(function ($optionsItem) use ($that, $type, $escape) {
+                    if (is_string($optionsItem)) {
+                        $optionsItem = [
+                            'content' => $optionsItem,
                         ];
                     }
-                    return $that->renderPart($sType, $aOptionsItem, $bEscape);
-                }, $aOptions)
+                    return $that->renderPart($type, $optionsItem, $escape);
+                }, $options)
             );
         }
 
-        $aAttributes = $aOptions['attributes'] ?? [];
-        switch ($sType) {
+        $attributes = $options['attributes'] ?? [];
+        switch ($type) {
             case self::MEDIA_IMAGE:
-                return $this->getView()->plugin('image')->__invoke(...$aOptions);
+                return $this->getView()->plugin('image')->__invoke(...$options);
 
             case self::MEDIA_TITLE:
-                if (empty($aOptions['content'])) {
-                    throw new \DomainException('Media part type "' . $sType . '" expects a content, none given');
+                if (empty($options['content'])) {
+                    throw new \DomainException('Media part type "' . $type . '" expects a content, none given');
                 }
-                $sTag = 'h5';
-                $aAttributes = $this->setClassesToAttributes(
-                    $aAttributes,
+                $tag = 'h5';
+                $attributes = $this->setClassesToAttributes(
+                    $attributes,
                     ['mt-0']
                 );
                 break;
 
             case self::MEDIA_TEXT:
-                if (empty($aOptions['content'])) {
-                    throw new \DomainException('Media part type "' . $sType . '" expects a content, none given');
+                if (empty($options['content'])) {
+                    throw new \DomainException('Media part type "' . $type . '" expects a content, none given');
                 }
-                $sTag = 'p';
+                $tag = 'p';
                 break;
 
             case self::MEDIA_MEDIA:
-                if (empty($aOptions['content'])) {
-                    throw new \DomainException('Media part type "' . $sType . '" expects a content, none given');
+                if (empty($options['content'])) {
+                    throw new \DomainException('Media part type "' . $type . '" expects a content, none given');
                 }
-                return $this->__invoke($aOptions['content'], $aAttributes, $bEscape);
+                return $this->__invoke($options['content'], $attributes, $escape);
 
             default:
-                throw new \DomainException('Media part type "' . $sType . '" is not supported');
+                throw new \DomainException('Media part type "' . $type . '" is not supported');
         }
 
         return $this->htmlElement(
-            $sTag,
-            $aAttributes,
-            $aOptions['content'] ?? null,
-            $bEscape
+            $tag,
+            $attributes,
+            $options['content'] ?? null,
+            $escape
         );
     }
 }

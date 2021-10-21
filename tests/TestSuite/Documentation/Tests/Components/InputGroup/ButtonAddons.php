@@ -4,10 +4,10 @@
 return [
     'title' => 'Button addons',
     'url' => '%bootstrap-url%/components/input-group/#button-addons',
-    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-        $oFactory = new \Laminas\Form\Factory();
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+        $factory = new \Laminas\Form\Factory();
 
-        echo $oView->formRow($oFactory->create([
+        echo $view->formRow($factory->create([
             'name' => 'button-prepend',
             'type' => 'text',
             'options' => [
@@ -30,7 +30,7 @@ return [
             ],
         ])) . PHP_EOL;
 
-        echo $oView->formRow($oFactory->create([
+        echo $view->formRow($factory->create([
             'name' => 'button-append',
             'type' => 'text',
             'options' => [
@@ -47,13 +47,13 @@ return [
                 ],
             ],
             'attributes' => [
-                'placeholder' => 'Recipient\'s username',
-                'aria-label' => 'Recipient\'s username',
+                'placeholder' => "Recipient's username",
+                'aria-label' => "Recipient's username",
                 'aria-describedby' => 'button-addon2',
             ],
         ])) . PHP_EOL;
 
-        echo $oView->formRow($oFactory->create([
+        echo $view->formRow($factory->create([
             'name' => 'buttons-prepend',
             'type' => 'text',
             'options' => [
@@ -87,7 +87,7 @@ return [
             ],
         ])) . PHP_EOL;
 
-        echo $oView->formRow($oFactory->create([
+        echo $view->formRow($factory->create([
             'name' => 'button-append',
             'type' => 'text',
             'options' => [
@@ -114,8 +114,8 @@ return [
                 ],
             ],
             'attributes' => [
-                'placeholder' => 'Recipient\'s username',
-                'aria-label' => 'Recipient\'s username with two button addons',
+                'placeholder' => "Recipient's username",
+                'aria-label' => "Recipient's username with two button addons",
                 'aria-describedby' => 'button-addon4',
             ],
         ]));

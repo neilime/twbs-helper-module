@@ -12,13 +12,13 @@ class FormTest extends \PHPUnit\Framework\TestCase
     /**
      * @see \PHPUnit\Framework\TestCase::setUp()
      */
-    public function setUp(): void
+    protected function setUp(): void
     {
-        $oViewHelperPluginManager = \TestSuite\Bootstrap::getServiceManager()->get('ViewHelperManager');
-        $oRenderer = new \Laminas\View\Renderer\PhpRenderer();
-        $this->formHelper = $oViewHelperPluginManager
+        $viewHelperPluginManager = \TestSuite\Bootstrap::getServiceManager()->get('ViewHelperManager');
+        $phpRenderer = new \Laminas\View\Renderer\PhpRenderer();
+        $this->formHelper = $viewHelperPluginManager
             ->get('form')
-            ->setView($oRenderer->setHelperPluginManager($oViewHelperPluginManager));
+            ->setView($phpRenderer->setHelperPluginManager($viewHelperPluginManager));
     }
 
     public function testInvokeWithoutArgumentsReturnSelf()
@@ -55,7 +55,7 @@ class FormTest extends \PHPUnit\Framework\TestCase
             }
         };
 
-        $oNewHorizontalForm = new $horizontalFormClass();
+        $newHorizontalForm = new $horizontalFormClass();
 
         $this->assertEquals(
             '<form action="" method="POST" name="form" role="form" id="form">' . PHP_EOL .
@@ -69,7 +69,7 @@ class FormTest extends \PHPUnit\Framework\TestCase
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</form>',
-            $this->formHelper->__invoke($oNewHorizontalForm)
+            $this->formHelper->__invoke($newHorizontalForm)
         );
     }
 }

@@ -20,7 +20,7 @@ class HtmlListTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
 
     public function testInvokeWithDirectNestedList()
     {
-        $sExpectedMarkup = '<ul>' . PHP_EOL .
+        $expectedMarkup = '<ul>' . PHP_EOL .
             '    <li>' . PHP_EOL .
             '        <ul>' . PHP_EOL .
             '            <li>test</li>' . PHP_EOL .
@@ -28,12 +28,12 @@ class HtmlListTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
             '    </li>' . PHP_EOL .
             '</ul>';
 
-        $this->assertSame($sExpectedMarkup, $this->helper->__invoke([['test']]));
+        $this->assertSame($expectedMarkup, $this->helper->__invoke([['test']]));
     }
 
     public function testInvokeWithEmptyArgumentItems()
     {
-        $this->expectExceptionMessage('Argument "$aItems" must not be empty');
+        $this->expectExceptionMessage('Argument "$items" must not be empty');
         $this->helper->__invoke([]);
     }
 }

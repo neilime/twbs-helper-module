@@ -12,13 +12,13 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
     /**
      * @see \PHPUnit\Framework\TestCase::setUp()
      */
-    public function setUp(): void
+    protected function setUp(): void
     {
-        $oViewHelperPluginManager = \TestSuite\Bootstrap::getServiceManager()->get('ViewHelperManager');
-        $oRenderer = new \Laminas\View\Renderer\PhpRenderer();
-        $this->formButtonHelper = $oViewHelperPluginManager
+        $viewHelperPluginManager = \TestSuite\Bootstrap::getServiceManager()->get('ViewHelperManager');
+        $phpRenderer = new \Laminas\View\Renderer\PhpRenderer();
+        $this->formButtonHelper = $viewHelperPluginManager
             ->get('formButton')
-            ->setView($oRenderer->setHelperPluginManager($oViewHelperPluginManager));
+            ->setView($phpRenderer->setHelperPluginManager($viewHelperPluginManager));
     }
 
     public function testRenderWithWrongPopoverOptionThrowsAnException()
@@ -41,7 +41,7 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(\DomainException::class);
         $this->expectExceptionMessage(
-            'TwbsHelper\Form\View\Helper\FormButton::renderButtonContent expects either button content ' .
+            \TwbsHelper\Form\View\Helper\FormButton::class . '::renderButtonContent expects either button content ' .
                 'as the second argument, or that the element provided has a label value, a glyphicon option, ' .
                 'or a fontAwesome option; none found'
         );

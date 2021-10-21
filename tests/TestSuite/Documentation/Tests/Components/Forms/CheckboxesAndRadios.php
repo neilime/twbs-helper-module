@@ -8,11 +8,11 @@ return [
         [
             'title' => 'Default (stacked)',
             'url' => '%bootstrap-url%/components/forms/#default-stacked',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                $oFactory = new \Laminas\Form\Factory();
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                $factory = new \Laminas\Form\Factory();
 
                 // Render Default checkbox
-                echo $oView->formRow($oFactory->create([
+                echo $view->formRow($factory->create([
                     'name' => 'default-checkbox',
                     'type' => 'checkbox',
                     'options' => [
@@ -26,7 +26,7 @@ return [
                 ])) . PHP_EOL;
 
                 // Render Disabled checkbox
-                echo $oView->formRow($oFactory->create([
+                echo $view->formRow($factory->create([
                     'name' => 'disabled-checkbox',
                     'type' => 'checkbox',
                     'options' => [
@@ -43,7 +43,7 @@ return [
                 echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Render radio
-                echo $oView->formRow($oFactory->create([
+                echo $view->formRow($factory->create([
                     'name' => 'exampleRadios',
                     'type' => 'radio',
                     'options' => [
@@ -73,11 +73,11 @@ return [
         [
             'title' => 'Inline',
             'url' => '%bootstrap-url%/components/forms/#inline',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                $oFactory = new \Laminas\Form\Factory();
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                $factory = new \Laminas\Form\Factory();
 
                 // Render checkbox
-                echo $oView->formRow($oFactory->create([
+                echo $view->formRow($factory->create([
                     'name' => 'inlineCheckboxOptions',
                     'type' => 'multicheckbox',
                     'options' => [
@@ -107,7 +107,7 @@ return [
                 echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Render radio
-                echo $oView->formRow($oFactory->create([
+                echo $view->formRow($factory->create([
                     'name' => 'inlineRadioOptions',
                     'type' => 'radio',
                     'options' => [
@@ -138,12 +138,12 @@ return [
         [
             'title' => 'Without labels',
             'url' => '%bootstrap-url%/components/forms/#without-labels',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
 
-                $oFactory = new \Laminas\Form\Factory();
+                $factory = new \Laminas\Form\Factory();
 
                 // Render checkbox
-                echo $oView->formRow($oFactory->create([
+                echo $view->formRow($factory->create([
                     'name' => 'blankCheckbox',
                     'type' => 'multicheckbox',
                     'options' => [
@@ -159,7 +159,7 @@ return [
                 ])) . PHP_EOL;
 
                 // Render radio
-                echo $oView->formRow($oFactory->create([
+                echo $view->formRow($factory->create([
                     'name' => 'blankRadio',
                     'type' => 'radio',
                     'options' => [

@@ -4,10 +4,10 @@
 return [
     'title' => 'Help text',
     'url' => '%bootstrap-url%/components/forms/#help-text',
-    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-        $oFactory = new \Laminas\Form\Factory();
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+        $factory = new \Laminas\Form\Factory();
 
-        echo $oView->formRow($oFactory->create([
+        echo $view->formRow($factory->create([
             'name' => 'password',
             'options' => [
                 'label' => 'Password',
@@ -30,7 +30,7 @@ return [
         // Inline text can use any typical inline HTML element
         // (be it a <small>, <span>, or something else)
         // with nothing more than a utility class
-        echo $oView->form($oFactory->create([
+        echo $view->form($factory->create([
             'type' => 'form',
             'options' => [
                 'layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE,

@@ -12,18 +12,18 @@ class FormCollectionTest extends \PHPUnit\Framework\TestCase
     /**
      * @see \PHPUnit\Framework\TestCase::setUp()
      */
-    public function setUp(): void
+    protected function setUp(): void
     {
-        $oViewHelperPluginManager = \TestSuite\Bootstrap::getServiceManager()->get('ViewHelperManager');
-        $oRenderer = new \Laminas\View\Renderer\PhpRenderer();
-        $this->formCollectionHelper = $oViewHelperPluginManager
+        $viewHelperPluginManager = \TestSuite\Bootstrap::getServiceManager()->get('ViewHelperManager');
+        $phpRenderer = new \Laminas\View\Renderer\PhpRenderer();
+        $this->formCollectionHelper = $viewHelperPluginManager
             ->get('formCollection')
-            ->setView($oRenderer->setHelperPluginManager($oViewHelperPluginManager));
+            ->setView($phpRenderer->setHelperPluginManager($viewHelperPluginManager));
     }
 
     public function testRenderWithInlineLayoutAddFormInlineClass()
     {
-        $oCollection = new \Laminas\Form\Element\Collection('test-collection', [
+        $collection = new \Laminas\Form\Element\Collection('test-collection', [
             'count' => 1,
             'layout' => 'inline',
             'should_create_template' => true,
@@ -35,16 +35,16 @@ class FormCollectionTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals(
             '<fieldset class="form-inline">' .
-            '<span data-template="&lt;button&#x20;type&#x3D;&quot;button&quot;&#x20;name&#x3D;&quot;' .
-            '__index__&quot;&#x20;class&#x3D;&quot;btn&amp;&#x23;x20&#x3B;btn-secondary&quot;&#x20;' .
-            'value&#x3D;&quot;&quot;&gt;test&lt;&#x2F;button&gt;"></span></fieldset>',
-            $this->formCollectionHelper->render($oCollection)
+                '<span data-template="&lt;button&#x20;type&#x3D;&quot;button&quot;&#x20;name&#x3D;&quot;' .
+                '__index__&quot;&#x20;class&#x3D;&quot;btn&amp;&#x23;x20&#x3B;btn-secondary&quot;&#x20;' .
+                'value&#x3D;&quot;&quot;&gt;test&lt;&#x2F;button&gt;"></span></fieldset>',
+            $this->formCollectionHelper->render($collection)
         );
     }
 
     public function testRenderTemplateWithInlineLayout()
     {
-        $oCollection = new \Laminas\Form\Element\Collection('test-collection', [
+        $collection = new \Laminas\Form\Element\Collection('test-collection', [
             'count' => 1,
             'layout' => 'inline',
             'should_create_template' => true,
@@ -56,9 +56,9 @@ class FormCollectionTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals(
             '<span data-template="&lt;button&#x20;type&#x3D;&quot;button&quot;&#x20;name&#x3D;&quot;' .
-            '__index__&quot;&#x20;class&#x3D;&quot;btn&amp;&#x23;x20&#x3B;btn-secondary&quot;&#x20;' .
-            'value&#x3D;&quot;&quot;&gt;test&lt;&#x2F;button&gt;"></span>',
-            $this->formCollectionHelper->renderTemplate($oCollection)
+                '__index__&quot;&#x20;class&#x3D;&quot;btn&amp;&#x23;x20&#x3B;btn-secondary&quot;&#x20;' .
+                'value&#x3D;&quot;&quot;&gt;test&lt;&#x2F;button&gt;"></span>',
+            $this->formCollectionHelper->renderTemplate($collection)
         );
     }
 }

@@ -8,8 +8,8 @@ return [
         [
             'title' => 'Card groups',
             'url' => '%bootstrap-url%/components/card/#card-groups',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->cardGroup([
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->cardGroup([
                     [
                         'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
@@ -43,7 +43,7 @@ return [
                 echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // With footers
-                echo $oView->cardGroup([
+                echo $view->cardGroup([
                     [
                         'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
@@ -71,8 +71,8 @@ return [
         [
             'title' => 'Card decks',
             'url' => '%bootstrap-url%/components/card/#card-decks',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->cardDeck([
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->cardDeck([
                     [
                         'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
@@ -106,7 +106,7 @@ return [
                 echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // With footers
-                echo $oView->cardDeck([
+                echo $view->cardDeck([
                     [
                         'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Primary card title',
@@ -134,8 +134,8 @@ return [
         [
             'title' => 'Card columns',
             'url' => '%bootstrap-url%/components/card/#card-columns',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->cardColumns([
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->cardColumns([
                     [
                         'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
                         'title' => 'Card title that wraps to a new line',
@@ -188,8 +188,7 @@ return [
                     [
                         [
                             'blockquote' => [
-                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ' .
-                                    'Integer posuere erat a ante.',
+                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.',
                                 'Someone famous in <cite title="Source Title">Source Title</cite>',
                                 ['class' => 'mb-0'],
                             ],

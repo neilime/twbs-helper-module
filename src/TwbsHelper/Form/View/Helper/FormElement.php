@@ -23,80 +23,80 @@ class FormElement extends \Laminas\Form\View\Helper\FormElement
     /**
      * Constructor
      *
-     * @param \TwbsHelper\Options\ModuleOptions $oOptions
+     * @param \TwbsHelper\Options\ModuleOptions $options
      * @return void
      */
-    public function __construct(\TwbsHelper\Options\ModuleOptions $oOptions)
+    public function __construct(\TwbsHelper\Options\ModuleOptions $options)
     {
-        if (is_array($oOptions->getTypeMap())) {
-            $this->typeMap = array_merge($this->typeMap, $oOptions->getTypeMap());
+        if (is_array($options->getTypeMap())) {
+            $this->typeMap = array_merge($this->typeMap, $options->getTypeMap());
         }
 
-        if (is_array($oOptions->getClassMap())) {
-            $this->classMap = array_merge($this->classMap, $oOptions->getClassMap());
+        if (is_array($options->getClassMap())) {
+            $this->classMap = array_merge($this->classMap, $options->getClassMap());
         }
 
-        $this->options = $oOptions;
+        $this->options = $options;
     }
 
     /**
      * Render an element
      *
-     * @param \Laminas\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface $element
      * @return string
      */
-    public function render(\Laminas\Form\ElementInterface $oElement): string
+    public function render(\Laminas\Form\ElementInterface $element): string
     {
         // Add form-control class
-        $sElementType = $oElement->getAttribute('type');
+        $elementType = $element->getAttribute('type');
 
-        $aClasses = [];
+        $classes = [];
 
         if (
-            !in_array($sElementType, $this->options->getIgnoredViewHelpers())
-            && !($oElement instanceof \Laminas\Form\Element\Collection)
-            && !$oElement->getOption('custom')
+            !in_array($elementType, $this->options->getIgnoredViewHelpers())
+            && !($element instanceof \Laminas\Form\Element\Collection)
+            && !$element->getOption('custom')
         ) {
-            $aClasses[] = $oElement->getOption('plaintext') ? 'form-control-plaintext' : 'form-control';
+            $classes[] = $element->getOption('plaintext') ? 'form-control-plaintext' : 'form-control';
 
             // Set size class except for select element
-            $sSizeOption = $oElement->getOption('size');
-            if ($sElementType !== 'select' && $sSizeOption) {
-                $aClasses[] = $this->getSizeClass($sSizeOption, 'form-control');
+            $sizeOption = $element->getOption('size');
+            if ($elementType !== 'select' && $sizeOption) {
+                $classes[] = $this->getSizeClass($sizeOption, 'form-control');
             }
 
-            $this->setClassesToElement($oElement, $aClasses);
+            $this->setClassesToElement($element, $classes);
         }
 
-        $sMarkup = parent::render($oElement);
+        $markup = parent::render($element);
 
         // Render element's add-on
-        return $this->getView()->plugin('formAddOn')->render($oElement, $sMarkup);
+        return $this->getView()->plugin('formAddOn')->render($element, $markup);
     }
 
     /**
      * Render element by helper name
      *
-     * @param string $sName
-     * @param \Laminas\Form\ElementInterface $oElement
+     * @param string $name
+     * @param \Laminas\Form\ElementInterface $element
      * @return string
      */
-    protected function renderHelper(string $sName, \Laminas\Form\ElementInterface $oElement): string
+    protected function renderHelper(string $name, \Laminas\Form\ElementInterface $element): string
     {
-        $oHelper = $this->getView()->plugin($sName);
+        $helper = $this->getView()->plugin($name);
 
         if ($this->options->getValidTagAttributes()) {
-            foreach ($this->options->getValidTagAttributes() as $aAttribute) {
-                $oHelper->addValidAttribute($aAttribute);
+            foreach ($this->options->getValidTagAttributes() as $attribute) {
+                $helper->addValidAttribute($attribute);
             }
         }
 
         if ($this->options->getValidTagAttributePrefixes()) {
-            foreach ($this->options->getValidTagAttributePrefixes() as $sPrefix) {
-                $oHelper->addValidAttributePrefix($sPrefix);
+            foreach ($this->options->getValidTagAttributePrefixes() as $prefix) {
+                $helper->addValidAttributePrefix($prefix);
             }
         }
 
-        return $oHelper($oElement);
+        return $helper($element);
     }
 }

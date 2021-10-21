@@ -8,10 +8,10 @@ return [
         [
             'title' => 'Server side',
             'url' => '%bootstrap-url%/components/forms/#server-side',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                $oFactory = new \Laminas\Form\Factory();
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                $factory = new \Laminas\Form\Factory();
 
-                $oForm = $oFactory->create([
+                $form = $factory->create([
                     'type' => 'form',
                     'options' => ['row_class' => 'form-row'],
                     'elements' => [
@@ -131,14 +131,14 @@ return [
                 ]);
 
                 // Set error messages
-                $oForm->get('city')->setMessages(['Please provide a valid city.']);
-                $oForm->get('state')->setMessages(['Please select a valid state.']);
-                $oForm->get('zip')->setMessages(['Please provide a valid zip.']);
-                $oForm->get('termsAndConditions')->setMessages(['You must agree before submitting.']);
+                $form->get('city')->setMessages(['Please provide a valid city.']);
+                $form->get('state')->setMessages(['Please select a valid state.']);
+                $form->get('zip')->setMessages(['Please provide a valid zip.']);
+                $form->get('termsAndConditions')->setMessages(['You must agree before submitting.']);
 
 
                 // Render form
-                echo $oView->form($oForm);
+                echo $view->form($form);
             },
         ],
     ],

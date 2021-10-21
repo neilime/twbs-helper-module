@@ -17,20 +17,20 @@ class Toast extends \TwbsHelper\View\Helper\AbstractHtmlElement
     /**
      * Generates a 'toast' element
      */
-    public function __invoke(array $aOptions): string
+    public function __invoke(array $options): string
     {
-        return $this->render($aOptions);
+        return $this->render($options);
     }
 
-    public function render(array $aOptions): string
+    public function render(array $options): string
     {
-        $aClasses = ['toast'];
-        $aStyles = [];
+        $classes = ['toast'];
+        $styles = [];
 
-        if (!empty($aOptions['placement'])) {
-            switch ($aOptions['placement']) {
+        if (!empty($options['placement'])) {
+            switch ($options['placement']) {
                 case self::PLACEMENT_TOP_CENTER:
-                    $aStyles = [
+                    $styles = [
                         'position' => 'absolute',
                         'top' => '0',
                         'left' => '0',
@@ -40,7 +40,7 @@ class Toast extends \TwbsHelper\View\Helper\AbstractHtmlElement
                     ];
                     break;
                 case self::PLACEMENT_BOTTOM_CENTER:
-                    $aStyles = [
+                    $styles = [
                         'position' => 'absolute',
                         'bottom' => '0',
                         'left' => '0',
@@ -50,28 +50,28 @@ class Toast extends \TwbsHelper\View\Helper\AbstractHtmlElement
                     ];
                     break;
                 case self::PLACEMENT_BOTTOM_LEFT:
-                    $aStyles = [
+                    $styles = [
                         'position' => 'absolute',
                         'bottom' => '0',
                         'left' => '0',
                     ];
                     break;
                 case self::PLACEMENT_BOTTOM_RIGHT:
-                    $aStyles = [
+                    $styles = [
                         'position' => 'absolute',
                         'bottom' => '0',
                         'right' => '0',
                     ];
                     break;
                 case self::PLACEMENT_TOP_LEFT:
-                    $aStyles = [
+                    $styles = [
                         'position' => 'absolute',
                         'top' => '0',
                         'left' => '0',
                     ];
                     break;
                 case self::PLACEMENT_TOP_RIGHT:
-                    $aStyles = [
+                    $styles = [
                         'position' => 'absolute',
                         'top' => '0',
                         'right' => '0',
@@ -80,95 +80,95 @@ class Toast extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 default:
                     throw new \InvalidArgumentException(sprintf(
                         'Option "placement" "%s" is not supported',
-                        $aOptions['placement']
+                        $options['placement']
                     ));
             }
         }
 
-        $aDefaultAttributes = [
+        $defaultAttributes = [
             'role' => 'alert',
             'aria-live' => 'assertive',
             'aria-atomic' => 'true',
         ];
 
-        if (isset($aOptions['autohide'])) {
-            $aDefaultAttributes['data-autohide'] = $aOptions['autohide'] ? 'true' : 'false';
+        if (isset($options['autohide'])) {
+            $defaultAttributes['data-autohide'] = $options['autohide'] ? 'true' : 'false';
         }
 
-        $aAttributes = $this->setClassesToAttributes(array_merge(
-            $aDefaultAttributes,
-            $aOptions['attributes'] ?? []
-        ), $aClasses);
+        $attributes = $this->setClassesToAttributes(array_merge(
+            $defaultAttributes,
+            $options['attributes'] ?? []
+        ), $classes);
 
-        if ($aStyles) {
-            $aAttributes = $this->setStylesToAttributes(
-                $aAttributes,
-                $aStyles
+        if ($styles) {
+            $attributes = $this->setStylesToAttributes(
+                $attributes,
+                $styles
             );
         }
 
-        $sToastContent =
-            $this->renderHeader($aOptions['header'] ?? []) .
+        $toastContent =
+            $this->renderHeader($options['header'] ?? []) .
             PHP_EOL .
-            $this->renderBody($aOptions['body'] ?? '');
+            $this->renderBody($options['body'] ?? '');
 
         return $this->htmlElement(
             'div',
-            $aAttributes,
-            $sToastContent
+            $attributes,
+            $toastContent
         );
     }
 
-    public function renderHeader(array $aHeaderOptions): string
+    public function renderHeader(array $headerOptions): string
     {
-        $sToastHeader = '';
+        $toastHeader = '';
 
-        if (!empty($aHeaderOptions['image'])) {
-            $sToastHeader .= $this->getView()->plugin('image')->__invoke(
-                ...$aHeaderOptions['image']
+        if (!empty($headerOptions['image'])) {
+            $toastHeader .= $this->getView()->plugin('image')->__invoke(
+                ...$headerOptions['image']
             );
         }
 
-        if (!empty($aHeaderOptions['title'])) {
-            $aTitleOptions = is_array($aHeaderOptions['title'])
-                ? $aHeaderOptions['title']
-                : ['content' => $aHeaderOptions['title']];
+        if (!empty($headerOptions['title'])) {
+            $titleOptions = is_array($headerOptions['title'])
+                ? $headerOptions['title']
+                : ['content' => $headerOptions['title']];
 
-            $sToastHeader .= ($sToastHeader ? PHP_EOL : '') . $this->htmlElement(
+            $toastHeader .= ($toastHeader ? PHP_EOL : '') . $this->htmlElement(
                 'strong',
                 $this->setClassesToAttributes(
-                    $aTitleOptions['attributes'] ?? [],
+                    $titleOptions['attributes'] ?? [],
                     ['mr-auto']
                 ),
-                $aTitleOptions['content']
+                $titleOptions['content']
             );
         }
 
-        if (!empty($aHeaderOptions['subtitle'])) {
-            $aSubtitleOptions = is_array($aHeaderOptions['subtitle'])
-                ? $aHeaderOptions['subtitle']
-                : ['content' => $aHeaderOptions['subtitle']];
+        if (!empty($headerOptions['subtitle'])) {
+            $subtitleOptions = is_array($headerOptions['subtitle'])
+                ? $headerOptions['subtitle']
+                : ['content' => $headerOptions['subtitle']];
 
 
-            $sToastHeader .= ($sToastHeader ? PHP_EOL : '') . $this->htmlElement(
+            $toastHeader .= ($toastHeader ? PHP_EOL : '') . $this->htmlElement(
                 'small',
                 $this->setClassesToAttributes(
-                    $aSubtitleOptions['attributes'] ?? [],
+                    $subtitleOptions['attributes'] ?? [],
                     ['text-muted']
                 ),
-                $aSubtitleOptions['content']
+                $subtitleOptions['content']
             );
         }
 
         // Close button
-        $oTranslator = $this->getTranslator();
-        $sToastHeader .= ($sToastHeader ? PHP_EOL : '') . $this->htmlElement(
+        $translator = $this->getTranslator();
+        $toastHeader .= ($toastHeader ? PHP_EOL : '') . $this->htmlElement(
             'button',
             [
                 'type' => 'button',
                 'class' => 'ml-2 mb-1 close',
                 'data-dismiss' => 'toast',
-                'aria-label' => $oTranslator ? $oTranslator->translate(
+                'aria-label' => $translator ? $translator->translate(
                     'Close',
                     $this->getTranslatorTextDomain()
                 ) : 'Close',
@@ -184,16 +184,16 @@ class Toast extends \TwbsHelper\View\Helper\AbstractHtmlElement
         return $this->htmlElement(
             'div',
             $this->setClassesToAttributes([], ['toast-header']),
-            $sToastHeader
+            $toastHeader
         );
     }
 
-    public function renderBody(string $sBody): string
+    public function renderBody(string $body): string
     {
         return $this->htmlElement(
             'div',
             $this->setClassesToAttributes([], ['toast-body']),
-            $sBody
+            $body
         );
     }
 }

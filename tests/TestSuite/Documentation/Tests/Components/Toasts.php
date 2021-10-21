@@ -12,8 +12,8 @@ return [
                 [
                     'title' => 'Basic',
                     'url' => '%bootstrap-url%/components/toasts/#basic',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        echo $oView->toast([
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        echo $view->toast([
                             'header' => [
                                 'image' => [
                                     '/twbs-helper-module/img/docs/rounded-blue.svg',
@@ -30,11 +30,11 @@ return [
                 [
                     'title' => 'Translucent',
                     'url' => '%bootstrap-url%/components/toasts/#translucent',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
 
                         echo '<div class="bg-dark">';
 
-                        echo $oView->toast([
+                        echo $view->toast([
                             'header' => [
                                 'image' => [
                                     '/twbs-helper-module/img/docs/rounded-blue.svg',
@@ -53,9 +53,9 @@ return [
                 [
                     'title' => 'Stacking',
                     'url' => '%bootstrap-url%/components/toasts/#stacking',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
 
-                        echo $oView->toast([
+                        echo $view->toast([
                             'header' => [
                                 'image' => [
                                     '/twbs-helper-module/img/docs/rounded-blue.svg',
@@ -67,7 +67,7 @@ return [
                             'body' => 'See? Just like this.',
                         ]) . PHP_EOL;
 
-                        echo $oView->toast([
+                        echo $view->toast([
                             'header' => [
                                 'image' => [
                                     '/twbs-helper-module/img/docs/rounded-blue.svg',
@@ -83,11 +83,11 @@ return [
                 [
                     'title' => 'Placement',
                     'url' => '%bootstrap-url%/components/toasts/#placement',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
 
                         echo '<div class="bg-dark" style="position:relative;min-height:200px;">';
 
-                        echo $oView->toast([
+                        echo $view->toast([
                             'placement' => 'top-right',
                             'header' => [
                                 'image' => [
@@ -106,7 +106,7 @@ return [
 
                         echo '<div class="bg-dark" style="position:relative;min-height:200px;">';
 
-                        echo $oView->toast([
+                        echo $view->toast([
                             'placement' => 'top-center',
                             'header' => [
                                 'image' => [
@@ -125,8 +125,8 @@ return [
                 [
                     'title' => 'Accessibility',
                     'url' => '%bootstrap-url%/components/toasts/#accessibility',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        echo $oView->toast([
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        echo $view->toast([
                             'autohide' => false,
                             'header' => [
                                 'image' => [

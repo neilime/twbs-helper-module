@@ -8,6 +8,8 @@ namespace TwbsHelper\View\Helper;
 class CardGroup extends \TwbsHelper\View\Helper\AbstractGroup
 {
     protected static $groupClass = 'card-group';
+
     protected static $groupTag = 'div';
+
     protected static $helperName = 'card';
 }

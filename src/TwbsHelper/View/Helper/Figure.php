@@ -11,41 +11,40 @@ class Figure extends \TwbsHelper\View\Helper\AbstractHtmlElement
     /**
      * Generates a 'figure' element
      *
-     * @param string $sImageSrc The path to the image of the figure
-     * @param string $sCaption The content of the caption of the figure. Default : empty
-     * @param array $aAttributes Html attributes of the "<figure>" element. Default : empty
-     * @param array $aImageOptionsAndAttributes \TwbsHelper\View\Helper\Image options and attributes. Default : empty
-     * @param array $aCaptionAttributes Html attributes of the "<figcaption>" (caption) element. Default : empty
-     * @param boolean $bEscape True espace html caption '$sCaption'. Default True
+     * @param string $imageSrc The path to the image of the figure
+     * @param string $caption The content of the caption of the figure. Default : empty
+     * @param array $attributes Html attributes of the "<figure>" element. Default : empty
+     * @param array $imageOptionsAndAttributes \TwbsHelper\View\Helper\Image options and attributes. Default : empty
+     * @param array $captionAttributes Html attributes of the "<figcaption>" (caption) element. Default : empty
+     * @param boolean $escape True espace html caption '$caption'. Default True
      * @return string The figure XHTML.
      * @throws \InvalidArgumentException
      */
     public function __invoke(
-        string $sImageSrc,
-        string $sCaption = '',
-        array $aAttributes = [],
-        array $aImageOptionsAndAttributes = [],
-        array $aCaptionAttributes = [],
-        bool $bEscape = true
+        string $imageSrc,
+        string $caption = '',
+        array $attributes = [],
+        array $imageOptionsAndAttributes = [],
+        array $captionAttributes = [],
+        bool $escape = true
     ) {
 
         // Handle caption
-        $sCaptionContent = $sCaption ? PHP_EOL . $this->htmlElement(
+        $captionContent = $caption ? PHP_EOL . $this->htmlElement(
             'figcaption',
-            $this->setClassesToAttributes($aCaptionAttributes, ['figure-caption']),
-            $sCaption,
-            $bEscape
+            $this->setClassesToAttributes($captionAttributes, ['figure-caption']),
+            $caption,
+            $escape
         ) : '';
 
         // Handle image
-        $aImageOptionsAndAttributes['figure'] = true;
-        $sImageContent = $this->getView()->plugin('image')->__invoke($sImageSrc, $aImageOptionsAndAttributes);
-
+        $imageOptionsAndAttributes['figure'] = true;
+        $imageContent = $this->getView()->plugin('image')->__invoke($imageSrc, $imageOptionsAndAttributes);
 
         return $this->htmlElement(
             'figure',
-            $this->setClassesToAttributes($aAttributes, ['figure']),
-            $sImageContent . $sCaptionContent,
+            $this->setClassesToAttributes($attributes, ['figure']),
+            $imageContent . $captionContent,
             false
         );
     }

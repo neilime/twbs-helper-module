@@ -4,10 +4,10 @@
 return [
     'title' => 'Auto-sizing',
     'url' => '%bootstrap-url%/components/forms/#auto-sizing',
-    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-        $oFactory = new \Laminas\Form\Factory();
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+        $factory = new \Laminas\Form\Factory();
 
-        echo $oView->form($oFactory->create([
+        echo $view->form($factory->create([
             'type' => 'form',
             'options' => [
                 'row_class' => 'align-items-center form-row',
@@ -80,7 +80,7 @@ return [
         echo PHP_EOL . '<br/>' . PHP_EOL;
 
         // Remix that once again with size-specific column classes.
-        echo $oView->form($oFactory->create([
+        echo $view->form($factory->create([
             'type' => 'form',
             'options' => [
                 'row_class' => 'align-items-center form-row',
@@ -157,7 +157,7 @@ return [
         echo PHP_EOL . '<br/>' . PHP_EOL;
 
         // And of course custom form controls are supported.
-        echo $oView->form($oFactory->create([
+        echo $view->form($factory->create([
             'type' => 'form',
             'options' => [
                 'row_class' => 'align-items-center form-row',

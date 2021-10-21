@@ -12,8 +12,8 @@ return [
                 [
                     'title' => 'Modal components',
                     'url' => '%bootstrap-url%/components/modal/#modal-components',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        echo $oView->modal([
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        echo $view->modal([
                             'title' => 'Modal title',
                             'Modal body text goes here.',
                             'footer' => [
@@ -41,10 +41,10 @@ return [
                 [
                     'title' => 'Scrolling long content',
                     'url' => '%bootstrap-url%/components/modal/#scrolling-long-content',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                         // You can also create a scrollable modal that allows scroll the modal body
                         // by adding the option 'scrollable'
-                        echo $oView->modal([
+                        echo $view->modal([
                             'title' => 'Modal title',
                             'text' => [
                                 'Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac ' .
@@ -121,8 +121,8 @@ return [
                 [
                     'title' => 'Vertically centered',
                     'url' => '%bootstrap-url%/components/modal/#vertically-centered',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        echo $oView->modal([
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        echo $view->modal([
                             'title' => 'Modal title',
                             'Cras mattis consectetur purus sit amet fermentum. Cras justo odio, ' .
                                 'dapibus ac facilisis in, egestas eget quam. Morbi leo risus, ' .
@@ -152,8 +152,8 @@ return [
                 [
                     'title' => 'Tooltips and popovers',
                     'url' => '%bootstrap-url%/components/modal/#tooltips-and-popovers',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        echo $oView->modal([
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        echo $view->modal([
                             'title' => 'Modal title',
                             ['type' => 'subtitle', 'content' => 'Popover in a modal'],
                             'This <a href="#" role="button" class="btn btn-secondary popover-test" ' .
@@ -188,8 +188,8 @@ return [
                 [
                     'title' => 'Optional sizes',
                     'url' => '%bootstrap-url%/components/modal/#optional-sizes',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        echo $oView->modal([
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        echo $view->modal([
                             'title' => 'Extra large modal',
                             '...',
                         ], [
@@ -198,7 +198,7 @@ return [
                             'class' => 'bd-example-modal-xl',
                         ]) . PHP_EOL;
 
-                        echo $oView->modal([
+                        echo $view->modal([
                             'title' => 'Large modal',
                             '...',
                         ], [
@@ -207,7 +207,7 @@ return [
                             'class' => 'bd-example-modal-lg',
                         ]) . PHP_EOL;
 
-                        echo $oView->modal([
+                        echo $view->modal([
                             'title' => 'Small modal',
                             '...',
                         ], [

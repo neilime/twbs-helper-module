@@ -19,7 +19,7 @@ class HeadPrinterTest extends \PHPUnit\Framework\TestCase
      */
     protected $headPrinter;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->file = $this->createMock(\DocumentationGenerator\FileSystem\File::class);
         $this->configuration = new \DocumentationGenerator\Configuration(
@@ -61,7 +61,7 @@ class HeadPrinterTest extends \PHPUnit\Framework\TestCase
             'test-page.mdx'
         );
 
-        $sExpectedContent =
+        $expectedContent =
             '---' . PHP_EOL .
             'sidebar_position: 1' . PHP_EOL .
             'label: Exemples' . PHP_EOL .
@@ -71,7 +71,7 @@ class HeadPrinterTest extends \PHPUnit\Framework\TestCase
             'import TabItem from "@theme/TabItem";' . PHP_EOL .
             'import CodeBlock from "@theme/CodeBlock";' . PHP_EOL .
             'import HtmlCode from "src/components/HtmlCode.tsx";' . PHP_EOL . PHP_EOL;
-        $this->file->expects($this->once())->method('appendFile')->with('test-page.mdx', $sExpectedContent);
+        $this->file->expects($this->once())->method('appendFile')->with('test-page.mdx', $expectedContent);
 
         $this->headPrinter->printContentToPage();
     }

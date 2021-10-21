@@ -16,8 +16,8 @@ namespace TestSuite\Documentation;
  *             'url' => '%bootstrap-url%/sample/test-1', // The url of the documentation "Sample part, test 1"
  *             // The rendering function should return the expected markup
  *             // as shown in the related documentation website page
- *             'rendering' => function(\Laminas\ServiceManager\ServiceManager $oViewHelperPluginManager){
- *                 return $oViewHelperPluginManager->get('sampleTestOneHelper')->render('sample test-one');
+ *             'rendering' => function(\Laminas\ServiceManager\ServiceManager $viewHelperPluginManager){
+ *                 return $viewHelperPluginManager->get('sampleTestOneHelper')->render('sample test-one');
  *             },
  *         ),
  *         array(
@@ -28,7 +28,7 @@ namespace TestSuite\Documentation;
  *                 array(
  *                     'title' => '...',
  *                     'url' => '...',
- *                     'rendering' => function(\Laminas\ServiceManager\ServiceManager $oViewHelperPluginManager){
+ *                     'rendering' => function(\Laminas\ServiceManager\ServiceManager $viewHelperPluginManager){
  *                         // ...
  *                     },
  *                 ),
@@ -48,64 +48,67 @@ class DocumentationTest extends \PHPUnit\Framework\TestCase
      */
     public function getTestCasesProvider()
     {
-        $oApplication = \TestSuite\Bootstrap::getServiceManager()->get('Application');
-        $oApplication->bootstrap();
-        $oRouteMatch = new \Laminas\Router\RouteMatch([]);
-        $oRouteMatch->setMatchedRouteName('test-route');
-        $oApplication->getMvcEvent()->setRouteMatch($oRouteMatch);
+        $application = \TestSuite\Bootstrap::getServiceManager()->get('Application');
+        $application->bootstrap();
 
-        $aTestConfigs = \TestSuite\Documentation\DocumentationTestConfigsLoader::loadDocumentationTestConfigs();
+        $routeMatch = new \Laminas\Router\RouteMatch([]);
+        $routeMatch->setMatchedRouteName('test-route');
+        $application->getMvcEvent()->setRouteMatch($routeMatch);
 
-        $aTestCases = [];
-        foreach ($aTestConfigs as $oDocumentationTestConfig) {
-            $aTestCases = array_merge($aTestCases, $this->parseTestsConfig($oDocumentationTestConfig));
+        $testConfigs = \TestSuite\Documentation\DocumentationTestConfigsLoader::loadDocumentationTestConfigs();
+
+        $testCases = [];
+        foreach ($testConfigs as $testConfig) {
+            $testCases = array_merge($testCases, $this->parseTestsConfig($testConfig));
         }
 
-        return $aTestCases;
+        return $testCases;
     }
 
     /**
      * Extract test cases values for a given tests configuration
-     * @param array $aTestsConfig
-     * @param string|null $sParentTitle
+     * @param array $testsConfig
+     * @param string|null $parentTitle
      * @return array
      * @throws \InvalidArgumentException
      */
-    protected function parseTestsConfig(\TestSuite\Documentation\DocumentationTestConfig $oTestConfig)
+    protected function parseTestsConfig(\TestSuite\Documentation\DocumentationTestConfig $documentationTestConfig)
     {
         // Extract root tests for this tests config
-        $aTestCases = $this->extractTestCaseFromTestConfig($oTestConfig);
+        $testCases = $this->extractTestCaseFromTestConfig($documentationTestConfig);
 
-        foreach ($oTestConfig->tests as $oNestedTestsConfig) {
-            $aParsedTestCase = $this->parseTestsConfig($oNestedTestsConfig);
+        foreach ($documentationTestConfig->tests as $nestedTestsConfig) {
+            $parsedTestCase = $this->parseTestsConfig($nestedTestsConfig);
 
             // Assert that there are no duplicated tests title
-            $aSameKeys = array_intersect_key($aParsedTestCase, $aTestCases);
-            if ($aSameKeys) {
+            $sameKeys = array_intersect_key($parsedTestCase, $testCases);
+            if ($sameKeys !== []) {
                 throw new \InvalidArgumentException(sprintf(
-                    'Argument "$aTestsConfig[\'tests\']" has duplicated test title: "%s"',
-                    join('", "', array_keys($aSameKeys))
+                    'Argument "$testsConfig[\'tests\']" has duplicated test title: "%s"',
+                    implode('", "', array_keys($sameKeys))
                 ));
             }
 
-            $aTestCases = array_merge($aTestCases, $aParsedTestCase);
+            $testCases = array_merge($testCases, $parsedTestCase);
         }
 
-        return $aTestCases;
+        return $testCases;
     }
 
     /**
      * Create a test case array for the given test config if tests params exist
-     * @param array $aTestConfig The test config array, expects ['rendering' => closure]
-     * @param string $sTitle The title of this test
-     * @return array An empty array if no test was found, else [ $sTitle => [rendering, expected] ]
+     * @param array $testConfig The test config array, expects ['rendering' => closure]
+     * @param string $title The title of this test
+     * @return array An empty array if no test was found, else [ $title => [rendering, expected] ]
      * @throws \InvalidArgumentException
      */
-    protected function extractTestCaseFromTestConfig(\TestSuite\Documentation\DocumentationTestConfig $oTestConfig)
-    {
-        if ($oTestConfig->rendering) {
-            return [$oTestConfig->title => [$oTestConfig->rendering]];
+    protected function extractTestCaseFromTestConfig(
+        \TestSuite\Documentation\DocumentationTestConfig $documentationTestConfig
+    ) {
+        if ($documentationTestConfig->rendering) {
+            return [$documentationTestConfig->title => [$documentationTestConfig->rendering]];
         }
+
         // No tests available
         return [];
     }
@@ -113,17 +116,17 @@ class DocumentationTest extends \PHPUnit\Framework\TestCase
     /**
      * @dataProvider getTestCasesProvider
      */
-    public function testDocumentation($oRendering)
+    public function testDocumentation($rendering)
     {
-        $oRenderer = \TestSuite\Bootstrap::getServiceManager()->get('ViewPhpRenderer');
+        $renderer = \TestSuite\Bootstrap::getServiceManager()->get('ViewPhpRenderer');
 
         // Retrieve output of renderging
         ob_start();
-        call_user_func($oRendering, $oRenderer);
-        $sRendering = ob_get_contents();
+        call_user_func($rendering, $renderer);
+        $rendering = ob_get_contents();
         ob_end_clean();
 
-        $this->assertMatchesHtmlSnapshot('<?xml encoding="utf-8" ?>' . $sRendering);
+        $this->assertMatchesHtmlSnapshot('<?xml encoding="utf-8" ?>' . $rendering);
     }
 
     /*
@@ -147,7 +150,7 @@ class DocumentationTest extends \PHPUnit\Framework\TestCase
 
     protected function getSnapshotPath(): string
     {
-        preg_match('/testDocumentation with data set "(.+)"/', $this->getName(), $aMatches);
-        return \TestSuite\Documentation\DocumentationTestSnapshot::getSnapshotPathFromTitle($aMatches[1]);
+        preg_match('/testDocumentation with data set "(.+)"/', $this->getName(), $matches);
+        return \TestSuite\Documentation\DocumentationTestSnapshot::getSnapshotPathFromTitle($matches[1]);
     }
 }

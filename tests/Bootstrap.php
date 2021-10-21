@@ -22,30 +22,30 @@ class Bootstrap
     public static function init()
     {
         // Load the user-defined test configuration file
-        if (!file_exists($sApplicationConfigPath = __DIR__ . '/config/application-config.php')) {
+        if (!file_exists($applicationConfigPath = __DIR__ . '/config/application-config.php')) {
             throw new \LogicException(sprintf(
                 'Application configuration file "%s" does not exist',
-                $sApplicationConfigPath
+                $applicationConfigPath
             ));
         }
-        if (false === ($aApplicationConfig = include $sApplicationConfigPath)) {
+        if (false === ($applicationConfig = include $applicationConfigPath)) {
             throw new \LogicException(sprintf(
                 'An error occured while including application configuration file "%"',
-                $sApplicationConfigPath
+                $applicationConfigPath
             ));
         }
 
         // Prepare the service manager
-        static::$config = $aApplicationConfig;
-        $oServiceManager = new \Laminas\ServiceManager\ServiceManager();
-        $oServiceManagerConfig = new \Laminas\Mvc\Service\ServiceManagerConfig(static::$config['service_manager'] ??  []);
-        $oServiceManagerConfig->configureServiceManager($oServiceManager);
-        $oServiceManager->setService('ApplicationConfig', static::$config);
+        static::$config = $applicationConfig;
+        $serviceManager = new \Laminas\ServiceManager\ServiceManager();
+        $serviceManagerConfig = new \Laminas\Mvc\Service\ServiceManagerConfig(static::$config['service_manager'] ??  []);
+        $serviceManagerConfig->configureServiceManager($serviceManager);
+        $serviceManager->setService('ApplicationConfig', static::$config);
 
         // Load modules
-        $oServiceManager->get('ModuleManager')->loadModules();
+        $serviceManager->get('ModuleManager')->loadModules();
 
-        static::$serviceManager = $oServiceManager;
+        static::$serviceManager = $serviceManager;
     }
 
     /**
@@ -66,46 +66,46 @@ class Bootstrap
 
     /**
      * Retrieve parent for a given path
-     * @param string $sPath
+     * @param string $path
      * @return boolean|string
      */
-    protected static function findParentPath($sPath)
+    protected static function findParentPath($path)
     {
-        $sCurrentDir = __DIR__;
-        $sPreviousDir = '.';
-        while (!is_dir($sPreviousDir . '/' . $sPath)) {
-            $sCurrentDir = dirname($sCurrentDir);
-            if ($sPreviousDir === $sCurrentDir) {
+        $currentDir = __DIR__;
+        $previousDir = '.';
+        while (!is_dir($previousDir . '/' . $path)) {
+            $currentDir = dirname($currentDir);
+            if ($previousDir === $currentDir) {
                 return false;
             }
-            $sPreviousDir = $sCurrentDir;
+            $previousDir = $currentDir;
         }
-        return $sCurrentDir . '/' . $sPath;
+        return $currentDir . '/' . $path;
     }
 }
 
 error_reporting(E_ALL | E_STRICT);
 
 // Composer autoloading
-if (!file_exists($sComposerAutoloadPath = __DIR__ . '/../vendor/autoload.php')) {
-    throw new \LogicException('Composer autoload file "' . $sComposerAutoloadPath . '" does not exist');
+if (!file_exists($composerAutoloadPath = __DIR__ . '/../vendor/autoload.php')) {
+    throw new \LogicException('Composer autoload file "' . $composerAutoloadPath . '" does not exist');
 }
-if (false === (include $sComposerAutoloadPath)) {
+if (false === (include $composerAutoloadPath)) {
     throw new \LogicException(sprintf(
         'An error occured while including composer autoload file "%s"',
-        $sComposerAutoloadPath
+        $composerAutoloadPath
     ));
 }
 
 // PHP Code Sniffer autoloading
-if (!file_exists($sPHPCodeSnifferAutoloadPath = __DIR__ . '/../vendor/squizlabs/php_codesniffer/autoload.php')) {
-    throw new \LogicException('PHP Code Sniffer autoload file "' . $sPHPCodeSnifferAutoloadPath . '" does not exist');
+if (!file_exists($phpCodeSnifferAutoloadPath = __DIR__ . '/../vendor/squizlabs/php_codesniffer/autoload.php')) {
+    throw new \LogicException('PHP Code Sniffer autoload file "' . $phpCodeSnifferAutoloadPath . '" does not exist');
 }
 
-if (false === (include $sPHPCodeSnifferAutoloadPath)) {
+if (false === (include $phpCodeSnifferAutoloadPath)) {
     throw new \LogicException(sprintf(
         'An error occured while including PHP Code Sniffer autoload file "%s"',
-        $sPHPCodeSnifferAutoloadPath
+        $phpCodeSnifferAutoloadPath
     ));
 }
 

@@ -19,96 +19,81 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
     /**
      *
-     * @param  array $aItems
-     * @param  array $aButtonToolbarOptions
      * @return ButtonGroup|string
      */
-    public function __invoke(array $aItems = null, array $aButtonToolbarOptions = null)
+    public function __invoke(array $items = null, array $buttonToolbarOptions = null)
     {
-        return $aItems ? $this->render($aItems, $aButtonToolbarOptions) : $this;
+        return $items ? $this->render($items, $buttonToolbarOptions) : $this;
     }
 
     /**
      * Render button toolbar markup
      *
-     * @param  array $aItems
-     * @param  array $aButtonToolbarOptions
      * @throws LogicException
-     * @return string
      */
-    public function render(array $aItems, array $aButtonToolbarOptions = null): string
+    public function render(array $items, array $buttonToolbarOptions = null): string
     {
         // Button group container attributes
-        $aClasses = ['btn-toolbar'];
-        $aAttributes = $this->setClassesToAttributes($aButtonToolbarOptions['attributes'] ?? [], $aClasses);
+        $classes = ['btn-toolbar'];
+        $attributes = $this->setClassesToAttributes($buttonToolbarOptions['attributes'] ?? [], $classes);
 
         // Render button group
-        return $this->htmlElement('div', $aAttributes, $this->renderToolbarItems($aItems));
+        return $this->htmlElement('div', $attributes, $this->renderToolbarItems($items));
     }
 
     /**
      * Render toolbar items markup
-     *
-     * @param array $aItems
-     * @return string
      */
-    protected function renderToolbarItems(array $aItems): string
+    protected function renderToolbarItems(array $items): string
     {
-        $sMarkup = '';
-        foreach ($aItems as $aItem) {
-            if (empty($aItem)) {
+        $markup = '';
+        foreach ($items as $item) {
+            if (empty($item)) {
                 continue;
             }
 
-            $sItemMarkup = '';
+            $itemMarkup = '';
 
-            if (is_array($aItem)) {
-                $sItemMarkup = $this->renderToolbarItemSpec($aItem);
-            } elseif ($aItem instanceof \Laminas\Form\ElementInterface) {
-                $sItemMarkup = $this->renderToolbarItem($aItem);
+            if (is_array($item)) {
+                $itemMarkup = $this->renderToolbarItemSpec($item);
+            } elseif ($item instanceof \Laminas\Form\ElementInterface) {
+                $itemMarkup = $this->renderToolbarItem($item);
             } else {
                 throw new \InvalidArgumentException(sprintf(
                     'Item expects an instanceof \Laminas\Form\ElementInterface or an array, "%s" given',
-                    is_object($aItem) ? get_class($aItem) : gettype($aItem)
+                    is_object($item) ? get_class($item) : gettype($item)
                 ));
             }
 
-            $sMarkup .= ($sMarkup ? PHP_EOL : '') . $sItemMarkup;
+            $markup .= ($markup ? PHP_EOL : '') . $itemMarkup;
         }
-        return $sMarkup;
+
+        return $markup;
     }
 
     /**
      * Render toolbar item markup
-     *
-     * @param \Laminas\Form\ElementInterface $oItem
-     * @return string
      */
-    protected function renderToolbarItem(\Laminas\Form\ElementInterface $oItem): string
+    protected function renderToolbarItem(\Laminas\Form\ElementInterface $element): string
     {
-        return $this->getFormElementHelper()->__invoke($oItem);
+        return $this->getFormElementHelper()->__invoke($element);
     }
 
     /**
      * Render toolbar item markup from given specifications
-     *
-     * @param array $aItem
-     * @return string
      */
-    protected function renderToolbarItemSpec(array $aItem): string
+    protected function renderToolbarItemSpec(array $item): string
     {
-        if (isset($aItem['buttons'])) {
-            return   $this->getButtonGroupHelper()->__invoke($aItem['buttons'], $aItem['options'] ?? []);
+        if (isset($item['buttons'])) {
+            return   $this->getButtonGroupHelper()->__invoke($item['buttons'], $item['options'] ?? []);
         }
-        $oFactory = new \Laminas\Form\Factory();
-        $oItem = $oFactory->create($aItem);
 
-        return $this->renderToolbarItem($oItem);
+        $formFactory = new \Laminas\Form\Factory();
+        $item = $formFactory->create($item);
+
+        return $this->renderToolbarItem($item);
     }
 
-    /**
-     * @return \TwbsHelper\View\Helper\ButtonGroup
-     */
     public function getButtonGroupHelper(): \TwbsHelper\View\Helper\ButtonGroup
     {
         if ($this->buttonGroupHelper instanceof \TwbsHelper\View\Helper\ButtonGroup) {
@@ -122,9 +107,6 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
         return $this->buttonGroupHelper = new \TwbsHelper\View\Helper\ButtonGroup();
     }
 
-    /**
-     * @return \TwbsHelper\Form\View\Helper\FormElement
-     */
     public function getFormElementHelper(): \TwbsHelper\Form\View\Helper\FormElement
     {
         if ($this->formElementHelper instanceof \TwbsHelper\Form\View\Helper\FormElement) {

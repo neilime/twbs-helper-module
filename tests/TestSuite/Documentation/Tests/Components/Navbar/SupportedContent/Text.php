@@ -4,8 +4,8 @@
 return [
     'title' => 'Text',
     'url' => '%bootstrap-url%/components/navbar/#text',
-    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-        echo $oView->navigation()->navbar()->render(
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+        echo $view->navigation()->navbar()->render(
             new \Laminas\Navigation\Navigation(),
             [
                 'text' => 'Navbar text with an inline element',
@@ -16,7 +16,7 @@ return [
 
         echo PHP_EOL . '<br/>' . PHP_EOL;
 
-        echo $oView->navigation()->navbar()->render(
+        echo $view->navigation()->navbar()->render(
             new \Laminas\Navigation\Navigation([
                 [
                     'label' => 'Home <span class="sr-only">(current)</span>',

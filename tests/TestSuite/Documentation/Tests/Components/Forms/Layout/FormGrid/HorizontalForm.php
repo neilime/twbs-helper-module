@@ -4,10 +4,10 @@
 return [
     'title' => 'Horizontal form',
     'url' => '%bootstrap-url%/components/forms/#horizontal-form',
-    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-        $oFactory = new \Laminas\Form\Factory();
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+        $factory = new \Laminas\Form\Factory();
 
-        echo $oView->form($oFactory->create([
+        echo $view->form($factory->create([
             'type' => 'form',
             'options' => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL],
             'elements' => [
@@ -121,10 +121,10 @@ return [
             'title' => 'Horizontal form label sizing',
             'url' => '%bootstrap-url%/components/forms/#horizontal-form-label-sizing',
 
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                $oFactory = new \Laminas\Form\Factory();
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                $factory = new \Laminas\Form\Factory();
 
-                echo $oView->form($oFactory->create([
+                echo $view->form($factory->create([
                     'type' => 'form',
                     'options' => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL],
                     'elements' => [

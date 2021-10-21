@@ -4,10 +4,10 @@
 return [
     'title' => 'Segmented buttons',
     'url' => '%bootstrap-url%/components/input-group/#segmented-buttons',
-    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-        $oFactory = new \Laminas\Form\Factory();
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+        $factory = new \Laminas\Form\Factory();
 
-        echo $oView->formRow($oFactory->create([
+        echo $view->formRow($factory->create([
             'name' => 'segmented-dropdown-prepend',
             'type' => 'text',
             'options' => [
@@ -38,7 +38,7 @@ return [
             ],
         ])) . PHP_EOL;
 
-        echo $oView->formRow($oFactory->create([
+        echo $view->formRow($factory->create([
             'name' => 'segmented-dropdown-append',
             'type' => 'text',
             'options' => [

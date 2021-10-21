@@ -4,10 +4,10 @@
 return [
     'title' => 'Basic example',
     'url' => '%bootstrap-url%/components/input-group/#basic-example',
-    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-        $oFactory = new \Laminas\Form\Factory();
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+        $factory = new \Laminas\Form\Factory();
 
-        echo $oView->formRow($oFactory->create([
+        echo $view->formRow($factory->create([
             'name' => 'username',
             'type' => 'text',
             'options' => [
@@ -22,7 +22,7 @@ return [
             ],
         ])) . PHP_EOL;
 
-        echo $oView->formRow($oFactory->create([
+        echo $view->formRow($factory->create([
             'name' => 'recipient_username',
             'type' => 'text',
             'options' => [
@@ -31,13 +31,13 @@ return [
                 'add_on_append' => '@example.com',
             ],
             'attributes' => [
-                'placeholder' => 'Recipient\'s username',
-                'aria-label' => 'Recipient\'s username',
+                'placeholder' => "Recipient's username",
+                'aria-label' => "Recipient's username",
                 'aria-describedby' => 'basic-addon2',
             ],
         ])) . PHP_EOL;
 
-        echo $oView->formRow($oFactory->create([
+        echo $view->formRow($factory->create([
             'name' => 'url',
             'type' => 'text',
             'options' => [
@@ -52,7 +52,7 @@ return [
             ],
         ])) . PHP_EOL;
 
-        echo $oView->formRow($oFactory->create([
+        echo $view->formRow($factory->create([
             'name' => 'amount',
             'type' => 'text',
             'options' => [
@@ -66,7 +66,7 @@ return [
             ],
         ])) . PHP_EOL;
 
-        echo $oView->formRow($oFactory->create([
+        echo $view->formRow($factory->create([
             'name' => 'textarea',
             'type' => 'textarea',
             'options' => [

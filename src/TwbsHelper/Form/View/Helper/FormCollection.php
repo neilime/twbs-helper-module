@@ -10,6 +10,7 @@ class FormCollection extends \Laminas\Form\View\Helper\FormCollection
     use \TwbsHelper\View\Helper\HtmlTrait;
 
     protected static $fieldsetRegex = '/(<fieldset[^>]*>)([\s\S]*)(<\/fieldset[^>]*>)$/imU';
+
     protected static $legendRegex = '/<legend[^>]*>([\s\S]*)<\/legend[^>]*>/imU';
 
     // Hold configurable options
@@ -22,7 +23,7 @@ class FormCollection extends \Laminas\Form\View\Helper\FormCollection
      */
     protected $wrapper = '<fieldset%4$s>%2$s%1$s%3$s</fieldset>';
 
-      /**
+    /**
      * Attributes valid for the tag represented by this helper
      *
      * This should be overridden in extending classes
@@ -37,114 +38,114 @@ class FormCollection extends \Laminas\Form\View\Helper\FormCollection
     /**
      * Constructor
      *
-     * @param \TwbsHelper\Options\ModuleOptions $options
+     * @param \TwbsHelper\Options\ModuleOptions $moduleOptions
      * @access public
      * @return void
      */
-    public function __construct(\TwbsHelper\Options\ModuleOptions $options)
+    public function __construct(\TwbsHelper\Options\ModuleOptions $moduleOptions)
     {
-        $this->options = $options;
+        $this->options = $moduleOptions;
     }
 
     /**
      * Render a collection by iterating through all fieldsets and elements
      *
-     * @param \Laminas\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface $element
      * @return string
      */
-    public function render(\Laminas\Form\ElementInterface $oElement): string
+    public function render(\Laminas\Form\ElementInterface $element): string
     {
         // Add valid custom attributes
         if ($this->options->getValidTagAttributes()) {
-            foreach ($this->options->getValidTagAttributes() as $attribute) {
-                $this->addValidAttribute($attribute);
+            foreach ($this->options->getValidTagAttributes() as $validTagAttribute) {
+                $this->addValidAttribute($validTagAttribute);
             }
         }
 
         if ($this->options->getValidTagAttributePrefixes()) {
-            foreach ($this->options->getValidTagAttributePrefixes() as $prefix) {
-                $this->addValidAttributePrefix($prefix);
+            foreach ($this->options->getValidTagAttributePrefixes() as $validTagAttributePrefix) {
+                $this->addValidAttributePrefix($validTagAttributePrefix);
             }
         }
 
-        $sElementLayout = $oElement->getOption('layout');
+        $elementLayout = $element->getOption('layout');
 
         // Set form layout class
-        if ($sElementLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE) {
-            $this->setClassesToElement($oElement, ['form-' . $sElementLayout]);
+        if ($elementLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE) {
+            $this->setClassesToElement($element, ['form-' . $elementLayout]);
         }
 
-        $sMarkup = parent::render($oElement);
-        if (!$sMarkup || !$this->shouldWrap) {
-            return $sMarkup;
+        $markup = parent::render($element);
+        if (!$markup || !$this->shouldWrap) {
+            return $markup;
         }
 
-        if (!preg_match(self::$fieldsetRegex, $sMarkup, $aMatches)) {
-            return $sMarkup;
+        if (!preg_match(self::$fieldsetRegex, $markup, $matches)) {
+            return $markup;
         }
 
-        $sMarkup = $aMatches[2];
+        $markup = $matches[2];
 
         // Define legend class
-        $aLabelAttributes = $oElement instanceof \Laminas\Form\LabelAwareInterface
-            ? $oElement->getLabelAttributes()
+        $labelAttributes = $element instanceof \Laminas\Form\LabelAwareInterface
+            ? $element->getLabelAttributes()
             : [];
-        $aLegendClasses = ['col-form-label'];
+        $legendClasses = ['col-form-label'];
 
         // Define legend column classes
-        $sColumSize = $oElement->getOption('column');
-        if ($sColumSize && !$this->hasColumnClassAttribute($aLabelAttributes['class'] ?? '')) {
-            $aLegendClasses[] = $this->getColumnCounterpartClass($sColumSize);
+        $columSize = $element->getOption('column');
+        if ($columSize && !$this->hasColumnClassAttribute($labelAttributes['class'] ?? '')) {
+            $legendClasses[] = $this->getColumnCounterpartClass($columSize);
         }
 
         // Extract legend
-        $sLegendContent = '';
-        if (preg_match(self::$legendRegex, $sMarkup, $aLegendMatches)) {
-            $sLegendContent = sprintf(
+        $legendContent = '';
+        if (preg_match(self::$legendRegex, $markup, $legendMatches)) {
+            $legendContent = sprintf(
                 '<legend%s>%s</legend>',
                 $this->attributesToString($this->setClassesToAttributes(
-                    $aLabelAttributes,
-                    $aLegendClasses
+                    $labelAttributes,
+                    $legendClasses
                 ), 'legend'),
-                $aLegendMatches[1]
+                $legendMatches[1]
             ) . PHP_EOL;
-            $sMarkup = str_replace($aLegendMatches[0], '', $sMarkup);
+            $markup = str_replace($legendMatches[0], '', $markup);
         }
 
-        if ($sColumSize) {
-            $sMarkup = $this->htmlElement(
+        if ($columSize) {
+            $markup = $this->htmlElement(
                 'div',
-                $this->setClassesToAttributes([], [$this->getColumnClass($sColumSize)]),
-                $sMarkup
+                $this->setClassesToAttributes([], [$this->getColumnClass($columSize)]),
+                $markup
             );
         }
 
-        $sMarkup = $sLegendContent . $sMarkup;
+        $markup = $legendContent . $markup;
 
-        if ($sElementLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL) {
-            $sMarkup = $this->htmlElement('div', ['class' => 'row'], $sMarkup);
+        if ($elementLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL) {
+            $markup = $this->htmlElement('div', ['class' => 'row'], $markup);
         }
 
-        return $aMatches[1] . $this->addProperIndentation($sMarkup) . $aMatches[3];
+        return $matches[1] . $this->addProperIndentation($markup) . $matches[3];
     }
 
     /**
      * Only render a template
      *
-     * @param \Laminas\Form\Element\Collection $oCollection
+     * @param \Laminas\Form\Element\Collection $collection
      * @return string
      */
-    public function renderTemplate(\Laminas\Form\Element\Collection $oCollection): string
+    public function renderTemplate(\Laminas\Form\Element\Collection $collection): string
     {
         // Set inline class
-        $sElementLayout = $oCollection->getOption('layout');
-        if ($sElementLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE) {
-            $oElementOrFieldset = $oCollection->getTemplateElement();
-            if ($oElementOrFieldset) {
-                $oElementOrFieldset->setOption('layout', $sElementLayout);
+        $elementLayout = $collection->getOption('layout');
+        if ($elementLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE) {
+            $elementOrFieldset = $collection->getTemplateElement();
+            if ($elementOrFieldset !== null) {
+                $elementOrFieldset->setOption('layout', $elementLayout);
             }
         }
 
-        return parent::renderTemplate($oCollection);
+        return parent::renderTemplate($collection);
     }
 }

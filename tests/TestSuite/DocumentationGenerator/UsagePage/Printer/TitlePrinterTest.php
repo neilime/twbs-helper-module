@@ -19,7 +19,7 @@ class TitlePrinterTest extends \PHPUnit\Framework\TestCase
      */
     protected $titlePrinter;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->file = $this->createMock(\DocumentationGenerator\FileSystem\File::class);
         $this->configuration = new \DocumentationGenerator\Configuration(

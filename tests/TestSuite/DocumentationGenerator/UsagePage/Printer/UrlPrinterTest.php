@@ -19,7 +19,7 @@ class UrlPrinterTest extends \PHPUnit\Framework\TestCase
      */
     protected $urlPrinter;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->file = $this->createMock(\DocumentationGenerator\FileSystem\File::class);
         $this->configuration = new \DocumentationGenerator\Configuration(

@@ -11,167 +11,167 @@ class ListGroup extends \TwbsHelper\View\Helper\HtmlList
     /**
      * Generates a 'List' element. Manage indentation of Xhtml markup
      *
-     * @param  array   $aItems      Array with the elements of the list
-     * @param  array   $aOptionsAndAttributes Attributes for the ul tag.
-     * @param  boolean $bEscape     Escape the items.
+     * @param  array   $items      Array with the elements of the list
+     * @param  array   $optionsAndAttributes Attributes for the ul tag.
+     * @param  boolean $escape     Escape the items.
      * @return string The list XHTML.
      */
-    public function __invoke(array $aItems, array $aOptionsAndAttributes = [], bool $bEscape = true)
+    public function __invoke(array $items, array $optionsAndAttributes = [], bool $escape = true)
     {
 
         return parent::__invoke(
-            $aItems,
-            $this->setClassesToAttributes($aOptionsAndAttributes, ['list-group']),
-            $bEscape
+            $items,
+            $this->setClassesToAttributes($optionsAndAttributes, ['list-group']),
+            $escape
         );
     }
 
     protected function renderContainer(
-        string $sTag,
-        array $aOptionsAndAttributes,
-        string $sListContent,
-        bool $bEscape = true
+        string $tag,
+        array $optionsAndAttributes,
+        string $listContent,
+        bool $escape = true
     ) {
-        if (isset($aOptionsAndAttributes['type'])) {
-            $sTag = 'div';
+        if (isset($optionsAndAttributes['type'])) {
+            $tag = 'div';
         }
-        unset($aOptionsAndAttributes['type']);
+        unset($optionsAndAttributes['type']);
 
-        if (isset($aOptionsAndAttributes['flush'])) {
-            $aOptionsAndAttributes = $this->setClassesToAttributes($aOptionsAndAttributes, ['list-group-flush']);
+        if (isset($optionsAndAttributes['flush'])) {
+            $optionsAndAttributes = $this->setClassesToAttributes($optionsAndAttributes, ['list-group-flush']);
         }
-        unset($aOptionsAndAttributes['flush']);
+        unset($optionsAndAttributes['flush']);
 
-        if (isset($aOptionsAndAttributes['horizontal'])) {
-            $aOptionsAndAttributes = $this->setClassesToAttributes(
-                $aOptionsAndAttributes,
+        if (isset($optionsAndAttributes['horizontal'])) {
+            $optionsAndAttributes = $this->setClassesToAttributes(
+                $optionsAndAttributes,
                 [
-                    $aOptionsAndAttributes['horizontal'] === true
+                    $optionsAndAttributes['horizontal'] === true
                         ? 'list-group-horizontal'
                         : $this->getSizeClass(
-                            $aOptionsAndAttributes['horizontal'],
+                            $optionsAndAttributes['horizontal'],
                             'list-group-horizontal'
                         ),
                 ]
             );
         }
-        unset($aOptionsAndAttributes['horizontal']);
+        unset($optionsAndAttributes['horizontal']);
 
         return parent::renderContainer(
-            $sTag,
-            $aOptionsAndAttributes,
-            $sListContent,
-            $bEscape
+            $tag,
+            $optionsAndAttributes,
+            $listContent,
+            $escape
         );
     }
 
     protected function renderListItem(
-        $sItem,
-        string $sItemLabel = '',
-        array $aOptionsAndAttributes = [],
-        array $aItemAttributes = [],
-        bool $bEscape = true,
-        string $sTag = 'li'
+        $item,
+        string $itemLabel = '',
+        array $optionsAndAttributes = [],
+        array $itemAttributes = [],
+        bool $escape = true,
+        string $tag = 'li'
     ): string {
 
-        $bDisabled = false;
+        $disabled = false;
 
         // Item with options
-        if (is_array($sItem)) {
+        if (is_array($item)) {
             // Content
-            if (!empty($sItem['content'])) {
-                $sItemLabel = $sItem['content'];
+            if (!empty($item['content'])) {
+                $itemLabel = $item['content'];
             }
-            unset($sItem['content']);
+            unset($item['content']);
 
             // Custom attributes
-            if (!empty($sItem['attributes'])) {
-                $aItemAttributes = \Laminas\Stdlib\ArrayUtils::merge($aItemAttributes, $sItem['attributes']);
+            if (!empty($item['attributes'])) {
+                $itemAttributes = \Laminas\Stdlib\ArrayUtils::merge($itemAttributes, $item['attributes']);
             }
-            unset($sItem['attributes']);
+            unset($item['attributes']);
 
             // Disabled state
-            $bDisabled =  !empty($sItem['disabled']);
-            unset($sItem['disabled']);
-            if ($bDisabled) {
-                $aItemAttributes['aria-disabled'] = 'true';
-                $aItemAttributes = $this->setClassesToAttributes($aItemAttributes, ['disabled']);
+            $disabled =  !empty($item['disabled']);
+            unset($item['disabled']);
+            if ($disabled) {
+                $itemAttributes['aria-disabled'] = 'true';
+                $itemAttributes = $this->setClassesToAttributes($itemAttributes, ['disabled']);
             }
 
             // Active state
-            if (!empty($sItem['active'])) {
-                $aItemAttributes = $this->setClassesToAttributes($aItemAttributes, ['active']);
+            if (!empty($item['active'])) {
+                $itemAttributes = $this->setClassesToAttributes($itemAttributes, ['active']);
             }
-            unset($sItem['active']);
+            unset($item['active']);
 
             // Variant
-            if (!empty($sItem['variant'])) {
-                $aItemAttributes = $this->setClassesToAttributes(
-                    $aItemAttributes,
-                    [$this->getVariantClass($sItem['variant'], 'list-group-item')]
+            if (!empty($item['variant'])) {
+                $itemAttributes = $this->setClassesToAttributes(
+                    $itemAttributes,
+                    [$this->getVariantClass($item['variant'], 'list-group-item')]
                 );
             }
-            unset($sItem['variant']);
+            unset($item['variant']);
 
             // Badge
-            if (!empty($sItem['badge'])) {
-                $aItemAttributes = $this->setClassesToAttributes(
-                    $aItemAttributes,
+            if (!empty($item['badge'])) {
+                $itemAttributes = $this->setClassesToAttributes(
+                    $itemAttributes,
                     ['d-flex', 'justify-content-between', 'align-items-center']
                 );
-                $sItemLabel = $this->renderBadge($sItem['badge'], $sItemLabel, $bEscape);
+                $itemLabel = $this->renderBadge($item['badge'], $itemLabel, $escape);
             }
-            unset($sItem['badge']);
+            unset($item['badge']);
         }
 
         // Item type
-        if (!empty($aOptionsAndAttributes['type'])) {
-            switch ($aOptionsAndAttributes['type']) {
+        if (!empty($optionsAndAttributes['type'])) {
+            switch ($optionsAndAttributes['type']) {
                 case 'action':
-                    $sTag = 'a';
-                    $aItemAttributes = $this->setClassesToAttributes($aItemAttributes, ['list-group-item-action']);
-                    if ($bDisabled) {
-                        $aItemAttributes['tabindex'] = -1;
+                    $tag = 'a';
+                    $itemAttributes = $this->setClassesToAttributes($itemAttributes, ['list-group-item-action']);
+                    if ($disabled) {
+                        $itemAttributes['tabindex'] = -1;
                     }
                     break;
                 case 'button':
-                    $sTag = 'button';
-                    $aItemAttributes = $this->setClassesToAttributes($aItemAttributes, ['list-group-item-action']);
-                    $aItemAttributes['type'] = 'button';
-                    if ($bDisabled) {
-                        $aItemAttributes = $this->setClassesToAttributes($aItemAttributes, [], ['disabled']);
-                        $aItemAttributes['disabled'] = true;
+                    $tag = 'button';
+                    $itemAttributes = $this->setClassesToAttributes($itemAttributes, ['list-group-item-action']);
+                    $itemAttributes['type'] = 'button';
+                    if ($disabled) {
+                        $itemAttributes = $this->setClassesToAttributes($itemAttributes, [], ['disabled']);
+                        $itemAttributes['disabled'] = true;
                     }
                     break;
 
                 default:
-                    throw new \DomainException('Item "type" option "' . $sItem['type'] . '" is not supported');
+                    throw new \DomainException('Item "type" option "' . $item['type'] . '" is not supported');
             }
         }
 
         return parent::renderListItem(
-            $sItem,
-            $sItemLabel,
-            $aOptionsAndAttributes,
-            $this->setClassesToAttributes($aItemAttributes, ['list-group-item']),
-            $bEscape,
-            $sTag
+            $item,
+            $itemLabel,
+            $optionsAndAttributes,
+            $this->setClassesToAttributes($itemAttributes, ['list-group-item']),
+            $escape,
+            $tag
         );
     }
 
-    protected function renderBadge($aBadgeOptions, string $sItemLabel, bool $bEscape): string
+    protected function renderBadge($badgeOptions, string $itemLabel, bool $escape): string
     {
-        if ($sItemLabel && $bEscape && !$this->isHTML($sItemLabel)) {
-            $sItemLabel = $this->getView()->plugin('escapeHtml')->__invoke($sItemLabel);
+        if ($itemLabel && $escape && !$this->isHTML($itemLabel)) {
+            $itemLabel = $this->getView()->plugin('escapeHtml')->__invoke($itemLabel);
         }
 
-        $oBadgeHelper = $this->getView()->plugin('badge');
+        $badgeHelper = $this->getView()->plugin('badge');
 
-        $sBadgeContent =  call_user_func_array(
-            [$oBadgeHelper,'__invoke'],
-            is_array($aBadgeOptions) ? $aBadgeOptions : [$aBadgeOptions]
+        $badgeContent =  call_user_func_array(
+            [$badgeHelper, '__invoke'],
+            is_array($badgeOptions) ? $badgeOptions : [$badgeOptions]
         );
 
-        return ($sItemLabel ? $sItemLabel . PHP_EOL : '') . $sBadgeContent;
+        return ($itemLabel ? $itemLabel . PHP_EOL : '') . $badgeContent;
     }
 }

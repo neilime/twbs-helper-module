@@ -18,8 +18,8 @@ class Image extends \TwbsHelper\View\Helper\AbstractHtmlElement
     /**
      * Generates a 'image' element
      *
-     * @param string $sImageSrc   The path to the image
-     * @param array  $aOptionsAndAttributes  Image options and Html attributes. Default : empty. Allowed options:
+     * @param string $imageSrc   The path to the image
+     * @param array  $optionsAndAttributes  Image options and Html attributes. Default : empty. Allowed options:
      *     - boolean fluid: responsive image
      *     - boolean thumbnail: thumbnail image
      *     - boolean rounded: rounded image
@@ -29,45 +29,47 @@ class Image extends \TwbsHelper\View\Helper\AbstractHtmlElement
      * @return string The image XHTML.
      * @throws \InvalidArgumentException
      */
-    public function __invoke(string $sImageSrc, array $aOptionsAndAttributes = [])
+    public function __invoke(string $imageSrc, array $optionsAndAttributes = [])
     {
-        $aImageClasses = [];
-        foreach ($this->imagesClasses as $sOptions => $sClass) {
-            if (!empty($aOptionsAndAttributes[$sOptions])) {
-                $aImageClasses[] = $sClass;
+        $imageClasses = [];
+        foreach ($this->imagesClasses as $options => $class) {
+            if (!empty($optionsAndAttributes[$options])) {
+                $imageClasses[] = $class;
             }
-            unset($aOptionsAndAttributes[$sOptions]);
+
+            unset($optionsAndAttributes[$options]);
         }
 
         // Image class
-        if ($aImageClasses) {
-            $aOptionsAndAttributes = $this->setClassesToAttributes($aOptionsAndAttributes, $aImageClasses);
+        if ($imageClasses !== []) {
+            $optionsAndAttributes = $this->setClassesToAttributes($optionsAndAttributes, $imageClasses);
         }
 
         // Image src
-        $aOptionsAndAttributes['src'] = $sImageSrc;
+        $optionsAndAttributes['src'] = $imageSrc;
 
-        $aSources = $aOptionsAndAttributes['sources'] ?? [];
-        unset($aOptionsAndAttributes['sources']);
+        $sources = $optionsAndAttributes['sources'] ?? [];
+        unset($optionsAndAttributes['sources']);
 
-        $sImageContent = $this->htmlElement('img', $aOptionsAndAttributes);
-        if (!$aSources) {
-            return $sImageContent;
+        $imageContent = $this->htmlElement('img', $optionsAndAttributes);
+        if (!$sources) {
+            return $imageContent;
         }
-        return $this->htmlElement('picture', [], $this->renderSources($aSources) . PHP_EOL . $sImageContent, false);
+
+        return $this->htmlElement('picture', [], $this->renderSources($sources) . PHP_EOL . $imageContent, false);
     }
 
 
-    public function renderSources(array $aSources)
+    public function renderSources(array $sources)
     {
-        $sSourcesContent = '';
-        foreach ($aSources as $sSrcSet => $sType) {
-            $sSourcesContent  .= ($sSourcesContent ? PHP_EOL : '') . $this->htmlElement('source', [
-                'srcset' => $sSrcSet,
-                'type'   => $sType,
+        $sourcesContent = '';
+        foreach ($sources as $srcSet => $type) {
+            $sourcesContent  .= ($sourcesContent ? PHP_EOL : '') . $this->htmlElement('source', [
+                'srcset' => $srcSet,
+                'type'   => $type,
             ]);
         }
 
-        return $sSourcesContent;
+        return $sourcesContent;
     }
 }

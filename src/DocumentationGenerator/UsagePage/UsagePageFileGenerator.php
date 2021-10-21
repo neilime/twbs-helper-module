@@ -19,7 +19,7 @@ class UsagePageFileGenerator
     /**
      * @var \TestSuite\Documentation\DocumentationTestConfig
      */
-    private $testConfig;
+    private $documentationTestConfig;
 
     /**
      * @var \DocumentationGenerator\UsagePage\PagePathInfo
@@ -28,11 +28,11 @@ class UsagePageFileGenerator
 
 
     public function __construct(
-        \DocumentationGenerator\Configuration $oConfiguration,
-        \TestSuite\Documentation\DocumentationTestConfig $oTestConfig
+        \DocumentationGenerator\Configuration $configuration,
+        \TestSuite\Documentation\DocumentationTestConfig $documentationTestConfig
     ) {
-        $this->configuration = $oConfiguration;
-        $this->testConfig = $oTestConfig;
+        $this->configuration = $configuration;
+        $this->documentationTestConfig = $documentationTestConfig;
         $this->pagePathInfo = $this->getPagePathInfo();
     }
 
@@ -44,80 +44,82 @@ class UsagePageFileGenerator
 
     private function getPagePathInfo()
     {
-        $aTitleParts = $this->testConfig->getTitleParts();
-        $sDirName = $sPageDirPath = $this->getUsageDirPath();
+        $titleParts = $this->documentationTestConfig->getTitleParts();
+        $dirName = $this->getUsageDirPath();
+        $pageDirPath = $dirName;
 
-        $iMaxNestedDir = $this->configuration->getMaxNestedDir();
-        for ($iIterator = 1; $iIterator < $iMaxNestedDir; $iIterator++) {
-            if (!empty($aTitleParts)) {
-                $sDirName = array_shift($aTitleParts);
-                $sPageDirPath = $sPageDirPath . DIRECTORY_SEPARATOR . $this->sanitizePath($sDirName);
+        $maxNestedDir = $this->configuration->getMaxNestedDir();
+        for ($iterator = 1; $iterator < $maxNestedDir; ++$iterator) {
+            if (!empty($titleParts)) {
+                $dirName = array_shift($titleParts);
+                $pageDirPath = $pageDirPath . DIRECTORY_SEPARATOR . $this->sanitizePath($dirName);
             } else {
                 break;
             }
         }
 
-        $oPageInfo = new \DocumentationGenerator\UsagePage\PagePathInfo();
-        $oPageInfo->dirName = $sDirName;
-        $oPageInfo->dirPath = $sPageDirPath;
-        $oPageInfo->pageName = array_shift($aTitleParts);
-        $sPageFileName = $this->sanitizePath($oPageInfo->pageName) . '.mdx';
-        $oPageInfo->pagePath = $oPageInfo->dirPath . DIRECTORY_SEPARATOR . $sPageFileName;
+        $pagePathInfo = new \DocumentationGenerator\UsagePage\PagePathInfo();
+        $pagePathInfo->dirName = $dirName;
+        $pagePathInfo->dirPath = $pageDirPath;
+        $pagePathInfo->pageName = array_shift($titleParts);
+        $pageFileName = $this->sanitizePath($pagePathInfo->pageName) . '.mdx';
+        $pagePathInfo->pagePath = $pagePathInfo->dirPath . DIRECTORY_SEPARATOR . $pageFileName;
 
-        return $oPageInfo;
-    }
-
-    private function getUsageDirPath()
-    {
-        $sUsageDirPath = $this->configuration->getRootDirPath() . DIRECTORY_SEPARATOR . self::$USAGE_DIR_PATH;
-
-        if (!is_dir($sUsageDirPath)) {
-            throw new \LogicException('Usage dir path "' . $sUsageDirPath . '" does not exist');
-        }
-
-        return realpath($sUsageDirPath);
-    }
-
-    private function sanitizePath($sPath)
-    {
-        $sDivider = '-';
-
-        // Replace non letter or digits by divider
-        $sSafePath = preg_replace('~[^\pL\d]+~u', $sDivider, $sPath);
-
-        // transliterate
-        $sSafePath = iconv('utf-8', 'us-ascii//TRANSLIT', $sSafePath);
-
-        // remove unwanted characters
-        $sSafePath = preg_replace('~[^-\w]+~', '', $sSafePath);
-
-        // trim
-        $sSafePath = trim($sSafePath, $sDivider);
-
-        // remove duplicate divider
-        $sSafePath = preg_replace('~-+~', $sDivider, $sSafePath);
-
-        // lowercase
-        $sSafePath = strtolower($sSafePath);
-
-        if (empty($sSafePath)) {
-            return 'n-a';
-        }
-
-        return $sSafePath;
+        return $pagePathInfo;
     }
 
     private function createPageDir()
     {
-        $sPageDirPath = $this->pagePathInfo->dirPath;
+        $pageDirPath = $this->pagePathInfo->dirPath;
 
-        if (empty($sPageDirPath)) {
+        if (empty($pageDirPath)) {
             throw new \LogicException('Page directory path is undefined');
         }
-        if (!is_dir($sPageDirPath)) {
-            mkdir($sPageDirPath);
+
+        if (!is_dir($pageDirPath)) {
+            mkdir($pageDirPath);
             $this->generateCategoryFile();
         }
+    }
+
+    private function getUsageDirPath()
+    {
+        $usageDirPath = $this->configuration->getRootDirPath() . DIRECTORY_SEPARATOR . self::$USAGE_DIR_PATH;
+
+        if (!is_dir($usageDirPath)) {
+            throw new \LogicException('Usage dir path "' . $usageDirPath . '" does not exist');
+        }
+
+        return realpath($usageDirPath);
+    }
+
+    private function sanitizePath($path)
+    {
+        $divider = '-';
+
+        // Replace non letter or digits by divider
+        $safePath = preg_replace('/[^\pL\d]+/u', $divider, $path);
+
+        // transliterate
+        $safePath = iconv('utf-8', 'us-ascii//TRANSLIT', $safePath);
+
+        // remove unwanted characters
+        $safePath = preg_replace('/[^-\w]+/', '', $safePath);
+
+        // trim
+        $safePath = trim($safePath, $divider);
+
+        // remove duplicate divider
+        $safePath = preg_replace('/-+/', $divider, $safePath);
+
+        // lowercase
+        $safePath = strtolower($safePath);
+
+        if (empty($safePath)) {
+            return 'n-a';
+        }
+
+        return $safePath;
     }
 
     private function generateCategoryFile()
@@ -127,7 +129,7 @@ class UsagePageFileGenerator
             sprintf(
                 self::$USAGE_PAGE_DIRECTORY_TEMPLATE,
                 $this->pagePathInfo->dirName,
-                $this->testConfig->position
+                $this->documentationTestConfig->position
             )
         );
     }

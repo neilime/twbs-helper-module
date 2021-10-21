@@ -4,23 +4,23 @@ namespace DocumentationGenerator\FileSystem\Local;
 
 class File implements \DocumentationGenerator\FileSystem\File
 {
-    public function fileExists($sFilePath)
+    public function fileExists($filePath)
     {
-        return file_exists($sFilePath);
+        return file_exists($filePath);
     }
 
-    public function readFile($sFilePath)
+    public function readFile($filePath)
     {
-        return file_get_contents($sFilePath);
+        return file_get_contents($filePath);
     }
 
-    public function writeFile($sFilePath, $sFileContent)
+    public function writeFile($filePath, $fileContent)
     {
-        file_put_contents($sFilePath, $sFileContent);
+        file_put_contents($filePath, $fileContent);
     }
 
-    public function appendFile($sFilePath, $sFileContent)
+    public function appendFile($filePath, $fileContent)
     {
-        file_put_contents($sFilePath, $sFileContent, FILE_APPEND);
+        file_put_contents($filePath, $fileContent, FILE_APPEND);
     }
 }

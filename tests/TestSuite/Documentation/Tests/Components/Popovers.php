@@ -8,13 +8,13 @@ return [
         [
             'title' => 'Example',
             'url' => '%bootstrap-url%/components/popovers/#example',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->formButton()->renderSpec([
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->formButton()->renderSpec([
                     'name' => 'popover',
                     'options' => [
                         'label' => 'Click to toggle popover',
                         'variant' => 'danger',
-                        'popover' => 'And here\'s some amazing content. It\'s very engaging. Right?',
+                        'popover' => "And here's some amazing content. It's very engaging. Right?",
                         'size' => 'lg',
                     ],
                     'attributes' => ['title' => 'Popover title'],
@@ -24,21 +24,21 @@ return [
         [
             'title' => 'Four directions',
             'url' => '%bootstrap-url%/components/popovers/#four-directions',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                 foreach (
                     [
                     'top' => 'Popover on top',
                     'right' => 'Popover on right',
                     'bottom' => 'Popover on bottom',
                     'left' => 'Popover on left',
-                    ] as $sPlacement => $sButtonLabel
+                    ] as $placement => $buttonLabel
                 ) {
-                    echo $oView->formButton()->renderSpec([
+                    echo $view->formButton()->renderSpec([
                         'name' => 'popover',
                         'options' => [
-                            'label' => $sButtonLabel,
+                            'label' => $buttonLabel,
                             'popover' => [
-                                'placement' => $sPlacement,
+                                'placement' => $placement,
                                 'content' => 'Vivamus sagittis lacus vel augue laoreet rutrum faucibus.',
                             ],
                         ],
@@ -49,8 +49,8 @@ return [
         [
             'title' => 'Dismiss on next click',
             'url' => '%bootstrap-url%/components/popovers/#dismiss-on-next-click',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->formButton()->renderSpec([
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->formButton()->renderSpec([
                     'name' => 'popover',
                     'options' => [
                         'tag' => 'a',
@@ -58,7 +58,7 @@ return [
                         'variant' => 'danger',
                         'popover' => [
                             'trigger' => 'focus',
-                            'content' => 'And here\'s some amazing content. It\'s very engaging. Right?',
+                            'content' => "And here's some amazing content. It's very engaging. Right?",
                         ],
                         'size' => 'lg',
                     ],
@@ -69,8 +69,8 @@ return [
         [
             'title' => 'Disabled elements',
             'url' => '%bootstrap-url%/components/popovers/#disabled-elements',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->formButton()->renderSpec([
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->formButton()->renderSpec([
                     'name' => 'popover',
                     'options' => [
                         'label' => 'Disabled button',

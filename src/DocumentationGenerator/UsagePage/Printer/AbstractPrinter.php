@@ -25,22 +25,22 @@ abstract class AbstractPrinter
     abstract protected function getContentToPrint();
 
     public function __construct(
-        \DocumentationGenerator\Configuration $oConfiguration,
-        \TestSuite\Documentation\DocumentationTestConfig $oTestConfig,
-        $sPagePath
+        \DocumentationGenerator\Configuration $configuration,
+        \TestSuite\Documentation\DocumentationTestConfig $documentationTestConfig,
+        $pagePath
     ) {
-        $this->configuration = $oConfiguration;
-        $this->testConfig = $oTestConfig;
-        $this->pagePath = $sPagePath;
+        $this->configuration = $configuration;
+        $this->testConfig = $documentationTestConfig;
+        $this->pagePath = $pagePath;
     }
 
     public function printContentToPage()
     {
-        $sContent = $this->getContentToPrint();
-        if ($sContent) {
+        $contentToPrint = $this->getContentToPrint();
+        if ($contentToPrint) {
             $this->configuration->getFile()->appendFile(
                 $this->pagePath,
-                $sContent . PHP_EOL,
+                $contentToPrint . PHP_EOL,
             );
         }
     }

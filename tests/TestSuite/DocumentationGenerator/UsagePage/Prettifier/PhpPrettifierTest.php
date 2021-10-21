@@ -7,33 +7,38 @@ class PhpPrettifierTest extends \PHPUnit\Framework\TestCase
     use \Spatie\Snapshots\MatchesSnapshots;
 
     /**
+     * @var \DocumentationGenerator\FileSystem\File&\PHPUnit\Framework\MockObject\MockObject|mixed
+     */
+    public $file;
+
+    /**
      * @var \DocumentationGenerator\UsagePage\Prettifier\PhpPrettifier
      */
     protected $phpPrettifier;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
 
         $this->file = $this->createMock(\DocumentationGenerator\FileSystem\File::class);
-        $oConfiguration = new \DocumentationGenerator\Configuration(
+        $configuration = new \DocumentationGenerator\Configuration(
             __DIR__ . '/../../../../..',
             'x.x',
             2,
             $this->file
         );
 
-        $this->phpPrettifier = \DocumentationGenerator\UsagePage\Prettifier\PhpPrettifier::getInstance($oConfiguration);
+        $this->phpPrettifier = \DocumentationGenerator\UsagePage\Prettifier\PhpPrettifier::getInstance($configuration);
     }
 
     public function testPrettifyShouldSetProperIndentation()
     {
-        $sSource = <<<'SOURCE'
+        $source = <<<'SOURCE'
 <?php
 
-$oFactory = new \Laminas\Form\Factory();
+$factory = new \Laminas\Form\Factory();
 
 // Render Default checkbox
-echo $this->formRow($oFactory->create([
+echo $this->formRow($factory->create([
 'name' => 'default-checkbox',
 'type' => 'checkbox',
 'options' => [
@@ -47,8 +52,8 @@ echo $this->formRow($oFactory->create([
 ])) . PHP_EOL;        
 SOURCE;
 
-        $sResult = $this->phpPrettifier->prettify($sSource);
+        $result = $this->phpPrettifier->prettify($source);
 
-        $this->assertMatchesSnapshot($sResult);
+        $this->assertMatchesSnapshot($result);
     }
 }

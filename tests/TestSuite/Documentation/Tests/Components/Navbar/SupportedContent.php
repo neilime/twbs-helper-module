@@ -4,13 +4,13 @@
 return [
     'title' => 'Supported content',
     'url' => '%bootstrap-url%/components/navbar/#supported-content',
-    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-        echo $oView->navigation()->navbar()->render(
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+        echo $view->navigation()->navbar()->render(
             new \Laminas\Navigation\Navigation([
                 ['label' => 'Home <span class="sr-only">(current)</span>', 'uri' => '#', 'active' => true],
                 ['label' => 'Link', 'uri' => '#'],
                 [
-                    'type' => '\TwbsHelper\Navigation\Page\DropdownPage',
+                    'type' => \TwbsHelper\Navigation\Page\DropdownPage::class,
                     'label' => 'Dropdown',
                     'dropdown' => [
                         'items' => [

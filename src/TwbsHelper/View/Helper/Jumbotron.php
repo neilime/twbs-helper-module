@@ -18,116 +18,116 @@ class Jumbotron extends \TwbsHelper\View\Helper\AbstractHtmlElement
     /**
      * Generates a 'jumbotron' element
      *
-     * @param string|array  $sContent The content of the alert
-     * @param array  $aOptionsAndAttributes Options & Html attributes
-     * @param boolean $bEscape True espace html content '$sContent'. Default True
+     * @param string|array  $content The content of the alert
+     * @param array  $optionsAndAttributes Options & Html attributes
+     * @param boolean $escape True espace html content '$content'. Default True
      * @return string The jumbotron XHTML.
      */
     public function __invoke(
-        $sContent,
-        array $aOptionsAndAttributes = [],
-        bool $bEscape = true
+        $content,
+        array $optionsAndAttributes = [],
+        bool $escape = true
     ): string {
-        $bFluid = !empty($aOptionsAndAttributes['fluid']);
-        unset($aOptionsAndAttributes['fluid']);
-        if ($bFluid) {
-            $aOptionsAndAttributes = $this->setClassesToAttributes($aOptionsAndAttributes, ['jumbotron-fluid']);
+        $fluid = !empty($optionsAndAttributes['fluid']);
+        unset($optionsAndAttributes['fluid']);
+        if ($fluid) {
+            $optionsAndAttributes = $this->setClassesToAttributes($optionsAndAttributes, ['jumbotron-fluid']);
         }
 
-        if (is_array($sContent)) {
-            $sContent = $this->renderJumbotronParts($sContent, $bEscape);
+        if (is_array($content)) {
+            $content = $this->renderJumbotronParts($content, $escape);
         }
 
-        if ($bFluid) {
-            $sContent = $this->htmlElement(
+        if ($fluid) {
+            $content = $this->htmlElement(
                 'div',
                 ['class' => 'container'],
-                $sContent,
-                $bEscape
+                $content,
+                $escape
             );
         }
 
         return $this->htmlElement(
             'div',
-            $this->setClassesToAttributes($aOptionsAndAttributes, ['jumbotron']),
-            $sContent,
-            $bEscape
+            $this->setClassesToAttributes($optionsAndAttributes, ['jumbotron']),
+            $content,
+            $escape
         );
     }
 
-    protected function renderJumbotronParts(array $aParts = [], bool $bEscape = true): string
+    protected function renderJumbotronParts(array $parts = [], bool $escape = true): string
     {
-        $sContent = '';
+        $content = '';
 
-        foreach ($aParts as $sKey => $sPartContent) {
-            $sType = is_numeric($sKey) ? self::JUMBOTRON_TEXT : $sKey;
-            if (is_string($sPartContent)) {
-                $aOptions = [];
-                if ($sPartContent === self::JUMBOTRON_DIVIDER) {
-                    $sType =  self::JUMBOTRON_DIVIDER;
+        foreach ($parts as $key => $partContent) {
+            $type = is_numeric($key) ? self::JUMBOTRON_TEXT : $key;
+            if (is_string($partContent)) {
+                $options = [];
+                if ($partContent === self::JUMBOTRON_DIVIDER) {
+                    $type =  self::JUMBOTRON_DIVIDER;
                 } else {
-                    $aOptions['content'] = $sPartContent;
+                    $options['content'] = $partContent;
                 }
-            } elseif (is_array($sPartContent)) {
-                $aOptions = $sPartContent;
+            } elseif (is_array($partContent)) {
+                $options = $partContent;
             }
 
-            $sContent .= ($sContent ? PHP_EOL : '') . $this->renderJumbotronPart(
-                $sType,
-                $aOptions ?? [],
-                $bEscape
+            $content .= ($content ? PHP_EOL : '') . $this->renderJumbotronPart(
+                $type,
+                $options ?? [],
+                $escape
             );
         }
 
-        return $sContent;
+        return $content;
     }
 
     protected function renderJumbotronPart(
-        string $sType,
-        array $aOptions = [],
-        bool $bEscape = true
+        string $type,
+        array $options = [],
+        bool $escape = true
     ): string {
 
-        $aAttributes = $aOptions['attributes'] ?? [];
-        switch ($sType) {
+        $attributes = $options['attributes'] ?? [];
+        switch ($type) {
             case self::JUMBOTRON_TITLE:
-                $sTag = 'h1';
-                $aAttributes = $this->setClassesToAttributes(
-                    $aAttributes,
-                    ['display-' . ($aOptions['size'] ?? 4)]
+                $tag = 'h1';
+                $attributes = $this->setClassesToAttributes(
+                    $attributes,
+                    ['display-' . ($options['size'] ?? 4)]
                 );
                 break;
 
             case self::JUMBOTRON_LEAD:
-                $sTag = 'p';
-                $aAttributes = $this->setClassesToAttributes($aAttributes, ['lead']);
+                $tag = 'p';
+                $attributes = $this->setClassesToAttributes($attributes, ['lead']);
                 break;
 
             case self::JUMBOTRON_TEXT:
-                $sTag = 'p';
+                $tag = 'p';
                 break;
 
             case self::JUMBOTRON_BUTTON:
-                return $this->getView()->plugin('formButton')->renderSpec($aOptions);
+                return $this->getView()->plugin('formButton')->renderSpec($options);
 
             case self::JUMBOTRON_DIVIDER:
-                $sTag = 'hr';
+                $tag = 'hr';
                 break;
 
             default:
-                throw new \DomainException('Jumbotron part type "' . $sType . '" is not supported');
+                throw new \DomainException('Jumbotron part type "' . $type . '" is not supported');
         }
 
 
-        if (empty($aOptions['content']) && $sType !== self::JUMBOTRON_DIVIDER) {
-            throw new \DomainException('Jumbotron part type "' . $sType . '" expects a content, none given');
+        if (empty($options['content']) && $type !== self::JUMBOTRON_DIVIDER) {
+            throw new \DomainException('Jumbotron part type "' . $type . '" expects a content, none given');
         }
 
         return $this->htmlElement(
-            $sTag,
-            $aAttributes,
-            $aOptions['content'] ?? null,
-            $bEscape
+            $tag,
+            $attributes,
+            $options['content'] ?? null,
+            $escape
         );
     }
 }

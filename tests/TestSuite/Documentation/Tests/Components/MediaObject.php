@@ -8,8 +8,8 @@ return [
         [
             'title' => 'Example',
             'url' => '%bootstrap-url%/components/media-object/#example',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->media([
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->media([
                     'img' => ['/twbs-helper-module/img/docs/64x64.svg', ['alt' => '...', 'class' => 'mr-3']],
                     'title' => 'Media heading',
                     'text' => 'Cras sit amet nibh libero, in gravida nulla. ' .
@@ -23,8 +23,8 @@ return [
         [
             'title' => 'Nesting',
             'url' => '%bootstrap-url%/components/media-object/#nesting',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->media([
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->media([
                     'img' => ['/twbs-helper-module/img/docs/64x64.svg', ['alt' => '...', 'class' => 'mr-3']],
                     'title' => 'Media heading',
                     'text' => 'Cras sit amet nibh libero, in gravida nulla. ' .
@@ -49,9 +49,9 @@ return [
         [
             'title' => 'Alignment',
             'url' => '%bootstrap-url%/components/media-object/#alignment',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                 // Top-aligned media
-                echo $oView->media([
+                echo $view->media([
                     'img' => [
                         '/twbs-helper-module/img/docs/64x64.svg',
                         ['alt' => '...', 'class' => 'align-self-start mr-3']
@@ -69,7 +69,7 @@ return [
                 ]) . PHP_EOL;
 
                 // Center-aligned media
-                echo $oView->media([
+                echo $view->media([
                     'img' => [
                         '/twbs-helper-module/img/docs/64x64.svg',
                         ['alt' => '...', 'class' => 'align-self-center mr-3']
@@ -90,7 +90,7 @@ return [
                 ]) . PHP_EOL;
 
                 // Bottom-aligned media
-                echo $oView->media([
+                echo $view->media([
                     'img' => [
                         '/twbs-helper-module/img/docs/64x64.svg',
                         ['alt' => '...', 'class' => 'align-self-end mr-3']
@@ -114,8 +114,8 @@ return [
         [
             'title' => 'Order',
             'url' => '%bootstrap-url%/components/media-object/#order',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->media([
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->media([
                     'title' => ['content' => 'Media object', 'attributes' => ['class' => 'mb-1']],
                     'text' => 'Cras sit amet nibh libero, in gravida nulla. ' .
                         'Nulla vel metus scelerisque ante sollicitudin. ' .
@@ -129,8 +129,8 @@ return [
         [
             'title' => 'Media list',
             'url' => '%bootstrap-url%/components/media-object/#media-list',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->mediaList([
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->mediaList([
                     [
                         'img' => ['/twbs-helper-module/img/docs/64x64.svg', ['alt' => '...', 'class' => 'mr-3']],
                         'title' => ['content' => 'List-based media object', 'attributes' => ['class' => 'mb-1']],

@@ -8,8 +8,8 @@ return [
         [
             'title' => 'Examples',
             'url' => '%bootstrap-url%/content/tables/#examples',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->table([
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->table([
                     'head' => ['#', 'First', 'Last', 'Handle'],
                     'body' => [
                         ['1', 'Mark', 'Otto', '@mdo'],
@@ -20,7 +20,7 @@ return [
 
                 echo PHP_EOL . '<br/>' . PHP_EOL;
 
-                echo $oView->table([
+                echo $view->table([
                     'head' => ['#', 'First', 'Last', 'Handle'],
                     'body' => [
                         ['1', 'Mark', 'Otto', '@mdo'],
@@ -33,9 +33,9 @@ return [
         [
             'title' => 'Table head options',
             'url' => '%bootstrap-url%/content/tables/#table-head-options',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                 // First table (head dark)
-                echo $oView->table([
+                echo $view->table([
                     'head' => [
                         'attributes' => ['class' => 'thead-dark'],
                         'rows' => ['#', 'First', 'Last', 'Handle'],
@@ -50,7 +50,7 @@ return [
                 echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Second table (head light)
-                echo $oView->table([
+                echo $view->table([
                     'head' => [
                         'attributes' => ['class' => 'thead-light'],
                         'rows' => ['#', 'First', 'Last', 'Handle'],
@@ -66,9 +66,9 @@ return [
         [
             'title' => 'Striped rows',
             'url' => '%bootstrap-url%/content/tables/#striped-rows',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                 // First table (head striped)
-                echo $oView->table([
+                echo $view->table([
                     'head' => ['#', 'First', 'Last', 'Handle'],
                     'body' => [
                         ['1', 'Mark', 'Otto', '@mdo'],
@@ -81,7 +81,7 @@ return [
                 echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Second table (head striped & dark)
-                echo $oView->table([
+                echo $view->table([
                     'head' => ['#', 'First', 'Last', 'Handle'],
                     'body' => [
                         ['1', 'Mark', 'Otto', '@mdo'],
@@ -94,9 +94,9 @@ return [
         [
             'title' => 'Bordered table',
             'url' => '%bootstrap-url%/content/tables/#bordered-table',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                 // First table (bordered)
-                echo $oView->table([
+                echo $view->table([
                     'head' => ['#', 'First', 'Last', 'Handle'],
                     'body' => [
                         ['1', 'Mark', 'Otto', '@mdo'],
@@ -108,7 +108,7 @@ return [
                 echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // First table (bordered & dark)
-                echo $oView->table([
+                echo $view->table([
                     'head' => ['#', 'First', 'Last', 'Handle'],
                     'body' => [
                         ['1', 'Mark', 'Otto', '@mdo'],
@@ -121,10 +121,10 @@ return [
         [
             'title' => 'Borderless table',
             'url' => '%bootstrap-url%/content/tables/#borderless-table',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
 
                 // First table (borderless)
-                echo $oView->table([
+                echo $view->table([
                     'head' => ['#', 'First', 'Last', 'Handle'],
                     'body' => [
                         ['1', 'Mark', 'Otto', '@mdo'],
@@ -136,7 +136,7 @@ return [
                 echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Second table (borderless & dark)
-                echo $oView->table([
+                echo $view->table([
                     'head' => ['#', 'First', 'Last', 'Handle'],
                     'body' => [
                         ['1', 'Mark', 'Otto', '@mdo'],
@@ -149,9 +149,9 @@ return [
         [
             'title' => 'Hoverable rows',
             'url' => '%bootstrap-url%/content/tables/#hoverable-rows',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                 // First table (hoverable)
-                echo $oView->table([
+                echo $view->table([
                     'head' => ['#', 'First', 'Last', 'Handle'],
                     'body' => [
                         ['1', 'Mark', 'Otto', '@mdo'],
@@ -163,7 +163,7 @@ return [
                 echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Second table (hoverable & dark)
-                echo $oView->table([
+                echo $view->table([
                     'head' => ['#', 'First', 'Last', 'Handle'],
                     'body' => [
                         ['1', 'Mark', 'Otto', '@mdo'],
@@ -176,9 +176,9 @@ return [
         [
             'title' => 'Small Table',
             'url' => '%bootstrap-url%/content/tables/#small-table',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                 // First table (small)
-                echo $oView->table([
+                echo $view->table([
                     'head' => ['#', 'First', 'Last', 'Handle'],
                     'body' => [
                         ['1', 'Mark', 'Otto', '@mdo'],
@@ -190,7 +190,7 @@ return [
                 echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Second table (small & dark)
-                echo $oView->table([
+                echo $view->table([
                     'head' => ['#', 'First', 'Last', 'Handle'],
                     'body' => [
                         ['1', 'Mark', 'Otto', '@mdo'],
@@ -203,9 +203,9 @@ return [
         [
             'title' => 'Contextual classes',
             'url' => '%bootstrap-url%/content/tables/#contextual-classes',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                 // First table
-                echo $oView->table([
+                echo $view->table([
                     'head' => ['Class', 'Heading', 'Heading'],
                     'body' => [
                         [
@@ -251,7 +251,7 @@ return [
                 echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Second table (dark)
-                echo $oView->table([
+                echo $view->table([
                     'head' => ['Class', 'Heading', 'Heading'],
                     'body' => [
                         [
@@ -298,8 +298,8 @@ return [
         [
             'title' => 'Captions',
             'url' => '%bootstrap-url%/content/tables/#captions',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->table([
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->table([
                     'caption' => 'List of users',
                     'head' => ['#', 'First', 'Last', 'Handle'],
                     'body' => [
@@ -317,8 +317,8 @@ return [
                 [
                     'title' => 'Always responsive',
                     'url' => '%bootstrap-url%/content/tables/#always-responsive',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        echo $oView->table([
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        echo $view->table([
                             'responsive' => true,
                             'head' => [
                                 '#', 'Heading', 'Heading', 'Heading', 'Heading',
@@ -335,14 +335,14 @@ return [
                 [
                     'title' => 'Breakpoint specific',
                     'url' => '%bootstrap-url%/content/tables/#breakpoint-specific',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        foreach (['sm', 'md', 'lg', 'xl'] as $iKey => $sSize) {
-                            if ($iKey) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        foreach (['sm', 'md', 'lg', 'xl'] as $key => $size) {
+                            if ($key) {
                                 echo PHP_EOL . '<br/>' . PHP_EOL;
                             }
 
-                            echo $oView->table([
-                                'responsive' => $sSize,
+                            echo $view->table([
+                                'responsive' => $size,
                                 'head' => [
                                     '#', 'Heading', 'Heading', 'Heading', 'Heading',
                                     'Heading', 'Heading', 'Heading', 'Heading', 'Heading',

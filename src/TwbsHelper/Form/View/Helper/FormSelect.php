@@ -9,23 +9,23 @@ class FormSelect extends \Laminas\Form\View\Helper\FormSelect
     /**
      * Render a form <select> element from the provided $element
      *
-     * @param \Laminas\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface $element
      * @return string
      */
-    public function render(\Laminas\Form\ElementInterface $oElement): string
+    public function render(\Laminas\Form\ElementInterface $element): string
     {
-        if ($bIsCustom = $oElement->getOption('custom')) {
-            $this->setClassesToElement($oElement, ['custom-select']);
+        if ($isCustom = $element->getOption('custom')) {
+            $this->setClassesToElement($element, ['custom-select']);
         }
 
-        if ($sSizeOption = $oElement->getOption('size')) {
-            $this->setClassesToElement($oElement, [$this->getSizeClass(
-                $sSizeOption,
-                $bIsCustom ? 'custom-select' : 'form-control'
+        if ($sizeOption = $element->getOption('size')) {
+            $this->setClassesToElement($element, [$this->getSizeClass(
+                $sizeOption,
+                $isCustom ? 'custom-select' : 'form-control'
             )]);
         }
 
-        return parent::render($oElement);
+        return parent::render($element);
     }
 
     /**
@@ -42,17 +42,17 @@ class FormSelect extends \Laminas\Form\View\Helper\FormSelect
      * )
      * </code>
      *
-     * @param  array $aOptions
-     * @param  array $aSelectedOptions Option values that should be marked as selected
+     * @param  array $options
+     * @param  array $selectedOptions Option values that should be marked as selected
      * @return string
      */
-    public function renderOptions(array $aOptions, array $aSelectedOptions = []): string
+    public function renderOptions(array $options, array $selectedOptions = []): string
     {
-        $sOptionsContent = parent::renderOptions($aOptions, $aSelectedOptions);
+        $optionsContent = parent::renderOptions($options, $selectedOptions);
         if (PHP_EOL !==  "\n") {
-            $sOptionsContent = str_replace("\n", PHP_EOL, $sOptionsContent);
+            $optionsContent = str_replace("\n", PHP_EOL, $optionsContent);
         }
 
-        return $this->addProperIndentation($sOptionsContent);
+        return $this->addProperIndentation($optionsContent);
     }
 }

@@ -8,8 +8,8 @@ return [
         [
             'title' => 'Basic example',
             'url' => '%bootstrap-url%/components/button-group/#basic-example',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->buttonGroup([
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->buttonGroup([
                     // Create button via \Laminas\Form\Factory
                     ['type' => 'button', 'name' => 'left', 'options' =>  ['label' => 'Left']],
                     // Button object
@@ -24,8 +24,8 @@ return [
             'tests' => [
                 [
                     'title' => 'Combine sets of button groups',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        echo $oView->buttonToolbar([
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        echo $view->buttonToolbar([
                             [
                                 'buttons' => [
                                     new \Laminas\Form\Element\Button('1', ['label' => '1']),
@@ -73,8 +73,8 @@ return [
                 ],
                 [
                     'title' => 'Mix input groups with button groups',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        $aToolbarItems = [
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        $toolbarItems = [
                             [
                                 'buttons' => [
                                     new \Laminas\Form\Element\Button('1', ['label' => '1']),
@@ -102,8 +102,8 @@ return [
                             ],
                         ];
 
-                        echo $oView->buttonToolbar(
-                            $aToolbarItems,
+                        echo $view->buttonToolbar(
+                            $toolbarItems,
                             [
                                 'attributes' => [
                                     'role' => 'toolbar',
@@ -115,8 +115,8 @@ return [
                         ) . PHP_EOL;
 
                         // Justified content
-                        echo $oView->buttonToolbar(
-                            $aToolbarItems,
+                        echo $view->buttonToolbar(
+                            $toolbarItems,
                             [
                                 'attributes' => [
                                     'role' => 'toolbar',
@@ -134,21 +134,21 @@ return [
         [
             'title' => 'Sizing',
             'url' => '%bootstrap-url%/components/button-group/#sizing',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                foreach (['lg', null, 'sm'] as $sSize) {
-                    echo $oView->buttonGroup([
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                foreach (['lg', null, 'sm'] as $size) {
+                    echo $view->buttonGroup([
                         new \Laminas\Form\Element\Button('left', ['label' => 'Left']),
                         new \Laminas\Form\Element\Button('middle', ['label' => 'Middle']),
                         new \Laminas\Form\Element\Button('right', ['label' => 'Right']),
-                    ], ['size' => $sSize, 'attributes' => ['role' => 'group', 'aria-label' => '...']]) . PHP_EOL;
+                    ], ['size' => $size, 'attributes' => ['role' => 'group', 'aria-label' => '...']]) . PHP_EOL;
                 }
             },
         ],
         [
             'title' => 'Nesting',
             'url' => '%bootstrap-url%/components/button-group/#nesting',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->buttonGroup([
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->buttonGroup([
                     ['type' => \Laminas\Form\Element\Button::class, 'name' => '1', 'options' => ['label' => '1']],
                     ['type' => \Laminas\Form\Element\Button::class, 'name' => '2', 'options' => ['label' => '2']],
                     [
@@ -166,8 +166,8 @@ return [
         [
             'title' => 'Vertical variation',
             'url' => '%bootstrap-url%/components/button-group/#vertical-variation',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->buttonGroup([
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->buttonGroup([
                     new \Laminas\Form\Element\Button('button', ['label' => 'Button']),
                     new \Laminas\Form\Element\Button('button', ['label' => 'Button']),
                     new \Laminas\Form\Element\Button('button', ['label' => 'Button']),
@@ -176,7 +176,7 @@ return [
                     new \Laminas\Form\Element\Button('button', ['label' => 'Button']),
                 ], ['vertical' => true]) . PHP_EOL;
 
-                echo $oView->buttonGroup([
+                echo $view->buttonGroup([
                     new \Laminas\Form\Element\Button('button', ['label' => 'Button']),
                     new \Laminas\Form\Element\Button('button', ['label' => 'Button']),
                     new \Laminas\Form\Element\Button('dropdown', [

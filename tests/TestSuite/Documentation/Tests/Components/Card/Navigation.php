@@ -4,9 +4,9 @@
 return [
     'title' => 'Navigation',
     'url' => '%bootstrap-url%/components/card/#navigation',
-    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
         // Nav tabs (pages defined by a \Laminas\Navigation\Navigation object as container)
-        echo $oView->card([
+        echo $view->card([
             'nav' => new \Laminas\Navigation\Navigation(
                 [
                     ['label' => 'Active', 'uri' => '#', 'active' => true,],
@@ -23,7 +23,7 @@ return [
         echo PHP_EOL . '<br/>' . PHP_EOL;
 
         // Nav pills (pages defined by an array as  container)
-        echo $oView->card([
+        echo $view->card([
             'nav' => [
                 'options' => ['pills' => true],
                 'container' => [

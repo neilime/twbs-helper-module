@@ -5,6 +5,7 @@ namespace DocumentationGenerator\UsagePage\Printer;
 class HeadPrinter extends \DocumentationGenerator\UsagePage\Printer\AbstractPrinter
 {
     private static $WEBSITE_PATH = 'website/';
+
     private static $HTML_CODE_PATH = 'src/components/HtmlCode.tsx';
 
     private static $CODE_TEMPLATE = '---
@@ -17,54 +18,54 @@ import TabItem from "@theme/TabItem";
 import CodeBlock from "@theme/CodeBlock";
 import HtmlCode from "%s";';
 
-    public function getContentToPrint()
+    protected function getContentToPrint()
     {
         if (!$this->shouldWriteHead()) {
             return "";
         }
 
-        $sHtmlCodeRelativePath = $this->getHtmlCodeRelativePath();
+        $htmlCodeRelativePath = $this->getHtmlCodeRelativePath();
 
         return sprintf(
             self::$CODE_TEMPLATE,
             $this->testConfig->position,
             $this->testConfig->getShortTitle(),
-            $sHtmlCodeRelativePath,
+            $htmlCodeRelativePath,
         ) . PHP_EOL;
     }
 
     private function shouldWriteHead()
     {
-        $bPageExists = $this->pageExists();
-        if ($bPageExists) {
+        $pageExists = $this->pageExists();
+        if ($pageExists) {
             return false;
         }
 
-        $bIsNestedPage = $this->testConfig->getNestedPosition() >= $this->configuration->getMaxNestedDir();
-        return $bIsNestedPage;
+        return $this->testConfig->getNestedPosition() >= $this->configuration->getMaxNestedDir();
     }
 
     private function getHtmlCodeRelativePath()
     {
         $this->configuration->getFile()->writeFile($this->pagePath, '');
-        $sPagePath = realpath($this->pagePath);
-        $sWebsitePath = realpath($this->configuration->getRootDirPath() . DIRECTORY_SEPARATOR . self::$WEBSITE_PATH);
+        $pagePath = realpath($this->pagePath);
+        $websitePath = realpath($this->configuration->getRootDirPath() . DIRECTORY_SEPARATOR . self::$WEBSITE_PATH);
 
-        $aDirectoryPathParts = explode(DIRECTORY_SEPARATOR, is_file($sPagePath)
-            ? dirname($sPagePath)
-            : rtrim($sPagePath, DIRECTORY_SEPARATOR));
+        $directoryPathParts = explode(DIRECTORY_SEPARATOR, is_file($pagePath)
+            ? dirname($pagePath)
+            : rtrim($pagePath, DIRECTORY_SEPARATOR));
 
-        $aFilePathParts = explode(DIRECTORY_SEPARATOR, $sWebsitePath);
+        $filePathParts = explode(DIRECTORY_SEPARATOR, $websitePath);
 
-        while ($aDirectoryPathParts && $aFilePathParts && ($aDirectoryPathParts[0] == $aFilePathParts[0])) {
-            array_shift($aDirectoryPathParts);
-            array_shift($aFilePathParts);
+        while ($directoryPathParts && $filePathParts && ($directoryPathParts[0] === $filePathParts[0])) {
+            array_shift($directoryPathParts);
+            array_shift($filePathParts);
         }
-        $sWebsiteRelativePath = str_repeat(
-            '..' . DIRECTORY_SEPARATOR,
-            count($aDirectoryPathParts)
-        ) . implode(DIRECTORY_SEPARATOR, $aFilePathParts);
 
-        return $sWebsiteRelativePath . self::$HTML_CODE_PATH;
+        $websiteRelativePath = str_repeat(
+            '..' . DIRECTORY_SEPARATOR,
+            count($directoryPathParts)
+        ) . implode(DIRECTORY_SEPARATOR, $filePathParts);
+
+        return $websiteRelativePath . self::$HTML_CODE_PATH;
     }
 }

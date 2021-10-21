@@ -13,7 +13,6 @@ class FormModuleOptionsFactory implements FactoryInterface
         $requestedName,
         ?array $options = null
     ) {
-        /** @var ModuleOptions $options */
         $moduleOptions = $container->get(ModuleOptions::class);
 
         return new $requestedName($moduleOptions);

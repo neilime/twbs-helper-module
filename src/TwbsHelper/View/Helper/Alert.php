@@ -11,61 +11,62 @@ class Alert extends \TwbsHelper\View\Helper\AbstractHtmlElement
     /**
      * Generates an 'alert' element
      *
-     * @param  string  $sContent     The content of the alert
-     * @param  string|array   $aOptionsAndAttributes  Html attributes of the "<div>" element
-     * @param  boolean $bEscape      True espace html content '$sContent'. Default True
+     * @param  string  $content     The content of the alert
+     * @param  string|array   $optionsAndAttributes  Html attributes of the "<div>" element
+     * @param  boolean $escape      True espace html content '$content'. Default True
      * @return string The alert XHTML.
      */
     public function __invoke(
-        string $sContent,
-        $aOptionsAndAttributes = null,
-        bool $bEscape = true
+        string $content,
+        $optionsAndAttributes = null,
+        bool $escape = true
     ) {
 
-        if (!$aOptionsAndAttributes) {
-            $aOptionsAndAttributes = [];
-        } elseif (is_string($aOptionsAndAttributes)) {
-            $aOptionsAndAttributes = [
-                'variant' => $aOptionsAndAttributes,
+        if (!$optionsAndAttributes) {
+            $optionsAndAttributes = [];
+        } elseif (is_string($optionsAndAttributes)) {
+            $optionsAndAttributes = [
+                'variant' => $optionsAndAttributes,
             ];
         }
 
-        $sVariantClass = $this->getVariantClass(
-            $aOptionsAndAttributes['variant'] ?? 'secondary',
+        $variantClass = $this->getVariantClass(
+            $optionsAndAttributes['variant'] ?? 'secondary',
             'alert'
         );
-        unset($aOptionsAndAttributes['variant']);
+        unset($optionsAndAttributes['variant']);
 
-        $aClasses = ['alert', $sVariantClass];
+        $classes = ['alert', $variantClass];
 
         // Heading
-        $sHeading = $aOptionsAndAttributes['heading'] ?? null;
-        unset($aOptionsAndAttributes['heading']);
-        if ($sHeading) {
-            $sContent = $this->htmlElement(
+        $heading = $optionsAndAttributes['heading'] ?? null;
+        unset($optionsAndAttributes['heading']);
+        if ($heading) {
+            $content = $this->htmlElement(
                 'h4',
                 ['class' => 'alert-heading'],
-                $sHeading
-            ) . ($sContent ? PHP_EOL . $sContent : '');
+                $heading
+            ) . ($content ? PHP_EOL . $content : '');
         }
 
         // Dismissible
-        $bDismissible = $aOptionsAndAttributes['dismissible'] ?? false;
-        unset($aOptionsAndAttributes['dismissible']);
-        if ($bDismissible) {
-            $aClasses = array_merge($aClasses, ['alert-dismissible', 'fade', 'show']);
-            $sContent .= ($sContent ? PHP_EOL : '') . $this->htmlElement(
+        $dismissible = $optionsAndAttributes['dismissible'] ?? false;
+        unset($optionsAndAttributes['dismissible']);
+        if ($dismissible) {
+            $classes = array_merge($classes, ['alert-dismissible', 'fade', 'show']);
+            $content .= ($content ? PHP_EOL : '') . $this->htmlElement(
                 'button',
                 ['type' => 'button', 'class' => 'close', 'data-dismiss' => 'alert', 'aria-label' => 'Close'],
                 $this->htmlElement('span', ['aria-hidden' => 'true'], '&times;', false),
-                $bEscape
+                $escape
             );
         }
 
-        $aAttributes = $this->setClassesToAttributes($aOptionsAndAttributes, $aClasses);
-        if (!isset($aAttributes['role'])) {
-            $aAttributes['role'] = 'alert';
+        $attributes = $this->setClassesToAttributes($optionsAndAttributes, $classes);
+        if (!isset($attributes['role'])) {
+            $attributes['role'] = 'alert';
         }
-        return $this->htmlElement('div', $aAttributes, $sContent, $bEscape);
+
+        return $this->htmlElement('div', $attributes, $content, $escape);
     }
 }

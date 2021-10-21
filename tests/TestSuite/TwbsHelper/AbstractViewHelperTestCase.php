@@ -10,7 +10,7 @@ abstract class AbstractViewHelperTestCase extends \PHPUnit\Framework\TestCase
      */
     protected $helper;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         if (!is_string($this->helper)) {
             throw new \LogicException(sprintf(
@@ -19,9 +19,10 @@ abstract class AbstractViewHelperTestCase extends \PHPUnit\Framework\TestCase
             ));
         }
 
-        $oViewHelperPluginManager = \TestSuite\Bootstrap::getServiceManager()->get('ViewHelperManager');
-        $oRenderer = new \Laminas\View\Renderer\PhpRenderer();
-        $oRenderer->setHelperPluginManager($oViewHelperPluginManager);
-        $this->helper = $oRenderer->getHelperPluginManager()->get($this->helper);
+        $viewHelperPluginManager = \TestSuite\Bootstrap::getServiceManager()->get('ViewHelperManager');
+        $phpRenderer = new \Laminas\View\Renderer\PhpRenderer();
+        $phpRenderer->setHelperPluginManager($viewHelperPluginManager);
+
+        $this->helper = $phpRenderer->getHelperPluginManager()->get($this->helper);
     }
 }

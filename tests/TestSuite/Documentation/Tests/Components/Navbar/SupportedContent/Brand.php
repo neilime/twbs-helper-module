@@ -4,9 +4,9 @@
 return [
     'title' => 'Brand',
     'url' => '%bootstrap-url%/components/navbar/#brand',
-    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
         // As a link
-        echo $oView->navigation()->navbar()->render(
+        echo $view->navigation()->navbar()->render(
             new \Laminas\Navigation\Navigation(),
             [
                 'brand' => 'Navbar',
@@ -18,7 +18,7 @@ return [
         echo PHP_EOL . '<br/>' . PHP_EOL;
 
         // As a heading
-        echo $oView->navigation()->navbar()->render(
+        echo $view->navigation()->navbar()->render(
             new \Laminas\Navigation\Navigation(),
             [
                 'brand' => [
@@ -34,7 +34,7 @@ return [
         echo PHP_EOL . '<br/>' . PHP_EOL;
 
         // Just an image
-        echo $oView->navigation()->navbar()->render(
+        echo $view->navigation()->navbar()->render(
             new \Laminas\Navigation\Navigation(),
             [
                 'brand' => [
@@ -50,7 +50,7 @@ return [
         echo PHP_EOL . '<br/>' . PHP_EOL;
 
         // Image and text
-        echo $oView->navigation()->navbar()->render(
+        echo $view->navigation()->navbar()->render(
             new \Laminas\Navigation\Navigation(),
             [
                 'brand' => [

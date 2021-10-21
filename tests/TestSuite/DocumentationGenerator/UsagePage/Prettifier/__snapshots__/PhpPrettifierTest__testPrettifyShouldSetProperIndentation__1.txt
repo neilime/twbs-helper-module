@@ -1,10 +1,10 @@
 <?php
 
-$oFactory = new \Laminas\Form\Factory();
+$factory = new \Laminas\Form\Factory();
 
 // Render Default checkbox
 echo $this->formRow(
-    $oFactory->create(
+    $factory->create(
         [
             'name'       => 'default-checkbox',
             'type'       => 'checkbox',

@@ -4,9 +4,9 @@
 return [
     'title' => 'Color schemes',
     'url' => '%bootstrap-url%/components/navbar/#color-schemes',
-    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
 
-        $oNavigationContainer = new \Laminas\Navigation\Navigation([
+        $navigationContainer = new \Laminas\Navigation\Navigation([
             ['label' => 'Home <span class="sr-only">(current)</span>', 'uri' => '#', 'active' => true],
             ['label' => 'Link', 'uri' => '#'],
             ['label' => 'Features', 'uri' => '#'],
@@ -14,7 +14,7 @@ return [
             ['label' => 'About', 'uri' => '#'],
         ]);
 
-        $aOptions = [
+        $options = [
             'brand' => 'Navbar',
             'form' => [
                 'elements' => [
@@ -43,24 +43,24 @@ return [
         ];
 
         // Navbar dark, background dark
-        $aOptions['variant'] = 'dark';
-        $aOptions['background'] = 'dark';
+        $options['variant'] = 'dark';
+        $options['background'] = 'dark';
 
-        echo $oView->navigation()->navbar()->render($oNavigationContainer, $aOptions);
+        echo $view->navigation()->navbar()->render($navigationContainer, $options);
         echo PHP_EOL . '<br/>' . PHP_EOL;
 
         // Navbar dark, background primary
-        $aOptions['variant'] = 'dark';
-        $aOptions['background'] = 'primary';
+        $options['variant'] = 'dark';
+        $options['background'] = 'primary';
 
-        echo $oView->navigation()->navbar()->render($oNavigationContainer, $aOptions);
+        echo $view->navigation()->navbar()->render($navigationContainer, $options);
         echo PHP_EOL . '<br/>' . PHP_EOL;
 
         // Navbar light, custom background-color
-        $aOptions['variant'] = 'dark';
-        $aOptions['background'] = false;
-        $aOptions['attributes'] = ['style' => 'background-color: #e3f2fd;'];
+        $options['variant'] = 'dark';
+        $options['background'] = false;
+        $options['attributes'] = ['style' => 'background-color: #e3f2fd;'];
 
-        echo $oView->navigation()->navbar()->render($oNavigationContainer, $aOptions);
+        echo $view->navigation()->navbar()->render($navigationContainer, $options);
     },
 ];

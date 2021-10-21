@@ -26,117 +26,115 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
     /**
      * Constructor
      *
-     * @param \TwbsHelper\Options\ModuleOptions $options
+     * @param \TwbsHelper\Options\ModuleOptions $moduleOptions
      * @access public
      * @return void
      */
-    public function __construct(\TwbsHelper\Options\ModuleOptions $options)
+    public function __construct(\TwbsHelper\Options\ModuleOptions $moduleOptions)
     {
-        $this->options = $options;
+        $this->options = $moduleOptions;
     }
 
     /**
-     * @param \Laminas\Form\ElementInterface $oElement
-     * @param string|null $sLabelPosition
+     * @param \Laminas\Form\ElementInterface $element
+     * @param string|null $labelPosition
      * @return string
      */
-    public function render(\Laminas\Form\ElementInterface $oElement, ?string $sLabelPosition = null): string
+    public function render(\Laminas\Form\ElementInterface $element, ?string $labelPosition = null): string
     {
         // Retrieve element type
-        $sElementType = $oElement->getAttribute('type');
+        $elementType = $element->getAttribute('type');
 
         // Nothing to do for hidden elements which have no messages
-        if ('hidden' === $sElementType && !$oElement->getMessages()) {
-            return parent::render($oElement, $sLabelPosition);
+        if ('hidden' === $elementType && !$element->getMessages()) {
+            return parent::render($element, $labelPosition);
         }
 
         // Retrieve expected layout
-        $sLayout = $oElement->getOption('layout');
+        $layout = $element->getOption('layout');
 
-        if (is_null($sLabelPosition)) {
-            $sLabelPosition = $this->labelPosition;
+        if (is_null($labelPosition)) {
+            $labelPosition = $this->labelPosition;
         }
 
         // Partial rendering
         if ($this->partial) {
-            $sLabel = $oElement->getLabel();
+            $label = $element->getLabel();
 
-            if (!empty($sLabel)) {
-                // Translate the label
-                if (null !== ($oTranslator = $this->getTranslator())) {
-                    $sLabel = $oTranslator->translate($sLabel, $this->getTranslatorTextDomain());
-                }
+            // Translate the label
+            if (!empty($label) && null !== ($translator = $this->getTranslator())) {
+                $label = $translator->translate($label, $this->getTranslatorTextDomain());
             }
 
             return $this->view->render(
                 $this->partial,
                 [
-                    'element'         => $oElement,
-                    'label'           => $sLabel,
+                    'element'         => $element,
+                    'label'           => $label,
                     'labelAttributes' => $this->labelAttributes,
-                    'labelPosition'   => $sLabelPosition,
+                    'labelPosition'   => $labelPosition,
                     'renderErrors'    => $this->renderErrors,
                 ]
             );
         }
 
         // Render element
-        $sElementContent = $this->renderElement($oElement, $sLabelPosition);
+        $elementContent = $this->renderElement($element, $labelPosition);
 
         // Render form row
         switch (true) {
                 // Form group disabled
-            case $oElement->getOption('form_group') === false:
+            case $element->getOption('form_group') === false:
                 // Radio elements
-            case in_array($sElementType, ['radio'], true):
+            case $elementType === 'radio':
                 // All "button" elements in inline form
-            case in_array($sElementType, ['submit', 'button', 'reset'], true)
-                && $sLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE:
-                return $sElementContent;
+            case in_array($elementType, ['submit', 'button', 'reset'], true)
+                && $layout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE:
+                return $elementContent;
 
             default:
-                return $this->renderFormRow($oElement, $sElementContent);
+                return $this->renderFormRow($element, $elementContent);
         }
     }
 
     /**
-     * @param \Laminas\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface $element
      * @return string
      */
-    public function renderFormRow(\Laminas\Form\ElementInterface $oElement, $sElementContent): string
+    public function renderFormRow(\Laminas\Form\ElementInterface $element, $elementContent): string
     {
-        $aRowClasses = ['form-group'];
+        $rowClasses = ['form-group'];
 
-        if ($oElement->getMessages()) {
-            $aRowClasses[]  = 'has-error';
+        if ($element->getMessages()) {
+            $rowClasses[]  = 'has-error';
         }
 
         // Column
-        $sColum = $oElement->getOption('column');
-        if ($sColum) {
-            if ($oElement->getOption('layout') ===  \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL) {
-                $aRowClasses[] = 'row';
+        $colum = $element->getOption('column');
+        if ($colum) {
+            if ($element->getOption('layout') ===  \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL) {
+                $rowClasses[] = 'row';
             } else {
-                $aColumSizes = is_array($sColum) ? $sColum : [$sColum];
-                foreach ($aColumSizes as $sColumSize) {
-                    $aRowClasses[] = $this->getColumnClass($sColumSize);
+                $columSizes = is_array($colum) ? $colum : [$colum];
+                foreach ($columSizes as $columSize) {
+                    $rowClasses[] = $this->getColumnClass($columSize);
                 }
             }
         }
 
         // Additional row class
-        if ($sAddRowClass = $oElement->getOption('row_class')) {
-            $aRowClasses = array_merge($aRowClasses, explode(' ', $sAddRowClass));
+        if ($addRowClass = $element->getOption('row_class')) {
+            $rowClasses = array_merge($rowClasses, explode(' ', $addRowClass));
         }
 
-        $aAttributes = $this->setClassesToAttributes(
+        $attributes = $this->setClassesToAttributes(
             [],
-            $aRowClasses
+            $rowClasses
         );
 
-        if ($this->hasColumnClassAttribute($aAttributes['class'] ?? '')) {
-            $aAttributes = $this->setClassesToAttributes(
-                $aAttributes,
+        if ($this->hasColumnClassAttribute($attributes['class'] ?? '')) {
+            $attributes = $this->setClassesToAttributes(
+                $attributes,
                 [],
                 ['form-group']
             );
@@ -144,76 +142,77 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
 
         // Add valid custom attributes
         if ($this->options->getValidTagAttributes()) {
-            foreach ($this->options->getValidTagAttributes() as $attribute) {
-                $this->addValidAttribute($attribute);
+            foreach ($this->options->getValidTagAttributes() as $validTagAttribute) {
+                $this->addValidAttribute($validTagAttribute);
             }
         }
 
         if ($this->options->getValidTagAttributePrefixes()) {
-            foreach ($this->options->getValidTagAttributePrefixes() as $prefix) {
-                $this->addValidAttributePrefix($prefix);
+            foreach ($this->options->getValidTagAttributePrefixes() as $validTagAttributePrefix) {
+                $this->addValidAttributePrefix($validTagAttributePrefix);
             }
         }
 
         // Additional row attributes
-        if ($aRowAdditionalAttributes = $oElement->getOption('row-attributes')) {
-            $aAttributes = array_merge($aAttributes, $aRowAdditionalAttributes);
+        if ($rowAdditionalAttributes = $element->getOption('row-attributes')) {
+            $attributes = array_merge($attributes, $rowAdditionalAttributes);
         }
 
         // Render element into form group
         return $this->htmlElement(
             'div',
-            $aAttributes,
-            $sElementContent
+            $attributes,
+            $elementContent
         );
     }
 
     /**
-     * @param \Laminas\Form\ElementInterface $oElement
-     * @param string $sLabelPosition
+     * @param \Laminas\Form\ElementInterface $element
+     * @param string $labelPosition
      * @return string
      * @throws \DomainException
      */
-    protected function renderElement(\Laminas\Form\ElementInterface $oElement, string $sLabelPosition = null): string
+    protected function renderElement(\Laminas\Form\ElementInterface $element, string $labelPosition = null): string
     {
         // Retrieve expected layout
-        $sLayout = $oElement->getOption('layout');
+        $layout = $element->getOption('layout');
 
         // "is-invalid" validation state case
-        if ($oElement->getMessages()) {
+        if ($element->getMessages()) {
             // Element have errors
-            if ($sInputErrorClass = $this->getInputErrorClass()) {
-                $this->setClassesToElement($oElement, [$sInputErrorClass]);
+            $inputErrorClass = $this->getInputErrorClass();
+            if ($inputErrorClass) {
+                $this->setClassesToElement($element, [$inputErrorClass]);
             }
-        } elseif ($oElement->getOption('valid_feedback')) { // "is-valid" validation state case
-            // Element have errors
-            if ($sInputValidClass = $this->getInputValidClass()) {
-                $this->setClassesToElement($oElement, [$sInputValidClass]);
+        } elseif ($element->getOption('valid_feedback')) { // "is-valid" validation state case
+            $inputValidClass = $this->getInputValidClass();
+            if ($inputValidClass) {
+                $this->setClassesToElement($element, [$inputValidClass]);
             }
         }
 
         // Render element
-        $sElementContent = $this->getElementHelper()->render($oElement);
+        $elementContent = $this->getElementHelper()->render($element);
 
         $checkBoxHorizontalLogic = false;
         if (
-            $oElement instanceof \Laminas\Form\Element\Checkbox
-            && !$oElement instanceof \Laminas\Form\Element\MultiCheckbox
-            && $sLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL
+            $element instanceof \Laminas\Form\Element\Checkbox
+            && !$element instanceof \Laminas\Form\Element\MultiCheckbox
+            && $layout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL
         ) {
             $checkBoxHorizontalLogic = true;
-            $sElementContent = $this->renderLabel(
-                $oElement,
-                $sElementContent,
+            $elementContent = $this->renderLabel(
+                $element,
+                $elementContent,
                 self::LABEL_APPEND
             );
         }
 
-        switch ($sLayout) {
+        switch ($layout) {
             case null:
             case \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE:
-                $aRenderingOrder = [
-                    'renderLabel' =>  [$sLabelPosition],
+                $renderingOrder = [
+                    'renderLabel' =>  [$labelPosition],
                     'renderHelpBlock' => [],
                     'renderErrors' => [],
                     'renderValidFeedback' => [],
@@ -221,7 +220,7 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
                 ];
                 break;
             case \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL:
-                $aRenderingOrder = [
+                $renderingOrder = [
                     'renderHelpBlock' => [],
                     'renderErrors' => [],
                     'renderValidFeedback' => [],
@@ -229,96 +228,97 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
                 ];
                 break;
             default:
-                throw new \DomainException('Layout "' . $sLayout . '" is not supported');
+                throw new \DomainException('Layout "' . $layout . '" is not supported');
         }
 
-        foreach ($aRenderingOrder as $sFunction => $aArguments) {
-            array_unshift($aArguments, $oElement, $sElementContent);
-            $sElementContent = call_user_func_array([$this, $sFunction], $aArguments);
+        foreach ($renderingOrder as $function => $arguments) {
+            array_unshift($arguments, $element, $elementContent);
+            $elementContent = call_user_func_array([$this, $function], $arguments);
         }
 
-        if ($sLayout !== \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL) {
-            return $sElementContent;
+        if ($layout !== \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL) {
+            return $elementContent;
         }
 
         // Column size
-        $aClasses = [];
-        if ($sColumn = $oElement->getOption('column')) {
-            $aClasses[] = $this->getColumnClass($sColumn);
+        $classes = [];
+        if ($column = $element->getOption('column')) {
+            $classes[] = $this->getColumnClass($column);
 
             if ($checkBoxHorizontalLogic) {
-                $aClasses[] = $this->getOffsetCounterpartClass($sColumn);
+                $classes[] = $this->getOffsetCounterpartClass($column);
             }
         }
 
-        $sElementContent = $this->htmlElement(
+        $elementContent = $this->htmlElement(
             'div',
-            $this->setClassesToAttributes([], $aClasses),
-            $sElementContent
+            $this->setClassesToAttributes([], $classes),
+            $elementContent
         );
 
         if ($checkBoxHorizontalLogic) {
-            return $sElementContent;
+            return $elementContent;
         }
 
-        return $this->renderLabel($oElement, $sElementContent, $sLabelPosition);
+        return $this->renderLabel($element, $elementContent, $labelPosition);
     }
 
 
     /**
      * Render element's label
      *
-     * @param \Laminas\Form\ElementInterface $oElement
-     * @param string $sElementContent
-     * @param string $sLabelPosition
+     * @param \Laminas\Form\ElementInterface $element
+     * @param string $elementContent
+     * @param string $labelPosition
      * @return string
      */
     protected function renderLabel(
-        \Laminas\Form\ElementInterface $oElement,
-        string $sElementContent,
-        string $sLabelPosition = null
+        \Laminas\Form\ElementInterface $element,
+        string $elementContent,
+        string $labelPosition = null
     ): string {
 
-        if (!$oElement->getLabel()) {
-            return $sElementContent;
+        if (!$element->getLabel()) {
+            return $elementContent;
         }
 
-        $sLabelContent = $this->getLabelHelper()->__invoke($oElement);
+        $labelContent = $this->getLabelHelper()->__invoke($element);
 
-        if (!$sLabelContent) {
-            return $sElementContent;
+        if (!$labelContent) {
+            return $elementContent;
         }
 
-        $sPosition = $this->getDefaultLabelPosition($oElement, $sLabelPosition);
+        $position = $this->getDefaultLabelPosition($element, $labelPosition);
 
-        return $sPosition === self::LABEL_APPEND
-            ? $sElementContent . PHP_EOL . $sLabelContent
-            : $sLabelContent . PHP_EOL . $sElementContent;
+        return $position === self::LABEL_APPEND
+            ? $elementContent . PHP_EOL . $labelContent
+            : $labelContent . PHP_EOL . $elementContent;
     }
 
-    protected function getDefaultLabelPosition(\Laminas\Form\ElementInterface $oElement, $sLabelPosition = null): string
+    protected function getDefaultLabelPosition(\Laminas\Form\ElementInterface $element, $labelPosition = null): string
     {
 
-        if ($oElement instanceof \Laminas\Form\LabelAwareInterface) {
-            $sPosition = $oElement->getLabelOption('position');
-            if ($sPosition) {
-                return $sPosition;
+        if ($element instanceof \Laminas\Form\LabelAwareInterface) {
+            $position = $element->getLabelOption('position');
+            if ($position) {
+                return $position;
             }
         }
 
-        switch ($oElement->getAttribute('type')) {
+        switch ($element->getAttribute('type')) {
             case 'checkbox':
             case 'radio':
                 return self::LABEL_APPEND;
             case 'file':
-                if ($oElement->getOption('custom')) {
+                if ($element->getOption('custom')) {
                     return self::LABEL_APPEND;
                 }
                 // Default behaviour
             default:
-                if ($sLabelPosition) {
-                    return $sLabelPosition;
+                if ($labelPosition) {
+                    return $labelPosition;
                 }
+
                 return $this->getLabelPosition();
         }
     }
@@ -326,127 +326,131 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
     /**
      * Render element's help block
      *
-     * @param \Laminas\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface $element
      * @return string
      */
-    protected function renderHelpBlock(\Laminas\Form\ElementInterface $oElement, string $sElementContent): string
+    protected function renderHelpBlock(\Laminas\Form\ElementInterface $element, string $elementContent): string
     {
-        $sHelpBlock = $oElement->getOption('help_block');
-        if (!$sHelpBlock) {
-            return $sElementContent;
+        $helpBlock = $element->getOption('help_block');
+        if (!$helpBlock) {
+            return $elementContent;
         }
 
-        $aAttributes = [];
-        if (is_string($sHelpBlock)) {
-            $sContent = $sHelpBlock;
-        } elseif (is_array($sHelpBlock)) {
-            if (empty($sHelpBlock['content'])) {
+        $attributes = [];
+        if (is_string($helpBlock)) {
+            $content = $helpBlock;
+        } elseif (is_array($helpBlock)) {
+            if (empty($helpBlock['content'])) {
                 throw new \InvalidArgumentException(
                     'Option "[help_block][content]" is undefined'
                 );
             }
-            $sContent = $sHelpBlock['content'];
-            if (!is_string($sContent)) {
+
+            $content = $helpBlock['content'];
+            if (!is_string($content)) {
                 throw new \InvalidArgumentException(sprintf(
                     'Option "[help_block][content]" expects a string, "%s" given',
-                    is_object($sContent) ? get_class($sContent) : gettype($sContent)
+                    is_object($content) ? get_class($content) : gettype($content)
                 ));
             }
-            if (!empty($sHelpBlock['attributes'])) {
-                $aAttributes = \Laminas\Stdlib\ArrayUtils::merge($aAttributes, $sHelpBlock['attributes']);
+
+            if (!empty($helpBlock['attributes'])) {
+                $attributes = \Laminas\Stdlib\ArrayUtils::merge($attributes, $helpBlock['attributes']);
             }
         } else {
             throw new \InvalidArgumentException(sprintf(
                 'Option "help_block" expects a string or an array, "%s" given',
-                is_object($sHelpBlock) ? get_class($sHelpBlock) : gettype($sHelpBlock)
+                is_object($helpBlock) ? get_class($helpBlock) : gettype($helpBlock)
             ));
         }
-        if ($oTranslator = $this->getTranslator()) {
-            $sContent = $oTranslator->translate($sContent, $this->getTranslatorTextDomain());
+
+        $translator = $this->getTranslator();
+        if ($translator) {
+            $content = $translator->translate($content, $this->getTranslatorTextDomain());
         }
 
-        $aClasses = ['text-muted'];
-        if ($oElement->getOption('layout') !== \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE) {
-            $aClasses[] = 'form-text';
+        $classes = ['text-muted'];
+        if ($element->getOption('layout') !== \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE) {
+            $classes[] = 'form-text';
         }
 
-        return $sElementContent . PHP_EOL . $this->htmlElement(
+        return $elementContent . PHP_EOL . $this->htmlElement(
             'small',
-            $this->setClassesToAttributes($aAttributes, $aClasses),
-            $sContent
+            $this->setClassesToAttributes($attributes, $classes),
+            $content
         );
     }
 
     /**
      * Render element's errors
      *
-     * @param \Laminas\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface $element
      * @return string
      */
-    protected function renderValidFeedback(\Laminas\Form\ElementInterface $oElement, string $sElementContent): string
+    protected function renderValidFeedback(\Laminas\Form\ElementInterface $element, string $elementContent): string
     {
-        $sValidFeedback = $oElement->getOption('valid_feedback');
-        if ($sValidFeedback) {
-            $sValidFeedbackContent = $this->htmlElement('div', ['class' => 'valid-feedback'], $sValidFeedback);
-            $sElementContent .= PHP_EOL . $sValidFeedbackContent;
+        $validFeedback = $element->getOption('valid_feedback');
+        if ($validFeedback) {
+            $validFeedbackContent = $this->htmlElement('div', ['class' => 'valid-feedback'], $validFeedback);
+            $elementContent .= PHP_EOL . $validFeedbackContent;
         }
-        return $sElementContent;
+
+        return $elementContent;
     }
 
     /**
      * Render element's errors
      *
-     * @param \Laminas\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface $element
      * @return string
      */
-    protected function renderErrors(\Laminas\Form\ElementInterface $oElement, string $sElementContent): string
+    protected function renderErrors(\Laminas\Form\ElementInterface $element, string $elementContent): string
     {
         if ($this->renderErrors) {
-            $sElementErrorsContent = $this->getElementErrorsHelper()->render($oElement);
-            if ($sElementErrorsContent) {
-                $sElementContent .= PHP_EOL . $sElementErrorsContent;
+            $elementErrorsContent = $this->getElementErrorsHelper()->render($element);
+            if ($elementErrorsContent) {
+                $elementContent .= PHP_EOL . $elementErrorsContent;
             }
         }
-        return $sElementContent;
+
+        return $elementContent;
     }
 
     /**
      * Render element's dedicated container
      *
-     * @param \Laminas\Form\ElementInterface $oElement
-     * @param string $sElementContent
+     * @param \Laminas\Form\ElementInterface $element
+     * @param string $elementContent
      * @return string
      */
     protected function renderDedicatedContainer(
-        \Laminas\Form\ElementInterface $oElement,
-        string $sElementContent
+        \Laminas\Form\ElementInterface $element,
+        string $elementContent
     ): string {
-        switch ($oElement->getAttribute('type')) {
-            case 'checkbox':
-                $aClassesToAdd =  $oElement->getOption('custom')
-                    // Custom checkbox classes
-                    ? [
-                        'custom-control',
-                        $oElement->getOption('switch')
-                            // Switch custom checkbox
-                            ? 'custom-switch'
-                            // Regular custom checkbox
-                            : 'custom-checkbox',
-                    ]
-                    // Regular checkbox class
-                    : ['form-check'];
-
-                $sElementContent = $this->htmlElement(
-                    'div',
-                    $this->setClassesToAttributes(
-                        ['class' => $oElement->getOption('form_check_class')],
-                        $aClassesToAdd
-                    ),
-                    $sElementContent
-                );
-                break;
+        if ($element->getAttribute('type') === 'checkbox') {
+            $classesToAdd =  $element->getOption('custom')
+                // Custom checkbox classes
+                ? [
+                    'custom-control',
+                    $element->getOption('switch')
+                        // Switch custom checkbox
+                        ? 'custom-switch'
+                        // Regular custom checkbox
+                        : 'custom-checkbox',
+                ]
+                // Regular checkbox class
+                : ['form-check'];
+            $elementContent = $this->htmlElement(
+                'div',
+                $this->setClassesToAttributes(
+                    ['class' => $element->getOption('form_check_class')],
+                    $classesToAdd
+                ),
+                $elementContent
+            );
         }
-        return $sElementContent;
+
+        return $elementContent;
     }
 
     /**

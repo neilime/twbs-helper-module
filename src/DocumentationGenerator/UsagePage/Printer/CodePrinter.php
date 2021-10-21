@@ -19,65 +19,71 @@ class CodePrinter extends \DocumentationGenerator\UsagePage\Printer\AbstractPrin
 </TabItem>
 </Tabs>';
 
-    public function getContentToPrint()
+    protected function getContentToPrint()
     {
         if (!$this->testConfig->rendering) {
             return "";
         }
 
-        $sBootstrapVersion = $this->configuration->getBootstrapVersion();
-        $sSource = $this->getRenderingSource();
-        $sRenderResult = $this->getRenderResult();
+        $bootstrapVersion = $this->configuration->getBootstrapVersion();
+        $source = $this->getRenderingSource();
+        $renderResult = $this->getRenderResult();
 
         return sprintf(
             self::$CODE_TEMPLATE,
-            $sBootstrapVersion,
-            $sRenderResult,
-            $sSource
+            $bootstrapVersion,
+            $renderResult,
+            $source
         ) . PHP_EOL;
     }
 
     private function getRenderingSource()
     {
         // Extract rendering closure content
-        $oReflectionFunction = new \ReflectionFunction($this->testConfig->rendering);
-        $sSource = '';
-        $aLines = file($oReflectionFunction->getFileName());
-        for ($iLine = $oReflectionFunction->getStartLine(); $iLine < $oReflectionFunction->getEndLine() - 1; $iLine++) {
-            $sLine = trim($aLines[$iLine]);
-            $sSource .=  $sLine . PHP_EOL;
+        $reflectionFunction = new \ReflectionFunction($this->testConfig->rendering);
+        $source = '';
+        $lines = file($reflectionFunction->getFileName());
+        for (
+            $startLine = $reflectionFunction->getStartLine();
+            $startLine < $reflectionFunction->getEndLine() - 1;
+            ++$startLine
+        ) {
+            $line = trim($lines[$startLine]);
+            $source .=  $line . PHP_EOL;
         }
-        $sSource = '<?php' . PHP_EOL . PHP_EOL . str_replace(['$oView', ' . PHP_EOL'], ['$this', ''], $sSource);
 
-        $oSourcePrettifier = \DocumentationGenerator\UsagePage\Prettifier\PhpPrettifier::getInstance(
+        $source = '<?php' . PHP_EOL . PHP_EOL . str_replace(['$view', ' . PHP_EOL'], ['$this', ''], $source);
+
+        $phpPrettifier = \DocumentationGenerator\UsagePage\Prettifier\PhpPrettifier::getInstance(
             $this->configuration
         );
-        return $oSourcePrettifier->prettify($sSource);
+        return $phpPrettifier->prettify($source);
     }
 
     private function getRenderResult()
     {
-        $sSnapshotPath = \TestSuite\Documentation\DocumentationTestSnapshot::getSnapshotPathFromTitle(
+        $snapshotPath = \TestSuite\Documentation\DocumentationTestSnapshot::getSnapshotPathFromTitle(
             $this->testConfig->title
         );
-        $sSnapshotPath =  $sSnapshotPath . '__1.html';
-        $sSnapshotContent = file_get_contents($sSnapshotPath);
-        $oDomDocument = new \DOMDocument('1.0');
-        $oDomDocument->preserveWhiteSpace = false;
-        $oDomDocument->formatOutput = true;
-        $oDomDocument->substituteEntities = true;
+        $snapshotPath .= '__1.html';
 
-        @$oDomDocument->loadHTML($sSnapshotContent); // to ignore HTML5 errors
+        $snapshotContent = file_get_contents($snapshotPath);
+        $domDocument = new \DOMDocument('1.0');
+        $domDocument->preserveWhiteSpace = false;
+        $domDocument->formatOutput = true;
+        $domDocument->substituteEntities = true;
 
-        $oBodyNode = $oDomDocument->getElementsByTagName('body')[0];
+        @$domDocument->loadHTML($snapshotContent); // to ignore HTML5 errors
 
-        $sRenderResult = '';
-        $aChildren = $oBodyNode->childNodes;
-        foreach ($aChildren as $oChildNode) {
-            $sChildNodeContent = $oChildNode->ownerDocument->saveXML($oChildNode, LIBXML_NOEMPTYTAG);
-            $sRenderResult .= $sChildNodeContent;
+        $bodyNode = $domDocument->getElementsByTagName('body')[0];
+
+        $renderResult = '';
+        $children = $bodyNode->childNodes;
+        foreach ($children as $child) {
+            $childNodeContent = $child->ownerDocument->saveXML($child, LIBXML_NOEMPTYTAG);
+            $renderResult .= $childNodeContent;
         }
 
-        return trim($sRenderResult);
+        return trim($renderResult);
     }
 }

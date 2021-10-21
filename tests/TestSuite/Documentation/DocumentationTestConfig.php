@@ -5,16 +5,21 @@ namespace TestSuite\Documentation;
 class DocumentationTestConfig
 {
     public static $TITLE_SEPARATOR = ' / ';
+
     public $title;
+
     public $url;
+
     public $rendering;
+
     public $tests = [];
+
     public $position = 1;
 
     public function getShortTitle()
     {
-        $aTitleParts = $this->getTitleParts();
-        return array_pop($aTitleParts);
+        $titleParts = $this->getTitleParts();
+        return array_pop($titleParts);
     }
 
     public function getNestedPosition()
@@ -28,60 +33,62 @@ class DocumentationTestConfig
     }
 
     public static function fromArray(
-        array $aTestConfig,
-        \TestSuite\Documentation\DocumentationTestConfig $oParentConfig = null
+        array $testConfig,
+        \TestSuite\Documentation\DocumentationTestConfig $documentationTestConfig = null
     ): self {
 
-        $oDocumentationTestConfig = new self();
+        $self = new self();
 
-        if (!isset($aTestConfig['title'])) {
-            throw new \InvalidArgumentException('Argument "$aTestConfig" does not have a defined "title" key');
-        }
-        $oDocumentationTestConfig->title = $aTestConfig['title'];
-
-        if ($oParentConfig) {
-            $sTitle = trim($oParentConfig->title . self::$TITLE_SEPARATOR . $oDocumentationTestConfig->title);
-            $oDocumentationTestConfig->title = $sTitle;
+        if (!isset($testConfig['title'])) {
+            throw new \InvalidArgumentException('Argument "$testConfig" does not have a defined "title" key');
         }
 
-        if (isset($aTestConfig['url'])) {
-            $oDocumentationTestConfig->url = $aTestConfig['url'];
+        $self->title = $testConfig['title'];
+
+        if ($documentationTestConfig !== null) {
+            $title = trim($documentationTestConfig->title . self::$TITLE_SEPARATOR . $self->title);
+            $self->title = $title;
         }
 
-        if (isset($aTestConfig['rendering'])) {
-            if (!is_callable($aTestConfig['rendering'])) {
+        if (isset($testConfig['url'])) {
+            $self->url = $testConfig['url'];
+        }
+
+        if (isset($testConfig['rendering'])) {
+            if (!is_callable($testConfig['rendering'])) {
                 throw new \InvalidArgumentException(sprintf(
-                    'Argument "$aTestConfig[\'rendering\']" expects a callable value for "%s" ", "%s" given',
-                    $oDocumentationTestConfig->title,
-                    is_object($aTestConfig['rendering'])
-                        ? get_class($aTestConfig['rendering'])
-                        : gettype($aTestConfig['rendering'])
-                ));
-            }
-            $oDocumentationTestConfig->rendering = $aTestConfig['rendering'];
-        }
-
-        if (isset($aTestConfig['tests'])) {
-            if (!is_array($aTestConfig)) {
-                throw new \InvalidArgumentException(sprintf(
-                    'Argument "$aTestConfig[\'tests\']" for "%s" expects an array, "%s" given',
-                    $oDocumentationTestConfig->title,
-                    is_object($aTestConfig['tests'])
-                        ? get_class($aTestConfig['tests'])
-                        : gettype($aTestConfig['tests'])
+                    'Argument "$testConfig[\'rendering\']" expects a callable value for "%s" ", "%s" given',
+                    $self->title,
+                    is_object($testConfig['rendering'])
+                        ? get_class($testConfig['rendering'])
+                        : gettype($testConfig['rendering'])
                 ));
             }
 
-            $iPosition = 1;
-            foreach ($aTestConfig['tests'] as $aNestedTestsConfig) {
-                $oNestedTestsConfig = static::fromArray($aNestedTestsConfig, $oDocumentationTestConfig);
-                $oNestedTestsConfig->position = $iPosition;
-                $iPosition++;
+            $self->rendering = $testConfig['rendering'];
+        }
 
-                $oDocumentationTestConfig->tests[] = $oNestedTestsConfig;
+        if (isset($testConfig['tests'])) {
+            if (!is_array($testConfig)) {
+                throw new \InvalidArgumentException(sprintf(
+                    'Argument "$testConfig[\'tests\']" for "%s" expects an array, "%s" given',
+                    $self->title,
+                    is_object($testConfig['tests'])
+                        ? get_class($testConfig['tests'])
+                        : gettype($testConfig['tests'])
+                ));
+            }
+
+            $position = 1;
+            foreach ($testConfig['tests'] as $nestedTestsConfig) {
+                $nestedTestsConfig = static::fromArray($nestedTestsConfig, $self);
+                $nestedTestsConfig->position = $position;
+                ++$position;
+
+                $self->tests[] = $nestedTestsConfig;
             }
         }
 
-        return $oDocumentationTestConfig;
+        return $self;
     }
 }

@@ -44,13 +44,12 @@ class ModuleOptions extends AbstractOptions
     /**
      * setIgnoredViewHelpers
      *
-     * @param  array $aIgnoredViewHelpers
      * @access public
      * @return \TwbsHelper\Options\ModuleOptions
      */
-    public function setIgnoredViewHelpers(array $aIgnoredViewHelpers)
+    public function setIgnoredViewHelpers(array $ignoredViewHelpers)
     {
-        $this->ignoredViewHelpers = $aIgnoredViewHelpers;
+        $this->ignoredViewHelpers = $ignoredViewHelpers;
 
         return $this;
     }
@@ -71,13 +70,12 @@ class ModuleOptions extends AbstractOptions
     /**
      * setIgnoredViewHelpers
      *
-     * @param  array $aValidTagAttributes
      * @access public
      * @return \TwbsHelper\Options\ModuleOptions
      */
-    public function setValidTagAttributes(array $aValidTagAttributes)
+    public function setValidTagAttributes(array $validTagAttributes)
     {
-        $this->validTagAttributes = $aValidTagAttributes;
+        $this->validTagAttributes = $validTagAttributes;
 
         return $this;
     }
@@ -98,13 +96,12 @@ class ModuleOptions extends AbstractOptions
     /**
      * setValidTagAttributePrefixes
      *
-     * @param  array $aValidTagAttributePrefixes
      * @access public
      * @return \TwbsHelper\Options\ModuleOptions
      */
-    public function setValidTagAttributePrefixes(array $aValidTagAttributePrefixes)
+    public function setValidTagAttributePrefixes(array $validTagAttributePrefixes)
     {
-        $this->validTagAttributePrefixes = $aValidTagAttributePrefixes;
+        $this->validTagAttributePrefixes = $validTagAttributePrefixes;
 
         return $this;
     }
@@ -125,13 +122,12 @@ class ModuleOptions extends AbstractOptions
     /**
      * setClassMap
      *
-     * @param  array $aClassMap
      * @access public
      * @return \TwbsHelper\Options\ModuleOptions
      */
-    public function setClassMap(array $aClassMap)
+    public function setClassMap(array $classMap)
     {
-        $this->classMap = $aClassMap;
+        $this->classMap = $classMap;
 
         return $this;
     }
@@ -152,13 +148,12 @@ class ModuleOptions extends AbstractOptions
     /**
      * setTypeMap
      *
-     * @param  array $aTypeMap
      * @access public
      * @return \TwbsHelper\Options\ModuleOptions
      */
-    public function setTypeMap(array $aTypeMap)
+    public function setTypeMap(array $typeMap)
     {
-        $this->typeMap = $aTypeMap;
+        $this->typeMap = $typeMap;
 
         return $this;
     }

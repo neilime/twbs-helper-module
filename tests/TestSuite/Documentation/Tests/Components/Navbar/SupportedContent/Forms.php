@@ -4,8 +4,8 @@
 return [
     'title' => 'Forms',
     'url' => '%bootstrap-url%/components/navbar/#forms',
-    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-        echo $oView->navigation()->navbar()->render(
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+        echo $view->navigation()->navbar()->render(
             new \Laminas\Navigation\Navigation(),
             [
                 'expand' => false,
@@ -41,7 +41,7 @@ return [
 
         echo PHP_EOL . '<br/>' . PHP_EOL;
 
-        echo $oView->navigation()->navbar()->render(
+        echo $view->navigation()->navbar()->render(
             new \Laminas\Navigation\Navigation(),
             [
                 'expand' => false,
@@ -79,7 +79,7 @@ return [
         echo PHP_EOL . '<br/>' . PHP_EOL;
 
         // Input groups work, too:
-        echo $oView->navigation()->navbar()->render(
+        echo $view->navigation()->navbar()->render(
             new \Laminas\Navigation\Navigation(),
             [
                 'expand' => false,
@@ -110,7 +110,7 @@ return [
         echo PHP_EOL . '<br/>' . PHP_EOL;
 
         // Input groups work, too:
-        echo $oView->navigation()->navbar()->render(
+        echo $view->navigation()->navbar()->render(
             new \Laminas\Navigation\Navigation(),
             [
                 'expand' => false,

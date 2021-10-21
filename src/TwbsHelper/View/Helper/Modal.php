@@ -18,131 +18,131 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
     /**
      * Generates a 'modal' element
      *
-     * @param string|array $sContent The content of the alert
-     * @param array $aOptionsAndAttributes Options & Html attributes
-     * @param boolean $bEscape True espace html content '$sContent'. Default True
+     * @param string|array $content The content of the alert
+     * @param array $optionsAndAttributes Options & Html attributes
+     * @param boolean $escape True espace html content '$content'. Default True
      * @return string The jumbotron XHTML.
      */
     public function __invoke(
-        $sContent,
-        array $aOptionsAndAttributes = [],
-        bool $bEscape = true
+        $content,
+        array $optionsAndAttributes = [],
+        bool $escape = true
     ): string {
 
-        $aModalClasses = ['modal'];
-        if (!empty($aOptionsAndAttributes['fade'])) {
-            $aModalClasses[] = 'fade';
+        $modalClasses = ['modal'];
+        if (!empty($optionsAndAttributes['fade'])) {
+            $modalClasses[] = 'fade';
         }
-        unset($aOptionsAndAttributes['fade']);
+        unset($optionsAndAttributes['fade']);
 
-        $aDialogClasses = ['modal-dialog'];
-        foreach (['scrollable', 'centered'] as $sModalOption) {
-            if (!empty($aOptionsAndAttributes[$sModalOption])) {
-                $aDialogClasses[] = 'modal-dialog-' . $sModalOption;
+        $dialogClasses = ['modal-dialog'];
+        foreach (['scrollable', 'centered'] as $modalOption) {
+            if (!empty($optionsAndAttributes[$modalOption])) {
+                $dialogClasses[] = 'modal-dialog-' . $modalOption;
             }
-            unset($aOptionsAndAttributes[$sModalOption]);
+            unset($optionsAndAttributes[$modalOption]);
         }
 
-        if (!empty($aOptionsAndAttributes['size'])) {
-            $aDialogClasses[] = $this->getSizeClass($aOptionsAndAttributes['size'], 'modal');
+        if (!empty($optionsAndAttributes['size'])) {
+            $dialogClasses[] = $this->getSizeClass($optionsAndAttributes['size'], 'modal');
         }
 
-        unset($aOptionsAndAttributes['size']);
+        unset($optionsAndAttributes['size']);
 
-        $sContent = $this->renderParts(
-            (array) $sContent,
-            $aOptionsAndAttributes,
-            $bEscape
+        $content = $this->renderParts(
+            (array) $content,
+            $optionsAndAttributes,
+            $escape
         );
 
-        $aOptionsAndAttributes = \Laminas\Stdlib\ArrayUtils::merge(
+        $optionsAndAttributes = \Laminas\Stdlib\ArrayUtils::merge(
             [
                 'tabindex' => '-1',
                 'role' => 'dialog',
             ],
-            $aOptionsAndAttributes
+            $optionsAndAttributes
         );
 
         return $this->htmlElement(
             'div',
-            $this->setClassesToAttributes($aOptionsAndAttributes, $aModalClasses),
+            $this->setClassesToAttributes($optionsAndAttributes, $modalClasses),
             $this->htmlElement(
                 'div',
-                $this->setClassesToAttributes(['role' => 'document'], $aDialogClasses),
+                $this->setClassesToAttributes(['role' => 'document'], $dialogClasses),
                 $this->htmlElement(
                     'div',
                     ['class' => 'modal-content'],
-                    $sContent,
-                    $bEscape
+                    $content,
+                    $escape
                 ),
-                $bEscape
+                $escape
             ),
-            $bEscape
+            $escape
         );
     }
 
     protected function renderParts(
-        array $aParts,
-        array $aOptionsAndAttributes,
-        bool $bEscape
+        array $parts,
+        array $optionsAndAttributes,
+        bool $escape
     ): string {
-        $sHeaderPart = '';
-        $sBodyPart = '';
-        $sFooterPart = '';
-        foreach ($aParts as $sKey => $sPartContent) {
-            $sType = is_numeric($sKey) ? self::MODAL_TEXT : $sKey;
+        $headerPart = '';
+        $bodyPart = '';
+        $footerPart = '';
+        foreach ($parts as $key => $partContent) {
+            $type = is_numeric($key) ? self::MODAL_TEXT : $key;
 
-            if (is_array($sPartContent)) {
-                $aOptions = $sPartContent;
-                if (empty($aOptions['type'])) {
-                    $aOptions['type'] = $sType;
+            if (is_array($partContent)) {
+                $options = $partContent;
+                if (empty($options['type'])) {
+                    $options['type'] = $type;
                 }
-            } elseif (is_string($sPartContent)) {
-                if ($sPartContent === self::MODAL_DIVIDER) {
-                    $aOptions = ['type' => self::MODAL_DIVIDER];
+            } elseif (is_string($partContent)) {
+                if ($partContent === self::MODAL_DIVIDER) {
+                    $options = ['type' => self::MODAL_DIVIDER];
                 } else {
-                    $aOptions = [
-                        'type' => $sType,
-                        'content' => $sPartContent,
+                    $options = [
+                        'type' => $type,
+                        'content' => $partContent,
                     ];
                 }
             }
 
-            $sPartContent = $this->renderPart(
-                $aOptions ?? [],
-                $bEscape
+            $partContent = $this->renderPart(
+                $options ?? [],
+                $escape
             );
 
-            switch ($sType) {
+            switch ($type) {
                 case self::MODAL_TITLE:
-                    $sHeaderPart .= ($sHeaderPart ? PHP_EOL : '') . $sPartContent;
+                    $headerPart .= ($headerPart ? PHP_EOL : '') . $partContent;
                     break;
 
                 case self::MODAL_TEXT:
                 case self::MODAL_DIVIDER:
                 case self::MODAL_BUTTON:
-                    $sBodyPart .= ($sBodyPart ? PHP_EOL : '') . $sPartContent;
+                    $bodyPart .= ($bodyPart ? PHP_EOL : '') . $partContent;
                     break;
 
                 case self::MODAL_FOOTER:
-                    $sFooterPart .= ($sFooterPart ? PHP_EOL : '') . $sPartContent;
+                    $footerPart .= ($footerPart ? PHP_EOL : '') . $partContent;
                     break;
 
                 default:
-                    throw new \DomainException(__CLASS__ . ' part type "' . $sType . '" is not supported');
+                    throw new \DomainException(__CLASS__ . ' part type "' . $type . '" is not supported');
             }
         }
 
         // Render header
-        if (empty($aOptionsAndAttributes['disable_close'])) {
-            $oTranslator = $this->getTranslator();
-            $sHeaderPart .= ($sHeaderPart ? PHP_EOL : '') .  $this->htmlElement(
+        if (empty($optionsAndAttributes['disable_close'])) {
+            $translator = $this->getTranslator();
+            $headerPart .= ($headerPart ? PHP_EOL : '') .  $this->htmlElement(
                 'button',
                 [
                     'type' => 'button',
                     'class' => 'close',
                     'data-dismiss' => 'modal',
-                    'aria-label' => $oTranslator ? $oTranslator->translate(
+                    'aria-label' => $translator ? $translator->translate(
                         'Close',
                         $this->getTranslatorTextDomain()
                     ) : 'Close',
@@ -153,127 +153,127 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
                     '&times;',
                     false
                 ),
-                $bEscape
+                $escape
             );
         }
-        $sHeaderPart = $sHeaderPart ? $this->htmlElement(
+        $headerPart = $headerPart ? $this->htmlElement(
             'div',
             ['class' => 'modal-header'],
-            $sHeaderPart,
-            $bEscape
+            $headerPart,
+            $escape
         ) : '';
 
         // Render body
-        $sBodyPart = $sBodyPart ? $this->htmlElement(
+        $bodyPart = $bodyPart ? $this->htmlElement(
             'div',
             ['class' => 'modal-body'],
-            $sBodyPart,
-            $bEscape
+            $bodyPart,
+            $escape
         ) : '';
 
         // Render footer
-        $sFooterPart = $sFooterPart ? $this->htmlElement(
+        $footerPart = $footerPart ? $this->htmlElement(
             'div',
             ['class' => 'modal-footer'],
-            $sFooterPart,
-            $bEscape
+            $footerPart,
+            $escape
         ) : '';
 
-        return join(PHP_EOL, array_filter([$sHeaderPart, $sBodyPart, $sFooterPart]));
+        return join(PHP_EOL, array_filter([$headerPart, $bodyPart, $footerPart]));
     }
 
     protected function renderPart(
-        array $aOptions = [],
-        bool $bEscape = true
+        array $options = [],
+        bool $escape = true
     ): string {
-        if (empty($aOptions['type'])) {
+        if (empty($options['type'])) {
             throw new \DomainException('Modal part expects a type, none given');
         }
-        $sType = $aOptions['type'];
-        unset($aOptions['type']);
+        $type = $options['type'];
+        unset($options['type']);
 
-        if (\Laminas\Stdlib\ArrayUtils::isList($aOptions)) {
+        if (\Laminas\Stdlib\ArrayUtils::isList($options)) {
             $that = $this;
             return join(
                 PHP_EOL,
-                array_map(function ($aOptionsItem) use ($that, $sType, $bEscape) {
-                    if (is_string($aOptionsItem)) {
-                        $aOptionsItem = [
-                            'content' => $aOptionsItem,
+                array_map(function ($optionsItem) use ($that, $type, $escape) {
+                    if (is_string($optionsItem)) {
+                        $optionsItem = [
+                            'content' => $optionsItem,
                         ];
                     }
-                    if (!isset($aOptionsItem['type'])) {
-                        $aOptionsItem['type'] = $sType;
+                    if (!isset($optionsItem['type'])) {
+                        $optionsItem['type'] = $type;
                     }
-                    return $that->renderPart($aOptionsItem, $bEscape);
-                }, $aOptions)
+                    return $that->renderPart($optionsItem, $escape);
+                }, $options)
             );
         }
 
-        $aAttributes = $aOptions['attributes'] ?? [];
-        switch ($sType) {
+        $attributes = $options['attributes'] ?? [];
+        switch ($type) {
             case self::MODAL_TITLE:
             case self::MODAL_SUBTITLE:
-                if (empty($aOptions['content'])) {
-                    throw new \DomainException('Modal part type "' . $sType . '" expects a content, none given');
+                if (empty($options['content'])) {
+                    throw new \DomainException('Modal part type "' . $type . '" expects a content, none given');
                 }
-                $sTag = 'h5';
+                $tag = 'h5';
 
-                if ($sType === self::MODAL_SUBTITLE) {
+                if ($type === self::MODAL_SUBTITLE) {
                     break;
                 }
 
-                $aAttributes = $this->setClassesToAttributes(
-                    $aAttributes,
+                $attributes = $this->setClassesToAttributes(
+                    $attributes,
                     ['modal-title']
                 );
                 break;
 
             case self::MODAL_TEXT:
-                if (empty($aOptions['content'])) {
-                    throw new \DomainException(__CLASS__ . ' part type "' . $sType . '" expects a content, none given');
+                if (empty($options['content'])) {
+                    throw new \DomainException(__CLASS__ . ' part type "' . $type . '" expects a content, none given');
                 }
-                $sTag = 'p';
+                $tag = 'p';
                 break;
 
             case self::MODAL_DIVIDER:
-                $sTag = 'hr';
+                $tag = 'hr';
                 break;
 
             case self::MODAL_BUTTON:
-                return $this->getView()->plugin('formButton')->renderSpec($aOptions);
+                return $this->getView()->plugin('formButton')->renderSpec($options);
 
             case self::MODAL_FOOTER:
-                $sFooterContent = '';
-                foreach ($aOptions as $sKey => $sPartContent) {
-                    $sType = is_numeric($sKey) ? self::MODAL_TEXT : $sKey;
-                    if (is_array($sPartContent)) {
-                        $aTmpOptions = $sPartContent;
-                    } elseif (is_string($sPartContent)) {
-                        $aTmpOptions = ['content' => $sPartContent];
+                $footerContent = '';
+                foreach ($options as $key => $partContent) {
+                    $type = is_numeric($key) ? self::MODAL_TEXT : $key;
+                    if (is_array($partContent)) {
+                        $tmpOptions = $partContent;
+                    } elseif (is_string($partContent)) {
+                        $tmpOptions = ['content' => $partContent];
                     }
 
-                    if (!isset($aTmpOptions['type'])) {
-                        $aTmpOptions['type'] = $sType;
+                    if (!isset($tmpOptions['type'])) {
+                        $tmpOptions['type'] = $type;
                     }
 
-                    $sPartContent = $this->renderPart(
-                        $aTmpOptions,
-                        $bEscape
+                    $partContent = $this->renderPart(
+                        $tmpOptions,
+                        $escape
                     );
-                    $sFooterContent .= ($sFooterContent ? PHP_EOL : '') . $sPartContent;
+                    $footerContent .= ($footerContent ? PHP_EOL : '') . $partContent;
                 }
-                return $sFooterContent;
+                return $footerContent;
 
             default:
-                throw new \DomainException(__CLASS__ . ' part type "' . $sType . '" is not supported');
+                throw new \DomainException(__CLASS__ . ' part type "' . $type . '" is not supported');
         }
 
         return $this->htmlElement(
-            $sTag,
-            $aAttributes,
-            $aOptions['content'] ?? null,
-            $bEscape
+            $tag,
+            $attributes,
+            $options['content'] ?? null,
+            $escape
         );
     }
 }

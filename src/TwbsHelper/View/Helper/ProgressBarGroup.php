@@ -10,15 +10,15 @@ class ProgressBarGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
     /**
      * Generates a 'progressbar' element
      */
-    public function __invoke(array $aProgressBars, array $aOptions = []): string
+    public function __invoke(array $progressBars, array $options = []): string
     {
         return $this->htmlElement(
             'div',
-            $this->setClassesToAttributes($aOptions['attributes'] ?? [], ['progress']),
-            join(PHP_EOL, array_map(function ($aProgressBar) {
-                $aProgressBar['container'] = false;
-                return $this->getView()->plugin('progressBar')->__invoke($aProgressBar);
-            }, $aProgressBars))
+            $this->setClassesToAttributes($options['attributes'] ?? [], ['progress']),
+            join(PHP_EOL, array_map(function ($progressBar) {
+                $progressBar['container'] = false;
+                return $this->getView()->plugin('progressBar')->__invoke($progressBar);
+            }, $progressBars))
         );
     }
 }

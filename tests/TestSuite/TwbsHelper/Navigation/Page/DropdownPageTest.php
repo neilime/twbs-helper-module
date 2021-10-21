@@ -7,18 +7,18 @@ class DropdownPageTest extends \PHPUnit\Framework\TestCase
 
     public function testInitializeANewDropdownPage()
     {
-        $oDropdownPage = new \TwbsHelper\Navigation\Page\DropdownPage();
-        $this->assertNull($oDropdownPage->getDropdown());
-        $this->assertEquals('#', $oDropdownPage->getHref());
+        $dropdownPage = new \TwbsHelper\Navigation\Page\DropdownPage();
+        $this->assertNull($dropdownPage->getDropdown());
+        $this->assertEquals('#', $dropdownPage->getHref());
     }
 
     public function testSetDropdown()
     {
-        $oDropdownPage = new \TwbsHelper\Navigation\Page\DropdownPage();
-        $aDropdown = [];
+        $dropdownPage = new \TwbsHelper\Navigation\Page\DropdownPage();
+        $dropdown = [];
 
-        $oDropdownPage->setDropdown($aDropdown);
+        $dropdownPage->setDropdown($dropdown);
 
-        $this->assertSame($aDropdown, $oDropdownPage->getDropdown());
+        $this->assertSame($dropdown, $dropdownPage->getDropdown());
     }
 }

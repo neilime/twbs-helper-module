@@ -14,234 +14,234 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
     /**
      * Generates a 'carousel' element
      *
-     * @param array $aSlides    The slides of the carousel
-     * @param array  $aOptionsAndAttributes Html attributes of the "<div>" element
-     * @param boolean $bEscape     True espace html content. Default True
+     * @param array $slides    The slides of the carousel
+     * @param array  $optionsAndAttributes Html attributes of the "<div>" element
+     * @param boolean $escape     True espace html content. Default True
      * @return string The carousel XHTML.
      */
     public function __invoke(
-        array $aSlides,
-        array $aOptionsAndAttributes = [],
-        bool $bEscape = true
+        array $slides,
+        array $optionsAndAttributes = [],
+        bool $escape = true
     ): string {
 
 
-        if (empty($aOptionsAndAttributes['id'])) {
-            $aOptionsAndAttributes['id'] = uniqid('twbs-carousel-');
+        if (empty($optionsAndAttributes['id'])) {
+            $optionsAndAttributes['id'] = uniqid('twbs-carousel-');
         }
-        if (!isset($aOptionsAndAttributes['data-ride'])) {
-            $aOptionsAndAttributes['data-ride'] = 'carousel';
-        }
-
-        $aClasses = ['carousel', 'slide'];
-        if (!empty($aOptionsAndAttributes['crossfade'])) {
-            $aClasses[] = 'carousel-fade';
+        if (!isset($optionsAndAttributes['data-ride'])) {
+            $optionsAndAttributes['data-ride'] = 'carousel';
         }
 
-        $aSlides = $this->parseSlides($aSlides);
-        $sContent = $this->renderSlides($aSlides, $bEscape);
-        if ($sContent) {
-            if (!empty($aOptionsAndAttributes['indicators'])) {
-                $sContent = $this->renderIndicators(
-                    $aOptionsAndAttributes['id'],
-                    $aSlides,
-                    $bEscape
-                ) . PHP_EOL . $sContent;
+        $classes = ['carousel', 'slide'];
+        if (!empty($optionsAndAttributes['crossfade'])) {
+            $classes[] = 'carousel-fade';
+        }
+
+        $slides = $this->parseSlides($slides);
+        $content = $this->renderSlides($slides, $escape);
+        if ($content) {
+            if (!empty($optionsAndAttributes['indicators'])) {
+                $content = $this->renderIndicators(
+                    $optionsAndAttributes['id'],
+                    $slides,
+                    $escape
+                ) . PHP_EOL . $content;
             }
-            if (!empty($aOptionsAndAttributes['controls'])) {
-                $sContent .= PHP_EOL . $this->renderControls(
-                    $aOptionsAndAttributes['id'],
-                    $aOptionsAndAttributes['controls'],
-                    $bEscape
+            if (!empty($optionsAndAttributes['controls'])) {
+                $content .= PHP_EOL . $this->renderControls(
+                    $optionsAndAttributes['id'],
+                    $optionsAndAttributes['controls'],
+                    $escape
                 );
             }
         }
         unset(
-            $aOptionsAndAttributes['indicators'],
-            $aOptionsAndAttributes['controls'],
-            $aOptionsAndAttributes['crossfade']
+            $optionsAndAttributes['indicators'],
+            $optionsAndAttributes['controls'],
+            $optionsAndAttributes['crossfade']
         );
 
         return $this->htmlElement(
             'div',
-            $this->setClassesToAttributes($aOptionsAndAttributes, $aClasses),
-            $sContent,
-            $bEscape
+            $this->setClassesToAttributes($optionsAndAttributes, $classes),
+            $content,
+            $escape
         );
     }
 
-    protected function parseSlides(array $aSlides)
+    protected function parseSlides(array $slides)
     {
-        $aParsedSlides = [];
-        foreach ($aSlides as $sKey => $aSlide) {
-            if (is_string($aSlide)) {
-                if (is_string($sKey)) {
-                    $aSlide = ['src' => $sKey, 'optionsAndAttributes' => ['caption' => $aSlide]];
+        $parsedSlides = [];
+        foreach ($slides as $key => $slide) {
+            if (is_string($slide)) {
+                if (is_string($key)) {
+                    $slide = ['src' => $key, 'optionsAndAttributes' => ['caption' => $slide]];
                 } else {
-                    $aSlide = ['src' => $aSlide, 'optionsAndAttributes' => []];
+                    $slide = ['src' => $slide, 'optionsAndAttributes' => []];
                 }
-            } elseif (is_array($aSlide)) {
-                if (is_string($sKey)) {
-                    $aSlide = ['src' => $sKey, 'optionsAndAttributes' => $aSlide];
+            } elseif (is_array($slide)) {
+                if (is_string($key)) {
+                    $slide = ['src' => $key, 'optionsAndAttributes' => $slide];
                 } else {
-                    if (\Laminas\Stdlib\ArrayUtils::isList($aSlide)) {
-                        $aSlide = ['src' => $aSlide[0], 'optionsAndAttributes' => $aSlide[1] ?? []];
+                    if (\Laminas\Stdlib\ArrayUtils::isList($slide)) {
+                        $slide = ['src' => $slide[0], 'optionsAndAttributes' => $slide[1] ?? []];
                     } else {
-                        if (isset($aSlide['options'])) {
-                            $aSlide['optionsAndAttributes'] = array_merge(
-                                $aSlide['optionsAndAttributes'] ?? [],
-                                $aSlide['options']
+                        if (isset($slide['options'])) {
+                            $slide['optionsAndAttributes'] = array_merge(
+                                $slide['optionsAndAttributes'] ?? [],
+                                $slide['options']
                             );
-                            unset($aSlide['options']);
+                            unset($slide['options']);
                         }
-                        if (isset($aSlide['attributes'])) {
-                            $aSlide['optionsAndAttributes'] = array_merge(
-                                $aSlide['optionsAndAttributes'] ?? [],
-                                $aSlide['attributes']
+                        if (isset($slide['attributes'])) {
+                            $slide['optionsAndAttributes'] = array_merge(
+                                $slide['optionsAndAttributes'] ?? [],
+                                $slide['attributes']
                             );
-                            unset($aSlide['attributes']);
+                            unset($slide['attributes']);
                         }
                     }
                 }
             }
 
 
-            $aParsedSlides[] = $aSlide;
+            $parsedSlides[] = $slide;
         }
-        return $aParsedSlides;
+        return $parsedSlides;
     }
 
-    protected function renderSlides(array $aSlides, bool $bEscape = true)
+    protected function renderSlides(array $slides, bool $escape = true)
     {
-        $sSlidesContent = '';
-        foreach ($aSlides as $aSlide) {
-            $sSlidesContent .= ($sSlidesContent ? PHP_EOL : '') . $this->renderSlide($aSlide, $bEscape);
+        $slidesContent = '';
+        foreach ($slides as $slide) {
+            $slidesContent .= ($slidesContent ? PHP_EOL : '') . $this->renderSlide($slide, $escape);
         }
 
-        if ($sSlidesContent) {
-            $sSlidesContent = $this->htmlElement('div', ['class' => 'carousel-inner'], $sSlidesContent, $bEscape);
+        if ($slidesContent) {
+            $slidesContent = $this->htmlElement('div', ['class' => 'carousel-inner'], $slidesContent, $escape);
         }
-        return $sSlidesContent;
+        return $slidesContent;
     }
 
-    protected function renderSlide($aSlide, bool $bEscape = true)
+    protected function renderSlide($slide, bool $escape = true)
     {
-        $aClasses = ['carousel-item'];
-        $aAttributes = [];
+        $classes = ['carousel-item'];
+        $attributes = [];
 
-        $aSlide['optionsAndAttributes'] = $this->setClassesToAttributes(
-            $aSlide['optionsAndAttributes'] ?? [],
+        $slide['optionsAndAttributes'] = $this->setClassesToAttributes(
+            $slide['optionsAndAttributes'] ?? [],
             ['d-block', 'w-100']
         );
 
-        if (!empty($aSlide['optionsAndAttributes']['active'])) {
-            $aClasses[] = 'active';
+        if (!empty($slide['optionsAndAttributes']['active'])) {
+            $classes[] = 'active';
         }
-        unset($aSlide['optionsAndAttributes']['active']);
+        unset($slide['optionsAndAttributes']['active']);
 
-        if (!empty($aSlide['optionsAndAttributes']['interval'])) {
-            $aAttributes['data-interval'] = $aSlide['optionsAndAttributes']['interval'];
+        if (!empty($slide['optionsAndAttributes']['interval'])) {
+            $attributes['data-interval'] = $slide['optionsAndAttributes']['interval'];
         }
-        unset($aSlide['optionsAndAttributes']['interval']);
+        unset($slide['optionsAndAttributes']['interval']);
 
-        $sSlideContent = '';
-        if (!empty($aSlide['optionsAndAttributes']['caption'])) {
-            $sSlideContent = $this->renderSlideCaption(
-                $aSlide['optionsAndAttributes']['caption'],
-                $bEscape
+        $slideContent = '';
+        if (!empty($slide['optionsAndAttributes']['caption'])) {
+            $slideContent = $this->renderSlideCaption(
+                $slide['optionsAndAttributes']['caption'],
+                $escape
             );
         }
-        unset($aSlide['optionsAndAttributes']['caption']);
+        unset($slide['optionsAndAttributes']['caption']);
 
         // Generate image
-        $sSlideContent = $this->getView()->plugin('image')->__invoke(
-            $aSlide['src'],
-            $aSlide['optionsAndAttributes']
-        ) . ($sSlideContent ? PHP_EOL . $sSlideContent : '');
+        $slideContent = $this->getView()->plugin('image')->__invoke(
+            $slide['src'],
+            $slide['optionsAndAttributes']
+        ) . ($slideContent ? PHP_EOL . $slideContent : '');
 
         return $this->htmlElement(
             'div',
-            $this->setClassesToAttributes($aAttributes, $aClasses),
-            $sSlideContent,
-            $bEscape
+            $this->setClassesToAttributes($attributes, $classes),
+            $slideContent,
+            $escape
         );
     }
 
-    protected function renderSlideCaption($sCaptionContent, bool $bEscape = true)
+    protected function renderSlideCaption($captionContent, bool $escape = true)
     {
-        if (is_array($sCaptionContent)) {
-            $sContent = '';
-            foreach ($sCaptionContent as $sKey => $sCaptionPartContent) {
+        if (is_array($captionContent)) {
+            $content = '';
+            foreach ($captionContent as $key => $captionPartContent) {
                 switch (true) {
-                    case $sKey === 'title':
-                        $sCaptionPartContent = $this->htmlElement('h5', [], $sCaptionPartContent);
+                    case $key === 'title':
+                        $captionPartContent = $this->htmlElement('h5', [], $captionPartContent);
                         break;
-                    case $sKey === 'text':
-                        $sCaptionPartContent = $this->htmlElement('p', [], $sCaptionPartContent);
+                    case $key === 'text':
+                        $captionPartContent = $this->htmlElement('p', [], $captionPartContent);
                         break;
-                    case is_int($sKey):
+                    case is_int($key):
                         break;
                     default:
                         throw new \InvalidArgumentException(sprintf(
                             'Caption part "%s" is not supported',
-                            $sKey
+                            $key
                         ));
                 }
 
-                $sContent .= ($sContent ? PHP_EOL : '') . $sCaptionPartContent;
+                $content .= ($content ? PHP_EOL : '') . $captionPartContent;
             }
-            $sCaptionContent = $sContent;
+            $captionContent = $content;
         }
 
         return $this->htmlElement(
             'div',
             $this->setClassesToAttributes([], ['carousel-caption', 'd-none', 'd-md-block']),
-            $sCaptionContent,
-            $bEscape
+            $captionContent,
+            $escape
         );
     }
 
-    protected function renderIndicators(string $sId, array $aSlides, bool $bEscape = true): string
+    protected function renderIndicators(string $id, array $slides, bool $escape = true): string
     {
-        $sIndicatorsContent = '';
-        $iIterator = -1;
-        foreach ($aSlides as $aSlide) {
-            $sIndicatorsContent .= ($sIndicatorsContent ? PHP_EOL : '') . $this->renderIndicator(
-                $sId,
-                ++$iIterator,
-                $aSlide,
-                $bEscape
+        $indicatorsContent = '';
+        $iterator = -1;
+        foreach ($slides as $slide) {
+            $indicatorsContent .= ($indicatorsContent ? PHP_EOL : '') . $this->renderIndicator(
+                $id,
+                ++$iterator,
+                $slide,
+                $escape
             );
         }
 
         return $this->htmlElement(
             'ol',
             $this->setClassesToAttributes([], ['carousel-indicators']),
-            $sIndicatorsContent,
-            $bEscape
+            $indicatorsContent,
+            $escape
         );
     }
 
-    protected function renderIndicator(string $sId, int $iIterator, $aSlide, bool $bEscape = true): string
+    protected function renderIndicator(string $id, int $iterator, $slide, bool $escape = true): string
     {
         return $this->htmlElement(
             'li',
             $this->setClassesToAttributes([
-                'data-target' => '#' . $sId,
-                'data-slide-to' => $iIterator,
-            ], !empty($aSlide['optionsAndAttributes']['active']) ? ['active'] : []),
+                'data-target' => '#' . $id,
+                'data-slide-to' => $iterator,
+            ], !empty($slide['optionsAndAttributes']['active']) ? ['active'] : []),
             '',
-            $bEscape
+            $escape
         );
     }
 
-    protected function renderControls(string $sId, $aControls, bool $bEscape = true): string
+    protected function renderControls(string $id, $controls, bool $escape = true): string
     {
         switch (true) {
-            case is_iterable($aControls):
+            case is_iterable($controls):
                 break;
-            case $aControls === true:
-                $aControls = [
+            case $controls === true:
+                $controls = [
                     self::CONTROL_PREVIOUS => 'Previous',
                     self::CONTROL_NEXT => 'Next',
                 ];
@@ -249,44 +249,44 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
             default:
                 throw new \InvalidArgumentException(sprintf(
                     'Option "controls" of type "%s" is not supported',
-                    gettype($aControls)
+                    gettype($controls)
                 ));
         }
 
-        $sControlsContent = '';
-        foreach ($aControls as $sControl => $sLabel) {
-            $sControlsContent .= ($sControlsContent ? PHP_EOL : '') . $this->renderControl(
-                $sId,
-                $sControl,
-                $sLabel,
-                $bEscape
+        $controlsContent = '';
+        foreach ($controls as $control => $label) {
+            $controlsContent .= ($controlsContent ? PHP_EOL : '') . $this->renderControl(
+                $id,
+                $control,
+                $label,
+                $escape
             );
         }
 
-        return $sControlsContent;
+        return $controlsContent;
     }
 
-    protected function renderControl(string $sId, string $sControl, string $sLabel, bool $bEscape = true): string
+    protected function renderControl(string $id, string $control, string $label, bool $escape = true): string
     {
 
-        $sControlContent =
+        $controlContent =
             $this->htmlElement(
                 'span',
-                ['class' => 'carousel-control-' . $sControl . '-icon', 'aria-hidden' => 'true'],
+                ['class' => 'carousel-control-' . $control . '-icon', 'aria-hidden' => 'true'],
                 ''
             ) . PHP_EOL .
-            $this->htmlElement('span', ['class' => 'sr-only'], $sLabel, $bEscape);
+            $this->htmlElement('span', ['class' => 'sr-only'], $label, $escape);
 
         return $this->htmlElement(
             'a',
             [
-                'class' => 'carousel-control-' . $sControl,
-                'href' => '#' . $sId,
+                'class' => 'carousel-control-' . $control,
+                'href' => '#' . $id,
                 'role' => 'button',
-                'data-slide' => $sControl,
+                'data-slide' => $control,
             ],
-            $sControlContent,
-            $bEscape
+            $controlContent,
+            $escape
         );
     }
 }

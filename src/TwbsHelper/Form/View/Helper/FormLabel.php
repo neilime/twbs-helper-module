@@ -17,157 +17,159 @@ class FormLabel extends \Laminas\Form\View\Helper\FormLabel
      * Always generates a "for" statement, as we cannot assume the form input
      * will be provided in the $labelContent.
      *
-     * @param \Laminas\Form\ElementInterface $oElement
-     * @param  null|string $sLabelContent
-     * @param string $sPosition
+     * @param \Laminas\Form\ElementInterface $element
+     * @param  null|string $labelContent
+     * @param string $position
      * @return string|\TwbsHelper\Form\View\Helper\FormLabel
      */
     public function __invoke(
-        \Laminas\Form\ElementInterface $oElement = null,
-        ?string $sLabelContent = null,
-        string $sPosition = null
+        \Laminas\Form\ElementInterface $element = null,
+        ?string $labelContent = null,
+        string $position = null
     ) {
-        if (!$oElement) {
+        if ($element === null) {
             return $this;
         }
 
         // Button element is a special case, because label is always rendered inside it
         if (
-            $oElement instanceof \Laminas\Form\Element\Button
-            || $oElement instanceof \Laminas\Form\Element\Submit
+            $element instanceof \Laminas\Form\Element\Button
+            || $element instanceof \Laminas\Form\Element\Submit
         ) {
-            return $sLabelContent;
+            return $labelContent;
         }
 
-        if ($oElement instanceof \Laminas\Form\LabelAwareInterface) {
-            $aLabelAttributes = $oElement->getLabelAttributes();
-
-            $oElement->setLabelAttributes($aLabelAttributes = $this->setClassesToAttributes(
-                $aLabelAttributes,
-                $this->getLabelClasses($oElement, $aLabelAttributes)
-            ));
+        if ($element instanceof \Laminas\Form\LabelAwareInterface) {
+            $labelAttributes = $element->getLabelAttributes();
+            $labelAttributes = $this->setClassesToAttributes(
+                $labelAttributes,
+                $this->getLabelClasses($element, $labelAttributes)
+            );
+            $element->setLabelAttributes($labelAttributes);
         } else {
-            $aLabelAttributes = [];
+            $labelAttributes = [];
         }
 
-        $sMarkup = parent::__invoke($oElement, $sLabelContent, $sPosition);
-        if (!preg_match('/(<label[^>]*>)([\s\S]*)(<\/label[^>]*>)/imU', $sMarkup, $aMatches)) {
-            return $sMarkup;
+        $markup = parent::__invoke($element, $labelContent, $position);
+        if (!preg_match('/(<label[^>]*>)([\s\S]*)(<\/label[^>]*>)/imU', $markup, $matches)) {
+            return $markup;
         }
 
-        $sLabel = trim($aMatches[2]);
-        if (!$sLabel) {
-            return $sLabelContent;
+        $label = trim($matches[2]);
+        if (!$label) {
+            return $labelContent;
         }
 
         // Add required string if element is required
         if (
             $this->requiredFormat &&
-            $oElement->getAttribute('required') && strpos($this->requiredFormat, $sLabel) === false
+            $element->getAttribute('required') && strpos($this->requiredFormat, $label) === false
         ) {
-            $sLabel .= $this->requiredFormat;
+            $label .= $this->requiredFormat;
         }
 
-        if ($oElement instanceof \Laminas\Form\Element\MultiCheckbox) {
+        if ($element instanceof \Laminas\Form\Element\MultiCheckbox) {
             return $this->htmlElement(
                 'div',
-                $aLabelAttributes,
-                $sLabel,
-                !$oElement->getLabelOption('disable_html_escape')
+                $labelAttributes,
+                $label,
+                !$element->getLabelOption('disable_html_escape')
             );
         }
 
-        return $aMatches[1] . $sLabel . $aMatches[3];
+        return $matches[1] . $label . $matches[3];
     }
 
     /**
      * Render element's label
      *
-     * @param \Laminas\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface $element
      * @return string
      */
-    public function renderPartial(\Laminas\Form\ElementInterface $oElement): string
+    public function renderPartial(\Laminas\Form\ElementInterface $element): string
     {
-        if (!$oElement instanceof \Laminas\Form\LabelAwareInterface) {
+        if (!$element instanceof \Laminas\Form\LabelAwareInterface) {
             return '';
         }
 
-        $sLabel = $oElement->getLabel();
-        if ($sLabel && ($oTranslator = $this->getTranslator())) {
-            $sLabel = $oTranslator->translate($sLabel, $this->getTranslatorTextDomain());
+        $label = $element->getLabel();
+        if ($label && ($translator = $this->getTranslator())) {
+            $label = $translator->translate($label, $this->getTranslatorTextDomain());
         }
 
-        return $sLabel ?? '';
+        return $label ?? '';
     }
 
-    protected function getLabelClasses(\Laminas\Form\ElementInterface $oElement, array $aLabelAttributes): array
+    protected function getLabelClasses(\Laminas\Form\ElementInterface $element, array $labelAttributes): array
     {
-        $aLabelClasses = [];
+        $labelClasses = [];
 
-        $sLayout = $oElement->getOption('layout');
+        $layout = $element->getOption('layout');
 
         // Define label column class
-        $sColumSize = $oElement->getOption('column');
+        $columSize = $element->getOption('column');
         if (
-            $sColumSize
-            && $oElement->getOption('layout') !== null
-            && !$this->hasColumnClassAttribute($aLabelAttributes['class'] ?? '')
-            && ! (
-                $oElement instanceof \Laminas\Form\Element\Checkbox
-                && ! $oElement instanceof \Laminas\Form\Element\MultiCheckbox
-                && $sLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL
-            )
+            $columSize
+            && $element->getOption('layout') !== null
+            && !$this->hasColumnClassAttribute($labelAttributes['class'] ?? '')
+            && !($element instanceof \Laminas\Form\Element\Checkbox
+                && !$element instanceof \Laminas\Form\Element\MultiCheckbox
+                && $layout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL)
         ) {
-            $aLabelClasses[] = $this->getColumnCounterpartClass($sColumSize);
+            $labelClasses[] = $this->getColumnCounterpartClass($columSize);
         }
 
         // Define label size class
-        if ($sSize = $oElement->getOption('size')) {
-            $aLabelClasses[] = $this->getSizeClass($sSize, 'col-form-label');
+        if ($size = $element->getOption('size')) {
+            $labelClasses[] = $this->getSizeClass($size, 'col-form-label');
         }
 
-        if ($oElement instanceof \Laminas\Form\Element\MultiCheckbox) {
-            return $aLabelClasses;
+        if ($element instanceof \Laminas\Form\Element\MultiCheckbox) {
+            return $labelClasses;
         }
 
-        switch ($oElement->getAttribute('type')) {
+        switch ($element->getAttribute('type')) {
             case 'checkbox':
             case 'radio':
-                $aLabelClasses[] = $oElement->getOption('custom')
+                $labelClasses[] = $element->getOption('custom')
                     ? 'custom-control-label'
                     : 'form-check-label';
                 break;
 
             case 'file':
-                if ($oElement->getOption('custom')) {
-                    $aLabelClasses[] = 'custom-file-label';
+                if ($element->getOption('custom')) {
+                    $labelClasses[] = 'custom-file-label';
                 }
+
                 break;
 
             default:
                 // Validation state
-                if ($oElement->getOption('validation-state') || $oElement->getMessages()) {
-                    $aLabelClasses[] = 'col-form-label';
+                if ($element->getOption('validation-state') || $element->getMessages()) {
+                    $labelClasses[] = 'col-form-label';
                 }
 
-                switch ($sLayout) {
+                switch ($layout) {
                         // Hide label for "inline" layout
                     case \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE:
-                        if ($oElement->getOption('show_label') !== true) {
-                            $aLabelClasses[] = 'sr-only';
+                        if ($element->getOption('show_label') !== true) {
+                            $labelClasses[] = 'sr-only';
                         }
+
                         break;
 
                     case \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL:
-                        $aLabelClasses[] = 'col-form-label';
+                        $labelClasses[] = 'col-form-label';
                         break;
                     case null:
-                        if ($oElement->getOption('show_label') === false) {
-                            $aLabelClasses[] = 'sr-only';
+                        if ($element->getOption('show_label') === false) {
+                            $labelClasses[] = 'sr-only';
                         }
+
                         break;
                 }
         }
-        return $aLabelClasses;
+
+        return $labelClasses;
     }
 }

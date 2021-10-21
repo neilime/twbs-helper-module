@@ -12,10 +12,10 @@ return [
                 [
                     'title' => 'Checkboxes',
                     'url' => '%bootstrap-url%/components/forms/#checkboxes',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        $oFactory = new \Laminas\Form\Factory();
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        $factory = new \Laminas\Form\Factory();
 
-                        echo $oView->formRow($oFactory->create([
+                        echo $view->formRow($factory->create([
                             'name' => 'custom_checkbox',
                             'type' => 'checkbox',
                             'options' => [
@@ -33,10 +33,10 @@ return [
                 [
                     'title' => 'Radios',
                     'url' => '%bootstrap-url%/components/forms/#checkboxes',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        $oFactory = new \Laminas\Form\Factory();
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        $factory = new \Laminas\Form\Factory();
 
-                        echo $oView->formRow($oFactory->create([
+                        echo $view->formRow($factory->create([
                             'name' => 'customRadio',
                             'type' => 'radio',
                             'options' => [
@@ -60,10 +60,10 @@ return [
                 [
                     'title' => 'Inline',
                     'url' => '%bootstrap-url%/components/forms/#inline-1',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        $oFactory = new \Laminas\Form\Factory();
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        $factory = new \Laminas\Form\Factory();
 
-                        echo $oView->formRow($oFactory->create([
+                        echo $view->formRow($factory->create([
                             'name' => 'customRadioInline1',
                             'type' => 'radio',
                             'options' => [
@@ -88,10 +88,10 @@ return [
                 [
                     'title' => 'Disabled',
                     'url' => '%bootstrap-url%/components/forms/#disabled',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        $oFactory = new \Laminas\Form\Factory();
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        $factory = new \Laminas\Form\Factory();
 
-                        echo $oView->formRow($oFactory->create([
+                        echo $view->formRow($factory->create([
                             'name' => 'custom_checkbox_disabled',
                             'type' => 'checkbox',
                             'options' => [
@@ -106,7 +106,7 @@ return [
                             ],
                         ])) . PHP_EOL;
 
-                        echo $oView->formRow($oFactory->create([
+                        echo $view->formRow($factory->create([
                             'name' => 'radioDisabled',
                             'type' => 'radio',
                             'options' => [
@@ -128,10 +128,10 @@ return [
         [
             'title' => 'Switches',
             'url' => '%bootstrap-url%/components/forms/#switches',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                $oFactory = new \Laminas\Form\Factory();
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                $factory = new \Laminas\Form\Factory();
 
-                echo $oView->formRow($oFactory->create([
+                echo $view->formRow($factory->create([
                     'name' => 'custom_switch',
                     'type' => 'checkbox',
                     'options' => [
@@ -144,7 +144,7 @@ return [
                     'attributes' => ['id' => 'customSwitch1'],
                 ])) . PHP_EOL;
 
-                echo $oView->formRow($oFactory->create([
+                echo $view->formRow($factory->create([
                     'name' => 'custom_switch',
                     'type' => 'checkbox',
                     'options' => [
@@ -164,10 +164,10 @@ return [
         [
             'title' => 'Select menu',
             'url' => '%bootstrap-url%/components/forms/#select-menu',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                $oFactory = new \Laminas\Form\Factory();
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                $factory = new \Laminas\Form\Factory();
 
-                echo $oView->formElement($oFactory->create([
+                echo $view->formElement($factory->create([
                     'name' => 'custom_select',
                     'type' => 'select',
                     'options' => [
@@ -184,7 +184,7 @@ return [
                 echo '<br/><br/>' . PHP_EOL;
 
                 // You may also choose from small and large custom selects to match our similarly sized text inputs.
-                echo $oView->formElement($oFactory->create([
+                echo $view->formElement($factory->create([
                     'name' => 'custom_select_lg',
                     'type' => 'select',
                     'options' => [
@@ -202,7 +202,7 @@ return [
 
                 echo '<br/><br/>' . PHP_EOL;
 
-                echo $oView->formElement($oFactory->create([
+                echo $view->formElement($factory->create([
                     'name' => 'custom_select_sm',
                     'type' => 'select',
                     'options' => [
@@ -220,7 +220,7 @@ return [
                 echo '<br/><br/>' . PHP_EOL;
 
                 // The multiple attribute is also supported
-                echo $oView->formElement($oFactory->create([
+                echo $view->formElement($factory->create([
                     'name' => 'custom_select_multiple',
                     'type' => 'select',
                     'options' => [
@@ -238,7 +238,7 @@ return [
                 echo '<br/><br/>' . PHP_EOL;
 
                 // As is the size attribute
-                echo $oView->formElement($oFactory->create([
+                echo $view->formElement($factory->create([
                     'name' => 'custom_select_size',
                     'type' => 'select',
                     'options' => [
@@ -257,10 +257,10 @@ return [
         [
             'title' => 'Range',
             'url' => '%bootstrap-url%/components/forms/#range',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                $oFactory = new \Laminas\Form\Factory();
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                $factory = new \Laminas\Form\Factory();
 
-                echo $oView->formRow($oFactory->create([
+                echo $view->formRow($factory->create([
                     'name' => 'custom_range',
                     'type' => 'range',
                     'options' => [
@@ -275,10 +275,10 @@ return [
         [
             'title' => 'File browser',
             'url' => '%bootstrap-url%/components/forms/#file-browser',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                $oFactory = new \Laminas\Form\Factory();
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                $factory = new \Laminas\Form\Factory();
 
-                echo $oView->formRow($oFactory->create([
+                echo $view->formRow($factory->create([
                     'name' => 'custom_file',
                     'type' => 'file',
                     'options' => [
@@ -293,10 +293,10 @@ return [
                 [
                     'title' => 'Translating or customizing the strings with HTML',
                     'url' => '%bootstrap-url%/components/forms/#translating-or-customizing-the-strings-with-html',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        $oFactory = new \Laminas\Form\Factory();
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        $factory = new \Laminas\Form\Factory();
 
-                        echo $oView->formRow($oFactory->create([
+                        echo $view->formRow($factory->create([
                             'name' => 'custom_file',
                             'type' => 'file',
                             'options' => [

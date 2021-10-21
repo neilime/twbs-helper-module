@@ -8,17 +8,19 @@ namespace TwbsHelper\View\Helper;
 class MediaList extends \TwbsHelper\View\Helper\AbstractGroup
 {
     protected static $groupClass = 'list-unstyled';
+
     protected static $groupTag = 'ul';
+
     protected static $helperName = 'media';
 
     protected function renderGroupItem(
-        \Laminas\View\Helper\HelperInterface $oItemHelper,
-        array $aArguments
+        \Laminas\View\Helper\HelperInterface $itemHelper,
+        array $arguments
     ): string {
-        $aArguments[1] = empty($aArguments[1])
+        $arguments[1] = empty($arguments[1])
             ? ['tag' => 'li']
-            : \Laminas\Stdlib\ArrayUtils::merge($aArguments[1], ['tag' => 'li']);
+            : \Laminas\Stdlib\ArrayUtils::merge($arguments[1], ['tag' => 'li']);
 
-        return parent::renderGroupItem($oItemHelper, $aArguments);
+        return parent::renderGroupItem($itemHelper, $arguments);
     }
 }
