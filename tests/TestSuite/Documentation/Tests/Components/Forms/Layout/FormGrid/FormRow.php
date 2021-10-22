@@ -5,10 +5,10 @@ return [
     'title' => 'Form row',
     'url' => '%bootstrap-url%/components/forms/#form-row',
 
-    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-        $oFactory = new \Laminas\Form\Factory();
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+        $factory = new \Laminas\Form\Factory();
 
-        echo $oView->form($oFactory->create([
+        echo $view->form($factory->create([
             'type' => 'form',
             'options' => ['row_class' => 'form-row'],
             'elements' => [

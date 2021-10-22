@@ -8,8 +8,8 @@ return [
         [
             'title' => 'Basic example',
             'url' => '%bootstrap-url%/components/list-group/#basic-example',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->listGroup([
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->listGroup([
                     'Cras justo odio',
                     'Dapibus ac facilisis in',
                     'Morbi leo risus',
@@ -21,8 +21,8 @@ return [
         [
             'title' => 'Active items',
             'url' => '%bootstrap-url%/components/list-group/#active-items',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->listGroup([
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->listGroup([
                     'Cras justo odio' => ['active' => true],
                     'Dapibus ac facilisis in',
                     'Morbi leo risus',
@@ -34,8 +34,8 @@ return [
         [
             'title' => 'Disabled  items',
             'url' => '%bootstrap-url%/components/list-group/#disabled-items',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->listGroup([
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->listGroup([
                     'Cras justo odio' => ['disabled' => true],
                     'Dapibus ac facilisis in',
                     'Morbi leo risus',
@@ -47,8 +47,8 @@ return [
         [
             'title' => 'Links and buttons',
             'url' => '%bootstrap-url%/components/list-group/#links-and-buttons',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->listGroup([
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->listGroup([
                     'Cras justo odio' => [
                         'active' => true,
                         'attributes' => ['href' => '#'],
@@ -64,7 +64,7 @@ return [
 
                 echo '<br/>' . PHP_EOL;
 
-                echo $oView->listGroup([
+                echo $view->listGroup([
                     'Cras justo odio' => ['active' => true],
                     'Dapibus ac facilisis in',
                     'Morbi leo risus',
@@ -76,8 +76,8 @@ return [
         [
             'title' => 'Flush',
             'url' => '%bootstrap-url%/components/list-group/#flush',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->listGroup(
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->listGroup(
                     [
                         'Cras justo odio',
                         'Dapibus ac facilisis in',
@@ -92,9 +92,9 @@ return [
         [
             'title' => 'Horizontal',
             'url' => '%bootstrap-url%/components/list-group/#horizontal',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                 // Add option 'horizontal' to change the layout of list group items from vertical to horizontal
-                echo $oView->listGroup(
+                echo $view->listGroup(
                     [
                         'Cras justo odio',
                         'Dapibus ac facilisis in',
@@ -105,16 +105,16 @@ return [
 
                 // Alternatively, choose a responsive variant `sm|md|lg|xl`
                 // to make a list group horizontal starting at that breakpoint’s
-                foreach (['sm', 'md', 'lg', 'xl'] as $sBreakpoint) {
+                foreach (['sm', 'md', 'lg', 'xl'] as $breakpoint) {
                     echo PHP_EOL . '<br/>' . PHP_EOL;
 
-                    echo $oView->listGroup(
+                    echo $view->listGroup(
                         [
                             'Cras justo odio',
                             'Dapibus ac facilisis in',
                             'Morbi leo risus',
                         ],
-                        ['horizontal' => $sBreakpoint]
+                        ['horizontal' => $breakpoint]
                     );
                 }
             },
@@ -122,9 +122,9 @@ return [
         [
             'title' => 'Contextual classes',
             'url' => '%bootstrap-url%/components/list-group/#contextual-classes',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                 // Use option 'variant' to style list items with a stateful background and color
-                echo $oView->listGroup([
+                echo $view->listGroup([
                     'Dapibus ac facilisis in',
                     'A simple primary list group item' => ['variant' => 'primary'],
                     'A simple secondary list group item' => ['variant' => 'secondary'],
@@ -139,7 +139,7 @@ return [
                 echo '<br/>' . PHP_EOL;
 
                 // Contextual classes also work with .list-group-item-action
-                echo $oView->listGroup(
+                echo $view->listGroup(
                     [
                         'Dapibus ac facilisis in' => ['attributes' => ['href' => '#']],
                         'A simple primary list group item' => [
@@ -182,8 +182,8 @@ return [
         [
             'title' => 'With badges',
             'url' => '%bootstrap-url%/components/list-group/#with-badges',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->listGroup(
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->listGroup(
                     [
                         'Cras justo odio' => [
                             'badge' => [
@@ -210,8 +210,8 @@ return [
         [
             'title' => 'Custom content',
             'url' => '%bootstrap-url%/components/list-group/#custom-content',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->listGroup(
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->listGroup(
                     [
                         [
                             'content' => '<div class="d-flex w-100 justify-content-between">' . PHP_EOL .

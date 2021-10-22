@@ -8,8 +8,8 @@ return [
         [
             'title' => 'Responsive images',
             'url' => '%bootstrap-url%/content/images/#responsive-images',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->image(
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->image(
                     '/twbs-helper-module/img/docs/responsive.svg',
                     ['fluid' => true, 'alt' => 'Responsive image',]
                 );
@@ -18,8 +18,8 @@ return [
         [
             'title' => 'Image thumbnails',
             'url' => '%bootstrap-url%/content/images/#image-thumbnails',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->image(
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->image(
                     '/twbs-helper-module/img/docs/200x200.svg',
                     ['thumbnail' => true, 'alt' => 'Image thumbnail',]
                 );
@@ -28,18 +28,18 @@ return [
         [
             'title' => 'Aligning images',
             'url' => '%bootstrap-url%/content/images/#aligning-images',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->image(
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->image(
                     '/twbs-helper-module/img/docs/200x200.svg',
                     ['rounded' => true, 'alt' => 'Image aligned left', 'class' => 'float-left']
                 )  . PHP_EOL;
 
-                echo $oView->image(
+                echo $view->image(
                     '/twbs-helper-module/img/docs/200x200.svg',
                     ['rounded' => true, 'alt' => 'Image aligned right', 'class' => 'float-right']
                 ) . PHP_EOL;
 
-                echo $oView->image(
+                echo $view->image(
                     '/twbs-helper-module/img/docs/200x200.svg',
                     ['rounded' => true, 'alt' => 'Image aligned block', 'class' => 'mx-auto d-block']
                 );
@@ -48,8 +48,8 @@ return [
         [
             'title' => 'Picture',
             'url' => '%bootstrap-url%/content/images/#picture',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->image('/twbs-helper-module/img/docs/200x200.svg', [
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->image('/twbs-helper-module/img/docs/200x200.svg', [
                     'thumbnail' => true,
                     'fluid' => true,
                     'alt' => 'Picture image',

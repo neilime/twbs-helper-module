@@ -9,16 +9,16 @@ class DropdownPage extends \Laminas\Navigation\Page\AbstractPage
      *
      * @var array|null
      */
-    protected $dropdown = null;
+    protected $dropdown;
 
     public function getDropdown()
     {
         return $this->dropdown;
     }
 
-    public function setDropdown(array $aDropdown)
+    public function setDropdown(array $dropdown)
     {
-        $this->dropdown = $aDropdown;
+        $this->dropdown = $dropdown;
         return $this;
     }
 

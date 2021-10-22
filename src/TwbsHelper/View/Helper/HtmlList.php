@@ -11,94 +11,92 @@ class HtmlList extends \TwbsHelper\View\Helper\AbstractHtmlElement
     /**
      * Generates a 'List' element. Manage indentation of Xhtml markup
      *
-     * @param  array   $aItems      Array with the elements of the list
-     * @param  array   $aOptionsAndAttributes Attributes for the ol/ul tag.
+     * @param  array   $items      Array with the elements of the list
+     * @param  array   $optionsAndAttributes Attributes for the ol/ul tag.
      * If class attributes contains "list-inline", so the li will have the class "list-inline-item"
-     * @param  boolean $bEscape     Escape the items.
+     * @param  boolean $escape     Escape the items.
      * @throws \InvalidArgumentException
      * @return string The list XHTML.
      */
-    public function __invoke(array $aItems, array $aOptionsAndAttributes = [], bool $bEscape = true)
+    public function __invoke(array $items, array $optionsAndAttributes = [], bool $escape = true)
     {
-        if (empty($aItems)) {
-            throw new \InvalidArgumentException('Argument "$aItems" must not be empty');
+        if (empty($items)) {
+            throw new \InvalidArgumentException('Argument "$items" must not be empty');
         }
 
-        $aItemAttributes = isset($aOptionsAndAttributes['class'])
-            && strpos($aOptionsAndAttributes['class'], 'list-inline') !== false
+        $itemAttributes = isset($optionsAndAttributes['class'])
+            && strpos($optionsAndAttributes['class'], 'list-inline') !== false
             ? $this->setClassesToAttributes([], ['list-inline-item'])
             : [];
 
-        $sListContent = '';
-        foreach ($aItems as $sKey => $sItem) {
-            $sListContent .= ($sListContent ? PHP_EOL : '') . $this->renderListItem(
-                $sItem,
-                is_string($sKey) ? $sKey : '',
-                $aOptionsAndAttributes,
-                $aItemAttributes,
-                $bEscape
+        $listContent = '';
+        foreach ($items as $key => $item) {
+            $listContent .= ($listContent ? PHP_EOL : '') . $this->renderListItem(
+                $item,
+                is_string($key) ? $key : '',
+                $optionsAndAttributes,
+                $itemAttributes,
+                $escape
             );
         }
 
-        $bOrdered = isset($aOptionsAndAttributes['ordered']) ? $aOptionsAndAttributes['ordered'] : false;
-        unset($aOptionsAndAttributes['ordered']);
+        $ordered = isset($optionsAndAttributes['ordered']) ? $optionsAndAttributes['ordered'] : false;
+        unset($optionsAndAttributes['ordered']);
         return $this->renderContainer(
-            $bOrdered ? 'ol' : 'ul',
-            $aOptionsAndAttributes,
-            $sListContent,
-            $bEscape
+            $ordered ? 'ol' : 'ul',
+            $optionsAndAttributes,
+            $listContent,
+            $escape
         );
     }
 
     protected function renderContainer(
-        string $sTag,
-        array $aOptionsAndAttributes,
-        string $sListContent,
-        bool $bEscape = true
+        string $tag,
+        array $optionsAndAttributes,
+        string $listContent,
+        bool $escape = true
     ) {
         return $this->htmlElement(
-            $sTag,
-            $aOptionsAndAttributes,
-            $sListContent,
-            $bEscape
+            $tag,
+            $optionsAndAttributes,
+            $listContent,
+            $escape
         );
     }
 
     protected function renderListItem(
-        $sItem,
-        string $sItemLabel = '',
-        array $aOptionsAndAttributes = [],
-        array $aItemAttributes = [],
-        bool $bEscape = true,
-        string $sTag = 'li'
+        $item,
+        string $itemLabel = '',
+        array $optionsAndAttributes = [],
+        array $itemAttributes = [],
+        bool $escape = true,
+        string $tag = 'li'
     ): string {
 
-        if (is_array($sItem)) {
-            if ($sItemLabel) {
-                if ($bEscape && !$this->isHTML($sItemLabel)) {
-                    $sItemLabel = $this->getView()->plugin('escapeHtml')->__invoke($sItemLabel);
-                }
+        if (is_array($item)) {
+            if ($itemLabel && ($escape && !$this->isHTML($itemLabel))) {
+                $itemLabel = $this->getView()->plugin('escapeHtml')->__invoke($itemLabel);
             }
 
-            if ($sItem) {
+            if ($item !== []) {
                 // Generate nested list
-                $sItem = ($sItemLabel ? $sItemLabel . PHP_EOL : '') . $this(
-                    $sItem,
-                    $aOptionsAndAttributes,
-                    $bEscape
+                $item = ($itemLabel ? $itemLabel . PHP_EOL : '') . $this(
+                    $item,
+                    $optionsAndAttributes,
+                    $escape
                 );
             } else {
-                $sItem = $sItemLabel;
+                $item = $itemLabel;
             }
-        } elseif ($bEscape && !$this->isHTML($sItem)) {
-            $sItem = $this->getView()->plugin('escapeHtml')->__invoke($sItem);
+        } elseif ($escape && !$this->isHTML($item)) {
+            $item = $this->getView()->plugin('escapeHtml')->__invoke($item);
         }
 
         return $this->htmlElement(
-            $sTag,
-            $aItemAttributes,
-            $sItem,
-            $bEscape
+            $tag,
+            $itemAttributes,
+            $item,
+            $escape
         );
     }
 }

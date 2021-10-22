@@ -3,46 +3,46 @@
 error_reporting(E_ALL | E_STRICT);
 
 // Composer autoloading
-if (!file_exists($sComposerAutoloadPath = __DIR__ . '/../vendor/autoload.php')) {
-    throw new \LogicException('Composer autoload file "' . $sComposerAutoloadPath . '" does not exist');
+if (!file_exists($composerAutoloadPath = __DIR__ . '/../vendor/autoload.php')) {
+    throw new \LogicException('Composer autoload file "' . $composerAutoloadPath . '" does not exist');
 }
 
-if (false === (include $sComposerAutoloadPath)) {
+if (false === (include $composerAutoloadPath)) {
     throw new \LogicException(sprintf(
         'An error occured while including composer autoload file "%s"',
-        $sComposerAutoloadPath
+        $composerAutoloadPath
     ));
 }
 
 // PHP Code Sniffer autoloading
-if (!file_exists($sPHPCodeSnifferAutoloadPath = __DIR__ . '/../vendor/squizlabs/php_codesniffer/autoload.php')) {
-    throw new \LogicException('PHP Code Sniffer autoload file "' . $sPHPCodeSnifferAutoloadPath . '" does not exist');
+if (!file_exists($phpCodeSnifferAutoloadPath = __DIR__ . '/../vendor/squizlabs/php_codesniffer/autoload.php')) {
+    throw new \LogicException('PHP Code Sniffer autoload file "' . $phpCodeSnifferAutoloadPath . '" does not exist');
 }
 
-if (false === (include $sPHPCodeSnifferAutoloadPath)) {
+if (false === (include $phpCodeSnifferAutoloadPath)) {
     throw new \LogicException(sprintf(
         'An error occured while including PHP Code Sniffer autoload file "%s"',
-        $sPHPCodeSnifferAutoloadPath
+        $phpCodeSnifferAutoloadPath
     ));
 }
 
 
-$sRootDirPath = dirname(__DIR__);
-$sBootstrapVersion = '4.5';
-$iMaxNestedDir = 2;
+$rootDirPath = dirname(__DIR__);
+$bootstrapVersion = '4.5';
+$maxNestedDir = 2;
 
-$oConfiguration = new \DocumentationGenerator\Configuration(
-    $sRootDirPath,
-    $sBootstrapVersion,
-    $iMaxNestedDir,
+$configuration = new \DocumentationGenerator\Configuration(
+    $rootDirPath,
+    $bootstrapVersion,
+    $maxNestedDir,
     new \DocumentationGenerator\FileSystem\Local\File()
 );
 
-$oHomePageGenerator = new \DocumentationGenerator\HomePageGenerator($oConfiguration);
-$oHomePageGenerator->generate();
+$homePageGenerator = new \DocumentationGenerator\HomePageGenerator($configuration);
+$homePageGenerator->generate();
 
-$oUsagePagesGenerator = new \DocumentationGenerator\UsagePage\UsagePagesGenerator(
-    $oConfiguration,
+$usagePagesGenerator = new \DocumentationGenerator\UsagePage\UsagePagesGenerator(
+    $configuration,
     \TestSuite\Documentation\DocumentationTestConfigsLoader::loadDocumentationTestConfigs(),
 );
-$oUsagePagesGenerator->generate();
+$usagePagesGenerator->generate();

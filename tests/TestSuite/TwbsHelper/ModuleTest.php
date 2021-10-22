@@ -10,7 +10,7 @@ class ModuleTest extends \PHPUnit\Framework\TestCase
      */
     protected $module;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->module = new \TwbsHelper\Module();
     }

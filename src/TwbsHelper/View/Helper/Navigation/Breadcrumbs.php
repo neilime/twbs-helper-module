@@ -20,35 +20,35 @@ class Breadcrumbs extends \Laminas\View\Helper\Navigation\Breadcrumbs
      * Renders breadcrumbs by chaining 'a' elements with the separator
      * registered in the helper.
      *
-     * @param  \Laminas\Navigation\AbstractContainer $oContainer [optional] container to render.
+     * @param  \Laminas\Navigation\AbstractContainer $container [optional] container to render.
      * Default is to render the container registered in the helper.
      * @return string
      */
-    public function renderStraight($oContainer = null)
+    public function renderStraight($container = null)
     {
-        $this->parseContainer($oContainer);
-        if (null === $oContainer) {
-            $oContainer = $this->getContainer();
+        $this->parseContainer($container);
+        if (null === $container) {
+            $container = $this->getContainer();
         }
 
         // Find deepest active
-        $oActivePage = $this->findActive($oContainer);
-        if (!$oActivePage) {
+        $activePage = $this->findActive($container);
+        if ($activePage === []) {
             return sprintf(static::$navFormat, '');
         }
 
-        $oActivePage = $oActivePage['page'];
+        $activePage = $activePage['page'];
 
         // Put the deepest active page last in breadcrumbs
         if ($this->getLinkLast()) {
-            $sHtml = $this->htmlify($oActivePage);
+            $html = $this->htmlify($activePage);
         } else {
-            $oEscapeHtml = $this->getView()->plugin('escapeHtml');
-            $sHtml = $this->renderBreadcrumbItem(
-                $oEscapeHtml(
+            $escapeHtml = $this->getView()->plugin('escapeHtml');
+            $html = $this->renderBreadcrumbItem(
+                $escapeHtml(
                     $this->translate(
-                        $oActivePage->getLabel(),
-                        $oActivePage->getTextDomain()
+                        $activePage->getLabel(),
+                        $activePage->getTextDomain()
                     )
                 ),
                 true
@@ -56,23 +56,23 @@ class Breadcrumbs extends \Laminas\View\Helper\Navigation\Breadcrumbs
         }
 
         // Walk back to root
-        while ($parent = $oActivePage->getParent()) {
+        while ($parent = $activePage->getParent()) {
             if ($parent instanceof \Laminas\Navigation\Page\AbstractPage) {
                 // Prepend crumb to html
-                $sHtml = $this->htmlify($parent) . PHP_EOL . $sHtml;
+                $html = $this->htmlify($parent) . PHP_EOL . $html;
             }
 
-            if ($parent === $oContainer) {
+            if ($parent === $container) {
                 // At the root of the given container
                 break;
             }
 
-            $oActivePage = $parent;
+            $activePage = $parent;
         }
 
         return sprintf(
             static::$navFormat,
-            $sHtml ? PHP_EOL . $sHtml . PHP_EOL . '    ' : ''
+            $html ? PHP_EOL . $html . PHP_EOL . '    ' : ''
         );
     }
 
@@ -80,25 +80,24 @@ class Breadcrumbs extends \Laminas\View\Helper\Navigation\Breadcrumbs
     /**
      * Returns an HTML string containing an 'a' element for the given page
      *
-     * @param \Laminas\Navigation\Page\AbstractPage $oPage
      * @return string HTML string
      */
-    public function htmlify(\Laminas\Navigation\Page\AbstractPage $oPage)
+    public function htmlify(\Laminas\Navigation\Page\AbstractPage $page)
     {
         return $this->renderBreadcrumbItem(
-            parent::htmlify($oPage),
-            $oPage->isActive()
+            parent::htmlify($page),
+            $page->isActive()
         );
     }
 
 
-    protected function renderBreadcrumbItem($sHtml, bool $bActive = false)
+    protected function renderBreadcrumbItem($html, bool $active = false)
     {
         return '        ' . sprintf(
-            $bActive
+            $active
                 ? static::$activeBreadcrumbItemFormat
                 : self::$breadcrumbItemFormat,
-            $sHtml
+            $html
         );
     }
 }

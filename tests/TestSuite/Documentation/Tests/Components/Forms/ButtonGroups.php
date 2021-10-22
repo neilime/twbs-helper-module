@@ -3,10 +3,10 @@
 // Documentation test config file for "Components / Forms / Custom forms" part
 return [
     'title' => 'Button groups',
-    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-        $oFactory = new \Laminas\Form\Factory();
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+        $factory = new \Laminas\Form\Factory();
 
-        echo $oView->form($oFactory->create([
+        echo $view->form($factory->create([
             'type' => 'form',
             'elements' => [
                 [

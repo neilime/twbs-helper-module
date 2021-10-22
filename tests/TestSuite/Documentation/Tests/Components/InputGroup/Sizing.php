@@ -4,11 +4,11 @@
 return [
     'title' => 'Sizing',
     'url' => '%bootstrap-url%/components/input-group/#sizing',
-    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-        $oFactory = new \Laminas\Form\Factory();
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+        $factory = new \Laminas\Form\Factory();
 
         // Small
-        echo $oView->formRow($oFactory->create([
+        echo $view->formRow($factory->create([
             'name' => 'small',
             'type' => 'text',
             'options' => [
@@ -24,7 +24,7 @@ return [
         ])) . PHP_EOL;
 
         // Default
-        echo $oView->formRow($oFactory->create([
+        echo $view->formRow($factory->create([
             'name' => 'default',
             'type' => 'text',
             'options' => [
@@ -39,7 +39,7 @@ return [
         ])) . PHP_EOL;
 
         // Large
-        echo $oView->formRow($oFactory->create([
+        echo $view->formRow($factory->create([
             'name' => 'large',
             'type' => 'text',
             'options' => [

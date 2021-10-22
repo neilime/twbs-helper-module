@@ -4,10 +4,10 @@
 return [
     'title' => 'Wrapping',
     'url' => '%bootstrap-url%/components/input-group/#wrapping',
-    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-        $oFactory = new \Laminas\Form\Factory();
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+        $factory = new \Laminas\Form\Factory();
 
-        echo $oView->formRow($oFactory->create([
+        echo $view->formRow($factory->create([
             'name' => 'username',
             'type' => 'text',
             'options' => [

@@ -1,107 +1,105 @@
-<?php 
+<?php
 
-$oPaginationControlHelper = $this->plugin('paginationControl');
+$paginationControlHelper = $this->plugin('paginationControl');
 
 if ($this->pageCount) {
-   
 
-    $aPaginationItems = [];
+
+    $paginationItems = [];
 
     // Generate previous link
-    if($this->previousLink){
-        $aLiAttributes = ['class' => 'page-item'];
-        $aPreviousAttributes = ['class' => 'page-link'];
-        if(isset($this->previous)){
-            $aPreviousAttributes['href'] = $this->url($this->route, ['page' => $this->previous]);
-        }
-        else{
-            $aLiAttributes = $oPaginationControlHelper->setClassesToAttributes($aLiAttributes, ['disabled']);
-            $aPreviousAttributes['href'] = '#';
-            $aPreviousAttributes['tabindex'] = '-1';
+    if ($this->previousLink) {
+        $liAttributes = ['class' => 'page-item'];
+        $previousAttributes = ['class' => 'page-link'];
+        if (isset($this->previous)) {
+            $previousAttributes['href'] = $this->url($this->route, ['page' => $this->previous]);
+        } else {
+            $liAttributes = $paginationControlHelper->setClassesToAttributes($liAttributes, ['disabled']);
+            $previousAttributes['href'] = '#';
+            $previousAttributes['tabindex'] = '-1';
         }
 
-        $aPaginationItems[] = $oPaginationControlHelper->htmlElement(
+        $paginationItems[] = $paginationControlHelper->htmlElement(
             'li',
-            $aLiAttributes,
-            $oPaginationControlHelper->htmlElement(
-                'a', 
-                $aPreviousAttributes, 
+            $liAttributes,
+            $paginationControlHelper->htmlElement(
+                'a',
+                $previousAttributes,
                 $this->translate($this->previousLink)
             )
         );
     }
 
     // Generate pages
-    foreach ($this->pagesInRange as $iPage) {
+    foreach ($this->pagesInRange as $page) {
 
-        $aLiAttributes = ['class' => 'page-item'];
-        $aLinkAttributes = ['class' => 'page-link'];
-        $sLinkContent = $iPage;
+        $liAttributes = ['class' => 'page-item'];
+        $linkAttributes = ['class' => 'page-link'];
+        $linkContent = $page;
 
-        if ($iPage != $this->current) {
-            $aLinkAttributes['href'] = $this->url($this->route, ['page' => $iPage]);
+        if ($page != $this->current) {
+            $linkAttributes['href'] = $this->url($this->route, ['page' => $page]);
         } else {
-            $aLiAttributes = $oPaginationControlHelper->setClassesToAttributes($aLiAttributes, ['active']);
-            $aLinkAttributes['href'] = '#';
-            $sLinkContent .= ' <span class="sr-only">' . $this->translate('(current)') . '</span>';
+            $liAttributes = $paginationControlHelper->setClassesToAttributes($liAttributes, ['active']);
+            $linkAttributes['href'] = '#';
+            $linkContent .= ' <span class="sr-only">' . $this->translate('(current)') . '</span>';
         }
 
-        $aPaginationItems[] = $oPaginationControlHelper->htmlElement(
+        $paginationItems[] = $paginationControlHelper->htmlElement(
             'li',
-            $aLiAttributes,
-            $oPaginationControlHelper->htmlElement(
-                'a', 
-                $aLinkAttributes, 
-                $this->translate($sLinkContent)
+            $liAttributes,
+            $paginationControlHelper->htmlElement(
+                'a',
+                $linkAttributes,
+                $this->translate($linkContent)
             )
         );
     }
 
     // Generate next link
-    if($this->nextLink){
-        $aLiAttributes = ['class' => 'page-item'];
-        $aNextAttributes = ['class' => 'page-link'];
-        if(isset($this->next)){
-            $aNextAttributes['href'] = $this->url($this->route, ['page' => $this->next]);
-        }
-        else{
-            $aLiAttributes = $oPaginationControlHelper->setClassesToAttributes($aLiAttributes, ['disabled']);
-            $aNextAttributes['href'] = '#';
-            $aNextAttributes['tabindex'] = '-1';
+    if ($this->nextLink) {
+        $liAttributes = ['class' => 'page-item'];
+        $nextAttributes = ['class' => 'page-link'];
+        if (isset($this->next)) {
+            $nextAttributes['href'] = $this->url($this->route, ['page' => $this->next]);
+        } else {
+            $liAttributes = $paginationControlHelper->setClassesToAttributes($liAttributes, ['disabled']);
+            $nextAttributes['href'] = '#';
+            $nextAttributes['tabindex'] = '-1';
         }
 
-        $aPaginationItems[] = $oPaginationControlHelper->htmlElement(
+        $paginationItems[] = $paginationControlHelper->htmlElement(
             'li',
-            $aLiAttributes,
-            $oPaginationControlHelper->htmlElement(
-                'a', 
-                $aNextAttributes, 
+            $liAttributes,
+            $paginationControlHelper->htmlElement(
+                'a',
+                $nextAttributes,
                 $this->translate($this->nextLink)
             )
         );
     }
 
-    $aUlAttributes = ['class' => 'pagination'];
-    if($this->size){
-        $aUlAttributes = $oPaginationControlHelper->setClassesToAttributes(
-            $aUlAttributes, 
-            [$oPaginationControlHelper->getSizeClass($this->size, 'pagination')]
+    $ulAttributes = ['class' => 'pagination'];
+    if ($this->size) {
+        $ulAttributes = $paginationControlHelper->setClassesToAttributes(
+            $ulAttributes,
+            [$paginationControlHelper->getSizeClass($this->size, 'pagination')]
         );
     }
-    if($this->alignment){
-        $aUlAttributes = $oPaginationControlHelper->setClassesToAttributes(
-            $aUlAttributes, 
-            [$oPaginationControlHelper->getPrefixedClass($this->alignment, 'justify-content')]
+    if ($this->alignment) {
+        $ulAttributes = $paginationControlHelper->setClassesToAttributes(
+            $ulAttributes,
+            [$paginationControlHelper->getPrefixedClass($this->alignment, 'justify-content')]
         );
     }
 
-    echo $oPaginationControlHelper->htmlElement(
+    echo $paginationControlHelper->htmlElement(
         'nav',
         $this->attributes ?? [],
-        $oPaginationControlHelper->htmlElement(
+        $paginationControlHelper->htmlElement(
             'ul',
-            $aUlAttributes,
-            join(PHP_EOL, $aPaginationItems)
+            $ulAttributes,
+            join(PHP_EOL, $paginationItems)
         )
     );
 }

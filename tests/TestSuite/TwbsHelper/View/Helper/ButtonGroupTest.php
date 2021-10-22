@@ -20,7 +20,7 @@ class ButtonGroupTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
 
     public function testGetFormElementHelperLazyLoad()
     {
-        $oHelper = new \TwbsHelper\View\Helper\ButtonGroup();
-        $this->assertInstanceOf('\TwbsHelper\Form\View\Helper\FormElement', $oHelper->getFormElementHelper());
+        $buttonGroup = new \TwbsHelper\View\Helper\ButtonGroup();
+        $this->assertInstanceOf(\TwbsHelper\Form\View\Helper\FormElement::class, $buttonGroup->getFormElementHelper());
     }
 }

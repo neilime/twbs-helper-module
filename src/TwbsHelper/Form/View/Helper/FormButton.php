@@ -32,17 +32,17 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
      *
      * Proxies to {@link render()}.
      *
-     * @param \Laminas\Form\ElementInterface|null $oElement
-     * @param null|string           $sButtonContent
+     * @param \Laminas\Form\ElementInterface|null $element
+     * @param null|string           $buttonContent
      * @return string|FormButton
      */
-    public function __invoke(?\Laminas\Form\ElementInterface $oElement = null, $sButtonContent = null)
+    public function __invoke(?\Laminas\Form\ElementInterface $element = null, $buttonContent = null)
     {
-        if (!$oElement) {
+        if (!$element) {
             return $this;
         }
 
-        return $this->render($oElement, $sButtonContent);
+        return $this->render($element, $buttonContent);
     }
 
     /**
@@ -50,26 +50,26 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
      *
      * @see FormButton::render()
      */
-    public function renderSpec(array $oElementSpec, ?string $sButtonContent = null): string
+    public function renderSpec(array $elementSpec, ?string $buttonContent = null): string
     {
-        $oFactory = new \Laminas\Form\Factory();
+        $factory = new \Laminas\Form\Factory();
 
         // Set default type if none given
-        if (empty($oElementSpec['type'])) {
-            $oElementSpec['type'] = \Laminas\Form\Element\Button::class;
+        if (empty($elementSpec['type'])) {
+            $elementSpec['type'] = \Laminas\Form\Element\Button::class;
         }
 
-        $oElement = $oFactory->create($oElementSpec);
+        $element = $factory->create($elementSpec);
 
-        if (!$oElement instanceof \Laminas\Form\Element\Button) {
+        if (!$element instanceof \Laminas\Form\Element\Button) {
             throw new \InvalidArgumentException(sprintf(
                 'Invalid button type specified, %s does not inherit from %s.',
-                get_class($oElement),
+                get_class($element),
                 \Laminas\Form\Element\Button::class
             ));
         }
 
-        return $this->render($oElement, $sButtonContent);
+        return $this->render($element, $buttonContent);
     }
 
     /**
@@ -80,211 +80,211 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
      *
      * @see \Laminas\Form\View\Helper\FormButton::render()
      */
-    public function render(\Laminas\Form\ElementInterface $oElement, ?string $sButtonContent = null): string
+    public function render(\Laminas\Form\ElementInterface $element, ?string $buttonContent = null): string
     {
         // Dropdown button
-        if ($oElement->getOption('dropdown')) {
-            return $this->getView()->plugin('dropdown')->render($oElement);
+        if ($element->getOption('dropdown')) {
+            return $this->getView()->plugin('dropdown')->render($element);
         }
 
-        $this->defineButtonClasses($oElement);
-        $sButtonContent = $this->renderButtonContent($oElement, $sButtonContent);
+        $this->defineButtonClasses($element);
+        $buttonContent = $this->renderButtonContent($element, $buttonContent);
 
-        $sTag = $oElement->getOption('tag');
+        $tag = $element->getOption('tag');
 
-        $aValidTagAttributes = $this->validTagAttributes;
-        if ($sTag === 'a') {
+        $validTagAttributes = $this->validTagAttributes;
+        if ($tag === 'a') {
             $this->validTagAttributes['href'] = true;
 
             unset($this->validTagAttributes['type']);
             unset($this->validTagAttributes['value']);
             unset($this->validTagAttributes['name']);
 
-            $oElement->setAttribute('type', null);
-            $oElement->setAttribute('name', 'dummy');
+            $element->setAttribute('type', null);
+            $element->setAttribute('name', 'dummy');
 
-            if (!$oElement->getAttribute('role')) {
-                $oElement->setAttribute('role', 'button');
+            if (!$element->getAttribute('role')) {
+                $element->setAttribute('role', 'button');
             }
         }
 
         // Popover
-        $aPopoverAttributes = $this->getPopoverAttributes($oElement);
+        $popoverAttributes = $this->getPopoverAttributes($element);
 
         // Tooltip
-        $aTooltipAttributes = $this->getTooltipAttributes($oElement);
+        $tooltipAttributes = $this->getTooltipAttributes($element);
 
-        $bIsDisabled = $oElement->getAttribute('disabled');
-        if ($aPopoverAttributes || $aTooltipAttributes) {
-            if ($bIsDisabled) {
-                $this->setStylesToElement($oElement, [
+        $isDisabled = $element->getAttribute('disabled');
+        if ($popoverAttributes || $tooltipAttributes) {
+            if ($isDisabled) {
+                $this->setStylesToElement($element, [
                     'pointer-events' => 'none',
                 ]);
             } else {
-                $oElement->setAttributes(array_merge(
-                    $aPopoverAttributes,
-                    $aTooltipAttributes,
-                    $oElement->getAttributes()
+                $element->setAttributes(array_merge(
+                    $popoverAttributes,
+                    $tooltipAttributes,
+                    $element->getAttributes()
                 ));
             }
         }
 
-        $sMarkup =  $this->openTag($oElement) . $this->addProperIndentation($sButtonContent) . $this->closeTag();
-        $this->validTagAttributes = $aValidTagAttributes;
+        $markup =  $this->openTag($element) . $this->addProperIndentation($buttonContent) . $this->closeTag();
+        $this->validTagAttributes = $validTagAttributes;
 
-        if ($sTag && $sTag !== 'button') {
+        if ($tag && $tag !== 'button') {
             unset($this->booleanAttributes['type'], $this->booleanAttributes['value']);
 
-            $sMarkup = str_replace(
+            $markup = str_replace(
                 ['<button', '</button>'],
-                ['<' . $sTag,  '</' . $sTag . '>'],
-                $sMarkup
+                ['<' . $tag,  '</' . $tag . '>'],
+                $markup
             );
         }
 
-        if ($bIsDisabled && ($aPopoverAttributes || $aTooltipAttributes)) {
-            $sMarkup = $this->htmlElement(
+        if ($isDisabled && ($popoverAttributes || $tooltipAttributes)) {
+            $markup = $this->htmlElement(
                 'span',
                 $this->setClassesToAttributes(
                     array_merge(
-                        $aPopoverAttributes,
-                        $aTooltipAttributes,
+                        $popoverAttributes,
+                        $tooltipAttributes,
                         ['tabindex' => '0']
                     ),
                     ['d-inline-block']
                 ),
-                $sMarkup
+                $markup
             );
         }
 
-        return $sMarkup;
+        return $markup;
     }
 
-    protected function getTooltipAttributes(\Laminas\Form\ElementInterface $oElement): array
+    protected function getTooltipAttributes(\Laminas\Form\ElementInterface $element): array
     {
         // Retrieve tooltip options
-        $aTooltipOptions = $oElement->getOption('tooltip');
-        if (!$aTooltipOptions) {
+        $tooltipOptions = $element->getOption('tooltip');
+        if (!$tooltipOptions) {
             return [];
         }
 
-        if (is_string($aTooltipOptions)) {
-            $aTooltipOptions = ['content' => $aTooltipOptions];
+        if (is_string($tooltipOptions)) {
+            $tooltipOptions = ['content' => $tooltipOptions];
         }
 
-        $aTooltipAttributes = [
-            'title' => $aTooltipOptions['content'],
+        $tooltipAttributes = [
+            'title' => $tooltipOptions['content'],
             'data-toggle' => 'tooltip',
         ];
 
-        if ($this->isHTML($aTooltipOptions['content'])) {
-            $aTooltipAttributes['data-html'] = 'true';
+        if ($this->isHTML($tooltipOptions['content'])) {
+            $tooltipAttributes['data-html'] = 'true';
         }
 
-        if (isset($aTooltipOptions['placement'])) {
-            $aTooltipAttributes['data-placement'] = $aTooltipOptions['placement'];
+        if (isset($tooltipOptions['placement'])) {
+            $tooltipAttributes['data-placement'] = $tooltipOptions['placement'];
         }
-        return $aTooltipAttributes;
+        return $tooltipAttributes;
     }
 
-    protected function getPopoverAttributes(\Laminas\Form\ElementInterface $oElement): array
+    protected function getPopoverAttributes(\Laminas\Form\ElementInterface $element): array
     {
-        $aPopoverOption = $oElement->getOption('popover');
-        if (!$aPopoverOption) {
+        $popoverOption = $element->getOption('popover');
+        if (!$popoverOption) {
             return [];
         }
 
-        if (is_string($aPopoverOption)) {
-            $aPopoverOption = ['content' => $aPopoverOption];
-        } elseif (!is_array($aPopoverOption)) {
+        if (is_string($popoverOption)) {
+            $popoverOption = ['content' => $popoverOption];
+        } elseif (!is_array($popoverOption)) {
             throw new \InvalidArgumentException(sprintf(
                 'Option "popover" expects a string or an array, "%s" given',
-                is_object($aPopoverOption) ? get_class($aPopoverOption) : gettype($aPopoverOption)
+                is_object($popoverOption) ? get_class($popoverOption) : gettype($popoverOption)
             ));
         }
 
-        $aPopoverAttributes = [
+        $popoverAttributes = [
             'data-toggle' => 'popover',
-            'data-content' => $aPopoverOption['content'],
+            'data-content' => $popoverOption['content'],
         ];
 
-        if (isset($aPopoverOption['placement'])) {
-            $aPopoverAttributes['data-placement'] = $aPopoverOption['placement'];
-            $aPopoverAttributes['data-container'] = 'body';
+        if (isset($popoverOption['placement'])) {
+            $popoverAttributes['data-placement'] = $popoverOption['placement'];
+            $popoverAttributes['data-container'] = 'body';
         }
 
-        if (isset($aPopoverOption['trigger'])) {
-            $aPopoverAttributes['data-trigger'] = $aPopoverOption['trigger'];
+        if (isset($popoverOption['trigger'])) {
+            $popoverAttributes['data-trigger'] = $popoverOption['trigger'];
         }
-        return $aPopoverAttributes;
+        return $popoverAttributes;
     }
 
-    protected function defineButtonClasses(\Laminas\Form\ElementInterface $oElement)
+    protected function defineButtonClasses(\Laminas\Form\ElementInterface $element)
     {
-        if (!empty($oElement->getOption('disable_twbs'))) {
+        if (!empty($element->getOption('disable_twbs'))) {
             return;
         }
 
-        $aClassesToAdd = ['btn'];
+        $classesToAdd = ['btn'];
 
         // Variant option
-        if ($sVariant = $oElement->getOption('variant')) {
-            $aClassesToAdd[] = $this->getVariantClass($sVariant, 'btn', 'outline');
+        if ($variant = $element->getOption('variant')) {
+            $classesToAdd[] = $this->getVariantClass($variant, 'btn', 'outline');
         }
 
         // Size option
-        if ($sSize = $oElement->getOption('size')) {
-            $aClassesToAdd[] = $this->getSizeClass($sSize, 'btn');
+        if ($size = $element->getOption('size')) {
+            $classesToAdd[] = $this->getSizeClass($size, 'btn');
         }
 
         // Block option
-        if ($oElement->getOption('block')) {
-            $aClassesToAdd[] = 'btn-block';
+        if ($element->getOption('block')) {
+            $classesToAdd[] = 'btn-block';
         }
 
-        $aClasses = $this->addClassesAttribute(($oElement->getAttribute('class') ?? ''), $aClassesToAdd);
+        $classes = $this->addClassesAttribute(($element->getAttribute('class') ?? ''), $classesToAdd);
 
-        if (!preg_grep('/^btn-.*(' . join('|', static::$variants) . ')$/', $aClasses)) {
-            $aClasses[] = 'btn-secondary';
+        if (!preg_grep('/^btn-.*(' . join('|', static::$variants) . ')$/', $classes)) {
+            $classes[] = 'btn-secondary';
         }
 
-        $this->setClassesToElement($oElement, $aClasses);
+        $this->setClassesToElement($element, $classes);
     }
 
-    protected function renderButtonContent(\Laminas\Form\ElementInterface $oElement, string $sButtonContent = null)
+    protected function renderButtonContent(\Laminas\Form\ElementInterface $element, string $buttonContent = null)
     {
         // Define button content
-        if (null === $sButtonContent) {
-            $sButtonContent = $oElement->getLabel();
+        if (null === $buttonContent) {
+            $buttonContent = $element->getLabel();
 
-            if (!$sButtonContent) {
-                $sButtonContent = $oElement->getValue();
+            if (!$buttonContent) {
+                $buttonContent = $element->getValue();
             }
         }
 
-        if ($sButtonContent) {
+        if ($buttonContent) {
             // Translate button content upon request
-            $oTranslator = $this->getTranslator();
-            if ($oTranslator) {
-                $sButtonContent = $oTranslator->translate($sButtonContent, $this->getTranslatorTextDomain());
+            $translator = $this->getTranslator();
+            if ($translator) {
+                $buttonContent = $translator->translate($buttonContent, $this->getTranslatorTextDomain());
             }
 
             if (
-                !$this->isHTML($sButtonContent)
-                && (!$oElement instanceof \Laminas\Form\LabelAwareInterface
-                    || !$oElement->getLabelOption('disable_html_escape'))
+                !$this->isHTML($buttonContent)
+                && (!$element instanceof \Laminas\Form\LabelAwareInterface
+                    || !$element->getLabelOption('disable_html_escape'))
             ) {
-                $sButtonContent = $this->getEscapeHtmlHelper()($sButtonContent);
+                $buttonContent = $this->getEscapeHtmlHelper()($buttonContent);
             }
         }
 
         // Render icon
-        $sButtonContent = $this->renderIconContent($oElement, $sButtonContent);
+        $buttonContent = $this->renderIconContent($element, $buttonContent);
 
         // Render spinner
-        $sButtonContent = $this->renderSpinnerContent($oElement, $sButtonContent);
+        $buttonContent = $this->renderSpinnerContent($element, $buttonContent);
 
-        if (null === $sButtonContent) {
+        if (null === $buttonContent) {
             throw new \DomainException(sprintf(
                 '%s expects either button content as the second argument, ' .
                     'or that the element provided has a label value, ' .
@@ -292,132 +292,132 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
                 __METHOD__
             ));
         }
-        return $sButtonContent;
+        return $buttonContent;
     }
 
-    protected function renderIconContent(\Laminas\Form\ElementInterface $oElement, string $sButtonContent = null)
+    protected function renderIconContent(\Laminas\Form\ElementInterface $element, string $buttonContent = null)
     {
         // Retrieve icon options
-        $aIconOptions = $oElement->getOption('icon');
-        if (!$aIconOptions) {
-            return $sButtonContent;
+        $iconOptions = $element->getOption('icon');
+        if (!$iconOptions) {
+            return $buttonContent;
         }
 
         // Set default icon options if scalar provided
-        if (is_scalar($aIconOptions)) {
-            $aIconOptions = [
-                'class'     => $aIconOptions,
+        if (is_scalar($iconOptions)) {
+            $iconOptions = [
+                'class'     => $iconOptions,
                 'position' => self::POSITION_PREPEND,
             ];
-        } elseif (is_array($aIconOptions)) {
-            if (empty($aIconOptions['class'])) {
+        } elseif (is_array($iconOptions)) {
+            if (empty($iconOptions['class'])) {
                 throw new \InvalidArgumentException('"[icon][class]" option is undefined');
             }
 
-            if (!is_scalar($aIconOptions['class'])) {
+            if (!is_scalar($iconOptions['class'])) {
                 throw new \InvalidArgumentException(sprintf(
                     '"[icon][class]" option expects a scalar value, "%s" given',
-                    is_object($aIconOptions['class'])
-                        ? get_class($aIconOptions['class'])
-                        : gettype($aIconOptions['class'])
+                    is_object($iconOptions['class'])
+                        ? get_class($iconOptions['class'])
+                        : gettype($iconOptions['class'])
                 ));
             }
 
-            if (isset($aIconOptions['position'])) {
-                if (!is_string($aIconOptions['position'])) {
+            if (isset($iconOptions['position'])) {
+                if (!is_string($iconOptions['position'])) {
                     throw new \InvalidArgumentException(sprintf(
                         '"[icon][position]" option expects a string, "%s" given',
-                        is_object($aIconOptions['position'])
-                            ? get_class($aIconOptions['position'])
-                            : gettype($aIconOptions['position'])
+                        is_object($iconOptions['position'])
+                            ? get_class($iconOptions['position'])
+                            : gettype($iconOptions['position'])
                     ));
                 }
-                if (!in_array($aIconOptions['position'], [self::POSITION_PREPEND, self::POSITION_APPEND], true)) {
+                if (!in_array($iconOptions['position'], [self::POSITION_PREPEND, self::POSITION_APPEND], true)) {
                     throw new \InvalidArgumentException(sprintf(
                         '"[icon][position]" option allows "%s" or "%s", "%s" given',
                         self::POSITION_PREPEND,
                         self::POSITION_APPEND,
-                        $aIconOptions['position']
+                        $iconOptions['position']
                     ));
                 }
             }
         } else {
             throw new \InvalidArgumentException(sprintf(
                 '"icon" button option expects a scalar value or an array, "%s" given',
-                is_object($aIconOptions) ? get_class($aIconOptions) : gettype($aIconOptions)
+                is_object($iconOptions) ? get_class($iconOptions) : gettype($iconOptions)
             ));
         }
 
-        $sIconContent = $this->htmlElement('i', ['class' => $aIconOptions['class']], '');
+        $iconContent = $this->htmlElement('i', ['class' => $iconOptions['class']], '');
 
         // No button content provided, set icon as button content
-        if (!$sButtonContent) {
-            return $sIconContent;
+        if (!$buttonContent) {
+            return $iconContent;
         }
 
         // Define icon position
-        $sIconPosition = $aIconOptions['position'] ?? self::POSITION_PREPEND;
-        if ($sIconPosition === self::POSITION_PREPEND) {
+        $iconPosition = $iconOptions['position'] ?? self::POSITION_PREPEND;
+        if ($iconPosition === self::POSITION_PREPEND) {
             // Append icon to button content
-            return $sIconContent . ' ' . $sButtonContent;
+            return $iconContent . ' ' . $buttonContent;
         } else {
             // Prepend icon to button content
-            return $sButtonContent . ' ' . $sIconContent;
+            return $buttonContent . ' ' . $iconContent;
         }
     }
 
-    protected function renderSpinnerContent(\Laminas\Form\ElementInterface $oElement, string $sButtonContent = null)
+    protected function renderSpinnerContent(\Laminas\Form\ElementInterface $element, string $buttonContent = null)
     {
         // Retrieve spinner options
-        $aSpinnerOptions = $oElement->getOption('spinner');
-        if (!$aSpinnerOptions) {
-            return $sButtonContent;
+        $spinnerOptions = $element->getOption('spinner');
+        if (!$spinnerOptions) {
+            return $buttonContent;
         }
 
-        if (is_string($aSpinnerOptions)) {
-            $aSpinnerOptions = ['label' => $aSpinnerOptions];
+        if (is_string($spinnerOptions)) {
+            $spinnerOptions = ['label' => $spinnerOptions];
         }
-        if ($aSpinnerOptions === true) {
-            $aSpinnerOptions = [];
+        if ($spinnerOptions === true) {
+            $spinnerOptions = [];
         }
-        $aSpinnerOptions['tag'] = 'span';
-        $aSpinnerOptions['size'] = 'sm';
+        $spinnerOptions['tag'] = 'span';
+        $spinnerOptions['size'] = 'sm';
 
-        $aSpinnerOptions['attributes'] = array_merge(
-            $aSpinnerOptions['attributes'] ?? [],
+        $spinnerOptions['attributes'] = array_merge(
+            $spinnerOptions['attributes'] ?? [],
             ['aria-hidden' => 'true']
         );
 
-        $sSpinnerContent = $this->getView()->plugin('spinner')->__invoke($aSpinnerOptions);
+        $spinnerContent = $this->getView()->plugin('spinner')->__invoke($spinnerOptions);
 
         // No button content provided, set spinner as button content
-        if (!$sButtonContent) {
-            return $sSpinnerContent;
+        if (!$buttonContent) {
+            return $spinnerContent;
         }
 
         // Define spinner position
-        $sSpinnerPosition = $aSpinnerOptions['position'] ?? self::POSITION_PREPEND;
+        $spinnerPosition = $spinnerOptions['position'] ?? self::POSITION_PREPEND;
 
-        if ($sSpinnerPosition === self::POSITION_PREPEND) {
+        if ($spinnerPosition === self::POSITION_PREPEND) {
             // Append spinner to button content
-            return $sSpinnerContent . PHP_EOL . $sButtonContent;
+            return $spinnerContent . PHP_EOL . $buttonContent;
         } else {
             // Prepend spinner to button content
-            return $sButtonContent . PHP_EOL . $sSpinnerContent;
+            return $buttonContent . PHP_EOL . $spinnerContent;
         }
     }
 
     /**
      * Determine button type to use
      *
-     * @param \Laminas\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface $element
      * @return string
      */
-    protected function getType(\Laminas\Form\ElementInterface $oElement): string
+    protected function getType(\Laminas\Form\ElementInterface $element): string
     {
-        $sTag = $oElement->getOption('tag');
-        if (!$sTag || $sTag === 'button') {
-            return parent::getType($oElement);
+        $tag = $element->getOption('tag');
+        if (!$tag || $tag === 'button') {
+            return parent::getType($element);
         }
         return '';
     }

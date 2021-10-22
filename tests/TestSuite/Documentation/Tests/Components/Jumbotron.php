@@ -4,8 +4,8 @@
 return [
     'title' => 'Jumbotron',
     'url' => '%bootstrap-url%/components/jumbotron/',
-    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-        echo $oView->jumbotron([
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+        echo $view->jumbotron([
             'title' => 'Hello, world!',
             'lead' => 'This is a simple hero unit, a simple jumbotron-style component ' .
                 'for calling extra attention to featured content or information.',
@@ -26,7 +26,7 @@ return [
         ]) . PHP_EOL;
 
         // To make the jumbotron full width, and without rounded corners, add the option fluid
-        echo $oView->jumbotron(
+        echo $view->jumbotron(
             [
                 'title' => 'Fluid jumbotron',
                 'lead' => 'This is a modified jumbotron that occupies the entire horizontal space of its parent.',

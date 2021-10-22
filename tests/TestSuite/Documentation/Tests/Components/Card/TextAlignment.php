@@ -4,8 +4,8 @@
 return [
     'title' => 'Text alignment',
     'url' => '%bootstrap-url%/components/card/#text-alignment',
-    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-        echo $oView->card([
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+        echo $view->card([
             'title' => 'Special title treatment',
             'text' => 'With supporting text below as a natural lead-in to additional content.',
             '<a href="#" class="btn btn-primary">Go somewhere</a>',
@@ -14,7 +14,7 @@ return [
         echo '<br/>' . PHP_EOL;
 
         // Text center
-        echo $oView->card([
+        echo $view->card([
             'title' => 'Special title treatment',
             'text' => 'With supporting text below as a natural lead-in to additional content.',
             '<a href="#" class="btn btn-primary">Go somewhere</a>',
@@ -23,7 +23,7 @@ return [
         echo '<br/>' . PHP_EOL;
 
         // Text right
-        echo $oView->card([
+        echo $view->card([
             'title' => 'Special title treatment',
             'text' => 'With supporting text below as a natural lead-in to additional content.',
             '<a href="#" class="btn btn-primary">Go somewhere</a>',

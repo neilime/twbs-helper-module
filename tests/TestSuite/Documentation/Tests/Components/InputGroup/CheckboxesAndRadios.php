@@ -4,10 +4,10 @@
 return [
     'title' => 'Checkboxes and radios',
     'url' => '%bootstrap-url%/components/input-group/#checkboxes-and-radios',
-    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-        $oFactory = new \Laminas\Form\Factory();
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+        $factory = new \Laminas\Form\Factory();
 
-        echo $oView->formRow($oFactory->create([
+        echo $view->formRow($factory->create([
             'name' => 'checkbox-text',
             'type' => 'text',
             'options' => [
@@ -30,7 +30,7 @@ return [
             ],
         ])) . PHP_EOL;
 
-        echo $oView->formRow($oFactory->create([
+        echo $view->formRow($factory->create([
             'name' => 'radio-text',
             'type' => 'text',
             'options' => [

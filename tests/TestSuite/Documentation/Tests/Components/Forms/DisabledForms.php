@@ -4,10 +4,10 @@
 return [
     'title' => 'Disabled forms',
     'url' => '%bootstrap-url%/components/forms/#disabled-forms',
-    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-        $oFactory = new \Laminas\Form\Factory();
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+        $factory = new \Laminas\Form\Factory();
 
-        echo $oView->form($oFactory->create([
+        echo $view->form($factory->create([
             'type' => 'form',
             'elements' => [
                 [
@@ -43,7 +43,7 @@ return [
                                 'spec' => [
                                     'type' => 'checkbox',
                                     'name' => 'disabled-fieldset-check',
-                                    'options' => ['label' => 'Can\'t check this', 'use_hidden_element' => false],
+                                    'options' => ['label' => "Can't check this", 'use_hidden_element' => false],
                                     'attributes' => [
                                         'id' => 'disabledFieldsetCheck',
                                         'disabled' => true,

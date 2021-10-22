@@ -4,9 +4,9 @@
 return [
     'title' => 'Containers',
     'url' => '%bootstrap-url%/components/navbar/#containers',
-    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
 
-        echo $oView->navigation()->navbar()->render(
+        echo $view->navigation()->navbar()->render(
             new \Laminas\Navigation\Navigation(),
             [
                 'brand' => 'Navbar',
@@ -17,7 +17,7 @@ return [
 
         echo PHP_EOL . '<br/>' . PHP_EOL;
 
-        echo $oView->navigation()->navbar()->render(
+        echo $view->navigation()->navbar()->render(
             new \Laminas\Navigation\Navigation(),
             [
                 'brand' => 'Navbar',

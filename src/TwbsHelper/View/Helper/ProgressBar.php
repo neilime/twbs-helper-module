@@ -10,70 +10,68 @@ class ProgressBar extends \TwbsHelper\View\Helper\AbstractHtmlElement
     /**
      * Generates a 'progressbar' element
      */
-    public function __invoke($iMin = 0, $iMax = 0, $iCurrent = 0): string
+    public function __invoke($min = 0, $max = 0, $current = 0): string
     {
-        if (is_array($iMin)) {
-            $aOptions = $iMin;
-        } else {
-            $aOptions = ['min' => $iMin, 'max' => $iMax, 'current' => $iCurrent];
-        }
+        $options = is_array($min) ? $min : ['min' => $min, 'max' => $max, 'current' => $current];
 
-        return $this->render($aOptions);
+        return $this->render($options);
     }
 
-    public function render(array $aOptions): string
+    public function render(array $options): string
     {
 
-        $iCurrent = $aOptions['current'] ?? 0;
-        $iMin = $aOptions['min'] ?? 0;
-        $iMax = $aOptions['max'] ?? 0;
+        $current = $options['current'] ?? 0;
+        $min = $options['min'] ?? 0;
+        $max = $options['max'] ?? 0;
 
-        $iPercent = $aOptions['min'] === $aOptions['max']
+        $percent = $options['min'] === $options['max']
             ? .0
             : (float)(
-                ($iCurrent - $iMin) / ($iMax - $iMin)
-            ) * 100;
+                ($current - $min) / ($max - $min)) * 100;
 
-        $aDefaultAttributes = [
+        $defaultAttributes = [
             'role' => 'progressbar',
-            'aria-valuenow' => $iCurrent,
-            'aria-valuemin' => $iMin,
-            'aria-valuemax' => $iMax,
+            'aria-valuenow' => $current,
+            'aria-valuemin' => $min,
+            'aria-valuemax' => $max,
         ];
 
-        $sPercent = $iPercent . '%';
-
-        $aProgressBarClasses = ['progress-bar'];
-        if (!empty($aOptions['variant'])) {
-            $aProgressBarClasses[] = $this->getVariantClass($aOptions['variant'], 'bg');
-        }
-        if (!empty($aOptions['striped'])) {
-            $aProgressBarClasses[] = 'progress-bar-striped';
-        }
-        if (!empty($aOptions['animated'])) {
-            $aProgressBarClasses[] = 'progress-bar-animated';
+        $progressBarClasses = ['progress-bar'];
+        if (!empty($options['variant'])) {
+            $progressBarClasses[] = $this->getVariantClass($options['variant'], 'bg');
         }
 
-        $sProgressBarContent = $this->htmlElement(
+        if (!empty($options['striped'])) {
+            $progressBarClasses[] = 'progress-bar-striped';
+        }
+
+        if (!empty($options['animated'])) {
+            $progressBarClasses[] = 'progress-bar-animated';
+        }
+
+        $progressBarWidthAttributes = $percent !== false && $percent > 0 ? ['width' => $percent . '%'] : [];
+        $progressBarContent = empty($options['show_label']) ? '' : $percent . '%';
+
+        $progressBarContent = $this->htmlElement(
             'div',
             $this->setStylesToAttributes(
                 $this->setClassesToAttributes(
-                    $aDefaultAttributes,
-                    $aProgressBarClasses
+                    $defaultAttributes,
+                    $progressBarClasses
                 ),
-                $iPercent !== false && $iPercent > 0 ? ['width' => $sPercent] : []
+                $progressBarWidthAttributes
             ),
-            empty($aOptions['show_label']) ? '' : $sPercent
+            $progressBarContent
         );
 
-        if (isset($aOptions['container']) && $aOptions['container'] === false) {
-            return $sProgressBarContent;
+        if (isset($options['container']) && $options['container'] === false) {
+            return $progressBarContent;
         }
 
         return $this->htmlElement(
             'div',
-            $this->setClassesToAttributes($aOptions['attributes'] ?? [], ['progress']),
-            $sProgressBarContent
+            $this->setClassesToAttributes($options['attributes'] ?? [], ['progress']),
+            $progressBarContent
         );
     }
 }

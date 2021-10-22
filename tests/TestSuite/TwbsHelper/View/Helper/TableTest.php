@@ -17,7 +17,7 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
 
     public function testRenderTableRowsWithWrongArgumentHead()
     {
-        $this->expectExceptionMessage('Argument "$aRows[\'head\']" expects an array, "string" given');
+        $this->expectExceptionMessage('Argument "$rows[\'head\']" expects an array, "string" given');
         $this->helper->renderTableRows([
             'head' => 'wrong'
         ]);
@@ -25,7 +25,7 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
 
     public function testRenderTableRowsWithWrongArgumentBody()
     {
-        $this->expectExceptionMessage('Argument "$aRows[\'body\']" expects an array, "string" given');
+        $this->expectExceptionMessage('Argument "$rows[\'body\']" expects an array, "string" given');
         $this->helper->renderTableRows([
             'body' => 'wrong'
         ]);
@@ -41,7 +41,7 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
 
     public function testRenderTableRowsWithHeadDefinedInFirstBodyRow()
     {
-        $sExpectedMarkup = '<thead>' . PHP_EOL .
+        $expectedMarkup = '<thead>' . PHP_EOL .
             '    <tr>' . PHP_EOL .
             '        <th scope="col">head 1</th>' . PHP_EOL .
             '        <th scope="col">head 2</th>' . PHP_EOL .
@@ -53,7 +53,7 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
             '        <td>value 2</td>' . PHP_EOL .
             '    </tr>' . PHP_EOL .
             '</tbody>';
-        $this->assertSame($sExpectedMarkup, $this->helper->renderTableRows([
+        $this->assertSame($expectedMarkup, $this->helper->renderTableRows([
             ['head 1' => 'value 1', 'head 2' => 'value 2'],
         ]));
     }
@@ -81,7 +81,7 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
 
     public function testRenderTableRowWithWrongAttributesType()
     {
-        $this->expectExceptionMessage('Argument "$aRow[\'attributes\']" expects an array, "string" given');
+        $this->expectExceptionMessage('Argument "$row[\'attributes\']" expects an array, "string" given');
         $this->helper->renderTableRow([
             'attributes' => 'wrong'
         ], 'td');
@@ -89,7 +89,7 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
 
     public function testRenderTableRowWithWrongCellsType()
     {
-        $this->expectExceptionMessage('Argument "$aRow[\'cells\']" expects an array, "string" given');
+        $this->expectExceptionMessage('Argument "$row[\'cells\']" expects an array, "string" given');
         $this->helper->renderTableRow([
             'cells' => 'wrong'
         ], 'td');
@@ -97,13 +97,13 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
 
     public function testRenderTableCellWithEmptyArgumentCell()
     {
-        $this->expectExceptionMessage('Argument "$sCell" expects an array or a scalar value, "stdClass" given');
+        $this->expectExceptionMessage('Argument "$cell" expects an array or a scalar value, "stdClass" given');
         $this->helper->renderTableCell(new \stdClass(), 'td', true);
     }
 
     public function testRenderTableCellWithUndefinedCellData()
     {
-        $this->expectExceptionMessage('Argument "$sCell[\'data\']" is undefined');
+        $this->expectExceptionMessage('Argument "$cell[\'data\']" is undefined');
         $this->helper->renderTableCell([
             'data' => null,
         ], 'td', true);
@@ -111,7 +111,7 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
 
     public function testRenderTableCellWithWrongTypeCellData()
     {
-        $this->expectExceptionMessage('Argument "$sCell[\'data\']" expects a string value, "array" given');
+        $this->expectExceptionMessage('Argument "$cell[\'data\']" expects a string value, "array" given');
         $this->helper->renderTableCell([
             'data' => [],
         ], 'td', true);
@@ -119,7 +119,7 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
 
     public function testRenderTableCellWithWrongTypeCellType()
     {
-        $this->expectExceptionMessage('Argument "$sCell[\'type\']" expects a string, "array" given');
+        $this->expectExceptionMessage('Argument "$cell[\'type\']" expects a string, "array" given');
         $this->helper->renderTableCell([
             'data' => 'test',
             'type' => [],
@@ -128,7 +128,7 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
 
     public function testRenderTableCellWithWrongTypeCellAttributes()
     {
-        $this->expectExceptionMessage('Argument "$sCell[\'attributes\']" expects an array, "string" given');
+        $this->expectExceptionMessage('Argument "$cell[\'attributes\']" expects an array, "string" given');
         $this->helper->renderTableCell([
             'data' => 'test',
             'attributes' => 'wrong',

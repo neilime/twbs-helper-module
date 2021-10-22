@@ -55,396 +55,396 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
     ];
 
     /**
-     * @param \Laminas\Form\ElementInterface|array $oDropdown
-     * @param boolean $bEscape     Escape the dropdown.
+     * @param \Laminas\Form\ElementInterface|array $dropdown
+     * @param boolean $escape     Escape the dropdown.
      * @return \TwbsHelper\View\Helper\Dropdown|string
      */
-    public function __invoke($oDropdown = null, bool $bEscape = true)
+    public function __invoke($dropdown = null, bool $escape = true)
     {
-        return $oDropdown ? $this->render($oDropdown, $bEscape) : $this;
+        return $dropdown ? $this->render($dropdown, $escape) : $this;
     }
 
     /**
      * Render dropdown markup
-     * @param \Laminas\Form\ElementInterface|iterable $oDropdown
-     * @param boolean $bEscape     Escape the dropdown.
+     * @param \Laminas\Form\ElementInterface|iterable $dropdown
+     * @param boolean $escape     Escape the dropdown.
      * @return string
      */
-    public function render($oDropdown, bool $bEscape = true): string
+    public function render($dropdown, bool $escape = true): string
     {
         if (
-            is_iterable($oDropdown)
-            && !($oDropdown instanceof \Laminas\Form\ElementInterface)
+            is_iterable($dropdown)
+            && !($dropdown instanceof \Laminas\Form\ElementInterface)
         ) {
-            $oFactory = new \Laminas\Form\Factory();
-            $oDropdown = $oFactory->create($oDropdown);
-        } elseif (!($oDropdown instanceof \Laminas\Form\ElementInterface)) {
+            $factory = new \Laminas\Form\Factory();
+            $dropdown = $factory->create($dropdown);
+        } elseif (!($dropdown instanceof \Laminas\Form\ElementInterface)) {
             throw new \InvalidArgumentException(sprintf(
-                'Argument "$oDropdown" expects %s, "%s" given',
+                'Argument "$dropdown" expects %s, "%s" given',
                 'an instanceof \Laminas\Form\ElementInterface or an iterable',
-                is_object($oDropdown) ? get_class($oDropdown) : gettype($oDropdown)
+                is_object($dropdown) ? get_class($dropdown) : gettype($dropdown)
             ));
         }
 
-        $aDropdownOptions = $oDropdown->getOption('dropdown');
-        if (\Laminas\Stdlib\ArrayUtils::isList($aDropdownOptions)) {
-            $oDropdown->setOption('dropdown', $aDropdownOptions =  [
-                'items' => $aDropdownOptions,
+        $dropdownOptions = $dropdown->getOption('dropdown');
+        if (\Laminas\Stdlib\ArrayUtils::isList($dropdownOptions)) {
+            $dropdown->setOption('dropdown', $dropdownOptions =  [
+                'items' => $dropdownOptions,
             ]);
         }
 
         // Toggle
-        $sDropdownContent = $this->renderToggle($oDropdown) . PHP_EOL;
+        $dropdownContent = $this->renderToggle($dropdown) . PHP_EOL;
 
         // Menu
-        $sDropdownContent .= $this->renderMenuFromElement($oDropdown, $bEscape);
+        $dropdownContent .= $this->renderMenuFromElement($dropdown, $escape);
 
-        if (!empty($aDropdownOptions['disable_container'])) {
-            return $sDropdownContent;
+        if (!empty($dropdownOptions['disable_container'])) {
+            return $dropdownContent;
         }
 
-        return $this->renderContainer($aDropdownOptions, $sDropdownContent);
+        return $this->renderContainer($dropdownOptions, $dropdownContent);
     }
 
-    protected function renderContainer(array $aDropdownOptions, string $sDropdownContent): string
+    protected function renderContainer(array $dropdownOptions, string $dropdownContent): string
     {
-        $aClasses = $this->getClassesAttribute($aDropdownOptions['attributes']['class'] ?? '');
-        if (!empty($aDropdownOptions['direction'])) {
-            if (!in_array($aDropdownOptions['direction'], static::$directions, true)) {
+        $classes = $this->getClassesAttribute($dropdownOptions['attributes']['class'] ?? '');
+        if (!empty($dropdownOptions['direction'])) {
+            if (!in_array($dropdownOptions['direction'], static::$directions, true)) {
                 throw new \InvalidArgumentException(sprintf(
                     'Direction option "%s" does not exist',
-                    $aDropdownOptions['direction']
+                    $dropdownOptions['direction']
                 ));
             }
-            $aClasses[] = 'drop' . $aDropdownOptions['direction'];
+            $classes[] = 'drop' . $dropdownOptions['direction'];
         }
 
-        if (!preg_grep('/^drop(' . join('|', static::$directions) . ')$/', $aClasses)) {
-            $aClasses[] = 'drop' . static::$directions[0];
+        if (!preg_grep('/^drop(' . join('|', static::$directions) . ')$/', $classes)) {
+            $classes[] = 'drop' . static::$directions[0];
         }
 
-        if (!empty($aDropdownOptions['split'])) {
-            $aClasses[] = 'btn-group';
+        if (!empty($dropdownOptions['split'])) {
+            $classes[] = 'btn-group';
         }
 
         // Render dropdown container
         return $this->htmlElement(
             'div',
-            $this->setClassesToAttributes($aDropdownOptions['attributes']  ?? [], $aClasses),
-            $sDropdownContent
+            $this->setClassesToAttributes($dropdownOptions['attributes']  ?? [], $classes),
+            $dropdownContent
         );
     }
 
     /**
      * Render dropdown toggle markup
-     * @param \Laminas\Form\ElementInterface $oDropdown
+     * @param \Laminas\Form\ElementInterface $dropdown
      * @throws \InvalidArgumentException
      * @return string
      */
-    public function renderToggle(\Laminas\Form\ElementInterface $oDropdown): string
+    public function renderToggle(\Laminas\Form\ElementInterface $dropdown): string
     {
 
-        $aDropdownOptions = $oDropdown->getOption('dropdown');
-        $sSplitOption = $aDropdownOptions['split'] ?? false;
+        $dropdownOptions = $dropdown->getOption('dropdown');
+        $splitOption = $dropdownOptions['split'] ?? false;
 
-        if ($sSplitOption) {
-            $aOptions = $oDropdown->getOptions();
-            unset($aOptions['dropdown']);
-            if (empty($aOptions['label'])) {
-                $aOptions['label'] = $oDropdown->getLabel();
+        if ($splitOption) {
+            $options = $dropdown->getOptions();
+            unset($options['dropdown']);
+            if (empty($options['label'])) {
+                $options['label'] = $dropdown->getLabel();
             }
-            $aSplitElement = [
+            $splitElement = [
                 'type' => \Laminas\Form\Element\Button::class,
-                'name' => $oDropdown->getName() . '-toggle',
-                'options' => $aOptions,
+                'name' => $dropdown->getName() . '-toggle',
+                'options' => $options,
                 'attributes' => [
                     'class' => 'dropdown-toggle-split',
                 ],
             ];
 
-            if (is_string($sSplitOption)) {
-                $aSplitElement['options']['label'] = $sSplitOption;
-            } elseif (is_array($sSplitOption)) {
-                $aSplitElement = \Laminas\Stdlib\ArrayUtils::merge($aSplitElement, $sSplitOption);
-            } elseif ($sSplitOption !== true) {
+            if (is_string($splitOption)) {
+                $splitElement['options']['label'] = $splitOption;
+            } elseif (is_array($splitOption)) {
+                $splitElement = \Laminas\Stdlib\ArrayUtils::merge($splitElement, $splitOption);
+            } elseif ($splitOption !== true) {
                 throw new \InvalidArgumentException(sprintf(
                     '"split" option expects a string an array or true, "%s" given',
-                    is_object($sSplitOption)
-                        ? get_class($sSplitOption)
-                        : gettype($sSplitOption)
+                    is_object($splitOption)
+                        ? get_class($splitOption)
+                        : gettype($splitOption)
                 ));
             }
-            $oFactory = new \Laminas\Form\Factory();
-            $oToogleElement = $oFactory->create($aSplitElement);
+            $factory = new \Laminas\Form\Factory();
+            $toogleElement = $factory->create($splitElement);
 
-            if ($oToogleElement instanceof \Laminas\Form\LabelAwareInterface) {
-                $oToogleElement->setLabel('<span class="sr-only">' . $oToogleElement->getLabel() . '</span>');
-                $oToogleElement->setLabelOption('disable_html_escape', true);
+            if ($toogleElement instanceof \Laminas\Form\LabelAwareInterface) {
+                $toogleElement->setLabel('<span class="sr-only">' . $toogleElement->getLabel() . '</span>');
+                $toogleElement->setLabelOption('disable_html_escape', true);
             }
         } else {
-            $oToogleElement = clone $oDropdown;
-            $oToogleElement->setOption('dropdown', null);
+            $toogleElement = clone $dropdown;
+            $toogleElement->setOption('dropdown', null);
         }
 
         // Dropdown toggle default attributes
-        $aToogleElementAttributes = $oToogleElement->getAttributes();
+        $toogleElementAttributes = $toogleElement->getAttributes();
         foreach (
             [
-            'data-toggle' => 'dropdown',
-            'role' => 'button',
-            'aria-haspopup' => 'true',
-            'aria-expanded' => 'false',
-            'data-offset' => $aDropdownOptions['offset'] ?? null,
-            ] as $sAttributeName => $sDefaultValue
+                'data-toggle' => 'dropdown',
+                'role' => 'button',
+                'aria-haspopup' => 'true',
+                'aria-expanded' => 'false',
+                'data-offset' => $dropdownOptions['offset'] ?? null,
+            ] as $attributeName => $defaultValue
         ) {
-            if ($sDefaultValue !== null && !isset($aToogleElementAttributes[$sAttributeName])) {
-                $aToogleElementAttributes[$sAttributeName] =  $sDefaultValue;
+            if ($defaultValue !== null && !isset($toogleElementAttributes[$attributeName])) {
+                $toogleElementAttributes[$attributeName] =  $defaultValue;
             }
         }
 
-        $sTag = $oToogleElement->getOption('tag');
-        if ($sTag && $sTag === 'a') {
-            $aToogleElementAttributes['href'] = '#';
+        $tag = $toogleElement->getOption('tag');
+        if ($tag === 'a') {
+            $toogleElementAttributes['href'] = '#';
         }
 
         // Dropdown toggle class attribute
-        $oToogleElement->setAttributes($this->setClassesToAttributes(
-            $aToogleElementAttributes,
+        $toogleElement->setAttributes($this->setClassesToAttributes(
+            $toogleElementAttributes,
             ['dropdown-toggle']
         ));
-        $sToogleMarkup = $this->getView()->plugin('formButton')->render($oToogleElement);
+        $toogleMarkup = $this->getView()->plugin('formButton')->render($toogleElement);
 
-        if (!$sSplitOption) {
-            return $sToogleMarkup;
+        if (!$splitOption) {
+            return $toogleMarkup;
         }
 
         // Render button without dropdown
-        $oDropdown->setOption('dropdown', null);
-        $sToogleMarkup = $this->getView()->plugin('formButton')->render($oDropdown) . PHP_EOL . $sToogleMarkup;
-        $oDropdown->setOption('dropdown', $aDropdownOptions);
-        return  $sToogleMarkup;
+        $dropdown->setOption('dropdown', null);
+        $toogleMarkup = $this->getView()->plugin('formButton')->render($dropdown) . PHP_EOL . $toogleMarkup;
+        $dropdown->setOption('dropdown', $dropdownOptions);
+        return  $toogleMarkup;
     }
 
-    public function renderMenuFromElement($oDropdown, bool $bEscape = true)
+    public function renderMenuFromElement($dropdown, bool $escape = true)
     {
         if (
-            is_array($oDropdown)
-            || ($oDropdown instanceof \Traversable
-                && !($oDropdown instanceof \Laminas\Form\ElementInterface))
+            is_array($dropdown)
+            || ($dropdown instanceof \Traversable
+                && !($dropdown instanceof \Laminas\Form\ElementInterface))
         ) {
-            $oFactory = new \Laminas\Form\Factory();
-            $oDropdown = $oFactory->create($oDropdown);
-        } elseif (!($oDropdown instanceof \Laminas\Form\ElementInterface)) {
+            $factory = new \Laminas\Form\Factory();
+            $dropdown = $factory->create($dropdown);
+        } elseif (!($dropdown instanceof \Laminas\Form\ElementInterface)) {
             throw new \InvalidArgumentException(sprintf(
-                'Argument "$oDropdown" expects %s, "%s" given',
+                'Argument "$dropdown" expects %s, "%s" given',
                 'an instanceof \Laminas\Form\ElementInterface or an array / Traversable',
-                is_object($oDropdown) ? get_class($oDropdown) : gettype($oDropdown)
+                is_object($dropdown) ? get_class($dropdown) : gettype($dropdown)
             ));
         }
 
-        $aDropdownOptions = $oDropdown->getOption('dropdown');
-        if (!isset($aDropdownOptions['items'])) {
+        $dropdownOptions = $dropdown->getOption('dropdown');
+        if (!isset($dropdownOptions['items'])) {
             throw new \InvalidArgumentException(__METHOD__ . ' expects "items" option');
         }
-        if (!is_array($aDropdownOptions['items'])) {
+        if (!is_array($dropdownOptions['items'])) {
             throw new \InvalidArgumentException(sprintf(
                 '"items" option expects an array, "%s" given',
-                is_object($aDropdownOptions['items'])
-                    ? get_class($aDropdownOptions['items'])
-                    : gettype($aDropdownOptions['items'])
+                is_object($dropdownOptions['items'])
+                    ? get_class($dropdownOptions['items'])
+                    : gettype($dropdownOptions['items'])
             ));
         }
 
         // List items
-        $aMenuAttributes = [];
-        if ($sId = $oDropdown->getAttribute('id')) {
-            $aMenuAttributes['aria-labelledby'] = $sId;
+        $menuAttributes = [];
+        if ($id = $dropdown->getAttribute('id')) {
+            $menuAttributes['aria-labelledby'] = $id;
         }
 
-        if (!empty($aDropdownOptions['alignment'])) {
-            if (is_string($aDropdownOptions['alignment'])) {
-                $aDropdownOptions['alignment'] = [$aDropdownOptions['alignment']];
+        if (!empty($dropdownOptions['alignment'])) {
+            if (is_string($dropdownOptions['alignment'])) {
+                $dropdownOptions['alignment'] = [$dropdownOptions['alignment']];
             }
 
-            $aAligmentClasses = [];
-            foreach ($aDropdownOptions['alignment'] as $sAligment) {
+            $aligmentClasses = [];
+            foreach ($dropdownOptions['alignment'] as $aligment) {
                 if (
-                    !in_array($sAligment, static::$alignments, true)
+                    !in_array($aligment, static::$alignments, true)
                     && !preg_match(
                         '/^(' . join('|', $this->getSizes()) . ')-(' . join('|', static::$alignments) . ')$/',
-                        $sAligment
+                        $aligment
                     )
                 ) {
-                    throw new \InvalidArgumentException('Alignment option "' . $sAligment . '" does not exist');
+                    throw new \InvalidArgumentException('Alignment option "' . $aligment . '" does not exist');
                 }
-                $aAligmentClasses[]   = 'dropdown-menu-' .  $sAligment;
+                $aligmentClasses[]   = 'dropdown-menu-' .  $aligment;
             }
-            if ($aAligmentClasses) {
-                $aMenuAttributes = $this->setClassesToAttributes(
-                    $aMenuAttributes,
-                    $aAligmentClasses
+            if ($aligmentClasses) {
+                $menuAttributes = $this->setClassesToAttributes(
+                    $menuAttributes,
+                    $aligmentClasses
                 );
             }
         }
 
-        return $this->renderMenu($aDropdownOptions['items'], $aMenuAttributes, $bEscape);
+        return $this->renderMenu($dropdownOptions['items'], $menuAttributes, $escape);
     }
 
     /**
      * Render dropdown menu markup
-     * @param array $aItems Dropdown menu items
-     * @param array $aAttributes Dropdown menu attributes
-     * @param boolean $bEscape     Escape the dropdown menu.
+     * @param iterable $items Dropdown menu items
+     * @param iterable $attributes Dropdown menu attributes
+     * @param boolean $escape     Escape the dropdown menu.
      * @throws \InvalidArgumentException
      * @return string
      */
-    public function renderMenu(array $aItems, array $aAttributes = [], bool $bEscape = true): string
+    public function renderMenu(iterable $items, iterable $attributes = [], bool $escape = true): string
     {
         // Dropdown list class attribute
-        $aAttributes = $this->setClassesToAttributes(
-            $aAttributes,
+        $attributes = $this->setClassesToAttributes(
+            $attributes,
             ['dropdown-menu']
         );
 
         // Dropdown list items
-        $sItems = '';
-        foreach ($aItems as $sKey => $aItemOptions) {
+        $itemsContent = '';
+        foreach ($items as $key => $itemOptions) {
             switch (true) {
-                case $aItemOptions instanceof \Laminas\Form\FormInterface:
+                case $itemOptions instanceof \Laminas\Form\FormInterface:
                     // Free html
-                    $aItemOptions = [
+                    $itemOptions = [
                         'type' => self::TYPE_ITEM_HTML,
-                        'label' =>  $this->getView()->plugin('form')->__invoke($aItemOptions),
+                        'label' =>  $this->getView()->plugin('form')->__invoke($itemOptions),
                     ];
                     break;
-                case !is_array($aItemOptions):
-                    if (!is_scalar($aItemOptions)) {
+                case !is_array($itemOptions):
+                    if (!is_scalar($itemOptions)) {
                         throw new \LogicException(sprintf(
                             '"item" option expects an array or a scalar value, "%s" given',
-                            is_object($aItemOptions)
-                                ? get_class($aItemOptions)
-                                : gettype($aItemOptions)
+                            is_object($itemOptions)
+                                ? get_class($itemOptions)
+                                : gettype($itemOptions)
                         ));
                     }
 
-                    if (isset(static::$dropdownItemTags[$aItemOptions])) {
-                        $aItemOptions = ['type' => $aItemOptions];
-                        if (is_string($sKey)) {
-                            $aItemOptions['label'] = $sKey;
+                    if (isset(static::$dropdownItemTags[$itemOptions])) {
+                        $itemOptions = ['type' => $itemOptions];
+                        if (is_string($key)) {
+                            $itemOptions['label'] = $key;
                         }
                     } else {
-                        if ($this->isHTML($aItemOptions)) {
+                        if ($this->isHTML($itemOptions)) {
                             // Free html
-                            $aItemOptions = [
+                            $itemOptions = [
                                 'type' => self::TYPE_ITEM_HTML,
-                                'label' => $aItemOptions,
+                                'label' => $itemOptions,
                             ];
                         } else {
                             // Link
-                            $aItemOptions = [
-                                'label' => $aItemOptions,
+                            $itemOptions = [
+                                'label' => $itemOptions,
                                 'type' => self::TYPE_ITEM_LINK,
-                                'item_attributes' => ['href' => is_string($sKey) ? $sKey : null],
+                                'item_attributes' => ['href' => is_string($key) ? $key : null],
                             ];
                         }
                     }
                     break;
                 default:
-                    if (!isset($aItemOptions['label'])) {
-                        $aItemOptions['label'] = is_string($sKey) ? $sKey : null;
+                    if (!isset($itemOptions['label'])) {
+                        $itemOptions['label'] = is_string($key) ? $key : null;
                     }
-                    if (!isset($aItemOptions['type'])) {
-                        $aItemOptions['type'] = self::TYPE_ITEM_LINK;
+                    if (!isset($itemOptions['type'])) {
+                        $itemOptions['type'] = self::TYPE_ITEM_LINK;
                     }
             }
 
-            $sItems .= ($sItems ? PHP_EOL : '') . $this->renderItem($aItemOptions, $bEscape);
+            $itemsContent .= ($itemsContent ? PHP_EOL : '') . $this->renderItem($itemOptions, $escape);
         }
 
-        return $this->htmlElement('div', $aAttributes, $sItems, $bEscape);
+        return $this->htmlElement('div', $attributes, $itemsContent, $escape);
     }
     /**
      * Render dropdown list item markup
-     * @param array $aItemOptions
+     * @param array $itemOptions
      * @throws \InvalidArgumentException
      * @return string
      */
-    protected function renderItem(array $aItemOptions, bool $bEscape): string
+    protected function renderItem(array $itemOptions, bool $escape): string
     {
-        if (empty($aItemOptions['type'])) {
+        if (empty($itemOptions['type'])) {
             throw new \InvalidArgumentException(__METHOD__ . ' expects "type" option');
         }
 
-        $sItemContent = '';
-        $aClasses = [];
-        $aAttributes = $aItemOptions['attributes']  ?? [];
-        switch ($aItemOptions['type']) {
+        $itemContent = '';
+        $classes = [];
+        $attributes = $itemOptions['attributes']  ?? [];
+        switch ($itemOptions['type']) {
             case self::TYPE_ITEM_HEADER:
                 // Define item container "header" class
-                $aClasses[] = 'dropdown-header';
+                $classes[] = 'dropdown-header';
 
                 // Header label
-                if (empty($aItemOptions['label'])) {
-                    throw new \LogicException('"' . $aItemOptions['type'] . '" item expects "label" option');
+                if (empty($itemOptions['label'])) {
+                    throw new \LogicException('"' . $itemOptions['type'] . '" item expects "label" option');
                 }
-                if (!is_scalar($aItemOptions['label'])) {
+                if (!is_scalar($itemOptions['label'])) {
                     throw new \LogicException(sprintf(
                         '"label" option expect scalar value, "%s" given',
-                        is_object($aItemOptions['label'])
-                            ? get_class($aItemOptions['label'])
-                            : gettype($aItemOptions['label'])
+                        is_object($itemOptions['label'])
+                            ? get_class($itemOptions['label'])
+                            : gettype($itemOptions['label'])
                     ));
                 }
-                $sItemContent = $aItemOptions['label'];
+                $itemContent = $itemOptions['label'];
 
                 break;
 
             case self::TYPE_ITEM_DIVIDER:
                 // Define item container "divider" class
-                $aClasses[] = 'dropdown-divider';
-                $sItemContent = '';
+                $classes[] = 'dropdown-divider';
+                $itemContent = '';
                 break;
 
             case self::TYPE_ITEM_LINK:
                 // Define item container "item" class
-                $aClasses[] = 'dropdown-item';
-                $aDefaultAttributes = ['href' => '#'];
+                $classes[] = 'dropdown-item';
+                $defaultAttributes = ['href' => '#'];
 
                 foreach (
                     [
-                    'active' => true,
-                    'disabled' => ['tabindex' => '-1', 'aria-disabled' => 'true'],
-                    ] as $sOption => $aOptionAttributes
+                        'active' => true,
+                        'disabled' => ['tabindex' => '-1', 'aria-disabled' => 'true'],
+                    ] as $option => $optionAttributes
                 ) {
-                    if (!empty($aItemOptions[$sOption])) {
-                        $aClasses[] = $sOption;
+                    if (!empty($itemOptions[$option])) {
+                        $classes[] = $option;
 
-                        if (is_array($aOptionAttributes)) {
-                            $aDefaultAttributes = \Laminas\Stdlib\ArrayUtils::merge(
-                                $aDefaultAttributes,
-                                $aOptionAttributes
+                        if (is_array($optionAttributes)) {
+                            $defaultAttributes = \Laminas\Stdlib\ArrayUtils::merge(
+                                $defaultAttributes,
+                                $optionAttributes
                             );
                         }
                     }
                 }
 
-                if (empty($aItemOptions['label'])) {
-                    throw new \LogicException('"' . $aItemOptions['type'] . '" item expects "label" option');
+                if (empty($itemOptions['label'])) {
+                    throw new \LogicException('"' . $itemOptions['type'] . '" item expects "label" option');
                 }
-                if (!is_scalar($aItemOptions['label'])) {
+                if (!is_scalar($itemOptions['label'])) {
                     throw new \LogicException(sprintf(
                         '"label" option expect scalar value, "%s" given',
-                        is_object($aItemOptions['label'])
-                            ? get_class($aItemOptions['label'])
-                            : gettype($aItemOptions['label'])
+                        is_object($itemOptions['label'])
+                            ? get_class($itemOptions['label'])
+                            : gettype($itemOptions['label'])
                     ));
                 }
-                $sItemContent = $aItemOptions['label'];
+                $itemContent = $itemOptions['label'];
 
                 // Default attributes
-                foreach ($aDefaultAttributes as $sAttributeName => $sDefaultValue) {
-                    if ($sDefaultValue !== null && empty($aAttributes[$sAttributeName])) {
-                        $aAttributes[$sAttributeName] = $sDefaultValue;
+                foreach ($defaultAttributes as $attributeName => $defaultValue) {
+                    if ($defaultValue !== null && empty($attributes[$attributeName])) {
+                        $attributes[$attributeName] = $defaultValue;
                     }
                 }
 
@@ -452,50 +452,50 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
             case self::TYPE_ITEM_TEXT:
                 // Define item container "item-text" class
-                $aClasses[] = 'dropdown-item-text';
-                if (empty($aItemOptions['label'])) {
-                    throw new \LogicException('"' . $aItemOptions['type'] . '" item expects "label" option');
+                $classes[] = 'dropdown-item-text';
+                if (empty($itemOptions['label'])) {
+                    throw new \LogicException('"' . $itemOptions['type'] . '" item expects "label" option');
                 }
-                if (!is_scalar($aItemOptions['label'])) {
+                if (!is_scalar($itemOptions['label'])) {
                     throw new \LogicException(sprintf(
                         '"label" option expect scalar value, "%s" given',
-                        is_object($aItemOptions['label'])
-                            ? get_class($aItemOptions['label'])
-                            : gettype($aItemOptions['label'])
+                        is_object($itemOptions['label'])
+                            ? get_class($itemOptions['label'])
+                            : gettype($itemOptions['label'])
                     ));
                 }
-                $sItemContent = $aItemOptions['label'];
+                $itemContent = $itemOptions['label'];
                 break;
             case self::TYPE_ITEM_HTML:
-                if (empty($aItemOptions['label'])) {
-                    throw new \LogicException('"' . $aItemOptions['type'] . '" item expects "label" option');
+                if (empty($itemOptions['label'])) {
+                    throw new \LogicException('"' . $itemOptions['type'] . '" item expects "label" option');
                 }
-                if (!is_scalar($aItemOptions['label'])) {
+                if (!is_scalar($itemOptions['label'])) {
                     throw new \LogicException(sprintf(
                         '"label" option expect scalar value, "%s" given',
-                        is_object($aItemOptions['label'])
-                            ? get_class($aItemOptions['label'])
-                            : gettype($aItemOptions['label'])
+                        is_object($itemOptions['label'])
+                            ? get_class($itemOptions['label'])
+                            : gettype($itemOptions['label'])
                     ));
                 }
-                return $aItemOptions['label'];
+                return $itemOptions['label'];
         }
 
         // Dropdown list class attribute
-        $aAttributes = $this->setClassesToAttributes($aAttributes, $aClasses);
+        $attributes = $this->setClassesToAttributes($attributes, $classes);
 
-        if ($sItemContent) {
-            if (($oTranslator = $this->getTranslator())) {
-                $sItemContent = $oTranslator->translate($sItemContent, $this->getTranslatorTextDomain());
+        if ($itemContent) {
+            if (($translator = $this->getTranslator())) {
+                $itemContent = $translator->translate($itemContent, $this->getTranslatorTextDomain());
             }
         }
 
-        $sItemMarkup = $this->htmlElement(
-            static::$dropdownItemTags[$aItemOptions['type']],
-            $aAttributes,
-            $sItemContent,
-            $bEscape
+        $itemMarkup = $this->htmlElement(
+            static::$dropdownItemTags[$itemOptions['type']],
+            $attributes,
+            $itemContent,
+            $escape
         );
-        return $sItemMarkup;
+        return $itemMarkup;
     }
 }

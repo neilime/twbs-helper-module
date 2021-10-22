@@ -6,7 +6,14 @@ class Form extends \Laminas\Form\View\Helper\Form
 {
     use \TwbsHelper\View\Helper\HtmlTrait;
 
+    /**
+     * @var string
+     */
     public const LAYOUT_HORIZONTAL = 'horizontal';
+
+    /**
+     * @var string
+     */
     public const LAYOUT_INLINE     = 'inline';
 
     // Hold configurable options
@@ -15,237 +22,240 @@ class Form extends \Laminas\Form\View\Helper\Form
     /**
      * Constructor
      *
-     * @param \TwbsHelper\Options\ModuleOptions $options
+     * @param \TwbsHelper\Options\ModuleOptions $moduleOptions
      * @access public
      * @return void
      */
-    public function __construct(\TwbsHelper\Options\ModuleOptions $options)
+    public function __construct(\TwbsHelper\Options\ModuleOptions $moduleOptions)
     {
-        $this->options = $options;
+        $this->options = $moduleOptions;
     }
 
     /**
-     * @param \Laminas\Form\FormInterface $oForm
+     * @param \Laminas\Form\FormInterface $form
      * @return \TwbsHelper\Form\View\Helper\Form|string
      */
-    public function __invoke(\Laminas\Form\FormInterface $oForm = null)
+    public function __invoke(\Laminas\Form\FormInterface $form = null)
     {
         // Add valid custom attributes
         if ($this->options->getValidTagAttributes()) {
-            foreach ($this->options->getValidTagAttributes() as $attribute) {
-                $this->addValidAttribute($attribute);
+            foreach ($this->options->getValidTagAttributes() as $validTagAttribute) {
+                $this->addValidAttribute($validTagAttribute);
             }
         }
 
         if ($this->options->getValidTagAttributePrefixes()) {
-            foreach ($this->options->getValidTagAttributePrefixes() as $prefix) {
-                $this->addValidAttributePrefix($prefix);
+            foreach ($this->options->getValidTagAttributePrefixes() as $validTagAttributePrefix) {
+                $this->addValidAttributePrefix($validTagAttributePrefix);
             }
         }
 
-        if ($oForm) {
-            return $this->render($oForm);
+        if ($form !== null) {
+            return $this->render($form);
         }
+
         return $this;
     }
 
     /**
-     * Render a form from the provided $oForm,
+     * Render a form from the provided $form,
      *
-     * @param \Laminas\Form\FormInterface $oForm
+     * @param \Laminas\Form\FormInterface $form
      * @return string
      */
-    public function render(\Laminas\Form\FormInterface $oForm): string
+    public function render(\Laminas\Form\FormInterface $form): string
     {
         // Prepare form if needed
-        if (method_exists($oForm, 'prepare')) {
-            $oForm->prepare();
+        if (method_exists($form, 'prepare')) {
+            $form->prepare();
         }
 
         // Set form role
-        if (!$oForm->getAttribute('role')) {
-            $oForm->setAttribute('role', 'form');
+        if (!$form->getAttribute('role')) {
+            $form->setAttribute('role', 'form');
         }
 
-        $sFormLayout = $oForm->getOption('layout');
+        $formLayout = $form->getOption('layout');
 
         // Set inline class
-        if ($sFormLayout === self::LAYOUT_INLINE) {
-            $this->setClassesToElement($oForm, ['form-inline']);
+        if ($formLayout === self::LAYOUT_INLINE) {
+            $this->setClassesToElement($form, ['form-inline']);
         }
 
-        $sElementsContent = $this->renderElements($oForm);
+        $elementsContent = $this->renderElements($form);
+        $elementsContent = empty($elementsContent) ? '' : $this->addProperIndentation($elementsContent, true);
 
-        return $this->openTag($oForm)
-            . ($sElementsContent ? $this->addProperIndentation($sElementsContent, true) : '') .
-            $this->closeTag();
+        return $this->openTag($form) . $elementsContent . $this->closeTag();
     }
 
 
     /**
-     * @param \Laminas\Form\FormInterface $oForm
+     * @param \Laminas\Form\FormInterface $form
      * @return string
      */
-    protected function renderElements(\Laminas\Form\FormInterface $oForm): string
+    protected function renderElements(\Laminas\Form\FormInterface $form): string
     {
-        $sRowClass = $oForm->getOption('row_class') ?? 'row';
-        $sFormLayout = $oForm->getOption('layout');
+        $rowClass = $form->getOption('row_class') ?? 'row';
+        $formLayout = $form->getOption('layout');
 
         // Store element rows rendering
-        $aRowsRendering = [];
-        foreach ($oForm as $oElement) {
+        $rowsRendering = [];
+        foreach ($form as $element) {
             // Define layout option to form elements if not already defined
-            if ($sFormLayout && !$oElement->getOption('layout')) {
-                $oElement->setOption('layout', $sFormLayout);
+            if ($formLayout && !$element->getOption('layout')) {
+                $element->setOption('layout', $formLayout);
             }
-            $aRowsRendering = $this->renderElement($oElement, $sRowClass, $aRowsRendering);
+
+            $rowsRendering = $this->renderElement($element, $rowClass, $rowsRendering);
         }
 
         // Assemble rows rendering
-        $sFormContent = '';
-        ksort($aRowsRendering, SORT_STRING);
+        $formContent = '';
+        ksort($rowsRendering, SORT_STRING);
 
-        foreach ($aRowsRendering as $aRowRendering) {
-            $sRowContent = $aRowRendering['content'];
-            if (!empty($aRowRendering['helper'])) {
-                $aHelperParams = $aRowRendering['helper_params'];
-                foreach ($aHelperParams as $sKey => $sValue) {
-                    if ($sValue === '%content%') {
-                        $aHelperParams[$sKey] = $sRowContent;
+        foreach ($rowsRendering as $rowRendering) {
+            $rowContent = $rowRendering['content'];
+            if (!empty($rowRendering['helper'])) {
+                $helperParams = $rowRendering['helper_params'];
+                foreach ($helperParams as $key => $value) {
+                    if ($value === '%content%') {
+                        $helperParams[$key] = $rowContent;
                         break;
                     }
                 }
-                $sRowContent = call_user_func_array($aRowRendering['helper'], $aHelperParams);
+
+                $rowContent = call_user_func_array($rowRendering['helper'], $helperParams);
             }
 
-            $sFormContent .= ($sFormContent ? PHP_EOL : '') . $sRowContent;
+            $formContent .= ($formContent ? PHP_EOL : '') . $rowContent;
         }
 
-        return $sFormContent;
+        return $formContent;
     }
 
     /**
      * Retrieve element rendering
      */
     protected function renderElement(
-        \Laminas\Form\ElementInterface $oElement,
-        string $sRowClass,
-        array $aRowsRendering
+        \Laminas\Form\ElementInterface $element,
+        string $rowClass,
+        array $rowsRendering
     ): array {
 
-        if ($oElement instanceof \Laminas\Form\Element\Button && $oElement->getOption('row_name')) {
-            return $this->renderButtonGroup($oElement, $sRowClass, $aRowsRendering);
+        if ($element instanceof \Laminas\Form\Element\Button && $element->getOption('row_name')) {
+            return $this->renderButtonGroup($element, $rowClass, $rowsRendering);
         }
 
-        $oHelperPluginManager = $this->getView()->getHelperPluginManager();
+        $helperPluginManager = $this->getView()->getHelperPluginManager();
 
-        if ($oElement instanceof \Laminas\Form\FieldsetInterface) {
-            $this->setClassesToElement($oElement, ['form-group']);
-            $sElementMarkup = $oHelperPluginManager->get('formCollection')->__invoke($oElement);
+        if ($element instanceof \Laminas\Form\FieldsetInterface) {
+            $this->setClassesToElement($element, ['form-group']);
+            $elementMarkup = $helperPluginManager->get('formCollection')->__invoke($element);
         } else {
-            $sElementMarkup = $oHelperPluginManager->get('formRow')->__invoke($oElement);
+            $elementMarkup = $helperPluginManager->get('formRow')->__invoke($element);
         }
 
-        if (!$sElementMarkup) {
-            return $aRowsRendering;
+        if (!$elementMarkup) {
+            return $rowsRendering;
         }
 
-        $aOptions = $oElement->getOptions();
+        $options = $element->getOptions();
 
-        $sRowRenderingKey = $this->generateRowRenderingKey($oElement, $aRowsRendering);
+        $rowRenderingKey = $this->generateRowRenderingKey($element, $rowsRendering);
 
-        if (isset($aRowsRendering[$sRowRenderingKey])) {
-            $aRowsRendering[$sRowRenderingKey]['content'] .= PHP_EOL . $sElementMarkup;
+        if (isset($rowsRendering[$rowRenderingKey])) {
+            $rowsRendering[$rowRenderingKey]['content'] .= PHP_EOL . $elementMarkup;
         } else {
-            $aRowsRendering[$sRowRenderingKey] = ['content' => $sElementMarkup];
+            $rowsRendering[$rowRenderingKey] = ['content' => $elementMarkup];
 
 
-            $bIsNotLayoutHorizontal = empty($aOptions['layout']) || self::LAYOUT_HORIZONTAL !== $aOptions['layout'];
+            $isNotLayoutHorizontal = empty($options['layout']) || self::LAYOUT_HORIZONTAL !== $options['layout'];
 
-            if (!empty($aOptions['column']) && $bIsNotLayoutHorizontal) {
-                $aRowsRendering[$sRowRenderingKey]['helper'] = [$this, 'htmlElement'];
-                $aRowsRendering[$sRowRenderingKey]['helper_params'] = [
+            if (!empty($options['column']) && $isNotLayoutHorizontal) {
+                $rowsRendering[$rowRenderingKey]['helper'] = [$this, 'htmlElement'];
+                $rowsRendering[$rowRenderingKey]['helper_params'] = [
                     'div',
-                    $this->setClassesToAttributes([], [$sRowClass]), '%content%'
+                    $this->setClassesToAttributes([], [$rowClass]), '%content%'
                 ];
             }
         }
 
-        return $aRowsRendering;
+        return $rowsRendering;
     }
 
     /**
      * Retrieve button group element rendering
      */
     protected function renderButtonGroup(
-        \Laminas\Form\Element\Button $oElement,
-        string $sRowClass,
-        array $aRowsRendering
+        \Laminas\Form\Element\Button $button,
+        string $rowClass,
+        array $rowsRendering
     ): array {
-        $sRowRenderingKey = $this->generateRowRenderingKey($oElement, $aRowsRendering);
+        $rowRenderingKey = $this->generateRowRenderingKey($button, $rowsRendering);
 
-        if (isset($aRowsRendering[$sRowRenderingKey])) {
-            $aRowsRendering[$sRowRenderingKey]['content'][] = $oElement;
+        if (isset($rowsRendering[$rowRenderingKey])) {
+            $rowsRendering[$rowRenderingKey]['content'][] = $button;
         } else {
-            $aOptions = $oElement->getOptions();
-            $bIsNotLayoutHorizontal = empty($aOptions['layout']) || self::LAYOUT_HORIZONTAL !== $aOptions['layout'];
+            $options = $button->getOptions();
+            $isNotLayoutHorizontal = empty($options['layout']) || self::LAYOUT_HORIZONTAL !== $options['layout'];
 
-            if (empty($aOptions['column']) || !$bIsNotLayoutHorizontal) {
-                $sRowClass = 'form-group';
+            if (empty($options['column']) || !$isNotLayoutHorizontal) {
+                $rowClass = 'form-group';
             }
 
-            $aRowsRendering[$sRowRenderingKey] = [
-                'content' => [$oElement],
+            $rowsRendering[$rowRenderingKey] = [
+                'content' => [$button],
                 'helper' => [
                     $this->getView()->getHelperPluginManager()->get('buttonGroup'),
                     '__invoke'
                 ],
                 'helper_params' => [
                     '%content%',
-                    ['attributes' => ['class' => $sRowClass]]
+                    ['attributes' => ['class' => $rowClass]]
                 ]
             ];
         }
-        return $aRowsRendering;
+
+        return $rowsRendering;
     }
 
     /**
      * Generate
      */
-    private function generateRowRenderingKey(\Laminas\Form\ElementInterface $oElement, array $aRowsRendering): string
+    private function generateRowRenderingKey(\Laminas\Form\ElementInterface $element, array $rowsRendering): string
     {
-        $aExistingKeys = array_keys($aRowsRendering);
-        $aOptions = $oElement->getOptions();
+        $existingKeys = array_keys($rowsRendering);
+        $options = $element->getOptions();
 
-        $sRowName = $aOptions['row_name'] ?? '';
+        $rowName = $options['row_name'] ?? '';
 
-        if (!$aExistingKeys) {
-            return '0_' . $sRowName;
+        if ($existingKeys === []) {
+            return '0_' . $rowName;
         }
 
-        if ($sRowName) {
-            foreach ($aExistingKeys as $sExistingKey) {
-                if (preg_match('/^[0-9]+_' . preg_quote($sRowName) . '$/', $sExistingKey)) {
-                    return $sExistingKey;
+        if ($rowName) {
+            foreach ($existingKeys as $existingKey) {
+                if (preg_match('/^[0-9]+_' . preg_quote($rowName, '/') . '$/', $existingKey)) {
+                    return $existingKey;
                 }
             }
 
-            $sLastKey = array_pop($aExistingKeys);
-            $sRowRenderingKeyPrefix = $this->incrementRowRenderingKeyPrefix($sLastKey);
+            $lastKey = array_pop($existingKeys);
+            $rowRenderingKeyPrefix = $this->incrementRowRenderingKeyPrefix($lastKey);
 
-            return $sRowRenderingKeyPrefix . $sRowName;
+            return $rowRenderingKeyPrefix . $rowName;
         }
 
-        $sLastKey = array_pop($aExistingKeys);
-        if (preg_match('/^[0-9]+_$/', $sLastKey)) {
-            return $sLastKey;
+        $lastKey = array_pop($existingKeys);
+        if (preg_match('/^\d+_$/', $lastKey)) {
+            return $lastKey;
         }
 
-        return $this->incrementRowRenderingKeyPrefix($sLastKey);
+        return $this->incrementRowRenderingKeyPrefix($lastKey);
     }
 
-    private function incrementRowRenderingKeyPrefix(string $sKey): string
+    private function incrementRowRenderingKeyPrefix(string $key): string
     {
-        return intval(explode('_', $sKey)[0]) + 1 . '_';
+        return (int) explode('_', $key)[0] + 1 . '_';
     }
 }

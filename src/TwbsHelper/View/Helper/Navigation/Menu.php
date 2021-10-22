@@ -23,31 +23,31 @@ class Menu extends \Laminas\View\Helper\Navigation\Menu
      */
     protected $renderInvisible = true;
 
-    public function renderMenu($container = null, array $aOptions = [])
+    public function renderMenu($container = null, array $options = [])
     {
         $this->parseContainer($container);
         if (null === $container) {
             $container = $this->getContainer();
         }
         // Create iterator
-        $oIterator = new \RecursiveIteratorIterator(
+        $iterator = new \RecursiveIteratorIterator(
             $container,
             \RecursiveIteratorIterator::SELF_FIRST
         );
 
-        foreach ($oIterator as $oPage) {
-            $aPageClasses = ['nav-item'];
-            if ($oPage instanceof \TwbsHelper\Navigation\Page\DropdownPage) {
-                $aPageClasses[] = 'dropdown';
+        foreach ($iterator as $page) {
+            $pageClasses = ['nav-item'];
+            if ($page instanceof \TwbsHelper\Navigation\Page\DropdownPage) {
+                $pageClasses[] = 'dropdown';
             }
-            $oPage->setClass(join(
+            $page->setClass(join(
                 ' ',
-                $this->addClassesAttribute($oPage->getClass() ?? '', $aPageClasses)
+                $this->addClassesAttribute($page->getClass() ?? '', $pageClasses)
             ));
         }
 
-        $aUlClasses = [$this->ulClass];
-        $aItemClasses = [];
+        $ulClasses = [$this->ulClass];
+        $itemClasses = [];
 
         foreach (
             [
@@ -58,69 +58,69 @@ class Menu extends \Laminas\View\Helper\Navigation\Menu
             'centered' => 'justify-content-center',
             'right_aligned' => 'justify-content-end',
             'vertical' => 'flex-column',
-            ] as $sOption => $sClassName
+            ] as $option => $className
         ) {
-            if (!empty($aOptions[$sOption])) {
-                $aUlClasses[] = $sClassName;
+            if (!empty($options[$option])) {
+                $ulClasses[] = $className;
             }
         }
 
-        if (isset($aOptions['vertical']) && is_string($aOptions['vertical'])) {
-            $aUlClasses[] = $this->getSizeClass($aOptions['vertical'], 'flex-%s-row');
-            $aItemClasses[] = $this->getSizeClass($aOptions['vertical'], 'flex-%s-fill');
-            $aItemClasses[] = $this->getSizeClass($aOptions['vertical'], 'text-%s-center');
+        if (isset($options['vertical']) && is_string($options['vertical'])) {
+            $ulClasses[] = $this->getSizeClass($options['vertical'], 'flex-%s-row');
+            $itemClasses[] = $this->getSizeClass($options['vertical'], 'flex-%s-fill');
+            $itemClasses[] = $this->getSizeClass($options['vertical'], 'text-%s-center');
         }
 
-        $aOptions['ulClass'] = join(' ', $this->addClassesAttribute($aOptions['ulClass'] ?? '', $aUlClasses));
+        $options['ulClass'] = join(' ', $this->addClassesAttribute($options['ulClass'] ?? '', $ulClasses));
 
-        $sContent = parent::renderMenu(
+        $content = parent::renderMenu(
             $container,
             array_merge([
                 'liActiveClass' => '',
                 'addClassToListItem' => true,
                 'onlyActiveBranch' => false,
-            ], $aOptions)
+            ], $options)
         );
 
-        if (!$sContent) {
+        if (!$content) {
             return '';
         }
 
-        if (isset($aOptions['list']) && $aOptions['list'] === false) {
-            $sContent = preg_replace('/(<)ul([^>]*>[\s\S]*<\/)ul([^>]*>)/imU', '$1nav$2nav$3', $sContent);
-            if (!$sContent) {
+        if (isset($options['list']) && $options['list'] === false) {
+            $content = preg_replace('/(<)ul([^>]*>[\s\S]*<\/)ul([^>]*>)/imU', '$1nav$2nav$3', $content);
+            if (!$content) {
                 return '';
             }
 
-            $sContent = preg_replace('/<li[^>]*>\s*(\S(.*\S)?)\s*<\/li[^>]*>/imU', '$1', $sContent);
-            if (!$sContent) {
+            $content = preg_replace('/<li[^>]*>\s*(\S(.*\S)?)\s*<\/li[^>]*>/imU', '$1', $content);
+            if (!$content) {
                 return '';
             }
 
             // When using a <nav>-based navigation, include .nav-item on the anchors
             // For nav-fill & nav-justified
             if (
-                !empty($aOptions['fill'])
-                || !empty($aOptions['justified'])
+                !empty($options['fill'])
+                || !empty($options['justified'])
             ) {
-                $aItemClasses[] = 'nav-item';
+                $itemClasses[] = 'nav-item';
             }
         }
 
-        if ($aItemClasses) {
-            $sContent = preg_replace(
+        if ($itemClasses) {
+            $content = preg_replace(
                 '/(<a.*class=")([^"]*"[^>]*>)/imU',
                 sprintf(
                     '$1%s$2',
                     $this->getView()->plugin('escapehtmlattr')->__invoke(
-                        join(' ', $this->cleanClassesAttribute($aItemClasses)) . ' '
+                        join(' ', $this->cleanClassesAttribute($itemClasses)) . ' '
                     )
                 ),
-                $sContent
+                $content
             );
         }
 
-        return $sContent ?? '';
+        return $content ?? '';
     }
 
     /**
@@ -129,35 +129,35 @@ class Menu extends \Laminas\View\Helper\Navigation\Menu
      *
      * Overrides {@link AbstractHelper::htmlify()}.
      *
-     * @param \Laminas\Navigation\Page\AbstractPage $oPage page to generate HTML for
-     * @param bool $bEscapeLabel        Whether or not to escape the label
-     * @param bool $bAddClassToListItem Whether or not to add the page class to the list item
+     * @param \Laminas\Navigation\Page\AbstractPage $page page to generate HTML for
+     * @param bool $escapeLabel        Whether or not to escape the label
+     * @param bool $addClassToListItem Whether or not to add the page class to the list item
      * @return string
      */
     public function htmlify(
-        \Laminas\Navigation\Page\AbstractPage $oPage,
-        $bEscapeLabel = true,
-        $bAddClassToListItem = false
+        \Laminas\Navigation\Page\AbstractPage $page,
+        $escapeLabel = true,
+        $addClassToListItem = false
     ) {
-        $sPageClass = $oPage->getClass();
+        $pageClass = $page->getClass();
 
-        $aClasses = ['nav-link'];
-        if ($oPage->isActive(true)) {
-            $aClasses[] = 'active';
+        $classes = ['nav-link'];
+        if ($page->isActive(true)) {
+            $classes[] = 'active';
         }
-        if (!$oPage->isVisible(true)) {
-            $aClasses[] = 'disabled';
+        if (!$page->isVisible(true)) {
+            $classes[] = 'disabled';
         }
 
-        if ($oPage instanceof \TwbsHelper\Navigation\Page\DropdownPage) {
-            $aClasses[] = 'dropdown-toggle';
-            $aDropdownOptions = $oPage->getDropdown();
-            $aDropdownAttributes = [];
-            if (\Laminas\Stdlib\ArrayUtils::isList($aDropdownOptions)) {
-                $aDropdownOptions = ['items' => $aDropdownOptions];
+        if ($page instanceof \TwbsHelper\Navigation\Page\DropdownPage) {
+            $classes[] = 'dropdown-toggle';
+            $dropdownOptions = $page->getDropdown();
+            $dropdownAttributes = [];
+            if (\Laminas\Stdlib\ArrayUtils::isList($dropdownOptions)) {
+                $dropdownOptions = ['items' => $dropdownOptions];
             } else {
-                if (!empty($aDropdownOptions['attributes'])) {
-                    $aDropdownAttributes = $aDropdownOptions['attributes'];
+                if (!empty($dropdownOptions['attributes'])) {
+                    $dropdownAttributes = $dropdownOptions['attributes'];
                 }
             }
             return trim($this->addProperIndentation($this->getView()->plugin('dropdown')->render([
@@ -165,29 +165,29 @@ class Menu extends \Laminas\View\Helper\Navigation\Menu
                 'options' => [
                     'disable_twbs' => true,
                     'tag' => 'a',
-                    'label' => $oPage->getLabel(),
+                    'label' => $page->getLabel(),
                     'dropdown' => \Laminas\Stdlib\ArrayUtils::merge(
                         ['disable_container' => true],
-                        $aDropdownOptions
+                        $dropdownOptions
                     ),
                 ],
-                'attributes' => $this->setClassesToAttributes($aDropdownAttributes, $aClasses)
+                'attributes' => $this->setClassesToAttributes($dropdownAttributes, $classes)
             ]), true, $this->indentation . $this->indentation));
         }
 
 
-        $oPage->setClass(join(' ', $aClasses));
+        $page->setClass(join(' ', $classes));
 
         if (
-            $bEscapeLabel
-            && $this->isHTML($this->translate($oPage->getLabel(), $oPage->getTextDomain()))
+            $escapeLabel
+            && $this->isHTML($this->translate($page->getLabel(), $page->getTextDomain()))
         ) {
-            $bEscapeLabel = false;
+            $escapeLabel = false;
         }
 
-        $sHtml = parent::htmlify($oPage, $bEscapeLabel, false);
-        $oPage->setClass($sPageClass);
-        return $sHtml;
+        $html = parent::htmlify($page, $escapeLabel, false);
+        $page->setClass($pageClass);
+        return $html;
     }
 
     /**
@@ -195,25 +195,25 @@ class Menu extends \Laminas\View\Helper\Navigation\Menu
      *
      * Overloads {@link View\Helper\AbstractHtmlElement::htmlAttribs()}.
      *
-     * @param  array $aAttributes  an array where each key-value pair is converted
+     * @param  array $attributes  an array where each key-value pair is converted
      *                         to an attribute name and value
      * @return string
      */
-    protected function htmlAttribs($aAttributes)
+    protected function htmlAttribs($attributes)
     {
-        if (isset($aAttributes['class'])) {
-            if (strstr($aAttributes['class'], 'disabled')) {
-                $aAttributes['tabindex'] = '-1';
-                $aAttributes['aria-disabled'] = 'true';
+        if (isset($attributes['class'])) {
+            if (strstr($attributes['class'], 'disabled')) {
+                $attributes['tabindex'] = '-1';
+                $attributes['aria-disabled'] = 'true';
             }
-            if (strstr($aAttributes['class'], 'dropdown-toggle')) {
-                $aAttributes['data-toggle'] = 'dropdown';
-                $aAttributes['role'] = 'button';
-                $aAttributes['aria-haspopup'] = 'true';
-                $aAttributes['aria-expanded'] = 'false';
+            if (strstr($attributes['class'], 'dropdown-toggle')) {
+                $attributes['data-toggle'] = 'dropdown';
+                $attributes['role'] = 'button';
+                $attributes['aria-haspopup'] = 'true';
+                $attributes['aria-expanded'] = 'false';
             }
         }
 
-        return parent::htmlAttribs($aAttributes);
+        return parent::htmlAttribs($attributes);
     }
 }

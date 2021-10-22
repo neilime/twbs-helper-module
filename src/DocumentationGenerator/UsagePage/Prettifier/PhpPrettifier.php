@@ -11,7 +11,7 @@ class PhpPrettifier
     private $config;
     private $ruleset;
 
-    private function __construct(\DocumentationGenerator\Configuration $oConfiguration)
+    private function __construct(\DocumentationGenerator\Configuration $configuration)
     {
         if (defined('PHP_CODESNIFFER_VERBOSITY') === false) {
             define('PHP_CODESNIFFER_VERBOSITY', false);
@@ -20,47 +20,47 @@ class PhpPrettifier
             define('PHP_CODESNIFFER_CBF', true);
         }
 
-        $oConfig = new \PHP_CodeSniffer\Config([
-            $oConfiguration->getRootDirPath() . DIRECTORY_SEPARATOR . self::$CONFIGURATION_PATH
+        $config = new \PHP_CodeSniffer\Config([
+            $configuration->getRootDirPath() . DIRECTORY_SEPARATOR . self::$CONFIGURATION_PATH
         ]);
-        $oConfig->stdin = true;
-        $oConfig->standards = ['Squiz'];
+        $config->stdin = true;
+        $config->standards = ['Squiz'];
 
-        $oRunner = new \PHP_CodeSniffer\Runner();
-        $oRunner->config = $oConfig;
-        $oRunner->init();
+        $runner = new \PHP_CodeSniffer\Runner();
+        $runner->config = $config;
+        $runner->init();
 
-        $this->config = $oConfig;
-        $this->ruleset = $oRunner->ruleset;
+        $this->config = $config;
+        $this->ruleset = $runner->ruleset;
     }
 
     /**
      * gets the instance via lazy initialization (created on first usage)
      */
     public static function getInstance(
-        \DocumentationGenerator\Configuration $oConfiguration
+        \DocumentationGenerator\Configuration $configuration
     ): \DocumentationGenerator\UsagePage\Prettifier\PhpPrettifier {
         if (static::$instance === null) {
-            static::$instance = new static($oConfiguration);
+            static::$instance = new static($configuration);
         }
 
         return static::$instance;
     }
 
 
-    public function prettify($sSource)
+    public function prettify($source)
     {
 
-        $this->config->stdinContent = $sSource;
-        $oFile = new \DocumentationGenerator\UsagePage\Prettifier\SourceFile(
-            $sSource,
+        $this->config->stdinContent = $source;
+        $file = new \DocumentationGenerator\UsagePage\Prettifier\SourceFile(
+            $source,
             $this->ruleset,
             $this->config
         );
 
-        $oFile->process();
-        $oFile->fixer->fixFile();
+        $file->process();
+        $file->fixer->fixFile();
 
-        return $oFile->getContent();
+        return $file->getContent();
     }
 }

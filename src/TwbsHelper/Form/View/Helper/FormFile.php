@@ -7,38 +7,38 @@ class FormFile extends \Laminas\Form\View\Helper\FormFile
     use \TwbsHelper\View\Helper\HtmlTrait;
 
     /**
-     * Render a form <input> element from the provided $oElement
+     * Render a form <input> element from the provided $element
      *
-     * @param \Laminas\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface $element
      * @return string
      */
-    public function render(\Laminas\Form\ElementInterface $oElement): string
+    public function render(\Laminas\Form\ElementInterface $element): string
     {
-        $bCustom = $oElement->getOption('custom');
+        $custom = $element->getOption('custom');
 
-        $sElementContent =  parent::render($this->setClassesToElement(
-            $oElement,
-            [$bCustom ? 'custom-file-input' : 'form-control-file'],
+        $elementContent =  parent::render($this->setClassesToElement(
+            $element,
+            [$custom ? 'custom-file-input' : 'form-control-file'],
             ['form-control']
         ));
 
-        if ($bCustom) {
-            if ($sLabel = $oElement->getOption('custom_label')) {
-                $sLabelTmp = $oElement->getLabel();
-                $oElement->setLabel($sLabel);
-                $sLabel = $this->getView()->plugin('form_label')->__invoke($oElement);
-                $oElement->setLabel($sLabelTmp ?? '');
-                if ($sLabel) {
-                    $sElementContent .= PHP_EOL . $sLabel;
+        if ($custom) {
+            if ($label = $element->getOption('custom_label')) {
+                $labelTmp = $element->getLabel();
+                $element->setLabel($label);
+                $label = $this->getView()->plugin('form_label')->__invoke($element);
+                $element->setLabel($labelTmp ?? '');
+                if ($label) {
+                    $elementContent .= PHP_EOL . $label;
                 }
             }
 
-            $sElementContent = $this->htmlElement(
+            $elementContent = $this->htmlElement(
                 'div',
                 ['class' => 'custom-file'],
-                $sElementContent
+                $elementContent
             );
         }
-        return $sElementContent;
+        return $elementContent;
     }
 }

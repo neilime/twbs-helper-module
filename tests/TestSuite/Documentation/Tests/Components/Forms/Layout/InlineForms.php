@@ -4,10 +4,10 @@
 return [
     'title' => 'Inline forms',
     'url' => '%bootstrap-url%/components/forms/#inline-forms',
-    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-        $oFactory = new \Laminas\Form\Factory();
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+        $factory = new \Laminas\Form\Factory();
 
-        echo $oView->form($oFactory->create([
+        echo $view->form($factory->create([
             'type' => 'form',
             'options' => [
                 'layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE,
@@ -78,7 +78,7 @@ return [
         echo PHP_EOL . '<br/>' . PHP_EOL;
 
         // Custom form controls and selects are also supported
-        echo $oView->form($oFactory->create([
+        echo $view->form($factory->create([
             'type' => 'form',
             'options' => [
                 'layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE,

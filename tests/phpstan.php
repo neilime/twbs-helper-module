@@ -1,26 +1,26 @@
 <?php
 
 // Load the user-defined test configuration file
-if (!file_exists($sApplicationConfigPath = __DIR__ . '/config/application-config.php')) {
+if (!file_exists($applicationConfigPath = __DIR__ . '/config/application-config.php')) {
     throw new \LogicException(sprintf(
         'Application configuration file "%s" does not exist',
-        $sApplicationConfigPath
+        $applicationConfigPath
     ));
 }
-if (false === ($aApplicationConfig = include $sApplicationConfigPath)) {
+if (false === ($applicationConfig = include $applicationConfigPath)) {
     throw new \LogicException(sprintf(
         'An error occured while including application configuration file "%"',
-        $sApplicationConfigPath
+        $applicationConfigPath
     ));
 }
 
 // Prepare the service manager
-$oServiceManager = new \Laminas\ServiceManager\ServiceManager();
-$oServiceManagerConfig = new \Laminas\Mvc\Service\ServiceManagerConfig($aApplicationConfig['service_manager'] ??  []);
-$oServiceManagerConfig->configureServiceManager($oServiceManager);
-$oServiceManager->setService('ApplicationConfig', $aApplicationConfig);
+$serviceManager = new \Laminas\ServiceManager\ServiceManager();
+$serviceManagerConfig = new \Laminas\Mvc\Service\ServiceManagerConfig($applicationConfig['service_manager'] ??  []);
+$serviceManagerConfig->configureServiceManager($serviceManager);
+$serviceManager->setService('ApplicationConfig', $applicationConfig);
 
 // Load modules
-$oServiceManager->get('ModuleManager')->loadModules();
+$serviceManager->get('ModuleManager')->loadModules();
 
-return $oServiceManager;
+return $serviceManager;

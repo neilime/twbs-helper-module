@@ -12,8 +12,8 @@ return [
                 [
                     'title' => 'Single button',
                     'url' => '%bootstrap-url%/components/dropdowns/#single-button',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        echo $oView->formButton()->renderSpec([
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        echo $view->formButton()->renderSpec([
                             'name' => 'dropdown',
                             'options' => [
                                 'label' => 'Dropdown',
@@ -26,7 +26,7 @@ return [
                         echo PHP_EOL . '<br/>' . PHP_EOL;
 
                         // With <a> elements
-                        echo $oView->formButton()->renderSpec([
+                        echo $view->formButton()->renderSpec([
                             'name' => 'dropdown',
                             'options' => [
                                 'tag' => 'a',
@@ -43,12 +43,12 @@ return [
                             [
                             'primary', 'secondary', 'success', 'danger',
                             'warning', 'info', 'light', 'dark',
-                            ] as $sVariant
+                            ] as $variant
                         ) {
-                            echo $oView->formButton()->renderSpec([
+                            echo $view->formButton()->renderSpec([
                                 'name' => 'dropdown',
                                 'options' => [
-                                    'variant' => $sVariant,
+                                    'variant' => $variant,
                                     'label' => 'Dropdown',
                                     'dropdown' => [
                                         'attributes' => ['class' => 'btn-group'],
@@ -68,17 +68,17 @@ return [
                 [
                     'title' => 'Split button',
                     'url' => '%bootstrap-url%/components/dropdowns/#split-button',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                         foreach (
                             [
                             'primary', 'secondary', 'success', 'danger',
                             'warning', 'info', 'light', 'dark',
-                            ] as $sVariant
+                            ] as $variant
                         ) {
-                            echo $oView->formButton()->renderSpec([
+                            echo $view->formButton()->renderSpec([
                                 'name' => 'dropdown',
                                 'options' => [
-                                    'variant' => $sVariant,
+                                    'variant' => $variant,
                                     'label' => 'Dropdown',
                                     'dropdown' => [
                                         'split' => 'Toggle Dropdown',
@@ -100,9 +100,9 @@ return [
         [
             'title' => 'Sizing',
             'url' => '%bootstrap-url%/components/dropdowns/#sizing',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                 // Large button
-                echo $oView->formButton()->renderSpec([
+                echo $view->formButton()->renderSpec([
                     'name' => 'dropdown',
                     'options' => [
                         'label' => 'Large button',
@@ -115,7 +115,7 @@ return [
                 ]) . PHP_EOL;
 
                 // Large split button
-                echo $oView->formButton()->renderSpec([
+                echo $view->formButton()->renderSpec([
                     'name' => 'dropdown',
                     'options' => [
                         'label' => 'Large button',
@@ -130,7 +130,7 @@ return [
                 echo PHP_EOL . '<br/><br/>' . PHP_EOL;
 
                 // Small button
-                echo $oView->formButton()->renderSpec([
+                echo $view->formButton()->renderSpec([
                     'name' => 'dropdown',
                     'options' => [
                         'label' => 'Small button',
@@ -143,7 +143,7 @@ return [
                 ]) . PHP_EOL;
 
                 // Small split button
-                echo $oView->formButton()->renderSpec([
+                echo $view->formButton()->renderSpec([
                     'name' => 'dropdown',
                     'options' => [
                         'label' => 'Small button',
@@ -163,9 +163,9 @@ return [
                 [
                     'title' => 'Dropup',
                     'url' => '%bootstrap-url%/components/dropdowns/#dropup',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                         // Dropup button
-                        echo $oView->formButton()->renderSpec([
+                        echo $view->formButton()->renderSpec([
                             'name' => 'dropup',
                             'options' => [
                                 'label' => 'Dropup',
@@ -185,7 +185,7 @@ return [
                         ]) . PHP_EOL;
 
                         // Dropup split button
-                        echo $oView->formButton()->renderSpec([
+                        echo $view->formButton()->renderSpec([
                             'name' => 'split-dropup',
                             'options' => [
                                 'label' => 'Split dropup',
@@ -208,9 +208,9 @@ return [
                 [
                     'title' => 'Dropright',
                     'url' => '%bootstrap-url%/components/dropdowns/#dropright',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                         // Dropright button
-                        echo $oView->formButton()->renderSpec([
+                        echo $view->formButton()->renderSpec([
                             'name' => 'dropright',
                             'options' => [
                                 'label' => 'Dropright',
@@ -230,7 +230,7 @@ return [
                         ]) . PHP_EOL;
 
                         // Dropright split button
-                        echo $oView->formButton()->renderSpec([
+                        echo $view->formButton()->renderSpec([
                             'name' => 'split-dropright',
                             'options' => [
                                 'label' => 'Split dropright',
@@ -255,8 +255,8 @@ return [
         [
             'title' => 'Menu items',
             'url' => '%bootstrap-url%/components/dropdowns/#menu-items',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->formButton()->renderSpec([
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->formButton()->renderSpec([
                     'name' => 'dropdown',
                     'options' => [
                         'label' => 'Dropdown',
@@ -268,7 +268,7 @@ return [
                 echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Non-interactive dropdown items
-                echo $oView->dropdown()->renderMenu([
+                echo $view->dropdown()->renderMenu([
                     'Dropdown item text' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_TEXT,
                     'Action',
                     'Another action',
@@ -279,8 +279,8 @@ return [
                 [
                     'title' => 'Active',
                     'url' => '%bootstrap-url%/components/dropdowns/#active',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        echo $oView->dropdown()->renderMenu([
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        echo $view->dropdown()->renderMenu([
                             'Regular link',
                             'Active link' => ['active' => true],
                             'Another link'
@@ -290,8 +290,8 @@ return [
                 [
                     'title' => 'Disabled',
                     'url' => '%bootstrap-url%/components/dropdowns/#disabled',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        echo $oView->dropdown()->renderMenu([
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        echo $view->dropdown()->renderMenu([
                             'Regular link',
                             'Disabled link' => ['disabled' => true],
                             'Another link'
@@ -303,8 +303,8 @@ return [
         [
             'title' => 'Menu alignment',
             'url' => '%bootstrap-url%/components/dropdowns/#menu-alignment',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->formButton()->renderSpec([
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->formButton()->renderSpec([
                     'name' => 'dropdown',
                     'options' => [
                         'label' => 'Right-aligned menu',
@@ -319,8 +319,8 @@ return [
                 [
                     'title' => 'Responsive alignment',
                     'url' => '%bootstrap-url%/components/dropdowns/#responsive-alignment',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        echo $oView->formButton()->renderSpec([
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        echo $view->formButton()->renderSpec([
                             'name' => 'dropdown',
                             'options' => [
                                 'label' => 'Left-aligned but right aligned when large screen',
@@ -333,7 +333,7 @@ return [
 
                         echo PHP_EOL . '<br/>' . PHP_EOL;
 
-                        echo $oView->formButton()->renderSpec([
+                        echo $view->formButton()->renderSpec([
                             'name' => 'dropdown',
                             'options' => [
                                 'label' => 'Left-aligned but right aligned when large screen',
@@ -354,8 +354,8 @@ return [
                 [
                     'title' => 'Headers',
                     'url' => '%bootstrap-url%/components/dropdowns/#headers',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        echo $oView->dropdown()->renderMenu([
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        echo $view->dropdown()->renderMenu([
                             'Dropdown header' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_HEADER,
                             'Action',
                             'Another action',
@@ -365,8 +365,8 @@ return [
                 [
                     'title' => 'Dividers',
                     'url' => '%bootstrap-url%/components/dropdowns/#headers',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        echo $oView->dropdown()->renderMenu([
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        echo $view->dropdown()->renderMenu([
                             'Action',
                             'Another action',
                             'Something else here',
@@ -378,9 +378,9 @@ return [
                 [
                     'title' => 'Text',
                     'url' => '%bootstrap-url%/components/dropdowns/#headers',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        echo $oView->dropdown()->renderMenu([
-                            '<p>Some example text that\'s free-flowing within the dropdown menu.</p>',
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        echo $view->dropdown()->renderMenu([
+                            "<p>Some example text that's free-flowing within the dropdown menu.</p>",
                             '<p class="mb-0">And this is more example text.</p>',
                         ], ['class' => 'p-4 text-muted', 'style' => 'max-width: 200px;']);
                     },
@@ -388,11 +388,11 @@ return [
                 [
                     'title' => 'Forms',
                     'url' => '%bootstrap-url%/components/dropdowns/#forms',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
 
                         // Create form
-                        $oFactory = new \Laminas\Form\Factory();
-                        $oForm = $oFactory->create([
+                        $factory = new \Laminas\Form\Factory();
+                        $form = $factory->create([
                             'type' => 'form',
                             'name' => 'dropdown',
                             'attributes' => ['id' => 'dropdown'],
@@ -438,8 +438,8 @@ return [
                             ]
                         ]);
 
-                        echo $oView->dropdown()->renderMenu([
-                            $oForm,
+                        echo $view->dropdown()->renderMenu([
+                            $form,
                             'New around here? Sign up',
                             'Forgot password?',
                         ]);
@@ -450,11 +450,11 @@ return [
         [
             'title' => 'Dropdown options',
             'url' => '%bootstrap-url%/components/dropdowns/#dropdown-options',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
 
                 echo '<div class="d-flex">' . PHP_EOL;
 
-                echo $oView->formButton()->renderSpec([
+                echo $view->formButton()->renderSpec([
                     'name' => 'dropdown',
                     'options' => [
                         'label' => 'Offset',
@@ -467,7 +467,7 @@ return [
                     'attributes' => ['id' => 'dropdownMenuOffset'],
                 ]) . PHP_EOL;
 
-                echo $oView->formButton()->renderSpec([
+                echo $view->formButton()->renderSpec([
                     'name' => 'dropdown',
                     'options' => [
                         'label' => 'Reference',

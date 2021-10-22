@@ -10,106 +10,106 @@ class Spinner extends \TwbsHelper\View\Helper\AbstractHtmlElement
     /**
      * Generates a 'spinner' element
      */
-    public function __invoke($sLabel = null): string
+    public function __invoke($label = null): string
     {
-        if (is_array($sLabel)) {
-            $aOptions = $sLabel;
-        } elseif ($sLabel) {
-            $aOptions = ['label' => $sLabel];
+        if (is_array($label)) {
+            $options = $label;
+        } elseif ($label) {
+            $options = ['label' => $label];
         } else {
-            $aOptions = [];
+            $options = [];
         }
 
-        return $this->render($aOptions);
+        return $this->render($options);
     }
 
-    public function render(array $aOptions): string
+    public function render(array $options): string
     {
-        $aAttributes = array_merge(
+        $attributes = array_merge(
             ['role' => 'status'],
-            $aOptions['attributes'] ?? []
+            $options['attributes'] ?? []
         );
 
-        $sTypeClass = $this->getPrefixedClass($aOptions['type'] ?? 'border', 'spinner');
-        $aClasses = [$sTypeClass];
+        $typeClass = $this->getPrefixedClass($options['type'] ?? 'border', 'spinner');
+        $classes = [$typeClass];
 
-        if (!empty($aOptions['size'])) {
-            $aClasses[] = $this->getPrefixedClass($aOptions['size'], $sTypeClass);
-        }
-        if (!empty($aOptions['variant'])) {
-            $aClasses[] = $this->getVariantClass($aOptions['variant'], 'text');
-        }
-        if (!empty($aOptions['margin'])) {
-            $aClasses[] = $this->getPrefixedClass($aOptions['margin'], 'm');
+        if (!empty($options['size'])) {
+            $classes[] = $this->getPrefixedClass($options['size'], $typeClass);
         }
 
-        $sLabelContent = $aOptions['label'] ?? '';
-        $bShowLabel = !empty($aOptions['show_label']);
+        if (!empty($options['variant'])) {
+            $classes[] = $this->getVariantClass($options['variant'], 'text');
+        }
 
-        $sLabelMarkup = $sLabelContent
-            ? $bShowLabel
-                ? $this->htmlElement(
-                    'strong',
-                    [],
-                    $sLabelContent
-                )
-                : $this->htmlElement(
-                    'span',
-                    ['class' => 'sr-only'],
-                    $sLabelContent
-                )
+        if (!empty($options['margin'])) {
+            $classes[] = $this->getPrefixedClass($options['margin'], 'm');
+        }
+
+        $labelContent = $options['label'] ?? '';
+        $showLabel = !empty($options['show_label']);
+
+        $labelMarkup = $labelContent
+            ? $showLabel
+            ? $this->htmlElement(
+                'strong',
+                [],
+                $labelContent
+            )
+            : $this->htmlElement(
+                'span',
+                ['class' => 'sr-only'],
+                $labelContent
+            )
             : '';
 
-        $sPlacement = $aOptions['placement'] ?? null;
+        $placement = $options['placement'] ?? null;
 
-        switch ($sPlacement) {
-            case 'center':
-                if ($bShowLabel) {
-                    $aClasses[] = 'ml-auto';
-                }
-                break;
-            case 'right':
-                $aClasses[] = 'float-right';
-                break;
+        if ($placement == 'center') {
+            if ($showLabel) {
+                $classes[] = 'ml-auto';
+            }
+        } elseif ($placement == 'right') {
+            $classes[] = 'float-right';
         }
 
-        if (!$sLabelMarkup || ($sPlacement === 'center' && $bShowLabel)) {
-            $aAttributes['aria-hidden'] = 'true';
+        if (!$labelMarkup || ($placement === 'center' && $showLabel)) {
+            $attributes['aria-hidden'] = 'true';
         }
 
-        $sSpinnerMarkup = $this->htmlElement(
-            $aOptions['tag'] ?? 'div',
-            $this->setClassesToAttributes($aAttributes, $aClasses),
-            $sLabelMarkup && !($sPlacement === 'center' && $bShowLabel) ? $sLabelMarkup : ''
+        $spinnerMarkup = $this->htmlElement(
+            $options['tag'] ?? 'div',
+            $this->setClassesToAttributes($attributes, $classes),
+            $labelMarkup && !($placement === 'center' && $showLabel) ? $labelMarkup : ''
         );
 
-        if (!$sPlacement) {
-            return $sSpinnerMarkup;
+        if (!$placement) {
+            return $spinnerMarkup;
         }
 
-        $aClasses = [];
-        switch ($sPlacement) {
+        $classes = [];
+        switch ($placement) {
             case 'center':
-                $aClasses[] = 'd-flex';
-                if ($sLabelMarkup && $bShowLabel) {
-                    $sSpinnerMarkup = $sLabelMarkup . PHP_EOL . $sSpinnerMarkup;
-                    $aClasses[] = 'align-items-center';
+                $classes[] = 'd-flex';
+                if ($labelMarkup && $showLabel) {
+                    $spinnerMarkup = $labelMarkup . PHP_EOL . $spinnerMarkup;
+                    $classes[] = 'align-items-center';
                 } else {
-                    $aClasses[] = 'justify-content-center';
+                    $classes[] = 'justify-content-center';
                 }
+
                 break;
             case 'right':
-                $aClasses[] = 'clearfix';
+                $classes[] = 'clearfix';
                 break;
             case 'text-center':
-                $aClasses[] = 'text-center';
+                $classes[] = 'text-center';
                 break;
         }
 
         return $this->htmlElement(
             'div',
-            $this->setClassesToAttributes([], $aClasses),
-            $sSpinnerMarkup
+            $this->setClassesToAttributes([], $classes),
+            $spinnerMarkup
         );
     }
 }

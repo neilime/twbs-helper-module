@@ -8,8 +8,8 @@ return [
         [
             'title' => 'Image caps',
             'url' => '%bootstrap-url%/components/card/#image-caps',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->card([
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->card([
                     'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...']],
                     'title' => 'Card title',
                     'text' => [
@@ -19,7 +19,7 @@ return [
                     ],
                 ], ['class' => 'mb-3']) . PHP_EOL;
 
-                echo $oView->card([
+                echo $view->card([
                     'title' => 'Card title',
                     'text' => [
                         'This is a wider card with supporting text below as a natural lead-in to additional content. ' .
@@ -33,8 +33,8 @@ return [
         [
             'title' => 'Image overlays',
             'url' => '%bootstrap-url%/components/card/#image-overlays',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->card([
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->card([
                     'overlay' => [
                         'img' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...']],
                         'title' => 'Card title',

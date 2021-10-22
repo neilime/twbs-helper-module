@@ -8,15 +8,15 @@ return [
         [
             'title' => 'Overview',
             'url' => '%bootstrap-url%/components/pagination/#overview',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                 // Create a paginator with 4 pages
-                $oPaginator = new \Laminas\Paginator\Paginator(new \Laminas\Paginator\Adapter\ArrayAdapter(array_fill(
+                $paginator = new \Laminas\Paginator\Paginator(new \Laminas\Paginator\Adapter\ArrayAdapter(array_fill(
                     0,
                     30,
                     true
                 )));
 
-                echo $oView->paginationControl($oPaginator, null, null, [
+                echo $view->paginationControl($paginator, null, null, [
                     'attributes' => ['aria-label' => 'Page navigation example'],
                     'previousLink' => 'Previous',
                     'nextLink' => 'Next',
@@ -26,15 +26,15 @@ return [
         [
             'title' => 'Working with icons',
             'url' => '%bootstrap-url%/components/pagination/#working-with-icons',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                 // Create a paginator with 4 pages
-                $oPaginator = new \Laminas\Paginator\Paginator(new \Laminas\Paginator\Adapter\ArrayAdapter(array_fill(
+                $paginator = new \Laminas\Paginator\Paginator(new \Laminas\Paginator\Adapter\ArrayAdapter(array_fill(
                     0,
                     30,
                     true
                 )));
 
-                echo $oView->paginationControl($oPaginator, null, null, [
+                echo $view->paginationControl($paginator, null, null, [
                     'previousLink' => '«',
                     'nextLink' => '»',
                     'attributes' => ['aria-label' => 'Page navigation example'],
@@ -44,20 +44,20 @@ return [
         [
             'title' => 'Sizing',
             'url' => '%bootstrap-url%/components/pagination/#sizing',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                 // Create a paginator with 4 pages
-                $oPaginator = new \Laminas\Paginator\Paginator(new \Laminas\Paginator\Adapter\ArrayAdapter(array_fill(
+                $paginator = new \Laminas\Paginator\Paginator(new \Laminas\Paginator\Adapter\ArrayAdapter(array_fill(
                     0,
                     30,
                     true
                 )));
 
-                echo $oView->paginationControl($oPaginator, null, null, [
+                echo $view->paginationControl($paginator, null, null, [
                     'size' => 'lg',
                     'attributes' => ['aria-label' => 'Page navigation example'],
                 ]) . PHP_EOL;
 
-                echo $oView->paginationControl($oPaginator, null, null, [
+                echo $view->paginationControl($paginator, null, null, [
                     'size' => 'sm',
                     'attributes' => ['aria-label' => 'Page navigation example'],
                 ]);
@@ -66,22 +66,22 @@ return [
         [
             'title' => 'Alignment',
             'url' => '%bootstrap-url%/components/pagination/#alignment',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                 // Create a paginator with 4 pages
-                $oPaginator = new \Laminas\Paginator\Paginator(new \Laminas\Paginator\Adapter\ArrayAdapter(array_fill(
+                $paginator = new \Laminas\Paginator\Paginator(new \Laminas\Paginator\Adapter\ArrayAdapter(array_fill(
                     0,
                     30,
                     true
                 )));
 
-                echo $oView->paginationControl($oPaginator, null, null, [
+                echo $view->paginationControl($paginator, null, null, [
                     'alignment' => 'center',
                     'previousLink' => 'Previous',
                     'nextLink' => 'Next',
                     'attributes' => ['aria-label' => 'Page navigation example'],
                 ]) . PHP_EOL;
 
-                echo $oView->paginationControl($oPaginator, null, null, [
+                echo $view->paginationControl($paginator, null, null, [
                     'alignment' => 'end',
                     'previousLink' => 'Previous',
                     'nextLink' => 'Next',

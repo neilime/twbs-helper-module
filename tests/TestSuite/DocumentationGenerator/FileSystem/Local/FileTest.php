@@ -14,7 +14,7 @@ class FileTest extends \PHPUnit\Framework\TestCase
      */
     protected $root;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->root = \org\bovigo\vfs\vfsStream::setup('exampleDir');
 
@@ -23,59 +23,59 @@ class FileTest extends \PHPUnit\Framework\TestCase
 
     public function testFileExistsShouldReturnTrueWhenFileExists()
     {
-        $sFileName = 'test.txt';
-        $sFilePath = $this->root->url() . DIRECTORY_SEPARATOR . $sFileName;
+        $fileName = 'test.txt';
+        $filePath = $this->root->url() . DIRECTORY_SEPARATOR . $fileName;
         \org\bovigo\vfs\vfsStream::create([
-            $sFileName => 'test'
+            $fileName => 'test'
         ], $this->root);
-        $this->assertTrue($this->file->fileExists($sFilePath));
+        $this->assertTrue($this->file->fileExists($filePath));
     }
 
     public function testFileExistsShouldReturnFalseWhenFileDoesNotExists()
     {
-        $sFilePath = $this->root->url() . DIRECTORY_SEPARATOR . 'test.txt';
-        $this->assertFalse($this->file->fileExists($sFilePath));
+        $filePath = $this->root->url() . DIRECTORY_SEPARATOR . 'test.txt';
+        $this->assertFalse($this->file->fileExists($filePath));
     }
 
     public function testReadFile()
     {
-        $sFileName = 'test.txt';
-        $sFileContent = 'test content';
-        $sFilePath = $this->root->url() . DIRECTORY_SEPARATOR . $sFileName;
+        $fileName = 'test.txt';
+        $fileContent = 'test content';
+        $filePath = $this->root->url() . DIRECTORY_SEPARATOR . $fileName;
         \org\bovigo\vfs\vfsStream::create([
-            $sFileName => $sFileContent
+            $fileName => $fileContent
         ], $this->root);
-        $this->assertEquals($sFileContent, $this->file->readFile($sFilePath));
+        $this->assertEquals($fileContent, $this->file->readFile($filePath));
     }
 
     public function testWriteFile()
     {
-        $sFileName = 'test.txt';
-        $sFilePath = $this->root->url() . DIRECTORY_SEPARATOR . $sFileName;
-        $sContent = 'test content';
+        $fileName = 'test.txt';
+        $filePath = $this->root->url() . DIRECTORY_SEPARATOR . $fileName;
+        $content = 'test content';
 
-        $this->file->writeFile($sFilePath, $sContent);
+        $this->file->writeFile($filePath, $content);
 
-        $this->assertTrue($this->root->hasChild($sFileName));
+        $this->assertTrue($this->root->hasChild($fileName));
 
-        $this->assertEquals($sContent, $this->root->getChild($sFileName)->getContent());
+        $this->assertEquals($content, $this->root->getChild($fileName)->getContent());
     }
 
     public function testAppendFile()
     {
-        $sFileName = 'test.txt';
-        $sFilePath = $this->root->url() . DIRECTORY_SEPARATOR . $sFileName;
-        $sContent = 'test content';
+        $fileName = 'test.txt';
+        $filePath = $this->root->url() . DIRECTORY_SEPARATOR . $fileName;
+        $content = 'test content';
         \org\bovigo\vfs\vfsStream::create([
-            $sFileName => $sContent
+            $fileName => $content
         ], $this->root);
 
-        $sNewContent = 'test new content';
+        $newContent = 'test new content';
 
-        $this->file->appendFile($sFilePath, $sNewContent);
+        $this->file->appendFile($filePath, $newContent);
 
-        $this->assertTrue($this->root->hasChild($sFileName));
+        $this->assertTrue($this->root->hasChild($fileName));
 
-        $this->assertEquals($sContent . $sNewContent, $this->root->getChild($sFileName)->getContent());
+        $this->assertEquals($content . $newContent, $this->root->getChild($fileName)->getContent());
     }
 }

@@ -8,16 +8,16 @@ return [
         [
             'title' => 'Example',
             'url' => '%bootstrap-url%/components/alerts/#examples',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                 foreach (
                     [
-                    'primary', 'secondary', 'success', 'danger',
-                    'warning', 'info', 'light', 'dark',
-                    ] as $sVariant
+                        'primary', 'secondary', 'success', 'danger',
+                        'warning', 'info', 'light', 'dark',
+                    ] as $variant
                 ) {
-                    echo $oView->alert(
-                        'A simple ' . $sVariant . ' alert—check it out!',
-                        $sVariant
+                    echo $view->alert(
+                        'A simple ' . $variant . ' alert—check it out!',
+                        $variant
                     ) . PHP_EOL;
                 }
             },
@@ -25,18 +25,18 @@ return [
                 [
                     'title' => 'Link color',
                     'url' => '%bootstrap-url%/components/alerts/#link-color',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                         foreach (
                             [
-                            'primary', 'secondary', 'success', 'danger',
-                            'warning', 'info', 'light', 'dark',
-                            ] as $sVariant
+                                'primary', 'secondary', 'success', 'danger',
+                                'warning', 'info', 'light', 'dark',
+                            ] as $variant
                         ) {
-                            echo $oView->alert(
-                                'A simple ' . $sVariant . ' alert with ' .
+                            echo $view->alert(
+                                'A simple ' . $variant . ' alert with ' .
                                     '<a href="#" class="alert-link">an example link</a>. ' .
                                     'Give it a click if you like.',
-                                $sVariant
+                                $variant
                             ) . PHP_EOL;
                         }
                     },
@@ -44,9 +44,9 @@ return [
                 [
                     'title' => 'Additional content',
                     'url' => '%bootstrap-url%/components/alerts/#additional-content',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                         // Success
-                        echo $oView->alert(
+                        echo $view->alert(
                             '<p>Aww yeah, you successfully read this important alert message. ' .
                                 'This example text is going to run a bit longer so that you can see ' .
                                 'how spacing within an alert works with this kind of content.</p>' . PHP_EOL .
@@ -64,8 +64,8 @@ return [
                 [
                     'title' => 'Dismissing',
                     'url' => '%bootstrap-url%/components/alerts/#dismissing',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        echo $oView->alert(
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        echo $view->alert(
                             '<strong>Holy guacamole!</strong> You should check in on some of those fields below.',
                             [
                                 'variant' => 'warning',

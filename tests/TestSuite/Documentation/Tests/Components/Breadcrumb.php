@@ -8,12 +8,12 @@ return [
         [
             'title' => 'Example',
             'url' => '%bootstrap-url%/components/breadcrumb/#example',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->breadcrumbs(new \Laminas\Navigation\Navigation([
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->breadcrumbs(new \Laminas\Navigation\Navigation([
                     ['label' => 'Home', 'uri' => '/', 'active' => true,],
                 ]))->setMinDepth(0)  . PHP_EOL;
 
-                echo $oView->breadcrumbs(new \Laminas\Navigation\Navigation([
+                echo $view->breadcrumbs(new \Laminas\Navigation\Navigation([
                     [
                         'label' => 'Home', 'uri' => '/', 'pages' => [
                             ['label' => 'Library', 'uri' => '/library', 'active' => true],
@@ -21,7 +21,7 @@ return [
                     ],
                 ]))->setMinDepth(0) . PHP_EOL;
 
-                echo $oView->breadcrumbs(new \Laminas\Navigation\Navigation([
+                echo $view->breadcrumbs(new \Laminas\Navigation\Navigation([
                     [
                         'label' => 'Home', 'uri' => '/', 'pages' => [
                             [

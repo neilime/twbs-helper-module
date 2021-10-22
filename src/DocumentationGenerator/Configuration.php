@@ -25,15 +25,15 @@ class Configuration
     private $file;
 
     public function __construct(
-        $sRootDirPath,
-        $sBootstrapVersion,
-        $iMaxNestedDir,
-        \DocumentationGenerator\FileSystem\File $oFile
+        $rootDirPath,
+        $bootstrapVersion,
+        $maxNestedDir,
+        \DocumentationGenerator\FileSystem\File $file
     ) {
-        $this->rootDirPath = $sRootDirPath;
-        $this->bootstrapVersion = $sBootstrapVersion;
-        $this->maxNestedDir = $iMaxNestedDir;
-        $this->file = $oFile;
+        $this->rootDirPath = $rootDirPath;
+        $this->bootstrapVersion = $bootstrapVersion;
+        $this->maxNestedDir = $maxNestedDir;
+        $this->file = $file;
     }
 
     public function getRootDirPath()

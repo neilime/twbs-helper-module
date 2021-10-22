@@ -13,7 +13,7 @@ class CardTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
     public function testRenderCardHeaderNavWithoutContainer()
     {
         $this->expectExceptionMessage(
-            'nav[\'container\'] is undefined'
+            "nav['container'] is undefined"
         );
         $this->helper->__invoke(['nav' => ['wrong' => false]]);
     }
@@ -45,7 +45,7 @@ class CardTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
     public function testRenderCardOverlayWithoutImg()
     {
         $this->expectExceptionMessage(
-            'overlay[\'img\'] is undefined'
+            "overlay['img'] is undefined"
         );
         $this->helper->__invoke(['overlay' => ['wrong' => false]]);
     }

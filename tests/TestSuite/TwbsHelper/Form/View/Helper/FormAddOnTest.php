@@ -12,13 +12,13 @@ class FormAddOnTest extends \PHPUnit\Framework\TestCase
     /**
      * @see \PHPUnit\Framework\TestCase::setUp()
      */
-    public function setUp(): void
+    protected function setUp(): void
     {
-        $oViewHelperPluginManager = \TestSuite\Bootstrap::getServiceManager()->get('ViewHelperManager');
-        $oRenderer = new \Laminas\View\Renderer\PhpRenderer();
-        $this->formAddOnHelper = $oViewHelperPluginManager
+        $viewHelperPluginManager = \TestSuite\Bootstrap::getServiceManager()->get('ViewHelperManager');
+        $phpRenderer = new \Laminas\View\Renderer\PhpRenderer();
+        $this->formAddOnHelper = $viewHelperPluginManager
             ->get('formAddOn')
-            ->setView($oRenderer->setHelperPluginManager($oViewHelperPluginManager));
+            ->setView($phpRenderer->setHelperPluginManager($viewHelperPluginManager));
     }
 
     public function testInvokeWithoutArgumentsReturnSelf()

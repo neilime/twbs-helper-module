@@ -8,28 +8,28 @@ return [
         [
             'title' => 'Examples',
             'url' => '%bootstrap-url%/components/tooltips/#examples',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                 foreach (
                     [
                     'top' => 'Tooltip on top',
                     'right' => 'Tooltip on right',
                     'bottom' => 'Tooltip on bottom',
                     'left' => 'Tooltip on left',
-                    ] as $sPlacement => $sLabel
+                    ] as $placement => $label
                 ) {
-                    echo $oView->formButton()->renderSpec([
+                    echo $view->formButton()->renderSpec([
                         'name' => 'tooltip',
                         'options' => [
-                            'label' => $sLabel,
+                            'label' => $label,
                             'tooltip' => [
-                                'placement' => $sPlacement,
-                                'content' => $sLabel,
+                                'placement' => $placement,
+                                'content' => $label,
                             ],
                         ],
                     ]) . PHP_EOL;
                 }
 
-                echo $oView->formButton()->renderSpec([
+                echo $view->formButton()->renderSpec([
                     'name' => 'tooltip',
                     'options' => [
                         'label' => 'Tooltip with HTML',
@@ -41,8 +41,8 @@ return [
         [
             'title' => 'Disabled elements',
             'url' => '%bootstrap-url%/components/tooltips/#disabled-elements',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->formButton()->renderSpec([
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->formButton()->renderSpec([
                     'name' => 'tooltip',
                     'options' => [
                         'label' => 'Disabled button',

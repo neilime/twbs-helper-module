@@ -10,152 +10,153 @@ trait HtmlTrait
     protected $indentation = '    ';
 
     public function htmlElement(
-        string $sTag,
-        iterable $aAttributes = [],
-        string $sContent = null,
-        bool $bEscape = true
+        string $tag,
+        iterable $attributes = [],
+        string $content = null,
+        bool $escape = true
     ): string {
 
-        $sAttributes = $this->attributesToString($aAttributes, $sTag);
+        $attributes = $this->attributesToString($attributes, $tag);
 
-        $sElementContent = '<' . $sTag . $sAttributes;
-        if ($sContent === null) {
-            $sElementContent .= $this->getView()->plugin('HtmlTag')->getClosingBracket();
-            return $sElementContent;
+        $elementContent = '<' . $tag . $attributes;
+        if ($content === null) {
+            return $elementContent . $this->getView()->plugin('HtmlTag')->getClosingBracket();
         }
 
-        if ($bEscape && !$this->isHTML($sContent)) {
-            $sContent = $this->getView()->plugin('escapeHtml')->__invoke($sContent);
+        if ($escape && !$this->isHTML($content)) {
+            $content = $this->getView()->plugin('escapeHtml')->__invoke($content);
         }
 
-        $sTag = strtolower($sTag);
+        $tag = strtolower($tag);
 
-        $bForceIndentation = in_array(
-            $sTag,
+        $forceIndentation = in_array(
+            $tag,
             ['div', 'blockquote', 'figure', 'ul', 'fieldset', 'nav'],
             true
         );
 
         return sprintf(
             '<%s%s>%s</%s>',
-            $sTag,
-            $sAttributes,
-            $this->addProperIndentation($sContent, $bForceIndentation),
-            $sTag
+            $tag,
+            $attributes,
+            $this->addProperIndentation($content, $forceIndentation),
+            $tag
         );
     }
 
     public function addProperIndentation(
-        string $sContent,
-        bool $bForceIndentation = false,
-        string $sIndentation = null
+        string $content,
+        bool $forceIndentation = false,
+        string $indentation = null
     ): string {
 
-        if (!$sContent) {
-            return $sContent;
+        if (!$content) {
+            return $content;
         }
 
         // Divs must start on  new line
-        $sContent = preg_replace('/<\/div>([^\s].*)/', '</div>' . PHP_EOL . '$1', $sContent);
+        $content = preg_replace('/<\/div>([^\s].*)/', '</div>' . PHP_EOL . '$1', $content);
 
-        $aLines = explode(
+        $lines = explode(
             PHP_EOL,
-            $sContent
+            $content
         );
 
-        if (count($aLines) === 1 && !$bForceIndentation) {
-            return $sContent;
+        if (count($lines) === 1 && !$forceIndentation) {
+            return $content;
         }
 
-        if ($sIndentation === null) {
-            $sIndentation = $this->indentation;
+        if ($indentation === null) {
+            $indentation = $this->indentation;
         }
 
-        $sContent = '';
-        $bShouldIndent = true;
-        foreach ($aLines as $sLine) {
-            if ($sLine && $bShouldIndent) {
-                $sLine = $sIndentation . $sLine;
+        $content = '';
+        $shouldIndent = true;
+        foreach ($lines as $line) {
+            if ($line && $shouldIndent) {
+                $line = $indentation . $line;
             }
 
-            $bIsStartOfTextArea = !!preg_match('/<textarea[^>]*>/i', $sLine);
-            if ($bIsStartOfTextArea) {
-                $bShouldIndent = false;
+            $isStartOfTextArea = !!preg_match('/<textarea[^>]*>/i', $line);
+            if ($isStartOfTextArea) {
+                $shouldIndent = false;
             }
 
-            $bIsEndOfTextArea = !!preg_match('/<\/textarea[^>]*>/i', $sLine);
-            if ($bIsEndOfTextArea) {
-                $bShouldIndent = true;
+            $isEndOfTextArea = !!preg_match('/<\/textarea[^>]*>/i', $line);
+            if ($isEndOfTextArea) {
+                $shouldIndent = true;
             }
 
-            $sContent .= $sLine . PHP_EOL;
+            $content .= $line . PHP_EOL;
         }
 
-        return PHP_EOL . $sContent;
+        return PHP_EOL . $content;
     }
 
-    public function removeIndentation(string $sContent): string
+    public function removeIndentation(string $content): string
     {
-        return join(PHP_EOL, array_map('ltrim', explode(
+        return implode(PHP_EOL, array_map('ltrim', explode(
             PHP_EOL,
-            $sContent
+            $content
         )));
     }
 
-    protected function isHTML(string $sString): bool
+    protected function isHTML(string $string): bool
     {
-        return $sString !== strip_tags($sString);
+        return $string !== strip_tags($string);
     }
 
-    public function attributesToString(iterable $aAttributes, string $sTag): string
+    public function attributesToString(iterable $attributes, string $tag): string
     {
         // Clean attributes
-        if (!empty($aAttributes['class'])) {
-            $aAttributes = $this->setClassesToAttributes($aAttributes);
+        if (!empty($attributes['class'])) {
+            $attributes = $this->setClassesToAttributes($attributes);
         }
-        if (!empty($aAttributes['style'])) {
-            $aAttributes = $this->setStylesToAttributes($aAttributes);
-        }
-        if (!is_array($aAttributes)) {
-            $aAttributes = iterator_to_array($aAttributes);
-        }
-        ksort($aAttributes);
 
-        $aPossibleHelpers = [
+        if (!empty($attributes['style'])) {
+            $attributes = $this->setStylesToAttributes($attributes);
+        }
+
+        if (!is_array($attributes)) {
+            $attributes = iterator_to_array($attributes);
+        }
+
+        ksort($attributes);
+
+        $possibleHelpers = [
             [$this, 'createAttributesString'],
             [$this, 'htmlAttribs'],
         ];
-        switch ($sTag) {
-            case 'button':
-                array_unshift(
-                    $aPossibleHelpers,
-                    [$this->getView()->plugin('formButton'), 'createAttributesString']
-                );
-                break;
+        if ($tag === 'button') {
+            array_unshift(
+                $possibleHelpers,
+                [$this->getView()->plugin('formButton'), 'createAttributesString']
+            );
         }
 
-        foreach ($aPossibleHelpers as $aPossibleHelper) {
-            if (!is_callable($aPossibleHelper)) {
+        foreach ($possibleHelpers as $possibleHelper) {
+            if (!is_callable($possibleHelper)) {
                 continue;
             }
 
             try {
-                $sMarkup = trim(call_user_func($aPossibleHelper, $aAttributes));
-                return $sMarkup ? ' ' . $sMarkup : '';
-            } catch (\Throwable $oException) {
-                if ($oException instanceof \BadMethodCallException) {
+                $markup = trim(call_user_func($possibleHelper, $attributes));
+                return $markup ? ' ' . $markup : '';
+            } catch (\Throwable $throwable) {
+                if ($throwable instanceof \BadMethodCallException) {
                     continue;
                 }
-                throw $oException;
+
+                throw $throwable;
             }
         }
 
-        $oHelper = $this->getView()->plugin('HtmlTag');
-        $oReflectionClass = new \ReflectionClass($oHelper);
-        $oMethod = $oReflectionClass->getMethod('htmlAttribs');
-        $oMethod->setAccessible(true);
+        $helper = $this->getView()->plugin('HtmlTag');
+        $reflectionClass = new \ReflectionClass($helper);
+        $reflectionMethod = $reflectionClass->getMethod('htmlAttribs');
+        $reflectionMethod->setAccessible(true);
 
-        $sMarkup = trim($oMethod->invoke($oHelper, $aAttributes));
-        return $sMarkup ? ' ' . $sMarkup : '';
+        $markup = trim($reflectionMethod->invoke($helper, $attributes));
+        return $markup ? ' ' . $markup : '';
     }
 }

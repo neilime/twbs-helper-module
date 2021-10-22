@@ -8,10 +8,10 @@ return [
         [
             'title' => 'Custom select',
             'url' => '%bootstrap-url%/components/input-group/#custom-select',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                $oFactory = new \Laminas\Form\Factory();
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                $factory = new \Laminas\Form\Factory();
 
-                echo $oView->formElement($oFactory->create([
+                echo $view->formElement($factory->create([
                     'name' => 'select_label_prepend',
                     'type' => 'select',
                     'options' => [
@@ -31,7 +31,7 @@ return [
                     ],
                 ])->setValue('')) . PHP_EOL;
 
-                echo $oView->formElement($oFactory->create([
+                echo $view->formElement($factory->create([
                     'name' => 'select_label_append',
                     'type' => 'select',
                     'options' => [
@@ -51,7 +51,7 @@ return [
                     ],
                 ])->setValue('')) . PHP_EOL;
 
-                echo $oView->formElement($oFactory->create([
+                echo $view->formElement($factory->create([
                     'name' => 'select_button_prepend',
                     'type' => 'select',
                     'options' => [
@@ -81,7 +81,7 @@ return [
                 ])->setValue('')) . PHP_EOL;
 
 
-                echo $oView->formElement($oFactory->create([
+                echo $view->formElement($factory->create([
                     'name' => 'select_button_append',
                     'type' => 'select',
                     'options' => [
@@ -113,10 +113,10 @@ return [
         [
             'title' => 'Custom file input',
             'url' => '%bootstrap-url%/components/input-group/#custom-file-input',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                $oFactory = new \Laminas\Form\Factory();
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                $factory = new \Laminas\Form\Factory();
 
-                echo $oView->formRow($oFactory->create([
+                echo $view->formRow($factory->create([
                     'name' => 'custom_file_label_prepend',
                     'type' => 'file',
                     'options' => [
@@ -132,7 +132,7 @@ return [
                     ],
                 ])) . PHP_EOL;
 
-                echo $oView->formRow($oFactory->create([
+                echo $view->formRow($factory->create([
                     'name' => 'custom_file_label_append',
                     'type' => 'file',
                     'options' => [
@@ -148,7 +148,7 @@ return [
                     ],
                 ])) . PHP_EOL;
 
-                echo $oView->formRow($oFactory->create([
+                echo $view->formRow($factory->create([
                     'name' => 'custom_file_button_prepend',
                     'type' => 'file',
                     'options' => [
@@ -172,7 +172,7 @@ return [
                     ],
                 ])) . PHP_EOL;
 
-                echo $oView->formRow($oFactory->create([
+                echo $view->formRow($factory->create([
                     'name' => 'custom_file_button_append',
                     'type' => 'file',
                     'options' => [

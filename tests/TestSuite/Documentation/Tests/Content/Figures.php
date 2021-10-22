@@ -7,8 +7,8 @@ return [
     'tests' => [
         [
             'title' => 'Basic',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->figure(
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->figure(
                     '/twbs-helper-module/img/docs/400x300.svg',
                     'A caption for the above image.',
                     [],
@@ -22,9 +22,9 @@ return [
 
         ],
         [
-            'title' => 'Aligning figure\'s caption',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->figure(
+            'title' => "Aligning figure's caption",
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->figure(
                     '/twbs-helper-module/img/docs/400x300.svg',
                     'A caption for the above image.',
                     [],

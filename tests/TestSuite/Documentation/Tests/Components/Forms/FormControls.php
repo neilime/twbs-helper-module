@@ -4,10 +4,10 @@
 return [
     'title' => 'Form controls',
     'url' => '%bootstrap-url%/components/forms/#form-controls',
-    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-        $oFactory = new \Laminas\Form\Factory();
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+        $factory = new \Laminas\Form\Factory();
 
-        echo $oView->form($oFactory->create([
+        echo $view->form($factory->create([
             'type' => 'form',
             'elements' => [
                 [
@@ -94,84 +94,84 @@ return [
         [
             'title' => 'Sizing',
             'url' => '%bootstrap-url%/components/forms/#sizing',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                $oFactory = new \Laminas\Form\Factory();
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                $factory = new \Laminas\Form\Factory();
 
                 // Render large input
-                $oElement = $oFactory->create([
+                $element = $factory->create([
                     'name' => 'lg',
                     'type' => 'text',
                     'options' => ['size' => 'lg'],
                     'attributes' => ['placeholder' => '.form-control-lg'],
                 ]);
-                echo $oView->formElement($oElement) . PHP_EOL . '<br/>' . PHP_EOL;
+                echo $view->formElement($element) . PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Render default input
-                $oElement = $oFactory->create([
+                $element = $factory->create([
                     'name' => 'default',
                     'type' => 'text',
                     'attributes' => ['placeholder' => 'Default input'],
                 ]);
-                echo $oView->formElement($oElement) . PHP_EOL . '<br/>' . PHP_EOL;
+                echo $view->formElement($element) . PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Render small input
-                $oElement = $oFactory->create([
+                $element = $factory->create([
                     'name' => 'sm',
                     'type' => 'text',
                     'options' => ['size' => 'sm'],
                     'attributes' => ['placeholder' => '.form-control-sm'],
                 ]);
-                echo $oView->formElement($oElement) . PHP_EOL . '<br/>' . PHP_EOL;
+                echo $view->formElement($element) . PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Render large select
-                $oElement = $oFactory->create([
+                $element = $factory->create([
                     'name' => 'lg',
                     'type' => 'select',
                     'options' => ['size' => 'lg', 'value_options' => ['Large select']],
                     'attributes' => ['placeholder' => '.form-control-lg'],
                 ]);
-                echo $oView->formElement($oElement) . PHP_EOL . '<br/>' . PHP_EOL;
+                echo $view->formElement($element) . PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Render default select
-                $oElement = $oFactory->create([
+                $element = $factory->create([
                     'name' => 'default',
                     'type' => 'select',
                     'options' => ['value_options' => ['Default select']],
                     'attributes' => ['placeholder' => 'Default input'],
                 ]);
-                echo $oView->formElement($oElement) . PHP_EOL . '<br/>' . PHP_EOL;
+                echo $view->formElement($element) . PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Render small select
-                $oElement = $oFactory->create([
+                $element = $factory->create([
                     'name' => 'sm',
                     'type' => 'select',
                     'options' => ['size' => 'sm', 'value_options' => ['Small select']],
                     'attributes' => ['placeholder' => '.form-control-sm'],
                 ]);
-                echo $oView->formElement($oElement) . PHP_EOL . '<br/>' . PHP_EOL;
+                echo $view->formElement($element) . PHP_EOL . '<br/>' . PHP_EOL;
             },
         ],
         [
             'title' => 'Readonly',
             'url' => '%bootstrap-url%/components/forms/#readonly',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                 // Render element
-                $oFactory = new \Laminas\Form\Factory();
-                $oElement = $oFactory->create([
+                $factory = new \Laminas\Form\Factory();
+                $element = $factory->create([
                     'name' => 'readonly-input',
                     'type' => 'text',
                     'attributes' => ['readonly' => true, 'placeholder' => 'Readonly input here...'],
                 ]);
-                echo $oView->formElement($oElement);
+                echo $view->formElement($element);
             },
         ],
         [
             'title' => 'Readonly plain text',
             'url' => '%bootstrap-url%/components/forms/#readonly-plain-text',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                $oFactory = new \Laminas\Form\Factory();
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                $factory = new \Laminas\Form\Factory();
                 // Render horizontal form
-                $oForm = $oFactory->create([
+                $form = $factory->create([
                     'type' => 'form',
                     'options' => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL],
                     'elements' => [
@@ -208,12 +208,12 @@ return [
                     ],
                 ]);
 
-                echo $oView->form($oForm);
+                echo $view->form($form);
 
                 echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 // Render inline form
-                echo $oView->form($oFactory->create([
+                echo $view->form($factory->create([
                     'type' => 'form',
                     'options' => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE],
                     'elements' => [

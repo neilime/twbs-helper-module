@@ -4,10 +4,10 @@
 return [
     'title' => 'Buttons with dropdowns',
     'url' => '%bootstrap-url%/components/input-group/#buttons-with-dropdowns',
-    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-        $oFactory = new \Laminas\Form\Factory();
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+        $factory = new \Laminas\Form\Factory();
 
-        echo $oView->formRow($oFactory->create([
+        echo $view->formRow($factory->create([
             'name' => 'dropdown-prepend',
             'type' => 'text',
             'options' => [
@@ -35,7 +35,7 @@ return [
             ],
         ])) . PHP_EOL;
 
-        echo $oView->formRow($oFactory->create([
+        echo $view->formRow($factory->create([
             'name' => 'dropdown-append',
             'type' => 'text',
             'options' => [

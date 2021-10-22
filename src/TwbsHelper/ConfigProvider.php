@@ -15,6 +15,7 @@ class ConfigProvider
      * Path to the module config
      *
      * @const string
+     * @var string
      */
     private const MODULE_CONFIG_PATH = __DIR__ . '/../../config/module.config.php';
 
@@ -23,7 +24,7 @@ class ConfigProvider
      *
      * @var array
      */
-    protected $moduleConfig;
+    protected $moduleConfig = [];
 
     /**
      * Returns the configuration array

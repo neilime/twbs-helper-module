@@ -12,21 +12,21 @@ class FormElementTest extends \PHPUnit\Framework\TestCase
     /**
      * @var \Laminas\Form\Form
      */
-    private $testform;
+    private $form;
 
     /**
      * @see \PHPUnit\Framework\TestCase::setUp()
      */
-    public function setUp(): void
+    protected function setUp(): void
     {
-        $oViewHelperPluginManager = \TestSuite\Bootstrap::getServiceManager()->get('ViewHelperManager');
-        $oRenderer = new \Laminas\View\Renderer\PhpRenderer();
-        $this->formElementHelper = $oViewHelperPluginManager
+        $viewHelperPluginManager = \TestSuite\Bootstrap::getServiceManager()->get('ViewHelperManager');
+        $phpRenderer = new \Laminas\View\Renderer\PhpRenderer();
+        $this->formElementHelper = $viewHelperPluginManager
             ->get('formElement')
-            ->setView($oRenderer->setHelperPluginManager($oViewHelperPluginManager));
+            ->setView($phpRenderer->setHelperPluginManager($viewHelperPluginManager));
 
-        $this->testform = new \Laminas\Form\Form();
-        $this->testform->add([
+        $this->form = new \Laminas\Form\Form();
+        $this->form->add([
             'name' => 'email',
             'id' => 'email',
             'type' => \Laminas\Form\Element\Email::class,
@@ -42,10 +42,10 @@ class FormElementTest extends \PHPUnit\Framework\TestCase
 
     public function testRenderElement()
     {
-        $oElement = $this->testform->get('email');
+        $element = $this->form->get('email');
 
         $this->assertEquals(
-            $this->formElementHelper->render($oElement),
+            $this->formElementHelper->render($element),
             '<input type="email" name="email" maxlength="254" class="form-control" value=""/>'
         );
     }

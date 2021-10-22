@@ -6,22 +6,21 @@ class UrlPrinter extends \DocumentationGenerator\UsagePage\Printer\AbstractPrint
 {
     private static $BOOTSTRAP_URL = 'https://getbootstrap.com/docs/';
 
-    public function getContentToPrint()
+    protected function getContentToPrint()
     {
         if (!$this->pageExists()) {
             return "";
         }
 
-        $sUrl = $this->testConfig->url;
+        $url = $this->testConfig->url;
 
-        if (!$sUrl) {
+        if (!$url) {
             return "";
         }
 
-        $sBootstrapUrl = self::$BOOTSTRAP_URL . $this->configuration->getBootstrapVersion();
-        $sUrl = str_replace('%bootstrap-url%', $sBootstrapUrl, $sUrl);
-        $sUrl = '[Twitter bootstrap Documentation](' . $sUrl . ')' . PHP_EOL;
+        $bootstrapUrl = self::$BOOTSTRAP_URL . $this->configuration->getBootstrapVersion();
+        $url = str_replace('%bootstrap-url%', $bootstrapUrl, $url);
 
-        return $sUrl;
+        return '[Twitter bootstrap Documentation](' . $url . ')' . PHP_EOL;
     }
 }

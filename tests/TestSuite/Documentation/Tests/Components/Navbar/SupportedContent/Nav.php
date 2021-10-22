@@ -4,8 +4,8 @@
 return [
     'title' => 'Nav',
     'url' => '%bootstrap-url%/components/navbar/#nav',
-    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-        echo $oView->navigation()->navbar()->render(
+    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+        echo $view->navigation()->navbar()->render(
             new \Laminas\Navigation\Navigation([
                 [
                     'label' => 'Home <span class="sr-only">(current)</span>',
@@ -25,7 +25,7 @@ return [
         echo PHP_EOL . '<br/>' . PHP_EOL;
 
         // Avoid the list-based approach
-        echo $oView->navigation()->navbar()->render(
+        echo $view->navigation()->navbar()->render(
             new \Laminas\Navigation\Navigation([
                 [
                     'label' => 'Home <span class="sr-only">(current)</span>',
@@ -45,7 +45,7 @@ return [
 
         echo PHP_EOL . '<br/>' . PHP_EOL;
 
-        echo $oView->navigation()->navbar()->render(
+        echo $view->navigation()->navbar()->render(
             new \Laminas\Navigation\Navigation([
                 [
                     'label' => 'Home <span class="sr-only">(current)</span>',
@@ -55,7 +55,7 @@ return [
                 ['label' => 'Features', 'uri' => '#'],
                 ['label' => 'Pricing', 'uri' => '#'],
                 [
-                    'type' => '\TwbsHelper\Navigation\Page\DropdownPage',
+                    'type' => \TwbsHelper\Navigation\Page\DropdownPage::class,
                     'label' => 'Dropdown link',
                     'dropdown' => [
                         'items' => [

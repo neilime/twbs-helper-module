@@ -8,15 +8,15 @@ return [
         [
             'title' => 'Using utilities',
             'url' => '%bootstrap-url%/components/card/#using-utilities',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
 
-                echo $oView->card([
+                echo $view->card([
                     'title' => 'Card title',
                     'text' => 'With supporting text below as a natural lead-in to additional content.',
                     '<a href="#" class="btn btn-primary">Button</a>',
                 ], ['class' => 'w-75']) . PHP_EOL;
 
-                echo $oView->card([
+                echo $view->card([
                     'title' => 'Card title',
                     'text' => 'With supporting text below as a natural lead-in to additional content.',
                     '<a href="#" class="btn btn-primary">Button</a>',
@@ -26,8 +26,8 @@ return [
         [
             'title' => 'Using custom CSS',
             'url' => '%bootstrap-url%/components/card/#using-custom-css',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->card([
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->card([
                     'title' => 'Special title treatment',
                     'text' => 'With supporting text below as a natural lead-in to additional content.',
                     '<a href="#" class="btn btn-primary">Go somewhere</a>',

@@ -4,77 +4,80 @@ namespace TwbsHelper\View\Helper;
 
 trait StyleAttributeTrait
 {
-    protected function getStylesAttribute(string $sStyleAttribute, $bCleanStyles = true): array
+    protected function getStylesAttribute(string $styleAttribute, $cleanStyles = true): array
     {
-        $aStyles = [];
-        foreach (
-            array_map(
-                function ($sStyle) {
-                    return explode(':', $sStyle);
-                },
-                explode(';', $sStyleAttribute)
-            ) as $aStyle
-        ) {
-            if (count($aStyle) !== 2) {
+        $styles = array_map(
+            function ($style) {
+                return explode(':', $style);
+            },
+            explode(';', $styleAttribute)
+        );
+
+        $parsedStyles = [];
+        foreach ($styles as $style) {
+            if (count($style) !== 2) {
                 continue;
             }
-            $aStyles[$aStyle[0]] = $aStyle[1];
+
+            $parsedStyles[$style[0]] = $style[1];
         }
 
-        return $bCleanStyles ? $this->cleanStylesAttribute($aStyles) : $aStyles;
+        return $cleanStyles ? $this->cleanStylesAttribute($parsedStyles) : $parsedStyles;
     }
 
     protected function setStylesToElement(
-        \Laminas\Form\ElementInterface $oElement,
-        iterable $aAddStyles = [],
-        iterable $aRemoveStyles = []
+        \Laminas\Form\ElementInterface $element,
+        iterable $addStyles = [],
+        iterable $removeStyles = []
     ): \Laminas\Form\ElementInterface {
-        return $oElement->setAttributes(
+        return $element->setAttributes(
             $this->setStylesToAttributes(
-                $oElement->getAttributes(),
-                $aAddStyles,
-                $aRemoveStyles
+                $element->getAttributes(),
+                $addStyles,
+                $removeStyles
             )
         );
     }
 
     public function setStylesToAttributes(
-        iterable $aAttributes,
-        iterable $aAddStyles = [],
-        iterable $aRemoveStyles = []
+        iterable $attributes,
+        iterable $addStyles = [],
+        iterable $removeStyles = []
     ): iterable {
-        $aStyles = $this->addStylesAttribute($aAttributes['style'] ?? '', $aAddStyles);
-        if ($aStyles) {
-            $aStyles = array_diff_key(
-                $aStyles,
-                is_array($aRemoveStyles) ? $aRemoveStyles : iterator_to_array($aRemoveStyles)
+        $styles = $this->addStylesAttribute($attributes['style'] ?? '', $addStyles);
+        if ($styles) {
+            $styles = array_diff_key(
+                $styles,
+                is_array($removeStyles) ? $removeStyles : iterator_to_array($removeStyles)
             );
 
-            $sStyles = '';
-            foreach ($aStyles as $sKey => $sStyle) {
-                $sStyles .= $sKey . ': ' . $sStyle . ';';
+            $stylesContent = '';
+            foreach ($styles as $key => $style) {
+                $stylesContent .= $key . ': ' . $style . ';';
             }
 
-            $aAttributes['style'] = $sStyles;
+            $attributes['style'] = $stylesContent;
         }
-        return $aAttributes;
+
+        return $attributes;
     }
 
-    protected function addStylesAttribute(string $sStyleAttribute, iterable $aStyles): array
+    protected function addStylesAttribute(string $styleAttribute, iterable $styles): array
     {
         return array_merge(
-            $this->getStylesAttribute($sStyleAttribute),
-            $this->cleanStylesAttribute($aStyles)
+            $this->getStylesAttribute($styleAttribute),
+            $this->cleanStylesAttribute($styles)
         );
     }
 
-    protected function cleanStylesAttribute(iterable $aStyles): array
+    protected function cleanStylesAttribute(iterable $styles): array
     {
-        $aCleanedStyles = [];
-        foreach ($aStyles as $sKey => $sValue) {
-            $aCleanedStyles[strtolower(trim($sKey))] = trim($sValue);
+        $cleanedStyles = [];
+        foreach ($styles as $key => $value) {
+            $cleanedStyles[strtolower(trim($key))] = trim($value);
         }
-        ksort($aCleanedStyles);
-        return $aCleanedStyles;
+
+        ksort($cleanedStyles);
+        return $cleanedStyles;
     }
 }

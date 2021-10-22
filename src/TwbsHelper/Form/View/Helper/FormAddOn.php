@@ -15,153 +15,153 @@ class FormAddOn extends \Laminas\Form\View\Helper\AbstractHelper
     protected $formFactory;
 
     /**
-     * @param \Laminas\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface $element
      * @return \TwbsHelper\Form\View\Helper\FormAddOn|string
      */
-    public function __invoke(\Laminas\Form\ElementInterface $oElement = null, string $sContent = '')
+    public function __invoke(\Laminas\Form\ElementInterface $element = null, string $content = '')
     {
-        return $oElement ? $this->render($oElement, $sContent) : $this;
+        return $element ? $this->render($element, $content) : $this;
     }
 
-    public function render(\Laminas\Form\ElementInterface $oElement = null, string $sContent = ''): string
+    public function render(\Laminas\Form\ElementInterface $element = null, string $content = ''): string
     {
         // Addon
-        $bHasAddOn = false;
-        $sAddOnId = $oElement->getAttribute('aria-describedby');
+        $hasAddOn = false;
+        $addOnId = $element->getAttribute('aria-describedby');
 
-        foreach ([self::POSITION_APPEND, self::POSITION_PREPEND] as $sAddOnPosition) {
-            if ($aAddOnOptions = $oElement->getOption('add_on_' . $sAddOnPosition)) {
-                $bHasAddOn = true;
+        foreach ([self::POSITION_APPEND, self::POSITION_PREPEND] as $addOnPosition) {
+            if ($addOnOptions = $element->getOption('add_on_' . $addOnPosition)) {
+                $hasAddOn = true;
 
-                $aAttributes = ['class' => 'input-group-' . $sAddOnPosition];
+                $attributes = ['class' => 'input-group-' . $addOnPosition];
 
                 // Define global add-on id based on element's aria-describedby
-                if ($sAddOnId && \Laminas\Stdlib\ArrayUtils::isList($aAddOnOptions)) {
-                    $aAttributes['id'] = $sAddOnId;
+                if ($addOnId && \Laminas\Stdlib\ArrayUtils::isList($addOnOptions)) {
+                    $attributes['id'] = $addOnId;
                 }
 
-                $sAddOnContent = $this->htmlElement(
+                $addOnContent = $this->htmlElement(
                     'div',
-                    $aAttributes,
-                    $this->renderAddOn($aAddOnOptions, $oElement, $sAddOnId)
+                    $attributes,
+                    $this->renderAddOn($addOnOptions, $element, $addOnId)
                 );
 
-                if ($sAddOnPosition === self::POSITION_APPEND) {
-                    $sContent .= ($sContent ? PHP_EOL : '') . $sAddOnContent;
+                if ($addOnPosition === self::POSITION_APPEND) {
+                    $content .= ($content ? PHP_EOL : '') . $addOnContent;
                 } else {
-                    $sContent = $sAddOnContent . ($sContent ? PHP_EOL . $sContent : '');
+                    $content = $addOnContent . ($content ? PHP_EOL . $content : '');
                 }
             }
         }
 
-        if (!$bHasAddOn) {
-            return $sContent;
+        if (!$hasAddOn) {
+            return $content;
         }
 
-        $aInputGroupClasses = ['input-group'];
+        $inputGroupClasses = ['input-group'];
 
         // Input group size
-        if ($sSize = $oElement->getOption('size')) {
-            $aInputGroupClasses[] = $this->getSizeClass($sSize, 'input-group');
+        if ($size = $element->getOption('size')) {
+            $inputGroupClasses[] = $this->getSizeClass($size, 'input-group');
         }
 
         return $this->htmlElement(
             'div',
             $this->setClassesToAttributes(
                 [
-                    'class' => $oElement->getOption('input_group_class'),
+                    'class' => $element->getOption('input_group_class'),
                 ],
-                $aInputGroupClasses
+                $inputGroupClasses
             ),
-            $sContent
+            $content
         );
     }
 
     /**
      * Render add-on markup
      *
-     * @param \Laminas\Form\ElementInterface|array|string $aAddOnOptions
-     * @param \Laminas\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface|array|string $addOnOptions
+     * @param \Laminas\Form\ElementInterface $element
      * @throws \InvalidArgumentException
      * @throws \LogicException
      * @return string
      */
     protected function renderAddOn(
-        $aAddOnOptions,
-        \Laminas\Form\ElementInterface $oElement,
-        string $sAddOnId = null
+        $addOnOptions,
+        \Laminas\Form\ElementInterface $element,
+        string $addOnId = null
     ): string {
-        if ($aAddOnOptions instanceof \Laminas\Form\ElementInterface) {
-            $aAddOnOptions = ['element' => $aAddOnOptions];
-        } elseif (is_string($aAddOnOptions)) {
-            $aAddOnOptions = ['text' => $aAddOnOptions];
+        if ($addOnOptions instanceof \Laminas\Form\ElementInterface) {
+            $addOnOptions = ['element' => $addOnOptions];
+        } elseif (is_string($addOnOptions)) {
+            $addOnOptions = ['text' => $addOnOptions];
         }
 
-        if (\Laminas\Stdlib\ArrayUtils::isList($aAddOnOptions)) {
-            $sContent = '';
-            foreach ($aAddOnOptions as $aAddOnOptionsTmp) {
-                $sContent .= ($sContent ? PHP_EOL : '') . $this->renderAddOn(
-                    $aAddOnOptionsTmp,
-                    $oElement
+        if (\Laminas\Stdlib\ArrayUtils::isList($addOnOptions)) {
+            $content = '';
+            foreach ($addOnOptions as $addOnOptionsTmp) {
+                $content .= ($content ? PHP_EOL : '') . $this->renderAddOn(
+                    $addOnOptionsTmp,
+                    $element
                 );
             }
-            return $sContent;
+            return $content;
         }
 
         // Define add-on id based on element's aria-describedby
-        if ($sAddOnId && !isset($aAddOnOptions['attributes']['id'])) {
-            $aAddOnOptions['attributes']['id'] = $sAddOnId;
+        if ($addOnId && !isset($addOnOptions['attributes']['id'])) {
+            $addOnOptions['attributes']['id'] = $addOnId;
         }
 
-        return $this->renderContent($aAddOnOptions, $oElement);
+        return $this->renderContent($addOnOptions, $element);
     }
 
-    protected function renderContent(array $aAddOnOptions, \Laminas\Form\ElementInterface $oElement): string
+    protected function renderContent(array $addOnOptions, \Laminas\Form\ElementInterface $element): string
     {
-        $aAttributes = $aAddOnOptions['attributes'] ?? [];
+        $attributes = $addOnOptions['attributes'] ?? [];
 
         switch (true) {
-            case isset($aAddOnOptions['text']):
-                if (!is_string($aAddOnOptions['text'])) {
+            case isset($addOnOptions['text']):
+                if (!is_string($addOnOptions['text'])) {
                     throw new \InvalidArgumentException(sprintf(
                         '"text" option expects a string, "%s" given',
-                        is_object($aAddOnOptions['text'])
-                            ? get_class($aAddOnOptions['text'])
-                            : gettype($aAddOnOptions['text'])
+                        is_object($addOnOptions['text'])
+                            ? get_class($addOnOptions['text'])
+                            : gettype($addOnOptions['text'])
                     ));
                 }
                 return $this->renderText(
-                    $aAddOnOptions['text'],
-                    $aAttributes
+                    $addOnOptions['text'],
+                    $attributes
                 );
 
-            case isset($aAddOnOptions['label']):
-                if (!is_string($aAddOnOptions['label'])) {
+            case isset($addOnOptions['label']):
+                if (!is_string($addOnOptions['label'])) {
                     throw new \InvalidArgumentException(sprintf(
                         '"label" option expects a string, "%s" given',
-                        is_object($aAddOnOptions['label'])
-                            ? get_class($aAddOnOptions['label'])
-                            : gettype($aAddOnOptions['label'])
+                        is_object($addOnOptions['label'])
+                            ? get_class($addOnOptions['label'])
+                            : gettype($addOnOptions['label'])
                     ));
                 }
 
                 return $this->renderLabel(
-                    $aAddOnOptions['label'],
-                    $aAttributes,
-                    $oElement
+                    $addOnOptions['label'],
+                    $attributes,
+                    $element
                 );
 
-            case isset($aAddOnOptions['element']):
+            case isset($addOnOptions['element']):
                 if (
-                    is_iterable($aAddOnOptions['element'])
-                    && !($aAddOnOptions['element'] instanceof \Laminas\Form\ElementInterface)
+                    is_iterable($addOnOptions['element'])
+                    && !($addOnOptions['element'] instanceof \Laminas\Form\ElementInterface)
                 ) {
-                    $aAddOnOptions['element'] = $this->createElement($aAddOnOptions['element']);
+                    $addOnOptions['element'] = $this->createElement($addOnOptions['element']);
                 }
 
                 return $this->renderElement(
-                    $aAddOnOptions['element'],
-                    $aAttributes
+                    $addOnOptions['element'],
+                    $attributes
                 );
 
             default:
@@ -169,86 +169,86 @@ class FormAddOn extends \Laminas\Form\View\Helper\AbstractHelper
         }
     }
 
-    protected function renderText(string $sAddonText, array $aAttributes): string
+    protected function renderText(string $addonText, array $attributes): string
     {
-        $oTranslator = $this->getTranslator();
-        if ($oTranslator) {
-            $sAddonText =  $oTranslator->translate(
-                $sAddonText,
+        $translator = $this->getTranslator();
+        if ($translator) {
+            $addonText =  $translator->translate(
+                $addonText,
                 $this->getTranslatorTextDomain()
             );
         }
-        return $this->renderAddOnElement($sAddonText, $aAttributes);
+        return $this->renderAddOnElement($addonText, $attributes);
     }
 
     protected function renderLabel(
-        string $sAddonLabel,
-        array $aAttributes,
-        \Laminas\Form\ElementInterface $oElement
+        string $addonLabel,
+        array $attributes,
+        \Laminas\Form\ElementInterface $element
     ): string {
         return $this->getView()->plugin('formLabel')->__invoke($this->createElement([
-            'name' => $oElement->getName(),
+            'name' => $element->getName(),
             'options' => [
-                'label' => $sAddonLabel,
+                'label' => $addonLabel,
                 'label_attributes' => $this->setClassesToAttributes(
-                    $aAttributes,
+                    $attributes,
                     ['input-group-text']
                 ),
             ],
-            'attributes' => ['id' => $oElement->getAttribute('id')],
+            'attributes' => ['id' => $element->getAttribute('id')],
         ]));
     }
 
     /**
-     * @param \Laminas\Form\ElementInterface $oElement
+     * @param \Laminas\Form\ElementInterface $element
      * @return string
      */
-    protected function renderElement(\Laminas\Form\ElementInterface $oElement, array $aAttributes): string
+    protected function renderElement(\Laminas\Form\ElementInterface $element, array $attributes): string
     {
         // Set options to improve rendering
-        if ($aDropdownOptions = $oElement->getOption('dropdown')) {
-            if (\Laminas\Stdlib\ArrayUtils::isList($aDropdownOptions)) {
-                $oElement->setOption('dropdown', [
-                    'items' => $aDropdownOptions,
+        if ($dropdownOptions = $element->getOption('dropdown')) {
+            if (\Laminas\Stdlib\ArrayUtils::isList($dropdownOptions)) {
+                $element->setOption('dropdown', [
+                    'items' => $dropdownOptions,
                     'disable_container' => true,
                 ]);
-            } elseif (!isset($aDropdownOptions['disable_container'])) {
-                $aDropdownOptions['disable_container'] = true;
-                $oElement->setOption('dropdown', $aDropdownOptions);
+            } elseif (!isset($dropdownOptions['disable_container'])) {
+                $dropdownOptions['disable_container'] = true;
+                $element->setOption('dropdown', $dropdownOptions);
             }
         }
 
-        $oElement->setAttributes(\Laminas\Stdlib\ArrayUtils::merge(
-            $aAttributes,
-            $oElement->getAttributes()
+        $element->setAttributes(\Laminas\Stdlib\ArrayUtils::merge(
+            $attributes,
+            $element->getAttributes()
         ));
 
-        $oHelper = $this->getView()->plugin('formElement');
+        $helper = $this->getView()->plugin('formElement');
 
-        if ($oElement instanceof \Laminas\Form\Element\Checkbox) {
-            $oElement->setOption('disable_twbs', true);
+        if ($element instanceof \Laminas\Form\Element\Checkbox) {
+            $element->setOption('disable_twbs', true);
             return $this->renderAddOnElement(
-                $oHelper->render($oElement),
-                $aAttributes
+                $helper->render($element),
+                $attributes
             );
         }
-        return $oHelper->render($oElement);
+        return $helper->render($element);
     }
 
-    protected function renderAddOnElement(string $sAddonText, array $aAttributes = []): string
+    protected function renderAddOnElement(string $addonText, array $attributes = []): string
     {
         return $this->htmlElement(
             'div',
-            $this->setClassesToAttributes($aAttributes, ['input-group-text']),
-            $sAddonText
+            $this->setClassesToAttributes($attributes, ['input-group-text']),
+            $addonText
         );
     }
 
-    protected function createElement(array $aElement): \Laminas\Form\ElementInterface
+    protected function createElement(array $element): \Laminas\Form\ElementInterface
     {
         if (!$this->formFactory) {
             $this->formFactory = new \Laminas\Form\Factory();
         }
-        return $this->formFactory->createElement($aElement);
+        return $this->formFactory->createElement($element);
     }
 }

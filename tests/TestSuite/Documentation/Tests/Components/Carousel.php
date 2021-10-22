@@ -12,8 +12,8 @@ return [
                 [
                     'title' => 'Slides only',
                     'url' => '%bootstrap-url%/components/carousel/#slides-only',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        echo $oView->carousel([
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        echo $view->carousel([
                             [
                                 'src' => '/twbs-helper-module/img/docs/400x300.svg',
                                 'optionsAndAttributes' => ['active' => true, 'alt' => 'Slide 1'],
@@ -26,8 +26,8 @@ return [
                 [
                     'title' => 'With controls',
                     'url' => '%bootstrap-url%/components/carousel/#with-controls',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        echo $oView->carousel([
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        echo $view->carousel([
                             [
                                 'src' => '/twbs-helper-module/img/docs/400x300.svg',
                                 'optionsAndAttributes' => ['active' => true, 'alt' => 'Slide 1'],
@@ -40,8 +40,8 @@ return [
                 [
                     'title' => 'With indicators',
                     'url' => '%bootstrap-url%/components/carousel/#with-indicators',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        echo $oView->carousel([
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        echo $view->carousel([
                             [
                                 'src' => '/twbs-helper-module/img/docs/400x300.svg',
                                 'optionsAndAttributes' => ['active' => true, 'alt' => 'Slide 1'],
@@ -54,8 +54,8 @@ return [
                 [
                     'title' => 'With captions',
                     'url' => '%bootstrap-url%/components/carousel/#with-captions',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        echo $oView->carousel([
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        echo $view->carousel([
                             [
                                 'src' => '/twbs-helper-module/img/docs/400x300.svg',
                                 'optionsAndAttributes' => [
@@ -94,8 +94,8 @@ return [
                 [
                     'title' => 'Crossfade',
                     'url' => '%bootstrap-url%/components/carousel/#crossfade',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        echo $oView->carousel([
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        echo $view->carousel([
                             [
                                 'src' => '/twbs-helper-module/img/docs/400x300.svg',
                                 'optionsAndAttributes' => ['active' => true, 'alt' => 'Slide 1'],
@@ -108,8 +108,8 @@ return [
                 [
                     'title' => 'Individual .carousel-item interval',
                     'url' => '%bootstrap-url%/components/carousel/#individual-carousel-item-interval',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        echo $oView->carousel([
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        echo $view->carousel([
                             ['src' => '/twbs-helper-module/img/docs/400x300.svg', 'optionsAndAttributes' => [
                                 'interval' => 10000,
                                 'active' => true,

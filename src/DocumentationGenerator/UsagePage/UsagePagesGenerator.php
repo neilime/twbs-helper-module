@@ -14,26 +14,26 @@ class UsagePagesGenerator
     /**
      * @var \TestSuite\Documentation\DocumentationTestConfig[]
      */
-    private $testConfigs;
+    private $testConfigs = [];
 
-    public function __construct(\DocumentationGenerator\Configuration $oConfiguration, $aTestConfigs)
+    public function __construct(\DocumentationGenerator\Configuration $configuration, $testConfigs)
     {
-        $this->configuration = $oConfiguration;
-        $this->testConfigs = $aTestConfigs;
+        $this->configuration = $configuration;
+        $this->testConfigs = $testConfigs;
     }
 
     public function generate()
     {
         $this->cleanUsagePages();
 
-        foreach ($this->testConfigs as $oTestConfig) {
+        foreach ($this->testConfigs as $testConfig) {
             try {
-                $this->parseTestsConfig($oTestConfig);
-            } catch (\Exception $oException) {
+                $this->parseTestsConfig($testConfig);
+            } catch (\Exception $exception) {
                 throw new \LogicException(
-                    'An error occured while parsing test config "' . $oTestConfig->title . '"',
-                    $oException->getCode(),
-                    $oException
+                    'An error occured while parsing test config "' . $testConfig->title . '"',
+                    $exception->getCode(),
+                    $exception
                 );
             }
         }
@@ -41,32 +41,46 @@ class UsagePagesGenerator
 
     private function cleanUsagePages()
     {
-        $sUsageDirPath = $this->getUsageDirPath();
-        $aUsageDirectories = array_diff(scandir($sUsageDirPath), ['..', '.']);
+        $usageDirPath = $this->getUsageDirPath();
+        $usageDirectories = array_diff(scandir($usageDirPath), ['..', '.']);
 
-        foreach ($aUsageDirectories as $sDirectoryName) {
-            $sDirectoryPath = $sUsageDirPath . DIRECTORY_SEPARATOR . $sDirectoryName;
-            if (is_dir($sDirectoryPath)) {
-                $this->rrmdir($sDirectoryPath);
+        foreach ($usageDirectories as $usageDirectory) {
+            $directoryPath = $usageDirPath . DIRECTORY_SEPARATOR . $usageDirectory;
+            if (is_dir($directoryPath)) {
+                $this->rrmdir($directoryPath);
             }
+        }
+    }
+
+    /**
+     * Extract test cases values for a given tests configuration
+     */
+    private function parseTestsConfig(\TestSuite\Documentation\DocumentationTestConfig $documentationTestConfig)
+    {
+        $this->generateDocPageFromTest($documentationTestConfig);
+
+        foreach ($documentationTestConfig->tests as $nestedTestConfig) {
+            $this->parseTestsConfig($nestedTestConfig);
         }
     }
 
     private function getUsageDirPath()
     {
-        $sUsageDirPath = $this->configuration->getRootDirPath() . DIRECTORY_SEPARATOR . self::$USAGE_DIR_PATH;
+        $usageDirPath = $this->configuration->getRootDirPath() . DIRECTORY_SEPARATOR . self::$USAGE_DIR_PATH;
 
-        if (!is_dir($sUsageDirPath)) {
-            throw new \LogicException('Usage dir path "' . $sUsageDirPath . '" does not exist');
+        if (!is_dir($usageDirPath)) {
+            throw new \LogicException('Usage dir path "' . $usageDirPath . '" does not exist');
         }
 
-        return realpath($sUsageDirPath);
+        return realpath($usageDirPath);
     }
 
     private function rrmdir($path)
     {
         if (is_dir($path)) {
-            array_map([$this, "rrmdir"], glob($path . DIRECTORY_SEPARATOR . '{,.[!.]}*', GLOB_BRACE));
+            array_map(function ($path) {
+                return $this->rrmdir($path);
+            }, glob($path . DIRECTORY_SEPARATOR . '{,.[!.]}*', GLOB_BRACE));
             @rmdir($path);
         } else {
             @unlink($path);
@@ -74,26 +88,14 @@ class UsagePagesGenerator
     }
 
     /**
-     * Extract test cases values for a given tests configuration
-     */
-    private function parseTestsConfig(\TestSuite\Documentation\DocumentationTestConfig $oTestConfig)
-    {
-        $this->generateDocPageFromTest($oTestConfig);
-
-        foreach ($oTestConfig->tests as $oNestedTestConfig) {
-            $this->parseTestsConfig($oNestedTestConfig);
-        }
-    }
-
-    /**
      * Write the test content for the given params into the given demo page file
      */
-    private function generateDocPageFromTest(\TestSuite\Documentation\DocumentationTestConfig $oTestConfig)
+    private function generateDocPageFromTest(\TestSuite\Documentation\DocumentationTestConfig $documentationTestConfig)
     {
-        $oUsagePageGenerator = new \DocumentationGenerator\UsagePage\UsagePageGenerator(
+        $usagePageGenerator = new \DocumentationGenerator\UsagePage\UsagePageGenerator(
             $this->configuration,
-            $oTestConfig
+            $documentationTestConfig
         );
-        $oUsagePageGenerator->generate();
+        $usagePageGenerator->generate();
     }
 }

@@ -8,22 +8,22 @@ return [
         [
             'title' => 'Border spinner',
             'url' => '%bootstrap-url%/components/spinners/#border-spinner',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->spinner('Loading...');
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->spinner('Loading...');
             },
             'tests' => [
                 [
                     'title' => 'Colors',
                     'url' => '%bootstrap-url%/components/spinners/#colors',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                         foreach (
                             [
-                            'primary', 'secondary', 'success', 'danger',
-                            'warning', 'info', 'light', 'dark',
-                            ] as $sVariant
+                                'primary', 'secondary', 'success', 'danger',
+                                'warning', 'info', 'light', 'dark',
+                            ] as $variant
                         ) {
-                            echo $oView->spinner([
-                                'variant' => $sVariant,
+                            echo $view->spinner([
+                                'variant' => $variant,
                                 'label' => 'Loading...',
                             ]) . PHP_EOL;
                         }
@@ -34,19 +34,19 @@ return [
         [
             'title' => 'Growing spinner',
             'url' => '%bootstrap-url%/components/spinners/#growing-spinner',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                echo $oView->spinner(['type' => 'grow', 'label' => 'Loading...']);
+            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                echo $view->spinner(['type' => 'grow', 'label' => 'Loading...']);
 
                 echo PHP_EOL . '<br/>' . PHP_EOL;
 
                 foreach (
                     [
-                    'primary', 'secondary', 'success', 'danger',
-                    'warning', 'info', 'light', 'dark',
-                    ] as $sVariant
+                        'primary', 'secondary', 'success', 'danger',
+                        'warning', 'info', 'light', 'dark',
+                    ] as $variant
                 ) {
-                    echo $oView->spinner([
-                        'variant' => $sVariant,
+                    echo $view->spinner([
+                        'variant' => $variant,
                         'type' => 'grow',
                         'label' => 'Loading...',
                     ]) . PHP_EOL;
@@ -60,8 +60,8 @@ return [
                 [
                     'title' => 'Margin',
                     'url' => '%bootstrap-url%/components/spinners/#margin',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        echo $oView->spinner([
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        echo $view->spinner([
                             'margin' => 5,
                             'label' => 'Loading...',
                         ]);
@@ -74,15 +74,15 @@ return [
                         [
                             'title' => 'Flex',
                             'url' => '%bootstrap-url%/components/spinners/#flex',
-                            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                                echo $oView->spinner([
+                            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                                echo $view->spinner([
                                     'placement' => 'center',
                                     'label' => 'Loading...',
                                 ]);
 
                                 echo PHP_EOL . '<br/>' . PHP_EOL;
 
-                                echo $oView->spinner([
+                                echo $view->spinner([
                                     'placement' => 'center',
                                     'label' => 'Loading...',
                                     'show_label' => true,
@@ -92,8 +92,8 @@ return [
                         [
                             'title' => 'Floats',
                             'url' => '%bootstrap-url%/components/spinners/#floats',
-                            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                                echo $oView->spinner([
+                            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                                echo $view->spinner([
                                     'placement' => 'right',
                                     'label' => 'Loading...',
                                 ]);
@@ -102,8 +102,8 @@ return [
                         [
                             'title' => 'Text align',
                             'url' => '%bootstrap-url%/components/spinners/#text-align',
-                            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                                echo $oView->spinner([
+                            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                                echo $view->spinner([
                                     'placement' => 'text-center',
                                     'label' => 'Loading...',
                                 ]);
@@ -114,13 +114,13 @@ return [
                 [
                     'title' => 'Size',
                     'url' => '%bootstrap-url%/components/spinners/#size',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        echo $oView->spinner([
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        echo $view->spinner([
                             'size' => 'sm',
                             'label' => 'Loading...',
                         ]) . PHP_EOL;
 
-                        echo $oView->spinner([
+                        echo $view->spinner([
                             'size' => 'sm',
                             'type' => 'grow',
                             'label' => 'Loading...',
@@ -128,12 +128,12 @@ return [
 
                         echo PHP_EOL . '<br/><br/>' . PHP_EOL;
 
-                        echo $oView->spinner([
+                        echo $view->spinner([
                             'attributes' => ['style' => 'width: 3rem; height: 3rem;'],
                             'label' => 'Loading...',
                         ]) . PHP_EOL;
 
-                        echo $oView->spinner([
+                        echo $view->spinner([
                             'attributes' => ['style' => 'width: 3rem; height: 3rem;'],
                             'type' => 'grow',
                             'label' => 'Loading...',
@@ -143,8 +143,8 @@ return [
                 [
                     'title' => 'Buttons',
                     'url' => '%bootstrap-url%/components/spinners/#buttons',
-                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $oView) {
-                        echo $oView->formButton()->renderSpec([
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        echo $view->formButton()->renderSpec([
                             'options' => [
                                 'spinner' => 'Loading...',
                                 'variant' => 'primary',
@@ -152,7 +152,7 @@ return [
                             'attributes' => ['disabled' => true],
                         ]) . PHP_EOL;
 
-                        echo $oView->formButton()->renderSpec([
+                        echo $view->formButton()->renderSpec([
                             'options' => [
                                 'label' => 'Loading...',
                                 'spinner' => true,
@@ -163,7 +163,7 @@ return [
 
                         echo PHP_EOL . '<br/><br/>' . PHP_EOL;
 
-                        echo $oView->formButton()->renderSpec([
+                        echo $view->formButton()->renderSpec([
                             'options' => [
                                 'spinner' => [
                                     'type' => 'grow',
@@ -174,7 +174,7 @@ return [
                             'attributes' => ['disabled' => true],
                         ]) . PHP_EOL;
 
-                        echo $oView->formButton()->renderSpec([
+                        echo $view->formButton()->renderSpec([
                             'options' => [
                                 'label' => 'Loading...',
                                 'spinner' => ['type' => 'grow'],

@@ -22,35 +22,36 @@ class UsagePageGenerator
     /**
      * @var \TestSuite\Documentation\DocumentationTestConfig
      */
-    private $testConfig;
+    private $documentationTestConfig;
+
     public function __construct(
-        \DocumentationGenerator\Configuration $oConfiguration,
-        \TestSuite\Documentation\DocumentationTestConfig $oTestConfig
+        \DocumentationGenerator\Configuration $configuration,
+        \TestSuite\Documentation\DocumentationTestConfig $documentationTestConfig
     ) {
-        $this->configuration = $oConfiguration;
-        $this->testConfig = $oTestConfig;
+        $this->configuration = $configuration;
+        $this->documentationTestConfig = $documentationTestConfig;
     }
 
     public function generate()
     {
-        $sPagePath = $this->createPageFile();
+        $pagePath = $this->createPageFile();
 
-        if (!$sPagePath) {
+        if (!$pagePath) {
             return;
         }
 
-        foreach ($this->printers as $sPrinterClass) {
-            $oPrinter = new $sPrinterClass($this->configuration, $this->testConfig, $sPagePath);
-            $oPrinter->printContentToPage();
+        foreach ($this->printers as $printerClass) {
+            $printer = new $printerClass($this->configuration, $this->documentationTestConfig, $pagePath);
+            $printer->printContentToPage();
         }
     }
 
     private function createPageFile()
     {
-        $oUsagePageDirectoryGenerator = new \DocumentationGenerator\UsagePage\UsagePageFileGenerator(
+        $usagePageFileGenerator = new \DocumentationGenerator\UsagePage\UsagePageFileGenerator(
             $this->configuration,
-            $this->testConfig
+            $this->documentationTestConfig
         );
-        return $oUsagePageDirectoryGenerator->generate();
+        return $usagePageFileGenerator->generate();
     }
 }
