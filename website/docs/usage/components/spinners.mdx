@@ -8,3 +8,456 @@ import TabItem from "@theme/TabItem";
 import CodeBlock from "@theme/CodeBlock";
 import HtmlCode from "../../../src/components/HtmlCode.tsx";
 
+# Spinners
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/spinners/)
+
+## Border spinner
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/spinners/#border-spinner)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->spinner('Loading...');
+
+```
+
+</TabItem>
+</Tabs>
+
+### Colors
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/spinners/#colors)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="spinner-border text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-border text-secondary" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-border text-success" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-border text-danger" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-border text-warning" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-border text-info" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-border text-light" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-border text-dark" role="status">
+    <span class="sr-only">Loading...</span>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+foreach ([
+    'primary',
+    'secondary',
+    'success',
+    'danger',
+    'warning',
+    'info',
+    'light',
+    'dark',
+] as $variant) {
+    echo $this->spinner(
+        [
+            'variant' => $variant,
+            'label'   => 'Loading...',
+        ]
+    );
+}
+
+```
+
+</TabItem>
+</Tabs>
+
+## Growing spinner
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/spinners/#growing-spinner)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="spinner-grow" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+<br></br>
+<div class="spinner-grow text-primary" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-grow text-secondary" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-grow text-success" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-grow text-danger" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-grow text-warning" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-grow text-info" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-grow text-light" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-grow text-dark" role="status">
+    <span class="sr-only">Loading...</span>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->spinner(['type' => 'grow', 'label' => 'Loading...']);
+
+echo PHP_EOL.'<br/>';
+
+foreach ([
+    'primary',
+    'secondary',
+    'success',
+    'danger',
+    'warning',
+    'info',
+    'light',
+    'dark',
+] as $variant) {
+    echo $this->spinner(
+        [
+            'variant' => $variant,
+            'type'    => 'grow',
+            'label'   => 'Loading...',
+        ]
+    );
+}
+
+```
+
+</TabItem>
+</Tabs>
+
+## Alignment
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/spinners/#alignment)
+
+### Margin
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/spinners/#margin)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="m-5 spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->spinner(
+    [
+        'margin' => 5,
+        'label'  => 'Loading...',
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+### Placement
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/spinners/#placement)
+
+#### Flex
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/spinners/#flex)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+<br></br>
+<div class="align-items-center d-flex">
+    <strong>Loading...</strong>
+    <div aria-hidden="true" class="ml-auto spinner-border" role="status"></div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->spinner(
+    [
+        'placement' => 'center',
+        'label'     => 'Loading...',
+    ]
+);
+
+echo PHP_EOL.'<br/>';
+
+echo $this->spinner(
+    [
+        'placement'  => 'center',
+        'label'      => 'Loading...',
+        'show_label' => true,
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+#### Floats
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/spinners/#floats)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="clearfix">
+    <div class="float-right spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->spinner(
+    [
+        'placement' => 'right',
+        'label'     => 'Loading...',
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+#### Text align
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/spinners/#text-align)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="text-center">
+    <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->spinner(
+    [
+        'placement' => 'text-center',
+        'label'     => 'Loading...',
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+### Size
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/spinners/#size)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="spinner-border spinner-border-sm" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-grow spinner-grow-sm" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+<br></br><br></br>
+<div class="spinner-border" role="status" style="height: 3rem;width: 3rem;">
+    <span class="sr-only">Loading...</span>
+</div>
+<div class="spinner-grow" role="status" style="height: 3rem;width: 3rem;">
+    <span class="sr-only">Loading...</span>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->spinner(
+    [
+        'size'  => 'sm',
+        'label' => 'Loading...',
+    ]
+);
+
+echo $this->spinner(
+    [
+        'size'  => 'sm',
+        'type'  => 'grow',
+        'label' => 'Loading...',
+    ]
+);
+
+echo PHP_EOL.'<br/><br/>';
+
+echo $this->spinner(
+    [
+        'attributes' => ['style' => 'width: 3rem; height: 3rem;'],
+        'label'      => 'Loading...',
+    ]
+);
+
+echo $this->spinner(
+    [
+        'attributes' => ['style' => 'width: 3rem; height: 3rem;'],
+        'type'       => 'grow',
+        'label'      => 'Loading...',
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+### Buttons
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/spinners/#buttons)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<button type="button" name="button" disabled="disabled" class="btn btn-primary" value="">
+  <span aria-hidden="true" class="spinner-border spinner-border-sm" role="status">
+    <span class="sr-only">Loading...</span>
+  </span>
+</button>
+<button type="button" name="button" disabled="disabled" class="btn btn-primary" value="">
+    <span aria-hidden="true" class="spinner-border spinner-border-sm" role="status"></span>
+    Loading...
+</button>
+<br></br><br></br>
+<button type="button" name="button" disabled="disabled" class="btn btn-primary" value="">
+  <span aria-hidden="true" class="spinner-grow spinner-grow-sm" role="status">
+    <span class="sr-only">Loading...</span>
+  </span>
+</button>
+<button type="button" name="button" disabled="disabled" class="btn btn-primary" value="">
+    <span aria-hidden="true" class="spinner-grow spinner-grow-sm" role="status"></span>
+    Loading...
+</button>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->formButton()->renderSpec(
+    [
+        'options'    => [
+            'spinner' => 'Loading...',
+            'variant' => 'primary',
+        ],
+        'attributes' => ['disabled' => true],
+    ]
+);
+
+echo $this->formButton()->renderSpec(
+    [
+        'options'    => [
+            'label'   => 'Loading...',
+            'spinner' => true,
+            'variant' => 'primary',
+        ],
+        'attributes' => ['disabled' => true],
+    ]
+);
+
+echo PHP_EOL.'<br/><br/>';
+
+echo $this->formButton()->renderSpec(
+    [
+        'options'    => [
+            'spinner' => [
+                'type'  => 'grow',
+                'label' => 'Loading...',
+            ],
+            'variant' => 'primary',
+        ],
+        'attributes' => ['disabled' => true],
+    ]
+);
+
+echo $this->formButton()->renderSpec(
+    [
+        'options'    => [
+            'label'   => 'Loading...',
+            'spinner' => ['type' => 'grow'],
+            'variant' => 'primary',
+        ],
+        'attributes' => ['disabled' => true],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+

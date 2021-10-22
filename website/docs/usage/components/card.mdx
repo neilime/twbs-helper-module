@@ -8,3 +8,1547 @@ import TabItem from "@theme/TabItem";
 import CodeBlock from "@theme/CodeBlock";
 import HtmlCode from "../../../src/components/HtmlCode.tsx";
 
+# Card
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/)
+
+## Example
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#example)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="card" style="width: 18rem;">
+    <img alt="..." class="card-img-top" src="/twbs-helper-module/img/docs/image-cap.svg"></img>
+    <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->card(
+    [
+        'image_top' => [
+            '/twbs-helper-module/img/docs/image-cap.svg',
+            ['alt' => '...'],
+        ],
+        'title' => 'Card title',
+        'text' => "Some quick example text to build on the card title and make up the bulk of the card's content.",
+        '<a href="&#x23;" class="btn btn-primary">Go somewhere</a>',
+    ],
+    ['style' => 'width: 18rem;']
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+## Content types
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#content-types)
+
+### Body
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#body)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="card">
+    <div class="card-body">
+        This is some text within a card body.
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->card('This is some text within a card body.');
+
+```
+
+</TabItem>
+</Tabs>
+
+### Titles, text, and links
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#titles-text-and-links)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a class="card-link" href="#">Card link</a>
+        <a class="card-link" href="#">Another link</a>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->card(
+    [
+        'title'    => 'Card title',
+        'subtitle' => [
+            'content'    => 'Card subtitle',
+            'attributes' => ['class' => 'mb-2 text-muted'],
+        ],
+        'text'     => 'Some quick example text to build on the card title'." and make up the bulk of the card's content.",
+        'link'     => [
+            'Card link',
+            'Another link',
+        ],
+    ],
+    ['style' => 'width: 18rem;']
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+### Images
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#images)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="card" style="width: 18rem;">
+    <img alt="..." class="card-img-top" src="/twbs-helper-module/img/docs/image-cap.svg"></img>
+    <div class="card-body">
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->card(
+    [
+        'image_top' => [
+            '/twbs-helper-module/img/docs/image-cap.svg',
+            ['alt' => '...'],
+        ],
+        'text'      => 'Some quick example text to build on the card title'." and make up the bulk of the card's content.",
+    ],
+    ['style' => 'width: 18rem;']
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+### List groups
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#list-groups)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="card" style="width: 18rem;">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Vestibulum at eros</li>
+    </ul>
+</div>
+<br></br>
+<div class="card" style="width: 18rem;">
+    <div class="card-header">
+        Featured
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Vestibulum at eros</li>
+    </ul>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->card(
+    [
+        'listGroup' => [
+            [
+                'Cras justo odio',
+                'Dapibus ac facilisis in',
+                'Vestibulum at eros',
+            ],
+        ],
+    ],
+    ['style' => 'width: 18rem;']
+);
+
+echo PHP_EOL.'<br/>';
+
+echo $this->card(
+    [
+        'header'    => 'Featured',
+        'listGroup' => [
+            [
+                'Cras justo odio',
+                'Dapibus ac facilisis in',
+                'Vestibulum at eros',
+            ],
+        ],
+    ],
+    ['style' => 'width: 18rem;']
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+### Kitchen sink
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#kitchen-sink)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="card" style="width: 18rem;">
+    <img alt="..." class="card-img-top" src="/twbs-helper-module/img/docs/image-cap.svg"></img>
+    <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Cras justo odio</li>
+        <li class="list-group-item">Dapibus ac facilisis in</li>
+        <li class="list-group-item">Vestibulum at eros</li>
+    </ul>
+    <div class="card-body">
+        <a class="card-link" href="#">Card link</a>
+        <a class="card-link" href="#">Another link</a>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->card(
+    [
+        'image_top' => [
+            '/twbs-helper-module/img/docs/image-cap.svg',
+            ['alt' => '...'],
+        ],
+        'title'     => 'Card title',
+        'text'      => 'Some quick example text to build on the card title'." and make up the bulk of the card's content.",
+        'listGroup' => [
+            [
+                'Cras justo odio',
+                'Dapibus ac facilisis in',
+                'Vestibulum at eros',
+            ],
+        ],
+        'link'      => [
+            'Card link',
+            'Another link',
+        ],
+    ],
+    ['style' => 'width: 18rem;']
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+### Header and footer
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#header-and-footer)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="card">
+    <div class="card-header">
+        Featured
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+<br></br>
+<div class="card">
+    <div class="card-header">
+        Quote
+    </div>
+    <div class="card-body">
+        <blockquote class="blockquote mb-0">
+            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        </blockquote>
+    </div>
+</div>
+<br></br>
+<div class="card text-center">
+    <div class="card-header">
+        Featured
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+    <div class="card-footer text-muted">
+        2 days ago
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+
+echo $this->card(
+    [
+        'header' => 'Featured',
+        'title' => 'Special title treatment',
+        'text' => 'With supporting text below as a natural lead-in to additional content.',
+        '<a href="#" class="btn btn-primary">Go somewhere</a>',
+    ]
+);
+
+echo PHP_EOL.'<br/>';
+
+// With blockquote
+echo $this->card(
+    [
+        'header'     => 'Quote',
+        'blockquote' => [
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.',
+            'Someone famous in <cite title="Source Title">Source Title</cite>',
+            ['class' => 'mb-0'],
+        ],
+    ]
+);
+
+echo PHP_EOL.'<br/>';
+
+// Centered
+echo $this->card(
+    [
+        'header' => 'Featured',
+        'title' => 'Special title treatment',
+        'text' => 'With supporting text below as a natural lead-in to additional content.',
+        '<a href="#" class="btn btn-primary">Go somewhere</a>',
+        'footer' => [
+            '2 days ago',
+            ['class' => 'text-muted'],
+        ],
+    ],
+    ['class' => 'text-center']
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+## Sizing
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#sizing)
+
+### Using utilities
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#using-utilities)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="card w-75">
+    <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Button</a>
+    </div>
+</div>
+<div class="card w-50">
+    <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Button</a>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+
+echo $this->card(
+    [
+        'title' => 'Card title',
+        'text' => 'With supporting text below as a natural lead-in to additional content.',
+        '<a href="#" class="btn btn-primary">Button</a>',
+    ],
+    ['class' => 'w-75']
+);
+
+echo $this->card(
+    [
+        'title' => 'Card title',
+        'text' => 'With supporting text below as a natural lead-in to additional content.',
+        '<a href="#" class="btn btn-primary">Button</a>',
+    ],
+    ['class' => 'w-50']
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+### Using custom CSS
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#using-custom-css)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->card(
+    [
+        'title' => 'Special title treatment',
+        'text' => 'With supporting text below as a natural lead-in to additional content.',
+        '<a href="#" class="btn btn-primary">Go somewhere</a>',
+    ],
+    ['style' => 'width: 18rem;']
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+## Text alignment
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#text-alignment)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+<br></br>
+<div class="card text-center" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+<br></br>
+<div class="card text-right" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->card(
+    [
+        'title' => 'Special title treatment',
+        'text' => 'With supporting text below as a natural lead-in to additional content.',
+        '<a href="#" class="btn btn-primary">Go somewhere</a>',
+    ],
+    ['style' => 'width: 18rem;']
+);
+
+echo '<br/>';
+
+// Text center
+echo $this->card(
+    [
+        'title' => 'Special title treatment',
+        'text' => 'With supporting text below as a natural lead-in to additional content.',
+        '<a href="#" class="btn btn-primary">Go somewhere</a>',
+    ],
+    [
+        'class' => 'text-center',
+        'style' => 'width: 18rem;',
+    ]
+);
+
+echo '<br/>';
+
+// Text right
+echo $this->card(
+    [
+        'title' => 'Special title treatment',
+        'text' => 'With supporting text below as a natural lead-in to additional content.',
+        '<a href="#" class="btn btn-primary">Go somewhere</a>',
+    ],
+    [
+        'class' => 'text-right',
+        'style' => 'width: 18rem;',
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+## Navigation
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#navigation)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="card text-center">
+    <div class="card-header">
+        <ul class="card-header-tabs nav nav-tabs">
+            <li class=" nav-item">
+                <a class="nav-link active" href="#">Active</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+        </ul>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>
+<br></br>
+<div class="card text-center">
+    <div class="card-header">
+        <ul class="card-header-pills nav nav-pills">
+            <li class=" nav-item">
+                <a class="nav-link active" href="#">Active</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+        </ul>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+// Nav tabs (pages defined by a \Laminas\Navigation\Navigation object as container)
+echo $this->card(
+    [
+        'nav' => new \Laminas\Navigation\Navigation(
+            [
+                [
+                    'label'  => 'Active',
+                    'uri'    => '#',
+                    'active' => true,
+                ],
+                [
+                    'label' => 'Link',
+                    'uri'   => '#',
+                ],
+                [
+                    'label' => 'Link',
+                    'uri'   => '#',
+                ],
+                [
+                    'label'   => 'Disabled',
+                    'uri'     => '#',
+                    'visible' => false,
+                ],
+            ]
+        ),
+        'title' => 'Special title treatment',
+        'text' => 'With supporting text below as a natural lead-in to additional content.',
+        '<a href="#" class="btn btn-primary">Go somewhere</a>',
+    ],
+    ['class' => 'text-center']
+);
+
+echo PHP_EOL.'<br/>';
+
+// Nav pills (pages defined by an array as  container)
+echo $this->card(
+    [
+        'nav' => [
+            'options'   => ['pills' => true],
+            'container' => [
+                [
+                    'label'  => 'Active',
+                    'uri'    => '#',
+                    'active' => true,
+                ],
+                [
+                    'label' => 'Link',
+                    'uri'   => '#',
+                ],
+                [
+                    'label' => 'Link',
+                    'uri'   => '#',
+                ],
+                [
+                    'label'   => 'Disabled',
+                    'uri'     => '#',
+                    'visible' => false,
+                ],
+            ],
+        ],
+        'title' => 'Special title treatment',
+        'text' => 'With supporting text below as a natural lead-in to additional content.',
+        '<a href="#" class="btn btn-primary">Go somewhere</a>',
+    ],
+    ['class' => 'text-center']
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+## Images
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#images-1)
+
+### Image caps
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#image-caps)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="card mb-3">
+    <img alt="..." class="card-img-top" src="/twbs-helper-module/img/docs/image-cap.svg"></img>
+    <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+    <img alt="..." class="card-img-top" src="/twbs-helper-module/img/docs/image-cap.svg"></img>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->card(
+    [
+        'image_top' => [
+            '/twbs-helper-module/img/docs/image-cap.svg',
+            ['alt' => '...'],
+        ],
+        'title'     => 'Card title',
+        'text'      => [
+            'This is a wider card with supporting text below as a natural lead-in to additional content. '.'This content is a little bit longer.',
+            '<small class="text-muted">Last updated 3 mins ago</small>',
+        ],
+    ],
+    ['class' => 'mb-3']
+);
+
+echo $this->card(
+    [
+        'title'     => 'Card title',
+        'text'      => [
+            'This is a wider card with supporting text below as a natural lead-in to additional content. '.'This content is a little bit longer.',
+            '<small class="text-muted">Last updated 3 mins ago</small>',
+        ],
+        'image_top' => [
+            '/twbs-helper-module/img/docs/image-cap.svg',
+            ['alt' => '...'],
+        ],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+### Image overlays
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#image-overlays)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="bg-dark card text-white">
+    <img alt="..." class="card-img" src="/twbs-helper-module/img/docs/image-cap.svg"></img>
+    <div class="card-img-overlay">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text">Last updated 3 mins ago</p>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->card(
+    [
+        'overlay' => [
+            'img'   => [
+                '/twbs-helper-module/img/docs/image-cap.svg',
+                ['alt' => '...'],
+            ],
+            'title' => 'Card title',
+            'text'  => [
+                'This is a wider card with supporting text below as a natural '.'lead-in to additional content. '.'This content is a little bit longer.',
+                'Last updated 3 mins ago',
+            ],
+        ],
+    ],
+    [
+        'bgVariant' => 'dark',
+        'class'     => 'text-white',
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+## Card styles
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#card-styles)
+
+### Background and color
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#background-and-color)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="bg-primary card mb-3 text-white">
+    <div class="card-header">
+        Header
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div>
+<div class="bg-secondary card mb-3 text-white">
+    <div class="card-header">
+        Header
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div>
+<div class="bg-success card mb-3 text-white">
+    <div class="card-header">
+        Header
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div>
+<div class="bg-danger card mb-3 text-white">
+    <div class="card-header">
+        Header
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div>
+<div class="bg-warning card mb-3 text-white">
+    <div class="card-header">
+        Header
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div>
+<div class="bg-info card mb-3 text-white">
+    <div class="card-header">
+        Header
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div>
+<div class="bg-light card mb-3">
+    <div class="card-header">
+        Header
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div>
+<div class="bg-dark card mb-3 text-white">
+    <div class="card-header">
+        Header
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+foreach ([
+    'primary',
+    'secondary',
+    'success',
+    'danger',
+    'warning',
+    'info',
+    'light',
+    'dark',
+] as $variant) {
+    echo $this->card(
+        [
+            'header' => 'Header',
+            'title'  => 'Primary card title',
+            'text'   => 'Some quick example text to build on the card title'." and make up the bulk of the card's content.",
+        ],
+        [
+            'bgVariant' => $variant,
+            'class'     => ($variant !== 'light' ? 'text-white ' : '').'mb-3',
+        ]
+    );
+}
+
+```
+
+</TabItem>
+</Tabs>
+
+### Border
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#border)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="border-primary card mb-3">
+    <div class="card-header">
+        Header
+    </div>
+    <div class="card-body text-primary">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div>
+<div class="border-secondary card mb-3">
+    <div class="card-header">
+        Header
+    </div>
+    <div class="card-body text-secondary">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div>
+<div class="border-success card mb-3">
+    <div class="card-header">
+        Header
+    </div>
+    <div class="card-body text-success">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div>
+<div class="border-danger card mb-3">
+    <div class="card-header">
+        Header
+    </div>
+    <div class="card-body text-danger">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div>
+<div class="border-warning card mb-3">
+    <div class="card-header">
+        Header
+    </div>
+    <div class="card-body text-warning">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div>
+<div class="border-info card mb-3">
+    <div class="card-header">
+        Header
+    </div>
+    <div class="card-body text-info">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div>
+<div class="border-light card mb-3">
+    <div class="card-header">
+        Header
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div>
+<div class="border-dark card mb-3">
+    <div class="card-header">
+        Header
+    </div>
+    <div class="card-body text-dark">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+foreach ([
+    'primary',
+    'secondary',
+    'success',
+    'danger',
+    'warning',
+    'info',
+    'light',
+    'dark',
+] as $variant) {
+    echo $this->card(
+        [
+            'header' => 'Header',
+            'title'  => 'Primary card title',
+            'text'   => 'Some quick example text to build on the card title'." and make up the bulk of the card's content.",
+        ],
+        [
+            'borderVariant' => $variant,
+            'bodyVariant'   => $variant !== 'light' ? $variant : null,
+            'class'         => 'mb-3',
+        ]
+    );
+}
+
+```
+
+</TabItem>
+</Tabs>
+
+### Mixins utilities
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#mixins-utilities)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="border-success card mb-3">
+    <div class="bg-transparent border-success card-header">
+        Header
+    </div>
+    <div class="card-body text-success">
+        <h5 class="card-title">Success card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+    <div class="bg-transparent border-success card-footer">
+        Footer
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->card(
+    [
+        'header' => [
+            'Header',
+            ['class' => 'bg-transparent border-success'],
+        ],
+        'title'  => 'Success card title',
+        'text'   => 'Some quick example text to build on the card title'." and make up the bulk of the card's content.",
+        'footer' => [
+            'Footer',
+            ['class' => 'card-footer bg-transparent border-success'],
+        ],
+    ],
+    [
+        'borderVariant' => 'success',
+        'bodyVariant'   => 'success',
+        'class'         => 'mb-3',
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+## Card layout
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#card-layout)
+
+### Card groups
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#card-groups)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="card-group">
+    <div class="card">
+        <img alt="..." class="card-img-top" src="/twbs-helper-module/img/docs/image-cap.svg"></img>
+        <div class="card-body">
+            <h5 class="card-title">Primary card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+    <div class="card">
+        <img alt="..." class="card-img-top" src="/twbs-helper-module/img/docs/image-cap.svg"></img>
+        <div class="card-body">
+            <h5 class="card-title">Primary card title</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+    <div class="card">
+        <img alt="..." class="card-img-top" src="/twbs-helper-module/img/docs/image-cap.svg"></img>
+        <div class="card-body">
+            <h5 class="card-title">Primary card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+</div>
+<br></br>
+<div class="card-group">
+    <div class="card">
+        <img alt="..." class="card-img-top" src="/twbs-helper-module/img/docs/image-cap.svg"></img>
+        <div class="card-body">
+            <h5 class="card-title">Primary card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+    </div>
+    <div class="card">
+        <img alt="..." class="card-img-top" src="/twbs-helper-module/img/docs/image-cap.svg"></img>
+        <div class="card-body">
+            <h5 class="card-title">Primary card title</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+    </div>
+    <div class="card">
+        <img alt="..." class="card-img-top" src="/twbs-helper-module/img/docs/image-cap.svg"></img>
+        <div class="card-body">
+            <h5 class="card-title">Primary card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->cardGroup(
+    [
+        [
+            'image_top' => [
+                '/twbs-helper-module/img/docs/image-cap.svg',
+                ['alt' => '...'],
+            ],
+            'title'     => 'Primary card title',
+            'text'      => [
+                'This is a wider card with supporting text below as a natural lead-in to additional '.'content. This content is a little bit longer.',
+                '<small class="text-muted">Last updated 3 mins ago</small>',
+            ],
+        ],
+        [
+            'image_top' => [
+                '/twbs-helper-module/img/docs/image-cap.svg',
+                ['alt' => '...'],
+            ],
+            'title'     => 'Primary card title',
+            'text'      => [
+                'This card has supporting text below as a natural lead-in to additional content.',
+                '<small class="text-muted">Last updated 3 mins ago</small>',
+            ],
+        ],
+        [
+            'image_top' => [
+                '/twbs-helper-module/img/docs/image-cap.svg',
+                ['alt' => '...'],
+            ],
+            'title'     => 'Primary card title',
+            'text'      => [
+                'This is a wider card with supporting text below as a natural lead-in '.'to additional content. This card has even longer content than the '.'first to show that equal height action.',
+                '<small class="text-muted">Last updated 3 mins ago</small>',
+            ],
+        ],
+    ]
+);
+
+
+echo PHP_EOL.'<br/>';
+
+// With footers
+echo $this->cardGroup(
+    [
+        [
+            'image_top' => [
+                '/twbs-helper-module/img/docs/image-cap.svg',
+                ['alt' => '...'],
+            ],
+            'title'     => 'Primary card title',
+            'text'      => 'This is a wider card with supporting text below as a natural lead-in to '.'additional content. This content is a little bit longer.',
+            'footer'    => '<small class="text-muted">Last updated 3 mins ago</small>',
+        ],
+        [
+            'image_top' => [
+                '/twbs-helper-module/img/docs/image-cap.svg',
+                ['alt' => '...'],
+            ],
+            'title'     => 'Primary card title',
+            'text'      => 'This card has supporting text below as a natural lead-in to additional content.',
+            'footer'    => '<small class="text-muted">Last updated 3 mins ago</small>',
+        ],
+        [
+            'image_top' => [
+                '/twbs-helper-module/img/docs/image-cap.svg',
+                ['alt' => '...'],
+            ],
+            'title'     => 'Primary card title',
+            'text'      => 'This is a wider card with supporting text below '.'as a natural lead-in to additional content. '.'This card has even longer content than the first to show that equal height action.',
+            'footer'    => '<small class="text-muted">Last updated 3 mins ago</small>',
+        ],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+### Card decks
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#card-decks)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="card-deck">
+    <div class="card">
+        <img alt="..." class="card-img-top" src="/twbs-helper-module/img/docs/image-cap.svg"></img>
+        <div class="card-body">
+            <h5 class="card-title">Primary card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+    <div class="card">
+        <img alt="..." class="card-img-top" src="/twbs-helper-module/img/docs/image-cap.svg"></img>
+        <div class="card-body">
+            <h5 class="card-title">Primary card title</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+    <div class="card">
+        <img alt="..." class="card-img-top" src="/twbs-helper-module/img/docs/image-cap.svg"></img>
+        <div class="card-body">
+            <h5 class="card-title">Primary card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+</div>
+<br></br>
+<div class="card-deck">
+    <div class="card">
+        <img alt="..." class="card-img-top" src="/twbs-helper-module/img/docs/image-cap.svg"></img>
+        <div class="card-body">
+            <h5 class="card-title">Primary card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+    </div>
+    <div class="card">
+        <img alt="..." class="card-img-top" src="/twbs-helper-module/img/docs/image-cap.svg"></img>
+        <div class="card-body">
+            <h5 class="card-title">Primary card title</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+    </div>
+    <div class="card">
+        <img alt="..." class="card-img-top" src="/twbs-helper-module/img/docs/image-cap.svg"></img>
+        <div class="card-body">
+            <h5 class="card-title">Primary card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->cardDeck(
+    [
+        [
+            'image_top' => [
+                '/twbs-helper-module/img/docs/image-cap.svg',
+                ['alt' => '...'],
+            ],
+            'title'     => 'Primary card title',
+            'text'      => [
+                'This is a wider card with supporting text below '.'as a natural lead-in to additional content. '.'This content is a little bit longer.',
+                '<small class="text-muted">Last updated 3 mins ago</small>',
+            ],
+        ],
+        [
+            'image_top' => [
+                '/twbs-helper-module/img/docs/image-cap.svg',
+                ['alt' => '...'],
+            ],
+            'title'     => 'Primary card title',
+            'text'      => [
+                'This card has supporting text below as a natural lead-in to additional content.',
+                '<small class="text-muted">Last updated 3 mins ago</small>',
+            ],
+        ],
+        [
+            'image_top' => [
+                '/twbs-helper-module/img/docs/image-cap.svg',
+                ['alt' => '...'],
+            ],
+            'title'     => 'Primary card title',
+            'text'      => [
+                'This is a wider card with supporting text below as a '.'natural lead-in to additional content. '.'This card has even longer content than the first to show that equal height action.',
+                '<small class="text-muted">Last updated 3 mins ago</small>',
+            ],
+        ],
+    ]
+);
+
+echo PHP_EOL.'<br/>';
+
+// With footers
+echo $this->cardDeck(
+    [
+        [
+            'image_top' => [
+                '/twbs-helper-module/img/docs/image-cap.svg',
+                ['alt' => '...'],
+            ],
+            'title'     => 'Primary card title',
+            'text'      => 'This is a wider card with supporting text below as a '.'natural lead-in to additional content. This content is a little bit longer.',
+            'footer'    => '<small class="text-muted">Last updated 3 mins ago</small>',
+        ],
+        [
+            'image_top' => [
+                '/twbs-helper-module/img/docs/image-cap.svg',
+                ['alt' => '...'],
+            ],
+            'title'     => 'Primary card title',
+            'text'      => 'This card has supporting text below as a natural lead-in to additional content.',
+            'footer'    => '<small class="text-muted">Last updated 3 mins ago</small>',
+        ],
+        [
+            'image_top' => [
+                '/twbs-helper-module/img/docs/image-cap.svg',
+                ['alt' => '...'],
+            ],
+            'title'     => 'Primary card title',
+            'text'      => 'This is a wider card with supporting text below as a natural '.'lead-in to additional content. This card has even longer content than '.'the first to show that equal height action.',
+            'footer'    => '<small class="text-muted">Last updated 3 mins ago</small>',
+        ],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+### Card columns
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/card/#card-columns)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="4.5">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="card-columns">
+    <div class="card">
+        <img alt="..." class="card-img-top" src="/twbs-helper-module/img/docs/image-cap.svg"></img>
+        <div class="card-body">
+            <h5 class="card-title">Card title that wraps to a new line</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        </div>
+    </div>
+    <div class="card p-3">
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+            </blockquote>
+        </div>
+    </div>
+    <div class="card">
+        <img alt="..." class="card-img-top" src="/twbs-helper-module/img/docs/image-cap.svg"></img>
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+    <div class="bg-primary card p-3 text-center text-white">
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
+                <footer class="blockquote-footer text-white">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+            </blockquote>
+        </div>
+    </div>
+    <div class="card text-center">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This card has a regular title and short paragraphy of text below it.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+    <div class="card">
+        <img alt="..." class="card-img-top" src="/twbs-helper-module/img/docs/image-cap.svg"></img>
+    </div>
+    <div class="card p-3 text-right">
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+            </blockquote>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is another card with title and supporting text below. This card has some additional content to make it slightly taller overall.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->cardColumns(
+    [
+        [
+            'image_top' => [
+                '/twbs-helper-module/img/docs/image-cap.svg',
+                ['alt' => '...'],
+            ],
+            'title'     => 'Card title that wraps to a new line',
+            'text'      => 'This is a longer card with supporting text below as '.'a natural lead-in to additional content. This content is a little bit longer.',
+        ],
+        [
+            [
+                'blockquote' => [
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.',
+                    'Someone famous in <cite title="Source Title">Source Title</cite>',
+                    ['class' => 'mb-0'],
+                ],
+            ],
+            ['class' => 'p-3'],
+        ],
+        [
+            'image_top' => [
+                '/twbs-helper-module/img/docs/image-cap.svg',
+                ['alt' => '...'],
+            ],
+            'title'     => 'Card title',
+            'text'      => [
+                'This card has supporting text below as a natural lead-in to additional content.',
+                '<small class="text-muted">Last updated 3 mins ago</small>',
+            ],
+        ],
+        [
+            [
+                'blockquote' => [
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.',
+                    'Someone famous in <cite title="Source Title">Source Title</cite>',
+                    ['class' => 'mb-0'],
+                    [],
+                    ['class' => 'text-white'],
+                ],
+            ],
+            [
+                'bgVariant' => 'primary',
+                'class'     => 'text-white text-center p-3',
+            ],
+        ],
+        [
+            [
+                'title' => 'Card title',
+                'text'  => [
+                    'This card has a regular title and short paragraphy of text below it.',
+                    '<small class="text-muted">Last updated 3 mins ago</small>',
+                ],
+            ],
+            ['class' => 'text-center'],
+        ],
+        [
+            'image_top' => [
+                '/twbs-helper-module/img/docs/image-cap.svg',
+                ['alt' => '...'],
+            ],
+        ],
+        [
+            [
+                'blockquote' => [
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.',
+                    'Someone famous in <cite title="Source Title">Source Title</cite>',
+                    ['class' => 'mb-0'],
+                ],
+            ],
+            ['class' => 'p-3 text-right'],
+        ],
+        [
+            'title' => 'Card title',
+            'text'  => [
+                'This is another card with title and supporting text below. '.'This card has some additional content to make it slightly taller overall.',
+                '<small class="text-muted">Last updated 3 mins ago</small>',
+            ],
+        ],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
