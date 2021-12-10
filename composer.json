@@ -30,7 +30,7 @@
     "laminas/laminas-escaper": "^2.9",
     "laminas/laminas-form": "^3.0",
     "laminas/laminas-i18n": "^2.13",
-    "laminas/laminas-navigation": "^2.11",
+    "laminas/laminas-navigation": "^2.12",
     "laminas/laminas-paginator": "^2.11",
     "laminas/laminas-servicemanager": "^3.7",
     "laminas/laminas-stdlib": "^3.6",
