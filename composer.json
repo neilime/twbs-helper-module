@@ -34,7 +34,7 @@
     "laminas/laminas-paginator": "^2.11",
     "laminas/laminas-servicemanager": "^3.7",
     "laminas/laminas-stdlib": "^3.6",
-    "laminas/laminas-view": "^2.14"
+    "laminas/laminas-view": "^2.15"
   },
   "require-dev": {
     "laminas/laminas-component-installer": "^2.5",
