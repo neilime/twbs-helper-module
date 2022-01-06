@@ -6,7 +6,6 @@ use LogicException;
 
 class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
-
     /**
      * @var \TwbsHelper\View\Helper\ButtonGroup|null
      */

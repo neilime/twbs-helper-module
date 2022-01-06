@@ -4,7 +4,6 @@ namespace TwbsHelper\View\Helper;
 
 class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
-
     /**
      * @var string
      */

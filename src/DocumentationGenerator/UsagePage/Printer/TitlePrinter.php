@@ -4,7 +4,6 @@ namespace DocumentationGenerator\UsagePage\Printer;
 
 class TitlePrinter extends \DocumentationGenerator\UsagePage\Printer\AbstractPrinter
 {
-
     protected function getContentToPrint()
     {
         if (!$this->pageExists()) {

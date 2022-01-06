@@ -12,7 +12,6 @@ use Laminas\Stdlib\AbstractOptions;
  */
 class ModuleOptions extends AbstractOptions
 {
-
     // @var array
     protected $ignoredViewHelpers;
 

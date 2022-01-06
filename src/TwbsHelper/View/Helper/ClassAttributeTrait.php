@@ -4,7 +4,6 @@ namespace TwbsHelper\View\Helper;
 
 trait ClassAttributeTrait
 {
-
     // Allowed variants
     protected static $variants = [
         'danger',

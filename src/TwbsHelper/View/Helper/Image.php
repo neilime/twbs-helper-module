@@ -7,7 +7,6 @@ namespace TwbsHelper\View\Helper;
  */
 class Image extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
-
     protected $imagesClasses = [
         'fluid'     => 'img-fluid',
         'thumbnail' => 'img-thumbnail',

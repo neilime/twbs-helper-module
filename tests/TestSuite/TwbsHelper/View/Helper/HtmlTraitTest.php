@@ -4,7 +4,6 @@ namespace TestSuite\TwbsHelper\View\Helper;
 
 class HtmlTraitTest extends \PHPUnit\Framework\TestCase
 {
-
     /**
      * @var \TwbsHelper\View\Helper\HtmlTrait
      */

@@ -4,7 +4,6 @@ namespace TestSuite\TwbsHelper\Navigation\Page;
 
 class DropdownPageTest extends \PHPUnit\Framework\TestCase
 {
-
     public function testInitializeANewDropdownPage()
     {
         $dropdownPage = new \TwbsHelper\Navigation\Page\DropdownPage();

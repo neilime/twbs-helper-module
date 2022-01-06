@@ -7,7 +7,6 @@ namespace TwbsHelper\View\Helper;
  */
 class Media extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
-
     public const MEDIA_IMAGE = 'img';
     public const MEDIA_TITLE = 'title';
     public const MEDIA_TEXT = 'text';

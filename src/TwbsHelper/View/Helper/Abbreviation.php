@@ -7,7 +7,6 @@ namespace TwbsHelper\View\Helper;
  */
 class Abbreviation extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
-
     /**
      * Generates an 'abbreviation' element
      *

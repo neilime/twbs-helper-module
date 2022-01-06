@@ -7,7 +7,6 @@ namespace TwbsHelper\View\Helper;
  */
 class Jumbotron extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
-
     public const JUMBOTRON_TITLE = 'title';
     public const JUMBOTRON_LEAD = 'lead';
     public const JUMBOTRON_TEXT = 'text';

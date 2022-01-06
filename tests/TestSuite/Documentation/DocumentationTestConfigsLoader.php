@@ -4,7 +4,6 @@ namespace TestSuite\Documentation;
 
 class DocumentationTestConfigsLoader
 {
-
     public static function loadDocumentationTestConfigs()
     {
         $documentationFiles = self::getDocumentationFiles();

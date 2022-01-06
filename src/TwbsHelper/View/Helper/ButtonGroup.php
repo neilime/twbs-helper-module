@@ -9,7 +9,6 @@ namespace TwbsHelper\View\Helper;
  */
 class ButtonGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
-
     /**
      * @var \TwbsHelper\Form\View\Helper\FormElement|null
      */

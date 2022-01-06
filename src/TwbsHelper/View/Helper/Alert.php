@@ -7,7 +7,6 @@ namespace TwbsHelper\View\Helper;
  */
 class Alert extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
-
     /**
      * Generates an 'alert' element
      *
