@@ -24,21 +24,14 @@ jobs:
         working-directory: website
         run: yarn
 
-      - name: 🔑 Add key to allow access to repository
-        uses: webfactory/ssh-agent@v0.5.4
-        with:
-          ssh-private-key: ${{ secrets.GH_PAGES_DEPLOY }}
-
-      - id: get_version
-        uses: battila7/get-version-action@v2
-
-      - name: 🚀 Release to GitHub Pages
-        env:
-          USE_SSH: true
-          GIT_USER: git
+      - name: 🏗️ Build website
+        run: yarn build
         working-directory: website
-        run: |
-          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-          git config --global user.name "${{ github.actor }}"
 
-          npx docusaurus deploy
+      - name: 🚀 Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./website/build
+          user_name: ${{ github.actor }}
+          user_email: ${{ github.actor }}@users.noreply.github.com
