@@ -4,7 +4,6 @@ namespace TestSuite\TwbsHelper\View\Helper;
 
 class HtmlListTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
 {
-
     /**
      * @var \TwbsHelper\View\Helper\HtmlList
      */

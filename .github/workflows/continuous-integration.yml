@@ -12,7 +12,12 @@ jobs:
   build:
     strategy:
       matrix:
-        php-versions: ["7.3", "7.4", "8.0"]
+        include:
+          - php-versions: "7.4"
+          - php-versions: "8.0"
+          - php-versions: "8.1"
+            stable: true
+
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -59,13 +64,13 @@ jobs:
         run: composer test:ci
 
       - name: 📊 Upload coverage results to Coveralls
-        if: matrix.php-versions == '8.0'
+        if: matrix.stable
         uses: codecov/codecov-action@v2.1.0
         with:
           file: ./build/logs/clover.xml
 
       - name: 📃 Generate documentation
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && matrix.php-versions == '8.0'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && matrix.stable == 'true'
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PRIVATE_ACCESS_TOKEN }}
         run: |

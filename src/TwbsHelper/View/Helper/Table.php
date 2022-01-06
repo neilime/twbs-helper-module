@@ -7,7 +7,6 @@ namespace TwbsHelper\View\Helper;
  */
 class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
-
     /**
      * @var string
      */

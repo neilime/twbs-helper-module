@@ -4,8 +4,6 @@ namespace TwbsHelper;
 
 class Module
 {
-
-
     /**
      * Retrieve module configuration
      *

@@ -7,7 +7,6 @@ namespace TwbsHelper\View\Helper;
  */
 class ListGroup extends \TwbsHelper\View\Helper\HtmlList
 {
-
     /**
      * Generates a 'List' element. Manage indentation of Xhtml markup
      *

@@ -4,7 +4,6 @@ namespace TestSuite\TwbsHelper\View\Helper\Navigation;
 
 class BreadcrumbsTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
 {
-
     /**
      * @var \TwbsHelper\View\Helper\Navigation\Breadcrumbs
      */

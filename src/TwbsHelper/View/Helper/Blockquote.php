@@ -7,7 +7,6 @@ namespace TwbsHelper\View\Helper;
  */
 class Blockquote extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
-
     /**
      * Generates a 'blockquote' element
      *

@@ -7,7 +7,6 @@ namespace TwbsHelper\View\Helper;
  */
 class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
-
     public const CARD_HEADER = 'header';
     public const CARD_HEADER_NAV_TABS = 'nav';
     public const CARD_FOOTER = 'footer';

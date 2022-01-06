@@ -11,7 +11,6 @@ use Laminas\Form\View\Helper\FormElementErrors as LaminasFormElementErrorsViewHe
  */
 class FormElementErrors extends LaminasFormElementErrorsViewHelper
 {
-
     /**
      * @var string Templates for the open/close/separators for message tags
      */

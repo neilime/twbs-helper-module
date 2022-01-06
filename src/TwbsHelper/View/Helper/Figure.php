@@ -7,7 +7,6 @@ namespace TwbsHelper\View\Helper;
  */
 class Figure extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
-
     /**
      * Generates a 'figure' element
      *

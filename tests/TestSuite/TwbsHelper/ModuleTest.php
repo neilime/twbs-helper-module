@@ -4,7 +4,6 @@ namespace TestSuite\TwbsHelper;
 
 class ModuleTest extends \PHPUnit\Framework\TestCase
 {
-
     /**
      * @var \TwbsHelper\Module
      */

@@ -4,7 +4,6 @@ namespace TestSuite\TwbsHelper;
 
 abstract class AbstractViewHelperTestCase extends \PHPUnit\Framework\TestCase
 {
-
     /**
      * @var \Laminas\View\Helper\AbstractHtmlElement
      */

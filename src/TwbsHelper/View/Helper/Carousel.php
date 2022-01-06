@@ -7,7 +7,6 @@ namespace TwbsHelper\View\Helper;
  */
 class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
-
     public const CONTROL_PREVIOUS = 'prev';
     public const CONTROL_NEXT = 'next';
 

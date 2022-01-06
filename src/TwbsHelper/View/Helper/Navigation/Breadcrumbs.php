@@ -7,7 +7,6 @@ namespace TwbsHelper\View\Helper\Navigation;
  */
 class Breadcrumbs extends \Laminas\View\Helper\Navigation\Breadcrumbs
 {
-
     protected static $navFormat =
     '<nav aria-label="breadcrumb">' . PHP_EOL .
         '    <ol class="breadcrumb">%s</ol>' . PHP_EOL . '</nav>';
