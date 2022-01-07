@@ -37,7 +37,7 @@
     "laminas/laminas-view": "^2.16"
   },
   "require-dev": {
-    "laminas/laminas-component-installer": "^2.5",
+    "laminas/laminas-component-installer": "^2.6",
     "laminas/laminas-modulemanager": "^2.11",
     "laminas/laminas-mvc": "^3.3",
     "mikey179/vfsstream": "^1.6",
