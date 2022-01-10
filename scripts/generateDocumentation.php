@@ -26,23 +26,28 @@ if (false === (include $phpCodeSnifferAutoloadPath)) {
     ));
 }
 
-
 $rootDirPath = dirname(__DIR__);
-$bootstrapVersion = '4.5';
+$testsDirPath = $rootDirPath . '/tests/TestSuite/Documentation/Tests';
+$bootstrapVersion = '5.1';
 $maxNestedDir = 2;
 
-$configuration = new \DocumentationGenerator\Configuration(
+$configuration = new \Documentation\Generator\Configuration(
     $rootDirPath,
+    $testsDirPath,
     $bootstrapVersion,
-    $maxNestedDir,
-    new \DocumentationGenerator\FileSystem\Local\File()
+    $maxNestedDir
 );
 
-$homePageGenerator = new \DocumentationGenerator\HomePageGenerator($configuration);
+$file = new \Documentation\Generator\FileSystem\Local\File();
+
+$homePageGenerator = new \Documentation\Generator\HomePageGenerator($configuration, $file);
 $homePageGenerator->generate();
 
-$usagePagesGenerator = new \DocumentationGenerator\UsagePage\UsagePagesGenerator(
+$testConfigsLoader = new \Documentation\Test\ConfigsLoader($testsDirPath);
+
+$usagePagesGenerator = new \Documentation\Generator\UsagePage\UsagePagesGenerator(
     $configuration,
-    \TestSuite\Documentation\DocumentationTestConfigsLoader::loadDocumentationTestConfigs(),
+    $file,
+    $testConfigsLoader->loadDocumentationTestConfigs(),
 );
 $usagePagesGenerator->generate();

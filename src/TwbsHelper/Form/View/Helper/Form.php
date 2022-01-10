@@ -4,7 +4,7 @@ namespace TwbsHelper\Form\View\Helper;
 
 class Form extends \Laminas\Form\View\Helper\Form
 {
-    use \TwbsHelper\View\Helper\HtmlTrait;
+    use \TwbsHelper\Form\View\ElementHelperTrait;
 
     /**
      * @var string
@@ -57,6 +57,40 @@ class Form extends \Laminas\Form\View\Helper\Form
         return $this;
     }
 
+
+    /**
+     * Renders a form from an array specification
+     *
+     * @see Form::render()
+     */
+    public function renderSpec(array $formSpec): string
+    {
+        $form = $this->getFormFromSpec($formSpec);
+
+        return $this->render($form);
+    }
+
+    protected function getFormFromSpec(array $formSpec): \Laminas\Form\FormInterface
+    {
+        $factory = new \Laminas\Form\Factory();
+
+        if (empty($formSpec['type'])) {
+            $formSpec['type'] = 'form';
+        }
+
+        $form = $factory->create($formSpec);
+
+        if (!$form instanceof \Laminas\Form\FormInterface) {
+            throw new \InvalidArgumentException(sprintf(
+                'Invalid spec specified, %s does not inherit from %s.',
+                get_class($form),
+                \Laminas\Form\FormInterface::class
+            ));
+        }
+        return $form;
+    }
+
+
     /**
      * Render a form from the provided $form,
      *
@@ -64,6 +98,19 @@ class Form extends \Laminas\Form\View\Helper\Form
      * @return string
      */
     public function render(\Laminas\Form\FormInterface $form): string
+    {
+        $this->prepareForm($form);
+
+        $elementsContent = $this->renderElements($form);
+        $elementsContent = empty($elementsContent)
+            ? ''
+            : $this->getView()->plugin('htmlElement')->addProperIndentation($elementsContent, true);
+
+        return $this->openTag($form) . $elementsContent . $this->closeTag();
+    }
+
+
+    protected function prepareForm(\Laminas\Form\FormInterface $form)
     {
         // Prepare form if needed
         if (method_exists($form, 'prepare')) {
@@ -75,19 +122,38 @@ class Form extends \Laminas\Form\View\Helper\Form
             $form->setAttribute('role', 'form');
         }
 
-        $formLayout = $form->getOption('layout');
+        $classes = [];
 
-        // Set inline class
-        if ($formLayout === self::LAYOUT_INLINE) {
-            $this->setClassesToElement($form, ['form-inline']);
+        if ($form->getOption('custom_validation')) {
+            $classes[] = 'needs-validation';
+            $form->setAttribute('novalidate', true);
+        } elseif ($form->getMessages()) {
+            $classes[] = 'was-validated';
         }
 
-        $elementsContent = $this->renderElements($form);
-        $elementsContent = empty($elementsContent) ? '' : $this->addProperIndentation($elementsContent, true);
+        // Set inline classes
+        $formLayout = $form->getOption('layout');
+        if ($formLayout === self::LAYOUT_INLINE) {
+            $classes = ['row', 'align-items-center'];
 
-        return $this->openTag($form) . $elementsContent . $this->closeTag();
+            $column = $form->getOption('column');
+            if ($column) {
+                $classes = array_merge(
+                    $classes,
+                    $this->getView()->plugin('htmlClass')->plugin('column')->getClassesFromOption($column, 'row-cols'),
+                );
+            }
+
+            $gutter = $form->getOption('gutter');
+            if ($gutter) {
+                $classes = array_merge(
+                    $classes,
+                    $this->getView()->plugin('htmlClass')->plugin('gutter')->getClassesFromOption($gutter),
+                );
+            }
+        }
+        $this->setClassesToElement($form, $classes);
     }
-
 
     /**
      * @param \Laminas\Form\FormInterface $form
@@ -96,7 +162,9 @@ class Form extends \Laminas\Form\View\Helper\Form
     protected function renderElements(\Laminas\Form\FormInterface $form): string
     {
         $rowClass = $form->getOption('row_class') ?? 'row';
+        $gutter = $form->getOption('gutter');
         $formLayout = $form->getOption('layout');
+        $tooltipFeedback = $form->getOption('tooltip_feedback');
 
         // Store element rows rendering
         $rowsRendering = [];
@@ -106,7 +174,15 @@ class Form extends \Laminas\Form\View\Helper\Form
                 $element->setOption('layout', $formLayout);
             }
 
-            $rowsRendering = $this->renderElement($element, $rowClass, $rowsRendering);
+            // Define tooltip_feedback option to form elements if not already defined
+            if ($element->getOption('tooltip_feedback') === null) {
+                $element->setOption('tooltip_feedback', $tooltipFeedback);
+            }
+
+            $rowsRendering = $this->renderElement($element, $rowsRendering, [
+                'row_class' => $rowClass,
+                'gutter' => $gutter,
+            ]);
         }
 
         // Assemble rows rendering
@@ -138,18 +214,17 @@ class Form extends \Laminas\Form\View\Helper\Form
      */
     protected function renderElement(
         \Laminas\Form\ElementInterface $element,
-        string $rowClass,
-        array $rowsRendering
+        array $rowsRendering,
+        array $rowOptions
     ): array {
 
         if ($element instanceof \Laminas\Form\Element\Button && $element->getOption('row_name')) {
-            return $this->renderButtonGroup($element, $rowClass, $rowsRendering);
+            return $this->renderButtonGroup($element, $rowsRendering, $rowOptions);
         }
 
         $helperPluginManager = $this->getView()->getHelperPluginManager();
 
         if ($element instanceof \Laminas\Form\FieldsetInterface) {
-            $this->setClassesToElement($element, ['form-group']);
             $elementMarkup = $helperPluginManager->get('formCollection')->__invoke($element);
         } else {
             $elementMarkup = $helperPluginManager->get('formRow')->__invoke($element);
@@ -168,14 +243,32 @@ class Form extends \Laminas\Form\View\Helper\Form
         } else {
             $rowsRendering[$rowRenderingKey] = ['content' => $elementMarkup];
 
+            $hasNoLayout = empty($options['layout']);
 
-            $isNotLayoutHorizontal = empty($options['layout']) || self::LAYOUT_HORIZONTAL !== $options['layout'];
+            if (!empty($options['column']) && $hasNoLayout) {
+                $rowsRendering[$rowRenderingKey]['helper'] = [
+                    $this->getView()->plugin('htmlElement'),
+                    '__invoke'
+                ];
 
-            if (!empty($options['column']) && $isNotLayoutHorizontal) {
-                $rowsRendering[$rowRenderingKey]['helper'] = [$this, 'htmlElement'];
+                $rowAttributes = $this->getView()->plugin('htmlattributes')->__invoke([
+                    'class' => $rowOptions['row_class'],
+                ]);
+
+                // Gutter
+                $gutter = $rowOptions['gutter'];
+                if ($gutter) {
+                    $rowAttributes->merge([
+                        'class' => $this->getView()->plugin('htmlClass')->plugin('gutter')->getClassesFromOption(
+                            $gutter
+                        ),
+                    ]);
+                }
+
                 $rowsRendering[$rowRenderingKey]['helper_params'] = [
                     'div',
-                    $this->setClassesToAttributes([], [$rowClass]), '%content%'
+                    $rowAttributes,
+                    '%content%'
                 ];
             }
         }
@@ -188,20 +281,24 @@ class Form extends \Laminas\Form\View\Helper\Form
      */
     protected function renderButtonGroup(
         \Laminas\Form\Element\Button $button,
-        string $rowClass,
-        array $rowsRendering
+        array $rowsRendering,
+        array $rowOptions
     ): array {
         $rowRenderingKey = $this->generateRowRenderingKey($button, $rowsRendering);
 
         if (isset($rowsRendering[$rowRenderingKey])) {
             $rowsRendering[$rowRenderingKey]['content'][] = $button;
         } else {
-            $options = $button->getOptions();
-            $isNotLayoutHorizontal = empty($options['layout']) || self::LAYOUT_HORIZONTAL !== $options['layout'];
+            $buttonOptions = $button->getOptions();
+            $isNotLayoutHorizontal = empty($buttonOptions['layout'])
+                || self::LAYOUT_HORIZONTAL !== $buttonOptions['layout'];
 
-            if (empty($options['column']) || !$isNotLayoutHorizontal) {
+            if (empty($buttonOptions['column']) || !$isNotLayoutHorizontal) {
                 $rowClass = 'form-group';
+            } else {
+                $rowClass = $rowOptions['row_class'];
             }
+
 
             $rowsRendering[$rowRenderingKey] = [
                 'content' => [$button],

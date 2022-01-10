@@ -13,7 +13,7 @@ class CarouselTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
     {
         $this->assertMatchesRegularExpression(
             // Expected
-            '/<div class="carousel&#x20;slide" data-ride="carousel" id="twbs-carousel-[a-z0-9]{13}"><\/div>/',
+            '/<div class="carousel&#x20;slide" data-bs-ride="carousel" id="twbs-carousel-[a-z0-9]{13}"><\/div>/',
             // Rendering
             $this->helper->__invoke([])
         );
@@ -23,7 +23,7 @@ class CarouselTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
     {
         $this->assertSame(
             // Expected
-            '<div class="carousel&#x20;slide" data-ride="carousel" id="test-carousel">' . PHP_EOL .
+            '<div class="carousel&#x20;slide" data-bs-ride="carousel" id="test-carousel">' . PHP_EOL .
                 '    <div class="carousel-inner">' . PHP_EOL .
                 '        <div class="carousel-item">' . PHP_EOL .
                 '            <img class="d-block&#x20;w-100" src="test-src" />' . PHP_EOL .
@@ -39,7 +39,7 @@ class CarouselTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
     {
         $this->assertSame(
             // Expected
-            '<div class="carousel&#x20;slide" data-ride="carousel" id="test-carousel">' . PHP_EOL .
+            '<div class="carousel&#x20;slide" data-bs-ride="carousel" id="test-carousel">' . PHP_EOL .
                 '    <div class="carousel-inner">' . PHP_EOL .
                 '        <div class="carousel-item">' . PHP_EOL .
                 '            <img class="d-block&#x20;w-100" src="test-src" />' . PHP_EOL .
@@ -54,59 +54,11 @@ class CarouselTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
         );
     }
 
-    public function testShouldRenderSlidesOptions()
-    {
-        $this->assertSame(
-            // Expected
-            '<div class="carousel&#x20;slide" data-ride="carousel" id="test-carousel">' . PHP_EOL .
-                '    <div class="carousel-inner">' . PHP_EOL .
-                '        <div class="active&#x20;carousel-item">' . PHP_EOL .
-                '            <img class="d-block&#x20;w-100" src="test" />' . PHP_EOL .
-                '        </div>' . PHP_EOL .
-                '    </div>' . PHP_EOL .
-                '</div>',
-            // Rendering
-            $this->helper->__invoke(
-                [
-                    [
-                        'src' => 'test',
-                        'options' => ['active' => true]
-                    ]
-                ],
-                ['id' => 'test-carousel']
-            )
-        );
-    }
-
-    public function testShouldRenderSlidesAttributes()
-    {
-        $this->assertSame(
-            // Expected
-            '<div class="carousel&#x20;slide" data-ride="carousel" id="test-carousel">' . PHP_EOL .
-                '    <div class="carousel-inner">' . PHP_EOL .
-                '        <div class="carousel-item" data-interval="100">' . PHP_EOL .
-                '            <img class="d-block&#x20;w-100" src="test" />' . PHP_EOL .
-                '        </div>' . PHP_EOL .
-                '    </div>' . PHP_EOL .
-                '</div>',
-            // Rendering
-            $this->helper->__invoke(
-                [
-                    [
-                        'src' => 'test',
-                        'attributes' => ['interval' => 100]
-                    ]
-                ],
-                ['id' => 'test-carousel']
-            )
-        );
-    }
-
     public function testShouldRenderIntegerSlideCaption()
     {
         $this->assertSame(
             // Expected
-            '<div class="carousel&#x20;slide" data-ride="carousel" id="test-carousel">' . PHP_EOL .
+            '<div class="carousel&#x20;slide" data-bs-ride="carousel" id="test-carousel">' . PHP_EOL .
                 '    <div class="carousel-inner">' . PHP_EOL .
                 '        <div class="carousel-item">' . PHP_EOL .
                 '            <img class="d-block&#x20;w-100" src="test" />' . PHP_EOL .
@@ -121,9 +73,7 @@ class CarouselTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 [
                     [
                         'src' => 'test',
-                        'attributes' => [
-                            'caption' => ['test']
-                        ]
+                        'caption' => ['test']
                     ],
                 ],
                 ['id' => 'test-carousel']
@@ -138,8 +88,8 @@ class CarouselTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
             [
                 [
                     'src' => 'test',
-                    'attributes' => ['caption' => ['wrong' => 'test']]
-                ]
+                    'caption' => ['wrong' => 'test'],
+                ],
             ],
             ['id' => 'test-carousel']
         );
@@ -149,17 +99,17 @@ class CarouselTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
     {
         $this->assertSame(
             // Expected
-            '<div class="carousel&#x20;slide" data-ride="carousel" id="test-carousel">' . PHP_EOL .
+            '<div class="carousel&#x20;slide" data-bs-ride="carousel" id="test-carousel">' . PHP_EOL .
                 '    <div class="carousel-inner">' . PHP_EOL .
                 '        <div class="carousel-item">' . PHP_EOL .
                 '            <img class="d-block&#x20;w-100" src="test" />' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
-                '    <a class="carousel-control-prev" data-slide="prev" href="&#x23;test-carousel" ' .
-                'role="button">' . PHP_EOL .
+                '    <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="&#x23;test-carousel" ' .
+                'name="carousel-control-prev" type="button" value="">' . PHP_EOL .
                 '        <span aria-hidden="true" class="carousel-control-prev-icon"></span>' . PHP_EOL .
-                '        <span class="sr-only">Previous</span>' . PHP_EOL .
-                '    </a>' . PHP_EOL .
+                '        <span class="visually-hidden">Previous</span>' . PHP_EOL .
+                '    </button>' . PHP_EOL .
                 '</div>',
             // Rendering
             $this->helper->__invoke(

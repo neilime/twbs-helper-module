@@ -12,9 +12,14 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
     protected $buttonGroupHelper;
 
     /**
-     * @var \TwbsHelper\Form\View\Helper\FormElement|null
+     * @var \TwbsHelper\Form\View\Helper\FormRow|null
      */
-    protected $formElementHelper;
+    protected $formRowHelper;
+
+    /**
+     * @var \TwbsHelper\View\Helper\HtmlElement|null
+     */
+    protected $htmlElementHelper;
 
     /**
      *
@@ -34,10 +39,17 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
     {
         // Button group container attributes
         $classes = ['btn-toolbar'];
-        $attributes = $this->setClassesToAttributes($buttonToolbarOptions['attributes'] ?? [], $classes);
+
+        $attributes = $this->getView()->plugin('htmlattributes')
+            ->__invoke($buttonToolbarOptions['attributes'] ?? [])
+            ->merge(['class' => $classes]);
 
         // Render button group
-        return $this->htmlElement('div', $attributes, $this->renderToolbarItems($items));
+        return $this->getHtmlElementHelper()->__invoke(
+            'div',
+            $attributes,
+            $this->renderToolbarItems($items)
+        );
     }
 
     /**
@@ -75,7 +87,8 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
      */
     protected function renderToolbarItem(\Laminas\Form\ElementInterface $element): string
     {
-        return $this->getFormElementHelper()->__invoke($element);
+        $element->setOption('form_group', false);
+        return $this->getFormRowHelper()->__invoke($element);
     }
 
     /**
@@ -99,25 +112,41 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
             return $this->buttonGroupHelper;
         }
 
-        if ($this->view !== null && method_exists($this->view, 'plugin')) {
-            return $this->buttonGroupHelper = $this->view->plugin('buttonGroup');
+        $view = $this->getView();
+        if ($view !== null && method_exists($view, 'plugin')) {
+            return $this->buttonGroupHelper = $view->plugin('buttonGroup');
         }
 
         return $this->buttonGroupHelper = new \TwbsHelper\View\Helper\ButtonGroup();
     }
 
-    public function getFormElementHelper(): \TwbsHelper\Form\View\Helper\FormElement
+    public function getFormRowHelper(): \TwbsHelper\Form\View\Helper\FormRow
     {
-        if ($this->formElementHelper instanceof \TwbsHelper\Form\View\Helper\FormElement) {
-            return $this->formElementHelper;
+        if ($this->formRowHelper instanceof \TwbsHelper\Form\View\Helper\FormRow) {
+            return $this->formRowHelper;
         }
 
-        if ($this->view !== null && method_exists($this->view, 'plugin')) {
-            return $this->formElementHelper = $this->view->plugin('form_element');
+        $view = $this->getView();
+        if ($view !== null && method_exists($view, 'plugin')) {
+            return $this->formRowHelper = $view->plugin('form_row');
         }
 
-        return $this->formElementHelper = new \TwbsHelper\Form\View\Helper\FormElement(
+        return $this->formRowHelper = new \TwbsHelper\Form\View\Helper\FormRow(
             new \TwbsHelper\Options\ModuleOptions()
         );
+    }
+
+    public function getHtmlElementHelper(): \TwbsHelper\View\Helper\HtmlElement
+    {
+        if ($this->htmlElementHelper instanceof \TwbsHelper\View\Helper\HtmlElement) {
+            return $this->htmlElementHelper;
+        }
+
+        $view = $this->getView();
+        if ($view !== null && method_exists($view, 'plugin')) {
+            return $this->htmlElementHelper = $view->plugin('htmlElement');
+        }
+
+        return $this->htmlElementHelper = new \TwbsHelper\View\Helper\HtmlElement();
     }
 }

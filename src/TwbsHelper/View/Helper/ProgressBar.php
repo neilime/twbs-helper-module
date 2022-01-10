@@ -10,67 +10,77 @@ class ProgressBar extends \TwbsHelper\View\Helper\AbstractHtmlElement
     /**
      * Generates a 'progressbar' element
      */
-    public function __invoke($min = 0, $max = 0, $current = 0): string
+    public function __invoke($min = 0, $max = 0, $current = 0, bool $escape = true): string
     {
-        $options = is_array($min) ? $min : ['min' => $min, 'max' => $max, 'current' => $current];
+        $optionsAndAttributes = is_array($min) ? $min : ['min' => $min, 'max' => $max, 'current' => $current];
 
-        return $this->render($options);
+        return $this->render($optionsAndAttributes, $escape);
     }
 
-    public function render(array $options): string
+    public function render(iterable $optionsAndAttributes, bool $escape): string
     {
+        $progressBarContent = $this->renderProgressBarContent($optionsAndAttributes, $escape);
 
-        $current = $options['current'] ?? 0;
-        $min = $options['min'] ?? 0;
-        $max = $options['max'] ?? 0;
+        if (isset($optionsAndAttributes['container']) && $optionsAndAttributes['container'] === false) {
+            return $progressBarContent;
+        }
 
-        $percent = $options['min'] === $options['max']
+        $attributes = $this->getView()->plugin('htmlattributes')
+            ->__invoke($optionsAndAttributes['attributes'] ?? [])
+            ->merge(['class' => ['progress']]);
+
+        return $this->getView()->plugin('htmlElement')->__invoke(
+            'div',
+            $attributes,
+            $progressBarContent,
+            $escape
+        );
+    }
+
+    public function renderProgressBarContent(iterable $optionsAndAttributes, bool $escape): string
+    {
+        $current = $optionsAndAttributes['current'] ?? 0;
+        $min = $optionsAndAttributes['min'] ?? 0;
+        $max = $optionsAndAttributes['max'] ?? 0;
+
+        $percent = $optionsAndAttributes['min'] === $optionsAndAttributes['max']
             ? .0
             : (float)(
                 ($current - $min) / ($max - $min)) * 100;
 
-        $defaultAttributes = [
+        $attributes = $this->getView()->plugin('htmlattributes')->__invoke([
             'role' => 'progressbar',
             'aria-valuenow' => $current,
             'aria-valuemin' => $min,
             'aria-valuemax' => $max,
-        ];
+            'class' => ['progress-bar'],
+        ]);
 
-        $progressBarClasses = ['progress-bar'];
-        if (!empty($options['variant'])) {
-            $progressBarClasses[] = $this->getVariantClass($options['variant'], 'bg');
+        if (!empty($optionsAndAttributes['variant'])) {
+            $attributes['class']->merge(
+                $this->getView()->plugin('htmlClass')->plugin('variant')->getClassesFromOption(
+                    $optionsAndAttributes['variant'],
+                    'bg'
+                )
+            );
         }
 
-        if (!empty($options['striped'])) {
-            $progressBarClasses[] = 'progress-bar-striped';
+        if (!empty($optionsAndAttributes['striped'])) {
+            $attributes['class']->merge(['progress-bar-striped']);
         }
 
-        if (!empty($options['animated'])) {
-            $progressBarClasses[] = 'progress-bar-animated';
+        if (!empty($optionsAndAttributes['animated'])) {
+            $attributes['class']->merge(['progress-bar-animated']);
         }
 
-        $progressBarWidthAttributes = $percent !== false && $percent > 0 ? ['width' => $percent . '%'] : [];
-        $progressBarContent = empty($options['show_label']) ? '' : $percent . '%';
+        $progressBarStyles = $percent !== false && $percent > 0 ? ['width' => $percent . '%'] : [];
+        $attributes->merge(['style' => $progressBarStyles]);
 
-        $progressBarContent = $this->htmlElement(
+        $progressBarContent = empty($optionsAndAttributes['show_label']) ? '' : $percent . '%';
+
+        return $this->getView()->plugin('htmlElement')->__invoke(
             'div',
-            $this->setStylesToAttributes(
-                $this->setClassesToAttributes(
-                    $defaultAttributes,
-                    $progressBarClasses
-                ),
-                $progressBarWidthAttributes
-            ),
-            $progressBarContent
-        );
-
-        if (isset($options['container']) && $options['container'] === false) {
-            return $progressBarContent;
-        }
-
-        return $this->htmlElement(
-            'div',
-            $this->setClassesToAttributes($options['attributes'] ?? [], ['progress']),
+            $attributes,
             $progressBarContent
         );
     }

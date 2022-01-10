@@ -7,14 +7,14 @@ return [
     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
 
         $navigationContainer = new \Laminas\Navigation\Navigation([
-            ['label' => 'Home <span class="sr-only">(current)</span>', 'uri' => '#', 'active' => true],
-            ['label' => 'Link', 'uri' => '#'],
+            ['label' => 'Home', 'uri' => '#', 'active' => true],
             ['label' => 'Features', 'uri' => '#'],
             ['label' => 'Pricing', 'uri' => '#'],
             ['label' => 'About', 'uri' => '#'],
         ]);
 
         $options = [
+            'container' => 'fluid',
             'brand' => 'Navbar',
             'form' => [
                 'elements' => [
@@ -25,7 +25,7 @@ return [
                                 'type' => 'search',
                                 'placeholder' => 'Search',
                                 'aria-label' => 'Search',
-                                'class' => 'mr-sm-2',
+                                'class' => 'me-2',
                             ],
                         ],
                     ],
@@ -34,17 +34,24 @@ return [
                             'type' => 'submit',
                             'options' => [
                                 'label' => 'Search',
-                                'variant' => 'outline-success',
+                                'variant' => 'outline-light',
                             ],
                         ],
                     ],
                 ],
+                'attributes' => [
+                    'class' => 'd-flex',
+                ],
+            ],
+            'nav' => [
+                'ulClass' => 'mb-2 mb-lg-0 me-auto',
             ],
         ];
 
         // Navbar dark, background dark
         $options['variant'] = 'dark';
         $options['background'] = 'dark';
+        $options['attributes'] = ['id' => 'navbarColor01'];
 
         echo $view->navigation()->navbar()->render($navigationContainer, $options);
         echo PHP_EOL . '<br/>' . PHP_EOL;
@@ -52,14 +59,16 @@ return [
         // Navbar dark, background primary
         $options['variant'] = 'dark';
         $options['background'] = 'primary';
+        $options['attributes'] = ['id' => 'navbarColor02'];
 
         echo $view->navigation()->navbar()->render($navigationContainer, $options);
         echo PHP_EOL . '<br/>' . PHP_EOL;
 
         // Navbar light, custom background-color
-        $options['variant'] = 'dark';
+        $options['variant'] = 'light';
         $options['background'] = false;
-        $options['attributes'] = ['style' => 'background-color: #e3f2fd;'];
+        $options['form']['elements'][1]['spec']['options']['variant'] = 'outline-primary';
+        $options['attributes'] = ['id' => 'navbarColor03', 'style' => 'background-color: #e3f2fd;'];
 
         echo $view->navigation()->navbar()->render($navigationContainer, $options);
     },

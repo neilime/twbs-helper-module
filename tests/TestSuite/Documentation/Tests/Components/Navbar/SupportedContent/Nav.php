@@ -8,7 +8,7 @@ return [
         echo $view->navigation()->navbar()->render(
             new \Laminas\Navigation\Navigation([
                 [
-                    'label' => 'Home <span class="sr-only">(current)</span>',
+                    'label' => 'Home',
                     'uri' => '#',
                     'active' => true,
                 ],
@@ -19,6 +19,7 @@ return [
             [
                 'brand' => 'Navbar',
                 'attributes' => ['id' => 'navbarNav'],
+                'container' => 'fluid',
             ]
         );
 
@@ -28,7 +29,7 @@ return [
         echo $view->navigation()->navbar()->render(
             new \Laminas\Navigation\Navigation([
                 [
-                    'label' => 'Home <span class="sr-only">(current)</span>',
+                    'label' => 'Home',
                     'uri' => '#',
                     'active' => true,
                 ],
@@ -40,6 +41,7 @@ return [
                 'brand' => 'Navbar',
                 'attributes' => ['id' => 'navbarNavAltMarkup'],
                 'nav' => ['list' => false],
+                'container' => 'fluid',
             ]
         );
 
@@ -48,7 +50,7 @@ return [
         echo $view->navigation()->navbar()->render(
             new \Laminas\Navigation\Navigation([
                 [
-                    'label' => 'Home <span class="sr-only">(current)</span>',
+                    'label' => 'Home',
                     'uri' => '#',
                     'active' => true,
                 ],
@@ -70,6 +72,7 @@ return [
             [
                 'brand' => 'Navbar',
                 'attributes' => ['id' => 'navbarNavDropdown'],
+                'container' => 'fluid',
             ]
         );
     },

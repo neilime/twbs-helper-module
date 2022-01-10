@@ -8,7 +8,10 @@ namespace TwbsHelper\View\Helper\Navigation;
 class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
 {
     use \Laminas\I18n\Translator\TranslatorAwareTrait;
-    use \TwbsHelper\View\Helper\HtmlTrait;
+
+    public const BRAND_POSITION_LEFT = 'left';
+    public const BRAND_POSITION_RIGHT = 'right';
+    public const BRAND_POSITION_HIDDEN = 'hidden';
 
     /**
      * View helper entry point.
@@ -63,142 +66,140 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
             $container = $this->getContainer();
         }
 
-        $attributes = $options['attributes'] ?? [];
+        $attributes = $this->prepareAttributes($options);
         $id = $attributes['id'] ?? null;
-        unset($attributes['id']);
-
-        $classes = ['navbar'];
-        if (!isset($options['expand']) || $options['expand'] !== false) {
-            $classes[] = $this->getSizeClass(
-                $options['expand'] ?? 'lg',
-                'navbar-expand'
-            );
-        }
-        if (!isset($options['variant']) || $options['variant'] !== false) {
-            $classes[] = $this->getVariantClass(
-                $options['variant'] ?? 'light',
-                'navbar'
-            );
-        }
-        if (!isset($options['background']) || $options['background'] !== false) {
-            $classes[] = $this->getVariantClass(
-                $options['background'] ?? 'light',
-                'bg'
-            );
-        }
-        if (!empty($options['placement'])) {
-            $classes[] = $options['placement'];
-        }
 
         $content = '';
 
         // Brand
-        if (isset($options['brand'])) {
-            $content .= $this->renderBrand($options['brand']);
+        $brandPosition = $options['brand']['position'] ?? self::BRAND_POSITION_LEFT;
+        $brandContent = isset($options['brand']) ? $this->renderBrand($options['brand']) : '';
+
+        if ($brandContent && $brandPosition === self::BRAND_POSITION_LEFT) {
+            $content .= $brandContent;
         }
 
         // Toggler
         if (!isset($options['toggler']) || $options['toggler'] !== false) {
             $content .= ($content ? PHP_EOL : '') . $this->renderToggler(
-                $options['toggler'] ?? [],
+                $options,
                 $id
             );
         }
 
-        // Nav
-        $navContainerAttributes = [];
-        if ($id) {
-            $navContainerAttributes['id'] = $id;
+        if ($brandContent && $brandPosition === self::BRAND_POSITION_RIGHT) {
+            $content .= ($content ? PHP_EOL : '') . $brandContent;
         }
 
-        $navContent =  $this->renderNav($container, $options['nav'] ?? []);
+        $content = $this->renderNavbarNav(
+            $content,
+            $container,
+            $options,
+            $id,
+            $brandContent && $brandPosition === self::BRAND_POSITION_HIDDEN ? $brandContent : null
+        );
 
-        // Nav form
-        if (isset($options['form'])) {
-            $navContent .= ($navContent ? PHP_EOL : '') . $this->renderForm($options['form']);
+        if (!empty($options['container'])) {
+            $content = $this->renderContainer($content, $options['container']);
         }
 
-        // Nav text
-        if (isset($options['text'])) {
-            $textContent = $this->renderText($options['text']);
-            if ($navContent) {
-                $navContent .=  PHP_EOL . $textContent;
-            } else {
-                $content .= ($content ? PHP_EOL : '') . $textContent;
-            }
+        if (!isset($options['collapse']) || $options['collapse'] !== false) {
+            $attributes->offsetUnset('id');
         }
 
-        if ($navContent) {
-            $collapse = !isset($options['collapse']) || $options['collapse'] !== false;
-            $content .= ($content ? PHP_EOL : '') . ($collapse
-                ? $this->htmlElement(
-                    'div',
-                    $this->setClassesToAttributes(
-                        $navContainerAttributes,
-                        ['collapse', 'navbar-collapse']
-                    ),
-                    $navContent
-                )
-                : $navContent);
-        }
-
-        $containerOption = $options['container'] ?? null;
-
-        if ($containerOption === 'within') {
-            $content = $this->htmlElement(
-                'div',
-                ['class' => 'container'],
-                $content
-            );
-        }
-
-        $content = $this->htmlElement(
+        $content = $this->getView()->plugin('htmlElement')->__invoke(
             'nav',
-            $this->setClassesToAttributes($attributes, $classes),
+            $attributes,
             $content
         );
 
-        if ($containerOption === 'wrap') {
-            $content = $this->htmlElement(
-                'div',
-                ['class' => 'container'],
-                $content
-            );
+        if (!empty($options['wrapping_container'])) {
+            $content = $this->renderContainer($content, $options['wrapping_container']);
         }
 
         return $content;
     }
 
-    public function renderToggler(array $togglerOptions, string $id = null): string
+    protected function prepareAttributes(iterable $options): \TwbsHelper\View\HtmlAttributesSet
+    {
+        $attributes = $this->getView()->plugin('htmlattributes')
+            ->__invoke($options['attributes'] ?? [])
+            ->merge(['class' => ['navbar']]);
+
+        if (!isset($options['expand']) || $options['expand'] !== false) {
+            $attributes['class']->merge(
+                $this->getView()->plugin('htmlClass')->plugin('size')->getClassesFromOption(
+                    $options['expand'] ?? 'lg',
+                    'navbar-expand'
+                )
+            );
+        }
+
+        if (!isset($options['variant']) || $options['variant'] !== false) {
+            $attributes['class']->merge(
+                $this->getView()->plugin('htmlClass')->plugin('variant')->getClassesFromOption(
+                    $options['variant'] ?? 'light',
+                    'navbar'
+                )
+            );
+        }
+
+        if (!isset($options['background']) || $options['background'] !== false) {
+            $attributes['class']->merge(
+                $this->getView()->plugin('htmlClass')->plugin('variant')->getClassesFromOption(
+                    $options['background'] ?? 'light',
+                    'bg'
+                )
+            );
+        }
+
+        if (!empty($options['placement'])) {
+            $attributes['class']->merge([$options['placement']]);
+        }
+
+        return $attributes;
+    }
+
+    public function renderToggler(iterable $options, string $id = null): string
     {
         $translator = $this->getTranslator();
+
+        $togglerOptions = $options['toggler'] ?? [];
 
         $attributes = [
             'class' => 'navbar-toggler',
             'type' => 'button',
-            'data-toggle' => 'collapse',
             'aria-expanded' => 'false',
+            'data-bs-toggle' => empty($options['offcanvas']) ? 'collapse' : 'offcanvas',
             'aria-label' => $translator
                 ? $translator->translate('Toggle navigation', $this->getTranslatorTextDomain())
                 : 'Toggle navigation',
         ];
 
         if ($id) {
-            $attributes['data-target'] = '#' . $id;
-            $attributes['aria-controls'] = $id;
+            $attributes['data-bs-target'] = '#' . $id;
         }
+
+        $attributes = $this->getView()->plugin('htmlattributes')
+            ->__invoke($togglerOptions['attributes'] ?? [])
+            ->merge($attributes);
+
+        unset($togglerOptions['attributes']);
+
+        if (!empty($attributes['data-bs-target'])) {
+            $attributes['aria-controls'] = trim($attributes['data-bs-target'], '#');
+        }
+
 
         return $this->getView()->plugin('formButton')->renderSpec(\Laminas\Stdlib\ArrayUtils::merge(
             [
-                'name' => 'navbar_toggler',
                 'options' => [
-                    'label' => '<span class="navbar-toggler-icon"></span>',
                     'disable_twbs' => true,
                 ],
                 'attributes' => $attributes,
             ],
             $togglerOptions
-        ));
+        ), '');
     }
 
     public function renderBrand($brandOptions): string
@@ -213,18 +214,13 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
         }
 
         if (!empty($brandOptions['img'])) {
-            $imgAttributes = [
-                'width' => 30,
-                'height' => 30,
-                'alt' => '',
-            ];
+            $imgAttributes = [];
             if ($content) {
-                $imgAttributes['class'] = 'd-inline-block align-top';
+                $imgAttributes['class'] = 'align-text-top d-inline-block';
             }
-            $brandOptions['img'][1] = \Laminas\Stdlib\ArrayUtils::merge(
-                $imgAttributes,
-                $brandOptions['img'][1] ?? []
-            );
+            $brandOptions['img'][1] = $this->getView()->plugin('htmlattributes')
+                ->__invoke($brandOptions['img'][1] ?? [])
+                ->merge($imgAttributes);
 
             $content = $this->getView()->plugin('image')->__invoke(...$brandOptions['img']) . ($content
                 ? PHP_EOL . $content
@@ -232,7 +228,9 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
         }
 
         $type =  $brandOptions['type'] ?? 'link';
-        $attributes = [];
+        $attributes = [
+            'class' => ['navbar-brand'],
+        ];
 
         switch ($type) {
             case 'link':
@@ -246,14 +244,13 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
                 throw new \DomainException(__METHOD__ . ' doe snot support brand type "' . $type . '"');
         }
 
-        $attributes = \Laminas\Stdlib\ArrayUtils::merge(
-            $attributes,
-            $brandOptions['attributes'] ?? []
-        );
+        $attributes = $this->getView()->plugin('htmlattributes')
+            ->__invoke($brandOptions['attributes'] ?? [])
+            ->merge($attributes);
 
-        return $this->htmlElement(
+        return $this->getView()->plugin('htmlElement')->__invoke(
             $tag,
-            $this->setClassesToAttributes($attributes, ['navbar-brand']),
+            $attributes,
             $content
         );
     }
@@ -269,24 +266,120 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
             $content .= $textOptions['content'];
         }
 
-        return $this->htmlElement(
+        $attributes = $this->getView()->plugin('htmlattributes')
+            ->__invoke($textOptions['attributes'] ?? [])
+            ->merge(['class' => ['navbar-text']]);
+
+        return $this->getView()->plugin('htmlElement')->__invoke(
             'span',
-            $this->setClassesToAttributes(
-                $textOptions['attributes'] ?? [],
-                ['navbar-text']
-            ),
+            $attributes,
             $content
         );
+    }
+
+    public function renderNavbarNav(
+        string $content,
+        \Laminas\Navigation\AbstractContainer $container,
+        iterable $options,
+        string $id = null,
+        string $brandContent = null
+    ): string {
+
+        $navContent = $this->renderNav($container, $options['nav'] ?? []);
+
+        // Nav form
+        if (isset($options['form'])) {
+            $navContent .= ($navContent ? PHP_EOL : '') . $this->renderForm($options['form']);
+        }
+
+        if ($brandContent) {
+            $navContent = $brandContent . ($navContent ? PHP_EOL . $navContent : '');
+        }
+
+        // Nav text
+        $textContent = null;
+        if (isset($options['text'])) {
+            $textContent = $this->renderText($options['text']);
+        }
+
+        if (!$navContent) {
+            if (!$textContent) {
+                return $content;
+            }
+
+            $content .= ($content ? PHP_EOL : '') . $textContent;
+            return $content;
+        }
+
+        if ($textContent) {
+            $navContent .=  PHP_EOL . $textContent;
+        }
+
+        $offcanvas = $options['offcanvas'] ?? null;
+
+        if ($offcanvas) {
+            $content .= ($content ? PHP_EOL : '') .  $this->renderOffcanvas(
+                $navContent,
+                $offcanvas === true ? [] : $offcanvas,
+                $id,
+            );
+            return $content;
+        }
+
+        $collapse = !isset($options['collapse']) || $options['collapse'] !== false;
+        if ($collapse) {
+            $content .= ($content ? PHP_EOL : '') . $this->renderCollapse($navContent, $id);
+            return $content;
+        }
+
+        return $content . ($content ? PHP_EOL : '') . $navContent;
     }
 
     public function renderNav(\Laminas\Navigation\AbstractContainer $container, array $navOptions = []): string
     {
         $navigationHelper = $this->getView()->plugin('navigation');
+
+        $ulAttributes = $this->getView()->plugin('htmlattributes')
+            ->__invoke(['class' => $navOptions['ulClass'] ?? ''])
+            ->merge(['class' => ['navbar-nav']]);
+
+        if (!empty($navOptions['scroll'])) {
+            $ulAttributes->merge([
+                'class' => ['navbar-nav-scroll'],
+                'style' => '--bs-scroll-height: 100px;',
+            ]);
+        }
+
+        unset($navOptions['ulClass']);
+
         return $navigationHelper->menu()->renderMenu(
             $container,
             \Laminas\Stdlib\ArrayUtils::merge([
-                'ulClass' => 'navbar-nav mr-auto',
+                'ulClass' => $ulAttributes['class'],
+                'style' => $ulAttributes['style'] ?? null,
+                'page' => true,
             ], $navOptions)
+        );
+    }
+
+    public function renderOffcanvas(string $content, iterable $options, string $id = null): string
+    {
+        if ($id) {
+            $options['id'] = $id;
+        }
+
+        return $this->getView()->plugin('offcanvas')->__invoke($content, $options);
+    }
+
+    public function renderCollapse(string $content, string $id = null): string
+    {
+        return $this->getView()->plugin('htmlElement')->__invoke(
+            'div',
+            [
+                'id' => $id,
+                'class' => ['collapse', 'navbar-collapse'],
+            ],
+            $content
         );
     }
 
@@ -320,8 +413,12 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
             $element->setOption('form_group', false);
         }
 
-        $form->setOption('layout', \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE);
         return $this->getView()->plugin('form')->__invoke($form);
+    }
+
+    protected function renderContainer(string $content, $containerOption): string
+    {
+        return $this->getView()->plugin('container')->__invoke($content, $containerOption);
     }
 
     /**

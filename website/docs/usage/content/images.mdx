@@ -10,16 +10,16 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 
 # Images
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/images/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/content/images/)
 
 ## Responsive images
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/images/#responsive-images)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/content/images/#responsive-images)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
-      <div dangerouslySetInnerHTML={{ __html: `<img alt="Responsive image" class="img-fluid" src="/twbs-helper-module/img/docs/responsive.svg"></img>` }}></div>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<img alt="..." class="img-fluid" src="/twbs-helper-module/img/docs/responsive.svg"></img>` }}></div>
   </HtmlCode>
 </TabItem>
 <TabItem value="source" label="Source">
@@ -27,13 +27,7 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 ```php
 <?php
 
-echo $this->image(
-    '/twbs-helper-module/img/docs/responsive.svg',
-    [
-        'fluid' => true,
-        'alt'   => 'Responsive image',
-    ]
-);
+echo $this->image('/twbs-helper-module/img/docs/responsive.svg', ['fluid' => true, 'alt' => '...']);
 
 ```
 
@@ -42,12 +36,12 @@ echo $this->image(
 
 ## Image thumbnails
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/images/#image-thumbnails)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/content/images/#image-thumbnails)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
-      <div dangerouslySetInnerHTML={{ __html: `<img alt="Image thumbnail" class="img-thumbnail" src="/twbs-helper-module/img/docs/200x200.svg"></img>` }}></div>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<img alt="..." class="img-thumbnail" src="/twbs-helper-module/img/docs/200x200.svg"></img>` }}></div>
   </HtmlCode>
 </TabItem>
 <TabItem value="source" label="Source">
@@ -55,13 +49,7 @@ echo $this->image(
 ```php
 <?php
 
-echo $this->image(
-    '/twbs-helper-module/img/docs/200x200.svg',
-    [
-        'thumbnail' => true,
-        'alt'       => 'Image thumbnail',
-    ]
-);
+echo $this->image('/twbs-helper-module/img/docs/200x200.svg', ['thumbnail' => true, 'alt' => '...']);
 
 ```
 
@@ -70,14 +58,15 @@ echo $this->image(
 
 ## Aligning images
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/images/#aligning-images)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/content/images/#aligning-images)
+
+### Float
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
-      <div dangerouslySetInnerHTML={{ __html: `<img alt="Image aligned left" class="float-left rounded" src="/twbs-helper-module/img/docs/200x200.svg"></img>
-<img alt="Image aligned right" class="float-right rounded" src="/twbs-helper-module/img/docs/200x200.svg"></img>
-<img alt="Image aligned block" class="d-block mx-auto rounded" src="/twbs-helper-module/img/docs/200x200.svg"></img>` }}></div>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<img alt="..." class="float-start rounded" src="/twbs-helper-module/img/docs/200x200.svg"></img>
+<img alt="..." class="float-end rounded" src="/twbs-helper-module/img/docs/200x200.svg"></img>` }}></div>
   </HtmlCode>
 </TabItem>
 <TabItem value="source" label="Source">
@@ -89,26 +78,75 @@ echo $this->image(
     '/twbs-helper-module/img/docs/200x200.svg',
     [
         'rounded' => true,
-        'alt'     => 'Image aligned left',
-        'class'   => 'float-left',
+        'alt'     => '...',
+        'class'   => 'float-start',
     ]
 );
+
+echo PHP_EOL;
 
 echo $this->image(
     '/twbs-helper-module/img/docs/200x200.svg',
     [
         'rounded' => true,
-        'alt'     => 'Image aligned right',
-        'class'   => 'float-right',
+        'alt'     => '...',
+        'class'   => 'float-end',
     ]
 );
+
+```
+
+</TabItem>
+</Tabs>
+
+### Mx Auto
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<img alt="..." class="d-block mx-auto rounded" src="/twbs-helper-module/img/docs/200x200.svg"></img>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
 
 echo $this->image(
     '/twbs-helper-module/img/docs/200x200.svg',
     [
         'rounded' => true,
-        'alt'     => 'Image aligned block',
+        'alt'     => '...',
         'class'   => 'mx-auto d-block',
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+### Centered
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="text-center">
+    <img alt="..." class="rounded" src="/twbs-helper-module/img/docs/200x200.svg"></img>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->image(
+    '/twbs-helper-module/img/docs/200x200.svg',
+    [
+        'rounded'  => true,
+        'centered' => true,
+        'alt'      => '...',
     ]
 );
 
@@ -119,14 +157,14 @@ echo $this->image(
 
 ## Picture
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/images/#picture)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/content/images/#picture)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
+  <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<picture>
     <source srcset="/twbs-helper-module/img/docs/200x200.svg" type="image/svg+xml"></source>
-    <img alt="Picture image" class="img-fluid img-thumbnail" src="/twbs-helper-module/img/docs/200x200.svg"></img>
+    <img alt="..." class="img-fluid img-thumbnail" src="/twbs-helper-module/img/docs/200x200.svg"></img>
 </picture>` }}></div>
   </HtmlCode>
 </TabItem>
@@ -140,7 +178,7 @@ echo $this->image(
     [
         'thumbnail' => true,
         'fluid'     => true,
-        'alt'       => 'Picture image',
+        'alt'       => '...',
         'sources'   => ['/twbs-helper-module/img/docs/200x200.svg' => 'image/svg+xml'],
     ]
 );

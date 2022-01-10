@@ -8,10 +8,10 @@ return [
 
         foreach (
             [
-            false => 'Default',
-            'fixed-top' => 'Fixed top',
-            'fixed-bottom' => 'Fixed bottom',
-            'sticky-top' => 'Sticky top',
+                false => 'Default',
+                'fixed-top' => 'Fixed top',
+                'fixed-bottom' => 'Fixed bottom',
+                'sticky-top' => 'Sticky top',
             ] as $placement => $brand
         ) {
             echo $view->navigation()->navbar()->render(
@@ -21,6 +21,7 @@ return [
                     'placement' => $placement,
                     'toggler' => false,
                     'expand' => false,
+                    'container' => 'fluid',
                 ]
             );
             echo PHP_EOL . '<br/>' . PHP_EOL;

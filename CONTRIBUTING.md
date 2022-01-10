@@ -20,3 +20,12 @@ To run tests:
   ```
 
   This will generate code-coverage report witch can be displayed in a browser by opening `tests/_report/index.html` file
+
+## Generate a new snapshot
+
+```sh
+composer generate-snapshot "Full title" "$(cat <<EOF
+
+EOF
+)"
+```

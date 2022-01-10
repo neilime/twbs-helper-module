@@ -7,6 +7,10 @@ namespace TwbsHelper\View\Helper;
  */
 class Spinner extends \TwbsHelper\View\Helper\AbstractHtmlElement
 {
+    public const PLACEMENT_CENTER = 'center';
+    public const PLACEMENT_END = 'end';
+    public const PLACEMENT_TEXT_CENTER = 'text-center';
+
     /**
      * Generates a 'spinner' element
      */
@@ -23,93 +27,129 @@ class Spinner extends \TwbsHelper\View\Helper\AbstractHtmlElement
         return $this->render($options);
     }
 
-    public function render(array $options): string
+    public function render(iterable $options): string
     {
-        $attributes = array_merge(
-            ['role' => 'status'],
-            $options['attributes'] ?? []
-        );
+        $label = $this->renderSpinnerLabel($options);
 
-        $typeClass = $this->getPrefixedClass($options['type'] ?? 'border', 'spinner');
-        $classes = [$typeClass];
+        $container = $this->renderSpinnerContainer($label, $options);
 
-        if (!empty($options['size'])) {
-            $classes[] = $this->getPrefixedClass($options['size'], $typeClass);
-        }
+        return $this->renderSpinnerWithPlacement($label, $container, $options);
+    }
 
-        if (!empty($options['variant'])) {
-            $classes[] = $this->getVariantClass($options['variant'], 'text');
-        }
-
-        if (!empty($options['margin'])) {
-            $classes[] = $this->getPrefixedClass($options['margin'], 'm');
-        }
-
+    protected function renderSpinnerLabel(iterable $options): string
+    {
         $labelContent = $options['label'] ?? '';
         $showLabel = !empty($options['show_label']);
 
-        $labelMarkup = $labelContent
-            ? $showLabel
-            ? $this->htmlElement(
+        if (!$labelContent) {
+            return '';
+        }
+
+        if ($showLabel) {
+            return $this->getView()->plugin('htmlElement')->__invoke(
                 'strong',
                 [],
                 $labelContent
-            )
-            : $this->htmlElement(
-                'span',
-                ['class' => 'sr-only'],
-                $labelContent
-            )
-            : '';
-
-        $placement = $options['placement'] ?? null;
-
-        if ($placement == 'center') {
-            if ($showLabel) {
-                $classes[] = 'ml-auto';
-            }
-        } elseif ($placement == 'right') {
-            $classes[] = 'float-right';
+            );
         }
 
-        if (!$labelMarkup || ($placement === 'center' && $showLabel)) {
+        return $this->getView()->plugin('htmlElement')->__invoke(
+            'span',
+            ['class' => 'visually-hidden'],
+            $labelContent
+        );
+    }
+
+    protected function renderSpinnerContainer(string $label, iterable $options): string
+    {
+        $attributes = $this->getView()->plugin('htmlattributes')
+            ->__invoke($options['attributes'] ?? [])
+            ->merge(['role' => 'status']);
+
+        $classes = [];
+
+        $typeClass = $this->getView()->plugin('htmlClass')->getPrefixedClass($options['type'] ?? 'border', 'spinner');
+        $classes[] = $typeClass;
+
+        if (!empty($options['size'])) {
+            $attributes['class']->merge(
+                $this->getView()->plugin('htmlClass')->plugin('size')->getClassesFromOption(
+                    $options['size'],
+                    $typeClass
+                )
+            );
+        }
+
+        if (!empty($options['variant'])) {
+            $attributes['class']->merge(
+                $this->getView()->plugin('htmlClass')->plugin('variant')->getClassesFromOption(
+                    $options['variant'],
+                    'text'
+                )
+            );
+        }
+
+        if (!empty($options['margin'])) {
+            $classes[] = $this->getView()->plugin('htmlClass')->getPrefixedClass($options['margin'], 'm');
+        }
+
+        $placement = $options['placement'] ?? null;
+        $showLabel = !empty($options['show_label']);
+
+        if ($placement == static::PLACEMENT_CENTER) {
+            if ($showLabel) {
+                $classes[] = 'ms-auto';
+            }
+        } elseif ($placement == static::PLACEMENT_END) {
+            $classes[] = 'float-end';
+        }
+        $attributes['class']->merge($classes);
+
+        if (!$label || ($placement === static::PLACEMENT_CENTER && $showLabel)) {
             $attributes['aria-hidden'] = 'true';
         }
 
-        $spinnerMarkup = $this->htmlElement(
+        return $this->getView()->plugin('htmlElement')->__invoke(
             $options['tag'] ?? 'div',
-            $this->setClassesToAttributes($attributes, $classes),
-            $labelMarkup && !($placement === 'center' && $showLabel) ? $labelMarkup : ''
+            $attributes,
+            $label && !($placement === static::PLACEMENT_CENTER && $showLabel) ? $label : ''
         );
+    }
+
+    protected function renderSpinnerWithPlacement(string $label, string $container, iterable $options): string
+    {
+        $placement = $options['placement'] ?? null;
 
         if (!$placement) {
-            return $spinnerMarkup;
+            return $container;
         }
+
+        $showLabel = !empty($options['show_label']);
 
         $classes = [];
         switch ($placement) {
-            case 'center':
+            case static::PLACEMENT_CENTER:
                 $classes[] = 'd-flex';
-                if ($labelMarkup && $showLabel) {
-                    $spinnerMarkup = $labelMarkup . PHP_EOL . $spinnerMarkup;
+                if ($label && $showLabel) {
+                    $container = $label . PHP_EOL . $container;
                     $classes[] = 'align-items-center';
                 } else {
                     $classes[] = 'justify-content-center';
                 }
 
                 break;
-            case 'right':
+            case static::PLACEMENT_END:
                 $classes[] = 'clearfix';
                 break;
-            case 'text-center':
+            case static::PLACEMENT_TEXT_CENTER:
                 $classes[] = 'text-center';
                 break;
         }
 
-        return $this->htmlElement(
+        return $this->getView()->plugin('htmlElement')->__invoke(
             'div',
-            $this->setClassesToAttributes([], $classes),
-            $spinnerMarkup
+            ['class' => $classes],
+            $container
         );
     }
 }

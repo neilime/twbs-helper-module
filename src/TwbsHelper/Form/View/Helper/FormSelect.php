@@ -4,7 +4,7 @@ namespace TwbsHelper\Form\View\Helper;
 
 class FormSelect extends \Laminas\Form\View\Helper\FormSelect
 {
-    use \TwbsHelper\View\Helper\HtmlTrait;
+    use \TwbsHelper\Form\View\ElementHelperTrait;
 
     /**
      * Render a form <select> element from the provided $element
@@ -14,15 +14,17 @@ class FormSelect extends \Laminas\Form\View\Helper\FormSelect
      */
     public function render(\Laminas\Form\ElementInterface $element): string
     {
-        if ($isCustom = $element->getOption('custom')) {
-            $this->setClassesToElement($element, ['custom-select']);
-        }
+        $this->setClassesToElement($element, ['form-select'], ['form-control']);
+
 
         if ($sizeOption = $element->getOption('size')) {
-            $this->setClassesToElement($element, [$this->getSizeClass(
-                $sizeOption,
-                $isCustom ? 'custom-select' : 'form-control'
-            )]);
+            $this->setClassesToElement(
+                $element,
+                $this->getView()->plugin('htmlClass')->plugin('size')->getClassesFromOption(
+                    $sizeOption,
+                    'form-select'
+                )
+            );
         }
 
         return parent::render($element);
@@ -53,6 +55,6 @@ class FormSelect extends \Laminas\Form\View\Helper\FormSelect
             $optionsContent = str_replace("\n", PHP_EOL, $optionsContent);
         }
 
-        return $this->addProperIndentation($optionsContent);
+        return $this->getView()->plugin('htmlElement')->addProperIndentation($optionsContent);
     }
 }

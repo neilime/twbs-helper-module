@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 label: Breadcrumb
 ---
 
@@ -10,31 +10,29 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 
 # Breadcrumb
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/breadcrumb/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/breadcrumb/)
 
 ## Example
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/breadcrumb/#example)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/breadcrumb/#example)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
+  <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item active" aria-current="page">Home</li>
-    </ol>
+    <ol class="breadcrumb"><li aria-current="page" class="active breadcrumb-item">Home</li></ol>
 </nav>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Library</li>
+        <li aria-current="page" class="active breadcrumb-item">Library</li>
     </ol>
 </nav>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">Home</a></li>
         <li class="breadcrumb-item"><a href="/library">Library</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Data</li>
+        <li aria-current="page" class="active breadcrumb-item">Data</li>
     </ol>
 </nav>` }}></div>
   </HtmlCode>
@@ -43,6 +41,7 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 
 ```php
 <?php
+
 
 echo $this->breadcrumbs(
     new \Laminas\Navigation\Navigation(
@@ -97,6 +96,78 @@ echo $this->breadcrumbs(
         ]
     )
 )->setMinDepth(0);
+
+```
+
+</TabItem>
+</Tabs>
+
+## Dividers
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/breadcrumb/#dividers)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '&gt;';">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li aria-current="page" class="active breadcrumb-item">Library</li>
+    </ol>
+</nav>
+<nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&quot;);">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li aria-current="page" class="active breadcrumb-item">Library</li>
+    </ol>
+</nav>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->breadcrumbs(
+    new \Laminas\Navigation\Navigation(
+        [
+            [
+                'label' => 'Home',
+                'uri'   => '/',
+                'pages' => [
+                    [
+                        'label'  => 'Library',
+                        'uri'    => '/library',
+                        'active' => true,
+                    ],
+                ],
+            ],
+        ]
+    )
+)->setMinDepth(0)->setSeparator('>');
+
+echo $this->breadcrumbs(
+    new \Laminas\Navigation\Navigation(
+        [
+            [
+                'label' => 'Home',
+                'uri'   => '/',
+                'pages' => [
+                    [
+                        'label'  => 'Library',
+                        'uri'    => '/library',
+                        'active' => true,
+                    ],
+                ],
+            ],
+        ]
+    )
+)->setMinDepth(0)->setSeparator(
+    'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'8\' '.'height=\'8\'%3E%3Cpath d=\'M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z\' '.'fill=\'currentColor\'/%3E%3C/svg%3E")'
+);
+
+// Reset separator
+$this->breadcrumbs()->setSeparator(' &gt; ');
 
 ```
 

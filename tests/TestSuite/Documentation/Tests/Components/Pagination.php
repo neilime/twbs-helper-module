@@ -5,89 +5,10 @@ return [
     'title' => 'Pagination',
     'url' => '%bootstrap-url%/components/pagination/',
     'tests' => [
-        [
-            'title' => 'Overview',
-            'url' => '%bootstrap-url%/components/pagination/#overview',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
-                // Create a paginator with 4 pages
-                $paginator = new \Laminas\Paginator\Paginator(new \Laminas\Paginator\Adapter\ArrayAdapter(array_fill(
-                    0,
-                    30,
-                    true
-                )));
-
-                echo $view->paginationControl($paginator, null, null, [
-                    'attributes' => ['aria-label' => 'Page navigation example'],
-                    'previousLink' => 'Previous',
-                    'nextLink' => 'Next',
-                ]);
-            },
-        ],
-        [
-            'title' => 'Working with icons',
-            'url' => '%bootstrap-url%/components/pagination/#working-with-icons',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
-                // Create a paginator with 4 pages
-                $paginator = new \Laminas\Paginator\Paginator(new \Laminas\Paginator\Adapter\ArrayAdapter(array_fill(
-                    0,
-                    30,
-                    true
-                )));
-
-                echo $view->paginationControl($paginator, null, null, [
-                    'previousLink' => '«',
-                    'nextLink' => '»',
-                    'attributes' => ['aria-label' => 'Page navigation example'],
-                ]);
-            },
-        ],
-        [
-            'title' => 'Sizing',
-            'url' => '%bootstrap-url%/components/pagination/#sizing',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
-                // Create a paginator with 4 pages
-                $paginator = new \Laminas\Paginator\Paginator(new \Laminas\Paginator\Adapter\ArrayAdapter(array_fill(
-                    0,
-                    30,
-                    true
-                )));
-
-                echo $view->paginationControl($paginator, null, null, [
-                    'size' => 'lg',
-                    'attributes' => ['aria-label' => 'Page navigation example'],
-                ]) . PHP_EOL;
-
-                echo $view->paginationControl($paginator, null, null, [
-                    'size' => 'sm',
-                    'attributes' => ['aria-label' => 'Page navigation example'],
-                ]);
-            },
-        ],
-        [
-            'title' => 'Alignment',
-            'url' => '%bootstrap-url%/components/pagination/#alignment',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
-                // Create a paginator with 4 pages
-                $paginator = new \Laminas\Paginator\Paginator(new \Laminas\Paginator\Adapter\ArrayAdapter(array_fill(
-                    0,
-                    30,
-                    true
-                )));
-
-                echo $view->paginationControl($paginator, null, null, [
-                    'alignment' => 'center',
-                    'previousLink' => 'Previous',
-                    'nextLink' => 'Next',
-                    'attributes' => ['aria-label' => 'Page navigation example'],
-                ]) . PHP_EOL;
-
-                echo $view->paginationControl($paginator, null, null, [
-                    'alignment' => 'end',
-                    'previousLink' => 'Previous',
-                    'nextLink' => 'Next',
-                    'attributes' => ['aria-label' => 'Page navigation example'],
-                ]);
-            },
-        ],
+        include __DIR__ . '/Pagination/Overview.php',
+        include __DIR__ . '/Pagination/WorkingWithIcons.php',
+        include __DIR__ . '/Pagination/DisabledAndActiveStates.php',
+        include __DIR__ . '/Pagination/Sizing.php',
+        include __DIR__ . '/Pagination/Alignment.php',
     ],
 ];

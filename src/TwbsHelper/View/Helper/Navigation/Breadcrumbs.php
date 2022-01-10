@@ -7,14 +7,6 @@ namespace TwbsHelper\View\Helper\Navigation;
  */
 class Breadcrumbs extends \Laminas\View\Helper\Navigation\Breadcrumbs
 {
-    protected static $navFormat =
-    '<nav aria-label="breadcrumb">' . PHP_EOL .
-        '    <ol class="breadcrumb">%s</ol>' . PHP_EOL . '</nav>';
-
-    protected static $activeBreadcrumbItemFormat = '<li class="breadcrumb-item active" aria-current="page">%s</li>';
-
-    protected static $breadcrumbItemFormat = '<li class="breadcrumb-item">%s</li>';
-
     /**
      * Renders breadcrumbs by chaining 'a' elements with the separator
      * registered in the helper.
@@ -33,7 +25,7 @@ class Breadcrumbs extends \Laminas\View\Helper\Navigation\Breadcrumbs
         // Find deepest active
         $activePage = $this->findActive($container);
         if ($activePage === []) {
-            return sprintf(static::$navFormat, '');
+            return $this->renderNavContainer('');
         }
 
         $activePage = $activePage['page'];
@@ -69,10 +61,7 @@ class Breadcrumbs extends \Laminas\View\Helper\Navigation\Breadcrumbs
             $activePage = $parent;
         }
 
-        return sprintf(
-            static::$navFormat,
-            $html ? PHP_EOL . $html . PHP_EOL . '    ' : ''
-        );
+        return $this->renderNavContainer($html);
     }
 
 
@@ -89,14 +78,43 @@ class Breadcrumbs extends \Laminas\View\Helper\Navigation\Breadcrumbs
         );
     }
 
-
-    protected function renderBreadcrumbItem($html, bool $active = false)
+    protected function renderNavContainer(string $content): string
     {
-        return '        ' . sprintf(
-            $active
-                ? static::$activeBreadcrumbItemFormat
-                : self::$breadcrumbItemFormat,
-            $html
+        $olContent = $this->getView()->plugin('htmlElement')->__invoke(
+            'ol',
+            ['class' => 'breadcrumb'],
+            $content
         );
+
+        $label = 'breadcrumb';
+        if ($this->hasTranslator()) {
+            $label = $this->getTranslator()->translate($label);
+        }
+        $attributes = [
+            'aria-label' => $label,
+        ];
+
+        $separator = trim($this->getSeparator());
+        if ($separator !== '&gt;') {
+            if (!preg_match('/^\s*url(.+)\s*$/', $separator)) {
+                $separator = '\'' . $separator . '\'';
+            }
+
+            $attributes['style'] = '--bs-breadcrumb-divider: ' . $separator . ';';
+        }
+
+        return $this->getView()->plugin('htmlElement')->__invoke('nav', $attributes, $olContent);
+    }
+
+
+    protected function renderBreadcrumbItem(string $content, bool $active = false)
+    {
+        $attributes = $this->getView()->plugin('htmlattributes')->__invoke(['class' => 'breadcrumb-item']);
+        if ($active) {
+            $attributes->merge(['class' => ['active']]);
+            $attributes['aria-current'] = 'page';
+        }
+
+        return $this->getView()->plugin('htmlElement')->__invoke('li', $attributes, $content);
     }
 }

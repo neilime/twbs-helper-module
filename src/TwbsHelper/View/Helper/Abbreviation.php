@@ -22,18 +22,25 @@ class Abbreviation extends \TwbsHelper\View\Helper\AbstractHtmlElement
         string $content,
         string $title = '',
         bool $initialism = false,
-        array $attributes = [],
+        iterable $attributes = [],
         bool $escape = true
     ) {
+
+        $attributes = $this->getView()->plugin('htmlattributes')->__invoke($attributes);
 
         if ($title) {
             $attributes['title'] = $title;
         }
 
         if ($initialism) {
-            $attributes = $this->setClassesToAttributes($attributes, ['initialism']);
+            $attributes->merge(['class' => ['initialism']]);
         }
 
-        return $this->htmlElement('abbr', $attributes, $content, $escape);
+        return $this->getView()->plugin('htmlElement')->__invoke(
+            'abbr',
+            $attributes,
+            $content,
+            $escape
+        );
     }
 }

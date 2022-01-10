@@ -26,7 +26,7 @@ return [
                             'This content is a little bit longer.',
                         '<small class="text-muted">Last updated 3 mins ago</small>'
                     ],
-                    'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...']],
+                    'image_bottom' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...']],
                 ]);
             },
         ],
@@ -36,7 +36,7 @@ return [
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                 echo $view->card([
                     'overlay' => [
-                        'img' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...']],
+                        'img' => ['/twbs-helper-module/img/docs/card-image.svg', ['alt' => '...']],
                         'title' => 'Card title',
                         'text' => [
                             'This is a wider card with supporting text below as a natural ' .
@@ -45,7 +45,7 @@ return [
                             'Last updated 3 mins ago',
                         ],
                     ],
-                ], ['bgVariant' => 'dark', 'class' => 'text-white']);
+                ], ['bg_variant' => 'dark', 'class' => 'text-white']);
             },
         ]
     ]

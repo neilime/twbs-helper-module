@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<?xml encoding="utf-8" ?><html><body><form action="" class="needs-validation" id="form" method="POST" name="form" novalidate="1" role="form">
+    <div class="g-3 row">
+        <div class="col-md-4">
+            <label class="form-label" for="validationCustom01">First name</label>
+            <input class="form-control is-valid" id="validationCustom01" name="firstName" required="required" type="text" value="Mark">
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label" for="validationCustom02">Last name</label>
+            <input class="form-control is-valid" id="validationCustom02" name="lastName" required="required" type="text" value="Otto">
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 has-error">
+            <label class="col-form-label form-label" for="validationCustomUsername">Username</label>
+            <div class="has-validation input-group">
+                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                <input aria-describedby="inputGroupPrepend" class="form-control is-invalid" id="validationCustomUsername" name="username" placeholder="Username" required="required" type="text" value="">
+                <div class="invalid-feedback">Please choose a username.</div>
+            </div>
+        </div>
+        <div class="col-md-6 has-error">
+            <label class="col-form-label form-label" for="validationCustom03">City</label>
+            <input class="form-control is-invalid" id="validationCustom03" name="city" required="required" type="text" value="">
+            <div class="invalid-feedback">Please provide a valid city.</div>
+        </div>
+        <div class="col-md-3 has-error">
+            <label class="col-form-label form-label" for="validationCustom04">State</label>
+            <select class="form-select is-invalid" id="validationCustom04" name="state" required="required">
+                <option selected value="">Choose...</option>
+                <option value="0">...</option>
+            </select>
+            <div class="invalid-feedback">Please select a valid state.</div>
+        </div>
+        <div class="col-md-3 has-error">
+            <label class="col-form-label form-label" for="validationCustom05">Zip</label>
+            <input class="form-control is-invalid" id="validationCustom05" name="zip" required="required" type="text" value="">
+            <div class="invalid-feedback">Please select a valid zip.</div>
+        </div>
+        <div class="col-12 has-error">
+            <div class="form-check">
+                <input type="hidden" name="terms-and-conditions" value="0"><input class="form-check-input is-invalid" id="invalidCheck" name="terms-and-conditions" required="required" type="checkbox" value="1">
+                <div class="invalid-feedback">You must agree before submitting..</div>
+                <label class="form-check-label" for="invalidCheck">Agree to terms and conditions</label>
+            </div>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary" name="submit" type="submit" value="">Submit form</button>
+        </div>
+    </div>
+</form></body></html>

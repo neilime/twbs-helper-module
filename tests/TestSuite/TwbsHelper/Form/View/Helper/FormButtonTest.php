@@ -25,7 +25,7 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage(
-            'Option "popover" expects a string or an array, "stdClass" given'
+            'Option "popover" expects a string or an iterable, "stdClass" given'
         );
 
         $this->formButtonHelper->render(new \Laminas\Form\Element\Button(
@@ -52,7 +52,7 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
     public function testRenderIconWithStringIconOption()
     {
         $this->assertEquals(
-            '<button type="button" name="test" class="btn&#x20;btn-secondary" value="">' .
+            '<button class="btn&#x20;btn-secondary" name="test" type="button" value="">' .
                 '<i class="fa-bootstrap&#x20;fab"></i>' .
                 '</button>',
             $this->formButtonHelper->render(new \Laminas\Form\Element\Button(
@@ -67,7 +67,7 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
     public function testRenderIconWithArrayIconOption()
     {
         $this->assertEquals(
-            '<button type="button" name="test" class="btn&#x20;btn-secondary" value="">' .
+            '<button class="btn&#x20;btn-secondary" name="test" type="button" value="">' .
                 '<i class="fa-bootstrap&#x20;fab"></i> test' .
                 '</button>',
             $this->formButtonHelper->render(new \Laminas\Form\Element\Button(
@@ -83,7 +83,7 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
         );
 
         $this->assertEquals(
-            '<button type="button" name="test" class="btn&#x20;btn-secondary" value="">' .
+            '<button class="btn&#x20;btn-secondary" name="test" type="button" value="">' .
                 'test <i class="fa-bootstrap&#x20;fab"></i>' .
                 '</button>',
             $this->formButtonHelper->render(new \Laminas\Form\Element\Button(

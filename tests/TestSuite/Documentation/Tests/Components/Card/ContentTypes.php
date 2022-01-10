@@ -49,9 +49,9 @@ return [
                 echo $view->card([
                     'listGroup' => [
                         [
-                            'Cras justo odio',
-                            'Dapibus ac facilisis in',
-                            'Vestibulum at eros',
+                            'An item',
+                            'A second item',
+                            'A third item',
                         ],
                     ],
                 ], ['style' => 'width: 18rem;']);
@@ -62,11 +62,24 @@ return [
                     'header' => 'Featured',
                     'listGroup' => [
                         [
-                            'Cras justo odio',
-                            'Dapibus ac facilisis in',
-                            'Vestibulum at eros',
+                            'An item',
+                            'A second item',
+                            'A third item',
                         ],
                     ],
+                ], ['style' => 'width: 18rem;']);
+
+                echo PHP_EOL . '<br/>' . PHP_EOL;
+
+                echo $view->card([
+                    'listGroup' => [
+                        [
+                            'An item',
+                            'A second item',
+                            'A third item',
+                        ],
+                    ],
+                    'footer' => 'Card footer',
                 ], ['style' => 'width: 18rem;']);
             },
         ],
@@ -81,9 +94,9 @@ return [
                         " and make up the bulk of the card's content.",
                     'listGroup' => [
                         [
-                            'Cras justo odio',
-                            'Dapibus ac facilisis in',
-                            'Vestibulum at eros',
+                            'An item',
+                            'A second item',
+                            'A third item',
                         ],
                     ],
                     'link' => [
@@ -107,13 +120,25 @@ return [
 
                 echo PHP_EOL . '<br/>' . PHP_EOL;
 
+                // Styled card headers
+                echo $view->card([
+                    'header' => [
+                        'Featured',
+                        ['tag' => 'h5'],
+                    ],
+                    'title' => 'Special title treatment',
+                    'text' => 'With supporting text below as a natural lead-in to additional content.',
+                    '<a href="#" class="btn btn-primary">Go somewhere</a>',
+                ]);
+
+                echo PHP_EOL . '<br/>' . PHP_EOL;
+
                 // With blockquote
                 echo $view->card([
                     'header' => 'Quote',
                     'blockquote' => [
-                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.',
+                        'A well-known quote, contained in a blockquote element.',
                         'Someone famous in <cite title="Source Title">Source Title</cite>',
-                        ['class' => 'mb-0'],
                     ],
                 ]);
 

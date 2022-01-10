@@ -10,7 +10,8 @@ return [
             new \Laminas\Navigation\Navigation(),
             [
                 'brand' => 'Navbar',
-                'container' => 'wrap',
+                'wrapping_container' => true,
+                'container' => 'fluid',
                 'toggler' => false,
             ]
         );
@@ -21,7 +22,7 @@ return [
             new \Laminas\Navigation\Navigation(),
             [
                 'brand' => 'Navbar',
-                'container' => 'within',
+                'container' => 'md',
                 'toggler' => false,
             ]
         );

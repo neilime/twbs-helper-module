@@ -37,6 +37,7 @@
     "laminas/laminas-view": "^2.16"
   },
   "require-dev": {
+    "jfcherng/php-diff": "^6.11",
     "laminas/laminas-component-installer": "^2.6",
     "laminas/laminas-modulemanager": "^2.11",
     "laminas/laminas-mvc": "^3.3",
@@ -58,7 +59,7 @@
   "autoload-dev": {
     "psr-4": {
       "TestSuite\\": "tests/TestSuite",
-      "DocumentationGenerator\\": "src/DocumentationGenerator"
+      "Documentation\\": "src/Documentation"
     }
   },
   "scripts": {
@@ -66,6 +67,7 @@
     "test:update-snapshot": "@test -d --update-snapshots",
     "test:ci": "@test -d pcov.enabled=1 -d max_execution_time=0 --coverage-text --coverage-clover ./build/logs/clover.xml --coverage-html ./build/coverage/",
     "generate-docs": "php scripts/generateDocumentation.php",
+    "generate-snapshot": "php scripts/generateSnapshot.php",
     "cs": "phpcs",
     "cbf": "phpcbf",
     "stan": "phpstan analyse --level 5 src",

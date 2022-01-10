@@ -11,7 +11,6 @@ return [
                 [
                     ['label' => 'Active', 'uri' => '#', 'active' => true,],
                     ['label' => 'Link', 'uri' => '#',],
-                    ['label' => 'Link', 'uri' => '#',],
                     ['label' => 'Disabled', 'uri' => '#', 'visible' => false,],
                 ]
             ),
@@ -28,7 +27,6 @@ return [
                 'options' => ['pills' => true],
                 'container' => [
                     ['label' => 'Active', 'uri' => '#', 'active' => true,],
-                    ['label' => 'Link', 'uri' => '#',],
                     ['label' => 'Link', 'uri' => '#',],
                     ['label' => 'Disabled', 'uri' => '#', 'visible' => false,],
                 ]

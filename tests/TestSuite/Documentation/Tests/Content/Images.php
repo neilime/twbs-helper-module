@@ -9,41 +9,55 @@ return [
             'title' => 'Responsive images',
             'url' => '%bootstrap-url%/content/images/#responsive-images',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
-                echo $view->image(
-                    '/twbs-helper-module/img/docs/responsive.svg',
-                    ['fluid' => true, 'alt' => 'Responsive image',]
-                );
+                echo $view->image('/twbs-helper-module/img/docs/responsive.svg', ['fluid' => true, 'alt' => '...',]);
             },
         ],
         [
             'title' => 'Image thumbnails',
             'url' => '%bootstrap-url%/content/images/#image-thumbnails',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
-                echo $view->image(
-                    '/twbs-helper-module/img/docs/200x200.svg',
-                    ['thumbnail' => true, 'alt' => 'Image thumbnail',]
-                );
+                echo $view->image('/twbs-helper-module/img/docs/200x200.svg', ['thumbnail' => true, 'alt' => '...',]);
             },
         ],
         [
             'title' => 'Aligning images',
             'url' => '%bootstrap-url%/content/images/#aligning-images',
-            'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
-                echo $view->image(
-                    '/twbs-helper-module/img/docs/200x200.svg',
-                    ['rounded' => true, 'alt' => 'Image aligned left', 'class' => 'float-left']
-                )  . PHP_EOL;
+            'tests' => [
+                [
+                    'title' => 'Float',
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        echo $view->image(
+                            '/twbs-helper-module/img/docs/200x200.svg',
+                            ['rounded' => true, 'alt' => '...', 'class' => 'float-start']
+                        );
 
-                echo $view->image(
-                    '/twbs-helper-module/img/docs/200x200.svg',
-                    ['rounded' => true, 'alt' => 'Image aligned right', 'class' => 'float-right']
-                ) . PHP_EOL;
+                        echo PHP_EOL;
 
-                echo $view->image(
-                    '/twbs-helper-module/img/docs/200x200.svg',
-                    ['rounded' => true, 'alt' => 'Image aligned block', 'class' => 'mx-auto d-block']
-                );
-            },
+                        echo $view->image(
+                            '/twbs-helper-module/img/docs/200x200.svg',
+                            ['rounded' => true, 'alt' => '...', 'class' => 'float-end']
+                        );
+                    },
+                ],
+                [
+                    'title' => 'Mx Auto',
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        echo $view->image(
+                            '/twbs-helper-module/img/docs/200x200.svg',
+                            ['rounded' => true, 'alt' => '...', 'class' => 'mx-auto d-block']
+                        );
+                    },
+                ],
+                [
+                    'title' => 'Centered',
+                    'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
+                        echo $view->image(
+                            '/twbs-helper-module/img/docs/200x200.svg',
+                            ['rounded' => true, 'centered' => true, 'alt' => '...']
+                        );
+                    },
+                ],
+            ]
         ],
         [
             'title' => 'Picture',
@@ -52,7 +66,7 @@ return [
                 echo $view->image('/twbs-helper-module/img/docs/200x200.svg', [
                     'thumbnail' => true,
                     'fluid' => true,
-                    'alt' => 'Picture image',
+                    'alt' => '...',
                     'sources' => ['/twbs-helper-module/img/docs/200x200.svg' => 'image/svg+xml'],
                 ]);
             },

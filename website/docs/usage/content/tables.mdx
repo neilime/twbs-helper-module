@@ -10,15 +10,15 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 
 # Tables
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/tables/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/content/tables/)
 
-## Examples
+## Overview
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/tables/#examples)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/content/tables/#overview)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
+  <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<table class="table">
     <thead>
         <tr>
@@ -43,39 +43,7 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
         </tr>
         <tr>
             <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-        </tr>
-    </tbody>
-</table>
-<br></br>
-<table class="table table-dark">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
+            <td colspan="2">Larry the Bird</td>
             <td>@twitter</td>
         </tr>
     </tbody>
@@ -110,46 +78,14 @@ echo $this->table(
             ],
             [
                 '3',
-                'Larry',
-                'the Bird',
+                [
+                    'data'       => 'Larry the Bird',
+                    'attributes' => ['colspan' => 2],
+                ],
                 '@twitter',
             ],
         ],
     ]
-);
-
-echo PHP_EOL.'<br/>';
-
-echo $this->table(
-    [
-        'head' => [
-            '#',
-            'First',
-            'Last',
-            'Handle',
-        ],
-        'body' => [
-            [
-                '1',
-                'Mark',
-                'Otto',
-                '@mdo',
-            ],
-            [
-                '2',
-                'Jacob',
-                'Thornton',
-                '@fat',
-            ],
-            [
-                '3',
-                'Larry',
-                'the Bird',
-                '@twitter',
-            ],
-        ],
-    ],
-    ['class' => 'table-dark']
 );
 
 ```
@@ -157,71 +93,66 @@ echo $this->table(
 </TabItem>
 </Tabs>
 
-## Table head options
+## Variants
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/tables/#table-head-options)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/content/tables/#variants)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
+  <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<table class="table">
-    <thead class="thead-dark">
+    <thead>
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Class</th>
+            <th scope="col">Heading</th>
+            <th scope="col">Heading</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <th scope="row">Default</th>
+            <td>Cell</td>
+            <td>Cell</td>
         </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
+        <tr class="table-primary">
+            <th scope="row">Primary</th>
+            <td>Cell</td>
+            <td>Cell</td>
         </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
+        <tr class="table-secondary">
+            <th scope="row">Secondary</th>
+            <td>Cell</td>
+            <td>Cell</td>
         </tr>
-    </tbody>
-</table>
-<br></br>
-<table class="table">
-    <thead class="thead-light">
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+        <tr class="table-success">
+            <th scope="row">Success</th>
+            <td>Cell</td>
+            <td>Cell</td>
         </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+        <tr class="table-danger">
+            <th scope="row">Danger</th>
+            <td>Cell</td>
+            <td>Cell</td>
         </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
+        <tr class="table-warning">
+            <th scope="row">Warning</th>
+            <td>Cell</td>
+            <td>Cell</td>
         </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
+        <tr class="table-info">
+            <th scope="row">Info</th>
+            <td>Cell</td>
+            <td>Cell</td>
+        </tr>
+        <tr class="table-light">
+            <th scope="row">Light</th>
+            <td>Cell</td>
+            <td>Cell</td>
+        </tr>
+        <tr class="table-dark">
+            <th scope="row">Dark</th>
+            <td>Cell</td>
+            <td>Cell</td>
         </tr>
     </tbody>
 </table>` }}></div>
@@ -232,73 +163,83 @@ echo $this->table(
 ```php
 <?php
 
-// First table (head dark)
+// Use "variant" option to color tables, table rows or individual cells.
 echo $this->table(
     [
         'head' => [
-            'attributes' => ['class' => 'thead-dark'],
-            'rows'       => [
-                '#',
-                'First',
-                'Last',
-                'Handle',
-            ],
+            'Class',
+            'Heading',
+            'Heading',
         ],
         'body' => [
             [
-                '1',
-                'Mark',
-                'Otto',
-                '@mdo',
+                'Default',
+                'Cell',
+                'Cell',
             ],
             [
-                '2',
-                'Jacob',
-                'Thornton',
-                '@fat',
+                'variant' => 'primary',
+                'cells'   => [
+                    'Primary',
+                    'Cell',
+                    'Cell',
+                ],
             ],
             [
-                '3',
-                'Larry',
-                'the Bird',
-                '@twitter',
-            ],
-        ],
-    ]
-);
-
-echo PHP_EOL.'<br/>';
-
-// Second table (head light)
-echo $this->table(
-    [
-        'head' => [
-            'attributes' => ['class' => 'thead-light'],
-            'rows'       => [
-                '#',
-                'First',
-                'Last',
-                'Handle',
-            ],
-        ],
-        'body' => [
-            [
-                '1',
-                'Mark',
-                'Otto',
-                '@mdo',
+                'variant' => 'secondary',
+                'cells'   => [
+                    'Secondary',
+                    'Cell',
+                    'Cell',
+                ],
             ],
             [
-                '2',
-                'Jacob',
-                'Thornton',
-                '@fat',
+                'variant' => 'success',
+                'cells'   => [
+                    'Success',
+                    'Cell',
+                    'Cell',
+                ],
             ],
             [
-                '3',
-                'Larry',
-                'the Bird',
-                '@twitter',
+                'variant' => 'danger',
+                'cells'   => [
+                    'Danger',
+                    'Cell',
+                    'Cell',
+                ],
+            ],
+            [
+                'variant' => 'warning',
+                'cells'   => [
+                    'Warning',
+                    'Cell',
+                    'Cell',
+                ],
+            ],
+            [
+                'variant' => 'info',
+                'cells'   => [
+                    'Info',
+                    'Cell',
+                    'Cell',
+                ],
+            ],
+            [
+                'variant' => 'light',
+                'cells'   => [
+                    'Light',
+                    'Cell',
+                    'Cell',
+                ],
+            ],
+            [
+                'variant' => 'dark',
+                'cells'   => [
+                    'Dark',
+                    'Cell',
+                    'Cell',
+                ],
             ],
         ],
     ]
@@ -309,13 +250,17 @@ echo $this->table(
 </TabItem>
 </Tabs>
 
-## Striped rows
+## Accented tables
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/tables/#striped-rows)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/content/tables/#accented-tables)
+
+### Striped rows
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/content/tables/#striped-rows)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
+  <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<table class="table table-striped">
     <thead>
         <tr>
@@ -340,8 +285,7 @@ echo $this->table(
         </tr>
         <tr>
             <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
+            <td colspan="2">Larry the Bird</td>
             <td>@twitter</td>
         </tr>
     </tbody>
@@ -371,8 +315,37 @@ echo $this->table(
         </tr>
         <tr>
             <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+<br></br>
+<table class="table table-striped table-success">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
             <td>@twitter</td>
         </tr>
     </tbody>
@@ -384,16 +357,17 @@ echo $this->table(
 ```php
 <?php
 
-// First table (head striped)
+// Use "striped" option to add zebra-striping to any table row within the <tbody>.
 echo $this->table(
     [
-        'head' => [
+        'striped' => true,
+        'head'    => [
             '#',
             'First',
             'Last',
             'Handle',
         ],
-        'body' => [
+        'body'    => [
             [
                 '1',
                 'Mark',
@@ -408,28 +382,30 @@ echo $this->table(
             ],
             [
                 '3',
-                'Larry',
-                'the Bird',
+                [
+                    'data'       => 'Larry the Bird',
+                    'attributes' => ['colspan' => 2],
+                ],
                 '@twitter',
             ],
         ],
-    ],
-    ['class' => 'table-striped']
+    ]
 );
-
 
 echo PHP_EOL.'<br/>';
 
-// Second table (head striped & dark)
+// This option can also be added to table variants
 echo $this->table(
     [
-        'head' => [
+        'striped' => true,
+        'variant' => 'dark',
+        'head'    => [
             '#',
             'First',
             'Last',
             'Handle',
         ],
-        'body' => [
+        'body'    => [
             [
                 '1',
                 'Mark',
@@ -444,13 +420,51 @@ echo $this->table(
             ],
             [
                 '3',
-                'Larry',
-                'the Bird',
+                [
+                    'data'       => 'Larry the Bird',
+                    'attributes' => ['colspan' => 2],
+                ],
                 '@twitter',
             ],
         ],
-    ],
-    ['class' => 'table-striped table-dark']
+    ]
+);
+
+echo PHP_EOL.'<br/>';
+
+echo $this->table(
+    [
+        'striped' => true,
+        'variant' => 'success',
+        'head'    => [
+            '#',
+            'First',
+            'Last',
+            'Handle',
+        ],
+        'body'    => [
+            [
+                '1',
+                'Mark',
+                'Otto',
+                '@mdo',
+            ],
+            [
+                '2',
+                'Jacob',
+                'Thornton',
+                '@fat',
+            ],
+            [
+                '3',
+                [
+                    'data'       => 'Larry the Bird',
+                    'attributes' => ['colspan' => 2],
+                ],
+                '@twitter',
+            ],
+        ],
+    ]
 );
 
 ```
@@ -458,13 +472,391 @@ echo $this->table(
 </TabItem>
 </Tabs>
 
-## Bordered table
+### Hoverable rows
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/tables/#bordered-table)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/content/tables/#hoverable-rows)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+<br></br>
+<table class="table table-dark table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+<br></br>
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+// Use "hover" option to add zebra-striping to any table row within the <tbody>.
+echo $this->table(
+    [
+        'hover' => true,
+        'head'  => [
+            '#',
+            'First',
+            'Last',
+            'Handle',
+        ],
+        'body'  => [
+            [
+                '1',
+                'Mark',
+                'Otto',
+                '@mdo',
+            ],
+            [
+                '2',
+                'Jacob',
+                'Thornton',
+                '@fat',
+            ],
+            [
+                '3',
+                [
+                    'data'       => 'Larry the Bird',
+                    'attributes' => ['colspan' => 2],
+                ],
+                '@twitter',
+            ],
+        ],
+    ]
+);
+
+echo PHP_EOL.'<br/>';
+
+echo $this->table(
+    [
+        'variant' => 'dark',
+        'hover'   => true,
+        'head'    => [
+            '#',
+            'First',
+            'Last',
+            'Handle',
+        ],
+        'body'    => [
+            [
+                '1',
+                'Mark',
+                'Otto',
+                '@mdo',
+            ],
+            [
+                '2',
+                'Jacob',
+                'Thornton',
+                '@fat',
+            ],
+            [
+                '3',
+                [
+                    'data'       => 'Larry the Bird',
+                    'attributes' => ['colspan' => 2],
+                ],
+                '@twitter',
+            ],
+        ],
+    ]
+);
+
+echo PHP_EOL.'<br/>';
+
+// This option can also be combined with the striped option
+echo $this->table(
+    [
+        'hover'   => true,
+        'striped' => true,
+        'head'    => [
+            '#',
+            'First',
+            'Last',
+            'Handle',
+        ],
+        'body'    => [
+            [
+                '1',
+                'Mark',
+                'Otto',
+                '@mdo',
+            ],
+            [
+                '2',
+                'Jacob',
+                'Thornton',
+                '@fat',
+            ],
+            [
+                '3',
+                [
+                    'data'       => 'Larry the Bird',
+                    'attributes' => ['colspan' => 2],
+                ],
+                '@twitter',
+            ],
+        ],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+### Active tables
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/content/tables/#active-tables)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="table-active">
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td class="table-active" colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+<br></br>
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="table-active">
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td class="table-active" colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+// Highlight a table row or cell by adding the "active" option.
+echo $this->table(
+    [
+        'head' => [
+            '#',
+            'First',
+            'Last',
+            'Handle',
+        ],
+        'body' => [
+            [
+                'active' => true,
+                'cells'  => [
+                    '1',
+                    'Mark',
+                    'Otto',
+                    '@mdo',
+                ],
+            ],
+            [
+                '2',
+                'Jacob',
+                'Thornton',
+                '@fat',
+            ],
+            [
+                '3',
+                [
+                    'data'       => 'Larry the Bird',
+                    'active'     => true,
+                    'attributes' => ['colspan' => 2],
+                ],
+                '@twitter',
+            ],
+        ],
+    ]
+);
+
+echo PHP_EOL.'<br/>';
+
+echo $this->table(
+    [
+        'variant' => 'dark',
+        'head'    => [
+            '#',
+            'First',
+            'Last',
+            'Handle',
+        ],
+        'body'    => [
+            [
+                'active' => true,
+                'cells'  => [
+                    '1',
+                    'Mark',
+                    'Otto',
+                    '@mdo',
+                ],
+            ],
+            [
+                '2',
+                'Jacob',
+                'Thornton',
+                '@fat',
+            ],
+            [
+                '3',
+                [
+                    'data'       => 'Larry the Bird',
+                    'active'     => true,
+                    'attributes' => ['colspan' => 2],
+                ],
+                '@twitter',
+            ],
+        ],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+## Table borders
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/content/tables/#table-borders)
+
+### Bordered tables
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/content/tables/#bordered-tables)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<table class="table table-bordered">
     <thead>
         <tr>
@@ -495,7 +887,7 @@ echo $this->table(
     </tbody>
 </table>
 <br></br>
-<table class="table table-bordered table-dark">
+<table class="border-primary table table-bordered">
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -531,16 +923,17 @@ echo $this->table(
 ```php
 <?php
 
-// First table (bordered)
+// Add "bordered" option for borders on all sides of the table and cells
 echo $this->table(
     [
-        'head' => [
+        'bordered' => true,
+        'head'     => [
             '#',
             'First',
             'Last',
             'Handle',
         ],
-        'body' => [
+        'body'     => [
             [
                 '1',
                 'Mark',
@@ -562,22 +955,22 @@ echo $this->table(
                 '@twitter',
             ],
         ],
-    ],
-    ['class' => 'table-bordered']
+    ]
 );
 
 echo PHP_EOL.'<br/>';
 
-// First table (bordered & dark)
+// "bordered" option can be a variant to change colors
 echo $this->table(
     [
-        'head' => [
+        'bordered' => 'primary',
+        'head'     => [
             '#',
             'First',
             'Last',
             'Handle',
         ],
-        'body' => [
+        'body'     => [
             [
                 '1',
                 'Mark',
@@ -599,8 +992,7 @@ echo $this->table(
                 '@twitter',
             ],
         ],
-    ],
-    ['class' => 'table-bordered table-dark']
+    ]
 );
 
 ```
@@ -608,13 +1000,13 @@ echo $this->table(
 </TabItem>
 </Tabs>
 
-## Borderless table
+### Tables without borders
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/tables/#borderless-table)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/content/tables/#tables-without-borders)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
+  <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<table class="table table-borderless">
     <thead>
         <tr>
@@ -682,16 +1074,17 @@ echo $this->table(
 <?php
 
 
-// First table (borderless)
+// Add "borderless" option for a table without borders
 echo $this->table(
     [
-        'head' => [
+        'borderless' => true,
+        'head'       => [
             '#',
             'First',
             'Last',
             'Handle',
         ],
-        'body' => [
+        'body'       => [
             [
                 '1',
                 'Mark',
@@ -713,22 +1106,23 @@ echo $this->table(
                 '@twitter',
             ],
         ],
-    ],
-    ['class' => 'table-borderless']
+    ]
 );
 
 echo PHP_EOL.'<br/>';
 
-// Second table (borderless & dark)
+// This option can also be combined with the "variant" option
 echo $this->table(
     [
-        'head' => [
+        'borderless' => true,
+        'variant'    => 'dark',
+        'head'       => [
             '#',
             'First',
             'Last',
             'Handle',
         ],
-        'body' => [
+        'body'       => [
             [
                 '1',
                 'Mark',
@@ -750,8 +1144,7 @@ echo $this->table(
                 '@twitter',
             ],
         ],
-    ],
-    ['class' => 'table-borderless table-dark']
+    ]
 );
 
 ```
@@ -759,163 +1152,13 @@ echo $this->table(
 </TabItem>
 </Tabs>
 
-## Hoverable rows
+## Small Tables
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/tables/#hoverable-rows)
-
-<Tabs>
-<TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
-      <div dangerouslySetInnerHTML={{ __html: `<table class="table table-hover">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-        </tr>
-    </tbody>
-</table>
-<br></br>
-<table class="table table-dark table-hover">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-        </tr>
-    </tbody>
-</table>` }}></div>
-  </HtmlCode>
-</TabItem>
-<TabItem value="source" label="Source">
-
-```php
-<?php
-
-// First table (hoverable)
-echo $this->table(
-    [
-        'head' => [
-            '#',
-            'First',
-            'Last',
-            'Handle',
-        ],
-        'body' => [
-            [
-                '1',
-                'Mark',
-                'Otto',
-                '@mdo',
-            ],
-            [
-                '2',
-                'Jacob',
-                'Thornton',
-                '@fat',
-            ],
-            [
-                '3',
-                [
-                    'data'       => 'Larry the Bird',
-                    'attributes' => ['colspan' => 2],
-                ],
-                '@twitter',
-            ],
-        ],
-    ],
-    ['class' => 'table-hover']
-);
-
-echo PHP_EOL.'<br/>';
-
-// Second table (hoverable & dark)
-echo $this->table(
-    [
-        'head' => [
-            '#',
-            'First',
-            'Last',
-            'Handle',
-        ],
-        'body' => [
-            [
-                '1',
-                'Mark',
-                'Otto',
-                '@mdo',
-            ],
-            [
-                '2',
-                'Jacob',
-                'Thornton',
-                '@fat',
-            ],
-            [
-                '3',
-                [
-                    'data'       => 'Larry the Bird',
-                    'attributes' => ['colspan' => 2],
-                ],
-                '@twitter',
-            ],
-        ],
-    ],
-    ['class' => 'table-hover table-dark']
-);
-
-```
-
-</TabItem>
-</Tabs>
-
-## Small Table
-
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/tables/#small-table)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/content/tables/#small-tables)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
+  <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<table class="table table-sm">
     <thead>
         <tr>
@@ -982,9 +1225,10 @@ echo $this->table(
 ```php
 <?php
 
-// First table (small)
+// Add "size" option to make any table more compact by cutting all cell padding in half.
 echo $this->table(
     [
+        'size' => 'sm',
         'head' => [
             '#',
             'First',
@@ -1013,22 +1257,23 @@ echo $this->table(
                 '@twitter',
             ],
         ],
-    ],
-    ['class' => 'table-sm']
+    ]
 );
 
 echo PHP_EOL.'<br/>';
 
-// Second table (small & dark)
+// This option can also be combined with the "variant" option
 echo $this->table(
     [
-        'head' => [
+        'size'    => 'sm',
+        'variant' => 'dark',
+        'head'    => [
             '#',
             'First',
             'Last',
             'Handle',
         ],
-        'body' => [
+        'body'    => [
             [
                 '1',
                 'Mark',
@@ -1050,8 +1295,7 @@ echo $this->table(
                 '@twitter',
             ],
         ],
-    ],
-    ['class' => 'table-sm table-dark']
+    ]
 );
 
 ```
@@ -1059,133 +1303,177 @@ echo $this->table(
 </TabItem>
 </Tabs>
 
-## Contextual classes
+## Vertical alignment
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/tables/#contextual-classes)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/content/tables/#vertical-alignment)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
-      <div dangerouslySetInnerHTML={{ __html: `<table class="table">
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="table-responsive">
+    <table class="align-middle table">
+        <thead>
+            <tr>
+                <th class="w-25" scope="col">Heading 1</th>
+                <th class="w-25" scope="col">Heading 2</th>
+                <th class="w-25" scope="col">Heading 3</th>
+                <th class="w-25" scope="col">Heading 4</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
+                <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
+                <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
+                <td>This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.</td>
+            </tr>
+            <tr class="align-bottom">
+                <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
+                <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
+                <td>This cell inherits <code>vertical-align: bottom;</code> from the table row</td>
+                <td>This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.</td>
+            </tr>
+            <tr>
+                <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
+                <td>This cell inherits <code>vertical-align: middle;</code> from the table</td>
+                <td class="align-top">This cell is aligned to the top.</td>
+                <td>This here is some placeholder text, intended to take up quite a bit of vertical space, to demonstrate how the vertical alignment works in the preceding cells.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+// Use the align option to re-align where needed
+echo $this->table(
+    [
+        'responsive' => true,
+        'align'      => 'middle',
+        'head'       => [
+            [
+                'data'       => 'Heading 1',
+                'attributes' => ['class' => 'w-25'],
+            ],
+            [
+                'data'       => 'Heading 2',
+                'attributes' => ['class' => 'w-25'],
+            ],
+            [
+                'data'       => 'Heading 3',
+                'attributes' => ['class' => 'w-25'],
+            ],
+            [
+                'data'       => 'Heading 4',
+                'attributes' => ['class' => 'w-25'],
+            ],
+        ],
+        'body'       => [
+            [
+                [
+                    'type'       => \TwbsHelper\View\Helper\Table::TABLE_DATA,
+                    'attributes' => ['scope' => null],
+                    'data'       => 'This cell inherits <code>vertical-align: middle;</code> from the table',
+                ],
+                'This cell inherits <code>vertical-align: middle;</code> from the table',
+                'This cell inherits <code>vertical-align: middle;</code> from the table',
+                'This here is some placeholder text, intended to take up quite a bit of vertical space, '.'to demonstrate how the vertical alignment works in the preceding cells.',
+            ],
+            [
+                'align' => 'bottom',
+                [
+                    'type'       => \TwbsHelper\View\Helper\Table::TABLE_DATA,
+                    'attributes' => ['scope' => null],
+                    'data'       => 'This cell inherits <code>vertical-align: bottom;</code> from the table row',
+                ],
+                'This cell inherits <code>vertical-align: bottom;</code> from the table row',
+                'This cell inherits <code>vertical-align: bottom;</code> from the table row',
+                'This here is some placeholder text, intended to take up quite a bit of vertical space, '.'to demonstrate how the vertical alignment works in the preceding cells.'
+            ],
+            [
+                [
+                    'type'       => \TwbsHelper\View\Helper\Table::TABLE_DATA,
+                    'attributes' => ['scope' => null],
+                    'data'       => 'This cell inherits <code>vertical-align: middle;</code> from the table',
+                ],
+                'This cell inherits <code>vertical-align: middle;</code> from the table',
+                [
+                    'align' => 'top',
+                    'data'  => 'This cell is aligned to the top.',
+                ],
+                'This here is some placeholder text, intended to take up quite a bit of vertical space, '.'to demonstrate how the vertical alignment works in the preceding cells.',
+            ],
+        ],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+## Nesting
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/content/tables/#nesting)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<table class="table table-bordered table-striped">
     <thead>
         <tr>
-            <th scope="col">Class</th>
-            <th scope="col">Heading</th>
-            <th scope="col">Heading</th>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
         </tr>
     </thead>
     <tbody>
-        <tr class="table-active">
-            <th scope="row">Active</th>
-            <td>Cell</td>
-            <td>Cell</td>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
         </tr>
         <tr>
-            <th scope="row">Default</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="table-primary">
-            <th scope="row">Primary</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="table-secondary">
-            <th scope="row">Secondary</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="table-success">
-            <th scope="row">Success</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="table-danger">
-            <th scope="row">Danger</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="table-warning">
-            <th scope="row">Warning</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="table-info">
-            <th scope="row">Info</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="table-light">
-            <th scope="row">Light</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="table-dark">
-            <th scope="row">Dark</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-    </tbody>
-</table>
-<br></br>
-<table class="table table-dark">
-    <thead>
-        <tr>
-            <th scope="col">Class</th>
-            <th scope="col">Heading</th>
-            <th scope="col">Heading</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr class="bg-active">
-            <th scope="row">Active</th>
-            <td>Cell</td>
-            <td>Cell</td>
+            <td colspan="4">
+                <table class="mb-0 table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Header</th>
+                            <th scope="col">Header</th>
+                            <th scope="col">Header</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">A</th>
+                            <td>First</td>
+                            <td>Last</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">B</th>
+                            <td>First</td>
+                            <td>Last</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">C</th>
+                            <td>First</td>
+                            <td>Last</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
         </tr>
         <tr>
-            <th scope="row">Default</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="bg-primary">
-            <th scope="row">Primary</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="bg-secondary">
-            <th scope="row">Secondary</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="bg-success">
-            <th scope="row">Success</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="bg-danger">
-            <th scope="row">Danger</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="bg-warning">
-            <th scope="row">Warning</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="bg-info">
-            <th scope="row">Info</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="bg-light">
-            <th scope="row">Light</th>
-            <td>Cell</td>
-            <td>Cell</td>
-        </tr>
-        <tr class="bg-dark">
-            <th scope="row">Dark</th>
-            <td>Cell</td>
-            <td>Cell</td>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
         </tr>
     </tbody>
 </table>` }}></div>
@@ -1196,187 +1484,60 @@ echo $this->table(
 ```php
 <?php
 
-// First table
 echo $this->table(
     [
-        'head' => [
-            'Class',
-            'Heading',
-            'Heading',
+        'striped'  => true,
+        'bordered' => true,
+        'head'     => [
+            '#',
+            'First',
+            'Last',
+            'Handle',
         ],
-        'body' => [
+        'body'     => [
             [
-                'attributes' => ['class' => 'table-active'],
-                'cells'      => [
-                    'Active',
-                    'Cell',
-                    'Cell',
+                '1',
+                'Mark',
+                'Otto',
+                '@mdo',
+            ],
+            [
+                [
+                    'data'       => [
+                        'head' => [
+                            'Header',
+                            'Header',
+                            'Header',
+                        ],
+                        'body' => [
+                            [
+                                'A',
+                                'First',
+                                'Last',
+                            ],
+                            [
+                                'B',
+                                'First',
+                                'Last',
+                            ],
+                            [
+                                'C',
+                                'First',
+                                'Last',
+                            ],
+                        ],
+                    ],
+                    'attributes' => ['colspan' => 4],
                 ],
             ],
             [
-                'Default',
-                'Cell',
-                'Cell',
-            ],
-            [
-                'attributes' => ['class' => 'table-primary'],
-                'cells'      => [
-                    'Primary',
-                    'Cell',
-                    'Cell',
-                ],
-            ],
-            [
-                'attributes' => ['class' => 'table-secondary'],
-                'cells'      => [
-                    'Secondary',
-                    'Cell',
-                    'Cell',
-                ],
-            ],
-            [
-                'attributes' => ['class' => 'table-success'],
-                'cells'      => [
-                    'Success',
-                    'Cell',
-                    'Cell',
-                ],
-            ],
-            [
-                'attributes' => ['class' => 'table-danger'],
-                'cells'      => [
-                    'Danger',
-                    'Cell',
-                    'Cell',
-                ],
-            ],
-            [
-                'attributes' => ['class' => 'table-warning'],
-                'cells'      => [
-                    'Warning',
-                    'Cell',
-                    'Cell',
-                ],
-            ],
-            [
-                'attributes' => ['class' => 'table-info'],
-                'cells'      => [
-                    'Info',
-                    'Cell',
-                    'Cell',
-                ],
-            ],
-            [
-                'attributes' => ['class' => 'table-light'],
-                'cells'      => [
-                    'Light',
-                    'Cell',
-                    'Cell',
-                ],
-            ],
-            [
-                'attributes' => ['class' => 'table-dark'],
-                'cells'      => [
-                    'Dark',
-                    'Cell',
-                    'Cell',
-                ],
+                '3',
+                'Larry',
+                'the Bird',
+                '@twitter',
             ],
         ],
     ]
-);
-
-echo PHP_EOL.'<br/>';
-
-// Second table (dark)
-echo $this->table(
-    [
-        'head' => [
-            'Class',
-            'Heading',
-            'Heading',
-        ],
-        'body' => [
-            [
-                'attributes' => ['class' => 'bg-active'],
-                'cells'      => [
-                    'Active',
-                    'Cell',
-                    'Cell',
-                ],
-            ],
-            [
-                'Default',
-                'Cell',
-                'Cell',
-            ],
-            [
-                'attributes' => ['class' => 'bg-primary'],
-                'cells'      => [
-                    'Primary',
-                    'Cell',
-                    'Cell',
-                ],
-            ],
-            [
-                'attributes' => ['class' => 'bg-secondary'],
-                'cells'      => [
-                    'Secondary',
-                    'Cell',
-                    'Cell',
-                ],
-            ],
-            [
-                'attributes' => ['class' => 'bg-success'],
-                'cells'      => [
-                    'Success',
-                    'Cell',
-                    'Cell',
-                ],
-            ],
-            [
-                'attributes' => ['class' => 'bg-danger'],
-                'cells'      => [
-                    'Danger',
-                    'Cell',
-                    'Cell',
-                ],
-            ],
-            [
-                'attributes' => ['class' => 'bg-warning'],
-                'cells'      => [
-                    'Warning',
-                    'Cell',
-                    'Cell',
-                ],
-            ],
-            [
-                'attributes' => ['class' => 'bg-info'],
-                'cells'      => [
-                    'Info',
-                    'Cell',
-                    'Cell',
-                ],
-            ],
-            [
-                'attributes' => ['class' => 'bg-light'],
-                'cells'      => [
-                    'Light',
-                    'Cell',
-                    'Cell',
-                ],
-            ],
-            [
-                'attributes' => ['class' => 'bg-dark'],
-                'cells'      => [
-                    'Dark',
-                    'Cell',
-                    'Cell',
-                ],
-            ],
-        ],
-    ],
-    ['class' => 'table-dark']
 );
 
 ```
@@ -1384,16 +1545,50 @@ echo $this->table(
 </TabItem>
 </Tabs>
 
-## Captions
+## Anatomy
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/tables/#captions)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/content/tables/#anatomy)
+
+### Table head
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/content/tables/#table-head)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
+  <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<table class="table">
-    <caption>List of users</caption>
-    <thead>
+    <thead class="table-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+<br></br>
+<table class="table">
+    <thead class="table-dark">
         <tr>
             <th scope="col">#</th>
             <th scope="col">First</th>
@@ -1429,16 +1624,55 @@ echo $this->table(
 ```php
 <?php
 
+// Use the option "variant" to make <thead>s appear light or dark gray.
 echo $this->table(
     [
-        'caption' => 'List of users',
-        'head'    => [
-            '#',
-            'First',
-            'Last',
-            'Handle',
+        'head' => [
+            'variant' => 'light',
+            'cells'   => [
+                '#',
+                'First',
+                'Last',
+                'Handle',
+            ],
         ],
-        'body'    => [
+        'body' => [
+            [
+                '1',
+                'Mark',
+                'Otto',
+                '@mdo',
+            ],
+            [
+                '2',
+                'Jacob',
+                'Thornton',
+                '@fat',
+            ],
+            [
+                '3',
+                'Larry',
+                'the Bird',
+                '@twitter',
+            ],
+        ],
+    ]
+);
+
+echo PHP_EOL.'<br/>';
+
+echo $this->table(
+    [
+        'head' => [
+            'variant' => 'dark',
+            'cells'   => [
+                '#',
+                'First',
+                'Last',
+                'Handle',
+            ],
+        ],
+        'body' => [
             [
                 '1',
                 'Mark',
@@ -1466,17 +1700,265 @@ echo $this->table(
 </TabItem>
 </Tabs>
 
-## Responsive classes
+### Table foot
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/tables/#responsive-tables)
-
-### Always responsive
-
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/tables/#always-responsive)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/content/tables/#table-foot)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<table class="table">
+    <thead class="table-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Footer</td>
+            <td>Footer</td>
+            <td>Footer</td>
+            <td>Footer</td>
+        </tr>
+    </tfoot>
+</table>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->table(
+    [
+        'head'   => [
+            'variant' => 'light',
+            'cells'   => [
+                '#',
+                'First',
+                'Last',
+                'Handle',
+            ],
+        ],
+        'body'   => [
+            [
+                '1',
+                'Mark',
+                'Otto',
+                '@mdo',
+            ],
+            [
+                '2',
+                'Jacob',
+                'Thornton',
+                '@fat',
+            ],
+            [
+                '3',
+                'Larry',
+                'the Bird',
+                '@twitter',
+            ],
+        ],
+        'footer' => [
+            'Footer',
+            'Footer',
+            'Footer',
+            'Footer',
+        ],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+### Captions
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/content/tables/#captions)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<table class="table">
+    <caption>List of users</caption>
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>
+<br></br>
+<table class="caption-top table">
+    <caption>List of users</caption>
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td colspan="2">Larry the Bird</td>
+            <td>@twitter</td>
+        </tr>
+    </tbody>
+</table>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->table(
+    [
+        'caption' => 'List of users',
+        'head'    => [
+            '#',
+            'First',
+            'Last',
+            'Handle',
+        ],
+        'body'    => [
+            [
+                '1',
+                'Mark',
+                'Otto',
+                '@mdo',
+            ],
+            [
+                '2',
+                'Jacob',
+                'Thornton',
+                '@fat',
+            ],
+            [
+                '3',
+                [
+                    'data'       => 'Larry the Bird',
+                    'attributes' => ['colspan' => 2],
+                ],
+                '@twitter',
+            ],
+        ],
+    ]
+);
+
+echo PHP_EOL.'<br/>';
+
+// You can also put the <caption> on the top of the table with the "captionTop" option
+echo $this->table(
+    [
+        'captionTop' => 'List of users',
+        'head'       => [
+            '#',
+            'First',
+            'Last',
+            'Handle',
+        ],
+        'body'       => [
+            [
+                '1',
+                'Mark',
+                'Otto',
+                '@mdo',
+            ],
+            [
+                '2',
+                'Jacob',
+                'Thornton',
+                '@fat',
+            ],
+            [
+                '3',
+                [
+                    'data'       => 'Larry the Bird',
+                    'attributes' => ['colspan' => 2],
+                ],
+                '@twitter',
+            ],
+        ],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+## Responsive tables
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/content/tables/#responsive-tables)
+
+### Always responsive
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/content/tables/#always-responsive)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<div class="table-responsive">
     <table class="table">
         <thead>
@@ -1603,12 +2085,69 @@ echo $this->table(
 
 ### Breakpoint specific
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/content/tables/#breakpoint-specific)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/content/tables/#breakpoint-specific)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
-      <div dangerouslySetInnerHTML={{ __html: `<div class="table-responsive-sm">
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+                <th scope="col">Heading</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<br></br>
+<div class="table-responsive-sm">
     <table class="table">
         <thead>
             <tr>
@@ -1842,7 +2381,7 @@ echo $this->table(
 ```php
 <?php
 
-foreach (['sm', 'md', 'lg', 'xl'] as $key => $size) {
+foreach ([true, 'sm', 'md', 'lg', 'xl'] as $key => $size) {
     if ($key) {
         echo PHP_EOL.'<br/>';
     }

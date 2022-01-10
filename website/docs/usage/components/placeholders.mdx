@@ -1,0 +1,214 @@
+---
+sidebar_position: 18
+label: Placeholders
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../src/components/HtmlCode.tsx";
+
+# Placeholders
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/placeholders/)
+
+## Example
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/placeholders/#example)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="card">
+    <img alt="..." class="card-img-top" src="/twbs-helper-module/img/docs/image-cap.svg"></img>
+    <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a class="btn btn-primary" href="#">Go somewhere</a>
+    </div>
+</div>
+<div aria-hidden="true" class="card">
+    <img alt="..." class="card-img-top" src="/twbs-helper-module/img/docs/image-cap.svg"></img>
+    <div class="card-body">
+        <div class="card-title h5 placeholder-glow">
+            <span class="col-6 placeholder"></span>
+        </div>
+        <p class="card-text placeholder-glow">
+            <span class="col-7 placeholder"></span>
+            <span class="col-4 placeholder"></span>
+            <span class="col-4 placeholder"></span>
+            <span class="col-6 placeholder"></span>
+            <span class="col-8 placeholder"></span>
+        </p>
+        <a aria-disabled="true" class="btn btn-primary col-6 disabled placeholder" href="#" role="button" tabindex="-1"></a>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->card(
+    [
+        'image_top' => [
+            '/twbs-helper-module/img/docs/image-cap.svg',
+            ['alt' => '...'],
+        ],
+        'title' => 'Card title',
+        'text' => 'Some quick example text to build on the card title '.'and make up the bulk of the card\'s content.',
+        '<a class="btn btn-primary" href="&#x23;">Go somewhere</a>',
+    ],
+);
+
+echo $this->card(
+    [
+        'image_top' => [
+            '/twbs-helper-module/img/docs/image-cap.svg',
+            ['alt' => '...'],
+        ],
+        'title' => [
+            'attributes' => [    'class' => 'h5 placeholder-glow'    ],
+            'tag'        => 'div',
+            'content'    => $this->placeholder(6),
+        ],
+        'text' => [
+            'content'    => $this->placeholder(7).$this->placeholder(4).$this->placeholder(4).$this->placeholder(6).$this->placeholder(8),
+            'attributes' => ['class' => 'placeholder-glow'],
+        ],
+        $this->placeholder(['column' => 6, 'button' => ['options' => ['variant' => 'primary']]]),
+    ],
+    ['aria-hidden' => 'true']
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+## How it works
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/placeholders/#how-it-works)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<p aria-hidden="true">
+  <span class="col-6 placeholder"></span>
+</p>
+<a aria-disabled="true" aria-hidden="true" class="btn btn-primary col-4 disabled placeholder" href="#" role="button" tabindex="-1"></a>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->placeholder(['column' => 6, 'hidden' => true]);
+
+echo $this->placeholder(
+    [
+        'column' => 4,
+        'hidden' => true,
+        'button' => [
+            'options' => ['variant' => 'primary'],
+        ],
+    ]
+);
+
+```
+
+</TabItem>
+</Tabs>
+
+### Width
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/placeholders/#width)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<span class="col-6 placeholder"></span>
+<span class="placeholder w-75"></span>
+<span class="placeholder" style="width: 25%;"></span>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->placeholder(6);
+
+echo $this->placeholder(['class' => 'w-75']);
+
+echo $this->placeholder(['style' => 'width: 25%']);
+
+```
+
+</TabItem>
+</Tabs>
+
+### Sizing
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/placeholders/#sizing)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<span class="col-12 placeholder placeholder-lg"></span>
+<span class="col-12 placeholder"></span>
+<span class="col-12 placeholder placeholder-sm"></span>
+<span class="col-12 placeholder placeholder-xs"></span>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+
+echo $this->placeholder(['column' => 12, 'size' => 'lg']);
+
+echo $this->placeholder(12);
+
+echo $this->placeholder(['column' => 12, 'size' => 'sm']);
+
+echo $this->placeholder(['column' => 12, 'size' => 'xs']);
+
+```
+
+</TabItem>
+</Tabs>
+
+### Animation
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/placeholders/#animation)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<p class="placeholder-glow">
+  <span class="col-12 placeholder"></span>
+</p>
+<p class="placeholder-wave">
+  <span class="col-12 placeholder"></span>
+</p>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+
+echo $this->placeholder(['column' => 12, 'animation' => 'glow']);
+
+echo $this->placeholder(['column' => 12, 'animation' => 'wave']);
+
+```
+
+</TabItem>
+</Tabs>
+

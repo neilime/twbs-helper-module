@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 label: Badges
 ---
 
@@ -10,32 +10,31 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 
 # Badges
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/badge/)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/badge/)
 
-## Example
+## Examples
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/badge/#example)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/badge/#examples)
+
+### Headings
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/badge/#headings)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
-      <div dangerouslySetInnerHTML={{ __html: `<h1>Example heading <span class="badge badge-secondary">New</span>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<h1>Example heading <span class="badge bg-secondary">New</span>
 </h1>
-<h2>Example heading <span class="badge badge-secondary">New</span>
+<h2>Example heading <span class="badge bg-secondary">New</span>
 </h2>
-<h3>Example heading <span class="badge badge-secondary">New</span>
+<h3>Example heading <span class="badge bg-secondary">New</span>
 </h3>
-<h4>Example heading <span class="badge badge-secondary">New</span>
+<h4>Example heading <span class="badge bg-secondary">New</span>
 </h4>
-<h5>Example heading <span class="badge badge-secondary">New</span>
+<h5>Example heading <span class="badge bg-secondary">New</span>
 </h5>
-<h6>Example heading <span class="badge badge-secondary">New</span>
-</h6>
-<br></br>
-<button type="button" name="button" class="btn btn-primary" value="">
-    Profile <span class="badge badge-light">9</span>
-    <span class="sr-only">unread messages</span>
-</button>` }}></div>
+<h6>Example heading <span class="badge bg-secondary">New</span>
+</h6>` }}></div>
   </HtmlCode>
 </TabItem>
 <TabItem value="source" label="Source">
@@ -56,13 +55,37 @@ echo '<h5>Example heading '.$this->badge('New').'</h5>';
 // H6
 echo '<h6>Example heading '.$this->badge('New').'</h6>';
 
-echo PHP_EOL.'<br/>';
+```
 
-// Button
+</TabItem>
+</Tabs>
+
+### Buttons
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/badge/#buttons)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<button class="btn btn-primary" name="button" type="button" value="">
+    Notifications
+    <span class="badge bg-secondary">4</span>
+</button>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
 echo $this->formButton()->renderSpec(
     [
         'options' => [
-            'label'   => 'Profile '.$this->badge('9', 'light').'<span class="sr-only">unread messages</span>',
+            'label'   => 'Notifications',
+            'badge'   => [
+                '4',
+                'secondary',
+            ],
             'variant' => 'primary',
         ],
     ]
@@ -73,21 +96,25 @@ echo $this->formButton()->renderSpec(
 </TabItem>
 </Tabs>
 
-## Contextual variations
+### Positioned
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/badge/#contextual-variations)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/badge/#positioned)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
-      <div dangerouslySetInnerHTML={{ __html: `<span class="badge badge-primary">Primary</span>
-<span class="badge badge-secondary">Secondary</span>
-<span class="badge badge-success">Success</span>
-<span class="badge badge-danger">Danger</span>
-<span class="badge badge-warning">Warning</span>
-<span class="badge badge-info">Info</span>
-<span class="badge badge-light">Light</span>
-<span class="badge badge-dark">Dark</span>` }}></div>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<button class="btn btn-primary position-relative" name="button" type="button" value="">
+    Inbox
+    <span class="badge bg-danger position-absolute rounded-pill start-100 top-0 translate-middle">
+        99+
+        <span class="visually-hidden">unread messages</span>
+    </span>
+</button>
+<br></br>
+<button class="btn btn-primary position-relative" name="button" type="button" value="">
+    Profile
+    <span class="bg-danger border border-light p-2 position-absolute rounded-pill start-100 top-0 translate-middle"><span class="visually-hidden">New alerts</span></span>
+</button>` }}></div>
   </HtmlCode>
 </TabItem>
 <TabItem value="source" label="Source">
@@ -95,39 +122,64 @@ echo $this->formButton()->renderSpec(
 ```php
 <?php
 
-foreach ([
-    'primary',
-    'secondary',
-    'success',
-    'danger',
-    'warning',
-    'info',
-    'light',
-    'dark',
-] as $variant) {
-    echo $this->badge(ucfirst($variant), $variant);
-}
+echo $this->formButton()->renderSpec(
+    [
+        'options' => [
+            'label'   => 'Inbox',
+            'badge'   => [
+                '99+',
+                [
+                    'variant'        => 'danger',
+                    'positioned'     => true,
+                    'type'           => 'pill',
+                    'hidden_content' => 'unread messages',
+                ],
+            ],
+            'variant' => 'primary',
+        ],
+    ]
+);
+
+echo PHP_EOL.'<br />';
+
+echo $this->formButton()->renderSpec(
+    [
+        'options' => [
+            'label'   => 'Profile',
+            'badge'   => [
+                '',
+                [
+                    'variant'        => 'danger',
+                    'positioned'     => true,
+                    'type'           => 'pill',
+                    'hidden_content' => 'New alerts',
+                ],
+            ],
+            'variant' => 'primary',
+        ],
+    ]
+);
 
 ```
 
 </TabItem>
 </Tabs>
 
-## Pill badges
+### Background colors
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/badge/#pill-badges)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/badge/#background-colors)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
-      <div dangerouslySetInnerHTML={{ __html: `<span class="badge badge-pill badge-primary">Primary</span>
-<span class="badge badge-pill badge-secondary">Secondary</span>
-<span class="badge badge-pill badge-success">Success</span>
-<span class="badge badge-danger badge-pill">Danger</span>
-<span class="badge badge-pill badge-warning">Warning</span>
-<span class="badge badge-info badge-pill">Info</span>
-<span class="badge badge-light badge-pill">Light</span>
-<span class="badge badge-dark badge-pill">Dark</span>` }}></div>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<span class="badge bg-primary">Primary</span>
+<span class="badge bg-secondary">Secondary</span>
+<span class="badge bg-success">Success</span>
+<span class="badge bg-danger">Danger</span>
+<span class="badge bg-warning text-dark">Warning</span>
+<span class="badge bg-info text-dark">Info</span>
+<span class="badge bg-light text-dark">Light</span>
+<span class="badge bg-dark">Dark</span>` }}></div>
   </HtmlCode>
 </TabItem>
 <TabItem value="source" label="Source">
@@ -135,45 +187,35 @@ foreach ([
 ```php
 <?php
 
-foreach ([
-    'primary',
-    'secondary',
-    'success',
-    'danger',
-    'warning',
-    'info',
-    'light',
-    'dark',
-] as $variant) {
-    echo $this->badge(
-        ucfirst($variant),
-        [
-            'type'    => 'pill',
-            'variant' => $variant,
-        ]
-    );
-}
+echo $this->badge('Primary', 'primary');
+echo $this->badge('Secondary', 'secondary');
+echo $this->badge('Success', 'success');
+echo $this->badge('Danger', 'danger');
+echo $this->badge('Warning', ['variant' => 'warning', 'text_variant' => 'dark']);
+echo $this->badge('Info', ['variant' => 'info', 'text_variant' => 'dark']);
+echo $this->badge('Light', ['variant' => 'light', 'text_variant' => 'dark']);
+echo $this->badge('Dark', 'dark');
 
 ```
 
 </TabItem>
 </Tabs>
 
-## Links
+### Pill badges
 
-[Twitter bootstrap Documentation](https://getbootstrap.com/docs/4.5/components/badge/#links)
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/badge/#pill-badges)
 
 <Tabs>
 <TabItem value="result" label="Result" default>
-  <HtmlCode bootstrapVersion="4.5">
-      <div dangerouslySetInnerHTML={{ __html: `<a class="badge badge-primary" href="#">Primary</a>
-<a class="badge badge-secondary" href="#">Secondary</a>
-<a class="badge badge-success" href="#">Success</a>
-<a class="badge badge-danger" href="#">Danger</a>
-<a class="badge badge-warning" href="#">Warning</a>
-<a class="badge badge-info" href="#">Info</a>
-<a class="badge badge-light" href="#">Light</a>
-<a class="badge badge-dark" href="#">Dark</a>` }}></div>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<span class="badge bg-primary rounded-pill">Primary</span>
+<span class="badge bg-secondary rounded-pill">Secondary</span>
+<span class="badge bg-success rounded-pill">Success</span>
+<span class="badge bg-danger rounded-pill">Danger</span>
+<span class="badge bg-warning rounded-pill text-dark">Warning</span>
+<span class="badge bg-info rounded-pill text-dark">Info</span>
+<span class="badge bg-light rounded-pill text-dark">Light</span>
+<span class="badge bg-dark rounded-pill">Dark</span>` }}></div>
   </HtmlCode>
 </TabItem>
 <TabItem value="source" label="Source">
@@ -181,26 +223,35 @@ foreach ([
 ```php
 <?php
 
-foreach ([
-    'primary',
-    'secondary',
-    'success',
-    'danger',
-    'warning',
-    'info',
-    'light',
-    'dark',
-] as $variant) {
-    echo $this->badge(
-        ucfirst($variant),
-        [
-            'type'    => 'link',
-            'href'    => '#',
-            'variant' => $variant,
-
-        ]
-    );
-}
+echo $this->badge('Primary', ['variant' => 'primary', 'type' => 'pill']);
+echo $this->badge('Secondary', ['variant' => 'secondary', 'type' => 'pill']);
+echo $this->badge('Success', ['variant' => 'success', 'type' => 'pill']);
+echo $this->badge('Danger', ['variant' => 'danger', 'type' => 'pill']);
+echo $this->badge(
+    'Warning',
+    [
+        'variant'      => 'warning',
+        'type'         => 'pill',
+        'text_variant' => 'dark',
+    ]
+);
+echo $this->badge(
+    'Info',
+    [
+        'variant'      => 'info',
+        'type'         => 'pill',
+        'text_variant' => 'dark',
+    ]
+);
+echo $this->badge(
+    'Light',
+    [
+        'variant'      => 'light',
+        'type'         => 'pill',
+        'text_variant' => 'dark',
+    ]
+);
+echo $this->badge('Dark', ['variant' => 'dark', 'type' => 'pill']);
 
 ```
 
