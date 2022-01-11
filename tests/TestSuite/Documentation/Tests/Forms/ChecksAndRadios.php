@@ -99,8 +99,8 @@ return [
                             ],
                         ]));
                     },
-                ]
-            ]
+                ],
+            ],
         ],
         [
             'title' => 'Radios',
@@ -128,7 +128,7 @@ return [
                     ],
                     'attributes' => [
                         'value' => 'option2',
-                    ]
+                    ],
                 ]));
             },
             'tests' => [
@@ -159,11 +159,11 @@ return [
                             'attributes' => [
                                 'value' => 'option2',
                                 'disabled' => true,
-                            ]
+                            ],
                         ]));
-                    }
+                    },
                 ],
-            ]
+            ],
         ],
         [
             'title' => 'Switches',
@@ -567,7 +567,7 @@ return [
                             ],
                             'attributes' => ['value' => 'option1'],
                         ]));
-                    }
+                    },
                 ],
             ],
         ],

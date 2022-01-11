@@ -72,6 +72,9 @@ return [
                                             ],
                                         ],
                                     ],
+                                    'attributes' => [
+                                        'value' => 'option1',
+                                    ],
                                 ],
                             ],
                         ],
@@ -84,6 +87,7 @@ return [
                             'label' => 'Example checkbox',
                             'column' => 'sm-10',
                         ],
+                        'attributes' => ['id' => 'gridCheck1'],
                     ],
                 ],
                 [
@@ -92,7 +96,6 @@ return [
                         'options' => [
                             'label' => 'Sign in',
                             'variant' => 'primary',
-                            'column' => 'sm-10',
                         ],
                     ],
                 ],
