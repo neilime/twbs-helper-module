@@ -31,7 +31,6 @@ class FormTest extends \PHPUnit\Framework\TestCase
 
     public function testInitializeAnHorizontalFormClass()
     {
-
         $horizontalFormClass = new class () extends \Laminas\Form\Form
         {
             public function prepare()
@@ -64,8 +63,8 @@ class FormTest extends \PHPUnit\Framework\TestCase
                 'Email' .
                 '</label>' . PHP_EOL .
                 '        <div class="col-sm-10">' . PHP_EOL .
-                '            <input name="email" type="email" id="inputEmail3" ' .
-                'placeholder="Email" class="form-control" value=""/>' . PHP_EOL .
+                '            <input class="form-control" id="inputEmail3" name="email" placeholder="Email" ' .
+                'type="email" value=""/>' . PHP_EOL .
                 '        </div>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
                 '</form>',

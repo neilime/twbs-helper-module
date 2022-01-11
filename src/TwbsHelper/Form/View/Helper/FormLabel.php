@@ -157,6 +157,7 @@ class FormLabel extends \Laminas\Form\View\Helper\FormLabel
         }
 
         if ($element instanceof \Laminas\Form\Element\MultiCheckbox) {
+            $labelClasses[] = 'form-label';
             return $labelClasses;
         }
 
@@ -166,7 +167,6 @@ class FormLabel extends \Laminas\Form\View\Helper\FormLabel
 
         switch ($element->getAttribute('type')) {
             case 'checkbox':
-            case 'radio':
                 $buttonOption = $element->getOption('button');
                 if ($buttonOption) {
                     /** @var \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Variant $variantClassHelper **/

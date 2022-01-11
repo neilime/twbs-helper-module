@@ -80,6 +80,7 @@ return [
             'formMultiCheckbox'   => \TwbsHelper\Form\View\Helper\FormMultiCheckbox::class,
             'formRadio'           => \TwbsHelper\Form\View\Helper\FormRadio::class,
             'formRange'           => \TwbsHelper\Form\View\Helper\FormRange::class,
+            'formRows'            => \TwbsHelper\Form\View\Helper\FormRows::class,
             'formSelect'          => \TwbsHelper\Form\View\Helper\FormSelect::class,
             'formLabel'           => \TwbsHelper\Form\View\Helper\FormLabel::class,
 
@@ -103,6 +104,10 @@ return [
             'formselect'          => \TwbsHelper\Form\View\Helper\FormSelect::class,
             'formlabel'           => \TwbsHelper\Form\View\Helper\FormLabel::class,
             'form_row_element'    => \TwbsHelper\Form\View\Helper\FormRowElement::class,
+            'formemail'           => \TwbsHelper\Form\View\Helper\FormEmail::class,
+            'formEmail'           => \TwbsHelper\Form\View\Helper\FormEmail::class,
+            'formpassword'        => \TwbsHelper\Form\View\Helper\FormPassword::class,
+            'formPassword'        => \TwbsHelper\Form\View\Helper\FormPassword::class,
             'formfile'            => \TwbsHelper\Form\View\Helper\FormFile::class,
             'formFile'            => \TwbsHelper\Form\View\Helper\FormFile::class,
             'forminput'           => \TwbsHelper\Form\View\Helper\FormInput::class,
@@ -118,8 +123,6 @@ return [
             'HtmlAttributes'      => \TwbsHelper\View\Helper\HtmlAttributes::class,
 
             // Zend
-            'formemail'           => \Laminas\Form\View\Helper\FormEmail::class,
-            'formpassword'        => \Laminas\Form\View\Helper\FormPassword::class,
             'formhidden'          => \Laminas\Form\View\Helper\FormHidden::class,
             'translate'           => \Laminas\I18n\View\Helper\Translate::class,
         ],

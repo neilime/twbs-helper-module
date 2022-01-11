@@ -3,44 +3,39 @@
     <div class="mb-3 row">
         <label class="col-form-label col-sm-2" for="inputEmail3">Email</label>
         <div class="col-sm-10">
-            <input name="email" type="email" id="inputEmail3" class="form-control" value="">
+            <input class="form-control" id="inputEmail3" name="email" type="email" value="">
         </div>
     </div>
     <div class="mb-3 row">
         <label class="col-form-label col-sm-2" for="inputPassword3">Password</label>
         <div class="col-sm-10">
-            <input name="password" type="password" id="inputPassword3" class="form-control" value="">
+            <input class="form-control" id="inputPassword3" name="password" type="password" value="">
         </div>
     </div>
-    <fieldset>
-        <div class="row">
-            <div class="col-sm-10">
-                <div class="form-check">
-                    <input class="form-check-input" id="gridRadios1" name="fieldset[gridRadios]" type="radio" value="option1">
-                    <label class="form-check-label" for="gridRadios1">First radio</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" id="gridRadios2" name="fieldset[gridRadios]" type="radio" value="option2">
-                    <label class="form-check-label" for="gridRadios2">Second radio</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" disabled id="gridRadios3" name="fieldset[gridRadios]" type="radio" value="option3">
-                    <label class="form-check-label" for="gridRadios3">Third disabled radio</label>
-                </div>
-            </div>
+    <fieldset class="mb-3 row">
+        <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+        <div class="col-sm-10">
+            <div class="form-check">
+            <input checked class="form-check-input" id="gridRadios1" name="fieldset[gridRadios]" type="radio" value="option1">
+            <label class="form-check-label" for="gridRadios1">First radio</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" id="gridRadios2" name="fieldset[gridRadios]" type="radio" value="option2">
+            <label class="form-check-label" for="gridRadios2">Second radio</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" disabled id="gridRadios3" name="fieldset[gridRadios]" type="radio" value="option3">
+            <label class="form-check-label" for="gridRadios3">Third disabled radio</label>
+        </div>
         </div>
     </fieldset>
     <div class="mb-3 row">
         <div class="col-sm-10 offset-sm-2">
             <div class="form-check">
-                <input type="hidden" name="checkbox" value="0"><input class="form-check-input" name="checkbox" type="checkbox" value="1">
-                <label class="form-check-label" for="checkbox">Example checkbox</label>
+                <input type="hidden" name="checkbox" value="0"><input class="form-check-input" id="gridCheck1" name="checkbox" type="checkbox" value="1">
+                <label class="form-check-label" for="gridCheck1">Example checkbox</label>
             </div>
         </div>
     </div>
-    <div class="mb-3 row">
-        <div class="col-sm-10">
-            <button class="btn btn-primary" name="submit" type="submit" value="">Sign in</button>
-        </div>
-    </div>
+    <button class="btn btn-primary" name="submit" type="submit" value="">Sign in</button>
 </form></body></html>

@@ -2,8 +2,6 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
-use PhpParser\Node\Scalar\String_;
-
 class FormRowElement extends \Laminas\Form\View\Helper\FormRow
 {
     use \TwbsHelper\Form\View\ElementHelperTrait;
@@ -31,7 +29,7 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
     {
         $this->prepareElementForRendering($element);
 
-        if ($element instanceof \Laminas\Form\Element\MultiCheckbox) {
+        if ($this->elementIsMultiCheckbox($element)) {
             $elementContent = $this->renderMultiCheckboxCommonParts($element);
         } else {
             $elementContent = $this->renderElementCommonParts($element);
@@ -222,9 +220,12 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
             }
         }
 
+        if ($this->elementIsMultiCheckbox($element)) {
+            return self::LABEL_PREPEND;
+        }
+
         switch ($element->getAttribute('type')) {
             case 'checkbox':
-            case 'radio':
                 return self::LABEL_APPEND;
             case 'file':
                 if ($element->getOption('custom')) {
@@ -383,6 +384,10 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
             $classes += $this->getView()->plugin('htmlClass')->plugin('column')->getClassesFromOption($column);
         }
 
+        if (!$classes) {
+            return $elementContent;
+        }
+
         return $this->getView()->plugin('htmlElement')->__invoke(
             'div',
             ['class' => $classes],
@@ -468,5 +473,10 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
     protected function elementIsCheckbox(\Laminas\Form\ElementInterface $element)
     {
         return $element->getAttribute('type') === 'checkbox';
+    }
+
+    protected function elementIsMultiCheckbox(\Laminas\Form\ElementInterface $element)
+    {
+        return $element instanceof \Laminas\Form\Element\MultiCheckbox;
     }
 }
