@@ -75,6 +75,11 @@ trait MultiCheckboxTrait
     {
         $valueOptions = $multiCheckbox->getValueOptions();
         foreach ($valueOptions as &$valueOption) {
+            // Skip from preparing simple string value
+            if (!is_array($valueOption)) {
+                continue;
+            }
+
             if (!$valueOption) {
                 $valueOption = [];
             }
