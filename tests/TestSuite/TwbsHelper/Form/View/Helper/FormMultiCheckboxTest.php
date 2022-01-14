@@ -12,18 +12,18 @@ class FormMultiCheckboxTest extends \TestSuite\TwbsHelper\AbstractViewHelperTest
     public function testRenderSimpleValues()
     {
         $this->assertEquals(
-             '<div class="form-check">' . PHP_EOL .
-             '    <input class="form-check-input" name="test&#x5B;&#x5D;" type="checkbox" value="0"/>' . PHP_EOL .
-             '    <label>First checkbox</label>' . PHP_EOL .
-             '</div>' . PHP_EOL .
-             '<div class="form-check">' . PHP_EOL .
-             '    <input class="form-check-input" name="test&#x5B;&#x5D;" type="checkbox" value="1"/>' . PHP_EOL .
-             '    <label>Second checkbox</label>' . PHP_EOL .
-             '</div>' . PHP_EOL .
-             '<div class="form-check">' . PHP_EOL .
-             '    <input class="form-check-input" name="test&#x5B;&#x5D;" type="checkbox" value="2"/>' . PHP_EOL .
-             '    <label>Third checkbox</label>' . PHP_EOL .
-             '</div>',
+            '<div class="form-check">' . PHP_EOL .
+            '    <input class="form-check-input" name="test&#x5B;&#x5D;" type="checkbox" value="0"/>' . PHP_EOL .
+            '    <label>First checkbox</label>' . PHP_EOL .
+            '</div>' . PHP_EOL .
+            '<div class="form-check">' . PHP_EOL .
+            '    <input class="form-check-input" name="test&#x5B;&#x5D;" type="checkbox" value="1"/>' . PHP_EOL .
+            '    <label>Second checkbox</label>' . PHP_EOL .
+            '</div>' . PHP_EOL .
+            '<div class="form-check">' . PHP_EOL .
+            '    <input class="form-check-input" name="test&#x5B;&#x5D;" type="checkbox" value="2"/>' . PHP_EOL .
+            '    <label>Third checkbox</label>' . PHP_EOL .
+            '</div>',
             $this->helper->render(new \Laminas\Form\Element\MultiCheckbox(
                 'test',
                 [
