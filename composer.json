@@ -34,7 +34,7 @@
     "laminas/laminas-paginator": "^2.12",
     "laminas/laminas-servicemanager": "^3.10",
     "laminas/laminas-stdlib": "^3.7",
-    "laminas/laminas-view": "^2.19"
+    "laminas/laminas-view": "^2.20"
   },
   "require-dev": {
     "jfcherng/php-diff": "^6.11",
