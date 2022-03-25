@@ -38,7 +38,7 @@
   },
   "require-dev": {
     "jfcherng/php-diff": "^6.11",
-    "laminas/laminas-component-installer": "^2.6",
+    "laminas/laminas-component-installer": "^2.7",
     "laminas/laminas-modulemanager": "^2.11",
     "laminas/laminas-mvc": "^3.3",
     "mikey179/vfsstream": "^1.6",
