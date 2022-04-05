@@ -40,6 +40,7 @@ return [
                             'name' => 'customRadio',
                             'type' => 'radio',
                             'options' => [
+                                'form_group' => false,
                                 'custom' => true,
                                 'value_options' => [
                                     [
@@ -68,6 +69,7 @@ return [
                             'type' => 'radio',
                             'options' => [
                                 'layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE,
+                                'form_group' => false,
                                 'custom' => true,
                                 'value_options' => [
                                     [
@@ -110,6 +112,7 @@ return [
                             'name' => 'radioDisabled',
                             'type' => 'radio',
                             'options' => [
+                                'form_group' => false,
                                 'custom' => true,
                                 'value_options' => [
                                     [
