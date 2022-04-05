@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - 4.x
   pull_request:
     paths-ignore:
       - "**.md"

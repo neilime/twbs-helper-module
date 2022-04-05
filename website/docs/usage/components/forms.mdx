@@ -1092,17 +1092,19 @@ echo $this->form(
         <div class="row">
             <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
             <div class="col-sm-10">
-                <div class="form-check">
-                    <input type="radio" name="fieldset[gridRadios]" class="form-check-input" id="gridRadios1" value="option1"></input>
-                    <label class="form-check-label" for="gridRadios1">First radio</label>
-                </div>
-                <div class="form-check">
-                    <input type="radio" name="fieldset[gridRadios]" class="form-check-input" id="gridRadios2" value="option2"></input>
-                    <label class="form-check-label" for="gridRadios2">Second radio</label>
-                </div>
-                <div class="form-check">
-                    <input type="radio" name="fieldset[gridRadios]" class="form-check-input" id="gridRadios3" value="option3" disabled="disabled"></input>
-                    <label class="form-check-label" for="gridRadios3">Third disabled radio</label>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input type="radio" name="fieldset[gridRadios]" class="form-check-input" id="gridRadios1" value="option1"></input>
+                        <label class="form-check-label" for="gridRadios1">First radio</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" name="fieldset[gridRadios]" class="form-check-input" id="gridRadios2" value="option2"></input>
+                        <label class="form-check-label" for="gridRadios2">Second radio</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" name="fieldset[gridRadios]" class="form-check-input" id="gridRadios3" value="option3" disabled="disabled"></input>
+                        <label class="form-check-label" for="gridRadios3">Third disabled radio</label>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1189,7 +1191,6 @@ echo $this->form(
                                     'type'    => 'radio',
                                     'name'    => 'gridRadios',
                                     'options' => [
-                                        'column'        => 'sm-10',
                                         'value_options' => [
                                             [
                                                 'label'      => 'First radio',
@@ -2010,17 +2011,19 @@ echo $this->form(
         <div class="row">
             <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
             <div class="col-sm-10">
-                <div class="form-check">
-                    <input type="radio" name="fieldset[gridRadios]" class="form-check-input" id="gridRadios1" value="option1"></input>
-                    <label class="form-check-label" for="gridRadios1">First radio</label>
-                </div>
-                <div class="form-check">
-                    <input type="radio" name="fieldset[gridRadios]" class="form-check-input" id="gridRadios2" value="option2"></input>
-                    <label class="form-check-label" for="gridRadios2">Second radio</label>
-                </div>
-                <div class="form-check">
-                    <input type="radio" name="fieldset[gridRadios]" class="form-check-input" id="gridRadios3" value="option3" disabled="disabled"></input>
-                    <label class="form-check-label" for="gridRadios3">Third disabled radio</label>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input type="radio" name="fieldset[gridRadios]" class="form-check-input" id="gridRadios1" value="option1"></input>
+                        <label class="form-check-label" for="gridRadios1">First radio</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" name="fieldset[gridRadios]" class="form-check-input" id="gridRadios2" value="option2"></input>
+                        <label class="form-check-label" for="gridRadios2">Second radio</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" name="fieldset[gridRadios]" class="form-check-input" id="gridRadios3" value="option3" disabled="disabled"></input>
+                        <label class="form-check-label" for="gridRadios3">Third disabled radio</label>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2107,7 +2110,6 @@ echo $this->form(
                                     'type'    => 'radio',
                                     'name'    => 'gridRadios',
                                     'options' => [
-                                        'column'        => 'sm-10',
                                         'value_options' => [
                                             [
                                                 'label'      => 'First radio',
@@ -3137,6 +3139,7 @@ echo $this->formRow(
             'name'    => 'customRadio',
             'type'    => 'radio',
             'options' => [
+                'form_group'    => false,
                 'custom'        => true,
                 'value_options' => [
                     [
@@ -3191,6 +3194,7 @@ echo $this->formRow(
             'type'    => 'radio',
             'options' => [
                 'layout'        => \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE,
+                'form_group'    => false,
                 'custom'        => true,
                 'value_options' => [
                     [
@@ -3263,6 +3267,7 @@ echo $this->formRow(
             'name'       => 'radioDisabled',
             'type'       => 'radio',
             'options'    => [
+                'form_group'    => false,
                 'custom'        => true,
                 'value_options' => [
                     [

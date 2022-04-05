@@ -85,8 +85,6 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
         switch (true) {
                 // Form group disabled
             case $element->getOption('form_group') === false:
-                // Radio elements
-            case $elementType === 'radio':
                 // All "button" elements in inline form
             case in_array($elementType, ['submit', 'button', 'reset'], true)
                 && $layout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE:
@@ -305,9 +303,12 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
             }
         }
 
+        if ($element instanceof \Laminas\Form\Element\MultiCheckbox) {
+            return self::LABEL_PREPEND;
+        }
+
         switch ($element->getAttribute('type')) {
             case 'checkbox':
-            case 'radio':
                 return self::LABEL_APPEND;
             case 'file':
                 if ($element->getOption('custom')) {
