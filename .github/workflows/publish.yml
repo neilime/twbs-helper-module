@@ -9,29 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: echo ::set-output name=NVMRC::$(cat .nvmrc)
-        id: nvm
-
-      - uses: actions/setup-node@v3.1.1
-        id: setup-node
+      - uses: ./.github/workflows/build-website.yml
         with:
-          node-version: "${{ steps.nvm.outputs.NVMRC }}"
-          cache: yarn
-          cache-dependency-path: website/yarn.lock
-
-      - name: ⚙️ Install Dependencies
-        if: steps.setup-node.outputs.cache-hit != 'true'
-        working-directory: website
-        run: yarn
-
-      - name: 🏗️ Build website
-        run: yarn build
-        working-directory: website
-
-      - name: 🚀 Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./website/build
-          user_name: ${{ github.actor }}
-          user_email: ${{ github.actor }}@users.noreply.github.com
+          publish: true
