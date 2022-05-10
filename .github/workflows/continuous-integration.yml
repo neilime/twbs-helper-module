@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  build:
+  checks:
     strategy:
       matrix:
         include:
@@ -78,3 +78,7 @@ jobs:
           git config user.name "${{ github.actor }}"
           echo `git add -A && git commit -m "docs: update documentation"`
           git push --follow-tags origin main
+
+  build-website:
+    name: Check that website is building without errors
+    uses: ./.github/workflows/build-website.yml

@@ -79,7 +79,11 @@
   },
   "config": {
     "optimize-autoloader": true,
-    "sort-packages": true
+    "sort-packages": true,
+    "allow-plugins": {
+      "laminas/laminas-component-installer": true,
+      "phpstan/extension-installer": true
+    }
   },
   "extra": {
     "branch-alias": {
