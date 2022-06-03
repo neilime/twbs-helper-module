@@ -67,22 +67,6 @@ class CodePrinter extends \Documentation\Generator\UsagePage\Printer\AbstractPri
         $snapshotPath = $snapshotService->getSnapshotPathFromTitle($this->testConfig->title);
 
         $snapshotContent = file_get_contents($snapshotPath);
-        $domDocument = new \DOMDocument('1.0');
-        $domDocument->preserveWhiteSpace = false;
-        $domDocument->formatOutput = true;
-        $domDocument->substituteEntities = true;
-
-        @$domDocument->loadHTML($snapshotContent); // to ignore HTML5 errors
-
-        $bodyNode = $domDocument->getElementsByTagName('body')[0];
-
-        $renderResult = '';
-        $children = $bodyNode->childNodes;
-        foreach ($children as $child) {
-            $childNodeContent = $child->ownerDocument->saveXML($child, LIBXML_NOEMPTYTAG);
-            $renderResult .= $childNodeContent;
-        }
-
-        return trim($renderResult);
+        return trim($snapshotContent);
     }
 }

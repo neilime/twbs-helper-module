@@ -41,12 +41,8 @@ echo $this->lead('This is a lead paragraph. It stands out from regular paragraph
 <Tabs>
 <TabItem value="result" label="Result" default>
   <HtmlCode bootstrapVersion="5.1">
-      <div dangerouslySetInnerHTML={{ __html: `<p>
-  <abbr title="attribute">attr</abbr>
-</p>
-<p>
-  <abbr class="initialism" title="HyperText Markup Language">HTML</abbr>
-</p>` }}></div>
+      <div dangerouslySetInnerHTML={{ __html: `<p><abbr title="attribute">attr</abbr></p>
+<p><abbr class="initialism" title="HyperText Markup Language">HTML</abbr></p>` }}></div>
   </HtmlCode>
 </TabItem>
 <TabItem value="source" label="Source">

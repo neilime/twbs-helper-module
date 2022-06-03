@@ -6,7 +6,8 @@ class HtmlDriver extends \Spatie\Snapshots\Drivers\HtmlDriver
 {
     public function serialize($data): string
     {
-        return parent::serialize('<?xml encoding="utf-8" ?>' . $data);
+        $serializedData = parent::serialize(mb_convert_encoding($data, 'HTML-ENTITIES', 'UTF-8'));
+        return preg_replace('~<(?:!DOCTYPE|/?(?:html|head|body))[^>]*>\s*~i', '', $serializedData);
     }
 
     public function extension(): string

@@ -6,8 +6,14 @@ class Config
 {
     public static $TITLE_SEPARATOR = ' / ';
 
+    /**
+     * @var string
+     */
     public $title;
 
+    /**
+     * @var string
+     */
     public $url;
 
     public $rendering;
@@ -29,7 +35,7 @@ class Config
 
     public function getTitleParts()
     {
-        return explode(self::$TITLE_SEPARATOR, $this->title);
+        return explode(self::$TITLE_SEPARATOR, $this->title ?? '');
     }
 
     public static function fromArray(

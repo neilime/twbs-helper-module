@@ -22,11 +22,11 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
       <div dangerouslySetInnerHTML={{ __html: `<form action="" id="form" method="POST" name="form" role="form">
     <div class="mb-3">
         <label class="form-label" for="formGroupExampleInput">Example label</label>
-        <input class="form-control" id="formGroupExampleInput" name="exampleLabel" placeholder="Example input placeholder" type="text" value=""></input>
+        <input class="form-control" id="formGroupExampleInput" name="exampleLabel" placeholder="Example input placeholder" type="text" value="">
     </div>
     <div class="mb-3">
         <label class="form-label" for="formGroupExampleInput2">Another label</label>
-        <input class="form-control" id="formGroupExampleInput2" name="anotherLabel" placeholder="Another input placeholder" type="text" value=""></input>
+        <input class="form-control" id="formGroupExampleInput2" name="anotherLabel" placeholder="Another input placeholder" type="text" value="">
     </div>
 </form>` }}></div>
   </HtmlCode>
@@ -83,10 +83,10 @@ echo $this->form(
       <div dangerouslySetInnerHTML={{ __html: `<form action="" id="form" method="POST" name="form" role="form">
     <div class="row">
         <div class="col">
-            <input aria-label="First name" class="form-control" name="firstName" placeholder="First name" type="text" value=""></input>
+            <input aria-label="First name" class="form-control" name="firstName" placeholder="First name" type="text" value="">
         </div>
         <div class="col">
-            <input aria-label="Last name" class="form-control" name="lastName" placeholder="Last name" type="text" value=""></input>
+            <input aria-label="Last name" class="form-control" name="lastName" placeholder="Last name" type="text" value="">
         </div>
     </div>
 </form>` }}></div>
@@ -144,10 +144,10 @@ echo $this->form(
       <div dangerouslySetInnerHTML={{ __html: `<form action="" id="form" method="POST" name="form" role="form">
     <div class="g-3 row">
         <div class="col">
-            <input aria-label="First name" class="form-control" name="firstName" placeholder="First name" type="text" value=""></input>
+            <input aria-label="First name" class="form-control" name="firstName" placeholder="First name" type="text" value="">
         </div>
         <div class="col">
-            <input aria-label="Last name" class="form-control" name="lastName" placeholder="Last name" type="text" value=""></input>
+            <input aria-label="Last name" class="form-control" name="lastName" placeholder="Last name" type="text" value="">
         </div>
     </div>
 </form>
@@ -155,38 +155,38 @@ echo $this->form(
     <div class="g-3 row">
         <div class="col-md-6">
             <label class="form-label" for="inputEmail4">Email</label>
-            <input name="email" type="email" id="inputEmail4" class="form-control" value=""></input>
+            <input class="form-control" id="inputEmail4" name="email" type="email" value="">
         </div>
         <div class="col-md-6">
             <label class="form-label" for="inputPassword4">Password</label>
-            <input name="password" type="password" id="inputPassword4" class="form-control" value=""></input>
+            <input class="form-control" id="inputPassword4" name="password" type="password" value="">
         </div>
         <div class="col-12">
             <label class="form-label" for="inputAddress">Address</label>
-            <input class="form-control" id="inputAddress" name="address1" placeholder="1234 Main St" type="text" value=""></input>
+            <input class="form-control" id="inputAddress" name="address1" placeholder="1234 Main St" type="text" value="">
         </div>
         <div class="col-12">
             <label class="form-label" for="inputAddress2">Address 2</label>
-            <input class="form-control" id="inputAddress2" name="address2" placeholder="Apartment, studio, or floor" type="text" value=""></input>
+            <input class="form-control" id="inputAddress2" name="address2" placeholder="Apartment, studio, or floor" type="text" value="">
         </div>
         <div class="col-md-6">
             <label class="form-label" for="inputCity">City</label>
-            <input class="form-control" id="inputCity" name="city" type="text" value=""></input>
+            <input class="form-control" id="inputCity" name="city" type="text" value="">
         </div>
         <div class="col-md-4">
             <label class="form-label" for="inputState">State</label>
             <select class="form-select" id="inputState" name="state">
-                <option selected="selected" value="">Choose...</option>
+                <option selected value="">Choose...</option>
                 <option value="0">...</option>
             </select>
         </div>
         <div class="col-md-2">
             <label class="form-label" for="inputZip">Zip</label>
-            <input class="form-control" id="inputZip" name="zip" type="text" value=""></input>
+            <input class="form-control" id="inputZip" name="zip" type="text" value="">
         </div>
         <div class="col-12">
             <div class="form-check">
-                <input type="hidden" name="checked-checkbox" value="0"></input><input class="form-check-input" id="gridCheck" name="checked-checkbox" type="checkbox" value="1"></input>
+                <input type="hidden" name="checked-checkbox" value="0"><input class="form-check-input" id="gridCheck" name="checked-checkbox" type="checkbox" value="1">
                 <label class="form-check-label" for="gridCheck">Check me out</label>
             </div>
         </div>
@@ -381,46 +381,41 @@ echo $this->form(
     <div class="mb-3 row">
         <label class="col-form-label col-sm-2" for="inputEmail3">Email</label>
         <div class="col-sm-10">
-            <input name="email" type="email" id="inputEmail3" class="form-control" value=""></input>
+            <input class="form-control" id="inputEmail3" name="email" type="email" value="">
         </div>
     </div>
     <div class="mb-3 row">
         <label class="col-form-label col-sm-2" for="inputPassword3">Password</label>
         <div class="col-sm-10">
-            <input name="password" type="password" id="inputPassword3" class="form-control" value=""></input>
+            <input class="form-control" id="inputPassword3" name="password" type="password" value="">
         </div>
     </div>
-    <fieldset>
-        <div class="row">
-            <div class="col-sm-10">
-                <div class="form-check">
-                    <input class="form-check-input" id="gridRadios1" name="fieldset[gridRadios]" type="radio" value="option1"></input>
-                    <label class="form-check-label" for="gridRadios1">First radio</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" id="gridRadios2" name="fieldset[gridRadios]" type="radio" value="option2"></input>
-                    <label class="form-check-label" for="gridRadios2">Second radio</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" disabled="disabled" id="gridRadios3" name="fieldset[gridRadios]" type="radio" value="option3"></input>
-                    <label class="form-check-label" for="gridRadios3">Third disabled radio</label>
-                </div>
-            </div>
+    <fieldset class="mb-3 row">
+        <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+        <div class="col-sm-10">
+            <div class="form-check">
+            <input checked class="form-check-input" id="gridRadios1" name="fieldset[gridRadios]" type="radio" value="option1">
+            <label class="form-check-label" for="gridRadios1">First radio</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" id="gridRadios2" name="fieldset[gridRadios]" type="radio" value="option2">
+            <label class="form-check-label" for="gridRadios2">Second radio</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" disabled id="gridRadios3" name="fieldset[gridRadios]" type="radio" value="option3">
+            <label class="form-check-label" for="gridRadios3">Third disabled radio</label>
+        </div>
         </div>
     </fieldset>
     <div class="mb-3 row">
         <div class="col-sm-10 offset-sm-2">
             <div class="form-check">
-                <input type="hidden" name="checkbox" value="0"></input><input class="form-check-input" name="checkbox" type="checkbox" value="1"></input>
-                <label class="form-check-label" for="checkbox">Example checkbox</label>
+                <input type="hidden" name="checkbox" value="0"><input class="form-check-input" id="gridCheck1" name="checkbox" type="checkbox" value="1">
+                <label class="form-check-label" for="gridCheck1">Example checkbox</label>
             </div>
         </div>
     </div>
-    <div class="mb-3 row">
-        <div class="col-sm-10">
-            <button class="btn btn-primary" name="submit" type="submit" value="">Sign in</button>
-        </div>
-    </div>
+    <button class="btn btn-primary" name="submit" type="submit" value="">Sign in</button>
 </form>` }}></div>
   </HtmlCode>
 </TabItem>
@@ -474,9 +469,9 @@ echo $this->form(
                         'elements' => [
                             [
                                 'spec' => [
-                                    'type'    => 'radio',
-                                    'name'    => 'gridRadios',
-                                    'options' => [
+                                    'type'       => 'radio',
+                                    'name'       => 'gridRadios',
+                                    'options'    => [
                                         'column'        => 'sm-10',
                                         'value_options' => [
                                             [
@@ -497,6 +492,7 @@ echo $this->form(
                                             ],
                                         ],
                                     ],
+                                    'attributes' => [    'value' => 'option1'    ],
                                 ],
                             ],
                         ],
@@ -504,11 +500,12 @@ echo $this->form(
                 ],
                 [
                     'spec' => [
-                        'type'    => 'checkbox',
-                        'options' => [
+                        'type'       => 'checkbox',
+                        'options'    => [
                             'label'  => 'Example checkbox',
                             'column' => 'sm-10',
                         ],
+                        'attributes' => ['id' => 'gridCheck1'],
                     ],
                 ],
                 [
@@ -517,7 +514,6 @@ echo $this->form(
                         'options' => [
                             'label'   => 'Sign in',
                             'variant' => 'primary',
-                            'column'  => 'sm-10',
                         ],
                     ],
                 ],
@@ -542,19 +538,19 @@ echo $this->form(
     <div class="mb-3 row">
         <label class="col-form-label col-form-label-sm col-sm-2" for="colFormLabelSm">Email</label>
         <div class="col-sm-10">
-            <input name="emailSm" type="email" id="colFormLabelSm" placeholder="col-form-label-sm" class="form-control form-control-sm" value=""></input>
+            <input class="form-control form-control-sm" id="colFormLabelSm" name="emailSm" placeholder="col-form-label-sm" type="email" value="">
         </div>
     </div>
     <div class="mb-3 row">
         <label class="col-form-label col-sm-2" for="colFormLabel">Email</label>
         <div class="col-sm-10">
-            <input name="email" type="email" id="colFormLabel" placeholder="col-form-label" class="form-control" value=""></input>
+            <input class="form-control" id="colFormLabel" name="email" placeholder="col-form-label" type="email" value="">
         </div>
     </div>
     <div class="mb-3 row">
         <label class="col-form-label col-form-label-lg col-sm-2" for="colFormLabelLg">Email</label>
         <div class="col-sm-10">
-            <input name="emailLg" type="email" id="colFormLabelLg" placeholder="col-form-label-lg" class="form-control form-control-lg" value=""></input>
+            <input class="form-control form-control-lg" id="colFormLabelLg" name="emailLg" placeholder="col-form-label-lg" type="email" value="">
         </div>
     </div>
 </form>` }}></div>
@@ -637,13 +633,13 @@ echo $this->form(
       <div dangerouslySetInnerHTML={{ __html: `<form action="" id="form" method="POST" name="form" role="form">
     <div class="g-3 row">
         <div class="col-sm-7">
-            <input aria-label="City" class="form-control" name="city" placeholder="City" type="text" value=""></input>
+            <input aria-label="City" class="form-control" name="city" placeholder="City" type="text" value="">
         </div>
         <div class="col-sm">
-            <input aria-label="State" class="form-control" name="state" placeholder="State" type="text" value=""></input>
+            <input aria-label="State" class="form-control" name="state" placeholder="State" type="text" value="">
         </div>
         <div class="col-sm">
-            <input aria-label="Zip" class="form-control" name="zip" placeholder="Zip" type="text" value=""></input>
+            <input aria-label="Zip" class="form-control" name="zip" placeholder="Zip" type="text" value="">
         </div>
     </div>
 </form>` }}></div>
@@ -716,19 +712,19 @@ echo $this->form(
     <div class="align-items-center gx-3 gy-2 row">
         <div class="col-auto">
             <label class="visually-hidden" for="autoSizingInput">Name</label>
-            <input class="form-control" id="autoSizingInput" name="name" placeholder="Jane Doe" type="text" value=""></input>
+            <input class="form-control" id="autoSizingInput" name="name" placeholder="Jane Doe" type="text" value="">
         </div>
         <div class="col-auto">
             <label class="visually-hidden" for="autoSizingInputGroup">Username</label>
             <div class="input-group">
                 <span class="input-group-text">@</span>
-                <input class="form-control" id="autoSizingInputGroup" name="username" placeholder="Username" type="text" value=""></input>
+                <input class="form-control" id="autoSizingInputGroup" name="username" placeholder="Username" type="text" value="">
             </div>
         </div>
         <div class="col-auto">
             <label class="visually-hidden" for="autoSizingSelect">Preference</label>
             <select class="form-select" id="autoSizingSelect" name="preference">
-                <option selected="selected" value="">Choose...</option>
+                <option selected value="">Choose...</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
@@ -736,7 +732,7 @@ echo $this->form(
         </div>
         <div class="col-auto">
             <div class="form-check">
-                <input class="form-check-input" id="autoSizingCheck" name="remember_me" type="checkbox" value="1"></input>
+                <input class="form-check-input" id="autoSizingCheck" name="remember_me" type="checkbox" value="1">
                 <label class="form-check-label" for="autoSizingCheck">Remember me</label>
             </div>
         </div>
@@ -745,24 +741,24 @@ echo $this->form(
         </div>
     </div>
 </form>
-<br></br>
+<br>
 <form action="" id="form" method="POST" name="form" role="form">
     <div class="align-items-center gx-3 gy-2 row">
         <div class="col-sm-3">
             <label class="visually-hidden" for="specificSizeInputName">Name</label>
-            <input class="form-control" id="specificSizeInputName" name="name" placeholder="Jane Doe" type="text" value=""></input>
+            <input class="form-control" id="specificSizeInputName" name="name" placeholder="Jane Doe" type="text" value="">
         </div>
         <div class="col-sm-3">
             <label class="visually-hidden" for="specificSizeInputGroupUsername">Username</label>
             <div class="input-group">
                 <span class="input-group-text">@</span>
-                <input class="form-control" id="specificSizeInputGroupUsername" name="username" placeholder="Username" type="text" value=""></input>
+                <input class="form-control" id="specificSizeInputGroupUsername" name="username" placeholder="Username" type="text" value="">
             </div>
         </div>
         <div class="col-sm-3">
             <label class="visually-hidden" for="specificSizeSelect">Preference</label>
             <select class="form-select" id="specificSizeSelect" name="preference">
-                <option selected="selected" value="">Choose...</option>
+                <option selected value="">Choose...</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
@@ -770,7 +766,7 @@ echo $this->form(
         </div>
         <div class="col-auto">
             <div class="form-check">
-                <input class="form-check-input" id="autoSizingCheck2" name="remember_me" type="checkbox" value="1"></input>
+                <input class="form-check-input" id="autoSizingCheck2" name="remember_me" type="checkbox" value="1">
                 <label class="form-check-label" for="autoSizingCheck2">Remember me</label>
             </div>
         </div>
@@ -978,13 +974,13 @@ echo $this->form(
     <div class="col-12">
         <div class="input-group">
             <span class="input-group-text">@</span>
-            <input class="form-control" id="inlineFormInputGroupUsername" name="username" placeholder="Username" type="text" value=""></input>
+            <input class="form-control" id="inlineFormInputGroupUsername" name="username" placeholder="Username" type="text" value="">
         </div>
     </div>
     <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
     <div class="col-12">
         <select class="form-select" id="inlineFormSelectPref" name="preference">
-            <option selected="selected" value="">Choose...</option>
+            <option selected value="">Choose...</option>
             <option value="1">One</option>
             <option value="2">Two</option>
             <option value="3">Three</option>
@@ -992,7 +988,7 @@ echo $this->form(
     </div>
     <div class="col-12">
         <div class="form-check">
-            <input class="form-check-input" id="inlineFormCheck" name="remember_me" type="checkbox" value="1"></input>
+            <input class="form-check-input" id="inlineFormCheck" name="remember_me" type="checkbox" value="1">
             <label class="form-check-label" for="inlineFormCheck">Remember me</label>
         </div>
     </div>

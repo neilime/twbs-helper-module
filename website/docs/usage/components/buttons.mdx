@@ -70,9 +70,9 @@ foreach ([
   <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<a class="btn btn-primary" href="#" role="button">Link</a>
 <button class="btn btn-primary" name="button" type="submit" value="">Button</button>
-<input class="btn btn-primary" name="button" type="button" value="Input"></input>
-<input class="btn btn-primary" name="button" type="submit" value="Submit"></input>
-<input class="btn btn-primary" name="button" type="reset" value="Reset"></input>` }}></div>
+<input class="btn btn-primary" name="button" type="button" value="Input">
+<input class="btn btn-primary" name="button" type="submit" value="Submit">
+<input class="btn btn-primary" name="button" type="reset" value="Reset">` }}></div>
   </HtmlCode>
 </TabItem>
 <TabItem value="source" label="Source">
@@ -201,7 +201,7 @@ foreach ([
   <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<button class="btn btn-lg btn-primary" name="button" type="button" value="">Large button</button>
 <button class="btn btn-lg btn-secondary" name="button" type="button" value="">Large button</button>
-<br></br><br></br>
+<br><br>
 <button class="btn btn-primary btn-sm" name="button" type="button" value="">Small button</button>
 <button class="btn btn-secondary btn-sm" name="button" type="button" value="">Small button</button>` }}></div>
   </HtmlCode>
@@ -267,12 +267,12 @@ echo $this->formButton()->renderSpec(
 <Tabs>
 <TabItem value="result" label="Result" default>
   <HtmlCode bootstrapVersion="5.1">
-      <div dangerouslySetInnerHTML={{ __html: `<button class="btn btn-lg btn-primary" disabled="disabled" name="button" type="button" value="">Primary button</button>
-<button class="btn btn-lg btn-secondary" disabled="disabled" name="button" type="button" value="">Button</button>
-<br></br><br></br>
+      <div dangerouslySetInnerHTML={{ __html: `<button class="btn btn-lg btn-primary" disabled name="button" type="button" value="">Primary button</button>
+<button class="btn btn-lg btn-secondary" disabled name="button" type="button" value="">Button</button>
+<br><br>
 <a aria-disabled="true" class="btn btn-lg btn-primary disabled" role="button">Primary link</a>
 <a aria-disabled="true" class="btn btn-lg btn-secondary disabled" role="button">Link</a>
-<br></br><br></br>
+<br><br>
 <a aria-disabled="true" class="btn btn-lg btn-primary disabled" href="#" role="button" tabindex="-1">Primary link</a>
 <a aria-disabled="true" class="btn btn-lg btn-secondary disabled" href="#" role="button" tabindex="-1">Link</a>` }}></div>
   </HtmlCode>
@@ -376,17 +376,17 @@ echo $this->formButton()->renderSpec(
 <button class="btn btn-primary" name="button" type="button" value="">Button</button>
 <button class="btn btn-primary" name="button" type="button" value="">Button</button>
 </div>
-<br></br><br></br>
+<br><br>
 <div class="d-grid gap-2 d-md-block">
 <button class="btn btn-primary" name="button" type="button" value="">Button</button>
 <button class="btn btn-primary" name="button" type="button" value="">Button</button>
 </div>
-<br></br><br></br>
+<br><br>
 <div class="d-grid gap-2 col-6 mx-auto">
 <button class="btn btn-primary" name="button" type="button" value="">Button</button>
 <button class="btn btn-primary" name="button" type="button" value="">Button</button>
 </div>
-<br></br><br></br>
+<br><br>
 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
 <button class="btn btn-primary" name="button" type="button" value="">Button</button>
 <button class="btn btn-primary" name="button" type="button" value="">Button</button>
@@ -511,8 +511,8 @@ echo '</div>';
   <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<button autocomplete="off" class="btn btn-primary" data-bs-toggle="button" name="button" type="button" value="">Toggle button</button>
 <button aria-pressed="true" autocomplete="off" class="active btn btn-primary" data-bs-toggle="button" name="button" type="button" value="">Active toggle button</button>
-<button autocomplete="off" class="btn btn-primary" data-bs-toggle="button" disabled="disabled" name="button" type="button" value="">Disabled toggle button</button>
-<br></br><br></br>
+<button autocomplete="off" class="btn btn-primary" data-bs-toggle="button" disabled name="button" type="button" value="">Disabled toggle button</button>
+<br><br>
 <a class="btn btn-primary" data-bs-toggle="button" href="#" role="button">Toggle link</a>
 <a aria-pressed="true" class="active btn btn-primary" data-bs-toggle="button" href="#" role="button">Active toggle link</a>
 <a aria-disabled="true" class="btn btn-primary disabled" data-bs-toggle="button" href="#" role="button" tabindex="-1">Disabled toggle link</a>` }}></div>
