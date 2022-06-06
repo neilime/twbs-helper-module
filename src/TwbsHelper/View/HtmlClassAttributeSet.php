@@ -66,7 +66,7 @@ class HtmlClassAttributeSet extends \ArrayObject
     {
         $classes = $this->getArrayCopy();
 
-        $classes = array_unique(array_filter(array_map('trim', $classes)));
+        $classes = array_unique(array_filter(array_map('trim', array_filter($classes))));
         sort($classes);
 
         $this->exchangeArray($classes);
