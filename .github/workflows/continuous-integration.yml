@@ -27,7 +27,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-versions }}
-          extensions: mbstring
+          extensions: none, json, dom, tokenizer, xml, xmlwriter, simplexml, iconv, mbstring, intl, sodium
           coverage: pcov
 
       - name: ♻️ Get composer cache directory

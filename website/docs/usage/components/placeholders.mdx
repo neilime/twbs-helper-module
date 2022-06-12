@@ -20,7 +20,7 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 <TabItem value="result" label="Result" default>
   <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<div class="card">
-    <img alt="..." class="card-img-top" src="/twbs-helper-module/img/docs/image-cap.svg"></img>
+    <img alt="..." class="card-img-top" src="/twbs-helper-module/img/docs/image-cap.svg">
     <div class="card-body">
         <h5 class="card-title">Card title</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -28,7 +28,7 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
     </div>
 </div>
 <div aria-hidden="true" class="card">
-    <img alt="..." class="card-img-top" src="/twbs-helper-module/img/docs/image-cap.svg"></img>
+    <img alt="..." class="card-img-top" src="/twbs-helper-module/img/docs/image-cap.svg">
     <div class="card-body">
         <div class="card-title h5 placeholder-glow">
             <span class="col-6 placeholder"></span>
@@ -94,9 +94,7 @@ echo $this->card(
 <Tabs>
 <TabItem value="result" label="Result" default>
   <HtmlCode bootstrapVersion="5.1">
-      <div dangerouslySetInnerHTML={{ __html: `<p aria-hidden="true">
-  <span class="col-6 placeholder"></span>
-</p>
+      <div dangerouslySetInnerHTML={{ __html: `<p aria-hidden="true"><span class="col-6 placeholder"></span></p>
 <a aria-disabled="true" aria-hidden="true" class="btn btn-primary col-4 disabled placeholder" href="#" role="button" tabindex="-1"></a>` }}></div>
   </HtmlCode>
 </TabItem>
@@ -189,12 +187,8 @@ echo $this->placeholder(['column' => 12, 'size' => 'xs']);
 <Tabs>
 <TabItem value="result" label="Result" default>
   <HtmlCode bootstrapVersion="5.1">
-      <div dangerouslySetInnerHTML={{ __html: `<p class="placeholder-glow">
-  <span class="col-12 placeholder"></span>
-</p>
-<p class="placeholder-wave">
-  <span class="col-12 placeholder"></span>
-</p>` }}></div>
+      <div dangerouslySetInnerHTML={{ __html: `<p class="placeholder-glow"><span class="col-12 placeholder"></span></p>
+<p class="placeholder-wave"><span class="col-12 placeholder"></span></p>` }}></div>
   </HtmlCode>
 </TabItem>
 <TabItem value="source" label="Source">

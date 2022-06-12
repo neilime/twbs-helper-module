@@ -22,7 +22,7 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
       <div dangerouslySetInnerHTML={{ __html: `<form action="" id="form" method="POST" name="form" role="form">
     <div class="mb-3">
         <label class="form-label" for="exampleFormControlInput1">Email address</label>
-        <input name="email" type="email" id="exampleFormControlInput1" placeholder="name@example.com" class="form-control" value=""></input>
+        <input class="form-control" id="exampleFormControlInput1" name="email" placeholder="name@example.com" type="email" value="">
     </div>
     <div class="mb-3">
         <label class="form-label" for="exampleFormControlTextarea1">Example textarea</label>
@@ -82,11 +82,11 @@ echo $this->form(
 <Tabs>
 <TabItem value="result" label="Result" default>
   <HtmlCode bootstrapVersion="5.1">
-      <div dangerouslySetInnerHTML={{ __html: `<input aria-label=".form-control-lg example" class="form-control form-control-lg" name="lg" placeholder=".form-control-lg" type="text" value=""></input>
-<br></br>
-<input aria-label="default input example" class="form-control" name="default" placeholder="Default input" type="text" value=""></input>
-<br></br>
-<input aria-label=".form-control-sm example" class="form-control form-control-sm" name="sm" placeholder=".form-control-sm" type="text" value=""></input>` }}></div>
+      <div dangerouslySetInnerHTML={{ __html: `<input aria-label=".form-control-lg example" class="form-control form-control-lg" name="lg" placeholder=".form-control-lg" type="text" value="">
+<br>
+<input aria-label="default input example" class="form-control" name="default" placeholder="Default input" type="text" value="">
+<br>
+<input aria-label=".form-control-sm example" class="form-control form-control-sm" name="sm" placeholder=".form-control-sm" type="text" value="">` }}></div>
   </HtmlCode>
 </TabItem>
 <TabItem value="source" label="Source">
@@ -153,9 +153,9 @@ echo $this->formElement($element);
 <Tabs>
 <TabItem value="result" label="Result" default>
   <HtmlCode bootstrapVersion="5.1">
-      <div dangerouslySetInnerHTML={{ __html: `<input aria-label="Disabled input example" class="form-control" disabled="disabled" name="disabled-input" placeholder="Disabled input" type="text" value=""></input>
-<br></br>
-<input aria-label="Disabled input example" class="form-control" disabled="disabled" name="disabled-readonly-input" readonly="readonly" type="text" value="Disabled readonly input"></input>` }}></div>
+      <div dangerouslySetInnerHTML={{ __html: `<input aria-label="Disabled input example" class="form-control" disabled name="disabled-input" placeholder="Disabled input" type="text" value="">
+<br>
+<input aria-label="Disabled input example" class="form-control" disabled name="disabled-readonly-input" readonly type="text" value="Disabled readonly input">` }}></div>
   </HtmlCode>
 </TabItem>
 <TabItem value="source" label="Source">
@@ -207,7 +207,7 @@ echo $this->formElement($element);
 <Tabs>
 <TabItem value="result" label="Result" default>
   <HtmlCode bootstrapVersion="5.1">
-      <div dangerouslySetInnerHTML={{ __html: `<input aria-label="readonly input example" class="form-control" name="readonly-input" readonly="readonly" type="text" value="Readonly input here..."></input>` }}></div>
+      <div dangerouslySetInnerHTML={{ __html: `<input aria-label="readonly input example" class="form-control" name="readonly-input" readonly type="text" value="Readonly input here...">` }}></div>
   </HtmlCode>
 </TabItem>
 <TabItem value="source" label="Source">
@@ -246,25 +246,25 @@ echo $this->formElement($element);
     <div class="mb-3 row">
         <label class="col-form-label col-sm-2" for="staticEmail">Email</label>
         <div class="col-sm-10">
-            <input name="email" type="email" id="staticEmail" readonly="readonly" class="form-control-plaintext" value="email@example.com"></input>
+            <input class="form-control-plaintext" id="staticEmail" name="email" readonly type="email" value="email@example.com">
         </div>
     </div>
     <div class="mb-3 row">
         <label class="col-form-label col-sm-2" for="inputPassword">Password</label>
         <div class="col-sm-10">
-            <input name="password" type="password" id="inputPassword" class="form-control" value=""></input>
+            <input class="form-control" id="inputPassword" name="password" type="password" value="">
         </div>
     </div>
 </form>
-<br></br>
+<br>
 <form action="" class="align-items-center row" id="form" method="POST" name="form" role="form">
     <label class="visually-hidden" for="staticEmail2">Email</label>
     <div class="col-auto">
-        <input name="email" type="email" id="staticEmail2" readonly="readonly" class="form-control-plaintext" value="email@example.com"></input>
+        <input class="form-control-plaintext" id="staticEmail2" name="email" readonly type="email" value="email@example.com">
     </div>
     <label class="visually-hidden" for="inputPassword2">Password</label>
     <div class="col-auto">
-        <input name="password" type="password" id="inputPassword2" placeholder="Password" class="form-control" value=""></input>
+        <input class="form-control" id="inputPassword2" name="password" placeholder="Password" type="password" value="">
     </div>
     <div class="col-auto">
         <button class="btn btn-primary mb-2" name="submit" type="submit" value="">Confirm identity</button>
@@ -389,23 +389,23 @@ echo $this->form(
       <div dangerouslySetInnerHTML={{ __html: `<form action="" id="form" method="POST" name="form" role="form">
     <div class="mb-3">
         <label class="form-label" for="formFile">Default file input example</label>
-        <input class="form-control" id="formFile" name="default-file" type="file"></input>
+        <input class="form-control" id="formFile" name="default-file" type="file">
     </div>
     <div class="mb-3">
         <label class="form-label" for="formFileMultiple">Multiple files input example</label>
-        <input class="form-control" id="formFileMultiple" multiple="multiple" name="file-multiple[]" type="file"></input>
+        <input class="form-control" id="formFileMultiple" multiple name="file-multiple[]" type="file">
     </div>
     <div class="mb-3">
         <label class="form-label" for="formFileDisabled">Disabled file input example</label>
-        <input class="form-control" disabled="disabled" id="formFileDisabled" name="file-disabled" type="file"></input>
+        <input class="form-control" disabled id="formFileDisabled" name="file-disabled" type="file">
     </div>
     <div class="mb-3">
         <label class="col-form-label-sm form-label" for="formFileSm">Small file input example</label>
-        <input class="form-control form-control-sm" id="formFileSm" name="file-sm" type="file"></input>
+        <input class="form-control form-control-sm" id="formFileSm" name="file-sm" type="file">
     </div>
     <div class="mb-3">
         <label class="col-form-label-lg form-label" for="formFileLg">Large file input example</label>
-        <input class="form-control form-control-lg" id="formFileLg" name="file-lg" type="file"></input>
+        <input class="form-control form-control-lg" id="formFileLg" name="file-lg" type="file">
     </div>
 </form>` }}></div>
   </HtmlCode>

@@ -20,11 +20,11 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 <TabItem value="result" label="Result" default>
   <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<div class="form-check">
-    <input type="hidden" name="default-checkbox" value="0"></input><input class="form-check-input" id="flexCheckDefault" name="default-checkbox" type="checkbox" value="1"></input>
+    <input type="hidden" name="default-checkbox" value="0"><input class="form-check-input" id="flexCheckDefault" name="default-checkbox" type="checkbox" value="1">
     <label class="form-check-label" for="flexCheckDefault">Default checkbox</label>
 </div>
 <div class="form-check">
-    <input type="hidden" name="checked-checkbox" value="0"></input><input checked="checked" class="form-check-input" id="flexCheckChecked" name="checked-checkbox" type="checkbox" value="1"></input>
+    <input type="hidden" name="checked-checkbox" value="0"><input checked class="form-check-input" id="flexCheckChecked" name="checked-checkbox" type="checkbox" value="1">
     <label class="form-check-label" for="flexCheckChecked">Checked checkbox</label>
 </div>` }}></div>
   </HtmlCode>
@@ -84,7 +84,7 @@ echo $this->formRow(
 <TabItem value="result" label="Result" default>
   <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<div class="form-check">
-    <input class="form-check-input" id="flexCheckIndeterminate" name="indeterminate-checkbox" type="checkbox" value=""></input>
+    <input class="form-check-input" id="flexCheckIndeterminate" name="indeterminate-checkbox" type="checkbox" value="">
     <label class="form-check-label" for="flexCheckIndeterminate">Indeterminate checkbox</label>
 </div>` }}></div>
   </HtmlCode>
@@ -125,11 +125,11 @@ echo $this->formRow(
 <TabItem value="result" label="Result" default>
   <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<div class="form-check">
-    <input type="hidden" disabled="disabled" name="default-checkbox" value="0"></input><input class="form-check-input" disabled="disabled" id="flexCheckDisabled" name="default-checkbox" type="checkbox" value="1"></input>
+    <input type="hidden" disabled name="default-checkbox" value="0"><input class="form-check-input" disabled id="flexCheckDisabled" name="default-checkbox" type="checkbox" value="1">
     <label class="form-check-label" for="flexCheckDisabled">Disabled checkbox</label>
 </div>
 <div class="form-check">
-    <input type="hidden" disabled="disabled" name="checked-checkbox" value="0"></input><input checked="checked" class="form-check-input" disabled="disabled" id="flexCheckCheckedDisabled" name="checked-checkbox" type="checkbox" value="1"></input>
+    <input type="hidden" disabled name="checked-checkbox" value="0"><input checked class="form-check-input" disabled id="flexCheckCheckedDisabled" name="checked-checkbox" type="checkbox" value="1">
     <label class="form-check-label" for="flexCheckCheckedDisabled">Disabled checked checkbox</label>
 </div>` }}></div>
   </HtmlCode>
@@ -193,11 +193,11 @@ echo $this->formRow(
 <TabItem value="result" label="Result" default>
   <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<div class="form-check">
-    <input class="form-check-input" id="flexRadioDefault1" name="flexRadioDefault" type="radio" value="option1"></input>
+    <input class="form-check-input" id="flexRadioDefault1" name="flexRadioDefault" type="radio" value="option1">
     <label class="form-check-label" for="flexRadioDefault1">Default radio</label>
 </div>
 <div class="form-check">
-    <input checked="checked" class="form-check-input" id="flexRadioDefault2" name="flexRadioDefault" type="radio" value="option2"></input>
+    <input checked class="form-check-input" id="flexRadioDefault2" name="flexRadioDefault" type="radio" value="option2">
     <label class="form-check-label" for="flexRadioDefault2">Default checked radio</label>
 </div>` }}></div>
   </HtmlCode>
@@ -247,11 +247,11 @@ echo $this->formRow(
 <TabItem value="result" label="Result" default>
   <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<div class="form-check">
-    <input class="form-check-input" disabled="disabled" id="flexRadioDisabled" name="flexRadioDisabled" type="radio" value="option1"></input>
+    <input class="form-check-input" disabled id="flexRadioDisabled" name="flexRadioDisabled" type="radio" value="option1">
     <label class="form-check-label" for="flexRadioDisabled">Default radio</label>
 </div>
 <div class="form-check">
-    <input checked="checked" class="form-check-input" disabled="disabled" id="flexRadioCheckedDisabled" name="flexRadioDisabled" type="radio" value="option2"></input>
+    <input checked class="form-check-input" disabled id="flexRadioCheckedDisabled" name="flexRadioDisabled" type="radio" value="option2">
     <label class="form-check-label" for="flexRadioCheckedDisabled">Default checked radio</label>
 </div>` }}></div>
   </HtmlCode>
@@ -304,19 +304,19 @@ echo $this->formRow(
 <TabItem value="result" label="Result" default>
   <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<div class="form-check form-switch">
-    <input type="hidden" name="default-switch-checkbox" value="0"></input><input class="form-check-input" id="flexSwitchCheckDefault" name="default-switch-checkbox" role="switch" type="checkbox" value="1"></input>
+    <input type="hidden" name="default-switch-checkbox" value="0"><input class="form-check-input" id="flexSwitchCheckDefault" name="default-switch-checkbox" role="switch" type="checkbox" value="1">
     <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
 </div>
 <div class="form-check form-switch">
-    <input type="hidden" name="checked-switch-checkbox" value="0"></input><input checked="checked" class="form-check-input" id="flexSwitchCheckChecked" name="checked-switch-checkbox" role="switch" type="checkbox" value="1"></input>
+    <input type="hidden" name="checked-switch-checkbox" value="0"><input checked class="form-check-input" id="flexSwitchCheckChecked" name="checked-switch-checkbox" role="switch" type="checkbox" value="1">
     <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
 </div>
 <div class="form-check form-switch">
-    <input type="hidden" disabled="disabled" name="disabled-switch-checkbox" value="0"></input><input class="form-check-input" disabled="disabled" id="flexSwitchCheckDisabled" name="disabled-switch-checkbox" role="switch" type="checkbox" value="1"></input>
+    <input type="hidden" disabled name="disabled-switch-checkbox" value="0"><input class="form-check-input" disabled id="flexSwitchCheckDisabled" name="disabled-switch-checkbox" role="switch" type="checkbox" value="1">
     <label class="form-check-label" for="flexSwitchCheckDisabled">Disabled switch checkbox input</label>
 </div>
 <div class="form-check form-switch">
-    <input type="hidden" disabled="disabled" name="disabled-checked-switch-checkbox" value="0"></input><input checked="checked" class="form-check-input" disabled="disabled" id="flexSwitchCheckChecked" name="disabled-checked-switch-checkbox" role="switch" type="checkbox" value="1"></input>
+    <input type="hidden" disabled name="disabled-checked-switch-checkbox" value="0"><input checked class="form-check-input" disabled id="flexSwitchCheckChecked" name="disabled-checked-switch-checkbox" role="switch" type="checkbox" value="1">
     <label class="form-check-label" for="flexSwitchCheckChecked">Disabled checked switch checkbox input</label>
 </div>` }}></div>
   </HtmlCode>
@@ -421,24 +421,24 @@ echo $this->formRow(
 <TabItem value="result" label="Result" default>
   <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<div class="form-check">
-    <input type="hidden" name="default-checkbox" value="0"></input><input class="form-check-input" id="defaultCheck1" name="default-checkbox" type="checkbox" value="1"></input>
+    <input type="hidden" name="default-checkbox" value="0"><input class="form-check-input" id="defaultCheck1" name="default-checkbox" type="checkbox" value="1">
     <label class="form-check-label" for="defaultCheck1">Default checkbox</label>
 </div>
 <div class="form-check">
-    <input type="hidden" disabled="disabled" name="disabled-checkbox" value="0"></input><input class="form-check-input" disabled="disabled" id="defaultCheck2" name="disabled-checkbox" type="checkbox" value="1"></input>
+    <input type="hidden" disabled name="disabled-checkbox" value="0"><input class="form-check-input" disabled id="defaultCheck2" name="disabled-checkbox" type="checkbox" value="1">
     <label class="form-check-label" for="defaultCheck2">Disabled checkbox</label>
 </div>
-<br></br>
+<br>
 <div class="form-check">
-    <input class="form-check-input" id="exampleRadios1" name="exampleRadios" type="radio" value="option1"></input>
+    <input class="form-check-input" id="exampleRadios1" name="exampleRadios" type="radio" value="option1">
     <label class="form-check-label" for="exampleRadios1">Default radio</label>
 </div>
 <div class="form-check">
-    <input class="form-check-input" id="exampleRadios2" name="exampleRadios" type="radio" value="option2"></input>
+    <input class="form-check-input" id="exampleRadios2" name="exampleRadios" type="radio" value="option2">
     <label class="form-check-label" for="exampleRadios2">Second default radio</label>
 </div>
 <div class="form-check">
-    <input class="form-check-input" disabled="disabled" id="exampleRadios3" name="exampleRadios" type="radio" value="option3"></input>
+    <input class="form-check-input" disabled id="exampleRadios3" name="exampleRadios" type="radio" value="option3">
     <label class="form-check-label" for="exampleRadios3">Disabled radio</label>
 </div>` }}></div>
   </HtmlCode>
@@ -530,30 +530,30 @@ echo $this->formRow(
   <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<div class="col-auto">
     <div class="form-check form-check-inline">
-        <input class="form-check-input" id="inlineCheckbox1" name="inlineCheckboxOptions[]" type="checkbox" value="option1"></input>
+        <input class="form-check-input" id="inlineCheckbox1" name="inlineCheckboxOptions[]" type="checkbox" value="option1">
         <label class="form-check-label" for="inlineCheckbox1">1</label>
     </div>
     <div class="form-check form-check-inline">
-        <input class="form-check-input" id="inlineCheckbox2" name="inlineCheckboxOptions[]" type="checkbox" value="option2"></input>
+        <input class="form-check-input" id="inlineCheckbox2" name="inlineCheckboxOptions[]" type="checkbox" value="option2">
         <label class="form-check-label" for="inlineCheckbox2">2</label>
     </div>
     <div class="form-check form-check-inline">
-        <input class="form-check-input" disabled="disabled" id="inlineCheckbox3" name="inlineCheckboxOptions[]" type="checkbox" value="option3"></input>
+        <input class="form-check-input" disabled id="inlineCheckbox3" name="inlineCheckboxOptions[]" type="checkbox" value="option3">
         <label class="form-check-label" for="inlineCheckbox3">3 (disabled)</label>
     </div>
 </div>
-<br></br>
+<br>
 <div class="col-auto">
     <div class="form-check form-check-inline">
-        <input class="form-check-input" id="inlineRadio1" name="inlineRadioOptions" type="radio" value="option1"></input>
+        <input class="form-check-input" id="inlineRadio1" name="inlineRadioOptions" type="radio" value="option1">
         <label class="form-check-label" for="inlineRadio1">1</label>
     </div>
     <div class="form-check form-check-inline">
-        <input class="form-check-input" id="inlineRadio2" name="inlineRadioOptions" type="radio" value="option2"></input>
+        <input class="form-check-input" id="inlineRadio2" name="inlineRadioOptions" type="radio" value="option2">
         <label class="form-check-label" for="inlineRadio2">2</label>
     </div>
     <div class="form-check form-check-inline">
-        <input class="form-check-input" disabled="disabled" id="inlineRadio3" name="inlineRadioOptions" type="radio" value="option3"></input>
+        <input class="form-check-input" disabled id="inlineRadio3" name="inlineRadioOptions" type="radio" value="option3">
         <label class="form-check-label" for="inlineRadio3">3 (disabled)</label>
     </div>
 </div>` }}></div>
@@ -645,10 +645,10 @@ echo $this->formRow(
 <TabItem value="result" label="Result" default>
   <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<div class="form-check">
-    <input type="hidden" name="checkboxNoLabel" value="0"></input><input aria-label="..." class="form-check-input" id="checkboxNoLabel" name="checkboxNoLabel" type="checkbox" value="1"></input>
+    <input type="hidden" name="checkboxNoLabel" value="0"><input aria-label="..." class="form-check-input" id="checkboxNoLabel" name="checkboxNoLabel" type="checkbox" value="1">
 </div>
 <div class="form-check">
-    <input aria-label="..." class="form-check-input position-static" id="radioNoLabel1" name="radioNoLabel" type="radio" value="option1"></input>
+    <input aria-label="..." class="form-check-input position-static" id="radioNoLabel1" name="radioNoLabel" type="radio" value="option1">
 </div>` }}></div>
   </HtmlCode>
 </TabItem>
@@ -719,15 +719,15 @@ echo $this->formRow(
 <TabItem value="result" label="Result" default>
   <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<div class="form-check">
-    <input type="hidden" name="single-toggle" value="0"></input><input autocomplete="off" class="btn-check" id="btn-check-1" name="single-toggle" type="checkbox" value="1"></input>
+    <input type="hidden" name="single-toggle" value="0"><input autocomplete="off" class="btn-check" id="btn-check-1" name="single-toggle" type="checkbox" value="1">
     <label class="btn btn-primary" for="btn-check-1">Single toggle</label>
 </div>
 <div class="form-check">
-    <input type="hidden" name="single-toggle" value="0"></input><input autocomplete="off" checked="checked" class="btn-check" id="btn-check-2" name="single-toggle" type="checkbox" value="1"></input>
+    <input type="hidden" name="single-toggle" value="0"><input autocomplete="off" checked class="btn-check" id="btn-check-2" name="single-toggle" type="checkbox" value="1">
     <label class="btn btn-primary" for="btn-check-2">Checked</label>
 </div>
 <div class="form-check">
-    <input type="hidden" disabled="disabled" name="single-toggle" value="0"></input><input autocomplete="off" class="btn-check" disabled="disabled" id="btn-check-3" name="single-toggle" type="checkbox" value="1"></input>
+    <input type="hidden" disabled name="single-toggle" value="0"><input autocomplete="off" class="btn-check" disabled id="btn-check-3" name="single-toggle" type="checkbox" value="1">
     <label class="btn btn-primary" for="btn-check-3">Disabled</label>
 </div>` }}></div>
   </HtmlCode>
@@ -819,19 +819,19 @@ echo PHP_EOL;
   <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<div class="col-auto">
     <div class="form-check form-check-inline">
-        <input autocomplete="off" checked="checked" class="btn-check" id="option1" name="inlineRadioOptions" type="radio" value="option1"></input>
+        <input autocomplete="off" checked class="btn-check" id="option1" name="inlineRadioOptions" type="radio" value="option1">
         <label class="btn btn-secondary" for="option1">Checked</label>
     </div>
     <div class="form-check form-check-inline">
-        <input autocomplete="off" class="btn-check" id="option2" name="inlineRadioOptions" type="radio" value="option2"></input>
+        <input autocomplete="off" class="btn-check" id="option2" name="inlineRadioOptions" type="radio" value="option2">
         <label class="btn btn-secondary" for="option2">Radio</label>
     </div>
     <div class="form-check form-check-inline">
-        <input autocomplete="off" class="btn-check" disabled="disabled" id="inlineRadio3" name="inlineRadioOptions" type="radio" value="option3"></input>
+        <input autocomplete="off" class="btn-check" disabled id="inlineRadio3" name="inlineRadioOptions" type="radio" value="option3">
         <label class="btn btn-secondary" for="inlineRadio3">Disabled</label>
     </div>
     <div class="form-check form-check-inline">
-        <input class="btn-check" id="inlineRadio3" name="inlineRadioOptions" type="radio" value="option4"></input>
+        <input class="btn-check" id="inlineRadio3" name="inlineRadioOptions" type="radio" value="option4">
         <label class="btn btn-secondary" for="inlineRadio3">Radio</label>
     </div>
 </div>` }}></div>
@@ -904,20 +904,20 @@ echo $this->formRow(
 <TabItem value="result" label="Result" default>
   <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<div class="form-check">
-    <input type="hidden" name="single-toggle-outlined" value="0"></input><input autocomplete="off" class="btn-check" id="btn-check-outlined" name="single-toggle-outlined" type="checkbox" value="1"></input>
+    <input type="hidden" name="single-toggle-outlined" value="0"><input autocomplete="off" class="btn-check" id="btn-check-outlined" name="single-toggle-outlined" type="checkbox" value="1">
     <label class="btn btn-outline-primary" for="btn-check-outlined">Single toggle</label>
 </div>
 <div class="form-check">
-    <input type="hidden" name="single-toggle" value="0"></input><input autocomplete="off" checked="checked" class="btn-check" id="btn-check-2-outlined" name="single-toggle" type="checkbox" value="1"></input>
+    <input type="hidden" name="single-toggle" value="0"><input autocomplete="off" checked class="btn-check" id="btn-check-2-outlined" name="single-toggle" type="checkbox" value="1">
     <label class="btn btn-outline-secondary" for="btn-check-2-outlined">Checked</label>
 </div>
 <div class="col-auto">
     <div class="form-check form-check-inline">
-        <input autocomplete="off" checked="checked" class="btn-check" id="success-outlined" name="options-outlined" type="radio" value="option1"></input>
+        <input autocomplete="off" checked class="btn-check" id="success-outlined" name="options-outlined" type="radio" value="option1">
         <label class="btn btn-outline-success" for="success-outlined">Checked success radio</label>
     </div>
     <div class="form-check form-check-inline">
-        <input autocomplete="off" class="btn-check" id="danger-outlined" name="options-outlined" type="radio" value="option2"></input>
+        <input autocomplete="off" class="btn-check" id="danger-outlined" name="options-outlined" type="radio" value="option2">
         <label class="btn btn-outline-danger" for="danger-outlined">Danger radio</label>
     </div>
 </div>` }}></div>

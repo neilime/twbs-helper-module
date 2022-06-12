@@ -1,0 +1,14 @@
+.git/
+.settings
+.buildpath
+.project
+vendor
+nbproject/
+**/nbactions.xml
+**/nb-configuration.xml
+build/
+**/.idea/
+**/composer.lock
+**/*.swp
+website/node_modules
+**/tests/.phpunit.result.cache
