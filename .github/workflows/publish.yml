@@ -5,10 +5,8 @@ on:
     tags: [v*]
 
 jobs:
-  gh-release:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: ./.github/workflows/build-website.yml
-        with:
-          publish: true
+  gh-release:   
+    name: Build and release website
+    uses: ./.github/workflows/build-website.yml
+    with:
+      publish: true
