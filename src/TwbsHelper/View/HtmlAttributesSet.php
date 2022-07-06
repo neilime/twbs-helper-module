@@ -40,6 +40,7 @@ class HtmlAttributesSet extends \TwbsHelper\View\OriginalHtmlAttributesSet
         $this->cleanAttributes();
     }
 
+    #[\ReturnTypeWillChange]
     public function offsetGet($key)
     {
         if (!$this->offsetExists($key) && isset(static::$attributeWithSet[$key])) {
