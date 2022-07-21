@@ -1,6 +1,5 @@
 parameters:
     ignoreErrors:
-        - '/Call to an undefined method Laminas\\View\\Helper\\AbstractHelper::/'
         - '/Access to an offset on an unknown class Laminas\\ServiceManager\\InitializersConfigurationType/'
     laminasframework:
        serviceManagerLoader: tests/phpstan.php
