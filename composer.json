@@ -32,7 +32,7 @@
     "laminas/laminas-i18n": "^2.16",
     "laminas/laminas-navigation": "^2.13",
     "laminas/laminas-paginator": "^2.13",
-    "laminas/laminas-servicemanager": "^3.14",
+    "laminas/laminas-servicemanager": "^3.15",
     "laminas/laminas-stdlib": "^3.10",
     "laminas/laminas-view": "^2.22"
   },
