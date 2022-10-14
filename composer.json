@@ -27,7 +27,7 @@
   },
   "require": {
     "php": "^7.4 || ~8.0.0 || ~8.1.0",
-    "laminas/laminas-escaper": "^2.10",
+    "laminas/laminas-escaper": "^2.12",
     "laminas/laminas-form": "^3.4",
     "laminas/laminas-i18n": "^2.17",
     "laminas/laminas-navigation": "^2.15",
