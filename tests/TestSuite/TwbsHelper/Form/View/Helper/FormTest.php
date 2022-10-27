@@ -29,6 +29,16 @@ class FormTest extends \PHPUnit\Framework\TestCase
         );
     }
 
+    public function testRenderEmptyForm()
+    {
+        $form = new \Laminas\Form\Form();
+
+        $this->assertEquals(
+            '<form action="" method="POST" role="form"></form>',
+            $this->formHelper->__invoke($form)
+        );
+    }
+
     public function testInitializeAnHorizontalFormClass()
     {
         $horizontalFormClass = new class () extends \Laminas\Form\Form
@@ -70,5 +80,16 @@ class FormTest extends \PHPUnit\Framework\TestCase
                 '</form>',
             $this->formHelper->__invoke($newHorizontalForm)
         );
+    }
+
+
+    public function testRenderSpecWithWrongFormElementThrowsAnException()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage(
+            'Invalid spec specified, Laminas\Form\Element does not inherit from Laminas\Form\FormInterface.'
+        );
+
+        $this->formHelper->renderSpec(['type' => 'Element']);
     }
 }

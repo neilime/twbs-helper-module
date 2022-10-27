@@ -57,22 +57,10 @@ class FormRows extends \Laminas\Form\View\Helper\AbstractHelper
     {
         $rowClass = $form->getOption('row_class') ?? 'row';
         $gutter = $form->getOption('gutter');
-        $formLayout = $form->getOption('layout');
-        $tooltipFeedback = $form->getOption('tooltip_feedback');
 
         // Store element rows rendering
         $rowsRendering = [];
         foreach ($form as $element) {
-            // Define layout option to form elements if not already defined
-            if ($formLayout && !$element->getOption('layout')) {
-                $element->setOption('layout', $formLayout);
-            }
-
-            // Define tooltip_feedback option to form elements if not already defined
-            if ($element->getOption('tooltip_feedback') === null) {
-                $element->setOption('tooltip_feedback', $tooltipFeedback);
-            }
-
             $rowsRendering = $this->renderElement($element, $rowsRendering, [
                 'row_class' => $rowClass,
                 'gutter' => $gutter,
