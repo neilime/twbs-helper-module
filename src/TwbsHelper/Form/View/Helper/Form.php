@@ -22,6 +22,21 @@ class Form extends \Laminas\Form\View\Helper\Form
     protected $options;
 
     /**
+     * @var null|\TwbsHelper\Form\View\Helper\FormRows
+     */
+    protected $formRowsHelper;
+
+    /**
+     * @var null|\TwbsHelper\View\Helper\HtmlElement
+     */
+    protected $htmlElementHelper;
+
+    /**
+     * @var null|\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass
+     */
+    protected $htmlClassHelper;
+
+    /**
      * Constructor
      *
      * @param \TwbsHelper\Options\ModuleOptions $moduleOptions
@@ -103,14 +118,13 @@ class Form extends \Laminas\Form\View\Helper\Form
     {
         $this->prepareForm($form);
 
-        $elementsContent = $this->getView()->plugin('formRows')->__invoke($form);
+        $elementsContent = $this->getFormRowsHelper()->__invoke($form);
         $elementsContent = empty($elementsContent)
             ? ''
-            : $this->getView()->plugin('htmlElement')->addProperIndentation($elementsContent, true);
+            : $this->getHtmlElementHelper()->addProperIndentation($elementsContent, true);
 
         return $this->openTag($form) . $elementsContent . $this->closeTag();
     }
-
 
     protected function prepareForm(\Laminas\Form\FormInterface $form)
     {
@@ -124,6 +138,12 @@ class Form extends \Laminas\Form\View\Helper\Form
             $form->setAttribute('role', 'form');
         }
 
+        $this->prepareFormClasses($form);
+        $this->inheritOptionsToElements($form);
+    }
+
+    protected function prepareFormClasses(\Laminas\Form\FormInterface $form)
+    {
         $classes = [];
 
         if ($form->getOption('custom_validation')) {
@@ -142,7 +162,7 @@ class Form extends \Laminas\Form\View\Helper\Form
             if ($column) {
                 $classes = array_merge(
                     $classes,
-                    $this->getView()->plugin('htmlClass')->plugin('column')->getClassesFromOption($column, 'row-cols'),
+                    $this->getHtmlClassHelper()->plugin('column')->getClassesFromOption($column, 'row-cols'),
                 );
             }
 
@@ -150,10 +170,92 @@ class Form extends \Laminas\Form\View\Helper\Form
             if ($gutter) {
                 $classes = array_merge(
                     $classes,
-                    $this->getView()->plugin('htmlClass')->plugin('gutter')->getClassesFromOption($gutter),
+                    $this->getHtmlClassHelper()->plugin('gutter')->getClassesFromOption($gutter),
                 );
             }
         }
         $this->setClassesToElement($form, $classes);
+    }
+
+    protected function inheritOptionsToElements(\Laminas\Form\FormInterface $form)
+    {
+        $formLayout = $form->getOption('layout');
+        $tooltipFeedback = $form->getOption('tooltip_feedback');
+
+        foreach ($form as $element) {
+            // Define layout option to form elements if not already defined
+            if ($formLayout && !$element->getOption('layout')) {
+                $element->setOption('layout', $formLayout);
+            }
+            // Define tooltip_feedback option to form elements if not already defined
+            if ($element->getOption('tooltip_feedback') === null) {
+                $element->setOption('tooltip_feedback', $tooltipFeedback);
+            }
+        }
+    }
+
+    /**
+     * Retrieve the formRow helper
+     */
+    protected function getFormRowsHelper(): \TwbsHelper\Form\View\Helper\FormRows
+    {
+        if ($this->formRowsHelper) {
+            return $this->formRowsHelper;
+        }
+
+        if ($this->view !== null && method_exists($this->view, 'plugin')) {
+            $this->formRowsHelper = $this->view->plugin('formRows');
+        }
+
+        if (!$this->formRowsHelper instanceof \TwbsHelper\Form\View\Helper\FormRows) {
+            throw new \LogicException(sprintf(
+                'FormCollection helper expects an instanceof \TwbsHelper\Form\View\Helper\FormRows, "%s" defined',
+                is_object($this->formRowsHelper)
+                    ? get_class($this->formRowsHelper)
+                    : gettype($this->formRowsHelper)
+            ));
+        }
+
+        return $this->formRowsHelper;
+    }
+
+    /**
+     * Retrieve the htmlElement helper
+     */
+    protected function getHtmlElementHelper()
+    {
+        if ($this->htmlElementHelper) {
+            return $this->htmlElementHelper;
+        }
+
+        if ($this->view !== null && method_exists($this->view, 'plugin')) {
+            $this->htmlElementHelper = $this->view->plugin('htmlElement');
+        }
+
+        if (!$this->htmlElementHelper instanceof \TwbsHelper\View\Helper\HtmlElement) {
+            $this->htmlElementHelper = new \TwbsHelper\View\Helper\HtmlElement();
+        }
+
+        return $this->htmlElementHelper;
+    }
+
+    /**
+     * Retrieve the htmlclass helper
+     */
+    protected function getHtmlClassHelper()
+    {
+        if ($this->htmlClassHelper) {
+            return $this->htmlClassHelper;
+        }
+
+        if ($this->view !== null && method_exists($this->view, 'plugin')) {
+            $this->htmlClassHelper = $this->view->plugin('htmlClass');
+        }
+
+        if (!$this->htmlClassHelper instanceof \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass) {
+            $this->htmlClassHelper = new \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass();
+        }
+
+        return $this->htmlClassHelper;
     }
 }

@@ -8,7 +8,7 @@ build-php: ## Build PHP image for given version
 	@DOCKER_BUILDKIT=1 docker build -t "twbs-helper-php:$(filter-out $@,$(MAKECMDGOALS))" --build-arg "VERSION=$(filter-out $@,$(MAKECMDGOALS))" .
 
 install:
-	@$(call run-php,$(filter-out $@,$(MAKECMDGOALS)) composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader)
+	@$(call run-php,$(filter-out $@,$(MAKECMDGOALS)) composer install --no-progress --prefer-dist --optimize-autoloader)
 
 shell:
 	@$(call run-php,$(filter-out $@,$(MAKECMDGOALS)) bash)
@@ -18,6 +18,9 @@ test:
 
 test-update:
 	@$(call run-php,$(filter-out $@,$(MAKECMDGOALS)) composer test:update-snapshot)
+
+lint:
+	@$(call run-php,$(filter-out $@,$(MAKECMDGOALS)) composer cs)
 
 lint-fix:
 	@$(call run-php,$(filter-out $@,$(MAKECMDGOALS)) composer cbf)
