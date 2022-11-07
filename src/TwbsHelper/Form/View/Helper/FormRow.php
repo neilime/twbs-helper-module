@@ -2,6 +2,8 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
+use Laminas\Form\LabelAwareInterface;
+
 class FormRow extends \Laminas\Form\View\Helper\FormRow
 {
     use \TwbsHelper\Form\View\ElementHelperTrait;
@@ -35,10 +37,13 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
      */
     public function render(\Laminas\Form\ElementInterface $element, ?string $labelPosition = null): string
     {
-
         // Nothing to do for hidden elements which have no messages
         if ('hidden' === $element->getAttribute('type') && !$element->getMessages()) {
             return parent::render($element, $labelPosition);
+        }
+
+        if ($element instanceof LabelAwareInterface && $element->getLabelOption('label_position')) {
+            $labelPosition = $element->getLabelOption('label_position');
         }
 
         if ($element->getOption('floating_label')) {
