@@ -10,13 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: echo ::set-output name=NVMRC::$(cat .nvmrc)
-        id: nvm
 
       - uses: actions/setup-node@v3.5.1
-        id: setup-node
         with:
-          node-version: "${{ steps.nvm.outputs.NVMRC }}"
+          node-version-file: ".nvmrc"
           cache: yarn
           cache-dependency-path: website/yarn.lock
 
