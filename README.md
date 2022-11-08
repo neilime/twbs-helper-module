@@ -22,7 +22,7 @@
 
 ## Demonstration / example
 
-🚀 Render **ALL** of the [Twitter Bootstrap v5+](https://getbootstrap.com/) elements with TwbsHelper : [see it in action, on-line](https://neilime.github.io/twbs-helper-module/#/usage/?id=rendering).
+🚀 Render **ALL** of the [Twitter Bootstrap v5+](https://getbootstrap.com/) elements with TwbsHelper : [see it in action, on-line](https://neilime.github.io/twbs-helper-module/docs/usage/intro/).
 
 ## Documentation
 
