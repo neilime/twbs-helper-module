@@ -8,7 +8,9 @@ build-php: ## Build PHP image for given version
 	@DOCKER_BUILDKIT=1 docker build -t "twbs-helper-php:$(filter-out $@,$(MAKECMDGOALS))" --build-arg "VERSION=$(filter-out $@,$(MAKECMDGOALS))" .
 
 install:
+	rm -f composer.lock
 	@$(call run-php,$(filter-out $@,$(MAKECMDGOALS)) composer install --no-progress --prefer-dist --optimize-autoloader)
+	rm -f composer.lock
 
 shell:
 	@$(call run-php,$(filter-out $@,$(MAKECMDGOALS)) bash)

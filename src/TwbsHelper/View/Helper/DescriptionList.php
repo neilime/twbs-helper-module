@@ -49,7 +49,7 @@ class DescriptionList extends \TwbsHelper\View\Helper\AbstractHtmlElement
         }
 
         $attributes = $this->getView()->plugin('htmlattributes')
-            ->__invoke($optionsAndAttributes ?? [])
+            ->__invoke($optionsAndAttributes ?: [])
             ->merge(['class' => ['row']]);
 
         return $this->renderContainer(
@@ -175,7 +175,7 @@ class DescriptionList extends \TwbsHelper\View\Helper\AbstractHtmlElement
         unset($termOptionsAndAttributes['column']);
 
         $attributes = $this->getView()->plugin('htmlattributes')
-            ->__invoke($termOptionsAndAttributes ?? [])
+            ->__invoke($termOptionsAndAttributes ?: [])
             ->merge([
                 'class' => $this->getView()->plugin('htmlClass')->plugin('column')->getClassesFromOption(
                     $columSize
@@ -211,7 +211,7 @@ class DescriptionList extends \TwbsHelper\View\Helper\AbstractHtmlElement
         unset($detailOptionsAndAttributes['column']);
 
         $attributes = $this->getView()->plugin('htmlattributes')
-            ->__invoke($detailOptionsAndAttributes ?? [])
+            ->__invoke($detailOptionsAndAttributes ?: [])
             ->merge([
                 'class' => $this->getView()->plugin('htmlClass')->plugin('column')->getClassesFromOption(
                     $columSize

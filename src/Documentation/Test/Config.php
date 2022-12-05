@@ -7,9 +7,9 @@ class Config
     public static $TITLE_SEPARATOR = ' / ';
 
     /**
-     * @var string
+     * @var string|null
      */
-    public $title;
+    public $title = null;
 
     /**
      * @var string

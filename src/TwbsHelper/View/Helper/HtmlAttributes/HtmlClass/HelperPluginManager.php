@@ -2,6 +2,8 @@
 
 namespace TwbsHelper\View\Helper\HtmlAttributes\HtmlClass;
 
+use Laminas\ServiceManager\ConfigInterface;
+
 /**
  * Plugin manager implementation for HTML class attribute helpers
  *
@@ -31,8 +33,10 @@ class HelperPluginManager extends \Laminas\ServiceManager\AbstractPluginManager
 
     /**
      * Default factories
+     *
      * @var array
      */
+    /** @phpstan-ignore-next-line */
     protected $factories = [
         \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Align::class
         => \Laminas\ServiceManager\Factory\InvokableFactory::class,
@@ -63,6 +67,8 @@ class HelperPluginManager extends \Laminas\ServiceManager\AbstractPluginManager
      * Sets the provided $parentLocator as the creation context for all
      * factories; for $config, {@see \Laminas\ServiceManager\ServiceManager::configure()}
      * for details on its accepted structure.
+     * @param null|ConfigInterface|\Psr\Container\ContainerInterface $configInstanceOrParentLocator
+     * @param array $config
      */
     public function __construct($configInstanceOrParentLocator = null, array $config = [])
     {
@@ -76,7 +82,7 @@ class HelperPluginManager extends \Laminas\ServiceManager\AbstractPluginManager
      */
     public function injectHtmlClassHelper($first, $second)
     {
-        $helper = ($first instanceof \Interop\Container\ContainerInterface)
+        $helper = ($first instanceof \Psr\Container\ContainerInterface)
             ? $second
             : $first;
 

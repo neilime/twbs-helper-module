@@ -26,6 +26,6 @@ class SnapshotService
         $snapshotFile = $safePath . '__' .  $incrementor . '.html';
 
         return $this->testsDirectoryPath . DIRECTORY_SEPARATOR .
-            static::$SNAPSHOT_ROOT_DIRECTORY . DIRECTORY_SEPARATOR . $snapshotFile;
+            self::$SNAPSHOT_ROOT_DIRECTORY . DIRECTORY_SEPARATOR . $snapshotFile;
     }
 }
