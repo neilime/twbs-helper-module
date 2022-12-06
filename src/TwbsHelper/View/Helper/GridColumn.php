@@ -121,7 +121,7 @@ class GridColumn extends \TwbsHelper\View\Helper\AbstractHtmlElement
             );
         }
 
-        $colOption = $optionsAndAttributes['column'] ?? $options['column'] ?? true;
+        $colOption = $optionsAndAttributes['column'] ?? true;
         $attributes['class']->merge(
             $this->getView()->plugin('htmlClass')->plugin('column')->getClassesFromOption($colOption)
         );
