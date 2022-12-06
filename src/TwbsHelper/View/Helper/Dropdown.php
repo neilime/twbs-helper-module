@@ -109,7 +109,7 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
             throw new \InvalidArgumentException(sprintf(
                 'Argument "$dropdown" expects %s, "%s" given',
                 'an instanceof \Laminas\Form\ElementInterface or an iterable',
-                is_object($dropdown) ? get_class($dropdown) : gettype($dropdown)
+                get_class($dropdown)
             ));
         }
         return $dropdown;
@@ -175,9 +175,9 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
         $toogleElementAttributes = $toogleElement->getAttributes();
         foreach (
             [
-            'data-bs-toggle' => 'dropdown',
-            'data-bs-offset' => $dropdownOptions['offset'] ?? null,
-            'aria-expanded' => 'false',
+                'data-bs-toggle' => 'dropdown',
+                'data-bs-offset' => $dropdownOptions['offset'] ?? null,
+                'aria-expanded' => 'false',
             ] as $attributeName => $defaultValue
         ) {
             if ($defaultValue !== null && !isset($toogleElementAttributes[$attributeName])) {
@@ -478,8 +478,8 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
                 foreach (
                     [
-                    'active' => ['aria-current' => 'true'],
-                    'disabled' => ['tabindex' => '-1', 'aria-disabled' => 'true'],
+                        'active' => ['aria-current' => 'true'],
+                        'disabled' => ['tabindex' => '-1', 'aria-disabled' => 'true'],
                     ] as $option => $optionAttributes
                 ) {
                     if (empty($itemOptions[$option])) {

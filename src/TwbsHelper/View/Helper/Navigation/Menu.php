@@ -96,7 +96,7 @@ class Menu extends \Laminas\View\Helper\Navigation\Menu
 
         $content = $this->renderMenuItemsLink($content, $options);
 
-        return $content ?? '';
+        return $content ?: '';
     }
 
     protected function renderMenuItemsNav(string $content, iterable $options): string
@@ -214,13 +214,13 @@ class Menu extends \Laminas\View\Helper\Navigation\Menu
         $classes = [];
         foreach (
             [
-            'tabs' => 'nav-tabs',
-            'pills' => 'nav-pills',
-            'fill' => 'nav-fill',
-            'justified' => 'nav-justified',
-            'centered' => 'justify-content-center',
-            'right_aligned' => 'justify-content-end',
-            'vertical' => 'flex-column',
+                'tabs' => 'nav-tabs',
+                'pills' => 'nav-pills',
+                'fill' => 'nav-fill',
+                'justified' => 'nav-justified',
+                'centered' => 'justify-content-center',
+                'right_aligned' => 'justify-content-end',
+                'vertical' => 'flex-column',
             ] as $option => $className
         ) {
             if (!empty($options[$option])) {

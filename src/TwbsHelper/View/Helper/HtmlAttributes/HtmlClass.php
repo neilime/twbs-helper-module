@@ -49,11 +49,12 @@ class HtmlClass extends \Laminas\View\Helper\AbstractHelper
             }
             $helperPluginManager = new $helperPluginManager(new \Laminas\ServiceManager\ServiceManager());
         }
+
         if (!$helperPluginManager instanceof \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\HelperPluginManager) {
             throw new \InvalidArgumentException(sprintf(
                 'Helper helpers must extend %s; got type "%s" instead',
                 \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\HelperPluginManager::class,
-                (is_object($helperPluginManager) ? get_class($helperPluginManager) : gettype($helperPluginManager))
+                get_class($helperPluginManager)
             ));
         }
         $this->helperPluginManager = $helperPluginManager;

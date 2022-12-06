@@ -2,14 +2,14 @@ version: 2
 updates:
   - package-ecosystem: composer
     open-pull-requests-limit: 20
-    versioning-strategy: increase
+    versioning-strategy: widen
     directory: "/"
     schedule:
       interval: weekly
       day: friday
   - package-ecosystem: npm
     open-pull-requests-limit: 20
-    versioning-strategy: increase
+    versioning-strategy: widen
     directory: "/website"
     schedule:
       interval: weekly
