@@ -7,35 +7,35 @@ build-php: ## Build PHP image for given version
 	@echo "Build php $(filter-out $@,$(MAKECMDGOALS))"
 	@DOCKER_BUILDKIT=1 docker build -t "twbs-helper-php:$(filter-out $@,$(MAKECMDGOALS))" --build-arg "VERSION=$(filter-out $@,$(MAKECMDGOALS))" .
 
-install:
+install: ## Install PHP dependencies for given PHP version
 	rm -f composer.lock
 	@$(call run-php,$(filter-out $@,$(MAKECMDGOALS)) composer install --no-progress --prefer-dist --optimize-autoloader)
 	rm -f composer.lock
 
-shell:
+shell: ## Execute shell in given PHP version container
 	@$(call run-php,$(filter-out $@,$(MAKECMDGOALS)) bash)
 
-test:
+test: ## Execute tests for given PHP version
 	@$(call run-php,$(filter-out $@,$(MAKECMDGOALS)) composer test)
 
-test-update:
+test-update: ## Execute tests and update snapshots for given PHP version
 	@$(call run-php,$(filter-out $@,$(MAKECMDGOALS)) composer test:update-snapshot)
 
-lint:
+lint: ## Execute lint for given PHP version
 	@$(call run-php,$(filter-out $@,$(MAKECMDGOALS)) composer cs)
 
-lint-fix:
+lint-fix: ## Execute lint fixing for given PHP version
 	@$(call run-php,$(filter-out $@,$(MAKECMDGOALS)) composer cbf)
 
-ci:
+ci: ## Execute CI scripts for given PHP version
 	@$(call run-php,$(filter-out $@,$(MAKECMDGOALS)) composer ci)
 
-generate-docs:
+generate-docs: ## Generate documentation for given PHP version
 	@$(call run-php,$(filter-out $@,$(MAKECMDGOALS)) composer generate-docs)
 
 ## Run PHP for given version
 define run-php
-	@docker run -it --rm -u $(shell id -u):$(shell id -g) -v ${PWD}:/usr/src/app -w /usr/src/app twbs-helper-php:$(1)
+	@docker run -it --rm -u $(shell id -u):$(shell id -g) -v ${PWD}:${PWD} -w ${PWD} twbs-helper-php:$(1)
 endef
 
 #############################
