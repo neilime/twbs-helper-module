@@ -17,10 +17,10 @@ class Breadcrumbs extends \Laminas\View\Helper\Navigation\Breadcrumbs
      */
     public function renderStraight($container = null)
     {
-        $this->parseContainer($container);
         if (null === $container) {
             $container = $this->getContainer();
         }
+        $this->parseContainer($container);
 
         // Find deepest active
         $activePage = $this->findActive($container);
@@ -31,7 +31,7 @@ class Breadcrumbs extends \Laminas\View\Helper\Navigation\Breadcrumbs
         $activePage = $activePage['page'];
 
         // Put the deepest active page last in breadcrumbs
-        if ($this->getLinkLast()) {
+        if ($this->getLinkLast() && !$activePage->isActive()) {
             $html = $this->htmlify($activePage);
         } else {
             $escapeHtml = $this->getView()->plugin('escapeHtml');

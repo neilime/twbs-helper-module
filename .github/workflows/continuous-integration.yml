@@ -16,6 +16,7 @@ jobs:
         include:
           - php-versions: "8.0"
           - php-versions: "8.1"
+          - php-versions: "8.2"
             stable: true
 
     runs-on: ubuntu-latest

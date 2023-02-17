@@ -26,9 +26,7 @@ class BreadcrumbsTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
             '<nav aria-label="breadcrumb">' . PHP_EOL .
                 '    <ol class="breadcrumb">' . PHP_EOL .
                 '        <li class="breadcrumb-item"><a href="&#x2F;">Home</a></li>' . PHP_EOL .
-                '        <li aria-current="page" class="active&#x20;breadcrumb-item">' .
-                '<a href="&#x2F;library">Library</a>' .
-                '</li>' . PHP_EOL .
+                '        <li aria-current="page" class="active&#x20;breadcrumb-item">Library</li>' . PHP_EOL .
                 '    </ol>' . PHP_EOL .
                 '</nav>',
             $this->helper->renderStraight(new \Laminas\Navigation\Navigation([

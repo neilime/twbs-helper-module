@@ -8,10 +8,12 @@ trait ElementHelperTrait
     {
         $attributes = $this->getView()->plugin('htmlattributes')->__invoke($attributes)->getArrayCopy();
 
-        if (!is_callable('parent::prepareAttributes')) {
-            return $attributes;
+        $callParentPrepareAttributes = parent::class . '::prepareAttributes';
+        if (is_callable($callParentPrepareAttributes)) {
+            $attributes = call_user_func($callParentPrepareAttributes, $attributes);
         }
-        return call_user_func('parent::prepareAttributes', $attributes);
+
+        return $attributes;
     }
 
     protected function setClassesToElement(

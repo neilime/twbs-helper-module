@@ -61,10 +61,10 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
      */
     public function renderNavbar($container = null, array $options = []): string
     {
-        $this->parseContainer($container);
         if (null === $container) {
             $container = $this->getContainer();
         }
+        $this->parseContainer($container);
 
         $attributes = $this->prepareAttributes($options);
         $id = $attributes['id'] ?? null;
