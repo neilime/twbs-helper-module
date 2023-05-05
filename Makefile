@@ -27,6 +27,9 @@ lint: ## Execute lint for given PHP version
 lint-fix: ## Execute lint fixing for given PHP version
 	@$(call run-php,$(filter-out $@,$(MAKECMDGOALS)) composer cbf)
 
+stan: ## Execute PHPStan for given PHP version
+	@$(call run-php,$(filter-out $@,$(MAKECMDGOALS)) composer stan)
+
 ci: ## Execute CI scripts for given PHP version
 	@$(call run-php,$(filter-out $@,$(MAKECMDGOALS)) composer ci)
 

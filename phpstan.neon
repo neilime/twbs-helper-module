@@ -1,6 +1,4 @@
 parameters:
-    ignoreErrors:
-        - '/Access to an offset on an unknown class Laminas\\ServiceManager\\InitializersConfigurationType/'
     laminasframework:
        serviceManagerLoader: tests/phpstan.php
     excludePaths:

@@ -36,7 +36,6 @@ class HelperPluginManager extends \Laminas\ServiceManager\AbstractPluginManager
      *
      * @var array
      */
-    /** @phpstan-ignore-next-line */
     protected $factories = [
         \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Align::class
         => \Laminas\ServiceManager\Factory\InvokableFactory::class,
