@@ -24,7 +24,6 @@ class FormRowElementTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCas
                 'test',
                 [
                     'label' => 'Choose from the list below',
-                    'form_group' => false,
                     'value_options' => [
                         [
                             'label' => 'Default radio',

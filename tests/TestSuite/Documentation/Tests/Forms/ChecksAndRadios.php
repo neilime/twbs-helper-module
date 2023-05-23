@@ -112,7 +112,6 @@ return [
                     'name' => 'flexRadioDefault',
                     'type' => 'radio',
                     'options' => [
-                        'form_group' => false,
                         'value_options' => [
                             [
                                 'label' => 'Default radio',
@@ -142,7 +141,6 @@ return [
                             'name' => 'flexRadioDisabled',
                             'type' => 'radio',
                             'options' => [
-                                'form_group' => false,
                                 'value_options' => [
                                     [
                                         'label' => 'Default radio',
@@ -278,7 +276,6 @@ return [
                     'name' => 'exampleRadios',
                     'type' => 'radio',
                     'options' => [
-                        'form_group' => false,
                         'value_options' => [
                             [
                                 'label' => 'Default radio',
@@ -343,7 +340,6 @@ return [
                     'type' => 'radio',
                     'options' => [
                         'layout' => 'inline',
-                        'form_group' => false,
                         'value_options' => [
                             [
                                 'label' => '1',
@@ -390,7 +386,6 @@ return [
                     'name' => 'radioNoLabel',
                     'type' => 'radio',
                     'options' => [
-                        'form_group' => false,
                         'value_options' => [
                             [
                                 'label' => '',
@@ -476,7 +471,6 @@ return [
                             'options' => [
                                 'button' => true,
                                 'layout' => 'inline',
-                                'form_group' => false,
                                 'value_options' => [
                                     [
                                         'label' => 'Checked',
@@ -548,7 +542,6 @@ return [
                             'name' => 'options-outlined',
                             'type' => 'radio',
                             'options' => [
-                                'form_group' => false,
                                 'layout' => 'inline',
                                 'value_options' => [
                                     [

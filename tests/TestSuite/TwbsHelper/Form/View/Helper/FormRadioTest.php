@@ -21,7 +21,6 @@ class FormRadioTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 'test',
                 [
                     'label' => 'Choose from the list below',
-                    'form_group' => false,
                     'value_options' => [
                         [
                             'label' => 'Default radio',

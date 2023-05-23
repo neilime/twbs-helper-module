@@ -200,6 +200,12 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
         if (!$isCheckbox && $isLayoutInline) {
             $column = $element->getOption('column') ?? 'auto';
             $columnClasses = $this->getView()->plugin('htmlClass')->plugin('column')->getClassesFromOption($column);
+
+            $rowClass = $element->getOption('row_class');
+            if ($rowClass) {
+                $columnClasses[] = $rowClass;
+            }
+
             $content = $this->getView()->plugin('htmlElement')->__invoke(
                 'div',
                 ['class' => $columnClasses],
