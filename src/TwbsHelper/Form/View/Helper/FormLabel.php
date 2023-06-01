@@ -39,8 +39,6 @@ class FormLabel extends \Laminas\Form\View\Helper\FormLabel
             return $labelContent;
         }
 
-
-
         $labelAttributes = $this->prepareLabelAttributes($element);
         $markup = parent::__invoke($element, $labelContent, $position);
 
@@ -71,7 +69,7 @@ class FormLabel extends \Laminas\Form\View\Helper\FormLabel
                 'div',
                 $labelAttributes,
                 $label,
-                !$element->getLabelOption('disable_html_escape')
+                false
             );
         }
 
