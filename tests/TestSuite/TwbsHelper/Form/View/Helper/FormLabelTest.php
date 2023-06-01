@@ -12,7 +12,7 @@ class FormLabelTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
     /**
      * @dataProvider dataProviderRenderLabels
      */
-    public function testRenderWithLabel($element, string $expected)
+    public function testRenderWithLabel(\Laminas\Form\Element $element, string $expected)
     {
         $this->assertEquals(
             $expected,
