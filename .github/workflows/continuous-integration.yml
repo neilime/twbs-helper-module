@@ -65,7 +65,7 @@ jobs:
 
       - name: 📊 Upload coverage results to Codecov
         if: matrix.stable
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v3
         with:
           file: ./build/logs/clover.xml
 
