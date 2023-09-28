@@ -91,7 +91,7 @@ class UsagePageFileGenerator
         $pagePathInfo = new \Documentation\Generator\UsagePage\PagePathInfo();
         $pagePathInfo->dirName = $dirName;
         $pagePathInfo->dirPath = $pageDirPath;
-        $pagePathInfo->pageName = array_shift($titleParts);
+        $pagePathInfo->pageName = $titleParts ? array_shift($titleParts) : $dirName;
         $pageFileName = $this->sanitizePath($pagePathInfo->pageName) . '.mdx';
         $pagePathInfo->pagePath = $pagePathInfo->dirPath . DIRECTORY_SEPARATOR . $pageFileName;
 

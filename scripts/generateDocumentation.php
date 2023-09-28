@@ -28,13 +28,11 @@ if (false === (include $phpCodeSnifferAutoloadPath)) {
 
 $rootDirPath = dirname(__DIR__);
 $testsDirPath = $rootDirPath . '/tests/TestSuite/Documentation/Tests';
-$bootstrapVersion = '5.1';
 $maxNestedDir = 2;
 
 $configuration = new \Documentation\Generator\Configuration(
     $rootDirPath,
     $testsDirPath,
-    $bootstrapVersion,
     $maxNestedDir
 );
 
