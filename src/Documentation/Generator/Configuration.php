@@ -15,6 +15,11 @@ class Configuration
     private $testsDirPath;
 
     /**
+     * @var string
+     */
+    private $bootstrapVersion;
+
+    /**
      * @var int
      */
     private $maxNestedDir;
@@ -22,10 +27,12 @@ class Configuration
     public function __construct(
         $rootDirPath,
         $testsDirPath,
+        $bootstrapVersion,
         $maxNestedDir
     ) {
         $this->rootDirPath = $rootDirPath;
         $this->testsDirPath = $testsDirPath;
+        $this->bootstrapVersion = $bootstrapVersion;
         $this->maxNestedDir = $maxNestedDir;
     }
 
@@ -41,22 +48,7 @@ class Configuration
 
     public function getBootstrapVersion()
     {
-        $composerJsonPath = $this->getRootDirPath() . '/composer.json';
-        if (!file_exists($composerJsonPath)) {
-            throw new \LogicException(
-                'composer.json file not found in root directory "' . $this->getRootDirPath() . '"'
-            );
-        }
-
-        $composerJson = json_decode(file_get_contents($composerJsonPath), true);
-
-        foreach ($composerJson['require-dev'] as $packageName => $packageVersion) {
-            if ('twbs/bootstrap' === $packageName) {
-                return preg_replace('/^.*(\d+\.\d+).*$/', '$1', $packageVersion);
-            }
-        }
-
-        throw new \LogicException('Bootstrap version not found in composer dev dependencies');
+        return $this->bootstrapVersion;
     }
 
     public function getMaxNestedDir()

@@ -30,13 +30,17 @@ $rootDirPath = dirname(__DIR__);
 $testsDirPath = $rootDirPath . '/tests/TestSuite/Documentation/Tests';
 $maxNestedDir = 2;
 
+$file = new \Documentation\Generator\FileSystem\Local\File();
+
+$bootstrapVersionResolver = new \Documentation\Generator\BootstrapVersionResolver($file, $rootDirPath);
+
 $configuration = new \Documentation\Generator\Configuration(
     $rootDirPath,
     $testsDirPath,
+    $bootstrapVersionResolver->getBootstrapVersion(),
     $maxNestedDir
 );
 
-$file = new \Documentation\Generator\FileSystem\Local\File();
 
 $homePageGenerator = new \Documentation\Generator\HomePageGenerator($configuration, $file);
 $homePageGenerator->generate();
