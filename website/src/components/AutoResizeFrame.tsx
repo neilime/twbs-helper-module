@@ -5,7 +5,22 @@ const AutoResizeFrame: FunctionComponent<{ srcDoc: string }> = ({ srcDoc }) => {
   const ref = useRef<HTMLIFrameElement>();
   const [height, setHeight] = useState("100px");
   const onLoad = () => {
-    setHeight(ref?.current?.contentWindow.document.body.scrollHeight + "px");
+    const refreshHeight = () => {
+      setHeight(ref?.current?.contentWindow.document.body.scrollHeight + "px");
+    };
+
+    if (ref?.current?.contentWindow.addEventListener) {
+      ref?.current?.contentWindow.addEventListener(
+        "message",
+        ({ data }) => {
+          if (data.type === "refreshHeight") {
+            refreshHeight();
+          }
+        },
+        false
+      );
+    }
+    refreshHeight();
   };
 
   const id = "iframe_" + Math.random().toString(36).slice(2, 9);
