@@ -14,8 +14,31 @@ updates:
     schedule:
       interval: weekly
       day: friday
+    groups:
+      docusaurus:
+        patterns:
+          - "@docusaurus/*"
+      react:
+        patterns:
+          - react
+          - react-*
+          - "@types/react"
+          - "@types/react-*"
+
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
       interval: weekly
       day: friday
+    groups:
+      laminas:
+        patterns:
+          - "laminas/*"
+      phpstan:
+        patterns:
+          - "phpstan/*"
+          - "slam/phpstan-laminas-framework"
+      phpunit:
+        patterns:
+          - "phpunit/*"
+          - "spatie/phpunit-snapshot-assertions"
