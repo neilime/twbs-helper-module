@@ -36,14 +36,14 @@
 
 ## Author
 
-👤 **ESCEMI <contact@escemi.com>**
+👤 **[ESCEMI](https://www.escemi.com)**
 
 - Website: https://www.escemi.com
 - Sponsor: https://github.com/sponsors/neilime
-- Github: [@neilime](https://github.com/neilime)
+- Github: [@escemi-tech](https://github.com/escemi-tech)
 - LinkedIn: [@escemi](https://www.linkedin.com/company/escemi)
 
 ## 📝 License
 
-Copyright © 2020 [ESCEMI <contact@escemi.com>](https://www.escemi.com).<br />
+Copyright © 2020 [ESCEMI](https://www.escemi.com).<br />
 This project is [MIT](https://github.com/neilime/twbs-helper-module/blob/main/LICENSE) licensed.

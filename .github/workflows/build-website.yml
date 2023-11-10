@@ -21,6 +21,14 @@ jobs:
         working-directory: website
         run: yarn install --frozen-lockfile
 
+      - name: ♻️ Webpack cache
+        uses: actions/cache@v3
+        with:
+          path: website/node_modules/.cache/webpack
+          key: ${{ runner.os }}-webpack-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-webpack-
+
       - name: 🏗️ Build website
         run: yarn build
         working-directory: website
