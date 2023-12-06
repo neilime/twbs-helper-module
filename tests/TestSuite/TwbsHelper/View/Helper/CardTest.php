@@ -25,7 +25,8 @@ class CardTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 '    <div class="card-header&#x20;test-class">' . PHP_EOL .
                 '        <ul class="card-header-tabs&#x20;nav&#x20;nav-tabs">' . PHP_EOL .
                 '            <li class="&#x20;nav-item">' . PHP_EOL .
-                '                <a class="nav-link&#x20;active" href="&#x23;">Active</a>' . PHP_EOL .
+                '                <a class="nav-link&#x20;active" href="&#x23;" aria-current="page">' .
+                'Active</a>' . PHP_EOL .
                 '            </li>' . PHP_EOL .
                 '        </ul>' . PHP_EOL .
                 '    </div>' . PHP_EOL .
