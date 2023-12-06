@@ -47,7 +47,7 @@
     "phpstan/phpstan-phpunit": "^0.12",
     "phpunit/phpunit": "^9.5.11",
     "slam/phpstan-laminas-framework": "^0.12",
-    "spatie/phpunit-snapshot-assertions": "^4.2",
+    "spatie/phpunit-snapshot-assertions": "^4.2.13",
     "squizlabs/php_codesniffer": "^3.6"
   },
   "autoload": {
@@ -77,7 +77,11 @@
   },
   "config": {
     "optimize-autoloader": true,
-    "sort-packages": true
+    "sort-packages": true,
+    "allow-plugins": {
+      "laminas/laminas-component-installer": true,
+      "phpstan/extension-installer": true
+    }
   },
   "extra": {
     "branch-alias": {
