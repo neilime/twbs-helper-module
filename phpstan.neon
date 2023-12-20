@@ -2,6 +2,3 @@ parameters:
     tmpDir: tools/cache/phpstan
     laminasframework:
        serviceManagerLoader: tests/phpstan.php
-    excludePaths:
-        - src/Documentation/Generator/UsagePage/Prettifier/SourceFile.php
-        - src/Documentation/Generator/UsagePage/Prettifier/PhpPrettifier.php
