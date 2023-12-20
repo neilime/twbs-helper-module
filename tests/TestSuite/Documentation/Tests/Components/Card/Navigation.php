@@ -29,7 +29,7 @@ return [
                     ['label' => 'Active', 'uri' => '#', 'active' => true,],
                     ['label' => 'Link', 'uri' => '#',],
                     ['label' => 'Disabled', 'uri' => '#', 'visible' => false,],
-                ]
+                ],
             ],
             'title' => 'Special title treatment',
             'text' => 'With supporting text below as a natural lead-in to additional content.',

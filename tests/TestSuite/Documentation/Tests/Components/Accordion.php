@@ -177,8 +177,8 @@ return [
                             'always_open' => true,
                         ]);
                     },
-                ]
+                ],
             ],
-        ]
+        ],
     ],
 ];

@@ -63,7 +63,7 @@ return [
                             'id' => 'autoSizingSelect',
                             'value' => '',
                         ],
-                    ]
+                    ],
                 ],
                 [
                     'spec' => [
@@ -151,7 +151,7 @@ return [
                             'id' => 'specificSizeSelect',
                             'value' => '',
                         ],
-                    ]
+                    ],
                 ],
                 [
                     'spec' => [

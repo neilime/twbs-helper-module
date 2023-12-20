@@ -56,7 +56,7 @@ class FormAddOnTest extends \PHPUnit\Framework\TestCase
                     'add_on_prepend' => new \Laminas\Form\Element\Button(
                         'add-on',
                         ['label' => 'Add-On']
-                    )
+                    ),
                 ]
             ))
         );

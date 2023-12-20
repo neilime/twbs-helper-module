@@ -22,7 +22,7 @@ return [
                                     'help_block' => [
                                         'content' => 'We\'ll never share your email with anyone else.',
                                         'attributes' => ['id' => 'emailHelp'],
-                                    ]
+                                    ],
                                 ],
                                 'attributes' => [
                                     'type' => 'email',
@@ -56,7 +56,7 @@ return [
                                 'options' => ['label' => 'Submit', 'variant' => 'primary'],
                             ],
                         ],
-                    ]
+                    ],
                 ]));
             },
         ],
@@ -75,7 +75,7 @@ return [
                             'content' => 'Your password must be 8-20 characters long, contain letters and numbers, ' .
                                 'and must not contain spaces, special characters, or emoji.',
                             'attributes' => ['id' => 'passwordHelpBlock'],
-                        ]
+                        ],
                     ],
                     'attributes' => [
                         'id' => 'inputPassword5',
@@ -94,7 +94,7 @@ return [
                         'layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE,
                     ],
                     'attributes' => [
-                        'class' => 'g-3'
+                        'class' => 'g-3',
                     ],
                     'elements' => [
                         [
@@ -164,7 +164,7 @@ return [
                                             'name' => 'disabled-fieldset-check',
                                             'options' => [
                                                 'label' => 'Can\'t check this',
-                                                'use_hidden_element' => false
+                                                'use_hidden_element' => false,
                                             ],
                                             'attributes' => [
                                                 'id' => 'disabledFieldsetCheck',
@@ -184,6 +184,6 @@ return [
                     ],
                 ]));
             },
-        ]
-    ]
+        ],
+    ],
 ];

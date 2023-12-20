@@ -10,7 +10,7 @@ return [
             'url' => '%bootstrap-url%/components/close-button/#example',
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                 echo $view->formButton()->renderSpec(['options' => ['close' => true]], '');
-            }
+            },
         ],
         [
             'title' => 'Disabled state',
@@ -20,7 +20,7 @@ return [
                     'options' => ['close' => true],
                     'attributes' => ['disabled' => true],
                 ], '');
-            }
+            },
         ],
         [
             'title' => 'White variant',
@@ -35,7 +35,7 @@ return [
                     'options' => ['close' => true],
                     'attributes' => ['disabled' => true, 'class' => 'btn-close-white'],
                 ], '');
-            }
+            },
         ],
     ],
 ];

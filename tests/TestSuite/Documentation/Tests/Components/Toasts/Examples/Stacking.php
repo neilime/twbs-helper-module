@@ -30,7 +30,7 @@ return [
                     'subtitle' => '2 seconds ago',
                 ],
                 'body' => 'Heads up, toasts will stack automatically',
-            ]
+            ],
         ]);
     },
 ];

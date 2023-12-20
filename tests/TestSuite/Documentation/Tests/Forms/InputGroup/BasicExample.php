@@ -84,7 +84,7 @@ return [
                                 'aria-label' => "Server",
                             ],
                         ],
-                    ]
+                    ],
                 ],
             ],
             'attributes' => [

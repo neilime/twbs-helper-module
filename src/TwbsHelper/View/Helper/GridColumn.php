@@ -111,7 +111,7 @@ class GridColumn extends \TwbsHelper\View\Helper\AbstractHtmlElement
             }
 
             $attributes['class']->merge([
-                $this->getView()->plugin('htmlClass')->getPrefixedClass($order, 'order')
+                $this->getView()->plugin('htmlClass')->getPrefixedClass($order, 'order'),
             ]);
         }
 

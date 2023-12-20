@@ -36,7 +36,7 @@ class CardTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 [
                     ['label' => 'Active', 'uri' => '#', 'active' => true,],
                 ],
-                ['class' => 'test-class']
+                ['class' => 'test-class'],
 
             ]])
         );

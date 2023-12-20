@@ -67,7 +67,7 @@ return [
                         'name' => 'city',
                         'options' => [
                             'column' => 'md-6',
-                            'label' => 'City'
+                            'label' => 'City',
                         ],
                         'attributes' => [
                             'type' => 'text',
@@ -98,7 +98,7 @@ return [
                         'name' => 'zip',
                         'options' => [
                             'column' => 'md-3',
-                            'label' => 'Zip'
+                            'label' => 'Zip',
                         ],
                         'attributes' => [
                             'type' => 'text',
@@ -140,5 +140,5 @@ return [
             'zip' => ['Please select a valid zip.'],
             'terms-and-conditions' => ['You must agree before submitting..'],
         ]));
-    }
+    },
 ];

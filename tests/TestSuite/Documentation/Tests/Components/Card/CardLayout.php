@@ -24,7 +24,7 @@ return [
                         'title' => 'Card title',
                         'text' => [
                             'This card has supporting text below as a natural lead-in to additional content.',
-                            '<small class="text-muted">Last updated 3 mins ago</small>'
+                            '<small class="text-muted">Last updated 3 mins ago</small>',
                         ],
                     ],
                     [
@@ -97,7 +97,7 @@ return [
                             'title' => 'Card title',
                             'text' => [
                                 'This card has supporting text below as a natural lead-in to additional content.',
-                                '<small class="text-muted">Last updated 3 mins ago</small>'
+                                '<small class="text-muted">Last updated 3 mins ago</small>',
                             ],
                         ],
                         [
@@ -141,7 +141,7 @@ return [
                             'title' => 'Card title',
                             'text' => [
                                 'This card has supporting text below as a natural lead-in to additional content.',
-                                '<small class="text-muted">Last updated 3 mins ago</small>'
+                                '<small class="text-muted">Last updated 3 mins ago</small>',
                             ],
                         ],
                         [
@@ -156,7 +156,7 @@ return [
                     ],
                     ['class' => 'row-cols-1 row-cols-md-3 g-4'],
                 );
-            }
+            },
         ],
     ],
 ];

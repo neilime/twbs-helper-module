@@ -94,7 +94,7 @@ return [
                     ],
                     'attributes' => ['id' => 'dropdownMenuClickable'],
                 ]);
-            }
+            },
         ],
     ],
 ];

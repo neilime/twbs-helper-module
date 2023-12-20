@@ -36,7 +36,7 @@ return [
                         'container' => 'fluid',
                     ]
                 );
-            }
+            },
         ],
         [
             'title' => 'Image',
@@ -60,7 +60,7 @@ return [
                         'container' => true,
                     ]
                 );
-            }
+            },
         ],
         [
             'title' => 'Image and text',

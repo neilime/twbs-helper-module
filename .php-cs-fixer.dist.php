@@ -12,7 +12,7 @@ return (new Config())
     ->setRules([
         '@PSR12' => true,
         'array_indentation' => true,
-        '@PHP81Migration' => true,
+        '@PHP83Migration' => true,
     ])
     ->setFinder($finder)
     ->setUsingCache(true)

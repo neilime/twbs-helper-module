@@ -12,7 +12,7 @@ return [
             ],
             'attributes' => [
                 'id' => 'liveToastBtn',
-            ]
+            ],
         ]) . PHP_EOL;
 
         echo $view->toast([

@@ -106,7 +106,7 @@ return [
                         [
                             '3',
                             ['data' => 'Larry the Bird', 'active' => true, 'attributes' => ['colspan' => 2]],
-                            '@twitter'
+                            '@twitter',
                         ],
                     ],
                 ]);
@@ -122,11 +122,11 @@ return [
                         [
                             '3',
                             ['data' => 'Larry the Bird', 'active' => true, 'attributes' => ['colspan' => 2]],
-                            '@twitter'
+                            '@twitter',
                         ],
                     ],
                 ]);
             },
         ],
-    ]
+    ],
 ];

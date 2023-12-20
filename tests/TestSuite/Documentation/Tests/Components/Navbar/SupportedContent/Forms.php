@@ -135,7 +135,7 @@ return [
                                 ],
                                 'attributes' => [
                                     'class' => 'me-2',
-                                ]
+                                ],
                             ],
                         ],
                         [

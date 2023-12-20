@@ -15,7 +15,7 @@ return [
                                 ['alt' => '...', 'fluid' => true, 'rounded' => 'start'],
                             ],
                         ],
-                        ['column' => 'md-4']
+                        ['column' => 'md-4'],
                     ],
                     [
                         [
@@ -30,7 +30,7 @@ return [
                     ],
                 ],
                 ['class' => 'g-0'],
-            ]
+            ],
         ], ['class' => 'mb-3', 'style' => 'max-width: 540px;']);
     },
 ];

@@ -52,7 +52,7 @@ class GridTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                             'Row 1 - Column 2',
                             ['column' => 'md-2'],
                         ],
-                    ]
+                    ],
                 ],
                 [
                     [
@@ -63,7 +63,7 @@ class GridTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                             'Row 2 - Column 2',
                             ['column' => 'md-2'],
                         ],
-                    ]
+                    ],
                 ],
             ])
         );

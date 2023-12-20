@@ -30,7 +30,7 @@ class FormLabelTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                         'label' => 'Without special chars',
                     ]
                 ),
-                '<label class="form-label" for="test_one">Without special chars</label>'
+                '<label class="form-label" for="test_one">Without special chars</label>',
             ],
             [
                 new \Laminas\Form\Element\Text(
@@ -39,7 +39,7 @@ class FormLabelTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                         'label' => 'With special chars < > &',
                     ]
                 ),
-                '<label class="form-label" for="test_one">With special chars &lt; &gt; &amp;</label>'
+                '<label class="form-label" for="test_one">With special chars &lt; &gt; &amp;</label>',
             ],
             [
                 new \Laminas\Form\Element\Text(
@@ -48,7 +48,7 @@ class FormLabelTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                         'label' => 'With special chars &lt; &gt; &amp;',
                     ]
                 ),
-                '<label class="form-label" for="test_one">With special chars &amp;lt; &amp;gt; &amp;amp;</label>'
+                '<label class="form-label" for="test_one">With special chars &amp;lt; &amp;gt; &amp;amp;</label>',
             ],
             [
                 new \Laminas\Form\Element\Text(
@@ -57,7 +57,7 @@ class FormLabelTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                         'label' => 'With a quote\'',
                     ]
                 ),
-                '<label class="form-label" for="test_one">With a quote&#039;</label>'
+                '<label class="form-label" for="test_one">With a quote&#039;</label>',
             ],
             [
                 new \Laminas\Form\Element\MultiCheckbox(
@@ -68,7 +68,7 @@ class FormLabelTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 ),
                 '<div class="form-label">
     Without special chars
-</div>'
+</div>',
             ],
             [
                 new \Laminas\Form\Element\MultiCheckbox(
@@ -79,7 +79,7 @@ class FormLabelTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 ),
                 '<div class="form-label">
     With special chars &lt; &gt; &amp;
-</div>'
+</div>',
             ],
             [
                 new \Laminas\Form\Element\MultiCheckbox(
@@ -90,7 +90,7 @@ class FormLabelTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 ),
                 '<div class="form-label">
     With special chars &amp;lt; &amp;gt; &amp;amp;
-</div>'
+</div>',
             ],
             [
                 new \Laminas\Form\Element\MultiCheckbox(
@@ -101,7 +101,7 @@ class FormLabelTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 ),
                 '<div class="form-label">
     With a quote&#039;
-</div>'
+</div>',
             ],
             [
                 new \Laminas\Form\Element\Text(
@@ -113,7 +113,7 @@ class FormLabelTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                         ],
                     ]
                 ),
-                '<label class="form-label" for="test_one">Without special chars</label>'
+                '<label class="form-label" for="test_one">Without special chars</label>',
             ],
             [
                 new \Laminas\Form\Element\Text(
@@ -125,7 +125,7 @@ class FormLabelTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                         ],
                     ]
                 ),
-                '<label class="form-label" for="test_one">With special chars < > &</label>'
+                '<label class="form-label" for="test_one">With special chars < > &</label>',
             ],
             [
                 new \Laminas\Form\Element\Text(
@@ -137,7 +137,7 @@ class FormLabelTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                         ],
                     ]
                 ),
-                '<label class="form-label" for="test_one">With special chars &lt; &gt; &amp;</label>'
+                '<label class="form-label" for="test_one">With special chars &lt; &gt; &amp;</label>',
             ],
             [
                 new \Laminas\Form\Element\Text(
@@ -149,7 +149,7 @@ class FormLabelTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                         ],
                     ]
                 ),
-                '<label class="form-label" for="test_one">With a quote\'</label>'
+                '<label class="form-label" for="test_one">With a quote\'</label>',
             ],
             [
                 new \Laminas\Form\Element\MultiCheckbox(
@@ -163,7 +163,7 @@ class FormLabelTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 ),
                 '<div class="form-label">
     Without special chars
-</div>'
+</div>',
             ],
             [
                 new \Laminas\Form\Element\MultiCheckbox(
@@ -177,7 +177,7 @@ class FormLabelTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 ),
                 '<div class="form-label">
     With special chars < > &
-</div>'
+</div>',
             ],
             [
                 new \Laminas\Form\Element\MultiCheckbox(
@@ -191,7 +191,7 @@ class FormLabelTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 ),
                 '<div class="form-label">
     With special chars &lt; &gt; &amp;
-</div>'
+</div>',
             ],
             [
                 new \Laminas\Form\Element\MultiCheckbox(
@@ -205,7 +205,7 @@ class FormLabelTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 ),
                 '<div class="form-label">
     With a quote\'
-</div>'
+</div>',
             ],
         ];
     }

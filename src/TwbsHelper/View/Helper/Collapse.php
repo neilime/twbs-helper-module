@@ -60,8 +60,8 @@ class Collapse extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
         $triggers['items'] = $triggerItems;
 
-        $triggers['tag'] = $triggers['tag'] ?? 'p';
-        $triggers['attributes'] = $triggers['attributes'] ?? [];
+        $triggers['tag'] ??= 'p';
+        $triggers['attributes'] ??= [];
 
         return $triggers;
     }

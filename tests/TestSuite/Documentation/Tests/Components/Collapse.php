@@ -16,7 +16,7 @@ return [
                                 'options' => [
                                     'variant' => 'primary',
                                     'label' => 'Link with href',
-                                    'tag' => 'a'
+                                    'tag' => 'a',
                                 ],
                             ],
                             [
@@ -40,7 +40,7 @@ return [
                         ],
                     ],
                 );
-            }
+            },
         ],
         [
             'title' => 'Horizontal',
@@ -74,7 +74,7 @@ return [
                         ],
                     ],
                 );
-            }
+            },
         ],
         [
             'title' => 'Multiple targets',
@@ -135,7 +135,7 @@ return [
                         ],
                     ],
                 );
-            }
+            },
         ],
     ],
 ];

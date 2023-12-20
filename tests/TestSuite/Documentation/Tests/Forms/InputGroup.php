@@ -15,5 +15,5 @@ return [
         include __DIR__ . DIRECTORY_SEPARATOR . 'InputGroup/ButtonsWithDropdowns.php',
         include __DIR__ . DIRECTORY_SEPARATOR . 'InputGroup/SegmentedButtons.php',
         include __DIR__ . DIRECTORY_SEPARATOR . 'InputGroup/CustomForms.php',
-    ]
+    ],
 ];

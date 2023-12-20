@@ -50,7 +50,7 @@ return [
                             'id' => 'inlineFormSelectPref',
                             'value' => '',
                         ],
-                    ]
+                    ],
                 ],
                 [
                     'spec' => [

@@ -49,7 +49,7 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
      * @var array
      */
     protected static $directions = [
-        'down', 'up', 'start', 'end'
+        'down', 'up', 'start', 'end',
     ];
 
     /**

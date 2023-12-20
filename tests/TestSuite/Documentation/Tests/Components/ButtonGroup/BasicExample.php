@@ -27,7 +27,7 @@ return [
                     'attributes' => [
                         'class' => 'active',
                         'aria-current' => 'page',
-                        'href' => '#'
+                        'href' => '#',
                     ],
                 ],
                 [

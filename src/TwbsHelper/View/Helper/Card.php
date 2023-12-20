@@ -37,7 +37,7 @@ class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
         self::CARD_IMG_TOP => 'renderCardImgTop',
         self::CARD_IMG_BOTTOM => 'renderCardImgBottom',
         self::CARD_OVERLAY => 'renderCardOverlay',
-        self::CARD_LIST_GROUP => 'renderCardListGroup'
+        self::CARD_LIST_GROUP => 'renderCardListGroup',
     ];
 
     /**
@@ -191,7 +191,7 @@ class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
         $attributes = $this->getView()->plugin('htmlattributes')
             ->__invoke($attributes)
             ->merge([
-                'class' => $this->getView()->plugin('htmlClass')->plugin('column')->getClassesFromOption($column)
+                'class' => $this->getView()->plugin('htmlClass')->plugin('column')->getClassesFromOption($column),
             ]);
 
         $content = $this->renderCardContainerContent($content, [], $escape);
@@ -370,7 +370,7 @@ class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
             ->__invoke($arguments[1] ?? [])
             ->merge(['class' => ['list-group-flush']])->getArrayCopy();
 
-        $arguments[2] = $arguments[2] ?? $escape;
+        $arguments[2] ??= $escape;
 
         return $this->getView()->plugin('listGroup')->__invoke(...$arguments);
     }
@@ -429,7 +429,7 @@ class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 $blockquoteAttributes = $typeContent[2] ?? ['class' => 'mb-0'];
                 $blockquoteContentAttributes = $typeContent[3] ?? [];
                 $blockquoteFooterAttributes = $typeContent[4] ?? [];
-                $blockquoteFooterAttributes['tag'] = $blockquoteFooterAttributes['tag'] ?? 'footer';
+                $blockquoteFooterAttributes['tag'] ??= 'footer';
                 $blockquoteFigureAttributes = $typeContent[5] ?? [];
                 $blockquoteEscape = $typeContent[6] ?? $escape;
 

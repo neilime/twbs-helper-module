@@ -94,8 +94,8 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
             [
                 'title' => 'test',
                 'tests' => [
-                    ['title' => 'child']
-                ]
+                    ['title' => 'child'],
+                ],
             ],
         );
 

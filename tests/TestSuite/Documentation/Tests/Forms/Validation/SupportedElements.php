@@ -109,5 +109,5 @@ return [
             'select' => ['Example invalid select feedback'],
             'file' => ['Example invalid form file feedback'],
         ]));
-    }
+    },
 ];

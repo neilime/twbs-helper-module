@@ -20,30 +20,30 @@ return [
                     [
                         'type' => \TwbsHelper\View\Helper\Table::TABLE_DATA,
                         'attributes' => ['scope' => null],
-                        'data' => 'This cell inherits <code>vertical-align: middle;</code> from the table'
+                        'data' => 'This cell inherits <code>vertical-align: middle;</code> from the table',
                     ],
                     'This cell inherits <code>vertical-align: middle;</code> from the table',
                     'This cell inherits <code>vertical-align: middle;</code> from the table',
                     'This here is some placeholder text, intended to take up quite a bit of vertical space, ' .
-                        'to demonstrate how the vertical alignment works in the preceding cells.'
+                        'to demonstrate how the vertical alignment works in the preceding cells.',
                 ],
                 [
                     'align' => 'bottom',
                     [
                         'type' => \TwbsHelper\View\Helper\Table::TABLE_DATA,
                         'attributes' => ['scope' => null],
-                        'data' => 'This cell inherits <code>vertical-align: bottom;</code> from the table row'
+                        'data' => 'This cell inherits <code>vertical-align: bottom;</code> from the table row',
                     ],
                     'This cell inherits <code>vertical-align: bottom;</code> from the table row',
                     'This cell inherits <code>vertical-align: bottom;</code> from the table row',
                     'This here is some placeholder text, intended to take up quite a bit of vertical space, ' .
-                        'to demonstrate how the vertical alignment works in the preceding cells.'
+                        'to demonstrate how the vertical alignment works in the preceding cells.',
                 ],
                 [
                     [
                         'type' => \TwbsHelper\View\Helper\Table::TABLE_DATA,
                         'attributes' => ['scope' => null],
-                        'data' => 'This cell inherits <code>vertical-align: middle;</code> from the table'
+                        'data' => 'This cell inherits <code>vertical-align: middle;</code> from the table',
                     ],
                     'This cell inherits <code>vertical-align: middle;</code> from the table',
                     [
@@ -51,7 +51,7 @@ return [
                         'data' => 'This cell is aligned to the top.',
                     ],
                     'This here is some placeholder text, intended to take up quite a bit of vertical space, ' .
-                        'to demonstrate how the vertical alignment works in the preceding cells.'
+                        'to demonstrate how the vertical alignment works in the preceding cells.',
                 ],
             ],
         ]);

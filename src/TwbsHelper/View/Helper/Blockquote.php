@@ -40,7 +40,7 @@ class Blockquote extends \TwbsHelper\View\Helper\AbstractHtmlElement
             $escape
         );
 
-        $footerAttributes['tag'] = $footerAttributes['tag'] ?? 'figcaption';
+        $footerAttributes['tag'] ??= 'figcaption';
         $footerContent = $this->renderFooter(
             $footer,
             $htmlattributesHelper->__invoke($footerAttributes),

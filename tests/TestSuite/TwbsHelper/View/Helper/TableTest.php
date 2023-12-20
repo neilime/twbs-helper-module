@@ -17,7 +17,7 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
     public function testInvokeWithEmptyHeadRows()
     {
         $this->assertSame('<table class="table"></table>', $this->helper->__invoke([
-            'head' => []
+            'head' => [],
         ]));
     }
 
@@ -27,8 +27,8 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
             '<table class="table"><thead class="test"><tr></tr></thead></table>',
             $this->helper->__invoke([
                 'head' => [
-                    'attributes' => ['class' => 'test']
-                ]
+                    'attributes' => ['class' => 'test'],
+                ],
             ])
         );
     }
@@ -39,8 +39,8 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
             '<table class="table"><thead><tr><th scope="col">test</th></tr></thead></table>',
             $this->helper->__invoke([
                 'head' => [
-                    'rows' => [['test']]
-                ]
+                    'rows' => [['test']],
+                ],
             ])
         );
     }
@@ -54,10 +54,10 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                     "rows" => [
                         [
                             "attributes" => ["class" => "test"],
-                            "cells" => ["test"]
-                        ]
-                    ]
-                ]
+                            "cells" => ["test"],
+                        ],
+                    ],
+                ],
             ])
         );
     }
@@ -66,7 +66,7 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
     {
         $this->expectExceptionMessage('Argument "$rows[\'head\']" expects an array, "string" given');
         $this->helper->__invoke([
-            'head' => 'wrong'
+            'head' => 'wrong',
         ]);
     }
 
@@ -74,7 +74,7 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
     {
         $this->expectExceptionMessage('Argument "$rows[\'body\']" expects an array, "string" given');
         $this->helper->__invoke([
-            'body' => 'wrong'
+            'body' => 'wrong',
         ]);
     }
 
@@ -82,7 +82,7 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
     {
         $this->expectExceptionMessage('Argument "$cell" expects an array or a scalar value, "stdClass" given');
         $this->helper->__invoke([
-            new \stdClass()
+            new \stdClass(),
         ]);
     }
 
@@ -90,7 +90,7 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
     {
         $this->expectExceptionMessage('Argument "$rows[\'head\']" expects an array, "stdClass" given');
         $this->helper->__invoke([
-            'head' => new \stdClass()
+            'head' => new \stdClass(),
         ]);
     }
 
@@ -98,7 +98,7 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
     {
         $this->expectExceptionMessage('Argument "$rows[\'body\']" expects an array, "stdClass" given');
         $this->helper->__invoke([
-            'body' => new \stdClass()
+            'body' => new \stdClass(),
         ]);
     }
 
@@ -106,7 +106,7 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
     {
         $this->expectExceptionMessage('Argument "$rows[\'footer\']" expects an array, "stdClass" given');
         $this->helper->__invoke([
-            'footer' => new \stdClass()
+            'footer' => new \stdClass(),
         ]);
     }
 
@@ -114,7 +114,7 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
     {
         $this->expectExceptionMessage('Argument "$caption" expects an array or a scalar value, "stdClass" given');
         $this->helper->__invoke([
-            'caption' => new \stdClass()
+            'caption' => new \stdClass(),
         ]);
     }
 
@@ -123,8 +123,8 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
         $this->expectExceptionMessage('"$groupRows[\'attributes\']" expects an array, "stdClass" given');
         $this->helper->__invoke([
             'head' => [
-                'attributes' => new \stdClass()
-            ]
+                'attributes' => new \stdClass(),
+            ],
         ]);
     }
 
@@ -133,8 +133,8 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
         $this->expectExceptionMessage('"$groupRows[\'rows\']" expects an array, "stdClass" given');
         $this->helper->__invoke([
             'head' => [
-                'rows' => new \stdClass()
-            ]
+                'rows' => new \stdClass(),
+            ],
         ]);
     }
 
@@ -146,10 +146,10 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 "rows" => [
                     [
                         "attributes" => new \stdclass(),
-                        "cells" => ["test"]
-                    ]
-                ]
-            ]
+                        "cells" => ["test"],
+                    ],
+                ],
+            ],
         ]);
     }
 
@@ -161,9 +161,9 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 "rows" => [
                     [
                         "cells" => new \stdclass(),
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ]);
     }
 
@@ -175,9 +175,9 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 "rows" => [
                     [
                         "cells" => [[]],
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ]);
     }
 
@@ -192,9 +192,9 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 "rows" => [
                     [
                         "cells" => [["data" => new \stdclass()]],
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ]);
     }
 
@@ -206,9 +206,9 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 "rows" => [
                     [
                         "cells" => [["type" => new \stdclass(), "data" => "test"]],
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ]);
     }
 
@@ -220,9 +220,9 @@ class TableTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 "rows" => [
                     [
                         "cells" => [["attributes" => new \stdclass(), "data" => "test"]],
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ]);
     }
 }

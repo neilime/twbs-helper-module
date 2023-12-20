@@ -89,7 +89,7 @@ return [
                                 'options' => ['label' => 'Sign in', 'variant' => 'primary'],
                             ],
                         ],
-                    ]
+                    ],
                 ]);
 
                 echo $view->dropdown()->renderMenu([

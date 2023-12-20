@@ -187,7 +187,7 @@ class FormButtonTest extends \PHPUnit\Framework\TestCase
 
         $this->formButtonHelper->renderSpec([
             'type' => \Laminas\Form\Element\Text::class,
-            'name' => 'test'
+            'name' => 'test',
         ]);
     }
 }

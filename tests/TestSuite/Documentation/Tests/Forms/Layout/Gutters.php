@@ -53,11 +53,11 @@ return [
                         'name' => 'email',
                         'options' => [
                             'column' => 'md-6',
-                            'label' => 'Email'
+                            'label' => 'Email',
                         ],
                         'attributes' => [
                             'type' => 'email',
-                            'id' => 'inputEmail4'
+                            'id' => 'inputEmail4',
                         ],
                     ],
                 ],
@@ -66,11 +66,11 @@ return [
                         'name' => 'password',
                         'options' => [
                             'column' => 'md-6',
-                            'label' => 'Password'
+                            'label' => 'Password',
                         ],
                         'attributes' => [
                             'type' => 'password',
-                            'id' => 'inputPassword4'
+                            'id' => 'inputPassword4',
                         ],
                     ],
                 ],
@@ -79,12 +79,12 @@ return [
                         'name' => 'address1',
                         'options' => [
                             'column' => 12,
-                            'label' => 'Address'
+                            'label' => 'Address',
                         ],
                         'attributes' => [
                             'type' => 'text',
                             'placeholder' => '1234 Main St',
-                            'id' => 'inputAddress'
+                            'id' => 'inputAddress',
                         ],
                     ],
                 ],
@@ -93,12 +93,12 @@ return [
                         'name' => 'address2',
                         'options' => [
                             'column' => 12,
-                            'label' => 'Address 2'
+                            'label' => 'Address 2',
                         ],
                         'attributes' => [
                             'type' => 'text',
                             'placeholder' => 'Apartment, studio, or floor',
-                            'id' => 'inputAddress2'
+                            'id' => 'inputAddress2',
                         ],
                     ],
                 ],
@@ -107,11 +107,11 @@ return [
                         'name' => 'city',
                         'options' => [
                             'column' => 'md-6',
-                            'label' => 'City'
+                            'label' => 'City',
                         ],
                         'attributes' => [
                             'type' => 'text',
-                            'id' => 'inputCity'
+                            'id' => 'inputCity',
                         ],
                     ],
                 ],
@@ -123,7 +123,7 @@ return [
                             'column' => 'md-4',
                             'label' => 'State',
                             'empty_option' => 'Choose...',
-                            'value_options' => ['...']
+                            'value_options' => ['...'],
                         ],
                         'attributes' => [
                             'id' => 'inputState',
@@ -136,11 +136,11 @@ return [
                         'name' => 'zip',
                         'options' => [
                             'column' => 'md-2',
-                            'label' => 'Zip'
+                            'label' => 'Zip',
                         ],
                         'attributes' => [
                             'type' => 'text',
-                            'id' => 'inputZip'
+                            'id' => 'inputZip',
                         ],
                     ],
                 ],
@@ -170,5 +170,5 @@ return [
                 ],
             ],
         ]));
-    }
+    },
 ];
