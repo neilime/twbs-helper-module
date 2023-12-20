@@ -11,14 +11,14 @@ return [
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                 foreach (
                     [
-                    ['primary', 'white'],
-                    ['secondary', 'white'],
-                    ['success', 'white'],
-                    ['danger', 'white'],
-                    ['warning', 'dark'],
-                    ['info', 'dark'],
-                    ['light', 'dark'],
-                    ['dark', 'white'],
+                        ['primary', 'white'],
+                        ['secondary', 'white'],
+                        ['success', 'white'],
+                        ['danger', 'white'],
+                        ['warning', 'dark'],
+                        ['info', 'dark'],
+                        ['light', 'dark'],
+                        ['dark', 'white'],
                     ] as [$variant, $text]
                 ) {
                     echo $view->card([
@@ -40,14 +40,14 @@ return [
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                 foreach (
                     [
-                    ['primary', 'primary'],
-                    ['secondary', 'secondary'],
-                    ['success', 'success'],
-                    ['danger', 'danger'],
-                    ['warning', null],
-                    ['info', null],
-                    ['light', null],
-                    ['dark', 'dark'],
+                        ['primary', 'primary'],
+                        ['secondary', 'secondary'],
+                        ['success', 'success'],
+                        ['danger', 'danger'],
+                        ['warning', null],
+                        ['info', null],
+                        ['light', null],
+                        ['dark', 'dark'],
                     ] as [$variant, $body_variant]
                 ) {
                     echo $view->card(

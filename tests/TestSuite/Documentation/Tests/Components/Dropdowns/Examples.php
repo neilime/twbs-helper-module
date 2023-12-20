@@ -36,8 +36,8 @@ return [
                 // Variations
                 foreach (
                     [
-                    'primary', 'secondary', 'success',
-                    'info', 'warning', 'danger',
+                        'primary', 'secondary', 'success',
+                        'info', 'warning', 'danger',
                     ] as $variant
                 ) {
                     echo $view->formButton()->renderSpec([
@@ -66,8 +66,8 @@ return [
             'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
                 foreach (
                     [
-                    'primary', 'secondary', 'success',
-                    'info', 'warning', 'danger',
+                        'primary', 'secondary', 'success',
+                        'info', 'warning', 'danger',
                     ] as $variant
                 ) {
                     echo $view->formButton()->renderSpec([

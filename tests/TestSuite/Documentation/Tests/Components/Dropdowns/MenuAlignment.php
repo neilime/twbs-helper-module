@@ -57,10 +57,10 @@ return [
                 // Alignments
                 foreach (
                     [
-                    'Dropdown' => null,
-                    'Right-aligned menu' => 'end',
-                    'Left-aligned, right-aligned lg' => 'lg-end',
-                    'Right-aligned, left-aligned lg' => 'lg-start',
+                        'Dropdown' => null,
+                        'Right-aligned menu' => 'end',
+                        'Left-aligned, right-aligned lg' => 'lg-end',
+                        'Right-aligned, left-aligned lg' => 'lg-start',
                     ] as $label => $alignment
                 ) {
                     echo $view->formButton()->renderSpec([
@@ -80,9 +80,9 @@ return [
                 // Directions
                 foreach (
                     [
-                    'Dropstart' => 'start',
-                    'Dropend' => 'end',
-                    'Dropup' => 'up',
+                        'Dropstart' => 'start',
+                        'Dropend' => 'end',
+                        'Dropup' => 'up',
                     ] as $label => $direction
                 ) {
                     echo $view->formButton()->renderSpec([

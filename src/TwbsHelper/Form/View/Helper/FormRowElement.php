@@ -232,6 +232,7 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
                     return self::LABEL_APPEND;
                 }
                 // Default behaviour
+                // no break
             default:
                 if ($labelPosition) {
                     return $labelPosition;

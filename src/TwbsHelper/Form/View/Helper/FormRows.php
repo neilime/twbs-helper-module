@@ -102,7 +102,8 @@ class FormRows extends \Laminas\Form\View\Helper\AbstractHelper
 
         if (
             $element->getOption('row_name')
-            && ($element instanceof \Laminas\Form\Element\Button
+            && (
+                $element instanceof \Laminas\Form\Element\Button
                 || $element instanceof \Laminas\Form\Element\Submit
             )
         ) {

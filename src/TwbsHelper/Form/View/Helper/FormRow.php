@@ -94,7 +94,7 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
         // Render form row
         $elementType = $element->getAttribute('type');
         switch (true) {
-                // Inline form
+            // Inline form
             case $this->elementIsLayout($element, \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE):
                 // Form group disabled
             case $element->getOption('form_group') === false:
