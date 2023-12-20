@@ -20,7 +20,7 @@ return [
                             ['C', 'First', 'Last'],
                         ],
                     ],
-                    'attributes' => ['colspan' => 4]
+                    'attributes' => ['colspan' => 4],
                 ]],
                 ['3', 'Larry', 'the Bird', '@twitter'],
             ],

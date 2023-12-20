@@ -23,7 +23,7 @@ return [
                                 'Something else here',
                                 '---',
                                 'Separated link',
-                            ]
+                            ],
                         ],
                     ],
                 ]) . PHP_EOL;

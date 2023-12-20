@@ -51,7 +51,7 @@ return [
                                 'options' => [
                                     'variant' => 'primary',
                                     'label' => 'Link with href',
-                                    'tag' => 'a'
+                                    'tag' => 'a',
                                 ],
                             ],
                             [

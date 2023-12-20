@@ -21,8 +21,8 @@ return [
                         'attributes' => [
                             'aria-label' => 'First name',
                         ],
-                    ]
-                ]
+                    ],
+                ],
             ],
             'attributes' => [
                 'aria-label' => 'Last name',

@@ -25,7 +25,7 @@ return [
                         echo '<h5>Example heading ' . $view->badge('New') . '</h5>' . PHP_EOL;
                         // H6
                         echo '<h6>Example heading ' . $view->badge('New') . '</h6>';
-                    }
+                    },
                 ],
                 [
                     'title' => 'Buttons',
@@ -38,7 +38,7 @@ return [
                                 'variant' => 'primary',
                             ],
                         ]);
-                    }
+                    },
                 ],
                 [
                     'title' => 'Positioned',
@@ -54,7 +54,7 @@ return [
                                         'positioned' => true,
                                         'type' => 'pill',
                                         'hidden_content' => 'unread messages',
-                                    ]
+                                    ],
                                 ],
                                 'variant' => 'primary',
                             ],
@@ -72,12 +72,12 @@ return [
                                         'positioned' => true,
                                         'type' => 'pill',
                                         'hidden_content' => 'New alerts',
-                                    ]
+                                    ],
                                 ],
                                 'variant' => 'primary',
                             ],
                         ]);
-                    }
+                    },
                 ],
                 [
                     'title' => 'Background colors',

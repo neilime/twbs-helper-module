@@ -99,7 +99,7 @@ return [
                     PHP_EOL .
                     '</div>',
                 ['column' => 8],
-            ]
+            ],
         ]);
     },
 ];

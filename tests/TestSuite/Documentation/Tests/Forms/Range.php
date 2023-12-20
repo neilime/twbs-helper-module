@@ -14,7 +14,7 @@ return [
                 echo $view->formRow($factory->create([
                     'name' => 'range',
                     'options' => [
-                        'label' => 'Example Range'
+                        'label' => 'Example Range',
                     ],
                     'attributes' => [
                         'type' => 'range',
@@ -32,12 +32,12 @@ return [
                 echo $view->formRow($factory->create([
                     'name' => 'range',
                     'options' => [
-                        'label' => 'Disabled range'
+                        'label' => 'Disabled range',
                     ],
                     'attributes' => [
                         'type' => 'range',
                         'id' => 'disabledRange',
-                        'disabled' => true
+                        'disabled' => true,
                     ],
                 ]));
             },
@@ -51,13 +51,13 @@ return [
                 echo $view->formRow($factory->create([
                     'name' => 'range',
                     'options' => [
-                        'label' => 'Example Range'
+                        'label' => 'Example Range',
                     ],
                     'attributes' => [
                         'type' => 'range',
                         'id' => 'customRange2',
                         'min' => 0,
-                        'max' => 5
+                        'max' => 5,
                     ],
                 ]));
             },
@@ -71,17 +71,17 @@ return [
                 echo $view->formRow($factory->create([
                     'name' => 'range',
                     'options' => [
-                        'label' => 'Example Range'
+                        'label' => 'Example Range',
                     ],
                     'attributes' => [
                         'type' => 'range',
                         'id' => 'customRange3',
                         'min' => 0,
                         'max' => 5,
-                        'step' => 0.5
+                        'step' => 0.5,
                     ],
                 ]));
             },
         ],
-    ]
+    ],
 ];

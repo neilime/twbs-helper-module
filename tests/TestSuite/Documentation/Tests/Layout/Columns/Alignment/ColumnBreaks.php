@@ -27,7 +27,7 @@ return [
                     ['.col-6 .col-sm-4'],
                     ['.col-6 .col-sm-4'],
                 ],
-                ['column' => [6, 'sm-4']]
+                ['column' => [6, 'sm-4']],
             ],
         ]);
     },

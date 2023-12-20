@@ -28,13 +28,13 @@ return [
                     [
                         'options' => [
                             'size' => 'sm',
-                            'label' => 'Close'
+                            'label' => 'Close',
                         ],
                         'attributes' => [
                             'data-bs-dismiss' => 'toast',
                         ],
                     ],
-                ]
+                ],
             ],
         ]);
     },

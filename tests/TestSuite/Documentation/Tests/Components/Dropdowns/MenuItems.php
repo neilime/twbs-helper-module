@@ -24,7 +24,7 @@ return [
             'Dropdown item text' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_TEXT,
             'Action',
             'Another action',
-            'Something else here'
+            'Something else here',
         ]);
     },
     'tests' => [
@@ -35,7 +35,7 @@ return [
                 echo $view->dropdown()->renderMenu([
                     'Regular link',
                     'Active link' => ['active' => true],
-                    'Another link'
+                    'Another link',
                 ]);
             },
         ],
@@ -46,7 +46,7 @@ return [
                 echo $view->dropdown()->renderMenu([
                     'Regular link',
                     'Disabled link' => ['disabled' => true],
-                    'Another link'
+                    'Another link',
                 ]);
             },
         ],

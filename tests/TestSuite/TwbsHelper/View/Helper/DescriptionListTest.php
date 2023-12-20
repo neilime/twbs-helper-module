@@ -17,7 +17,7 @@ class DescriptionListTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCa
                 '    <dd class="col-sm-9">test</dd>' . PHP_EOL .
                 '</dl>',
             $this->helper->render([
-                ['term' => 'test', 'detail' => 'test']
+                ['term' => 'test', 'detail' => 'test'],
             ])
         );
     }
@@ -32,7 +32,7 @@ class DescriptionListTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCa
     {
         $this->expectExceptionMessage('Argument "$items[0]" expects a string or an array, "stdClass" given');
         $this->helper->render([
-            new \stdClass()
+            new \stdClass(),
         ]);
     }
 
@@ -40,7 +40,7 @@ class DescriptionListTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCa
     {
         $this->expectExceptionMessage('Argument "$items[0][term]" expects a string or an array, "stdClass" given');
         $this->helper->render([
-            ['term' => new \stdClass()]
+            ['term' => new \stdClass()],
         ]);
     }
 
@@ -48,7 +48,7 @@ class DescriptionListTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCa
     {
         $this->expectExceptionMessage('Argument "$items[0][detail]" expects a string or an array, "stdClass" given');
         $this->helper->render([
-            ['term' => 'test', 'detail' => new \stdClass()]
+            ['term' => 'test', 'detail' => new \stdClass()],
         ]);
     }
 }

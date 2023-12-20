@@ -27,9 +27,9 @@ class DropdownTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 'label' => 'test',
                 'dropdown' => [
                     'items' => ['test'],
-                    'direction' => 'wrong'
-                ]
-            ]
+                    'direction' => 'wrong',
+                ],
+            ],
         ]);
     }
 
@@ -42,9 +42,9 @@ class DropdownTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 'label' => 'test',
                 'dropdown' => [
                     'items' => ['test'],
-                    'split' => new \stdClass()
-                ]
-            ]
+                    'split' => new \stdClass(),
+                ],
+            ],
         ]);
     }
 
@@ -57,8 +57,8 @@ class DropdownTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 'label' => 'test',
                 'dropdown' => [
                     'items' => null,
-                ]
-            ]
+                ],
+            ],
         ]);
     }
 
@@ -71,8 +71,8 @@ class DropdownTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 'label' => 'test',
                 'dropdown' => [
                     'items' => new \stdClass(),
-                ]
-            ]
+                ],
+            ],
         ]);
     }
 
@@ -89,8 +89,8 @@ class DropdownTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 'dropdown' => [
                     'alignment' => 'wrong',
                     'items' => ['test'],
-                ]
-            ]
+                ],
+            ],
         ]);
     }
 
@@ -106,8 +106,8 @@ class DropdownTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 'label' => 'test',
                 'dropdown' => [
                     'items' => [new \stdClass()],
-                ]
-            ]
+                ],
+            ],
         ]);
     }
 
@@ -122,10 +122,10 @@ class DropdownTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                     'items' => [
                         [
                             'type' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_HEADER,
-                        ]
+                        ],
                     ],
-                ]
-            ]
+                ],
+            ],
         ]);
     }
 
@@ -140,11 +140,11 @@ class DropdownTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                     'items' => [
                         [
                             'type' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_HEADER,
-                            'label' => new \stdClass()
-                        ]
+                            'label' => new \stdClass(),
+                        ],
                     ],
-                ]
-            ]
+                ],
+            ],
         ]);
     }
 
@@ -159,10 +159,10 @@ class DropdownTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                     'items' => [
                         [
                             'type' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_LINK,
-                        ]
+                        ],
                     ],
-                ]
-            ]
+                ],
+            ],
         ]);
     }
 
@@ -177,11 +177,11 @@ class DropdownTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                     'items' => [
                         [
                             'type' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_LINK,
-                            'label' => new \stdClass()
-                        ]
+                            'label' => new \stdClass(),
+                        ],
                     ],
-                ]
-            ]
+                ],
+            ],
         ]);
     }
 
@@ -196,10 +196,10 @@ class DropdownTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                     'items' => [
                         [
                             'type' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_TEXT,
-                        ]
+                        ],
                     ],
-                ]
-            ]
+                ],
+            ],
         ]);
     }
 
@@ -214,11 +214,11 @@ class DropdownTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                     'items' => [
                         [
                             'type' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_TEXT,
-                            'label' => new \stdClass()
-                        ]
+                            'label' => new \stdClass(),
+                        ],
                     ],
-                ]
-            ]
+                ],
+            ],
         ]);
     }
 
@@ -233,10 +233,10 @@ class DropdownTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                     'items' => [
                         [
                             'type' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_HTML,
-                        ]
+                        ],
                     ],
-                ]
-            ]
+                ],
+            ],
         ]);
     }
 
@@ -251,11 +251,11 @@ class DropdownTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                     'items' => [
                         [
                             'type' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_HTML,
-                            'label' => new \stdClass()
-                        ]
+                            'label' => new \stdClass(),
+                        ],
                     ],
-                ]
-            ]
+                ],
+            ],
         ]);
     }
 }

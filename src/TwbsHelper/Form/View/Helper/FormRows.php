@@ -148,7 +148,7 @@ class FormRows extends \Laminas\Form\View\Helper\AbstractHelper
 
         $rowRendering['helper'] = [
             $this->getHtmlElementHelper(),
-            '__invoke'
+            '__invoke',
         ];
 
         $rowAttributes = $this->getHtmlattributesHelper()->__invoke([
@@ -168,7 +168,7 @@ class FormRows extends \Laminas\Form\View\Helper\AbstractHelper
         $rowRendering['helper_params'] = [
             'div',
             $rowAttributes,
-            '%content%'
+            '%content%',
         ];
 
         return $rowRendering;
@@ -202,12 +202,12 @@ class FormRows extends \Laminas\Form\View\Helper\AbstractHelper
                 'content' => [$button],
                 'helper' => [
                     $this->getButtonGroupHelper(),
-                    '__invoke'
+                    '__invoke',
                 ],
                 'helper_params' => [
                     '%content%',
-                    ['attributes' => ['class' => $rowClass]]
-                ]
+                    ['attributes' => ['class' => $rowClass]],
+                ],
             ];
         }
 

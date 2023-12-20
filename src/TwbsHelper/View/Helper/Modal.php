@@ -84,7 +84,7 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
             case is_iterable($content):
                 $part = $content;
-                $part['type'] = $part['type'] ?? $type;
+                $part['type'] ??= $type;
                 $parts[] = $part;
                 break;
 
@@ -260,7 +260,7 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
         return join(PHP_EOL, array_filter([
             $this->renderHeaderPart($headerPart, $optionsAndAttributes, $escape),
             $this->renderBodyPart($bodyPart, $optionsAndAttributes, $escape),
-            $this->renderFooterPart($footerPart, $escape)
+            $this->renderFooterPart($footerPart, $escape),
         ]));
     }
 
@@ -434,7 +434,7 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
                         'content' => $partItem,
                     ];
                 }
-                $partItem['type'] = $partItem['type'] ?? $type;
+                $partItem['type'] ??= $type;
                 return $that->renderPart($partItem, $escape);
             }, \Laminas\Stdlib\ArrayUtils::iteratorToArray($part))
         );

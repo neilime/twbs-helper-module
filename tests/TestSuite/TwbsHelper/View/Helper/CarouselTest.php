@@ -73,7 +73,7 @@ class CarouselTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 [
                     [
                         'src' => 'test',
-                        'caption' => ['test']
+                        'caption' => ['test'],
                     ],
                 ],
                 ['id' => 'test-carousel']
@@ -116,7 +116,7 @@ class CarouselTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 ['test'],
                 [
                     'id' => 'test-carousel',
-                    'controls' => [\TwbsHelper\View\Helper\Carousel::CONTROL_PREVIOUS => 'Previous']
+                    'controls' => [\TwbsHelper\View\Helper\Carousel::CONTROL_PREVIOUS => 'Previous'],
                 ]
             )
         );
@@ -129,7 +129,7 @@ class CarouselTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
             ['test'],
             [
                 'id' => 'test-carousel',
-                'controls' => 'wrong'
+                'controls' => 'wrong',
             ]
         );
     }

@@ -16,7 +16,7 @@ return [
                         'id' => 'navbarToggleExternalContent',
                     ],
                 ],
-            ]
+            ],
         ]) . PHP_EOL;
 
         echo $view->navigation()->navbar()->render(
@@ -25,7 +25,7 @@ return [
                 'expand' => false,
                 'toggler' => [
                     'attributes' => [
-                        'data-bs-target' => '#navbarToggleExternalContent'
+                        'data-bs-target' => '#navbarToggleExternalContent',
                     ],
                 ],
                 'container' => 'fluid',

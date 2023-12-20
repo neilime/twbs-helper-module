@@ -92,7 +92,7 @@ class DescriptionList extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
         if (is_string($itemValue)) {
             $detailOptionsAndAttributes = [
-                'data' => $itemValue
+                'data' => $itemValue,
             ];
         } elseif (is_array($itemValue)) {
             if (!empty($itemValue['term'])) {

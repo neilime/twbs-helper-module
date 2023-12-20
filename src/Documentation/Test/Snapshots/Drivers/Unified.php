@@ -135,8 +135,8 @@ class Unified extends \Jfcherng\Diff\Renderer\Text\AbstractText
 
         static $mbOld, $mbNew;
 
-        $mbOld = $mbOld ?? new MbString();
-        $mbNew = $mbNew ?? new MbString();
+        $mbOld ??= new MbString();
+        $mbNew ??= new MbString();
 
         $mbOld->set($oldValue);
         $mbNew->set($newValue);

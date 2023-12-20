@@ -36,11 +36,11 @@ class PhpPrettifier
     public static function getInstance(
         \Documentation\Generator\Configuration $configuration
     ): \Documentation\Generator\UsagePage\Prettifier\PhpPrettifier {
-        if (static::$instance === null) {
-            static::$instance = new static($configuration);
+        if (self::$instance === null) {
+            self::$instance = new self($configuration);
         }
 
-        return static::$instance;
+        return self::$instance;
     }
 
     public function prettify($source)

@@ -18,7 +18,7 @@ return [
                             'spec' => [
                                 'name' => 'email',
                                 'options' => [
-                                    'label' => 'Email address'
+                                    'label' => 'Email address',
                                 ],
                                 'attributes' => [
                                     'type' => 'email',
@@ -31,7 +31,7 @@ return [
                             'spec' => [
                                 'name' => 'textarea',
                                 'options' => [
-                                    'label' => 'Example textarea'
+                                    'label' => 'Example textarea',
                                 ],
                                 'attributes' => [
                                     'type' => 'textarea',
@@ -93,7 +93,7 @@ return [
                     'attributes' => [
                         'disabled' => true,
                         'placeholder' => 'Disabled input',
-                        'aria-label' => 'Disabled input example'
+                        'aria-label' => 'Disabled input example',
                     ],
                 ]);
                 echo $view->formElement($element);
@@ -108,7 +108,7 @@ return [
                         'disabled' => true,
                         'readonly' => true,
                         'value' => 'Disabled readonly input',
-                        'aria-label' => 'Disabled input example'
+                        'aria-label' => 'Disabled input example',
                     ],
                 ]);
                 echo $view->formElement($element);
@@ -126,7 +126,7 @@ return [
                     'attributes' => [
                         'readonly' => true,
                         'value' => 'Readonly input here...',
-                        'aria-label' => 'readonly input example'
+                        'aria-label' => 'readonly input example',
                     ],
                 ]);
                 echo $view->formElement($element);

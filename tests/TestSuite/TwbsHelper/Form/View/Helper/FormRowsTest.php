@@ -53,7 +53,7 @@ class FormRowsTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                         ],
                     ],
                 ],
-            ]
+            ],
         ]);
 
         $this->assertEquals(

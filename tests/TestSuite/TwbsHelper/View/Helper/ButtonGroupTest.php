@@ -33,7 +33,7 @@ class ButtonGroupTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 '    </div>' . PHP_EOL .
                 '</div>',
             $this->helper->__invoke([
-                ['options' => ['label' => 'test']]
+                ['options' => ['label' => 'test']],
             ], ['column' => 'sm-2'])
         );
     }

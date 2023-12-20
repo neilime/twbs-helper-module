@@ -15,7 +15,7 @@ return [
                     'spec' => [
                         'name' => 'exampleLabel',
                         'options' => [
-                            'label' => 'Example label'
+                            'label' => 'Example label',
                         ],
                         'attributes' => [
                             'id' => 'formGroupExampleInput',
@@ -27,7 +27,7 @@ return [
                     'spec' => [
                         'name' => 'anotherLabel',
                         'options' => [
-                            'label' => 'Another label'
+                            'label' => 'Another label',
                         ],
                         'attributes' => [
                             'id' => 'formGroupExampleInput2',
@@ -37,5 +37,5 @@ return [
                 ],
             ],
         ]));
-    }
+    },
 ];

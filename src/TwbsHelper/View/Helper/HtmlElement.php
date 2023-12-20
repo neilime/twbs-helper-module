@@ -14,7 +14,7 @@ class HtmlElement extends \Laminas\View\Helper\AbstractHtmlElement
         'figure',
         'ul',
         'fieldset',
-        'nav'
+        'nav',
     ];
 
     /**

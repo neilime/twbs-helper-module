@@ -143,7 +143,7 @@ class ListGroup extends \TwbsHelper\View\Helper\HtmlList
                 'class' => [
                     'd-flex',
                     'justify-content-between',
-                    $isNumbered ? 'align-items-start' : 'align-items-center'
+                    $isNumbered ? 'align-items-start' : 'align-items-center',
                 ],
             ]);
         }

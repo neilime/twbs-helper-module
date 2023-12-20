@@ -234,7 +234,7 @@ class Offcanvas extends \TwbsHelper\View\Helper\AbstractHtmlElement
         }
 
         $attributes['class']->merge([
-            $this->getView()->plugin('htmlClass')->getPrefixedClass($placement, 'offcanvas')
+            $this->getView()->plugin('htmlClass')->getPrefixedClass($placement, 'offcanvas'),
         ]);
 
         return $this->getView()->plugin('htmlElement')->__invoke(

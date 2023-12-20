@@ -122,7 +122,7 @@ class Placeholder extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 'class' => $this->getView()->plugin('htmlClass')->plugin('size')->getClassesFromOption(
                     $optionsAndAttributes['size'],
                     'placeholder'
-                )
+                ),
             ]);
         }
     }

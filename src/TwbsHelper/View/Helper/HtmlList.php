@@ -173,7 +173,7 @@ class HtmlList extends \TwbsHelper\View\Helper\AbstractHtmlElement
         $item['attributes'] = $this->getView()->plugin('htmlattributes')
             ->__invoke($item['attributes'] ?? [])
             ->merge([
-                'class' => $this->getListItemClassesFromOptionsAndAttributes($optionsAndAttributes)
+                'class' => $this->getListItemClassesFromOptionsAndAttributes($optionsAndAttributes),
             ]);
 
         return $item;
@@ -182,7 +182,7 @@ class HtmlList extends \TwbsHelper\View\Helper\AbstractHtmlElement
     protected function getListItemClassesFromOptionsAndAttributes(iterable $optionsAndAttributes): array
     {
         $classes = [];
-        $inline = isset($optionsAndAttributes['inline']) ? $optionsAndAttributes['inline'] : false;
+        $inline = $optionsAndAttributes['inline'] ?? false;
         if ($inline) {
             $classes[] = 'list-inline-item';
         }

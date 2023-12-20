@@ -45,7 +45,7 @@ return [
                 'Second heading',
                 'Third heading',
                 'Fourth heading',
-                'Fifth heading'
+                'Fifth heading',
             ] as $key => $label
         ) {
             echo '    <h4 id="scrollspyHeading' . ($key + 1) . '">' . $label . '</h4>' . PHP_EOL .

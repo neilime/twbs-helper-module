@@ -31,8 +31,8 @@ class FileTest extends \PHPUnit\Framework\TestCase
 
         \org\bovigo\vfs\vfsStream::create([
             'test' => [
-                'test.txt' => 'test'
-            ]
+                'test.txt' => 'test',
+            ],
         ], $this->root);
 
         $dirPath = $this->root->url() . DIRECTORY_SEPARATOR . 'test';
@@ -49,8 +49,8 @@ class FileTest extends \PHPUnit\Framework\TestCase
 
         \org\bovigo\vfs\vfsStream::create([
             'test' => [
-                'test.txt' => 'test'
-            ]
+                'test.txt' => 'test',
+            ],
         ], $this->root);
 
         $dirPath = $this->root->url() . DIRECTORY_SEPARATOR . 'wrong';
@@ -70,7 +70,7 @@ class FileTest extends \PHPUnit\Framework\TestCase
         $fileName = 'test.txt';
         $filePath = $this->root->url() . DIRECTORY_SEPARATOR . $fileName;
         \org\bovigo\vfs\vfsStream::create([
-            $fileName => 'test'
+            $fileName => 'test',
         ], $this->root);
         $this->assertTrue($this->file->fileExists($filePath));
     }
@@ -87,7 +87,7 @@ class FileTest extends \PHPUnit\Framework\TestCase
         $fileContent = 'test content';
         $filePath = $this->root->url() . DIRECTORY_SEPARATOR . $fileName;
         \org\bovigo\vfs\vfsStream::create([
-            $fileName => $fileContent
+            $fileName => $fileContent,
         ], $this->root);
         $this->assertEquals($fileContent, $this->file->readFile($filePath));
     }
@@ -127,7 +127,7 @@ class FileTest extends \PHPUnit\Framework\TestCase
         $filePath = $this->root->url() . DIRECTORY_SEPARATOR . $fileName;
         $content = 'test content';
         \org\bovigo\vfs\vfsStream::create([
-            $fileName => $content
+            $fileName => $content,
         ], $this->root);
 
         $newContent = 'test new content';
@@ -145,7 +145,7 @@ class FileTest extends \PHPUnit\Framework\TestCase
         $filePath = $this->root->url() . DIRECTORY_SEPARATOR . $fileName;
         $content = 'test content';
         \org\bovigo\vfs\vfsStream::create([
-            $fileName => $content
+            $fileName => $content,
         ], $this->root);
 
         $this->assertTrue($this->root->hasChild($fileName));

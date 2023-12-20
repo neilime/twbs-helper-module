@@ -60,7 +60,7 @@ return [
                                 'id' => 'flexCheckIndeterminate',
                             ],
                         ]));
-                    }
+                    },
                 ],
                 [
                     'title' => 'Disabled',
@@ -439,7 +439,7 @@ return [
                             'attributes' => [
                                 'id' => 'btn-check-2',
                                 'autocomplete' => 'off',
-                                'checked' => true
+                                'checked' => true,
                             ],
                         ]));
 
@@ -457,7 +457,7 @@ return [
                             'attributes' => [
                                 'id' => 'btn-check-3',
                                 'autocomplete' => 'off',
-                                'disabled' => true
+                                'disabled' => true,
                             ],
                         ]));
 
@@ -503,7 +503,7 @@ return [
                             ],
                             'attributes' => ['value' => 'option1'],
                         ]));
-                    }
+                    },
                 ],
                 [
                     'title' => 'Outlined styles',
@@ -537,7 +537,7 @@ return [
                             'attributes' => [
                                 'id' => 'btn-check-2-outlined',
                                 'autocomplete' => 'off',
-                                'checked' => true
+                                'checked' => true,
                             ],
                         ]));
 

@@ -53,11 +53,11 @@ return [
                                     'type' => 'email',
                                     'id' => 'floatingInputValue',
                                     'placeholder' => 'name@example.com',
-                                    'value' => 'test@example.com'
+                                    'value' => 'test@example.com',
                                 ],
-                            ]
-                        ]
-                    ]
+                            ],
+                        ],
+                    ],
                 ]));
 
                 echo $view->form($factory->create([
@@ -76,11 +76,11 @@ return [
                                     'type' => 'email',
                                     'id' => 'floatingInputInvalid',
                                     'placeholder' => 'name@example.com',
-                                    'value' => 'test@example.com'
+                                    'value' => 'test@example.com',
                                 ],
-                            ]
-                        ]
-                    ]
+                            ],
+                        ],
+                    ],
                 ])->setMessages(['invalidEmailWithValue' => ['']]));
             },
         ],
@@ -120,7 +120,7 @@ return [
                         'style' => 'height: 100px',
                     ],
                 ]));
-            }
+            },
         ],
         [
             'title' => 'Selects',
@@ -150,7 +150,7 @@ return [
                         ],
                     ],
                 ));
-            }
+            },
         ],
         [
             'title' => 'Layout',
@@ -206,7 +206,7 @@ return [
                         ],
                     ],
                 ]));
-            }
+            },
         ],
     ],
 ];

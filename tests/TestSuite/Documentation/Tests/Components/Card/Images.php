@@ -24,7 +24,7 @@ return [
                     'text' => [
                         'This is a wider card with supporting text below as a natural lead-in to additional content. ' .
                             'This content is a little bit longer.',
-                        '<small class="text-muted">Last updated 3 mins ago</small>'
+                        '<small class="text-muted">Last updated 3 mins ago</small>',
                     ],
                     'image_bottom' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...']],
                 ]);
@@ -47,6 +47,6 @@ return [
                     ],
                 ], ['bg_variant' => 'dark', 'class' => 'text-white']);
             },
-        ]
-    ]
+        ],
+    ],
 ];
