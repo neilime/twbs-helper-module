@@ -46,7 +46,8 @@ class ProgressBar extends \TwbsHelper\View\Helper\AbstractHtmlElement
         $percent = $optionsAndAttributes['min'] === $optionsAndAttributes['max']
             ? .0
             : (float)(
-                ($current - $min) / ($max - $min)) * 100;
+                ($current - $min) / ($max - $min)
+            ) * 100;
 
         $attributes = $this->getView()->plugin('htmlattributes')->__invoke([
             'role' => 'progressbar',

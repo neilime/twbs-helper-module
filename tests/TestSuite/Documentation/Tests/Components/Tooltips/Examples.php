@@ -7,10 +7,10 @@ return [
     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
         foreach (
             [
-            'top' => 'Tooltip on top',
-            'right' => 'Tooltip on right',
-            'bottom' => 'Tooltip on bottom',
-            'left' => 'Tooltip on left',
+                'top' => 'Tooltip on top',
+                'right' => 'Tooltip on right',
+                'bottom' => 'Tooltip on bottom',
+                'left' => 'Tooltip on left',
             ] as $placement => $label
         ) {
             echo $view->formButton()->renderSpec([

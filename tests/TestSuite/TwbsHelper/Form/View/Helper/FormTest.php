@@ -41,8 +41,7 @@ class FormTest extends \PHPUnit\Framework\TestCase
 
     public function testInitializeAnHorizontalFormClass()
     {
-        $horizontalFormClass = new class () extends \Laminas\Form\Form
-        {
+        $horizontalFormClass = new class () extends \Laminas\Form\Form {
             public function prepare()
             {
                 $this->setName('form');

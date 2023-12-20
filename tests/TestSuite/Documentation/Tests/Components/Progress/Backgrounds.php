@@ -7,10 +7,10 @@ return [
     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
         foreach (
             [
-            'success' => 25,
-            'info' => 50,
-            'warning' => 75,
-            'danger' => 100,
+                'success' => 25,
+                'info' => 50,
+                'warning' => 75,
+                'danger' => 100,
             ] as $variant => $current
         ) {
             echo $view->progressBar([
