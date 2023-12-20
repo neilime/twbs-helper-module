@@ -1,4 +1,5 @@
 parameters:
+    tmpDir: tools/cache/phpstan
     laminasframework:
        serviceManagerLoader: tests/phpstan.php
     excludePaths:

@@ -11,6 +11,7 @@ install: ## Install PHP dependencies for given PHP version
 	rm -f composer.lock
 	@$(call run-php,$(filter-out $@,$(MAKECMDGOALS)) composer install --no-progress --prefer-dist --optimize-autoloader)
 	rm -f composer.lock
+	@$(call run-php,$(filter-out $@,$(MAKECMDGOALS)) composer --working-dir=tools install --no-progress --prefer-dist --optimize-autoloader)
 
 shell: ## Execute shell in given PHP version container
 	@$(call run-php,$(filter-out $@,$(MAKECMDGOALS)) bash)
@@ -22,10 +23,10 @@ test-update: ## Execute tests and update snapshots for given PHP version
 	@$(call run-php,$(filter-out $@,$(MAKECMDGOALS)) composer test:update-snapshot)
 
 lint: ## Execute lint for given PHP version
-	@$(call run-php,$(filter-out $@,$(MAKECMDGOALS)) composer cs)
+	@$(call run-php,$(filter-out $@,$(MAKECMDGOALS)) composer php-cs-fixer)
 
 lint-fix: ## Execute lint fixing for given PHP version
-	@$(call run-php,$(filter-out $@,$(MAKECMDGOALS)) composer cbf)
+	@$(call run-php,$(filter-out $@,$(MAKECMDGOALS)) composer php-cs-fixer:fix)
 
 stan: ## Execute PHPStan for given PHP version
 	@$(call run-php,$(filter-out $@,$(MAKECMDGOALS)) composer stan)
