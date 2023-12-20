@@ -47,30 +47,29 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 ```php
 <?php
 
-echo $this->modal(
-    [
-        'title' => 'Modal title',
-        'Modal body text goes here.',
-        'footer' => [
-            'button' => [
-                [
-                    'options'    => [
-                        'label'   => 'Close',
-                        'variant' => 'secondary',
-                    ],
-                    'attributes' => [    'data-bs-dismiss' => 'modal'    ],
+echo $this->modal([
+    'title' => 'Modal title',
+    'Modal body text goes here.',
+    'footer' => [
+        'button' => [
+            [
+                'options' => [
+                    'label' => 'Close',
+                    'variant' => 'secondary',
                 ],
-                [
-                    'options' => [
-                        'label'   => 'Save changes',
-                        'variant' => 'primary',
-                    ],
+                'attributes' => [
+                    'data-bs-dismiss' => 'modal',
                 ],
             ],
-        ]
+            [
+                'options' => [
+                    'label' => 'Save changes',
+                    'variant' => 'primary',
+                ],
+            ],
+        ],
     ]
-);
-
+]);
 ```
 
 </TabItem>
@@ -109,35 +108,37 @@ echo $this->modal(
 <?php
 
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [    'label' => 'Launch demo modal'    ],
-        'attributes' => [
-            'data-bs-toggle' => 'modal',
-            'data-bs-target' => '#exampleModal',
-        ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Launch demo modal',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#exampleModal',
+    ],
+]);
 
 echo $this->modal(
     [
         'title' => [
-            'content'    => 'Modal title',
+            'content' => 'Modal title',
             'attributes' => ['id' => 'exampleModalLabel'],
         ],
         'Woohoo, you\'re reading this text in a modal!',
         'footer' => [
             'button' => [
                 [
-                    'options'    => [
-                        'label'   => 'Close',
+                    'options' => [
+                        'label' => 'Close',
                         'variant' => 'secondary',
                     ],
-                    'attributes' => [    'data-bs-dismiss' => 'modal'    ],
+                    'attributes' => [
+                        'data-bs-dismiss' => 'modal',
+                    ],
                 ],
                 [
                     'options' => [
-                        'label'   => 'Save changes',
+                        'label' => 'Save changes',
                         'variant' => 'primary',
                     ],
                 ],
@@ -145,12 +146,11 @@ echo $this->modal(
         ],
     ],
     [
-        'fade'   => true,
+        'fade' => true,
         'hidden' => true,
-        'id'     => 'exampleModal',
+        'id' => 'exampleModal',
     ]
 );
-
 ```
 
 </TabItem>
@@ -189,38 +189,38 @@ echo $this->modal(
 <?php
 
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label'   => 'Launch static backdrop modal',
-            'variant' => 'primary',
-        ],
-        'attributes' => [
-            'data-bs-toggle' => 'modal',
-            'data-bs-target' => '#staticBackdrop',
-        ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Launch static backdrop modal',
+        'variant' => 'primary',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#staticBackdrop',
+    ],
+]);
 
 echo $this->modal(
     [
         'title' => [
-            'content'    => 'Modal title',
+            'content' => 'Modal title',
             'attributes' => ['id' => 'staticBackdropLabel'],
         ],
         'I will not close if you click outside me. Don\'t even try to press escape key.',
         'footer' => [
             'button' => [
                 [
-                    'options'    => [
-                        'label'   => 'Close',
+                    'options' => [
+                        'label' => 'Close',
                         'variant' => 'secondary',
                     ],
-                    'attributes' => [    'data-bs-dismiss' => 'modal'    ],
+                    'attributes' => [
+                        'data-bs-dismiss' => 'modal',
+                    ],
                 ],
                 [
                     'options' => [
-                        'label'   => 'Understood',
+                        'label' => 'Understood',
                         'variant' => 'primary',
                     ],
                 ],
@@ -228,13 +228,12 @@ echo $this->modal(
         ],
     ],
     [
-        'fade'     => true,
-        'hidden'   => true,
+        'fade' => true,
+        'hidden' => true,
         'backdrop' => true,
-        'id'       => 'staticBackdrop',
+        'id' => 'staticBackdrop',
     ]
 );
-
 ```
 
 </TabItem>
@@ -294,38 +293,44 @@ echo $this->modal(
 <?php
 
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label'   => 'Launch demo modal',
-            'variant' => 'primary',
-        ],
-        'attributes' => [
-            'data-bs-toggle' => 'modal',
-            'data-bs-target' => '#exampleModalLong',
-        ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Launch demo modal',
+        'variant' => 'primary',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#exampleModalLong',
+    ],
+]);
 
 echo $this->modal(
     [
         'title' => [
-            'content'    => 'Modal title',
+            'content' => 'Modal title',
             'attributes' => ['id' => 'exampleModalLongTitle'],
         ],
-        'This is some placeholder content to show the scrolling behavior for modals. '.'Instead of repeating the text the modal, '.'we use an inline style set a minimum height, '.'thereby extending the length of the overall modal '.'and demonstrating the overflow scrolling. '.'When content becomes longer than the height of the viewport, '.'scrolling will move the modal as needed.',
+        'This is some placeholder content to show the scrolling behavior for modals. ' .
+        'Instead of repeating the text the modal, ' .
+        'we use an inline style set a minimum height, ' .
+        'thereby extending the length of the overall modal ' .
+        'and demonstrating the overflow scrolling. ' .
+        'When content becomes longer than the height of the viewport, ' .
+        'scrolling will move the modal as needed.',
         'footer' => [
             'button' => [
                 [
-                    'options'    => [
-                        'label'   => 'Close',
+                    'options' => [
+                        'label' => 'Close',
                         'variant' => 'secondary',
                     ],
-                    'attributes' => [    'data-bs-dismiss' => 'modal'    ],
+                    'attributes' => [
+                        'data-bs-dismiss' => 'modal',
+                    ],
                 ],
                 [
                     'options' => [
-                        'label'   => 'Save changes',
+                        'label' => 'Save changes',
                         'variant' => 'primary',
                     ],
                 ],
@@ -333,49 +338,54 @@ echo $this->modal(
         ],
     ],
     [
-        'fade'            => true,
-        'hidden'          => true,
-        'id'              => 'exampleModalLong',
+        'fade' => true,
+        'hidden' => true,
+        'id' => 'exampleModalLong',
         'body_attributes' => ['style' => 'min-height: 1500px'],
     ]
 );
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label'   => 'Launch demo modal',
-            'variant' => 'primary',
-        ],
-        'attributes' => [
-            'data-bs-toggle' => 'modal',
-            'data-bs-target' => '#exampleModalScrollable',
-        ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Launch demo modal',
+        'variant' => 'primary',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#exampleModalScrollable',
+    ],
+]);
 
 echo $this->modal(
     [
         'title' => [
-            'content'    => 'Modal title',
+            'content' => 'Modal title',
             'attributes' => ['id' => 'exampleModalScrollableTitle'],
         ],
-        'This is some placeholder content to show the scrolling behavior for modals. '.'We use repeated line breaks to demonstrate how content can exceed minimum inner height, '.'thereby showing inner scrolling. '.'When content becomes longer than the predefined max-height of modal, '.'content will be cropped and scrollable within the modal.',
-        '<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>'.'<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>',
+        'This is some placeholder content to show the scrolling behavior for modals. ' .
+        'We use repeated line breaks to demonstrate how content can exceed minimum inner height, ' .
+        'thereby showing inner scrolling. ' .
+        'When content becomes longer than the predefined max-height of modal, ' .
+        'content will be cropped and scrollable within the modal.',
+        '<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>' .
+        '<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>',
         'This content should appear at the bottom after you scroll.',
         'footer' => [
             'button' => [
                 [
-                    'options'    => [
-                        'label'   => 'Close',
+                    'options' => [
+                        'label' => 'Close',
                         'variant' => 'secondary',
                     ],
-                    'attributes' => [    'data-bs-dismiss' => 'modal'    ],
+                    'attributes' => [
+                        'data-bs-dismiss' => 'modal',
+                    ],
                 ],
                 [
                     'options' => [
-                        'label'   => 'Save changes',
+                        'label' => 'Save changes',
                         'variant' => 'primary',
                     ],
                 ],
@@ -383,13 +393,12 @@ echo $this->modal(
         ],
     ],
     [
-        'fade'       => true,
-        'hidden'     => true,
+        'fade' => true,
+        'hidden' => true,
         'scrollable' => true,
-        'id'         => 'exampleModalScrollable',
+        'id' => 'exampleModalScrollable',
     ]
 );
-
 ```
 
 </TabItem>
@@ -449,38 +458,38 @@ echo $this->modal(
 <?php
 
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label'   => 'Vertically centered modal',
-            'variant' => 'primary',
-        ],
-        'attributes' => [
-            'data-bs-toggle' => 'modal',
-            'data-bs-target' => '#exampleModalCenter',
-        ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Vertically centered modal',
+        'variant' => 'primary',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#exampleModalCenter',
+    ],
+]);
 
 echo $this->modal(
     [
         'title' => [
-            'content'    => 'Modal title',
+            'content' => 'Modal title',
             'attributes' => ['id' => 'exampleModalCenterTitle'],
         ],
         'This is a vertically centered modal.',
         'footer' => [
             'button' => [
                 [
-                    'options'    => [
-                        'label'   => 'Close',
+                    'options' => [
+                        'label' => 'Close',
                         'variant' => 'secondary',
                     ],
-                    'attributes' => [    'data-bs-dismiss' => 'modal'    ],
+                    'attributes' => [
+                        'data-bs-dismiss' => 'modal',
+                    ],
                 ],
                 [
                     'options' => [
-                        'label'   => 'Save changes',
+                        'label' => 'Save changes',
                         'variant' => 'primary',
                     ],
                 ],
@@ -488,49 +497,55 @@ echo $this->modal(
         ],
     ],
     [
-        'fade'     => true,
-        'hidden'   => true,
-        'id'       => 'exampleModalCenter',
+        'fade' => true,
+        'hidden' => true,
+        'id' => 'exampleModalCenter',
         'centered' => true,
     ]
 );
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label'   => 'Vertically centered scrollable modal',
-            'variant' => 'primary',
-        ],
-        'attributes' => [
-            'data-bs-toggle' => 'modal',
-            'data-bs-target' => '#exampleModalCenteredScrollable',
-        ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Vertically centered scrollable modal',
+        'variant' => 'primary',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#exampleModalCenteredScrollable',
+    ],
+]);
 
 echo $this->modal(
     [
         'title' => [
-            'content'    => 'Modal title',
+            'content' => 'Modal title',
             'attributes' => ['id' => 'exampleModalCenteredScrollableTitle'],
         ],
-        'This is some placeholder content to show a vertically centered modal. '.'We\'ve added some extra copy here to show how vertically centering the modal works when '.'combined with scrollable modals. '.'We also use some repeated line breaks to quickly extend the height of the content, '.'thereby triggering the scrolling. '.'When content becomes longer than the predefined max-height of modal, '.'content will be cropped and scrollable within the modal.</p>',
+        'This is some placeholder content to show a vertically centered modal. ' .
+        'We\'ve added some extra copy here to show how vertically centering the modal works when ' .
+        'combined with scrollable modals. ' .
+        'We also use some repeated line breaks to quickly extend the height of the content, ' .
+        'thereby triggering the scrolling. ' .
+        'When content becomes longer than the predefined max-height of modal, ' .
+        'content will be cropped and scrollable within the modal.</p>',
         '<br><br><br><br><br><br><br><br><br><br>',
         'Just like that.',
         'footer' => [
             'button' => [
                 [
-                    'options'    => [
-                        'label'   => 'Close',
+                    'options' => [
+                        'label' => 'Close',
                         'variant' => 'secondary',
                     ],
-                    'attributes' => [    'data-bs-dismiss' => 'modal'    ],
+                    'attributes' => [
+                        'data-bs-dismiss' => 'modal',
+                    ],
                 ],
                 [
                     'options' => [
-                        'label'   => 'Save changes',
+                        'label' => 'Save changes',
                         'variant' => 'primary',
                     ],
                 ],
@@ -538,14 +553,13 @@ echo $this->modal(
         ],
     ],
     [
-        'fade'       => true,
-        'hidden'     => true,
-        'id'         => 'exampleModalCenteredScrollable',
-        'centered'   => true,
+        'fade' => true,
+        'hidden' => true,
+        'id' => 'exampleModalCenteredScrollable',
+        'centered' => true,
         'scrollable' => true,
     ]
 );
-
 ```
 
 </TabItem>
@@ -588,48 +602,54 @@ echo $this->modal(
 <?php
 
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label'   => 'Launch demo modal',
-            'variant' => 'primary',
-        ],
-        'attributes' => [
-            'data-bs-toggle' => 'modal',
-            'data-bs-target' => '#exampleModalPopovers',
-        ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Launch demo modal',
+        'variant' => 'primary',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#exampleModalPopovers',
+    ],
+]);
 
 echo $this->modal(
     [
         'title' => [
-            'content'    => 'Modal title',
+            'content' => 'Modal title',
             'attributes' => ['id' => 'exampleModalPopoversLabel'],
         ],
         [
-            'type'    => 'subtitle',
+            'type' => 'subtitle',
             'content' => 'Popover in a modal',
         ],
-        'This <a class="btn btn-secondary popover-test" data-bs-container="#exampleModalPopovers" '.'data-bs-content="Popover body content is set in this attribute." '.'data-bs-original-title="Popover title" '.'href="#" role="button" title="">button</a> triggers a popover on click.',
+        'This <a class="btn btn-secondary popover-test" data-bs-container="#exampleModalPopovers" ' .
+        'data-bs-content="Popover body content is set in this attribute." ' .
+        'data-bs-original-title="Popover title" ' .
+        'href="#" role="button" title="">button</a> triggers a popover on click.',
         '---',
         [
-            'type'    => 'subtitle',
+            'type' => 'subtitle',
             'content' => 'Tooltips in a modal',
         ],
-        '<a class="tooltip-test" data-bs-container="#exampleModalPopovers" data-bs-original-title="Tooltip" '.'href="#" title="">This link</a> and <a class="tooltip-test" '.'data-bs-container="#exampleModalPopovers" '.'data-bs-original-title="Tooltip" href="#" title="">that link</a> have tooltips on hover.',
+        '<a class="tooltip-test" data-bs-container="#exampleModalPopovers" data-bs-original-title="Tooltip" ' .
+        'href="#" title="">This link</a> and <a class="tooltip-test" ' .
+        'data-bs-container="#exampleModalPopovers" ' .
+        'data-bs-original-title="Tooltip" href="#" title="">that link</a> have tooltips on hover.',
         'footer' => [
             'button' => [
                 [
-                    'options'    => [
-                        'label'   => 'Close',
+                    'options' => [
+                        'label' => 'Close',
                         'variant' => 'secondary',
                     ],
-                    'attributes' => [    'data-bs-dismiss' => 'modal'    ],
+                    'attributes' => [
+                        'data-bs-dismiss' => 'modal',
+                    ],
                 ],
                 [
                     'options' => [
-                        'label'   => 'Save changes',
+                        'label' => 'Save changes',
                         'variant' => 'primary',
                     ],
                 ],
@@ -637,12 +657,11 @@ echo $this->modal(
         ],
     ],
     [
-        'fade'   => true,
+        'fade' => true,
         'hidden' => true,
-        'id'     => 'exampleModalPopovers',
+        'id' => 'exampleModalPopovers',
     ]
 );
-
 ```
 
 </TabItem>
@@ -716,27 +735,25 @@ echo $this->modal(
 <?php
 
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label'   => 'Launch demo modal',
-            'variant' => 'primary',
-        ],
-        'attributes' => [
-            'data-bs-toggle' => 'modal',
-            'data-bs-target' => '#gridSystemModal',
-        ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Launch demo modal',
+        'variant' => 'primary',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#gridSystemModal',
+    ],
+]);
 
 echo $this->modal(
     [
-        'title'  => [
-            'content'    => 'Grids in modals',
+        'title' => [
+            'content' => 'Grids in modals',
             'attributes' => ['id' => 'gridModalLabel'],
         ],
-        'grid'   => [
-            'rows'       => [
+        'grid' => [
+            'rows' => [
                 [
                     [
                         [
@@ -745,10 +762,7 @@ echo $this->modal(
                         ],
                         [
                             '.col-md-4 .ms-auto',
-                            [
-                                'column' => 'md-4',
-                                'class'  => 'ms-auto',
-                            ],
+                            ['column' => 'md-4', 'class' => 'ms-auto'],
                         ],
                     ],
                 ],
@@ -756,17 +770,11 @@ echo $this->modal(
                     [
                         [
                             '.col-md-3 .ms-auto',
-                            [
-                                'column' => 'md-3',
-                                'class'  => 'ms-auto',
-                            ],
+                            ['column' => 'md-3', 'class' => 'ms-auto'],
                         ],
                         [
                             '.col-md-2 .ms-auto',
-                            [
-                                'column' => 'md-2',
-                                'class'  => 'ms-auto',
-                            ],
+                            ['column' => 'md-2', 'class' => 'ms-auto'],
                         ],
                     ],
                 ],
@@ -774,10 +782,7 @@ echo $this->modal(
                     [
                         [
                             '.col-md-6 .ms-auto',
-                            [
-                                'column' => 'md-6',
-                                'class'  => 'ms-auto',
-                            ],
+                            ['column' => 'md-6', 'class' => 'ms-auto'],
                         ],
                     ],
                 ],
@@ -787,32 +792,22 @@ echo $this->modal(
                             'Level 1: .col-sm-9',
                             [
                                 'column' => 'sm-9',
-                                'grid'   => [
+                                'grid' => [
                                     'rows' => [
                                         [
                                             [
                                                 [
                                                     'Level 2: .col-8 .col-sm-6',
-                                                    [
-                                                        'column' => [
-                                                            8,
-                                                            'sm-6',
-                                                        ],
-                                                    ],
+                                                    ['column' => [8, 'sm-6']],
                                                 ],
                                                 [
                                                     'Level 2: .col-4 .col-sm-6',
-                                                    [
-                                                        'column' => [
-                                                            4,
-                                                            'sm-6',
-                                                        ],
-                                                    ],
+                                                    ['column' => [4, 'sm-6']],
                                                 ],
                                             ],
                                         ],
                                     ],
-                                ],
+                                ]
                             ],
                         ],
                     ],
@@ -820,21 +815,23 @@ echo $this->modal(
             ],
             'attributes' => [
                 'container' => 'fluid',
-                'class'     => 'bd-example-row',
+                'class' => 'bd-example-row',
             ],
         ],
         'footer' => [
             'button' => [
                 [
-                    'options'    => [
-                        'label'   => 'Close',
+                    'options' => [
+                        'label' => 'Close',
                         'variant' => 'secondary',
                     ],
-                    'attributes' => [    'data-bs-dismiss' => 'modal'    ],
+                    'attributes' => [
+                        'data-bs-dismiss' => 'modal',
+                    ],
                 ],
                 [
                     'options' => [
-                        'label'   => 'Save changes',
+                        'label' => 'Save changes',
                         'variant' => 'primary',
                     ],
                 ],
@@ -842,12 +839,11 @@ echo $this->modal(
         ],
     ],
     [
-        'fade'   => true,
+        'fade' => true,
         'hidden' => true,
-        'id'     => 'gridSystemModal',
+        'id' => 'gridSystemModal',
     ]
 );
-
 ```
 
 </TabItem>
@@ -898,70 +894,70 @@ echo $this->modal(
 <?php
 
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label'   => 'Open modal for @mdo',
-            'variant' => 'primary',
-        ],
-        'attributes' => [
-            'data-bs-toggle'   => 'modal',
-            'data-bs-target'   => '#exampleModal',
-            'data-bs-whatever' => '@mdo',
-        ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Open modal for @mdo',
+        'variant' => 'primary',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#exampleModal',
+        'data-bs-whatever' => '@mdo',
+    ],
+]);
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label'   => 'Open modal for @fat',
-            'variant' => 'primary',
-        ],
-        'attributes' => [
-            'data-bs-toggle'   => 'modal',
-            'data-bs-target'   => '#exampleModal',
-            'data-bs-whatever' => '@fat',
-        ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Open modal for @fat',
+        'variant' => 'primary',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#exampleModal',
+        'data-bs-whatever' => '@fat',
+    ],
+]);
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label'   => 'Open modal for @getbootstrap',
-            'variant' => 'primary',
-        ],
-        'attributes' => [
-            'data-bs-toggle'   => 'modal',
-            'data-bs-target'   => '#exampleModal',
-            'data-bs-whatever' => '@getbootstrap',
-        ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Open modal for @getbootstrap',
+        'variant' => 'primary',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#exampleModal',
+        'data-bs-whatever' => '@getbootstrap',
+    ],
+]);
 
 echo $this->modal(
     [
-        'title'  => [
-            'content'    => 'New message to @mdo',
+        'title' => [
+            'content' => 'New message to @mdo',
             'attributes' => ['id' => 'exampleModalLabel'],
         ],
-        'form'   => [
+        'form' => [
             'elements' => [
                 [
                     'spec' => [
-                        'name'       => 'recipient',
-                        'options'    => [    'label' => 'Recipient:'    ],
-                        'attributes' => [    'id' => 'recipient-name'    ],
+                        'name' => 'recipient',
+                        'options' => [
+                            'label' => 'Recipient:',
+                        ],
+                        'attributes' => [
+                            'id' => 'recipient-name',
+                        ],
                     ],
                 ],
                 [
                     'spec' => [
-                        'name'       => 'message',
-                        'options'    => [    'label' => 'Message:'    ],
+                        'name' => 'message',
+                        'options' => [
+                            'label' => 'Message:',
+                        ],
                         'attributes' => [
                             'type' => 'textarea',
-                            'id'   => 'message-text',
+                            'id' => 'message-text',
                         ],
                     ],
                 ],
@@ -970,15 +966,17 @@ echo $this->modal(
         'footer' => [
             'button' => [
                 [
-                    'options'    => [
-                        'label'   => 'Close',
+                    'options' => [
+                        'label' => 'Close',
                         'variant' => 'secondary',
                     ],
-                    'attributes' => [    'data-bs-dismiss' => 'modal'    ],
+                    'attributes' => [
+                        'data-bs-dismiss' => 'modal',
+                    ],
                 ],
                 [
                     'options' => [
-                        'label'   => 'Send message',
+                        'label' => 'Send message',
                         'variant' => 'primary',
                     ],
                 ],
@@ -986,9 +984,9 @@ echo $this->modal(
         ],
     ],
     [
-        'fade'   => true,
+        'fade' => true,
         'hidden' => true,
-        'id'     => 'exampleModal',
+        'id' => 'exampleModal',
     ]
 );
 
@@ -996,25 +994,26 @@ $this->inlineScript()->captureStart();
 
 // TODO: docusaurus mdx-loader does not support this
 // echo <<<JS
-// var exampleModal = document.getElementById('exampleModal')
-// exampleModal.addEventListener('show.bs.modal', function (event) {
-// Button that triggered the modal
-// var button = event.relatedTarget
-// Extract info from data-bs-* attributes
-// var recipient = button.getAttribute('data-bs-whatever')
-// If necessary, you could initiate an AJAX request here
-// and then do the updating in a callback.
-//
-// Update the modal's content.
-// var modalTitle = exampleModal.querySelector('.modal-title')
-// var modalBodyInput = exampleModal.querySelector('.modal-body input')
-// modalTitle.textContent = 'New message to ' + recipient
-// modalBodyInput.value = recipient
-// })
+//     var exampleModal = document.getElementById('exampleModal')
+//     exampleModal.addEventListener('show.bs.modal', function (event) {
+//         // Button that triggered the modal
+//         var button = event.relatedTarget
+//         // Extract info from data-bs-* attributes
+//         var recipient = button.getAttribute('data-bs-whatever')
+//         // If necessary, you could initiate an AJAX request here
+//         // and then do the updating in a callback.
+//         //
+//         // Update the modal's content.
+//         var modalTitle = exampleModal.querySelector('.modal-title')
+//         var modalBodyInput = exampleModal.querySelector('.modal-body input')
+
+//         modalTitle.textContent = 'New message to ' + recipient
+//         modalBodyInput.value = recipient
+//     })
 // JS;
+
 $this->inlineScript()->captureEnd();
 echo $this->inlineScript();
-
 ```
 
 </TabItem>
@@ -1068,32 +1067,30 @@ echo $this->inlineScript();
 <?php
 
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label'   => 'Open first modal',
-            'tag'     => 'a',
-            'variant' => 'primary',
-        ],
-        'attributes' => [
-            'data-bs-toggle' => 'modal',
-            'href'           => '#exampleModalToggle',
-        ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Open first modal',
+        'tag' => 'a',
+        'variant' => 'primary',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'href' => '#exampleModalToggle',
+    ],
+]);
 
 echo $this->modal(
     [
         'title' => [
-            'content'    => 'Modal 1',
+            'content' => 'Modal 1',
             'attributes' => ['id' => 'exampleModalToggleLabel'],
         ],
         'Show a second modal and hide this one with the button below.',
         'footer' => [
             'button' => [
                 [
-                    'options'    => [
-                        'label'   => 'Open second modal',
+                    'options' => [
+                        'label' => 'Open second modal',
                         'variant' => 'primary',
                     ],
                     'attributes' => [
@@ -1105,25 +1102,25 @@ echo $this->modal(
         ],
     ],
     [
-        'fade'     => true,
-        'hidden'   => true,
+        'fade' => true,
+        'hidden' => true,
         'centered' => true,
-        'id'       => 'exampleModalToggle',
+        'id' => 'exampleModalToggle',
     ]
 );
 
 echo $this->modal(
     [
         'title' => [
-            'content'    => 'Modal 2',
+            'content' => 'Modal 2',
             'attributes' => ['id' => 'exampleModalToggleLabel2'],
         ],
         'Hide this modal and show the first with the button below.',
         'footer' => [
             'button' => [
                 [
-                    'options'    => [
-                        'label'   => 'Back to first',
+                    'options' => [
+                        'label' => 'Back to first',
                         'variant' => 'primary',
                     ],
                     'attributes' => [
@@ -1135,13 +1132,12 @@ echo $this->modal(
         ],
     ],
     [
-        'fade'     => true,
-        'hidden'   => true,
+        'fade' => true,
+        'hidden' => true,
         'centered' => true,
-        'id'       => 'exampleModalToggle2',
+        'id' => 'exampleModalToggle2',
     ]
 );
-
 ```
 
 </TabItem>
@@ -1180,35 +1176,37 @@ echo $this->modal(
 <?php
 
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [    'label' => 'Launch demo modal'    ],
-        'attributes' => [
-            'data-bs-toggle' => 'modal',
-            'data-bs-target' => '#exampleModal',
-        ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Launch demo modal',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#exampleModal',
+    ],
+]);
 
 echo $this->modal(
     [
         'title' => [
-            'content'    => 'Modal title',
+            'content' => 'Modal title',
             'attributes' => ['id' => 'exampleModalLabel'],
         ],
         'Woohoo, you\'re reading this text in a modal!',
         'footer' => [
             'button' => [
                 [
-                    'options'    => [
-                        'label'   => 'Close',
+                    'options' => [
+                        'label' => 'Close',
                         'variant' => 'secondary',
                     ],
-                    'attributes' => [    'data-bs-dismiss' => 'modal'    ],
+                    'attributes' => [
+                        'data-bs-dismiss' => 'modal',
+                    ],
                 ],
                 [
                     'options' => [
-                        'label'   => 'Save changes',
+                        'label' => 'Save changes',
                         'variant' => 'primary',
                     ],
                 ],
@@ -1217,10 +1215,9 @@ echo $this->modal(
     ],
     [
         'hidden' => true,
-        'id'     => 'exampleModal',
+        'id' => 'exampleModal',
     ]
 );
-
 ```
 
 </TabItem>
@@ -1283,102 +1280,77 @@ echo $this->modal(
 <?php
 
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label'   => 'Extra large modal',
-            'variant' => 'primary',
-        ],
-        'attributes' => [
-            'data-bs-toggle' => 'modal',
-            'data-bs-target' => '#exampleModalXl',
-        ],
-    ]
-);
-
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label'   => 'Large modal',
-            'variant' => 'primary',
-        ],
-        'attributes' => [
-            'data-bs-toggle' => 'modal',
-            'data-bs-target' => '#exampleModalLg',
-        ],
-    ]
-);
-
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label'   => 'Small modal',
-            'variant' => 'primary',
-        ],
-        'attributes' => [
-            'data-bs-toggle' => 'modal',
-            'data-bs-target' => '#exampleModalSm',
-        ],
-    ]
-);
-
-echo $this->modal(
-    [
-        'title' => [
-            'content'    => 'Extra large modal',
-            'attributes' => [
-                'id'    => 'exampleModalXlLabel',
-                'class' => 'h4',
-            ],
-        ],
-        '...',
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Extra large modal',
+        'variant' => 'primary',
     ],
-    [
-        'hidden' => true,
-        'fade'   => true,
-        'size'   => 'xl',
-        'id'     => 'exampleModalXl',
-    ]
-);
-
-echo $this->modal(
-    [
-        'title' => [
-            'content'    => 'Large modal',
-            'attributes' => [
-                'id'    => 'exampleModalLgLabel',
-                'class' => 'h4',
-            ],
-        ],
-        '...',
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#exampleModalXl',
     ],
-    [
-        'hidden' => true,
-        'fade'   => true,
-        'size'   => 'lg',
-        'id'     => 'exampleModalLg',
-    ]
-);
+]);
 
-echo $this->modal(
-    [
-        'title' => [
-            'content'    => 'Small modal',
-            'attributes' => [
-                'id'    => 'exampleModalSmLabel',
-                'class' => 'h4',
-            ],
-        ],
-        '...',
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Large modal',
+        'variant' => 'primary',
     ],
-    [
-        'hidden' => true,
-        'fade'   => true,
-        'size'   => 'sm',
-        'id'     => 'exampleModalSm',
-    ]
-);
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#exampleModalLg',
+    ],
+]);
 
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Small modal',
+        'variant' => 'primary',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#exampleModalSm',
+    ],
+]);
+
+echo $this->modal([
+    'title' => [
+        'content' => 'Extra large modal',
+        'attributes' => ['id' => 'exampleModalXlLabel', 'class' => 'h4'],
+    ],
+    '...',
+], [
+    'hidden' => true,
+    'fade' => true,
+    'size' => 'xl',
+    'id' => 'exampleModalXl',
+]);
+
+echo $this->modal([
+    'title' => [
+        'content' => 'Large modal',
+        'attributes' => ['id' => 'exampleModalLgLabel', 'class' => 'h4'],
+    ],
+    '...',
+], [
+    'hidden' => true,
+    'fade' => true,
+    'size' => 'lg',
+    'id' => 'exampleModalLg',
+]);
+
+echo $this->modal([
+    'title' => [
+        'content' => 'Small modal',
+        'attributes' => ['id' => 'exampleModalSmLabel', 'class' => 'h4'],
+    ],
+    '...',
+], [
+    'hidden' => true,
+    'fade' => true,
+    'size' => 'sm',
+    'id' => 'exampleModalSm',
+]);
 ```
 
 </TabItem>
@@ -1501,104 +1473,85 @@ echo $this->modal(
 <?php
 
 
-$fullscreenSizes = [
-    'sm',
-    'md',
-    'lg',
-    'xl',
-    'xxl',
-];
+$fullscreenSizes = ['sm', 'md', 'lg', 'xl', 'xxl'];
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label'   => 'Full screen',
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Full screen',
+        'variant' => 'primary',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#exampleModalFullscreen',
+    ],
+]);
+
+foreach ($fullscreenSizes as $size) {
+    echo $this->formButton()->renderSpec([
+        'options' => [
+            'label' => 'Full screen below ' . $size,
             'variant' => 'primary',
         ],
         'attributes' => [
             'data-bs-toggle' => 'modal',
-            'data-bs-target' => '#exampleModalFullscreen',
+            'data-bs-target' => '#exampleModalFullscreen' . ucfirst($size),
         ],
-    ]
-);
-
-foreach ($fullscreenSizes as $size) {
-    echo $this->formButton()->renderSpec(
-        [
-            'options'    => [
-                'label'   => 'Full screen below '.$size,
-                'variant' => 'primary',
-            ],
-            'attributes' => [
-                'data-bs-toggle' => 'modal',
-                'data-bs-target' => '#exampleModalFullscreen'.ucfirst($size),
-            ],
-        ]
-    );
+    ]);
 }
 
-echo $this->modal(
-    [
-        'title' => [
-            'content'    => 'Full screen modal',
-            'attributes' => [
-                'id'    => 'exampleModalFullscreenLabel',
-                'class' => 'h4',
+echo $this->modal([
+    'title' => [
+        'content' => 'Full screen modal',
+        'attributes' => ['id' => 'exampleModalFullscreenLabel', 'class' => 'h4'],
+    ],
+    '...',
+    'footer' => [
+        'button' => [
+            [
+                'options' => [
+                    'label' => 'Close',
+                    'variant' => 'secondary',
+                ],
+                'attributes' => [
+                    'data-bs-dismiss' => 'modal',
+                ],
             ],
+        ],
+    ],
+], [
+    'hidden' => true,
+    'fade' => true,
+    'fullscreen' => true,
+    'id' => 'exampleModalFullscreen',
+]);
+
+foreach ($fullscreenSizes as $size) {
+    echo $this->modal([
+        'title' => [
+            'content' => 'Full screen below ' . $size,
+            'attributes' => ['id' => 'exampleModalFullscreen' . ucfirst($size) . 'Label', 'class' => 'h4'],
         ],
         '...',
         'footer' => [
             'button' => [
                 [
-                    'options'    => [
-                        'label'   => 'Close',
+                    'options' => [
+                        'label' => 'Close',
                         'variant' => 'secondary',
                     ],
-                    'attributes' => [    'data-bs-dismiss' => 'modal'    ],
-                ],
-            ],
-        ],
-    ],
-    [
-        'hidden'     => true,
-        'fade'       => true,
-        'fullscreen' => true,
-        'id'         => 'exampleModalFullscreen',
-    ]
-);
-
-foreach ($fullscreenSizes as $size) {
-    echo $this->modal(
-        [
-            'title' => [
-                'content'    => 'Full screen below '.$size,
-                'attributes' => [
-                    'id'    => 'exampleModalFullscreen'.ucfirst($size).'Label',
-                    'class' => 'h4',
-                ],
-            ],
-            '...',
-            'footer' => [
-                'button' => [
-                    [
-                        'options'    => [
-                            'label'   => 'Close',
-                            'variant' => 'secondary',
-                        ],
-                        'attributes' => [    'data-bs-dismiss' => 'modal'    ],
+                    'attributes' => [
+                        'data-bs-dismiss' => 'modal',
                     ],
                 ],
             ],
         ],
-        [
-            'hidden'     => true,
-            'fade'       => true,
-            'fullscreen' => $size,
-            'id'         => 'exampleModalFullscreen'.ucfirst($size),
-        ]
-    );
-}//end foreach
-
+    ], [
+        'hidden' => true,
+        'fade' => true,
+        'fullscreen' => $size,
+        'id' => 'exampleModalFullscreen' . ucfirst($size),
+    ]);
+}
 ```
 
 </TabItem>

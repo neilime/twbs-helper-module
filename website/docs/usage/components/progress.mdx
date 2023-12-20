@@ -56,7 +56,6 @@ echo $this->progressBar(0, 100, 75);
 
 // Display progress bar at 100%
 echo $this->progressBar(0, 100, 100);
-
 ```
 
 </TabItem>
@@ -81,15 +80,12 @@ echo $this->progressBar(0, 100, 100);
 ```php
 <?php
 
-echo $this->progressBar(
-    [
-        'show_label' => true,
-        'min'        => 0,
-        'max'        => 100,
-        'current'    => 25,
-    ]
-);
-
+echo $this->progressBar([
+    'show_label' => true,
+    'min' => 0,
+    'max' => 100,
+    'current' => 25,
+]);
 ```
 
 </TabItem>
@@ -115,24 +111,19 @@ echo $this->progressBar(
 ```php
 <?php
 
-echo $this->progressBar(
-    [
-        'attributes' => ['style' => 'height:1px'],
-        'min'        => 0,
-        'max'        => 100,
-        'current'    => 25,
-    ]
-);
+echo $this->progressBar([
+    'attributes' => ['style' => 'height:1px'],
+    'min' => 0,
+    'max' => 100,
+    'current' => 25,
+]);
 
-echo $this->progressBar(
-    [
-        'attributes' => ['style' => 'height:20px'],
-        'min'        => 0,
-        'max'        => 100,
-        'current'    => 25,
-    ]
-);
-
+echo $this->progressBar([
+    'attributes' => ['style' => 'height:20px'],
+    'min' => 0,
+    'max' => 100,
+    'current' => 25,
+]);
 ```
 
 </TabItem>
@@ -164,22 +155,21 @@ echo $this->progressBar(
 ```php
 <?php
 
-foreach ([
-    'success' => 25,
-    'info'    => 50,
-    'warning' => 75,
-    'danger'  => 100,
-] as $variant => $current) {
-    echo $this->progressBar(
-        [
-            'variant' => $variant,
-            'min'     => 0,
-            'max'     => 100,
-            'current' => $current,
-        ]
-    );
+foreach (
+    [
+        'success' => 25,
+        'info' => 50,
+        'warning' => 75,
+        'danger' => 100,
+    ] as $variant => $current
+) {
+    echo $this->progressBar([
+        'variant' => $variant,
+        'min' => 0,
+        'max' => 100,
+        'current' => $current,
+    ]);
 }
-
 ```
 
 </TabItem>
@@ -204,28 +194,11 @@ foreach ([
 ```php
 <?php
 
-echo $this->progressBarGroup(
-    [
-        [
-            'min'     => 0,
-            'max'     => 100,
-            'current' => 15,
-        ],
-        [
-            'variant' => 'success',
-            'min'     => 0,
-            'max'     => 100,
-            'current' => 30,
-        ],
-        [
-            'variant' => 'info',
-            'min'     => 0,
-            'max'     => 100,
-            'current' => 20,
-        ],
-    ]
-);
-
+echo $this->progressBarGroup([
+    ['min' => 0, 'max' => 100, 'current' => 15],
+    ['variant' => 'success', 'min' => 0, 'max' => 100, 'current' => 30],
+    ['variant' => 'info', 'min' => 0, 'max' => 100, 'current' => 20],
+]);
 ```
 
 </TabItem>
@@ -260,24 +233,23 @@ echo $this->progressBarGroup(
 ```php
 <?php
 
-foreach ([
-    null      => 10,
-    'success' => 25,
-    'info'    => 50,
-    'warning' => 75,
-    'danger'  => 100,
-] as $variant => $current) {
-    echo $this->progressBar(
-        [
-            'striped' => true,
-            'variant' => $variant,
-            'current' => $current,
-            'min'     => 0,
-            'max'     => 100,
-        ]
-    );
+foreach (
+    [
+        null => 10,
+        'success' => 25,
+        'info' => 50,
+        'warning' => 75,
+        'danger' => 100,
+    ] as $variant => $current
+) {
+    echo $this->progressBar([
+        'striped' => true,
+        'variant' => $variant,
+        'current' => $current,
+        'min' => 0,
+        'max' => 100,
+    ]);
 }
-
 ```
 
 </TabItem>
@@ -300,16 +272,13 @@ foreach ([
 ```php
 <?php
 
-echo $this->progressBar(
-    [
-        'striped'  => true,
-        'animated' => true,
-        'current'  => 75,
-        'min'      => 0,
-        'max'      => 100,
-    ]
-);
-
+echo $this->progressBar([
+    'striped' => true,
+    'animated' => true,
+    'current' => 75,
+    'min' => 0,
+    'max' => 100,
+]);
 ```
 
 </TabItem>

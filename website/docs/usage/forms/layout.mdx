@@ -38,36 +38,35 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->form(
-    $factory->create(
+echo $this->form($factory->create([
+    'type' => 'form',
+    'elements' => [
         [
-            'type'     => 'form',
-            'elements' => [
-                [
-                    'spec' => [
-                        'name'       => 'exampleLabel',
-                        'options'    => ['label' => 'Example label'],
-                        'attributes' => [
-                            'id'          => 'formGroupExampleInput',
-                            'placeholder' => 'Example input placeholder',
-                        ],
-                    ],
+            'spec' => [
+                'name' => 'exampleLabel',
+                'options' => [
+                    'label' => 'Example label'
                 ],
-                [
-                    'spec' => [
-                        'name'       => 'anotherLabel',
-                        'options'    => ['label' => 'Another label'],
-                        'attributes' => [
-                            'id'          => 'formGroupExampleInput2',
-                            'placeholder' => 'Another input placeholder',
-                        ],
-                    ],
+                'attributes' => [
+                    'id' => 'formGroupExampleInput',
+                    'placeholder' => 'Example input placeholder',
                 ],
             ],
-        ]
-    )
-);
-
+        ],
+        [
+            'spec' => [
+                'name' => 'anotherLabel',
+                'options' => [
+                    'label' => 'Another label'
+                ],
+                'attributes' => [
+                    'id' => 'formGroupExampleInput2',
+                    'placeholder' => 'Another input placeholder',
+                ],
+            ],
+        ],
+    ],
+]));
 ```
 
 </TabItem>
@@ -99,36 +98,35 @@ echo $this->form(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->form(
-    $factory->create(
+echo $this->form($factory->create([
+    'type' => 'form',
+    'elements' => [
         [
-            'type'     => 'form',
-            'elements' => [
-                [
-                    'spec' => [
-                        'name'       => 'firstName',
-                        'options'    => [    'column' => true    ],
-                        'attributes' => [
-                            'aria-label'  => 'First name',
-                            'placeholder' => 'First name',
-                        ],
-                    ],
+            'spec' => [
+                'name' => 'firstName',
+                'options' => [
+                    'column' => true,
                 ],
-                [
-                    'spec' => [
-                        'name'       => 'lastName',
-                        'options'    => [    'column' => true    ],
-                        'attributes' => [
-                            'aria-label'  => 'Last name',
-                            'placeholder' => 'Last name',
-                        ],
-                    ],
+                'attributes' => [
+                    'aria-label' => 'First name',
+                    'placeholder' => 'First name',
                 ],
             ],
-        ]
-    )
-);
-
+        ],
+        [
+            'spec' => [
+                'name' => 'lastName',
+                'options' => [
+                    'column' => true,
+                ],
+                'attributes' => [
+                    'aria-label' => 'Last name',
+                    'placeholder' => 'Last name',
+                ],
+            ],
+        ],
+    ],
+]));
 ```
 
 </TabItem>
@@ -204,167 +202,168 @@ echo $this->form(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->form(
-    $factory->create(
+echo $this->form($factory->create([
+    'type' => 'form',
+    'options' => [
+        'gutter' => 3,
+    ],
+    'elements' => [
         [
-            'type'     => 'form',
-            'options'  => [    'gutter' => 3    ],
-            'elements' => [
-                [
-                    'spec' => [
-                        'name'       => 'firstName',
-                        'options'    => [    'column' => true    ],
-                        'attributes' => [
-                            'aria-label'  => 'First name',
-                            'placeholder' => 'First name',
-                        ],
-                    ],
+            'spec' => [
+                'name' => 'firstName',
+                'options' => [
+                    'column' => true,
                 ],
-                [
-                    'spec' => [
-                        'name'       => 'lastName',
-                        'options'    => [    'column' => true    ],
-                        'attributes' => [
-                            'aria-label'  => 'Last name',
-                            'placeholder' => 'Last name',
-                        ],
-                    ],
+                'attributes' => [
+                    'aria-label' => 'First name',
+                    'placeholder' => 'First name',
                 ],
             ],
-        ]
-    )
-);
+        ],
+        [
+            'spec' => [
+                'name' => 'lastName',
+                'options' => [
+                    'column' => true,
+                ],
+                'attributes' => [
+                    'aria-label' => 'Last name',
+                    'placeholder' => 'Last name',
+                ],
+            ],
+        ],
+    ],
+]));
 
 // More complex layouts can also be created with the grid system
-echo $this->form(
-    $factory->create(
+echo $this->form($factory->create([
+    'type' => 'form',
+    'options' => [
+        'gutter' => 3,
+    ],
+    'elements' => [
         [
-            'type'     => 'form',
-            'options'  => [    'gutter' => 3    ],
-            'elements' => [
-                [
-                    'spec' => [
-                        'name'       => 'email',
-                        'options'    => [
-                            'column' => 'md-6',
-                            'label'  => 'Email',
-                        ],
-                        'attributes' => [
-                            'type' => 'email',
-                            'id'   => 'inputEmail4',
-                        ],
-                    ],
+            'spec' => [
+                'name' => 'email',
+                'options' => [
+                    'column' => 'md-6',
+                    'label' => 'Email'
                 ],
-                [
-                    'spec' => [
-                        'name'       => 'password',
-                        'options'    => [
-                            'column' => 'md-6',
-                            'label'  => 'Password',
-                        ],
-                        'attributes' => [
-                            'type' => 'password',
-                            'id'   => 'inputPassword4',
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'address1',
-                        'options'    => [
-                            'column' => 12,
-                            'label'  => 'Address',
-                        ],
-                        'attributes' => [
-                            'type'        => 'text',
-                            'placeholder' => '1234 Main St',
-                            'id'          => 'inputAddress',
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'address2',
-                        'options'    => [
-                            'column' => 12,
-                            'label'  => 'Address 2',
-                        ],
-                        'attributes' => [
-                            'type'        => 'text',
-                            'placeholder' => 'Apartment, studio, or floor',
-                            'id'          => 'inputAddress2',
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'city',
-                        'options'    => [
-                            'column' => 'md-6',
-                            'label'  => 'City',
-                        ],
-                        'attributes' => [
-                            'type' => 'text',
-                            'id'   => 'inputCity',
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'state',
-                        'type'       => 'select',
-                        'options'    => [
-                            'column'        => 'md-4',
-                            'label'         => 'State',
-                            'empty_option'  => 'Choose...',
-                            'value_options' => ['...'],
-                        ],
-                        'attributes' => [
-                            'id'    => 'inputState',
-                            'value' => '',
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'zip',
-                        'options'    => [
-                            'column' => 'md-2',
-                            'label'  => 'Zip',
-                        ],
-                        'attributes' => [
-                            'type' => 'text',
-                            'id'   => 'inputZip',
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'checked-checkbox',
-                        'type'       => 'checkbox',
-                        'options'    => [
-                            'column' => 12,
-                            'label'  => 'Check me out',
-                        ],
-                        'attributes' => [    'id' => 'gridCheck'    ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'    => 'submit',
-                        'type'    => 'submit',
-                        'options' => [
-                            'column'  => 12,
-                            'label'   => 'Sign in',
-                            'variant' => 'primary',
-                        ],
-                    ],
+                'attributes' => [
+                    'type' => 'email',
+                    'id' => 'inputEmail4'
                 ],
             ],
-        ]
-    )
-);
-
+        ],
+        [
+            'spec' => [
+                'name' => 'password',
+                'options' => [
+                    'column' => 'md-6',
+                    'label' => 'Password'
+                ],
+                'attributes' => [
+                    'type' => 'password',
+                    'id' => 'inputPassword4'
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'address1',
+                'options' => [
+                    'column' => 12,
+                    'label' => 'Address'
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'placeholder' => '1234 Main St',
+                    'id' => 'inputAddress'
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'address2',
+                'options' => [
+                    'column' => 12,
+                    'label' => 'Address 2'
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'placeholder' => 'Apartment, studio, or floor',
+                    'id' => 'inputAddress2'
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'city',
+                'options' => [
+                    'column' => 'md-6',
+                    'label' => 'City'
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'inputCity'
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'state',
+                'type' => 'select',
+                'options' => [
+                    'column' => 'md-4',
+                    'label' => 'State',
+                    'empty_option' => 'Choose...',
+                    'value_options' => ['...']
+                ],
+                'attributes' => [
+                    'id' => 'inputState',
+                    'value' => '',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'zip',
+                'options' => [
+                    'column' => 'md-2',
+                    'label' => 'Zip'
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'inputZip'
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'checked-checkbox',
+                'type' => 'checkbox',
+                'options' => [
+                    'column' => 12,
+                    'label' => 'Check me out',
+                ],
+                'attributes' => [
+                    'id' => 'gridCheck',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'submit',
+                'type' => 'submit',
+                'options' => [
+                    'column' => 12,
+                    'label' => 'Sign in',
+                    'variant' => 'primary',
+                ],
+            ],
+        ],
+    ],
+]));
 ```
 
 </TabItem>
@@ -426,102 +425,99 @@ echo $this->form(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->form(
-    $factory->create(
+echo $this->form($factory->create([
+    'type' => 'form',
+    'options' => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL],
+    'elements' => [
         [
-            'type'     => 'form',
-            'options'  => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL],
-            'elements' => [
-                [
-                    'spec' => [
-                        'name'       => 'email',
-                        'options'    => [
-                            'label'  => 'Email',
-                            'column' => 'sm-10',
-                        ],
-                        'attributes' => [
-                            'type' => 'email',
-                            'id'   => 'inputEmail3',
-                        ],
-                    ],
+            'spec' => [
+                'name' => 'email',
+                'options' => [
+                    'label' => 'Email',
+                    'column' => 'sm-10',
                 ],
-                [
-                    'spec' => [
-                        'name'       => 'password',
-                        'options'    => [
-                            'label'  => 'Password',
-                            'column' => 'sm-10',
-                        ],
-                        'attributes' => [
-                            'type' => 'password',
-                            'id'   => 'inputPassword3',
-                        ],
-                    ],
+                'attributes' => [
+                    'type' => 'email',
+                    'id' => 'inputEmail3',
                 ],
-                [
-                    'spec' => [
-                        'type'     => 'fieldset',
-                        'options'  => [
-                            'label'            => 'Radios',
-                            'label_attributes' => ['class' => 'col-form-label pt-0'],
-                            'column'           => 'sm-10',
-                        ],
-                        'elements' => [
-                            [
-                                'spec' => [
-                                    'type'       => 'radio',
-                                    'name'       => 'gridRadios',
-                                    'options'    => [
-                                        'column'        => 'sm-10',
-                                        'value_options' => [
-                                            [
-                                                'label'      => 'First radio',
-                                                'attributes' => ['id' => 'gridRadios1'],
-                                                'value'      => 'option1',
-                                            ],
-                                            [
-                                                'label'      => 'Second radio',
-                                                'attributes' => ['id' => 'gridRadios2'],
-                                                'value'      => 'option2',
-                                            ],
-                                            [
-                                                'label'      => 'Third disabled radio',
-                                                'disabled'   => true,
-                                                'attributes' => ['id' => 'gridRadios3'],
-                                                'value'      => 'option3',
-                                            ],
-                                        ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'password',
+                'options' => [
+                    'label' => 'Password',
+                    'column' => 'sm-10',
+                ],
+                'attributes' => [
+                    'type' => 'password',
+                    'id' => 'inputPassword3',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'fieldset',
+                'options' => [
+                    'label' => 'Radios',
+                    'label_attributes' => ['class' => 'col-form-label pt-0'],
+                    'column' => 'sm-10',
+                ],
+                'elements' => [
+                    [
+                        'spec' => [
+                            'type' => 'radio',
+                            'name' => 'gridRadios',
+                            'options' => [
+                                'column' => 'sm-10',
+                                'value_options' => [
+                                    [
+                                        'label' => 'First radio',
+                                        'attributes' => ['id' => 'gridRadios1'],
+                                        'value' => 'option1',
                                     ],
-                                    'attributes' => [    'value' => 'option1'    ],
+                                    [
+                                        'label' => 'Second radio',
+                                        'attributes' => ['id' => 'gridRadios2'],
+                                        'value' => 'option2',
+                                    ],
+                                    [
+                                        'label' => 'Third disabled radio',
+                                        'disabled' => true,
+                                        'attributes' => ['id' => 'gridRadios3'],
+                                        'value' => 'option3',
+                                    ],
                                 ],
+                            ],
+                            'attributes' => [
+                                'value' => 'option1',
                             ],
                         ],
                     ],
                 ],
-                [
-                    'spec' => [
-                        'type'       => 'checkbox',
-                        'options'    => [
-                            'label'  => 'Example checkbox',
-                            'column' => 'sm-10',
-                        ],
-                        'attributes' => ['id' => 'gridCheck1'],
-                    ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'checkbox',
+                'options' => [
+                    'label' => 'Example checkbox',
+                    'column' => 'sm-10',
                 ],
-                [
-                    'spec' => [
-                        'type'    => 'submit',
-                        'options' => [
-                            'label'   => 'Sign in',
-                            'variant' => 'primary',
-                        ],
-                    ],
+                'attributes' => ['id' => 'gridCheck1'],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'submit',
+                'options' => [
+                    'label' => 'Sign in',
+                    'variant' => 'primary',
                 ],
             ],
-        ]
-    )
-);
-
+        ],
+    ]
+]));
 ```
 
 </TabItem>
@@ -563,61 +559,56 @@ echo $this->form(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->form(
-    $factory->create(
+echo $this->form($factory->create([
+    'type' => 'form',
+    'options' => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL],
+    'elements' => [
         [
-            'type'     => 'form',
-            'options'  => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL],
-            'elements' => [
-                [
-                    'spec' => [
-                        'name'       => 'emailSm',
-                        'options'    => [
-                            'label'  => 'Email',
-                            'column' => 'sm-10',
-                            'size'   => 'sm',
-                        ],
-                        'attributes' => [
-                            'type'        => 'email',
-                            'id'          => 'colFormLabelSm',
-                            'placeholder' => 'col-form-label-sm',
-                        ],
-                    ],
+            'spec' => [
+                'name' => 'emailSm',
+                'options' => [
+                    'label' => 'Email',
+                    'column' => 'sm-10',
+                    'size' => 'sm',
                 ],
-                [
-                    'spec' => [
-                        'name'       => 'email',
-                        'options'    => [
-                            'label'  => 'Email',
-                            'column' => 'sm-10',
-                        ],
-                        'attributes' => [
-                            'type'        => 'email',
-                            'id'          => 'colFormLabel',
-                            'placeholder' => 'col-form-label',
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'emailLg',
-                        'options'    => [
-                            'label'  => 'Email',
-                            'column' => 'sm-10',
-                            'size'   => 'lg',
-                        ],
-                        'attributes' => [
-                            'type'        => 'email',
-                            'id'          => 'colFormLabelLg',
-                            'placeholder' => 'col-form-label-lg',
-                        ],
-                    ],
+                'attributes' => [
+                    'type' => 'email',
+                    'id' => 'colFormLabelSm',
+                    'placeholder' => 'col-form-label-sm',
                 ],
             ],
-        ]
-    )
-);
-
+        ],
+        [
+            'spec' => [
+                'name' => 'email',
+                'options' => [
+                    'label' => 'Email',
+                    'column' => 'sm-10',
+                ],
+                'attributes' => [
+                    'type' => 'email',
+                    'id' => 'colFormLabel',
+                    'placeholder' => 'col-form-label',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'emailLg',
+                'options' => [
+                    'label' => 'Email',
+                    'column' => 'sm-10',
+                    'size' => 'lg',
+                ],
+                'attributes' => [
+                    'type' => 'email',
+                    'id' => 'colFormLabelLg',
+                    'placeholder' => 'col-form-label-lg',
+                ],
+            ],
+        ],
+    ],
+]));
 ```
 
 </TabItem>
@@ -652,50 +643,53 @@ echo $this->form(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->form(
-    $factory->create(
+echo $this->form($factory->create([
+    'type' => 'form',
+    'options' => [
+        'gutter' => 3,
+    ],
+    'elements' => [
         [
-            'type'     => 'form',
-            'options'  => [    'gutter' => 3    ],
-            'elements' => [
-                [
-                    'spec' => [
-                        'name'       => 'city',
-                        'options'    => [    'column' => 'sm-7'    ],
-                        'attributes' => [
-                            'type'        => 'text',
-                            'placeholder' => 'City',
-                            'aria-label'  => 'City',
-                        ],
-                    ],
+            'spec' => [
+                'name' => 'city',
+                'options' => [
+                    'column' => 'sm-7',
                 ],
-                [
-                    'spec' => [
-                        'name'       => 'state',
-                        'options'    => [    'column' => 'sm'    ],
-                        'attributes' => [
-                            'type'        => 'text',
-                            'placeholder' => 'State',
-                            'aria-label'  => 'State',
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'zip',
-                        'options'    => [    'column' => 'sm'    ],
-                        'attributes' => [
-                            'type'        => 'text',
-                            'placeholder' => 'Zip',
-                            'aria-label'  => 'Zip',
-                        ],
-                    ],
+                'attributes' => [
+                    'type' => 'text',
+                    'placeholder' => 'City',
+                    'aria-label' => 'City',
                 ],
             ],
-        ]
-    )
-);
-
+        ],
+        [
+            'spec' => [
+                'name' => 'state',
+                'options' => [
+                    'column' => 'sm',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'placeholder' => 'State',
+                    'aria-label' => 'State',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'zip',
+                'options' => [
+                    'column' => 'sm',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'placeholder' => 'Zip',
+                    'aria-label' => 'Zip',
+                ],
+            ],
+        ],
+    ]
+]));
 ```
 
 </TabItem>
@@ -784,179 +778,178 @@ echo $this->form(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->form(
-    $factory->create(
+echo $this->form($factory->create([
+    'type' => 'form',
+    'options' => [
+        'row_class' => 'row gy-2 gx-3 align-items-center',
+    ],
+    'elements' => [
         [
-            'type'     => 'form',
-            'options'  => [    'row_class' => 'row gy-2 gx-3 align-items-center'    ],
-            'elements' => [
-                [
-                    'spec' => [
-                        'name'       => 'name',
-                        'options'    => [
-                            'label'      => 'Name',
-                            'show_label' => false,
-                            'column'     => 'auto',
-                        ],
-                        'attributes' => [
-                            'type'        => 'text',
-                            'id'          => 'autoSizingInput',
-                            'placeholder' => 'Jane Doe',
-                        ],
-                    ],
+            'spec' => [
+                'name' => 'name',
+                'options' => [
+                    'label' => 'Name',
+                    'show_label' => false,
+                    'column' => 'auto',
                 ],
-                [
-                    'spec' => [
-                        'name'       => 'username',
-                        'options'    => [
-                            'label'          => 'Username',
-                            'show_label'     => false,
-                            'column'         => 'auto',
-                            'add_on_prepend' => '@',
-                        ],
-                        'attributes' => [
-                            'type'        => 'text',
-                            'id'          => 'autoSizingInputGroup',
-                            'placeholder' => 'Username',
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'preference',
-                        'type'       => 'select',
-                        'options'    => [
-                            'label'         => 'Preference',
-                            'show_label'    => false,
-                            'column'        => 'auto',
-                            'empty_option'  => 'Choose...',
-                            'value_options' => [
-                                1 => 'One',
-                                2 => 'Two',
-                                3 => 'Three',
-                            ],
-                        ],
-                        'attributes' => [
-                            'id'    => 'autoSizingSelect',
-                            'value' => '',
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'type'       => 'checkbox',
-                        'name'       => 'remember_me',
-                        'options'    => [
-                            'label'              => 'Remember me',
-                            'use_hidden_element' => false,
-                            'column'             => 'auto',
-                        ],
-                        'attributes' => [    'id' => 'autoSizingCheck'    ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'type'    => 'submit',
-                        'options' => [
-                            'label'   => 'Submit',
-                            'variant' => 'primary',
-                            'column'  => 'auto',
-                        ],
-                    ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'autoSizingInput',
+                    'placeholder' => 'Jane Doe',
                 ],
             ],
-        ]
-    )
-);
+        ],
+        [
+            'spec' => [
+                'name' => 'username',
+                'options' => [
+                    'label' => 'Username',
+                    'show_label' => false,
+                    'column' => 'auto',
+                    'add_on_prepend' => '@',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'autoSizingInputGroup',
+                    'placeholder' => 'Username',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'preference',
+                'type' => 'select',
+                'options' => [
+                    'label' => 'Preference',
+                    'show_label' => false,
+                    'column' => 'auto',
+                    'empty_option' => 'Choose...',
+                    'value_options' => [
+                        1 => 'One',
+                        2 => 'Two',
+                        3 => 'Three',
+                    ],
+                ],
+                'attributes' => [
+                    'id' => 'autoSizingSelect',
+                    'value' => '',
+                ],
+            ]
+        ],
+        [
+            'spec' => [
+                'type' => 'checkbox',
+                'name' => 'remember_me',
+                'options' => [
+                    'label' => 'Remember me',
+                    'use_hidden_element' => false,
+                    'column' => 'auto',
+                ],
+                'attributes' => [
+                    'id' => 'autoSizingCheck',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'submit',
+                'options' => [
+                    'label' => 'Submit',
+                    'variant' => 'primary',
+                    'column' => 'auto',
+                ],
+            ],
+        ],
+    ],
+]));
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 // You can then remix that once again with size-specific column classes.
-echo $this->form(
-    $factory->create(
+echo $this->form($factory->create([
+    'type' => 'form',
+    'options' => [
+        'row_class' => 'row gx-3 gy-2 align-items-center',
+    ],
+    'elements' => [
         [
-            'type'     => 'form',
-            'options'  => [    'row_class' => 'row gx-3 gy-2 align-items-center'    ],
-            'elements' => [
-                [
-                    'spec' => [
-                        'name'       => 'name',
-                        'options'    => [
-                            'label'      => 'Name',
-                            'show_label' => false,
-                            'column'     => 'sm-3',
-                        ],
-                        'attributes' => [
-                            'type'        => 'text',
-                            'id'          => 'specificSizeInputName',
-                            'placeholder' => 'Jane Doe',
-                        ],
-                    ],
+            'spec' => [
+                'name' => 'name',
+                'options' => [
+                    'label' => 'Name',
+                    'show_label' => false,
+                    'column' => 'sm-3',
                 ],
-                [
-                    'spec' => [
-                        'name'       => 'username',
-                        'options'    => [
-                            'label'          => 'Username',
-                            'show_label'     => false,
-                            'column'         => 'sm-3',
-                            'add_on_prepend' => '@',
-                        ],
-                        'attributes' => [
-                            'type'        => 'text',
-                            'id'          => 'specificSizeInputGroupUsername',
-                            'placeholder' => 'Username',
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'preference',
-                        'type'       => 'select',
-                        'options'    => [
-                            'label'         => 'Preference',
-                            'show_label'    => false,
-                            'column'        => 'sm-3',
-                            'empty_option'  => 'Choose...',
-                            'value_options' => [
-                                1 => 'One',
-                                2 => 'Two',
-                                3 => 'Three',
-                            ],
-                        ],
-                        'attributes' => [
-                            'id'    => 'specificSizeSelect',
-                            'value' => '',
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'type'       => 'checkbox',
-                        'name'       => 'remember_me',
-                        'options'    => [
-                            'label'              => 'Remember me',
-                            'use_hidden_element' => false,
-                            'column'             => 'auto',
-                        ],
-                        'attributes' => [    'id' => 'autoSizingCheck2'    ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'type'    => 'submit',
-                        'options' => [
-                            'label'   => 'Submit',
-                            'variant' => 'primary',
-                            'column'  => 'auto',
-                        ],
-                    ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'specificSizeInputName',
+                    'placeholder' => 'Jane Doe',
                 ],
             ],
-        ]
-    )
-);
-
+        ],
+        [
+            'spec' => [
+                'name' => 'username',
+                'options' => [
+                    'label' => 'Username',
+                    'show_label' => false,
+                    'column' => 'sm-3',
+                    'add_on_prepend' => '@',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'specificSizeInputGroupUsername',
+                    'placeholder' => 'Username',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'preference',
+                'type' => 'select',
+                'options' => [
+                    'label' => 'Preference',
+                    'show_label' => false,
+                    'column' => 'sm-3',
+                    'empty_option' => 'Choose...',
+                    'value_options' => [
+                        1 => 'One',
+                        2 => 'Two',
+                        3 => 'Three',
+                    ],
+                ],
+                'attributes' => [
+                    'id' => 'specificSizeSelect',
+                    'value' => '',
+                ],
+            ]
+        ],
+        [
+            'spec' => [
+                'type' => 'checkbox',
+                'name' => 'remember_me',
+                'options' => [
+                    'label' => 'Remember me',
+                    'use_hidden_element' => false,
+                    'column' => 'auto',
+                ],
+                'attributes' => [
+                    'id' => 'autoSizingCheck2',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'submit',
+                'options' => [
+                    'label' => 'Submit',
+                    'variant' => 'primary',
+                    'column' => 'auto',
+                ],
+            ],
+        ],
+    ],
+]));
 ```
 
 </TabItem>
@@ -1005,80 +998,77 @@ echo $this->form(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->form(
-    $factory->create(
+echo $this->form($factory->create([
+    'type' => 'form',
+    'options' => [
+        'layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE,
+        'column' => 'lg-auto',
+        'gutter' => 3,
+    ],
+    'elements' => [
         [
-            'type'     => 'form',
-            'options'  => [
-                'layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE,
-                'column' => 'lg-auto',
-                'gutter' => 3,
-            ],
-            'elements' => [
-                [
-                    'spec' => [
-                        'name'       => 'username',
-                        'options'    => [
-                            'label'          => 'Username',
-                            'show_label'     => false,
-                            'column'         => 12,
-                            'add_on_prepend' => '@',
-                        ],
-                        'attributes' => [
-                            'type'        => 'text',
-                            'id'          => 'inlineFormInputGroupUsername',
-                            'placeholder' => 'Username',
-                        ],
-                    ],
+            'spec' => [
+                'name' => 'username',
+                'options' => [
+                    'label' => 'Username',
+                    'show_label' => false,
+                    'column' => 12,
+                    'add_on_prepend' => '@',
                 ],
-                [
-                    'spec' => [
-                        'name'       => 'preference',
-                        'type'       => 'select',
-                        'options'    => [
-                            'label'         => 'Preference',
-                            'show_label'    => false,
-                            'column'        => 12,
-                            'empty_option'  => 'Choose...',
-                            'value_options' => [
-                                1 => 'One',
-                                2 => 'Two',
-                                3 => 'Three',
-                            ],
-                        ],
-                        'attributes' => [
-                            'id'    => 'inlineFormSelectPref',
-                            'value' => '',
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'type'       => 'checkbox',
-                        'name'       => 'remember_me',
-                        'options'    => [
-                            'label'              => 'Remember me',
-                            'use_hidden_element' => false,
-                            'column'             => 12,
-                        ],
-                        'attributes' => [    'id' => 'inlineFormCheck'    ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'type'    => 'submit',
-                        'options' => [
-                            'label'   => 'Submit',
-                            'variant' => 'primary',
-                            'column'  => 12,
-                        ],
-                    ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'inlineFormInputGroupUsername',
+                    'placeholder' => 'Username',
                 ],
             ],
-        ]
-    )
-);
-
+        ],
+        [
+            'spec' => [
+                'name' => 'preference',
+                'type' => 'select',
+                'options' => [
+                    'label' => 'Preference',
+                    'show_label' => false,
+                    'column' => 12,
+                    'empty_option' => 'Choose...',
+                    'value_options' => [
+                        1 => 'One',
+                        2 => 'Two',
+                        3 => 'Three',
+                    ],
+                ],
+                'attributes' => [
+                    'id' => 'inlineFormSelectPref',
+                    'value' => '',
+                ],
+            ]
+        ],
+        [
+            'spec' => [
+                'type' => 'checkbox',
+                'name' => 'remember_me',
+                'options' => [
+                    'label' => 'Remember me',
+                    'use_hidden_element' => false,
+                    'column' => 12,
+                ],
+                'attributes' => [
+                    'id' => 'inlineFormCheck',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'submit',
+                'options' => [
+                    'label' => 'Submit',
+                    'variant' => 'primary',
+                    'column' => 12,
+                ],
+            ],
+        ],
+    ],
+]));
 ```
 
 </TabItem>

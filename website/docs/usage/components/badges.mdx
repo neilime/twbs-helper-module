@@ -43,18 +43,17 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 <?php
 
 // H1
-echo '<h1>Example heading '.$this->badge('New').'</h1>';
+echo '<h1>Example heading ' . $this->badge('New') . '</h1>';
 // H2
-echo '<h2>Example heading '.$this->badge('New').'</h2>';
+echo '<h2>Example heading ' . $this->badge('New') . '</h2>';
 // H3
-echo '<h3>Example heading '.$this->badge('New').'</h3>';
+echo '<h3>Example heading ' . $this->badge('New') . '</h3>';
 // H4
-echo '<h4>Example heading '.$this->badge('New').'</h4>';
+echo '<h4>Example heading ' . $this->badge('New') . '</h4>';
 // H5
-echo '<h5>Example heading '.$this->badge('New').'</h5>';
+echo '<h5>Example heading ' . $this->badge('New') . '</h5>';
 // H6
-echo '<h6>Example heading '.$this->badge('New').'</h6>';
-
+echo '<h6>Example heading ' . $this->badge('New') . '</h6>';
 ```
 
 </TabItem>
@@ -78,19 +77,13 @@ echo '<h6>Example heading '.$this->badge('New').'</h6>';
 ```php
 <?php
 
-echo $this->formButton()->renderSpec(
-    [
-        'options' => [
-            'label'   => 'Notifications',
-            'badge'   => [
-                '4',
-                'secondary',
-            ],
-            'variant' => 'primary',
-        ],
-    ]
-);
-
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Notifications',
+        'badge' => ['4', 'secondary'],
+        'variant' => 'primary',
+    ],
+]);
 ```
 
 </TabItem>
@@ -122,44 +115,39 @@ echo $this->formButton()->renderSpec(
 ```php
 <?php
 
-echo $this->formButton()->renderSpec(
-    [
-        'options' => [
-            'label'   => 'Inbox',
-            'badge'   => [
-                '99+',
-                [
-                    'variant'        => 'danger',
-                    'positioned'     => true,
-                    'type'           => 'pill',
-                    'hidden_content' => 'unread messages',
-                ],
-            ],
-            'variant' => 'primary',
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Inbox',
+        'badge' => [
+            '99+',
+            [
+                'variant' => 'danger',
+                'positioned' => true,
+                'type' => 'pill',
+                'hidden_content' => 'unread messages',
+            ]
         ],
-    ]
-);
+        'variant' => 'primary',
+    ],
+]);
 
-echo PHP_EOL.'<br />';
+echo PHP_EOL . '<br />';
 
-echo $this->formButton()->renderSpec(
-    [
-        'options' => [
-            'label'   => 'Profile',
-            'badge'   => [
-                '',
-                [
-                    'variant'        => 'danger',
-                    'positioned'     => true,
-                    'type'           => 'pill',
-                    'hidden_content' => 'New alerts',
-                ],
-            ],
-            'variant' => 'primary',
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Profile',
+        'badge' => [
+            '',
+            [
+                'variant' => 'danger',
+                'positioned' => true,
+                'type' => 'pill',
+                'hidden_content' => 'New alerts',
+            ]
         ],
-    ]
-);
-
+        'variant' => 'primary',
+    ],
+]);
 ```
 
 </TabItem>
@@ -195,7 +183,6 @@ echo $this->badge('Warning', ['variant' => 'warning', 'text_variant' => 'dark'])
 echo $this->badge('Info', ['variant' => 'info', 'text_variant' => 'dark']);
 echo $this->badge('Light', ['variant' => 'light', 'text_variant' => 'dark']);
 echo $this->badge('Dark', 'dark');
-
 ```
 
 </TabItem>
@@ -229,30 +216,17 @@ echo $this->badge('Success', ['variant' => 'success', 'type' => 'pill']);
 echo $this->badge('Danger', ['variant' => 'danger', 'type' => 'pill']);
 echo $this->badge(
     'Warning',
-    [
-        'variant'      => 'warning',
-        'type'         => 'pill',
-        'text_variant' => 'dark',
-    ]
+    ['variant' => 'warning', 'type' => 'pill', 'text_variant' => 'dark']
 );
 echo $this->badge(
     'Info',
-    [
-        'variant'      => 'info',
-        'type'         => 'pill',
-        'text_variant' => 'dark',
-    ]
+    ['variant' => 'info', 'type' => 'pill', 'text_variant' => 'dark']
 );
 echo $this->badge(
     'Light',
-    [
-        'variant'      => 'light',
-        'type'         => 'pill',
-        'text_variant' => 'dark',
-    ]
+    ['variant' => 'light', 'type' => 'pill', 'text_variant' => 'dark']
 );
 echo $this->badge('Dark', ['variant' => 'dark', 'type' => 'pill']);
-
 ```
 
 </TabItem>

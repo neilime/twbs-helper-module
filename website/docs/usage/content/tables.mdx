@@ -55,39 +55,14 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 ```php
 <?php
 
-echo $this->table(
-    [
-        'head' => [
-            '#',
-            'First',
-            'Last',
-            'Handle',
-        ],
-        'body' => [
-            [
-                '1',
-                'Mark',
-                'Otto',
-                '@mdo',
-            ],
-            [
-                '2',
-                'Jacob',
-                'Thornton',
-                '@fat',
-            ],
-            [
-                '3',
-                [
-                    'data'       => 'Larry the Bird',
-                    'attributes' => ['colspan' => 2],
-                ],
-                '@twitter',
-            ],
-        ],
-    ]
-);
-
+echo $this->table([
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
 ```
 
 </TabItem>
@@ -164,87 +139,44 @@ echo $this->table(
 <?php
 
 // Use "variant" option to color tables, table rows or individual cells.
-echo $this->table(
-    [
-        'head' => [
-            'Class',
-            'Heading',
-            'Heading',
+echo $this->table([
+    'head' => ['Class', 'Heading', 'Heading'],
+    'body' => [
+        ['Default', 'Cell', 'Cell'],
+        [
+            'variant' => 'primary',
+            'cells' => ['Primary', 'Cell', 'Cell'],
         ],
-        'body' => [
-            [
-                'Default',
-                'Cell',
-                'Cell',
-            ],
-            [
-                'variant' => 'primary',
-                'cells'   => [
-                    'Primary',
-                    'Cell',
-                    'Cell',
-                ],
-            ],
-            [
-                'variant' => 'secondary',
-                'cells'   => [
-                    'Secondary',
-                    'Cell',
-                    'Cell',
-                ],
-            ],
-            [
-                'variant' => 'success',
-                'cells'   => [
-                    'Success',
-                    'Cell',
-                    'Cell',
-                ],
-            ],
-            [
-                'variant' => 'danger',
-                'cells'   => [
-                    'Danger',
-                    'Cell',
-                    'Cell',
-                ],
-            ],
-            [
-                'variant' => 'warning',
-                'cells'   => [
-                    'Warning',
-                    'Cell',
-                    'Cell',
-                ],
-            ],
-            [
-                'variant' => 'info',
-                'cells'   => [
-                    'Info',
-                    'Cell',
-                    'Cell',
-                ],
-            ],
-            [
-                'variant' => 'light',
-                'cells'   => [
-                    'Light',
-                    'Cell',
-                    'Cell',
-                ],
-            ],
-            [
-                'variant' => 'dark',
-                'cells'   => [
-                    'Dark',
-                    'Cell',
-                    'Cell',
-                ],
-            ],
+        [
+            'variant' => 'secondary',
+            'cells' => ['Secondary', 'Cell', 'Cell'],
         ],
-    ]
-);
-
+        [
+            'variant' => 'success',
+            'cells' => ['Success', 'Cell', 'Cell'],
+        ],
+        [
+            'variant' => 'danger',
+            'cells' => ['Danger', 'Cell', 'Cell'],
+        ],
+        [
+            'variant' => 'warning',
+            'cells' => ['Warning', 'Cell', 'Cell'],
+        ],
+        [
+            'variant' => 'info',
+            'cells' => ['Info', 'Cell', 'Cell'],
+        ],
+        [
+            'variant' => 'light',
+            'cells' => ['Light', 'Cell', 'Cell'],
+        ],
+        [
+            'variant' => 'dark',
+            'cells' => ['Dark', 'Cell', 'Cell'],
+        ],
+    ],
+]);
 ```
 
 </TabItem>
@@ -358,115 +290,43 @@ echo $this->table(
 <?php
 
 // Use "striped" option to add zebra-striping to any table row within the <tbody>.
-echo $this->table(
-    [
-        'striped' => true,
-        'head'    => [
-            '#',
-            'First',
-            'Last',
-            'Handle',
-        ],
-        'body'    => [
-            [
-                '1',
-                'Mark',
-                'Otto',
-                '@mdo',
-            ],
-            [
-                '2',
-                'Jacob',
-                'Thornton',
-                '@fat',
-            ],
-            [
-                '3',
-                [
-                    'data'       => 'Larry the Bird',
-                    'attributes' => ['colspan' => 2],
-                ],
-                '@twitter',
-            ],
-        ],
-    ]
-);
+echo $this->table([
+    'striped' => true,
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 // This option can also be added to table variants
-echo $this->table(
-    [
-        'striped' => true,
-        'variant' => 'dark',
-        'head'    => [
-            '#',
-            'First',
-            'Last',
-            'Handle',
-        ],
-        'body'    => [
-            [
-                '1',
-                'Mark',
-                'Otto',
-                '@mdo',
-            ],
-            [
-                '2',
-                'Jacob',
-                'Thornton',
-                '@fat',
-            ],
-            [
-                '3',
-                [
-                    'data'       => 'Larry the Bird',
-                    'attributes' => ['colspan' => 2],
-                ],
-                '@twitter',
-            ],
-        ],
-    ]
-);
 
-echo PHP_EOL.'<br/>';
+echo $this->table([
+    'striped' => true,
+    'variant' => 'dark',
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
 
-echo $this->table(
-    [
-        'striped' => true,
-        'variant' => 'success',
-        'head'    => [
-            '#',
-            'First',
-            'Last',
-            'Handle',
-        ],
-        'body'    => [
-            [
-                '1',
-                'Mark',
-                'Otto',
-                '@mdo',
-            ],
-            [
-                '2',
-                'Jacob',
-                'Thornton',
-                '@fat',
-            ],
-            [
-                '3',
-                [
-                    'data'       => 'Larry the Bird',
-                    'attributes' => ['colspan' => 2],
-                ],
-                '@twitter',
-            ],
-        ],
-    ]
-);
+echo PHP_EOL . '<br/>';
 
+echo $this->table([
+    'striped' => true,
+    'variant' => 'success',
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
 ```
 
 </TabItem>
@@ -576,115 +436,43 @@ echo $this->table(
 <?php
 
 // Use "hover" option to add zebra-striping to any table row within the <tbody>.
-echo $this->table(
-    [
-        'hover' => true,
-        'head'  => [
-            '#',
-            'First',
-            'Last',
-            'Handle',
-        ],
-        'body'  => [
-            [
-                '1',
-                'Mark',
-                'Otto',
-                '@mdo',
-            ],
-            [
-                '2',
-                'Jacob',
-                'Thornton',
-                '@fat',
-            ],
-            [
-                '3',
-                [
-                    'data'       => 'Larry the Bird',
-                    'attributes' => ['colspan' => 2],
-                ],
-                '@twitter',
-            ],
-        ],
-    ]
-);
+echo $this->table([
+    'hover' => true,
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
-echo $this->table(
-    [
-        'variant' => 'dark',
-        'hover'   => true,
-        'head'    => [
-            '#',
-            'First',
-            'Last',
-            'Handle',
-        ],
-        'body'    => [
-            [
-                '1',
-                'Mark',
-                'Otto',
-                '@mdo',
-            ],
-            [
-                '2',
-                'Jacob',
-                'Thornton',
-                '@fat',
-            ],
-            [
-                '3',
-                [
-                    'data'       => 'Larry the Bird',
-                    'attributes' => ['colspan' => 2],
-                ],
-                '@twitter',
-            ],
-        ],
-    ]
-);
+echo $this->table([
+    'variant' => 'dark',
+    'hover' => true,
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 // This option can also be combined with the striped option
-echo $this->table(
-    [
-        'hover'   => true,
-        'striped' => true,
-        'head'    => [
-            '#',
-            'First',
-            'Last',
-            'Handle',
-        ],
-        'body'    => [
-            [
-                '1',
-                'Mark',
-                'Otto',
-                '@mdo',
-            ],
-            [
-                '2',
-                'Jacob',
-                'Thornton',
-                '@fat',
-            ],
-            [
-                '3',
-                [
-                    'data'       => 'Larry the Bird',
-                    'attributes' => ['colspan' => 2],
-                ],
-                '@twitter',
-            ],
-        ],
-    ]
-);
 
+echo $this->table([
+    'hover' => true,
+    'striped' => true,
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
 ```
 
 </TabItem>
@@ -764,83 +552,34 @@ echo $this->table(
 <?php
 
 // Highlight a table row or cell by adding the "active" option.
-echo $this->table(
-    [
-        'head' => [
-            '#',
-            'First',
-            'Last',
-            'Handle',
+echo $this->table([
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['active' => true, 'cells' => ['1', 'Mark', 'Otto', '@mdo']],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        [
+            '3',
+            ['data' => 'Larry the Bird', 'active' => true, 'attributes' => ['colspan' => 2]],
+            '@twitter'
         ],
-        'body' => [
-            [
-                'active' => true,
-                'cells'  => [
-                    '1',
-                    'Mark',
-                    'Otto',
-                    '@mdo',
-                ],
-            ],
-            [
-                '2',
-                'Jacob',
-                'Thornton',
-                '@fat',
-            ],
-            [
-                '3',
-                [
-                    'data'       => 'Larry the Bird',
-                    'active'     => true,
-                    'attributes' => ['colspan' => 2],
-                ],
-                '@twitter',
-            ],
-        ],
-    ]
-);
+    ],
+]);
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
-echo $this->table(
-    [
-        'variant' => 'dark',
-        'head'    => [
-            '#',
-            'First',
-            'Last',
-            'Handle',
+echo $this->table([
+    'variant' => 'dark',
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['active' => true, 'cells' => ['1', 'Mark', 'Otto', '@mdo']],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        [
+            '3',
+            ['data' => 'Larry the Bird', 'active' => true, 'attributes' => ['colspan' => 2]],
+            '@twitter'
         ],
-        'body'    => [
-            [
-                'active' => true,
-                'cells'  => [
-                    '1',
-                    'Mark',
-                    'Otto',
-                    '@mdo',
-                ],
-            ],
-            [
-                '2',
-                'Jacob',
-                'Thornton',
-                '@fat',
-            ],
-            [
-                '3',
-                [
-                    'data'       => 'Larry the Bird',
-                    'active'     => true,
-                    'attributes' => ['colspan' => 2],
-                ],
-                '@twitter',
-            ],
-        ],
-    ]
-);
-
+    ],
+]);
 ```
 
 </TabItem>
@@ -924,77 +663,28 @@ echo $this->table(
 <?php
 
 // Add "bordered" option for borders on all sides of the table and cells
-echo $this->table(
-    [
-        'bordered' => true,
-        'head'     => [
-            '#',
-            'First',
-            'Last',
-            'Handle',
-        ],
-        'body'     => [
-            [
-                '1',
-                'Mark',
-                'Otto',
-                '@mdo',
-            ],
-            [
-                '2',
-                'Jacob',
-                'Thornton',
-                '@fat',
-            ],
-            [
-                '3',
-                [
-                    'data'       => 'Larry the Bird',
-                    'attributes' => ['colspan' => 2],
-                ],
-                '@twitter',
-            ],
-        ],
-    ]
-);
+echo $this->table([
+    'bordered' => true,
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 // "bordered" option can be a variant to change colors
-echo $this->table(
-    [
-        'bordered' => 'primary',
-        'head'     => [
-            '#',
-            'First',
-            'Last',
-            'Handle',
-        ],
-        'body'     => [
-            [
-                '1',
-                'Mark',
-                'Otto',
-                '@mdo',
-            ],
-            [
-                '2',
-                'Jacob',
-                'Thornton',
-                '@fat',
-            ],
-            [
-                '3',
-                [
-                    'data'       => 'Larry the Bird',
-                    'attributes' => ['colspan' => 2],
-                ],
-                '@twitter',
-            ],
-        ],
-    ]
-);
-
+echo $this->table([
+    'bordered' => 'primary',
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
 ```
 
 </TabItem>
@@ -1075,78 +765,29 @@ echo $this->table(
 
 
 // Add "borderless" option for a table without borders
-echo $this->table(
-    [
-        'borderless' => true,
-        'head'       => [
-            '#',
-            'First',
-            'Last',
-            'Handle',
-        ],
-        'body'       => [
-            [
-                '1',
-                'Mark',
-                'Otto',
-                '@mdo',
-            ],
-            [
-                '2',
-                'Jacob',
-                'Thornton',
-                '@fat',
-            ],
-            [
-                '3',
-                [
-                    'data'       => 'Larry the Bird',
-                    'attributes' => ['colspan' => 2],
-                ],
-                '@twitter',
-            ],
-        ],
-    ]
-);
+echo $this->table([
+    'borderless' => true,
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 // This option can also be combined with the "variant" option
-echo $this->table(
-    [
-        'borderless' => true,
-        'variant'    => 'dark',
-        'head'       => [
-            '#',
-            'First',
-            'Last',
-            'Handle',
-        ],
-        'body'       => [
-            [
-                '1',
-                'Mark',
-                'Otto',
-                '@mdo',
-            ],
-            [
-                '2',
-                'Jacob',
-                'Thornton',
-                '@fat',
-            ],
-            [
-                '3',
-                [
-                    'data'       => 'Larry the Bird',
-                    'attributes' => ['colspan' => 2],
-                ],
-                '@twitter',
-            ],
-        ],
-    ]
-);
-
+echo $this->table([
+    'borderless' => true,
+    'variant' => 'dark',
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
 ```
 
 </TabItem>
@@ -1226,78 +867,29 @@ echo $this->table(
 <?php
 
 // Add "size" option to make any table more compact by cutting all cell padding in half.
-echo $this->table(
-    [
-        'size' => 'sm',
-        'head' => [
-            '#',
-            'First',
-            'Last',
-            'Handle',
-        ],
-        'body' => [
-            [
-                '1',
-                'Mark',
-                'Otto',
-                '@mdo',
-            ],
-            [
-                '2',
-                'Jacob',
-                'Thornton',
-                '@fat',
-            ],
-            [
-                '3',
-                [
-                    'data'       => 'Larry the Bird',
-                    'attributes' => ['colspan' => 2],
-                ],
-                '@twitter',
-            ],
-        ],
-    ]
-);
+echo $this->table([
+    'size' => 'sm',
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 // This option can also be combined with the "variant" option
-echo $this->table(
-    [
-        'size'    => 'sm',
-        'variant' => 'dark',
-        'head'    => [
-            '#',
-            'First',
-            'Last',
-            'Handle',
-        ],
-        'body'    => [
-            [
-                '1',
-                'Mark',
-                'Otto',
-                '@mdo',
-            ],
-            [
-                '2',
-                'Jacob',
-                'Thornton',
-                '@fat',
-            ],
-            [
-                '3',
-                [
-                    'data'       => 'Larry the Bird',
-                    'attributes' => ['colspan' => 2],
-                ],
-                '@twitter',
-            ],
-        ],
-    ]
-);
-
+echo $this->table([
+    'size' => 'sm',
+    'variant' => 'dark',
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
 ```
 
 </TabItem>
@@ -1350,67 +942,55 @@ echo $this->table(
 <?php
 
 // Use the align option to re-align where needed
-echo $this->table(
-    [
-        'responsive' => true,
-        'align'      => 'middle',
-        'head'       => [
+echo $this->table([
+    'responsive' => true,
+    'align' => 'middle',
+    'head' => [
+        ['data' => 'Heading 1', 'attributes' => ['class' => 'w-25']],
+        ['data' => 'Heading 2', 'attributes' => ['class' => 'w-25']],
+        ['data' => 'Heading 3', 'attributes' => ['class' => 'w-25']],
+        ['data' => 'Heading 4', 'attributes' => ['class' => 'w-25']],
+    ],
+    'body' => [
+        [
             [
-                'data'       => 'Heading 1',
-                'attributes' => ['class' => 'w-25'],
+                'type' => \TwbsHelper\View\Helper\Table::TABLE_DATA,
+                'attributes' => ['scope' => null],
+                'data' => 'This cell inherits <code>vertical-align: middle;</code> from the table'
             ],
-            [
-                'data'       => 'Heading 2',
-                'attributes' => ['class' => 'w-25'],
-            ],
-            [
-                'data'       => 'Heading 3',
-                'attributes' => ['class' => 'w-25'],
-            ],
-            [
-                'data'       => 'Heading 4',
-                'attributes' => ['class' => 'w-25'],
-            ],
+            'This cell inherits <code>vertical-align: middle;</code> from the table',
+            'This cell inherits <code>vertical-align: middle;</code> from the table',
+            'This here is some placeholder text, intended to take up quite a bit of vertical space, ' .
+            'to demonstrate how the vertical alignment works in the preceding cells.'
         ],
-        'body'       => [
+        [
+            'align' => 'bottom',
             [
-                [
-                    'type'       => \TwbsHelper\View\Helper\Table::TABLE_DATA,
-                    'attributes' => ['scope' => null],
-                    'data'       => 'This cell inherits <code>vertical-align: middle;</code> from the table',
-                ],
-                'This cell inherits <code>vertical-align: middle;</code> from the table',
-                'This cell inherits <code>vertical-align: middle;</code> from the table',
-                'This here is some placeholder text, intended to take up quite a bit of vertical space, '.'to demonstrate how the vertical alignment works in the preceding cells.',
+                'type' => \TwbsHelper\View\Helper\Table::TABLE_DATA,
+                'attributes' => ['scope' => null],
+                'data' => 'This cell inherits <code>vertical-align: bottom;</code> from the table row'
             ],
-            [
-                'align' => 'bottom',
-                [
-                    'type'       => \TwbsHelper\View\Helper\Table::TABLE_DATA,
-                    'attributes' => ['scope' => null],
-                    'data'       => 'This cell inherits <code>vertical-align: bottom;</code> from the table row',
-                ],
-                'This cell inherits <code>vertical-align: bottom;</code> from the table row',
-                'This cell inherits <code>vertical-align: bottom;</code> from the table row',
-                'This here is some placeholder text, intended to take up quite a bit of vertical space, '.'to demonstrate how the vertical alignment works in the preceding cells.'
-            ],
-            [
-                [
-                    'type'       => \TwbsHelper\View\Helper\Table::TABLE_DATA,
-                    'attributes' => ['scope' => null],
-                    'data'       => 'This cell inherits <code>vertical-align: middle;</code> from the table',
-                ],
-                'This cell inherits <code>vertical-align: middle;</code> from the table',
-                [
-                    'align' => 'top',
-                    'data'  => 'This cell is aligned to the top.',
-                ],
-                'This here is some placeholder text, intended to take up quite a bit of vertical space, '.'to demonstrate how the vertical alignment works in the preceding cells.',
-            ],
+            'This cell inherits <code>vertical-align: bottom;</code> from the table row',
+            'This cell inherits <code>vertical-align: bottom;</code> from the table row',
+            'This here is some placeholder text, intended to take up quite a bit of vertical space, ' .
+            'to demonstrate how the vertical alignment works in the preceding cells.'
         ],
-    ]
-);
-
+        [
+            [
+                'type' => \TwbsHelper\View\Helper\Table::TABLE_DATA,
+                'attributes' => ['scope' => null],
+                'data' => 'This cell inherits <code>vertical-align: middle;</code> from the table'
+            ],
+            'This cell inherits <code>vertical-align: middle;</code> from the table',
+            [
+                'align' => 'top',
+                'data' => 'This cell is aligned to the top.',
+            ],
+            'This here is some placeholder text, intended to take up quite a bit of vertical space, ' .
+            'to demonstrate how the vertical alignment works in the preceding cells.'
+        ],
+    ],
+]);
 ```
 
 </TabItem>
@@ -1484,62 +1064,26 @@ echo $this->table(
 ```php
 <?php
 
-echo $this->table(
-    [
-        'striped'  => true,
-        'bordered' => true,
-        'head'     => [
-            '#',
-            'First',
-            'Last',
-            'Handle',
-        ],
-        'body'     => [
-            [
-                '1',
-                'Mark',
-                'Otto',
-                '@mdo',
-            ],
-            [
-                [
-                    'data'       => [
-                        'head' => [
-                            'Header',
-                            'Header',
-                            'Header',
-                        ],
-                        'body' => [
-                            [
-                                'A',
-                                'First',
-                                'Last',
-                            ],
-                            [
-                                'B',
-                                'First',
-                                'Last',
-                            ],
-                            [
-                                'C',
-                                'First',
-                                'Last',
-                            ],
-                        ],
-                    ],
-                    'attributes' => ['colspan' => 4],
+echo $this->table([
+    'striped' => true,
+    'bordered' => true,
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        [[
+            'data' => [
+                'head' => ['Header', 'Header', 'Header'],
+                'body' => [
+                    ['A', 'First', 'Last'],
+                    ['B', 'First', 'Last'],
+                    ['C', 'First', 'Last'],
                 ],
             ],
-            [
-                '3',
-                'Larry',
-                'the Bird',
-                '@twitter',
-            ],
-        ],
-    ]
-);
-
+            'attributes' => ['colspan' => 4]
+        ]],
+        ['3', 'Larry', 'the Bird', '@twitter'],
+    ],
+]);
 ```
 
 </TabItem>
@@ -1625,76 +1169,31 @@ echo $this->table(
 <?php
 
 // Use the option "variant" to make <thead>s appear light or dark gray.
-echo $this->table(
-    [
-        'head' => [
-            'variant' => 'light',
-            'cells'   => [
-                '#',
-                'First',
-                'Last',
-                'Handle',
-            ],
-        ],
-        'body' => [
-            [
-                '1',
-                'Mark',
-                'Otto',
-                '@mdo',
-            ],
-            [
-                '2',
-                'Jacob',
-                'Thornton',
-                '@fat',
-            ],
-            [
-                '3',
-                'Larry',
-                'the Bird',
-                '@twitter',
-            ],
-        ],
-    ]
-);
+echo $this->table([
+    'head' => [
+        'variant' => 'light',
+        'cells' => ['#', 'First', 'Last', 'Handle'],
+    ],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', 'Larry', 'the Bird', '@twitter'],
+    ],
+]);
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
-echo $this->table(
-    [
-        'head' => [
-            'variant' => 'dark',
-            'cells'   => [
-                '#',
-                'First',
-                'Last',
-                'Handle',
-            ],
-        ],
-        'body' => [
-            [
-                '1',
-                'Mark',
-                'Otto',
-                '@mdo',
-            ],
-            [
-                '2',
-                'Jacob',
-                'Thornton',
-                '@fat',
-            ],
-            [
-                '3',
-                'Larry',
-                'the Bird',
-                '@twitter',
-            ],
-        ],
-    ]
-);
-
+echo $this->table([
+    'head' => [
+        'variant' => 'dark',
+        'cells' => ['#', 'First', 'Last', 'Handle'],
+    ],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', 'Larry', 'the Bird', '@twitter'],
+    ],
+]);
 ```
 
 </TabItem>
@@ -1752,46 +1251,18 @@ echo $this->table(
 ```php
 <?php
 
-echo $this->table(
-    [
-        'head'   => [
-            'variant' => 'light',
-            'cells'   => [
-                '#',
-                'First',
-                'Last',
-                'Handle',
-            ],
-        ],
-        'body'   => [
-            [
-                '1',
-                'Mark',
-                'Otto',
-                '@mdo',
-            ],
-            [
-                '2',
-                'Jacob',
-                'Thornton',
-                '@fat',
-            ],
-            [
-                '3',
-                'Larry',
-                'the Bird',
-                '@twitter',
-            ],
-        ],
-        'footer' => [
-            'Footer',
-            'Footer',
-            'Footer',
-            'Footer',
-        ],
-    ]
-);
-
+echo $this->table([
+    'head' => [
+        'variant' => 'light',
+        'cells' => ['#', 'First', 'Last', 'Handle'],
+    ],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', 'Larry', 'the Bird', '@twitter'],
+    ],
+    'footer' => ['Footer', 'Footer', 'Footer', 'Footer'],
+]);
 ```
 
 </TabItem>
@@ -1872,77 +1343,28 @@ echo $this->table(
 ```php
 <?php
 
-echo $this->table(
-    [
-        'caption' => 'List of users',
-        'head'    => [
-            '#',
-            'First',
-            'Last',
-            'Handle',
-        ],
-        'body'    => [
-            [
-                '1',
-                'Mark',
-                'Otto',
-                '@mdo',
-            ],
-            [
-                '2',
-                'Jacob',
-                'Thornton',
-                '@fat',
-            ],
-            [
-                '3',
-                [
-                    'data'       => 'Larry the Bird',
-                    'attributes' => ['colspan' => 2],
-                ],
-                '@twitter',
-            ],
-        ],
-    ]
-);
+echo $this->table([
+    'caption' => 'List of users',
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 // You can also put the <caption> on the top of the table with the "captionTop" option
-echo $this->table(
-    [
-        'captionTop' => 'List of users',
-        'head'       => [
-            '#',
-            'First',
-            'Last',
-            'Handle',
-        ],
-        'body'       => [
-            [
-                '1',
-                'Mark',
-                'Otto',
-                '@mdo',
-            ],
-            [
-                '2',
-                'Jacob',
-                'Thornton',
-                '@fat',
-            ],
-            [
-                '3',
-                [
-                    'data'       => 'Larry the Bird',
-                    'attributes' => ['colspan' => 2],
-                ],
-                '@twitter',
-            ],
-        ],
-    ]
-);
-
+echo $this->table([
+    'captionTop' => 'List of users',
+    'head' => ['#', 'First', 'Last', 'Handle'],
+    'body' => [
+        ['1', 'Mark', 'Otto', '@mdo'],
+        ['2', 'Jacob', 'Thornton', '@fat'],
+        ['3', ['data' => 'Larry the Bird', 'attributes' => ['colspan' => 2]], '@twitter'],
+    ],
+]);
 ```
 
 </TabItem>
@@ -2022,62 +1444,18 @@ echo $this->table(
 ```php
 <?php
 
-echo $this->table(
-    [
-        'responsive' => true,
-        'head'       => [
-            '#',
-            'Heading',
-            'Heading',
-            'Heading',
-            'Heading',
-            'Heading',
-            'Heading',
-            'Heading',
-            'Heading',
-            'Heading',
-        ],
-        'body'       => [
-            [
-                '1',
-                'Cell',
-                'Cell',
-                'Cell',
-                'Cell',
-                'Cell',
-                'Cell',
-                'Cell',
-                'Cell',
-                'Cell',
-            ],
-            [
-                '2',
-                'Cell',
-                'Cell',
-                'Cell',
-                'Cell',
-                'Cell',
-                'Cell',
-                'Cell',
-                'Cell',
-                'Cell',
-            ],
-            [
-                '3',
-                'Cell',
-                'Cell',
-                'Cell',
-                'Cell',
-                'Cell',
-                'Cell',
-                'Cell',
-                'Cell',
-                'Cell',
-            ],
-        ],
-    ]
-);
-
+echo $this->table([
+    'responsive' => true,
+    'head' => [
+        '#', 'Heading', 'Heading', 'Heading', 'Heading',
+        'Heading', 'Heading', 'Heading', 'Heading', 'Heading',
+    ],
+    'body' => [
+        ['1', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell'],
+        ['2', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell'],
+        ['3', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell'],
+    ],
+]);
 ```
 
 </TabItem>
@@ -2383,66 +1761,22 @@ echo $this->table(
 
 foreach ([true, 'sm', 'md', 'lg', 'xl'] as $key => $size) {
     if ($key) {
-        echo PHP_EOL.'<br/>';
+        echo PHP_EOL . '<br/>';
     }
 
-    echo $this->table(
-        [
-            'responsive' => $size,
-            'head'       => [
-                '#',
-                'Heading',
-                'Heading',
-                'Heading',
-                'Heading',
-                'Heading',
-                'Heading',
-                'Heading',
-                'Heading',
-                'Heading',
-            ],
-            'body'       => [
-                [
-                    '1',
-                    'Cell',
-                    'Cell',
-                    'Cell',
-                    'Cell',
-                    'Cell',
-                    'Cell',
-                    'Cell',
-                    'Cell',
-                    'Cell',
-                ],
-                [
-                    '2',
-                    'Cell',
-                    'Cell',
-                    'Cell',
-                    'Cell',
-                    'Cell',
-                    'Cell',
-                    'Cell',
-                    'Cell',
-                    'Cell',
-                ],
-                [
-                    '3',
-                    'Cell',
-                    'Cell',
-                    'Cell',
-                    'Cell',
-                    'Cell',
-                    'Cell',
-                    'Cell',
-                    'Cell',
-                    'Cell',
-                ],
-            ],
-        ]
-    );
-}//end foreach
-
+    echo $this->table([
+        'responsive' => $size,
+        'head' => [
+            '#', 'Heading', 'Heading', 'Heading', 'Heading',
+            'Heading', 'Heading', 'Heading', 'Heading', 'Heading',
+        ],
+        'body' => [
+            ['1', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell'],
+            ['2', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell'],
+            ['3', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell', 'Cell'],
+        ],
+    ]);
+}
 ```
 
 </TabItem>

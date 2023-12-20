@@ -28,7 +28,6 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 <?php
 
 echo $this->lead('This is a lead paragraph. It stands out from regular paragraphs.');
-
 ```
 
 </TabItem>
@@ -51,13 +50,12 @@ echo $this->lead('This is a lead paragraph. It stands out from regular paragraph
 <?php
 
 // First abbreviation
-echo '<p>'.$this->abbreviation('attr', 'attribute').'</p>';
+echo '<p>' . $this->abbreviation('attr', 'attribute') . '</p>';
 
 echo PHP_EOL;
 
 // Second abbreviation
-echo '<p>'.$this->abbreviation('HTML', 'HyperText Markup Language', true).'</p>';
-
+echo '<p>' . $this->abbreviation('HTML', 'HyperText Markup Language', true) . '</p>';
 ```
 
 </TabItem>
@@ -83,7 +81,6 @@ echo '<p>'.$this->abbreviation('HTML', 'HyperText Markup Language', true).'</p>'
 echo $this->blockquote(
     'A well-known quote, contained in a blockquote element.'
 );
-
 ```
 
 </TabItem>
@@ -110,12 +107,11 @@ echo $this->blockquote(
 <?php
 
 echo $this->blockquote(
-// Content
+    // Content
     'A well-known quote, contained in a blockquote element.',
     // Footer content
     'Someone famous in <cite title="Source Title">Source Title</cite>'
 );
-
 ```
 
 </TabItem>
@@ -149,7 +145,7 @@ echo $this->blockquote(
 
 // Center
 echo $this->blockquote(
-// Content
+    // Content
     'A well-known quote, contained in a blockquote element.',
     // Footer content
     'Someone famous in <cite title="Source Title">Source Title</cite>',
@@ -157,14 +153,14 @@ echo $this->blockquote(
     [],
     [],
     // Class for figure wrapper
-    ['class' => 'text-center'],
+    ["class" => "text-center"],
 );
 
 echo PHP_EOL;
 
 // Right
 echo $this->blockquote(
-// Content
+    // Content
     'A well-known quote, contained in a blockquote element.',
     // Footer content
     'Someone famous in <cite title="Source Title">Source Title</cite>',
@@ -174,7 +170,6 @@ echo $this->blockquote(
     // Class for figure wrapper
     ['class' => 'text-end'],
 );
-
 ```
 
 </TabItem>
@@ -214,7 +209,7 @@ echo $this->blockquote(
 <?php
 
 echo $this->htmlList(
-// List items
+    // List items
     [
         'This is a list.',
         'It appears completely unstyled.',
@@ -230,7 +225,6 @@ echo $this->htmlList(
     // Set "unstyled" flag
     ['unstyled' => true],
 );
-
 ```
 
 </TabItem>
@@ -256,16 +250,11 @@ echo $this->htmlList(
 <?php
 
 echo $this->htmlList(
-// List items
-    [
-        'This is a list item.',
-        'And another one.',
-        'But they\'re displayed inline.',
-    ],
+    // List items
+    ['This is a list item.', 'And another one.', 'But they\'re displayed inline.'],
     // Set "inline" flag
     ['inline' => true],
 );
-
 ```
 
 </TabItem>
@@ -307,20 +296,26 @@ echo $this->htmlList(
 
 echo $this->descriptionList(
     [
-        'Description lists'           => 'A description list is perfect for defining terms.',
-        'Term'                        => '<p>Definition for the term.</p>'.'<p>And some more placeholder definition text.</p>',
-        'Another term'                => 'This definition is short, so no extra paragraphs or anything.',
+        'Description lists' => 'A description list is perfect for defining terms.',
+        'Term' => '<p>Definition for the term.</p>' .
+        '<p>And some more placeholder definition text.</p>',
+        'Another term' => 'This definition is short, so no extra paragraphs or anything.',
         'Truncated term is truncated' => [
-            'term'   => [    'class' => 'text-truncate'    ],
+            'term' => [
+                'class' => 'text-truncate',
+            ],
             'detail' => 'This can be useful when space is tight. Adds an ellipsis at the end.',
         ],
-        'Nesting'                     => [
+        'Nesting' => [
             'detail' => [
                 'data' => [
                     'Nested definition list' => [
-                        'term'   => [    'column' => 'sm-4'    ],
+                        'term' => [
+                            'column' => 'sm-4',
+                        ],
                         'detail' => [
-                            'data'   => 'I heard you like definition lists. '.'Let me put a definition list inside your definition list.',
+                            'data' => 'I heard you like definition lists. ' .
+                            'Let me put a definition list inside your definition list.',
                             'column' => 'sm-8',
                         ],
                     ],
@@ -329,7 +324,6 @@ echo $this->descriptionList(
         ],
     ],
 );
-
 ```
 
 </TabItem>

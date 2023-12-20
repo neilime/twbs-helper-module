@@ -37,40 +37,33 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 $factory = new \Laminas\Form\Factory();
 
 // Default checkbox
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'default-checkbox',
-            'type'       => 'checkbox',
-            'options'    => [
-                'label'      => 'Default checkbox',
-                'form_group' => false,
-            ],
-            'attributes' => [    'id' => 'flexCheckDefault'    ],
-        ]
-    )
-);
+echo $this->formRow($factory->create([
+    'name' => 'default-checkbox',
+    'type' => 'checkbox',
+    'options' => [
+        'label' => 'Default checkbox',
+        'form_group' => false,
+    ],
+    'attributes' => [
+        'id' => 'flexCheckDefault',
+    ],
+]));
 
-echo PHP_EOL;
+echo  PHP_EOL;
 
 // Checked checkbox
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'checked-checkbox',
-            'type'       => 'checkbox',
-            'options'    => [
-                'label'      => 'Checked checkbox',
-                'form_group' => false,
-            ],
-            'attributes' => [
-                'id'      => 'flexCheckChecked',
-                'checked' => true,
-            ],
-        ]
-    )
-);
-
+echo $this->formRow($factory->create([
+    'name' => 'checked-checkbox',
+    'type' => 'checkbox',
+    'options' => [
+        'label' => 'Checked checkbox',
+        'form_group' => false,
+    ],
+    'attributes' => [
+        'id' => 'flexCheckChecked',
+        'checked' => true,
+    ],
+]));
 ```
 
 </TabItem>
@@ -96,22 +89,19 @@ echo $this->formRow(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'indeterminate-checkbox',
-            'type'       => 'checkbox',
-            'options'    => [
-                'label'              => 'Indeterminate checkbox',
-                'use_hidden_element' => false,
-                'form_group'         => false,
-                'checked_value'      => '',
-            ],
-            'attributes' => [    'id' => 'flexCheckIndeterminate'    ],
-        ]
-    )
-);
-
+echo $this->formRow($factory->create([
+    'name' => 'indeterminate-checkbox',
+    'type' => 'checkbox',
+    'options' => [
+        'label' => 'Indeterminate checkbox',
+        'use_hidden_element' => false,
+        'form_group' => false,
+        'checked_value' => "",
+    ],
+    'attributes' => [
+        'id' => 'flexCheckIndeterminate',
+    ],
+]));
 ```
 
 </TabItem>
@@ -142,44 +132,35 @@ echo $this->formRow(
 $factory = new \Laminas\Form\Factory();
 
 // Disabled checkbox
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'default-checkbox',
-            'type'       => 'checkbox',
-            'options'    => [
-                'label'      => 'Disabled checkbox',
-                'form_group' => false,
-            ],
-            'attributes' => [
-                'id'       => 'flexCheckDisabled',
-                'disabled' => true,
-            ],
-        ]
-    )
-);
+echo $this->formRow($factory->create([
+    'name' => 'default-checkbox',
+    'type' => 'checkbox',
+    'options' => [
+        'label' => 'Disabled checkbox',
+        'form_group' => false,
+    ],
+    'attributes' => [
+        'id' => 'flexCheckDisabled',
+        'disabled' => true,
+    ],
+]));
 
-echo PHP_EOL;
+echo  PHP_EOL;
 
 // Disabled checked checkbox
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'checked-checkbox',
-            'type'       => 'checkbox',
-            'options'    => [
-                'label'      => 'Disabled checked checkbox',
-                'form_group' => false,
-            ],
-            'attributes' => [
-                'id'       => 'flexCheckCheckedDisabled',
-                'checked'  => true,
-                'disabled' => true,
-            ],
-        ]
-    )
-);
-
+echo $this->formRow($factory->create([
+    'name' => 'checked-checkbox',
+    'type' => 'checkbox',
+    'options' => [
+        'label' => 'Disabled checked checkbox',
+        'form_group' => false,
+    ],
+    'attributes' => [
+        'id' => 'flexCheckCheckedDisabled',
+        'checked' => true,
+        'disabled' => true,
+    ],
+]));
 ```
 
 </TabItem>
@@ -209,31 +190,28 @@ echo $this->formRow(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'flexRadioDefault',
-            'type'       => 'radio',
-            'options'    => [
-                'form_group'    => false,
-                'value_options' => [
-                    [
-                        'label'      => 'Default radio',
-                        'value'      => 'option1',
-                        'attributes' => ['id' => 'flexRadioDefault1'],
-                    ],
-                    [
-                        'label'      => 'Default checked radio',
-                        'value'      => 'option2',
-                        'attributes' => ['id' => 'flexRadioDefault2'],
-                    ],
-                ],
+echo $this->formRow($factory->create([
+    'name' => 'flexRadioDefault',
+    'type' => 'radio',
+    'options' => [
+        'form_group' => false,
+        'value_options' => [
+            [
+                'label' => 'Default radio',
+                'value' => 'option1',
+                'attributes' => ['id' => 'flexRadioDefault1'],
             ],
-            'attributes' => [    'value' => 'option2'    ],
-        ]
-    )
-);
-
+            [
+                'label' => 'Default checked radio',
+                'value' => 'option2',
+                'attributes' => ['id' => 'flexRadioDefault2'],
+            ],
+        ],
+    ],
+    'attributes' => [
+        'value' => 'option2',
+    ],
+]));
 ```
 
 </TabItem>
@@ -263,34 +241,29 @@ echo $this->formRow(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'flexRadioDisabled',
-            'type'       => 'radio',
-            'options'    => [
-                'form_group'    => false,
-                'value_options' => [
-                    [
-                        'label'      => 'Default radio',
-                        'value'      => 'option1',
-                        'attributes' => ['id' => 'flexRadioDisabled'],
-                    ],
-                    [
-                        'label'      => 'Default checked radio',
-                        'value'      => 'option2',
-                        'attributes' => ['id' => 'flexRadioCheckedDisabled'],
-                    ],
-                ],
+echo $this->formRow($factory->create([
+    'name' => 'flexRadioDisabled',
+    'type' => 'radio',
+    'options' => [
+        'form_group' => false,
+        'value_options' => [
+            [
+                'label' => 'Default radio',
+                'value' => 'option1',
+                'attributes' => ['id' => 'flexRadioDisabled'],
             ],
-            'attributes' => [
-                'value'    => 'option2',
-                'disabled' => true,
+            [
+                'label' => 'Default checked radio',
+                'value' => 'option2',
+                'attributes' => ['id' => 'flexRadioCheckedDisabled'],
             ],
-        ]
-    )
-);
-
+        ],
+    ],
+    'attributes' => [
+        'value' => 'option2',
+        'disabled' => true,
+    ],
+]));
 ```
 
 </TabItem>
@@ -329,85 +302,70 @@ echo $this->formRow(
 $factory = new \Laminas\Form\Factory();
 
 // Default switch checkbox input
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'default-switch-checkbox',
-            'type'       => 'checkbox',
-            'options'    => [
-                'switch'     => true,
-                'label'      => 'Default switch checkbox input',
-                'form_group' => false,
-            ],
-            'attributes' => [    'id' => 'flexSwitchCheckDefault'    ],
-        ]
-    )
-);
+echo $this->formRow($factory->create([
+    'name' => 'default-switch-checkbox',
+    'type' => 'checkbox',
+    'options' => [
+        'switch' => true,
+        'label' => 'Default switch checkbox input',
+        'form_group' => false,
+    ],
+    'attributes' => [
+        'id' => 'flexSwitchCheckDefault',
+    ],
+]));
 
-echo PHP_EOL;
+echo  PHP_EOL;
 
 // Checked switch checkbox input
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'checked-switch-checkbox',
-            'type'       => 'checkbox',
-            'options'    => [
-                'switch'     => true,
-                'label'      => 'Checked switch checkbox input',
-                'form_group' => false,
-            ],
-            'attributes' => [
-                'id'      => 'flexSwitchCheckChecked',
-                'checked' => true,
-            ],
-        ]
-    )
-);
+echo $this->formRow($factory->create([
+    'name' => 'checked-switch-checkbox',
+    'type' => 'checkbox',
+    'options' => [
+        'switch' => true,
+        'label' => 'Checked switch checkbox input',
+        'form_group' => false,
+    ],
+    'attributes' => [
+        'id' => 'flexSwitchCheckChecked',
+        'checked' => true,
+    ],
+]));
 
-echo PHP_EOL;
+echo  PHP_EOL;
 
 // Disabled switch checkbox input
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'disabled-switch-checkbox',
-            'type'       => 'checkbox',
-            'options'    => [
-                'switch'     => true,
-                'label'      => 'Disabled switch checkbox input',
-                'form_group' => false,
-            ],
-            'attributes' => [
-                'id'       => 'flexSwitchCheckDisabled',
-                'disabled' => true,
-            ],
-        ]
-    )
-);
+echo $this->formRow($factory->create([
+    'name' => 'disabled-switch-checkbox',
+    'type' => 'checkbox',
+    'options' => [
+        'switch' => true,
+        'label' => 'Disabled switch checkbox input',
+        'form_group' => false,
+    ],
+    'attributes' => [
+        'id' => 'flexSwitchCheckDisabled',
+        'disabled' => true,
+    ],
+]));
 
-echo PHP_EOL;
+echo  PHP_EOL;
 
 // Disabled checked switch checkbox input
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'disabled-checked-switch-checkbox',
-            'type'       => 'checkbox',
-            'options'    => [
-                'switch'     => true,
-                'label'      => 'Disabled checked switch checkbox input',
-                'form_group' => false,
-            ],
-            'attributes' => [
-                'id'       => 'flexSwitchCheckChecked',
-                'checked'  => true,
-                'disabled' => true,
-            ],
-        ]
-    )
-);
-
+echo $this->formRow($factory->create([
+    'name' => 'disabled-checked-switch-checkbox',
+    'type' => 'checkbox',
+    'options' => [
+        'switch' => true,
+        'label' => 'Disabled checked switch checkbox input',
+        'form_group' => false,
+    ],
+    'attributes' => [
+        'id' => 'flexSwitchCheckChecked',
+        'checked' => true,
+        'disabled' => true,
+    ],
+]));
 ```
 
 </TabItem>
@@ -451,71 +409,60 @@ echo $this->formRow(
 $factory = new \Laminas\Form\Factory();
 
 // Render Default checkbox
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'default-checkbox',
-            'type'       => 'checkbox',
-            'options'    => [
-                'label'      => 'Default checkbox',
-                'form_group' => false,
-            ],
-            'attributes' => [    'id' => 'defaultCheck1'    ],
-        ]
-    )
-);
+echo $this->formRow($factory->create([
+    'name' => 'default-checkbox',
+    'type' => 'checkbox',
+    'options' => [
+        'label' => 'Default checkbox',
+        'form_group' => false,
+    ],
+    'attributes' => [
+        'id' => 'defaultCheck1',
+    ],
+]));
 
 // Render Disabled checkbox
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'disabled-checkbox',
-            'type'       => 'checkbox',
-            'options'    => [
-                'label'      => 'Disabled checkbox',
-                'form_group' => false,
-            ],
-            'attributes' => [
-                'id'       => 'defaultCheck2',
-                'disabled' => true,
-            ],
-        ]
-    )
-);
+echo $this->formRow($factory->create([
+    'name' => 'disabled-checkbox',
+    'type' => 'checkbox',
+    'options' => [
+        'label' => 'Disabled checkbox',
+        'form_group' => false,
+    ],
+    'attributes' => [
+        'id' => 'defaultCheck2',
+        'disabled' => true,
+    ],
+]));
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 // Render radio
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'    => 'exampleRadios',
-            'type'    => 'radio',
-            'options' => [
-                'form_group'    => false,
-                'value_options' => [
-                    [
-                        'label'      => 'Default radio',
-                        'value'      => 'option1',
-                        'attributes' => ['id' => 'exampleRadios1'],
-                    ],
-                    [
-                        'label'      => 'Second default radio',
-                        'value'      => 'option2',
-                        'attributes' => ['id' => 'exampleRadios2'],
-                    ],
-                    [
-                        'label'      => 'Disabled radio',
-                        'value'      => 'option3',
-                        'disabled'   => true,
-                        'attributes' => ['id' => 'exampleRadios3'],
-                    ],
-                ],
+echo $this->formRow($factory->create([
+    'name' => 'exampleRadios',
+    'type' => 'radio',
+    'options' => [
+        'form_group' => false,
+        'value_options' => [
+            [
+                'label' => 'Default radio',
+                'value' => 'option1',
+                'attributes' => ['id' => 'exampleRadios1'],
             ],
-        ]
-    )
-);
-
+            [
+                'label' => 'Second default radio',
+                'value' => 'option2',
+                'attributes' => ['id' => 'exampleRadios2'],
+            ],
+            [
+                'label' => 'Disabled radio',
+                'value' => 'option3',
+                'disabled' => true,
+                'attributes' => ['id' => 'exampleRadios3'],
+            ],
+        ],
+    ],
+]));
 ```
 
 </TabItem>
@@ -567,71 +514,62 @@ echo $this->formRow(
 $factory = new \Laminas\Form\Factory();
 
 // Render checkbox
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'    => 'inlineCheckboxOptions',
-            'type'    => 'multicheckbox',
-            'options' => [
-                'layout'        => 'inline',
-                'form_group'    => false,
-                'value_options' => [
-                    [
-                        'label'      => '1',
-                        'value'      => 'option1',
-                        'attributes' => ['id' => 'inlineCheckbox1'],
-                    ],
-                    [
-                        'label'      => '2',
-                        'value'      => 'option2',
-                        'attributes' => ['id' => 'inlineCheckbox2'],
-                    ],
-                    [
-                        'label'      => '3 (disabled)',
-                        'value'      => 'option3',
-                        'disabled'   => true,
-                        'attributes' => ['id' => 'inlineCheckbox3'],
-                    ],
-                ],
+echo $this->formRow($factory->create([
+    'name' => 'inlineCheckboxOptions',
+    'type' => 'multicheckbox',
+    'options' => [
+        'layout' => 'inline',
+        'form_group' => false,
+        'value_options' => [
+            [
+                'label' => '1',
+                'value' => 'option1',
+                'attributes' => ['id' => 'inlineCheckbox1'],
             ],
-        ]
-    )
-);
+            [
+                'label' => '2',
+                'value' => 'option2',
+                'attributes' => ['id' => 'inlineCheckbox2'],
+            ],
+            [
+                'label' => '3 (disabled)',
+                'value' => 'option3',
+                'disabled' => true,
+                'attributes' => ['id' => 'inlineCheckbox3'],
+            ],
+        ],
+    ],
+]));
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 // Render radio
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'    => 'inlineRadioOptions',
-            'type'    => 'radio',
-            'options' => [
-                'layout'        => 'inline',
-                'form_group'    => false,
-                'value_options' => [
-                    [
-                        'label'      => '1',
-                        'value'      => 'option1',
-                        'attributes' => ['id' => 'inlineRadio1'],
-                    ],
-                    [
-                        'label'      => '2',
-                        'value'      => 'option2',
-                        'attributes' => ['id' => 'inlineRadio2'],
-                    ],
-                    [
-                        'label'      => '3 (disabled)',
-                        'value'      => 'option3',
-                        'disabled'   => true,
-                        'attributes' => ['id' => 'inlineRadio3'],
-                    ],
-                ],
+echo $this->formRow($factory->create([
+    'name' => 'inlineRadioOptions',
+    'type' => 'radio',
+    'options' => [
+        'layout' => 'inline',
+        'form_group' => false,
+        'value_options' => [
+            [
+                'label' => '1',
+                'value' => 'option1',
+                'attributes' => ['id' => 'inlineRadio1'],
             ],
-        ]
-    )
-);
-
+            [
+                'label' => '2',
+                'value' => 'option2',
+                'attributes' => ['id' => 'inlineRadio2'],
+            ],
+            [
+                'label' => '3 (disabled)',
+                'value' => 'option3',
+                'disabled' => true,
+                'attributes' => ['id' => 'inlineRadio3'],
+            ],
+        ],
+    ],
+]));
 ```
 
 </TabItem>
@@ -661,47 +599,32 @@ echo $this->formRow(
 $factory = new \Laminas\Form\Factory();
 
 // Render checkbox
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'checkboxNoLabel',
-            'type'       => 'checkbox',
-            'options'    => [
-                'form_group' => false,
-                'label'      => '',
-                'value'      => 'option1',
-            ],
-            'attributes' => [
-                'id'         => 'checkboxNoLabel',
-                'aria-label' => '...',
-            ],
-        ]
-    )
-);
+echo $this->formRow($factory->create([
+    'name' => 'checkboxNoLabel',
+    'type' => 'checkbox',
+    'options' => [
+        'form_group' => false,
+        'label' => '',
+        'value' => 'option1',
+    ],
+    'attributes' => ['id' => 'checkboxNoLabel', 'aria-label' => '...'],
+]));
 
 // Render radio
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'    => 'radioNoLabel',
-            'type'    => 'radio',
-            'options' => [
-                'form_group'    => false,
-                'value_options' => [
-                    [
-                        'label'      => '',
-                        'value'      => 'option1',
-                        'attributes' => [
-                            'id'         => 'radioNoLabel1',
-                            'aria-label' => '...',
-                        ],
-                    ],
-                ],
+echo $this->formRow($factory->create([
+    'name' => 'radioNoLabel',
+    'type' => 'radio',
+    'options' => [
+        'form_group' => false,
+        'value_options' => [
+            [
+                'label' => '',
+                'value' => 'option1',
+                'attributes' => ['id' => 'radioNoLabel1', 'aria-label' => '...'],
             ],
-        ]
-    )
-);
-
+        ],
+    ],
+]));
 ```
 
 </TabItem>
@@ -741,70 +664,54 @@ echo $this->formRow(
 $factory = new \Laminas\Form\Factory();
 
 // Single toggle
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'single-toggle',
-            'type'       => 'checkbox',
-            'options'    => [
-                'button'     => 'primary',
-                'form_group' => false,
-                'label'      => 'Single toggle',
-            ],
-            'attributes' => [
-                'id'           => 'btn-check-1',
-                'autocomplete' => 'off',
-            ],
-        ]
-    )
-);
+echo $this->formRow($factory->create([
+    'name' => 'single-toggle',
+    'type' => 'checkbox',
+    'options' => [
+        'button' => 'primary',
+        'form_group' => false,
+        'label' => 'Single toggle',
+    ],
+    'attributes' => ['id' => 'btn-check-1', 'autocomplete' => 'off'],
+]));
 
 echo PHP_EOL;
 
 // Checked
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'single-toggle',
-            'type'       => 'checkbox',
-            'options'    => [
-                'button'     => 'primary',
-                'form_group' => false,
-                'label'      => 'Checked',
-            ],
-            'attributes' => [
-                'id'           => 'btn-check-2',
-                'autocomplete' => 'off',
-                'checked'      => true,
-            ],
-        ]
-    )
-);
+echo $this->formRow($factory->create([
+    'name' => 'single-toggle',
+    'type' => 'checkbox',
+    'options' => [
+        'button' => 'primary',
+        'form_group' => false,
+        'label' => 'Checked',
+    ],
+    'attributes' => [
+        'id' => 'btn-check-2',
+        'autocomplete' => 'off',
+        'checked' => true
+    ],
+]));
 
 echo PHP_EOL;
 
 // Disabled
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'single-toggle',
-            'type'       => 'checkbox',
-            'options'    => [
-                'button'     => 'primary',
-                'form_group' => false,
-                'label'      => 'Disabled',
-            ],
-            'attributes' => [
-                'id'           => 'btn-check-3',
-                'autocomplete' => 'off',
-                'disabled'     => true,
-            ],
-        ]
-    )
-);
+echo $this->formRow($factory->create([
+    'name' => 'single-toggle',
+    'type' => 'checkbox',
+    'options' => [
+        'button' => 'primary',
+        'form_group' => false,
+        'label' => 'Disabled',
+    ],
+    'attributes' => [
+        'id' => 'btn-check-3',
+        'autocomplete' => 'off',
+        'disabled' => true
+    ],
+]));
 
 echo PHP_EOL;
-
 ```
 
 </TabItem>
@@ -844,53 +751,39 @@ echo PHP_EOL;
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'inlineRadioOptions',
-            'type'       => 'radio',
-            'options'    => [
-                'button'        => true,
-                'layout'        => 'inline',
-                'form_group'    => false,
-                'value_options' => [
-                    [
-                        'label'      => 'Checked',
-                        'value'      => 'option1',
-                        'attributes' => [
-                            'id'           => 'option1',
-                            'autocomplete' => 'off',
-                        ],
-                    ],
-                    [
-                        'label'      => 'Radio',
-                        'value'      => 'option2',
-                        'attributes' => [
-                            'id'           => 'option2',
-                            'autocomplete' => 'off',
-                        ],
-                    ],
-                    [
-                        'label'      => 'Disabled',
-                        'value'      => 'option3',
-                        'disabled'   => true,
-                        'attributes' => [
-                            'id'           => 'inlineRadio3',
-                            'autocomplete' => 'off',
-                        ],
-                    ],
-                    [
-                        'label'      => 'Radio',
-                        'value'      => 'option4',
-                        'attributes' => ['id' => 'inlineRadio3'],
-                    ],
-                ],
+echo $this->formRow($factory->create([
+    'name' => 'inlineRadioOptions',
+    'type' => 'radio',
+    'options' => [
+        'button' => true,
+        'layout' => 'inline',
+        'form_group' => false,
+        'value_options' => [
+            [
+                'label' => 'Checked',
+                'value' => 'option1',
+                'attributes' => ['id' => 'option1', 'autocomplete' => 'off'],
             ],
-            'attributes' => ['value' => 'option1'],
-        ]
-    )
-);
-
+            [
+                'label' => 'Radio',
+                'value' => 'option2',
+                'attributes' => ['id' => 'option2', 'autocomplete' => 'off'],
+            ],
+            [
+                'label' => 'Disabled',
+                'value' => 'option3',
+                'disabled' => true,
+                'attributes' => ['id' => 'inlineRadio3', 'autocomplete' => 'off'],
+            ],
+            [
+                'label' => 'Radio',
+                'value' => 'option4',
+                'attributes' => ['id' => 'inlineRadio3'],
+            ],
+        ],
+    ],
+    'attributes' => ['value' => 'option1'],
+]));
 ```
 
 </TabItem>
@@ -931,83 +824,61 @@ echo $this->formRow(
 $factory = new \Laminas\Form\Factory();
 
 // Single toggle outlined
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'single-toggle-outlined',
-            'type'       => 'checkbox',
-            'options'    => [
-                'button'     => 'outline-primary',
-                'form_group' => false,
-                'label'      => 'Single toggle',
-            ],
-            'attributes' => [
-                'id'           => 'btn-check-outlined',
-                'autocomplete' => 'off',
-            ],
-        ]
-    )
-);
+echo $this->formRow($factory->create([
+    'name' => 'single-toggle-outlined',
+    'type' => 'checkbox',
+    'options' => [
+        'button' => 'outline-primary',
+        'form_group' => false,
+        'label' => 'Single toggle',
+    ],
+    'attributes' => ['id' => 'btn-check-outlined', 'autocomplete' => 'off'],
+]));
 
 echo PHP_EOL;
 
 // Checked outlined
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'single-toggle',
-            'type'       => 'checkbox',
-            'options'    => [
-                'button'     => 'outline-secondary',
-                'form_group' => false,
-                'label'      => 'Checked',
-            ],
-            'attributes' => [
-                'id'           => 'btn-check-2-outlined',
-                'autocomplete' => 'off',
-                'checked'      => true,
-            ],
-        ]
-    )
-);
+echo $this->formRow($factory->create([
+    'name' => 'single-toggle',
+    'type' => 'checkbox',
+    'options' => [
+        'button' => 'outline-secondary',
+        'form_group' => false,
+        'label' => 'Checked',
+    ],
+    'attributes' => [
+        'id' => 'btn-check-2-outlined',
+        'autocomplete' => 'off',
+        'checked' => true
+    ],
+]));
 
 echo PHP_EOL;
 
 // Checked success radio
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'options-outlined',
-            'type'       => 'radio',
-            'options'    => [
-                'form_group'    => false,
-                'layout'        => 'inline',
-                'value_options' => [
-                    [
-                        'label'      => 'Checked success radio',
-                        'value'      => 'option1',
-                        'button'     => 'outline-success',
-                        'attributes' => [
-                            'id'           => 'success-outlined',
-                            'autocomplete' => 'off',
-                        ],
-                    ],
-                    [
-                        'label'      => 'Danger radio',
-                        'value'      => 'option2',
-                        'button'     => 'outline-danger',
-                        'attributes' => [
-                            'id'           => 'danger-outlined',
-                            'autocomplete' => 'off',
-                        ],
-                    ],
-                ],
+echo $this->formRow($factory->create([
+    'name' => 'options-outlined',
+    'type' => 'radio',
+    'options' => [
+        'form_group' => false,
+        'layout' => 'inline',
+        'value_options' => [
+            [
+                'label' => 'Checked success radio',
+                'value' => 'option1',
+                'button' => 'outline-success',
+                'attributes' => ['id' => 'success-outlined', 'autocomplete' => 'off'],
             ],
-            'attributes' => ['value' => 'option1'],
-        ]
-    )
-);
-
+            [
+                'label' => 'Danger radio',
+                'value' => 'option2',
+                'button' => 'outline-danger',
+                'attributes' => ['id' => 'danger-outlined', 'autocomplete' => 'off'],
+            ],
+        ],
+    ],
+    'attributes' => ['value' => 'option1'],
+]));
 ```
 
 </TabItem>

@@ -54,32 +54,33 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 ```php
 <?php
 
-echo $this->grid(
+echo $this->grid([
     [
         [
-            [
-                '<div class="bg-light border p-3">'.'    Custom column padding'.'</div>',
-                '<div class="bg-light border p-3">'.'    Custom column padding'.'</div>',
-            ],
-            ['gutter' => ['horizontal' => '5']],
+            '<div class="bg-light border p-3">' .
+            '    Custom column padding' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Custom column padding' .
+            '</div>',
         ],
+        ['gutter' => ['horizontal' => '5']],
     ],
-    ['class' => 'px-4']
-);
+], ['class' => 'px-4']);
 
-echo $this->grid(
+echo $this->grid([
     [
         [
-            [
-                '<div class="bg-light border p-3">'.'    Custom column padding'.'</div>',
-                '<div class="bg-light border p-3">'.'    Custom column padding'.'</div>',
-            ],
-            ['gutter' => ['horizontal' => '5']],
+            '<div class="bg-light border p-3">' .
+            '    Custom column padding' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Custom column padding' .
+            '</div>',
         ],
+        ['gutter' => ['horizontal' => '5']],
     ],
-    ['class' => 'overflow-hidden']
-);
-
+], ['class' => 'overflow-hidden']);
 ```
 
 </TabItem>
@@ -123,24 +124,28 @@ echo $this->grid(
 ```php
 <?php
 
-echo $this->grid(
+echo $this->grid([
     [
         [
-            [
-                '<div class="bg-light border p-3">'.'    Custom column padding'.'</div>',
-                '<div class="bg-light border p-3">'.'    Custom column padding'.'</div>',
-                '<div class="bg-light border p-3">'.'    Custom column padding'.'</div>',
-                '<div class="bg-light border p-3">'.'    Custom column padding'.'</div>',
-            ],
-            [
-                'column' => 6,
-                'gutter' => ['vertical' => '5'],
-            ],
+            '<div class="bg-light border p-3">' .
+            '    Custom column padding' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Custom column padding' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Custom column padding' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Custom column padding' .
+            '</div>',
+        ],
+        [
+            'column' => 6,
+            'gutter' => ['vertical' => '5'],
         ],
     ],
-    ['class' => 'overflow-hidden']
-);
-
+], ['class' => 'overflow-hidden']);
 ```
 
 </TabItem>
@@ -184,23 +189,28 @@ echo $this->grid(
 ```php
 <?php
 
-echo $this->grid(
+echo $this->grid([
     [
         [
-            [
-                '<div class="bg-light border p-3">'.'    Custom column padding'.'</div>',
-                '<div class="bg-light border p-3">'.'    Custom column padding'.'</div>',
-                '<div class="bg-light border p-3">'.'    Custom column padding'.'</div>',
-                '<div class="bg-light border p-3">'.'    Custom column padding'.'</div>',
-            ],
-            [
-                'column' => 6,
-                'gutter' => 2,
-            ],
+            '<div class="bg-light border p-3">' .
+            '    Custom column padding' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Custom column padding' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Custom column padding' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Custom column padding' .
+            '</div>',
         ],
-    ]
-);
-
+        [
+            'column' => 6,
+            'gutter' => 2,
+        ],
+    ],
+]);
 ```
 
 </TabItem>
@@ -274,35 +284,46 @@ echo $this->grid(
 ```php
 <?php
 
-echo $this->grid(
+echo $this->grid([
     [
         [
-            [
-                '<div class="bg-light border p-3">'.'    Row column'.'</div>',
-                '<div class="bg-light border p-3">'.'    Row column'.'</div>',
-                '<div class="bg-light border p-3">'.'    Row column'.'</div>',
-                '<div class="bg-light border p-3">'.'    Row column'.'</div>',
-                '<div class="bg-light border p-3">'.'    Row column'.'</div>',
-                '<div class="bg-light border p-3">'.'    Row column'.'</div>',
-                '<div class="bg-light border p-3">'.'    Row column'.'</div>',
-                '<div class="bg-light border p-3">'.'    Row column'.'</div>',
-                '<div class="bg-light border p-3">'.'    Row column'.'</div>',
-                '<div class="bg-light border p-3">'.'    Row column'.'</div>',
-            ],
-            [
-                'columns' => [
-                    2,
-                    'lg-5',
-                ],
-                'gutter'  => [
-                    2,
-                    'lg-3',
-                ],
-            ],
+            '<div class="bg-light border p-3">' .
+            '    Row column' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Row column' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Row column' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Row column' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Row column' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Row column' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Row column' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Row column' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Row column' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Row column' .
+            '</div>',
         ],
-    ]
-);
-
+        [
+            'columns' => [2, 'lg-5'],
+            'gutter' => [2, 'lg-3'],
+        ],
+    ],
+]);
 ```
 
 </TabItem>
@@ -332,28 +353,11 @@ echo $this->grid(
 
 echo $this->gridRow(
     [
-        [
-            '.col-sm-6 .col-md-8',
-            [
-                'column' => [
-                    'sm-6',
-                    'md-8',
-                ],
-            ],
-        ],
-        [
-            '.col-6 .col-md-4',
-            [
-                'column' => [
-                    6,
-                    'md-4',
-                ],
-            ],
-        ],
+        ['.col-sm-6 .col-md-8', ['column' => ['sm-6', 'md-8']]],
+        ['.col-6 .col-md-4', ['column' => [6, 'md-4']]],
     ],
     ['gutter' => 0],
 );
-
 ```
 
 </TabItem>

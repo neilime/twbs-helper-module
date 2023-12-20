@@ -52,36 +52,36 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 
 echo $this->card(
     [
-        'image_top' => [
-            '/twbs-helper-module/img/docs/image-cap.svg',
-            ['alt' => '...'],
-        ],
+        'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
         'title' => 'Card title',
-        'text' => 'Some quick example text to build on the card title '.'and make up the bulk of the card\'s content.',
+        'text' => 'Some quick example text to build on the card title ' .
+        'and make up the bulk of the card\'s content.',
         '<a class="btn btn-primary" href="&#x23;">Go somewhere</a>',
     ],
 );
 
 echo $this->card(
     [
-        'image_top' => [
-            '/twbs-helper-module/img/docs/image-cap.svg',
-            ['alt' => '...'],
-        ],
+        'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
         'title' => [
-            'attributes' => [    'class' => 'h5 placeholder-glow'    ],
-            'tag'        => 'div',
-            'content'    => $this->placeholder(6),
+            'attributes' => [
+                'class' => 'h5 placeholder-glow',
+            ],
+            'tag' => 'div',
+            'content' => $this->placeholder(6),
         ],
         'text' => [
-            'content'    => $this->placeholder(7).$this->placeholder(4).$this->placeholder(4).$this->placeholder(6).$this->placeholder(8),
+            'content' => $this->placeholder(7) .
+            $this->placeholder(4) .
+            $this->placeholder(4) .
+            $this->placeholder(6) .
+            $this->placeholder(8),
             'attributes' => ['class' => 'placeholder-glow'],
         ],
         $this->placeholder(['column' => 6, 'button' => ['options' => ['variant' => 'primary']]]),
     ],
     ['aria-hidden' => 'true']
 );
-
 ```
 
 </TabItem>
@@ -105,16 +105,13 @@ echo $this->card(
 
 echo $this->placeholder(['column' => 6, 'hidden' => true]);
 
-echo $this->placeholder(
-    [
-        'column' => 4,
-        'hidden' => true,
-        'button' => [
-            'options' => ['variant' => 'primary'],
-        ],
-    ]
-);
-
+echo $this->placeholder([
+    'column' => 4,
+    'hidden' => true,
+    'button' => [
+        'options' => ['variant' => 'primary'],
+    ],
+]);
 ```
 
 </TabItem>
@@ -142,7 +139,6 @@ echo $this->placeholder(6);
 echo $this->placeholder(['class' => 'w-75']);
 
 echo $this->placeholder(['style' => 'width: 25%']);
-
 ```
 
 </TabItem>
@@ -174,7 +170,6 @@ echo $this->placeholder(12);
 echo $this->placeholder(['column' => 12, 'size' => 'sm']);
 
 echo $this->placeholder(['column' => 12, 'size' => 'xs']);
-
 ```
 
 </TabItem>
@@ -200,7 +195,6 @@ echo $this->placeholder(['column' => 12, 'size' => 'xs']);
 echo $this->placeholder(['column' => 12, 'animation' => 'glow']);
 
 echo $this->placeholder(['column' => 12, 'animation' => 'wave']);
-
 ```
 
 </TabItem>

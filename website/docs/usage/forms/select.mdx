@@ -34,24 +34,21 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->formElement(
-    $factory->create(
-        [
-            'name'       => 'default-select',
-            'type'       => 'select',
-            'options'    => [
-                'empty_option'  => 'Open this select menu',
-                'value_options' => [
-                    1 => 'One',
-                    2 => 'Two',
-                    3 => 'Three',
-                ],
-            ],
-            'attributes' => [    'aria-label' => 'Default select example'    ],
-        ]
-    )
-);
-
+echo $this->formElement($factory->create([
+    'name' => 'default-select',
+    'type' => 'select',
+    'options' => [
+        'empty_option' => 'Open this select menu',
+        'value_options' => [
+            1 => 'One',
+            2 => 'Two',
+            3 => 'Three',
+        ],
+    ],
+    'attributes' => [
+        'aria-label' => 'Default select example',
+    ],
+]));
 ```
 
 </TabItem>
@@ -100,92 +97,79 @@ echo $this->formElement(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->formElement(
-    $factory->create(
-        [
-            'name'       => 'lg-select',
-            'type'       => 'select',
-            'options'    => [
-                'size'          => 'lg',
-                'empty_option'  => 'Open this select menu',
-                'value_options' => [
-                    1 => 'One',
-                    2 => 'Two',
-                    3 => 'Three',
-                ],
-            ],
-            'attributes' => [    'aria-label' => '.form-select-lg example'    ],
-        ]
-    )
-);
+echo $this->formElement($factory->create([
+    'name' => 'lg-select',
+    'type' => 'select',
+    'options' => [
+        'size' => 'lg',
+        'empty_option' => 'Open this select menu',
+        'value_options' => [
+            1 => 'One',
+            2 => 'Two',
+            3 => 'Three',
+        ],
+    ],
+    'attributes' => [
+        'aria-label' => '.form-select-lg example',
+    ],
+]));
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
-echo $this->formElement(
-    $factory->create(
-        [
-            'name'       => 'sm-select',
-            'type'       => 'select',
-            'options'    => [
-                'size'          => 'sm',
-                'empty_option'  => 'Open this select menu',
-                'value_options' => [
-                    1 => 'One',
-                    2 => 'Two',
-                    3 => 'Three',
-                ],
-            ],
-            'attributes' => [    'aria-label' => '.form-select-sm example'    ],
-        ]
-    )
-);
+echo $this->formElement($factory->create([
+    'name' => 'sm-select',
+    'type' => 'select',
+    'options' => [
+        'size' => 'sm',
+        'empty_option' => 'Open this select menu',
+        'value_options' => [
+            1 => 'One',
+            2 => 'Two',
+            3 => 'Three',
+        ],
+    ],
+    'attributes' => [
+        'aria-label' => '.form-select-sm example',
+    ],
+]));
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
-echo $this->formElement(
-    $factory->create(
-        [
-            'name'       => 'multiple-select',
-            'type'       => 'select',
-            'options'    => [
-                'empty_option'  => 'Open this select menu',
-                'value_options' => [
-                    1 => 'One',
-                    2 => 'Two',
-                    3 => 'Three',
-                ],
-            ],
-            'attributes' => [
-                'multiple'   => true,
-                'aria-label' => 'multiple select example',
-            ],
-        ]
-    )
-);
+echo $this->formElement($factory->create([
+    'name' => 'multiple-select',
+    'type' => 'select',
+    'options' => [
+        'empty_option' => 'Open this select menu',
+        'value_options' => [
+            1 => 'One',
+            2 => 'Two',
+            3 => 'Three',
+        ],
+    ],
+    'attributes' => [
+        'multiple' => true,
+        'aria-label' => 'multiple select example',
+    ],
+]));
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
-echo $this->formElement(
-    $factory->create(
-        [
-            'name'       => 'size-3-select',
-            'type'       => 'select',
-            'options'    => [
-                'empty_option'  => 'Open this select menu',
-                'value_options' => [
-                    1 => 'One',
-                    2 => 'Two',
-                    3 => 'Three',
-                ],
-            ],
-            'attributes' => [
-                'size'       => 3,
-                'aria-label' => 'size 3 select example',
-            ],
-        ]
-    )
-);
-
+echo $this->formElement($factory->create([
+    'name' => 'size-3-select',
+    'type' => 'select',
+    'options' => [
+        'empty_option' => 'Open this select menu',
+        'value_options' => [
+            1 => 'One',
+            2 => 'Two',
+            3 => 'Three',
+        ],
+    ],
+    'attributes' => [
+        'size' => 3,
+        'aria-label' => 'size 3 select example',
+    ],
+]));
 ```
 
 </TabItem>
@@ -213,27 +197,22 @@ echo $this->formElement(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->formElement(
-    $factory->create(
-        [
-            'name'       => 'default-select',
-            'type'       => 'select',
-            'options'    => [
-                'empty_option'  => 'Open this select menu',
-                'value_options' => [
-                    1 => 'One',
-                    2 => 'Two',
-                    3 => 'Three',
-                ],
-            ],
-            'attributes' => [
-                'disabled'   => true,
-                'aria-label' => 'Disabled select example',
-            ],
-        ]
-    )
-);
-
+echo $this->formElement($factory->create([
+    'name' => 'default-select',
+    'type' => 'select',
+    'options' => [
+        'empty_option' => 'Open this select menu',
+        'value_options' => [
+            1 => 'One',
+            2 => 'Two',
+            3 => 'Three',
+        ],
+    ],
+    'attributes' => [
+        'disabled' => true,
+        'aria-label' => 'Disabled select example',
+    ],
+]));
 ```
 
 </TabItem>

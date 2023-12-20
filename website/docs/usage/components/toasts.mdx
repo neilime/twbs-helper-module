@@ -41,25 +41,19 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 ```php
 <?php
 
-echo $this->toast(
-    [
-        'fade'   => true,
-        'show'   => true,
-        'header' => [
-            'image'    => [
-                '/twbs-helper-module/img/docs/rounded-blue.svg',
-                [
-                    'alt'   => '...',
-                    'class' => 'rounded me-2',
-                ],
-            ],
-            'title'    => 'Bootstrap',
-            'subtitle' => '11 mins ago',
+echo $this->toast([
+    'fade' => true,
+    'show' => true,
+    'header' => [
+        'image' => [
+            '/twbs-helper-module/img/docs/rounded-blue.svg',
+            ['alt' => '...', 'class' => 'rounded me-2'],
         ],
-        'body'   => 'Hello, world! This is a toast message.',
-    ]
-);
-
+        'title' => 'Bootstrap',
+        'subtitle' => '11 mins ago',
+    ],
+    'body' => 'Hello, world! This is a toast message.',
+]);
 ```
 
 </TabItem>
@@ -91,35 +85,29 @@ echo $this->toast(
 ```php
 <?php
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label'   => 'Show live toast',
-            'variant' => 'primary',
-        ],
-        'attributes' => [    'id' => 'liveToastBtn'    ],
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Show live toast',
+        'variant' => 'primary',
+    ],
+    'attributes' => [
+        'id' => 'liveToastBtn',
     ]
-);
+]);
 
-echo $this->toast(
-    [
-        'placement'  => 'bottom-right',
-        'header'     => [
-            'image'    => [
-                '/twbs-helper-module/img/docs/rounded-blue.svg',
-                [
-                    'alt'   => '...',
-                    'class' => 'rounded me-2',
-                ],
-            ],
-            'title'    => 'Bootstrap',
-            'subtitle' => '11 mins ago',
+echo $this->toast([
+    'placement' => 'bottom-right',
+    'header' => [
+        'image' => [
+            '/twbs-helper-module/img/docs/rounded-blue.svg',
+            ['alt' => '...', 'class' => 'rounded me-2'],
         ],
-        'body'       => 'Hello, world! This is a toast message.',
-        'attributes' => ['id' => 'liveToast'],
-    ]
-);
-
+        'title' => 'Bootstrap',
+        'subtitle' => '11 mins ago',
+    ],
+    'body' => 'Hello, world! This is a toast message.',
+    'attributes' => ['id' => 'liveToast'],
+]);
 ```
 
 </TabItem>
@@ -152,27 +140,21 @@ echo $this->toast(
 
 echo '<div class="bg-dark">';
 
-echo $this->toast(
-    [
-        'fade'   => true,
-        'show'   => true,
-        'header' => [
-            'image'    => [
-                '/twbs-helper-module/img/docs/rounded-blue.svg',
-                [
-                    'alt'   => '...',
-                    'class' => 'rounded me-2',
-                ],
-            ],
-            'title'    => 'Bootstrap',
-            'subtitle' => '11 mins ago',
+echo $this->toast([
+    'fade' => true,
+    'show' => true,
+    'header' => [
+        'image' => [
+            '/twbs-helper-module/img/docs/rounded-blue.svg',
+            ['alt' => '...', 'class' => 'rounded me-2'],
         ],
-        'body'   => 'Hello, world! This is a toast message.',
-    ]
-);
+        'title' => 'Bootstrap',
+        'subtitle' => '11 mins ago',
+    ],
+    'body' => 'Hello, world! This is a toast message.',
+]);
 
 echo '</div>';
-
 ```
 
 </TabItem>
@@ -216,43 +198,33 @@ echo '</div>';
 ```php
 <?php
 
-echo $this->toastStack(
+echo $this->toastStack([
     [
-        [
-            'fade'   => true,
-            'show'   => true,
-            'header' => [
-                'image'    => [
-                    '/twbs-helper-module/img/docs/rounded-blue.svg',
-                    [
-                        'alt'   => '...',
-                        'class' => 'rounded me-2',
-                    ],
-                ],
-                'title'    => 'Bootstrap',
-                'subtitle' => 'just now',
+        'fade' => true,
+        'show' => true,
+        'header' => [
+            'image' => [
+                '/twbs-helper-module/img/docs/rounded-blue.svg',
+                ['alt' => '...', 'class' => 'rounded me-2'],
             ],
-            'body'   => 'See? Just like this.',
+            'title' => 'Bootstrap',
+            'subtitle' => 'just now',
         ],
-        [
-            'fade'   => true,
-            'show'   => true,
-            'header' => [
-                'image'    => [
-                    '/twbs-helper-module/img/docs/rounded-blue.svg',
-                    [
-                        'alt'   => '...',
-                        'class' => 'rounded me-2',
-                    ],
-                ],
-                'title'    => 'Bootstrap',
-                'subtitle' => '2 seconds ago',
+        'body' => 'See? Just like this.',
+    ], [
+        'fade' => true,
+        'show' => true,
+        'header' => [
+            'image' => [
+                '/twbs-helper-module/img/docs/rounded-blue.svg',
+                ['alt' => '...', 'class' => 'rounded me-2'],
             ],
-            'body'   => 'Heads up, toasts will stack automatically',
+            'title' => 'Bootstrap',
+            'subtitle' => '2 seconds ago',
         ],
+        'body' => 'Heads up, toasts will stack automatically',
     ]
-);
-
+]);
 ```
 
 </TabItem>
@@ -289,41 +261,38 @@ echo $this->toastStack(
 ```php
 <?php
 
-echo $this->toast(
-    [
-        'fade' => true,
-        'show' => true,
-        'body' => 'Hello, world! This is a toast message.',
-    ]
-);
+echo $this->toast([
+    'fade' => true,
+    'show' => true,
+    'body' => 'Hello, world! This is a toast message.',
+]);
 
-echo $this->toast(
-    [
-        'fade'  => true,
-        'show'  => true,
-        'close' => false,
-        'body'  => [
-            'content' => 'Hello, world! This is a toast message.',
-            'buttons' => [
-                [
-                    'options' => [
-                        'variant' => 'primary',
-                        'size'    => 'sm',
-                        'label'   => 'Take action',
-                    ],
-                ],
-                [
-                    'options'    => [
-                        'size'  => 'sm',
-                        'label' => 'Close',
-                    ],
-                    'attributes' => [    'data-bs-dismiss' => 'toast'    ],
+echo $this->toast([
+    'fade' => true,
+    'show' => true,
+    'close' => false,
+    'body' => [
+        'content' => 'Hello, world! This is a toast message.',
+        'buttons' => [
+            [
+                'options' => [
+                    'variant' => 'primary',
+                    'size' => 'sm',
+                    'label' => 'Take action',
                 ],
             ],
-        ],
-    ]
-);
-
+            [
+                'options' => [
+                    'size' => 'sm',
+                    'label' => 'Close'
+                ],
+                'attributes' => [
+                    'data-bs-dismiss' => 'toast',
+                ],
+            ],
+        ]
+    ],
+]);
 ```
 
 </TabItem>
@@ -351,16 +320,15 @@ echo $this->toast(
 ```php
 <?php
 
-echo $this->toast(
-    [
-        'fade'       => true,
-        'show'       => true,
-        'body'       => 'Hello, world! This is a toast message.',
-        'close'      => ['attributes' => ['class' => 'btn-close-white']],
-        'attributes' => [    'class' => 'text-white bg-primary border-0'    ],
-    ]
-);
-
+echo $this->toast([
+    'fade' => true,
+    'show' => true,
+    'body' => 'Hello, world! This is a toast message.',
+    'close' => ['attributes' => ['class' => 'btn-close-white']],
+    'attributes' => [
+        'class' => 'text-white bg-primary border-0',
+    ],
+]);
 ```
 
 </TabItem>
@@ -530,116 +498,108 @@ echo $this->toast(
 <?php
 
 echo '<div aria-atomic="true" aria-live="polite" class="bg-dark position-relative">';
-foreach ([
-    'top-left',
-    'top-center',
-    'top-right',
-    'middle-left',
-    'middle-center',
-    'middle-right',
-    'bottom-left',
-    'bottom-center',
-    'bottom-right',
-] as $placement) {
+foreach (
+    [
+        'top-left',
+        'top-center',
+        'top-right',
+        'middle-left',
+        'middle-center',
+        'middle-right',
+        'bottom-left',
+        'bottom-center',
+        'bottom-right',
+    ] as $placement
+) {
     echo $this->toastStack(
         [
             [
-                'fade'   => true,
-                'show'   => true,
-                'close'  => false,
+                'fade' => true,
+                'show' => true,
+                'close' => false,
                 'header' => [
-                    'image'    => [
+                    'image' => [
                         '/twbs-helper-module/img/docs/rounded-blue.svg',
-                        [
-                            'alt'   => '...',
-                            'class' => 'rounded me-2',
-                        ],
+                        ['alt' => '...', 'class' => 'rounded me-2'],
                     ],
-                    'title'    => 'Bootstrap',
+                    'title' => 'Bootstrap',
                     'subtitle' => '11 mins ago',
                 ],
-                'body'   => 'Hello, world! This is a toast message.',
+                'body' => 'Hello, world! This is a toast message.',
             ],
         ],
         [
-            'id'        => 'toastPlacement',
+            'id' => 'toastPlacement',
             'placement' => $placement,
         ]
     );
-}//end foreach
+}
 
 echo '</div>';
 
 // For systems that generate more notifications, consider using a wrapping element so they can easily stack.
+
 echo '<div aria-atomic="true" aria-live="polite" class="position-relative">';
 
 echo $this->toastStack(
     [
         [
-            'fade'   => true,
-            'show'   => true,
+            'fade' => true,
+            'show' => true,
             'header' => [
-                'image'    => [
+                'image' => [
                     '/twbs-helper-module/img/docs/rounded-blue.svg',
-                    [
-                        'alt'   => '...',
-                        'class' => 'rounded me-2',
-                    ],
+                    ['alt' => '...', 'class' => 'rounded me-2'],
                 ],
-                'title'    => 'Bootstrap',
+                'title' => 'Bootstrap',
                 'subtitle' => 'just now',
             ],
-            'body'   => 'See? Just like this.',
+            'body' => 'See? Just like this.',
         ],
         [
-            'fade'   => true,
-            'show'   => true,
+            'fade' => true,
+            'show' => true,
             'header' => [
-                'image'    => [
+                'image' => [
                     '/twbs-helper-module/img/docs/rounded-blue.svg',
-                    [
-                        'alt'   => '...',
-                        'class' => 'rounded me-2',
-                    ],
+                    ['alt' => '...', 'class' => 'rounded me-2'],
                 ],
-                'title'    => 'Bootstrap',
+                'title' => 'Bootstrap',
                 'subtitle' => '2 seconds ago',
             ],
-            'body'   => 'Heads up, toasts will stack automatically',
+            'body' => 'Heads up, toasts will stack automatically',
         ],
     ],
     [
         'placement' => 'top-right',
-        'class'     => 'position-absolute',
+        'class' => 'position-absolute',
     ]
 );
 
 echo '</div>';
 
 // You can also get fancy with flexbox utilities to align toasts horizontally and/or vertically.
-echo '<div aria-live="polite" aria-atomic="true" '.'class="d-flex justify-content-center align-items-center w-100">';
+
+echo '<div aria-live="polite" aria-atomic="true" ' .
+'class="d-flex justify-content-center align-items-center w-100">';
 
 echo $this->toast(
     [
-        'fade'   => true,
-        'show'   => true,
+        'fade' => true,
+        'show' => true,
         'header' => [
-            'image'    => [
+            'image' => [
                 '/twbs-helper-module/img/docs/rounded-blue.svg',
-                [
-                    'alt'   => '...',
-                    'class' => 'rounded me-2',
-                ],
+                ['alt' => '...', 'class' => 'rounded me-2'],
             ],
-            'title'    => 'Bootstrap',
+            'title' => 'Bootstrap',
             'subtitle' => '11 mins ago',
         ],
-        'body'   => 'Hello, world! This is a toast message.',
+        'body' => 'Hello, world! This is a toast message.',
     ]
 );
 
 echo '</div>';
-
 ```
 
 </TabItem>
@@ -670,26 +630,20 @@ echo '</div>';
 ```php
 <?php
 
-echo $this->toast(
-    [
-        'fade'     => true,
-        'show'     => true,
-        'autohide' => false,
-        'header'   => [
-            'image'    => [
-                '/twbs-helper-module/img/docs/rounded-blue.svg',
-                [
-                    'alt'   => '...',
-                    'class' => 'rounded me-2',
-                ],
-            ],
-            'title'    => 'Bootstrap',
-            'subtitle' => '11 mins ago',
+echo $this->toast([
+    'fade' => true,
+    'show' => true,
+    'autohide' => false,
+    'header' => [
+        'image' => [
+            '/twbs-helper-module/img/docs/rounded-blue.svg',
+            ['alt' => '...', 'class' => 'rounded me-2'],
         ],
-        'body'     => 'Hello, world! This is a toast message.',
-    ]
-);
-
+        'title' => 'Bootstrap',
+        'subtitle' => '11 mins ago',
+    ],
+    'body' => 'Hello, world! This is a toast message.',
+]);
 ```
 
 </TabItem>

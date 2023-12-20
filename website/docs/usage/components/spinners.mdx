@@ -30,7 +30,6 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 <?php
 
 echo $this->spinner('Loading...');
-
 ```
 
 </TabItem>
@@ -74,24 +73,17 @@ echo $this->spinner('Loading...');
 ```php
 <?php
 
-foreach ([
-    'primary',
-    'secondary',
-    'success',
-    'danger',
-    'warning',
-    'info',
-    'light',
-    'dark',
-] as $variant) {
-    echo $this->spinner(
-        [
-            'variant' => $variant,
-            'label'   => 'Loading...',
-        ]
-    );
+foreach (
+    [
+        'primary', 'secondary', 'success', 'danger',
+        'warning', 'info', 'light', 'dark',
+    ] as $variant
+) {
+    echo $this->spinner([
+        'variant' => $variant,
+        'label' => 'Loading...',
+    ]);
 }
-
 ```
 
 </TabItem>
@@ -141,27 +133,20 @@ foreach ([
 
 echo $this->spinner(['type' => 'grow', 'label' => 'Loading...']);
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
-foreach ([
-    'primary',
-    'secondary',
-    'success',
-    'danger',
-    'warning',
-    'info',
-    'light',
-    'dark',
-] as $variant) {
-    echo $this->spinner(
-        [
-            'variant' => $variant,
-            'type'    => 'grow',
-            'label'   => 'Loading...',
-        ]
-    );
+foreach (
+    [
+        'primary', 'secondary', 'success', 'danger',
+        'warning', 'info', 'light', 'dark',
+    ] as $variant
+) {
+    echo $this->spinner([
+        'variant' => $variant,
+        'type' => 'grow',
+        'label' => 'Loading...',
+    ]);
 }
-
 ```
 
 </TabItem>
@@ -188,13 +173,10 @@ foreach ([
 ```php
 <?php
 
-echo $this->spinner(
-    [
-        'margin' => 5,
-        'label'  => 'Loading...',
-    ]
-);
-
+echo $this->spinner([
+    'margin' => 5,
+    'label' => 'Loading...',
+]);
 ```
 
 </TabItem>
@@ -228,23 +210,18 @@ echo $this->spinner(
 ```php
 <?php
 
-echo $this->spinner(
-    [
-        'placement' => 'center',
-        'label'     => 'Loading...',
-    ]
-);
+echo $this->spinner([
+    'placement' => 'center',
+    'label' => 'Loading...',
+]);
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
-echo $this->spinner(
-    [
-        'placement'  => 'center',
-        'label'      => 'Loading...',
-        'show_label' => true,
-    ]
-);
-
+echo $this->spinner([
+    'placement' => 'center',
+    'label' => 'Loading...',
+    'show_label' => true,
+]);
 ```
 
 </TabItem>
@@ -269,13 +246,10 @@ echo $this->spinner(
 ```php
 <?php
 
-echo $this->spinner(
-    [
-        'placement' => 'end',
-        'label'     => 'Loading...',
-    ]
-);
-
+echo $this->spinner([
+    'placement' => 'end',
+    'label' => 'Loading...',
+]);
 ```
 
 </TabItem>
@@ -300,13 +274,10 @@ echo $this->spinner(
 ```php
 <?php
 
-echo $this->spinner(
-    [
-        'placement' => 'text-center',
-        'label'     => 'Loading...',
-    ]
-);
-
+echo $this->spinner([
+    'placement' => 'text-center',
+    'label' => 'Loading...',
+]);
 ```
 
 </TabItem>
@@ -339,38 +310,29 @@ echo $this->spinner(
 ```php
 <?php
 
-echo $this->spinner(
-    [
-        'size'  => 'sm',
-        'label' => 'Loading...',
-    ]
-);
+echo $this->spinner([
+    'size' => 'sm',
+    'label' => 'Loading...',
+]);
 
-echo $this->spinner(
-    [
-        'size'  => 'sm',
-        'type'  => 'grow',
-        'label' => 'Loading...',
-    ]
-);
+echo $this->spinner([
+    'size' => 'sm',
+    'type' => 'grow',
+    'label' => 'Loading...',
+]);
 
-echo PHP_EOL.'<br/><br/>';
+echo PHP_EOL . '<br/><br/>';
 
-echo $this->spinner(
-    [
-        'attributes' => ['style' => 'width: 3rem; height: 3rem;'],
-        'label'      => 'Loading...',
-    ]
-);
+echo $this->spinner([
+    'attributes' => ['style' => 'width: 3rem; height: 3rem;'],
+    'label' => 'Loading...',
+]);
 
-echo $this->spinner(
-    [
-        'attributes' => ['style' => 'width: 3rem; height: 3rem;'],
-        'type'       => 'grow',
-        'label'      => 'Loading...',
-    ]
-);
-
+echo $this->spinner([
+    'attributes' => ['style' => 'width: 3rem; height: 3rem;'],
+    'type' => 'grow',
+    'label' => 'Loading...',
+]);
 ```
 
 </TabItem>
@@ -407,54 +369,47 @@ echo $this->spinner(
 ```php
 <?php
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'spinner'    => true,
-            'label'      => 'Loading...',
-            'show_label' => false,
-            'variant'    => 'primary',
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'spinner' => true,
+        'label' => 'Loading...',
+        'show_label' => false,
+        'variant' => 'primary',
+    ],
+    'attributes' => ['disabled' => true],
+]);
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Loading...',
+        'spinner' => true,
+        'variant' => 'primary',
+    ],
+    'attributes' => ['disabled' => true],
+]);
+
+echo PHP_EOL . '<br/><br/>';
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'spinner' => [
+            'type' => 'grow',
         ],
-        'attributes' => ['disabled' => true],
-    ]
-);
+        'variant' => 'primary',
+        'label' => 'Loading...',
+        'show_label' => false,
+    ],
+    'attributes' => ['disabled' => true],
+]);
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label'   => 'Loading...',
-            'spinner' => true,
-            'variant' => 'primary',
-        ],
-        'attributes' => ['disabled' => true],
-    ]
-);
-
-echo PHP_EOL.'<br/><br/>';
-
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'spinner'    => [    'type' => 'grow'    ],
-            'variant'    => 'primary',
-            'label'      => 'Loading...',
-            'show_label' => false,
-        ],
-        'attributes' => ['disabled' => true],
-    ]
-);
-
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label'   => 'Loading...',
-            'spinner' => ['type' => 'grow'],
-            'variant' => 'primary',
-        ],
-        'attributes' => ['disabled' => true],
-    ]
-);
-
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Loading...',
+        'spinner' => ['type' => 'grow'],
+        'variant' => 'primary',
+    ],
+    'attributes' => ['disabled' => true],
+]);
 ```
 
 </TabItem>

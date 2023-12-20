@@ -46,61 +46,19 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 ```php
 <?php
 
-echo $this->navigation()->menu()->renderMenu(
-    new \Laminas\Navigation\Navigation(
-        [
-            [
-                'label'  => 'Active',
-                'uri'    => '#',
-                'active' => true,
-            ],
-            [
-                'label' => 'Link',
-                'uri'   => '#',
-            ],
-            [
-                'label' => 'Link',
-                'uri'   => '#',
-            ],
-            [
-                'label'   => 'Disabled',
-                'uri'     => '#',
-                'visible' => false,
-            ],
-        ]
-    ),
-    ['page' => true]
-);
+echo $this->navigation()->menu()->renderMenu(new \Laminas\Navigation\Navigation([
+    ['label' => 'Active', 'uri' => '#', 'active' => true],
+    ['label' => 'Link', 'uri' => '#'],
+    ['label' => 'Link', 'uri' => '#'],
+    ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+]), ['page' => true]);
 
-echo $this->navigation()->menu()->renderMenu(
-    new \Laminas\Navigation\Navigation(
-        [
-            [
-                'label'  => 'Active',
-                'uri'    => '#',
-                'active' => true,
-            ],
-            [
-                'label' => 'Link',
-                'uri'   => '#',
-            ],
-            [
-                'label' => 'Link',
-                'uri'   => '#',
-            ],
-            [
-                'label'   => 'Disabled',
-                'uri'     => '#',
-                'visible' => false,
-            ],
-        ]
-    ),
-    [
-        'list' => false,
-        'page' => true,
-    ]
-);
-
+echo $this->navigation()->menu()->renderMenu(new \Laminas\Navigation\Navigation([
+    ['label' => 'Active', 'uri' => '#', 'active' => true],
+    ['label' => 'Link', 'uri' => '#'],
+    ['label' => 'Link', 'uri' => '#'],
+    ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+]), ['list' => false, 'page' => true]);
 ```
 
 </TabItem>
@@ -153,65 +111,20 @@ echo $this->navigation()->menu()->renderMenu(
 <?php
 
 // Centered with option 'center'
-echo $this->navigation()->menu()->renderMenu(
-    new \Laminas\Navigation\Navigation(
-        [
-            [
-                'label'  => 'Active',
-                'uri'    => '#',
-                'active' => true,
-            ],
-            [
-                'label' => 'Link',
-                'uri'   => '#',
-            ],
-            [
-                'label' => 'Link',
-                'uri'   => '#',
-            ],
-            [
-                'label'   => 'Disabled',
-                'uri'     => '#',
-                'visible' => false,
-            ],
-        ]
-    ),
-    [
-        'centered' => true,
-        'page'     => true,
-    ]
-);
+echo $this->navigation()->menu()->renderMenu(new \Laminas\Navigation\Navigation([
+    ['label' => 'Active', 'uri' => '#', 'active' => true],
+    ['label' => 'Link', 'uri' => '#'],
+    ['label' => 'Link', 'uri' => '#'],
+    ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+]), ['centered' => true, 'page' => true]);
 
 // Right-aligned with option 'right_aligned'
-echo $this->navigation()->menu()->renderMenu(
-    new \Laminas\Navigation\Navigation(
-        [
-            [
-                'label'  => 'Active',
-                'uri'    => '#',
-                'active' => true,
-            ],
-            [
-                'label' => 'Link',
-                'uri'   => '#',
-            ],
-            [
-                'label' => 'Link',
-                'uri'   => '#',
-            ],
-            [
-                'label'   => 'Disabled',
-                'uri'     => '#',
-                'visible' => false,
-            ],
-        ]
-    ),
-    [
-        'right_aligned' => true,
-        'page'          => true,
-    ]
-);
-
+echo $this->navigation()->menu()->renderMenu(new \Laminas\Navigation\Navigation([
+    ['label' => 'Active', 'uri' => '#', 'active' => true],
+    ['label' => 'Link', 'uri' => '#'],
+    ['label' => 'Link', 'uri' => '#'],
+    ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+]), ['right_aligned' => true, 'page' => true]);
 ```
 
 </TabItem>
@@ -252,64 +165,28 @@ echo $this->navigation()->menu()->renderMenu(
 <?php
 
 echo $this->navigation()->menu()->renderMenu(
-    new \Laminas\Navigation\Navigation(
-        [
-            [
-                'label'  => 'Active',
-                'uri'    => '#',
-                'active' => true,
-            ],
-            [
-                'label' => 'Link',
-                'uri'   => '#',
-            ],
-            [
-                'label' => 'Link',
-                'uri'   => '#',
-            ],
-            [
-                'label'   => 'Disabled',
-                'uri'     => '#',
-                'visible' => false,
-            ],
-        ]
-    ),
-    [
-        'vertical' => true,
-        'page'     => true,
-    ]
+    new \Laminas\Navigation\Navigation([
+        ['label' => 'Active', 'uri' => '#', 'active' => true],
+        ['label' => 'Link', 'uri' => '#'],
+        ['label' => 'Link', 'uri' => '#'],
+        ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+    ]),
+    ['vertical' => true, 'page' => true]
 );
 
 echo $this->navigation()->menu()->renderMenu(
-    new \Laminas\Navigation\Navigation(
-        [
-            [
-                'label'  => 'Active',
-                'uri'    => '#',
-                'active' => true,
-            ],
-            [
-                'label' => 'Link',
-                'uri'   => '#',
-            ],
-            [
-                'label' => 'Link',
-                'uri'   => '#',
-            ],
-            [
-                'label'   => 'Disabled',
-                'uri'     => '#',
-                'visible' => false,
-            ],
-        ]
-    ),
+    new \Laminas\Navigation\Navigation([
+        ['label' => 'Active', 'uri' => '#', 'active' => true],
+        ['label' => 'Link', 'uri' => '#'],
+        ['label' => 'Link', 'uri' => '#'],
+        ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+    ]),
     [
         'vertical' => true,
-        'list'     => false,
-        'page'     => true,
+        'list' => false,
+        'page' => true,
     ]
 );
-
 ```
 
 </TabItem>
@@ -343,35 +220,12 @@ echo $this->navigation()->menu()->renderMenu(
 ```php
 <?php
 
-echo $this->navigation()->menu()->renderMenu(
-    new \Laminas\Navigation\Navigation(
-        [
-            [
-                'label'  => 'Active',
-                'uri'    => '#',
-                'active' => true,
-            ],
-            [
-                'label' => 'Link',
-                'uri'   => '#',
-            ],
-            [
-                'label' => 'Link',
-                'uri'   => '#',
-            ],
-            [
-                'label'   => 'Disabled',
-                'uri'     => '#',
-                'visible' => false,
-            ],
-        ]
-    ),
-    [
-        'tabs' => true,
-        'page' => true,
-    ]
-);
-
+echo $this->navigation()->menu()->renderMenu(new \Laminas\Navigation\Navigation([
+    ['label' => 'Active', 'uri' => '#', 'active' => true],
+    ['label' => 'Link', 'uri' => '#'],
+    ['label' => 'Link', 'uri' => '#'],
+    ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+]), ['tabs' => true, 'page' => true]);
 ```
 
 </TabItem>
@@ -405,35 +259,12 @@ echo $this->navigation()->menu()->renderMenu(
 ```php
 <?php
 
-echo $this->navigation()->menu()->renderMenu(
-    new \Laminas\Navigation\Navigation(
-        [
-            [
-                'label'  => 'Active',
-                'uri'    => '#',
-                'active' => true,
-            ],
-            [
-                'label' => 'Link',
-                'uri'   => '#',
-            ],
-            [
-                'label' => 'Link',
-                'uri'   => '#',
-            ],
-            [
-                'label'   => 'Disabled',
-                'uri'     => '#',
-                'visible' => false,
-            ],
-        ]
-    ),
-    [
-        'pills' => true,
-        'page'  => true,
-    ]
-);
-
+echo $this->navigation()->menu()->renderMenu(new \Laminas\Navigation\Navigation([
+    ['label' => 'Active', 'uri' => '#', 'active' => true],
+    ['label' => 'Link', 'uri' => '#'],
+    ['label' => 'Link', 'uri' => '#'],
+    ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+]), ['pills' => true, 'page' => true]);
 ```
 
 </TabItem>
@@ -497,133 +328,68 @@ echo $this->navigation()->menu()->renderMenu(
 <?php
 
 echo $this->navigation()->menu()->renderMenu(
-    new \Laminas\Navigation\Navigation(
-        [
-            [
-                'label'  => 'Active',
-                'uri'    => '#',
-                'active' => true,
-            ],
-            [
-                'label' => 'Much longer nav link',
-                'uri'   => '#',
-            ],
-            [
-                'label' => 'Link',
-                'uri'   => '#',
-            ],
-            [
-                'label'   => 'Disabled',
-                'uri'     => '#',
-                'visible' => false,
-            ],
-        ]
-    ),
+    new \Laminas\Navigation\Navigation([
+        ['label' => 'Active', 'uri' => '#', 'active' => true],
+        ['label' => 'Much longer nav link', 'uri' => '#'],
+        ['label' => 'Link', 'uri' => '#'],
+        ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+    ]),
     [
         'pills' => true,
-        'fill'  => true,
-        'page'  => true,
+        'fill' => true,
+        'page' => true,
     ]
 );
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 echo $this->navigation()->menu()->renderMenu(
-    new \Laminas\Navigation\Navigation(
-        [
-            [
-                'label'  => 'Active',
-                'uri'    => '#',
-                'active' => true,
-            ],
-            [
-                'label' => 'Much longer nav link',
-                'uri'   => '#',
-            ],
-            [
-                'label' => 'Link',
-                'uri'   => '#',
-            ],
-            [
-                'label'   => 'Disabled',
-                'uri'     => '#',
-                'visible' => false,
-            ],
-        ]
-    ),
+    new \Laminas\Navigation\Navigation([
+        ['label' => 'Active', 'uri' => '#', 'active' => true],
+        ['label' => 'Much longer nav link', 'uri' => '#'],
+        ['label' => 'Link', 'uri' => '#'],
+        ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+    ]),
     [
         'pills' => true,
-        'fill'  => true,
-        'list'  => false,
-        'page'  => true,
+        'fill' => true,
+        'list' => false,
+        'page' => true,
     ]
 );
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 echo $this->navigation()->menu()->renderMenu(
-    new \Laminas\Navigation\Navigation(
-        [
-            [
-                'label'  => 'Active',
-                'uri'    => '#',
-                'active' => true,
-            ],
-            [
-                'label' => 'Much longer nav link',
-                'uri'   => '#',
-            ],
-            [
-                'label' => 'Link',
-                'uri'   => '#',
-            ],
-            [
-                'label'   => 'Disabled',
-                'uri'     => '#',
-                'visible' => false,
-            ],
-        ]
-    ),
+    new \Laminas\Navigation\Navigation([
+        ['label' => 'Active', 'uri' => '#', 'active' => true],
+        ['label' => 'Much longer nav link', 'uri' => '#'],
+        ['label' => 'Link', 'uri' => '#'],
+        ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+    ]),
     [
-        'pills'     => true,
+        'pills' => true,
         'justified' => true,
-        'page'      => true,
+        'page' => true,
     ]
 );
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 echo $this->navigation()->menu()->renderMenu(
-    new \Laminas\Navigation\Navigation(
-        [
-            [
-                'label'  => 'Active',
-                'uri'    => '#',
-                'active' => true,
-            ],
-            [
-                'label' => 'Much longer nav link',
-                'uri'   => '#',
-            ],
-            [
-                'label' => 'Link',
-                'uri'   => '#',
-            ],
-            [
-                'label'   => 'Disabled',
-                'uri'     => '#',
-                'visible' => false,
-            ],
-        ]
-    ),
+    new \Laminas\Navigation\Navigation([
+        ['label' => 'Active', 'uri' => '#', 'active' => true],
+        ['label' => 'Much longer nav link', 'uri' => '#'],
+        ['label' => 'Link', 'uri' => '#'],
+        ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+    ]),
     [
-        'pills'     => true,
+        'pills' => true,
         'justified' => true,
-        'list'      => false,
-        'page'      => true,
+        'list' => false,
+        'page' => true,
     ]
 );
-
 ```
 
 </TabItem>
@@ -649,41 +415,17 @@ echo $this->navigation()->menu()->renderMenu(
 ```php
 <?php
 
-echo $this->navigation()->menu()->renderMenu(
-    new \Laminas\Navigation\Navigation(
-        [
-            [
-                'label'  => 'Active',
-                'uri'    => '#',
-                'active' => true,
-                'class'  => 'flex-sm-fill text-sm-center',
-            ],
-            [
-                'label' => 'Longer nav link',
-                'uri'   => '#',
-                'class' => 'flex-sm-fill text-sm-center',
-            ],
-            [
-                'label' => 'Link',
-                'uri'   => '#',
-                'class' => 'flex-sm-fill text-sm-center',
-            ],
-            [
-                'label'   => 'Disabled',
-                'uri'     => '#',
-                'visible' => false,
-                'class'   => 'flex-sm-fill text-sm-center',
-            ],
-        ]
-    ),
-    [
-        'page'    => true,
-        'list'    => false,
-        'pills'   => true,
-        'ulClass' => 'flex-column flex-sm-row nav',
-    ]
-);
-
+echo $this->navigation()->menu()->renderMenu(new \Laminas\Navigation\Navigation([
+    ['label' => 'Active', 'uri' => '#', 'active' => true, 'class' => 'flex-sm-fill text-sm-center'],
+    ['label' => 'Longer nav link', 'uri' => '#', 'class' => 'flex-sm-fill text-sm-center'],
+    ['label' => 'Link', 'uri' => '#', 'class' => 'flex-sm-fill text-sm-center'],
+    ['label' => 'Disabled', 'uri' => '#', 'visible' => false, 'class' => 'flex-sm-fill text-sm-center'],
+]), [
+    'page' => true,
+    'list' => false,
+    'pills' => true,
+    'ulClass' => 'flex-column flex-sm-row nav',
+]);
 ```
 
 </TabItem>
@@ -729,41 +471,24 @@ echo $this->navigation()->menu()->renderMenu(
 <?php
 
 echo $this->navigation()->menu()->renderMenu(
-    new \Laminas\Navigation\Navigation(
+    new \Laminas\Navigation\Navigation([
+        ['label' => 'Active', 'uri' => '#', 'active' => true],
         [
-            [
-                'label'  => 'Active',
-                'uri'    => '#',
-                'active' => true,
+            'type' => \TwbsHelper\Navigation\Page\DropdownPage::class,
+            'label' => 'Dropdown',
+            'dropdown' => [
+                'Action',
+                'Another action',
+                'Something else here',
+                '---',
+                'Separated link',
             ],
-            [
-                'type'     => \TwbsHelper\Navigation\Page\DropdownPage::class,
-                'label'    => 'Dropdown',
-                'dropdown' => [
-                    'Action',
-                    'Another action',
-                    'Something else here',
-                    '---',
-                    'Separated link',
-                ],
-            ],
-            [
-                'label' => 'Link',
-                'uri'   => '#',
-            ],
-            [
-                'label'   => 'Disabled',
-                'uri'     => '#',
-                'visible' => false,
-            ],
-        ]
-    ),
-    [
-        'tabs' => true,
-        'page' => true,
-    ]
+        ],
+        ['label' => 'Link', 'uri' => '#'],
+        ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+    ]),
+    ['tabs' => true, 'page' => true]
 );
-
 ```
 
 </TabItem>
@@ -805,41 +530,24 @@ echo $this->navigation()->menu()->renderMenu(
 <?php
 
 echo $this->navigation()->menu()->renderMenu(
-    new \Laminas\Navigation\Navigation(
+    new \Laminas\Navigation\Navigation([
+        ['label' => 'Active', 'uri' => '#', 'active' => true],
         [
-            [
-                'label'  => 'Active',
-                'uri'    => '#',
-                'active' => true,
+            'type' => \TwbsHelper\Navigation\Page\DropdownPage::class,
+            'label' => 'Dropdown',
+            'dropdown' => [
+                'Action',
+                'Another action',
+                'Something else here',
+                '---',
+                'Separated link',
             ],
-            [
-                'type'     => \TwbsHelper\Navigation\Page\DropdownPage::class,
-                'label'    => 'Dropdown',
-                'dropdown' => [
-                    'Action',
-                    'Another action',
-                    'Something else here',
-                    '---',
-                    'Separated link',
-                ],
-            ],
-            [
-                'label' => 'Link',
-                'uri'   => '#',
-            ],
-            [
-                'label'   => 'Disabled',
-                'uri'     => '#',
-                'visible' => false,
-            ],
-        ]
-    ),
-    [
-        'pills' => true,
-        'page'  => true,
-    ]
+        ],
+        ['label' => 'Link', 'uri' => '#'],
+        ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+    ]),
+    ['pills' => true, 'page' => true]
 );
-
 ```
 
 </TabItem>

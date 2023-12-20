@@ -31,35 +31,32 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 ```php
 <?php
 
-foreach ([
-    'top'    => 'Tooltip on top',
-    'right'  => 'Tooltip on right',
-    'bottom' => 'Tooltip on bottom',
-    'left'   => 'Tooltip on left',
-] as $placement => $label) {
-    echo $this->formButton()->renderSpec(
-        [
-            'options' => [
-                'label'   => $label,
-                'tooltip' => [
-                    'placement' => $placement,
-                    'content'   => $label,
-                ],
+foreach (
+    [
+        'top' => 'Tooltip on top',
+        'right' => 'Tooltip on right',
+        'bottom' => 'Tooltip on bottom',
+        'left' => 'Tooltip on left',
+    ] as $placement => $label
+) {
+    echo $this->formButton()->renderSpec([
+        'options' => [
+            'label' => $label,
+            'tooltip' => [
+                'placement' => $placement,
+                'content' => $label,
             ],
-        ]
-    );
+        ],
+    ]);
 }
 
 // With custom HTML added:
-echo $this->formButton()->renderSpec(
-    [
-        'options' => [
-            'label'   => 'Tooltip with HTML',
-            'tooltip' => '<em>Tooltip</em> <u>with</u> <b>HTML</b>',
-        ],
-    ]
-);
-
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Tooltip with HTML',
+        'tooltip' => '<em>Tooltip</em> <u>with</u> <b>HTML</b>',
+    ],
+]);
 ```
 
 </TabItem>
@@ -84,17 +81,14 @@ echo $this->formButton()->renderSpec(
 ```php
 <?php
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label'   => 'Disabled button',
-            'tooltip' => 'Disabled tooltip',
-            'variant' => 'primary',
-        ],
-        'attributes' => ['disabled' => true],
-    ]
-);
-
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Disabled button',
+        'tooltip' => 'Disabled tooltip',
+        'variant' => 'primary',
+    ],
+    'attributes' => ['disabled' => true],
+]);
 ```
 
 </TabItem>

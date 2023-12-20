@@ -39,18 +39,15 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 ```php
 <?php
 
-echo $this->grid(
+echo $this->grid([
     [
         [
-            [
-                'Column',
-                'Column',
-                'Column',
-            ],
+            'Column',
+            'Column',
+            'Column',
         ],
-    ]
-);
-
+    ],
+]);
 ```
 
 </TabItem>
@@ -95,24 +92,21 @@ echo $this->grid(
 ```php
 <?php
 
-echo $this->grid(
+echo $this->grid([
     [
         [
-            [
-                '1 of 2',
-                '2 of 2',
-            ],
+            '1 of 2',
+            '2 of 2',
         ],
+    ],
+    [
         [
-            [
-                '1 of 3',
-                '2 of 3',
-                '3 of 3',
-            ],
+            '1 of 3',
+            '2 of 3',
+            '3 of 3',
         ],
-    ]
-);
-
+    ],
+]);
 ```
 
 </TabItem>
@@ -156,31 +150,22 @@ echo $this->grid(
 ```php
 <?php
 
-echo $this->grid(
+echo $this->grid([
     [
         [
-            [
-                '1 of 3',
-                [
-                    '2 of 3 (wider)',
-                    ['column' => 6],
-                ],
-                '3 of 3',
-            ],
+            '1 of 3',
+            ['2 of 3 (wider)', ['column' => 6]],
+            '3 of 3',
         ],
+    ],
+    [
         [
-            [
-                '1 of 3',
-                [
-                    '2 of 3 (wider)',
-                    ['column' => 5],
-                ],
-                '3 of 3',
-            ],
+            '1 of 3',
+            ['2 of 3 (wider)', ['column' => 5]],
+            '3 of 3',
         ],
-    ]
-);
-
+    ],
+]);
 ```
 
 </TabItem>
@@ -224,56 +209,25 @@ echo $this->grid(
 ```php
 <?php
 
-echo $this->grid(
+echo $this->grid([
     [
         [
-            [
-                [
-                    '1 of 3',
-                    [
-                        'column' => [
-                            true,
-                            'lg-2',
-                        ],
-                    ],
-                ],
-                [
-                    'Variable width content',
-                    ['column' => 'md-auto'],
-                ],
-                [
-                    '3 of 3',
-                    [
-                        'column' => [
-                            true,
-                            'lg-2',
-                        ],
-                    ],
-                ],
-            ],
-            [    'justify_content' => 'md-center'    ],
+            ['1 of 3', ['column' => [true, 'lg-2']]],
+            ['Variable width content', ['column' => 'md-auto']],
+            ['3 of 3', ['column' => [true, 'lg-2']]],
         ],
         [
-            [
-                '1 of 3',
-                [
-                    'Variable width content',
-                    ['column' => 'md-auto'],
-                ],
-                [
-                    '3 of 3',
-                    [
-                        'column' => [
-                            true,
-                            'lg-2',
-                        ],
-                    ],
-                ],
-            ],
+            'justify_content' => 'md-center',
         ],
-    ]
-);
-
+    ],
+    [
+        [
+            '1 of 3',
+            ['Variable width content', ['column' => 'md-auto']],
+            ['3 of 3', ['column' => [true, 'lg-2']]],
+        ],
+    ],
+]);
 ```
 
 </TabItem>
@@ -321,31 +275,17 @@ echo $this->grid(
 ```php
 <?php
 
-echo $this->grid(
+echo $this->grid([
+    [
+        ['col', 'col', 'col', 'col'],
+    ],
     [
         [
-            [
-                'col',
-                'col',
-                'col',
-                'col',
-            ],
+            ['col-8', ['column' => 8]],
+            ['col-4', ['column' => 4]],
         ],
-        [
-            [
-                [
-                    'col-8',
-                    ['column' => 8],
-                ],
-                [
-                    'col-4',
-                    ['column' => 4],
-                ],
-            ],
-        ],
-    ]
-);
-
+    ],
+]);
 ```
 
 </TabItem>
@@ -386,39 +326,21 @@ echo $this->grid(
 ```php
 <?php
 
-echo $this->grid(
+echo $this->grid([
     [
         [
-            [
-                [
-                    'col-sm-8',
-                    ['column' => 'sm-8'],
-                ],
-                [
-                    'col-sm-4',
-                    ['column' => 'sm-4'],
-                ],
-            ],
+            ['col-sm-8', ['column' => 'sm-8']],
+            ['col-sm-4', ['column' => 'sm-4']],
         ],
+    ],
+    [
         [
-            [
-                [
-                    'col-sm',
-                    ['column' => 'sm'],
-                ],
-                [
-                    'col-sm',
-                    ['column' => 'sm'],
-                ],
-                [
-                    'col-sm',
-                    ['column' => 'sm'],
-                ],
-            ],
+            ['col-sm', ['column' => 'sm']],
+            ['col-sm', ['column' => 'sm']],
+            ['col-sm', ['column' => 'sm']],
         ],
-    ]
-);
-
+    ],
+]);
 ```
 
 </TabItem>
@@ -467,71 +389,27 @@ echo $this->grid(
 ```php
 <?php
 
-echo $this->grid(
+echo $this->grid([
     [
         [
-            [
-                [
-                    '.col-md-8',
-                    ['column' => 'md-8'],
-                ],
-                [
-                    '.col-6 .col-md-4',
-                    [
-                        'column' => [
-                            6,
-                            'md-4',
-                        ],
-                    ],
-                ],
-            ],
+            ['.col-md-8', ['column' => 'md-8']],
+            ['.col-6 .col-md-4', ['column' => [6, 'md-4']]],
         ],
+    ],
+    [
         [
-            [
-                [
-                    '.col-6 .col-md-4',
-                    [
-                        'column' => [
-                            6,
-                            'md-4',
-                        ],
-                    ],
-                ],
-                [
-                    '.col-6 .col-md-4',
-                    [
-                        'column' => [
-                            6,
-                            'md-4',
-                        ],
-                    ],
-                ],
-                [
-                    '.col-6 .col-md-4',
-                    [
-                        'column' => [
-                            6,
-                            'md-4',
-                        ],
-                    ],
-                ],
-            ],
+            ['.col-6 .col-md-4', ['column' => [6, 'md-4']]],
+            ['.col-6 .col-md-4', ['column' => [6, 'md-4']]],
+            ['.col-6 .col-md-4', ['column' => [6, 'md-4']]],
         ],
+    ],
+    [
         [
-            [
-                [
-                    '.col-6',
-                    ['column' => 6],
-                ],
-                [
-                    '.col-6',
-                    ['column' => 6],
-                ],
-            ],
+            ['.col-6', ['column' => 6]],
+            ['.col-6', ['column' => 6]],
         ],
-    ]
-);
-
+    ],
+]);
 ```
 
 </TabItem>
@@ -647,99 +525,52 @@ echo $this->grid(
 ```php
 <?php
 
-echo $this->grid(
+echo $this->grid([
+    [
+        ['Column', 'Column', 'Column', 'Column'],
+        ['columns' => 2],
+    ],
+]);
+
+echo $this->grid([
+    [
+        ['Column', 'Column', 'Column', 'Column'],
+        ['columns' => 3],
+    ],
+]);
+
+echo $this->grid([
+    [
+        ['Column', 'Column', 'Column', 'Column'],
+        ['columns' => 'auto'],
+    ],
+]);
+
+echo $this->grid([
+    [
+        ['Column', 'Column', 'Column', 'Column'],
+        ['columns' => 4],
+    ],
+]);
+
+echo $this->grid([
     [
         [
-            [
-                'Column',
-                'Column',
-                'Column',
-                'Column',
-            ],
-            ['columns' => 2],
+            'Column',
+            'Column',
+            ['Column', ['column' => 6]],
+            'Column',
         ],
-    ]
-);
+        ['columns' => 4],
+    ],
+]);
 
-echo $this->grid(
+echo $this->grid([
     [
-        [
-            [
-                'Column',
-                'Column',
-                'Column',
-                'Column',
-            ],
-            ['columns' => 3],
-        ],
-    ]
-);
-
-echo $this->grid(
-    [
-        [
-            [
-                'Column',
-                'Column',
-                'Column',
-                'Column',
-            ],
-            ['columns' => 'auto'],
-        ],
-    ]
-);
-
-echo $this->grid(
-    [
-        [
-            [
-                'Column',
-                'Column',
-                'Column',
-                'Column',
-            ],
-            ['columns' => 4],
-        ],
-    ]
-);
-
-echo $this->grid(
-    [
-        [
-            [
-                'Column',
-                'Column',
-                [
-                    'Column',
-                    ['column' => 6],
-                ],
-                'Column',
-            ],
-            ['columns' => 4],
-        ],
-    ]
-);
-
-echo $this->grid(
-    [
-        [
-            [
-                'Column',
-                'Column',
-                'Column',
-                'Column',
-            ],
-            [
-                'columns' => [
-                    1,
-                    'sm-2',
-                    'md-4',
-                ],
-            ],
-        ],
-    ]
-);
-
+        ['Column', 'Column', 'Column', 'Column'],
+        ['columns' => [1, 'sm-2', 'md-4']],
+    ],
+]);
 ```
 
 </TabItem>
@@ -776,41 +607,20 @@ echo $this->grid(
 ```php
 <?php
 
-echo $this->grid(
+echo $this->grid([
     [
         [
+            ['Level 1: .col-sm-3', ['column' => 'sm-3']],
             [
+                null,
                 [
-                    'Level 1: .col-sm-3',
-                    ['column' => 'sm-3'],
-                ],
-                [
-                    null,
-                    [
-                        'column' => 'sm-9',
-                        'grid'   => [
-                            'rows' => [
+                    'column' => 'sm-9',
+                    'grid' => [
+                        'rows' => [
+                            [
                                 [
-                                    [
-                                        [
-                                            'Level 2: .col-8 .col-sm-6',
-                                            [
-                                                'column' => [
-                                                    8,
-                                                    'sm-6',
-                                                ],
-                                            ],
-                                        ],
-                                        [
-                                            'Level 2: .col-4 .col-sm-6',
-                                            [
-                                                'column' => [
-                                                    4,
-                                                    'sm-6',
-                                                ],
-                                            ],
-                                        ],
-                                    ],
+                                    ['Level 2: .col-8 .col-sm-6', ['column' => [8, 'sm-6']]],
+                                    ['Level 2: .col-4 .col-sm-6', ['column' => [4, 'sm-6']]],
                                 ],
                             ],
                         ],
@@ -818,9 +628,8 @@ echo $this->grid(
                 ],
             ],
         ],
-    ]
-);
-
+    ],
+]);
 ```
 
 </TabItem>

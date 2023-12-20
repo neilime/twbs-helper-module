@@ -27,18 +27,15 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 ```php
 <?php
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label'   => 'Click to toggle popover',
-            'variant' => 'danger',
-            'popover' => "And here's some amazing content. It's very engaging. Right?",
-            'size'    => 'lg',
-        ],
-        'attributes' => ['title' => 'Popover title'],
-    ]
-);
-
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Click to toggle popover',
+        'variant' => 'danger',
+        'popover' => "And here's some amazing content. It's very engaging. Right?",
+        'size' => 'lg',
+    ],
+    'attributes' => ['title' => 'Popover title'],
+]);
 ```
 
 </TabItem>
@@ -62,58 +59,49 @@ echo $this->formButton()->renderSpec(
 ```php
 <?php
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label'   => 'Popover on top',
-            'popover' => [
-                'placement' => 'top',
-                'content'   => 'Top popover',
-            ],
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Popover on top',
+        'popover' => [
+            'placement' => 'top',
+            'content' => 'Top popover',
         ],
-        'attributes' => ['title' => ''],
-    ]
-);
+    ],
+    'attributes' => ['title' => ''],
+]);
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label'   => 'Popover on right',
-            'popover' => [
-                'placement' => 'right',
-                'content'   => 'Right popover',
-            ],
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Popover on right',
+        'popover' => [
+            'placement' => 'right',
+            'content' => 'Right popover',
         ],
-        'attributes' => ['title' => ''],
-    ]
-);
+    ],
+    'attributes' => ['title' => ''],
+]);
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label'   => 'Popover on bottom',
-            'popover' => [
-                'placement' => 'bottom',
-                'content'   => 'Bottom popover',
-            ],
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Popover on bottom',
+        'popover' => [
+            'placement' => 'bottom',
+            'content' => 'Bottom popover',
         ],
-        'attributes' => ['title' => ''],
-    ]
-);
+    ],
+    'attributes' => ['title' => ''],
+]);
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label'   => 'Popover on left',
-            'popover' => [
-                'placement' => 'left',
-                'content'   => 'Left popover',
-            ],
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Popover on left',
+        'popover' => [
+            'placement' => 'left',
+            'content' => 'Left popover',
         ],
-        'attributes' => ['title' => ''],
-    ]
-);
-
+    ],
+    'attributes' => ['title' => ''],
+]);
 ```
 
 </TabItem>
@@ -134,26 +122,20 @@ echo $this->formButton()->renderSpec(
 ```php
 <?php
 
-echo $this->formButton()->renderSpec(
-    [
-        'name'       => 'popover',
-        'options'    => [
-            'tag'     => 'a',
-            'label'   => 'Dismissible popover',
-            'variant' => 'danger',
-            'popover' => [
-                'trigger' => 'focus',
-                'content' => "And here's some amazing content. It's very engaging. Right?",
-            ],
-            'size'    => 'lg',
+echo $this->formButton()->renderSpec([
+    'name' => 'popover',
+    'options' => [
+        'tag' => 'a',
+        'label' => 'Dismissible popover',
+        'variant' => 'danger',
+        'popover' => [
+            'trigger' => 'focus',
+            'content' => "And here's some amazing content. It's very engaging. Right?",
         ],
-        'attributes' => [
-            'title'    => 'Dismissible popover',
-            'tabindex' => '0',
-        ],
-    ]
-);
-
+        'size' => 'lg',
+    ],
+    'attributes' => ['title' => 'Dismissible popover', 'tabindex' => '0'],
+]);
 ```
 
 </TabItem>
@@ -174,20 +156,17 @@ echo $this->formButton()->renderSpec(
 ```php
 <?php
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label'   => 'Disabled button',
-            'variant' => 'primary',
-            'popover' => [
-                'content' => 'Disabled popover',
-                'trigger' => 'hover focus',
-            ],
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Disabled button',
+        'variant' => 'primary',
+        'popover' => [
+            'content' => 'Disabled popover',
+            'trigger' => 'hover focus',
         ],
-        'attributes' => ['disabled' => true],
-    ]
-);
-
+    ],
+    'attributes' => ['disabled' => true],
+]);
 ```
 
 </TabItem>

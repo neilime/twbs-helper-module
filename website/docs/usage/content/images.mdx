@@ -27,8 +27,7 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 ```php
 <?php
 
-echo $this->image('/twbs-helper-module/img/docs/responsive.svg', ['fluid' => true, 'alt' => '...']);
-
+echo $this->image('/twbs-helper-module/img/docs/responsive.svg', ['fluid' => true, 'alt' => '...',]);
 ```
 
 </TabItem>
@@ -49,8 +48,7 @@ echo $this->image('/twbs-helper-module/img/docs/responsive.svg', ['fluid' => tru
 ```php
 <?php
 
-echo $this->image('/twbs-helper-module/img/docs/200x200.svg', ['thumbnail' => true, 'alt' => '...']);
-
+echo $this->image('/twbs-helper-module/img/docs/200x200.svg', ['thumbnail' => true, 'alt' => '...',]);
 ```
 
 </TabItem>
@@ -76,24 +74,15 @@ echo $this->image('/twbs-helper-module/img/docs/200x200.svg', ['thumbnail' => tr
 
 echo $this->image(
     '/twbs-helper-module/img/docs/200x200.svg',
-    [
-        'rounded' => true,
-        'alt'     => '...',
-        'class'   => 'float-start',
-    ]
+    ['rounded' => true, 'alt' => '...', 'class' => 'float-start']
 );
 
 echo PHP_EOL;
 
 echo $this->image(
     '/twbs-helper-module/img/docs/200x200.svg',
-    [
-        'rounded' => true,
-        'alt'     => '...',
-        'class'   => 'float-end',
-    ]
+    ['rounded' => true, 'alt' => '...', 'class' => 'float-end']
 );
-
 ```
 
 </TabItem>
@@ -114,13 +103,8 @@ echo $this->image(
 
 echo $this->image(
     '/twbs-helper-module/img/docs/200x200.svg',
-    [
-        'rounded' => true,
-        'alt'     => '...',
-        'class'   => 'mx-auto d-block',
-    ]
+    ['rounded' => true, 'alt' => '...', 'class' => 'mx-auto d-block']
 );
-
 ```
 
 </TabItem>
@@ -143,13 +127,8 @@ echo $this->image(
 
 echo $this->image(
     '/twbs-helper-module/img/docs/200x200.svg',
-    [
-        'rounded'  => true,
-        'centered' => true,
-        'alt'      => '...',
-    ]
+    ['rounded' => true, 'centered' => true, 'alt' => '...']
 );
-
 ```
 
 </TabItem>
@@ -173,16 +152,12 @@ echo $this->image(
 ```php
 <?php
 
-echo $this->image(
-    '/twbs-helper-module/img/docs/200x200.svg',
-    [
-        'thumbnail' => true,
-        'fluid'     => true,
-        'alt'       => '...',
-        'sources'   => ['/twbs-helper-module/img/docs/200x200.svg' => 'image/svg+xml'],
-    ]
-);
-
+echo $this->image('/twbs-helper-module/img/docs/200x200.svg', [
+    'thumbnail' => true,
+    'fluid' => true,
+    'alt' => '...',
+    'sources' => ['/twbs-helper-module/img/docs/200x200.svg' => 'image/svg+xml'],
+]);
 ```
 
 </TabItem>

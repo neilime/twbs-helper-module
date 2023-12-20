@@ -28,7 +28,6 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 <?php
 
 echo $this->formButton()->renderSpec(['options' => ['close' => true]], '');
-
 ```
 
 </TabItem>
@@ -49,14 +48,10 @@ echo $this->formButton()->renderSpec(['options' => ['close' => true]], '');
 ```php
 <?php
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => ['close' => true],
-        'attributes' => ['disabled' => true],
-    ],
-    ''
-);
-
+echo $this->formButton()->renderSpec([
+    'options' => ['close' => true],
+    'attributes' => ['disabled' => true],
+], '');
 ```
 
 </TabItem>
@@ -78,25 +73,15 @@ echo $this->formButton()->renderSpec(
 ```php
 <?php
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => ['close' => true],
-        'attributes' => ['class' => 'btn-close-white'],
-    ],
-    ''
-);
+echo $this->formButton()->renderSpec([
+    'options' => ['close' => true],
+    'attributes' => ['class' => 'btn-close-white'],
+], '');
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => ['close' => true],
-        'attributes' => [
-            'disabled' => true,
-            'class'    => 'btn-close-white',
-        ],
-    ],
-    ''
-);
-
+echo $this->formButton()->renderSpec([
+    'options' => ['close' => true],
+    'attributes' => ['disabled' => true, 'class' => 'btn-close-white'],
+], '');
 ```
 
 </TabItem>

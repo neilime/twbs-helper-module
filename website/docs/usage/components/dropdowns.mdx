@@ -108,72 +108,55 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 ```php
 <?php
 
-echo $this->formButton()->renderSpec(
-    [
-        'name'       => 'dropdown',
-        'options'    => [
-            'label'    => 'Dropdown button',
-            'dropdown' => [
-                'Action',
-                'Another action',
-                'Something else here',
-            ],
-        ],
-        'attributes' => ['id' => 'dropdownMenuButton1'],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Dropdown button',
+        'dropdown' => ['Action', 'Another action', 'Something else here'],
+    ],
+    'attributes' => ['id' => 'dropdownMenuButton1'],
+]);
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 // With <a> elements
-echo $this->formButton()->renderSpec(
-    [
-        'name'       => 'dropdown',
-        'options'    => [
-            'tag'      => 'a',
-            'label'    => 'Dropdown link',
-            'dropdown' => [
-                'Action',
-                'Another action',
-                'Something else here',
-            ],
-        ],
-        'attributes' => ['id' => 'dropdownMenuLink'],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'tag' => 'a',
+        'label' => 'Dropdown link',
+        'dropdown' => ['Action', 'Another action', 'Something else here'],
+    ],
+    'attributes' => ['id' => 'dropdownMenuLink'],
+]);
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 // Variations
-foreach ([
-    'primary',
-    'secondary',
-    'success',
-    'info',
-    'warning',
-    'danger',
-] as $variant) {
-    echo $this->formButton()->renderSpec(
-        [
-            'name'    => 'dropdown',
-            'options' => [
-                'variant'  => $variant,
-                'label'    => 'Dropdown',
-                'dropdown' => [
-                    'attributes' => ['class' => 'btn-group'],
-                    'items'      => [
-                        'Action',
-                        'Another action',
-                        'Something else here',
-                        '---',
-                        'Separated link',
-                    ],
+foreach (
+    [
+        'primary', 'secondary', 'success',
+        'info', 'warning', 'danger',
+    ] as $variant
+) {
+    echo $this->formButton()->renderSpec([
+        'name' => 'dropdown',
+        'options' => [
+            'variant' => $variant,
+            'label' => 'Dropdown',
+            'dropdown' => [
+                'attributes' => ['class' => 'btn-group'],
+                'items' => [
+                    'Action',
+                    'Another action',
+                    'Something else here',
+                    '---',
+                    'Separated link',
                 ],
             ],
-        ]
-    );
-}//end foreach
-
+        ],
+    ]);
+}
 ```
 
 </TabItem>
@@ -259,35 +242,30 @@ foreach ([
 ```php
 <?php
 
-foreach ([
-    'primary',
-    'secondary',
-    'success',
-    'info',
-    'warning',
-    'danger',
-] as $variant) {
-    echo $this->formButton()->renderSpec(
-        [
-            'name'    => 'dropdown',
-            'options' => [
-                'variant'  => $variant,
-                'label'    => 'Dropdown',
-                'dropdown' => [
-                    'split' => 'Toggle Dropdown',
-                    'items' => [
-                        'Action',
-                        'Another action',
-                        'Something else here',
-                        '---',
-                        'Separated link',
-                    ],
+foreach (
+    [
+        'primary', 'secondary', 'success',
+        'info', 'warning', 'danger',
+    ] as $variant
+) {
+    echo $this->formButton()->renderSpec([
+        'name' => 'dropdown',
+        'options' => [
+            'variant' => $variant,
+            'label' => 'Dropdown',
+            'dropdown' => [
+                'split' => 'Toggle Dropdown',
+                'items' => [
+                    'Action',
+                    'Another action',
+                    'Something else here',
+                    '---',
+                    'Separated link',
                 ],
             ],
-        ]
-    );
-}//end foreach
-
+        ],
+    ]);
+}
 ```
 
 </TabItem>
@@ -351,91 +329,58 @@ foreach ([
 <?php
 
 // Large button
-echo $this->formButton()->renderSpec(
-    [
-        'name'    => 'dropdown',
-        'options' => [
-            'label'    => 'Large button',
-            'size'     => 'lg',
-            'dropdown' => [
-                'attributes' => ['class' => 'btn-group'],
-                'items'      => [
-                    'Action',
-                    'Another action',
-                    'Something else here',
-                    '---',
-                    'Separated link',
-                ],
-            ],
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Large button',
+        'size' => 'lg',
+        'dropdown' => [
+            'attributes' => ['class' => 'btn-group'],
+            'items' => ['Action', 'Another action', 'Something else here', '---', 'Separated link'],
         ],
-    ]
-);
+    ],
+]);
 
 // Large split button
-echo $this->formButton()->renderSpec(
-    [
-        'name'    => 'dropdown',
-        'options' => [
-            'label'    => 'Large button',
-            'size'     => 'lg',
-            'dropdown' => [
-                'split' => 'Toggle Dropdown',
-                'items' => [
-                    'Action',
-                    'Another action',
-                    'Something else here',
-                    '---',
-                    'Separated link',
-                ],
-            ],
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Large button',
+        'size' => 'lg',
+        'dropdown' => [
+            'split' => 'Toggle Dropdown',
+            'items' => ['Action', 'Another action', 'Something else here', '---', 'Separated link'],
         ],
-    ]
-);
+    ],
+]);
 
-echo PHP_EOL.'<br/><br/>';
+echo PHP_EOL . '<br/><br/>';
 
 // Small button
-echo $this->formButton()->renderSpec(
-    [
-        'name'    => 'dropdown',
-        'options' => [
-            'label'    => 'Small button',
-            'size'     => 'sm',
-            'dropdown' => [
-                'attributes' => ['class' => 'btn-group'],
-                'items'      => [
-                    'Action',
-                    'Another action',
-                    'Something else here',
-                    '---',
-                    'Separated link',
-                ],
-            ],
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Small button',
+        'size' => 'sm',
+        'dropdown' => [
+            'attributes' => ['class' => 'btn-group'],
+            'items' => ['Action', 'Another action', 'Something else here', '---', 'Separated link'],
         ],
-    ]
-);
+    ],
+]);
 
 // Small split button
-echo $this->formButton()->renderSpec(
-    [
-        'name'    => 'dropdown',
-        'options' => [
-            'label'    => 'Small button',
-            'size'     => 'sm',
-            'dropdown' => [
-                'split' => 'Toggle Dropdown',
-                'items' => [
-                    'Action',
-                    'Another action',
-                    'Something else here',
-                    '---',
-                    'Separated link',
-                ],
-            ],
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Small button',
+        'size' => 'sm',
+        'dropdown' => [
+            'split' => 'Toggle Dropdown',
+            'items' => ['Action', 'Another action', 'Something else here', '---', 'Separated link'],
         ],
-    ]
-);
-
+    ],
+]);
 ```
 
 </TabItem>
@@ -484,56 +429,51 @@ echo $this->formButton()->renderSpec(
 ```php
 <?php
 
-echo $this->formButton()->renderSpec(
-    [
-        'name'       => 'dropdown',
-        'options'    => [
-            'label'    => 'Dropdown button',
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Dropdown button',
+        'dropdown' => [
+            'dark' => true,
+            'items' => [
+                'Action',
+                'Another action',
+                'Something else here',
+                '---',
+                'Separated link',
+            ],
+        ],
+    ],
+    'attributes' => ['id' => 'dropdownMenuButton2'],
+]);
+
+echo PHP_EOL . '<br/>';
+
+echo $this->navigation()->navbar()->render(
+    new \Laminas\Navigation\Navigation([
+
+        [
+            'type' => \TwbsHelper\Navigation\Page\DropdownPage::class,
+            'label' => 'Dropdown',
             'dropdown' => [
-                'dark'  => true,
+                'dark' => true,
                 'items' => [
                     'Action',
                     'Another action',
                     'Something else here',
-                    '---',
-                    'Separated link',
                 ],
+                'attributes' => ['id' => 'navbarDarkDropdownMenuLink'],
             ],
         ],
-        'attributes' => ['id' => 'dropdownMenuButton2'],
-    ]
-);
-
-echo PHP_EOL.'<br/>';
-
-echo $this->navigation()->navbar()->render(
-    new \Laminas\Navigation\Navigation(
-        [
-
-            [
-                'type'     => \TwbsHelper\Navigation\Page\DropdownPage::class,
-                'label'    => 'Dropdown',
-                'dropdown' => [
-                    'dark'       => true,
-                    'items'      => [
-                        'Action',
-                        'Another action',
-                        'Something else here',
-                    ],
-                    'attributes' => ['id' => 'navbarDarkDropdownMenuLink'],
-                ],
-            ],
-        ]
-    ),
+    ]),
     [
-        'brand'      => 'Navbar',
-        'variant'    => 'dark',
+        'brand' => 'Navbar',
+        'variant' => 'dark',
         'background' => 'dark',
-        'container'  => 'fluid',
+        'container' => 'fluid',
         'attributes' => ['id' => 'navbarNavDarkDropdown'],
     ]
 );
-
 ```
 
 </TabItem>
@@ -579,47 +519,42 @@ echo $this->navigation()->navbar()->render(
 <?php
 
 // Dropup button
-echo $this->formButton()->renderSpec(
-    [
-        'name'    => 'dropup',
-        'options' => [
-            'label'    => 'Dropup',
-            'dropdown' => [
-                'direction'  => 'up',
-                'attributes' => ['class' => 'btn-group'],
-                'items'      => [
-                    'Action',
-                    'Another action',
-                    'Something else here',
-                    '---',
-                    'Separated link',
-                ],
-            ],
+echo $this->formButton()->renderSpec([
+    'name' => 'dropup',
+    'options' => [
+        'label' => 'Dropup',
+        'dropdown' => [
+            'direction' => 'up',
+            'attributes' => ['class' => 'btn-group'],
+            'items' => [
+                'Action',
+                'Another action',
+                'Something else here',
+                '---',
+                'Separated link',
+            ]
         ],
-    ]
-);
+    ],
+]);
 
 // Dropup split button
-echo $this->formButton()->renderSpec(
-    [
-        'name'    => 'split-dropup',
-        'options' => [
-            'label'    => 'Split dropup',
-            'dropdown' => [
-                'direction' => 'up',
-                'split'     => 'Toggle Dropdown',
-                'items'     => [
-                    'Action',
-                    'Another action',
-                    'Something else here',
-                    '---',
-                    'Separated link',
-                ],
+echo $this->formButton()->renderSpec([
+    'name' => 'split-dropup',
+    'options' => [
+        'label' => 'Split dropup',
+        'dropdown' => [
+            'direction' => 'up',
+            'split' => 'Toggle Dropdown',
+            'items' => [
+                'Action',
+                'Another action',
+                'Something else here',
+                '---',
+                'Separated link',
             ],
         ],
-    ]
-);
-
+    ],
+]);
 ```
 
 </TabItem>
@@ -661,47 +596,42 @@ echo $this->formButton()->renderSpec(
 <?php
 
 // Dropend button
-echo $this->formButton()->renderSpec(
-    [
-        'name'    => 'dropend',
-        'options' => [
-            'label'    => 'Dropright',
-            'dropdown' => [
-                'direction'  => 'end',
-                'attributes' => ['class' => 'btn-group'],
-                'items'      => [
-                    'Action',
-                    'Another action',
-                    'Something else here',
-                    '---',
-                    'Separated link',
-                ],
+echo $this->formButton()->renderSpec([
+    'name' => 'dropend',
+    'options' => [
+        'label' => 'Dropright',
+        'dropdown' => [
+            'direction' => 'end',
+            'attributes' => ['class' => 'btn-group'],
+            'items' => [
+                'Action',
+                'Another action',
+                'Something else here',
+                '---',
+                'Separated link',
             ],
         ],
-    ]
-);
+    ],
+]);
 
 // Dropend split button
-echo $this->formButton()->renderSpec(
-    [
-        'name'    => 'split-dropend',
-        'options' => [
-            'label'    => 'Split dropend',
-            'dropdown' => [
-                'direction' => 'end',
-                'split'     => 'Toggle Dropdown',
-                'items'     => [
-                    'Action',
-                    'Another action',
-                    'Something else here',
-                    '---',
-                    'Separated link',
-                ],
+echo $this->formButton()->renderSpec([
+    'name' => 'split-dropend',
+    'options' => [
+        'label' => 'Split dropend',
+        'dropdown' => [
+            'direction' => 'end',
+            'split' => 'Toggle Dropdown',
+            'items' => [
+                'Action',
+                'Another action',
+                'Something else here',
+                '---',
+                'Separated link',
             ],
         ],
-    ]
-);
-
+    ],
+]);
 ```
 
 </TabItem>
@@ -743,47 +673,42 @@ echo $this->formButton()->renderSpec(
 <?php
 
 // Dropstart button
-echo $this->formButton()->renderSpec(
-    [
-        'name'    => 'dropstart',
-        'options' => [
-            'label'    => 'Dropleft',
-            'dropdown' => [
-                'direction'  => 'start',
-                'attributes' => ['class' => 'btn-group'],
-                'items'      => [
-                    'Action',
-                    'Another action',
-                    'Something else here',
-                    '---',
-                    'Separated link',
-                ],
+echo $this->formButton()->renderSpec([
+    'name' => 'dropstart',
+    'options' => [
+        'label' => 'Dropleft',
+        'dropdown' => [
+            'direction' => 'start',
+            'attributes' => ['class' => 'btn-group'],
+            'items' => [
+                'Action',
+                'Another action',
+                'Something else here',
+                '---',
+                'Separated link',
             ],
         ],
-    ]
-);
+    ],
+]);
 
 // Dropstart split button
-echo $this->formButton()->renderSpec(
-    [
-        'name'    => 'split-dropstart',
-        'options' => [
-            'label'    => 'Split dropstart',
-            'dropdown' => [
-                'direction' => 'start',
-                'split'     => 'Toggle Dropdown',
-                'items'     => [
-                    'Action',
-                    'Another action',
-                    'Something else here',
-                    '---',
-                    'Separated link',
-                ],
+echo $this->formButton()->renderSpec([
+    'name' => 'split-dropstart',
+    'options' => [
+        'label' => 'Split dropstart',
+        'dropdown' => [
+            'direction' => 'start',
+            'split' => 'Toggle Dropdown',
+            'items' => [
+                'Action',
+                'Another action',
+                'Something else here',
+                '---',
+                'Separated link',
             ],
         ],
-    ]
-);
-
+    ],
+]);
 ```
 
 </TabItem>
@@ -818,36 +743,27 @@ echo $this->formButton()->renderSpec(
 ```php
 <?php
 
-echo $this->formButton()->renderSpec(
-    [
-        'name'       => 'dropdown',
-        'options'    => [
-            'label'    => 'Dropdown',
-            'dropdown' => [
-                'type'  => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_BUTTON,
-                'items' => [
-                    'Action',
-                    'Another action',
-                    'Something else here',
-                ],
-            ],
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Dropdown',
+        'dropdown' => [
+            'type' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_BUTTON,
+            'items' => ['Action', 'Another action', 'Something else here'],
         ],
-        'attributes' => ['id' => 'dropdownMenu2'],
-    ]
-);
+    ],
+    'attributes' => ['id' => 'dropdownMenu2'],
+]);
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 // Non-interactive dropdown items
-echo $this->dropdown()->renderMenu(
-    [
-        'Dropdown item text' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_TEXT,
-        'Action',
-        'Another action',
-        'Something else here'
-    ]
-);
-
+echo $this->dropdown()->renderMenu([
+    'Dropdown item text' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_TEXT,
+    'Action',
+    'Another action',
+    'Something else here'
+]);
 ```
 
 </TabItem>
@@ -872,14 +788,11 @@ echo $this->dropdown()->renderMenu(
 ```php
 <?php
 
-echo $this->dropdown()->renderMenu(
-    [
-        'Regular link',
-        'Active link' => ['active' => true],
-        'Another link'
-    ]
-);
-
+echo $this->dropdown()->renderMenu([
+    'Regular link',
+    'Active link' => ['active' => true],
+    'Another link'
+]);
 ```
 
 </TabItem>
@@ -904,14 +817,11 @@ echo $this->dropdown()->renderMenu(
 ```php
 <?php
 
-echo $this->dropdown()->renderMenu(
-    [
-        'Regular link',
-        'Disabled link' => ['disabled' => true],
-        'Another link'
-    ]
-);
-
+echo $this->dropdown()->renderMenu([
+    'Regular link',
+    'Disabled link' => ['disabled' => true],
+    'Another link'
+]);
 ```
 
 </TabItem>
@@ -939,24 +849,17 @@ echo $this->dropdown()->renderMenu(
 ```php
 <?php
 
-echo $this->formButton()->renderSpec(
-    [
-        'name'    => 'dropdown',
-        'options' => [
-            'label'    => 'Right-aligned menu example',
-            'dropdown' => [
-                'alignment' => 'end',
-                'type'      => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_BUTTON,
-                'items'     => [
-                    'Action',
-                    'Another action',
-                    'Something else here',
-                ],
-            ],
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Right-aligned menu example',
+        'dropdown' => [
+            'alignment' => 'end',
+            'type' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_BUTTON,
+            'items' => ['Action', 'Another action', 'Something else here'],
         ],
-    ]
-);
-
+    ],
+]);
 ```
 
 </TabItem>
@@ -993,47 +896,31 @@ echo $this->formButton()->renderSpec(
 ```php
 <?php
 
-echo $this->formButton()->renderSpec(
-    [
-        'name'    => 'dropdown',
-        'options' => [
-            'label'    => 'Left-aligned but right aligned when large screen',
-            'dropdown' => [
-                'alignment' => 'lg-end',
-                'type'      => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_BUTTON,
-                'items'     => [
-                    'Action',
-                    'Another action',
-                    'Something else here',
-                ],
-            ],
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Left-aligned but right aligned when large screen',
+        'dropdown' => [
+            'alignment' => 'lg-end',
+            'type' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_BUTTON,
+            'items' => ['Action', 'Another action', 'Something else here'],
         ],
-    ]
-);
+    ],
+]);
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
-echo $this->formButton()->renderSpec(
-    [
-        'name'    => 'dropdown',
-        'options' => [
-            'label'    => 'Left-aligned but right aligned when large screen',
-            'dropdown' => [
-                'alignment' => [
-                    'end',
-                    'lg-start',
-                ],
-                'type'      => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_BUTTON,
-                'items'     => [
-                    'Action',
-                    'Another action',
-                    'Something else here',
-                ],
-            ],
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Left-aligned but right aligned when large screen',
+        'dropdown' => [
+            'alignment' => ['end', 'lg-start'],
+            'type' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_BUTTON,
+            'items' => ['Action', 'Another action', 'Something else here'],
         ],
-    ]
-);
-
+    ],
+]);
 ```
 
 </TabItem>
@@ -1118,58 +1005,49 @@ echo $this->formButton()->renderSpec(
 
 
 // Alignments
-foreach ([
-    'Dropdown'                       => null,
-    'Right-aligned menu'             => 'end',
-    'Left-aligned, right-aligned lg' => 'lg-end',
-    'Right-aligned, left-aligned lg' => 'lg-start',
-] as $label => $alignment) {
-    echo $this->formButton()->renderSpec(
-        [
-            'name'    => 'dropdown',
-            'options' => [
-                'label'    => $label,
-                'dropdown' => [
-                    'alignment' => $alignment,
-                    'items'     => [
-                        'Action',
-                        'Another action',
-                        'Something else here',
-                    ],
-                ],
+foreach (
+    [
+        'Dropdown' => null,
+        'Right-aligned menu' => 'end',
+        'Left-aligned, right-aligned lg' => 'lg-end',
+        'Right-aligned, left-aligned lg' => 'lg-start',
+    ] as $label => $alignment
+) {
+    echo $this->formButton()->renderSpec([
+        'name' => 'dropdown',
+        'options' => [
+            'label' => $label,
+            'dropdown' => [
+                'alignment' => $alignment,
+                'items' => ['Action', 'Another action', 'Something else here'],
             ],
-        ]
-    );
+        ],
+    ]);
 
-    echo PHP_EOL.'<br/>';
+    echo PHP_EOL . '<br/>';
 }
 
 // Directions
-foreach ([
-    'Dropstart' => 'start',
-    'Dropend'   => 'end',
-    'Dropup'    => 'up',
-] as $label => $direction) {
-    echo $this->formButton()->renderSpec(
-        [
-            'name'    => 'dropdown',
-            'options' => [
-                'label'    => $label,
-                'dropdown' => [
-                    'direction' => $direction,
-                    'items'     => [
-                        'Action',
-                        'Another action',
-                        'Something else here',
-                    ],
-                ],
+foreach (
+    [
+        'Dropstart' => 'start',
+        'Dropend' => 'end',
+        'Dropup' => 'up',
+    ] as $label => $direction
+) {
+    echo $this->formButton()->renderSpec([
+        'name' => 'dropdown',
+        'options' => [
+            'label' => $label,
+            'dropdown' => [
+                'direction' => $direction,
+                'items' => ['Action', 'Another action', 'Something else here'],
             ],
-        ]
-    );
+        ],
+    ]);
 
-    echo PHP_EOL.'<br/>';
+    echo PHP_EOL . '<br/>';
 }
-
 ```
 
 </TabItem>
@@ -1198,14 +1076,11 @@ foreach ([
 ```php
 <?php
 
-echo $this->dropdown()->renderMenu(
-    [
-        'Dropdown header' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_HEADER,
-        'Action',
-        'Another action',
-    ]
-);
-
+echo $this->dropdown()->renderMenu([
+    'Dropdown header' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_HEADER,
+    'Action',
+    'Another action',
+]);
 ```
 
 </TabItem>
@@ -1232,16 +1107,13 @@ echo $this->dropdown()->renderMenu(
 ```php
 <?php
 
-echo $this->dropdown()->renderMenu(
-    [
-        'Action',
-        'Another action',
-        'Something else here',
-        '---',
-        'Separated link',
-    ]
-);
-
+echo $this->dropdown()->renderMenu([
+    'Action',
+    'Another action',
+    'Something else here',
+    '---',
+    'Separated link',
+]);
 ```
 
 </TabItem>
@@ -1265,17 +1137,10 @@ echo $this->dropdown()->renderMenu(
 ```php
 <?php
 
-echo $this->dropdown()->renderMenu(
-    [
-        '<p>Some example text that\'s free-flowing within the dropdown menu.</p>',
-        '<p class="mb-0">And this is more example text.</p>',
-    ],
-    [
-        'class' => 'p-4 text-muted',
-        'style' => 'max-width: 200px;',
-    ]
-);
-
+echo $this->dropdown()->renderMenu([
+    '<p>Some example text that\'s free-flowing within the dropdown menu.</p>',
+    '<p class="mb-0">And this is more example text.</p>',
+], ['class' => 'p-4 text-muted', 'style' => 'max-width: 200px;']);
 ```
 
 </TabItem>
@@ -1340,72 +1205,63 @@ echo $this->dropdown()->renderMenu(
 
 // Create form
 $factory = new \Laminas\Form\Factory();
-$form    = $factory->create(
-    [
-        'type'       => 'form',
-        'name'       => 'dropdown',
-        'attributes' => ['class' => 'px-4 py-3'],
-        'elements'   => [
-            [
-                'spec' => [
-                    'name'       => 'email',
-                    'options'    => ['label' => 'Email address'],
-                    'attributes' => [
-                        'type'        => 'email',
-                        'id'          => 'exampleDropdownFormEmail1',
-                        'placeholder' => 'email@example.com',
-                    ],
-                ],
-            ],
-            [
-                'spec' => [
-                    'name'       => 'password',
-                    'options'    => ['label' => 'Password'],
-                    'attributes' => [
-                        'type'        => 'password',
-                        'id'          => 'exampleDropdownFormPassword1',
-                        'placeholder' => 'Password',
-                    ],
-                ],
-            ],
-            [
-                'spec' => [
-                    'type'       => 'checkbox',
-                    'name'       => 'remember_me',
-                    'options'    => [
-                        'label'              => 'Remember me',
-                        'use_hidden_element' => false,
-                    ],
-                    'attributes' => [    'id' => 'dropdownCheck'    ],
-                ],
-            ],
-            [
-                'spec' => [
-                    'type'    => 'submit',
-                    'options' => [
-                        'label'   => 'Sign in',
-                        'variant' => 'primary',
-                    ],
+$form = $factory->create([
+    'type' => 'form',
+    'name' => 'dropdown',
+    'attributes' => ['class' => 'px-4 py-3'],
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'email',
+                'options' => ['label' => 'Email address'],
+                'attributes' => [
+                    'type' => 'email',
+                    'id' => 'exampleDropdownFormEmail1',
+                    'placeholder' => 'email@example.com',
                 ],
             ],
         ],
+        [
+            'spec' => [
+                'name' => 'password',
+                'options' => ['label' => 'Password'],
+                'attributes' => [
+                    'type' => 'password',
+                    'id' => 'exampleDropdownFormPassword1',
+                    'placeholder' => 'Password',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'checkbox',
+                'name' => 'remember_me',
+                'options' => ['label' => 'Remember me', 'use_hidden_element' => false],
+                'attributes' => [
+                    'id' => 'dropdownCheck',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'submit',
+                'options' => ['label' => 'Sign in', 'variant' => 'primary'],
+            ],
+        ],
     ]
-);
+]);
 
-echo $this->dropdown()->renderMenu(
-    [
-        $form,
-        '---',
-        'New around here? Sign up',
-        'Forgot password?',
-    ]
-);
+echo $this->dropdown()->renderMenu([
+    $form,
+    '---',
+    'New around here? Sign up',
+    'Forgot password?',
+]);
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 $form->setAttribute('class', 'dropdown-menu p-4');
 echo $this->form($form);
-
 ```
 
 </TabItem>
@@ -1447,49 +1303,33 @@ echo $this->form($form);
 
 echo '<div class="d-flex">';
 
-echo $this->formButton()->renderSpec(
-    [
-        'name'       => 'dropdown',
-        'options'    => [
-            'label'    => 'Offset',
-            'dropdown' => [
-                'attributes' => ['class' => 'me-1'],
-                'offset'     => '10,20',
-                'items'      => [
-                    'Action',
-                    'Another action',
-                    'Something else here',
-                ],
-            ],
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Offset',
+        'dropdown' => [
+            'attributes' => ['class' => 'me-1'],
+            'offset' => '10,20',
+            'items' => ['Action', 'Another action', 'Something else here'],
         ],
-        'attributes' => ['id' => 'dropdownMenuOffset'],
-    ]
-);
+    ],
+    'attributes' => ['id' => 'dropdownMenuOffset'],
+]);
 
-echo $this->formButton()->renderSpec(
-    [
-        'name'    => 'dropdown',
-        'options' => [
-            'label'    => 'Reference',
-            'dropdown' => [
-                'split' => [
-                    'attributes' => [
-                        'data-bs-reference' => 'parent',
-                        'id'                => 'dropdownMenuReference',
-                    ],
-                ],
-                'items' => [
-                    'Action',
-                    'Another action',
-                    'Something else here',
-                ],
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Reference',
+        'dropdown' => [
+            'split' => [
+                'attributes' => ['data-bs-reference' => 'parent', 'id' => 'dropdownMenuReference'],
             ],
+            'items' => ['Action', 'Another action', 'Something else here'],
         ],
-    ]
-);
+    ],
+]);
 
-echo PHP_EOL.'</div>';
-
+echo PHP_EOL . '</div>';
 ```
 
 </TabItem>
@@ -1544,84 +1384,59 @@ echo PHP_EOL.'</div>';
 ```php
 <?php
 
-echo $this->formButton()->renderSpec(
-    [
-        'name'       => 'dropdown',
-        'options'    => [
-            'label'    => 'Default dropdown',
-            'dropdown' => [
-                'auto_close' => true,
-                'items'      => [
-                    'Menu item',
-                    'Menu item',
-                    'Menu item',
-                ],
-            ],
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Default dropdown',
+        'dropdown' => [
+            'auto_close' => true,
+            'items' => ['Menu item', 'Menu item', 'Menu item'],
         ],
-        'attributes' => ['id' => 'defaultDropdown'],
-    ]
-);
+    ],
+    'attributes' => ['id' => 'defaultDropdown'],
+]);
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
-echo $this->formButton()->renderSpec(
-    [
-        'name'       => 'dropdown',
-        'options'    => [
-            'label'    => 'Clickable outside',
-            'dropdown' => [
-                'auto_close' => 'inside',
-                'items'      => [
-                    'Menu item',
-                    'Menu item',
-                    'Menu item',
-                ],
-            ],
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Clickable outside',
+        'dropdown' => [
+            'auto_close' => 'inside',
+            'items' => ['Menu item', 'Menu item', 'Menu item'],
         ],
-        'attributes' => ['id' => 'dropdownMenuClickableOutside'],
-    ]
-);
+    ],
+    'attributes' => ['id' => 'dropdownMenuClickableOutside'],
+]);
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
-echo $this->formButton()->renderSpec(
-    [
-        'name'       => 'dropdown',
-        'options'    => [
-            'label'    => 'Clickable inside',
-            'dropdown' => [
-                'auto_close' => 'outside',
-                'items'      => [
-                    'Menu item',
-                    'Menu item',
-                    'Menu item',
-                ],
-            ],
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Clickable inside',
+        'dropdown' => [
+            'auto_close' => 'outside',
+            'items' => ['Menu item', 'Menu item', 'Menu item'],
         ],
-        'attributes' => ['id' => 'dropdownMenuClickableInside'],
-    ]
-);
+    ],
+    'attributes' => ['id' => 'dropdownMenuClickableInside'],
+]);
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
-echo $this->formButton()->renderSpec(
-    [
-        'name'       => 'dropdown',
-        'options'    => [
-            'label'    => 'Manual close',
-            'dropdown' => [
-                'auto_close' => false,
-                'items'      => [
-                    'Menu item',
-                    'Menu item',
-                    'Menu item',
-                ],
-            ],
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Manual close',
+        'dropdown' => [
+            'auto_close' => false,
+            'items' => ['Menu item', 'Menu item', 'Menu item'],
         ],
-        'attributes' => ['id' => 'dropdownMenuClickable'],
-    ]
-);
-
+    ],
+    'attributes' => ['id' => 'dropdownMenuClickable'],
+]);
 ```
 
 </TabItem>

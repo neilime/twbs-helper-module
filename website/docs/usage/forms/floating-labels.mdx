@@ -49,94 +49,77 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'email',
-            'options'    => [
-                'label'          => 'Email address',
-                'floating_label' => true,
-            ],
-            'attributes' => [
-                'type'        => 'email',
-                'id'          => 'floatingInput',
-                'placeholder' => 'name@example.com',
-            ],
-        ]
-    )
-);
+echo $this->formRow($factory->create([
+    'name' => 'email',
+    'options' => [
+        'label' => 'Email address',
+        'floating_label' => true,
+    ],
+    'attributes' => [
+        'type' => 'email',
+        'id' => 'floatingInput',
+        'placeholder' => 'name@example.com',
+    ],
+]));
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'password',
-            'options'    => [
-                'label'             => 'Password',
-                'floating_label'    => true,
-                'row_spacing_class' => false,
-            ],
-            'attributes' => [
-                'type'        => 'password',
-                'id'          => 'floatingPassword',
-                'placeholder' => 'Password',
-            ],
-        ]
-    )
-);
+echo $this->formRow($factory->create([
+    'name' => 'password',
+    'options' => [
+        'label' => 'Password',
+        'floating_label' => true,
+        'row_spacing_class' => false,
+    ],
+    'attributes' => [
+        'type' => 'password',
+        'id' => 'floatingPassword',
+        'placeholder' => 'Password',
+    ],
+]));
 
-echo $this->form(
-    $factory->create(
+echo $this->form($factory->create([
+    'type' => 'form',
+    'elements' => [
         [
-            'type'     => 'form',
-            'elements' => [
-                [
-                    'spec' => [
-                        'name'       => 'emailWithValue',
-                        'options'    => [
-                            'label'             => 'Input with value',
-                            'floating_label'    => true,
-                            'row_spacing_class' => false,
-                        ],
-                        'attributes' => [
-                            'type'        => 'email',
-                            'id'          => 'floatingInputValue',
-                            'placeholder' => 'name@example.com',
-                            'value'       => 'test@example.com',
-                        ],
-                    ],
+            'spec' => [
+                'name' => 'emailWithValue',
+                'options' => [
+                    'label' => 'Input with value',
+                    'floating_label' => true,
+                    'row_spacing_class' => false,
                 ],
-            ],
-        ]
-    )
-);
-
-echo $this->form(
-    $factory->create(
-        [
-            'type'     => 'form',
-            'elements' => [
-                [
-                    'spec' => [
-
-                        'name'       => 'invalidEmailWithValue',
-                        'options'    => [
-                            'label'             => 'Invalid input',
-                            'floating_label'    => true,
-                            'row_spacing_class' => false,
-                        ],
-                        'attributes' => [
-                            'type'        => 'email',
-                            'id'          => 'floatingInputInvalid',
-                            'placeholder' => 'name@example.com',
-                            'value'       => 'test@example.com',
-                        ],
-                    ],
+                'attributes' => [
+                    'type' => 'email',
+                    'id' => 'floatingInputValue',
+                    'placeholder' => 'name@example.com',
+                    'value' => 'test@example.com'
                 ],
-            ],
+            ]
         ]
-    )->setMessages(['invalidEmailWithValue' => ['']])
-);
+    ]
+]));
 
+echo $this->form($factory->create([
+    'type' => 'form',
+    'elements' => [
+        [
+            'spec' => [
+
+                'name' => 'invalidEmailWithValue',
+                'options' => [
+                    'label' => 'Invalid input',
+                    'floating_label' => true,
+                    'row_spacing_class' => false,
+                ],
+                'attributes' => [
+                    'type' => 'email',
+                    'id' => 'floatingInputInvalid',
+                    'placeholder' => 'name@example.com',
+                    'value' => 'test@example.com'
+                ],
+            ]
+        ]
+    ]
+])->setMessages(['invalidEmailWithValue' => ['']]));
 ```
 
 </TabItem>
@@ -166,43 +149,36 @@ echo $this->form(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'comments',
-            'options'    => [
-                'label'             => 'Comments',
-                'floating_label'    => true,
-                'row_spacing_class' => false,
-            ],
-            'attributes' => [
-                'type'        => 'textarea',
-                'id'          => 'floatingTextarea',
-                'placeholder' => 'Leave a comment here',
-            ],
+echo $this->formRow($factory->create(
+    [
+        'name' => 'comments',
+        'options' => [
+            'label' => 'Comments',
+            'floating_label' => true,
+            'row_spacing_class' => false,
         ],
-    )
-);
+        'attributes' => [
+            'type' => 'textarea',
+            'id' => 'floatingTextarea',
+            'placeholder' => 'Leave a comment here',
+        ],
+    ],
+));
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'customHeightComments',
-            'options'    => [
-                'label'             => 'Comments',
-                'floating_label'    => true,
-                'row_spacing_class' => false,
-            ],
-            'attributes' => [
-                'type'        => 'textarea',
-                'id'          => 'floatingTextarea',
-                'placeholder' => 'Leave a comment here',
-                'style'       => 'height: 100px',
-            ],
-        ]
-    )
-);
-
+echo $this->formRow($factory->create([
+    'name' => 'customHeightComments',
+    'options' => [
+        'label' => 'Comments',
+        'floating_label' => true,
+        'row_spacing_class' => false,
+    ],
+    'attributes' => [
+        'type' => 'textarea',
+        'id' => 'floatingTextarea',
+        'placeholder' => 'Leave a comment here',
+        'style' => 'height: 100px',
+    ],
+]));
 ```
 
 </TabItem>
@@ -233,31 +209,28 @@ echo $this->formRow(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'floatingSelect',
-            'type'       => 'select',
-            'options'    => [
-                'label'             => 'Works with selects',
-                'floating_label'    => true,
-                'row_spacing_class' => false,
-                'empty_option'      => 'Open this select menu',
-                'value_options'     => [
-                    1 => 'One',
-                    2 => 'Two',
-                    3 => 'Three',
-                ],
-            ],
-            'attributes' => [
-                'id'         => 'floatingSelect',
-                'aria-label' => 'Floating label select example',
-                'value'      => '',
+echo $this->formRow($factory->create(
+    [
+        'name' => 'floatingSelect',
+        'type' => 'select',
+        'options' => [
+            'label' => 'Works with selects',
+            'floating_label' => true,
+            'row_spacing_class' => false,
+            'empty_option' => 'Open this select menu',
+            'value_options' => [
+                1 => 'One',
+                2 => 'Two',
+                3 => 'Three',
             ],
         ],
-    )
-);
-
+        'attributes' => [
+            'id' => 'floatingSelect',
+            'aria-label' => 'Floating label select example',
+            'value' => '',
+        ],
+    ],
+));
 ```
 
 </TabItem>
@@ -296,57 +269,54 @@ echo $this->formRow(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->form(
-    $factory->create(
+echo $this->form($factory->create([
+    'type' => 'form',
+    'options' => [
+        'gutter' => 2,
+    ],
+    'elements' => [
         [
-            'type'     => 'form',
-            'options'  => [    'gutter' => 2    ],
-            'elements' => [
-                [
-                    'spec' => [
-                        'name'       => 'floatingInputGrid',
-                        'options'    => [
-                            'column'            => 'md',
-                            'label'             => 'Email address',
-                            'floating_label'    => true,
-                            'row_spacing_class' => false,
-                        ],
-                        'attributes' => [
-                            'type'        => 'email',
-                            'id'          => 'floatingInputGrid',
-                            'placeholder' => 'name@example.com',
-                            'value'       => 'mdo@example.com',
-                        ],
-                    ],
+            'spec' => [
+                'name' => 'floatingInputGrid',
+                'options' => [
+                    'column' => 'md',
+                    'label' => 'Email address',
+                    'floating_label' => true,
+                    'row_spacing_class' => false,
                 ],
-                [
-                    'spec' => [
-                        'name'       => 'floatingSelectGrid',
-                        'type'       => 'select',
-                        'options'    => [
-                            'column'            => 'md',
-                            'label'             => 'Works with selects',
-                            'floating_label'    => true,
-                            'row_spacing_class' => false,
-                            'empty_option'      => 'Open this select menu',
-                            'value_options'     => [
-                                1 => 'One',
-                                2 => 'Two',
-                                3 => 'Three',
-                            ],
-                        ],
-                        'attributes' => [
-                            'id'         => 'floatingSelectGrid',
-                            'aria-label' => 'Floating label select example',
-                            'value'      => '',
-                        ],
-                    ],
+                'attributes' => [
+                    'type' => 'email',
+                    'id' => 'floatingInputGrid',
+                    'placeholder' => 'name@example.com',
+                    'value' => 'mdo@example.com',
                 ],
             ],
-        ]
-    )
-);
-
+        ],
+        [
+            'spec' => [
+                'name' => 'floatingSelectGrid',
+                'type' => 'select',
+                'options' => [
+                    'column' => 'md',
+                    'label' => 'Works with selects',
+                    'floating_label' => true,
+                    'row_spacing_class' => false,
+                    'empty_option' => 'Open this select menu',
+                    'value_options' => [
+                        1 => 'One',
+                        2 => 'Two',
+                        3 => 'Three',
+                    ],
+                ],
+                'attributes' => [
+                    'id' => 'floatingSelectGrid',
+                    'aria-label' => 'Floating label select example',
+                    'value' => '',
+                ],
+            ],
+        ],
+    ],
+]));
 ```
 
 </TabItem>

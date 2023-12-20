@@ -55,124 +55,103 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'username',
-            'type'       => 'text',
-            'options'    => [
-                'form_group'        => false,
-                'input_group_class' => 'mb-3',
-                'add_on_prepend'    => '@',
-            ],
-            'attributes' => [
-                'placeholder'      => 'Username',
-                'aria-label'       => 'Username',
-                'aria-describedby' => 'basic-addon1',
-            ],
-        ]
-    )
-);
+echo $this->formRow($factory->create([
+    'name' => 'username',
+    'type' => 'text',
+    'options' => [
+        'form_group' => false,
+        'input_group_class' => 'mb-3',
+        'add_on_prepend' => '@',
+    ],
+    'attributes' => [
+        'placeholder' => 'Username',
+        'aria-label' => 'Username',
+        'aria-describedby' => 'basic-addon1',
+    ],
+]));
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'recipient_username',
-            'type'       => 'text',
-            'options'    => [
-                'form_group'        => false,
-                'input_group_class' => 'mb-3',
-                'add_on_append'     => '@example.com',
-            ],
-            'attributes' => [
-                'placeholder'      => "Recipient's username",
-                'aria-label'       => "Recipient's username",
-                'aria-describedby' => 'basic-addon2',
-            ],
-        ]
-    )
-);
+echo $this->formRow($factory->create([
+    'name' => 'recipient_username',
+    'type' => 'text',
+    'options' => [
+        'form_group' => false,
+        'input_group_class' => 'mb-3',
+        'add_on_append' => '@example.com',
+    ],
+    'attributes' => [
+        'placeholder' => "Recipient's username",
+        'aria-label' => "Recipient's username",
+        'aria-describedby' => 'basic-addon2',
+    ],
+]));
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'url',
-            'type'       => 'text',
-            'options'    => [
-                'label'             => 'Your vanity URL',
-                'form_group'        => false,
-                'input_group_class' => 'mb-3',
-                'add_on_prepend'    => 'https://example.com/users/',
-            ],
-            'attributes' => [
-                'id'               => 'basic-url',
-                'aria-describedby' => 'basic-addon3',
-            ],
-        ]
-    )
-);
+echo $this->formRow($factory->create([
+    'name' => 'url',
+    'type' => 'text',
+    'options' => [
+        'label' => 'Your vanity URL',
+        'form_group' => false,
+        'input_group_class' => 'mb-3',
+        'add_on_prepend' => 'https://example.com/users/',
+    ],
+    'attributes' => [
+        'id' => 'basic-url',
+        'aria-describedby' => 'basic-addon3',
+    ],
+]));
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'amount',
-            'type'       => 'text',
-            'options'    => [
-                'form_group'        => false,
-                'input_group_class' => 'mb-3',
-                'add_on_prepend'    => '$',
-                'add_on_append'     => '.00',
-            ],
-            'attributes' => [    'aria-label' => 'Amount (to the nearest dollar)'    ],
-        ]
-    )
-);
+echo $this->formRow($factory->create([
+    'name' => 'amount',
+    'type' => 'text',
+    'options' => [
+        'form_group' => false,
+        'input_group_class' => 'mb-3',
+        'add_on_prepend' => '$',
+        'add_on_append' => '.00',
+    ],
+    'attributes' => [
+        'aria-label' => 'Amount (to the nearest dollar)',
+    ],
+]));
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'username',
-            'type'       => 'text',
-            'options'    => [
-                'row_name'          => 'multiple_inputs',
-                'form_group'        => false,
-                'input_group_class' => 'mb-3',
-                'add_on_append'     => [
-                    '@',
-                    [
-                        'element' => [
-                            'name'       => 'server',
-                            'type'       => 'text',
-                            'attributes' => [
-                                'placeholder' => 'Server',
-                                'aria-label'  => 'Server',
-                            ],
-                        ],
+echo $this->formRow($factory->create([
+    'name' => 'username',
+    'type' => 'text',
+    'options' => [
+        'row_name' => 'multiple_inputs',
+        'form_group' => false,
+        'input_group_class' => 'mb-3',
+        'add_on_append' => [
+            '@',
+            [
+                'element' => [
+                    'name' => 'server',
+                    'type' => 'text',
+                    'attributes' => [
+                        'placeholder' => "Server",
+                        'aria-label' => "Server",
                     ],
                 ],
-            ],
-            'attributes' => [
-                'placeholder' => 'Username',
-                'aria-label'  => 'Username',
-            ],
-        ]
-    )
-);
+            ]
+        ],
+    ],
+    'attributes' => [
+        'placeholder' => "Username",
+        'aria-label' => "Username",
+    ],
+]));
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'textarea',
-            'type'       => 'textarea',
-            'options'    => [
-                'form_group'     => false,
-                'add_on_prepend' => 'With textarea',
-            ],
-            'attributes' => [    'aria-label' => 'With textarea'    ],
-        ]
-    )
-);
-
+echo $this->formRow($factory->create([
+    'name' => 'textarea',
+    'type' => 'textarea',
+    'options' => [
+        'form_group' => false,
+        'add_on_prepend' => 'With textarea',
+    ],
+    'attributes' => [
+        'aria-label' => 'With textarea',
+    ],
+]));
 ```
 
 </TabItem>
@@ -200,21 +179,18 @@ echo $this->formRow(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'username',
-            'type'       => 'text',
-            'options'    => [    'add_on_prepend' => '@'    ],
-            'attributes' => [
-                'placeholder'      => 'Username',
-                'aria-label'       => 'Username',
-                'aria-describedby' => 'addon-wrapping',
-            ],
-        ]
-    )
-);
-
+echo $this->formRow($factory->create([
+    'name' => 'username',
+    'type' => 'text',
+    'options' => [
+        'add_on_prepend' => '@',
+    ],
+    'attributes' => [
+        'placeholder' => 'Username',
+        'aria-label' => 'Username',
+        'aria-describedby' => 'addon-wrapping',
+    ],
+]));
 ```
 
 </TabItem>
@@ -249,63 +225,50 @@ echo $this->formRow(
 $factory = new \Laminas\Form\Factory();
 
 // Small
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'small',
-            'type'       => 'text',
-            'options'    => [
-                'form_group'        => false,
-                'input_group_class' => 'mb-3',
-                'add_on_prepend'    => 'Small',
-                'size'              => 'sm',
-            ],
-            'attributes' => [
-                'aria-label'       => 'Sizing example input',
-                'aria-describedby' => 'inputGroup-sizing-sm',
-            ],
-        ]
-    )
-);
+echo $this->formRow($factory->create([
+    'name' => 'small',
+    'type' => 'text',
+    'options' => [
+        'form_group' => false,
+        'input_group_class' => 'mb-3',
+        'add_on_prepend' => 'Small',
+        'size' => 'sm',
+    ],
+    'attributes' => [
+        'aria-label' => 'Sizing example input',
+        'aria-describedby' => 'inputGroup-sizing-sm',
+    ],
+]));
 
 // Default
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'default',
-            'type'       => 'text',
-            'options'    => [
-                'form_group'        => false,
-                'input_group_class' => 'mb-3',
-                'add_on_prepend'    => 'Default',
-            ],
-            'attributes' => [
-                'aria-label'       => 'Sizing example input',
-                'aria-describedby' => 'inputGroup-sizing-default',
-            ],
-        ]
-    )
-);
+echo $this->formRow($factory->create([
+    'name' => 'default',
+    'type' => 'text',
+    'options' => [
+        'form_group' => false,
+        'input_group_class' => 'mb-3',
+        'add_on_prepend' => 'Default',
+    ],
+    'attributes' => [
+        'aria-label' => 'Sizing example input',
+        'aria-describedby' => 'inputGroup-sizing-default',
+    ],
+]));
 
 // Large
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'large',
-            'type'       => 'text',
-            'options'    => [
-                'form_group'     => false,
-                'add_on_prepend' => 'Large',
-                'size'           => 'lg',
-            ],
-            'attributes' => [
-                'aria-label'       => 'Sizing example input',
-                'aria-describedby' => 'inputGroup-sizing-lg',
-            ],
-        ]
-    )
-);
-
+echo $this->formRow($factory->create([
+    'name' => 'large',
+    'type' => 'text',
+    'options' => [
+        'form_group' => false,
+        'add_on_prepend' => 'Large',
+        'size' => 'lg',
+    ],
+    'attributes' => [
+        'aria-label' => 'Sizing example input',
+        'aria-describedby' => 'inputGroup-sizing-lg',
+    ],
+]));
 ```
 
 </TabItem>
@@ -335,53 +298,54 @@ echo $this->formRow(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'checkbox-text',
-            'type'       => 'text',
-            'options'    => [
-                'form_group'        => false,
-                'input_group_class' => 'mb-3',
-                'add_on_prepend'    => [
-                    'element' => [
-                        'type'       => 'checkbox',
-                        'options'    => [    'use_hidden_element' => false    ],
-                        'attributes' => [    'aria-label' => 'Checkbox for following text input'    ],
-                    ],
+echo $this->formRow($factory->create([
+    'name' => 'checkbox-text',
+    'type' => 'text',
+    'options' => [
+        'form_group' => false,
+        'input_group_class' => 'mb-3',
+        'add_on_prepend' => [
+            'element' => [
+                'type' => 'checkbox',
+                'options' => [
+                    'use_hidden_element' => false,
+                ],
+                'attributes' => [
+                    'aria-label' => 'Checkbox for following text input',
                 ],
             ],
-            'attributes' => [    'aria-label' => 'Text input with checkbox'    ],
-        ]
-    )
-);
+        ],
+    ],
+    'attributes' => [
+        'aria-label' => 'Text input with checkbox',
+    ],
+]));
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'radio-text',
-            'type'       => 'text',
-            'options'    => [
-                'form_group'     => false,
-                'add_on_prepend' => [
-                    'element' => [
-                        'type'    => 'radio',
-                        'options' => [
-                            'value_options' => [
-                                [
-                                    'label'      => '',
-                                    'attributes' => [    'aria-label' => 'Radio button for following text input'    ],
-                                ],
+echo $this->formRow($factory->create([
+    'name' => 'radio-text',
+    'type' => 'text',
+    'options' => [
+        'form_group' => false,
+        'add_on_prepend' => [
+            'element' => [
+                'type' => 'radio',
+                'options' => [
+                    'value_options' => [
+                        [
+                            'label' => '',
+                            'attributes' => [
+                                'aria-label' => 'Radio button for following text input',
                             ],
                         ],
                     ],
                 ],
             ],
-            'attributes' => [    'aria-label' => 'Text input with radio button'    ],
-        ]
-    )
-);
-
+        ],
+    ],
+    'attributes' => [
+        'aria-label' => 'Text input with radio button',
+    ],
+]));
 ```
 
 </TabItem>
@@ -410,28 +374,27 @@ echo $this->formRow(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'last-name',
-            'type'       => 'text',
-            'options'    => [
-                'add_on_prepend' => [
-                    'First and last name',
-                    [
-                        'element'    => [
-                            'name' => 'first-name',
-                            'type' => 'text',
-                        ],
-                        'attributes' => [    'aria-label' => 'First name'    ],
-                    ],
+echo $this->formRow($factory->create([
+    'name' => 'last-name',
+    'type' => 'text',
+    'options' => [
+        'add_on_prepend' => [
+            'First and last name',
+            [
+                'element' => [
+                    'name' => 'first-name',
+                    'type' => 'text',
                 ],
-            ],
-            'attributes' => [    'aria-label' => 'Last name'    ],
+                'attributes' => [
+                    'aria-label' => 'First name',
+                ],
+            ]
         ]
-    )
-);
-
+    ],
+    'attributes' => [
+        'aria-label' => 'Last name',
+    ],
+]));
 ```
 
 </TabItem>
@@ -463,42 +426,31 @@ echo $this->formRow(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'multiple-addons-prepend',
-            'type'       => 'text',
-            'options'    => [
-                'form_group'        => false,
-                'input_group_class' => 'mb-3',
-                'add_on_prepend'    => [
-                    '$',
-                    '0.00',
-                ],
-            ],
-            'attributes' => [    'aria-label' => 'Dollar amount (with dot and two decimal places)'    ],
-        ]
-    )
-);
+echo $this->formRow($factory->create([
+    'name' => 'multiple-addons-prepend',
+    'type' => 'text',
+    'options' => [
+        'form_group' => false,
+        'input_group_class' => 'mb-3',
+        'add_on_prepend' => ['$', '0.00'],
+    ],
+    'attributes' => [
+        'aria-label' => 'Dollar amount (with dot and two decimal places)',
+    ],
+]));
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'multiple-addons-append',
-            'type'       => 'text',
-            'options'    => [
-                'form_group'        => false,
-                'input_group_class' => 'mb-3',
-                'add_on_append'     => [
-                    '$',
-                    '0.00',
-                ],
-            ],
-            'attributes' => [    'aria-label' => 'Dollar amount (with dot and two decimal places)'    ],
-        ]
-    )
-);
-
+echo $this->formRow($factory->create([
+    'name' => 'multiple-addons-append',
+    'type' => 'text',
+    'options' => [
+        'form_group' => false,
+        'input_group_class' => 'mb-3',
+        'add_on_append' => ['$', '0.00'],
+    ],
+    'attributes' => [
+        'aria-label' => 'Dollar amount (with dot and two decimal places)',
+    ],
+]));
 ```
 
 </TabItem>
@@ -538,133 +490,116 @@ echo $this->formRow(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'button-prepend',
-            'type'       => 'text',
-            'options'    => [
-                'form_group'        => false,
-                'input_group_class' => 'mb-3',
-                'add_on_prepend'    => [
-                    'element' => [
-                        'type'    => 'button',
-                        'options' => [
-                            'label'   => 'Button',
-                            'variant' => 'outline-secondary',
-                        ],
+echo $this->formRow($factory->create([
+    'name' => 'button-prepend',
+    'type' => 'text',
+    'options' => [
+        'form_group' => false,
+        'input_group_class' => 'mb-3',
+        'add_on_prepend' => [
+            'element' => [
+                'type' => 'button',
+                'options' => [
+                    'label' => 'Button',
+                    'variant' => 'outline-secondary',
+                ],
+            ],
+        ],
+    ],
+    'attributes' => [
+        'placeholder' => '',
+        'aria-label' => 'Example text with button addon',
+        'aria-describedby' => 'button-addon1',
+    ],
+]));
+
+echo $this->formRow($factory->create([
+    'name' => 'button-append',
+    'type' => 'text',
+    'options' => [
+        'form_group' => false,
+        'input_group_class' => 'mb-3',
+        'add_on_append' => [
+            'element' => [
+                'type' => 'button',
+                'options' => [
+                    'label' => 'Button',
+                    'variant' => 'outline-secondary',
+                ],
+            ],
+        ],
+    ],
+    'attributes' => [
+        'placeholder' => "Recipient's username",
+        'aria-label' => "Recipient's username",
+        'aria-describedby' => 'button-addon2',
+    ],
+]));
+
+echo $this->formRow($factory->create([
+    'name' => 'buttons-prepend',
+    'type' => 'text',
+    'options' => [
+        'form_group' => false,
+        'input_group_class' => 'mb-3',
+        'add_on_prepend' => [
+            [
+                'element' => [
+                    'type' => 'button',
+                    'options' => [
+                        'label' => 'Button',
+                        'variant' => 'outline-secondary',
                     ],
                 ],
             ],
-            'attributes' => [
-                'placeholder'      => '',
-                'aria-label'       => 'Example text with button addon',
-                'aria-describedby' => 'button-addon1',
-            ],
-        ]
-    )
-);
-
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'button-append',
-            'type'       => 'text',
-            'options'    => [
-                'form_group'        => false,
-                'input_group_class' => 'mb-3',
-                'add_on_append'     => [
-                    'element' => [
-                        'type'    => 'button',
-                        'options' => [
-                            'label'   => 'Button',
-                            'variant' => 'outline-secondary',
-                        ],
+            [
+                'element' => [
+                    'type' => 'button',
+                    'options' => [
+                        'label' => 'Button',
+                        'variant' => 'outline-secondary',
                     ],
                 ],
             ],
-            'attributes' => [
-                'placeholder'      => "Recipient's username",
-                'aria-label'       => "Recipient's username",
-                'aria-describedby' => 'button-addon2',
-            ],
-        ]
-    )
-);
+        ],
+    ],
+    'attributes' => [
+        'placeholder' => '',
+        'aria-label' => 'Example text with two button addons',
+    ],
+]));
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'buttons-prepend',
-            'type'       => 'text',
-            'options'    => [
-                'form_group'        => false,
-                'input_group_class' => 'mb-3',
-                'add_on_prepend'    => [
-                    [
-                        'element' => [
-                            'type'    => 'button',
-                            'options' => [
-                                'label'   => 'Button',
-                                'variant' => 'outline-secondary',
-                            ],
-                        ],
-                    ],
-                    [
-                        'element' => [
-                            'type'    => 'button',
-                            'options' => [
-                                'label'   => 'Button',
-                                'variant' => 'outline-secondary',
-                            ],
-                        ],
+echo $this->formRow($factory->create([
+    'name' => 'button-append',
+    'type' => 'text',
+    'options' => [
+        'form_group' => false,
+        'add_on_append' => [
+            [
+                'element' => [
+                    'type' => 'button',
+                    'options' => [
+                        'label' => 'Button',
+                        'variant' => 'outline-secondary',
                     ],
                 ],
             ],
-            'attributes' => [
-                'placeholder' => '',
-                'aria-label'  => 'Example text with two button addons',
-            ],
-        ]
-    )
-);
-
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'button-append',
-            'type'       => 'text',
-            'options'    => [
-                'form_group'    => false,
-                'add_on_append' => [
-                    [
-                        'element' => [
-                            'type'    => 'button',
-                            'options' => [
-                                'label'   => 'Button',
-                                'variant' => 'outline-secondary',
-                            ],
-                        ],
-                    ],
-                    [
-                        'element' => [
-                            'type'    => 'button',
-                            'options' => [
-                                'label'   => 'Button',
-                                'variant' => 'outline-secondary',
-                            ],
-                        ],
+            [
+                'element' => [
+                    'type' => 'button',
+                    'options' => [
+                        'label' => 'Button',
+                        'variant' => 'outline-secondary',
                     ],
                 ],
             ],
-            'attributes' => [
-                'placeholder' => "Recipient's username",
-                'aria-label'  => "Recipient's username with two button addons",
-            ],
-        ]
-    )
-);
-
+        ],
+    ],
+    'attributes' => [
+        'placeholder' => "Recipient's username",
+        'aria-label' => "Recipient's username with two button addons",
+    ],
+]));
 ```
 
 </TabItem>
@@ -727,111 +662,104 @@ echo $this->formRow(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'dropdown-prepend',
-            'type'       => 'text',
-            'options'    => [
-                'form_group'        => false,
-                'input_group_class' => 'mb-3',
-                'add_on_prepend'    => [
-                    'element' => [
-                        'type'    => 'button',
-                        'options' => [
-                            'label'    => 'Dropdown',
-                            'variant'  => 'outline-secondary',
-                            'dropdown' => [
-                                'Action',
-                                'Another action',
-                                'Something else here',
-                                '---',
-                                'Separated link',
-                            ],
-                        ],
+echo $this->formRow($factory->create([
+    'name' => 'dropdown-prepend',
+    'type' => 'text',
+    'options' => [
+        'form_group' => false,
+        'input_group_class' => 'mb-3',
+        'add_on_prepend' => [
+            'element' => [
+                'type' => 'button',
+                'options' => [
+                    'label' => 'Dropdown',
+                    'variant' => 'outline-secondary',
+                    'dropdown' => [
+                        'Action',
+                        'Another action',
+                        'Something else here',
+                        '---',
+                        'Separated link',
                     ],
                 ],
             ],
-            'attributes' => [    'aria-label' => 'Text input with dropdown button'    ],
-        ]
-    )
-);
+        ],
+    ],
+    'attributes' => [
+        'aria-label' => 'Text input with dropdown button',
+    ],
+]));
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'dropdown-append',
-            'type'       => 'text',
-            'options'    => [
-                'form_group'        => false,
-                'input_group_class' => 'mb-3',
-                'add_on_append'     => [
-                    'element' => [
-                        'type'    => 'button',
-                        'options' => [
-                            'label'    => 'Dropdown',
-                            'variant'  => 'outline-secondary',
-                            'dropdown' => [
-                                'Action',
-                                'Another action',
-                                'Something else here',
-                                '---',
-                                'Separated link',
-                            ],
-                        ],
+echo $this->formRow($factory->create([
+    'name' => 'dropdown-append',
+    'type' => 'text',
+    'options' => [
+        'form_group' => false,
+        'input_group_class' => 'mb-3',
+        'add_on_append' => [
+            'element' => [
+                'type' => 'button',
+                'options' => [
+                    'label' => 'Dropdown',
+                    'variant' => 'outline-secondary',
+                    'dropdown' => [
+                        'Action',
+                        'Another action',
+                        'Something else here',
+                        '---',
+                        'Separated link',
                     ],
                 ],
             ],
-            'attributes' => [    'aria-label' => 'Text input with dropdown button'    ],
-        ]
-    )
-);
+        ],
+    ],
+    'attributes' => [
+        'aria-label' => 'Text input with dropdown button',
+    ],
+]));
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'dropdown-prepend-and-append',
-            'type'       => 'text',
-            'options'    => [
-                'form_group'     => false,
-                'add_on_prepend' => [
-                    'element' => [
-                        'type'    => 'button',
-                        'options' => [
-                            'label'    => 'Dropdown',
-                            'variant'  => 'outline-secondary',
-                            'dropdown' => [
-                                'Action',
-                                'Another action',
-                                'Something else here',
-                                '---',
-                                'Separated link',
-                            ],
-                        ],
-                    ],
-                ],
-                'add_on_append'  => [
-                    'element' => [
-                        'type'    => 'button',
-                        'options' => [
-                            'label'    => 'Dropdown',
-                            'variant'  => 'outline-secondary',
-                            'dropdown' => [
-                                'Action',
-                                'Another action',
-                                'Something else here',
-                                '---',
-                                'Separated link',
-                            ],
-                        ],
+echo $this->formRow($factory->create([
+    'name' => 'dropdown-prepend-and-append',
+    'type' => 'text',
+    'options' => [
+        'form_group' => false,
+        'add_on_prepend' => [
+            'element' => [
+                'type' => 'button',
+                'options' => [
+                    'label' => 'Dropdown',
+                    'variant' => 'outline-secondary',
+                    'dropdown' => [
+                        'Action',
+                        'Another action',
+                        'Something else here',
+                        '---',
+                        'Separated link',
                     ],
                 ],
             ],
-            'attributes' => [    'aria-label' => 'Text input with dropdown button'    ],
-        ]
-    )
-);
-
+        ],
+        'add_on_append' => [
+            'element' => [
+                'type' => 'button',
+                'options' => [
+                    'label' => 'Dropdown',
+                    'variant' => 'outline-secondary',
+                    'dropdown' => [
+                        'Action',
+                        'Another action',
+                        'Something else here',
+                        '---',
+                        'Separated link',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    'attributes' => [
+        'aria-label' => 'Text input with dropdown button',
+    ],
+]));
 ```
 
 </TabItem>
@@ -877,71 +805,66 @@ echo $this->formRow(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'segmented-dropdown-prepend',
-            'type'       => 'text',
-            'options'    => [
-                'form_group'        => false,
-                'input_group_class' => 'mb-3',
-                'add_on_prepend'    => [
-                    'element' => [
-                        'type'    => 'button',
-                        'options' => [
-                            'label'    => 'Action',
-                            'variant'  => 'outline-secondary',
-                            'dropdown' => [
-                                'split' => 'Toggle Dropdown',
-                                'items' => [
-                                    'Action',
-                                    'Another action',
-                                    'Something else here',
-                                    '---',
-                                    'Separated link',
-                                ],
-                            ],
+echo $this->formRow($factory->create([
+    'name' => 'segmented-dropdown-prepend',
+    'type' => 'text',
+    'options' => [
+        'form_group' => false,
+        'input_group_class' => 'mb-3',
+        'add_on_prepend' => [
+            'element' => [
+                'type' => 'button',
+                'options' => [
+                    'label' => 'Action',
+                    'variant' => 'outline-secondary',
+                    'dropdown' => [
+                        'split' => 'Toggle Dropdown',
+                        'items' => [
+                            'Action',
+                            'Another action',
+                            'Something else here',
+                            '---',
+                            'Separated link',
                         ],
                     ],
                 ],
             ],
-            'attributes' => [    'aria-label' => 'Text input with segmented dropdown button'    ],
-        ]
-    )
-);
+        ],
+    ],
+    'attributes' => [
+        'aria-label' => 'Text input with segmented dropdown button',
+    ],
+]));
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'segmented-dropdown-append',
-            'type'       => 'text',
-            'options'    => [
-                'form_group'    => false,
-                'add_on_append' => [
-                    'element' => [
-                        'type'    => 'button',
-                        'options' => [
-                            'label'    => 'Action',
-                            'variant'  => 'outline-secondary',
-                            'dropdown' => [
-                                'split' => 'Toggle Dropdown',
-                                'items' => [
-                                    'Action',
-                                    'Another action',
-                                    'Something else here',
-                                    '---',
-                                    'Separated link',
-                                ],
-                            ],
+echo $this->formRow($factory->create([
+    'name' => 'segmented-dropdown-append',
+    'type' => 'text',
+    'options' => [
+        'form_group' => false,
+        'add_on_append' => [
+            'element' => [
+                'type' => 'button',
+                'options' => [
+                    'label' => 'Action',
+                    'variant' => 'outline-secondary',
+                    'dropdown' => [
+                        'split' => 'Toggle Dropdown',
+                        'items' => [
+                            'Action',
+                            'Another action',
+                            'Something else here',
+                            '---',
+                            'Separated link',
                         ],
                     ],
                 ],
             ],
-            'attributes' => [    'aria-label' => 'Text input with segmented dropdown button'    ],
-        ]
-    )
-);
-
+        ],
+    ],
+    'attributes' => [
+        'aria-label' => 'Text input with segmented dropdown button',
+    ],
+]));
 ```
 
 </TabItem>
@@ -1003,115 +926,102 @@ echo $this->formRow(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'select_label_prepend',
-            'type'       => 'select',
-            'options'    => [
-                'form_group'        => false,
-                'input_group_class' => 'mb-3',
-                'custom'            => true,
-                'empty_option'      => 'Choose...',
-                'value_options'     => [
-                    1 => 'One',
-                    2 => 'Two',
-                    3 => 'Three',
-                ],
-                'add_on_prepend'    => ['label' => 'Options'],
-            ],
-            'attributes' => [    'id' => 'inputGroupSelect01'    ],
-        ]
-    )->setValue('')
-);
+echo $this->formRow($factory->create([
+    'name' => 'select_label_prepend',
+    'type' => 'select',
+    'options' => [
+        'form_group' => false,
+        'input_group_class' => 'mb-3',
+        'custom' => true,
+        'empty_option' => 'Choose...',
+        'value_options' => [
+            1 => 'One',
+            2 => 'Two',
+            3 => 'Three',
+        ],
+        'add_on_prepend' => ['label' => 'Options'],
+    ],
+    'attributes' => [
+        'id' => 'inputGroupSelect01',
+    ],
+])->setValue(''));
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'select_label_append',
-            'type'       => 'select',
-            'options'    => [
-                'form_group'        => false,
-                'input_group_class' => 'mb-3',
-                'custom'            => true,
-                'empty_option'      => 'Choose...',
-                'value_options'     => [
-                    1 => 'One',
-                    2 => 'Two',
-                    3 => 'Three',
-                ],
-                'add_on_append'     => ['label' => 'Options'],
-            ],
-            'attributes' => [    'id' => 'inputGroupSelect02'    ],
-        ]
-    )->setValue('')
-);
+echo $this->formRow($factory->create([
+    'name' => 'select_label_append',
+    'type' => 'select',
+    'options' => [
+        'form_group' => false,
+        'input_group_class' => 'mb-3',
+        'custom' => true,
+        'empty_option' => 'Choose...',
+        'value_options' => [
+            1 => 'One',
+            2 => 'Two',
+            3 => 'Three',
+        ],
+        'add_on_append' => ['label' => 'Options'],
+    ],
+    'attributes' => [
+        'id' => 'inputGroupSelect02',
+    ],
+])->setValue(''));
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'select_button_prepend',
-            'type'       => 'select',
-            'options'    => [
-                'form_group'        => false,
-                'input_group_class' => 'mb-3',
-                'custom'            => true,
-                'empty_option'      => 'Choose...',
-                'value_options'     => [
-                    1 => 'One',
-                    2 => 'Two',
-                    3 => 'Three',
-                ],
-                'add_on_prepend'    => [
-                    'element' => [
-                        'type'    => 'button',
-                        'options' => [
-                            'label'   => 'Button',
-                            'variant' => 'outline-secondary',
-                        ],
-                    ],
+echo $this->formRow($factory->create([
+    'name' => 'select_button_prepend',
+    'type' => 'select',
+    'options' => [
+        'form_group' => false,
+        'input_group_class' => 'mb-3',
+        'custom' => true,
+        'empty_option' => 'Choose...',
+        'value_options' => [
+            1 => 'One',
+            2 => 'Two',
+            3 => 'Three',
+        ],
+        'add_on_prepend' => [
+            'element' => [
+                'type' => 'button',
+                'options' => [
+                    'label' => 'Button',
+                    'variant' => 'outline-secondary',
                 ],
             ],
-            'attributes' => [
-                'id'         => 'inputGroupSelect03',
-                'aria-label' => 'Example select with button addon',
-            ],
-        ]
-    )->setValue('')
-);
+        ],
+    ],
+    'attributes' => [
+        'id' => 'inputGroupSelect03',
+        'aria-label' => 'Example select with button addon',
+    ],
+])->setValue(''));
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'select_button_append',
-            'type'       => 'select',
-            'options'    => [
-                'form_group'    => false,
-                'custom'        => true,
-                'empty_option'  => 'Choose...',
-                'value_options' => [
-                    1 => 'One',
-                    2 => 'Two',
-                    3 => 'Three',
-                ],
-                'add_on_append' => [
-                    'element' => [
-                        'type'    => 'button',
-                        'options' => [
-                            'label'   => 'Button',
-                            'variant' => 'outline-secondary',
-                        ],
-                    ],
+echo $this->formRow($factory->create([
+    'name' => 'select_button_append',
+    'type' => 'select',
+    'options' => [
+        'form_group' => false,
+        'custom' => true,
+        'empty_option' => 'Choose...',
+        'value_options' => [
+            1 => 'One',
+            2 => 'Two',
+            3 => 'Three',
+        ],
+        'add_on_append' => [
+            'element' => [
+                'type' => 'button',
+                'options' => [
+                    'label' => 'Button',
+                    'variant' => 'outline-secondary',
                 ],
             ],
-            'attributes' => [
-                'id'         => 'inputGroupSelect04',
-                'aria-label' => 'Example select with button addon',
-            ],
-        ]
-    )->setValue('')
-);
-
+        ],
+    ],
+    'attributes' => [
+        'id' => 'inputGroupSelect04',
+        'aria-label' => 'Example select with button addon',
+    ],
+])->setValue(''));
 ```
 
 </TabItem>
@@ -1149,102 +1059,85 @@ echo $this->formRow(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'custom_file_label_prepend',
-            'type'       => 'file',
-            'options'    => [
-                'custom'            => true,
-                'custom_label'      => 'Choose file',
-                'form_group'        => false,
-                'input_group_class' => 'mb-3',
-                'add_on_prepend'    => 'Upload',
-            ],
-            'attributes' => [
-                'id'               => 'inputGroupFile01',
-                'aria-describedby' => 'inputGroupFile01',
-            ],
-        ]
-    )
-);
+echo $this->formRow($factory->create([
+    'name' => 'custom_file_label_prepend',
+    'type' => 'file',
+    'options' => [
+        'custom' => true,
+        'custom_label' => 'Choose file',
+        'form_group' => false,
+        'input_group_class' => 'mb-3',
+        'add_on_prepend' => 'Upload',
+    ],
+    'attributes' => [
+        'id' => 'inputGroupFile01',
+        'aria-describedby' => 'inputGroupFile01',
+    ],
+]));
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'custom_file_label_append',
-            'type'       => 'file',
-            'options'    => [
-                'custom'            => true,
-                'custom_label'      => 'Choose file',
-                'form_group'        => false,
-                'input_group_class' => 'mb-3',
-                'add_on_append'     => 'Upload',
-            ],
-            'attributes' => [
-                'id'               => 'inputGroupFile02',
-                'aria-describedby' => 'inputGroupFile02',
-            ],
-        ]
-    )
-);
+echo $this->formRow($factory->create([
+    'name' => 'custom_file_label_append',
+    'type' => 'file',
+    'options' => [
+        'custom' => true,
+        'custom_label' => 'Choose file',
+        'form_group' => false,
+        'input_group_class' => 'mb-3',
+        'add_on_append' => 'Upload',
+    ],
+    'attributes' => [
+        'id' => 'inputGroupFile02',
+        'aria-describedby' => 'inputGroupFile02',
+    ],
+]));
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'custom_file_button_prepend',
-            'type'       => 'file',
-            'options'    => [
-                'custom'            => true,
-                'custom_label'      => 'Choose file',
-                'form_group'        => false,
-                'input_group_class' => 'mb-3',
-                'add_on_prepend'    => [
-                    'element' => [
-                        'type'    => 'button',
-                        'options' => [
-                            'label'   => 'Button',
-                            'variant' => 'outline-secondary',
-                        ],
-                    ],
+echo $this->formRow($factory->create([
+    'name' => 'custom_file_button_prepend',
+    'type' => 'file',
+    'options' => [
+        'custom' => true,
+        'custom_label' => 'Choose file',
+        'form_group' => false,
+        'input_group_class' => 'mb-3',
+        'add_on_prepend' => [
+            'element' => [
+                'type' => 'button',
+                'options' => [
+                    'label' => 'Button',
+                    'variant' => 'outline-secondary',
                 ],
             ],
-            'attributes' => [
-                'id'               => 'inputGroupFile03',
-                'aria-describedby' => 'inputGroupFileAddon03',
-            ],
-        ]
-    )
-);
+        ],
+    ],
+    'attributes' => [
+        'id' => 'inputGroupFile03',
+        'aria-describedby' => 'inputGroupFileAddon03',
+    ],
+]));
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'custom_file_button_append',
-            'type'       => 'file',
-            'options'    => [
-                'custom'            => true,
-                'custom_label'      => 'Choose file',
-                'form_group'        => false,
-                'input_group_class' => 'mb-3',
-                'add_on_append'     => [
-                    'element' => [
-                        'type'    => 'button',
-                        'options' => [
-                            'label'   => 'Button',
-                            'variant' => 'outline-secondary',
-                        ],
-                    ],
+echo $this->formRow($factory->create([
+    'name' => 'custom_file_button_append',
+    'type' => 'file',
+    'options' => [
+        'custom' => true,
+        'custom_label' => 'Choose file',
+        'form_group' => false,
+        'input_group_class' => 'mb-3',
+        'add_on_append' => [
+            'element' => [
+                'type' => 'button',
+                'options' => [
+                    'label' => 'Button',
+                    'variant' => 'outline-secondary',
                 ],
             ],
-            'attributes' => [
-                'id'               => 'inputGroupFile04',
-                'aria-describedby' => 'inputGroupFileAddon04',
-            ],
-        ]
-    )
-);
-
+        ],
+    ],
+    'attributes' => [
+        'id' => 'inputGroupFile04',
+        'aria-describedby' => 'inputGroupFileAddon04',
+    ],
+]));
 ```
 
 </TabItem>

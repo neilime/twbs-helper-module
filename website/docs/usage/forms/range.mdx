@@ -32,19 +32,16 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'range',
-            'options'    => ['label' => 'Example Range'],
-            'attributes' => [
-                'type' => 'range',
-                'id'   => 'customRange1',
-            ],
-        ]
-    )
-);
-
+echo $this->formRow($factory->create([
+    'name' => 'range',
+    'options' => [
+        'label' => 'Example Range'
+    ],
+    'attributes' => [
+        'type' => 'range',
+        'id' => 'customRange1',
+    ],
+]));
 ```
 
 </TabItem>
@@ -70,20 +67,17 @@ echo $this->formRow(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'range',
-            'options'    => ['label' => 'Disabled range'],
-            'attributes' => [
-                'type'     => 'range',
-                'id'       => 'disabledRange',
-                'disabled' => true,
-            ],
-        ]
-    )
-);
-
+echo $this->formRow($factory->create([
+    'name' => 'range',
+    'options' => [
+        'label' => 'Disabled range'
+    ],
+    'attributes' => [
+        'type' => 'range',
+        'id' => 'disabledRange',
+        'disabled' => true
+    ],
+]));
 ```
 
 </TabItem>
@@ -109,21 +103,18 @@ echo $this->formRow(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'range',
-            'options'    => ['label' => 'Example Range'],
-            'attributes' => [
-                'type' => 'range',
-                'id'   => 'customRange2',
-                'min'  => 0,
-                'max'  => 5,
-            ],
-        ]
-    )
-);
-
+echo $this->formRow($factory->create([
+    'name' => 'range',
+    'options' => [
+        'label' => 'Example Range'
+    ],
+    'attributes' => [
+        'type' => 'range',
+        'id' => 'customRange2',
+        'min' => 0,
+        'max' => 5
+    ],
+]));
 ```
 
 </TabItem>
@@ -149,22 +140,19 @@ echo $this->formRow(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->formRow(
-    $factory->create(
-        [
-            'name'       => 'range',
-            'options'    => ['label' => 'Example Range'],
-            'attributes' => [
-                'type' => 'range',
-                'id'   => 'customRange3',
-                'min'  => 0,
-                'max'  => 5,
-                'step' => 0.5,
-            ],
-        ]
-    )
-);
-
+echo $this->formRow($factory->create([
+    'name' => 'range',
+    'options' => [
+        'label' => 'Example Range'
+    ],
+    'attributes' => [
+        'type' => 'range',
+        'id' => 'customRange3',
+        'min' => 0,
+        'max' => 5,
+        'step' => 0.5
+    ],
+]));
 ```
 
 </TabItem>

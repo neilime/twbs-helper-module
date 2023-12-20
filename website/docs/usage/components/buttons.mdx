@@ -35,27 +35,19 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 ```php
 <?php
 
-foreach ([
-    'primary',
-    'secondary',
-    'success',
-    'danger',
-    'warning',
-    'info',
-    'light',
-    'dark',
-    'link',
-] as $variant) {
-    echo $this->formButton()->renderSpec(
-        [
-            'options' => [
-                'label'   => ucfirst($variant),
-                'variant' => $variant,
-            ],
-        ]
-    );
+foreach (
+    [
+        'primary', 'secondary', 'success', 'danger',
+        'warning', 'info', 'light', 'dark', 'link',
+    ] as $variant
+) {
+    echo $this->formButton()->renderSpec([
+        'options' => [
+            'label' => ucfirst($variant),
+            'variant' => $variant,
+        ],
+    ]);
 }
-
 ```
 
 </TabItem>
@@ -82,64 +74,53 @@ foreach ([
 
 
 // Link button
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label'   => 'Link',
-            'variant' => 'primary',
-            'tag'     => 'a',
-        ],
-        'attributes' => ['href' => '#'],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Link',
+        'variant' => 'primary',
+        'tag' => 'a',
+    ],
+    'attributes' => ['href' => '#'],
+]);
 
 // Submit button
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label'   => 'Button',
-            'variant' => 'primary',
-        ],
-        'attributes' => ['type' => 'submit'],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Button',
+        'variant' => 'primary',
+    ],
+    'attributes' => ['type' => 'submit'],
+]);
 
 // Input button
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'tag'     => 'input',
-            'label'   => 'Input',
-            'variant' => 'primary',
-        ],
-        'attributes' => ['type' => 'button'],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'tag' => 'input',
+        'label' => 'Input',
+        'variant' => 'primary',
+    ],
+    'attributes' => ['type' => 'button'],
+]);
 
 // Submit input
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'tag'     => 'input',
-            'label'   => 'Submit',
-            'variant' => 'primary',
-        ],
-        'attributes' => ['type' => 'submit'],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'tag' => 'input',
+        'label' => 'Submit',
+        'variant' => 'primary',
+    ],
+    'attributes' => ['type' => 'submit'],
+]);
 
 // Reset
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'tag'     => 'input',
-            'label'   => 'Reset',
-            'variant' => 'primary',
-        ],
-        'attributes' => ['type' => 'reset'],
-    ]
-);
-
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'tag' => 'input',
+        'label' => 'Reset',
+        'variant' => 'primary',
+    ],
+    'attributes' => ['type' => 'reset'],
+]);
 ```
 
 </TabItem>
@@ -167,26 +148,19 @@ echo $this->formButton()->renderSpec(
 ```php
 <?php
 
-foreach ([
-    'primary',
-    'secondary',
-    'success',
-    'danger',
-    'warning',
-    'info',
-    'light',
-    'dark',
-] as $variant) {
-    echo $this->formButton()->renderSpec(
-        [
-            'options' => [
-                'label'   => ucfirst($variant),
-                'variant' => 'outline-'.$variant,
-            ],
-        ]
-    );
+foreach (
+    [
+        'primary', 'secondary', 'success', 'danger',
+        'warning', 'info', 'light', 'dark',
+    ] as $variant
+) {
+    echo $this->formButton()->renderSpec([
+        'options' => [
+            'label' => ucfirst($variant),
+            'variant' => 'outline-' . $variant,
+        ],
+    ]);
 }
-
 ```
 
 </TabItem>
@@ -213,48 +187,39 @@ foreach ([
 
 
 // Large buttons
-echo $this->formButton()->renderSpec(
-    [
-        'options' => [
-            'label'   => 'Large button',
-            'variant' => 'primary',
-            'size'    => 'lg',
-        ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Large button',
+        'variant' => 'primary',
+        'size' => 'lg',
+    ],
+]);
 
 
-echo $this->formButton()->renderSpec(
-    [
-        'options' => [
-            'label' => 'Large button',
-            'size'  => 'lg',
-        ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Large button',
+        'size' => 'lg',
+    ],
+]);
 
 echo '<br/><br/>';
 
 // Small buttons
-echo $this->formButton()->renderSpec(
-    [
-        'options' => [
-            'label'   => 'Small button',
-            'variant' => 'primary',
-            'size'    => 'sm',
-        ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Small button',
+        'variant' => 'primary',
+        'size' => 'sm',
+    ],
+]);
 
-echo $this->formButton()->renderSpec(
-    [
-        'options' => [
-            'label' => 'Small button',
-            'size'  => 'sm',
-        ],
-    ]
-);
-
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Small button',
+        'size' => 'sm',
+    ],
+]);
 ```
 
 </TabItem>
@@ -283,83 +248,78 @@ echo $this->formButton()->renderSpec(
 <?php
 
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label'   => 'Primary button',
-            'variant' => 'primary',
-            'size'    => 'lg',
-        ],
-        'attributes' => [    'disabled' => true    ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Primary button',
+        'variant' => 'primary',
+        'size' => 'lg',
+    ],
+    'attributes' => [
+        'disabled' => true,
+    ],
+]);
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label' => 'Button',
-            'size'  => 'lg',
-        ],
-        'attributes' => [    'disabled' => true    ],
-    ]
-);
-
-echo '<br/><br/>';
-
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'tag'     => 'a',
-            'label'   => 'Primary link',
-            'variant' => 'primary',
-            'size'    => 'lg',
-        ],
-        'attributes' => [    'disabled' => true    ],
-    ]
-);
-
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'tag'   => 'a',
-            'label' => 'Link',
-            'size'  => 'lg',
-        ],
-        'attributes' => [    'disabled' => true    ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Button',
+        'size' => 'lg',
+    ],
+    'attributes' => [
+        'disabled' => true,
+    ],
+]);
 
 echo '<br/><br/>';
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'tag'     => 'a',
-            'label'   => 'Primary link',
-            'variant' => 'primary',
-            'size'    => 'lg',
-        ],
-        'attributes' => [
-            'href'     => '#',
-            'disabled' => true,
-        ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'tag' => 'a',
+        'label' => 'Primary link',
+        'variant' => 'primary',
+        'size' => 'lg',
+    ],
+    'attributes' => [
+        'disabled' => true,
+    ],
+]);
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'tag'   => 'a',
-            'label' => 'Link',
-            'size'  => 'lg',
-        ],
-        'attributes' => [
-            'href'     => '#',
-            'disabled' => true,
-        ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'tag' => 'a',
+        'label' => 'Link',
+        'size' => 'lg',
+    ],
+    'attributes' => [
+        'disabled' => true,
+    ],
+]);
 
+echo '<br/><br/>';
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'tag' => 'a',
+        'label' => 'Primary link',
+        'variant' => 'primary',
+        'size' => 'lg',
+    ],
+    'attributes' => [
+        'href' => '#',
+        'disabled' => true,
+    ],
+]);
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'tag' => 'a',
+        'label' => 'Link',
+        'size' => 'lg',
+    ],
+    'attributes' => [
+        'href' => '#',
+        'disabled' => true,
+    ],
+]);
 ```
 
 </TabItem>
@@ -401,23 +361,19 @@ echo $this->formButton()->renderSpec(
 
 echo '<div class="d-grid gap-2">';
 
-echo $this->formButton()->renderSpec(
-    [
-        'options' => [
-            'label'   => 'Button',
-            'variant' => 'primary',
-        ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Button',
+        'variant' => 'primary',
+    ],
+]);
 
-echo $this->formButton()->renderSpec(
-    [
-        'options' => [
-            'label'   => 'Button',
-            'variant' => 'primary',
-        ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Button',
+        'variant' => 'primary',
+    ],
+]);
 
 echo '</div>';
 
@@ -425,23 +381,19 @@ echo '<br/><br/>';
 
 echo '<div class="d-grid gap-2 d-md-block">';
 
-echo $this->formButton()->renderSpec(
-    [
-        'options' => [
-            'label'   => 'Button',
-            'variant' => 'primary',
-        ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Button',
+        'variant' => 'primary',
+    ],
+]);
 
-echo $this->formButton()->renderSpec(
-    [
-        'options' => [
-            'label'   => 'Button',
-            'variant' => 'primary',
-        ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Button',
+        'variant' => 'primary',
+    ],
+]);
 
 echo '</div>';
 
@@ -449,23 +401,19 @@ echo '<br/><br/>';
 
 echo '<div class="d-grid gap-2 col-6 mx-auto">';
 
-echo $this->formButton()->renderSpec(
-    [
-        'options' => [
-            'label'   => 'Button',
-            'variant' => 'primary',
-        ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Button',
+        'variant' => 'primary',
+    ],
+]);
 
-echo $this->formButton()->renderSpec(
-    [
-        'options' => [
-            'label'   => 'Button',
-            'variant' => 'primary',
-        ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Button',
+        'variant' => 'primary',
+    ],
+]);
 
 echo '</div>';
 
@@ -473,26 +421,21 @@ echo '<br/><br/>';
 
 echo '<div class="d-grid gap-2 d-md-flex justify-content-md-end">';
 
-echo $this->formButton()->renderSpec(
-    [
-        'options' => [
-            'label'   => 'Button',
-            'variant' => 'primary',
-        ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Button',
+        'variant' => 'primary',
+    ],
+]);
 
-echo $this->formButton()->renderSpec(
-    [
-        'options' => [
-            'label'   => 'Button',
-            'variant' => 'primary',
-        ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Button',
+        'variant' => 'primary',
+    ],
+]);
 
 echo '</div>';
-
 ```
 
 </TabItem>
@@ -523,78 +466,71 @@ echo '</div>';
 ```php
 <?php
 
-echo $this->formButton()->renderSpec(
-    [
-        'options' => [
-            'label'   => 'Toggle button',
-            'variant' => 'primary',
-            'toggle'  => false,
-        ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Toggle button',
+        'variant' => 'primary',
+        'toggle' => false,
+    ],
+]);
 
-echo $this->formButton()->renderSpec(
-    [
-        'options' => [
-            'label'   => 'Active toggle button',
-            'variant' => 'primary',
-            'toggle'  => true,
-        ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Active toggle button',
+        'variant' => 'primary',
+        'toggle' => true,
+    ],
+]);
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'label'   => 'Disabled toggle button',
-            'variant' => 'primary',
-            'toggle'  => false,
-        ],
-        'attributes' => [    'disabled' => true    ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Disabled toggle button',
+        'variant' => 'primary',
+        'toggle' => false,
+    ],
+    'attributes' => [
+        'disabled' => true,
+    ],
+]);
 
 echo '<br/><br/>';
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'tag'     => 'a',
-            'label'   => 'Toggle link',
-            'variant' => 'primary',
-            'toggle'  => false,
-        ],
-        'attributes' => [    'href' => '#'    ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'tag' => 'a',
+        'label' => 'Toggle link',
+        'variant' => 'primary',
+        'toggle' => false,
+    ],
+    'attributes' => [
+        'href' => '#',
+    ],
+]);
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'tag'     => 'a',
-            'label'   => 'Active toggle link',
-            'variant' => 'primary',
-            'toggle'  => true,
-        ],
-        'attributes' => [    'href' => '#'    ],
-    ]
-);
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'tag' => 'a',
+        'label' => 'Active toggle link',
+        'variant' => 'primary',
+        'toggle' => true,
+    ],
+    'attributes' => [
+        'href' => '#',
+    ],
+]);
 
-echo $this->formButton()->renderSpec(
-    [
-        'options'    => [
-            'tag'     => 'a',
-            'label'   => 'Disabled toggle link',
-            'variant' => 'primary',
-            'toggle'  => false,
-        ],
-        'attributes' => [
-            'disabled' => true,
-            'href'     => '#',
-        ],
-    ]
-);
-
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'tag' => 'a',
+        'label' => 'Disabled toggle link',
+        'variant' => 'primary',
+        'toggle' => false,
+    ],
+    'attributes' => [
+        'disabled' => true,
+        'href' => '#',
+    ],
+]);
 ```
 
 </TabItem>

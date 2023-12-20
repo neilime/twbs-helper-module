@@ -34,19 +34,12 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 ```php
 <?php
 
-echo $this->card(
-    [
-        'image_top' => [
-            '/twbs-helper-module/img/docs/image-cap.svg',
-            ['alt' => '...'],
-        ],
-        'title' => 'Card title',
-        'text' => "Some quick example text to build on the card title and make up the bulk of the card's content.",
-        '<a href="&#x23;" class="btn btn-primary">Go somewhere</a>',
-    ],
-    ['style' => 'width: 18rem;']
-);
-
+echo $this->card([
+    'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
+    'title' => 'Card title',
+    'text' => "Some quick example text to build on the card title and make up the bulk of the card's content.",
+    '<a href="&#x23;" class="btn btn-primary">Go somewhere</a>',
+], ['style' => 'width: 18rem;']);
 ```
 
 </TabItem>
@@ -76,7 +69,6 @@ echo $this->card(
 <?php
 
 echo $this->card('This is some text within a card body.');
-
 ```
 
 </TabItem>
@@ -105,22 +97,19 @@ echo $this->card('This is some text within a card body.');
 ```php
 <?php
 
-echo $this->card(
-    [
-        'title'    => 'Card title',
-        'subtitle' => [
-            'content'    => 'Card subtitle',
-            'attributes' => ['class' => 'mb-2 text-muted'],
-        ],
-        'text'     => 'Some quick example text to build on the card title'." and make up the bulk of the card's content.",
-        'link'     => [
-            'Card link',
-            'Another link',
-        ],
+echo $this->card([
+    'title' => 'Card title',
+    'subtitle' => [
+        'content' => 'Card subtitle',
+        'attributes' => ['class' => 'mb-2 text-muted'],
     ],
-    ['style' => 'width: 18rem;']
-);
-
+    'text' => "Some quick example text to build on the card title" .
+    " and make up the bulk of the card's content.",
+    'link' => [
+        'Card link',
+        'Another link',
+    ],
+], ['style' => 'width: 18rem;']);
 ```
 
 </TabItem>
@@ -146,17 +135,11 @@ echo $this->card(
 ```php
 <?php
 
-echo $this->card(
-    [
-        'image_top' => [
-            '/twbs-helper-module/img/docs/image-cap.svg',
-            ['alt' => '...'],
-        ],
-        'text'      => 'Some quick example text to build on the card title'." and make up the bulk of the card's content.",
-    ],
-    ['style' => 'width: 18rem;']
-);
-
+echo $this->card([
+    'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
+    'text' => "Some quick example text to build on the card title" .
+    " and make up the bulk of the card's content.",
+], ['style' => 'width: 18rem;']);
 ```
 
 </TabItem>
@@ -205,51 +188,41 @@ echo $this->card(
 ```php
 <?php
 
-echo $this->card(
-    [
-        'listGroup' => [
-            [
-                'An item',
-                'A second item',
-                'A third item',
-            ],
+echo $this->card([
+    'listGroup' => [
+        [
+            'An item',
+            'A second item',
+            'A third item',
         ],
     ],
-    ['style' => 'width: 18rem;']
-);
+], ['style' => 'width: 18rem;']);
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
-echo $this->card(
-    [
-        'header'    => 'Featured',
-        'listGroup' => [
-            [
-                'An item',
-                'A second item',
-                'A third item',
-            ],
+echo $this->card([
+    'header' => 'Featured',
+    'listGroup' => [
+        [
+            'An item',
+            'A second item',
+            'A third item',
         ],
     ],
-    ['style' => 'width: 18rem;']
-);
+], ['style' => 'width: 18rem;']);
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
-echo $this->card(
-    [
-        'listGroup' => [
-            [
-                'An item',
-                'A second item',
-                'A third item',
-            ],
+echo $this->card([
+    'listGroup' => [
+        [
+            'An item',
+            'A second item',
+            'A third item',
         ],
-        'footer'    => 'Card footer',
     ],
-    ['style' => 'width: 18rem;']
-);
-
+    'footer' => 'Card footer',
+], ['style' => 'width: 18rem;']);
 ```
 
 </TabItem>
@@ -285,29 +258,23 @@ echo $this->card(
 ```php
 <?php
 
-echo $this->card(
-    [
-        'image_top' => [
-            '/twbs-helper-module/img/docs/image-cap.svg',
-            ['alt' => '...'],
-        ],
-        'title'     => 'Card title',
-        'text'      => 'Some quick example text to build on the card title'." and make up the bulk of the card's content.",
-        'listGroup' => [
-            [
-                'An item',
-                'A second item',
-                'A third item',
-            ],
-        ],
-        'link'      => [
-            'Card link',
-            'Another link',
+echo $this->card([
+    'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
+    'title' => 'Card title',
+    'text' => "Some quick example text to build on the card title" .
+    " and make up the bulk of the card's content.",
+    'listGroup' => [
+        [
+            'An item',
+            'A second item',
+            'A third item',
         ],
     ],
-    ['style' => 'width: 18rem;']
-);
-
+    'link' => [
+        'Card link',
+        'Another link',
+    ],
+], ['style' => 'width: 18rem;']);
 ```
 
 </TabItem>
@@ -373,60 +340,47 @@ echo $this->card(
 <?php
 
 
-echo $this->card(
-    [
-        'header' => 'Featured',
-        'title' => 'Special title treatment',
-        'text' => 'With supporting text below as a natural lead-in to additional content.',
-        '<a href="#" class="btn btn-primary">Go somewhere</a>',
-    ]
-);
+echo $this->card([
+    'header' => 'Featured',
+    'title' => 'Special title treatment',
+    'text' => 'With supporting text below as a natural lead-in to additional content.',
+    '<a href="#" class="btn btn-primary">Go somewhere</a>',
+]);
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 // Styled card headers
-echo $this->card(
-    [
-        'header' => [
-            'Featured',
-            ['tag' => 'h5'],
-        ],
-        'title' => 'Special title treatment',
-        'text' => 'With supporting text below as a natural lead-in to additional content.',
-        '<a href="#" class="btn btn-primary">Go somewhere</a>',
-    ]
-);
+echo $this->card([
+    'header' => [
+        'Featured',
+        ['tag' => 'h5'],
+    ],
+    'title' => 'Special title treatment',
+    'text' => 'With supporting text below as a natural lead-in to additional content.',
+    '<a href="#" class="btn btn-primary">Go somewhere</a>',
+]);
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 // With blockquote
-echo $this->card(
-    [
-        'header'     => 'Quote',
-        'blockquote' => [
-            'A well-known quote, contained in a blockquote element.',
-            'Someone famous in <cite title="Source Title">Source Title</cite>',
-        ],
-    ]
-);
+echo $this->card([
+    'header' => 'Quote',
+    'blockquote' => [
+        'A well-known quote, contained in a blockquote element.',
+        'Someone famous in <cite title="Source Title">Source Title</cite>',
+    ],
+]);
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 // Centered
-echo $this->card(
-    [
-        'header' => 'Featured',
-        'title' => 'Special title treatment',
-        'text' => 'With supporting text below as a natural lead-in to additional content.',
-        '<a href="#" class="btn btn-primary">Go somewhere</a>',
-        'footer' => [
-            '2 days ago',
-            ['class' => 'text-muted'],
-        ],
-    ],
-    ['class' => 'text-center']
-);
-
+echo $this->card([
+    'header' => 'Featured',
+    'title' => 'Special title treatment',
+    'text' => 'With supporting text below as a natural lead-in to additional content.',
+    '<a href="#" class="btn btn-primary">Go somewhere</a>',
+    'footer' => ['2 days ago', ['class' => 'text-muted']],
+], ['class' => 'text-center']);
 ```
 
 </TabItem>
@@ -489,7 +443,6 @@ echo $this->cardGrid(
     ],
     ['column' => 'sm-6'],
 );
-
 ```
 
 </TabItem>
@@ -533,7 +486,7 @@ echo $this->card(
     ['class' => 'w-75']
 );
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 echo $this->card(
     [
@@ -543,7 +496,6 @@ echo $this->card(
     ],
     ['class' => 'w-50']
 );
-
 ```
 
 </TabItem>
@@ -578,7 +530,6 @@ echo $this->card(
     ],
     ['style' => 'width: 18rem;']
 );
-
 ```
 
 </TabItem>
@@ -621,45 +572,29 @@ echo $this->card(
 ```php
 <?php
 
-echo $this->card(
-    [
-        'title' => 'Special title treatment',
-        'text' => 'With supporting text below as a natural lead-in to additional content.',
-        '<a href="#" class="btn btn-primary">Go somewhere</a>',
-    ],
-    ['style' => 'width: 18rem;']
-);
+echo $this->card([
+    'title' => 'Special title treatment',
+    'text' => 'With supporting text below as a natural lead-in to additional content.',
+    '<a href="#" class="btn btn-primary">Go somewhere</a>',
+], ['style' => 'width: 18rem;']);
 
 echo '<br/>';
 
 // Text center
-echo $this->card(
-    [
-        'title' => 'Special title treatment',
-        'text' => 'With supporting text below as a natural lead-in to additional content.',
-        '<a href="#" class="btn btn-primary">Go somewhere</a>',
-    ],
-    [
-        'class' => 'text-center',
-        'style' => 'width: 18rem;',
-    ]
-);
+echo $this->card([
+    'title' => 'Special title treatment',
+    'text' => 'With supporting text below as a natural lead-in to additional content.',
+    '<a href="#" class="btn btn-primary">Go somewhere</a>',
+], ['class' => 'text-center', 'style' => 'width: 18rem;']);
 
 echo '<br/>';
 
 // Text end
-echo $this->card(
-    [
-        'title' => 'Special title treatment',
-        'text' => 'With supporting text below as a natural lead-in to additional content.',
-        '<a href="#" class="btn btn-primary">Go somewhere</a>',
-    ],
-    [
-        'class' => 'text-end',
-        'style' => 'width: 18rem;',
-    ]
-);
-
+echo $this->card([
+    'title' => 'Special title treatment',
+    'text' => 'With supporting text below as a natural lead-in to additional content.',
+    '<a href="#" class="btn btn-primary">Go somewhere</a>',
+], ['class' => 'text-end', 'style' => 'width: 18rem;']);
 ```
 
 </TabItem>
@@ -721,64 +656,35 @@ echo $this->card(
 <?php
 
 // Nav tabs (pages defined by a \Laminas\Navigation\Navigation object as container)
-echo $this->card(
-    [
-        'nav' => new \Laminas\Navigation\Navigation(
-            [
-                [
-                    'label'  => 'Active',
-                    'uri'    => '#',
-                    'active' => true,
-                ],
-                [
-                    'label' => 'Link',
-                    'uri'   => '#',
-                ],
-                [
-                    'label'   => 'Disabled',
-                    'uri'     => '#',
-                    'visible' => false,
-                ],
-            ]
-        ),
-        'title' => 'Special title treatment',
-        'text' => 'With supporting text below as a natural lead-in to additional content.',
-        '<a href="#" class="btn btn-primary">Go somewhere</a>',
-    ],
-    ['class' => 'text-center']
-);
+echo $this->card([
+    'nav' => new \Laminas\Navigation\Navigation(
+        [
+            ['label' => 'Active', 'uri' => '#', 'active' => true,],
+            ['label' => 'Link', 'uri' => '#',],
+            ['label' => 'Disabled', 'uri' => '#', 'visible' => false,],
+        ]
+    ),
+    'title' => 'Special title treatment',
+    'text' => 'With supporting text below as a natural lead-in to additional content.',
+    '<a href="#" class="btn btn-primary">Go somewhere</a>',
+], ['class' => 'text-center']);
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 // Nav pills (pages defined by an array as  container)
-echo $this->card(
-    [
-        'nav' => [
-            'options'   => ['pills' => true],
-            'container' => [
-                [
-                    'label'  => 'Active',
-                    'uri'    => '#',
-                    'active' => true,
-                ],
-                [
-                    'label' => 'Link',
-                    'uri'   => '#',
-                ],
-                [
-                    'label'   => 'Disabled',
-                    'uri'     => '#',
-                    'visible' => false,
-                ],
-            ],
-        ],
-        'title' => 'Special title treatment',
-        'text' => 'With supporting text below as a natural lead-in to additional content.',
-        '<a href="#" class="btn btn-primary">Go somewhere</a>',
+echo $this->card([
+    'nav' => [
+        'options' => ['pills' => true],
+        'container' => [
+            ['label' => 'Active', 'uri' => '#', 'active' => true,],
+            ['label' => 'Link', 'uri' => '#',],
+            ['label' => 'Disabled', 'uri' => '#', 'visible' => false,],
+        ]
     ],
-    ['class' => 'text-center']
-);
-
+    'title' => 'Special title treatment',
+    'text' => 'With supporting text below as a natural lead-in to additional content.',
+    '<a href="#" class="btn btn-primary">Go somewhere</a>',
+], ['class' => 'text-center']);
 ```
 
 </TabItem>
@@ -818,35 +724,25 @@ echo $this->card(
 ```php
 <?php
 
-echo $this->card(
-    [
-        'image_top' => [
-            '/twbs-helper-module/img/docs/image-cap.svg',
-            ['alt' => '...'],
-        ],
-        'title'     => 'Card title',
-        'text'      => [
-            'This is a wider card with supporting text below as a natural lead-in to additional content. '.'This content is a little bit longer.',
-            '<small class="text-muted">Last updated 3 mins ago</small>',
-        ],
+echo $this->card([
+    'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...']],
+    'title' => 'Card title',
+    'text' => [
+        'This is a wider card with supporting text below as a natural lead-in to additional content. ' .
+        'This content is a little bit longer.',
+        '<small class="text-muted">Last updated 3 mins ago</small>',
     ],
-    ['class' => 'mb-3']
-);
+], ['class' => 'mb-3']);
 
-echo $this->card(
-    [
-        'title'        => 'Card title',
-        'text'         => [
-            'This is a wider card with supporting text below as a natural lead-in to additional content. '.'This content is a little bit longer.',
-            '<small class="text-muted">Last updated 3 mins ago</small>',
-        ],
-        'image_bottom' => [
-            '/twbs-helper-module/img/docs/image-cap.svg',
-            ['alt' => '...'],
-        ],
-    ]
-);
-
+echo $this->card([
+    'title' => 'Card title',
+    'text' => [
+        'This is a wider card with supporting text below as a natural lead-in to additional content. ' .
+        'This content is a little bit longer.',
+        '<small class="text-muted">Last updated 3 mins ago</small>'
+    ],
+    'image_bottom' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...']],
+]);
 ```
 
 </TabItem>
@@ -874,26 +770,18 @@ echo $this->card(
 ```php
 <?php
 
-echo $this->card(
-    [
-        'overlay' => [
-            'img'   => [
-                '/twbs-helper-module/img/docs/card-image.svg',
-                ['alt' => '...'],
-            ],
-            'title' => 'Card title',
-            'text'  => [
-                'This is a wider card with supporting text below as a natural '.'lead-in to additional content. '.'This content is a little bit longer.',
-                'Last updated 3 mins ago',
-            ],
+echo $this->card([
+    'overlay' => [
+        'img' => ['/twbs-helper-module/img/docs/card-image.svg', ['alt' => '...']],
+        'title' => 'Card title',
+        'text' => [
+            'This is a wider card with supporting text below as a natural ' .
+            'lead-in to additional content. ' .
+            'This content is a little bit longer.',
+            'Last updated 3 mins ago',
         ],
     ],
-    [
-        'bg_variant' => 'dark',
-        'class'      => 'text-white',
-    ]
-);
-
+], ['bg_variant' => 'dark', 'class' => 'text-white']);
 ```
 
 </TabItem>
@@ -927,43 +815,33 @@ echo $this->card(
 ```php
 <?php
 
-echo $this->card(
-    [
-        'row' => [
+echo $this->card([
+    'row' => [
+        [
             [
                 [
-                    [
-                        'image' => [
-                            '/twbs-helper-module/img/docs/image.svg',
-                            [
-                                'alt'     => '...',
-                                'fluid'   => true,
-                                'rounded' => 'start',
-                            ],
-                        ],
+                    'image' => [
+                        '/twbs-helper-module/img/docs/image.svg',
+                        ['alt' => '...', 'fluid' => true, 'rounded' => 'start'],
                     ],
-                    ['column' => 'md-4'],
                 ],
-                [
-                    [
-                        'title' => 'Card title',
-                        'text'  => [
-                            'This is a wider card with supporting text below as a natural lead-in to '.'additional content. This content is a little bit longer.',
-                            '<small class="text-muted">Last updated 3 mins ago</small>',
-                        ],
-                    ],
-                    ['column' => 'md-8'],
-                ],
+                ['column' => 'md-4']
             ],
-            ['class' => 'g-0'],
+            [
+                [
+                    'title' => 'Card title',
+                    'text' => [
+                        'This is a wider card with supporting text below as a natural lead-in to ' .
+                        'additional content. This content is a little bit longer.',
+                        '<small class="text-muted">Last updated 3 mins ago</small>',
+                    ],
+                ],
+                ['column' => 'md-8'],
+            ],
         ],
-    ],
-    [
-        'class' => 'mb-3',
-        'style' => 'max-width: 540px;',
+        ['class' => 'g-0'],
     ]
-);
-
+], ['class' => 'mb-3', 'style' => 'max-width: 540px;']);
 ```
 
 </TabItem>
@@ -1059,57 +937,29 @@ echo $this->card(
 ```php
 <?php
 
-foreach ([
+foreach (
     [
-        'primary',
-        'white',
-    ],
-    [
-        'secondary',
-        'white',
-    ],
-    [
-        'success',
-        'white',
-    ],
-    [
-        'danger',
-        'white',
-    ],
-    [
-        'warning',
-        'dark',
-    ],
-    [
-        'info',
-        'dark',
-    ],
-    [
-        'light',
-        'dark',
-    ],
-    [
-        'dark',
-        'white',
-    ],
-] as [
-    $variant,
-    $text,
-]) {
-    echo $this->card(
-        [
-            'header' => 'Header',
-            'title'  => ucfirst($variant).' card title',
-            'text'   => 'Some quick example text to build on the card title'." and make up the bulk of the card's content.",
-        ],
-        [
-            'bg_variant' => $variant,
-            'class'      => 'text-'.$text.' mb-3',
-            'style'      => 'max-width: 18rem;',
-        ]
-    );
+        ['primary', 'white'],
+        ['secondary', 'white'],
+        ['success', 'white'],
+        ['danger', 'white'],
+        ['warning', 'dark'],
+        ['info', 'dark'],
+        ['light', 'dark'],
+        ['dark', 'white'],
+    ] as [$variant, $text]
+) {
+    echo $this->card([
+        'header' => 'Header',
+        'title' => ucfirst($variant) . ' card title',
+        'text' => "Some quick example text to build on the card title" .
+        " and make up the bulk of the card's content.",
+    ], [
+        'bg_variant' => $variant,
+        'class' => 'text-' . $text . ' mb-3',
+        'style' => 'max-width: 18rem;',
+    ]);
 }
-
 ```
 
 </TabItem>
@@ -1201,58 +1051,33 @@ foreach ([
 ```php
 <?php
 
-foreach ([
+foreach (
     [
-        'primary',
-        'primary',
-    ],
-    [
-        'secondary',
-        'secondary',
-    ],
-    [
-        'success',
-        'success',
-    ],
-    [
-        'danger',
-        'danger',
-    ],
-    [
-        'warning',
-        null,
-    ],
-    [
-        'info',
-        null,
-    ],
-    [
-        'light',
-        null,
-    ],
-    [
-        'dark',
-        'dark',
-    ],
-] as [
-    $variant,
-    $body_variant,
-]) {
+        ['primary', 'primary'],
+        ['secondary', 'secondary'],
+        ['success', 'success'],
+        ['danger', 'danger'],
+        ['warning', null],
+        ['info', null],
+        ['light', null],
+        ['dark', 'dark'],
+    ] as [$variant, $body_variant]
+) {
     echo $this->card(
         [
             'header' => 'Header',
-            'title'  => ucfirst($variant).'Primary card title',
-            'text'   => 'Some quick example text to build on the card title'." and make up the bulk of the card's content.",
+            'title' => ucfirst($variant) . 'Primary card title',
+            'text' => "Some quick example text to build on the card title" .
+            " and make up the bulk of the card's content.",
         ],
         [
             'border_variant' => $variant,
-            'body_variant'   => $body_variant,
-            'class'          => 'mb-3',
-            'style'          => 'max-width: 18rem;',
+            'body_variant' => $body_variant,
+            'class' => 'mb-3',
+            'style' => 'max-width: 18rem;',
         ]
     );
 }
-
 ```
 
 </TabItem>
@@ -1284,27 +1109,18 @@ foreach ([
 ```php
 <?php
 
-echo $this->card(
-    [
-        'header' => [
-            'Header',
-            ['class' => 'bg-transparent border-success'],
-        ],
-        'title'  => 'Success card title',
-        'text'   => 'Some quick example text to build on the card title'." and make up the bulk of the card's content.",
-        'footer' => [
-            'Footer',
-            ['class' => 'bg-transparent border-success'],
-        ],
-    ],
-    [
-        'border_variant' => 'success',
-        'body_variant'   => 'success',
-        'class'          => 'mb-3',
-        'style'          => 'max-width: 18rem;',
-    ]
-);
-
+echo $this->card([
+    'header' => ['Header', ['class' => 'bg-transparent border-success']],
+    'title' => 'Success card title',
+    'text' => "Some quick example text to build on the card title" .
+    " and make up the bulk of the card's content.",
+    'footer' => ['Footer', ['class' => 'bg-transparent border-success']],
+], [
+    'border_variant' => 'success',
+    'body_variant' => 'success',
+    'class' => 'mb-3',
+    'style' => 'max-width: 18rem;',
+]);
 ```
 
 </TabItem>
@@ -1387,80 +1203,63 @@ echo $this->card(
 ```php
 <?php
 
-echo $this->cardGroup(
+echo $this->cardGroup([
     [
-        [
-            'image_top' => [
-                '/twbs-helper-module/img/docs/image-cap.svg',
-                ['alt' => '...'],
-            ],
-            'title'     => 'Card title',
-            'text'      => [
-                'This is a wider card with supporting text below as a natural lead-in to '.'additional content. This content is a little bit longer.',
-                '<small class="text-muted">Last updated 3 mins ago</small>',
-            ],
+        'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
+        'title' => 'Card title',
+        'text' => [
+            'This is a wider card with supporting text below as a natural lead-in to ' .
+            'additional content. This content is a little bit longer.',
+            '<small class="text-muted">Last updated 3 mins ago</small>',
         ],
-        [
-            'image_top' => [
-                '/twbs-helper-module/img/docs/image-cap.svg',
-                ['alt' => '...'],
-            ],
-            'title'     => 'Card title',
-            'text'      => [
-                'This card has supporting text below as a natural lead-in to additional content.',
-                '<small class="text-muted">Last updated 3 mins ago</small>',
-            ],
+    ],
+    [
+        'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
+        'title' => 'Card title',
+        'text' => [
+            'This card has supporting text below as a natural lead-in to additional content.',
+            '<small class="text-muted">Last updated 3 mins ago</small>'
         ],
-        [
-            'image_top' => [
-                '/twbs-helper-module/img/docs/image-cap.svg',
-                ['alt' => '...'],
-            ],
-            'title'     => 'Card title',
-            'text'      => [
-                'This is a wider card with supporting text below as a natural lead-in to '.'additional content. '.'This card has even longer content than the first to show that equal height action.',
-                '<small class="text-muted">Last updated 3 mins ago</small>',
-            ],
+    ],
+    [
+        'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
+        'title' => 'Card title',
+        'text' => [
+            'This is a wider card with supporting text below as a natural lead-in to ' .
+            'additional content. ' .
+            'This card has even longer content than the first to show that equal height action.',
+            '<small class="text-muted">Last updated 3 mins ago</small>',
         ],
-    ]
-);
+    ],
+]);
 
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 // With footers
-echo $this->cardGroup(
+echo $this->cardGroup([
     [
-        [
-            'image_top' => [
-                '/twbs-helper-module/img/docs/image-cap.svg',
-                ['alt' => '...'],
-            ],
-            'title'     => 'Card title',
-            'text'      => 'This is a wider card with supporting text below as a natural lead-in to '.'additional content. This content is a little bit longer.',
-            'footer'    => '<small class="text-muted">Last updated 3 mins ago</small>',
-        ],
-        [
-            'image_top' => [
-                '/twbs-helper-module/img/docs/image-cap.svg',
-                ['alt' => '...'],
-            ],
-            'title'     => 'Card title',
-            'text'      => 'This card has supporting text below as a natural lead-in to additional content.',
-            'footer'    => '<small class="text-muted">Last updated 3 mins ago</small>',
-        ],
-        [
-            'image_top' => [
-                '/twbs-helper-module/img/docs/image-cap.svg',
-                ['alt' => '...'],
-            ],
-            'title'     => 'Card title',
-            'text'      => 'This is a wider card with supporting text below '.'as a natural lead-in to additional content. '.'This card has even longer content than the first to show that equal height action.',
-            'footer'    => '<small class="text-muted">Last updated 3 mins ago</small>',
-        ],
-    ]
-);
-
+        'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
+        'title' => 'Card title',
+        'text' => 'This is a wider card with supporting text below as a natural lead-in to ' .
+        'additional content. This content is a little bit longer.',
+        'footer' => '<small class="text-muted">Last updated 3 mins ago</small>',
+    ],
+    [
+        'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
+        'title' => 'Card title',
+        'text' => 'This card has supporting text below as a natural lead-in to additional content.',
+        'footer' => '<small class="text-muted">Last updated 3 mins ago</small>',
+    ],
+    [
+        'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
+        'title' => 'Card title',
+        'text' => 'This is a wider card with supporting text below ' .
+        'as a natural lead-in to additional content. ' .
+        'This card has even longer content than the first to show that equal height action.',
+        'footer' => '<small class="text-muted">Last updated 3 mins ago</small>',
+    ],
+]);
 ```
 
 </TabItem>
@@ -1568,46 +1367,37 @@ echo $this->cardGroup(
 echo $this->cardGrid(
     [
         [
-            'image_top' => [
-                '/twbs-helper-module/img/docs/image-cap.svg',
-                ['alt' => '...'],
-            ],
-            'title'     => 'Card title',
-            'text'      => [
-                'This is a wider card with supporting text below as a natural lead-in to '.'additional content. This content is a little bit longer.',
+            'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
+            'title' => 'Card title',
+            'text' => [
+                'This is a wider card with supporting text below as a natural lead-in to ' .
+                'additional content. This content is a little bit longer.',
                 '<small class="text-muted">Last updated 3 mins ago</small>',
             ],
         ],
         [
-            'image_top' => [
-                '/twbs-helper-module/img/docs/image-cap.svg',
-                ['alt' => '...'],
-            ],
-            'title'     => 'Card title',
-            'text'      => [
-                'This is a wider card with supporting text below as a natural lead-in to '.'additional content. This content is a little bit longer.',
+            'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
+            'title' => 'Card title',
+            'text' => [
+                'This is a wider card with supporting text below as a natural lead-in to ' .
+                'additional content. This content is a little bit longer.',
                 '<small class="text-muted">Last updated 3 mins ago</small>',
             ],
         ],
         [
-            'image_top' => [
-                '/twbs-helper-module/img/docs/image-cap.svg',
-                ['alt' => '...'],
-            ],
-            'title'     => 'Card title',
-            'text'      => [
+            'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
+            'title' => 'Card title',
+            'text' => [
                 'This card has supporting text below as a natural lead-in to additional content.',
-                '<small class="text-muted">Last updated 3 mins ago</small>',
+                '<small class="text-muted">Last updated 3 mins ago</small>'
             ],
         ],
         [
-            'image_top' => [
-                '/twbs-helper-module/img/docs/image-cap.svg',
-                ['alt' => '...'],
-            ],
-            'title'     => 'Card title',
-            'text'      => [
-                'This is a wider card with supporting text below as a natural lead-in to '.'additional content. This content is a little bit longer.',
+            'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
+            'title' => 'Card title',
+            'text' => [
+                'This is a wider card with supporting text below as a natural lead-in to ' .
+                'additional content. This content is a little bit longer.',
                 '<small class="text-muted">Last updated 3 mins ago</small>',
             ],
         ],
@@ -1616,58 +1406,48 @@ echo $this->cardGrid(
 );
 
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 echo $this->cardGrid(
     [
         [
-            'image_top' => [
-                '/twbs-helper-module/img/docs/image-cap.svg',
-                ['alt' => '...'],
-            ],
-            'title'     => 'Card title',
-            'text'      => [
-                'This is a wider card with supporting text below as a natural lead-in to '.'additional content. This content is a little bit longer.',
+            'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
+            'title' => 'Card title',
+            'text' => [
+                'This is a wider card with supporting text below as a natural lead-in to ' .
+                'additional content. This content is a little bit longer.',
                 '<small class="text-muted">Last updated 3 mins ago</small>',
             ],
         ],
         [
-            'image_top' => [
-                '/twbs-helper-module/img/docs/image-cap.svg',
-                ['alt' => '...'],
-            ],
-            'title'     => 'Card title',
-            'text'      => [
-                'This is a wider card with supporting text below as a natural lead-in to '.'additional content. This content is a little bit longer.',
+            'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
+            'title' => 'Card title',
+            'text' => [
+                'This is a wider card with supporting text below as a natural lead-in to ' .
+                'additional content. This content is a little bit longer.',
                 '<small class="text-muted">Last updated 3 mins ago</small>',
             ],
         ],
         [
-            'image_top' => [
-                '/twbs-helper-module/img/docs/image-cap.svg',
-                ['alt' => '...'],
-            ],
-            'title'     => 'Card title',
-            'text'      => [
+            'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
+            'title' => 'Card title',
+            'text' => [
                 'This card has supporting text below as a natural lead-in to additional content.',
-                '<small class="text-muted">Last updated 3 mins ago</small>',
+                '<small class="text-muted">Last updated 3 mins ago</small>'
             ],
         ],
         [
-            'image_top' => [
-                '/twbs-helper-module/img/docs/image-cap.svg',
-                ['alt' => '...'],
-            ],
-            'title'     => 'Card title',
-            'text'      => [
-                'This is a wider card with supporting text below as a natural lead-in to '.'additional content. This content is a little bit longer.',
+            'image_top' => ['/twbs-helper-module/img/docs/image-cap.svg', ['alt' => '...',]],
+            'title' => 'Card title',
+            'text' => [
+                'This is a wider card with supporting text below as a natural lead-in to ' .
+                'additional content. This content is a little bit longer.',
                 '<small class="text-muted">Last updated 3 mins ago</small>',
             ],
         ],
     ],
     ['class' => 'row-cols-1 row-cols-md-3 g-4'],
 );
-
 ```
 
 </TabItem>

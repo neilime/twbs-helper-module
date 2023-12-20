@@ -61,20 +61,13 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 echo $this->navigation()->navbar()->render(
     new \Laminas\Navigation\Navigation(
         [
+            ['label' => 'Home', 'uri' => '#', 'active' => true],
+            ['label' => 'Link', 'uri' => '#'],
             [
-                'label'  => 'Home',
-                'uri'    => '#',
-                'active' => true,
-            ],
-            [
-                'label' => 'Link',
-                'uri'   => '#',
-            ],
-            [
-                'type'     => \TwbsHelper\Navigation\Page\DropdownPage::class,
-                'label'    => 'Dropdown',
+                'type' => \TwbsHelper\Navigation\Page\DropdownPage::class,
+                'label' => 'Dropdown',
                 'dropdown' => [
-                    'items'      => [
+                    'items' => [
                         'Action',
                         'Another action',
                         '---',
@@ -84,33 +77,35 @@ echo $this->navigation()->navbar()->render(
                 ],
             ],
             [
-                'label'   => 'Disabled',
-                'uri'     => '#',
+                'label' => 'Disabled',
+                'uri' => '#',
                 'visible' => false,
             ],
         ],
     ),
     [
-        'container'  => 'fluid',
-        'brand'      => 'Navbar',
-        'nav'        => [    'ulClass' => 'mb-2 mb-lg-0 me-auto'    ],
-        'form'       => [
-            'elements'   => [
+        'container' => 'fluid',
+        'brand' => 'Navbar',
+        'nav' => [
+            'ulClass' => 'mb-2 mb-lg-0 me-auto',
+        ],
+        'form' => [
+            'elements' => [
                 [
                     'spec' => [
-                        'type'       => 'search',
+                        'type' => 'search',
                         'attributes' => [
                             'placeholder' => 'Search',
-                            'aria-label'  => 'Search',
-                            'class'       => 'me-2',
+                            'aria-label' => 'Search',
+                            'class' => 'me-2',
                         ],
                     ],
                 ],
                 [
                     'spec' => [
-                        'type'    => 'submit',
+                        'type' => 'submit',
                         'options' => [
-                            'label'   => 'Search',
+                            'label' => 'Search',
                             'variant' => 'outline-success',
                         ],
                     ],
@@ -121,7 +116,6 @@ echo $this->navigation()->navbar()->render(
         'attributes' => ['id' => 'navbarSupportedContent'],
     ]
 );
-
 ```
 
 </TabItem>
@@ -160,30 +154,29 @@ echo $this->navigation()->navbar()->render(
 echo $this->navigation()->navbar()->render(
     new \Laminas\Navigation\Navigation(),
     [
-        'brand'     => 'Navbar',
-        'expand'    => false,
-        'toggler'   => false,
+        'brand' => 'Navbar',
+        'expand' => false,
+        'toggler' => false,
         'container' => 'fluid',
     ]
 );
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 // As a heading
 echo $this->navigation()->navbar()->render(
     new \Laminas\Navigation\Navigation(),
     [
-        'brand'     => [
-            'content'    => 'Navbar',
+        'brand' => [
+            'content' => 'Navbar',
             'attributes' => ['class' => 'mb-0 h1'],
-            'type'       => 'heading',
+            'type' => 'heading',
         ],
-        'expand'    => false,
-        'toggler'   => false,
+        'expand' => false,
+        'toggler' => false,
         'container' => 'fluid',
     ]
 );
-
 ```
 
 </TabItem>
@@ -211,22 +204,21 @@ echo $this->navigation()->navbar()->render(
 echo $this->navigation()->navbar()->render(
     new \Laminas\Navigation\Navigation(),
     [
-        'brand'     => [
+        'brand' => [
             'img' => [
                 '/twbs-helper-module/img/docs/bootstrap-solid.svg',
                 [
-                    'width'  => 30,
+                    'width' => 30,
                     'height' => 24,
-                    'alt'    => '',
+                    'alt' => '',
                 ],
             ],
         ],
-        'expand'    => false,
-        'toggler'   => false,
+        'expand' => false,
+        'toggler' => false,
         'container' => true,
     ]
 );
-
 ```
 
 </TabItem>
@@ -257,23 +249,22 @@ echo $this->navigation()->navbar()->render(
 echo $this->navigation()->navbar()->render(
     new \Laminas\Navigation\Navigation(),
     [
-        'brand'     => [
+        'brand' => [
             'content' => 'Bootstrap',
-            'img'     => [
+            'img' => [
                 '/twbs-helper-module/img/docs/bootstrap-solid.svg',
                 [
-                    'width'  => 30,
+                    'width' => 30,
                     'height' => 24,
-                    'alt'    => '',
+                    'alt' => '',
                 ],
             ],
         ],
-        'expand'    => false,
-        'toggler'   => false,
+        'expand' => false,
+        'toggler' => false,
         'container' => 'fluid',
     ]
 );
-
 ```
 
 </TabItem>
@@ -359,108 +350,75 @@ echo $this->navigation()->navbar()->render(
 <?php
 
 echo $this->navigation()->navbar()->render(
-    new \Laminas\Navigation\Navigation(
+    new \Laminas\Navigation\Navigation([
         [
-            [
-                'label'  => 'Home',
-                'uri'    => '#',
-                'active' => true,
-            ],
-            [
-                'label' => 'Features',
-                'uri'   => '#',
-            ],
-            [
-                'label' => 'Pricing',
-                'uri'   => '#',
-            ],
-            [
-                'label'   => 'Disabled',
-                'uri'     => '#',
-                'visible' => false,
-            ],
-        ]
-    ),
+            'label' => 'Home',
+            'uri' => '#',
+            'active' => true,
+        ],
+        ['label' => 'Features', 'uri' => '#'],
+        ['label' => 'Pricing', 'uri' => '#'],
+        ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+    ]),
     [
-        'brand'      => 'Navbar',
+        'brand' => 'Navbar',
         'attributes' => ['id' => 'navbarNav'],
-        'container'  => 'fluid',
+        'container' => 'fluid',
     ]
 );
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 // Avoid the list-based approach
 echo $this->navigation()->navbar()->render(
-    new \Laminas\Navigation\Navigation(
+    new \Laminas\Navigation\Navigation([
         [
-            [
-                'label'  => 'Home',
-                'uri'    => '#',
-                'active' => true,
-            ],
-            [
-                'label' => 'Features',
-                'uri'   => '#',
-            ],
-            [
-                'label' => 'Pricing',
-                'uri'   => '#',
-            ],
-            [
-                'label'   => 'Disabled',
-                'uri'     => '#',
-                'visible' => false,
-            ],
-        ]
-    ),
+            'label' => 'Home',
+            'uri' => '#',
+            'active' => true,
+        ],
+        ['label' => 'Features', 'uri' => '#'],
+        ['label' => 'Pricing', 'uri' => '#'],
+        ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+    ]),
     [
-        'brand'      => 'Navbar',
+        'brand' => 'Navbar',
         'attributes' => ['id' => 'navbarNavAltMarkup'],
-        'nav'        => ['list' => false],
-        'container'  => 'fluid',
+        'nav' => ['list' => false],
+        'container' => 'fluid',
     ]
 );
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 echo $this->navigation()->navbar()->render(
-    new \Laminas\Navigation\Navigation(
+    new \Laminas\Navigation\Navigation([
         [
-            [
-                'label'  => 'Home',
-                'uri'    => '#',
-                'active' => true,
-            ],
-            [
-                'label' => 'Features',
-                'uri'   => '#',
-            ],
-            [
-                'label' => 'Pricing',
-                'uri'   => '#',
-            ],
-            [
-                'type'     => \TwbsHelper\Navigation\Page\DropdownPage::class,
-                'label'    => 'Dropdown link',
-                'dropdown' => [
-                    'items'      => [
-                        'Action',
-                        'Another action',
-                        'Something else here',
-                    ],
-                    'attributes' => ['id' => 'navbarDropdownMenuLink'],
+            'label' => 'Home',
+            'uri' => '#',
+            'active' => true,
+        ],
+        ['label' => 'Features', 'uri' => '#'],
+        ['label' => 'Pricing', 'uri' => '#'],
+        [
+            'type' => \TwbsHelper\Navigation\Page\DropdownPage::class,
+            'label' => 'Dropdown link',
+            'dropdown' => [
+                'items' => [
+                    'Action',
+                    'Another action',
+                    'Something else here',
                 ],
+                'attributes' => ['id' => 'navbarDropdownMenuLink'],
             ],
-        ]
-    ),
+        ],
+    ]),
     [
-        'brand'      => 'Navbar',
+        'brand' => 'Navbar',
         'attributes' => ['id' => 'navbarNavDropdown'],
-        'container'  => 'fluid',
+        'container' => 'fluid',
     ]
 );
-
 ```
 
 </TabItem>
@@ -518,142 +476,153 @@ echo $this->navigation()->navbar()->render(
     new \Laminas\Navigation\Navigation(),
     [
         'container' => 'fluid',
-        'expand'    => false,
-        'toggler'   => false,
-        'collapse'  => false,
-        'form'      => [
-            'elements'   => [
+        'expand' => false,
+        'toggler' => false,
+        'collapse' => false,
+        'form' => [
+            'elements' => [
                 [
                     'spec' => [
-                        'name'       => 'search',
+                        'name' => 'search',
                         'attributes' => [
-                            'type'        => 'search',
+                            'type' => 'search',
                             'placeholder' => 'Search',
-                            'aria-label'  => 'Search',
-                            'class'       => 'me-2',
+                            'aria-label' => 'Search',
+                            'class' => 'me-2',
                         ],
                     ],
                 ],
                 [
                     'spec' => [
-                        'type'    => 'submit',
+                        'type' => 'submit',
                         'options' => [
-                            'label'   => 'Search',
+                            'label' => 'Search',
                             'variant' => 'outline-success',
                         ],
                     ],
                 ],
             ],
-            'attributes' => [    'class' => 'd-flex'    ],
+            'attributes' => [
+                'class' => 'd-flex',
+            ],
         ],
     ]
 );
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 echo $this->navigation()->navbar()->render(
     new \Laminas\Navigation\Navigation(),
     [
         'container' => 'fluid',
-        'expand'    => false,
-        'toggler'   => false,
-        'collapse'  => false,
-        'brand'     => 'Navbar',
-        'form'      => [
-            'elements'   => [
+        'expand' => false,
+        'toggler' => false,
+        'collapse' => false,
+        'brand' => 'Navbar',
+        'form' => [
+            'elements' => [
                 [
                     'spec' => [
                         'attributes' => [
-                            'type'        => 'search',
+                            'type' => 'search',
                             'placeholder' => 'Search',
-                            'aria-label'  => 'Search',
-                            'class'       => 'me-2',
+                            'aria-label' => 'Search',
+                            'class' => 'me-2',
                         ],
                     ],
                 ],
                 [
                     'spec' => [
-                        'type'    => 'submit',
+                        'type' => 'submit',
                         'options' => [
-                            'label'   => 'Search',
+                            'label' => 'Search',
                             'variant' => 'outline-success',
                         ],
                     ],
                 ],
             ],
-            'attributes' => [    'class' => 'd-flex'    ],
+            'attributes' => [
+                'class' => 'd-flex',
+            ],
         ],
     ]
 );
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 // Input groups work, too:
 echo $this->navigation()->navbar()->render(
     new \Laminas\Navigation\Navigation(),
     [
-        'expand'   => false,
-        'toggler'  => false,
+        'expand' => false,
+        'toggler' => false,
         'collapse' => false,
-        'form'     => [
-            'elements'   => [
+        'form' => [
+            'elements' => [
                 [
                     'spec' => [
-                        'options'    => [    'add_on_prepend' => '@'    ],
+                        'options' => [
+                            'add_on_prepend' => '@',
+                        ],
                         'attributes' => [
-                            'type'             => 'text',
-                            'placeholder'      => 'Username',
-                            'aria-label'       => 'Username',
+                            'type' => 'text',
+                            'placeholder' => 'Username',
+                            'aria-label' => 'Username',
                             'aria-describedby' => 'basic-addon1',
                         ],
                     ],
                 ],
             ],
-            'attributes' => [    'class' => 'container-fluid'    ],
+            'attributes' => [
+                'class' => 'container-fluid',
+            ],
         ],
     ]
 );
 
 // Various buttons are supported as part of these navbar forms, too.
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 // Input groups work, too:
 echo $this->navigation()->navbar()->render(
     new \Laminas\Navigation\Navigation(),
     [
-        'expand'   => false,
-        'toggler'  => false,
+        'expand' => false,
+        'toggler' => false,
         'collapse' => false,
-        'form'     => [
-            'elements'   => [
+        'form' => [
+            'elements' => [
                 [
                     'spec' => [
-                        'type'       => 'button',
-                        'name'       => 'main_button',
-                        'options'    => [
-                            'label'   => 'Main button',
+                        'type' => 'button',
+                        'name' => 'main_button',
+                        'options' => [
+                            'label' => 'Main button',
                             'variant' => 'outline-success',
                         ],
-                        'attributes' => [    'class' => 'me-2'    ],
+                        'attributes' => [
+                            'class' => 'me-2',
+                        ]
                     ],
                 ],
                 [
                     'spec' => [
-                        'type'    => 'button',
-                        'name'    => 'smaller_button',
+                        'type' => 'button',
+                        'name' => 'smaller_button',
                         'options' => [
-                            'label'   => 'Smaller button',
+                            'label' => 'Smaller button',
                             'variant' => 'outline-secondary',
-                            'size'    => 'sm',
+                            'size' => 'sm',
                         ],
                     ],
                 ],
             ],
-            'attributes' => [    'class' => 'container-fluid justify-content-start'    ],
+            'attributes' => [
+                'class' => 'container-fluid justify-content-start',
+            ],
         ],
     ]
 );
-
 ```
 
 </TabItem>
@@ -703,41 +672,34 @@ echo $this->navigation()->navbar()->render(
     new \Laminas\Navigation\Navigation(),
     [
         'container' => 'fluid',
-        'text'      => 'Navbar text with an inline element',
-        'expand'    => false,
-        'toggler'   => false,
+        'text' => 'Navbar text with an inline element',
+        'expand' => false,
+        'toggler' => false,
     ]
 );
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 echo $this->navigation()->navbar()->render(
-    new \Laminas\Navigation\Navigation(
+    new \Laminas\Navigation\Navigation([
         [
-            [
-                'label'  => 'Home',
-                'uri'    => '#',
-                'active' => true,
-            ],
-            [
-                'label' => 'Features',
-                'uri'   => '#',
-            ],
-            [
-                'label' => 'Pricing',
-                'uri'   => '#',
-            ],
-        ]
-    ),
+            'label' => 'Home',
+            'uri' => '#',
+            'active' => true,
+        ],
+        ['label' => 'Features', 'uri' => '#'],
+        ['label' => 'Pricing', 'uri' => '#'],
+    ]),
     [
-        'container'  => 'fluid',
-        'brand'      => 'Navbar w/ text',
-        'text'       => 'Navbar text with an inline element',
+        'container' => 'fluid',
+        'brand' => 'Navbar w/ text',
+        'text' => 'Navbar text with an inline element',
         'attributes' => ['id' => 'navbarText'],
-        'nav'        => [    'ulClass' => 'mb-2 mb-lg-0 me-auto'    ],
+        'nav' => [
+            'ulClass' => 'mb-2 mb-lg-0 me-auto',
+        ],
     ]
 );
-
 ```
 
 </TabItem>
@@ -838,86 +800,71 @@ echo $this->navigation()->navbar()->render(
 <?php
 
 
-$navigationContainer = new \Laminas\Navigation\Navigation(
-    [
-        [
-            'label'  => 'Home',
-            'uri'    => '#',
-            'active' => true,
-        ],
-        [
-            'label' => 'Features',
-            'uri'   => '#',
-        ],
-        [
-            'label' => 'Pricing',
-            'uri'   => '#',
-        ],
-        [
-            'label' => 'About',
-            'uri'   => '#',
-        ],
-    ]
-);
+$navigationContainer = new \Laminas\Navigation\Navigation([
+    ['label' => 'Home', 'uri' => '#', 'active' => true],
+    ['label' => 'Features', 'uri' => '#'],
+    ['label' => 'Pricing', 'uri' => '#'],
+    ['label' => 'About', 'uri' => '#'],
+]);
 
 $options = [
     'container' => 'fluid',
-    'brand'     => 'Navbar',
-    'form'      => [
-        'elements'   => [
+    'brand' => 'Navbar',
+    'form' => [
+        'elements' => [
             [
                 'spec' => [
-                    'name'       => 'search',
+                    'name' => 'search',
                     'attributes' => [
-                        'type'        => 'search',
+                        'type' => 'search',
                         'placeholder' => 'Search',
-                        'aria-label'  => 'Search',
-                        'class'       => 'me-2',
+                        'aria-label' => 'Search',
+                        'class' => 'me-2',
                     ],
                 ],
             ],
             [
                 'spec' => [
-                    'type'    => 'submit',
+                    'type' => 'submit',
                     'options' => [
-                        'label'   => 'Search',
+                        'label' => 'Search',
                         'variant' => 'outline-light',
                     ],
                 ],
             ],
         ],
-        'attributes' => [    'class' => 'd-flex'],
+        'attributes' => [
+            'class' => 'd-flex',
+        ],
     ],
-    'nav'       => [    'ulClass' => 'mb-2 mb-lg-0 me-auto'],
+    'nav' => [
+        'ulClass' => 'mb-2 mb-lg-0 me-auto',
+    ],
 ];
 
 // Navbar dark, background dark
-$options['variant']    = 'dark';
+$options['variant'] = 'dark';
 $options['background'] = 'dark';
 $options['attributes'] = ['id' => 'navbarColor01'];
 
 echo $this->navigation()->navbar()->render($navigationContainer, $options);
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 // Navbar dark, background primary
-$options['variant']    = 'dark';
+$options['variant'] = 'dark';
 $options['background'] = 'primary';
 $options['attributes'] = ['id' => 'navbarColor02'];
 
 echo $this->navigation()->navbar()->render($navigationContainer, $options);
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 // Navbar light, custom background-color
-$options['variant']    = 'light';
+$options['variant'] = 'light';
 $options['background'] = false;
 $options['form']['elements'][1]['spec']['options']['variant'] = 'outline-primary';
-$options['attributes'] = [
-    'id'    => 'navbarColor03',
-    'style' => 'background-color: #e3f2fd;',
-];
+$options['attributes'] = ['id' => 'navbarColor03', 'style' => 'background-color: #e3f2fd;'];
 
 echo $this->navigation()->navbar()->render($navigationContainer, $options);
-
 ```
 
 </TabItem>
@@ -954,24 +901,23 @@ echo $this->navigation()->navbar()->render($navigationContainer, $options);
 echo $this->navigation()->navbar()->render(
     new \Laminas\Navigation\Navigation(),
     [
-        'brand'              => 'Navbar',
+        'brand' => 'Navbar',
         'wrapping_container' => true,
-        'container'          => 'fluid',
-        'toggler'            => false,
+        'container' => 'fluid',
+        'toggler' => false,
     ]
 );
 
-echo PHP_EOL.'<br/>';
+echo PHP_EOL . '<br/>';
 
 echo $this->navigation()->navbar()->render(
     new \Laminas\Navigation\Navigation(),
     [
-        'brand'     => 'Navbar',
+        'brand' => 'Navbar',
         'container' => 'md',
-        'toggler'   => false,
+        'toggler' => false,
     ]
 );
-
 ```
 
 </TabItem>
@@ -1016,25 +962,26 @@ echo $this->navigation()->navbar()->render(
 <?php
 
 
-foreach ([
-    false          => 'Default',
-    'fixed-top'    => 'Fixed top',
-    'fixed-bottom' => 'Fixed bottom',
-    'sticky-top'   => 'Sticky top',
-] as $placement => $brand) {
+foreach (
+    [
+        false => 'Default',
+        'fixed-top' => 'Fixed top',
+        'fixed-bottom' => 'Fixed bottom',
+        'sticky-top' => 'Sticky top',
+    ] as $placement => $brand
+) {
     echo $this->navigation()->navbar()->render(
         new \Laminas\Navigation\Navigation(),
         [
-            'brand'     => $brand,
+            'brand' => $brand,
             'placement' => $placement,
-            'toggler'   => false,
-            'expand'    => false,
+            'toggler' => false,
+            'expand' => false,
             'container' => 'fluid',
         ]
     );
-    echo PHP_EOL.'<br/>';
+    echo PHP_EOL . '<br/>';
 }
-
 ```
 
 </TabItem>
@@ -1089,20 +1036,13 @@ foreach ([
 echo $this->navigation()->navbar()->render(
     new \Laminas\Navigation\Navigation(
         [
+            ['label' => 'Home', 'uri' => '#', 'active' => true],
+            ['label' => 'Link', 'uri' => '#'],
             [
-                'label'  => 'Home',
-                'uri'    => '#',
-                'active' => true,
-            ],
-            [
+                'type' => \TwbsHelper\Navigation\Page\DropdownPage::class,
                 'label' => 'Link',
-                'uri'   => '#',
-            ],
-            [
-                'type'     => \TwbsHelper\Navigation\Page\DropdownPage::class,
-                'label'    => 'Link',
                 'dropdown' => [
-                    'items'      => [
+                    'items' => [
                         'Action',
                         'Another action',
                         '---',
@@ -1112,36 +1052,36 @@ echo $this->navigation()->navbar()->render(
                 ],
             ],
             [
-                'label'   => 'Link',
-                'uri'     => '#',
+                'label' => 'Link',
+                'uri' => '#',
                 'visible' => false,
             ],
         ],
     ),
     [
-        'container'  => 'fluid',
-        'brand'      => 'Navbar scroll',
-        'nav'        => [
-            'scroll'  => true,
+        'container' => 'fluid',
+        'brand' => 'Navbar scroll',
+        'nav' => [
+            'scroll' => true,
             'ulClass' => 'me-auto my-2 my-lg-0',
         ],
-        'form'       => [
-            'elements'   => [
+        'form' => [
+            'elements' => [
                 [
                     'spec' => [
-                        'type'       => 'search',
+                        'type' => 'search',
                         'attributes' => [
                             'placeholder' => 'Search',
-                            'aria-label'  => 'Search',
-                            'class'       => 'me-2',
+                            'aria-label' => 'Search',
+                            'class' => 'me-2',
                         ],
                     ],
                 ],
                 [
                     'spec' => [
-                        'type'    => 'submit',
+                        'type' => 'submit',
                         'options' => [
-                            'label'   => 'Search',
+                            'label' => 'Search',
                             'variant' => 'outline-success',
                         ],
                     ],
@@ -1152,7 +1092,6 @@ echo $this->navigation()->navbar()->render(
         'attributes' => ['id' => 'navbarScroll'],
     ]
 );
-
 ```
 
 </TabItem>
@@ -1249,18 +1188,11 @@ echo $this->navigation()->navbar()->render(
 
 $navigation = new \Laminas\Navigation\Navigation(
     [
+        ['label' => 'Home', 'uri' => '#', 'active' => true],
+        ['label' => 'Link', 'uri' => '#'],
         [
-            'label'  => 'Home',
-            'uri'    => '#',
-            'active' => true,
-        ],
-        [
-            'label' => 'Link',
-            'uri'   => '#',
-        ],
-        [
-            'label'   => 'Disabled',
-            'uri'     => '#',
+            'label' => 'Disabled',
+            'uri' => '#',
             'visible' => false,
         ],
     ],
@@ -1268,24 +1200,26 @@ $navigation = new \Laminas\Navigation\Navigation(
 
 $options = [
     'container' => 'fluid',
-    'nav'       => [    'ulClass' => 'mb-2 mb-lg-0 me-auto'],
-    'form'      => [
-        'elements'   => [
+    'nav' => [
+        'ulClass' => 'mb-2 mb-lg-0 me-auto',
+    ],
+    'form' => [
+        'elements' => [
             [
                 'spec' => [
-                    'type'       => 'search',
+                    'type' => 'search',
                     'attributes' => [
                         'placeholder' => 'Search',
-                        'aria-label'  => 'Search',
-                        'class'       => 'me-2',
+                        'aria-label' => 'Search',
+                        'class' => 'me-2',
                     ],
                 ],
             ],
             [
                 'spec' => [
-                    'type'    => 'submit',
+                    'type' => 'submit',
                     'options' => [
-                        'label'   => 'Search',
+                        'label' => 'Search',
                         'variant' => 'outline-success',
                     ],
                 ],
@@ -1296,8 +1230,8 @@ $options = [
 ];
 
 
-$options['brand']      = [
-    'content'  => 'Hidden brand',
+$options['brand'] = [
+    'content' => 'Hidden brand',
     'position' => 'hidden',
 ];
 $options['attributes'] = ['id' => 'navbarTogglerDemo01'];
@@ -1306,10 +1240,10 @@ echo $this->navigation()->navbar()->render(
     $options
 );
 
-echo PHP_EOL.'<br>';
+echo PHP_EOL . '<br>';
 
-$options['brand']      = [
-    'content'  => 'Navbar',
+$options['brand'] = [
+    'content' => 'Navbar',
     'position' => 'left',
 ];
 $options['attributes'] = ['id' => 'navbarTogglerDemo02'];
@@ -1318,10 +1252,10 @@ echo $this->navigation()->navbar()->render(
     $options
 );
 
-echo PHP_EOL.'<br>';
+echo PHP_EOL . '<br>';
 
-$options['brand']      = [
-    'content'  => 'Navbar',
+$options['brand'] = [
+    'content' => 'Navbar',
     'position' => 'right',
 ];
 $options['attributes'] = ['id' => 'navbarTogglerDemo03'];
@@ -1329,7 +1263,6 @@ echo $this->navigation()->navbar()->render(
     $navigation,
     $options
 );
-
 ```
 
 </TabItem>
@@ -1360,30 +1293,34 @@ echo $this->navigation()->navbar()->render(
 ```php
 <?php
 
-echo $this->collapse(
-    [
-        'targets' => [
-            [
-                'content'    => '<div class="bg-dark p-4">'.'    <h5 class="text-white h4">Collapsed content</h5>'.'    <span class="text-muted">Toggleable via the navbar brand.</span>'.'</div>',
-                'attributes' => [    'id' => 'navbarToggleExternalContent'    ],
+echo $this->collapse([
+    'targets' => [
+        [
+            'content' => '<div class="bg-dark p-4">' .
+            '    <h5 class="text-white h4">Collapsed content</h5>' .
+            '    <span class="text-muted">Toggleable via the navbar brand.</span>' .
+            '</div>',
+            'attributes' => [
+                'id' => 'navbarToggleExternalContent',
             ],
         ],
     ]
-);
+]);
 
 echo $this->navigation()->navbar()->render(
     new \Laminas\Navigation\Navigation(),
     [
-        'expand'     => false,
-        'toggler'    => [
-            'attributes' => ['data-bs-target' => '#navbarToggleExternalContent'],
+        'expand' => false,
+        'toggler' => [
+            'attributes' => [
+                'data-bs-target' => '#navbarToggleExternalContent'
+            ],
         ],
-        'container'  => 'fluid',
+        'container' => 'fluid',
         'background' => 'dark',
-        'variant'    => 'dark',
+        'variant' => 'dark',
     ]
 );
-
 ```
 
 </TabItem>
@@ -1441,20 +1378,13 @@ echo $this->navigation()->navbar()->render(
 echo $this->navigation()->navbar()->render(
     new \Laminas\Navigation\Navigation(
         [
+            ['label' => 'Home', 'uri' => '#', 'active' => true],
+            ['label' => 'Link', 'uri' => '#'],
             [
-                'label'  => 'Home',
-                'uri'    => '#',
-                'active' => true,
-            ],
-            [
-                'label' => 'Link',
-                'uri'   => '#',
-            ],
-            [
-                'type'     => \TwbsHelper\Navigation\Page\DropdownPage::class,
-                'label'    => 'Dropdown',
+                'type' => \TwbsHelper\Navigation\Page\DropdownPage::class,
+                'label' => 'Dropdown',
                 'dropdown' => [
-                    'items'      => [
+                    'items' => [
                         'Action',
                         'Another action',
                         '---',
@@ -1466,40 +1396,42 @@ echo $this->navigation()->navbar()->render(
         ],
     ),
     [
-        'container'  => 'fluid',
-        'expand'     => false,
-        'offcanvas'  => [
+        'container' => 'fluid',
+        'expand' => false,
+        'offcanvas' => [
             'placement' => 'end',
-            'header'    => [
+            'header' => [
                 'title' => [
-                    'content'    => 'Offcanvas',
-                    'attributes' => [    'id' => 'offcanvasNavbarLabel'    ],
+                    'content' => 'Offcanvas',
+                    'attributes' => [
+                        'id' => 'offcanvasNavbarLabel',
+                    ],
                 ],
             ],
         ],
-        'placement'  => 'fixed-top',
-        'brand'      => 'Offcanvas navbar',
-        'nav'        => [
-            'ulClass'       => 'flex-grow-1 pe-3',
+        'placement' => 'fixed-top',
+        'brand' => 'Offcanvas navbar',
+        'nav' => [
+            'ulClass' => 'flex-grow-1 pe-3',
             'right_aligned' => true,
         ],
-        'form'       => [
-            'elements'   => [
+        'form' => [
+            'elements' => [
                 [
                     'spec' => [
-                        'type'       => 'search',
+                        'type' => 'search',
                         'attributes' => [
                             'placeholder' => 'Search',
-                            'aria-label'  => 'Search',
-                            'class'       => 'me-2',
+                            'aria-label' => 'Search',
+                            'class' => 'me-2',
                         ],
                     ],
                 ],
                 [
                     'spec' => [
-                        'type'    => 'submit',
+                        'type' => 'submit',
                         'options' => [
-                            'label'   => 'Search',
+                            'label' => 'Search',
                             'variant' => 'outline-success',
                         ],
                     ],
@@ -1510,7 +1442,6 @@ echo $this->navigation()->navbar()->render(
         'attributes' => ['id' => 'offcanvasNavbar'],
     ]
 );
-
 ```
 
 </TabItem>

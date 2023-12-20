@@ -82,147 +82,140 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->form(
-    $factory->create(
+echo $this->form($factory->create([
+    'type' => 'form',
+    'options' => [
+        'gutter' => 3,
+        'custom_validation' => true,
+    ],
+    'elements' => [
         [
-            'type'     => 'form',
-            'options'  => [
-                'gutter'            => 3,
-                'custom_validation' => true,
-            ],
-            'elements' => [
-                [
-                    'spec' => [
-                        'name'       => 'firstName',
-                        'options'    => [
-                            'column'         => 'md-4',
-                            'label'          => 'First name',
-                            'valid_feedback' => 'Looks good!',
-                        ],
-                        'attributes' => [
-                            'type'     => 'text',
-                            'id'       => 'validationCustom01',
-                            'required' => true,
-                            'value'    => 'Mark',
-                        ],
-                    ],
+            'spec' => [
+                'name' => 'firstName',
+                'options' => [
+                    'column' => 'md-4',
+                    'label' => 'First name',
+                    'valid_feedback' => 'Looks good!',
                 ],
-                [
-                    'spec' => [
-                        'name'       => 'lastName',
-                        'options'    => [
-                            'column'         => 'md-4',
-                            'label'          => 'Last name',
-                            'valid_feedback' => 'Looks good!',
-                        ],
-                        'attributes' => [
-                            'type'     => 'text',
-                            'id'       => 'validationCustom02',
-                            'required' => true,
-                            'value'    => 'Otto',
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'username',
-                        'options'    => [
-                            'label'          => 'Username',
-                            'column'         => 'md-4',
-                            'add_on_prepend' => '@',
-                        ],
-                        'attributes' => [
-                            'type'             => 'text',
-                            'id'               => 'validationCustomUsername',
-                            'placeholder'      => 'Username',
-                            'aria-describedby' => 'inputGroupPrepend',
-                            'required'         => true,
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'city',
-                        'options'    => [
-                            'column' => 'md-6',
-                            'label'  => 'City',
-                        ],
-                        'attributes' => [
-                            'type'     => 'text',
-                            'id'       => 'validationCustom03',
-                            'required' => true,
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'state',
-                        'type'       => 'select',
-                        'options'    => [
-                            'column'        => 'md-3',
-                            'label'         => 'State',
-                            'empty_option'  => 'Choose...',
-                            'value_options' => ['...'],
-                        ],
-                        'attributes' => [
-                            'id'       => 'validationCustom04',
-                            'required' => true,
-                            'value'    => '',
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'zip',
-                        'options'    => [
-                            'column' => 'md-3',
-                            'label'  => 'Zip',
-                        ],
-                        'attributes' => [
-                            'type'     => 'text',
-                            'id'       => 'validationCustom05',
-                            'required' => true,
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'terms-and-conditions',
-                        'type'       => 'checkbox',
-                        'options'    => [
-                            'column' => 12,
-                            'label'  => 'Agree to terms and conditions',
-                        ],
-                        'attributes' => [
-                            'id'       => 'invalidCheck',
-                            'required' => true,
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'    => 'submit',
-                        'type'    => 'submit',
-                        'options' => [
-                            'column'  => 12,
-                            'label'   => 'Submit form',
-                            'variant' => 'primary',
-                        ],
-                    ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustom01',
+                    'required' => true,
+                    'value' => 'Mark',
                 ],
             ],
-        ]
-    )->setMessages(
+        ],
         [
-            'username'             => ['Please choose a username.'],
-            'city'                 => ['Please provide a valid city.'],
-            'state'                => ['Please select a valid state.'],
-            'zip'                  => ['Please select a valid zip.'],
-            'terms-and-conditions' => ['You must agree before submitting..'],
-        ]
-    )
-);
-
+            'spec' => [
+                'name' => 'lastName',
+                'options' => [
+                    'column' => 'md-4',
+                    'label' => 'Last name',
+                    'valid_feedback' => 'Looks good!',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustom02',
+                    'required' => true,
+                    'value' => 'Otto',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'username',
+                'options' => [
+                    'label' => 'Username',
+                    'column' => 'md-4',
+                    'add_on_prepend' => '@',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustomUsername',
+                    'placeholder' => 'Username',
+                    'aria-describedby' => 'inputGroupPrepend',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'city',
+                'options' => [
+                    'column' => 'md-6',
+                    'label' => 'City'
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustom03',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'state',
+                'type' => 'select',
+                'options' => [
+                    'column' => 'md-3',
+                    'label' => 'State',
+                    'empty_option' => 'Choose...',
+                    'value_options' => ['...'],
+                ],
+                'attributes' => [
+                    'id' => 'validationCustom04',
+                    'required' => true,
+                    'value' => '',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'zip',
+                'options' => [
+                    'column' => 'md-3',
+                    'label' => 'Zip'
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustom05',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'terms-and-conditions',
+                'type' => 'checkbox',
+                'options' => [
+                    'column' => 12,
+                    'label' => 'Agree to terms and conditions',
+                ],
+                'attributes' => [
+                    'id' => 'invalidCheck',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'submit',
+                'type' => 'submit',
+                'options' => [
+                    'column' => 12,
+                    'label' => 'Submit form',
+                    'variant' => 'primary',
+                ],
+            ],
+        ],
+    ],
+])->setMessages([
+    'username' => ['Please choose a username.'],
+    'city' => ['Please provide a valid city.'],
+    'state' => ['Please select a valid state.'],
+    'zip' => ['Please select a valid zip.'],
+    'terms-and-conditions' => ['You must agree before submitting..'],
+]));
 ```
 
 </TabItem>
@@ -287,134 +280,131 @@ echo $this->form(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->form(
-    $factory->create(
+echo $this->form($factory->create([
+    'type' => 'form',
+    'options' => [
+        'gutter' => 3,
+    ],
+    'elements' => [
         [
-            'type'     => 'form',
-            'options'  => [    'gutter' => 3    ],
-            'elements' => [
-                [
-                    'spec' => [
-                        'name'       => 'firstName',
-                        'options'    => [
-                            'column' => 'md-4',
-                            'label'  => 'First name',
-                        ],
-                        'attributes' => [
-                            'type'     => 'text',
-                            'id'       => 'validationCustom01',
-                            'required' => true,
-                            'value'    => 'Mark',
-                        ],
-                    ],
+            'spec' => [
+                'name' => 'firstName',
+                'options' => [
+                    'column' => 'md-4',
+                    'label' => 'First name',
                 ],
-                [
-                    'spec' => [
-                        'name'       => 'lastName',
-                        'options'    => [
-                            'column' => 'md-4',
-                            'label'  => 'Last name',
-                        ],
-                        'attributes' => [
-                            'type'     => 'text',
-                            'id'       => 'validationCustom02',
-                            'required' => true,
-                            'value'    => 'Otto',
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'username',
-                        'options'    => [
-                            'label'          => 'Username',
-                            'column'         => 'md-4',
-                            'add_on_prepend' => '@',
-                        ],
-                        'attributes' => [
-                            'type'             => 'text',
-                            'id'               => 'validationCustomUsername',
-                            'placeholder'      => 'Username',
-                            'aria-describedby' => 'inputGroupPrepend',
-                            'required'         => true,
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'city',
-                        'options'    => [
-                            'column' => 'md-6',
-                            'label'  => 'City',
-                        ],
-                        'attributes' => [
-                            'type'     => 'text',
-                            'id'       => 'validationCustom03',
-                            'required' => true,
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'state',
-                        'type'       => 'select',
-                        'options'    => [
-                            'column'        => 'md-3',
-                            'label'         => 'State',
-                            'empty_option'  => 'Choose...',
-                            'value_options' => ['...'],
-                        ],
-                        'attributes' => [
-                            'id'       => 'validationCustom04',
-                            'required' => true,
-                            'value'    => '',
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'zip',
-                        'options'    => [
-                            'column' => 'md-3',
-                            'label'  => 'Zip',
-                        ],
-                        'attributes' => [
-                            'type'     => 'text',
-                            'id'       => 'validationCustom05',
-                            'required' => true,
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'terms-and-conditions',
-                        'type'       => 'checkbox',
-                        'options'    => [
-                            'column' => 12,
-                            'label'  => 'Agree to terms and conditions',
-                        ],
-                        'attributes' => [
-                            'id'       => 'invalidCheck',
-                            'required' => true,
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'    => 'submit',
-                        'type'    => 'submit',
-                        'options' => [
-                            'column'  => 12,
-                            'label'   => 'Submit form',
-                            'variant' => 'primary',
-                        ],
-                    ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustom01',
+                    'required' => true,
+                    'value' => 'Mark',
                 ],
             ],
-        ]
-    )
-);
-
+        ],
+        [
+            'spec' => [
+                'name' => 'lastName',
+                'options' => [
+                    'column' => 'md-4',
+                    'label' => 'Last name',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustom02',
+                    'required' => true,
+                    'value' => 'Otto',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'username',
+                'options' => [
+                    'label' => 'Username',
+                    'column' => 'md-4',
+                    'add_on_prepend' => '@',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustomUsername',
+                    'placeholder' => 'Username',
+                    'aria-describedby' => 'inputGroupPrepend',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'city',
+                'options' => [
+                    'column' => 'md-6',
+                    'label' => 'City'
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustom03',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'state',
+                'type' => 'select',
+                'options' => [
+                    'column' => 'md-3',
+                    'label' => 'State',
+                    'empty_option' => 'Choose...',
+                    'value_options' => ['...'],
+                ],
+                'attributes' => [
+                    'id' => 'validationCustom04',
+                    'required' => true,
+                    'value' => '',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'zip',
+                'options' => [
+                    'column' => 'md-3',
+                    'label' => 'Zip'
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustom05',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'terms-and-conditions',
+                'type' => 'checkbox',
+                'options' => [
+                    'column' => 12,
+                    'label' => 'Agree to terms and conditions',
+                ],
+                'attributes' => [
+                    'id' => 'invalidCheck',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'submit',
+                'type' => 'submit',
+                'options' => [
+                    'column' => 12,
+                    'label' => 'Submit form',
+                    'variant' => 'primary',
+                ],
+            ],
+        ],
+    ],
+]));
 ```
 
 </TabItem>
@@ -490,144 +480,139 @@ echo $this->form(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->form(
-    $factory->create(
+echo $this->form($factory->create([
+    'type' => 'form',
+    'options' => [
+        'gutter' => 3,
+    ],
+    'elements' => [
         [
-            'type'     => 'form',
-            'options'  => [    'gutter' => 3    ],
-            'elements' => [
-                [
-                    'spec' => [
-                        'name'       => 'firstName',
-                        'options'    => [
-                            'column'         => 'md-4',
-                            'label'          => 'First name',
-                            'valid_feedback' => 'Looks good!',
-                        ],
-                        'attributes' => [
-                            'type'     => 'text',
-                            'id'       => 'validationCustom01',
-                            'required' => true,
-                            'value'    => 'Mark',
-                        ],
-                    ],
+            'spec' => [
+                'name' => 'firstName',
+                'options' => [
+                    'column' => 'md-4',
+                    'label' => 'First name',
+                    'valid_feedback' => 'Looks good!',
                 ],
-                [
-                    'spec' => [
-                        'name'       => 'lastName',
-                        'options'    => [
-                            'column'         => 'md-4',
-                            'label'          => 'Last name',
-                            'valid_feedback' => 'Looks good!',
-                        ],
-                        'attributes' => [
-                            'type'     => 'text',
-                            'id'       => 'validationCustom02',
-                            'required' => true,
-                            'value'    => 'Otto',
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'username',
-                        'options'    => [
-                            'label'          => 'Username',
-                            'column'         => 'md-4',
-                            'add_on_prepend' => '@',
-                        ],
-                        'attributes' => [
-                            'type'             => 'text',
-                            'id'               => 'validationCustomUsername',
-                            'placeholder'      => 'Username',
-                            'aria-describedby' => 'inputGroupPrepend',
-                            'required'         => true,
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'city',
-                        'options'    => [
-                            'column' => 'md-6',
-                            'label'  => 'City',
-                        ],
-                        'attributes' => [
-                            'type'     => 'text',
-                            'id'       => 'validationCustom03',
-                            'required' => true,
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'state',
-                        'type'       => 'select',
-                        'options'    => [
-                            'column'        => 'md-3',
-                            'label'         => 'State',
-                            'empty_option'  => 'Choose...',
-                            'value_options' => ['...'],
-                        ],
-                        'attributes' => [
-                            'id'       => 'validationCustom04',
-                            'required' => true,
-                            'value'    => '',
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'zip',
-                        'options'    => [
-                            'column' => 'md-3',
-                            'label'  => 'Zip',
-                        ],
-                        'attributes' => [
-                            'type'     => 'text',
-                            'id'       => 'validationCustom05',
-                            'required' => true,
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'terms-and-conditions',
-                        'type'       => 'checkbox',
-                        'options'    => [
-                            'column' => 12,
-                            'label'  => 'Agree to terms and conditions',
-                        ],
-                        'attributes' => [
-                            'id'       => 'invalidCheck',
-                            'required' => true,
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'    => 'submit',
-                        'type'    => 'submit',
-                        'options' => [
-                            'column'  => 12,
-                            'label'   => 'Submit form',
-                            'variant' => 'primary',
-                        ],
-                    ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustom01',
+                    'required' => true,
+                    'value' => 'Mark',
                 ],
             ],
-        ]
-    )->setMessages(
+        ],
         [
-            'username'             => ['Please choose a username.'],
-            'city'                 => ['Please provide a valid city.'],
-            'state'                => ['Please select a valid state.'],
-            'zip'                  => ['Please select a valid zip.'],
-            'terms-and-conditions' => ['You must agree before submitting..'],
-        ]
-    )
-);
-
+            'spec' => [
+                'name' => 'lastName',
+                'options' => [
+                    'column' => 'md-4',
+                    'label' => 'Last name',
+                    'valid_feedback' => 'Looks good!',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustom02',
+                    'required' => true,
+                    'value' => 'Otto',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'username',
+                'options' => [
+                    'label' => 'Username',
+                    'column' => 'md-4',
+                    'add_on_prepend' => '@',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustomUsername',
+                    'placeholder' => 'Username',
+                    'aria-describedby' => 'inputGroupPrepend',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'city',
+                'options' => [
+                    'column' => 'md-6',
+                    'label' => 'City'
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustom03',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'state',
+                'type' => 'select',
+                'options' => [
+                    'column' => 'md-3',
+                    'label' => 'State',
+                    'empty_option' => 'Choose...',
+                    'value_options' => ['...'],
+                ],
+                'attributes' => [
+                    'id' => 'validationCustom04',
+                    'required' => true,
+                    'value' => '',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'zip',
+                'options' => [
+                    'column' => 'md-3',
+                    'label' => 'Zip'
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustom05',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'terms-and-conditions',
+                'type' => 'checkbox',
+                'options' => [
+                    'column' => 12,
+                    'label' => 'Agree to terms and conditions',
+                ],
+                'attributes' => [
+                    'id' => 'invalidCheck',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'submit',
+                'type' => 'submit',
+                'options' => [
+                    'column' => 12,
+                    'label' => 'Submit form',
+                    'variant' => 'primary',
+                ],
+            ],
+        ],
+    ],
+])->setMessages([
+    'username' => ['Please choose a username.'],
+    'city' => ['Please provide a valid city.'],
+    'state' => ['Please select a valid state.'],
+    'zip' => ['Please select a valid zip.'],
+    'terms-and-conditions' => ['You must agree before submitting..'],
+]));
 ```
 
 </TabItem>
@@ -686,107 +671,108 @@ echo $this->form(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->form(
-    $factory->create(
+echo $this->form($factory->create([
+    'type' => 'form',
+    'elements' => [
         [
-            'type'     => 'form',
-            'elements' => [
-                [
-                    'spec' => [
-                        'name'       => 'textarea',
-                        'options'    => [    'label' => 'Textarea'    ],
-                        'attributes' => [
-                            'type'        => 'textarea',
-                            'id'          => 'validationTextarea',
-                            'required'    => true,
-                            'placeholder' => 'Required example textarea',
-                        ],
-                    ],
+            'spec' => [
+                'name' => 'textarea',
+                'options' => [
+                    'label' => 'Textarea',
                 ],
-                [
-                    'spec' => [
-                        'name'       => 'checkbox',
-                        'type'       => 'checkbox',
-                        'options'    => [    'label' => 'Check this checkbox'    ],
-                        'attributes' => [
-                            'id'       => 'validationFormCheck1',
-                            'required' => true,
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'radio-stacked',
-                        'type'       => 'radio',
-                        'options'    => [
-                            'value_options' => [
-                                [
-                                    'label'      => 'Toggle this radio',
-                                    'value'      => 'option1',
-                                    'attributes' => ['id' => 'validationFormCheck2'],
-                                ],
-                                [
-                                    'label'      => 'Or toggle this other radio',
-                                    'value'      => 'option2',
-                                    'attributes' => ['id' => 'validationFormCheck3'],
-                                ],
-                            ],
-                        ],
-                        'attributes' => [    'required' => true    ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'select',
-                        'type'       => 'select',
-                        'options'    => [
-                            'empty_option'  => 'Open this select menu',
-                            'value_options' => [
-                                1 => 'One',
-                                2 => 'Two',
-                                3 => 'Three',
-                            ],
-                        ],
-                        'attributes' => [
-                            'aria-label' => 'select example',
-                            'required'   => true,
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'file',
-                        'attributes' => [
-                            'type'       => 'file',
-                            'aria-label' => 'file example',
-                            'required'   => true,
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'submit',
-                        'type'       => 'submit',
-                        'options'    => [
-                            'label'   => 'Submit form',
-                            'variant' => 'primary',
-                        ],
-                        'attributes' => [    'disabled' => true    ],
-                    ],
+                'attributes' => [
+                    'type' => 'textarea',
+                    'id' => 'validationTextarea',
+                    'required' => true,
+                    'placeholder' => 'Required example textarea',
                 ],
             ],
-        ]
-    )->setMessages(
+        ],
         [
-            'textarea'      => ['Please enter a message in the textarea.'],
-            'checkbox'      => ['Example invalid feedback text'],
-            'radio-stacked' => ['More example invalid feedback text'],
-            'select'        => ['Example invalid select feedback'],
-            'file'          => ['Example invalid form file feedback'],
-        ]
-    )
-);
-
+            'spec' => [
+                'name' => 'checkbox',
+                'type' => 'checkbox',
+                'options' => [
+                    'label' => 'Check this checkbox',
+                ],
+                'attributes' => [
+                    'id' => 'validationFormCheck1',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'radio-stacked',
+                'type' => 'radio',
+                'options' => [
+                    'value_options' => [
+                        [
+                            'label' => 'Toggle this radio',
+                            'value' => 'option1',
+                            'attributes' => ['id' => 'validationFormCheck2'],
+                        ],
+                        [
+                            'label' => 'Or toggle this other radio',
+                            'value' => 'option2',
+                            'attributes' => ['id' => 'validationFormCheck3'],
+                        ],
+                    ],
+                ],
+                'attributes' => [
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'select',
+                'type' => 'select',
+                'options' => [
+                    'empty_option' => 'Open this select menu',
+                    'value_options' => [
+                        1 => 'One',
+                        2 => 'Two',
+                        3 => 'Three',
+                    ],
+                ],
+                'attributes' => [
+                    'aria-label' => 'select example',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'file',
+                'attributes' => [
+                    'type' => 'file',
+                    'aria-label' => 'file example',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'submit',
+                'type' => 'submit',
+                'options' => [
+                    'label' => 'Submit form',
+                    'variant' => 'primary',
+                ],
+                'attributes' => [
+                    'disabled' => true,
+                ],
+            ],
+        ],
+    ],
+])->setMessages([
+    'textarea' => ['Please enter a message in the textarea.'],
+    'checkbox' => ['Example invalid feedback text'],
+    'radio-stacked' => ['More example invalid feedback text'],
+    'select' => ['Example invalid select feedback'],
+    'file' => ['Example invalid form file feedback'],
+]));
 ```
 
 </TabItem>
@@ -855,133 +841,126 @@ echo $this->form(
 
 $factory = new \Laminas\Form\Factory();
 
-echo $this->form(
-    $factory->create(
+echo $this->form($factory->create([
+    'type' => 'form',
+    'options' => [
+        'gutter' => 3,
+        'custom_validation' => true,
+        'tooltip_feedback' => true,
+    ],
+    'elements' => [
         [
-            'type'     => 'form',
-            'options'  => [
-                'gutter'            => 3,
-                'custom_validation' => true,
-                'tooltip_feedback'  => true,
-            ],
-            'elements' => [
-                [
-                    'spec' => [
-                        'name'       => 'firstName',
-                        'options'    => [
-                            'column'         => 'md-4',
-                            'label'          => 'First name',
-                            'valid_feedback' => 'Looks good!',
-                        ],
-                        'attributes' => [
-                            'type'     => 'text',
-                            'id'       => 'validationTooltip01',
-                            'required' => true,
-                            'value'    => 'Mark',
-                        ],
-                    ],
+            'spec' => [
+                'name' => 'firstName',
+                'options' => [
+                    'column' => 'md-4',
+                    'label' => 'First name',
+                    'valid_feedback' => 'Looks good!',
                 ],
-                [
-                    'spec' => [
-                        'name'       => 'lastName',
-                        'options'    => [
-                            'column'         => 'md-4',
-                            'label'          => 'Last name',
-                            'valid_feedback' => 'Looks good!',
-                        ],
-                        'attributes' => [
-                            'type'     => 'text',
-                            'id'       => 'validationTooltip02',
-                            'required' => true,
-                            'value'    => 'Otto',
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'username',
-                        'options'    => [
-                            'label'          => 'Username',
-                            'column'         => 'md-4',
-                            'add_on_prepend' => '@',
-                        ],
-                        'attributes' => [
-                            'type'             => 'text',
-                            'id'               => 'validationTooltipUsername',
-                            'placeholder'      => 'Username',
-                            'aria-describedby' => 'validationTooltipUsernamePrepend',
-                            'required'         => true,
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'city',
-                        'options'    => [
-                            'column' => 'md-6',
-                            'label'  => 'City',
-                        ],
-                        'attributes' => [
-                            'type'     => 'text',
-                            'id'       => 'validationTooltip03',
-                            'required' => true,
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'state',
-                        'type'       => 'select',
-                        'options'    => [
-                            'column'        => 'md-3',
-                            'label'         => 'State',
-                            'empty_option'  => 'Choose...',
-                            'value_options' => ['...'],
-                        ],
-                        'attributes' => [
-                            'id'       => 'validationTooltip04',
-                            'required' => true,
-                            'value'    => '',
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'       => 'zip',
-                        'options'    => [
-                            'column' => 'md-3',
-                            'label'  => 'Zip',
-                        ],
-                        'attributes' => [
-                            'type'     => 'text',
-                            'id'       => 'validationTooltip05',
-                            'required' => true,
-                        ],
-                    ],
-                ],
-                [
-                    'spec' => [
-                        'name'    => 'submit',
-                        'type'    => 'submit',
-                        'options' => [
-                            'column'  => 12,
-                            'label'   => 'Submit form',
-                            'variant' => 'primary',
-                        ],
-                    ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationTooltip01',
+                    'required' => true,
+                    'value' => 'Mark',
                 ],
             ],
-        ]
-    )->setMessages(
+        ],
         [
-            'username' => ['Please choose a unique and valid username.'],
-            'city'     => ['Please provide a valid city.'],
-            'state'    => ['Please select a valid state.'],
-            'zip'      => ['Please select a valid zip.'],
-        ]
-    )
-);
-
+            'spec' => [
+                'name' => 'lastName',
+                'options' => [
+                    'column' => 'md-4',
+                    'label' => 'Last name',
+                    'valid_feedback' => 'Looks good!',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationTooltip02',
+                    'required' => true,
+                    'value' => 'Otto',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'username',
+                'options' => [
+                    'label' => 'Username',
+                    'column' => 'md-4',
+                    'add_on_prepend' => '@',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationTooltipUsername',
+                    'placeholder' => 'Username',
+                    'aria-describedby' => 'validationTooltipUsernamePrepend',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'city',
+                'options' => [
+                    'column' => 'md-6',
+                    'label' => 'City'
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationTooltip03',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'state',
+                'type' => 'select',
+                'options' => [
+                    'column' => 'md-3',
+                    'label' => 'State',
+                    'empty_option' => 'Choose...',
+                    'value_options' => ['...'],
+                ],
+                'attributes' => [
+                    'id' => 'validationTooltip04',
+                    'required' => true,
+                    'value' => '',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'zip',
+                'options' => [
+                    'column' => 'md-3',
+                    'label' => 'Zip'
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationTooltip05',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'submit',
+                'type' => 'submit',
+                'options' => [
+                    'column' => 12,
+                    'label' => 'Submit form',
+                    'variant' => 'primary',
+                ],
+            ],
+        ],
+    ],
+])->setMessages([
+    'username' => ['Please choose a unique and valid username.'],
+    'city' => ['Please provide a valid city.'],
+    'state' => ['Please select a valid state.'],
+    'zip' => ['Please select a valid zip.'],
+]));
 ```
 
 </TabItem>

@@ -43,28 +43,31 @@ echo $this->collapse(
             [
                 'options' => [
                     'variant' => 'primary',
-                    'label'   => 'Link with href',
-                    'tag'     => 'a',
+                    'label' => 'Link with href',
+                    'tag' => 'a'
                 ],
             ],
             [
                 'options' => [
                     'variant' => 'primary',
-                    'label'   => 'Button with data-bs-target',
+                    'label' => 'Button with data-bs-target',
                 ],
             ],
         ],
-        'targets'  => [
+        'targets' => [
             [
-                'content'    => $this->card(
-                    'Some placeholder content for the collapse component. '.'This panel is hidden by default but revealed '.'when the user activates the relevant trigger.'
+                'content' => $this->card(
+                    'Some placeholder content for the collapse component. ' .
+                'This panel is hidden by default but revealed ' .
+                'when the user activates the relevant trigger.'
                 ),
-                'attributes' => [    'id' => 'collapseExample'    ],
+                'attributes' => [
+                    'id' => 'collapseExample',
+                ],
             ],
         ],
     ],
 );
-
 ```
 
 </TabItem>
@@ -96,27 +99,32 @@ echo $this->collapse(
 
 echo $this->collapse(
     [
-        'horizontal' => [    'style' => 'min-height: 120px;'    ],
-        'triggers'   => [
+        'horizontal' => [
+            'style' => 'min-height: 120px;',
+        ],
+        'triggers' => [
             [
                 'options' => [
                     'variant' => 'primary',
-                    'label'   => 'Toggle width collapse',
+                    'label' => 'Toggle width collapse',
                 ],
             ],
         ],
-        'targets'    => [
+        'targets' => [
             [
-                'content'    => $this->card(
-                    'Some placeholder content for the collapse component. '.'This panel is hidden by default but revealed '.'when the user activates the relevant trigger.',
+                'content' => $this->card(
+                    'Some placeholder content for the collapse component. ' .
+                'This panel is hidden by default but revealed ' .
+                'when the user activates the relevant trigger.',
                     ['style' => 'width: 300px;'],
                 ),
-                'attributes' => [    'id' => 'collapseWidthExample'    ],
+                'attributes' => [
+                    'id' => 'collapseWidthExample',
+                ],
             ],
         ],
     ],
 );
-
 ```
 
 </TabItem>
@@ -167,52 +175,55 @@ echo $this->collapse(
             [
                 'options' => [
                     'variant' => 'primary',
-                    'label'   => 'Toggle first element',
-                    'tag'     => 'a',
+                    'label' => 'Toggle first element',
+                    'tag' => 'a',
                 ],
             ],
             [
                 'options' => [
                     'variant' => 'primary',
-                    'label'   => 'Toggle second element',
+                    'label' => 'Toggle second element',
                 ],
             ],
             [
-                'options'    => [
+                'options' => [
                     'variant' => 'primary',
-                    'label'   => 'Toggle both elements',
+                    'label' => 'Toggle both elements',
                 ],
                 'attributes' => [
                     'data-bs-target' => '.multi-collapse',
-                    'aria-controls'  => 'multiCollapseExample1 multiCollapseExample2',
+                    'aria-controls' => 'multiCollapseExample1 multiCollapseExample2',
                 ],
             ],
         ],
-        'targets'  => [
+        'targets' => [
             [
-                'column'     => true,
-                'content'    => $this->card(
-                    'Some placeholder content for the first collapse component of this '.'multi-collapse example. This panel is hidden by default but revealed '.'when the user activates the relevant trigger.',
+                'column' => true,
+                'content' => $this->card(
+                    'Some placeholder content for the first collapse component of this ' .
+                'multi-collapse example. This panel is hidden by default but revealed ' .
+                'when the user activates the relevant trigger.',
                 ),
                 'attributes' => [
-                    'id'    => 'multiCollapseExample1',
+                    'id' => 'multiCollapseExample1',
                     'class' => 'multi-collapse',
                 ],
             ],
             [
-                'column'     => true,
-                'content'    => $this->card(
-                    'Some placeholder content for the first collapse component of this '.'multi-collapse example. This panel is hidden by default but revealed '.'when the user activates the relevant trigger.',
+                'column' => true,
+                'content' => $this->card(
+                    'Some placeholder content for the first collapse component of this ' .
+                'multi-collapse example. This panel is hidden by default but revealed ' .
+                'when the user activates the relevant trigger.',
                 ),
                 'attributes' => [
-                    'id'    => 'multiCollapseExample2',
+                    'id' => 'multiCollapseExample2',
                     'class' => 'multi-collapse',
                 ],
             ],
         ],
     ],
 );
-
 ```
 
 </TabItem>

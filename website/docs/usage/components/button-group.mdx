@@ -38,61 +38,42 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 
 echo $this->buttonGroup(
     [
-    // Create button via specs and \Laminas\Form\Factory
-        [
-            'type'    => 'button',
-            'options' => ['label' => 'Left'],
-        ],
+        // Create button via specs and \Laminas\Form\Factory
+        ['type' => 'button', 'options' =>  ['label' => 'Left']],
         // Button object
         new \Laminas\Form\Element\Button('middle', ['label' => 'Middle']),
-        [
-            'type'    => 'button',
-            'options' => ['label' => 'Right'],
-        ],
+        ['type' => 'button', 'options' =>  ['label' => 'Right']],
     ],
     [
-        'variant'    => 'primary',
-        'attributes' => [
-            'role'       => 'group',
-            'aria-label' => 'Basic example',
-        ],
+        'variant' => 'primary',
+        'attributes' => ['role' => 'group', 'aria-label' => 'Basic example'],
     ],
 );
 
 echo $this->buttonGroup(
     [
         [
-            'type'       => 'button',
-            'options'    => [
-                'tag'   => 'a',
-                'label' => 'Active link',
-            ],
+            'type' => 'button',
+            'options' =>  ['tag' => 'a', 'label' => 'Active link'],
             'attributes' => [
-                'class'        => 'active',
+                'class' => 'active',
                 'aria-current' => 'page',
-                'href'         => '#',
+                'href' => '#'
             ],
         ],
         [
-            'type'       => 'button',
-            'options'    => [
-                'tag'   => 'a',
-                'label' => 'Link',
-            ],
+            'type' => 'button',
+            'options' =>  ['tag' => 'a', 'label' => 'Link'],
             'attributes' => ['href' => '#'],
         ],
         [
-            'type'       => 'button',
-            'options'    => [
-                'tag'   => 'a',
-                'label' => 'Link',
-            ],
+            'type' => 'button',
+            'options' =>  ['tag' => 'a', 'label' => 'Link'],
             'attributes' => ['href' => '#'],
         ],
     ],
     ['variant' => 'primary'],
 );
-
 ```
 
 </TabItem>
@@ -119,36 +100,12 @@ echo $this->buttonGroup(
 
 echo $this->buttonGroup(
     [
-        [
-            'type'    => 'button',
-            'options' => [
-                'label'   => 'Left',
-                'variant' => 'danger',
-            ],
-        ],
-        [
-            'type'    => 'button',
-            'options' => [
-                'label'   => 'Middle',
-                'variant' => 'warning',
-            ],
-        ],
-        [
-            'type'    => 'button',
-            'options' => [
-                'label'   => 'Right',
-                'variant' => 'success',
-            ],
-        ],
+        ['type' => 'button', 'options' =>  ['label' => 'Left', 'variant' => 'danger']],
+        ['type' => 'button', 'options' =>  ['label' => 'Middle', 'variant' => 'warning']],
+        ['type' => 'button', 'options' =>  ['label' => 'Right', 'variant' => 'success']],
     ],
-    [
-        'attributes' => [
-            'role'       => 'group',
-            'aria-label' => 'Basic mixed styles example',
-        ],
-    ]
+    ['attributes' => ['role' => 'group', 'aria-label' => 'Basic mixed styles example']]
 );
-
 ```
 
 </TabItem>
@@ -175,28 +132,15 @@ echo $this->buttonGroup(
 
 echo $this->buttonGroup(
     [
-        [
-            'type'    => 'button',
-            'options' => ['label' => 'Left'],
-        ],
-        [
-            'type'    => 'button',
-            'options' => ['label' => 'Middle'],
-        ],
-        [
-            'type'    => 'button',
-            'options' => ['label' => 'Right'],
-        ],
+        ['type' => 'button', 'options' =>  ['label' => 'Left']],
+        ['type' => 'button', 'options' =>  ['label' => 'Middle']],
+        ['type' => 'button', 'options' =>  ['label' => 'Right']],
     ],
     [
-        'variant'    => 'outline-primary',
-        'attributes' => [
-            'role'       => 'group',
-            'aria-label' => 'Basic outlined example',
-        ],
+        'variant' => 'outline-primary',
+        'attributes' => ['role' => 'group', 'aria-label' => 'Basic outlined example'],
     ],
 );
-
 ```
 
 </TabItem>
@@ -236,39 +180,27 @@ echo $this->buttonGroup(
 echo $this->buttonGroup(
     [
         [
-            'type'       => 'checkbox',
-            'name'       => 'checkbox-1',
-            'options'    => [
-                'tag'   => 'input',
-                'label' => 'Checkbox 1',
-            ],
+            'type' => 'checkbox',
+            'name' => 'checkbox-1',
+            'options' =>  ['tag' => 'input', 'label' => 'Checkbox 1'],
             'attributes' => ['id' => 'btncheck1'],
         ],
         [
-            'type'       => 'checkbox',
-            'name'       => 'checkbox-2',
-            'options'    => [
-                'tag'   => 'input',
-                'label' => 'Checkbox 2',
-            ],
+            'type' => 'checkbox',
+            'name' => 'checkbox-2',
+            'options' =>  ['tag' => 'input', 'label' => 'Checkbox 2'],
             'attributes' => ['id' => 'btncheck3'],
         ],
         [
-            'type'       => 'checkbox',
-            'name'       => 'checkbox-3',
-            'options'    => [
-                'tag'   => 'input',
-                'label' => 'Checkbox 3',
-            ],
+            'type' => 'checkbox',
+            'name' => 'checkbox-3',
+            'options' =>  ['tag' => 'input', 'label' => 'Checkbox 3'],
             'attributes' => ['id' => 'btncheck3'],
         ],
     ],
     [
-        'variant'    => 'outline-primary',
-        'attributes' => [
-            'role'       => 'group',
-            'aria-label' => 'Basic checkbox toggle button group',
-        ],
+        'variant' => 'outline-primary',
+        'attributes' => ['role' => 'group', 'aria-label' => 'Basic checkbox toggle button group'],
     ],
 );
 
@@ -277,24 +209,24 @@ echo '<br/>';
 echo $this->buttonGroup(
     [
         [
-            'name'       => 'btnradio',
-            'type'       => 'radio',
-            'options'    => [
-                'tag'           => 'input',
+            'name' => 'btnradio',
+            'type' => 'radio',
+            'options' => [
+                'tag' => 'input',
                 'value_options' => [
                     [
-                        'label'      => 'Radio 1',
-                        'value'      => 'option1',
+                        'label' => 'Radio 1',
+                        'value' => 'option1',
                         'attributes' => ['id' => 'btnradio1'],
                     ],
                     [
-                        'label'      => 'Radio 2',
-                        'value'      => 'option2',
+                        'label' => 'Radio 2',
+                        'value' => 'option2',
                         'attributes' => ['id' => 'btnradio2'],
                     ],
                     [
-                        'label'      => 'Radio 3',
-                        'value'      => 'option3',
+                        'label' => 'Radio 3',
+                        'value' => 'option3',
                         'attributes' => ['id' => 'btnradio3'],
                     ],
                 ],
@@ -303,14 +235,12 @@ echo $this->buttonGroup(
         ],
     ],
     [
-        'variant'    => 'outline-primary',
+        'variant' => 'outline-primary',
         'attributes' => [
-            'role'       => 'group',
-            'aria-label' => 'Basic radio toggle button group',
+            'role' => 'group', 'aria-label' => 'Basic radio toggle button group',
         ],
     ],
 );
-
 ```
 
 </TabItem>
@@ -348,84 +278,51 @@ echo $this->buttonGroup(
 ```php
 <?php
 
-echo $this->buttonToolbar(
+echo $this->buttonToolbar([
     [
-        [
-            'buttons' => [
-                [
-                    'type'    => 'button',
-                    'options' => ['label' => '1'],
-                ],
-                [
-                    'type'    => 'button',
-                    'options' => ['label' => '2'],
-                ],
-                [
-                    'type'    => 'button',
-                    'options' => ['label' => '3'],
-                ],
-                [
-                    'type'    => 'button',
-                    'options' => ['label' => '4'],
-                ],
-            ],
-            'options' => [
-                'variant'    => 'primary',
-                'attributes' => [
-                    'role'       => 'group',
-                    'aria-label' => 'First group',
-                    'class'      => 'me-2',
-                ],
-            ],
+        'buttons' => [
+            ['type' => 'button', 'options' => ['label' => '1']],
+            ['type' => 'button', 'options' => ['label' => '2']],
+            ['type' => 'button', 'options' => ['label' => '3']],
+            ['type' => 'button', 'options' => ['label' => '4']],
         ],
-        [
-            'buttons' => [
-                [
-                    'type'    => 'button',
-                    'options' => ['label' => '5'],
-                ],
-                [
-                    'type'    => 'button',
-                    'options' => ['label' => '6'],
-                ],
-                [
-                    'type'    => 'button',
-                    'options' => ['label' => '7'],
-                ],
-            ],
-            'options' => [
-                'attributes' => [
-                    'role'       => 'group',
-                    'aria-label' => 'Second group',
-                    'class'      => 'me-2',
-                ],
-            ],
-        ],
-        [
-            'buttons' => [
-                [
-                    'type'    => 'button',
-                    'options' => ['label' => '8'],
-                ],
-            ],
-            'options' => [
-                'variant'    => 'info',
-                'attributes' => [
-                    'role'       => 'group',
-                    'aria-label' => 'Third group',
-                    'class'      => 'me-2',
-                ],
+        'options' => [
+            'variant' => 'primary',
+            'attributes' => [
+                'role' => 'group',
+                'aria-label' => 'First group',
+                'class' => 'me-2',
             ],
         ],
     ],
     [
-        'attributes' => [
-            'role'       => 'toolbar',
-            'aria-label' => 'Toolbar with button groups',
+        'buttons' => [
+            ['type' => 'button', 'options' => ['label' => '5']],
+            ['type' => 'button', 'options' => ['label' => '6']],
+            ['type' => 'button', 'options' => ['label' => '7']],
         ],
-    ]
-);
-
+        'options' => [
+            'attributes' => [
+                'role' => 'group',
+                'aria-label' => 'Second group',
+                'class' => 'me-2',
+            ],
+        ],
+    ],
+    [
+        'buttons' => [
+            ['type' => 'button', 'options' => ['label' => '8']],
+        ],
+        'options' => [
+            'variant' => 'info',
+            'attributes' => [
+                'role' => 'group',
+                'aria-label' => 'Third group',
+                'class' => 'me-2',
+            ],
+        ],
+    ],
+], ['attributes' => ['role' => 'toolbar', 'aria-label' => 'Toolbar with button groups']]);
 ```
 
 </TabItem>
@@ -470,39 +367,27 @@ echo $this->buttonToolbar(
 $toolbarItems = [
     [
         'buttons' => [
-            [
-                'type'    => 'button',
-                'options' => ['label' => '1'],
-            ],
-            [
-                'type'    => 'button',
-                'options' => ['label' => '2'],
-            ],
-            [
-                'type'    => 'button',
-                'options' => ['label' => '3'],
-            ],
-            [
-                'type'    => 'button',
-                'options' => ['label' => '4'],
-            ],
+            ['type' => 'button', 'options' => ['label' => '1']],
+            ['type' => 'button', 'options' => ['label' => '2']],
+            ['type' => 'button', 'options' => ['label' => '3']],
+            ['type' => 'button', 'options' => ['label' => '4']],
         ],
         'options' => [
-            'variant'    => 'outline-secondary',
+            'variant' => 'outline-secondary',
             'attributes' => [
-                'role'       => 'group',
+                'role' => 'group',
                 'aria-label' => 'First group',
-                'class'      => 'me-2',
+                'class' => 'me-2',
             ],
         ],
     ],
     [
-        'type'       => 'text',
-        'name'       => 'input-group-example',
-        'options'    => ['add_on_prepend' => '@'],
+        'type' => 'text',
+        'name' => 'input-group-example',
+        'options' => ['add_on_prepend' => '@'],
         'attributes' => [
-            'placeholder'      => 'Input group example',
-            'aria-label'       => 'Input group example',
+            'placeholder' => 'Input group example',
+            'aria-label' => 'Input group example',
             'aria-describedby' => 'btnGroupAddon',
         ],
     ],
@@ -512,9 +397,9 @@ echo $this->buttonToolbar(
     $toolbarItems,
     [
         'attributes' => [
-            'role'       => 'toolbar',
+            'role' => 'toolbar',
             'aria-label' => 'Toolbar with button groups',
-            'class'      => 'mb-3',
+            'class' => 'mb-3',
         ],
     ]
 );
@@ -524,13 +409,13 @@ echo $this->buttonToolbar(
     $toolbarItems,
     [
         'attributes' => [
-            'role'       => 'toolbar',
-            'aria-label' => 'Toolbar with button groups',
-            'class'      => 'justify-content-between',
+            'role' => 'toolbar',
+            'aria-label' =>
+            'Toolbar with button groups',
+            'class' => 'justify-content-between',
         ],
     ]
 );
-
 ```
 
 </TabItem>
@@ -571,32 +456,19 @@ echo $this->buttonToolbar(
 foreach (['lg', null, 'sm'] as $size) {
     echo $this->buttonGroup(
         [
-            [
-                'type'    => 'button',
-                'options' => ['label' => 'Left'],
-            ],
-            [
-                'type'    => 'button',
-                'options' => ['label' => 'Middle'],
-            ],
-            [
-                'type'    => 'button',
-                'options' => ['label' => 'Right'],
-            ],
+            ['type' => 'button', 'options' => ['label' => 'Left']],
+            ['type' => 'button', 'options' => ['label' => 'Middle']],
+            ['type' => 'button', 'options' => ['label' => 'Right']],
         ],
         [
-            'size'       => $size,
-            'variant'    => 'outline-dark',
-            'attributes' => [
-                'role'       => 'group',
-                'aria-label' => '...',
-            ],
+            'size' => $size,
+            'variant' => 'outline-dark',
+            'attributes' => ['role' => 'group', 'aria-label' => '...'],
         ],
     );
 
     echo '<br/>';
-}//end foreach
-
+}
 ```
 
 </TabItem>
@@ -629,35 +501,25 @@ foreach (['lg', null, 'sm'] as $size) {
 
 echo $this->buttonGroup(
     [
+        ['type' => 'button', 'options' => ['label' => '1']],
+        ['type' => 'button', 'options' => ['label' => '2']],
         [
-            'type'    => 'button',
-            'options' => ['label' => '1'],
-        ],
-        [
-            'type'    => 'button',
-            'options' => ['label' => '2'],
-        ],
-        [
-            'type'       => 'button',
-            'options'    => [
-                'label'    => 'Dropdown',
-                'dropdown' => [
-                    'Dropdown link',
-                    'Dropdown link',
-                ],
+            'type' => 'button',
+            'options' => [
+                'label' => 'Dropdown',
+                'dropdown' => ['Dropdown link', 'Dropdown link'],
             ],
             'attributes' => ['id' => 'btnGroupDrop1'],
         ],
     ],
     [
-        'variant'    => 'primary',
+        'variant' => 'primary',
         'attributes' => [
-            'role'       => 'group',
+            'role' => 'group',
             'aria-label' => 'Button group with nested dropdown',
         ],
     ],
 );
-
 ```
 
 </TabItem>
@@ -731,33 +593,58 @@ echo $this->buttonGroup(
 
 echo $this->buttonGroup(
     [
+        ['type' => 'button', 'options' => ['label' => 'Button']],
+        ['type' => 'button', 'options' => ['label' => 'Button']],
+        ['type' => 'button', 'options' => ['label' => 'Button']],
+        ['type' => 'button', 'options' => ['label' => 'Button']],
+        ['type' => 'button', 'options' => ['label' => 'Button']],
+        ['type' => 'button', 'options' => ['label' => 'Button']],
+    ],
+    [
+        'variant' => 'dark',
+        'vertical' => true,
+    ],
+);
+
+echo '<br/>';
+
+echo $this->buttonGroup(
+    [
+        ['type' => 'button', 'options' => ['label' => 'Button']],
+        ['type' => 'button', 'options' => ['label' => 'Button']],
         [
-            'type'    => 'button',
-            'options' => ['label' => 'Button'],
+            'type' => 'button',
+            'options' => [
+                'label' => 'Dropdown',
+                'dropdown' => ['Dropdown link', 'Dropdown link'],
+            ],
+        ],
+        ['type' => 'button', 'options' => ['label' => 'Button']],
+        ['type' => 'button', 'options' => ['label' => 'Button']],
+        [
+            'type' => 'button',
+            'options' => [
+                'label' => 'Dropdown',
+                'dropdown' => ['Dropdown link', 'Dropdown link'],
+            ],
         ],
         [
-            'type'    => 'button',
-            'options' => ['label' => 'Button'],
+            'type' => 'button',
+            'options' => [
+                'label' => 'Dropdown',
+                'dropdown' => ['Dropdown link', 'Dropdown link'],
+            ],
         ],
         [
-            'type'    => 'button',
-            'options' => ['label' => 'Button'],
-        ],
-        [
-            'type'    => 'button',
-            'options' => ['label' => 'Button'],
-        ],
-        [
-            'type'    => 'button',
-            'options' => ['label' => 'Button'],
-        ],
-        [
-            'type'    => 'button',
-            'options' => ['label' => 'Button'],
+            'type' => 'button',
+            'options' => [
+                'label' => 'Dropdown',
+                'dropdown' => ['Dropdown link', 'Dropdown link'],
+            ],
         ],
     ],
     [
-        'variant'  => 'dark',
+        'variant' => 'primary',
         'vertical' => true,
     ],
 );
@@ -767,91 +654,24 @@ echo '<br/>';
 echo $this->buttonGroup(
     [
         [
-            'type'    => 'button',
-            'options' => ['label' => 'Button'],
-        ],
-        [
-            'type'    => 'button',
-            'options' => ['label' => 'Button'],
-        ],
-        [
-            'type'    => 'button',
+            'name' => 'vbtn-radio',
+            'type' => 'radio',
             'options' => [
-                'label'    => 'Dropdown',
-                'dropdown' => [
-                    'Dropdown link',
-                    'Dropdown link',
-                ],
-            ],
-        ],
-        [
-            'type'    => 'button',
-            'options' => ['label' => 'Button'],
-        ],
-        [
-            'type'    => 'button',
-            'options' => ['label' => 'Button'],
-        ],
-        [
-            'type'    => 'button',
-            'options' => [
-                'label'    => 'Dropdown',
-                'dropdown' => [
-                    'Dropdown link',
-                    'Dropdown link',
-                ],
-            ],
-        ],
-        [
-            'type'    => 'button',
-            'options' => [
-                'label'    => 'Dropdown',
-                'dropdown' => [
-                    'Dropdown link',
-                    'Dropdown link',
-                ],
-            ],
-        ],
-        [
-            'type'    => 'button',
-            'options' => [
-                'label'    => 'Dropdown',
-                'dropdown' => [
-                    'Dropdown link',
-                    'Dropdown link',
-                ],
-            ],
-        ],
-    ],
-    [
-        'variant'  => 'primary',
-        'vertical' => true,
-    ],
-);
-
-echo '<br/>';
-
-echo $this->buttonGroup(
-    [
-        [
-            'name'       => 'vbtn-radio',
-            'type'       => 'radio',
-            'options'    => [
-                'tag'           => 'input',
+                'tag' => 'input',
                 'value_options' => [
                     [
-                        'label'      => 'Radio 1',
-                        'value'      => 'option1',
+                        'label' => 'Radio 1',
+                        'value' => 'option1',
                         'attributes' => ['id' => 'vbtn-radio1'],
                     ],
                     [
-                        'label'      => 'Radio 2',
-                        'value'      => 'option2',
+                        'label' => 'Radio 2',
+                        'value' => 'option2',
                         'attributes' => ['id' => 'vbtn-radio2'],
                     ],
                     [
-                        'label'      => 'Radio 3',
-                        'value'      => 'option3',
+                        'label' => 'Radio 3',
+                        'value' => 'option3',
                         'attributes' => ['id' => 'vbtn-radio3'],
                     ],
                 ],
@@ -860,15 +680,13 @@ echo $this->buttonGroup(
         ],
     ],
     [
-        'variant'    => 'outline-danger',
-        'vertical'   => true,
+        'variant' => 'outline-danger',
+        'vertical' => true,
         'attributes' => [
-            'role'       => 'group',
-            'aria-label' => 'Vertical radio toggle button group',
+            'role' => 'group', 'aria-label' => 'Vertical radio toggle button group',
         ],
     ],
 );
-
 ```
 
 </TabItem>
