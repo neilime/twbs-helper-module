@@ -44,13 +44,23 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
 
       - name: ⚙️ Install dependencies
-        run: composer install --no-progress --prefer-dist --optimize-autoloader
+        run: |
+          composer install --no-progress --prefer-dist --optimize-autoloader
+          composer --working-dir=tools install --no-progress --prefer-dist --optimize-autoloader
+
+      - name: ♻️ Tools cache
+        uses: actions/cache@v3
+        with:
+          path: tools/cache
+          key: ${{ runner.os }}-test-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-test-
 
       - name: 👕 Lint
-        run: composer cs
+        run: composer php-cs-fixer -- --format=checkstyle | tools/vendor/bin/cs2pr
 
       - name: 🔬 Static analysis
-        run: composer stan
+        run: composer stan -- --error-format=checkstyle | tools/vendor/bin/cs2pr
 
       - name: ♻️ Test cache
         uses: actions/cache@v3

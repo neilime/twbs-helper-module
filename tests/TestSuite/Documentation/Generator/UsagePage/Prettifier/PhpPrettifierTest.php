@@ -33,24 +33,24 @@ class PhpPrettifierTest extends \PHPUnit\Framework\TestCase
     public function testPrettifyShouldSetProperIndentation()
     {
         $source = <<<'SOURCE'
-<?php
+            <?php
 
-$factory = new \Laminas\Form\Factory();
+            $factory = new \Laminas\Form\Factory();
 
-// Render Default checkbox
-echo $this->formRow($factory->create([
-'name' => 'default-checkbox',
-'type' => 'checkbox',
-'options' => [
-'label' => 'Default checkbox',
-'use_hidden_element' => false,
-'form_group' => false,
-],
-'attributes' => [
-'id' => 'defaultCheck1',
-],
-])) . PHP_EOL;
-SOURCE;
+            // Render Default checkbox
+            echo $this->formRow($factory->create([
+            'name' => 'default-checkbox',
+            'type' => 'checkbox',
+            'options' => [
+            'label' => 'Default checkbox',
+            'use_hidden_element' => false,
+            'form_group' => false,
+            ],
+            'attributes' => [
+            'id' => 'defaultCheck1',
+            ],
+            ])) . PHP_EOL;
+            SOURCE;
 
         $result = $this->phpPrettifier->prettify($source);
 

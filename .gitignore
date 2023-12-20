@@ -2,6 +2,8 @@
 /.buildpath
 /.project
 /vendor
+/tools/vendor
+/tools/cache
 /nbproject/
 nbactions.xml
 nb-configuration.xml
@@ -10,4 +12,3 @@ nb-configuration.xml
 composer.lock
 *.swp
 /website/node_modules
-tests/.phpunit.result.cache
