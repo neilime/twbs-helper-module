@@ -20,7 +20,8 @@ class HeadPrinterTest extends \PHPUnit\Framework\TestCase
             '/tmp/test-dir',
             '/tmp/test-dir/tests',
             'x.x',
-            2
+            2,
+            $this->createMock(\Documentation\Generator\FileSystem\File::class)
         );
     }
 

@@ -21,13 +21,13 @@ class UsagePageGeneratorTest extends \PHPUnit\Framework\TestCase
             '/tmp/test-dir',
             '/tmp/test-dir/tests',
             'x.x',
-            2
+            2,
+            $this->file
         );
         $config = new \Documentation\Test\Config();
 
         $this->usagePageGenerator = new \Documentation\Generator\UsagePage\UsagePageGenerator(
             $configuration,
-            $this->file,
             $config
         );
     }

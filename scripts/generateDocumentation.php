@@ -38,18 +38,18 @@ $configuration = new \Documentation\Generator\Configuration(
     $rootDirPath,
     $testsDirPath,
     $bootstrapVersionResolver->getBootstrapVersion(),
-    $maxNestedDir
+    $maxNestedDir,
+    $file
 );
 
 
-$homePageGenerator = new \Documentation\Generator\HomePageGenerator($configuration, $file);
+$homePageGenerator = new \Documentation\Generator\HomePageGenerator($configuration);
 $homePageGenerator->generate();
 
 $testConfigsLoader = new \Documentation\Test\ConfigsLoader($testsDirPath);
 
 $usagePagesGenerator = new \Documentation\Generator\UsagePage\UsagePagesGenerator(
     $configuration,
-    $file,
     $testConfigsLoader->loadDocumentationTestConfigs(),
 );
 $usagePagesGenerator->generate();

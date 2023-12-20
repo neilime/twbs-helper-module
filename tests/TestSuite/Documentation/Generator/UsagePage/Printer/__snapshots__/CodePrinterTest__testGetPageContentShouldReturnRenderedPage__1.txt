@@ -1,0 +1,16 @@
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="x.x">
+      <div dangerouslySetInnerHTML={{ __html: `test` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo 'test';
+```
+
+</TabItem>
+</Tabs>

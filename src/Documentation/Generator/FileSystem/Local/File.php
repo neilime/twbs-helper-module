@@ -12,7 +12,7 @@ class File implements \Documentation\Generator\FileSystem\File
     public function removeDir($dirPath)
     {
         if (!$this->dirExists($dirPath)) {
-            throw new \InvalidArgumentException('Argument "$dirPath" is not an existing directory path');
+            throw new \InvalidArgumentException('Given directory path "' . $dirPath . '" is not an existing directory path');
         }
 
         $dirObj = new \RecursiveDirectoryIterator($dirPath, \RecursiveDirectoryIterator::SKIP_DOTS);
@@ -38,8 +38,25 @@ class File implements \Documentation\Generator\FileSystem\File
         file_put_contents($filePath, $fileContent);
     }
 
+    public function writeTmpFile($fileName, $fileContent)
+    {
+        $tmpFile = tempnam(sys_get_temp_dir(), $fileName);
+        $this->writeFile($tmpFile, $fileContent);
+        return $tmpFile;
+    }
+
     public function appendFile($filePath, $fileContent)
     {
         file_put_contents($filePath, $fileContent, FILE_APPEND);
+    }
+
+
+    public function removeFile($filePath)
+    {
+        if (!$this->fileExists($filePath)) {
+            throw new \InvalidArgumentException('Given file path does "' . $filePath . '" not exists');
+        }
+
+        unlink($filePath);
     }
 }

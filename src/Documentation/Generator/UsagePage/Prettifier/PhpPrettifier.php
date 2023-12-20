@@ -9,11 +9,21 @@ class PhpPrettifier
     private static $CONFIGURATION_FILE = '.php-cs-fixer.dist.php';
     private static $instance = null;
 
-    private $configurationPath = '.php-cs-fixer.dist.php';
+    /**
+     * @var \Documentation\Generator\FileSystem\File
+     */
+    private $file;
+
+    /**
+     * @var \PhpCsFixer\Console\Application
+     */
     private $application;
+
+    private $configurationPath;
 
     private function __construct(\Documentation\Generator\Configuration $configuration)
     {
+        $this->file = $configuration->getFile();
         $this->configurationPath = $configuration->getRootDirPath() . DIRECTORY_SEPARATOR . self::$CONFIGURATION_FILE;
 
         $this->application = new Application();
@@ -33,39 +43,39 @@ class PhpPrettifier
         return static::$instance;
     }
 
-
     public function prettify($source)
     {
         // Write source to temporary file
-        $tmpFile = tempnam(sys_get_temp_dir(), 'phpcsfixer');
-        file_put_contents($tmpFile, $source);
+        $tmpFile = $this->file->writeTmpFile('phpcsfixer', $source);
 
         try {
-            $input = new \Symfony\Component\Console\Input\ArrayInput(
-                [
-                    'command' => 'fix',
-                    'path' => [$tmpFile],
-                    '--dry-run' => false,
-                    '--config' => $this->configurationPath,
-                ]
-            );
-
-            $output = new \Symfony\Component\Console\Output\BufferedOutput();
-
-            $result = $this->application->run(
-                $input,
-                $output
-            );
-
-            if ($result !== 0) {
-                throw new \RuntimeException('PhpCsFixer failed.' . $output->fetch());
-            }
-
-            $prettyfiedSource = trim(file_get_contents($tmpFile));
-
+            $prettyfiedSource = $this->executePhpCsFixer($tmpFile);
             return $prettyfiedSource;
         } finally {
-            unlink($tmpFile);
+            $this->file->removeFile($tmpFile);
         }
+    }
+
+    private function executePhpCsFixer($tmpFile)
+    {
+        $input = new \Symfony\Component\Console\Input\ArrayInput(
+            [
+                'command' => 'fix',
+                'path' => [$tmpFile],
+                '--dry-run' => false,
+                '--config' => $this->configurationPath,
+            ]
+        );
+
+        $output = new \Symfony\Component\Console\Output\BufferedOutput();
+
+        $this->application->run(
+            $input,
+            $output
+        );
+
+        $prettyfiedSource = trim($this->file->readFile($tmpFile));
+
+        return $prettyfiedSource;
     }
 }

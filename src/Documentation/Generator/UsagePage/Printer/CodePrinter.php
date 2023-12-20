@@ -58,6 +58,7 @@ class CodePrinter extends \Documentation\Generator\UsagePage\Printer\AbstractPri
         $phpPrettifier = \Documentation\Generator\UsagePage\Prettifier\PhpPrettifier::getInstance(
             $this->configuration
         );
+
         return $phpPrettifier->prettify($source);
     }
 
@@ -66,7 +67,7 @@ class CodePrinter extends \Documentation\Generator\UsagePage\Printer\AbstractPri
         $snapshotService = new \Documentation\Test\SnapshotService($this->configuration->getTestsDirPath());
         $snapshotPath = $snapshotService->getSnapshotPathFromTitle($this->testConfig->title);
 
-        $snapshotContent = file_get_contents($snapshotPath);
+        $snapshotContent = $this->configuration->getFile()->readFile($snapshotPath);
         return trim($snapshotContent);
     }
 }

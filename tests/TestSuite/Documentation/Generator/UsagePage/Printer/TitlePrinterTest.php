@@ -21,6 +21,7 @@ class TitlePrinterTest extends \PHPUnit\Framework\TestCase
             '/tmp/test-dir/tests',
             'x.x',
             2,
+            $this->createMock(\Documentation\Generator\FileSystem\File::class)
         );
     }
 

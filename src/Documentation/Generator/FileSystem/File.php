@@ -14,5 +14,9 @@ interface File
 
     public function writeFile($filePath, $fileContent);
 
+    public function writeTmpFile($fileName, $fileContent);
+
     public function appendFile($filePath, $fileContent);
+
+    public function removeFile($filePath);
 }

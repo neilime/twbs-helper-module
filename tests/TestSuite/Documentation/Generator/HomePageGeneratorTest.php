@@ -21,11 +21,11 @@ class HomePageGeneratorTest extends \PHPUnit\Framework\TestCase
             '/tmp/test-dir',
             '/tmp/test-dir/tests',
             'x.x',
-            2
+            2,
+            $this->file
         );
         $this->homePageGenerator = new \Documentation\Generator\HomePageGenerator(
             $configuration,
-            $this->file
         );
     }
 

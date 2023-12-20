@@ -55,7 +55,7 @@ class FileTest extends \PHPUnit\Framework\TestCase
 
         $dirPath = $this->root->url() . DIRECTORY_SEPARATOR . 'wrong';
         $this->expectExceptionMessage(
-            'Argument "$dirPath" is not an existing directory path'
+            'Given directory path "' . $dirPath . '" is not an existing directory path'
         );
         $this->file->removeDir($dirPath);
     }
@@ -105,6 +105,22 @@ class FileTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals($content, $this->root->getChild($fileName)->getContent());
     }
 
+    public function testWriteTmpFile()
+    {
+        $fileName = 'test.txt';
+        $content = 'test content';
+
+        $tmpFile = $this->file->writeTmpFile($fileName, $content);
+
+        $this->assertTrue($this->file->fileExists($tmpFile));
+
+        $this->assertEquals($content, $this->file->readFile($tmpFile));
+
+        $this->file->removeFile($tmpFile);
+
+        $this->assertFalse($this->file->fileExists($tmpFile));
+    }
+
     public function testAppendFile()
     {
         $fileName = 'test.txt';
@@ -121,5 +137,32 @@ class FileTest extends \PHPUnit\Framework\TestCase
         $this->assertTrue($this->root->hasChild($fileName));
 
         $this->assertEquals($content . $newContent, $this->root->getChild($fileName)->getContent());
+    }
+
+    public function testRemoveFile()
+    {
+        $fileName = 'test.txt';
+        $filePath = $this->root->url() . DIRECTORY_SEPARATOR . $fileName;
+        $content = 'test content';
+        \org\bovigo\vfs\vfsStream::create([
+            $fileName => $content
+        ], $this->root);
+
+        $this->assertTrue($this->root->hasChild($fileName));
+
+        $this->file->removeFile($filePath);
+
+        $this->assertFalse($this->root->hasChild($fileName));
+    }
+
+    public function testRemoveFileShouldThrowsAnExceptionWhenFilePathIsInvalid()
+    {
+        $filePath = $this->root->url() . DIRECTORY_SEPARATOR . 'wrong';
+
+        $this->expectExceptionMessage(
+            'Given file path does "' . $filePath . '" not exists'
+        );
+
+        $this->file->removeFile($filePath);
     }
 }

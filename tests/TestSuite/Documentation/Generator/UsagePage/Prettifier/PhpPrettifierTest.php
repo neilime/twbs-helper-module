@@ -7,24 +7,18 @@ class PhpPrettifierTest extends \PHPUnit\Framework\TestCase
     use \Spatie\Snapshots\MatchesSnapshots;
 
     /**
-     * @var \Documentation\Generator\FileSystem\File&\PHPUnit\Framework\MockObject\MockObject|mixed
-     */
-    public $file;
-
-    /**
      * @var \Documentation\Generator\UsagePage\Prettifier\PhpPrettifier
      */
     protected $phpPrettifier;
 
     protected function setUp(): void
     {
-
-        $this->file = $this->createMock(\Documentation\Generator\FileSystem\File::class);
         $configuration = new \Documentation\Generator\Configuration(
             __DIR__ . '/../../../../../..',
             'x.x',
+            '5.1',
             2,
-            $this->file
+            new \Documentation\Generator\FileSystem\Local\File(),
         );
 
         $this->phpPrettifier = \Documentation\Generator\UsagePage\Prettifier\PhpPrettifier::getInstance($configuration);
@@ -54,6 +48,7 @@ class PhpPrettifierTest extends \PHPUnit\Framework\TestCase
 
         $result = $this->phpPrettifier->prettify($source);
 
+        $this->assertNotEmpty($result);
         $this->assertMatchesSnapshot($result);
     }
 }
