@@ -6,7 +6,7 @@ sidebar_position: 1
 
 ## Setup
 
-`PHP_VERSION` is the version of php to use during the development. Example: `8.1`
+`PHP_VERSION` is the version of php to use during the development. Example: `8.3`
 
 ```sh
 make build-php PHP_VERSION
