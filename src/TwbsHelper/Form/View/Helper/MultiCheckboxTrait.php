@@ -2,6 +2,10 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
+/**
+ * @phpstan-import-type ValueOptionSpec from \Laminas\Form\Element\MultiCheckbox
+ * @phpstan-type TwbsValueOptionSpec ValueOptionSpec
+ */
 trait MultiCheckboxTrait
 {
     use \TwbsHelper\Form\View\ElementHelperTrait;
@@ -74,14 +78,12 @@ trait MultiCheckboxTrait
     protected function prepareValueOptions(\Laminas\Form\Element\MultiCheckbox $multiCheckbox)
     {
         $valueOptions = $multiCheckbox->getValueOptions();
+
         foreach ($valueOptions as &$valueOption) {
+            /** @var ValueOptionSpec&TwbsValueOptionSpec $valueOption */
             // Skip from preparing simple string value
             if (!is_array($valueOption)) {
                 continue;
-            }
-
-            if (!$valueOption) {
-                $valueOption = [];
             }
 
             // Input attributes

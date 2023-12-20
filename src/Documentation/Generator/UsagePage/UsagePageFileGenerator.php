@@ -17,11 +17,6 @@ class UsagePageFileGenerator
     private $configuration;
 
     /**
-     * @var \Documentation\Generator\FileSystem\File
-     */
-    private $file;
-
-    /**
      * @var \Documentation\Test\Config
      */
     private $documentationTestConfig;
@@ -33,11 +28,9 @@ class UsagePageFileGenerator
 
     public function __construct(
         \Documentation\Generator\Configuration $configuration,
-        \Documentation\Generator\FileSystem\File $file,
         \Documentation\Test\Config $documentationTestConfig
     ) {
         $this->configuration = $configuration;
-        $this->file = $file;
         $this->documentationTestConfig = $documentationTestConfig;
     }
 
@@ -50,14 +43,16 @@ class UsagePageFileGenerator
             throw new \LogicException('Page directory path is undefined');
         }
 
-        if (!$this->file->dirExists($pageDirPath)) {
+        $file = $this->configuration->getFile();
+
+        if (!$file->dirExists($pageDirPath)) {
             mkdir($pageDirPath);
             $this->generateCategoryFile();
         }
 
         if ($content) {
             return
-                $this->file->appendFile(
+                $file->appendFile(
                     $pagePathInfo->pagePath,
                     $content,
                 );
@@ -102,7 +97,7 @@ class UsagePageFileGenerator
     {
         $usageDirPath = $this->configuration->getRootDirPath() . DIRECTORY_SEPARATOR . self::$USAGE_DIR_PATH;
 
-        if (!$this->file->dirExists($usageDirPath)) {
+        if (!$this->configuration->getFile()->dirExists($usageDirPath)) {
             throw new \LogicException('Usage dir path "' . $usageDirPath . '" does not exist');
         }
 
@@ -141,7 +136,7 @@ class UsagePageFileGenerator
     private function generateCategoryFile()
     {
         $pagePathInfo = $this->getPagePathInfo();
-        $this->file->writeFile(
+        $this->configuration->getFile()->writeFile(
             $pagePathInfo->dirPath . DIRECTORY_SEPARATOR . '_category_.json',
             sprintf(
                 self::$USAGE_PAGE_DIRECTORY_TEMPLATE,

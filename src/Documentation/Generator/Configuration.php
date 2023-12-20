@@ -24,16 +24,23 @@ class Configuration
      */
     private $maxNestedDir;
 
+    /**
+     * @var \Documentation\Generator\FileSystem\File
+     */
+    private $file;
+
     public function __construct(
         $rootDirPath,
         $testsDirPath,
         $bootstrapVersion,
-        $maxNestedDir
+        $maxNestedDir,
+        $file
     ) {
         $this->rootDirPath = $rootDirPath;
         $this->testsDirPath = $testsDirPath;
         $this->bootstrapVersion = $bootstrapVersion;
         $this->maxNestedDir = $maxNestedDir;
+        $this->file = $file;
     }
 
     public function getRootDirPath()
@@ -54,5 +61,10 @@ class Configuration
     public function getMaxNestedDir()
     {
         return $this->maxNestedDir;
+    }
+
+    public function getFile()
+    {
+        return $this->file;
     }
 }

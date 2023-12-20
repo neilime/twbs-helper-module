@@ -15,7 +15,6 @@ jobs:
     strategy:
       matrix:
         include:
-          - php-versions: "8.0"
           - php-versions: "8.1"
           - php-versions: "8.2"
             stable: true
@@ -40,7 +39,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+          key: ${{ runner.os }}-composer-${{ matrix.php-versions }}-${{ hashFiles('**/composer.json') }}
           restore-keys: ${{ runner.os }}-composer-
 
       - name: ⚙️ Install dependencies
@@ -52,23 +51,17 @@ jobs:
         uses: actions/cache@v3
         with:
           path: tools/cache
-          key: ${{ runner.os }}-test-${{ github.sha }}
+          key: ${{ runner.os }}-tools-${{ matrix.php-versions }}-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-test-
+            ${{ runner.os }}-tools-
 
       - name: 👕 Lint
+        if: matrix.stable
         run: composer php-cs-fixer -- --format=checkstyle | tools/vendor/bin/cs2pr
 
       - name: 🔬 Static analysis
+        if: matrix.stable
         run: composer stan -- --error-format=checkstyle | tools/vendor/bin/cs2pr
-
-      - name: ♻️ Test cache
-        uses: actions/cache@v3
-        with:
-          path: tests/.phpunit.result.cache
-          key: ${{ runner.os }}-test-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-test-
 
       - name: 🧪 Test
         run: composer test:ci
@@ -80,7 +73,7 @@ jobs:
           file: ./build/logs/clover.xml
 
       - name: 📃 Generate documentation
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && matrix.stable == 'true'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && matrix.stable
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PRIVATE_ACCESS_TOKEN }}
         run: |

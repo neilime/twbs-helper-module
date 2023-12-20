@@ -21,15 +21,24 @@ class UsagePageFileGeneratorTest extends \PHPUnit\Framework\TestCase
             '/tmp/test-dir',
             '/tmp/test-dir/tests',
             'x.x',
-            2
+            2,
+            $this->file
         );
         $config = new \Documentation\Test\Config();
 
         $this->usagePageFileGenerator = new \Documentation\Generator\UsagePage\UsagePageFileGenerator(
             $configuration,
-            $this->file,
             $config
         );
+    }
+
+    public function testGenerateShouldCreateUsagePage()
+    {
+        $this->file->expects($this->exactly(2))->method('dirExists')->withConsecutive(
+            ['/tmp/test-dir/website/docs/usage'],
+        )->willReturn(true);
+
+        $this->usagePageFileGenerator->generate('test');
     }
 
     public function testGenerateThrowsAnErrorWhenUsageDirPathDoesNotExist()

@@ -13,25 +13,21 @@ class HomePageGenerator
      */
     private $configuration;
 
-    /**
-     * @var \Documentation\Generator\FileSystem\File
-     */
-    private $file;
-
     public function __construct(
-        \Documentation\Generator\Configuration $configuration,
-        \Documentation\Generator\FileSystem\File $file
+        \Documentation\Generator\Configuration $configuration
     ) {
         $this->configuration = $configuration;
-        $this->file = $file;
     }
 
     public function generate()
     {
         $readmePath = $this->configuration->getRootDirPath() . DIRECTORY_SEPARATOR . self::$README_FILEPATH;
-        $readmeContent = $this->file->readFile($readmePath);
 
-        $this->file->writeFile(
+        $file = $this->configuration->getFile();
+
+        $readmeContent = $file->readFile($readmePath);
+
+        $file->writeFile(
             self::$HOMEPAGE_FILEPATH,
             '---' . PHP_EOL . 'title: Home' . PHP_EOL . '---' . PHP_EOL . PHP_EOL . $readmeContent
         );

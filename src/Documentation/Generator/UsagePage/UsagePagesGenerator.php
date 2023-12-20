@@ -12,22 +12,15 @@ class UsagePagesGenerator
     private $configuration;
 
     /**
-     * @var \Documentation\Generator\FileSystem\File
-     */
-    private $file;
-
-    /**
      * @var \Documentation\Test\Config[]
      */
     private $testConfigs = [];
 
     public function __construct(
         \Documentation\Generator\Configuration $configuration,
-        \Documentation\Generator\FileSystem\File $file,
         array $testConfigs
     ) {
         $this->configuration = $configuration;
-        $this->file = $file;
         $this->testConfigs = $testConfigs;
     }
 
@@ -53,10 +46,12 @@ class UsagePagesGenerator
         $usageDirPath = $this->getUsageDirPath();
         $usageDirectories = array_diff(scandir($usageDirPath), ['..', '.']);
 
+        $file = $this->configuration->getFile();
+
         foreach ($usageDirectories as $usageDirectory) {
             $directoryPath = $usageDirPath . DIRECTORY_SEPARATOR . $usageDirectory;
-            if ($this->file->dirExists($directoryPath)) {
-                $this->file->removeDir($directoryPath);
+            if ($file->dirExists($directoryPath)) {
+                $file->removeDir($directoryPath);
             }
         }
     }
@@ -77,7 +72,7 @@ class UsagePagesGenerator
     {
         $usageDirPath = $this->configuration->getRootDirPath() . DIRECTORY_SEPARATOR . self::$USAGE_DIR_PATH;
 
-        if (!$this->file->dirExists($usageDirPath)) {
+        if (!$this->configuration->getFile()->dirExists($usageDirPath)) {
             throw new \LogicException('Usage dir path "' . $usageDirPath . '" does not exist');
         }
 
@@ -91,7 +86,6 @@ class UsagePagesGenerator
     {
         $usagePageGenerator = new \Documentation\Generator\UsagePage\UsagePageGenerator(
             $this->configuration,
-            $this->file,
             $documentationTestConfig
         );
         $usagePageGenerator->generate();

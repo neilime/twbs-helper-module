@@ -20,11 +20,6 @@ class UsagePageGenerator
     private $configuration;
 
     /**
-     * @var \Documentation\Generator\FileSystem\File
-     */
-    private $file;
-
-    /**
      * @var \Documentation\Test\Config
      */
     private $documentationTestConfig;
@@ -36,11 +31,9 @@ class UsagePageGenerator
 
     public function __construct(
         \Documentation\Generator\Configuration $configuration,
-        \Documentation\Generator\FileSystem\File $file,
         \Documentation\Test\Config $documentationTestConfig
     ) {
         $this->configuration = $configuration;
-        $this->file = $file;
         $this->documentationTestConfig = $documentationTestConfig;
     }
 
@@ -48,15 +41,17 @@ class UsagePageGenerator
     {
         $usagePageFileGenerator = new \Documentation\Generator\UsagePage\UsagePageFileGenerator(
             $this->configuration,
-            $this->file,
             $this->documentationTestConfig
         );
 
         $pagePath = $usagePageFileGenerator->getPagePathInfo()->pagePath;
 
         if ($pagePath) {
+
+            $file = $this->configuration->getFile();
+
             foreach ($this->printers as $printerClass) {
-                $pageExists = $this->usagePageContent || $this->file->fileExists($pagePath);
+                $pageExists = $this->usagePageContent || $file->fileExists($pagePath);
 
                 $printer = new $printerClass(
                     $this->configuration,
