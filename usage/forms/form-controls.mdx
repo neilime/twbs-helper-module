@@ -1,0 +1,458 @@
+---
+sidebar_position: 2
+label: Form controls
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../src/components/HtmlCode.tsx";
+
+# Form controls
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/forms/form-control)
+
+## Example
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/forms/form-control/#example)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<form action="" id="form" method="POST" name="form" role="form">
+    <div class="mb-3">
+        <label class="form-label" for="exampleFormControlInput1">Email address</label>
+        <input class="form-control" id="exampleFormControlInput1" name="email" placeholder="name@example.com" type="email" value="">
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="exampleFormControlTextarea1">Example textarea</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" name="textarea" rows="3"></textarea>
+    </div>
+</form>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$factory = new \Laminas\Form\Factory();
+
+echo $this->form($factory->create([
+    'type' => 'form',
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'email',
+                'options' => [
+                    'label' => 'Email address',
+                ],
+                'attributes' => [
+                    'type' => 'email',
+                    'id' => 'exampleFormControlInput1',
+                    'placeholder' => 'name@example.com',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'textarea',
+                'options' => [
+                    'label' => 'Example textarea',
+                ],
+                'attributes' => [
+                    'type' => 'textarea',
+                    'id' => 'exampleFormControlTextarea1',
+                    'rows' => 3,
+                ],
+            ],
+        ],
+    ],
+]));
+```
+
+</TabItem>
+</Tabs>
+
+## Sizing
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/forms/form-control/#sizing)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<input aria-label=".form-control-lg example" class="form-control form-control-lg" name="lg" placeholder=".form-control-lg" type="text" value="">
+<br>
+<input aria-label="default input example" class="form-control" name="default" placeholder="Default input" type="text" value="">
+<br>
+<input aria-label=".form-control-sm example" class="form-control form-control-sm" name="sm" placeholder=".form-control-sm" type="text" value="">` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$factory = new \Laminas\Form\Factory();
+
+// Render large input
+$element = $factory->create([
+    'name' => 'lg',
+    'type' => 'text',
+    'options' => ['size' => 'lg'],
+    'attributes' => ['placeholder' => '.form-control-lg', 'aria-label' => '.form-control-lg example'],
+]);
+echo $this->formElement($element);
+
+echo PHP_EOL . '<br/>';
+
+// Render default input
+$element = $factory->create([
+    'name' => 'default',
+    'type' => 'text',
+    'attributes' => ['placeholder' => 'Default input', 'aria-label' => 'default input example'],
+]);
+echo $this->formElement($element);
+
+echo PHP_EOL . '<br/>';
+
+// Render small input
+$element = $factory->create([
+    'name' => 'sm',
+    'type' => 'text',
+    'options' => ['size' => 'sm'],
+    'attributes' => ['placeholder' => '.form-control-sm', 'aria-label' => '.form-control-sm example'],
+]);
+echo $this->formElement($element);
+```
+
+</TabItem>
+</Tabs>
+
+## Disabled
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/forms/form-control/#disabled)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<input aria-label="Disabled input example" class="form-control" disabled name="disabled-input" placeholder="Disabled input" type="text" value="">
+<br>
+<input aria-label="Disabled input example" class="form-control" disabled name="disabled-readonly-input" readonly type="text" value="Disabled readonly input">` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+// Render disabled input
+$factory = new \Laminas\Form\Factory();
+$element = $factory->create([
+    'name' => 'disabled-input',
+    'type' => 'text',
+    'attributes' => [
+        'disabled' => true,
+        'placeholder' => 'Disabled input',
+        'aria-label' => 'Disabled input example',
+    ],
+]);
+echo $this->formElement($element);
+
+echo PHP_EOL . '<br/>';
+
+// Render disabled and readonly input
+$element = $factory->create([
+    'name' => 'disabled-readonly-input',
+    'type' => 'text',
+    'attributes' => [
+        'disabled' => true,
+        'readonly' => true,
+        'value' => 'Disabled readonly input',
+        'aria-label' => 'Disabled input example',
+    ],
+]);
+echo $this->formElement($element);
+```
+
+</TabItem>
+</Tabs>
+
+## Readonly
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/forms/form-control/#readonly)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<input aria-label="readonly input example" class="form-control" name="readonly-input" readonly type="text" value="Readonly input here...">` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+// Render element
+$factory = new \Laminas\Form\Factory();
+$element = $factory->create([
+    'name' => 'readonly-input',
+    'type' => 'text',
+    'attributes' => [
+        'readonly' => true,
+        'value' => 'Readonly input here...',
+        'aria-label' => 'readonly input example',
+    ],
+]);
+echo $this->formElement($element);
+```
+
+</TabItem>
+</Tabs>
+
+## Readonly plain text
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/forms/#readonly-plain-text)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<form action="" id="form" method="POST" name="form" role="form">
+    <div class="mb-3 row">
+        <label class="col-form-label col-sm-2" for="staticEmail">Email</label>
+        <div class="col-sm-10">
+            <input class="form-control-plaintext" id="staticEmail" name="email" readonly type="email" value="email@example.com">
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label class="col-form-label col-sm-2" for="inputPassword">Password</label>
+        <div class="col-sm-10">
+            <input class="form-control" id="inputPassword" name="password" type="password" value="">
+        </div>
+    </div>
+</form>
+<br>
+<form action="" class="align-items-center row" id="form" method="POST" name="form" role="form">
+    <label class="visually-hidden" for="staticEmail2">Email</label>
+    <div class="col-auto">
+        <input class="form-control-plaintext" id="staticEmail2" name="email" readonly type="email" value="email@example.com">
+    </div>
+    <label class="visually-hidden" for="inputPassword2">Password</label>
+    <div class="col-auto">
+        <input class="form-control" id="inputPassword2" name="password" placeholder="Password" type="password" value="">
+    </div>
+    <div class="col-auto">
+        <button class="btn btn-primary mb-2" name="submit" type="submit" value="">Confirm identity</button>
+    </div>
+</form>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$factory = new \Laminas\Form\Factory();
+
+// Render horizontal form
+$form = $factory->create([
+    'type' => 'form',
+    'options' => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL],
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'email',
+                'options' => [
+                    'plaintext' => true,
+                    'column' => 'sm-10',
+                    'label' => 'Email',
+                ],
+                'attributes' => [
+                    'type' => 'email',
+                    'id' => 'staticEmail',
+                    'value' => 'email@example.com',
+                    'readonly' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'password',
+                'options' => [
+                    'column' => 'sm-10',
+                    'label' => 'Password',
+                ],
+                'attributes' => [
+                    'type' => 'password',
+                    'id' => 'inputPassword',
+                ],
+            ],
+        ],
+    ],
+]);
+
+echo $this->form($form);
+
+echo PHP_EOL . '<br/>';
+
+// Render inline form
+echo $this->form($factory->create([
+    'type' => 'form',
+    'options' => ['layout' => \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE],
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'email',
+                'options' => [
+                    'plaintext' => true,
+                    'label' => 'Email',
+                    'show_label' => false,
+                ],
+                'attributes' => [
+                    'type' => 'email',
+                    'id' => 'staticEmail2',
+                    'value' => 'email@example.com',
+                    'readonly' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'password',
+                'options' => [
+                    'label' => 'Password',
+                    'show_label' => false,
+                ],
+                'attributes' => [
+                    'type' => 'password',
+                    'id' => 'inputPassword2',
+                    'placeholder' => 'Password',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'submit',
+                'options' => ['label' => 'Confirm identity', 'variant' => 'primary'],
+                'attributes' => ['class' => 'mb-2'],
+            ],
+        ],
+    ],
+]));
+```
+
+</TabItem>
+</Tabs>
+
+## File input
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/forms/form-control/#file-input)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<form action="" id="form" method="POST" name="form" role="form">
+    <div class="mb-3">
+        <label class="form-label" for="formFile">Default file input example</label>
+        <input class="form-control" id="formFile" name="default-file" type="file">
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="formFileMultiple">Multiple files input example</label>
+        <input class="form-control" id="formFileMultiple" multiple name="file-multiple[]" type="file">
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="formFileDisabled">Disabled file input example</label>
+        <input class="form-control" disabled id="formFileDisabled" name="file-disabled" type="file">
+    </div>
+    <div class="mb-3">
+        <label class="col-form-label-sm form-label" for="formFileSm">Small file input example</label>
+        <input class="form-control form-control-sm" id="formFileSm" name="file-sm" type="file">
+    </div>
+    <div class="mb-3">
+        <label class="col-form-label-lg form-label" for="formFileLg">Large file input example</label>
+        <input class="form-control form-control-lg" id="formFileLg" name="file-lg" type="file">
+    </div>
+</form>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$factory = new \Laminas\Form\Factory();
+// Render inline form
+echo $this->form($factory->create([
+    'type' => 'form',
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'default-file',
+                'options' => [
+                    'label' => 'Default file input example',
+                ],
+                'attributes' => [
+                    'type' => 'file',
+                    'id' => 'formFile',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'file-multiple',
+                'options' => [
+                    'label' => 'Multiple files input example',
+                ],
+                'attributes' => [
+                    'multiple' => true,
+                    'type' => 'file',
+                    'id' => 'formFileMultiple',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'file-disabled',
+                'options' => [
+                    'label' => 'Disabled file input example',
+                ],
+                'attributes' => [
+                    'disabled' => true,
+                    'type' => 'file',
+                    'id' => 'formFileDisabled',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'file-sm',
+                'options' => [
+                    'size' => 'sm',
+                    'label' => 'Small file input example',
+                ],
+                'attributes' => [
+                    'type' => 'file',
+                    'id' => 'formFileSm',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'file-lg',
+                'options' => [
+                    'size' => 'lg',
+                    'label' => 'Large file input example',
+                ],
+                'attributes' => [
+                    'type' => 'file',
+                    'id' => 'formFileLg',
+                ],
+            ],
+        ],
+    ],
+]));
+```
+
+</TabItem>
+</Tabs>
+

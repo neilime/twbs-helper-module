@@ -1,0 +1,1444 @@
+---
+sidebar_position: 11
+label: Dropdowns
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../src/components/HtmlCode.tsx";
+
+# Dropdowns
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/dropdowns/)
+
+## Examples
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/dropdowns/#examples)
+
+### Single button
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/dropdowns/#single-button)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="dropdown">
+    <button aria-expanded="false" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" id="dropdownMenuButton1" name="dropdown" type="button" value="">Dropdown button</button>
+    <ul aria-labelledby="dropdownMenuButton1" class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+</div>
+<br>
+<div class="dropdown">
+    <a aria-expanded="false" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownMenuLink" role="button">Dropdown link</a>
+    <ul aria-labelledby="dropdownMenuLink" class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+</div>
+<br>
+<div class="btn-group">
+    <button aria-expanded="false" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" name="dropdown" type="button" value="">Dropdown</button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+</div>
+<div class="btn-group">
+    <button aria-expanded="false" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" name="dropdown" type="button" value="">Dropdown</button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+</div>
+<div class="btn-group">
+    <button aria-expanded="false" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" name="dropdown" type="button" value="">Dropdown</button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+</div>
+<div class="btn-group">
+    <button aria-expanded="false" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" name="dropdown" type="button" value="">Dropdown</button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+</div>
+<div class="btn-group">
+    <button aria-expanded="false" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" name="dropdown" type="button" value="">Dropdown</button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+</div>
+<div class="btn-group">
+    <button aria-expanded="false" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" name="dropdown" type="button" value="">Dropdown</button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Dropdown button',
+        'dropdown' => ['Action', 'Another action', 'Something else here'],
+    ],
+    'attributes' => ['id' => 'dropdownMenuButton1'],
+]);
+
+echo PHP_EOL . '<br/>';
+
+// With <a> elements
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'tag' => 'a',
+        'label' => 'Dropdown link',
+        'dropdown' => ['Action', 'Another action', 'Something else here'],
+    ],
+    'attributes' => ['id' => 'dropdownMenuLink'],
+]);
+
+echo PHP_EOL . '<br/>';
+
+// Variations
+foreach (
+    [
+        'primary', 'secondary', 'success',
+        'info', 'warning', 'danger',
+    ] as $variant
+) {
+    echo $this->formButton()->renderSpec([
+        'name' => 'dropdown',
+        'options' => [
+            'variant' => $variant,
+            'label' => 'Dropdown',
+            'dropdown' => [
+                'attributes' => ['class' => 'btn-group'],
+                'items' => [
+                    'Action',
+                    'Another action',
+                    'Something else here',
+                    '---',
+                    'Separated link',
+                ],
+            ],
+        ],
+    ]);
+}
+```
+
+</TabItem>
+</Tabs>
+
+### Split button
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/dropdowns/#split-button)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="btn-group">
+    <button class="btn btn-primary" name="dropdown" type="button" value="">Dropdown</button>
+    <button aria-expanded="false" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" name="dropdown-toggle" type="button" value=""><span class="visually-hidden">Toggle Dropdown</span></button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+</div>
+<div class="btn-group">
+    <button class="btn btn-secondary" name="dropdown" type="button" value="">Dropdown</button>
+    <button aria-expanded="false" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" name="dropdown-toggle" type="button" value=""><span class="visually-hidden">Toggle Dropdown</span></button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+</div>
+<div class="btn-group">
+    <button class="btn btn-success" name="dropdown" type="button" value="">Dropdown</button>
+    <button aria-expanded="false" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" name="dropdown-toggle" type="button" value=""><span class="visually-hidden">Toggle Dropdown</span></button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+</div>
+<div class="btn-group">
+    <button class="btn btn-info" name="dropdown" type="button" value="">Dropdown</button>
+    <button aria-expanded="false" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" name="dropdown-toggle" type="button" value=""><span class="visually-hidden">Toggle Dropdown</span></button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+</div>
+<div class="btn-group">
+    <button class="btn btn-warning" name="dropdown" type="button" value="">Dropdown</button>
+    <button aria-expanded="false" class="btn btn-warning dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" name="dropdown-toggle" type="button" value=""><span class="visually-hidden">Toggle Dropdown</span></button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+</div>
+<div class="btn-group">
+    <button class="btn btn-danger" name="dropdown" type="button" value="">Dropdown</button>
+    <button aria-expanded="false" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" name="dropdown-toggle" type="button" value=""><span class="visually-hidden">Toggle Dropdown</span></button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+foreach (
+    [
+        'primary', 'secondary', 'success',
+        'info', 'warning', 'danger',
+    ] as $variant
+) {
+    echo $this->formButton()->renderSpec([
+        'name' => 'dropdown',
+        'options' => [
+            'variant' => $variant,
+            'label' => 'Dropdown',
+            'dropdown' => [
+                'split' => 'Toggle Dropdown',
+                'items' => [
+                    'Action',
+                    'Another action',
+                    'Something else here',
+                    '---',
+                    'Separated link',
+                ],
+            ],
+        ],
+    ]);
+}
+```
+
+</TabItem>
+</Tabs>
+
+## Sizing
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/dropdowns/#sizing)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="btn-group">
+    <button aria-expanded="false" class="btn btn-lg btn-secondary dropdown-toggle" data-bs-toggle="dropdown" name="dropdown" type="button" value="">Large button</button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+</div>
+<div class="btn-group">
+    <button class="btn btn-lg btn-secondary" name="dropdown" type="button" value="">Large button</button>
+    <button aria-expanded="false" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" name="dropdown-toggle" type="button" value=""><span class="visually-hidden">Toggle Dropdown</span></button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+</div>
+<br><br>
+<div class="btn-group">
+    <button aria-expanded="false" class="btn btn-secondary btn-sm dropdown-toggle" data-bs-toggle="dropdown" name="dropdown" type="button" value="">Small button</button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+</div>
+<div class="btn-group">
+    <button class="btn btn-secondary btn-sm" name="dropdown" type="button" value="">Small button</button>
+    <button aria-expanded="false" class="btn btn-secondary btn-sm dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" name="dropdown-toggle" type="button" value=""><span class="visually-hidden">Toggle Dropdown</span></button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+// Large button
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Large button',
+        'size' => 'lg',
+        'dropdown' => [
+            'attributes' => ['class' => 'btn-group'],
+            'items' => ['Action', 'Another action', 'Something else here', '---', 'Separated link'],
+        ],
+    ],
+]);
+
+// Large split button
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Large button',
+        'size' => 'lg',
+        'dropdown' => [
+            'split' => 'Toggle Dropdown',
+            'items' => ['Action', 'Another action', 'Something else here', '---', 'Separated link'],
+        ],
+    ],
+]);
+
+echo PHP_EOL . '<br/><br/>';
+
+// Small button
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Small button',
+        'size' => 'sm',
+        'dropdown' => [
+            'attributes' => ['class' => 'btn-group'],
+            'items' => ['Action', 'Another action', 'Something else here', '---', 'Separated link'],
+        ],
+    ],
+]);
+
+// Small split button
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Small button',
+        'size' => 'sm',
+        'dropdown' => [
+            'split' => 'Toggle Dropdown',
+            'items' => ['Action', 'Another action', 'Something else here', '---', 'Separated link'],
+        ],
+    ],
+]);
+```
+
+</TabItem>
+</Tabs>
+
+## Dark dropdowns
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/dropdowns/#dark-dropdowns)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="dropdown">
+    <button aria-expanded="false" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" id="dropdownMenuButton2" name="dropdown" type="button" value="">Dropdown button</button>
+    <ul aria-labelledby="dropdownMenuButton2" class="dropdown-menu dropdown-menu-dark">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+</div>
+<br>
+<nav class="bg-dark navbar navbar-dark navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-bs-target="#navbarNavDarkDropdown" data-bs-toggle="collapse" name="button" type="button" value=""></button>
+        <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+            <ul class="navbar-nav">
+                <li class="dropdown nav-item">
+                    <a aria-expanded="false" class="dropdown-toggle nav-link" data-bs-toggle="dropdown" href="#" id="navbarDarkDropdownMenuLink" role="button">Dropdown</a>
+                    <ul aria-labelledby="navbarDarkDropdownMenuLink" class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Dropdown button',
+        'dropdown' => [
+            'dark' => true,
+            'items' => [
+                'Action',
+                'Another action',
+                'Something else here',
+                '---',
+                'Separated link',
+            ],
+        ],
+    ],
+    'attributes' => ['id' => 'dropdownMenuButton2'],
+]);
+
+echo PHP_EOL . '<br/>';
+
+echo $this->navigation()->navbar()->render(
+    new \Laminas\Navigation\Navigation([
+
+        [
+            'type' => \TwbsHelper\Navigation\Page\DropdownPage::class,
+            'label' => 'Dropdown',
+            'dropdown' => [
+                'dark' => true,
+                'items' => [
+                    'Action',
+                    'Another action',
+                    'Something else here',
+                ],
+                'attributes' => ['id' => 'navbarDarkDropdownMenuLink'],
+            ],
+        ],
+    ]),
+    [
+        'brand' => 'Navbar',
+        'variant' => 'dark',
+        'background' => 'dark',
+        'container' => 'fluid',
+        'attributes' => ['id' => 'navbarNavDarkDropdown'],
+    ]
+);
+```
+
+</TabItem>
+</Tabs>
+
+## Directions
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/dropdowns/#directions)
+
+### Dropup
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/dropdowns/#dropup)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="btn-group dropup">
+    <button aria-expanded="false" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" name="dropup" type="button" value="">Dropup</button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+</div>
+<div class="btn-group dropup">
+    <button class="btn btn-secondary" name="split-dropup" type="button" value="">Split dropup</button>
+    <button aria-expanded="false" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" name="split-dropup-toggle" type="button" value=""><span class="visually-hidden">Toggle Dropdown</span></button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+// Dropup button
+echo $this->formButton()->renderSpec([
+    'name' => 'dropup',
+    'options' => [
+        'label' => 'Dropup',
+        'dropdown' => [
+            'direction' => 'up',
+            'attributes' => ['class' => 'btn-group'],
+            'items' => [
+                'Action',
+                'Another action',
+                'Something else here',
+                '---',
+                'Separated link',
+            ],
+        ],
+    ],
+]);
+
+// Dropup split button
+echo $this->formButton()->renderSpec([
+    'name' => 'split-dropup',
+    'options' => [
+        'label' => 'Split dropup',
+        'dropdown' => [
+            'direction' => 'up',
+            'split' => 'Toggle Dropdown',
+            'items' => [
+                'Action',
+                'Another action',
+                'Something else here',
+                '---',
+                'Separated link',
+            ],
+        ],
+    ],
+]);
+```
+
+</TabItem>
+</Tabs>
+
+### Dropright
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/dropdowns/#dropright)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="btn-group dropend">
+    <button aria-expanded="false" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" name="dropend" type="button" value="">Dropright</button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+</div>
+<div class="btn-group dropend">
+    <button class="btn btn-secondary" name="split-dropend" type="button" value="">Split dropend</button>
+    <button aria-expanded="false" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" name="split-dropend-toggle" type="button" value=""><span class="visually-hidden">Toggle Dropdown</span></button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+// Dropend button
+echo $this->formButton()->renderSpec([
+    'name' => 'dropend',
+    'options' => [
+        'label' => 'Dropright',
+        'dropdown' => [
+            'direction' => 'end',
+            'attributes' => ['class' => 'btn-group'],
+            'items' => [
+                'Action',
+                'Another action',
+                'Something else here',
+                '---',
+                'Separated link',
+            ],
+        ],
+    ],
+]);
+
+// Dropend split button
+echo $this->formButton()->renderSpec([
+    'name' => 'split-dropend',
+    'options' => [
+        'label' => 'Split dropend',
+        'dropdown' => [
+            'direction' => 'end',
+            'split' => 'Toggle Dropdown',
+            'items' => [
+                'Action',
+                'Another action',
+                'Something else here',
+                '---',
+                'Separated link',
+            ],
+        ],
+    ],
+]);
+```
+
+</TabItem>
+</Tabs>
+
+### Dropleft
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/dropdowns/#dropleft)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="btn-group dropstart">
+    <button aria-expanded="false" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" name="dropstart" type="button" value="">Dropleft</button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+</div>
+<div class="btn-group dropstart">
+    <button class="btn btn-secondary" name="split-dropstart" type="button" value="">Split dropstart</button>
+    <button aria-expanded="false" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" name="split-dropstart-toggle" type="button" value=""><span class="visually-hidden">Toggle Dropdown</span></button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+    </ul>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+// Dropstart button
+echo $this->formButton()->renderSpec([
+    'name' => 'dropstart',
+    'options' => [
+        'label' => 'Dropleft',
+        'dropdown' => [
+            'direction' => 'start',
+            'attributes' => ['class' => 'btn-group'],
+            'items' => [
+                'Action',
+                'Another action',
+                'Something else here',
+                '---',
+                'Separated link',
+            ],
+        ],
+    ],
+]);
+
+// Dropstart split button
+echo $this->formButton()->renderSpec([
+    'name' => 'split-dropstart',
+    'options' => [
+        'label' => 'Split dropstart',
+        'dropdown' => [
+            'direction' => 'start',
+            'split' => 'Toggle Dropdown',
+            'items' => [
+                'Action',
+                'Another action',
+                'Something else here',
+                '---',
+                'Separated link',
+            ],
+        ],
+    ],
+]);
+```
+
+</TabItem>
+</Tabs>
+
+## Menu items
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/dropdowns/#menu-items)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="dropdown">
+    <button aria-expanded="false" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" id="dropdownMenu2" name="dropdown" type="button" value="">Dropdown</button>
+    <ul aria-labelledby="dropdownMenu2" class="dropdown-menu">
+        <li><button class="dropdown-item" type="button">Action</button></li>
+        <li><button class="dropdown-item" type="button">Another action</button></li>
+        <li><button class="dropdown-item" type="button">Something else here</button></li>
+    </ul>
+</div>
+<br>
+<ul class="dropdown-menu">
+    <li><span class="dropdown-item-text">Dropdown item text</span></li>
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+</ul>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Dropdown',
+        'dropdown' => [
+            'type' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_BUTTON,
+            'items' => ['Action', 'Another action', 'Something else here'],
+        ],
+    ],
+    'attributes' => ['id' => 'dropdownMenu2'],
+]);
+
+echo PHP_EOL . '<br/>';
+
+// Non-interactive dropdown items
+echo $this->dropdown()->renderMenu([
+    'Dropdown item text' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_TEXT,
+    'Action',
+    'Another action',
+    'Something else here',
+]);
+```
+
+</TabItem>
+</Tabs>
+
+### Active
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/dropdowns/#active)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Regular link</a></li>
+    <li><a aria-current="true" class="active dropdown-item" href="#">Active link</a></li>
+    <li><a class="dropdown-item" href="#">Another link</a></li>
+</ul>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->dropdown()->renderMenu([
+    'Regular link',
+    'Active link' => ['active' => true],
+    'Another link',
+]);
+```
+
+</TabItem>
+</Tabs>
+
+### Disabled
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/dropdowns/#disabled)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Regular link</a></li>
+    <li><a aria-disabled="true" class="disabled dropdown-item" href="#" tabindex="-1">Disabled link</a></li>
+    <li><a class="dropdown-item" href="#">Another link</a></li>
+</ul>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->dropdown()->renderMenu([
+    'Regular link',
+    'Disabled link' => ['disabled' => true],
+    'Another link',
+]);
+```
+
+</TabItem>
+</Tabs>
+
+## Menu alignment
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/dropdowns/#menu-alignment)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="dropdown">
+    <button aria-expanded="false" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" name="dropdown" type="button" value="">Right-aligned menu example</button>
+    <ul class="dropdown-menu dropdown-menu-end">
+        <li><button class="dropdown-item" type="button">Action</button></li>
+        <li><button class="dropdown-item" type="button">Another action</button></li>
+        <li><button class="dropdown-item" type="button">Something else here</button></li>
+    </ul>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Right-aligned menu example',
+        'dropdown' => [
+            'alignment' => 'end',
+            'type' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_BUTTON,
+            'items' => ['Action', 'Another action', 'Something else here'],
+        ],
+    ],
+]);
+```
+
+</TabItem>
+</Tabs>
+
+### Responsive alignment
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/dropdowns/#responsive-alignment)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="dropdown">
+    <button aria-expanded="false" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" name="dropdown" type="button" value="">Left-aligned but right aligned when large screen</button>
+    <ul class="dropdown-menu dropdown-menu-lg-end">
+        <li><button class="dropdown-item" type="button">Action</button></li>
+        <li><button class="dropdown-item" type="button">Another action</button></li>
+        <li><button class="dropdown-item" type="button">Something else here</button></li>
+    </ul>
+</div>
+<br>
+<div class="dropdown">
+    <button aria-expanded="false" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" name="dropdown" type="button" value="">Left-aligned but right aligned when large screen</button>
+    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+        <li><button class="dropdown-item" type="button">Action</button></li>
+        <li><button class="dropdown-item" type="button">Another action</button></li>
+        <li><button class="dropdown-item" type="button">Something else here</button></li>
+    </ul>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Left-aligned but right aligned when large screen',
+        'dropdown' => [
+            'alignment' => 'lg-end',
+            'type' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_BUTTON,
+            'items' => ['Action', 'Another action', 'Something else here'],
+        ],
+    ],
+]);
+
+echo PHP_EOL . '<br/>';
+
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Left-aligned but right aligned when large screen',
+        'dropdown' => [
+            'alignment' => ['end', 'lg-start'],
+            'type' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_BUTTON,
+            'items' => ['Action', 'Another action', 'Something else here'],
+        ],
+    ],
+]);
+```
+
+</TabItem>
+</Tabs>
+
+### Alignment options
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/dropdowns/#alignment-options)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="dropdown">
+    <button aria-expanded="false" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" name="dropdown" type="button" value="">Dropdown</button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+</div>
+<br>
+<div class="dropdown">
+    <button aria-expanded="false" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" name="dropdown" type="button" value="">Right-aligned menu</button>
+    <ul class="dropdown-menu dropdown-menu-end">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+</div>
+<br>
+<div class="dropdown">
+    <button aria-expanded="false" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" name="dropdown" type="button" value="">Left-aligned, right-aligned lg</button>
+    <ul class="dropdown-menu dropdown-menu-lg-end">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+</div>
+<br>
+<div class="dropdown">
+    <button aria-expanded="false" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" name="dropdown" type="button" value="">Right-aligned, left-aligned lg</button>
+    <ul class="dropdown-menu dropdown-menu-lg-start">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+</div>
+<br>
+<div class="dropstart">
+    <button aria-expanded="false" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" name="dropdown" type="button" value="">Dropstart</button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+</div>
+<br>
+<div class="dropend">
+    <button aria-expanded="false" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" name="dropdown" type="button" value="">Dropend</button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+</div>
+<br>
+<div class="dropup">
+    <button aria-expanded="false" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" name="dropdown" type="button" value="">Dropup</button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+</div>
+<br>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+
+// Alignments
+foreach (
+    [
+        'Dropdown' => null,
+        'Right-aligned menu' => 'end',
+        'Left-aligned, right-aligned lg' => 'lg-end',
+        'Right-aligned, left-aligned lg' => 'lg-start',
+    ] as $label => $alignment
+) {
+    echo $this->formButton()->renderSpec([
+        'name' => 'dropdown',
+        'options' => [
+            'label' => $label,
+            'dropdown' => [
+                'alignment' => $alignment,
+                'items' => ['Action', 'Another action', 'Something else here'],
+            ],
+        ],
+    ]);
+
+    echo PHP_EOL . '<br/>';
+}
+
+// Directions
+foreach (
+    [
+        'Dropstart' => 'start',
+        'Dropend' => 'end',
+        'Dropup' => 'up',
+    ] as $label => $direction
+) {
+    echo $this->formButton()->renderSpec([
+        'name' => 'dropdown',
+        'options' => [
+            'label' => $label,
+            'dropdown' => [
+                'direction' => $direction,
+                'items' => ['Action', 'Another action', 'Something else here'],
+            ],
+        ],
+    ]);
+
+    echo PHP_EOL . '<br/>';
+}
+```
+
+</TabItem>
+</Tabs>
+
+## Menu content
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/dropdowns/#menu-content)
+
+### Headers
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/dropdowns/#headers)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<ul class="dropdown-menu">
+    <li><h6 class="dropdown-header">Dropdown header</h6></li>
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+</ul>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->dropdown()->renderMenu([
+    'Dropdown header' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_HEADER,
+    'Action',
+    'Another action',
+]);
+```
+
+</TabItem>
+</Tabs>
+
+### Dividers
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/dropdowns/#headers)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="#">Separated link</a></li>
+</ul>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->dropdown()->renderMenu([
+    'Action',
+    'Another action',
+    'Something else here',
+    '---',
+    'Separated link',
+]);
+```
+
+</TabItem>
+</Tabs>
+
+### Text
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/dropdowns/#headers)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<ul class="dropdown-menu p-4 text-muted" style="max-width: 200px;">
+    <li><p>Some example text that's free-flowing within the dropdown menu.</p></li>
+    <li><p class="mb-0">And this is more example text.</p></li>
+</ul>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->dropdown()->renderMenu([
+    '<p>Some example text that\'s free-flowing within the dropdown menu.</p>',
+    '<p class="mb-0">And this is more example text.</p>',
+], ['class' => 'p-4 text-muted', 'style' => 'max-width: 200px;']);
+```
+
+</TabItem>
+</Tabs>
+
+### Forms
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/dropdowns/#forms)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<ul class="dropdown-menu">
+    <li>
+        <form action="" class="px-4 py-3" id="dropdown" method="POST" name="dropdown" role="form">
+            <div class="mb-3">
+                <label class="form-label" for="exampleDropdownFormEmail1">Email address</label>
+                <input class="form-control" id="exampleDropdownFormEmail1" name="email" placeholder="email@example.com" type="email" value="">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="exampleDropdownFormPassword1">Password</label>
+                <input class="form-control" id="exampleDropdownFormPassword1" name="password" placeholder="Password" type="password" value="">
+            </div>
+            <div class="mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" id="dropdownCheck" name="remember_me" type="checkbox" value="1">
+                    <label class="form-check-label" for="dropdownCheck">Remember me</label>
+                </div>
+            </div>
+            <button class="btn btn-primary" name="submit" type="submit" value="">Sign in</button>
+        </form>
+    </li>
+    <li><hr class="dropdown-divider"></li>
+    <li><a class="dropdown-item" href="#">New around here? Sign up</a></li>
+    <li><a class="dropdown-item" href="#">Forgot password?</a></li>
+</ul>
+<br>
+<form action="" class="dropdown-menu p-4" id="dropdown" method="POST" name="dropdown" role="form">
+    <div class="mb-3">
+        <label class="form-label" for="exampleDropdownFormEmail1">Email address</label>
+        <input class="form-control" id="exampleDropdownFormEmail1" name="email" placeholder="email@example.com" type="email" value="">
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="exampleDropdownFormPassword1">Password</label>
+        <input class="form-control" id="exampleDropdownFormPassword1" name="password" placeholder="Password" type="password" value="">
+    </div>
+    <div class="mb-3">
+        <div class="form-check">
+            <input class="form-check-input" id="dropdownCheck" name="remember_me" type="checkbox" value="1">
+            <label class="form-check-label" for="dropdownCheck">Remember me</label>
+        </div>
+    </div>
+    <button class="btn btn-primary" name="submit" type="submit" value="">Sign in</button>
+</form>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+
+// Create form
+$factory = new \Laminas\Form\Factory();
+$form = $factory->create([
+    'type' => 'form',
+    'name' => 'dropdown',
+    'attributes' => ['class' => 'px-4 py-3'],
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'email',
+                'options' => ['label' => 'Email address'],
+                'attributes' => [
+                    'type' => 'email',
+                    'id' => 'exampleDropdownFormEmail1',
+                    'placeholder' => 'email@example.com',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'password',
+                'options' => ['label' => 'Password'],
+                'attributes' => [
+                    'type' => 'password',
+                    'id' => 'exampleDropdownFormPassword1',
+                    'placeholder' => 'Password',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'checkbox',
+                'name' => 'remember_me',
+                'options' => ['label' => 'Remember me', 'use_hidden_element' => false],
+                'attributes' => [
+                    'id' => 'dropdownCheck',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'type' => 'submit',
+                'options' => ['label' => 'Sign in', 'variant' => 'primary'],
+            ],
+        ],
+    ],
+]);
+
+echo $this->dropdown()->renderMenu([
+    $form,
+    '---',
+    'New around here? Sign up',
+    'Forgot password?',
+]);
+
+echo PHP_EOL . '<br/>';
+
+$form->setAttribute('class', 'dropdown-menu p-4');
+echo $this->form($form);
+```
+
+</TabItem>
+</Tabs>
+
+## Dropdown options
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/dropdowns/#dropdown-options)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="d-flex">
+<div class="dropdown me-1">
+    <button aria-expanded="false" class="btn btn-secondary dropdown-toggle" data-bs-offset="10,20" data-bs-toggle="dropdown" id="dropdownMenuOffset" name="dropdown" type="button" value="">Offset</button>
+    <ul aria-labelledby="dropdownMenuOffset" class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+</div>
+<div class="btn-group">
+    <button class="btn btn-secondary" name="dropdown" type="button" value="">Reference</button>
+    <button aria-expanded="false" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-reference="parent" data-bs-toggle="dropdown" id="dropdownMenuReference" name="dropdown-toggle" type="button" value=""><span class="visually-hidden">Reference</span></button>
+    <ul aria-labelledby="dropdownMenuReference" class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+</div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+
+echo '<div class="d-flex">';
+
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Offset',
+        'dropdown' => [
+            'attributes' => ['class' => 'me-1'],
+            'offset' => '10,20',
+            'items' => ['Action', 'Another action', 'Something else here'],
+        ],
+    ],
+    'attributes' => ['id' => 'dropdownMenuOffset'],
+]);
+
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Reference',
+        'dropdown' => [
+            'split' => [
+                'attributes' => ['data-bs-reference' => 'parent', 'id' => 'dropdownMenuReference'],
+            ],
+            'items' => ['Action', 'Another action', 'Something else here'],
+        ],
+    ],
+]);
+
+echo PHP_EOL . '</div>';
+```
+
+</TabItem>
+</Tabs>
+
+### Auto close behavior
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/dropdowns/#auto-close-behavior)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="dropdown">
+    <button aria-expanded="false" class="btn btn-secondary dropdown-toggle" data-bs-auto-close="true" data-bs-toggle="dropdown" id="defaultDropdown" name="dropdown" type="button" value="">Default dropdown</button>
+    <ul aria-labelledby="defaultDropdown" class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Menu item</a></li>
+        <li><a class="dropdown-item" href="#">Menu item</a></li>
+        <li><a class="dropdown-item" href="#">Menu item</a></li>
+    </ul>
+</div>
+<br>
+<div class="dropdown">
+    <button aria-expanded="false" class="btn btn-secondary dropdown-toggle" data-bs-auto-close="inside" data-bs-toggle="dropdown" id="dropdownMenuClickableOutside" name="dropdown" type="button" value="">Clickable outside</button>
+    <ul aria-labelledby="dropdownMenuClickableOutside" class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Menu item</a></li>
+        <li><a class="dropdown-item" href="#">Menu item</a></li>
+        <li><a class="dropdown-item" href="#">Menu item</a></li>
+    </ul>
+</div>
+<br>
+<div class="dropdown">
+    <button aria-expanded="false" class="btn btn-secondary dropdown-toggle" data-bs-auto-close="outside" data-bs-toggle="dropdown" id="dropdownMenuClickableInside" name="dropdown" type="button" value="">Clickable inside</button>
+    <ul aria-labelledby="dropdownMenuClickableInside" class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Menu item</a></li>
+        <li><a class="dropdown-item" href="#">Menu item</a></li>
+        <li><a class="dropdown-item" href="#">Menu item</a></li>
+    </ul>
+</div>
+<br>
+<div class="dropdown">
+    <button aria-expanded="false" class="btn btn-secondary dropdown-toggle" data-bs-auto-close="false" data-bs-toggle="dropdown" id="dropdownMenuClickable" name="dropdown" type="button" value="">Manual close</button>
+    <ul aria-labelledby="dropdownMenuClickable" class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Menu item</a></li>
+        <li><a class="dropdown-item" href="#">Menu item</a></li>
+        <li><a class="dropdown-item" href="#">Menu item</a></li>
+    </ul>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Default dropdown',
+        'dropdown' => [
+            'auto_close' => true,
+            'items' => ['Menu item', 'Menu item', 'Menu item'],
+        ],
+    ],
+    'attributes' => ['id' => 'defaultDropdown'],
+]);
+
+echo PHP_EOL . '<br/>';
+
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Clickable outside',
+        'dropdown' => [
+            'auto_close' => 'inside',
+            'items' => ['Menu item', 'Menu item', 'Menu item'],
+        ],
+    ],
+    'attributes' => ['id' => 'dropdownMenuClickableOutside'],
+]);
+
+echo PHP_EOL . '<br/>';
+
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Clickable inside',
+        'dropdown' => [
+            'auto_close' => 'outside',
+            'items' => ['Menu item', 'Menu item', 'Menu item'],
+        ],
+    ],
+    'attributes' => ['id' => 'dropdownMenuClickableInside'],
+]);
+
+echo PHP_EOL . '<br/>';
+
+echo $this->formButton()->renderSpec([
+    'name' => 'dropdown',
+    'options' => [
+        'label' => 'Manual close',
+        'dropdown' => [
+            'auto_close' => false,
+            'items' => ['Menu item', 'Menu item', 'Menu item'],
+        ],
+    ],
+    'attributes' => ['id' => 'dropdownMenuClickable'],
+]);
+```
+
+</TabItem>
+</Tabs>
+

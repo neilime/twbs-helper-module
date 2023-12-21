@@ -1,0 +1,392 @@
+---
+sidebar_position: 16
+label: Offcanvas
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../src/components/HtmlCode.tsx";
+
+# Offcanvas
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/offcanvas/)
+
+## Examples
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/offcanvas/#examples)
+
+### Offcanvas components
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/offcanvas/#offcanvas-components)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div aria-labelledby="offcanvasLabel" class="offcanvas offcanvas-start" id="offcanvas" tabindex="-1">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasLabel">Offcanvas</h5>
+        <button aria-label="Close" class="btn-close text-reset" data-bs-dismiss="offcanvas" name="button" type="button" value=""></button>
+    </div>
+    <div class="offcanvas-body">
+        Content for the offcanvas goes here. You can place just about any Bootstrap component or custom elements here.
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->offcanvas(
+    'Content for the offcanvas goes here. ' .
+'You can place just about any Bootstrap component or custom elements here.',
+    [
+        'header' => [
+            'title' => [
+                'content' => 'Offcanvas',
+                'attributes' => [
+                    'id' => 'offcanvasLabel',
+                ],
+            ],
+        ],
+        'id' => 'offcanvas',
+    ]
+);
+```
+
+</TabItem>
+</Tabs>
+
+### Live demo
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/offcanvas/#live-demo)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<a aria-controls="offcanvasExample" class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button">Link with href</a>
+<button aria-controls="offcanvasExample" class="btn btn-primary" data-bs-target="#offcanvasExample" data-bs-toggle="offcanvas" name="button" type="button" value="">Button with data-bs-target</button>
+<div aria-labelledby="offcanvasExampleLabel" class="offcanvas offcanvas-start" id="offcanvasExample" tabindex="-1">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+        <button aria-label="Close" class="btn-close text-reset" data-bs-dismiss="offcanvas" name="button" type="button" value=""></button>
+    </div>
+    <div class="offcanvas-body">
+        <div>
+            Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+        </div>
+        <div class="dropdown mt-3">
+            <button aria-expanded="false" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" id="dropdownMenuButton" name="button" type="button" value="">Dropdown button</button>
+            <ul aria-labelledby="dropdownMenuButton" class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->offcanvas(
+    '<div>' .
+'    Some text as placeholder. In real life you can have the elements you have chosen. ' .
+'Like, text, images, lists, etc.' .
+'</div>' .
+$this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Dropdown button',
+        'dropdown' => [
+            'items' => ['Action', 'Another action', 'Something else here'],
+            'attributes' => ['class' => 'mt-3'],
+        ],
+    ],
+    'attributes' => ['id' => 'dropdownMenuButton'],
+]),
+    [
+        'triggers' => [
+            [
+                'options' => [
+                    'variant' => 'primary',
+                    'label' => 'Link with href',
+                    'tag' => 'a',
+                ],
+            ],
+            [
+                'options' => [
+                    'variant' => 'primary',
+                    'label' => 'Button with data-bs-target',
+                ],
+            ],
+        ],
+        'header' => [
+            'title' => [
+                'content' => 'Offcanvas',
+                'attributes' => [
+                    'id' => 'offcanvasExampleLabel',
+                ],
+            ],
+        ],
+        'id' => 'offcanvasExample',
+    ]
+);
+```
+
+</TabItem>
+</Tabs>
+
+## Placement
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/offcanvas/#placement)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<button aria-controls="offcanvasTop" class="btn btn-primary" data-bs-target="#offcanvasTop" data-bs-toggle="offcanvas" name="button" type="button" value="">Toggle top offcanvas</button>
+<div aria-labelledby="offcanvasTopLabel" class="offcanvas offcanvas-top" id="offcanvasTop" tabindex="-1">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasTopLabel">Offcanvas top</h5>
+        <button aria-label="Close" class="btn-close text-reset" data-bs-dismiss="offcanvas" name="button" type="button" value=""></button>
+    </div>
+    <div class="offcanvas-body">
+        ...
+    </div>
+</div>
+<br>
+<button aria-controls="offcanvasRight" class="btn btn-primary" data-bs-target="#offcanvasRight" data-bs-toggle="offcanvas" name="button" type="button" value="">Toggle right offcanvas</button>
+<div aria-labelledby="offcanvasRightLabel" class="offcanvas offcanvas-end" id="offcanvasRight" tabindex="-1">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
+        <button aria-label="Close" class="btn-close text-reset" data-bs-dismiss="offcanvas" name="button" type="button" value=""></button>
+    </div>
+    <div class="offcanvas-body">
+        ...
+    </div>
+</div>
+<br>
+<button aria-controls="offcanvasBottom" class="btn btn-primary" data-bs-target="#offcanvasBottom" data-bs-toggle="offcanvas" name="button" type="button" value="">Toggle bottom offcanvas</button>
+<div aria-labelledby="offcanvasBottomLabel" class="offcanvas offcanvas-bottom" id="offcanvasBottom" tabindex="-1">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasBottomLabel">Offcanvas bottom</h5>
+        <button aria-label="Close" class="btn-close text-reset" data-bs-dismiss="offcanvas" name="button" type="button" value=""></button>
+    </div>
+    <div class="offcanvas-body small">
+        ...
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->offcanvas(
+    '...',
+    [
+        'triggers' => [
+            [
+                'options' => [
+                    'variant' => 'primary',
+                    'label' => 'Toggle top offcanvas',
+                ],
+            ],
+        ],
+        'header' => [
+            'title' => [
+                'content' => 'Offcanvas top',
+                'attributes' => [
+                    'id' => 'offcanvasTopLabel',
+                ],
+            ],
+        ],
+        'placement' => 'top',
+        'id' => 'offcanvasTop',
+    ]
+);
+
+echo PHP_EOL . '<br>';
+
+echo $this->offcanvas(
+    '...',
+    [
+        'triggers' => [
+            [
+                'options' => [
+                    'variant' => 'primary',
+                    'label' => 'Toggle right offcanvas',
+                ],
+            ],
+        ],
+        'header' => [
+            'title' => [
+                'content' => 'Offcanvas right',
+                'attributes' => [
+                    'id' => 'offcanvasRightLabel',
+                ],
+            ],
+        ],
+        'placement' => 'end',
+        'id' => 'offcanvasRight',
+    ]
+);
+
+echo PHP_EOL . '<br>';
+
+echo $this->offcanvas(
+    '...',
+    [
+        'triggers' => [
+            [
+                'options' => [
+                    'variant' => 'primary',
+                    'label' => 'Toggle bottom offcanvas',
+                ],
+            ],
+        ],
+        'header' => [
+            'title' => [
+                'content' => 'Offcanvas bottom',
+                'attributes' => [
+                    'id' => 'offcanvasBottomLabel',
+                ],
+            ],
+        ],
+        'body' => [
+            'class' => 'small',
+        ],
+        'placement' => 'bottom',
+        'id' => 'offcanvasBottom',
+    ]
+);
+```
+
+</TabItem>
+</Tabs>
+
+## Backdrop
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/offcanvas/#backdrop)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<button aria-controls="offcanvasScrolling" class="btn btn-primary" data-bs-target="#offcanvasScrolling" data-bs-toggle="offcanvas" name="button" type="button" value="">Enable body scrolling</button>
+<div aria-labelledby="offcanvasScrollingLabel" class="offcanvas offcanvas-start" data-bs-backdrop="false" data-bs-scroll="true" id="offcanvasScrolling" tabindex="-1">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Colored with scrolling</h5>
+        <button aria-label="Close" class="btn-close text-reset" data-bs-dismiss="offcanvas" name="button" type="button" value=""></button>
+    </div>
+    <div class="offcanvas-body">
+        <p>Try scrolling the rest of the page to see this option in action.</p>
+    </div>
+</div>
+<button aria-controls="offcanvasWithBackdrop" class="btn btn-primary" data-bs-target="#offcanvasWithBackdrop" data-bs-toggle="offcanvas" name="button" type="button" value="">Enable backdrop (default)</button>
+<div aria-labelledby="offcanvasWithBackdropLabel" class="offcanvas offcanvas-start" id="offcanvasWithBackdrop" tabindex="-1">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasWithBackdropLabel">Offcanvas with backdrop</h5>
+        <button aria-label="Close" class="btn-close text-reset" data-bs-dismiss="offcanvas" name="button" type="button" value=""></button>
+    </div>
+    <div class="offcanvas-body">
+        <p>.....</p>
+    </div>
+</div>
+<button aria-controls="offcanvasWithBothOptions" class="btn btn-primary" data-bs-target="#offcanvasWithBothOptions" data-bs-toggle="offcanvas" name="button" type="button" value="">Enable both scrolling &amp; backdrop</button>
+<div aria-labelledby="offcanvasWithBothOptionsLabel" class="offcanvas offcanvas-start" data-bs-scroll="true" id="offcanvasWithBothOptions" tabindex="-1">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5>
+        <button aria-label="Close" class="btn-close text-reset" data-bs-dismiss="offcanvas" name="button" type="button" value=""></button>
+    </div>
+    <div class="offcanvas-body">
+        <p>Try scrolling the rest of the page to see this option in action.</p>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->offcanvas(
+    '<p>Try scrolling the rest of the page to see this option in action.</p>',
+    [
+        'triggers' => [
+            [
+                'options' => [
+                    'variant' => 'primary',
+                    'label' => 'Enable body scrolling',
+                ],
+            ],
+        ],
+        'header' => [
+            'title' => [
+                'content' => 'Colored with scrolling',
+                'attributes' => [
+                    'id' => 'offcanvasScrollingLabel',
+                ],
+            ],
+        ],
+        'backdrop' => false,
+        'scroll' => true,
+        'id' => 'offcanvasScrolling',
+    ]
+);
+
+echo $this->offcanvas(
+    '<p>.....</p>',
+    [
+        'triggers' => [
+            [
+                'options' => [
+                    'variant' => 'primary',
+                    'label' => 'Enable backdrop (default)',
+                ],
+            ],
+        ],
+        'header' => [
+            'title' => [
+                'content' => 'Offcanvas with backdrop',
+                'attributes' => [
+                    'id' => 'offcanvasWithBackdropLabel',
+                ],
+            ],
+        ],
+        'id' => 'offcanvasWithBackdrop',
+    ]
+);
+
+echo $this->offcanvas(
+    '<p>Try scrolling the rest of the page to see this option in action.</p>',
+    [
+        'scroll' => true,
+        'triggers' => [
+            [
+                'options' => [
+                    'variant' => 'primary',
+                    'label' => 'Enable both scrolling & backdrop',
+                ],
+            ],
+        ],
+        'header' => [
+            'title' => [
+                'content' => 'Backdrop with scrolling',
+                'attributes' => [
+                    'id' => 'offcanvasWithBothOptionsLabel',
+                ],
+            ],
+        ],
+        'id' => 'offcanvasWithBothOptions',
+    ]
+);
+```
+
+</TabItem>
+</Tabs>
+

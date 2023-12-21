@@ -1,0 +1,365 @@
+---
+sidebar_position: 4
+label: Gutters
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../src/components/HtmlCode.tsx";
+
+# Gutters
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/layout/gutters/)
+
+## Horizontal gutters
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/layout/gutters/#horizontal-gutters)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="container px-4">
+    <div class="gx-5 row">
+        <div class="col">
+            <div class="bg-light border p-3">
+                Custom column padding
+            </div>
+        </div>
+        <div class="col">
+            <div class="bg-light border p-3">
+                Custom column padding
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container overflow-hidden">
+    <div class="gx-5 row">
+        <div class="col">
+            <div class="bg-light border p-3">
+                Custom column padding
+            </div>
+        </div>
+        <div class="col">
+            <div class="bg-light border p-3">
+                Custom column padding
+            </div>
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->grid([
+    [
+        [
+            '<div class="bg-light border p-3">' .
+            '    Custom column padding' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Custom column padding' .
+            '</div>',
+        ],
+        ['gutter' => ['horizontal' => '5']],
+    ],
+], ['class' => 'px-4']);
+
+echo $this->grid([
+    [
+        [
+            '<div class="bg-light border p-3">' .
+            '    Custom column padding' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Custom column padding' .
+            '</div>',
+        ],
+        ['gutter' => ['horizontal' => '5']],
+    ],
+], ['class' => 'overflow-hidden']);
+```
+
+</TabItem>
+</Tabs>
+
+## Vertical gutters
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/layout/gutters/#vertical-gutters)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="container overflow-hidden">
+    <div class="gy-5 row">
+        <div class="col-6">
+            <div class="bg-light border p-3">
+                Custom column padding
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="bg-light border p-3">
+                Custom column padding
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="bg-light border p-3">
+                Custom column padding
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="bg-light border p-3">
+                Custom column padding
+            </div>
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->grid([
+    [
+        [
+            '<div class="bg-light border p-3">' .
+            '    Custom column padding' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Custom column padding' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Custom column padding' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Custom column padding' .
+            '</div>',
+        ],
+        [
+            'column' => 6,
+            'gutter' => ['vertical' => '5'],
+        ],
+    ],
+], ['class' => 'overflow-hidden']);
+```
+
+</TabItem>
+</Tabs>
+
+## Horizontal & vertical gutters
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/layout/gutters/#horizontal--vertical-gutters)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="container">
+    <div class="g-2 row">
+        <div class="col-6">
+            <div class="bg-light border p-3">
+                Custom column padding
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="bg-light border p-3">
+                Custom column padding
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="bg-light border p-3">
+                Custom column padding
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="bg-light border p-3">
+                Custom column padding
+            </div>
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->grid([
+    [
+        [
+            '<div class="bg-light border p-3">' .
+            '    Custom column padding' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Custom column padding' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Custom column padding' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Custom column padding' .
+            '</div>',
+        ],
+        [
+            'column' => 6,
+            'gutter' => 2,
+        ],
+    ],
+]);
+```
+
+</TabItem>
+</Tabs>
+
+## Row columns gutters
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/layout/gutters/#row-columns-gutters)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="container">
+    <div class="g-2 g-lg-3 row row-cols-2 row-cols-lg-5">
+        <div class="col">
+            <div class="bg-light border p-3">
+                Row column
+            </div>
+        </div>
+        <div class="col">
+            <div class="bg-light border p-3">
+                Row column
+            </div>
+        </div>
+        <div class="col">
+            <div class="bg-light border p-3">
+                Row column
+            </div>
+        </div>
+        <div class="col">
+            <div class="bg-light border p-3">
+                Row column
+            </div>
+        </div>
+        <div class="col">
+            <div class="bg-light border p-3">
+                Row column
+            </div>
+        </div>
+        <div class="col">
+            <div class="bg-light border p-3">
+                Row column
+            </div>
+        </div>
+        <div class="col">
+            <div class="bg-light border p-3">
+                Row column
+            </div>
+        </div>
+        <div class="col">
+            <div class="bg-light border p-3">
+                Row column
+            </div>
+        </div>
+        <div class="col">
+            <div class="bg-light border p-3">
+                Row column
+            </div>
+        </div>
+        <div class="col">
+            <div class="bg-light border p-3">
+                Row column
+            </div>
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->grid([
+    [
+        [
+            '<div class="bg-light border p-3">' .
+            '    Row column' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Row column' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Row column' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Row column' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Row column' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Row column' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Row column' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Row column' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Row column' .
+            '</div>',
+            '<div class="bg-light border p-3">' .
+            '    Row column' .
+            '</div>',
+        ],
+        [
+            'columns' => [2, 'lg-5'],
+            'gutter' => [2, 'lg-3'],
+        ],
+    ],
+]);
+```
+
+</TabItem>
+</Tabs>
+
+## No gutters
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/layout/gutters/#no-gutters)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="g-0 row">
+    <div class="col-md-8 col-sm-6">
+        .col-sm-6 .col-md-8
+    </div>
+    <div class="col-6 col-md-4">
+        .col-6 .col-md-4
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->gridRow(
+    [
+        ['.col-sm-6 .col-md-8', ['column' => ['sm-6', 'md-8']]],
+        ['.col-6 .col-md-4', ['column' => [6, 'md-4']]],
+    ],
+    ['gutter' => 0],
+);
+```
+
+</TabItem>
+</Tabs>
+

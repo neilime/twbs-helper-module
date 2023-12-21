@@ -1,0 +1,560 @@
+---
+sidebar_position: 8
+label: Carousel
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../src/components/HtmlCode.tsx";
+
+# Carousel
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/carousel/)
+
+## Example
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/carousel/#example)
+
+### Slides only
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/carousel/#slides-only)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="carousel slide" data-bs-ride="carousel" id="carouselExampleSlidesOnly">
+    <div class="carousel-inner">
+        <div class="active carousel-item">
+            <img alt="..." class="d-block w-100" src="/twbs-helper-module/img/docs/slide1.svg">
+        </div>
+        <div class="carousel-item">
+            <img alt="..." class="d-block w-100" src="/twbs-helper-module/img/docs/slide2.svg">
+        </div>
+        <div class="carousel-item">
+            <img alt="..." class="d-block w-100" src="/twbs-helper-module/img/docs/slide3.svg">
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->carousel(
+    [
+        [
+            'src' => '/twbs-helper-module/img/docs/slide1.svg',
+            'active' => true,
+            'alt' => '...',
+        ],
+        [
+            'src' => '/twbs-helper-module/img/docs/slide2.svg',
+            'alt' => '...',
+        ],
+        [
+            'src' => '/twbs-helper-module/img/docs/slide3.svg',
+            'alt' => '...',
+        ],
+    ],
+    ['id' => 'carouselExampleSlidesOnly'],
+);
+```
+
+</TabItem>
+</Tabs>
+
+### With controls
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/carousel/#with-controls)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="carousel slide" data-bs-ride="carousel" id="carouselExampleControls">
+    <div class="carousel-inner">
+        <div class="active carousel-item">
+            <img alt="..." class="d-block w-100" src="/twbs-helper-module/img/docs/slide1.svg">
+        </div>
+        <div class="carousel-item">
+            <img alt="..." class="d-block w-100" src="/twbs-helper-module/img/docs/slide2.svg">
+        </div>
+        <div class="carousel-item">
+            <img alt="..." class="d-block w-100" src="/twbs-helper-module/img/docs/slide3.svg">
+        </div>
+    </div>
+    <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleControls" name="carousel-control-prev" type="button" value="">
+        <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleControls" name="carousel-control-next" type="button" value="">
+        <span aria-hidden="true" class="carousel-control-next-icon"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->carousel(
+    [
+        [
+            'src' => '/twbs-helper-module/img/docs/slide1.svg',
+            'active' => true,
+            'alt' => '...',
+        ],
+        [
+            'src' => '/twbs-helper-module/img/docs/slide2.svg',
+            'alt' => '...',
+        ],
+        [
+            'src' => '/twbs-helper-module/img/docs/slide3.svg',
+            'alt' => '...',
+        ],
+    ],
+    ['id' => 'carouselExampleControls', 'controls' => true],
+);
+```
+
+</TabItem>
+</Tabs>
+
+### With indicators
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/carousel/#with-indicators)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="carousel slide" data-bs-ride="carousel" id="carouselExampleIndicators">
+    <ol class="carousel-indicators">
+        <button aria-current="true" aria-label="Slide 1" class="active" data-bs-slide-to="0" data-bs-target="#carouselExampleIndicators" name="carousel-indicator-0" type="button" value=""></button>
+        <button aria-label="Slide 2" data-bs-slide-to="1" data-bs-target="#carouselExampleIndicators" name="carousel-indicator-1" type="button" value=""></button>
+        <button aria-label="Slide 3" data-bs-slide-to="2" data-bs-target="#carouselExampleIndicators" name="carousel-indicator-2" type="button" value=""></button>
+    </ol>
+    <div class="carousel-inner">
+        <div class="active carousel-item">
+            <img alt="..." class="d-block w-100" src="/twbs-helper-module/img/docs/slide1.svg">
+        </div>
+        <div class="carousel-item">
+            <img alt="..." class="d-block w-100" src="/twbs-helper-module/img/docs/slide2.svg">
+        </div>
+        <div class="carousel-item">
+            <img alt="..." class="d-block w-100" src="/twbs-helper-module/img/docs/slide3.svg">
+        </div>
+    </div>
+    <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleIndicators" name="carousel-control-prev" type="button" value="">
+        <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleIndicators" name="carousel-control-next" type="button" value="">
+        <span aria-hidden="true" class="carousel-control-next-icon"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->carousel(
+    [
+        [
+            'src' => '/twbs-helper-module/img/docs/slide1.svg',
+            'active' => true,
+            'alt' => '...',
+            'indicator' => 'Slide 1',
+        ],
+        [
+            'src' => '/twbs-helper-module/img/docs/slide2.svg',
+            'alt' => '...',
+            'indicator' => 'Slide 2',
+        ],
+        [
+            'src' => '/twbs-helper-module/img/docs/slide3.svg',
+            'alt' => '...',
+            'indicator' => 'Slide 3',
+        ],
+    ],
+    ['id' => 'carouselExampleIndicators', 'controls' => true],
+);
+```
+
+</TabItem>
+</Tabs>
+
+### With captions
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/carousel/#with-captions)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="carousel slide" data-bs-ride="carousel" id="carouselExampleCaptions">
+    <ol class="carousel-indicators">
+        <button aria-current="true" aria-label="Slide 1" class="active" data-bs-slide-to="0" data-bs-target="#carouselExampleCaptions" name="carousel-indicator-0" type="button" value=""></button>
+        <button aria-label="Slide 2" data-bs-slide-to="1" data-bs-target="#carouselExampleCaptions" name="carousel-indicator-1" type="button" value=""></button>
+        <button aria-label="Slide 3" data-bs-slide-to="2" data-bs-target="#carouselExampleCaptions" name="carousel-indicator-2" type="button" value=""></button>
+    </ol>
+    <div class="carousel-inner">
+        <div class="active carousel-item">
+            <img alt="..." class="d-block w-100" src="/twbs-helper-module/img/docs/slide1.svg">
+            <div class="carousel-caption d-md-block d-none">
+                <h5>First slide label</h5>
+                <p>Some representative placeholder content for the first slide.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img alt="..." class="d-block w-100" src="/twbs-helper-module/img/docs/slide2.svg">
+            <div class="carousel-caption d-md-block d-none">
+                <h5>Second slide label</h5>
+                <p>Some representative placeholder content for the second slide.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img alt="..." class="d-block w-100" src="/twbs-helper-module/img/docs/slide3.svg">
+            <div class="carousel-caption d-md-block d-none">
+                <h5>Third slide label</h5>
+                <p>Some representative placeholder content for the third slide.</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleCaptions" name="carousel-control-prev" type="button" value="">
+        <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleCaptions" name="carousel-control-next" type="button" value="">
+        <span aria-hidden="true" class="carousel-control-next-icon"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->carousel(
+    [
+        [
+            'src' => '/twbs-helper-module/img/docs/slide1.svg',
+            'active' => true,
+            'alt' => '...',
+            'indicator' => 'Slide 1',
+            'caption' => [
+                'title' => 'First slide label',
+                'text' => 'Some representative placeholder content for the first slide.',
+            ],
+        ],
+        [
+            'src' => '/twbs-helper-module/img/docs/slide2.svg',
+            'alt' => '...',
+            'indicator' => 'Slide 2',
+            'caption' => [
+                'title' => 'Second slide label',
+                'text' => 'Some representative placeholder content for the second slide.',
+            ],
+        ],
+        [
+            'src' => '/twbs-helper-module/img/docs/slide3.svg',
+            'alt' => '...',
+            'indicator' => 'Slide 3',
+            'caption' => [
+                'title' => 'Third slide label',
+                'text' => 'Some representative placeholder content for the third slide.',
+            ],
+        ],
+    ],
+    [
+        'id' => 'carouselExampleCaptions',
+        'controls' => true,
+    ],
+);
+```
+
+</TabItem>
+</Tabs>
+
+### Crossfade
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/carousel/#crossfade)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="carousel carousel-fade slide" data-bs-ride="carousel" id="carouselExampleFade">
+    <div class="carousel-inner">
+        <div class="active carousel-item">
+            <img alt="..." class="d-block w-100" src="/twbs-helper-module/img/docs/slide1.svg">
+        </div>
+        <div class="carousel-item">
+            <img alt="..." class="d-block w-100" src="/twbs-helper-module/img/docs/slide2.svg">
+        </div>
+        <div class="carousel-item">
+            <img alt="..." class="d-block w-100" src="/twbs-helper-module/img/docs/slide3.svg">
+        </div>
+    </div>
+    <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleFade" name="carousel-control-prev" type="button" value="">
+        <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleFade" name="carousel-control-next" type="button" value="">
+        <span aria-hidden="true" class="carousel-control-next-icon"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->carousel(
+    [
+        [
+            'src' => '/twbs-helper-module/img/docs/slide1.svg',
+            'active' => true,
+            'alt' => '...',
+        ],
+        [
+            'src' => '/twbs-helper-module/img/docs/slide2.svg',
+            'alt' => '...',
+        ],
+        [
+            'src' => '/twbs-helper-module/img/docs/slide3.svg',
+            'alt' => '...',
+        ],
+    ],
+    ['id' => 'carouselExampleFade', 'controls' => true, 'crossfade' => true],
+);
+```
+
+</TabItem>
+</Tabs>
+
+### Individual .carousel-item interval
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/carousel/#individual-carousel-item-interval)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="carousel slide" data-bs-ride="carousel" id="carouselExampleInterval">
+    <div class="carousel-inner">
+        <div class="active carousel-item" data-bs-interval="10000">
+            <img alt="..." class="d-block w-100" src="/twbs-helper-module/img/docs/slide1.svg">
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+            <img alt="..." class="d-block w-100" src="/twbs-helper-module/img/docs/slide2.svg">
+        </div>
+        <div class="carousel-item">
+            <img alt="..." class="d-block w-100" src="/twbs-helper-module/img/docs/slide3.svg">
+        </div>
+    </div>
+    <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleInterval" name="carousel-control-prev" type="button" value="">
+        <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleInterval" name="carousel-control-next" type="button" value="">
+        <span aria-hidden="true" class="carousel-control-next-icon"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->carousel(
+    [
+        [
+            'src' => '/twbs-helper-module/img/docs/slide1.svg',
+            'interval' => 10000,
+            'active' => true,
+            'alt' => '...',
+        ],
+        [
+            'src' => '/twbs-helper-module/img/docs/slide2.svg',
+            'interval' => 2000,
+            'alt' => '...',
+        ],
+        [
+            'src' => '/twbs-helper-module/img/docs/slide3.svg',
+            'alt' => '...',
+        ],
+    ],
+    ['id' => 'carouselExampleInterval', 'controls' => true],
+);
+```
+
+</TabItem>
+</Tabs>
+
+### Disable touch swiping
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/carousel/#disable-touch-swiping)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="carousel slide" data-bs-interval="false" data-bs-ride="carousel" data-bs-touch="false" id="carouselExampleControlsNoTouching">
+    <div class="carousel-inner">
+        <div class="active carousel-item">
+            <img alt="..." class="d-block w-100" src="/twbs-helper-module/img/docs/slide1.svg">
+        </div>
+        <div class="carousel-item">
+            <img alt="..." class="d-block w-100" src="/twbs-helper-module/img/docs/slide2.svg">
+        </div>
+        <div class="carousel-item">
+            <img alt="..." class="d-block w-100" src="/twbs-helper-module/img/docs/slide3.svg">
+        </div>
+    </div>
+    <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleControlsNoTouching" name="carousel-control-prev" type="button" value="">
+        <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleControlsNoTouching" name="carousel-control-next" type="button" value="">
+        <span aria-hidden="true" class="carousel-control-next-icon"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->carousel(
+    [
+        [
+            'src' => '/twbs-helper-module/img/docs/slide1.svg',
+            'active' => true,
+            'alt' => '...',
+        ],
+        [
+            'src' => '/twbs-helper-module/img/docs/slide2.svg',
+            'alt' => '...',
+        ],
+        [
+            'src' => '/twbs-helper-module/img/docs/slide3.svg',
+            'alt' => '...',
+        ],
+    ],
+    [
+        'id' => 'carouselExampleControlsNoTouching',
+        'controls' => true,
+        'swiping' => false,
+        'interval' => false,
+    ],
+);
+```
+
+</TabItem>
+</Tabs>
+
+## Dark variant
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/carousel/#dark-variant)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="carousel carousel-dark slide" data-bs-ride="carousel" id="carouselExampleCaptions">
+    <ol class="carousel-indicators">
+        <button aria-current="true" aria-label="Slide 1" class="active" data-bs-slide-to="0" data-bs-target="#carouselExampleCaptions" name="carousel-indicator-0" type="button" value=""></button>
+        <button aria-label="Slide 2" data-bs-slide-to="1" data-bs-target="#carouselExampleCaptions" name="carousel-indicator-1" type="button" value=""></button>
+        <button aria-label="Slide 3" data-bs-slide-to="2" data-bs-target="#carouselExampleCaptions" name="carousel-indicator-2" type="button" value=""></button>
+    </ol>
+    <div class="carousel-inner">
+        <div class="active carousel-item">
+            <img alt="..." class="d-block w-100" src="/twbs-helper-module/img/docs/slide1.svg">
+            <div class="carousel-caption d-md-block d-none">
+                <h5>First slide label</h5>
+                <p>Some representative placeholder content for the first slide.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img alt="..." class="d-block w-100" src="/twbs-helper-module/img/docs/slide2.svg">
+            <div class="carousel-caption d-md-block d-none">
+                <h5>Second slide label</h5>
+                <p>Some representative placeholder content for the second slide.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img alt="..." class="d-block w-100" src="/twbs-helper-module/img/docs/slide3.svg">
+            <div class="carousel-caption d-md-block d-none">
+                <h5>Third slide label</h5>
+                <p>Some representative placeholder content for the third slide.</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleCaptions" name="carousel-control-prev" type="button" value="">
+        <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleCaptions" name="carousel-control-next" type="button" value="">
+        <span aria-hidden="true" class="carousel-control-next-icon"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->carousel(
+    [
+        [
+            'src' => '/twbs-helper-module/img/docs/slide1.svg',
+            'active' => true,
+            'alt' => '...',
+            'indicator' => 'Slide 1',
+            'caption' => [
+                'title' => 'First slide label',
+                'text' => 'Some representative placeholder content for the first slide.',
+            ],
+        ],
+        [
+            'src' => '/twbs-helper-module/img/docs/slide2.svg',
+            'alt' => '...',
+            'indicator' => 'Slide 2',
+            'caption' => [
+                'title' => 'Second slide label',
+                'text' => 'Some representative placeholder content for the second slide.',
+            ],
+        ],
+        [
+            'src' => '/twbs-helper-module/img/docs/slide3.svg',
+            'alt' => '...',
+            'indicator' => 'Slide 3',
+            'caption' => [
+                'title' => 'Third slide label',
+                'text' => 'Some representative placeholder content for the third slide.',
+            ],
+        ],
+    ],
+    [
+        'id' => 'carouselExampleCaptions',
+        'controls' => true,
+        'variant' => 'dark',
+    ],
+);
+```
+
+</TabItem>
+</Tabs>
+

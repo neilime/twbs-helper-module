@@ -1,0 +1,89 @@
+---
+sidebar_position: 9
+label: Close button
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../src/components/HtmlCode.tsx";
+
+# Close button
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/close-button/)
+
+## Example
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/close-button/#example)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<button aria-label="Close" class="btn-close" name="button" type="button" value=""></button>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->formButton()->renderSpec(['options' => ['close' => true]], '');
+```
+
+</TabItem>
+</Tabs>
+
+## Disabled state
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/close-button/#disabled-state)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<button aria-label="Close" class="btn-close" disabled name="button" type="button" value=""></button>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->formButton()->renderSpec([
+    'options' => ['close' => true],
+    'attributes' => ['disabled' => true],
+], '');
+```
+
+</TabItem>
+</Tabs>
+
+## White variant
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/components/close-button/#white-variant)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<button aria-label="Close" class="btn-close btn-close-white" name="button" type="button" value=""></button>
+<button aria-label="Close" class="btn-close btn-close-white" disabled name="button" type="button" value=""></button>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->formButton()->renderSpec([
+    'options' => ['close' => true],
+    'attributes' => ['class' => 'btn-close-white'],
+], '');
+
+echo $this->formButton()->renderSpec([
+    'options' => ['close' => true],
+    'attributes' => ['disabled' => true, 'class' => 'btn-close-white'],
+], '');
+```
+
+</TabItem>
+</Tabs>
+

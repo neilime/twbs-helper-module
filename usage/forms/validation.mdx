@@ -1,0 +1,968 @@
+---
+sidebar_position: 9
+label: Validation
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../src/components/HtmlCode.tsx";
+
+# Validation
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/forms/validation)
+
+## Custom styles
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/forms/validation/#custom-styles)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<form action="" class="needs-validation" id="form" method="POST" name="form" novalidate="1" role="form">
+    <div class="g-3 row">
+        <div class="col-md-4">
+            <label class="form-label" for="validationCustom01">First name</label>
+            <input class="form-control is-valid" id="validationCustom01" name="firstName" required="required" type="text" value="Mark">
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label" for="validationCustom02">Last name</label>
+            <input class="form-control is-valid" id="validationCustom02" name="lastName" required="required" type="text" value="Otto">
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 has-error">
+            <label class="col-form-label form-label" for="validationCustomUsername">Username</label>
+            <div class="has-validation input-group">
+                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                <input aria-describedby="inputGroupPrepend" class="form-control is-invalid" id="validationCustomUsername" name="username" placeholder="Username" required="required" type="text" value="">
+                <div class="invalid-feedback">Please choose a username.</div>
+            </div>
+        </div>
+        <div class="col-md-6 has-error">
+            <label class="col-form-label form-label" for="validationCustom03">City</label>
+            <input class="form-control is-invalid" id="validationCustom03" name="city" required="required" type="text" value="">
+            <div class="invalid-feedback">Please provide a valid city.</div>
+        </div>
+        <div class="col-md-3 has-error">
+            <label class="col-form-label form-label" for="validationCustom04">State</label>
+            <select class="form-select is-invalid" id="validationCustom04" name="state" required="required">
+                <option selected value="">Choose...</option>
+                <option value="0">...</option>
+            </select>
+            <div class="invalid-feedback">Please select a valid state.</div>
+        </div>
+        <div class="col-md-3 has-error">
+            <label class="col-form-label form-label" for="validationCustom05">Zip</label>
+            <input class="form-control is-invalid" id="validationCustom05" name="zip" required="required" type="text" value="">
+            <div class="invalid-feedback">Please select a valid zip.</div>
+        </div>
+        <div class="col-12 has-error">
+            <div class="form-check">
+                <input type="hidden" name="terms-and-conditions" value="0"><input class="form-check-input is-invalid" id="invalidCheck" name="terms-and-conditions" required="required" type="checkbox" value="1">
+                <div class="invalid-feedback">You must agree before submitting..</div>
+                <label class="form-check-label" for="invalidCheck">Agree to terms and conditions</label>
+            </div>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary" name="submit" type="submit" value="">Submit form</button>
+        </div>
+    </div>
+</form>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$factory = new \Laminas\Form\Factory();
+
+echo $this->form($factory->create([
+    'type' => 'form',
+    'options' => [
+        'gutter' => 3,
+        'custom_validation' => true,
+    ],
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'firstName',
+                'options' => [
+                    'column' => 'md-4',
+                    'label' => 'First name',
+                    'valid_feedback' => 'Looks good!',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustom01',
+                    'required' => true,
+                    'value' => 'Mark',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'lastName',
+                'options' => [
+                    'column' => 'md-4',
+                    'label' => 'Last name',
+                    'valid_feedback' => 'Looks good!',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustom02',
+                    'required' => true,
+                    'value' => 'Otto',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'username',
+                'options' => [
+                    'label' => 'Username',
+                    'column' => 'md-4',
+                    'add_on_prepend' => '@',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustomUsername',
+                    'placeholder' => 'Username',
+                    'aria-describedby' => 'inputGroupPrepend',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'city',
+                'options' => [
+                    'column' => 'md-6',
+                    'label' => 'City',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustom03',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'state',
+                'type' => 'select',
+                'options' => [
+                    'column' => 'md-3',
+                    'label' => 'State',
+                    'empty_option' => 'Choose...',
+                    'value_options' => ['...'],
+                ],
+                'attributes' => [
+                    'id' => 'validationCustom04',
+                    'required' => true,
+                    'value' => '',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'zip',
+                'options' => [
+                    'column' => 'md-3',
+                    'label' => 'Zip',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustom05',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'terms-and-conditions',
+                'type' => 'checkbox',
+                'options' => [
+                    'column' => 12,
+                    'label' => 'Agree to terms and conditions',
+                ],
+                'attributes' => [
+                    'id' => 'invalidCheck',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'submit',
+                'type' => 'submit',
+                'options' => [
+                    'column' => 12,
+                    'label' => 'Submit form',
+                    'variant' => 'primary',
+                ],
+            ],
+        ],
+    ],
+])->setMessages([
+    'username' => ['Please choose a username.'],
+    'city' => ['Please provide a valid city.'],
+    'state' => ['Please select a valid state.'],
+    'zip' => ['Please select a valid zip.'],
+    'terms-and-conditions' => ['You must agree before submitting..'],
+]));
+```
+
+</TabItem>
+</Tabs>
+
+## Browser defaults
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/forms/validation/#browser-defaults)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<form action="" id="form" method="POST" name="form" role="form">
+    <div class="g-3 row">
+        <div class="col-md-4">
+            <label class="form-label" for="validationCustom01">First name</label>
+            <input class="form-control" id="validationCustom01" name="firstName" required="required" type="text" value="Mark">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label" for="validationCustom02">Last name</label>
+            <input class="form-control" id="validationCustom02" name="lastName" required="required" type="text" value="Otto">
+        </div>
+        <div class="col-md-4">
+            <label class="form-label" for="validationCustomUsername">Username</label>
+            <div class="input-group">
+                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                <input aria-describedby="inputGroupPrepend" class="form-control" id="validationCustomUsername" name="username" placeholder="Username" required="required" type="text" value="">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label" for="validationCustom03">City</label>
+            <input class="form-control" id="validationCustom03" name="city" required="required" type="text" value="">
+        </div>
+        <div class="col-md-3">
+            <label class="form-label" for="validationCustom04">State</label>
+            <select class="form-select" id="validationCustom04" name="state" required="required">
+                <option selected value="">Choose...</option>
+                <option value="0">...</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label" for="validationCustom05">Zip</label>
+            <input class="form-control" id="validationCustom05" name="zip" required="required" type="text" value="">
+        </div>
+        <div class="col-12">
+            <div class="form-check">
+                <input type="hidden" name="terms-and-conditions" value="0"><input class="form-check-input" id="invalidCheck" name="terms-and-conditions" required="required" type="checkbox" value="1">
+                <label class="form-check-label" for="invalidCheck">Agree to terms and conditions</label>
+            </div>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary" name="submit" type="submit" value="">Submit form</button>
+        </div>
+    </div>
+</form>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$factory = new \Laminas\Form\Factory();
+
+echo $this->form($factory->create([
+    'type' => 'form',
+    'options' => [
+        'gutter' => 3,
+    ],
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'firstName',
+                'options' => [
+                    'column' => 'md-4',
+                    'label' => 'First name',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustom01',
+                    'required' => true,
+                    'value' => 'Mark',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'lastName',
+                'options' => [
+                    'column' => 'md-4',
+                    'label' => 'Last name',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustom02',
+                    'required' => true,
+                    'value' => 'Otto',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'username',
+                'options' => [
+                    'label' => 'Username',
+                    'column' => 'md-4',
+                    'add_on_prepend' => '@',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustomUsername',
+                    'placeholder' => 'Username',
+                    'aria-describedby' => 'inputGroupPrepend',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'city',
+                'options' => [
+                    'column' => 'md-6',
+                    'label' => 'City',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustom03',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'state',
+                'type' => 'select',
+                'options' => [
+                    'column' => 'md-3',
+                    'label' => 'State',
+                    'empty_option' => 'Choose...',
+                    'value_options' => ['...'],
+                ],
+                'attributes' => [
+                    'id' => 'validationCustom04',
+                    'required' => true,
+                    'value' => '',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'zip',
+                'options' => [
+                    'column' => 'md-3',
+                    'label' => 'Zip',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustom05',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'terms-and-conditions',
+                'type' => 'checkbox',
+                'options' => [
+                    'column' => 12,
+                    'label' => 'Agree to terms and conditions',
+                ],
+                'attributes' => [
+                    'id' => 'invalidCheck',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'submit',
+                'type' => 'submit',
+                'options' => [
+                    'column' => 12,
+                    'label' => 'Submit form',
+                    'variant' => 'primary',
+                ],
+            ],
+        ],
+    ],
+]));
+```
+
+</TabItem>
+</Tabs>
+
+## Server side
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/forms/validation/#server-side)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<form action="" class="was-validated" id="form" method="POST" name="form" role="form">
+    <div class="g-3 row">
+        <div class="col-md-4">
+            <label class="form-label" for="validationCustom01">First name</label>
+            <input class="form-control is-valid" id="validationCustom01" name="firstName" required="required" type="text" value="Mark">
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label class="form-label" for="validationCustom02">Last name</label>
+            <input class="form-control is-valid" id="validationCustom02" name="lastName" required="required" type="text" value="Otto">
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 has-error">
+            <label class="col-form-label form-label" for="validationCustomUsername">Username</label>
+            <div class="has-validation input-group">
+                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                <input aria-describedby="inputGroupPrepend" class="form-control is-invalid" id="validationCustomUsername" name="username" placeholder="Username" required="required" type="text" value="">
+                <div class="invalid-feedback">Please choose a username.</div>
+            </div>
+        </div>
+        <div class="col-md-6 has-error">
+            <label class="col-form-label form-label" for="validationCustom03">City</label>
+            <input class="form-control is-invalid" id="validationCustom03" name="city" required="required" type="text" value="">
+            <div class="invalid-feedback">Please provide a valid city.</div>
+        </div>
+        <div class="col-md-3 has-error">
+            <label class="col-form-label form-label" for="validationCustom04">State</label>
+            <select class="form-select is-invalid" id="validationCustom04" name="state" required="required">
+                <option selected value="">Choose...</option>
+                <option value="0">...</option>
+            </select>
+            <div class="invalid-feedback">Please select a valid state.</div>
+        </div>
+        <div class="col-md-3 has-error">
+            <label class="col-form-label form-label" for="validationCustom05">Zip</label>
+            <input class="form-control is-invalid" id="validationCustom05" name="zip" required="required" type="text" value="">
+            <div class="invalid-feedback">Please select a valid zip.</div>
+        </div>
+        <div class="col-12 has-error">
+            <div class="form-check">
+                <input type="hidden" name="terms-and-conditions" value="0"><input class="form-check-input is-invalid" id="invalidCheck" name="terms-and-conditions" required="required" type="checkbox" value="1">
+                <div class="invalid-feedback">You must agree before submitting..</div>
+                <label class="form-check-label" for="invalidCheck">Agree to terms and conditions</label>
+            </div>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-primary" name="submit" type="submit" value="">Submit form</button>
+        </div>
+    </div>
+</form>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$factory = new \Laminas\Form\Factory();
+
+echo $this->form($factory->create([
+    'type' => 'form',
+    'options' => [
+        'gutter' => 3,
+    ],
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'firstName',
+                'options' => [
+                    'column' => 'md-4',
+                    'label' => 'First name',
+                    'valid_feedback' => 'Looks good!',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustom01',
+                    'required' => true,
+                    'value' => 'Mark',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'lastName',
+                'options' => [
+                    'column' => 'md-4',
+                    'label' => 'Last name',
+                    'valid_feedback' => 'Looks good!',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustom02',
+                    'required' => true,
+                    'value' => 'Otto',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'username',
+                'options' => [
+                    'label' => 'Username',
+                    'column' => 'md-4',
+                    'add_on_prepend' => '@',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustomUsername',
+                    'placeholder' => 'Username',
+                    'aria-describedby' => 'inputGroupPrepend',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'city',
+                'options' => [
+                    'column' => 'md-6',
+                    'label' => 'City',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustom03',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'state',
+                'type' => 'select',
+                'options' => [
+                    'column' => 'md-3',
+                    'label' => 'State',
+                    'empty_option' => 'Choose...',
+                    'value_options' => ['...'],
+                ],
+                'attributes' => [
+                    'id' => 'validationCustom04',
+                    'required' => true,
+                    'value' => '',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'zip',
+                'options' => [
+                    'column' => 'md-3',
+                    'label' => 'Zip',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationCustom05',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'terms-and-conditions',
+                'type' => 'checkbox',
+                'options' => [
+                    'column' => 12,
+                    'label' => 'Agree to terms and conditions',
+                ],
+                'attributes' => [
+                    'id' => 'invalidCheck',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'submit',
+                'type' => 'submit',
+                'options' => [
+                    'column' => 12,
+                    'label' => 'Submit form',
+                    'variant' => 'primary',
+                ],
+            ],
+        ],
+    ],
+])->setMessages([
+    'username' => ['Please choose a username.'],
+    'city' => ['Please provide a valid city.'],
+    'state' => ['Please select a valid state.'],
+    'zip' => ['Please select a valid zip.'],
+    'terms-and-conditions' => ['You must agree before submitting..'],
+]));
+```
+
+</TabItem>
+</Tabs>
+
+## Supported elements
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/forms/validation/#supported-elements)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<form action="" class="was-validated" id="form" method="POST" name="form" role="form">
+    <div class="has-error mb-3">
+        <label class="col-form-label form-label" for="validationTextarea">Textarea</label>
+        <textarea class="form-control is-invalid" id="validationTextarea" name="textarea" placeholder="Required example textarea" required="required"></textarea>
+        <div class="invalid-feedback">Please enter a message in the textarea.</div>
+    </div>
+    <div class="has-error mb-3">
+        <div class="form-check">
+            <input type="hidden" name="checkbox" value="0"><input class="form-check-input is-invalid" id="validationFormCheck1" name="checkbox" required="required" type="checkbox" value="1">
+            <div class="invalid-feedback">Example invalid feedback text</div>
+            <label class="form-check-label" for="validationFormCheck1">Check this checkbox</label>
+        </div>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input is-invalid" id="validationFormCheck2" name="radio-stacked" required="required" type="radio" value="option1">
+        <label class="form-check-label" for="validationFormCheck2">Toggle this radio</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input is-invalid" id="validationFormCheck3" name="radio-stacked" required="required" type="radio" value="option2">
+        <label class="form-check-label" for="validationFormCheck3">Or toggle this other radio</label>
+        <div class="invalid-feedback">More example invalid feedback text</div>
+    </div>
+    <div class="has-error mb-3">
+        <select aria-label="select example" class="form-select is-invalid" name="select" required="required">
+            <option value="">Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+        <div class="invalid-feedback">Example invalid select feedback</div>
+    </div>
+    <div class="has-error mb-3">
+        <input aria-label="file example" class="form-control is-invalid" name="file" required="required" type="file">
+        <div class="invalid-feedback">Example invalid form file feedback</div>
+    </div>
+    <button class="btn btn-primary" disabled name="submit" type="submit" value="">Submit form</button>
+</form>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$factory = new \Laminas\Form\Factory();
+
+echo $this->form($factory->create([
+    'type' => 'form',
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'textarea',
+                'options' => [
+                    'label' => 'Textarea',
+                ],
+                'attributes' => [
+                    'type' => 'textarea',
+                    'id' => 'validationTextarea',
+                    'required' => true,
+                    'placeholder' => 'Required example textarea',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'checkbox',
+                'type' => 'checkbox',
+                'options' => [
+                    'label' => 'Check this checkbox',
+                ],
+                'attributes' => [
+                    'id' => 'validationFormCheck1',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'radio-stacked',
+                'type' => 'radio',
+                'options' => [
+                    'value_options' => [
+                        [
+                            'label' => 'Toggle this radio',
+                            'value' => 'option1',
+                            'attributes' => ['id' => 'validationFormCheck2'],
+                        ],
+                        [
+                            'label' => 'Or toggle this other radio',
+                            'value' => 'option2',
+                            'attributes' => ['id' => 'validationFormCheck3'],
+                        ],
+                    ],
+                ],
+                'attributes' => [
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'select',
+                'type' => 'select',
+                'options' => [
+                    'empty_option' => 'Open this select menu',
+                    'value_options' => [
+                        1 => 'One',
+                        2 => 'Two',
+                        3 => 'Three',
+                    ],
+                ],
+                'attributes' => [
+                    'aria-label' => 'select example',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'file',
+                'attributes' => [
+                    'type' => 'file',
+                    'aria-label' => 'file example',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'submit',
+                'type' => 'submit',
+                'options' => [
+                    'label' => 'Submit form',
+                    'variant' => 'primary',
+                ],
+                'attributes' => [
+                    'disabled' => true,
+                ],
+            ],
+        ],
+    ],
+])->setMessages([
+    'textarea' => ['Please enter a message in the textarea.'],
+    'checkbox' => ['Example invalid feedback text'],
+    'radio-stacked' => ['More example invalid feedback text'],
+    'select' => ['Example invalid select feedback'],
+    'file' => ['Example invalid form file feedback'],
+]));
+```
+
+</TabItem>
+</Tabs>
+
+## Tooltips
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.1/forms/validation/#tooltips)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.1">
+      <div dangerouslySetInnerHTML={{ __html: `<form action="" class="needs-validation" id="form" method="POST" name="form" novalidate="1" role="form">
+    <div class="g-3 row">
+        <div class="col-md-4 position-relative">
+            <label class="form-label" for="validationTooltip01">First name</label>
+            <input class="form-control is-valid" id="validationTooltip01" name="firstName" required="required" type="text" value="Mark">
+            <div class="valid-tooltip">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 position-relative">
+            <label class="form-label" for="validationTooltip02">Last name</label>
+            <input class="form-control is-valid" id="validationTooltip02" name="lastName" required="required" type="text" value="Otto">
+            <div class="valid-tooltip">
+                Looks good!
+            </div>
+        </div>
+        <div class="col-md-4 has-error position-relative">
+            <label class="col-form-label form-label" for="validationTooltipUsername">Username</label>
+            <div class="has-validation input-group">
+                <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+                <input aria-describedby="validationTooltipUsernamePrepend" class="form-control is-invalid" id="validationTooltipUsername" name="username" placeholder="Username" required="required" type="text" value="">
+                <div class="invalid-tooltip">Please choose a unique and valid username.</div>
+            </div>
+        </div>
+        <div class="col-md-6 has-error position-relative">
+            <label class="col-form-label form-label" for="validationTooltip03">City</label>
+            <input class="form-control is-invalid" id="validationTooltip03" name="city" required="required" type="text" value="">
+            <div class="invalid-tooltip">Please provide a valid city.</div>
+        </div>
+        <div class="col-md-3 has-error position-relative">
+            <label class="col-form-label form-label" for="validationTooltip04">State</label>
+            <select class="form-select is-invalid" id="validationTooltip04" name="state" required="required">
+                <option selected value="">Choose...</option>
+                <option value="0">...</option>
+            </select>
+            <div class="invalid-tooltip">Please select a valid state.</div>
+        </div>
+        <div class="col-md-3 has-error position-relative">
+            <label class="col-form-label form-label" for="validationTooltip05">Zip</label>
+            <input class="form-control is-invalid" id="validationTooltip05" name="zip" required="required" type="text" value="">
+            <div class="invalid-tooltip">Please select a valid zip.</div>
+        </div>
+        <div class="col-12 position-relative">
+            <button class="btn btn-primary" name="submit" type="submit" value="">Submit form</button>
+        </div>
+    </div>
+</form>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$factory = new \Laminas\Form\Factory();
+
+echo $this->form($factory->create([
+    'type' => 'form',
+    'options' => [
+        'gutter' => 3,
+        'custom_validation' => true,
+        'tooltip_feedback' => true,
+    ],
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'firstName',
+                'options' => [
+                    'column' => 'md-4',
+                    'label' => 'First name',
+                    'valid_feedback' => 'Looks good!',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationTooltip01',
+                    'required' => true,
+                    'value' => 'Mark',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'lastName',
+                'options' => [
+                    'column' => 'md-4',
+                    'label' => 'Last name',
+                    'valid_feedback' => 'Looks good!',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationTooltip02',
+                    'required' => true,
+                    'value' => 'Otto',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'username',
+                'options' => [
+                    'label' => 'Username',
+                    'column' => 'md-4',
+                    'add_on_prepend' => '@',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationTooltipUsername',
+                    'placeholder' => 'Username',
+                    'aria-describedby' => 'validationTooltipUsernamePrepend',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'city',
+                'options' => [
+                    'column' => 'md-6',
+                    'label' => 'City',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationTooltip03',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'state',
+                'type' => 'select',
+                'options' => [
+                    'column' => 'md-3',
+                    'label' => 'State',
+                    'empty_option' => 'Choose...',
+                    'value_options' => ['...'],
+                ],
+                'attributes' => [
+                    'id' => 'validationTooltip04',
+                    'required' => true,
+                    'value' => '',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'zip',
+                'options' => [
+                    'column' => 'md-3',
+                    'label' => 'Zip',
+                ],
+                'attributes' => [
+                    'type' => 'text',
+                    'id' => 'validationTooltip05',
+                    'required' => true,
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'submit',
+                'type' => 'submit',
+                'options' => [
+                    'column' => 12,
+                    'label' => 'Submit form',
+                    'variant' => 'primary',
+                ],
+            ],
+        ],
+    ],
+])->setMessages([
+    'username' => ['Please choose a unique and valid username.'],
+    'city' => ['Please provide a valid city.'],
+    'state' => ['Please select a valid state.'],
+    'zip' => ['Please select a valid zip.'],
+]));
+```
+
+</TabItem>
+</Tabs>
+
