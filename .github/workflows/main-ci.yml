@@ -1,0 +1,51 @@
+name: Main - Continuous Integration
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  push:
+    branches:
+      - main
+      - 4.x
+
+jobs:
+  ci:
+    name: Continuous Integration
+    uses: ./.github/workflows/__shared-ci.yml
+    secrets: inherit
+    with:
+      publish: true
+
+  deploy:
+    name: Deploy website
+    needs: ci
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: documentation
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "docs: update documentation"
+          commit_options: "--no-verify --signoff"
+
+      - name: ⚙️ Setup Pages
+        if: github.ref == 'refs/heads/main'
+        uses: actions/configure-pages@v4
+
+      - name: 🚀 Deploy to GitHub Pages
+        id: deployment
+        if: github.ref == 'refs/heads/main'
+        uses: actions/deploy-pages@v3
