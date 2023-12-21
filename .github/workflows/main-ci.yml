@@ -31,6 +31,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PRIVATE_ACCESS_TOKEN }}
 
       - uses: actions/download-artifact@v4
         with:
@@ -40,6 +42,7 @@ jobs:
         with:
           commit_message: "docs: update documentation"
           commit_options: "--no-verify --signoff"
+          push_options: --force
 
       - name: ⚙️ Setup Pages
         if: github.ref == 'refs/heads/main'
@@ -48,4 +51,4 @@ jobs:
       - name: 🚀 Deploy to GitHub Pages
         id: deployment
         if: github.ref == 'refs/heads/main'
-        uses: actions/deploy-pages@v3
+        uses: actions/deploy-pages@v4

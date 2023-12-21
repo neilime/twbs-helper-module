@@ -36,7 +36,7 @@ jobs:
         with:
           name: documentation
 
-      - uses: actions/setup-node@v4.0.0
+      - uses: actions/setup-node@v4.0.1
         with:
           node-version-file: ".nvmrc"
           cache: yarn
@@ -60,6 +60,6 @@ jobs:
 
       - name: 📦 Upload website build artifact
         if: inputs.publish
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: website/build
