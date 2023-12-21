@@ -1,0 +1,51 @@
+name: Shared - Continuous Integration for common tasks
+
+on:
+  workflow_call:
+    inputs:
+      publish:
+        default: false
+        type: boolean
+
+jobs:
+  checks:
+    strategy:
+      matrix:
+        include:
+          - php-versions: "8.1"
+          - php-versions: "8.2"
+          - php-versions: "8.3"
+            stable: true
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup PHP, with composer and extensions
+        uses: ./.github/actions/setup-php
+        with:
+          php-version: ${{ matrix.php-versions }}
+
+      - name: 👕 Lint
+        if: matrix.stable
+        run: composer php-cs-fixer -- --format=checkstyle | tools/vendor/bin/cs2pr
+
+      - name: 🔬 Static analysis
+        if: matrix.stable
+        run: composer stan -- --error-format=checkstyle | tools/vendor/bin/cs2pr
+
+      - name: 🧪 Test
+        run: composer test:ci
+
+      - name: 📊 Upload coverage results to Codecov
+        if: matrix.stable
+        uses: codecov/codecov-action@v3
+        with:
+          file: ./build/logs/clover.xml
+
+  build-website:
+    name: Check that website is building without errors
+    uses: ./.github/workflows/__build-website.yml
+    with:
+      publish: ${{ inputs.publish }}

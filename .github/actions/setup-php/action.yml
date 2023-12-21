@@ -1,0 +1,41 @@
+name: Setup PHP
+description: Opiniated PHP setup with composer and extensions
+inputs:
+  php-version:
+    description: Php version to use
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: ⚙️ Setup PHP, with composer and extensions
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ inputs.php-version }}
+        extensions: none, curl, json, dom, tokenizer, xml, xmlwriter, simplexml, iconv, mbstring, intl, sodium
+        coverage: pcov
+
+    - name: ♻️ Get composer cache directory
+      id: composer-cache
+      shell: bash
+      run: echo "dir=$(composer config cache-files-dir)" >> "$GITHUB_OUTPUT"
+
+    - name: ♻️ Cache composer dependencies
+      uses: actions/cache@v3
+      with:
+        path: ${{ steps.composer-cache.outputs.dir }}
+        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+        restore-keys: ${{ runner.os }}-composer-
+
+    - name: ⚙️ Install dependencies
+      shell: bash
+      run: |
+        composer install --no-progress --prefer-dist --optimize-autoloader
+        composer --working-dir=tools install --no-progress --prefer-dist --optimize-autoloader
+
+    - name: ♻️ Tools cache
+      uses: actions/cache@v3
+      with:
+        path: tools/cache
+        key: ${{ runner.os }}-tools-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-tools-
