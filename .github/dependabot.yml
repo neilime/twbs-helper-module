@@ -42,6 +42,7 @@ updates:
         patterns:
           - "@docusaurus/*"
           - "@tsconfig/docusaurus"
+          - "clsx"
       react:
         patterns:
           - react
