@@ -47,7 +47,7 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: ♻️ Webpack cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: website/node_modules/.cache/webpack
           key: ${{ runner.os }}-webpack-${{ github.sha }}
