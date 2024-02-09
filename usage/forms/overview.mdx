@@ -19,7 +19,7 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 <Tabs>
 <TabItem value="result" label="Result" default>
   <HtmlCode bootstrapVersion="5.1">
-      <div dangerouslySetInnerHTML={{ __html: `<form action="" id="form" method="POST" name="form" role="form">
+      <div dangerouslySetInnerHTML={{ __html: `<form id="form" method="POST" name="form" role="form">
     <div class="mb-3">
         <label class="form-label" for="exampleInputEmail1">Email address</label>
         <input aria-describedby="emailHelp" class="form-control" id="exampleInputEmail1" name="email" type="email" value="">
@@ -113,7 +113,7 @@ echo $this->form($factory->create([
     Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
 </div>
 <br>
-<form action="" class="align-items-center g-3 row" id="form" method="POST" name="form" role="form">
+<form class="align-items-center g-3 row" id="form" method="POST" name="form" role="form">
     <div class="col-auto">
         <label class="col-form-label" for="inputPassword6">Password</label>
     </div>
@@ -194,7 +194,7 @@ echo $this->form($factory->create([
 <Tabs>
 <TabItem value="result" label="Result" default>
   <HtmlCode bootstrapVersion="5.1">
-      <div dangerouslySetInnerHTML={{ __html: `<form action="" id="form" method="POST" name="form" role="form">
+      <div dangerouslySetInnerHTML={{ __html: `<form id="form" method="POST" name="form" role="form">
     <fieldset disabled>
         <legend>Disabled fieldset example</legend>
         <div class="mb-3">
@@ -231,6 +231,7 @@ echo $this->form($factory->create([
                 'type' => 'fieldset',
                 'options' => [
                     'label' => 'Disabled fieldset example',
+                    'disabled' => true,
                 ],
                 'attributes' => [
                     'disabled' => true,
