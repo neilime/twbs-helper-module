@@ -131,6 +131,7 @@ return [
                                 'type' => 'fieldset',
                                 'options' => [
                                     'label' => 'Disabled fieldset example',
+                                    'disabled' => true,
                                 ],
                                 'attributes' => [
                                     'disabled' => true,
