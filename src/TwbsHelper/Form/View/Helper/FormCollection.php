@@ -102,7 +102,6 @@ class FormCollection extends \Laminas\Form\View\Helper\FormCollection
     protected function renderFieldset(\Laminas\Form\ElementInterface $element): string
     {
         $wrapper = $this->wrapper;
-        $this->wrapper = '<fieldset%4$s>%2$s%1$s%3$s</fieldset>';
 
         $columSize = $element->getOption('column');
         if ($columSize) {
@@ -114,7 +113,6 @@ class FormCollection extends \Laminas\Form\View\Helper\FormCollection
             $this->wrapper = '<fieldset%4$s>%2$s' . $columnWrapper . '</fieldset>';
         }
 
-
         $markup = parent::render($element);
 
         $this->wrapper = $wrapper;
@@ -122,7 +120,6 @@ class FormCollection extends \Laminas\Form\View\Helper\FormCollection
         if (!$markup || !$this->shouldWrap) {
             return $markup;
         }
-
 
         if (!preg_match(self::$fieldsetRegex, $markup, $matches)) {
             return $markup;

@@ -34,7 +34,7 @@ class FormTest extends \PHPUnit\Framework\TestCase
         $form = new \Laminas\Form\Form();
 
         $this->assertEquals(
-            '<form action="" method="POST" role="form"></form>',
+            '<form method="POST" role="form"></form>',
             $this->formHelper->__invoke($form)
         );
     }
@@ -66,7 +66,7 @@ class FormTest extends \PHPUnit\Framework\TestCase
         $newHorizontalForm = new $horizontalFormClass();
 
         $this->assertEquals(
-            '<form action="" id="form" method="POST" name="form" role="form">' . PHP_EOL .
+            '<form id="form" method="POST" name="form" role="form">' . PHP_EOL .
                 '    <div class="mb-3&#x20;row">' . PHP_EOL .
                 '        <label class="col-form-label&#x20;col-sm-2" for="inputEmail3">' .
                 'Email' .
