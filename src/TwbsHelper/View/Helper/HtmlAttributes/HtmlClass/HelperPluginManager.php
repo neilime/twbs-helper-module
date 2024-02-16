@@ -10,6 +10,7 @@ use Laminas\ServiceManager\ConfigInterface;
  * Enforces that helpers retrieved are instances of
  * Helper\HelperInterface. Additionally, it registers a number of default
  * helpers.
+ * @extends \Laminas\ServiceManager\AbstractPluginManager<\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\HelperInterface>
  */
 class HelperPluginManager extends \Laminas\ServiceManager\AbstractPluginManager
 {
@@ -124,7 +125,7 @@ class HelperPluginManager extends \Laminas\ServiceManager\AbstractPluginManager
      *
      * Validates against callables and HelperInterface implementations.
      *
-     * @param mixed $instance
+     * @param \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\HelperInterface|callable|mixed $instance
      * @throws \Laminas\ServiceManager\Exception\InvalidServiceException
      */
     public function validate($instance)
