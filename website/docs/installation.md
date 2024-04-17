@@ -10,6 +10,21 @@ sidebar_position: 1
 composer require neilime/twbs-helper-module
 ```
 
+Afterwards edit the global modules configuration file `config/modules.config.php` and add the configuration fragment below:
+
+  ```php
+  return [
+    //...
+    'Laminas\Router',
+    'Laminas\Validator',
+    'Laminas\Mvc\Console',
+    'TwbsHelper', // This is needed to enable the module
+    //...
+  ];
+  ```
+
+
+
 ## Include Twitter Bootstrap assets
 
 ### With **AssetsBundle** module (easy way)
