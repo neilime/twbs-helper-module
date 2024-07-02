@@ -3,7 +3,9 @@ updates:
   - package-ecosystem: composer
     open-pull-requests-limit: 20
     versioning-strategy: widen
-    directory: "/"
+    directories:
+      - "/"
+      - "/tools"
     schedule:
       interval: weekly
       day: friday
@@ -17,18 +19,6 @@ updates:
           - "spatie/phpunit-snapshot-assertions"
       dev-dependencies:
         dependency-type: development
-
-  - package-ecosystem: composer
-    open-pull-requests-limit: 20
-    versioning-strategy: widen
-    directory: "/tools"
-    schedule:
-      interval: weekly
-      day: friday
-    groups:
-      tools-dependencies:
-        patterns:
-          - "*"
 
   - package-ecosystem: npm
     open-pull-requests-limit: 20
@@ -53,7 +43,9 @@ updates:
         dependency-type: development
 
   - package-ecosystem: github-actions
-    directory: "/"
+    directories:
+      - "/"
+      - ".github/actions/**/*"
     schedule:
       interval: weekly
       day: friday
