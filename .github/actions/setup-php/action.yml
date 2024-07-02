@@ -20,7 +20,7 @@ runs:
       run: echo "dir=$(composer config cache-files-dir)" >> "$GITHUB_OUTPUT"
 
     - name: ♻️ Cache composer dependencies
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: ${{ steps.composer-cache.outputs.dir }}
         key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
@@ -33,7 +33,7 @@ runs:
         composer --working-dir=tools install --no-progress --prefer-dist --optimize-autoloader
 
     - name: ♻️ Tools cache
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: tools/cache
         key: ${{ runner.os }}-tools-${{ github.sha }}
