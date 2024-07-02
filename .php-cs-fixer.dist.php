@@ -16,4 +16,5 @@ return (new Config())
     ])
     ->setFinder($finder)
     ->setUsingCache(true)
-    ->setCacheFile(__DIR__ . '/tools/cache/.php-cs-fixer.cache');
+    ->setCacheFile(__DIR__ . '/tools/cache/.php-cs-fixer.cache')
+    ->setParallelConfig(PhpCsFixer\Runner\Parallel\ParallelConfigFactory::detect());
