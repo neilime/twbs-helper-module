@@ -9,6 +9,7 @@ updates:
     schedule:
       interval: weekly
       day: friday
+      time: "04:00"
     groups:
       laminas:
         patterns:
@@ -27,6 +28,7 @@ updates:
     schedule:
       interval: weekly
       day: friday
+      time: "04:00"
     groups:
       docusaurus:
         patterns:
@@ -49,6 +51,7 @@ updates:
     schedule:
       interval: weekly
       day: friday
+      time: "04:00"
     groups:
       github-actions-dependencies:
         patterns:
