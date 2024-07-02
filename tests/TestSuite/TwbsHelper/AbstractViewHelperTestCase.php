@@ -19,9 +19,12 @@ abstract class AbstractViewHelperTestCase extends \PHPUnit\Framework\TestCase
         }
 
         $viewHelperPluginManager = \TestSuite\Bootstrap::getServiceManager()->get('ViewHelperManager');
+        $resolver = \TestSuite\Bootstrap::getServiceManager()->get('ViewResolver');
         $phpRenderer = new \Laminas\View\Renderer\PhpRenderer();
-        $phpRenderer->setHelperPluginManager($viewHelperPluginManager);
+        $phpRenderer
+            ->setResolver($resolver)
+            ->setHelperPluginManager($viewHelperPluginManager);
 
-        $this->helper = $phpRenderer->getHelperPluginManager()->get($this->helper);
+        $this->helper = $phpRenderer->getHelperPluginManager()->get($this->helper, ['test' => 'test']);
     }
 }

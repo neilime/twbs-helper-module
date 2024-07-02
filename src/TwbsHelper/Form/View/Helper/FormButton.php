@@ -115,10 +115,6 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
 
     protected function prepareElementClassAttributes(\Laminas\Form\ElementInterface $element)
     {
-        if ($element->getOption('disable_twbs')) {
-            return;
-        }
-
         if ($element->getOption('close')) {
             return;
         }
