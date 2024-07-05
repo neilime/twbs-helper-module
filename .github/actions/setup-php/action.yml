@@ -39,3 +39,11 @@ runs:
         key: ${{ runner.os }}-tools-${{ github.sha }}
         restore-keys: |
           ${{ runner.os }}-tools-
+
+    - name: ♻️ Tests cache
+      uses: actions/cache@v4
+      with:
+        path: tests/.phpunit.cache
+        key: ${{ runner.os }}-tests-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-tests-

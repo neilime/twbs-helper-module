@@ -116,7 +116,7 @@ Enhancement suggestions are tracked as [GitHub issues](/issues).
 
 ## Styleguides
 
-- Code MUST respect the [PSR-12](https://www.php-fig.org/psr/psr-12/) coding style.
+- Code MUST respect the lint rules defined in the project.
 
 ### Commit Messages
 
