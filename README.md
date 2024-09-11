@@ -28,6 +28,8 @@
 
 ### [Installation](https://neilime.github.io/twbs-helper-module/docs/installation/)
 
+### [Configuration](https://neilime.github.io/twbs-helper-module/docs/configuration/)
+
 ### [Usage](https://neilime.github.io/twbs-helper-module/docs/usage/intro/)
 
 ### [Code coverage](https://codecov.io/gh/neilime/twbs-helper-module)

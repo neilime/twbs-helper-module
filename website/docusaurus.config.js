@@ -51,9 +51,21 @@ const {
             },
             {
               type: "doc",
+              docId: "configuration",
+              position: "left",
+              label: "Configuration",
+            },
+            {
+              type: "doc",
               docId: "usage/intro",
               position: "left",
               label: "Usage",
+            },
+            {
+              type: "doc",
+              docId: "development",
+              position: "left",
+              label: "Development",
             },
             {
               href: "https://github.com/neilime/twbs-helper-module",
@@ -73,8 +85,16 @@ const {
                   to: "/docs/installation",
                 },
                 {
+                  label: "Configuration",
+                  to: "/docs/configuration",
+                },
+                {
                   label: "Usage",
                   to: "/docs/usage",
+                },
+                {
+                  label: "Development",
+                  to: "/docs/development",
                 },
               ],
             },
