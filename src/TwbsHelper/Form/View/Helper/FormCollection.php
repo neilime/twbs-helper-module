@@ -67,14 +67,7 @@ class FormCollection extends \Laminas\Form\View\Helper\FormCollection
             }
         }
 
-        $elementLayout = $element->getOption('layout');
-
-        // Set form layout class
-        if ($elementLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE) {
-            $this->setClassesToElement($element, ['form-' . $elementLayout]);
-        } elseif ($elementLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL) {
-            $this->setClassesToElement($element, ['row', 'mb-3']);
-        }
+        $this->setClassesToElement($element, $this->getElementLayoutClasses($element));
 
         return $this->renderFieldset($element);
     }
@@ -97,6 +90,22 @@ class FormCollection extends \Laminas\Form\View\Helper\FormCollection
         }
 
         return parent::renderTemplate($collection);
+    }
+
+    protected function getElementLayoutClasses(\Laminas\Form\ElementInterface $element): array
+    {
+        $elementLayout = $element->getOption('layout');
+
+        // Set form layout class
+        if ($elementLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE) {
+            return ['form-' . $elementLayout];
+        }
+
+        if ($elementLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL) {
+            return ['row', 'mb-3'];
+        }
+
+        return [];
     }
 
     protected function renderFieldset(\Laminas\Form\ElementInterface $element): string
