@@ -29,6 +29,7 @@ class HelperPluginManager extends \Laminas\ServiceManager\AbstractPluginManager
         'justifyContent' => \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\JustifyContent::class,
         'offset' => \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Offset::class,
         'size' => \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Size::class,
+        'spacing' => \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Spacing::class,
         'variant' => \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Variant::class,
     ];
 
@@ -53,6 +54,8 @@ class HelperPluginManager extends \Laminas\ServiceManager\AbstractPluginManager
         \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Offset::class
         => \Laminas\ServiceManager\Factory\InvokableFactory::class,
         \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Size::class
+        => \Laminas\ServiceManager\Factory\InvokableFactory::class,
+        \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Spacing::class
         => \Laminas\ServiceManager\Factory\InvokableFactory::class,
         \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Variant::class
         => \Laminas\ServiceManager\Factory\InvokableFactory::class,

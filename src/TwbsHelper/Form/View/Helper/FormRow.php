@@ -159,13 +159,20 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
             if ($this->elementIsLayout($element, \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL)) {
                 $rowClasses[] = 'row';
             } else {
-                $rowClasses = $this->getView()->plugin('htmlClass')->plugin('column')->getClassesFromOption($colum);
+                $columnClasses = $this->getView()->plugin('htmlClass')->plugin('column')->getClassesFromOption($colum);
+
+                $rowClasses = array_merge($rowClasses, $columnClasses);
+
                 $shouldDefaultRowSpacingClass = false;
             }
         }
 
         if ($shouldDefaultRowSpacingClass) {
-            $rowClasses[] = $this->options->getDefaultRowSpacingClass();
+            $defaultRowSpacingClasses = $this->getView()->plugin('htmlClass')->plugin('spacing')->getClassesFromOption(
+                $this->options->getDefaultRowSpacingClass()
+            );
+
+            $rowClasses = array_merge($rowClasses, $defaultRowSpacingClasses);
         }
 
         if ($element->getMessages()) {
