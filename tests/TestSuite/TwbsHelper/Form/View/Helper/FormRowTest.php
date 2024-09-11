@@ -27,11 +27,27 @@ class FormRowTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
         $this->assertEquals(
             '{"element":{},"label":null,"labelAttributes":[],"labelPosition":"prepend","renderErrors":true}',
             $this->helper->__invoke(
-                $form,
-                null,
-                null,
-                'test/json'
+                element: $form,
+                partial: 'test/json'
             )
+        );
+    }
+
+    public function testWithRowRowSpacingClassDisabled()
+    {
+        $element = new \Laminas\Form\Element\Text(
+            'form',
+            [
+                'row_class' => 'mb-5',
+                'row_spacing_class' => false,
+            ]
+        );
+
+        $this->assertEquals(
+            '<div class="mb-5">' . PHP_EOL .
+                '    <input class="form-control" name="form" type="text" value=""/>' . PHP_EOL .
+                '</div>',
+            $this->helper->__invoke($element)
         );
     }
 }
