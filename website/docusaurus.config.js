@@ -6,6 +6,9 @@ const {
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 (
   module.exports = {
+    future: {
+      experimental_faster: true,
+    },
     title: "TwbsHelper",
     tagline:
       "Laminas (formerly Zend Framework) module for easy integration of the Twitter Bootstrap v4+",
@@ -17,6 +20,14 @@ const {
     favicon: "img/favicon.ico",
     organizationName: "neilime",
     projectName: "twbs-helper-module",
+    plugins: [
+      [
+        "rsdoctor",
+        {
+          rsdoctorOptions: { disableClientServer: true },
+        },
+      ],
+    ],
     presets: [
       [
         "@docusaurus/preset-classic",
