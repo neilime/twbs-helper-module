@@ -1,6 +1,6 @@
 <?php
 
-namespace Documentation;
+namespace TestSuite\Documentation;
 
 /**
  * Base class to perform tests according to the Bootstrap documentation : %bootstrap-url%/

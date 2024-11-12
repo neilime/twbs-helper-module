@@ -1,6 +1,6 @@
 <?php
 
-namespace TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper;
+namespace TestSuite\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper;
 
 class VariantTest extends \PHPUnit\Framework\TestCase
 {
