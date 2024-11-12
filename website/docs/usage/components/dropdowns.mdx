@@ -532,7 +532,7 @@ echo $this->formButton()->renderSpec([
                 'Something else here',
                 '---',
                 'Separated link',
-            ]
+            ],
         ],
     ],
 ]);
@@ -762,7 +762,7 @@ echo $this->dropdown()->renderMenu([
     'Dropdown item text' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_TEXT,
     'Action',
     'Another action',
-    'Something else here'
+    'Something else here',
 ]);
 ```
 
@@ -791,7 +791,7 @@ echo $this->dropdown()->renderMenu([
 echo $this->dropdown()->renderMenu([
     'Regular link',
     'Active link' => ['active' => true],
-    'Another link'
+    'Another link',
 ]);
 ```
 
@@ -820,7 +820,7 @@ echo $this->dropdown()->renderMenu([
 echo $this->dropdown()->renderMenu([
     'Regular link',
     'Disabled link' => ['disabled' => true],
-    'Another link'
+    'Another link',
 ]);
 ```
 
@@ -1155,7 +1155,7 @@ echo $this->dropdown()->renderMenu([
   <HtmlCode bootstrapVersion="5.1">
       <div dangerouslySetInnerHTML={{ __html: `<ul class="dropdown-menu">
     <li>
-        <form action="" class="px-4 py-3" id="dropdown" method="POST" name="dropdown" role="form">
+        <form class="px-4 py-3" id="dropdown" method="POST" name="dropdown" role="form">
             <div class="mb-3">
                 <label class="form-label" for="exampleDropdownFormEmail1">Email address</label>
                 <input class="form-control" id="exampleDropdownFormEmail1" name="email" placeholder="email@example.com" type="email" value="">
@@ -1178,7 +1178,7 @@ echo $this->dropdown()->renderMenu([
     <li><a class="dropdown-item" href="#">Forgot password?</a></li>
 </ul>
 <br>
-<form action="" class="dropdown-menu p-4" id="dropdown" method="POST" name="dropdown" role="form">
+<form class="dropdown-menu p-4" id="dropdown" method="POST" name="dropdown" role="form">
     <div class="mb-3">
         <label class="form-label" for="exampleDropdownFormEmail1">Email address</label>
         <input class="form-control" id="exampleDropdownFormEmail1" name="email" placeholder="email@example.com" type="email" value="">
@@ -1248,7 +1248,7 @@ $form = $factory->create([
                 'options' => ['label' => 'Sign in', 'variant' => 'primary'],
             ],
         ],
-    ]
+    ],
 ]);
 
 echo $this->dropdown()->renderMenu([

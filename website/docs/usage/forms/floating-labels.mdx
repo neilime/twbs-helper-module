@@ -27,13 +27,13 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
     <input class="form-control" id="floatingPassword" name="password" placeholder="Password" type="password" value="">
     <label for="floatingPassword">Password</label>
 </div>
-<form action="" id="form" method="POST" name="form" role="form">
+<form id="form" method="POST" name="form" role="form">
     <div class="form-floating">
         <input class="form-control" id="floatingInputValue" name="emailWithValue" placeholder="name@example.com" type="email" value="test@example.com">
         <label for="floatingInputValue">Input with value</label>
     </div>
 </form>
-<form action="" class="was-validated" id="form" method="POST" name="form" role="form">
+<form class="was-validated" id="form" method="POST" name="form" role="form">
     <div class="form-floating has-error">
         <input class="form-control is-invalid" id="floatingInputInvalid" name="invalidEmailWithValue" placeholder="name@example.com" type="email" value="test@example.com">
         <div class="invalid-feedback"></div>
@@ -91,11 +91,11 @@ echo $this->form($factory->create([
                     'type' => 'email',
                     'id' => 'floatingInputValue',
                     'placeholder' => 'name@example.com',
-                    'value' => 'test@example.com'
+                    'value' => 'test@example.com',
                 ],
-            ]
-        ]
-    ]
+            ],
+        ],
+    ],
 ]));
 
 echo $this->form($factory->create([
@@ -114,11 +114,11 @@ echo $this->form($factory->create([
                     'type' => 'email',
                     'id' => 'floatingInputInvalid',
                     'placeholder' => 'name@example.com',
-                    'value' => 'test@example.com'
+                    'value' => 'test@example.com',
                 ],
-            ]
-        ]
-    ]
+            ],
+        ],
+    ],
 ])->setMessages(['invalidEmailWithValue' => ['']]));
 ```
 
@@ -243,7 +243,7 @@ echo $this->formRow($factory->create(
 <Tabs>
 <TabItem value="result" label="Result" default>
   <HtmlCode bootstrapVersion="5.1">
-      <div dangerouslySetInnerHTML={{ __html: `<form action="" id="form" method="POST" name="form" role="form">
+      <div dangerouslySetInnerHTML={{ __html: `<form id="form" method="POST" name="form" role="form">
     <div class="g-2 row">
         <div class="col-md form-floating">
             <input class="form-control" id="floatingInputGrid" name="floatingInputGrid" placeholder="name@example.com" type="email" value="mdo@example.com">
