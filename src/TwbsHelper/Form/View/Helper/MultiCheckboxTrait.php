@@ -41,8 +41,12 @@ trait MultiCheckboxTrait
         $content = '';
 
         foreach (explode(self::$TMP_SEPARATOR, $tmpContent) as $optionContent) {
+
             // Retrieve input content
             if (preg_match('/(<label[^>]*>.*)(<input[^>]+>)(.*<\/label[^>]*>)/', $optionContent, $matches)) {
+                $extraOptionContent = trim(str_replace($matches[0], '', $optionContent));
+
+
                 $labelContent = $matches[1] . $matches[3];
                 if (preg_match('/<label[^>]*>\s*<\/label[^>]*>/', $labelContent)) {
                     $labelContent = '';
@@ -50,10 +54,16 @@ trait MultiCheckboxTrait
 
                 $optionContent = $matches[2] . ($labelContent ? PHP_EOL . $labelContent : '');
 
-                $content .= ($content ? PHP_EOL : '') . $this->renderElementOption(
+                $optionContent = $this->renderElementOption(
                     $element,
                     $optionContent,
                 );
+
+                if ($extraOptionContent) {
+                    $optionContent = $extraOptionContent . PHP_EOL . $optionContent;
+                }
+
+                $content .= ($content ? PHP_EOL : '') . $optionContent;
             }
         }
 
