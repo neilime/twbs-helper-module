@@ -19,7 +19,7 @@ import HtmlCode from "../../../src/components/HtmlCode.tsx";
 <Tabs>
 <TabItem value="result" label="Result" default>
   <HtmlCode bootstrapVersion="5.1">
-      <div dangerouslySetInnerHTML={{ __html: `<form action="" id="form" method="POST" name="form" role="form">
+      <div dangerouslySetInnerHTML={{ __html: `<form id="form" method="POST" name="form" role="form">
     <div class="mb-3">
         <label class="form-label" for="exampleFormControlInput1">Email address</label>
         <input class="form-control" id="exampleFormControlInput1" name="email" placeholder="name@example.com" type="email" value="">
@@ -45,7 +45,7 @@ echo $this->form($factory->create([
             'spec' => [
                 'name' => 'email',
                 'options' => [
-                    'label' => 'Email address'
+                    'label' => 'Email address',
                 ],
                 'attributes' => [
                     'type' => 'email',
@@ -58,7 +58,7 @@ echo $this->form($factory->create([
             'spec' => [
                 'name' => 'textarea',
                 'options' => [
-                    'label' => 'Example textarea'
+                    'label' => 'Example textarea',
                 ],
                 'attributes' => [
                     'type' => 'textarea',
@@ -154,7 +154,7 @@ $element = $factory->create([
     'attributes' => [
         'disabled' => true,
         'placeholder' => 'Disabled input',
-        'aria-label' => 'Disabled input example'
+        'aria-label' => 'Disabled input example',
     ],
 ]);
 echo $this->formElement($element);
@@ -169,7 +169,7 @@ $element = $factory->create([
         'disabled' => true,
         'readonly' => true,
         'value' => 'Disabled readonly input',
-        'aria-label' => 'Disabled input example'
+        'aria-label' => 'Disabled input example',
     ],
 ]);
 echo $this->formElement($element);
@@ -201,7 +201,7 @@ $element = $factory->create([
     'attributes' => [
         'readonly' => true,
         'value' => 'Readonly input here...',
-        'aria-label' => 'readonly input example'
+        'aria-label' => 'readonly input example',
     ],
 ]);
 echo $this->formElement($element);
@@ -217,7 +217,7 @@ echo $this->formElement($element);
 <Tabs>
 <TabItem value="result" label="Result" default>
   <HtmlCode bootstrapVersion="5.1">
-      <div dangerouslySetInnerHTML={{ __html: `<form action="" id="form" method="POST" name="form" role="form">
+      <div dangerouslySetInnerHTML={{ __html: `<form id="form" method="POST" name="form" role="form">
     <div class="mb-3 row">
         <label class="col-form-label col-sm-2" for="staticEmail">Email</label>
         <div class="col-sm-10">
@@ -232,7 +232,7 @@ echo $this->formElement($element);
     </div>
 </form>
 <br>
-<form action="" class="align-items-center row" id="form" method="POST" name="form" role="form">
+<form class="align-items-center row" id="form" method="POST" name="form" role="form">
     <label class="visually-hidden" for="staticEmail2">Email</label>
     <div class="col-auto">
         <input class="form-control-plaintext" id="staticEmail2" name="email" readonly type="email" value="email@example.com">
@@ -351,7 +351,7 @@ echo $this->form($factory->create([
 <Tabs>
 <TabItem value="result" label="Result" default>
   <HtmlCode bootstrapVersion="5.1">
-      <div dangerouslySetInnerHTML={{ __html: `<form action="" id="form" method="POST" name="form" role="form">
+      <div dangerouslySetInnerHTML={{ __html: `<form id="form" method="POST" name="form" role="form">
     <div class="mb-3">
         <label class="form-label" for="formFile">Default file input example</label>
         <input class="form-control" id="formFile" name="default-file" type="file">
