@@ -42,8 +42,7 @@ jobs:
         if: matrix.stable
         uses: codecov/codecov-action@v5
         with:
-          file: ./build/logs/clover.xml
-          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./build/logs/clover.xml
 
   build-website:
     name: Check that website is building without errors
