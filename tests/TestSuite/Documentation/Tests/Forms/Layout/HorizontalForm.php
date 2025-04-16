@@ -52,7 +52,6 @@ return [
                                     'type' => 'radio',
                                     'name' => 'gridRadios',
                                     'options' => [
-                                        'column' => 'sm-10',
                                         'value_options' => [
                                             [
                                                 'label' => 'First radio',
