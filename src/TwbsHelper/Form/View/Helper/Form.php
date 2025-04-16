@@ -9,6 +9,7 @@ use TwbsHelper\Options\ModuleOptions;
 use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass;
 use TwbsHelper\View\Helper\HtmlElement;
 use InvalidArgumentException;
+use Laminas\Form\FieldsetInterface;
 use LogicException;
 
 class Form extends \Laminas\Form\View\Helper\Form
@@ -186,7 +187,7 @@ class Form extends \Laminas\Form\View\Helper\Form
         $this->setClassesToElement($form, $classes);
     }
 
-    protected function inheritOptionsToElements(FormInterface $form)
+    protected function inheritOptionsToElements(FieldsetInterface $form)
     {
         $formLayout = $form->getOption('layout');
         $tooltipFeedback = $form->getOption('tooltip_feedback');
@@ -195,6 +196,9 @@ class Form extends \Laminas\Form\View\Helper\Form
             // Define layout option to form elements if not already defined
             if ($formLayout && !$element->getOption('layout')) {
                 $element->setOption('layout', $formLayout);
+                if ($element instanceof FieldsetInterface) {
+                    $this->inheritOptionsToElements($element);
+                }
             }
             // Define tooltip_feedback option to form elements if not already defined
             if ($element->getOption('tooltip_feedback') === null) {
