@@ -177,7 +177,7 @@ class Form extends \Laminas\Form\View\Helper\Form
         $this->setClassesToElement($form, $classes);
     }
 
-    protected function inheritOptionsToElements(\Laminas\Form\FormInterface $form)
+    protected function inheritOptionsToElements(\Laminas\Form\FieldsetInterface $form)
     {
         $formLayout = $form->getOption('layout');
         $tooltipFeedback = $form->getOption('tooltip_feedback');
@@ -186,6 +186,9 @@ class Form extends \Laminas\Form\View\Helper\Form
             // Define layout option to form elements if not already defined
             if ($formLayout && !$element->getOption('layout')) {
                 $element->setOption('layout', $formLayout);
+                if ($element instanceof \Laminas\Form\FieldsetInterface) {
+                    $this->inheritOptionsToElements($element);
+                }
             }
             // Define tooltip_feedback option to form elements if not already defined
             if ($element->getOption('tooltip_feedback') === null) {
