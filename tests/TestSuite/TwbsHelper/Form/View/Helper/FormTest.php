@@ -81,6 +81,76 @@ class FormTest extends \PHPUnit\Framework\TestCase
         );
     }
 
+    public function testInitializeAnHorizontalFormClassWithFieldset()
+    {
+        $factory = new \Laminas\Form\Factory();
+
+        $form = $factory->create([
+            'type' => 'form',
+            'elements' => [
+                [
+                    'spec' => [
+                        'name' => 'displayname',
+                        'options' => [
+                            'label' => 'Display name',
+                            'column' => 'sm-10',
+                        ],
+                        'attributes' => [
+                            'type' => 'text',
+                            'id' => 'inputDisplayname1',
+                            'placeholder' => 'Display name',
+                        ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'name' => 'credentials',
+                        'type' =>  \Laminas\Form\Fieldset::class,
+                        'elements' => [
+                            [
+                                'spec' => [
+                                    'name' => 'email',
+                                    'options' => [
+                                        'label' => 'Email',
+                                        'column' => 'sm-10',
+                                    ],
+                                    'attributes' => [
+                                        'type' => 'email',
+                                        'id' => 'inputEmail3',
+                                        'placeholder' => 'Email',
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
+        $form->setOption('layout', \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL);
+        $this->assertEquals(
+            '<form id="form" method="POST" name="form" role="form">' . PHP_EOL .
+                '    <div class="mb-3&#x20;row">' . PHP_EOL .
+                '        <label class="col-form-label&#x20;col-sm-2" for="inputDisplayname1">'.
+                'Display name</label>' . PHP_EOL .
+                '        <div class="col-sm-10">' . PHP_EOL .
+                '            <input class="form-control" id="inputDisplayname1" name="displayname" placeholder="Display&#x20;name" ' .
+                'type="text" value=""/>' . PHP_EOL .
+                '        </div>' . PHP_EOL .
+                '    </div>' . PHP_EOL .
+                '    <fieldset class="mb-3&#x20;row">' . PHP_EOL .
+                '        <div class="mb-3&#x20;row">' . PHP_EOL .
+                '            <label class="col-form-label&#x20;col-sm-2" for="inputEmail3">' .
+                'Email</label>' . PHP_EOL .
+                '            <div class="col-sm-10">' . PHP_EOL .
+                '                <input class="form-control" id="inputEmail3" name="credentials&#x5B;email&#x5D;" placeholder="Email" ' .
+                'type="email" value=""/>' . PHP_EOL .
+                '            </div>' . PHP_EOL .
+                '        </div>' . PHP_EOL .
+                '    </fieldset>' . PHP_EOL .
+                '</form>',
+            $this->formHelper->__invoke($form)
+        );
+    }
 
     public function testRenderSpecWithWrongFormElementThrowsAnException()
     {
