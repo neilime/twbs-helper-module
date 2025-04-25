@@ -15,7 +15,7 @@ on:
 
 jobs:
   main:
-    uses: hoverkraft-tech/ci-github-common/.github/workflows/need-fix-to-issue.yml@0.22.2
+    uses: hoverkraft-tech/ci-github-common/.github/workflows/need-fix-to-issue.yml@0.22.3
     with:
       manual-commit-ref: ${{ inputs.manual-commit-ref }}
       manual-base-ref: ${{ inputs.manual-base-ref }}
