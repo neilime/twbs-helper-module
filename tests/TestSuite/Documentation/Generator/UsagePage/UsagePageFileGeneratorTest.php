@@ -34,9 +34,16 @@ class UsagePageFileGeneratorTest extends \PHPUnit\Framework\TestCase
 
     public function testGenerateShouldCreateUsagePage()
     {
-        $this->file->expects($this->exactly(2))->method('dirExists')->withConsecutive(
-            ['/tmp/test-dir/website/docs/usage'],
-        )->willReturn(true);
+        $invocationCount = 0;
+        $this->file->expects($this->exactly(2))->method('dirExists')
+            ->willReturnCallback(function ($parameters) use (&$invocationCount) {
+                $invocationCount++;
+                if ($invocationCount === 1) {
+                    $this->assertSame('/tmp/test-dir/website/docs/usage', $parameters);
+                }
+
+                return true;
+            });
 
         $this->usagePageFileGenerator->generate('test');
     }

@@ -21,7 +21,7 @@ class Toast extends \TwbsHelper\View\Helper\AbstractHtmlElement
      * Generates a 'toast' element
      * @return string|\TwbsHelper\View\Helper\Toast
      */
-    public function __invoke(iterable $options = null)
+    public function __invoke(?iterable $options = null)
     {
         if ($options === null) {
             return $this;

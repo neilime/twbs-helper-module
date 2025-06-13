@@ -27,9 +27,7 @@ class FormElementFactoryTest extends TestCase
         $this->formElementFactory = new FormModuleOptionsFactory();
     }
 
-    /**
-     * @dataProvider formElementProvider
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('formElementProvider')]
     public function testRenderElement(string $formElement)
     {
         $this->assertInstanceOf(
@@ -41,7 +39,7 @@ class FormElementFactoryTest extends TestCase
         );
     }
 
-    public function formElementProvider(): array
+    public static function formElementProvider(): array
     {
         return [
             Form::class           => [

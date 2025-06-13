@@ -160,7 +160,7 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
         return $attributes;
     }
 
-    public function renderToggler(iterable $options, string $id = null): string
+    public function renderToggler(iterable $options, ?string $id = null): string
     {
         $translator = $this->getTranslator();
 
@@ -281,8 +281,8 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
         string $content,
         \Laminas\Navigation\AbstractContainer $container,
         iterable $options,
-        string $id = null,
-        string $brandContent = null
+        ?string $id = null,
+        ?string $brandContent = null
     ): string {
 
         $navContent = $this->renderNav($container, $options['nav'] ?? []);
@@ -362,7 +362,7 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
         );
     }
 
-    public function renderOffcanvas(string $content, iterable $options, string $id = null): string
+    public function renderOffcanvas(string $content, iterable $options, ?string $id = null): string
     {
         if ($id) {
             $options['id'] = $id;
@@ -371,7 +371,7 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
         return $this->getView()->plugin('offcanvas')->__invoke($content, $options);
     }
 
-    public function renderCollapse(string $content, string $id = null): string
+    public function renderCollapse(string $content, ?string $id = null): string
     {
         return $this->getView()->plugin('htmlElement')->__invoke(
             'div',

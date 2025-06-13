@@ -29,7 +29,7 @@ class HtmlElement extends \Laminas\View\Helper\AbstractHtmlElement
     public function __invoke(
         string $tag,
         iterable $attributes = [],
-        string $content = null,
+        ?string $content = null,
         bool $escape = true
     ): string {
 
@@ -64,7 +64,7 @@ class HtmlElement extends \Laminas\View\Helper\AbstractHtmlElement
     public function addProperIndentation(
         string $content,
         bool $forceIndentation = false,
-        int $indentation = null
+        ?int $indentation = null
     ): string {
 
         if (!$content) {

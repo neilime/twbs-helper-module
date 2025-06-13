@@ -168,7 +168,7 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
     protected function renderLabel(
         \Laminas\Form\ElementInterface $element,
         string $elementContent,
-        string $labelPosition = null
+        ?string $labelPosition = null
     ): string {
 
         if (!$element->getLabel()) {

@@ -30,7 +30,7 @@ class GridColumn extends \TwbsHelper\View\Helper\AbstractHtmlElement
     ];
 
     public function __invoke(
-        string $content = null,
+        ?string $content = null,
         iterable $optionsAndAttributes = [],
         bool $escape = true
     ): string {

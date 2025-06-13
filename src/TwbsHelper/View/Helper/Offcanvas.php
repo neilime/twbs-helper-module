@@ -133,7 +133,7 @@ class Offcanvas extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
     protected function renderTriggers(
         iterable $triggers,
-        string $id = null
+        ?string $id = null
     ): string {
         $content = '';
         foreach ($triggers as $trigger) {
@@ -149,7 +149,7 @@ class Offcanvas extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
     protected function renderTrigger(
         iterable $trigger,
-        string $id = null
+        ?string $id = null
     ): string {
 
         $triggerAttributes = [

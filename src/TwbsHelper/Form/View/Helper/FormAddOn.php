@@ -18,12 +18,12 @@ class FormAddOn extends \Laminas\Form\View\Helper\AbstractHelper
      * @param \Laminas\Form\ElementInterface $element
      * @return \TwbsHelper\Form\View\Helper\FormAddOn|string
      */
-    public function __invoke(\Laminas\Form\ElementInterface $element = null, string $content = '')
+    public function __invoke(?\Laminas\Form\ElementInterface $element = null, string $content = '')
     {
         return $element ? $this->render($element, $content) : $this;
     }
 
-    public function render(\Laminas\Form\ElementInterface $element = null, string $content = ''): string
+    public function render(?\Laminas\Form\ElementInterface $element = null, string $content = ''): string
     {
         $hasAddOn = false;
         foreach ([self::POSITION_APPEND, self::POSITION_PREPEND] as $addOnPosition) {

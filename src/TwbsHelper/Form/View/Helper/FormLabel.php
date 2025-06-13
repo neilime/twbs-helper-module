@@ -23,9 +23,9 @@ class FormLabel extends \Laminas\Form\View\Helper\FormLabel
      * @return string|\TwbsHelper\Form\View\Helper\FormLabel
      */
     public function __invoke(
-        \Laminas\Form\ElementInterface $element = null,
+        ?\Laminas\Form\ElementInterface $element = null,
         ?string $labelContent = null,
-        string $position = null
+        ?string $position = null
     ) {
         if ($element === null) {
             return $this;

@@ -369,7 +369,7 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
      */
     protected function renderTableRow(
         array $row,
-        string $defaultCellType = null,
+        ?string $defaultCellType = null,
         bool $escape = true
     ): string {
 
@@ -453,7 +453,7 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
      */
     public function renderTableCell(
         $cell,
-        string $defaultCellType = null,
+        ?string $defaultCellType,
         bool $isFirstCol,
         bool $escape = true
     ): string {
@@ -528,7 +528,7 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
     protected function defineCellStructure(
         $cell,
-        string $defaultCellType = null,
+        ?string $defaultCellType,
         bool $isFirstCol
     ): array {
         if (is_scalar($cell)) {

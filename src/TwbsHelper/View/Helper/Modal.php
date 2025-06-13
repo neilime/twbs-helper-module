@@ -421,7 +421,7 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
     }
 
     protected function renderPartList(
-        string $type = null,
+        ?string $type = null,
         array $part = [],
         bool $escape = true
     ): string {

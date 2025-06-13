@@ -350,7 +350,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
         }
     }
 
-    protected function renderButtonContent(\Laminas\Form\ElementInterface $element, string $buttonContent = null)
+    protected function renderButtonContent(\Laminas\Form\ElementInterface $element, ?string $buttonContent = null)
     {
         // Define button content
         if (null === $buttonContent) {
@@ -405,7 +405,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
         return $buttonContent;
     }
 
-    protected function renderIconContent(\Laminas\Form\ElementInterface $element, string $buttonContent = null)
+    protected function renderIconContent(\Laminas\Form\ElementInterface $element, ?string $buttonContent = null)
     {
         // Retrieve icon options
         $iconOptions = $element->getOption('icon');
@@ -476,7 +476,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
         }
     }
 
-    protected function renderSpinnerContent(\Laminas\Form\ElementInterface $element, string $buttonContent = null)
+    protected function renderSpinnerContent(\Laminas\Form\ElementInterface $element, ?string $buttonContent = null)
     {
         // Retrieve spinner options
         $spinnerOptions = $element->getOption('spinner');
@@ -516,7 +516,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
         }
     }
 
-    protected function renderBadgeContent(\Laminas\Form\ElementInterface $element, string $buttonContent = null)
+    protected function renderBadgeContent(\Laminas\Form\ElementInterface $element, ?string $buttonContent = null)
     {
         $badgeOptions = $element->getOption('badge');
         if (!$badgeOptions) {
@@ -538,7 +538,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
         return $buttonContent . PHP_EOL . $badgeContent;
     }
 
-    protected function renderButton(\Laminas\Form\ElementInterface $element, string $buttonContent = null): string
+    protected function renderButton(\Laminas\Form\ElementInterface $element, ?string $buttonContent = null): string
     {
         $htmlElementHelper = $this->getView()->plugin('htmlElement');
         $tag = $element->getOption('tag');
@@ -566,7 +566,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
 
     protected function renderPopoverAndTooltip(
         \Laminas\Form\ElementInterface $element,
-        string $buttonContent = null
+        ?string $buttonContent = null
     ): string {
 
         $isDisabled = $element->getAttribute('disabled');

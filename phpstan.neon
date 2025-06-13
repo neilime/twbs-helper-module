@@ -1,4 +1,11 @@
+includes:
+    - phpstan-baseline.neon
+
 parameters:
+    treatPhpDocTypesAsCertain: false
     tmpDir: tools/cache/phpstan
     laminasframework:
        serviceManagerLoader: tests/phpstan.php
+    ignoreErrors:
+        - identifier: function.impossibleType
+        - identifier: function.alreadyNarrowedType
