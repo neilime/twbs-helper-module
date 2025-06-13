@@ -1,4 +1,4 @@
-PHP_VERSION=8.3
+PHP_VERSION=8.4
 UID=$(shell id -u)
 GID=$(shell id -g)
 
