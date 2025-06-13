@@ -27,9 +27,7 @@ class FormElementFactoryTest extends TestCase
         $this->formElementFactory = new FormModuleOptionsFactory();
     }
 
-    /**
-     * @dataProvider formElementProvider
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('formElementProvider')]
     public function testRenderElement(string $formElement)
     {
         $this->assertInstanceOf(

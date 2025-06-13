@@ -126,9 +126,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         return [];
     }
 
-    /**
-     * @dataProvider getTestCasesProvider
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('getTestCasesProvider')]
     public function testDocumentation($rendering)
     {
         $renderer = \TestSuite\Bootstrap::getServiceManager()->get('ViewPhpRenderer');

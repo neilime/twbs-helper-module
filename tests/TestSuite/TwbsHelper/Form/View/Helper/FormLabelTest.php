@@ -9,9 +9,7 @@ class FormLabelTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
      */
     protected $helper = 'formLabel';
 
-    /**
-     * @dataProvider dataProviderRenderLabels
-     */
+    #[\PHPUnit\Framework\Attributes\DataProvider('dataProviderRenderLabels')]
     public function testRenderWithLabel(\Laminas\Form\Element $element, string $expected)
     {
         $this->assertEquals(

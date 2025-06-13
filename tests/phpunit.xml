@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="Bootstrap.php" colors="true" verbose="true" backupGlobals="false" backupStaticAttributes="false" stopOnFailure="true" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd" cacheResultFile="../tools/cache/.phpunit.result.cache">
-  <coverage>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="Bootstrap.php" colors="true" backupGlobals="false" stopOnFailure="true" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.5/phpunit.xsd" executionOrder="depends,defects" beStrictAboutOutputDuringTests="true" failOnRisky="true" failOnWarning="true">
+  <source>
     <include>
-      <directory suffix=".php">../src/</directory>
+      <directory suffix=".php">../src</directory>
     </include>
-  </coverage>
+  </source>
   <testsuites>
     <testsuite name="Documentation">
       <directory suffix=".php">./TestSuite/Documentation/</directory>
