@@ -1,0 +1,49 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Instanceof between Laminas\\Form\\ElementInterface and Laminas\\Form\\ElementInterface will always evaluate to true\.$#'
+			identifier: instanceof.alwaysTrue
+			count: 1
+			path: src/TwbsHelper/View/Helper/Dropdown.php
+
+		-
+			message: '#^Call to preg_quote\(\) is missing delimiter / to be effective\.$#'
+			identifier: argument.invalidPregQuote
+			count: 1
+			path: src/TwbsHelper/View/Helper/HtmlAttributes/HtmlClass.php
+
+		-
+			message: '#^Method TwbsHelper\\View\\Helper\\Navigation\\Menu\:\:prepareContainer\(\) never assigns null to &\$container so it can be removed from the by\-ref type\.$#'
+			identifier: parameterByRef.unusedType
+			count: 1
+			path: src/TwbsHelper/View/Helper/Navigation/Menu.php
+
+		-
+			message: '#^Method TwbsHelper\\View\\Helper\\Navigation\\Menu\:\:prepareContainer\(\) never assigns string to &\$container so it can be removed from the by\-ref type\.$#'
+			identifier: parameterByRef.unusedType
+			count: 1
+			path: src/TwbsHelper/View/Helper/Navigation/Menu.php
+
+		-
+			message: '#^Instanceof between mixed and Laminas\\Form\\FormInterface will always evaluate to false\.$#'
+			identifier: instanceof.alwaysFalse
+			count: 1
+			path: src/TwbsHelper/View/Helper/Navigation/Navbar.php
+
+		-
+			message: '#^Class TwbsHelper\\View\\Helper\\PaginationControl extends @final class Laminas\\View\\Helper\\PaginationControl\.$#'
+			identifier: class.extendsFinalByPhpDoc
+			count: 1
+			path: src/TwbsHelper/View/Helper/PaginationControl.php
+
+		-
+			message: '#^Property TwbsHelper\\View\\Helper\\PaginationControl\:\:\$defaultViewPartial overrides @final property Laminas\\View\\Helper\\PaginationControl\:\:\$defaultViewPartial\.$#'
+			identifier: property.parentPropertyFinalByPhpDoc
+			count: 1
+			path: src/TwbsHelper/View/Helper/PaginationControl.php
+
+		-
+			message: '#^Strict comparison using \!\=\= between float and false will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 1
+			path: src/TwbsHelper/View/Helper/ProgressBar.php
