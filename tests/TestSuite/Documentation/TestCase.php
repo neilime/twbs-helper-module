@@ -41,7 +41,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
 {
     use \Spatie\Snapshots\MatchesSnapshots;
 
-    private $testsDirectoryPath = __DIR__ . '/Tests';
+    private static $testsDirectoryPath = __DIR__ . '/Tests';
 
     /**
      * \Documentation\Test\SnapshotService
@@ -50,7 +50,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
     protected function setUp(): void
     {
-        $this->snapshotService = new \Documentation\Test\SnapshotService($this->testsDirectoryPath);
+        $this->snapshotService = new \Documentation\Test\SnapshotService(self::$testsDirectoryPath);
     }
 
     /**
@@ -58,7 +58,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * @return array
      * @throws \LogicException
      */
-    public function getTestCasesProvider()
+    public static function getTestCasesProvider()
     {
         $application = \TestSuite\Bootstrap::getServiceManager()->get('Application');
         $application->bootstrap();
@@ -67,12 +67,12 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $routeMatch->setMatchedRouteName('test-route');
         $application->getMvcEvent()->setRouteMatch($routeMatch);
 
-        $config = new \Documentation\Test\ConfigsLoader($this->testsDirectoryPath);
+        $config = new \Documentation\Test\ConfigsLoader(self::$testsDirectoryPath);
         $testConfigs = $config->loadDocumentationTestConfigs();
 
         $testCases = [];
         foreach ($testConfigs as $testConfig) {
-            $testCases = array_merge($testCases, $this->parseTestsConfig($testConfig));
+            $testCases = array_merge($testCases, static::parseTestsConfig($testConfig));
         }
 
         return $testCases;
@@ -85,13 +85,13 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * @return array
      * @throws \InvalidArgumentException
      */
-    protected function parseTestsConfig(\Documentation\Test\Config $documentationTestConfig)
+    protected static function parseTestsConfig(\Documentation\Test\Config $documentationTestConfig)
     {
         // Extract root tests for this tests config
-        $testCases = $this->extractTestCaseFromTestConfig($documentationTestConfig);
+        $testCases = static::extractTestCaseFromTestConfig($documentationTestConfig);
 
         foreach ($documentationTestConfig->tests as $nestedTestsConfig) {
-            $parsedTestCase = $this->parseTestsConfig($nestedTestsConfig);
+            $parsedTestCase = static::parseTestsConfig($nestedTestsConfig);
 
             // Assert that there are no duplicated tests title
             $sameKeys = array_intersect_key($parsedTestCase, $testCases);
@@ -115,7 +115,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * @return array An empty array if no test was found, else [ $title => [rendering, expected] ]
      * @throws \InvalidArgumentException
      */
-    protected function extractTestCaseFromTestConfig(
+    protected static function extractTestCaseFromTestConfig(
         \Documentation\Test\Config $documentationTestConfig
     ) {
         if ($documentationTestConfig->rendering) {
@@ -172,7 +172,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
     protected function getSnapshotTitle(): string
     {
-        preg_match('/testDocumentation with data set "(.+)"/', $this->getName(), $matches);
+        preg_match('/testDocumentation with data set "(.+)"/', $this->nameWithDataSet(), $matches);
         return $matches[1];
     }
 }

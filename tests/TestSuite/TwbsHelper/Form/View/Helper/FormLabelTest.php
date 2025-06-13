@@ -20,7 +20,7 @@ class FormLabelTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
         );
     }
 
-    public function dataProviderRenderLabels(): array
+    public static function dataProviderRenderLabels(): array
     {
         return [
             [

@@ -8,9 +8,11 @@
   <testsuites>
     <testsuite name="Documentation">
       <directory suffix=".php">./TestSuite/Documentation/</directory>
+      <exclude>./TestSuite/Documentation/Tests/</exclude>
     </testsuite>
     <testsuite name="TwbsHelper">
       <directory suffix=".php">./TestSuite/TwbsHelper/</directory>
+      <exclude>./TestSuite/TwbsHelper/AbstractViewHelperTestCase.php</exclude>
     </testsuite>
   </testsuites>
 </phpunit>

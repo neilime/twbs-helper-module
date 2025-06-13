@@ -42,9 +42,8 @@
     "laminas/laminas-modulemanager": "^2.12",
     "laminas/laminas-mvc": "^3.3",
     "mikey179/vfsstream": "^1.6",
-    "pcov/clobber": "^2.0",
-    "phpunit/phpunit": "^9.5.26",
-    "spatie/phpunit-snapshot-assertions": "^4.2",
+    "phpunit/phpunit": "^11.5",
+    "spatie/phpunit-snapshot-assertions": "^5.2",
     "twbs/bootstrap": "^5.1"
   },
   "autoload": {

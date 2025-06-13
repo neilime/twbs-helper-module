@@ -369,7 +369,7 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
      */
     protected function renderTableRow(
         array $row,
-	?string $defaultCellType = null,
+        ?string $defaultCellType = null,
         bool $escape = true
     ): string {
 

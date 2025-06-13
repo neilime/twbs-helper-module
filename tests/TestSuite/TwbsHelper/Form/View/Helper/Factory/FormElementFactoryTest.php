@@ -41,7 +41,7 @@ class FormElementFactoryTest extends TestCase
         );
     }
 
-    public function formElementProvider(): array
+    public static function formElementProvider(): array
     {
         return [
             Form::class           => [
