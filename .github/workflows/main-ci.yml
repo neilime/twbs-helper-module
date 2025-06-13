@@ -38,7 +38,7 @@ jobs:
         with:
           name: documentation
 
-      - uses: stefanzweifel/git-auto-commit-action@v5
+      - uses: stefanzweifel/git-auto-commit-action@v6
         with:
           commit_message: "docs: update documentation"
           commit_options: "--no-verify --signoff"
