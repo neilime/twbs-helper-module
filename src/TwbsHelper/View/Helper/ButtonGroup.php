@@ -17,7 +17,7 @@ class ButtonGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
     /**
      * @return \TwbsHelper\View\Helper\ButtonGroup|string
      */
-    public function __invoke(array $buttons = null, array $buttonGroupOptions = null)
+    public function __invoke(?array $buttons = null, ?array $buttonGroupOptions = null)
     {
         return $buttons ? $this->render($buttons, $buttonGroupOptions) : $this;
     }
@@ -27,7 +27,7 @@ class ButtonGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
      *
      * @throws \LogicException
      */
-    public function render(array $buttons, array $buttonGroupOptions = null): string
+    public function render(array $buttons, ?array $buttonGroupOptions = null): string
     {
         // Button group container attributes: regular or vertical
         $classes = empty($buttonGroupOptions['vertical']) ? ['btn-group'] : ['btn-group-vertical'];

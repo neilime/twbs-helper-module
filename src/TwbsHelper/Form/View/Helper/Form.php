@@ -52,7 +52,7 @@ class Form extends \Laminas\Form\View\Helper\Form
      * @param \Laminas\Form\FormInterface $form
      * @return \TwbsHelper\Form\View\Helper\Form|string
      */
-    public function __invoke(\Laminas\Form\FormInterface $form = null)
+    public function __invoke(?\Laminas\Form\FormInterface $form = null)
     {
         // Add valid custom attributes
         if ($this->options->getValidTagAttributes()) {

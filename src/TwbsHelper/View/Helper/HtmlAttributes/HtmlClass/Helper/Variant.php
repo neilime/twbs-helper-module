@@ -63,7 +63,7 @@ class Variant extends \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Ab
         return false;
     }
 
-    protected function validateOption($option, string $allowedVariantPrefix = null)
+    protected function validateOption($option, ?string $allowedVariantPrefix = null)
     {
         if (!is_string($option)) {
             throw new \InvalidArgumentException(sprintf(
@@ -76,7 +76,7 @@ class Variant extends \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Ab
         $this->validateStringOption($option, $allowedVariantPrefix);
     }
 
-    protected function validateStringOption(string $option, string $allowedVariantPrefix = null)
+    protected function validateStringOption(string $option, ?string $allowedVariantPrefix = null)
     {
         if ($this->isVariantOption($option)) {
             return;

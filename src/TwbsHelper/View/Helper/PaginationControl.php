@@ -21,7 +21,7 @@ class PaginationControl extends \Laminas\View\Helper\PaginationControl
     public function renderPageItem(
         $route,
         int $page,
-        int $current = null,
+        ?int $current = null,
         $activeStates = null
     ): string {
         $liAttributes = $this->getView()->plugin('htmlattributes')->__invoke([
@@ -57,7 +57,7 @@ class PaginationControl extends \Laminas\View\Helper\PaginationControl
     public function renderNavigationItem(
         $route,
         $link,
-        int $linkPage = null,
+        ?int $linkPage = null,
         $disabledStates = false
     ): string {
         $liAttributes = $this->getView()->plugin('htmlattributes')->__invoke(['class' => 'page-item']);

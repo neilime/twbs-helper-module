@@ -40,7 +40,7 @@ class Config
 
     public static function fromArray(
         array $testConfig,
-        \Documentation\Test\Config $documentationTestConfig = null
+        ?\Documentation\Test\Config $documentationTestConfig = null
     ): self {
 
         $self = new self();

@@ -25,7 +25,7 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
      *
      * @return ButtonGroup|string
      */
-    public function __invoke(array $items = null, array $buttonToolbarOptions = null)
+    public function __invoke(?array $items = null, ?array $buttonToolbarOptions = null)
     {
         return $items ? $this->render($items, $buttonToolbarOptions) : $this;
     }
@@ -35,7 +35,7 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
      *
      * @throws LogicException
      */
-    public function render(array $items, array $buttonToolbarOptions = null): string
+    public function render(array $items, ?array $buttonToolbarOptions = null): string
     {
         // Button group container attributes
         $classes = ['btn-toolbar'];

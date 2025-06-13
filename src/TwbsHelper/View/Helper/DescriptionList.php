@@ -17,7 +17,7 @@ class DescriptionList extends \TwbsHelper\View\Helper\AbstractHtmlElement
      * @throws \InvalidArgumentException
      * @return \TwbsHelper\View\Helper\DescriptionList|string
      */
-    public function __invoke(array $items = null, iterable $optionsAndAttributes = [], bool $escape = true)
+    public function __invoke(?array $items = null, iterable $optionsAndAttributes = [], bool $escape = true)
     {
         return $items ? $this->render($items, $optionsAndAttributes, $escape) : $this;
     }

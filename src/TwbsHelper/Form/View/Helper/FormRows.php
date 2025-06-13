@@ -40,7 +40,7 @@ class FormRows extends \Laminas\Form\View\Helper\AbstractHelper
      * @param \Laminas\Form\FormInterface $form
      * @return \TwbsHelper\Form\View\Helper\FormRows|string
      */
-    public function __invoke(\Laminas\Form\FormInterface $form = null)
+    public function __invoke(?\Laminas\Form\FormInterface $form = null)
     {
         if ($form !== null) {
             return $this->renderFormRows($form);

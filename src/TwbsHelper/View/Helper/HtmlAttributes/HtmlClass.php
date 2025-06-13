@@ -88,7 +88,7 @@ class HtmlClass extends \Laminas\View\Helper\AbstractHelper
      * @param  null|array $options Options to pass to plugin constructor (if not already instantiated)
      * @return \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\HelperInterface
      */
-    public function plugin($name, array $options = null)
+    public function plugin($name, ?array $options = null)
     {
         return $this->getHelperPluginManager()->get($name, $options);
     }
