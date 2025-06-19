@@ -2,34 +2,40 @@
 
 namespace TestSuite\Documentation\Generator\UsagePage\Printer;
 
-class UrlPrinterTest extends \PHPUnit\Framework\TestCase
+use Documentation\Generator\Configuration;
+use Documentation\Generator\FileSystem\File;
+use Documentation\Generator\UsagePage\Printer\UrlPrinter;
+use Documentation\Test\Config;
+use PHPUnit\Framework\TestCase;
+
+class UrlPrinterTest extends TestCase
 {
     /**
-     * @var \Documentation\Generator\Configuration
+     * @var Configuration
      */
     protected $configuration;
 
     /**
-     * @var \Documentation\Generator\UsagePage\Printer\UrlPrinter
+     * @var UrlPrinter
      */
     protected $urlPrinter;
 
     protected function setUp(): void
     {
-        $this->configuration = new \Documentation\Generator\Configuration(
+        $this->configuration = new Configuration(
             '/tmp/test-dir',
             '/tmp/test-dir/tests',
             'x.x',
             2,
-            $this->createMock(\Documentation\Generator\FileSystem\File::class)
+            $this->createMock(File::class)
         );
     }
 
     public function testPrintContentToPageWithUrl()
     {
-        $this->urlPrinter = new \Documentation\Generator\UsagePage\Printer\UrlPrinter(
+        $this->urlPrinter = new UrlPrinter(
             $this->configuration,
-            \Documentation\Test\Config::fromArray([
+            Config::fromArray([
                 'title' => 'Component',
                 'url' => '%bootstrap-url%/test',
             ]),
@@ -46,9 +52,9 @@ class UrlPrinterTest extends \PHPUnit\Framework\TestCase
 
     public function testPrintContentToPageWithoutUrl()
     {
-        $this->urlPrinter = new \Documentation\Generator\UsagePage\Printer\UrlPrinter(
+        $this->urlPrinter = new UrlPrinter(
             $this->configuration,
-            \Documentation\Test\Config::fromArray([
+            Config::fromArray([
                 'title' => 'Component',
             ]),
             'test-page.mdx',

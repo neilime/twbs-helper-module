@@ -2,16 +2,19 @@
 
 namespace TestSuite\Documentation\Test\Snapshots\Drivers;
 
-class HtmlDriverTest extends \PHPUnit\Framework\TestCase
+use Documentation\Test\Snapshots\Drivers\HtmlDriver;
+use PHPUnit\Framework\TestCase;
+
+class HtmlDriverTest extends TestCase
 {
     /**
-     * @var \Documentation\Test\Snapshots\Drivers\HtmlDriver
+     * @var HtmlDriver
      */
     protected $htmlDriver;
 
     protected function setUp(): void
     {
-        $this->htmlDriver = new \Documentation\Test\Snapshots\Drivers\HtmlDriver();
+        $this->htmlDriver = new HtmlDriver();
     }
 
     public function testSerialize()

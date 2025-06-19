@@ -2,20 +2,25 @@
 
 namespace TestSuite\TwbsHelper\View\Helper\HtmlAttributes;
 
-class HtmlClassTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
+use TestSuite\TwbsHelper\AbstractViewHelperTestCase;
+use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass;
+use InvalidArgumentException;
+use stdClass;
+
+class HtmlClassTest extends AbstractViewHelperTestCase
 {
     /**
-     * @var \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass
+     * @var HtmlClass
      */
     protected $helper = 'htmlClass';
 
     public function testSetHelperPluginManagerWithWrongClass()
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage(
             'Helper helpers must extend TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\HelperPluginManager; ' .
                 'got type "stdClass" instead'
         );
-        $this->helper->setHelperPluginManager(\stdClass::class);
+        $this->helper->setHelperPluginManager(stdClass::class);
     }
 }

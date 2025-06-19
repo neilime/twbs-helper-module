@@ -2,7 +2,9 @@
 
 namespace TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper;
 
-class Align extends \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Size
+use InvalidArgumentException;
+
+class Align extends Size
 {
     protected static $optionName = 'align';
 
@@ -43,7 +45,7 @@ class Align extends \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Size
             return;
         }
 
-        throw new \InvalidArgumentException(sprintf(
+        throw new InvalidArgumentException(sprintf(
             '"%s" option "%s" is not supported. Expects one of these values "%s"; ' .
                 'or Sized (%s) class. Example: "sm-center"',
             static::$optionName,

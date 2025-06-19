@@ -2,7 +2,11 @@
 
 namespace TestSuite\Documentation\Test;
 
-class ConfigTest extends \PHPUnit\Framework\TestCase
+use Documentation\Test\Config;
+use PHPUnit\Framework\TestCase;
+use stdClass;
+
+class ConfigTest extends TestCase
 {
     public function testFromArrayShouldThrowsAnErrorWhenTitleIsUndefined()
     {
@@ -10,7 +14,7 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
             'Argument "$testConfig" does not have a defined "title" key'
         );
 
-        \Documentation\Test\Config::fromArray([]);
+        Config::fromArray([]);
     }
 
     public function testFromArrayShouldThrowsAnErrorWhenRenderingIsNotCallableButString()
@@ -19,7 +23,7 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
             'Argument "$testConfig[\'rendering\']" expects a callable value for "test", "string" given'
         );
 
-        \Documentation\Test\Config::fromArray([
+        Config::fromArray([
             'title' => 'test',
             'rendering' => 'wrong',
         ]);
@@ -31,9 +35,9 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
             'Argument "$testConfig[\'rendering\']" expects a callable value for "test", "stdClass" given'
         );
 
-        \Documentation\Test\Config::fromArray([
+        Config::fromArray([
             'title' => 'test',
-            'rendering' => new \stdClass(),
+            'rendering' => new stdClass(),
         ]);
     }
 
@@ -43,7 +47,7 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
             'Argument "$testConfig[\'tests\']" for "test" expects an array, "string" given'
         );
 
-        \Documentation\Test\Config::fromArray([
+        Config::fromArray([
             'title' => 'test',
             'tests' => 'wrong',
         ]);
@@ -55,20 +59,20 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
             'Argument "$testConfig[\'tests\']" for "test" expects an array, "stdClass" given'
         );
 
-        \Documentation\Test\Config::fromArray([
+        Config::fromArray([
             'title' => 'test',
-            'tests' => new \stdClass(),
+            'tests' => new stdClass(),
         ]);
     }
 
     public function testFromArrayShouldHandleTitleFromParentConfig()
     {
 
-        $config = \Documentation\Test\Config::fromArray(
+        $config = Config::fromArray(
             [
                 'title' => 'test',
             ],
-            \Documentation\Test\Config::fromArray(['title' => 'parent'])
+            Config::fromArray(['title' => 'parent'])
         );
 
         $this->assertEquals('parent / test', $config->title);
@@ -79,7 +83,7 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
         $rendering = function () {
         };
 
-        $config = \Documentation\Test\Config::fromArray([
+        $config = Config::fromArray([
             'title' => 'test',
             'rendering' => $rendering,
         ]);
@@ -90,7 +94,7 @@ class ConfigTest extends \PHPUnit\Framework\TestCase
     public function testFromArrayShouldHandleTestChildren()
     {
 
-        $config = \Documentation\Test\Config::fromArray(
+        $config = Config::fromArray(
             [
                 'title' => 'test',
                 'tests' => [

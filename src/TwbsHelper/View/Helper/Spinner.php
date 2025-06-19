@@ -5,7 +5,7 @@ namespace TwbsHelper\View\Helper;
 /**
  * Helper for rendering spinner
  */
-class Spinner extends \TwbsHelper\View\Helper\AbstractHtmlElement
+class Spinner extends AbstractHtmlElement
 {
     public const PLACEMENT_CENTER = 'center';
     public const PLACEMENT_END = 'end';

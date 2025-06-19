@@ -2,10 +2,14 @@
 
 namespace TestSuite\TwbsHelper\View\Helper\Navigation;
 
-class BreadcrumbsTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
+use Laminas\Navigation\Navigation;
+use TestSuite\TwbsHelper\AbstractViewHelperTestCase;
+use TwbsHelper\View\Helper\Navigation\Breadcrumbs;
+
+class BreadcrumbsTest extends AbstractViewHelperTestCase
 {
     /**
-     * @var \TwbsHelper\View\Helper\Navigation\Breadcrumbs
+     * @var Breadcrumbs
      */
     protected $helper = 'breadcrumbs';
 
@@ -15,7 +19,7 @@ class BreadcrumbsTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
             '<nav aria-label="breadcrumb">' . PHP_EOL .
                 '    <ol class="breadcrumb"></ol>' . PHP_EOL .
                 '</nav>',
-            $this->helper->renderStraight(new \Laminas\Navigation\Navigation([]))
+            $this->helper->renderStraight(new Navigation([]))
         );
     }
 
@@ -29,7 +33,7 @@ class BreadcrumbsTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 '        <li aria-current="page" class="active&#x20;breadcrumb-item">Library</li>' . PHP_EOL .
                 '    </ol>' . PHP_EOL .
                 '</nav>',
-            $this->helper->renderStraight(new \Laminas\Navigation\Navigation([
+            $this->helper->renderStraight(new Navigation([
                 [
                     'label' => 'Home', 'uri' => '/', 'pages' => [
                         ['label' => 'Library', 'uri' => '/library', 'active' => true],

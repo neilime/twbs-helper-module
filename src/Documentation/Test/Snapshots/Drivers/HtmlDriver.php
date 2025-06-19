@@ -2,6 +2,9 @@
 
 namespace Documentation\Test\Snapshots\Drivers;
 
+use PHPUnit\Framework\ExpectationFailedException;
+use ReflectionObject;
+
 class HtmlDriver extends \Spatie\Snapshots\Drivers\HtmlDriver
 {
     public function serialize($data): string
@@ -22,11 +25,11 @@ class HtmlDriver extends \Spatie\Snapshots\Drivers\HtmlDriver
     {
         try {
             parent::match($expected, $actual);
-        } catch (\PHPUnit\Framework\ExpectationFailedException $exception) {
-            $exceptionReflection = new \ReflectionObject($exception);
+        } catch (ExpectationFailedException $exception) {
+            $exceptionReflection = new ReflectionObject($exception);
 
             $comparisonFailure = $exception->getComparisonFailure();
-            $newComparisonFailure = new \Documentation\Test\Snapshots\Drivers\ComparisonFailure(
+            $newComparisonFailure = new ComparisonFailure(
                 $comparisonFailure->getExpected(),
                 $comparisonFailure->getActual(),
                 $comparisonFailure->getExpectedAsString(),

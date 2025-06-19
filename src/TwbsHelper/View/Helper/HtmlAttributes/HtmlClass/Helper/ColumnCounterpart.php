@@ -2,7 +2,9 @@
 
 namespace TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper;
 
-class ColumnCounterpart extends \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Column
+use LogicException;
+
+class ColumnCounterpart extends Column
 {
     /**
      * Get column counter part classes.
@@ -18,18 +20,18 @@ class ColumnCounterpart extends \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass
             return [$column];
         }
 
-        if (preg_match('/^([1-9]|1[0-2]|auto)$/', $column, $matches)) {
+        if (preg_match('/^([1-9]|1[0-2]|auto)$/', (string) $column, $matches)) {
             return parent::getClassesFromOption($matches[1], $prefix);
         }
 
-        if (preg_match('/^(' . implode('|', static::$allowedOptions) . ')-([1-9]|1[0-2])$/', $column, $matches)) {
+        if (preg_match('/^(' . implode('|', static::$allowedOptions) . ')-([1-9]|1[0-2])$/', (string) $column, $matches)) {
             return parent::getClassesFromOption(
                 $matches[1] . '-' . (12 - (int) $matches[2]),
                 $prefix
             );
         }
 
-        throw new \LogicException(sprintf(
+        throw new LogicException(sprintf(
             '"%s" option is not supported',
             static::$optionName,
         ));

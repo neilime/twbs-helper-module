@@ -2,10 +2,13 @@
 
 namespace TestSuite\TwbsHelper\View\Helper;
 
-class BadgeTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
+use TestSuite\TwbsHelper\AbstractViewHelperTestCase;
+use TwbsHelper\View\Helper\Badge;
+
+class BadgeTest extends AbstractViewHelperTestCase
 {
     /**
-     * @var \TwbsHelper\View\Helper\Badge
+     * @var Badge
      */
     protected $helper = 'badge';
 

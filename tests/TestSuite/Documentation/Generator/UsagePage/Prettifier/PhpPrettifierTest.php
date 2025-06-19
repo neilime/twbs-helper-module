@@ -2,26 +2,32 @@
 
 namespace TestSuite\Documentation\Generator\UsagePage\Prettifier;
 
-class PhpPrettifierTest extends \PHPUnit\Framework\TestCase
+use Documentation\Generator\Configuration;
+use Documentation\Generator\FileSystem\Local\File;
+use Documentation\Generator\UsagePage\Prettifier\PhpPrettifier;
+use PHPUnit\Framework\TestCase;
+use Spatie\Snapshots\MatchesSnapshots;
+
+class PhpPrettifierTest extends TestCase
 {
-    use \Spatie\Snapshots\MatchesSnapshots;
+    use MatchesSnapshots;
 
     /**
-     * @var \Documentation\Generator\UsagePage\Prettifier\PhpPrettifier
+     * @var PhpPrettifier
      */
     protected $phpPrettifier;
 
     protected function setUp(): void
     {
-        $configuration = new \Documentation\Generator\Configuration(
+        $configuration = new Configuration(
             __DIR__ . '/../../../../../..',
             'x.x',
             '5.1',
             2,
-            new \Documentation\Generator\FileSystem\Local\File(),
+            new File(),
         );
 
-        $this->phpPrettifier = \Documentation\Generator\UsagePage\Prettifier\PhpPrettifier::getInstance($configuration);
+        $this->phpPrettifier = PhpPrettifier::getInstance($configuration);
     }
 
     public function testPrettifyShouldSetProperIndentation()

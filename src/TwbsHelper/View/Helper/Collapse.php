@@ -2,10 +2,13 @@
 
 namespace TwbsHelper\View\Helper;
 
+use Laminas\Stdlib\ArrayUtils;
+use InvalidArgumentException;
+
 /**
  * Helper for Collapse
  */
-class Collapse extends \TwbsHelper\View\Helper\AbstractHtmlElement
+class Collapse extends AbstractHtmlElement
 {
     protected static $allowedOptions = ['show', 'horizontal', 'triggers', 'targets'];
 
@@ -49,7 +52,7 @@ class Collapse extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
     protected function prepareTriggersSpec($triggers): iterable
     {
-        if (\Laminas\Stdlib\ArrayUtils::isList($triggers)) {
+        if (ArrayUtils::isList($triggers)) {
             $triggers = ['items' => $triggers];
         }
 
@@ -77,11 +80,9 @@ class Collapse extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 $trigger['attributes'] = [];
             }
         } else {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 '"trigger" option expects a scalar or an iterable value, "%s" given',
-                is_object($trigger)
-                    ? get_class($trigger)
-                    : gettype($trigger)
+                get_debug_type($trigger)
             ));
         }
 
@@ -90,7 +91,7 @@ class Collapse extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
     protected function prepareTargetsSpec($targets, bool $isShown, $horizontal): iterable
     {
-        if (\Laminas\Stdlib\ArrayUtils::isList($targets)) {
+        if (ArrayUtils::isList($targets)) {
             $targets = ['items' => $targets];
         }
 
@@ -115,11 +116,9 @@ class Collapse extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 $target['attributes'] = [];
             }
         } else {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 '"target" option expects a scalar or an iterable value, "%s" given',
-                is_object($target)
-                    ? get_class($target)
-                    : gettype($target)
+                get_debug_type($target)
             ));
         }
 
@@ -227,9 +226,7 @@ class Collapse extends \TwbsHelper\View\Helper\AbstractHtmlElement
         }
 
         $hasColumn = !empty($targets['column'])
-            || array_reduce($targets['items'], function ($hasColumn, $target) {
-                return $hasColumn || !empty($target['column']);
-            });
+            || array_reduce($targets['items'], fn ($hasColumn, $target) => $hasColumn || !empty($target['column']));
 
         if ($hasColumn) {
             $attributes = $this->getView()->plugin('htmlattributes')

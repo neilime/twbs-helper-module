@@ -2,6 +2,8 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
+use TwbsHelper\Form\View\ElementHelperTrait;
+
 /**
  * FormElementErrors
  *
@@ -9,7 +11,7 @@ namespace TwbsHelper\Form\View\Helper;
  */
 class FormElementErrors extends \Laminas\Form\View\Helper\FormElementErrors
 {
-    use \TwbsHelper\Form\View\ElementHelperTrait;
+    use ElementHelperTrait;
 
     /**
      * @var string Templates for the open/close/separators for message tags

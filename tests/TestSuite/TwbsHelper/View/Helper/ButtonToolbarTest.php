@@ -2,33 +2,40 @@
 
 namespace TestSuite\TwbsHelper\View\Helper;
 
-class ButtonToolbarTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
+use Laminas\View\Renderer\PhpRenderer;
+use TestSuite\Bootstrap;
+use TestSuite\TwbsHelper\AbstractViewHelperTestCase;
+use TwbsHelper\Form\View\Helper\FormRow;
+use TwbsHelper\View\Helper\ButtonGroup;
+use TwbsHelper\View\Helper\ButtonToolbar;
+
+class ButtonToolbarTest extends AbstractViewHelperTestCase
 {
     /**
-     * @var \TwbsHelper\View\Helper\ButtonToolbar
+     * @var ButtonToolbar
      */
     protected $helper = 'buttonToolbar';
 
     public function testGetButtonGroupHelperLazyLoad()
     {
-        $buttonToolbar = new \TwbsHelper\View\Helper\ButtonToolbar();
-        $this->assertInstanceOf(\TwbsHelper\View\Helper\ButtonGroup::class, $buttonToolbar->getButtonGroupHelper());
+        $buttonToolbar = new ButtonToolbar();
+        $this->assertInstanceOf(ButtonGroup::class, $buttonToolbar->getButtonGroupHelper());
     }
 
     public function testGetFormRowHelperLazyLoad()
     {
-        $buttonToolbar = new \TwbsHelper\View\Helper\ButtonToolbar();
+        $buttonToolbar = new ButtonToolbar();
         $this->assertInstanceOf(
-            \TwbsHelper\Form\View\Helper\FormRow::class,
+            FormRow::class,
             $buttonToolbar->getFormRowHelper()
         );
     }
 
     public function testInvalidButtonRendersEmptyString()
     {
-        $viewHelperPluginManager = \TestSuite\Bootstrap::getServiceManager()->get('ViewHelperManager');
-        $phpRenderer = new \Laminas\View\Renderer\PhpRenderer();
-        $buttonToolbar = new \TwbsHelper\View\Helper\ButtonToolbar();
+        $viewHelperPluginManager = Bootstrap::getServiceManager()->get('ViewHelperManager');
+        $phpRenderer = new PhpRenderer();
+        $buttonToolbar = new ButtonToolbar();
         $buttonToolbar->setView($phpRenderer->setHelperPluginManager($viewHelperPluginManager));
 
         $output = $buttonToolbar->render([null]);

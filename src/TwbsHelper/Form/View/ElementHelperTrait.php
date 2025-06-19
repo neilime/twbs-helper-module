@@ -2,6 +2,8 @@
 
 namespace TwbsHelper\Form\View;
 
+use Laminas\Form\ElementInterface;
+
 trait ElementHelperTrait
 {
     protected function prepareAttributes(array $attributes): array
@@ -17,10 +19,10 @@ trait ElementHelperTrait
     }
 
     protected function setClassesToElement(
-        \Laminas\Form\ElementInterface $element,
+        ElementInterface $element,
         iterable $addClasses = [],
         iterable $removeClasses = []
-    ): \Laminas\Form\ElementInterface {
+    ): ElementInterface {
         $attributes = $this->getView()->plugin('htmlattributes')->__invoke($element->getAttributes());
 
         if ($addClasses) {

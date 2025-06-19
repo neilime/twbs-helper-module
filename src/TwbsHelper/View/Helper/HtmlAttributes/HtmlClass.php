@@ -2,15 +2,21 @@
 
 namespace TwbsHelper\View\Helper\HtmlAttributes;
 
+use Laminas\ServiceManager\ServiceManager;
+use Laminas\View\Helper\AbstractHelper;
+use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\HelperPluginManager;
+use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\HelperInterface;
+use InvalidArgumentException;
+
 /**
  * Helper for rendering abbreviations
  */
-class HtmlClass extends \Laminas\View\Helper\AbstractHelper
+class HtmlClass extends AbstractHelper
 {
     /**
      * Helper plugin manager
      *
-     * @var \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\HelperPluginManager
+     * @var HelperPluginManager
      */
     protected $helperPluginManager;
 
@@ -34,27 +40,27 @@ class HtmlClass extends \Laminas\View\Helper\AbstractHelper
     /**
      * Set helper plugin manager instance
      *
-     * @param  string|\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\HelperPluginManager $helperPluginManager
-     * @return \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass
-     * @throws \InvalidArgumentException
+     * @param  string|HelperPluginManager $helperPluginManager
+     * @return HtmlClass
+     * @throws InvalidArgumentException
      */
     public function setHelperPluginManager($helperPluginManager)
     {
         if (is_string($helperPluginManager)) {
             if (!class_exists($helperPluginManager)) {
-                throw new \InvalidArgumentException(sprintf(
+                throw new InvalidArgumentException(sprintf(
                     'Invalid helper helpers class provided (%s)',
                     $helperPluginManager
                 ));
             }
-            $helperPluginManager = new $helperPluginManager(new \Laminas\ServiceManager\ServiceManager());
+            $helperPluginManager = new $helperPluginManager(new ServiceManager());
         }
 
-        if (!$helperPluginManager instanceof \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\HelperPluginManager) {
-            throw new \InvalidArgumentException(sprintf(
+        if (!$helperPluginManager instanceof HelperPluginManager) {
+            throw new InvalidArgumentException(sprintf(
                 'Helper helpers must extend %s; got type "%s" instead',
-                \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\HelperPluginManager::class,
-                get_class($helperPluginManager)
+                HelperPluginManager::class,
+                $helperPluginManager::class
             ));
         }
         $this->helperPluginManager = $helperPluginManager;
@@ -67,14 +73,14 @@ class HtmlClass extends \Laminas\View\Helper\AbstractHelper
     /**
      * Get helper plugin manager instance
      *
-     * @return \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\HelperPluginManager
+     * @return HelperPluginManager
      */
     public function getHelperPluginManager()
     {
         if (null === $this->helperPluginManager) {
             $this->setHelperPluginManager(
-                new \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\HelperPluginManager(
-                    new \Laminas\ServiceManager\ServiceManager()
+                new HelperPluginManager(
+                    new ServiceManager()
                 )
             );
         }
@@ -86,9 +92,9 @@ class HtmlClass extends \Laminas\View\Helper\AbstractHelper
      *
      * @param  string     $name Name of plugin to return
      * @param  null|array $options Options to pass to plugin constructor (if not already instantiated)
-     * @return \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\HelperInterface
+     * @return HelperInterface
      */
-    public function plugin($name, array $options = null)
+    public function plugin($name, ?array $options = null)
     {
         return $this->getHelperPluginManager()->get($name, $options);
     }

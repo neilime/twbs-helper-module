@@ -2,10 +2,12 @@
 
 namespace TwbsHelper\View\Helper;
 
+use TwbsHelper\View\HtmlAttributesSet;
+
 /**
  * Helper for rendering alerts
  */
-class Alert extends \TwbsHelper\View\Helper\AbstractHtmlElement
+class Alert extends AbstractHtmlElement
 {
     protected static $allowedOptions = [
         'heading',
@@ -70,7 +72,7 @@ class Alert extends \TwbsHelper\View\Helper\AbstractHtmlElement
         );
     }
 
-    protected function prepareAttributes(iterable $optionsAndAttributes): \TwbsHelper\View\HtmlAttributesSet
+    protected function prepareAttributes(iterable $optionsAndAttributes): HtmlAttributesSet
     {
 
 

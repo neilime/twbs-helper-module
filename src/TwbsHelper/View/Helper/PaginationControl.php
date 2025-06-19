@@ -2,12 +2,15 @@
 
 namespace TwbsHelper\View\Helper;
 
+use Laminas\I18n\Translator\TranslatorAwareTrait;
+
 /**
  * Helper for rendering pagination
+ * @phpstan-ignore class.extendsFinalByPhpDoc
  */
 class PaginationControl extends \Laminas\View\Helper\PaginationControl
 {
-    use \Laminas\I18n\Translator\TranslatorAwareTrait;
+    use TranslatorAwareTrait;
 
     public const SWAP_OUT_STATE = 'swap_out';
 
@@ -21,7 +24,7 @@ class PaginationControl extends \Laminas\View\Helper\PaginationControl
     public function renderPageItem(
         $route,
         int $page,
-        int $current = null,
+        ?int $current = null,
         $activeStates = null
     ): string {
         $liAttributes = $this->getView()->plugin('htmlattributes')->__invoke([
@@ -57,7 +60,7 @@ class PaginationControl extends \Laminas\View\Helper\PaginationControl
     public function renderNavigationItem(
         $route,
         $link,
-        int $linkPage = null,
+        ?int $linkPage = null,
         $disabledStates = false
     ): string {
         $liAttributes = $this->getView()->plugin('htmlattributes')->__invoke(['class' => 'page-item']);

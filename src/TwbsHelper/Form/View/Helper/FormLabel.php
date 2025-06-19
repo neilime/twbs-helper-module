@@ -2,9 +2,19 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
+use Laminas\Form\ElementInterface;
+use Laminas\Form\Element\Button;
+use Laminas\Form\Element\MultiCheckbox;
+use Laminas\Form\Element\Submit;
+use Laminas\Form\LabelAwareInterface;
+use TwbsHelper\Form\View\ElementHelperTrait;
+use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Column;
+use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Variant;
+use TwbsHelper\View\HtmlAttributesSet;
+
 class FormLabel extends \Laminas\Form\View\Helper\FormLabel
 {
-    use \TwbsHelper\Form\View\ElementHelperTrait;
+    use ElementHelperTrait;
 
     /**
      * @var string
@@ -17,15 +27,15 @@ class FormLabel extends \Laminas\Form\View\Helper\FormLabel
      * Always generates a "for" statement, as we cannot assume the form input
      * will be provided in the $labelContent.
      *
-     * @param \Laminas\Form\ElementInterface $element
+     * @param ElementInterface $element
      * @param  null|string $labelContent
      * @param string $position
-     * @return string|\TwbsHelper\Form\View\Helper\FormLabel
+     * @return string|FormLabel
      */
     public function __invoke(
-        \Laminas\Form\ElementInterface $element = null,
+        ?ElementInterface $element = null,
         ?string $labelContent = null,
-        string $position = null
+        ?string $position = null
     ) {
         if ($element === null) {
             return $this;
@@ -33,8 +43,8 @@ class FormLabel extends \Laminas\Form\View\Helper\FormLabel
 
         // Button element is a special case, because label is always rendered inside it
         if (
-            $element instanceof \Laminas\Form\Element\Button
-            || $element instanceof \Laminas\Form\Element\Submit
+            $element instanceof Button
+            || $element instanceof Submit
         ) {
             return $labelContent;
         }
@@ -59,12 +69,12 @@ class FormLabel extends \Laminas\Form\View\Helper\FormLabel
         // Add required string if element is required
         if (
             $this->requiredFormat &&
-            $element->getAttribute('required') && strpos($this->requiredFormat, $label) === false
+            $element->getAttribute('required') && !str_contains($this->requiredFormat, $label)
         ) {
             $label .= $this->requiredFormat;
         }
 
-        if ($element instanceof \Laminas\Form\Element\MultiCheckbox) {
+        if ($element instanceof MultiCheckbox) {
             return $this->getView()->plugin('htmlElement')->__invoke(
                 'div',
                 $labelAttributes,
@@ -79,12 +89,12 @@ class FormLabel extends \Laminas\Form\View\Helper\FormLabel
     /**
      * Render element's label
      *
-     * @param \Laminas\Form\ElementInterface $element
+     * @param ElementInterface $element
      * @return string
      */
-    public function renderPartial(\Laminas\Form\ElementInterface $element): string
+    public function renderPartial(ElementInterface $element): string
     {
-        if (!$element instanceof \Laminas\Form\LabelAwareInterface) {
+        if (!$element instanceof LabelAwareInterface) {
             return '';
         }
 
@@ -96,11 +106,11 @@ class FormLabel extends \Laminas\Form\View\Helper\FormLabel
         return $label ?? '';
     }
 
-    protected function prepareLabelAttributes(\Laminas\Form\ElementInterface $element): iterable
+    protected function prepareLabelAttributes(ElementInterface $element): iterable
     {
         $disableTwbs = $element->getOption('disable_twbs');
 
-        if ($disableTwbs || !$element instanceof \Laminas\Form\LabelAwareInterface) {
+        if ($disableTwbs || !$element instanceof LabelAwareInterface) {
             return [];
         }
 
@@ -114,8 +124,8 @@ class FormLabel extends \Laminas\Form\View\Helper\FormLabel
     }
 
     protected function getLabelClasses(
-        \Laminas\Form\ElementInterface $element,
-        \TwbsHelper\View\HtmlAttributesSet $labelAttributes
+        ElementInterface $element,
+        HtmlAttributesSet $labelAttributes
     ): iterable {
         $labelClasses = $labelAttributes['class'];
 
@@ -132,7 +142,7 @@ class FormLabel extends \Laminas\Form\View\Helper\FormLabel
         $isCheckboxWithLayout = $element->getAttribute('type') === 'checkbox'
             && $layout;
 
-        /** @var \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Column $columnClassHelper **/
+        /** @var Column $columnClassHelper **/
         $columnClassHelper = $this->getView()->plugin('htmlClass')->plugin('column');
 
         $shouldAddColumnCounterpartClass = $columSize
@@ -154,7 +164,7 @@ class FormLabel extends \Laminas\Form\View\Helper\FormLabel
             );
         }
 
-        if ($element instanceof \Laminas\Form\Element\MultiCheckbox) {
+        if ($element instanceof MultiCheckbox) {
             $labelClasses[] = 'form-label';
             return $labelClasses;
         }
@@ -167,7 +177,7 @@ class FormLabel extends \Laminas\Form\View\Helper\FormLabel
             case 'checkbox':
                 $buttonOption = $element->getOption('button');
                 if ($buttonOption) {
-                    /** @var \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Variant $variantClassHelper **/
+                    /** @var Variant $variantClassHelper **/
                     $variantClassHelper = $this->getView()->plugin('htmlClass')->plugin('variant');
 
                     $labelClasses[] = 'btn';
@@ -194,8 +204,8 @@ class FormLabel extends \Laminas\Form\View\Helper\FormLabel
                 }
 
                 switch ($layout) {
-                    case \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE:
-                    case \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL:
+                    case Form::LAYOUT_INLINE:
+                    case Form::LAYOUT_HORIZONTAL:
                         $labelClasses[] = 'col-form-label';
                         break;
 

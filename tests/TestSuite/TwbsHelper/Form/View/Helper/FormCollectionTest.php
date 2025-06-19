@@ -2,10 +2,17 @@
 
 namespace TestSuite\TwbsHelper\Form\View\Helper;
 
-class FormCollectionTest extends \PHPUnit\Framework\TestCase
+use Laminas\Form\Element\Button;
+use Laminas\Form\Element\Collection;
+use Laminas\View\Renderer\PhpRenderer;
+use PHPUnit\Framework\TestCase;
+use TestSuite\Bootstrap;
+use TwbsHelper\Form\View\Helper\FormCollection;
+
+class FormCollectionTest extends TestCase
 {
     /**
-     * @var \TwbsHelper\Form\View\Helper\FormCollection
+     * @var FormCollection
      */
     protected $formCollectionHelper;
 
@@ -14,8 +21,8 @@ class FormCollectionTest extends \PHPUnit\Framework\TestCase
      */
     protected function setUp(): void
     {
-        $viewHelperPluginManager = \TestSuite\Bootstrap::getServiceManager()->get('ViewHelperManager');
-        $phpRenderer = new \Laminas\View\Renderer\PhpRenderer();
+        $viewHelperPluginManager = Bootstrap::getServiceManager()->get('ViewHelperManager');
+        $phpRenderer = new PhpRenderer();
         $this->formCollectionHelper = $viewHelperPluginManager
             ->get('formCollection')
             ->setView($phpRenderer->setHelperPluginManager($viewHelperPluginManager));
@@ -23,11 +30,11 @@ class FormCollectionTest extends \PHPUnit\Framework\TestCase
 
     public function testRenderWithInlineLayoutAddFormInlineClass()
     {
-        $collection = new \Laminas\Form\Element\Collection('test-collection', [
+        $collection = new Collection('test-collection', [
             'count' => 1,
             'layout' => 'inline',
             'should_create_template' => true,
-            'target_element' => new \Laminas\Form\Element\Button(
+            'target_element' => new Button(
                 'test',
                 ['label' => 'test']
             ),
@@ -46,11 +53,11 @@ class FormCollectionTest extends \PHPUnit\Framework\TestCase
 
     public function testRenderTemplateWithInlineLayout()
     {
-        $collection = new \Laminas\Form\Element\Collection('test-collection', [
+        $collection = new Collection('test-collection', [
             'count' => 1,
             'layout' => 'inline',
             'should_create_template' => true,
-            'target_element' => new \Laminas\Form\Element\Button(
+            'target_element' => new Button(
                 'test',
                 ['label' => 'test']
             ),

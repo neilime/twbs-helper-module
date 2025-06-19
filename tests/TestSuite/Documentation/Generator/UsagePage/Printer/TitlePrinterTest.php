@@ -2,34 +2,40 @@
 
 namespace TestSuite\Documentation\Generator\UsagePage\Printer;
 
-class TitlePrinterTest extends \PHPUnit\Framework\TestCase
+use Documentation\Generator\Configuration;
+use Documentation\Generator\FileSystem\File;
+use Documentation\Generator\UsagePage\Printer\TitlePrinter;
+use Documentation\Test\Config;
+use PHPUnit\Framework\TestCase;
+
+class TitlePrinterTest extends TestCase
 {
     /**
-     * @var \Documentation\Generator\Configuration
+     * @var Configuration
      */
     protected $configuration;
 
     /**
-     * @var \Documentation\Generator\UsagePage\Printer\TitlePrinter
+     * @var TitlePrinter
      */
     protected $titlePrinter;
 
     protected function setUp(): void
     {
-        $this->configuration = new \Documentation\Generator\Configuration(
+        $this->configuration = new Configuration(
             '/tmp/test-dir',
             '/tmp/test-dir/tests',
             'x.x',
             2,
-            $this->createMock(\Documentation\Generator\FileSystem\File::class)
+            $this->createMock(File::class)
         );
     }
 
     public function testPrintContentToPageForFirstLevelTitle()
     {
-        $this->titlePrinter = new \Documentation\Generator\UsagePage\Printer\TitlePrinter(
+        $this->titlePrinter = new TitlePrinter(
             $this->configuration,
-            \Documentation\Test\Config::fromArray([
+            Config::fromArray([
                 'title' => 'Component',
                 'url' => '%bootstrap-url%/test',
             ]),
@@ -43,9 +49,9 @@ class TitlePrinterTest extends \PHPUnit\Framework\TestCase
 
     public function testPrintContentToPageForThirdLevelTitle()
     {
-        $this->titlePrinter = new \Documentation\Generator\UsagePage\Printer\TitlePrinter(
+        $this->titlePrinter = new TitlePrinter(
             $this->configuration,
-            \Documentation\Test\Config::fromArray([
+            Config::fromArray([
                 'title' => 'Component / Alert / Examples',
                 'url' => '%bootstrap-url%/test',
             ]),

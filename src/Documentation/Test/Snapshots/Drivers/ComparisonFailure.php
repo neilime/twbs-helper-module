@@ -2,6 +2,8 @@
 
 namespace Documentation\Test\Snapshots\Drivers;
 
+use Jfcherng\Diff\Differ;
+
 class ComparisonFailure extends \SebastianBergmann\Comparator\ComparisonFailure
 {
     /**
@@ -13,7 +15,7 @@ class ComparisonFailure extends \SebastianBergmann\Comparator\ComparisonFailure
             return '';
         }
 
-        $differ = new \Jfcherng\Diff\Differ(
+        $differ = new Differ(
             explode(PHP_EOL, $this->expectedAsString),
             explode(PHP_EOL, $this->actualAsString),
             [
@@ -21,7 +23,7 @@ class ComparisonFailure extends \SebastianBergmann\Comparator\ComparisonFailure
             ]
         );
 
-        $renderer = new \Documentation\Test\Snapshots\Drivers\Unified([
+        $renderer = new Unified([
             'detailLevel' => 'word',
         ]);
         $result = $renderer->render($differ);

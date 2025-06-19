@@ -2,24 +2,26 @@
 
 namespace TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper;
 
-abstract class AbstractHelper implements \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\HelperInterface
+use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass;
+
+abstract class AbstractHelper implements HelperInterface
 {
     protected static $optionName;
 
     /**
-     * @var \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass|null
+     * @var HtmlClass|null
      */
     protected $htmlclasshelper;
 
     /**
      * Set htmlclasshelper
      *
-     * @param \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass $htmlclasshelper
-     * @return \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\AbstractHelper
+     * @param HtmlClass $htmlclasshelper
+     * @return AbstractHelper
      */
     public function setHtmlClassHelper(
-        \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass $htmlclasshelper
-    ): \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\HelperInterface {
+        HtmlClass $htmlclasshelper
+    ): HelperInterface {
         $this->htmlclasshelper = $htmlclasshelper;
         return $this;
     }
@@ -27,9 +29,9 @@ abstract class AbstractHelper implements \TwbsHelper\View\Helper\HtmlAttributes\
     /**
      * Retrieve HtmlClass helper instance
      *
-     * @return null|\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass
+     * @return null|HtmlClass
      */
-    public function getHtmlClassHelper(): ?\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass
+    public function getHtmlClassHelper(): ?HtmlClass
     {
         return $this->htmlclasshelper;
     }

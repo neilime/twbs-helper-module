@@ -2,10 +2,13 @@
 
 namespace TwbsHelper\View\Helper;
 
+use Laminas\Stdlib\ArrayUtils;
+use InvalidArgumentException;
+
 /**
  * Helper for ordered and unordered lists
  */
-class DescriptionList extends \TwbsHelper\View\Helper\AbstractHtmlElement
+class DescriptionList extends AbstractHtmlElement
 {
     /**
      * Generates a 'Description List' element. Manage indentation of Xhtml markup
@@ -14,10 +17,10 @@ class DescriptionList extends \TwbsHelper\View\Helper\AbstractHtmlElement
      * @param  array   $optionsAndAttributes Attributes for the ol/ul tag.
      * If class attributes contains "list-inline", so the li will have the class "list-inline-item"
      * @param  boolean $escape     Escape the items.
-     * @throws \InvalidArgumentException
-     * @return \TwbsHelper\View\Helper\DescriptionList|string
+     * @throws InvalidArgumentException
+     * @return DescriptionList|string
      */
-    public function __invoke(array $items = null, iterable $optionsAndAttributes = [], bool $escape = true)
+    public function __invoke(?array $items = null, iterable $optionsAndAttributes = [], bool $escape = true)
     {
         return $items ? $this->render($items, $optionsAndAttributes, $escape) : $this;
     }
@@ -29,13 +32,13 @@ class DescriptionList extends \TwbsHelper\View\Helper\AbstractHtmlElement
      * @param  array   $optionsAndAttributes Attributes for the ol/ul tag.
      * If class attributes contains "list-inline", so the li will have the class "list-inline-item"
      * @param  boolean $escape     Escape the items.
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string The list XHTML.
      */
     public function render(array $items, iterable $optionsAndAttributes = [], bool $escape = true)
     {
         if (empty($items)) {
-            throw new \InvalidArgumentException('Argument "$items" must not be empty');
+            throw new InvalidArgumentException('Argument "$items" must not be empty');
         }
 
         $listContent = '';
@@ -101,18 +104,16 @@ class DescriptionList extends \TwbsHelper\View\Helper\AbstractHtmlElement
                         'data' => $itemValue['term'],
                     ];
                 } elseif (is_array($itemValue['term'])) {
-                    $termOptionsAndAttributes = \Laminas\Stdlib\ArrayUtils::merge(
+                    $termOptionsAndAttributes = ArrayUtils::merge(
                         $termOptionsAndAttributes,
                         $itemValue['term']
                     );
                 } else {
-                    throw new \InvalidArgumentException(
+                    throw new InvalidArgumentException(
                         sprintf(
                             'Argument "%s" expects a string or an array, "%s" given',
                             '$items[' . $itemKey . '][term]',
-                            is_object($itemValue['term'])
-                                ? get_class($itemValue['term'])
-                                : gettype($itemValue['term'])
+                            get_debug_type($itemValue['term'])
                         )
                     );
                 }
@@ -124,28 +125,26 @@ class DescriptionList extends \TwbsHelper\View\Helper\AbstractHtmlElement
                         'data' => $itemValue['detail'],
                     ];
                 } elseif (is_array($itemValue['detail'])) {
-                    $detailOptionsAndAttributes = \Laminas\Stdlib\ArrayUtils::merge(
+                    $detailOptionsAndAttributes = ArrayUtils::merge(
                         $detailOptionsAndAttributes,
                         $itemValue['detail']
                     );
                 } else {
-                    throw new \InvalidArgumentException(
+                    throw new InvalidArgumentException(
                         sprintf(
                             'Argument "%s" expects a string or an array, "%s" given',
                             '$items[' . $itemKey . '][detail]',
-                            is_object($itemValue['detail'])
-                                ? get_class($itemValue['detail'])
-                                : gettype($itemValue['detail'])
+                            get_debug_type($itemValue['detail'])
                         )
                     );
                 }
             }
         } else {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 sprintf(
                     'Argument "%s" expects a string or an array, "%s" given',
                     '$items[' . $itemKey . ']',
-                    is_object($itemValue) ? get_class($itemValue) : gettype($itemValue)
+                    get_debug_type($itemValue)
                 )
             );
         }

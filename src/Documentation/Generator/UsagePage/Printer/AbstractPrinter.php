@@ -2,15 +2,18 @@
 
 namespace Documentation\Generator\UsagePage\Printer;
 
+use Documentation\Generator\Configuration;
+use Documentation\Test\Config;
+
 abstract class AbstractPrinter
 {
     /**
-     * @var \Documentation\Generator\Configuration
+     * @var Configuration
      */
     protected $configuration;
 
     /**
-     * @var \Documentation\Test\Config
+     * @var Config
      */
     protected $testConfig;
 
@@ -30,8 +33,8 @@ abstract class AbstractPrinter
     abstract public function getPageContent();
 
     public function __construct(
-        \Documentation\Generator\Configuration $configuration,
-        \Documentation\Test\Config $documentationTestConfig,
+        Configuration $configuration,
+        Config $documentationTestConfig,
         string $pagePath,
         bool $pageExists
     ) {

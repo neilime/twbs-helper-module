@@ -5,7 +5,7 @@ namespace TwbsHelper\View\Helper;
 /**
  * Helper for card columns
  */
-class CardColumns extends \TwbsHelper\View\Helper\CardGroup
+class CardColumns extends CardGroup
 {
     protected static $groupClass = 'card-columns';
 }

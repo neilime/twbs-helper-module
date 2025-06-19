@@ -2,9 +2,18 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
+use Laminas\Form\Factory;
+use Laminas\Form\FormInterface;
+use TwbsHelper\Form\View\ElementHelperTrait;
+use TwbsHelper\Options\ModuleOptions;
+use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass;
+use TwbsHelper\View\Helper\HtmlElement;
+use InvalidArgumentException;
+use LogicException;
+
 class Form extends \Laminas\Form\View\Helper\Form
 {
-    use \TwbsHelper\Form\View\ElementHelperTrait;
+    use ElementHelperTrait;
 
     /**
      * @var string
@@ -22,37 +31,37 @@ class Form extends \Laminas\Form\View\Helper\Form
     protected $options;
 
     /**
-     * @var null|\TwbsHelper\Form\View\Helper\FormRows
+     * @var null|FormRows
      */
     protected $formRowsHelper;
 
     /**
-     * @var null|\TwbsHelper\View\Helper\HtmlElement
+     * @var null|HtmlElement
      */
     protected $htmlElementHelper;
 
     /**
-     * @var null|\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass
+     * @var null|HtmlClass
      */
     protected $htmlClassHelper;
 
     /**
      * Constructor
      *
-     * @param \TwbsHelper\Options\ModuleOptions $moduleOptions
+     * @param ModuleOptions $moduleOptions
      * @access public
      * @return void
      */
-    public function __construct(\TwbsHelper\Options\ModuleOptions $moduleOptions)
+    public function __construct(ModuleOptions $moduleOptions)
     {
         $this->options = $moduleOptions;
     }
 
     /**
-     * @param \Laminas\Form\FormInterface $form
-     * @return \TwbsHelper\Form\View\Helper\Form|string
+     * @param FormInterface $form
+     * @return Form|string
      */
-    public function __invoke(\Laminas\Form\FormInterface $form = null)
+    public function __invoke(?FormInterface $form = null)
     {
         // Add valid custom attributes
         if ($this->options->getValidTagAttributes()) {
@@ -87,9 +96,9 @@ class Form extends \Laminas\Form\View\Helper\Form
         return $this->render($form);
     }
 
-    protected function getFormFromSpec(array $formSpec): \Laminas\Form\FormInterface
+    protected function getFormFromSpec(array $formSpec): FormInterface
     {
-        $factory = new \Laminas\Form\Factory();
+        $factory = new Factory();
 
         if (empty($formSpec['type'])) {
             $formSpec['type'] = 'form';
@@ -97,11 +106,11 @@ class Form extends \Laminas\Form\View\Helper\Form
 
         $form = $factory->create($formSpec);
 
-        if (!$form instanceof \Laminas\Form\FormInterface) {
-            throw new \InvalidArgumentException(sprintf(
+        if (!$form instanceof FormInterface) {
+            throw new InvalidArgumentException(sprintf(
                 'Invalid spec specified, %s does not inherit from %s.',
-                get_class($form),
-                \Laminas\Form\FormInterface::class
+                $form::class,
+                FormInterface::class
             ));
         }
         return $form;
@@ -111,10 +120,10 @@ class Form extends \Laminas\Form\View\Helper\Form
     /**
      * Render a form from the provided $form,
      *
-     * @param \Laminas\Form\FormInterface $form
+     * @param FormInterface $form
      * @return string
      */
-    public function render(\Laminas\Form\FormInterface $form): string
+    public function render(FormInterface $form): string
     {
         $this->prepareForm($form);
 
@@ -126,7 +135,7 @@ class Form extends \Laminas\Form\View\Helper\Form
         return $this->openTag($form) . $elementsContent . $this->closeTag();
     }
 
-    protected function prepareForm(\Laminas\Form\FormInterface $form)
+    protected function prepareForm(FormInterface $form)
     {
         // Prepare form if needed
         if (method_exists($form, 'prepare')) {
@@ -142,7 +151,7 @@ class Form extends \Laminas\Form\View\Helper\Form
         $this->inheritOptionsToElements($form);
     }
 
-    protected function prepareFormClasses(\Laminas\Form\FormInterface $form)
+    protected function prepareFormClasses(FormInterface $form)
     {
         $classes = [];
 
@@ -177,7 +186,7 @@ class Form extends \Laminas\Form\View\Helper\Form
         $this->setClassesToElement($form, $classes);
     }
 
-    protected function inheritOptionsToElements(\Laminas\Form\FormInterface $form)
+    protected function inheritOptionsToElements(FormInterface $form)
     {
         $formLayout = $form->getOption('layout');
         $tooltipFeedback = $form->getOption('tooltip_feedback');
@@ -197,7 +206,7 @@ class Form extends \Laminas\Form\View\Helper\Form
     /**
      * Retrieve the formRow helper
      */
-    protected function getFormRowsHelper(): \TwbsHelper\Form\View\Helper\FormRows
+    protected function getFormRowsHelper(): FormRows
     {
         if ($this->formRowsHelper) {
             return $this->formRowsHelper;
@@ -207,12 +216,10 @@ class Form extends \Laminas\Form\View\Helper\Form
             $this->formRowsHelper = $this->view->plugin('formRows');
         }
 
-        if (!$this->formRowsHelper instanceof \TwbsHelper\Form\View\Helper\FormRows) {
-            throw new \LogicException(sprintf(
+        if (!$this->formRowsHelper instanceof FormRows) {
+            throw new LogicException(sprintf(
                 'FormCollection helper expects an instanceof \TwbsHelper\Form\View\Helper\FormRows, "%s" defined',
-                is_object($this->formRowsHelper)
-                    ? get_class($this->formRowsHelper)
-                    : gettype($this->formRowsHelper)
+                get_debug_type($this->formRowsHelper)
             ));
         }
 
@@ -232,8 +239,8 @@ class Form extends \Laminas\Form\View\Helper\Form
             $this->htmlElementHelper = $this->view->plugin('htmlElement');
         }
 
-        if (!$this->htmlElementHelper instanceof \TwbsHelper\View\Helper\HtmlElement) {
-            $this->htmlElementHelper = new \TwbsHelper\View\Helper\HtmlElement();
+        if (!$this->htmlElementHelper instanceof HtmlElement) {
+            $this->htmlElementHelper = new HtmlElement();
         }
 
         return $this->htmlElementHelper;
@@ -252,8 +259,8 @@ class Form extends \Laminas\Form\View\Helper\Form
             $this->htmlClassHelper = $this->view->plugin('htmlClass');
         }
 
-        if (!$this->htmlClassHelper instanceof \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass) {
-            $this->htmlClassHelper = new \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass();
+        if (!$this->htmlClassHelper instanceof HtmlClass) {
+            $this->htmlClassHelper = new HtmlClass();
         }
 
         return $this->htmlClassHelper;

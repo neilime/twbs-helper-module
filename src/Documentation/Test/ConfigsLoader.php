@@ -2,6 +2,9 @@
 
 namespace Documentation\Test;
 
+use DirectoryIterator;
+use LogicException;
+
 class ConfigsLoader
 {
     protected $testsDirectoryPath;
@@ -29,7 +32,7 @@ class ConfigsLoader
     private function getDocumentationFiles(): array
     {
         $documentationFiles = [];
-        foreach (new \DirectoryIterator($this->testsDirectoryPath) as $fileInfo) {
+        foreach (new DirectoryIterator($this->testsDirectoryPath) as $fileInfo) {
             // Ignore non php files
             if (!$fileInfo->isFile() || $fileInfo->getExtension() !== 'php') {
                 continue;
@@ -42,23 +45,23 @@ class ConfigsLoader
         return $documentationFiles;
     }
 
-    private function loadDocumentationTestConfigFromFile(string $filePath): \Documentation\Test\Config
+    private function loadDocumentationTestConfigFromFile(string $filePath): Config
     {
         if (false === ($testsConfig = include $filePath)) {
-            throw new \LogicException(sprintf(
+            throw new LogicException(sprintf(
                 'An error occured while including documentation test config file "%s"',
                 $filePath
             ));
         }
 
         if (!is_array($testsConfig)) {
-            throw new \LogicException(sprintf(
+            throw new LogicException(sprintf(
                 'Documentation test config file "%s" expects returning an array, "%s" retrieved',
                 $filePath,
-                is_object($testsConfig) ? get_class($testsConfig) : gettype($testsConfig)
+                get_debug_type($testsConfig)
             ));
         }
 
-        return \Documentation\Test\Config::fromArray($testsConfig);
+        return Config::fromArray($testsConfig);
     }
 }

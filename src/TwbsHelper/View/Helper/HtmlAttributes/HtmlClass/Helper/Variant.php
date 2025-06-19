@@ -2,7 +2,9 @@
 
 namespace TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper;
 
-class Variant extends \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\AbstractHelper
+use InvalidArgumentException;
+
+class Variant extends AbstractHelper
 {
     public const VARIANT_PRIMARY = 'primary';
     public const VARIANT_SECONDARY = 'secondary';
@@ -63,27 +65,27 @@ class Variant extends \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Ab
         return false;
     }
 
-    protected function validateOption($option, string $allowedVariantPrefix = null)
+    protected function validateOption($option, ?string $allowedVariantPrefix = null)
     {
         if (!is_string($option)) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 '"%s" option expects a string, "%s" given',
                 static::$optionName,
-                is_object($option) ? get_class($option) : gettype($option)
+                get_debug_type($option)
             ));
         }
 
         $this->validateStringOption($option, $allowedVariantPrefix);
     }
 
-    protected function validateStringOption(string $option, string $allowedVariantPrefix = null)
+    protected function validateStringOption(string $option, ?string $allowedVariantPrefix = null)
     {
         if ($this->isVariantOption($option)) {
             return;
         }
 
         if (!$allowedVariantPrefix) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 '"%s" option "%s" is not supported. Expects one of these values "%s"',
                 static::$optionName,
                 $option,
@@ -92,14 +94,12 @@ class Variant extends \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Ab
         }
 
         if (!$this->isPrefixedVariantOption($option, $allowedVariantPrefix)) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 '"%s" option "%s" is not supported. Expects one of these values "%s" or "%s"',
                 static::$optionName,
                 $option,
                 implode(',', static::$allowedOptions),
-                implode(',', array_map(function ($allowedOption) use ($allowedVariantPrefix) {
-                    return $this->getHtmlClassHelper()->getPrefixedClass($allowedOption, $allowedVariantPrefix);
-                }, static::$allowedOptions)),
+                implode(',', array_map(fn ($allowedOption) => $this->getHtmlClassHelper()->getPrefixedClass($allowedOption, $allowedVariantPrefix), static::$allowedOptions)),
             ));
         }
 

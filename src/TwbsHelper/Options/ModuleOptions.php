@@ -40,9 +40,9 @@ class ModuleOptions extends AbstractOptions
 
     /**
      * @param string $defaultRowSpacingClass
-     * @return \TwbsHelper\Options\ModuleOptions
+     * @return ModuleOptions
      */
-    public function setDefaultRowSpacingClass(string $defaultRowSpacingClass): \TwbsHelper\Options\ModuleOptions
+    public function setDefaultRowSpacingClass(string $defaultRowSpacingClass): ModuleOptions
     {
         $this->defaultRowSpacingClass = $defaultRowSpacingClass;
 
@@ -59,9 +59,9 @@ class ModuleOptions extends AbstractOptions
 
     /**
      * @param  array $ignoredViewHelpers
-     * @return \TwbsHelper\Options\ModuleOptions
+     * @return ModuleOptions
      */
-    public function setIgnoredViewHelpers(array $ignoredViewHelpers): \TwbsHelper\Options\ModuleOptions
+    public function setIgnoredViewHelpers(array $ignoredViewHelpers): ModuleOptions
     {
         $this->ignoredViewHelpers = $ignoredViewHelpers;
 
@@ -78,9 +78,9 @@ class ModuleOptions extends AbstractOptions
 
     /**
      * @param  array $validTagAttributes
-     * @return \TwbsHelper\Options\ModuleOptions
+     * @return ModuleOptions
      */
-    public function setValidTagAttributes(array $validTagAttributes): \TwbsHelper\Options\ModuleOptions
+    public function setValidTagAttributes(array $validTagAttributes): ModuleOptions
     {
         $this->validTagAttributes = $validTagAttributes;
 
@@ -97,9 +97,9 @@ class ModuleOptions extends AbstractOptions
 
     /**
      * @param  array $validTagAttributePrefixes
-     * @return \TwbsHelper\Options\ModuleOptions
+     * @return ModuleOptions
      */
-    public function setValidTagAttributePrefixes(array $validTagAttributePrefixes): \TwbsHelper\Options\ModuleOptions
+    public function setValidTagAttributePrefixes(array $validTagAttributePrefixes): ModuleOptions
     {
         $this->validTagAttributePrefixes = $validTagAttributePrefixes;
 
@@ -116,9 +116,9 @@ class ModuleOptions extends AbstractOptions
 
     /**
      * @param  array $classMap
-     * @return \TwbsHelper\Options\ModuleOptions
+     * @return ModuleOptions
      */
-    public function setClassMap(array $classMap): \TwbsHelper\Options\ModuleOptions
+    public function setClassMap(array $classMap): ModuleOptions
     {
         $this->classMap = $classMap;
 
@@ -135,9 +135,9 @@ class ModuleOptions extends AbstractOptions
 
     /**
      * @param  array $typeMap
-     * @return \TwbsHelper\Options\ModuleOptions
+     * @return ModuleOptions
      */
-    public function setTypeMap(array $typeMap): \TwbsHelper\Options\ModuleOptions
+    public function setTypeMap(array $typeMap): ModuleOptions
     {
         $this->typeMap = $typeMap;
 

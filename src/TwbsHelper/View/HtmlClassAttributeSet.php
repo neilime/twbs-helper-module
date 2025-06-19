@@ -2,13 +2,25 @@
 
 namespace TwbsHelper\View;
 
+use Laminas\Stdlib\ArrayUtils;
+use ArrayObject;
+use Stringable;
+
 /**
  * Class for storing and processing HTML class attribute.
+ * @extends ArrayObject<int, string>
  */
-class HtmlClassAttributeSet extends \ArrayObject
+class HtmlClassAttributeSet extends ArrayObject implements Stringable
 {
     public const ATTRIBUTE_NAME = 'class';
 
+    /**
+     * Constructor.
+     *
+     * @param string|iterable<string> $classes
+     *   If a string is provided, it should be a space-separated list of classes (e.g., "class1 class2 class3").
+     *   If an iterable is provided, it should contain class names.
+     */
     public function __construct($classes = [])
     {
         if (is_string($classes)) {
@@ -21,12 +33,13 @@ class HtmlClassAttributeSet extends \ArrayObject
 
     /**
      * Merge attributes with existing attributes.
+     * @param iterable<string> $classes
      */
     public function merge(iterable $classes): self
     {
         $this->exchangeArray(array_merge(
             $this->getArrayCopy(),
-            \Laminas\Stdlib\ArrayUtils::iteratorToArray($classes)
+            ArrayUtils::iteratorToArray($classes)
         ));
 
         $this->cleanAttribute();

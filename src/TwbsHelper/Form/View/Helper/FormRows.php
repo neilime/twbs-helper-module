@@ -2,45 +2,58 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
-class FormRows extends \Laminas\Form\View\Helper\AbstractHelper
+use Laminas\Form\ElementInterface;
+use Laminas\Form\Element\Button;
+use Laminas\Form\Element\Submit;
+use Laminas\Form\FieldsetInterface;
+use Laminas\Form\FormInterface;
+use Laminas\Form\View\Helper\AbstractHelper;
+use TwbsHelper\Form\View\ElementHelperTrait;
+use TwbsHelper\View\Helper\ButtonGroup;
+use TwbsHelper\View\Helper\HtmlAttributes;
+use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass;
+use TwbsHelper\View\Helper\HtmlElement;
+use LogicException;
+
+class FormRows extends AbstractHelper
 {
-    use \TwbsHelper\Form\View\ElementHelperTrait;
+    use ElementHelperTrait;
 
     /**
-     * @var null|\TwbsHelper\Form\View\Helper\FormCollection
+     * @var null|FormCollection
      */
     protected $formCollectionHelper;
 
     /**
-     * @var null|\TwbsHelper\Form\View\Helper\FormRow
+     * @var null|FormRow
      */
     protected $formRowHelper;
 
     /**
-     * @var null|\TwbsHelper\View\Helper\HtmlElement
+     * @var null|HtmlElement
      */
     protected $htmlElementHelper;
 
     /**
-     * @var null|\TwbsHelper\View\Helper\HtmlAttributes
+     * @var null|HtmlAttributes
      */
     protected $htmlAttributesHelper;
 
     /**
-     * @var null|\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass
+     * @var null|HtmlClass
      */
     protected $htmlClassHelper;
 
     /**
-     * @var null|\TwbsHelper\View\Helper\ButtonGroup
+     * @var null|ButtonGroup
      */
     protected $buttonGroupHelper;
 
     /**
-     * @param \Laminas\Form\FormInterface $form
-     * @return \TwbsHelper\Form\View\Helper\FormRows|string
+     * @param FormInterface $form
+     * @return FormRows|string
      */
-    public function __invoke(\Laminas\Form\FormInterface $form = null)
+    public function __invoke(?FormInterface $form = null)
     {
         if ($form !== null) {
             return $this->renderFormRows($form);
@@ -50,10 +63,10 @@ class FormRows extends \Laminas\Form\View\Helper\AbstractHelper
     }
 
     /**
-     * @param \Laminas\Form\FormInterface $form
+     * @param FormInterface $form
      * @return string
      */
-    protected function renderFormRows(\Laminas\Form\FormInterface $form): string
+    protected function renderFormRows(FormInterface $form): string
     {
         $rowClass = $form->getOption('row_class') ?? 'row';
         $gutter = $form->getOption('gutter');
@@ -95,7 +108,7 @@ class FormRows extends \Laminas\Form\View\Helper\AbstractHelper
      * Retrieve element rendering
      */
     protected function renderElement(
-        \Laminas\Form\ElementInterface $element,
+        ElementInterface $element,
         array $rowsRendering,
         array $rowOptions
     ): array {
@@ -103,14 +116,14 @@ class FormRows extends \Laminas\Form\View\Helper\AbstractHelper
         if (
             $element->getOption('row_name')
             && (
-                $element instanceof \Laminas\Form\Element\Button
-                || $element instanceof \Laminas\Form\Element\Submit
+                $element instanceof Button
+                || $element instanceof Submit
             )
         ) {
             return $this->renderButtonGroup($element, $rowsRendering, $rowOptions);
         }
 
-        if ($element instanceof \Laminas\Form\FieldsetInterface) {
+        if ($element instanceof FieldsetInterface) {
             $elementMarkup = $this->getFormCollectionHelper()->__invoke($element);
         } else {
             $elementMarkup = $this->getFormRowHelper()->__invoke($element);
@@ -134,7 +147,7 @@ class FormRows extends \Laminas\Form\View\Helper\AbstractHelper
     }
 
     protected function getElementRowRendering(
-        \Laminas\Form\ElementInterface $element,
+        ElementInterface $element,
         array $rowOptions
     ): array {
         $options = $element->getOptions();
@@ -178,7 +191,7 @@ class FormRows extends \Laminas\Form\View\Helper\AbstractHelper
      * Retrieve button group element rendering
      */
     protected function renderButtonGroup(
-        \Laminas\Form\ElementInterface $button,
+        ElementInterface $button,
         array $rowsRendering,
         array $rowOptions
     ): array {
@@ -189,7 +202,7 @@ class FormRows extends \Laminas\Form\View\Helper\AbstractHelper
         } else {
             $buttonOptions = $button->getOptions();
             $isNotLayoutHorizontal = empty($buttonOptions['layout'])
-                || \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL !== $buttonOptions['layout'];
+                || Form::LAYOUT_HORIZONTAL !== $buttonOptions['layout'];
 
             if (empty($buttonOptions['column']) || !$isNotLayoutHorizontal) {
                 $rowClass = 'form-group';
@@ -217,7 +230,7 @@ class FormRows extends \Laminas\Form\View\Helper\AbstractHelper
     /**
      * Generate
      */
-    private function generateRowRenderingKey(\Laminas\Form\ElementInterface $element, array $rowsRendering): string
+    private function generateRowRenderingKey(ElementInterface $element, array $rowsRendering): string
     {
         $existingKeys = array_keys($rowsRendering);
         $options = $element->getOptions();
@@ -230,7 +243,7 @@ class FormRows extends \Laminas\Form\View\Helper\AbstractHelper
 
         if ($rowName) {
             foreach ($existingKeys as $existingKey) {
-                if (preg_match('/^[0-9]+_' . preg_quote($rowName, '/') . '$/', $existingKey)) {
+                if (preg_match('/^[0-9]+_' . preg_quote((string) $rowName, '/') . '$/', $existingKey)) {
                     return $existingKey;
                 }
             }
@@ -257,7 +270,7 @@ class FormRows extends \Laminas\Form\View\Helper\AbstractHelper
     /**
      * Retrieve the formCollection helper
      */
-    protected function getFormCollectionHelper(): \TwbsHelper\Form\View\Helper\FormCollection
+    protected function getFormCollectionHelper(): FormCollection
     {
         if ($this->formCollectionHelper) {
             return $this->formCollectionHelper;
@@ -267,12 +280,10 @@ class FormRows extends \Laminas\Form\View\Helper\AbstractHelper
             $this->formCollectionHelper = $this->view->plugin('formCollection');
         }
 
-        if (!$this->formCollectionHelper instanceof \TwbsHelper\Form\View\Helper\FormCollection) {
-            throw new \LogicException(sprintf(
+        if (!$this->formCollectionHelper instanceof FormCollection) {
+            throw new LogicException(sprintf(
                 'FormCollection helper expects an instanceof \TwbsHelper\Form\View\Helper\FormCollection, "%s" defined',
-                is_object($this->formCollectionHelper)
-                    ? get_class($this->formCollectionHelper)
-                    : gettype($this->formCollectionHelper)
+                get_debug_type($this->formCollectionHelper)
             ));
         }
 
@@ -282,7 +293,7 @@ class FormRows extends \Laminas\Form\View\Helper\AbstractHelper
     /**
      * Retrieve the formRow helper
      */
-    protected function getFormRowHelper(): \TwbsHelper\Form\View\Helper\FormRow
+    protected function getFormRowHelper(): FormRow
     {
         if ($this->formRowHelper) {
             return $this->formRowHelper;
@@ -292,12 +303,10 @@ class FormRows extends \Laminas\Form\View\Helper\AbstractHelper
             $this->formRowHelper = $this->view->plugin('formRow');
         }
 
-        if (!$this->formRowHelper instanceof \TwbsHelper\Form\View\Helper\FormRow) {
-            throw new \LogicException(sprintf(
+        if (!$this->formRowHelper instanceof FormRow) {
+            throw new LogicException(sprintf(
                 'FormCollection helper expects an instanceof \TwbsHelper\Form\View\Helper\FormRow, "%s" defined',
-                is_object($this->formRowHelper)
-                    ? get_class($this->formRowHelper)
-                    : gettype($this->formRowHelper)
+                get_debug_type($this->formRowHelper)
             ));
         }
 
@@ -317,8 +326,8 @@ class FormRows extends \Laminas\Form\View\Helper\AbstractHelper
             $this->htmlElementHelper = $this->view->plugin('htmlElement');
         }
 
-        if (!$this->htmlElementHelper instanceof \TwbsHelper\View\Helper\HtmlElement) {
-            $this->htmlElementHelper = new \TwbsHelper\View\Helper\HtmlElement();
+        if (!$this->htmlElementHelper instanceof HtmlElement) {
+            $this->htmlElementHelper = new HtmlElement();
         }
 
         return $this->htmlElementHelper;
@@ -337,8 +346,8 @@ class FormRows extends \Laminas\Form\View\Helper\AbstractHelper
             $this->htmlAttributesHelper = $this->view->plugin('htmlAttributes');
         }
 
-        if (!$this->htmlAttributesHelper instanceof \TwbsHelper\View\Helper\HtmlAttributes) {
-            $this->htmlAttributesHelper = new \TwbsHelper\View\Helper\HtmlAttributes();
+        if (!$this->htmlAttributesHelper instanceof HtmlAttributes) {
+            $this->htmlAttributesHelper = new HtmlAttributes();
         }
 
         return $this->htmlAttributesHelper;
@@ -357,8 +366,8 @@ class FormRows extends \Laminas\Form\View\Helper\AbstractHelper
             $this->htmlClassHelper = $this->view->plugin('htmlClass');
         }
 
-        if (!$this->htmlClassHelper instanceof \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass) {
-            $this->htmlClassHelper = new \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass();
+        if (!$this->htmlClassHelper instanceof HtmlClass) {
+            $this->htmlClassHelper = new HtmlClass();
         }
 
         return $this->htmlClassHelper;
@@ -377,8 +386,8 @@ class FormRows extends \Laminas\Form\View\Helper\AbstractHelper
             $this->buttonGroupHelper = $this->view->plugin('buttonGroup');
         }
 
-        if (!$this->buttonGroupHelper instanceof \TwbsHelper\View\Helper\ButtonGroup) {
-            $this->buttonGroupHelper = new \TwbsHelper\View\Helper\ButtonGroup();
+        if (!$this->buttonGroupHelper instanceof ButtonGroup) {
+            $this->buttonGroupHelper = new ButtonGroup();
         }
 
         return $this->buttonGroupHelper;

@@ -5,7 +5,7 @@ namespace TwbsHelper\View\Helper;
 /**
  * Helper for card group
  */
-class CardGroup extends \TwbsHelper\View\Helper\AbstractGroupWithHelper
+class CardGroup extends AbstractGroupWithHelper
 {
     protected static $groupClass = 'card-group';
 

@@ -2,17 +2,20 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
+use Laminas\Form\ElementInterface;
+use TwbsHelper\Form\View\ElementHelperTrait;
+
 class FormSelect extends \Laminas\Form\View\Helper\FormSelect
 {
-    use \TwbsHelper\Form\View\ElementHelperTrait;
+    use ElementHelperTrait;
 
     /**
      * Render a form <select> element from the provided $element
      *
-     * @param \Laminas\Form\ElementInterface $element
+     * @param ElementInterface $element
      * @return string
      */
-    public function render(\Laminas\Form\ElementInterface $element): string
+    public function render(ElementInterface $element): string
     {
         $this->setClassesToElement($element, ['form-select'], ['form-control']);
 

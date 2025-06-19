@@ -2,9 +2,17 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
-class FormRowElement extends \Laminas\Form\View\Helper\FormRow
+use Laminas\Form\ElementInterface;
+use Laminas\Form\Element\MultiCheckbox;
+use Laminas\Form\LabelAwareInterface;
+use Laminas\Form\View\Helper\FormRow;
+use TwbsHelper\Form\View\ElementHelperTrait;
+use DomainException;
+use InvalidArgumentException;
+
+class FormRowElement extends FormRow
 {
-    use \TwbsHelper\Form\View\ElementHelperTrait;
+    use ElementHelperTrait;
 
     /**
      * The class that is added to element that have errors
@@ -21,11 +29,11 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
     protected $inputValidClass = 'is-valid';
 
     /**
-     * @param \Laminas\Form\ElementInterface $element
+     * @param ElementInterface $element
      * @param string|null $labelPosition
      * @return string
      */
-    public function render(\Laminas\Form\ElementInterface $element, ?string $labelPosition = null): string
+    public function render(ElementInterface $element, ?string $labelPosition = null): string
     {
         $this->prepareElementForRendering($element);
 
@@ -38,7 +46,7 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
         $layout = $element->getOption('layout');
         switch ($layout) {
             case null:
-            case \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE:
+            case Form::LAYOUT_INLINE:
                 $renderingOrder = [
                     'renderLayoutContentContainer' => [],
                     'renderLabel' =>  [$labelPosition],
@@ -47,7 +55,7 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
                 ];
                 break;
 
-            case \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL:
+            case Form::LAYOUT_HORIZONTAL:
                 $renderingOrder = [
                     'renderLayoutContentContainer' => [],
                     'renderHelpBlock' => [],
@@ -65,7 +73,7 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
                 break;
 
             default:
-                throw new \DomainException('Layout "' . $layout . '" is not supported');
+                throw new DomainException('Layout "' . $layout . '" is not supported');
         }
 
         foreach ($renderingOrder as $function => $arguments) {
@@ -76,7 +84,7 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
         return $elementContent;
     }
 
-    protected function renderElementCommonParts(\Laminas\Form\ElementInterface $element): string
+    protected function renderElementCommonParts(ElementInterface $element): string
     {
         // Render element
         $elementContent = $this->getElementHelper()->render($element);
@@ -95,7 +103,7 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
         return $elementContent;
     }
 
-    protected function renderMultiCheckboxCommonParts(\Laminas\Form\ElementInterface $element): string
+    protected function renderMultiCheckboxCommonParts(ElementInterface $element): string
     {
         // Render element feedbacks
         $elementContent = '';
@@ -114,7 +122,7 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
         // Inject feedbacks in last multicheckbox container
         if ($multicheckboxContent) {
             $elementContent = trim(
-                $this->getView()->plugin('htmlElement')->addProperIndentation($elementContent, true),
+                (string) $this->getView()->plugin('htmlElement')->addProperIndentation($elementContent, true),
                 PHP_EOL
             );
             $elementContent = preg_replace(
@@ -128,9 +136,9 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
     }
 
     /**
-     * @param \Laminas\Form\ElementInterface $element
+     * @param ElementInterface $element
      */
-    public function prepareElementForRendering(\Laminas\Form\ElementInterface $element)
+    public function prepareElementForRendering(ElementInterface $element)
     {
         // "is-invalid" validation state case
         if ($element->getMessages()) {
@@ -160,15 +168,15 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
     /**
      * Render element's label
      *
-     * @param \Laminas\Form\ElementInterface $element
+     * @param ElementInterface $element
      * @param string $elementContent
      * @param string $labelPosition
      * @return string
      */
     protected function renderLabel(
-        \Laminas\Form\ElementInterface $element,
+        ElementInterface $element,
         string $elementContent,
-        string $labelPosition = null
+        ?string $labelPosition = null
     ): string {
 
         if (!$element->getLabel()) {
@@ -192,10 +200,10 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
             : $labelContent . PHP_EOL . $elementContent;
     }
 
-    protected function renderLayoutContentContainer(\Laminas\Form\ElementInterface $element, $content): string
+    protected function renderLayoutContentContainer(ElementInterface $element, $content): string
     {
         $isCheckbox = $this->elementIsCheckbox($element);
-        $isLayoutInline = $this->elementIsLayout($element, \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE);
+        $isLayoutInline = $this->elementIsLayout($element, Form::LAYOUT_INLINE);
 
         if (!$isCheckbox && $isLayoutInline) {
             $column = $element->getOption('column') ?? 'auto';
@@ -210,10 +218,10 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
         return $content;
     }
 
-    protected function getDefaultLabelPosition(\Laminas\Form\ElementInterface $element, $labelPosition = null): string
+    protected function getDefaultLabelPosition(ElementInterface $element, $labelPosition = null): string
     {
 
-        if ($element instanceof \Laminas\Form\LabelAwareInterface) {
+        if ($element instanceof LabelAwareInterface) {
             $position = $element->getLabelOption('position');
             if ($position) {
                 return $position;
@@ -245,10 +253,10 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
     /**
      * Render element's help block
      *
-     * @param \Laminas\Form\ElementInterface $element
+     * @param ElementInterface $element
      * @return string
      */
-    protected function renderHelpBlock(\Laminas\Form\ElementInterface $element, string $elementContent): string
+    protected function renderHelpBlock(ElementInterface $element, string $elementContent): string
     {
         $helpBlock = $element->getOption('help_block');
         if (!$helpBlock) {
@@ -260,16 +268,16 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
             $content = $helpBlock;
         } elseif (is_array($helpBlock)) {
             if (empty($helpBlock['content'])) {
-                throw new \InvalidArgumentException(
+                throw new InvalidArgumentException(
                     'Option "[help_block][content]" is undefined'
                 );
             }
 
             $content = $helpBlock['content'];
             if (!is_string($content)) {
-                throw new \InvalidArgumentException(sprintf(
+                throw new InvalidArgumentException(sprintf(
                     'Option "[help_block][content]" expects a string, "%s" given',
-                    is_object($content) ? get_class($content) : gettype($content)
+                    get_debug_type($content)
                 ));
             }
 
@@ -279,9 +287,9 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
                     ->merge($attributes);
             }
         } else {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'Option "help_block" expects a string or an array, "%s" given',
-                is_object($helpBlock) ? get_class($helpBlock) : gettype($helpBlock)
+                get_debug_type($helpBlock)
             ));
         }
 
@@ -290,7 +298,7 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
             $content = $translator->translate($content, $this->getTranslatorTextDomain());
         }
 
-        $isLayoutInline = $element->getOption('layout') === \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE;
+        $isLayoutInline = $element->getOption('layout') === Form::LAYOUT_INLINE;
 
         $attributes->merge(['class' => ['form-text']]);
 
@@ -308,10 +316,10 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
     /**
      * Render element's valid feedback
      *
-     * @param \Laminas\Form\ElementInterface $element
+     * @param ElementInterface $element
      * @return string
      */
-    protected function renderValidFeedback(\Laminas\Form\ElementInterface $element, string $elementContent): string
+    protected function renderValidFeedback(ElementInterface $element, string $elementContent): string
     {
         $validFeedback = $element->getOption('valid_feedback');
         if ($validFeedback) {
@@ -330,10 +338,10 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
     /**
      * Render element's add-on
      *
-     * @param \Laminas\Form\ElementInterface $element
+     * @param ElementInterface $element
      * @return string
      */
-    protected function renderAddOn(\Laminas\Form\ElementInterface $element, string $elementContent): string
+    protected function renderAddOn(ElementInterface $element, string $elementContent): string
     {
         return $this->getView()->plugin('formAddOn')->render($element, $elementContent);
     }
@@ -341,10 +349,10 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
     /**
      * Render element's errors
      *
-     * @param \Laminas\Form\ElementInterface $element
+     * @param ElementInterface $element
      * @return string
      */
-    protected function renderErrors(\Laminas\Form\ElementInterface $element, string $elementContent): string
+    protected function renderErrors(ElementInterface $element, string $elementContent): string
     {
         if ($this->renderErrors) {
             $feedbackClass = $element->getOption('tooltip_feedback') ? 'invalid-tooltip' : 'invalid-feedback';
@@ -360,12 +368,12 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
     /**
      * Render element's dedicated container
      *
-     * @param \Laminas\Form\ElementInterface $element
+     * @param ElementInterface $element
      * @param string $elementContent
      * @return string
      */
     protected function renderDedicatedContainer(
-        \Laminas\Form\ElementInterface $element,
+        ElementInterface $element,
         string $elementContent
     ): string {
 
@@ -374,7 +382,7 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
             return $this->renderDedicatedContainerForCheckbox($element, $elementContent);
         }
 
-        $layoutHorizontal = $this->elementIsLayout($element, \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL);
+        $layoutHorizontal = $this->elementIsLayout($element, Form::LAYOUT_HORIZONTAL);
         if (!$layoutHorizontal) {
             return $elementContent;
         }
@@ -399,12 +407,12 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
     /**
      * Render element's dedicated container
      *
-     * @param \Laminas\Form\ElementInterface $element
+     * @param ElementInterface $element
      * @param string $elementContent
      * @return string
      */
     protected function renderDedicatedContainerForCheckbox(
-        \Laminas\Form\ElementInterface $element,
+        ElementInterface $element,
         string $elementContent
     ): string {
         if ($element->getOption('form_check_group') === false) {
@@ -450,7 +458,7 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
         if (
             $this->elementIsLayout(
                 $element,
-                \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL
+                Form::LAYOUT_HORIZONTAL
             )
         ) {
             $columnClasses = array_merge(
@@ -466,18 +474,18 @@ class FormRowElement extends \Laminas\Form\View\Helper\FormRow
         );
     }
 
-    protected function elementIsLayout(\Laminas\Form\ElementInterface $element, string $layout)
+    protected function elementIsLayout(ElementInterface $element, string $layout)
     {
         return $element->getOption('layout') ===  $layout;
     }
 
-    protected function elementIsCheckbox(\Laminas\Form\ElementInterface $element)
+    protected function elementIsCheckbox(ElementInterface $element)
     {
         return $element->getAttribute('type') === 'checkbox';
     }
 
-    protected function elementIsMultiCheckbox(\Laminas\Form\ElementInterface $element)
+    protected function elementIsMultiCheckbox(ElementInterface $element)
     {
-        return $element instanceof \Laminas\Form\Element\MultiCheckbox;
+        return $element instanceof MultiCheckbox;
     }
 }

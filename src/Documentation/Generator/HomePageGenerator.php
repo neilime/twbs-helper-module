@@ -8,15 +8,8 @@ class HomePageGenerator
 
     private static $HOMEPAGE_FILEPATH = 'website/src/pages/index.mdx';
 
-    /**
-     * @var \Documentation\Generator\Configuration
-     */
-    private $configuration;
-
-    public function __construct(
-        \Documentation\Generator\Configuration $configuration
-    ) {
-        $this->configuration = $configuration;
+    public function __construct(private readonly Configuration $configuration)
+    {
     }
 
     public function generate()

@@ -2,10 +2,14 @@
 
 namespace TwbsHelper\View\Helper;
 
+use Laminas\Navigation\Navigation;
+use Laminas\Stdlib\ArrayUtils;
+use InvalidArgumentException;
+
 /**
  * Helper for rendering cards
  */
-class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
+class Card extends AbstractHtmlElement
 {
     public const CARD_ROW = 'row';
     public const CARD_HEADER = 'header';
@@ -104,11 +108,9 @@ class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
         }
 
         if (!is_iterable($content)) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 '"$content" argument expects a string or an iterable value, "%s" given',
-                is_object($content)
-                    ? get_class($content)
-                    : gettype($content)
+                get_debug_type($content)
             ));
         }
 
@@ -116,7 +118,7 @@ class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
         $bodyItems = [];
         foreach ($content as $key => $contentData) {
-            if (\Laminas\Stdlib\ArrayUtils::isList($contentData)) {
+            if (ArrayUtils::isList($contentData)) {
                 $arguments = $contentData;
             } else {
                 $arguments = [$contentData];
@@ -220,14 +222,14 @@ class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
         $content = $arguments[0];
         // Nav header
         $options = [];
-        if (is_string($content) || $content instanceof \Laminas\Navigation\Navigation) {
+        if (is_string($content) || $content instanceof Navigation) {
             $container = $content;
         } elseif (is_array($content)) {
-            if (\Laminas\Stdlib\ArrayUtils::isList($content)) {
-                $container = new \Laminas\Navigation\Navigation($content);
+            if (ArrayUtils::isList($content)) {
+                $container = new Navigation($content);
             } else {
                 if (!isset($content['container'])) {
-                    throw new \InvalidArgumentException('nav[\'container\'] is undefined');
+                    throw new InvalidArgumentException('nav[\'container\'] is undefined');
                 }
                 if (isset($content['options'])) {
                     $options = array_merge($options, $content['options']);
@@ -235,15 +237,15 @@ class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
                 $container = $content['container'];
 
-                if (\Laminas\Stdlib\ArrayUtils::isList($container)) {
-                    $container = new \Laminas\Navigation\Navigation($container);
+                if (ArrayUtils::isList($container)) {
+                    $container = new Navigation($container);
                 }
             }
         } else {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'Content argument expects a string, an array or an instance of "%s", "%s" given',
-                '\Laminas\Navigation\Navigation',
-                is_object($content) ? get_class($content) : gettype($content)
+                Navigation::class,
+                get_debug_type($content)
             ));
         }
 
@@ -322,7 +324,7 @@ class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
         // Render image
         if (!isset($items['img'])) {
-            throw new \InvalidArgumentException('overlay[\'img\'] is undefined');
+            throw new InvalidArgumentException('overlay[\'img\'] is undefined');
         }
 
         $imageSrc = $items['img'][0] ?? '';
@@ -446,11 +448,11 @@ class Card extends \TwbsHelper\View\Helper\AbstractHtmlElement
             case is_int($type):
                 return $typeContent;
             default:
-                throw new \InvalidArgumentException('Card item "' . $type . '" is not supported');
+                throw new InvalidArgumentException('Card item "' . $type . '" is not supported');
         }
 
         if (is_iterable($typeContent)) {
-            if (\Laminas\Stdlib\ArrayUtils::isList($typeContent)) {
+            if (ArrayUtils::isList($typeContent)) {
                 $cardBodyItemContent = '';
                 foreach ($typeContent as $typeContentItem) {
                     $cardBodyItemContent .= ($cardBodyItemContent ? PHP_EOL : '') . $this->renderCardItem(

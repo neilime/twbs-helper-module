@@ -2,10 +2,13 @@
 
 namespace TestSuite\TwbsHelper\View\Helper;
 
-class FigureTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
+use TestSuite\TwbsHelper\AbstractViewHelperTestCase;
+use TwbsHelper\View\Helper\Figure;
+
+class FigureTest extends AbstractViewHelperTestCase
 {
     /**
-     * @var \TwbsHelper\View\Helper\Figure
+     * @var Figure
      */
     protected $helper = 'figure';
 

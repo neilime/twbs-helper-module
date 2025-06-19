@@ -2,22 +2,28 @@
 
 namespace TwbsHelper\View\Helper;
 
+use Laminas\Form\ElementInterface;
+use Laminas\Form\Factory;
+use Laminas\Stdlib\ArrayUtils;
+use TwbsHelper\Form\View\Helper\FormButton;
+use LogicException;
+
 /**
  * ButtonGroup
  *
  * @uses AbstractHelper
  */
-class ButtonGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
+class ButtonGroup extends AbstractHtmlElement
 {
     /**
-     * @var \TwbsHelper\Form\View\Helper\FormButton|null
+     * @var FormButton|null
      */
     protected $formButtonHelper;
 
     /**
-     * @return \TwbsHelper\View\Helper\ButtonGroup|string
+     * @return ButtonGroup|string
      */
-    public function __invoke(array $buttons = null, array $buttonGroupOptions = null)
+    public function __invoke(?array $buttons = null, ?array $buttonGroupOptions = null)
     {
         return $buttons ? $this->render($buttons, $buttonGroupOptions) : $this;
     }
@@ -25,9 +31,9 @@ class ButtonGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
     /**
      * Render button groups markup
      *
-     * @throws \LogicException
+     * @throws LogicException
      */
-    public function render(array $buttons, array $buttonGroupOptions = null): string
+    public function render(array $buttons, ?array $buttonGroupOptions = null): string
     {
         // Button group container attributes: regular or vertical
         $classes = empty($buttonGroupOptions['vertical']) ? ['btn-group'] : ['btn-group-vertical'];
@@ -79,14 +85,14 @@ class ButtonGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
         foreach ($buttons as $button) {
             if (
                 is_iterable($button)
-                && !($button instanceof \Laminas\Form\ElementInterface)
+                && !($button instanceof ElementInterface)
             ) {
-                $factory = new \Laminas\Form\Factory();
+                $factory = new Factory();
                 $button = $factory->create($button);
-            } elseif (!($button instanceof \Laminas\Form\ElementInterface)) {
-                throw new \LogicException(sprintf(
+            } elseif (!($button instanceof ElementInterface)) {
+                throw new LogicException(sprintf(
                     'Button expects an instanceof \Laminas\Form\ElementInterface or an array / Traversable, "%s" given',
-                    is_object($button) ? get_class($button) : gettype($button)
+                    get_debug_type($button)
                 ));
             }
 
@@ -101,11 +107,11 @@ class ButtonGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
         return $markup;
     }
 
-    protected function renderButton(\Laminas\Form\ElementInterface $button): string
+    protected function renderButton(ElementInterface $button): string
     {
         $dropdownOptions = $button->getOption('dropdown');
         if ($dropdownOptions) {
-            if (\Laminas\Stdlib\ArrayUtils::isList($dropdownOptions)) {
+            if (ArrayUtils::isList($dropdownOptions)) {
                 $dropdownOptions = ['items' => $dropdownOptions];
             }
 
@@ -127,9 +133,9 @@ class ButtonGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
         return $buttonMarkup;
     }
 
-    public function getFormButtonHelper(): \TwbsHelper\Form\View\Helper\FormButton
+    public function getFormButtonHelper(): FormButton
     {
-        if ($this->formButtonHelper instanceof \TwbsHelper\Form\View\Helper\FormButton) {
+        if ($this->formButtonHelper instanceof FormButton) {
             return $this->formButtonHelper;
         }
 
@@ -137,6 +143,6 @@ class ButtonGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
             return $this->formButtonHelper = $this->view->plugin('form_button');
         }
 
-        return $this->formButtonHelper = new \TwbsHelper\Form\View\Helper\FormButton();
+        return $this->formButtonHelper = new FormButton();
     }
 }

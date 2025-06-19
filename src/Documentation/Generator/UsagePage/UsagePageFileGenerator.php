@@ -2,6 +2,10 @@
 
 namespace Documentation\Generator\UsagePage;
 
+use Documentation\Generator\Configuration;
+use Documentation\Test\Config;
+use LogicException;
+
 class UsagePageFileGenerator
 {
     private static $USAGE_PAGE_DIRECTORY_TEMPLATE = '{
@@ -12,26 +16,12 @@ class UsagePageFileGenerator
     private static $USAGE_DIR_PATH = 'website/docs/usage';
 
     /**
-     * @var \Documentation\Generator\Configuration
-     */
-    private $configuration;
-
-    /**
-     * @var \Documentation\Test\Config
-     */
-    private $documentationTestConfig;
-
-    /**
-     * @var \Documentation\Generator\UsagePage\PagePathInfo
+     * @var PagePathInfo
      */
     private $pagePathInfo = null;
 
-    public function __construct(
-        \Documentation\Generator\Configuration $configuration,
-        \Documentation\Test\Config $documentationTestConfig
-    ) {
-        $this->configuration = $configuration;
-        $this->documentationTestConfig = $documentationTestConfig;
+    public function __construct(private readonly Configuration $configuration, private readonly Config $documentationTestConfig)
+    {
     }
 
     public function generate(string $content)
@@ -40,7 +30,7 @@ class UsagePageFileGenerator
         $pageDirPath = $pagePathInfo->dirPath;
 
         if (empty($pageDirPath)) {
-            throw new \LogicException('Page directory path is undefined');
+            throw new LogicException('Page directory path is undefined');
         }
 
         $file = $this->configuration->getFile();
@@ -59,7 +49,7 @@ class UsagePageFileGenerator
         }
     }
 
-    public function getPagePathInfo(): \Documentation\Generator\UsagePage\PagePathInfo
+    public function getPagePathInfo(): PagePathInfo
     {
         if ($this->pagePathInfo === null) {
             $this->pagePathInfo = $this->generatePagePathInfo();
@@ -83,7 +73,7 @@ class UsagePageFileGenerator
             }
         }
 
-        $pagePathInfo = new \Documentation\Generator\UsagePage\PagePathInfo();
+        $pagePathInfo = new PagePathInfo();
         $pagePathInfo->dirName = $dirName;
         $pagePathInfo->dirPath = $pageDirPath;
         $pagePathInfo->pageName = $titleParts ? array_shift($titleParts) : $dirName;
@@ -98,7 +88,7 @@ class UsagePageFileGenerator
         $usageDirPath = $this->configuration->getRootDirPath() . DIRECTORY_SEPARATOR . self::$USAGE_DIR_PATH;
 
         if (!$this->configuration->getFile()->dirExists($usageDirPath)) {
-            throw new \LogicException('Usage dir path "' . $usageDirPath . '" does not exist');
+            throw new LogicException('Usage dir path "' . $usageDirPath . '" does not exist');
         }
 
         return realpath($usageDirPath);
@@ -109,22 +99,22 @@ class UsagePageFileGenerator
         $divider = '-';
 
         // Replace non letter or digits by divider
-        $safePath = preg_replace('/[^\pL\d]+/u', $divider, $path);
+        $safePath = preg_replace('/[^\pL\d]+/u', $divider, (string) $path);
 
         // transliterate
-        $safePath = iconv('utf-8', 'us-ascii//TRANSLIT', $safePath);
+        $safePath = iconv('utf-8', 'us-ascii//TRANSLIT', (string) $safePath);
 
         // remove unwanted characters
-        $safePath = preg_replace('/[^-\w]+/', '', $safePath);
+        $safePath = preg_replace('/[^\-\w]+/', '', $safePath);
 
         // trim
-        $safePath = trim($safePath, $divider);
+        $safePath = trim((string) $safePath, $divider);
 
         // remove duplicate divider
         $safePath = preg_replace('/-+/', $divider, $safePath);
 
         // lowercase
-        $safePath = strtolower($safePath);
+        $safePath = strtolower((string) $safePath);
 
         if (empty($safePath)) {
             return 'n-a';

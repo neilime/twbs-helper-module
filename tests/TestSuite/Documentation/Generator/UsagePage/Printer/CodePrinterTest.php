@@ -2,30 +2,38 @@
 
 namespace TestSuite\Documentation\Generator\UsagePage\Printer;
 
-class CodePrinterTest extends \PHPUnit\Framework\TestCase
+use Documentation\Generator\Configuration;
+use Documentation\Generator\FileSystem\File;
+use Documentation\Generator\UsagePage\Printer\CodePrinter;
+use Documentation\Test\Config;
+use PHPUnit\Framework\TestCase;
+use Spatie\Snapshots\MatchesSnapshots;
+use MockObject;
+
+class CodePrinterTest extends TestCase
 {
-    use \Spatie\Snapshots\MatchesSnapshots;
+    use MatchesSnapshots;
 
     /**
-     * @var \MockObject
+     * @var MockObject
      */
     protected $file;
 
     /**
-     * @var \Documentation\Generator\Configuration
+     * @var Configuration
      */
     protected $configuration;
 
     /**
-     * @var \Documentation\Generator\UsagePage\Printer\CodePrinter
+     * @var CodePrinter
      */
     protected $codePrinter;
 
     protected function setUp(): void
     {
-        $this->file = $this->createMock(\Documentation\Generator\FileSystem\File::class);
+        $this->file = $this->createMock(File::class);
 
-        $this->configuration = new \Documentation\Generator\Configuration(
+        $this->configuration = new Configuration(
             '/tmp/test-dir',
             '/tmp/test-dir/tests',
             'x.x',
@@ -37,9 +45,9 @@ class CodePrinterTest extends \PHPUnit\Framework\TestCase
     public function testGetPageContentShouldReturnRenderedPage()
     {
 
-        $this->codePrinter = new \Documentation\Generator\UsagePage\Printer\CodePrinter(
+        $this->codePrinter = new CodePrinter(
             $this->configuration,
-            \Documentation\Test\Config::fromArray([
+            Config::fromArray([
                 'title' => 'Test',
                 'url' => '%bootstrap-url%/test',
                 'rendering' => function () {
@@ -62,9 +70,9 @@ class CodePrinterTest extends \PHPUnit\Framework\TestCase
 
     public function testGetPageContentWithoutRendering()
     {
-        $this->codePrinter = new \Documentation\Generator\UsagePage\Printer\CodePrinter(
+        $this->codePrinter = new CodePrinter(
             $this->configuration,
-            \Documentation\Test\Config::fromArray([
+            Config::fromArray([
                 'title' => 'Test',
                 'url' => '%bootstrap-url%/test',
             ]),

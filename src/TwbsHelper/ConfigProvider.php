@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace TwbsHelper;
 
+use InvalidArgumentException;
+
 /**
  * The configuration provider for the TwbsHelper module
  *
@@ -33,12 +35,12 @@ class ConfigProvider
      * method which returns an array with its configuration.
      *
      * @return array
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function __invoke()
     {
         if (!file_exists(self::MODULE_CONFIG_PATH)) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'Wrong path to module config file. Module configuration file "%s" does not exist',
                 self::MODULE_CONFIG_PATH
             ));

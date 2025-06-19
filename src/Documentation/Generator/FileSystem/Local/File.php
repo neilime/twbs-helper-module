@@ -2,6 +2,10 @@
 
 namespace Documentation\Generator\FileSystem\Local;
 
+use InvalidArgumentException;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
+
 class File implements \Documentation\Generator\FileSystem\File
 {
     public function dirExists($dirPath)
@@ -12,11 +16,11 @@ class File implements \Documentation\Generator\FileSystem\File
     public function removeDir($dirPath)
     {
         if (!$this->dirExists($dirPath)) {
-            throw new \InvalidArgumentException('Given directory path "' . $dirPath . '" is not an existing directory path');
+            throw new InvalidArgumentException('Given directory path "' . $dirPath . '" is not an existing directory path');
         }
 
-        $dirObj = new \RecursiveDirectoryIterator($dirPath, \RecursiveDirectoryIterator::SKIP_DOTS);
-        $files = new \RecursiveIteratorIterator($dirObj, \RecursiveIteratorIterator::CHILD_FIRST);
+        $dirObj = new RecursiveDirectoryIterator($dirPath, RecursiveDirectoryIterator::SKIP_DOTS);
+        $files = new RecursiveIteratorIterator($dirObj, RecursiveIteratorIterator::CHILD_FIRST);
         foreach ($files as $path) {
             $path->isDir() && !$path->isLink() ? rmdir($path->getPathname()) : unlink($path->getPathname());
         }
@@ -54,7 +58,7 @@ class File implements \Documentation\Generator\FileSystem\File
     public function removeFile($filePath)
     {
         if (!$this->fileExists($filePath)) {
-            throw new \InvalidArgumentException('Given file path does "' . $filePath . '" not exists');
+            throw new InvalidArgumentException('Given file path does "' . $filePath . '" not exists');
         }
 
         unlink($filePath);

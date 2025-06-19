@@ -2,7 +2,7 @@ version: 2
 updates:
   - package-ecosystem: composer
     open-pull-requests-limit: 20
-    versioning-strategy: widen
+    versioning-strategy: increase
     directories:
       - "/"
       - "/tools"
@@ -23,7 +23,7 @@ updates:
 
   - package-ecosystem: npm
     open-pull-requests-limit: 20
-    versioning-strategy: widen
+    versioning-strategy: increase
     directory: "/website"
     schedule:
       interval: weekly

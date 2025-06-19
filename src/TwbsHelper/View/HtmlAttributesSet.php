@@ -2,24 +2,27 @@
 
 namespace TwbsHelper\View;
 
+use Laminas\Escaper\Escaper;
+use ReturnTypeWillChange;
+
 /**
  * Class for storing and processing HTML tag attributes.
  */
-class HtmlAttributesSet extends \TwbsHelper\View\OriginalHtmlAttributesSet
+class HtmlAttributesSet extends OriginalHtmlAttributesSet
 {
     protected static $attributeWithSet = [
-        \TwbsHelper\View\HtmlClassAttributeSet::ATTRIBUTE_NAME => \TwbsHelper\View\HtmlClassAttributeSet::class,
-        \TwbsHelper\View\HtmlStyleAttributeSet::ATTRIBUTE_NAME => \TwbsHelper\View\HtmlStyleAttributeSet::class,
+        HtmlClassAttributeSet::ATTRIBUTE_NAME => HtmlClassAttributeSet::class,
+        HtmlStyleAttributeSet::ATTRIBUTE_NAME => HtmlStyleAttributeSet::class,
     ];
 
     /**
      * Constructor.
      *
-     * @param \Laminas\Escaper\Escaper $htmlEscaper General HTML escaper
+     * @param Escaper $htmlEscaper General HTML escaper
      * @param iterable $attributes Attributes to manage
      */
     public function __construct(
-        \Laminas\Escaper\Escaper $htmlEscaper,
+        Escaper $htmlEscaper,
         iterable $attributes = []
     ) {
         foreach (static::$attributeWithSet as $attributeName => $attributeSetClassName) {
@@ -40,7 +43,7 @@ class HtmlAttributesSet extends \TwbsHelper\View\OriginalHtmlAttributesSet
         $this->cleanAttributes();
     }
 
-    #[\ReturnTypeWillChange]
+    #[ReturnTypeWillChange]
     public function offsetGet($key)
     {
         if (!$this->offsetExists($key) && isset(static::$attributeWithSet[$key])) {

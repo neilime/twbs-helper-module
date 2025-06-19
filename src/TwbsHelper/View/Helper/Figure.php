@@ -2,10 +2,12 @@
 
 namespace TwbsHelper\View\Helper;
 
+use InvalidArgumentException;
+
 /**
  * Helper for rendering figures
  */
-class Figure extends \TwbsHelper\View\Helper\AbstractHtmlElement
+class Figure extends AbstractHtmlElement
 {
     /**
      * Generates a 'figure' element
@@ -17,7 +19,7 @@ class Figure extends \TwbsHelper\View\Helper\AbstractHtmlElement
      * @param array $captionAttributes Html attributes of the "<figcaption>" (caption) element. Default : empty
      * @param boolean $escape True espace html caption '$caption'. Default True
      * @return string The figure XHTML.
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function __invoke(
         string $imageSrc,

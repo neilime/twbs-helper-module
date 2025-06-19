@@ -2,12 +2,23 @@
 
 namespace TwbsHelper\View\Helper\Navigation;
 
+use Laminas\Form\Factory;
+use Laminas\Form\Form;
+use Laminas\Form\FormInterface;
+use Laminas\I18n\Translator\TranslatorAwareTrait;
+use Laminas\Navigation\AbstractContainer;
+use Laminas\Stdlib\ArrayUtils;
+use Laminas\View\Helper\Navigation\AbstractHelper;
+use TwbsHelper\View\HtmlAttributesSet;
+use DomainException;
+use InvalidArgumentException;
+
 /**
  * Helper for rendering navbar
  */
-class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
+class Navbar extends AbstractHelper
 {
-    use \Laminas\I18n\Translator\TranslatorAwareTrait;
+    use TranslatorAwareTrait;
 
     public const BRAND_POSITION_LEFT = 'left';
     public const BRAND_POSITION_RIGHT = 'right';
@@ -18,7 +29,7 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
      *
      * Retrieves helper and optionally sets container to operate on.
      *
-     * @param \Laminas\Navigation\AbstractContainer $container [optional] container to operate on
+     * @param AbstractContainer $container [optional] container to operate on
      * @return self|string
      */
     public function __invoke($container = null)
@@ -36,7 +47,7 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
      * Implements {@link HelperInterface::render()}.
      *
      * @see renderNavbar()
-     * @param \Laminas\Navigation\AbstractContainer $container [optional] container to render. Default is
+     * @param AbstractContainer $container [optional] container to render. Default is
      *     to render the container registered in the helper.
      * @param array $options [optional] options for controlling rendering
      * @return string
@@ -54,7 +65,7 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
      *
      * Available $options:
      *
-     * @param \Laminas\Navigation\AbstractContainer $container [optional] container to create menu from.
+     * @param AbstractContainer $container [optional] container to create menu from.
      *     Default is to use the container retrieved from {@link getContainer()}.
      * @param array $options [optional] options for controlling rendering
      * @return string
@@ -120,7 +131,7 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
         return $content;
     }
 
-    protected function prepareAttributes(iterable $options): \TwbsHelper\View\HtmlAttributesSet
+    protected function prepareAttributes(iterable $options): HtmlAttributesSet
     {
         $attributes = $this->getView()->plugin('htmlattributes')
             ->__invoke($options['attributes'] ?? [])
@@ -160,7 +171,7 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
         return $attributes;
     }
 
-    public function renderToggler(iterable $options, string $id = null): string
+    public function renderToggler(iterable $options, ?string $id = null): string
     {
         $translator = $this->getTranslator();
 
@@ -187,11 +198,11 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
         unset($togglerOptions['attributes']);
 
         if (!empty($attributes['data-bs-target'])) {
-            $attributes['aria-controls'] = trim($attributes['data-bs-target'], '#');
+            $attributes['aria-controls'] = trim((string) $attributes['data-bs-target'], '#');
         }
 
 
-        return $this->getView()->plugin('formButton')->renderSpec(\Laminas\Stdlib\ArrayUtils::merge(
+        return $this->getView()->plugin('formButton')->renderSpec(ArrayUtils::merge(
             [
                 'options' => [
                     'disable_twbs' => true,
@@ -241,7 +252,7 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
                 $tag = 'span';
                 break;
             default:
-                throw new \DomainException(__METHOD__ . ' doe snot support brand type "' . $type . '"');
+                throw new DomainException(__METHOD__ . ' doe snot support brand type "' . $type . '"');
         }
 
         $attributes = $this->getView()->plugin('htmlattributes')
@@ -279,10 +290,10 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
 
     public function renderNavbarNav(
         string $content,
-        \Laminas\Navigation\AbstractContainer $container,
+        AbstractContainer $container,
         iterable $options,
-        string $id = null,
-        string $brandContent = null
+        ?string $id = null,
+        ?string $brandContent = null
     ): string {
 
         $navContent = $this->renderNav($container, $options['nav'] ?? []);
@@ -335,7 +346,7 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
         return $content . ($content ? PHP_EOL : '') . $navContent;
     }
 
-    public function renderNav(\Laminas\Navigation\AbstractContainer $container, array $navOptions = []): string
+    public function renderNav(AbstractContainer $container, array $navOptions = []): string
     {
         $navigationHelper = $this->getView()->plugin('navigation');
 
@@ -354,7 +365,7 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
 
         return $navigationHelper->menu()->renderMenu(
             $container,
-            \Laminas\Stdlib\ArrayUtils::merge([
+            ArrayUtils::merge([
                 'ulClass' => $ulAttributes['class'],
                 'style' => $ulAttributes['style'] ?? null,
                 'page' => true,
@@ -362,7 +373,7 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
         );
     }
 
-    public function renderOffcanvas(string $content, iterable $options, string $id = null): string
+    public function renderOffcanvas(string $content, iterable $options, ?string $id = null): string
     {
         if ($id) {
             $options['id'] = $id;
@@ -371,7 +382,7 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
         return $this->getView()->plugin('offcanvas')->__invoke($content, $options);
     }
 
-    public function renderCollapse(string $content, string $id = null): string
+    public function renderCollapse(string $content, ?string $id = null): string
     {
         return $this->getView()->plugin('htmlElement')->__invoke(
             'div',
@@ -385,26 +396,26 @@ class Navbar extends \Laminas\View\Helper\Navigation\AbstractHelper
 
     public function renderForm($form): string
     {
-        if (is_iterable($form) && !($form instanceof \Laminas\Form\FormInterface)) {
-            $factory = new \Laminas\Form\Factory();
+        if (is_iterable($form) && !($form instanceof FormInterface)) {
+            $factory = new Factory();
 
             // Set default type if none given
             if (empty($form['type'])) {
-                $form['type'] = \Laminas\Form\Form::class;
+                $form['type'] = Form::class;
             }
 
             $form = $factory->create($form);
 
-            if (!($form instanceof \Laminas\Form\FormInterface)) {
-                throw new \InvalidArgumentException(sprintf(
+            if (!($form instanceof FormInterface)) {
+                throw new InvalidArgumentException(sprintf(
                     __METHOD__ . ' expects options to create an instance of \Laminas\Form\FormInterface, "%s" given',
-                    get_class($form)
+                    $form::class
                 ));
             }
-        } elseif (!($form instanceof \Laminas\Form\FormInterface)) {
-            throw new \InvalidArgumentException(sprintf(
+        } elseif (!($form instanceof FormInterface)) {
+            throw new InvalidArgumentException(sprintf(
                 __METHOD__ . ' expects an instance of \Laminas\Form\FormInterface or an iterable, "%s" given',
-                is_object($form) ? get_class($form) : gettype($form)
+                get_debug_type($form)
             ));
         }
 

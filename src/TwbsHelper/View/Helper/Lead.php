@@ -5,7 +5,7 @@ namespace TwbsHelper\View\Helper;
 /**
  * Helper for rendering leads (Make a paragraph stand out)
  */
-class Lead extends \TwbsHelper\View\Helper\AbstractHtmlElement
+class Lead extends AbstractHtmlElement
 {
     /**
      * Generates an 'lead' element

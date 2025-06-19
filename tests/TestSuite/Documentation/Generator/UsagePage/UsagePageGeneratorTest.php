@@ -2,29 +2,36 @@
 
 namespace TestSuite\Documentation\Generator\UsagePage;
 
-class UsagePageGeneratorTest extends \PHPUnit\Framework\TestCase
+use Documentation\Generator\Configuration;
+use Documentation\Generator\FileSystem\File;
+use Documentation\Generator\UsagePageGenerator;
+use Documentation\Test\Config;
+use PHPUnit\Framework\TestCase;
+use MockObject;
+
+class UsagePageGeneratorTest extends TestCase
 {
     /**
-     * @var \MockObject
+     * @var MockObject
      */
     protected $file;
 
     /**
-     * @var \Documentation\Generator\UsagePageGenerator
+     * @var UsagePageGenerator
      */
     protected $usagePageGenerator;
 
     protected function setUp(): void
     {
-        $this->file = $this->createMock(\Documentation\Generator\FileSystem\File::class);
-        $configuration = new \Documentation\Generator\Configuration(
+        $this->file = $this->createMock(File::class);
+        $configuration = new Configuration(
             '/tmp/test-dir',
             '/tmp/test-dir/tests',
             'x.x',
             2,
             $this->file
         );
-        $config = new \Documentation\Test\Config();
+        $config = new Config();
 
         $this->usagePageGenerator = new \Documentation\Generator\UsagePage\UsagePageGenerator(
             $configuration,

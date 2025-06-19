@@ -2,7 +2,9 @@
 
 namespace TwbsHelper\View\Helper;
 
-class HtmlElement extends \Laminas\View\Helper\AbstractHtmlElement
+use Laminas\View\Helper\AbstractHtmlElement;
+
+class HtmlElement extends AbstractHtmlElement
 {
     protected $htmlElementFormat = '<%s%s>%s</%s>';
 
@@ -29,7 +31,7 @@ class HtmlElement extends \Laminas\View\Helper\AbstractHtmlElement
     public function __invoke(
         string $tag,
         iterable $attributes = [],
-        string $content = null,
+        ?string $content = null,
         bool $escape = true
     ): string {
 
@@ -64,7 +66,7 @@ class HtmlElement extends \Laminas\View\Helper\AbstractHtmlElement
     public function addProperIndentation(
         string $content,
         bool $forceIndentation = false,
-        int $indentation = null
+        ?int $indentation = null
     ): string {
 
         if (!$content) {
@@ -76,7 +78,7 @@ class HtmlElement extends \Laminas\View\Helper\AbstractHtmlElement
 
         $lines = explode(
             PHP_EOL,
-            $content
+            (string) $content
         );
 
         if (count($lines) === 1 && !$forceIndentation) {
@@ -86,7 +88,7 @@ class HtmlElement extends \Laminas\View\Helper\AbstractHtmlElement
         if ($indentation === null) {
             $indentation = $this->indentation;
         } else {
-            $indentation = str_repeat($this->indentation, $indentation);
+            $indentation = str_repeat((string) $this->indentation, $indentation);
         }
 
 

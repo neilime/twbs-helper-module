@@ -2,10 +2,12 @@
 
 namespace TwbsHelper\View\Helper;
 
+use TwbsHelper\View\HtmlAttributesSet;
+
 /**
  * Helper for rendering blockquotes
  */
-class Blockquote extends \TwbsHelper\View\Helper\AbstractHtmlElement
+class Blockquote extends AbstractHtmlElement
 {
     protected static $allowedOptions = [
         'tag',
@@ -71,7 +73,7 @@ class Blockquote extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
     protected function renderContent(
         string $content,
-        \TwbsHelper\View\HtmlAttributesSet $contentAttributes,
+        HtmlAttributesSet $contentAttributes,
         bool $escape
     ): string {
         if (!$content) {
@@ -92,7 +94,7 @@ class Blockquote extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
     protected function renderFooter(
         string $footer,
-        \TwbsHelper\View\HtmlAttributesSet $footerAttributes,
+        HtmlAttributesSet $footerAttributes,
         bool $escape
     ): string {
         if (!$footer) {
@@ -116,8 +118,8 @@ class Blockquote extends \TwbsHelper\View\Helper\AbstractHtmlElement
     protected function renderContainerWithFigure(
         string $blockquoteContent,
         string $footerContent,
-        \TwbsHelper\View\HtmlAttributesSet $attributes,
-        \TwbsHelper\View\HtmlAttributesSet $figureAttributes,
+        HtmlAttributesSet $attributes,
+        HtmlAttributesSet $figureAttributes,
         bool $escape
     ): string {
 
@@ -138,7 +140,7 @@ class Blockquote extends \TwbsHelper\View\Helper\AbstractHtmlElement
     protected function renderContainerWithoutFigure(
         string $blockquoteContent,
         string $footerContent,
-        \TwbsHelper\View\HtmlAttributesSet $attributes,
+        HtmlAttributesSet $attributes,
         bool $escape
     ): string {
 
@@ -149,7 +151,7 @@ class Blockquote extends \TwbsHelper\View\Helper\AbstractHtmlElement
         return $this->renderContainer($blockquoteContent, $attributes, $escape);
     }
 
-    protected function renderContainer(string $content, \TwbsHelper\View\HtmlAttributesSet $attributes, bool $escape)
+    protected function renderContainer(string $content, HtmlAttributesSet $attributes, bool $escape)
     {
         $attributes->merge(['class' => ['blockquote']]);
 

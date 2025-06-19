@@ -2,10 +2,17 @@
 
 namespace TwbsHelper\View\Helper;
 
+use Laminas\Form\ElementInterface;
+use Laminas\Form\Factory;
+use TwbsHelper\Form\View\Helper\FormButton;
+use TwbsHelper\View\HtmlAttributesSet;
+use InvalidArgumentException;
+use LogicException;
+
 /**
  * Helper for rendering placeholders
  */
-class Placeholder extends \TwbsHelper\View\Helper\AbstractHtmlElement
+class Placeholder extends AbstractHtmlElement
 {
     public const ANIMATION_GLOW = 'glow';
     public const ANIMATION_WAVE = 'wave';
@@ -23,7 +30,7 @@ class Placeholder extends \TwbsHelper\View\Helper\AbstractHtmlElement
     ];
 
     /**
-     * @var \TwbsHelper\Form\View\Helper\FormButton|null
+     * @var FormButton|null
      */
     protected $formButtonHelper;
 
@@ -33,7 +40,7 @@ class Placeholder extends \TwbsHelper\View\Helper\AbstractHtmlElement
      * @param int|iterable $optionsAndAttributes options and Html attributes of the "<span>" element
      * @param boolean $escape     True espace html content '$content'. Default True
      * @return string The placeholder XHTML.
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function __invoke(
         $optionsAndAttributes = [],
@@ -79,16 +86,14 @@ class Placeholder extends \TwbsHelper\View\Helper\AbstractHtmlElement
         );
     }
 
-    protected function prepareAttributes($optionsAndAttributes): \TwbsHelper\View\HtmlAttributesSet
+    protected function prepareAttributes($optionsAndAttributes): HtmlAttributesSet
     {
         if (is_int($optionsAndAttributes)) {
             $optionsAndAttributes = ['column' => $optionsAndAttributes];
         } elseif (!is_iterable($optionsAndAttributes)) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'Arguement "$optionsAndAttributes" expects an int or an iterable value, "%s" given',
-                is_object($optionsAndAttributes)
-                    ? get_class($optionsAndAttributes)
-                    : gettype($optionsAndAttributes)
+                get_debug_type($optionsAndAttributes)
             ));
         }
 
@@ -103,7 +108,7 @@ class Placeholder extends \TwbsHelper\View\Helper\AbstractHtmlElement
     }
 
     protected function prepareAttributesForColumn(
-        \TwbsHelper\View\HtmlAttributesSet $optionsAndAttributes
+        HtmlAttributesSet $optionsAndAttributes
     ) {
         if (!empty($optionsAndAttributes['column'])) {
             $optionsAndAttributes->merge([
@@ -115,7 +120,7 @@ class Placeholder extends \TwbsHelper\View\Helper\AbstractHtmlElement
     }
 
     protected function prepareAttributesForSize(
-        \TwbsHelper\View\HtmlAttributesSet $optionsAndAttributes
+        HtmlAttributesSet $optionsAndAttributes
     ) {
         if (!empty($optionsAndAttributes['size'])) {
             $optionsAndAttributes->merge([
@@ -133,14 +138,14 @@ class Placeholder extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
         if (
             is_iterable($button)
-            && !($button instanceof \Laminas\Form\ElementInterface)
+            && !($button instanceof ElementInterface)
         ) {
-            $factory = new \Laminas\Form\Factory();
+            $factory = new Factory();
             $button = $factory->create($button);
-        } elseif (!($button instanceof \Laminas\Form\ElementInterface)) {
-            throw new \LogicException(sprintf(
+        } elseif (!($button instanceof ElementInterface)) {
+            throw new LogicException(sprintf(
                 'Button expects an instanceof \Laminas\Form\ElementInterface or an array / Traversable, "%s" given',
-                is_object($button) ? get_class($button) : gettype($button)
+                get_debug_type($button)
             ));
         }
 
@@ -156,7 +161,7 @@ class Placeholder extends \TwbsHelper\View\Helper\AbstractHtmlElement
         return $this->getFormButtonHelper()->__invoke($button, '');
     }
 
-    protected function prepareAttributesForButton($optionsAndAttributes): \TwbsHelper\View\HtmlAttributesSet
+    protected function prepareAttributesForButton($optionsAndAttributes): HtmlAttributesSet
     {
         $attributes = $this->getView()->plugin('htmlattributes')->__invoke(
             $this->prepareAttributes($optionsAndAttributes)
@@ -187,7 +192,7 @@ class Placeholder extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 self::$allowedAnimations
             )
         ) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'Given "animation" option "%s" is not supported. Expects one of these values "%s"',
                 $animation,
                 implode(',', self::$allowedAnimations)
@@ -196,9 +201,9 @@ class Placeholder extends \TwbsHelper\View\Helper\AbstractHtmlElement
         return $this->getView()->plugin('htmlClass')->getPrefixedClass($animation, 'placeholder');
     }
 
-    public function getFormButtonHelper(): \TwbsHelper\Form\View\Helper\FormButton
+    public function getFormButtonHelper(): FormButton
     {
-        if ($this->formButtonHelper instanceof \TwbsHelper\Form\View\Helper\FormButton) {
+        if ($this->formButtonHelper instanceof FormButton) {
             return $this->formButtonHelper;
         }
 
@@ -206,6 +211,6 @@ class Placeholder extends \TwbsHelper\View\Helper\AbstractHtmlElement
             return $this->formButtonHelper = $this->view->plugin('form_button');
         }
 
-        return $this->formButtonHelper = new \TwbsHelper\Form\View\Helper\FormButton();
+        return $this->formButtonHelper = new FormButton();
     }
 }

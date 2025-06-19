@@ -2,16 +2,19 @@
 
 namespace TestSuite\Documentation\Test;
 
-class SnapshotServiceTest extends \PHPUnit\Framework\TestCase
+use Documentation\Test\SnapshotService;
+use PHPUnit\Framework\TestCase;
+
+class SnapshotServiceTest extends TestCase
 {
     /**
-     * @var \Documentation\Test\SnapshotService
+     * @var SnapshotService
      */
     protected $snapshotService;
 
     protected function setUp(): void
     {
-        $this->snapshotService = new \Documentation\Test\SnapshotService('test');
+        $this->snapshotService = new SnapshotService('test');
     }
 
     public function testGetSnapshotIdFromTitle()

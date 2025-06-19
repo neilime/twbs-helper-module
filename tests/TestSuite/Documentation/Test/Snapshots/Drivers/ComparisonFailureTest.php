@@ -2,13 +2,17 @@
 
 namespace TestSuite\Documentation\Test\Snapshots\Drivers;
 
-class ComparisonFailureTest extends \PHPUnit\Framework\TestCase
+use Documentation\Test\Snapshots\Drivers\ComparisonFailure;
+use PHPUnit\Framework\TestCase;
+use Spatie\Snapshots\MatchesSnapshots;
+
+class ComparisonFailureTest extends TestCase
 {
-    use \Spatie\Snapshots\MatchesSnapshots;
+    use MatchesSnapshots;
 
     public function testGetDiffShouldReturnEmptyStringWhenThereIsNoDiff()
     {
-        $comparisonFailure = new \Documentation\Test\Snapshots\Drivers\ComparisonFailure(
+        $comparisonFailure = new ComparisonFailure(
             'test',
             'test',
             '',
@@ -19,7 +23,7 @@ class ComparisonFailureTest extends \PHPUnit\Framework\TestCase
 
     public function testGetDiffShouldReturnColoredDiffWhenThereIsDiff()
     {
-        $comparisonFailure = new \Documentation\Test\Snapshots\Drivers\ComparisonFailure(
+        $comparisonFailure = new ComparisonFailure(
             'test',
             'diff',
             'test',

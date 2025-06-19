@@ -2,7 +2,12 @@
 
 namespace TestSuite\TwbsHelper\View;
 
-class HtmlStyleAttributeSetTest extends \PHPUnit\Framework\TestCase
+use Laminas\View\Renderer\PhpRenderer;
+use PHPUnit\Framework\TestCase;
+use TestSuite\Bootstrap;
+use TwbsHelper\View\HtmlStyleAttributeSet;
+
+class HtmlStyleAttributeSetTest extends TestCase
 {
     /**
      * @var \\Laminas\View\Renderer\PhpRenderer
@@ -11,14 +16,14 @@ class HtmlStyleAttributeSetTest extends \PHPUnit\Framework\TestCase
 
     protected function setUp(): void
     {
-        $viewHelperPluginManager = \TestSuite\Bootstrap::getServiceManager()->get('ViewHelperManager');
-        $this->phpRenderer = new \Laminas\View\Renderer\PhpRenderer();
+        $viewHelperPluginManager = Bootstrap::getServiceManager()->get('ViewHelperManager');
+        $this->phpRenderer = new PhpRenderer();
         $this->phpRenderer->setHelperPluginManager($viewHelperPluginManager);
     }
 
     public function testToString()
     {
-        $htmlStyleAttributeSet = new \TwbsHelper\View\HtmlStyleAttributeSet([
+        $htmlStyleAttributeSet = new HtmlStyleAttributeSet([
             'width' => '50%',
             'color' => 'red',
         ]);
@@ -31,7 +36,7 @@ class HtmlStyleAttributeSetTest extends \PHPUnit\Framework\TestCase
 
     public function testMerge()
     {
-        $htmlStyleAttributeSet = new \TwbsHelper\View\HtmlStyleAttributeSet([
+        $htmlStyleAttributeSet = new HtmlStyleAttributeSet([
             'width' => '50%',
             'color' => 'red',
         ]);

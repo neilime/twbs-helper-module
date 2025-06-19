@@ -5,7 +5,7 @@ namespace TwbsHelper\View\Helper;
 /**
  * Helper for grid
  */
-class Grid extends \TwbsHelper\View\Helper\AbstractGroupWithHelper
+class Grid extends AbstractGroupWithHelper
 {
     protected static $helperName = 'gridRow';
 

@@ -26,7 +26,7 @@
     "twitter/bootstrap": "Twitter bootstrap assets"
   },
   "require": {
-    "php": "~8.1.0 || ~8.2.0 || ~8.3.0",
+    "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
     "laminas/laminas-escaper": "^2.12",
     "laminas/laminas-form": "^3.4",
     "laminas/laminas-i18n": "^2.17",
@@ -66,11 +66,15 @@
     "generate-snapshot": "php scripts/generateSnapshot.php",
     "php-cs-fixer": "@php-cs-fixer:fix --dry-run",
     "php-cs-fixer:fix": "tools/vendor/bin/php-cs-fixer fix --show-progress=dots --diff --config=.php-cs-fixer.dist.php",
-    "stan": "tools/vendor/bin/phpstan analyse --level 5 src",
+    "rector": "@rector:fix --dry-run",
+    "rector:fix": "tools/vendor/bin/rector process src",
+    "phpstan": "tools/vendor/bin/phpstan analyse --level 5 src",
     "ci": [
       "@php-cs-fixer",
-      "@stan",
-      "@test:ci"
+      "@rector",
+      "@phpstan",
+      "@test:ci",
+      "@generate-docs"
     ]
   },
   "config": {

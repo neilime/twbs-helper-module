@@ -2,10 +2,14 @@
 
 namespace TestSuite;
 
+use Laminas\Mvc\Service\ServiceManagerConfig;
+use Laminas\ServiceManager\ServiceManager;
+use LogicException;
+
 class Bootstrap
 {
     /**
-     * @var \Laminas\ServiceManager\ServiceManager
+     * @var ServiceManager
      */
     protected static $serviceManager;
 
@@ -21,13 +25,13 @@ class Bootstrap
     {
         // Load the user-defined test configuration file
         if (!file_exists($applicationConfigPath = __DIR__ . '/config/application-config.php')) {
-            throw new \LogicException(sprintf(
+            throw new LogicException(sprintf(
                 'Application configuration file "%s" does not exist',
                 $applicationConfigPath
             ));
         }
         if (false === ($applicationConfig = include $applicationConfigPath)) {
-            throw new \LogicException(sprintf(
+            throw new LogicException(sprintf(
                 'An error occured while including application configuration file "%"',
                 $applicationConfigPath
             ));
@@ -35,8 +39,8 @@ class Bootstrap
 
         // Prepare the service manager
         static::$config = $applicationConfig;
-        $serviceManager = new \Laminas\ServiceManager\ServiceManager();
-        $serviceManagerConfig = new \Laminas\Mvc\Service\ServiceManagerConfig(static::$config['service_manager'] ??  []);
+        $serviceManager = new ServiceManager();
+        $serviceManagerConfig = new ServiceManagerConfig(static::$config['service_manager'] ??  []);
         $serviceManagerConfig->configureServiceManager($serviceManager);
         $serviceManager->setService('ApplicationConfig', static::$config);
 
@@ -47,7 +51,7 @@ class Bootstrap
     }
 
     /**
-     * @return \Laminas\ServiceManager\ServiceManager
+     * @return ServiceManager
      */
     public static function getServiceManager()
     {
@@ -86,10 +90,10 @@ error_reporting(E_ALL | E_STRICT);
 
 // Composer autoloading
 if (!file_exists($composerAutoloadPath = __DIR__ . '/../vendor/autoload.php')) {
-    throw new \LogicException('Composer autoload file "' . $composerAutoloadPath . '" does not exist');
+    throw new LogicException('Composer autoload file "' . $composerAutoloadPath . '" does not exist');
 }
 if (false === (include $composerAutoloadPath)) {
-    throw new \LogicException(sprintf(
+    throw new LogicException(sprintf(
         'An error occured while including composer autoload file "%s"',
         $composerAutoloadPath
     ));
@@ -97,14 +101,14 @@ if (false === (include $composerAutoloadPath)) {
 
 // Tools autoloading
 if (!file_exists($toolsAutoloadPath = __DIR__ . '/../tools/vendor/autoload.php')) {
-    throw new \LogicException('Tools autoload file "' . $toolsAutoloadPath . '" does not exist');
+    throw new LogicException('Tools autoload file "' . $toolsAutoloadPath . '" does not exist');
 }
 
 if (false === (include $toolsAutoloadPath)) {
-    throw new \LogicException(sprintf(
+    throw new LogicException(sprintf(
         'An error occured while including tools autoload file "%s"',
         $toolsAutoloadPath
     ));
 }
 
-\TestSuite\Bootstrap::init();
+Bootstrap::init();

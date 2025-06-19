@@ -2,9 +2,15 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
+use Laminas\Form\ElementInterface;
+use TwbsHelper\Form\View\ElementHelperTrait;
+use TwbsHelper\Options\ModuleOptions;
+use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Column;
+use DomainException;
+
 class FormRow extends \Laminas\Form\View\Helper\FormRow
 {
-    use \TwbsHelper\Form\View\ElementHelperTrait;
+    use ElementHelperTrait;
 
     // Hold configurable options
     protected $options;
@@ -19,21 +25,21 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
     /**
      * Constructor
      *
-     * @param \TwbsHelper\Options\ModuleOptions $moduleOptions
+     * @param ModuleOptions $moduleOptions
      * @access public
      * @return void
      */
-    public function __construct(\TwbsHelper\Options\ModuleOptions $moduleOptions)
+    public function __construct(ModuleOptions $moduleOptions)
     {
         $this->options = $moduleOptions;
     }
 
     /**
-     * @param \Laminas\Form\ElementInterface $element
+     * @param ElementInterface $element
      * @param string|null $labelPosition
      * @return string
      */
-    public function render(\Laminas\Form\ElementInterface $element, ?string $labelPosition = null): string
+    public function render(ElementInterface $element, ?string $labelPosition = null): string
     {
 
         // Nothing to do for hidden elements which have no messages
@@ -59,11 +65,11 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
     }
 
     /**
-     * @param \Laminas\Form\ElementInterface $element
+     * @param ElementInterface $element
      * @param string|null $labelPosition
      * @return string
      */
-    protected function renderPartial(\Laminas\Form\ElementInterface $element, ?string $labelPosition = null): string
+    protected function renderPartial(ElementInterface $element, ?string $labelPosition = null): string
     {
         $label = $element->getLabel();
 
@@ -85,17 +91,17 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
     }
 
     /**
-     * @param \Laminas\Form\ElementInterface $element
+     * @param ElementInterface $element
      * @return string
      */
-    public function renderFormRow(\Laminas\Form\ElementInterface $element, string $elementContent): string
+    public function renderFormRow(ElementInterface $element, string $elementContent): string
     {
 
         // Render form row
         $elementType = $element->getAttribute('type');
         switch (true) {
             // Inline form
-            case $this->elementIsLayout($element, \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE):
+            case $this->elementIsLayout($element, Form::LAYOUT_INLINE):
                 // Form group disabled
             case $element->getOption('form_group') === false:
                 // Radio elements
@@ -109,7 +115,7 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
             'class' => $this->getElementRowClasses($element),
         ]);
 
-        /** @var \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Column $columnClassHelper **/
+        /** @var Column $columnClassHelper **/
         $columnClassHelper = $this->getView()->plugin('htmlClass')->plugin('column');
         if ($columnClassHelper->classesIncludeColumn($attributes['class'])) {
             $attributes->offsetGet('class')->remove('form-group');
@@ -144,10 +150,10 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
     }
 
     /**
-     * @param \Laminas\Form\ElementInterface $element
+     * @param ElementInterface $element
      * @return array
      */
-    protected function getElementRowClasses(\Laminas\Form\ElementInterface $element): array
+    protected function getElementRowClasses(ElementInterface $element): array
     {
 
         $rowClasses = [];
@@ -156,7 +162,7 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
         // Column
         $colum = $element->getOption('column');
         if ($colum) {
-            if ($this->elementIsLayout($element, \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL)) {
+            if ($this->elementIsLayout($element, Form::LAYOUT_HORIZONTAL)) {
                 $rowClasses[] = 'row';
             } else {
                 $columnClasses = $this->getView()->plugin('htmlClass')->plugin('column')->getClassesFromOption($colum);
@@ -190,24 +196,24 @@ class FormRow extends \Laminas\Form\View\Helper\FormRow
 
         // Additional row class
         if ($addRowClass = $element->getOption('row_class')) {
-            $rowClasses = array_merge($rowClasses, explode(' ', $addRowClass));
+            $rowClasses = array_merge($rowClasses, explode(' ', (string) $addRowClass));
         }
 
         return $rowClasses;
     }
 
-    protected function elementIsLayout(\Laminas\Form\ElementInterface $element, string $layout)
+    protected function elementIsLayout(ElementInterface $element, string $layout)
     {
         return $element->getOption('layout') ===  $layout;
     }
 
     /**
-     * @param \Laminas\Form\ElementInterface $element
+     * @param ElementInterface $element
      * @param string $labelPosition
      * @return string
-     * @throws \DomainException
+     * @throws DomainException
      */
-    protected function renderElement(\Laminas\Form\ElementInterface $element, ?string $labelPosition = null): string
+    protected function renderElement(ElementInterface $element, ?string $labelPosition = null): string
     {
         return $this->getFormRowElementHelper()->__invoke($element, $labelPosition);
     }

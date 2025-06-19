@@ -2,10 +2,13 @@
 
 namespace TwbsHelper\View\Helper;
 
+use Laminas\View\Helper\HelperInterface;
+use LogicException;
+
 /**
  * Abstract helper for group rendering
  */
-abstract class AbstractGroupWithHelper extends \TwbsHelper\View\Helper\AbstractGroup
+abstract class AbstractGroupWithHelper extends AbstractGroup
 {
     /**
      * @var string
@@ -27,9 +30,9 @@ abstract class AbstractGroupWithHelper extends \TwbsHelper\View\Helper\AbstractG
     }
 
     /**
-     * @throws \LogicException if the view or plugin method is unavailable in the current context
+     * @throws LogicException if the view or plugin method is unavailable in the current context
      */
-    protected function getItemViewHelper(): \Laminas\View\Helper\HelperInterface
+    protected function getItemViewHelper(): HelperInterface
     {
         if ($this->itemViewHelper) {
             return $this->itemViewHelper;
@@ -40,6 +43,6 @@ abstract class AbstractGroupWithHelper extends \TwbsHelper\View\Helper\AbstractG
             return $this->itemViewHelper = $phpRenderer->plugin(static::$helperName);
         }
 
-        throw new \LogicException('Unable to retrieve helper "' . static::$helperName . '"');
+        throw new LogicException('Unable to retrieve helper "' . static::$helperName . '"');
     }
 }

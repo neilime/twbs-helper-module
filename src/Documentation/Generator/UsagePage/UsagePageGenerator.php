@@ -2,44 +2,37 @@
 
 namespace Documentation\Generator\UsagePage;
 
+use Documentation\Generator\Configuration;
+use Documentation\Generator\UsagePage\Printer\CodePrinter;
+use Documentation\Generator\UsagePage\Printer\HeadPrinter;
+use Documentation\Generator\UsagePage\Printer\TitlePrinter;
+use Documentation\Generator\UsagePage\Printer\UrlPrinter;
+use Documentation\Test\Config;
+
 class UsagePageGenerator
 {
     /**
      * @var array
      */
     private $printers = [
-        \Documentation\Generator\UsagePage\Printer\HeadPrinter::class,
-        \Documentation\Generator\UsagePage\Printer\TitlePrinter::class,
-        \Documentation\Generator\UsagePage\Printer\UrlPrinter::class,
-        \Documentation\Generator\UsagePage\Printer\CodePrinter::class,
+        HeadPrinter::class,
+        TitlePrinter::class,
+        UrlPrinter::class,
+        CodePrinter::class,
     ];
-
-    /**
-     * @var \Documentation\Generator\Configuration
-     */
-    private $configuration;
-
-    /**
-     * @var \Documentation\Test\Config
-     */
-    private $documentationTestConfig;
 
     /**
      * @var string
      */
     private $usagePageContent = '';
 
-    public function __construct(
-        \Documentation\Generator\Configuration $configuration,
-        \Documentation\Test\Config $documentationTestConfig
-    ) {
-        $this->configuration = $configuration;
-        $this->documentationTestConfig = $documentationTestConfig;
+    public function __construct(private readonly Configuration $configuration, private readonly Config $documentationTestConfig)
+    {
     }
 
     public function generate()
     {
-        $usagePageFileGenerator = new \Documentation\Generator\UsagePage\UsagePageFileGenerator(
+        $usagePageFileGenerator = new UsagePageFileGenerator(
             $this->configuration,
             $this->documentationTestConfig
         );

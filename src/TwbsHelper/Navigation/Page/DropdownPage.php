@@ -2,7 +2,9 @@
 
 namespace TwbsHelper\Navigation\Page;
 
-class DropdownPage extends \Laminas\Navigation\Page\AbstractPage
+use Laminas\Navigation\Page\AbstractPage;
+
+class DropdownPage extends AbstractPage
 {
     /**
      * Page dropdown options

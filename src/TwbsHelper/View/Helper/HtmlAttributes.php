@@ -2,10 +2,13 @@
 
 namespace TwbsHelper\View\Helper;
 
+use Laminas\View\Helper\AbstractHelper;
+use TwbsHelper\View\HtmlAttributesSet;
+
 /**
  * Helper for creating HtmlAttributesSet objects
  */
-class HtmlAttributes extends \Laminas\View\Helper\AbstractHelper
+class HtmlAttributes extends AbstractHelper
 {
     /**
      * Returns a new HtmlAttributesSet object, optionally initializing it with
@@ -13,9 +16,9 @@ class HtmlAttributes extends \Laminas\View\Helper\AbstractHelper
      *
      * @param iterable<string, scalar|array|null> $attributes
      */
-    public function __invoke(iterable $attributes = []): \TwbsHelper\View\HtmlAttributesSet
+    public function __invoke(iterable $attributes = []): HtmlAttributesSet
     {
-        return new \TwbsHelper\View\HtmlAttributesSet(
+        return new HtmlAttributesSet(
             $this->getView()->plugin('escapehtml')->getEscaper(),
             $attributes
         );

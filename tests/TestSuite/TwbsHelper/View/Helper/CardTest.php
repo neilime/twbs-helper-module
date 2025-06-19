@@ -2,10 +2,13 @@
 
 namespace TestSuite\TwbsHelper\View\Helper;
 
-class CardTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
+use TestSuite\TwbsHelper\AbstractViewHelperTestCase;
+use TwbsHelper\View\Helper\Card;
+
+class CardTest extends AbstractViewHelperTestCase
 {
     /**
-     * @var \TwbsHelper\View\Helper\Card
+     * @var Card
      */
     protected $helper = 'card';
 

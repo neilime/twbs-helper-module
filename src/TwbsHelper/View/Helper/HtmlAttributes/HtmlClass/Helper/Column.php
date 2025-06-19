@@ -2,7 +2,9 @@
 
 namespace TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper;
 
-class Column extends \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Size
+use InvalidArgumentException;
+
+class Column extends Size
 {
     protected static $optionName = 'column';
 
@@ -87,17 +89,17 @@ class Column extends \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Siz
             return $this->validateIterableOption($option);
         }
 
-        throw new \InvalidArgumentException(sprintf(
+        throw new InvalidArgumentException(sprintf(
             '"%s" option expects a string, an integer, an iterable or true value, "%s" given',
             static::$optionName,
-            is_object($option) ? get_class($option) : gettype($option)
+            get_debug_type($option)
         ));
     }
 
     protected function validateStringOption(string $option)
     {
         if (!$this->isColumnOption($option)) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 '"%s" option "%s" is not supported. ' .
                     'Expects one of these values "%s"; ' .
                     'or "auto" or number value. Example: "auto" or "6"; ' .

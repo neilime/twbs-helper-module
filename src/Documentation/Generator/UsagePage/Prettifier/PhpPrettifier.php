@@ -3,6 +3,10 @@
 namespace Documentation\Generator\UsagePage\Prettifier;
 
 use PhpCsFixer\Console\Application;
+use Documentation\Generator\Configuration;
+use Documentation\Generator\FileSystem\File;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Output\BufferedOutput;
 
 class PhpPrettifier
 {
@@ -10,18 +14,18 @@ class PhpPrettifier
     private static $instance = null;
 
     /**
-     * @var \Documentation\Generator\FileSystem\File
+     * @var File
      */
     private $file;
 
     /**
-     * @var \PhpCsFixer\Console\Application
+     * @var Application
      */
     private $application;
 
     private $configurationPath;
 
-    private function __construct(\Documentation\Generator\Configuration $configuration)
+    private function __construct(Configuration $configuration)
     {
         $this->file = $configuration->getFile();
         $this->configurationPath = $configuration->getRootDirPath() . DIRECTORY_SEPARATOR . self::$CONFIGURATION_FILE;
@@ -34,8 +38,8 @@ class PhpPrettifier
      * gets the instance via lazy initialization (created on first usage)
      */
     public static function getInstance(
-        \Documentation\Generator\Configuration $configuration
-    ): \Documentation\Generator\UsagePage\Prettifier\PhpPrettifier {
+        Configuration $configuration
+    ): PhpPrettifier {
         if (self::$instance === null) {
             self::$instance = new self($configuration);
         }
@@ -58,7 +62,7 @@ class PhpPrettifier
 
     private function executePhpCsFixer($tmpFile)
     {
-        $input = new \Symfony\Component\Console\Input\ArrayInput(
+        $input = new ArrayInput(
             [
                 'command' => 'fix',
                 'path' => [$tmpFile],
@@ -67,14 +71,14 @@ class PhpPrettifier
             ]
         );
 
-        $output = new \Symfony\Component\Console\Output\BufferedOutput();
+        $output = new BufferedOutput();
 
         $this->application->run(
             $input,
             $output
         );
 
-        $prettyfiedSource = trim($this->file->readFile($tmpFile));
+        $prettyfiedSource = trim((string) $this->file->readFile($tmpFile));
 
         return $prettyfiedSource;
     }

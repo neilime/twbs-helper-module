@@ -2,10 +2,13 @@
 
 namespace TestSuite\TwbsHelper\View\Helper;
 
-class HtmlElementTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
+use TestSuite\TwbsHelper\AbstractViewHelperTestCase;
+use TwbsHelper\View\Helper\HtmlElement;
+
+class HtmlElementTest extends AbstractViewHelperTestCase
 {
     /**
-     * @var \TwbsHelper\View\Helper\HtmlElement
+     * @var HtmlElement
      */
     protected $helper = 'htmlElement';
 

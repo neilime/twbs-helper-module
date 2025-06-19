@@ -2,10 +2,14 @@
 
 namespace TestSuite\TwbsHelper\View\Helper;
 
-class DescriptionListTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
+use TestSuite\TwbsHelper\AbstractViewHelperTestCase;
+use TwbsHelper\View\Helper\DescriptionList;
+use stdClass;
+
+class DescriptionListTest extends AbstractViewHelperTestCase
 {
     /**
-     * @var \TwbsHelper\View\Helper\DescriptionList
+     * @var DescriptionList
      */
     protected $helper = 'descriptionList';
 
@@ -32,7 +36,7 @@ class DescriptionListTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCa
     {
         $this->expectExceptionMessage('Argument "$items[0]" expects a string or an array, "stdClass" given');
         $this->helper->render([
-            new \stdClass(),
+            new stdClass(),
         ]);
     }
 
@@ -40,7 +44,7 @@ class DescriptionListTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCa
     {
         $this->expectExceptionMessage('Argument "$items[0][term]" expects a string or an array, "stdClass" given');
         $this->helper->render([
-            ['term' => new \stdClass()],
+            ['term' => new stdClass()],
         ]);
     }
 
@@ -48,7 +52,7 @@ class DescriptionListTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCa
     {
         $this->expectExceptionMessage('Argument "$items[0][detail]" expects a string or an array, "stdClass" given');
         $this->helper->render([
-            ['term' => 'test', 'detail' => new \stdClass()],
+            ['term' => 'test', 'detail' => new stdClass()],
         ]);
     }
 }

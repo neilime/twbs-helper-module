@@ -2,28 +2,37 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
-class FormAddOn extends \Laminas\Form\View\Helper\AbstractHelper
+use Laminas\Form\ElementInterface;
+use Laminas\Form\Element\Checkbox;
+use Laminas\Form\Factory;
+use Laminas\Form\View\Helper\AbstractHelper;
+use Laminas\Stdlib\ArrayUtils;
+use TwbsHelper\Form\View\ElementHelperTrait;
+use TwbsHelper\View\HtmlAttributesSet;
+use InvalidArgumentException;
+
+class FormAddOn extends AbstractHelper
 {
-    use \TwbsHelper\Form\View\ElementHelperTrait;
+    use ElementHelperTrait;
 
     public const POSITION_APPEND = 'append';
     public const POSITION_PREPEND = 'prepend';
 
     /**
-     * @var \Laminas\Form\Factory|null
+     * @var Factory|null
      */
     protected $formFactory;
 
     /**
-     * @param \Laminas\Form\ElementInterface $element
-     * @return \TwbsHelper\Form\View\Helper\FormAddOn|string
+     * @param ElementInterface $element
+     * @return FormAddOn|string
      */
-    public function __invoke(\Laminas\Form\ElementInterface $element = null, string $content = '')
+    public function __invoke(?ElementInterface $element = null, string $content = '')
     {
         return $element ? $this->render($element, $content) : $this;
     }
 
-    public function render(\Laminas\Form\ElementInterface $element = null, string $content = ''): string
+    public function render(?ElementInterface $element = null, string $content = ''): string
     {
         $hasAddOn = false;
         foreach ([self::POSITION_APPEND, self::POSITION_PREPEND] as $addOnPosition) {
@@ -68,23 +77,23 @@ class FormAddOn extends \Laminas\Form\View\Helper\AbstractHelper
     /**
      * Render add-on markup
      *
-     * @param \Laminas\Form\ElementInterface|array|string $addOnOptions
-     * @param \Laminas\Form\ElementInterface $element
+     * @param ElementInterface|array|string $addOnOptions
+     * @param ElementInterface $element
      * @param string $addOnPosition
      * @return string
      */
     protected function renderAddOn(
         $addOnOptions,
-        \Laminas\Form\ElementInterface $element,
+        ElementInterface $element,
         string $addOnPosition
     ): string {
-        if ($addOnOptions instanceof \Laminas\Form\ElementInterface) {
+        if ($addOnOptions instanceof ElementInterface) {
             $addOnOptions = ['element' => $addOnOptions];
         } elseif (is_string($addOnOptions)) {
             $addOnOptions = ['text' => $addOnOptions];
         }
 
-        if (\Laminas\Stdlib\ArrayUtils::isList($addOnOptions)) {
+        if (ArrayUtils::isList($addOnOptions)) {
             $content = '';
             foreach ($addOnOptions as $addOnOptionsTmp) {
                 $content .= ($content ? PHP_EOL : '') . $this->renderAddOn(
@@ -101,7 +110,7 @@ class FormAddOn extends \Laminas\Form\View\Helper\AbstractHelper
 
     protected function renderAddOnContent(
         array $addOnOptions,
-        \Laminas\Form\ElementInterface $element,
+        ElementInterface $element,
         string $addOnPosition
     ): string {
         $attributes = $this->getView()->plugin('htmlattributes')->__invoke($addOnOptions['attributes'] ?? []);
@@ -114,11 +123,9 @@ class FormAddOn extends \Laminas\Form\View\Helper\AbstractHelper
         switch (true) {
             case isset($addOnOptions['text']):
                 if (!is_string($addOnOptions['text'])) {
-                    throw new \InvalidArgumentException(sprintf(
+                    throw new InvalidArgumentException(sprintf(
                         '"text" option expects a string, "%s" given',
-                        is_object($addOnOptions['text'])
-                            ? get_class($addOnOptions['text'])
-                            : gettype($addOnOptions['text'])
+                        get_debug_type($addOnOptions['text'])
                     ));
                 }
                 $addOnContent = $this->renderText($addOnOptions['text']);
@@ -126,11 +133,9 @@ class FormAddOn extends \Laminas\Form\View\Helper\AbstractHelper
 
             case isset($addOnOptions['label']):
                 if (!is_string($addOnOptions['label'])) {
-                    throw new \InvalidArgumentException(sprintf(
+                    throw new InvalidArgumentException(sprintf(
                         '"label" option expects a string, "%s" given',
-                        is_object($addOnOptions['label'])
-                            ? get_class($addOnOptions['label'])
-                            : gettype($addOnOptions['label'])
+                        get_debug_type($addOnOptions['label'])
                     ));
                 }
 
@@ -145,12 +150,12 @@ class FormAddOn extends \Laminas\Form\View\Helper\AbstractHelper
             case isset($addOnOptions['element']):
                 if (
                     is_iterable($addOnOptions['element'])
-                    && !($addOnOptions['element'] instanceof \Laminas\Form\ElementInterface)
+                    && !($addOnOptions['element'] instanceof ElementInterface)
                 ) {
                     $addOnOptions['element'] = $this->createElement($addOnOptions['element']);
                 }
 
-                $shouldWrapContent = $addOnOptions['element'] instanceof \Laminas\Form\Element\Checkbox;
+                $shouldWrapContent = $addOnOptions['element'] instanceof Checkbox;
                 // Define global add-on id based on element's aria-describedby
                 if (!$shouldWrapContent && $addOnId) {
                     $addOnOptions['element']->setAttribute('id', $addOnId);
@@ -164,7 +169,7 @@ class FormAddOn extends \Laminas\Form\View\Helper\AbstractHelper
                 break;
 
             default:
-                throw new \InvalidArgumentException('Addon options expects a text or an element to render, none given');
+                throw new InvalidArgumentException('Addon options expects a text or an element to render, none given');
         }
 
         if (!$shouldWrapContent) {
@@ -200,8 +205,8 @@ class FormAddOn extends \Laminas\Form\View\Helper\AbstractHelper
 
     protected function renderLabel(
         string $addonLabel,
-        \TwbsHelper\View\HtmlAttributesSet $labelAttributes,
-        \Laminas\Form\ElementInterface $element
+        HtmlAttributesSet $labelAttributes,
+        ElementInterface $element
     ): string {
 
         $labelAttributes->merge(['class' => ['input-group-text']]);
@@ -220,13 +225,13 @@ class FormAddOn extends \Laminas\Form\View\Helper\AbstractHelper
     }
 
     protected function renderElement(
-        \Laminas\Form\ElementInterface $element,
-        \TwbsHelper\View\HtmlAttributesSet $attributes,
+        ElementInterface $element,
+        HtmlAttributesSet $attributes,
         string $addOnPosition
     ): string {
         // Set options to improve rendering
         if ($dropdownOptions = $element->getOption('dropdown')) {
-            if (\Laminas\Stdlib\ArrayUtils::isList($dropdownOptions)) {
+            if (ArrayUtils::isList($dropdownOptions)) {
                 $dropdownOptions = [
                     'items' => $dropdownOptions,
                     'disable_container' => true,
@@ -250,7 +255,7 @@ class FormAddOn extends \Laminas\Form\View\Helper\AbstractHelper
 
         $helper = $this->getView()->plugin('formElement');
 
-        if ($element instanceof \Laminas\Form\Element\Checkbox) {
+        if ($element instanceof Checkbox) {
             $element->setOption('disable_twbs', true);
 
             $this->setClassesToElement($element, ['form-check-input', 'mt-0']);
@@ -261,10 +266,10 @@ class FormAddOn extends \Laminas\Form\View\Helper\AbstractHelper
     }
 
 
-    protected function createElement(array $element): \Laminas\Form\ElementInterface
+    protected function createElement(array $element): ElementInterface
     {
         if (!$this->formFactory) {
-            $this->formFactory = new \Laminas\Form\Factory();
+            $this->formFactory = new Factory();
         }
         return $this->formFactory->createElement($element);
     }

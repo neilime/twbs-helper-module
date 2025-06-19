@@ -13,7 +13,7 @@ use TwbsHelper\Form\View\Helper\FormRow;
 class FormElementFactoryTest extends TestCase
 {
     /**
-     * @var \TwbsHelper\Form\View\Helper\Factory\FormModuleOptionsFactory|mixed
+     * @var FormModuleOptionsFactory|mixed
      */
     public $formElementFactory;
 

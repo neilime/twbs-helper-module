@@ -2,7 +2,11 @@
 
 namespace Documentation\Generator\UsagePage\Printer;
 
-class CodePrinter extends \Documentation\Generator\UsagePage\Printer\AbstractPrinter
+use Documentation\Generator\UsagePage\Prettifier\PhpPrettifier;
+use Documentation\Test\SnapshotService;
+use ReflectionFunction;
+
+class CodePrinter extends AbstractPrinter
 {
     private static $CODE_TEMPLATE = '<Tabs>
 <TabItem value="result" label="Result" default>
@@ -41,7 +45,7 @@ class CodePrinter extends \Documentation\Generator\UsagePage\Printer\AbstractPri
     private function getRenderingSource()
     {
         // Extract rendering closure content
-        $reflectionFunction = new \ReflectionFunction($this->testConfig->rendering);
+        $reflectionFunction = new ReflectionFunction($this->testConfig->rendering);
         $source = '';
         $lines = file($reflectionFunction->getFileName());
         for (
@@ -55,7 +59,7 @@ class CodePrinter extends \Documentation\Generator\UsagePage\Printer\AbstractPri
 
         $source = '<?php' . PHP_EOL . PHP_EOL . str_replace(['$view', ' . PHP_EOL'], ['$this', ''], $source);
 
-        $phpPrettifier = \Documentation\Generator\UsagePage\Prettifier\PhpPrettifier::getInstance(
+        $phpPrettifier = PhpPrettifier::getInstance(
             $this->configuration
         );
 
@@ -64,10 +68,10 @@ class CodePrinter extends \Documentation\Generator\UsagePage\Printer\AbstractPri
 
     private function getRenderResult()
     {
-        $snapshotService = new \Documentation\Test\SnapshotService($this->configuration->getTestsDirPath());
+        $snapshotService = new SnapshotService($this->configuration->getTestsDirPath());
         $snapshotPath = $snapshotService->getSnapshotPathFromTitle($this->testConfig->title);
 
         $snapshotContent = $this->configuration->getFile()->readFile($snapshotPath);
-        return trim($snapshotContent);
+        return trim((string) $snapshotContent);
     }
 }

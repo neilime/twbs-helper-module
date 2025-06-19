@@ -2,9 +2,19 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
+use Laminas\Form\ElementInterface;
+use Laminas\Form\Element\Button;
+use Laminas\Form\Factory;
+use Laminas\Form\LabelAwareInterface;
+use TwbsHelper\Form\View\ElementHelperTrait;
+use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Variant;
+use TwbsHelper\View\HtmlAttributesSet;
+use DomainException;
+use InvalidArgumentException;
+
 class FormButton extends \Laminas\Form\View\Helper\FormButton
 {
-    use \TwbsHelper\Form\View\ElementHelperTrait;
+    use ElementHelperTrait;
 
     public const POSITION_PREPEND = 'prepend';
     public const POSITION_APPEND  = 'append';
@@ -14,11 +24,11 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
      *
      * Proxies to {@link render()}.
      *
-     * @param \Laminas\Form\ElementInterface|null $element
+     * @param ElementInterface|null $element
      * @param null|string           $buttonContent
      * @return string|FormButton
      */
-    public function __invoke(?\Laminas\Form\ElementInterface $element = null, $buttonContent = null)
+    public function __invoke(?ElementInterface $element = null, $buttonContent = null)
     {
         if (!$element) {
             return $this;
@@ -39,22 +49,22 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
         return $this->render($element, $buttonContent);
     }
 
-    protected function getElementFromSpec(array $elementSpec): \Laminas\Form\ElementInterface
+    protected function getElementFromSpec(array $elementSpec): ElementInterface
     {
-        $factory = new \Laminas\Form\Factory();
+        $factory = new Factory();
 
         // Set default type if none given
         if (empty($elementSpec['type'])) {
-            $elementSpec['type'] = \Laminas\Form\Element\Button::class;
+            $elementSpec['type'] = Button::class;
         }
 
         $element = $factory->create($elementSpec);
 
-        if (!$element instanceof \Laminas\Form\Element\Button) {
-            throw new \InvalidArgumentException(sprintf(
+        if (!$element instanceof Button) {
+            throw new InvalidArgumentException(sprintf(
                 'Invalid button type specified, %s does not inherit from %s.',
-                get_class($element),
-                \Laminas\Form\Element\Button::class
+                $element::class,
+                Button::class
             ));
         }
         return $element;
@@ -68,7 +78,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
      *
      * @see \Laminas\Form\View\Helper\FormButton::render()
      */
-    public function render(\Laminas\Form\ElementInterface $element, ?string $buttonContent = null): string
+    public function render(ElementInterface $element, ?string $buttonContent = null): string
     {
         // Dropdown button
         if ($element->getOption('dropdown')) {
@@ -99,7 +109,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
         return $buttonContent;
     }
 
-    protected function prepareElementAttributes(\Laminas\Form\ElementInterface $element)
+    protected function prepareElementAttributes(ElementInterface $element)
     {
         if (!empty($element->getOption('disable_twbs'))) {
             return;
@@ -113,7 +123,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
         $this->prepareElementClassAttributes($element);
     }
 
-    protected function prepareElementClassAttributes(\Laminas\Form\ElementInterface $element)
+    protected function prepareElementClassAttributes(ElementInterface $element)
     {
         if ($element->getOption('close')) {
             return;
@@ -137,7 +147,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
         }
 
         // Variant option
-        /** @var \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Variant $variantClassHelper **/
+        /** @var Variant $variantClassHelper **/
         $variantClassHelper = $this->getView()->plugin('htmlClass')->plugin('variant');
         if ($variant = $element->getOption('variant')) {
             $attributes['class']->merge($variantClassHelper->getClassesFromOption(
@@ -154,7 +164,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
         $this->setClassesToElement($element, $classes);
     }
 
-    protected function prepareElementAttributesForClose(\Laminas\Form\ElementInterface $element)
+    protected function prepareElementAttributesForClose(ElementInterface $element)
     {
         $close = $element->getOption('close');
         if (!$close) {
@@ -177,7 +187,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
         }
     }
 
-    protected function prepareElementAttributesForToggle(\Laminas\Form\ElementInterface $element)
+    protected function prepareElementAttributesForToggle(ElementInterface $element)
     {
         $toggle = $element->getOption('toggle');
         if ($toggle === null) {
@@ -199,7 +209,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
         );
     }
 
-    protected function prepareElementAttributesForPopover(\Laminas\Form\ElementInterface $element)
+    protected function prepareElementAttributesForPopover(ElementInterface $element)
     {
         $isDisabled = $element->getAttribute('disabled');
         if ($isDisabled) {
@@ -217,8 +227,8 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
     }
 
     protected function getElementPopoverAttributes(
-        \Laminas\Form\ElementInterface $element
-    ): ?\TwbsHelper\View\HtmlAttributesSet {
+        ElementInterface $element
+    ): ?HtmlAttributesSet {
         $popoverOption = $element->getOption('popover');
         if (!$popoverOption) {
             return null;
@@ -227,9 +237,9 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
         if (is_string($popoverOption)) {
             $popoverOption = ['content' => $popoverOption];
         } elseif (!is_iterable($popoverOption)) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'Option "popover" expects a string or an iterable, "%s" given',
-                is_object($popoverOption) ? get_class($popoverOption) : gettype($popoverOption)
+                get_debug_type($popoverOption)
             ));
         }
 
@@ -256,7 +266,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
         return $attributes;
     }
 
-    protected function prepareElementAttributesForTooltip(\Laminas\Form\ElementInterface $element)
+    protected function prepareElementAttributesForTooltip(ElementInterface $element)
     {
         $isDisabled = $element->getAttribute('disabled');
         if ($isDisabled) {
@@ -276,8 +286,8 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
     }
 
     protected function getElementTooltipAttributes(
-        \Laminas\Form\ElementInterface $element
-    ): ?\TwbsHelper\View\HtmlAttributesSet {
+        ElementInterface $element
+    ): ?HtmlAttributesSet {
         $this->getView()->plugin('htmlattributes');
         // Retrieve tooltip options
         $tooltipOptions = $element->getOption('tooltip');
@@ -306,7 +316,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
         return $attributes;
     }
 
-    protected function prepareElementAttributesForTag(\Laminas\Form\ElementInterface $element)
+    protected function prepareElementAttributesForTag(ElementInterface $element)
     {
         switch ($element->getOption('tag')) {
             case 'a':
@@ -334,7 +344,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
         }
     }
 
-    protected function prepareElementValidTagAttributes(\Laminas\Form\ElementInterface $element)
+    protected function prepareElementValidTagAttributes(ElementInterface $element)
     {
         switch ($element->getOption('tag')) {
             case 'a':
@@ -350,7 +360,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
         }
     }
 
-    protected function renderButtonContent(\Laminas\Form\ElementInterface $element, string $buttonContent = null)
+    protected function renderButtonContent(ElementInterface $element, ?string $buttonContent = null)
     {
         // Define button content
         if (null === $buttonContent) {
@@ -370,7 +380,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
 
             if (
                 !$this->getView()->plugin('htmlElement')->isHTML($buttonContent)
-                && (!$element instanceof \Laminas\Form\LabelAwareInterface
+                && (!$element instanceof LabelAwareInterface
                     || !$element->getLabelOption('disable_html_escape'))
             ) {
                 $buttonContent = $this->getEscapeHtmlHelper()($buttonContent);
@@ -395,7 +405,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
         $buttonContent = $this->renderBadgeContent($element, $buttonContent);
 
         if (null === $buttonContent) {
-            throw new \DomainException(sprintf(
+            throw new DomainException(sprintf(
                 '%s expects either button content as the second argument, ' .
                     'or that the element provided has a label value, ' .
                     'a glyphicon option, or a fontAwesome option; none found',
@@ -405,7 +415,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
         return $buttonContent;
     }
 
-    protected function renderIconContent(\Laminas\Form\ElementInterface $element, string $buttonContent = null)
+    protected function renderIconContent(ElementInterface $element, ?string $buttonContent = null)
     {
         // Retrieve icon options
         $iconOptions = $element->getOption('icon');
@@ -421,29 +431,25 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
             ];
         } elseif (is_array($iconOptions)) {
             if (empty($iconOptions['class'])) {
-                throw new \InvalidArgumentException('"[icon][class]" option is undefined');
+                throw new InvalidArgumentException('"[icon][class]" option is undefined');
             }
 
             if (!is_scalar($iconOptions['class'])) {
-                throw new \InvalidArgumentException(sprintf(
+                throw new InvalidArgumentException(sprintf(
                     '"[icon][class]" option expects a scalar value, "%s" given',
-                    is_object($iconOptions['class'])
-                        ? get_class($iconOptions['class'])
-                        : gettype($iconOptions['class'])
+                    get_debug_type($iconOptions['class'])
                 ));
             }
 
             if (isset($iconOptions['position'])) {
                 if (!is_string($iconOptions['position'])) {
-                    throw new \InvalidArgumentException(sprintf(
+                    throw new InvalidArgumentException(sprintf(
                         '"[icon][position]" option expects a string, "%s" given',
-                        is_object($iconOptions['position'])
-                            ? get_class($iconOptions['position'])
-                            : gettype($iconOptions['position'])
+                        get_debug_type($iconOptions['position'])
                     ));
                 }
                 if (!in_array($iconOptions['position'], [self::POSITION_PREPEND, self::POSITION_APPEND], true)) {
-                    throw new \InvalidArgumentException(sprintf(
+                    throw new InvalidArgumentException(sprintf(
                         '"[icon][position]" option allows "%s" or "%s", "%s" given',
                         self::POSITION_PREPEND,
                         self::POSITION_APPEND,
@@ -452,9 +458,9 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
                 }
             }
         } else {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 '"icon" button option expects a scalar value or an array, "%s" given',
-                is_object($iconOptions) ? get_class($iconOptions) : gettype($iconOptions)
+                get_debug_type($iconOptions)
             ));
         }
 
@@ -476,7 +482,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
         }
     }
 
-    protected function renderSpinnerContent(\Laminas\Form\ElementInterface $element, string $buttonContent = null)
+    protected function renderSpinnerContent(ElementInterface $element, ?string $buttonContent = null)
     {
         // Retrieve spinner options
         $spinnerOptions = $element->getOption('spinner');
@@ -516,7 +522,7 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
         }
     }
 
-    protected function renderBadgeContent(\Laminas\Form\ElementInterface $element, string $buttonContent = null)
+    protected function renderBadgeContent(ElementInterface $element, ?string $buttonContent = null)
     {
         $badgeOptions = $element->getOption('badge');
         if (!$badgeOptions) {
@@ -538,35 +544,32 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
         return $buttonContent . PHP_EOL . $badgeContent;
     }
 
-    protected function renderButton(\Laminas\Form\ElementInterface $element, string $buttonContent = null): string
+    protected function renderButton(ElementInterface $element, ?string $buttonContent = null): string
     {
         $htmlElementHelper = $this->getView()->plugin('htmlElement');
         $tag = $element->getOption('tag');
-        switch ($tag) {
-            case 'a':
-                return $htmlElementHelper->__invoke(
-                    $tag,
-                    $this->prepareAttributes($element->getAttributes()),
-                    $buttonContent
-                );
-            case 'input':
-                return $htmlElementHelper->__invoke(
-                    $tag,
-                    $this->getView()->plugin('htmlattributes')
-                        ->__invoke($this->prepareAttributes($element->getAttributes()))
-                        ->merge(['value' => $buttonContent])
-                );
-            default:
-                return $this->openTag($element)
-                    . $htmlElementHelper->addProperIndentation($buttonContent)
-                    . $this->closeTag();
-        }
+        return match ($tag) {
+            'a' => $htmlElementHelper->__invoke(
+                $tag,
+                $this->prepareAttributes($element->getAttributes()),
+                $buttonContent
+            ),
+            'input' => $htmlElementHelper->__invoke(
+                $tag,
+                $this->getView()->plugin('htmlattributes')
+                    ->__invoke($this->prepareAttributes($element->getAttributes()))
+                    ->merge(['value' => $buttonContent])
+            ),
+            default => $this->openTag($element)
+                . $htmlElementHelper->addProperIndentation($buttonContent)
+                . $this->closeTag(),
+        };
     }
 
 
     protected function renderPopoverAndTooltip(
-        \Laminas\Form\ElementInterface $element,
-        string $buttonContent = null
+        ElementInterface $element,
+        ?string $buttonContent = null
     ): string {
 
         $isDisabled = $element->getAttribute('disabled');
@@ -608,10 +611,10 @@ class FormButton extends \Laminas\Form\View\Helper\FormButton
     /**
      * Determine button type to use
      *
-     * @param \Laminas\Form\ElementInterface $element
+     * @param ElementInterface $element
      * @return string
      */
-    protected function getType(\Laminas\Form\ElementInterface $element): string
+    protected function getType(ElementInterface $element): string
     {
         $tag = $element->getOption('tag');
         if (!$tag || $tag === 'button' ||  $tag === 'input') {

@@ -5,7 +5,7 @@ namespace TwbsHelper\View\Helper;
 /**
  * Helper for rendering multiple progress bar
  */
-class ProgressBarGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
+class ProgressBarGroup extends AbstractHtmlElement
 {
     /**
      * Generates a 'progressbar' element

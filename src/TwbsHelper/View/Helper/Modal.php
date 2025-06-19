@@ -2,10 +2,14 @@
 
 namespace TwbsHelper\View\Helper;
 
+use Laminas\Stdlib\ArrayUtils;
+use DomainException;
+use InvalidArgumentException;
+
 /**
  * Helper for rendering modal objects
  */
-class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
+class Modal extends AbstractHtmlElement
 {
     public const MODAL_TITLE = 'title';
     public const MODAL_SUBTITLE = 'subtitle';
@@ -76,7 +80,7 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
         $parts = [];
         switch (true) {
-            case \Laminas\Stdlib\ArrayUtils::isList($content):
+            case ArrayUtils::isList($content):
                 foreach ($content as $part) {
                     $parts[] = $this->preparePartFromContent($type, $part);
                 }
@@ -97,11 +101,9 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 break;
 
             default:
-                throw new \InvalidArgumentException(sprintf(
+                throw new InvalidArgumentException(sprintf(
                     'Part content "$key" expects a string or an iterable value, "%s" given',
-                    is_object($content)
-                        ? get_class($content)
-                        : gettype($content)
+                    get_debug_type($content)
                 ));
         }
 
@@ -234,27 +236,12 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 $escape
             );
 
-            switch ($part['type']) {
-                case self::MODAL_TITLE:
-                    $headerPart .= ($headerPart ? PHP_EOL : '') . $partContent;
-                    break;
-
-                case self::MODAL_GRID:
-                case self::MODAL_FORM:
-                case self::MODAL_SUBTITLE:
-                case self::MODAL_TEXT:
-                case self::MODAL_DIVIDER:
-                case self::MODAL_BUTTON:
-                    $bodyPart .= ($bodyPart ? PHP_EOL : '') . $partContent;
-                    break;
-
-                case self::MODAL_FOOTER:
-                    $footerPart .= ($footerPart ? PHP_EOL : '') . $partContent;
-                    break;
-
-                default:
-                    throw new \DomainException(__CLASS__ . ' part type "' . $part['type'] . '" is not supported');
-            }
+            match ($part['type']) {
+                self::MODAL_TITLE => $headerPart .= ($headerPart ? PHP_EOL : '') . $partContent,
+                self::MODAL_GRID, self::MODAL_FORM, self::MODAL_SUBTITLE, self::MODAL_TEXT, self::MODAL_DIVIDER, self::MODAL_BUTTON => $bodyPart .= ($bodyPart ? PHP_EOL : '') . $partContent,
+                self::MODAL_FOOTER => $footerPart .= ($footerPart ? PHP_EOL : '') . $partContent,
+                default => throw new DomainException(self::class . ' part type "' . $part['type'] . '" is not supported'),
+            };
         }
 
         return join(PHP_EOL, array_filter([
@@ -336,10 +323,10 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
             return $this->renderPartForm($part);
         }
 
-        if (\Laminas\Stdlib\ArrayUtils::isList($part)) {
+        if (ArrayUtils::isList($part)) {
             return $this->renderPartList(
                 $type,
-                \Laminas\Stdlib\ArrayUtils::iteratorToArray($part),
+                ArrayUtils::iteratorToArray($part),
                 $escape
             );
         }
@@ -349,7 +336,7 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
             case self::MODAL_TITLE:
             case self::MODAL_SUBTITLE:
                 if (empty($part['content'])) {
-                    throw new \DomainException('Modal part type "' . $type . '" expects a content, none given');
+                    throw new DomainException('Modal part type "' . $type . '" expects a content, none given');
                 }
                 $tag = 'h5';
 
@@ -362,7 +349,7 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
             case self::MODAL_TEXT:
                 if (empty($part['content'])) {
-                    throw new \DomainException(__CLASS__ . ' part type "' . $type . '" expects a content, none given');
+                    throw new DomainException(self::class . ' part type "' . $type . '" expects a content, none given');
                 }
                 $tag = 'p';
                 break;
@@ -389,7 +376,7 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 return $footerContent;
 
             default:
-                throw new \DomainException(__CLASS__ . ' part type "' . $type . '" is not supported');
+                throw new DomainException(self::class . ' part type "' . $type . '" is not supported');
         }
 
         return $this->getView()->plugin('htmlElement')->__invoke(
@@ -421,7 +408,7 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
     }
 
     protected function renderPartList(
-        string $type = null,
+        ?string $type = null,
         array $part = [],
         bool $escape = true
     ): string {
@@ -436,7 +423,7 @@ class Modal extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 }
                 $partItem['type'] ??= $type;
                 return $that->renderPart($partItem, $escape);
-            }, \Laminas\Stdlib\ArrayUtils::iteratorToArray($part))
+            }, ArrayUtils::iteratorToArray($part))
         );
     }
 }
