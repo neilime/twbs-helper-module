@@ -2,34 +2,40 @@
 
 namespace TestSuite\Documentation\Generator\UsagePage\Printer;
 
-class HeadPrinterTest extends \PHPUnit\Framework\TestCase
+use Documentation\Generator\Configuration;
+use Documentation\Generator\FileSystem\File;
+use Documentation\Generator\UsagePage\Printer\HeadPrinter;
+use Documentation\Test\Config;
+use PHPUnit\Framework\TestCase;
+
+class HeadPrinterTest extends TestCase
 {
     /**
-     * @var \Documentation\Generator\Configuration
+     * @var Configuration
      */
     protected $configuration;
 
     /**
-     * @var \Documentation\Generator\UsagePage\Printer\HeadPrinter
+     * @var HeadPrinter
      */
     protected $headPrinter;
 
     protected function setUp(): void
     {
-        $this->configuration = new \Documentation\Generator\Configuration(
+        $this->configuration = new Configuration(
             '/tmp/test-dir',
             '/tmp/test-dir/tests',
             'x.x',
             2,
-            $this->createMock(\Documentation\Generator\FileSystem\File::class)
+            $this->createMock(File::class)
         );
     }
 
     public function testPrintContentOnExistingPage()
     {
-        $this->headPrinter = new \Documentation\Generator\UsagePage\Printer\HeadPrinter(
+        $this->headPrinter = new HeadPrinter(
             $this->configuration,
-            \Documentation\Test\Config::fromArray([
+            Config::fromArray([
                 'title' => 'Component',
                 'url' => '%bootstrap-url%/test',
             ]),
@@ -43,9 +49,9 @@ class HeadPrinterTest extends \PHPUnit\Framework\TestCase
 
     public function testGetPageContentOnUnexistingPage()
     {
-        $this->headPrinter = new \Documentation\Generator\UsagePage\Printer\HeadPrinter(
+        $this->headPrinter = new HeadPrinter(
             $this->configuration,
-            \Documentation\Test\Config::fromArray([
+            Config::fromArray([
                 'title' => 'Component / Alert / Exemples',
                 'url' => '%bootstrap-url%/test',
             ]),

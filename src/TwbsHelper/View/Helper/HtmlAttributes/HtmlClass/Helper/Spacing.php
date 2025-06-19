@@ -2,7 +2,9 @@
 
 namespace TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper;
 
-class Spacing extends \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\AbstractHelper
+use InvalidArgumentException;
+
+class Spacing extends AbstractHelper
 {
     public const PROPERTY_MARGIN = 'm';
     public const PROPERTY_PADDING = 'p';
@@ -56,10 +58,10 @@ class Spacing extends \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Ab
     protected function validateOption($option)
     {
         if (!is_string($option)) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 '"%s" option expects a string, "%s" given',
                 static::$optionName,
-                is_object($option) ? get_class($option) : gettype($option)
+                get_debug_type($option)
             ));
         }
 
@@ -70,7 +72,7 @@ class Spacing extends \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Ab
     {
         // Expect a string like mt-3, p-0, mx-auto, ...
         if (!$this->isSpacingClass($option)) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 '"%s" option "%s" is invalid. Expects a string like "m-0", "mt-3", "mx-auto", ...',
                 static::$optionName,
                 $option

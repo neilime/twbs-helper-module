@@ -2,10 +2,14 @@
 
 namespace TestSuite\TwbsHelper\View\Helper;
 
-class DropdownTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
+use TestSuite\TwbsHelper\AbstractViewHelperTestCase;
+use TwbsHelper\View\Helper\Dropdown;
+use stdClass;
+
+class DropdownTest extends AbstractViewHelperTestCase
 {
     /**
-     * @var \TwbsHelper\View\Helper\Dropdown
+     * @var Dropdown
      */
     protected $helper = 'dropdown';
 
@@ -15,7 +19,7 @@ class DropdownTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
             'Argument "$dropdown" expects an instanceof \Laminas\Form\ElementInterface or an iterable, ' .
                 '"stdClass" given'
         );
-        $this->helper->render(new \stdClass());
+        $this->helper->render(new stdClass());
     }
 
     public function testRenderWithWrongTypeForDirectionOption()
@@ -42,7 +46,7 @@ class DropdownTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 'label' => 'test',
                 'dropdown' => [
                     'items' => ['test'],
-                    'split' => new \stdClass(),
+                    'split' => new stdClass(),
                 ],
             ],
         ]);
@@ -70,7 +74,7 @@ class DropdownTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
             'options' => [
                 'label' => 'test',
                 'dropdown' => [
-                    'items' => new \stdClass(),
+                    'items' => new stdClass(),
                 ],
             ],
         ]);
@@ -105,7 +109,7 @@ class DropdownTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
             'options' => [
                 'label' => 'test',
                 'dropdown' => [
-                    'items' => [new \stdClass()],
+                    'items' => [new stdClass()],
                 ],
             ],
         ]);
@@ -121,7 +125,7 @@ class DropdownTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 'dropdown' => [
                     'items' => [
                         [
-                            'type' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_HEADER,
+                            'type' => Dropdown::TYPE_ITEM_HEADER,
                         ],
                     ],
                 ],
@@ -139,8 +143,8 @@ class DropdownTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 'dropdown' => [
                     'items' => [
                         [
-                            'type' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_HEADER,
-                            'label' => new \stdClass(),
+                            'type' => Dropdown::TYPE_ITEM_HEADER,
+                            'label' => new stdClass(),
                         ],
                     ],
                 ],
@@ -158,7 +162,7 @@ class DropdownTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 'dropdown' => [
                     'items' => [
                         [
-                            'type' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_LINK,
+                            'type' => Dropdown::TYPE_ITEM_LINK,
                         ],
                     ],
                 ],
@@ -176,8 +180,8 @@ class DropdownTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 'dropdown' => [
                     'items' => [
                         [
-                            'type' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_LINK,
-                            'label' => new \stdClass(),
+                            'type' => Dropdown::TYPE_ITEM_LINK,
+                            'label' => new stdClass(),
                         ],
                     ],
                 ],
@@ -195,7 +199,7 @@ class DropdownTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 'dropdown' => [
                     'items' => [
                         [
-                            'type' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_TEXT,
+                            'type' => Dropdown::TYPE_ITEM_TEXT,
                         ],
                     ],
                 ],
@@ -213,8 +217,8 @@ class DropdownTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 'dropdown' => [
                     'items' => [
                         [
-                            'type' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_TEXT,
-                            'label' => new \stdClass(),
+                            'type' => Dropdown::TYPE_ITEM_TEXT,
+                            'label' => new stdClass(),
                         ],
                     ],
                 ],
@@ -232,7 +236,7 @@ class DropdownTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 'dropdown' => [
                     'items' => [
                         [
-                            'type' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_HTML,
+                            'type' => Dropdown::TYPE_ITEM_HTML,
                         ],
                     ],
                 ],
@@ -250,8 +254,8 @@ class DropdownTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 'dropdown' => [
                     'items' => [
                         [
-                            'type' => \TwbsHelper\View\Helper\Dropdown::TYPE_ITEM_HTML,
-                            'label' => new \stdClass(),
+                            'type' => Dropdown::TYPE_ITEM_HTML,
+                            'label' => new stdClass(),
                         ],
                     ],
                 ],

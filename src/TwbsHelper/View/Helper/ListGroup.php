@@ -2,10 +2,15 @@
 
 namespace TwbsHelper\View\Helper;
 
+use Laminas\Form\Element\Checkbox;
+use Laminas\Form\Factory;
+use DomainException;
+use InvalidArgumentException;
+
 /**
  * Helper for ordered and unordered lists
  */
-class ListGroup extends \TwbsHelper\View\Helper\HtmlList
+class ListGroup extends HtmlList
 {
     protected static $allowedOptions = [
         'type',
@@ -131,7 +136,7 @@ class ListGroup extends \TwbsHelper\View\Helper\HtmlList
                     break;
 
                 default:
-                    throw new \DomainException(
+                    throw new DomainException(
                         'Item "type" option "' . $optionsAndAttributes['type'] . '" is not supported'
                     );
             }
@@ -195,20 +200,20 @@ class ListGroup extends \TwbsHelper\View\Helper\HtmlList
 
     protected function renderCheckbox($elementSpec, string $itemContent): string
     {
-        $factory = new \Laminas\Form\Factory();
+        $factory = new Factory();
 
         // Set default type if none given
         if (empty($elementSpec['type'])) {
-            $elementSpec['type'] = \Laminas\Form\Element\Checkbox::class;
+            $elementSpec['type'] = Checkbox::class;
         }
 
         $element = $factory->create($elementSpec);
 
-        if (!$element instanceof \Laminas\Form\Element\Checkbox) {
-            throw new \InvalidArgumentException(sprintf(
+        if (!$element instanceof Checkbox) {
+            throw new InvalidArgumentException(sprintf(
                 'Invalid checkbox type specified, %s does not inherit from %s.',
-                get_class($element),
-                \Laminas\Form\Element\Checkbox::class
+                $element::class,
+                Checkbox::class
             ));
         }
 

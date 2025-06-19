@@ -2,16 +2,21 @@
 
 namespace TestSuite\TwbsHelper\Form\View\Helper;
 
-class FormRowTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
+use Laminas\Form\Element\Text;
+use Laminas\Form\Factory;
+use TestSuite\TwbsHelper\AbstractViewHelperTestCase;
+use TwbsHelper\Form\View\Helper\FormRow;
+
+class FormRowTest extends AbstractViewHelperTestCase
 {
     /**
-     * @var \TwbsHelper\Form\View\Helper\FormRow
+     * @var FormRow
      */
     protected $helper = 'formRow';
 
     public function testRenderWithPartial()
     {
-        $factory = new \Laminas\Form\Factory();
+        $factory = new Factory();
 
         $form = $factory->create([
             'type' => 'form',
@@ -35,7 +40,7 @@ class FormRowTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
 
     public function testWithRowRowSpacingClassDisabled()
     {
-        $element = new \Laminas\Form\Element\Text(
+        $element = new Text(
             'form',
             [
                 'row_class' => 'mb-5',

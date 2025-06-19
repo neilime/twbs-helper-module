@@ -2,10 +2,14 @@
 
 namespace TestSuite\TwbsHelper\Form\View\Helper;
 
-class FormRowsTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
+use Laminas\Form\Factory;
+use TestSuite\TwbsHelper\AbstractViewHelperTestCase;
+use TwbsHelper\Form\View\Helper\FormRows;
+
+class FormRowsTest extends AbstractViewHelperTestCase
 {
     /**
-     * @var \TwbsHelper\Form\View\Helper\FormRows
+     * @var FormRows
      */
     protected $helper = 'formRows';
 
@@ -19,7 +23,7 @@ class FormRowsTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
 
     public function testRenderButtonGroup()
     {
-        $factory = new \Laminas\Form\Factory();
+        $factory = new Factory();
 
         $form = $factory->create([
             'type' => 'form',

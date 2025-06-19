@@ -33,7 +33,7 @@ jobs:
 
       - name: 🔬 Static analysis
         if: matrix.stable
-        run: composer stan -- --error-format=checkstyle | tools/vendor/bin/cs2pr
+        run: composer phpstan -- --error-format=checkstyle | tools/vendor/bin/cs2pr
 
       - name: 🧪 Test
         run: composer test:ci

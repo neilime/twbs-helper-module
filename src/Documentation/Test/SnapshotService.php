@@ -6,11 +6,8 @@ class SnapshotService
 {
     private static $SNAPSHOT_ROOT_DIRECTORY = '__snapshots__';
 
-    private $testsDirectoryPath;
-
-    public function __construct(string $testsDirectoryPath)
+    public function __construct(private readonly string $testsDirectoryPath)
     {
-        $this->testsDirectoryPath = $testsDirectoryPath;
     }
 
     public function getSnapshotIdFromTitle(string $title, $incrementor = 1): string

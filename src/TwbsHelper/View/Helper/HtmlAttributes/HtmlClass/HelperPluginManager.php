@@ -3,6 +3,22 @@
 namespace TwbsHelper\View\Helper\HtmlAttributes\HtmlClass;
 
 use Laminas\ServiceManager\ConfigInterface;
+use Laminas\ServiceManager\AbstractPluginManager;
+use Laminas\ServiceManager\Exception\InvalidServiceException;
+use Laminas\ServiceManager\Factory\InvokableFactory;
+use Psr\Container\ContainerInterface;
+use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass;
+use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Align;
+use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Column;
+use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\ColumnCounterpart;
+use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\ColumnOffsetCounterpart;
+use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Gutter;
+use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\HelperInterface;
+use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\JustifyContent;
+use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Offset;
+use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Size;
+use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Spacing;
+use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Variant;
 
 /**
  * Plugin manager implementation for HTML class attribute helpers
@@ -12,7 +28,7 @@ use Laminas\ServiceManager\ConfigInterface;
  * helpers.
  * @extends \Laminas\ServiceManager\AbstractPluginManager<\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\HelperInterface>
  */
-class HelperPluginManager extends \Laminas\ServiceManager\AbstractPluginManager
+class HelperPluginManager extends AbstractPluginManager
 {
     /**
      * Default helper aliases
@@ -20,17 +36,17 @@ class HelperPluginManager extends \Laminas\ServiceManager\AbstractPluginManager
      * @var string[]
      */
     protected $aliases = [
-        'align' => \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Align::class,
-        'column' => \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Column::class,
-        'columnCounterpart' => \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\ColumnCounterpart::class,
+        'align' => Align::class,
+        'column' => Column::class,
+        'columnCounterpart' => ColumnCounterpart::class,
         'columnOffsetCounterpart'
-        => \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\ColumnOffsetCounterpart::class,
-        'gutter' => \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Gutter::class,
-        'justifyContent' => \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\JustifyContent::class,
-        'offset' => \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Offset::class,
-        'size' => \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Size::class,
-        'spacing' => \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Spacing::class,
-        'variant' => \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Variant::class,
+        => ColumnOffsetCounterpart::class,
+        'gutter' => Gutter::class,
+        'justifyContent' => JustifyContent::class,
+        'offset' => Offset::class,
+        'size' => Size::class,
+        'spacing' => Spacing::class,
+        'variant' => Variant::class,
     ];
 
     /**
@@ -39,30 +55,30 @@ class HelperPluginManager extends \Laminas\ServiceManager\AbstractPluginManager
      * @var array
      */
     protected $factories = [
-        \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Align::class
-        => \Laminas\ServiceManager\Factory\InvokableFactory::class,
-        \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Column::class
-        => \Laminas\ServiceManager\Factory\InvokableFactory::class,
-        \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\ColumnCounterpart::class
-        => \Laminas\ServiceManager\Factory\InvokableFactory::class,
-        \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\ColumnOffsetCounterpart::class
-        => \Laminas\ServiceManager\Factory\InvokableFactory::class,
-        \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Gutter::class
-        => \Laminas\ServiceManager\Factory\InvokableFactory::class,
-        \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\JustifyContent::class
-        => \Laminas\ServiceManager\Factory\InvokableFactory::class,
-        \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Offset::class
-        => \Laminas\ServiceManager\Factory\InvokableFactory::class,
-        \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Size::class
-        => \Laminas\ServiceManager\Factory\InvokableFactory::class,
-        \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Spacing::class
-        => \Laminas\ServiceManager\Factory\InvokableFactory::class,
-        \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Variant::class
-        => \Laminas\ServiceManager\Factory\InvokableFactory::class,
+        Align::class
+        => InvokableFactory::class,
+        Column::class
+        => InvokableFactory::class,
+        ColumnCounterpart::class
+        => InvokableFactory::class,
+        ColumnOffsetCounterpart::class
+        => InvokableFactory::class,
+        Gutter::class
+        => InvokableFactory::class,
+        JustifyContent::class
+        => InvokableFactory::class,
+        Offset::class
+        => InvokableFactory::class,
+        Size::class
+        => InvokableFactory::class,
+        Spacing::class
+        => InvokableFactory::class,
+        Variant::class
+        => InvokableFactory::class,
     ];
 
     /**
-     * @var \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass|null
+     * @var HtmlClass|null
      */
     protected $htmlclasshelper;
 
@@ -70,12 +86,12 @@ class HelperPluginManager extends \Laminas\ServiceManager\AbstractPluginManager
      * Sets the provided $parentLocator as the creation context for all
      * factories; for $config, {@see \Laminas\ServiceManager\ServiceManager::configure()}
      * for details on its accepted structure.
-     * @param null|ConfigInterface|\Psr\Container\ContainerInterface $configInstanceOrParentLocator
+     * @param null|ConfigInterface|ContainerInterface $configInstanceOrParentLocator
      * @param array $config
      */
     public function __construct($configInstanceOrParentLocator = null, array $config = [])
     {
-        $this->initializers[] = [$this, 'injectHtmlClassHelper'];
+        $this->initializers[] = $this->injectHtmlClassHelper(...);
 
         parent::__construct($configInstanceOrParentLocator, $config);
     }
@@ -85,11 +101,11 @@ class HelperPluginManager extends \Laminas\ServiceManager\AbstractPluginManager
      */
     public function injectHtmlClassHelper($first, $second)
     {
-        $helper = ($first instanceof \Psr\Container\ContainerInterface)
+        $helper = ($first instanceof ContainerInterface)
             ? $second
             : $first;
 
-        if (!$helper instanceof \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\HelperInterface) {
+        if (!$helper instanceof HelperInterface) {
             return;
         }
 
@@ -103,12 +119,12 @@ class HelperPluginManager extends \Laminas\ServiceManager\AbstractPluginManager
     /**
      * Set htmlclasshelper
      *
-     * @param \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass $htmlclasshelper
-     * @return \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\HelperPluginManager
+     * @param HtmlClass $htmlclasshelper
+     * @return HelperPluginManager
      */
     public function setHtmlClassHelper(
-        \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass $htmlclasshelper
-    ): \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\HelperPluginManager {
+        HtmlClass $htmlclasshelper
+    ): HelperPluginManager {
         $this->htmlclasshelper = $htmlclasshelper;
         return $this;
     }
@@ -116,9 +132,9 @@ class HelperPluginManager extends \Laminas\ServiceManager\AbstractPluginManager
     /**
      * Retrieve HtmlClass helper instance
      *
-     * @return null|\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass
+     * @return null|HtmlClass
      */
-    public function getHtmlClassHelper(): ?\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass
+    public function getHtmlClassHelper(): ?HtmlClass
     {
         return $this->htmlclasshelper;
     }
@@ -128,21 +144,21 @@ class HelperPluginManager extends \Laminas\ServiceManager\AbstractPluginManager
      *
      * Validates against callables and HelperInterface implementations.
      *
-     * @param \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\HelperInterface|callable|mixed $instance
-     * @throws \Laminas\ServiceManager\Exception\InvalidServiceException
+     * @param HelperInterface|callable|mixed $instance
+     * @throws InvalidServiceException
      */
     public function validate($instance)
     {
         if (
             !is_callable($instance)
-            && !$instance instanceof \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\HelperInterface
+            && !$instance instanceof HelperInterface
         ) {
-            throw new \Laminas\ServiceManager\Exception\InvalidServiceException(
+            throw new InvalidServiceException(
                 sprintf(
                     '%s can only create instances of %s and/or callables; %s is invalid',
-                    get_class($this),
-                    \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\HelperInterface::class,
-                    (is_object($instance) ? get_class($instance) : gettype($instance))
+                    static::class,
+                    HelperInterface::class,
+                    (get_debug_type($instance))
                 )
             );
         }

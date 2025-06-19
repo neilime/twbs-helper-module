@@ -2,10 +2,13 @@
 
 namespace TestSuite\TwbsHelper\View\Helper;
 
-class AlertTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
+use TestSuite\TwbsHelper\AbstractViewHelperTestCase;
+use TwbsHelper\View\Helper\Alert;
+
+class AlertTest extends AbstractViewHelperTestCase
 {
     /**
-     * @var \TwbsHelper\View\Helper\Alert
+     * @var Alert
      */
     protected $helper = 'alert';
 

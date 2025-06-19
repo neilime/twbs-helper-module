@@ -2,10 +2,12 @@
 
 namespace TwbsHelper\View\Helper;
 
+use InvalidArgumentException;
+
 /**
  * Helper for rendering carousels
  */
-class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
+class Carousel extends AbstractHtmlElement
 {
     public const CONTROL_PREVIOUS = 'prev';
     public const CONTROL_NEXT = 'next';
@@ -67,9 +69,7 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
         $slides = $this->parseSlides($slides);
         $hasIndicators = !empty($optionsAndAttributes['indicators'])
-            || array_reduce($slides, function ($hasIndicators, $slide) {
-                return $hasIndicators || !empty($slide['indicator']);
-            });
+            || array_reduce($slides, fn ($hasIndicators, $slide) => $hasIndicators || !empty($slide['indicator']));
 
         $disableInterval = isset($optionsAndAttributes['interval'])
             && $optionsAndAttributes['interval'] === false
@@ -205,7 +205,7 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
                     case is_int($key):
                         break;
                     default:
-                        throw new \InvalidArgumentException(sprintf(
+                        throw new InvalidArgumentException(sprintf(
                             'Caption part "%s" is not supported',
                             $key
                         ));
@@ -308,7 +308,7 @@ class Carousel extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 ];
                 break;
             default:
-                throw new \InvalidArgumentException(sprintf(
+                throw new InvalidArgumentException(sprintf(
                     'Option "controls" of type "%s" is not supported',
                     gettype($controls)
                 ));

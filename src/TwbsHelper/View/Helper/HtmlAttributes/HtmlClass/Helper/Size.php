@@ -2,7 +2,9 @@
 
 namespace TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper;
 
-class Size extends \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\AbstractHelper
+use InvalidArgumentException;
+
+class Size extends AbstractHelper
 {
     public const SIZE_XS = 'xs';
     public const SIZE_SM = 'sm';
@@ -44,10 +46,10 @@ class Size extends \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Abstr
     protected function validateOption($option)
     {
         if (!is_string($option)) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 '"%s" option expects a string, "%s" given',
                 static::$optionName,
-                is_object($option) ? get_class($option) : gettype($option)
+                get_debug_type($option)
             ));
         }
 
@@ -57,7 +59,7 @@ class Size extends \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Abstr
     protected function validateStringOption(string $option)
     {
         if (!in_array($option, static::$allowedOptions)) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 '"%s" option "%s" is not supported. Expects one of these values "%s"',
                 static::$optionName,
                 $option,

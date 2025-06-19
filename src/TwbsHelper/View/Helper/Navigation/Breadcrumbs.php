@@ -2,6 +2,9 @@
 
 namespace TwbsHelper\View\Helper\Navigation;
 
+use Laminas\Navigation\AbstractContainer;
+use Laminas\Navigation\Page\AbstractPage;
+
 /**
  * Helper for rendering breadcrumbs
  */
@@ -11,7 +14,7 @@ class Breadcrumbs extends \Laminas\View\Helper\Navigation\Breadcrumbs
      * Renders breadcrumbs by chaining 'a' elements with the separator
      * registered in the helper.
      *
-     * @param  \Laminas\Navigation\AbstractContainer $container [optional] container to render.
+     * @param  AbstractContainer $container [optional] container to render.
      * Default is to render the container registered in the helper.
      * @return string
      */
@@ -48,7 +51,7 @@ class Breadcrumbs extends \Laminas\View\Helper\Navigation\Breadcrumbs
 
         // Walk back to root
         while ($parent = $activePage->getParent()) {
-            if ($parent instanceof \Laminas\Navigation\Page\AbstractPage) {
+            if ($parent instanceof AbstractPage) {
                 // Prepend crumb to html
                 $html = $this->htmlify($parent) . PHP_EOL . $html;
             }
@@ -70,7 +73,7 @@ class Breadcrumbs extends \Laminas\View\Helper\Navigation\Breadcrumbs
      *
      * @return string HTML string
      */
-    public function htmlify(\Laminas\Navigation\Page\AbstractPage $page)
+    public function htmlify(AbstractPage $page)
     {
         return $this->renderBreadcrumbItem(
             parent::htmlify($page),

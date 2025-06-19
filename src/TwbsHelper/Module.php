@@ -11,7 +11,7 @@ class Module
      */
     public function getConfig()
     {
-        $configProvider = new \TwbsHelper\ConfigProvider();
+        $configProvider = new ConfigProvider();
         $config = $configProvider->__invoke();
         $config['service_manager'] = $config['dependencies'];
         return $config;

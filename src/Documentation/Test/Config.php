@@ -2,6 +2,8 @@
 
 namespace Documentation\Test;
 
+use InvalidArgumentException;
+
 class Config
 {
     public static $TITLE_SEPARATOR = ' / ';
@@ -40,13 +42,13 @@ class Config
 
     public static function fromArray(
         array $testConfig,
-        \Documentation\Test\Config $documentationTestConfig = null
+        ?Config $documentationTestConfig = null
     ): self {
 
         $self = new self();
 
         if (!isset($testConfig['title'])) {
-            throw new \InvalidArgumentException('Argument "$testConfig" does not have a defined "title" key');
+            throw new InvalidArgumentException('Argument "$testConfig" does not have a defined "title" key');
         }
 
         $self->title = $testConfig['title'];
@@ -62,12 +64,10 @@ class Config
 
         if (isset($testConfig['rendering'])) {
             if (!is_callable($testConfig['rendering'])) {
-                throw new \InvalidArgumentException(sprintf(
+                throw new InvalidArgumentException(sprintf(
                     'Argument "$testConfig[\'rendering\']" expects a callable value for "%s", "%s" given',
                     $self->title,
-                    is_object($testConfig['rendering'])
-                        ? get_class($testConfig['rendering'])
-                        : gettype($testConfig['rendering'])
+                    get_debug_type($testConfig['rendering'])
                 ));
             }
 
@@ -76,12 +76,10 @@ class Config
 
         if (isset($testConfig['tests'])) {
             if (!is_array($testConfig['tests'])) {
-                throw new \InvalidArgumentException(sprintf(
+                throw new InvalidArgumentException(sprintf(
                     'Argument "$testConfig[\'tests\']" for "%s" expects an array, "%s" given',
                     $self->title,
-                    is_object($testConfig['tests'])
-                        ? get_class($testConfig['tests'])
-                        : gettype($testConfig['tests'])
+                    get_debug_type($testConfig['tests'])
                 ));
             }
 

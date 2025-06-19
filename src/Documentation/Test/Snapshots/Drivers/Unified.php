@@ -7,11 +7,14 @@ use Jfcherng\Diff\SequenceMatcher;
 use Jfcherng\Diff\Factory\LineRendererFactory;
 use Jfcherng\Diff\Renderer\Html\LineRenderer\AbstractLineRenderer;
 use Jfcherng\Utility\MbString;
+use Jfcherng\Diff\Renderer\RendererConstant;
+use Jfcherng\Diff\Renderer\Text\AbstractText;
+use Jfcherng\Utility\CliColor;
 
 /**
  * Unified diff generator.
  */
-class Unified extends \Jfcherng\Diff\Renderer\Text\AbstractText
+class Unified extends AbstractText
 {
     /**
      * {@inheritdoc}
@@ -150,18 +153,18 @@ class Unified extends \Jfcherng\Diff\Renderer\Text\AbstractText
         $lineRenderer->render($mbOld, $mbNew);
 
         $colors = [
-            \Jfcherng\Utility\CliColor::COLOR_BEGIN . 100 . \Jfcherng\Utility\CliColor::COLOR_END,
-            \Jfcherng\Utility\CliColor::COLOR_BEGIN . 49 . \Jfcherng\Utility\CliColor::COLOR_END,
+            CliColor::COLOR_BEGIN . 100 . CliColor::COLOR_END,
+            CliColor::COLOR_BEGIN . 49 . CliColor::COLOR_END,
         ];
 
         $old[$oldIndex] = str_replace(
-            \Jfcherng\Diff\Renderer\RendererConstant::HTML_CLOSURES,
+            RendererConstant::HTML_CLOSURES,
             $colors,
             $mbOld->get()
         );
 
         $new[$newIndex] = str_replace(
-            \Jfcherng\Diff\Renderer\RendererConstant::HTML_CLOSURES,
+            RendererConstant::HTML_CLOSURES,
             $colors,
             $mbNew->get()
         );

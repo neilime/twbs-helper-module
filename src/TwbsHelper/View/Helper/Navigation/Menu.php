@@ -2,6 +2,12 @@
 
 namespace TwbsHelper\View\Helper\Navigation;
 
+use Laminas\Navigation\AbstractContainer;
+use Laminas\Navigation\Page\AbstractPage;
+use Laminas\Stdlib\ArrayUtils;
+use TwbsHelper\Navigation\Page\DropdownPage;
+use RecursiveIteratorIterator;
+
 /**
  * Helper for rendering abbreviations
  */
@@ -42,7 +48,7 @@ class Menu extends \Laminas\View\Helper\Navigation\Menu
     }
 
     /**
-     * @param \Laminas\Navigation\AbstractContainer|string|null $container
+     * @param AbstractContainer|string|null $container
      */
     protected function prepareContainer(&$container = null)
     {
@@ -53,14 +59,14 @@ class Menu extends \Laminas\View\Helper\Navigation\Menu
         $this->parseContainer($container);
 
         // Create iterator
-        $iterator = new \RecursiveIteratorIterator(
+        $iterator = new RecursiveIteratorIterator(
             $container,
-            \RecursiveIteratorIterator::SELF_FIRST
+            RecursiveIteratorIterator::SELF_FIRST
         );
 
         foreach ($iterator as $page) {
             $pageClasses = ['nav-item'];
-            if ($page instanceof \TwbsHelper\Navigation\Page\DropdownPage) {
+            if ($page instanceof DropdownPage) {
                 $pageClasses[] = 'dropdown';
             }
 
@@ -243,7 +249,7 @@ class Menu extends \Laminas\View\Helper\Navigation\Menu
         $attributes->merge(['class' => $classes]);
 
         if ($isRoot) {
-            if (preg_match('/-nav(\s|-[a-z]+|$)/', $attributes['class'])) {
+            if (preg_match('/-nav(\s|-[a-z]+|$)/', (string) $attributes['class'])) {
                 $attributes->offsetGet('class')->remove('nav');
             }
         }
@@ -255,19 +261,15 @@ class Menu extends \Laminas\View\Helper\Navigation\Menu
     {
         $count = 1;
         while ($count) {
-            $content = preg_replace('/(<)ul([^>]*>[\s\S]*<\/)ul([^>]*>)/imU', '$1nav$2nav$3', $content, -1, $count);
+            $content = preg_replace('/(<)ul([^>]*>[\s\S]*<\/)ul([^>]*>)/imU', '$1nav$2nav$3', (string) $content, -1, $count);
         }
 
         $count = 1;
         while ($count) {
-            $content = preg_replace_callback('/(<li[^>]*>\s*)(\S(.*\S)?)(\s*<\/li[^>]*>)/ismU', function ($matches) {
-                return implode(PHP_EOL, array_map(function ($line) {
-                    return preg_replace('/^    /', '', $line);
-                }, explode(
-                    PHP_EOL,
-                    $matches[2]
-                )));
-            }, $content, -1, $count);
+            $content = preg_replace_callback('/(<li[^>]*>\s*)(\S(.*\S)?)(\s*<\/li[^>]*>)/ismU', fn ($matches) => implode(PHP_EOL, array_map(fn ($line) => preg_replace('/^    /', '', (string) $line), explode(
+                PHP_EOL,
+                (string) $matches[2]
+            ))), (string) $content, -1, $count);
         }
 
         return $content;
@@ -310,7 +312,7 @@ class Menu extends \Laminas\View\Helper\Navigation\Menu
             $content = preg_replace(
                 '/(<a.*aria-current=")(true)(".*)/imU',
                 '$1page$3',
-                $content
+                (string) $content
             );
         }
         return $content;
@@ -322,13 +324,13 @@ class Menu extends \Laminas\View\Helper\Navigation\Menu
      *
      * Overrides {@link AbstractHelper::htmlify()}.
      *
-     * @param \Laminas\Navigation\Page\AbstractPage $page page to generate HTML for
+     * @param AbstractPage $page page to generate HTML for
      * @param bool $escapeLabel        Whether or not to escape the label
      * @param bool $addClassToListItem Whether or not to add the page class to the list item
      * @return string
      */
     public function htmlify(
-        \Laminas\Navigation\Page\AbstractPage $page,
+        AbstractPage $page,
         $escapeLabel = true,
         $addClassToListItem = false
     ) {
@@ -342,12 +344,12 @@ class Menu extends \Laminas\View\Helper\Navigation\Menu
             $classes[] = 'disabled';
         }
 
-        if ($page instanceof \TwbsHelper\Navigation\Page\DropdownPage) {
+        if ($page instanceof DropdownPage) {
             $classes[] = 'dropdown-toggle';
             $dropdownOptions = $page->getDropdown();
             $dropdownAttributes = $this->getView()->plugin('htmlattributes')->__invoke(['class' => $classes]);
 
-            if (\Laminas\Stdlib\ArrayUtils::isList($dropdownOptions)) {
+            if (ArrayUtils::isList($dropdownOptions)) {
                 $dropdownOptions = ['items' => $dropdownOptions];
             } else {
                 if (!empty($dropdownOptions['attributes'])) {
@@ -363,7 +365,7 @@ class Menu extends \Laminas\View\Helper\Navigation\Menu
                     'disable_twbs' => true,
                     'tag' => 'a',
                     'label' => $page->getLabel(),
-                    'dropdown' => \Laminas\Stdlib\ArrayUtils::merge(
+                    'dropdown' => ArrayUtils::merge(
                         ['disable_container' => true],
                         $dropdownOptions
                     ),
@@ -371,7 +373,7 @@ class Menu extends \Laminas\View\Helper\Navigation\Menu
                 'attributes' => $dropdownAttributes,
             ]);
 
-            return trim($this->getView()->plugin('htmlElement')->addProperIndentation(
+            return trim((string) $this->getView()->plugin('htmlElement')->addProperIndentation(
                 $dropdownContent,
                 true,
                 2

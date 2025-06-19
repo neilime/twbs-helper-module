@@ -2,10 +2,13 @@
 
 namespace TwbsHelper\View\Helper;
 
+use Laminas\Stdlib\ArrayUtils;
+use InvalidArgumentException;
+
 /**
  * Helper for numbered and unnumbered lists
  */
-class HtmlList extends \TwbsHelper\View\Helper\AbstractHtmlElement
+class HtmlList extends AbstractHtmlElement
 {
     protected static $allowedOptions = ['tag', 'inline', 'unstyled', 'numbered'];
 
@@ -16,13 +19,13 @@ class HtmlList extends \TwbsHelper\View\Helper\AbstractHtmlElement
      * @param  iterable   $optionsAndAttributes Attributes for the ol/ul tag.
      * If class attributes contains "list-inline", so the li will have the class "list-inline-item"
      * @param  boolean $escape     Escape the items.
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string The list XHTML.
      */
     public function __invoke(iterable $items, iterable $optionsAndAttributes = [], bool $escape = true): string
     {
         if (empty($items)) {
-            throw new \InvalidArgumentException('Argument "$items" must not be empty');
+            throw new InvalidArgumentException('Argument "$items" must not be empty');
         }
 
         $listContent = '';
@@ -95,7 +98,7 @@ class HtmlList extends \TwbsHelper\View\Helper\AbstractHtmlElement
     ): string {
 
 
-        if (\Laminas\Stdlib\ArrayUtils::isList($item)) {
+        if (ArrayUtils::isList($item)) {
             $itemContent = $this->renderNestedListItem(
                 $item,
                 $itemContent,
@@ -162,11 +165,9 @@ class HtmlList extends \TwbsHelper\View\Helper\AbstractHtmlElement
         if (is_scalar($item)) {
             $item = ['content' => $item];
         } elseif (!is_iterable($item)) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 '"$item" expects a scalar or an iterable value, "%s" given',
-                is_object($item)
-                    ? get_class($item)
-                    : gettype($item)
+                get_debug_type($item)
             ));
         }
 

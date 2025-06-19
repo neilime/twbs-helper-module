@@ -2,10 +2,13 @@
 
 namespace TwbsHelper\View\Helper;
 
+use TwbsHelper\View\HtmlAttributesSet;
+use InvalidArgumentException;
+
 /**
  * Helper for rendering offcanvas
  */
-class Offcanvas extends \TwbsHelper\View\Helper\AbstractHtmlElement
+class Offcanvas extends AbstractHtmlElement
 {
     public const PLACEMENT_START = 'start';
     public const PLACEMENT_END = 'end';
@@ -84,9 +87,9 @@ class Offcanvas extends \TwbsHelper\View\Helper\AbstractHtmlElement
             if (is_scalar($titleOptions)) {
                 $titleOptions = ['content' => $titleOptions];
             } elseif (!is_iterable($titleOptions)) {
-                throw new \InvalidArgumentException(sprintf(
+                throw new InvalidArgumentException(sprintf(
                     '["offcanvas"]["header"]["title"] option expects a string or an iterable, "%s" given',
-                    is_object($titleOptions) ? get_class($titleOptions) : gettype($titleOptions)
+                    get_debug_type($titleOptions)
                 ));
             }
 
@@ -133,7 +136,7 @@ class Offcanvas extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
     protected function renderTriggers(
         iterable $triggers,
-        string $id = null
+        ?string $id = null
     ): string {
         $content = '';
         foreach ($triggers as $trigger) {
@@ -149,7 +152,7 @@ class Offcanvas extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
     protected function renderTrigger(
         iterable $trigger,
-        string $id = null
+        ?string $id = null
     ): string {
 
         $triggerAttributes = [
@@ -180,7 +183,7 @@ class Offcanvas extends \TwbsHelper\View\Helper\AbstractHtmlElement
     }
 
 
-    protected function renderBody(string $content, \TwbsHelper\View\HtmlAttributesSet $attributes, bool $escape): string
+    protected function renderBody(string $content, HtmlAttributesSet $attributes, bool $escape): string
     {
         $attributes->merge(['class' => ['offcanvas-body']]);
 
@@ -226,7 +229,7 @@ class Offcanvas extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 self::$allowedPlacements
             )
         ) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'Given "placement" option "%s" is not supported. Expects one of these values "%s"',
                 $placement,
                 implode(',', self::$allowedPlacements)

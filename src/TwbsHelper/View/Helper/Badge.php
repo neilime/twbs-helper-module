@@ -2,10 +2,13 @@
 
 namespace TwbsHelper\View\Helper;
 
+use TwbsHelper\View\HtmlAttributesSet;
+use InvalidArgumentException;
+
 /**
  * Helper for rendering badges
  */
-class Badge extends \TwbsHelper\View\Helper\AbstractHtmlElement
+class Badge extends AbstractHtmlElement
 {
     protected static $allowedOptions = [
         'hidden_content',
@@ -32,7 +35,7 @@ class Badge extends \TwbsHelper\View\Helper\AbstractHtmlElement
      * @param string|array $optionsAndAttributes options and Html attributes of the "<span>" element
      * @param boolean $escape     True espace html content '$content'. Default True
      * @return string The badge XHTML.
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function __invoke(
         string $content,
@@ -68,7 +71,7 @@ class Badge extends \TwbsHelper\View\Helper\AbstractHtmlElement
     protected function prepareAttributes(
         iterable $optionsAndAttributes,
         string $content
-    ): \TwbsHelper\View\HtmlAttributesSet {
+    ): HtmlAttributesSet {
         $optionsAndAttributes = $this->getView()->plugin('htmlattributes')
             ->__invoke($optionsAndAttributes)
             ->merge(['class' => ['badge']]);
@@ -81,7 +84,7 @@ class Badge extends \TwbsHelper\View\Helper\AbstractHtmlElement
         return $optionsAndAttributes->offsetsUnset(static::$allowedOptions);
     }
 
-    protected function prepareAttributesForVariant(\TwbsHelper\View\HtmlAttributesSet $optionsAndAttributes)
+    protected function prepareAttributesForVariant(HtmlAttributesSet $optionsAndAttributes)
     {
         $optionsAndAttributes['class']->merge(
             $this->getView()->plugin('htmlClass')->plugin('variant')->getClassesFromOption(
@@ -91,7 +94,7 @@ class Badge extends \TwbsHelper\View\Helper\AbstractHtmlElement
         );
     }
 
-    protected function prepareAttributesForText(\TwbsHelper\View\HtmlAttributesSet $optionsAndAttributes)
+    protected function prepareAttributesForText(HtmlAttributesSet $optionsAndAttributes)
     {
         if (empty($optionsAndAttributes['text_variant'])) {
             return;
@@ -105,7 +108,7 @@ class Badge extends \TwbsHelper\View\Helper\AbstractHtmlElement
         );
     }
 
-    protected function prepareAttributesForType(\TwbsHelper\View\HtmlAttributesSet $optionsAndAttributes)
+    protected function prepareAttributesForType(HtmlAttributesSet $optionsAndAttributes)
     {
         $type = $optionsAndAttributes['type'] ?? self::TYPE_SIMPLE;
         if ($type == self::TYPE_PILL) {
@@ -114,7 +117,7 @@ class Badge extends \TwbsHelper\View\Helper\AbstractHtmlElement
     }
 
     protected function prepareAttributesForPositioned(
-        \TwbsHelper\View\HtmlAttributesSet $optionsAndAttributes,
+        HtmlAttributesSet $optionsAndAttributes,
         string $content
     ) {
         if (empty($optionsAndAttributes['positioned'])) {

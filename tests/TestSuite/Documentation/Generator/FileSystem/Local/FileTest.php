@@ -2,23 +2,28 @@
 
 namespace TestSuite\Documentation\Generator\FileSystem\Local;
 
-class FileTest extends \PHPUnit\Framework\TestCase
+use Documentation\Generator\FileSystem\Local\File;
+use PHPUnit\Framework\TestCase;
+use org\bovigo\vfs\vfsStream;
+use org\bovigo\vfs\vfsStreamDirectory;
+
+class FileTest extends TestCase
 {
     /**
-     * @var \Documentation\Generator\FileSystem\Local\File
+     * @var File
      */
     protected $file;
 
     /**
-     * @var \org\bovigo\vfs\vfsStreamDirectory
+     * @var vfsStreamDirectory
      */
     protected $root;
 
     protected function setUp(): void
     {
-        $this->root = \org\bovigo\vfs\vfsStream::setup('exampleDir');
+        $this->root = vfsStream::setup('exampleDir');
 
-        $this->file = new \Documentation\Generator\FileSystem\Local\File();
+        $this->file = new File();
     }
 
     public function testDirExistsShouldReturnTrueWhenDirectoryExists()
@@ -29,7 +34,7 @@ class FileTest extends \PHPUnit\Framework\TestCase
     public function testRemoveDirShouldRemoveTheGivenDIrectory()
     {
 
-        \org\bovigo\vfs\vfsStream::create([
+        vfsStream::create([
             'test' => [
                 'test.txt' => 'test',
             ],
@@ -47,7 +52,7 @@ class FileTest extends \PHPUnit\Framework\TestCase
     public function testRemoveDirShouldThrowsAnExceptionWhenDirPathIsInvalid()
     {
 
-        \org\bovigo\vfs\vfsStream::create([
+        vfsStream::create([
             'test' => [
                 'test.txt' => 'test',
             ],
@@ -69,7 +74,7 @@ class FileTest extends \PHPUnit\Framework\TestCase
     {
         $fileName = 'test.txt';
         $filePath = $this->root->url() . DIRECTORY_SEPARATOR . $fileName;
-        \org\bovigo\vfs\vfsStream::create([
+        vfsStream::create([
             $fileName => 'test',
         ], $this->root);
         $this->assertTrue($this->file->fileExists($filePath));
@@ -86,7 +91,7 @@ class FileTest extends \PHPUnit\Framework\TestCase
         $fileName = 'test.txt';
         $fileContent = 'test content';
         $filePath = $this->root->url() . DIRECTORY_SEPARATOR . $fileName;
-        \org\bovigo\vfs\vfsStream::create([
+        vfsStream::create([
             $fileName => $fileContent,
         ], $this->root);
         $this->assertEquals($fileContent, $this->file->readFile($filePath));
@@ -126,7 +131,7 @@ class FileTest extends \PHPUnit\Framework\TestCase
         $fileName = 'test.txt';
         $filePath = $this->root->url() . DIRECTORY_SEPARATOR . $fileName;
         $content = 'test content';
-        \org\bovigo\vfs\vfsStream::create([
+        vfsStream::create([
             $fileName => $content,
         ], $this->root);
 
@@ -144,7 +149,7 @@ class FileTest extends \PHPUnit\Framework\TestCase
         $fileName = 'test.txt';
         $filePath = $this->root->url() . DIRECTORY_SEPARATOR . $fileName;
         $content = 'test content';
-        \org\bovigo\vfs\vfsStream::create([
+        vfsStream::create([
             $fileName => $content,
         ], $this->root);
 

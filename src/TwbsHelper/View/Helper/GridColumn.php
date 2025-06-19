@@ -2,6 +2,8 @@
 
 namespace TwbsHelper\View\Helper;
 
+use InvalidArgumentException;
+
 /**
  * Generates a grid 'column' element
  *
@@ -10,7 +12,7 @@ namespace TwbsHelper\View\Helper;
  * @param  boolean $escape True espace html content '$content'. Default True
  * @return string The column XHTML.
  */
-class GridColumn extends \TwbsHelper\View\Helper\AbstractHtmlElement
+class GridColumn extends AbstractHtmlElement
 {
     public const ORDER_FIRST = 'first';
     public const ORDER_LAST = 'last';
@@ -30,7 +32,7 @@ class GridColumn extends \TwbsHelper\View\Helper\AbstractHtmlElement
     ];
 
     public function __invoke(
-        string $content = null,
+        ?string $content = null,
         iterable $optionsAndAttributes = [],
         bool $escape = true
     ): string {
@@ -102,7 +104,7 @@ class GridColumn extends \TwbsHelper\View\Helper\AbstractHtmlElement
                     || $order > 12
                 )
             ) {
-                throw new \InvalidArgumentException(sprintf(
+                throw new InvalidArgumentException(sprintf(
                     'Given "order" option "%s" is not supported. ' .
                         'Expects one of these values "%s", or an integer between 1 and 12',
                     $order,

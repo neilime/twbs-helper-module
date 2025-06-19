@@ -2,17 +2,22 @@
 
 namespace TestSuite\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper;
 
-class VariantTest extends \PHPUnit\Framework\TestCase
+use PHPUnit\Framework\TestCase;
+use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass;
+use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Variant;
+use TwbsHelper\View\HtmlClassAttributeSet;
+
+class VariantTest extends TestCase
 {
     /**
-     * @var \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Variant
+     * @var Variant
      */
     protected $helper;
 
     protected function setUp(): void
     {
-        $this->helper = new \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Variant();
-        $this->helper->setHtmlClassHelper(new \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass());
+        $this->helper = new Variant();
+        $this->helper->setHtmlClassHelper(new HtmlClass());
     }
 
     public function testGetClassesFromOption()
@@ -22,7 +27,7 @@ class VariantTest extends \PHPUnit\Framework\TestCase
 
     public function testClassesIncludeVariantReturnsTrueWhenClassesHadAVariantClass()
     {
-        $classes = new \TwbsHelper\View\HtmlClassAttributeSet(['btn-light']);
+        $classes = new HtmlClassAttributeSet(['btn-light']);
         $this->assertTrue($this->helper->classesIncludeVariant($classes, 'btn', 'outline'));
     }
 

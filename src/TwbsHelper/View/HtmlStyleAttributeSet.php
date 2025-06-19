@@ -2,13 +2,25 @@
 
 namespace TwbsHelper\View;
 
+use Laminas\Stdlib\ArrayUtils;
+use ArrayObject;
+use Stringable;
+
 /**
- * Class for storing and processing HTML class attribute.
+ * Class for storing and processing HTML style attribute.
+ * @extends ArrayObject<string, string>
  */
-class HtmlStyleAttributeSet extends \ArrayObject
+class HtmlStyleAttributeSet extends ArrayObject implements Stringable
 {
     public const ATTRIBUTE_NAME = 'style';
 
+    /**
+     * Constructor.
+     *
+     * @param string|iterable<string, string> $styles
+     *   If a string is provided, it should be a CSS style string (e.g., "color: red; font-size: 12px;").
+     *   If an iterable is provided, it should contain key-value pairs of styles.
+     */
     public function __construct($styles = [])
     {
         if (is_string($styles)) {
@@ -24,12 +36,13 @@ class HtmlStyleAttributeSet extends \ArrayObject
 
     /**
      * Merge styles with existing styles.
+     * @param iterable<string, string> $styles
      */
     public function merge(iterable $styles): self
     {
         $this->exchangeArray(array_merge(
             $this->getArrayCopy(),
-            \Laminas\Stdlib\ArrayUtils::iteratorToArray($styles)
+            ArrayUtils::iteratorToArray($styles)
         ));
         $this->cleanAttribute();
 
@@ -58,7 +71,7 @@ class HtmlStyleAttributeSet extends \ArrayObject
 
         $cleanedStyles = [];
         foreach ($styles as $key => $value) {
-            $cleanedStyles[strtolower(trim($key))] = trim($value);
+            $cleanedStyles[strtolower(trim($key))] = trim((string) $value);
         }
 
         ksort($cleanedStyles);

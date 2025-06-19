@@ -2,10 +2,13 @@
 
 namespace TestSuite\TwbsHelper\View\Helper;
 
-class CarouselTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
+use TestSuite\TwbsHelper\AbstractViewHelperTestCase;
+use TwbsHelper\View\Helper\Carousel;
+
+class CarouselTest extends AbstractViewHelperTestCase
 {
     /**
-     * @var \TwbsHelper\View\Helper\Carousel
+     * @var Carousel
      */
     protected $helper = 'carousel';
 
@@ -116,7 +119,7 @@ class CarouselTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 ['test'],
                 [
                     'id' => 'test-carousel',
-                    'controls' => [\TwbsHelper\View\Helper\Carousel::CONTROL_PREVIOUS => 'Previous'],
+                    'controls' => [Carousel::CONTROL_PREVIOUS => 'Previous'],
                 ]
             )
         );

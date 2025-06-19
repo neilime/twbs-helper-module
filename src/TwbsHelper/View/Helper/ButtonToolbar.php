@@ -3,21 +3,26 @@
 namespace TwbsHelper\View\Helper;
 
 use LogicException;
+use Laminas\Form\ElementInterface;
+use Laminas\Form\Factory;
+use TwbsHelper\Form\View\Helper\FormRow;
+use TwbsHelper\Options\ModuleOptions;
+use InvalidArgumentException;
 
-class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
+class ButtonToolbar extends AbstractHtmlElement
 {
     /**
-     * @var \TwbsHelper\View\Helper\ButtonGroup|null
+     * @var ButtonGroup|null
      */
     protected $buttonGroupHelper;
 
     /**
-     * @var \TwbsHelper\Form\View\Helper\FormRow|null
+     * @var FormRow|null
      */
     protected $formRowHelper;
 
     /**
-     * @var \TwbsHelper\View\Helper\HtmlElement|null
+     * @var HtmlElement|null
      */
     protected $htmlElementHelper;
 
@@ -25,7 +30,7 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
      *
      * @return ButtonGroup|string
      */
-    public function __invoke(array $items = null, array $buttonToolbarOptions = null)
+    public function __invoke(?array $items = null, ?array $buttonToolbarOptions = null)
     {
         return $items ? $this->render($items, $buttonToolbarOptions) : $this;
     }
@@ -35,7 +40,7 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
      *
      * @throws LogicException
      */
-    public function render(array $items, array $buttonToolbarOptions = null): string
+    public function render(array $items, ?array $buttonToolbarOptions = null): string
     {
         // Button group container attributes
         $classes = ['btn-toolbar'];
@@ -67,12 +72,12 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
             if (is_array($item)) {
                 $itemMarkup = $this->renderToolbarItemSpec($item);
-            } elseif ($item instanceof \Laminas\Form\ElementInterface) {
+            } elseif ($item instanceof ElementInterface) {
                 $itemMarkup = $this->renderToolbarItem($item);
             } else {
-                throw new \InvalidArgumentException(sprintf(
+                throw new InvalidArgumentException(sprintf(
                     'Item expects an instanceof \Laminas\Form\ElementInterface or an array, "%s" given',
-                    is_object($item) ? get_class($item) : gettype($item)
+                    get_debug_type($item)
                 ));
             }
 
@@ -85,7 +90,7 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
     /**
      * Render toolbar item markup
      */
-    protected function renderToolbarItem(\Laminas\Form\ElementInterface $element): string
+    protected function renderToolbarItem(ElementInterface $element): string
     {
         $element->setOption('form_group', false);
         return $this->getFormRowHelper()->__invoke($element);
@@ -100,15 +105,15 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
             return   $this->getButtonGroupHelper()->__invoke($item['buttons'], $item['options'] ?? []);
         }
 
-        $formFactory = new \Laminas\Form\Factory();
+        $formFactory = new Factory();
         $item = $formFactory->create($item);
 
         return $this->renderToolbarItem($item);
     }
 
-    public function getButtonGroupHelper(): \TwbsHelper\View\Helper\ButtonGroup
+    public function getButtonGroupHelper(): ButtonGroup
     {
-        if ($this->buttonGroupHelper instanceof \TwbsHelper\View\Helper\ButtonGroup) {
+        if ($this->buttonGroupHelper instanceof ButtonGroup) {
             return $this->buttonGroupHelper;
         }
 
@@ -117,12 +122,12 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
             return $this->buttonGroupHelper = $view->plugin('buttonGroup');
         }
 
-        return $this->buttonGroupHelper = new \TwbsHelper\View\Helper\ButtonGroup();
+        return $this->buttonGroupHelper = new ButtonGroup();
     }
 
-    public function getFormRowHelper(): \TwbsHelper\Form\View\Helper\FormRow
+    public function getFormRowHelper(): FormRow
     {
-        if ($this->formRowHelper instanceof \TwbsHelper\Form\View\Helper\FormRow) {
+        if ($this->formRowHelper instanceof FormRow) {
             return $this->formRowHelper;
         }
 
@@ -131,14 +136,14 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
             return $this->formRowHelper = $view->plugin('form_row');
         }
 
-        return $this->formRowHelper = new \TwbsHelper\Form\View\Helper\FormRow(
-            new \TwbsHelper\Options\ModuleOptions()
+        return $this->formRowHelper = new FormRow(
+            new ModuleOptions()
         );
     }
 
-    public function getHtmlElementHelper(): \TwbsHelper\View\Helper\HtmlElement
+    public function getHtmlElementHelper(): HtmlElement
     {
-        if ($this->htmlElementHelper instanceof \TwbsHelper\View\Helper\HtmlElement) {
+        if ($this->htmlElementHelper instanceof HtmlElement) {
             return $this->htmlElementHelper;
         }
 
@@ -147,6 +152,6 @@ class ButtonToolbar extends \TwbsHelper\View\Helper\AbstractHtmlElement
             return $this->htmlElementHelper = $view->plugin('htmlElement');
         }
 
-        return $this->htmlElementHelper = new \TwbsHelper\View\Helper\HtmlElement();
+        return $this->htmlElementHelper = new HtmlElement();
     }
 }

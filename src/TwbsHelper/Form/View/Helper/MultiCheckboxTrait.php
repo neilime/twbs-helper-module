@@ -2,23 +2,29 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
+use Laminas\Form\ElementInterface;
+use Laminas\Form\Element\MultiCheckbox;
+use TwbsHelper\Form\View\ElementHelperTrait;
+use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Variant;
+use InvalidArgumentException;
+
 /**
  * @phpstan-import-type ValueOptionSpec from \Laminas\Form\Element\MultiCheckbox
  * @phpstan-type TwbsValueOptionSpec ValueOptionSpec
  */
 trait MultiCheckboxTrait
 {
-    use \TwbsHelper\Form\View\ElementHelperTrait;
+    use ElementHelperTrait;
 
     private static $TMP_SEPARATOR = '[SEPARATOR]';
 
     /**
      * Render a form <input type="radio"> element from the provided $element
      */
-    public function render(\Laminas\Form\ElementInterface $element): string
+    public function render(ElementInterface $element): string
     {
-        if (!$element instanceof \Laminas\Form\Element\MultiCheckbox) {
-            throw new \InvalidArgumentException(sprintf(
+        if (!$element instanceof MultiCheckbox) {
+            throw new InvalidArgumentException(sprintf(
                 '%s requires that the element is of type \Laminas\Form\Element\MultiCheckbox',
                 __METHOD__
             ));
@@ -70,7 +76,7 @@ trait MultiCheckboxTrait
         return $content;
     }
 
-    protected function prepareElement(\Laminas\Form\Element\MultiCheckbox $multiCheckbox)
+    protected function prepareElement(MultiCheckbox $multiCheckbox)
     {
         if ($multiCheckbox->getOption('disable_twbs')) {
             return;
@@ -85,7 +91,7 @@ trait MultiCheckboxTrait
         $this->prepareValueOptions($multiCheckbox);
     }
 
-    protected function prepareValueOptions(\Laminas\Form\Element\MultiCheckbox $multiCheckbox)
+    protected function prepareValueOptions(MultiCheckbox $multiCheckbox)
     {
         $valueOptions = $multiCheckbox->getValueOptions();
 
@@ -130,7 +136,7 @@ trait MultiCheckboxTrait
     }
 
     protected function getValueOptionLabelClasses(
-        \Laminas\Form\Element\MultiCheckbox $multiCheckbox,
+        MultiCheckbox $multiCheckbox,
         iterable $valueOption
     ): array {
         $labelClasses = [];
@@ -138,7 +144,7 @@ trait MultiCheckboxTrait
         if ($buttonOption) {
             $labelClasses[] = 'btn';
 
-            /** @var \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Variant $variantClassHelper **/
+            /** @var Variant $variantClassHelper **/
             $variantClassHelper = $this->getView()->plugin('htmlClass')->plugin('variant');
 
             $labelClasses[] = 'btn';
@@ -162,7 +168,7 @@ trait MultiCheckboxTrait
     }
 
 
-    protected function renderElementOption(\Laminas\Form\ElementInterface $element, string $optionContent): string
+    protected function renderElementOption(ElementInterface $element, string $optionContent): string
     {
 
         if ($element->getOption('disable_twbs') || $element->getOption('form_check_group') === false) {
@@ -171,7 +177,7 @@ trait MultiCheckboxTrait
 
         $groupClasses = ['form-check'];
 
-        if ($element->getOption('layout') === \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE) {
+        if ($element->getOption('layout') === Form::LAYOUT_INLINE) {
             $groupClasses[] = 'form-check-inline';
         }
 
