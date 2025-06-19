@@ -2,29 +2,35 @@
 
 namespace TestSuite\Documentation\Generator;
 
-class HomePageGeneratorTest extends \PHPUnit\Framework\TestCase
+use Documentation\Generator\Configuration;
+use Documentation\Generator\FileSystem\File;
+use Documentation\Generator\HomePageGenerator;
+use PHPUnit\Framework\TestCase;
+use MockObject;
+
+class HomePageGeneratorTest extends TestCase
 {
     /**
-     * @var \MockObject
+     * @var MockObject
      */
     protected $file;
 
     /**
-     * @var \Documentation\Generator\HomePageGenerator
+     * @var HomePageGenerator
      */
     protected $homePageGenerator;
 
     protected function setUp(): void
     {
-        $this->file = $this->createMock(\Documentation\Generator\FileSystem\File::class);
-        $configuration = new \Documentation\Generator\Configuration(
+        $this->file = $this->createMock(File::class);
+        $configuration = new Configuration(
             '/tmp/test-dir',
             '/tmp/test-dir/tests',
             'x.x',
             2,
             $this->file
         );
-        $this->homePageGenerator = new \Documentation\Generator\HomePageGenerator(
+        $this->homePageGenerator = new HomePageGenerator(
             $configuration,
         );
     }

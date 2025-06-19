@@ -11,8 +11,9 @@ $finder = Finder::create()
 return (new Config())
     ->setRules([
         '@PSR12' => true,
+        '@PHP84Migration' => true,
         'array_indentation' => true,
-        '@PHP83Migration' => true,
+        'global_namespace_import' => true,
     ])
     ->setFinder($finder)
     ->setUsingCache(true)

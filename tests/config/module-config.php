@@ -1,17 +1,21 @@
 <?php
 
+use Laminas\Router\Http\Segment;
+use Laminas\Router\Http\TreeRouteStack;
+use Laminas\View\Helper\Doctype;
+
 return [
     'view_manager' => [
-        'doctype' => \Laminas\View\Helper\Doctype::XHTML5,
+        'doctype' => Doctype::XHTML5,
         'template_map' => [
             'test/json' => __DIR__ . '/../view/test/json.phtml',
         ],
     ],
     'router' => [
-        'router_class' => \Laminas\Router\Http\TreeRouteStack::class,
+        'router_class' => TreeRouteStack::class,
         'routes' => [
             'test-route' => [
-                'type' => \Laminas\Router\Http\Segment::class,
+                'type' => Segment::class,
                 'options' => [
                     'route' => '/test-route[/:page]',
                 ],

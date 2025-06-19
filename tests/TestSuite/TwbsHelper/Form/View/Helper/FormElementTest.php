@@ -2,15 +2,22 @@
 
 namespace TestSuite\TwbsHelper\Form\View\Helper;
 
-class FormElementTest extends \PHPUnit\Framework\TestCase
+use Laminas\Form\Element\Email;
+use Laminas\Form\Form;
+use Laminas\View\Renderer\PhpRenderer;
+use PHPUnit\Framework\TestCase;
+use TestSuite\Bootstrap;
+use TwbsHelper\Form\View\Helper\FormElement;
+
+class FormElementTest extends TestCase
 {
     /**
-     * @var \TwbsHelper\Form\View\Helper\FormElement
+     * @var FormElement
      */
     protected $formElementHelper;
 
     /**
-     * @var \Laminas\Form\Form
+     * @var Form
      */
     private $form;
 
@@ -19,17 +26,17 @@ class FormElementTest extends \PHPUnit\Framework\TestCase
      */
     protected function setUp(): void
     {
-        $viewHelperPluginManager = \TestSuite\Bootstrap::getServiceManager()->get('ViewHelperManager');
-        $phpRenderer = new \Laminas\View\Renderer\PhpRenderer();
+        $viewHelperPluginManager = Bootstrap::getServiceManager()->get('ViewHelperManager');
+        $phpRenderer = new PhpRenderer();
         $this->formElementHelper = $viewHelperPluginManager
             ->get('formElement')
             ->setView($phpRenderer->setHelperPluginManager($viewHelperPluginManager));
 
-        $this->form = new \Laminas\Form\Form();
+        $this->form = new Form();
         $this->form->add([
             'name' => 'email',
             'id' => 'email',
-            'type' => \Laminas\Form\Element\Email::class,
+            'type' => Email::class,
             'options' => [
                 'label' => 'Your Email Address',
                 'label_attributes' => ['for' => 'email'],

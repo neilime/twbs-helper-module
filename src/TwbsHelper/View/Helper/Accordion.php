@@ -2,10 +2,14 @@
 
 namespace TwbsHelper\View\Helper;
 
+use Laminas\Stdlib\ArrayUtils;
+use TwbsHelper\View\HtmlAttributesSet;
+use InvalidArgumentException;
+
 /**
  * Helper for Accordion
  */
-class Accordion extends \TwbsHelper\View\Helper\AbstractGroup
+class Accordion extends AbstractGroup
 {
     protected static $groupClass = 'accordion';
 
@@ -14,7 +18,7 @@ class Accordion extends \TwbsHelper\View\Helper\AbstractGroup
     protected static $allowedOptions = ['flush', 'always_open'];
     protected static $allowedItemOptions = ['show'];
 
-    protected function prepareAttributes(iterable $optionsAndAttributes): \TwbsHelper\View\HtmlAttributesSet
+    protected function prepareAttributes(iterable $optionsAndAttributes): HtmlAttributesSet
     {
         $attributes = parent::prepareAttributes($optionsAndAttributes);
         if (isset($optionsAndAttributes['flush'])) {
@@ -86,16 +90,14 @@ class Accordion extends \TwbsHelper\View\Helper\AbstractGroup
         if (is_scalar($header)) {
             $headerSpec['items'][0]['options']['label'] = $header;
         } elseif (is_iterable($header)) {
-            $headerSpec = \Laminas\Stdlib\ArrayUtils::merge(
+            $headerSpec = ArrayUtils::merge(
                 $headerSpec,
-                \Laminas\Stdlib\ArrayUtils::iteratorToArray($header)
+                ArrayUtils::iteratorToArray($header)
             );
         } elseif ($header) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'Item "header" option expects a scalar or an iterable value, "%s" given',
-                is_object($header)
-                    ? get_class($header)
-                    : gettype($header)
+                get_debug_type($header)
             ));
         }
 
@@ -130,11 +132,9 @@ class Accordion extends \TwbsHelper\View\Helper\AbstractGroup
                 $body['attributes'] = [];
             }
         } else {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'Item "body" option expects a scalar or an iterable value, "%s" given',
-                is_object($body)
-                    ? get_class($body)
-                    : gettype($body)
+                get_debug_type($body)
             ));
         }
 

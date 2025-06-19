@@ -2,7 +2,9 @@
 
 namespace TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper;
 
-class JustifyContent extends \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Size
+use InvalidArgumentException;
+
+class JustifyContent extends Size
 {
     public const JUSTIFY_CONTENT_START = 'start';
     public const JUSTIFY_CONTENT_END = 'end';
@@ -52,7 +54,7 @@ class JustifyContent extends \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\He
             return;
         }
 
-        throw new \InvalidArgumentException(sprintf(
+        throw new InvalidArgumentException(sprintf(
             '"%s" option "%s" is not supported. Expects one of these values "%s"; ' .
                 'or Sized (%s) class. Example: "sm-center"',
             static::$optionName,

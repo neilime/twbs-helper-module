@@ -2,6 +2,16 @@
 
 namespace TestSuite\Documentation;
 
+use Documentation\Test\Config;
+use Documentation\Test\ConfigsLoader;
+use Documentation\Test\SnapshotService;
+use Documentation\Test\Snapshots\Drivers\HtmlDriver;
+use Laminas\Router\RouteMatch;
+use Spatie\Snapshots\MatchesSnapshots;
+use TestSuite\Bootstrap;
+use InvalidArgumentException;
+use LogicException;
+
 /**
  * Base class to perform tests according to the Bootstrap documentation : %bootstrap-url%/
  * This test class use configuration files existing in this directory.
@@ -39,7 +49,7 @@ namespace TestSuite\Documentation;
  */
 class TestCase extends \PHPUnit\Framework\TestCase
 {
-    use \Spatie\Snapshots\MatchesSnapshots;
+    use MatchesSnapshots;
 
     private $testsDirectoryPath = __DIR__ . '/Tests';
 
@@ -50,24 +60,24 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
     protected function setUp(): void
     {
-        $this->snapshotService = new \Documentation\Test\SnapshotService($this->testsDirectoryPath);
+        $this->snapshotService = new SnapshotService($this->testsDirectoryPath);
     }
 
     /**
      * Provides test cases from existing documentation test config files
      * @return array
-     * @throws \LogicException
+     * @throws LogicException
      */
     public function getTestCasesProvider()
     {
-        $application = \TestSuite\Bootstrap::getServiceManager()->get('Application');
+        $application = Bootstrap::getServiceManager()->get('Application');
         $application->bootstrap();
 
-        $routeMatch = new \Laminas\Router\RouteMatch([]);
+        $routeMatch = new RouteMatch([]);
         $routeMatch->setMatchedRouteName('test-route');
         $application->getMvcEvent()->setRouteMatch($routeMatch);
 
-        $config = new \Documentation\Test\ConfigsLoader($this->testsDirectoryPath);
+        $config = new ConfigsLoader($this->testsDirectoryPath);
         $testConfigs = $config->loadDocumentationTestConfigs();
 
         $testCases = [];
@@ -83,9 +93,9 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * @param array $testsConfig
      * @param string|null $parentTitle
      * @return array
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
-    protected function parseTestsConfig(\Documentation\Test\Config $documentationTestConfig)
+    protected function parseTestsConfig(Config $documentationTestConfig)
     {
         // Extract root tests for this tests config
         $testCases = $this->extractTestCaseFromTestConfig($documentationTestConfig);
@@ -96,7 +106,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
             // Assert that there are no duplicated tests title
             $sameKeys = array_intersect_key($parsedTestCase, $testCases);
             if ($sameKeys !== []) {
-                throw new \InvalidArgumentException(sprintf(
+                throw new InvalidArgumentException(sprintf(
                     'Argument "$testsConfig[\'tests\']" has duplicated test title: "%s"',
                     implode('", "', array_keys($sameKeys))
                 ));
@@ -113,10 +123,10 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * @param array $testConfig The test config array, expects ['rendering' => closure]
      * @param string $title The title of this test
      * @return array An empty array if no test was found, else [ $title => [rendering, expected] ]
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     protected function extractTestCaseFromTestConfig(
-        \Documentation\Test\Config $documentationTestConfig
+        Config $documentationTestConfig
     ) {
         if ($documentationTestConfig->rendering) {
             return [$documentationTestConfig->title => [$documentationTestConfig->rendering]];
@@ -131,7 +141,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      */
     public function testDocumentation($rendering)
     {
-        $renderer = \TestSuite\Bootstrap::getServiceManager()->get('ViewPhpRenderer');
+        $renderer = Bootstrap::getServiceManager()->get('ViewPhpRenderer');
 
         // Retrieve output of renderging
         ob_start();
@@ -141,7 +151,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
         $this->assertMatchesSnapshot(
             $rendering,
-            new \Documentation\Test\Snapshots\Drivers\HtmlDriver()
+            new HtmlDriver()
         );
     }
 

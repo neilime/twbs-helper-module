@@ -2,10 +2,14 @@
 
 namespace TestSuite\TwbsHelper\Form\View\Helper;
 
-class FormMultiCheckboxTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
+use Laminas\Form\Element\MultiCheckbox;
+use TestSuite\TwbsHelper\AbstractViewHelperTestCase;
+use TwbsHelper\Form\View\Helper\FormRadio;
+
+class FormMultiCheckboxTest extends AbstractViewHelperTestCase
 {
     /**
-     * @var \TwbsHelper\Form\View\Helper\FormRadio
+     * @var FormRadio
      */
     protected $helper = 'formMultiCheckbox';
 
@@ -24,7 +28,7 @@ class FormMultiCheckboxTest extends \TestSuite\TwbsHelper\AbstractViewHelperTest
                 '    <input class="form-check-input" name="test&#x5B;&#x5D;" type="checkbox" value="2"/>' . PHP_EOL .
                 '    <label>Third checkbox</label>' . PHP_EOL .
                 '</div>',
-            $this->helper->render(new \Laminas\Form\Element\MultiCheckbox(
+            $this->helper->render(new MultiCheckbox(
                 'test',
                 [
                     'label' => 'MultiCheckbox simple values text',
@@ -40,7 +44,7 @@ class FormMultiCheckboxTest extends \TestSuite\TwbsHelper\AbstractViewHelperTest
 
     public function testRenderHiddenElement()
     {
-        $multiCheckbox = new \Laminas\Form\Element\MultiCheckbox(
+        $multiCheckbox = new MultiCheckbox(
             'test',
             [
                 'label' => 'MultiCheckbox with hidden element',

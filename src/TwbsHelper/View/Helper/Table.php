@@ -2,10 +2,14 @@
 
 namespace TwbsHelper\View\Helper;
 
+use Laminas\Stdlib\ArrayUtils;
+use DomainException;
+use InvalidArgumentException;
+
 /**
  * Helper for rendering tables
  */
-class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
+class Table extends AbstractHtmlElement
 {
     /**
      * @var string
@@ -46,7 +50,7 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
      *   Default : empty
      * @param bool $escape true espace html content of cells. Default True
      * @return string The table XHTML.
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function __invoke(
         array $rows,
@@ -134,7 +138,7 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
      * @param array $rows the array of rows.
      * @param bool $escape true espace html content of cells. Default True
      * @return string The rows XHTML.
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     protected function renderTableRows(array $rows, bool $escape = true): string
     {
@@ -155,13 +159,11 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
         if (isset($rows['head'])) {
             if (!is_array($rows['head'])) {
-                throw new \InvalidArgumentException(
+                throw new InvalidArgumentException(
                     sprintf(
                         'Argument "%s" expects an array, "%s" given',
                         '$rows[\'head\']',
-                        is_object($rows['head'])
-                            ? get_class($rows['head'])
-                            : gettype($rows['head'])
+                        get_debug_type($rows['head'])
                     )
                 );
             }
@@ -172,13 +174,11 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
         if (isset($rows['body'])) {
             if (!is_array($rows['body'])) {
-                throw new \InvalidArgumentException(
+                throw new InvalidArgumentException(
                     sprintf(
                         'Argument "%s" expects an array, "%s" given',
                         '$rows[\'body\']',
-                        is_object($rows['body'])
-                            ? get_class($rows['body'])
-                            : gettype($rows['body'])
+                        get_debug_type($rows['body'])
                     )
                 );
             }
@@ -189,13 +189,11 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
         if (isset($rows['footer'])) {
             if (!is_array($rows['footer'])) {
-                throw new \InvalidArgumentException(
+                throw new InvalidArgumentException(
                     sprintf(
                         'Argument "%s" expects an array, "%s" given',
                         '$rows[\'footer\']',
-                        is_object($rows['footer'])
-                            ? get_class($rows['footer'])
-                            : gettype($rows['footer'])
+                        get_debug_type($rows['footer'])
                     )
                 );
             }
@@ -239,11 +237,11 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 'attributes' => [],
             ];
         } elseif (!is_array($caption)) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'Argument "%s" expects %s value, "%s" given',
                 '$caption',
                 'an array or a scalar',
-                is_object($caption) ? get_class($caption) : gettype($caption)
+                get_debug_type($caption)
             ));
         }
 
@@ -263,7 +261,7 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
      * @param array $groupRows the rows to be rendered
      * @param bool $escape true espace html content of cells. Default True
      * @return string The grouped rows XHTML.
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     protected function renderTableGroupRows(string $groupType, array $groupRows, bool $escape = true): string
     {
@@ -274,12 +272,10 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
         if (isset($groupRows['attributes'])) {
             $groupAttributes = $groupRows['attributes'];
             if (!is_array($groupAttributes)) {
-                throw new \InvalidArgumentException(
+                throw new InvalidArgumentException(
                     sprintf(
                         '"$groupRows[\'attributes\']" expects an array, "%s" given',
-                        is_object($groupAttributes)
-                            ? get_class($groupAttributes)
-                            : gettype($groupAttributes)
+                        get_debug_type($groupAttributes)
                     )
                 );
             }
@@ -299,20 +295,16 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
         if (isset($groupRows['rows'])) {
             $groupRows = $groupRows['rows'];
             if (!is_array($groupRows)) {
-                throw new \InvalidArgumentException(
+                throw new InvalidArgumentException(
                     sprintf(
                         '"$groupRows[\'rows\']" expects an array, "%s" given',
-                        is_object($groupRows)
-                            ? get_class($groupRows)
-                            : gettype($groupRows)
+                        get_debug_type($groupRows)
                     )
                 );
             }
         } else {
             // Rows can be a list of cells
-            $rowsAreListOfcells = !in_array(false, array_map(function ($value) {
-                return is_scalar($value) || !\Laminas\Stdlib\ArrayUtils::isList($value);
-            }, $groupRows));
+            $rowsAreListOfcells = !in_array(false, array_map(fn ($value) => is_scalar($value) || !ArrayUtils::isList($value), $groupRows));
 
             if ($rowsAreListOfcells) {
                 $groupRows = [$groupRows];
@@ -330,7 +322,7 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 $defaultCellType = self::TABLE_DATA;
                 break;
             default:
-                throw new \DomainException(sprintf(
+                throw new DomainException(sprintf(
                     'Argument "%s" "%s" is not supported',
                     '$groupType',
                     $groupType,
@@ -369,19 +361,17 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
      */
     protected function renderTableRow(
         array $row,
-        string $defaultCellType = null,
+        ?string $defaultCellType = null,
         bool $escape = true
     ): string {
 
         if (isset($row['attributes'])) {
             $rowAttributes = $row['attributes'];
             if (!is_array($rowAttributes)) {
-                throw new \InvalidArgumentException(sprintf(
+                throw new InvalidArgumentException(sprintf(
                     'Argument "%s" expects an array, "%s" given',
                     '$row[\'attributes\']',
-                    is_object($rowAttributes)
-                        ? get_class($rowAttributes)
-                        : gettype($rowAttributes)
+                    get_debug_type($rowAttributes)
                 ));
             }
 
@@ -408,10 +398,10 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
         if (isset($row['cells'])) {
             $row = $row['cells'];
             if (!is_array($row)) {
-                throw new \InvalidArgumentException(sprintf(
+                throw new InvalidArgumentException(sprintf(
                     'Argument "%s" expects an array, "%s" given',
                     '$row[\'cells\']',
-                    is_object($row) ? get_class($row) : gettype($row)
+                    get_debug_type($row)
                 ));
             }
         }
@@ -449,19 +439,19 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
      * @param boolean $isFirstCol weither the given cell is the first cell in the row
      * @param boolean $escape true espace html content of cells. Default True
      * @return string The cell XHTML.
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function renderTableCell(
         $cell,
-        string $defaultCellType = null,
-        bool $isFirstCol,
+        ?string $defaultCellType = null,
+        bool $isFirstCol = true,
         bool $escape = true
     ): string {
 
         $cell = $this->defineCellStructure($cell, $defaultCellType, $isFirstCol);
 
         if (!isset($cell['data'])) {
-            throw new \InvalidArgumentException('Argument "$cell[\'data\']" is undefined');
+            throw new InvalidArgumentException('Argument "$cell[\'data\']" is undefined');
         }
 
         if (is_array($cell['data'])) {
@@ -469,25 +459,21 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
         } elseif (is_scalar($cell['data'])) {
             $cellData = $cell['data'];
         } else {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'Argument "$cell[\'data\']" expects an array or a scalar value, "%s" given',
-                is_object($cell['data'])
-                    ? get_class($cell['data'])
-                    : gettype($cell['data'])
+                get_debug_type($cell['data'])
             ));
         }
 
         if (!isset($cell['type'])) {
-            throw new \InvalidArgumentException('Argument "$cell[\'type\']" is undefined');
+            throw new InvalidArgumentException('Argument "$cell[\'type\']" is undefined');
         }
 
         $cellType = $cell['type'];
         if (!is_string($cellType)) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'Argument "$cell[\'type\']" expects a string, "%s" given',
-                is_object($cellType)
-                    ? get_class($cellType)
-                    : gettype($cellType)
+                get_debug_type($cellType)
             ));
         }
 
@@ -495,12 +481,10 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
         if (isset($cell['attributes'])) {
             $attributes = $cell['attributes'];
             if (!is_array($attributes)) {
-                throw new \InvalidArgumentException(sprintf(
+                throw new InvalidArgumentException(sprintf(
                     'Argument "$cell[\'attributes\']" expects an array, ' .
                         '"%s" given',
-                    is_object($attributes)
-                        ? get_class($attributes)
-                        : gettype($attributes)
+                    get_debug_type($attributes)
                 ));
             }
         }
@@ -528,8 +512,8 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
     protected function defineCellStructure(
         $cell,
-        string $defaultCellType = null,
-        bool $isFirstCol
+        ?string $defaultCellType = null,
+        bool $isFirstCol = true
     ): array {
         if (is_scalar($cell)) {
             $cell = [
@@ -538,23 +522,21 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
             ];
         } elseif (is_array($cell)) {
             if (!isset($cell['data'])) {
-                throw new \InvalidArgumentException('Argument "$cell[\'data\']" is undefined');
+                throw new InvalidArgumentException('Argument "$cell[\'data\']" is undefined');
             }
 
             if (!isset($cell['attributes'])) {
                 $cell['attributes'] = [];
             } elseif (!is_array($cell['attributes'])) {
-                throw new \InvalidArgumentException(sprintf(
+                throw new InvalidArgumentException(sprintf(
                     'Argument "$cell[\'attributes\']" expects an array, "%s" given',
-                    is_object($cell['attributes'])
-                        ? get_class($cell['attributes'])
-                        : gettype($cell['attributes'])
+                    get_debug_type($cell['attributes'])
                 ));
             }
         } else {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'Argument "$cell" expects an array or a scalar value, "%s" given',
-                get_class($cell)
+                $cell::class
             ));
         }
 
@@ -587,7 +569,7 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 $defaultCellType = $isFirstCol ? self::TABLE_H : self::TABLE_DATA;
                 break;
             default:
-                throw new \DomainException(sprintf(
+                throw new DomainException(sprintf(
                     'Argument "%s" "%s" is not supported',
                     '$defaultCellType',
                     $defaultCellType,
@@ -603,7 +585,7 @@ class Table extends \TwbsHelper\View\Helper\AbstractHtmlElement
     protected function getAlignmentClass(string $alignment): string
     {
         if (!in_array($alignment, self::$allowedAlignments)) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'Given "align" option "%s" is not supported. Expects one of these values "%s"',
                 $alignment,
                 implode(',', self::$allowedAlignments)

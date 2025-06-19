@@ -5,7 +5,7 @@ namespace TwbsHelper\View\Helper;
 /**
  * Helper for rendering containers
  */
-class Container extends \TwbsHelper\View\Helper\AbstractHtmlElement
+class Container extends AbstractHtmlElement
 {
     /**
      * Generates a 'container' element
@@ -22,20 +22,14 @@ class Container extends \TwbsHelper\View\Helper\AbstractHtmlElement
         iterable $attributes = [],
         bool $escape = true
     ) {
-        switch (true) {
-            case $container === true:
-                $containerClasses = ['container'];
-                break;
-            case $container === 'fluid':
-                $containerClasses = ['container-' . $container];
-                break;
-            default:
-                $containerClasses = $this->getView()->plugin('htmlClass')->plugin('size')->getClassesFromOption(
-                    $container,
-                    'container'
-                );
-                break;
-        }
+        $containerClasses = match (true) {
+            $container === true => ['container'],
+            $container === 'fluid' => ['container-' . $container],
+            default => $this->getView()->plugin('htmlClass')->plugin('size')->getClassesFromOption(
+                $container,
+                'container'
+            ),
+        };
 
         $attributes = $this->getView()->plugin('htmlattributes')
             ->__invoke($attributes)

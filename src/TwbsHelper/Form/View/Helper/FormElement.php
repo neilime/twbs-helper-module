@@ -2,32 +2,44 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
+use Laminas\Form\ElementInterface;
+use Laminas\Form\Element\Collection;
+use TwbsHelper\Form\View\ElementHelperTrait;
+use TwbsHelper\Options\ModuleOptions;
+use Laminas\Form\Element\Button;
+use Laminas\Form\Element\Captcha;
+use Laminas\Form\Element\Csrf;
+use Laminas\Form\Element\DateSelect;
+use Laminas\Form\Element\DateTimeSelect;
+use Laminas\Form\Element\File;
+use Laminas\Form\Element\MonthSelect;
+
 class FormElement extends \Laminas\Form\View\Helper\FormElement
 {
-    use \TwbsHelper\Form\View\ElementHelperTrait;
+    use ElementHelperTrait;
 
     // Hold configurable options
     protected $options;
 
     // Instance map to view helper
     protected $classMap = [
-        'Laminas\Form\Element\File'                => 'formfile',
-        'Laminas\Form\Element\Button'              => 'formbutton',
-        'Laminas\Form\Element\Captcha'             => 'formcaptcha',
-        'Laminas\Form\Element\Csrf'                => 'formhidden',
-        'Laminas\Form\Element\Collection'          => 'formcollection',
-        'Laminas\Form\Element\DateTimeSelect'      => 'formdatetimeselect',
-        'Laminas\Form\Element\DateSelect'          => 'formdateselect',
-        'Laminas\Form\Element\MonthSelect'         => 'formmonthselect',
+        File::class                => 'formfile',
+        Button::class              => 'formbutton',
+        Captcha::class             => 'formcaptcha',
+        Csrf::class                => 'formhidden',
+        Collection::class          => 'formcollection',
+        DateTimeSelect::class      => 'formdatetimeselect',
+        DateSelect::class          => 'formdateselect',
+        MonthSelect::class         => 'formmonthselect',
     ];
 
     /**
      * Constructor
      *
-     * @param \TwbsHelper\Options\ModuleOptions $options
+     * @param ModuleOptions $options
      * @return void
      */
-    public function __construct(\TwbsHelper\Options\ModuleOptions $options)
+    public function __construct(ModuleOptions $options)
     {
         if (is_array($options->getTypeMap())) {
             $this->typeMap = array_merge($this->typeMap, $options->getTypeMap());
@@ -43,10 +55,10 @@ class FormElement extends \Laminas\Form\View\Helper\FormElement
     /**
      * Render an element
      *
-     * @param \Laminas\Form\ElementInterface $element
+     * @param ElementInterface $element
      * @return string
      */
-    public function render(\Laminas\Form\ElementInterface $element): string
+    public function render(ElementInterface $element): string
     {
         // Add form-control class
         $elementType = $element->getAttribute('type');
@@ -55,7 +67,7 @@ class FormElement extends \Laminas\Form\View\Helper\FormElement
 
         if (
             !in_array($elementType, $this->options->getIgnoredViewHelpers())
-            && !($element instanceof \Laminas\Form\Element\Collection)
+            && !($element instanceof Collection)
         ) {
             $classes[] = $element->getOption('plaintext') ? 'form-control-plaintext' : 'form-control';
 
@@ -89,10 +101,10 @@ class FormElement extends \Laminas\Form\View\Helper\FormElement
      * Render element by helper name
      *
      * @param string $name
-     * @param \Laminas\Form\ElementInterface $element
+     * @param ElementInterface $element
      * @return string
      */
-    protected function renderHelper(string $name, \Laminas\Form\ElementInterface $element): string
+    protected function renderHelper(string $name, ElementInterface $element): string
     {
         $helper = $this->getView()->plugin($name);
 

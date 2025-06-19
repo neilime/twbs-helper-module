@@ -2,10 +2,12 @@
 
 namespace TwbsHelper\View\Helper;
 
+use InvalidArgumentException;
+
 /**
  * Helper for rendering images
  */
-class Image extends \TwbsHelper\View\Helper\AbstractHtmlElement
+class Image extends AbstractHtmlElement
 {
     protected static $allowedOptions = [
         'centered',
@@ -36,7 +38,7 @@ class Image extends \TwbsHelper\View\Helper\AbstractHtmlElement
      * @param  boolean $escape   True espace html content '$content'. Default True
      *
      * @return string The image XHTML.
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function __invoke(string $imageSrc, iterable $optionsAndAttributes = [], bool $escape = true)
     {

@@ -2,7 +2,10 @@
 
 namespace TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper;
 
-class Gutter extends \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Size
+use Laminas\Stdlib\ArrayUtils;
+use InvalidArgumentException;
+
+class Gutter extends Size
 {
     public const GUTTER_HORIZONTAL = 'horizontal';
     public const GUTTER_VERTICAL = 'vertical';
@@ -27,7 +30,7 @@ class Gutter extends \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Siz
             return [$this->getHtmlClassHelper()->getPrefixedClass((string) $option, 'g')];
         }
 
-        if (\Laminas\Stdlib\ArrayUtils::isList($option)) {
+        if (ArrayUtils::isList($option)) {
             $classes = [];
             foreach ($option as $optionValue) {
                 $classes = array_merge(
@@ -62,18 +65,18 @@ class Gutter extends \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Siz
             return $this->validateStringOption($option);
         }
 
-        if (\Laminas\Stdlib\ArrayUtils::isList($option)) {
+        if (ArrayUtils::isList($option)) {
             return $this->validateListOption($option);
         }
 
-        if (\Laminas\Stdlib\ArrayUtils::isHashTable($option)) {
+        if (ArrayUtils::isHashTable($option)) {
             return $this->validateHashOption($option);
         }
 
-        throw new \InvalidArgumentException(sprintf(
+        throw new InvalidArgumentException(sprintf(
             '"%s" option expects an integer, a string or an array, "%s" given',
             static::$optionName,
-            is_object($option) ? get_class($option) : gettype($option)
+            get_debug_type($option)
         ));
     }
 
@@ -82,7 +85,7 @@ class Gutter extends \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Siz
         if ($option >= 0 && $option <= 5) {
             return;
         }
-        throw new \InvalidArgumentException(sprintf(
+        throw new InvalidArgumentException(sprintf(
             '"%s" option expects an integer between 0 and 5, "%s" given',
             static::$optionName,
             $option
@@ -100,7 +103,7 @@ class Gutter extends \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Siz
             return;
         }
 
-        throw new \InvalidArgumentException(sprintf(
+        throw new InvalidArgumentException(sprintf(
             '"%s" option "%s" is not supported. ' .
                 'Expects a number between 0 and 5; ' .
                 'or a sized (%s) numbered value. Example: "sm-5"',
@@ -117,14 +120,14 @@ class Gutter extends \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Siz
                 return $this->validateIntOption($optionValue);
             }
 
-            if (\Laminas\Stdlib\ArrayUtils::isHashTable($optionValue)) {
+            if (ArrayUtils::isHashTable($optionValue)) {
                 return $this->validateHashOption($optionValue);
             }
 
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 '"%s" option list entry expects an integer or an associative array, "%s" given',
                 static::$optionName,
-                is_object($optionValue) ? get_class($optionValue) : gettype($optionValue)
+                get_debug_type($optionValue)
             ));
         }
     }
@@ -142,7 +145,7 @@ class Gutter extends \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Siz
             return;
         }
 
-        throw new \InvalidArgumentException(sprintf(
+        throw new InvalidArgumentException(sprintf(
             '"%s" array option does accept given keys "%s", it only accepts "%s"',
             static::$optionName,
             implode(', ', array_keys($option)),

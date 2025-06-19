@@ -2,10 +2,13 @@
 
 namespace TestSuite\TwbsHelper\View\Helper\Navigation;
 
-class MenuTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
+use TestSuite\TwbsHelper\AbstractViewHelperTestCase;
+use TwbsHelper\View\Helper\Navigation\Menu;
+
+class MenuTest extends AbstractViewHelperTestCase
 {
     /**
-     * @var \TwbsHelper\View\Helper\Navigation\Menu
+     * @var Menu
      */
     protected $helper = 'menu';
 

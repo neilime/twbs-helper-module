@@ -2,7 +2,7 @@
 
 namespace Documentation\Generator\UsagePage\Printer;
 
-class UrlPrinter extends \Documentation\Generator\UsagePage\Printer\AbstractPrinter
+class UrlPrinter extends AbstractPrinter
 {
     private static $BOOTSTRAP_URL = 'https://getbootstrap.com/docs/';
 

@@ -2,11 +2,17 @@
 
 namespace TwbsHelper\View\Helper;
 
+use TwbsHelper\View\HtmlAttributesSet;
+use LogicException;
+
 /**
  * Helper for stacking toasts
  */
-class ToastStack extends \TwbsHelper\View\Helper\AbstractGroupWithHelper
+class ToastStack extends AbstractGroupWithHelper
 {
+    /**
+     * @var non-empty-string[]
+     */
     protected static $allowedOptions = ['placement'];
 
     protected static $groupClass = 'toast-container';
@@ -15,14 +21,14 @@ class ToastStack extends \TwbsHelper\View\Helper\AbstractGroupWithHelper
 
     protected static $helperName = 'toast';
 
-    protected function prepareAttributes(iterable $optionsAndAttributes): \TwbsHelper\View\HtmlAttributesSet
+    protected function prepareAttributes(iterable $optionsAndAttributes): HtmlAttributesSet
     {
         $attributes = parent::prepareAttributes($optionsAndAttributes);
 
         if (!empty($optionsAndAttributes['placement'])) {
             $helper = $this->getItemViewHelper();
-            if (!$helper instanceof \TwbsHelper\View\Helper\Toast) {
-                throw new \LogicException(
+            if (!$helper instanceof Toast) {
+                throw new LogicException(
                     'Helper "' . static::$helperName . '" must be an instance of "\TwbsHelper\View\Helper\Toast"'
                 );
             }

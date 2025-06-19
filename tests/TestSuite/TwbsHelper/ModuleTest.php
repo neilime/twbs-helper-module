@@ -2,16 +2,19 @@
 
 namespace TestSuite\TwbsHelper;
 
-class ModuleTest extends \PHPUnit\Framework\TestCase
+use PHPUnit\Framework\TestCase;
+use TwbsHelper\Module;
+
+class ModuleTest extends TestCase
 {
     /**
-     * @var \TwbsHelper\Module
+     * @var Module
      */
     protected $module;
 
     protected function setUp(): void
     {
-        $this->module = new \TwbsHelper\Module();
+        $this->module = new Module();
     }
 
     public function testGetConfig()

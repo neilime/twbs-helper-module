@@ -5,7 +5,7 @@ namespace TwbsHelper\View\Helper;
 /**
  * Helper for card grid
  */
-class CardGrid extends \TwbsHelper\View\Helper\AbstractGroupWithHelper
+class CardGrid extends AbstractGroupWithHelper
 {
     protected static $groupClass = 'row';
 

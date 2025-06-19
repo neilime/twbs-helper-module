@@ -2,10 +2,12 @@
 
 namespace TwbsHelper\View\Helper;
 
+use TwbsHelper\View\HtmlAttributesSet;
+
 /**
  * Helper for grid row
  */
-class GridRow extends \TwbsHelper\View\Helper\AbstractGroupWithHelper
+class GridRow extends AbstractGroupWithHelper
 {
     protected static $groupClass = 'row';
 
@@ -21,7 +23,7 @@ class GridRow extends \TwbsHelper\View\Helper\AbstractGroupWithHelper
         'justify_content',
     ];
 
-    protected function prepareAttributes(iterable $optionsAndAttributes): \TwbsHelper\View\HtmlAttributesSet
+    protected function prepareAttributes(iterable $optionsAndAttributes): HtmlAttributesSet
     {
         $attributes = parent::prepareAttributes($optionsAndAttributes);
 

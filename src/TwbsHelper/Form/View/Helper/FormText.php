@@ -2,7 +2,9 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
+use TwbsHelper\Form\View\ElementHelperTrait;
+
 class FormText extends \Laminas\Form\View\Helper\FormText
 {
-    use \TwbsHelper\Form\View\ElementHelperTrait;
+    use ElementHelperTrait;
 }

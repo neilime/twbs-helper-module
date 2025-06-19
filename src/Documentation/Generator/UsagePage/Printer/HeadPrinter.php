@@ -2,7 +2,7 @@
 
 namespace Documentation\Generator\UsagePage\Printer;
 
-class HeadPrinter extends \Documentation\Generator\UsagePage\Printer\AbstractPrinter
+class HeadPrinter extends AbstractPrinter
 {
     private static $WEBSITE_PATH = 'website/';
 

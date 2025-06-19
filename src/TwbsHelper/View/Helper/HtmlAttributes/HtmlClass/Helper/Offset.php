@@ -2,7 +2,9 @@
 
 namespace TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper;
 
-class Offset extends \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Size
+use InvalidArgumentException;
+
+class Offset extends Size
 {
     protected static $optionName = 'offset';
 
@@ -52,17 +54,17 @@ class Offset extends \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Siz
             return $this->validateIterableOption($option);
         }
 
-        throw new \InvalidArgumentException(sprintf(
+        throw new InvalidArgumentException(sprintf(
             '"%s" option expects a string or an iterable value, "%s" given',
             static::$optionName,
-            is_object($option) ? get_class($option) : gettype($option)
+            get_debug_type($option)
         ));
     }
 
     protected function validateStringOption(string $option)
     {
         if (!$this->isOffsetOption($option)) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 '"%s" option "%s" is not supported. ' .
                     'Expects Sized (%s) numbered class. Example: "sm-6"',
                 static::$optionName,

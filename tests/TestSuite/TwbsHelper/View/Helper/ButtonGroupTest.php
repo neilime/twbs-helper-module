@@ -2,10 +2,14 @@
 
 namespace TestSuite\TwbsHelper\View\Helper;
 
-class ButtonGroupTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
+use TestSuite\TwbsHelper\AbstractViewHelperTestCase;
+use TwbsHelper\Form\View\Helper\FormButton;
+use TwbsHelper\View\Helper\ButtonGroup;
+
+class ButtonGroupTest extends AbstractViewHelperTestCase
 {
     /**
-     * @var \TwbsHelper\View\Helper\ButtonGroup
+     * @var ButtonGroup
      */
     protected $helper = 'buttonGroup';
 
@@ -19,8 +23,8 @@ class ButtonGroupTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
 
     public function testGetFormButtonHelperLazyLoad()
     {
-        $buttonGroup = new \TwbsHelper\View\Helper\ButtonGroup();
-        $this->assertInstanceOf(\TwbsHelper\Form\View\Helper\FormButton::class, $buttonGroup->getFormButtonHelper());
+        $buttonGroup = new ButtonGroup();
+        $this->assertInstanceOf(FormButton::class, $buttonGroup->getFormButtonHelper());
     }
 
     public function testInvokeWithColumnOption()

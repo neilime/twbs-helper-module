@@ -2,10 +2,13 @@
 
 namespace TwbsHelper\View\Helper;
 
+use Laminas\Stdlib\ArrayUtils;
+use TwbsHelper\View\HtmlAttributesSet;
+
 /**
  * Abstract helper for group rendering
  */
-abstract class AbstractGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
+abstract class AbstractGroup extends AbstractHtmlElement
 {
     /**
      * @var string
@@ -43,7 +46,7 @@ abstract class AbstractGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
         );
     }
 
-    protected function prepareAttributes(iterable $optionsAndAttributes): \TwbsHelper\View\HtmlAttributesSet
+    protected function prepareAttributes(iterable $optionsAndAttributes): HtmlAttributesSet
     {
         $attributes = $this->getView()->plugin('htmlattributes')
             ->__invoke($optionsAndAttributes)
@@ -57,7 +60,7 @@ abstract class AbstractGroup extends \TwbsHelper\View\Helper\AbstractHtmlElement
     {
         $content = '';
         foreach ($items as $itemKey => $item) {
-            if (\Laminas\Stdlib\ArrayUtils::isList($item)) {
+            if (ArrayUtils::isList($item)) {
                 $itemSpec = $item[0];
                 $itemAttributes = $item[1] ?? [];
                 $itemEscape = $item[2] ??  $escape;

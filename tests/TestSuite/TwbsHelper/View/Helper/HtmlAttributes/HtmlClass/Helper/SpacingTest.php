@@ -2,17 +2,22 @@
 
 namespace TestSuite\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper;
 
-class SpacingTest extends \PHPUnit\Framework\TestCase
+use PHPUnit\Framework\TestCase;
+use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass;
+use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Spacing;
+use InvalidArgumentException;
+
+class SpacingTest extends TestCase
 {
     /**
-     * @var \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Spacing
+     * @var Spacing
      */
     protected $helper;
 
     protected function setUp(): void
     {
-        $this->helper = new \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Spacing();
-        $this->helper->setHtmlClassHelper(new \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass());
+        $this->helper = new Spacing();
+        $this->helper->setHtmlClassHelper(new HtmlClass());
     }
 
     public function testGetClassesFromOptionShouldReturnValidatedClass()
@@ -34,14 +39,14 @@ class SpacingTest extends \PHPUnit\Framework\TestCase
 
     public function testGetClassesFromOptionShouldThrowExceptionForInvalidClass()
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('"spacing" option "invalid" is invalid. Expects a string like');
         $this->helper->getClassesFromOption('invalid');
     }
 
     public function testGetClassesFromOptionShouldThrowExceptionForInvalidType()
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('"spacing" option expects a string, "array" given');
         $this->helper->getClassesFromOption([]);
     }

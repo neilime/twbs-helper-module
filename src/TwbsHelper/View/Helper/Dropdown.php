@@ -2,7 +2,17 @@
 
 namespace TwbsHelper\View\Helper;
 
-class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
+use Laminas\Form\ElementInterface;
+use Laminas\Form\Element\Button;
+use Laminas\Form\Factory;
+use Laminas\Form\FormInterface;
+use Laminas\Form\LabelAwareInterface;
+use Laminas\Stdlib\ArrayUtils;
+use TwbsHelper\View\HtmlAttributesSet;
+use InvalidArgumentException;
+use LogicException;
+
+class Dropdown extends AbstractHtmlElement
 {
     /**
      * @var string
@@ -53,9 +63,9 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
     ];
 
     /**
-     * @param \Laminas\Form\ElementInterface|array $dropdown
+     * @param ElementInterface|array $dropdown
      * @param boolean $escape     Escape the dropdown.
-     * @return \TwbsHelper\View\Helper\Dropdown|string
+     * @return Dropdown|string
      */
     public function __invoke($dropdown = null, bool $escape = true)
     {
@@ -64,7 +74,7 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
     /**
      * Render dropdown markup
-     * @param \Laminas\Form\ElementInterface|iterable $dropdown
+     * @param ElementInterface|iterable $dropdown
      * @param boolean $escape     Escape the dropdown.
      * @return string
      */
@@ -74,7 +84,7 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
         $dropdown = $this->createDropdown($dropdown);
 
         $dropdownOptions = $dropdown->getOption('dropdown');
-        if (\Laminas\Stdlib\ArrayUtils::isList($dropdownOptions)) {
+        if (ArrayUtils::isList($dropdownOptions)) {
             $dropdown->setOption('dropdown', $dropdownOptions =  [
                 'items' => $dropdownOptions,
             ]);
@@ -94,22 +104,22 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
     }
 
     /**
-     * @param \Laminas\Form\ElementInterface|iterable $dropdown
-     * @return \Laminas\Form\ElementInterface
+     * @param ElementInterface|iterable $dropdown
+     * @return ElementInterface
      */
     protected function createDropdown($dropdown)
     {
         if (
             is_iterable($dropdown)
-            && !($dropdown instanceof \Laminas\Form\ElementInterface)
+            && !($dropdown instanceof ElementInterface)
         ) {
-            $factory = new \Laminas\Form\Factory();
+            $factory = new Factory();
             $dropdown = $factory->create($dropdown);
-        } elseif (!($dropdown instanceof \Laminas\Form\ElementInterface)) {
-            throw new \InvalidArgumentException(sprintf(
+        } elseif (!($dropdown instanceof ElementInterface)) {
+            throw new InvalidArgumentException(sprintf(
                 'Argument "$dropdown" expects %s, "%s" given',
                 'an instanceof \Laminas\Form\ElementInterface or an iterable',
-                get_class($dropdown)
+                $dropdown::class
             ));
         }
         return $dropdown;
@@ -123,7 +133,7 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
         if (!empty($dropdownOptions['direction'])) {
             if (!in_array($dropdownOptions['direction'], static::$directions, true)) {
-                throw new \InvalidArgumentException(sprintf(
+                throw new InvalidArgumentException(sprintf(
                     'Direction option "%s" does not exist',
                     $dropdownOptions['direction']
                 ));
@@ -155,11 +165,11 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
     /**
      * Render dropdown toggle markup
-     * @param \Laminas\Form\ElementInterface $dropdown
-     * @throws \InvalidArgumentException
+     * @param ElementInterface $dropdown
+     * @throws InvalidArgumentException
      * @return string
      */
-    protected function renderToggle(\Laminas\Form\ElementInterface $dropdown): string
+    protected function renderToggle(ElementInterface $dropdown): string
     {
         $dropdownOptions = $dropdown->getOption('dropdown');
 
@@ -224,11 +234,11 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
     /**
      * Retrieve dropdown toggle split element
-     * @param \Laminas\Form\ElementInterface $dropdown
-     * @throws \InvalidArgumentException
-     * @return \Laminas\Form\ElementInterface|null
+     * @param ElementInterface $dropdown
+     * @throws InvalidArgumentException
+     * @return ElementInterface|null
      */
-    protected function getToggleSplitElement(\Laminas\Form\ElementInterface $dropdown): ?\Laminas\Form\ElementInterface
+    protected function getToggleSplitElement(ElementInterface $dropdown): ?ElementInterface
     {
         $dropdownOptions = $dropdown->getOption('dropdown');
 
@@ -242,7 +252,7 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
             $options['label'] = $dropdown->getLabel();
         }
         $splitElement = [
-            'type' => \Laminas\Form\Element\Button::class,
+            'type' => Button::class,
             'name' => $dropdown->getName() . '-toggle',
             'options' => $options,
             'attributes' => [
@@ -253,22 +263,20 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
         if (is_string($splitOption)) {
             $splitElement['options']['label'] = $splitOption;
         } elseif (is_iterable($splitOption)) {
-            $splitElement = \Laminas\Stdlib\ArrayUtils::merge(
+            $splitElement = ArrayUtils::merge(
                 $splitElement,
-                \Laminas\Stdlib\ArrayUtils::iteratorToArray($splitOption)
+                ArrayUtils::iteratorToArray($splitOption)
             );
         } elseif ($splitOption !== true) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 '"split" option expects a string an array or true, "%s" given',
-                is_object($splitOption)
-                    ? get_class($splitOption)
-                    : gettype($splitOption)
+                get_debug_type($splitOption)
             ));
         }
-        $factory = new \Laminas\Form\Factory();
+        $factory = new Factory();
         $toogleElement = $factory->create($splitElement);
 
-        if ($toogleElement instanceof \Laminas\Form\LabelAwareInterface) {
+        if ($toogleElement instanceof LabelAwareInterface) {
             $toogleElement->setLabel('<span class="visually-hidden">' . $toogleElement->getLabel() . '</span>');
             $toogleElement->setLabelOption('disable_html_escape', true);
         }
@@ -276,18 +284,16 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
         return $toogleElement;
     }
 
-    protected function renderMenuFromElement(\Laminas\Form\ElementInterface $dropdown, bool $escape = true)
+    protected function renderMenuFromElement(ElementInterface $dropdown, bool $escape = true)
     {
         $dropdownOptions = $dropdown->getOption('dropdown');
         if (!isset($dropdownOptions['items'])) {
-            throw new \InvalidArgumentException(__METHOD__ . ' expects "items" option');
+            throw new InvalidArgumentException(__METHOD__ . ' expects "items" option');
         }
         if (!is_array($dropdownOptions['items'])) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 '"items" option expects an array, "%s" given',
-                is_object($dropdownOptions['items'])
-                    ? get_class($dropdownOptions['items'])
-                    : gettype($dropdownOptions['items'])
+                get_debug_type($dropdownOptions['items'])
             ));
         }
 
@@ -297,8 +303,8 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
     }
 
     protected function prepareMenuAttributes(
-        \Laminas\Form\ElementInterface $dropdown
-    ): \TwbsHelper\View\HtmlAttributesSet {
+        ElementInterface $dropdown
+    ): HtmlAttributesSet {
         // Dropdown list class attribute
         $menuAttributes = $this->getView()->plugin('htmlattributes')->__invoke([]);
 
@@ -340,7 +346,7 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
         return $menuAttributes;
     }
 
-    protected function getDropdownId(\Laminas\Form\ElementInterface $dropdown): ?string
+    protected function getDropdownId(ElementInterface $dropdown): ?string
     {
 
         if ($id = $dropdown->getAttribute('id')) {
@@ -356,7 +362,7 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
      * @param iterable $items Dropdown menu items
      * @param iterable $attributes Dropdown menu attributes
      * @param boolean $escape     Escape the dropdown menu.
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     public function renderMenu(iterable $items, iterable $attributes = [], bool $escape = true): string
@@ -374,7 +380,7 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
         $itemsContent = '';
         foreach ($items as $key => $itemOptions) {
             switch (true) {
-                case $itemOptions instanceof \Laminas\Form\FormInterface:
+                case $itemOptions instanceof FormInterface:
                     // Free html
                     $itemOptions = [
                         'type' => self::TYPE_ITEM_HTML,
@@ -413,12 +419,10 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
                     }
                     break;
                 default:
-                    throw new \LogicException(sprintf(
+                    throw new LogicException(sprintf(
                         '"item" option expects an array, an instance of "\Laminas\Form\FormInterface" ' .
                             'or a scalar value, "%s" given',
-                        is_object($itemOptions)
-                            ? get_class($itemOptions)
-                            : gettype($itemOptions)
+                        get_debug_type($itemOptions)
                     ));
             }
 
@@ -437,13 +441,13 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
     /**
      * Render dropdown list item markup
      * @param array $itemOptions
-     * @throws \InvalidArgumentException
+     * @throws InvalidArgumentException
      * @return string
      */
     protected function renderItem(array $itemOptions, bool $escape): string
     {
         if (empty($itemOptions['type'])) {
-            throw new \InvalidArgumentException(__METHOD__ . ' expects a "type" option');
+            throw new InvalidArgumentException(__METHOD__ . ' expects a "type" option');
         }
 
         $itemContent = '';
@@ -487,7 +491,7 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
                     }
 
                     $classes[] = $option;
-                    $defaultAttributes = \Laminas\Stdlib\ArrayUtils::merge(
+                    $defaultAttributes = ArrayUtils::merge(
                         $defaultAttributes,
                         $optionAttributes
                     );
@@ -531,14 +535,12 @@ class Dropdown extends \TwbsHelper\View\Helper\AbstractHtmlElement
     protected function getLabelFromItemOptions(iterable $itemOptions)
     {
         if (empty($itemOptions['label'])) {
-            throw new \LogicException('"' . $itemOptions['type'] . '" item expects a "label" option');
+            throw new LogicException('"' . $itemOptions['type'] . '" item expects a "label" option');
         }
         if (!is_scalar($itemOptions['label'])) {
-            throw new \LogicException(sprintf(
+            throw new LogicException(sprintf(
                 '"label" option expect a scalar value, "%s" given',
-                is_object($itemOptions['label'])
-                    ? get_class($itemOptions['label'])
-                    : gettype($itemOptions['label'])
+                get_debug_type($itemOptions['label'])
             ));
         }
 

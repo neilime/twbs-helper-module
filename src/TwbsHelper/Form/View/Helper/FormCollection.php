@@ -2,12 +2,19 @@
 
 namespace TwbsHelper\Form\View\Helper;
 
+use Laminas\Form\ElementInterface;
+use Laminas\Form\Element\Collection;
+use Laminas\Form\LabelAwareInterface;
+use TwbsHelper\Form\View\ElementHelperTrait;
+use TwbsHelper\Options\ModuleOptions;
+use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Column;
+
 /**
  * FormCollection
  */
 class FormCollection extends \Laminas\Form\View\Helper\FormCollection
 {
-    use \TwbsHelper\Form\View\ElementHelperTrait;
+    use ElementHelperTrait;
 
     protected static $fieldsetRegex = '/(<fieldset[^>]*>)([\s\S]*)(<\/fieldset[^>]*>)$/imU';
 
@@ -37,11 +44,11 @@ class FormCollection extends \Laminas\Form\View\Helper\FormCollection
     /**
      * Constructor
      *
-     * @param \TwbsHelper\Options\ModuleOptions $moduleOptions
+     * @param ModuleOptions $moduleOptions
      * @access public
      * @return void
      */
-    public function __construct(\TwbsHelper\Options\ModuleOptions $moduleOptions)
+    public function __construct(ModuleOptions $moduleOptions)
     {
         $this->options = $moduleOptions;
     }
@@ -49,10 +56,10 @@ class FormCollection extends \Laminas\Form\View\Helper\FormCollection
     /**
      * Render a collection by iterating through all fieldsets and elements
      *
-     * @param \Laminas\Form\ElementInterface $element
+     * @param ElementInterface $element
      * @return string
      */
-    public function render(\Laminas\Form\ElementInterface $element): string
+    public function render(ElementInterface $element): string
     {
         // Add valid custom attributes
         if ($this->options->getValidTagAttributes()) {
@@ -75,14 +82,14 @@ class FormCollection extends \Laminas\Form\View\Helper\FormCollection
     /**
      * Only render a template
      *
-     * @param \Laminas\Form\Element\Collection $collection
+     * @param Collection $collection
      * @return string
      */
-    public function renderTemplate(\Laminas\Form\Element\Collection $collection): string
+    public function renderTemplate(Collection $collection): string
     {
         // Set inline class
         $elementLayout = $collection->getOption('layout');
-        if ($elementLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE) {
+        if ($elementLayout === Form::LAYOUT_INLINE) {
             $elementOrFieldset = $collection->getTemplateElement();
             if ($elementOrFieldset !== null) {
                 $elementOrFieldset->setOption('layout', $elementLayout);
@@ -92,23 +99,23 @@ class FormCollection extends \Laminas\Form\View\Helper\FormCollection
         return parent::renderTemplate($collection);
     }
 
-    protected function getElementLayoutClasses(\Laminas\Form\ElementInterface $element): array
+    protected function getElementLayoutClasses(ElementInterface $element): array
     {
         $elementLayout = $element->getOption('layout');
 
         // Set form layout class
-        if ($elementLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_INLINE) {
+        if ($elementLayout === Form::LAYOUT_INLINE) {
             return ['form-' . $elementLayout];
         }
 
-        if ($elementLayout === \TwbsHelper\Form\View\Helper\Form::LAYOUT_HORIZONTAL) {
+        if ($elementLayout === Form::LAYOUT_HORIZONTAL) {
             return ['row', 'mb-3'];
         }
 
         return [];
     }
 
-    protected function renderFieldset(\Laminas\Form\ElementInterface $element): string
+    protected function renderFieldset(ElementInterface $element): string
     {
         $wrapper = $this->wrapper;
 
@@ -141,12 +148,12 @@ class FormCollection extends \Laminas\Form\View\Helper\FormCollection
         return $matches[1] . $this->getView()->plugin('htmlElement')->addProperIndentation($markup) . $matches[3];
     }
 
-    protected function renderFieldsetLegend(\Laminas\Form\ElementInterface $element, string $markup): string
+    protected function renderFieldsetLegend(ElementInterface $element, string $markup): string
     {
         return preg_replace_callback(self::$legendRegex, function ($legendMatches) use ($element) {
             // Define legend class
             $labelAttributes = $this->getView()->plugin('htmlattributes')->__invoke(
-                $element instanceof \Laminas\Form\LabelAwareInterface
+                $element instanceof LabelAwareInterface
                     ? $element->getLabelAttributes()
                     : []
             );
@@ -154,7 +161,7 @@ class FormCollection extends \Laminas\Form\View\Helper\FormCollection
             // Define legend column classes
             $legendClasses = [];
 
-            /** @var \TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Column $columnClassHelper **/
+            /** @var Column $columnClassHelper **/
             $columnClassHelper = $this->getView()->plugin('htmlClass')->plugin('column');
             $columSize = $element->getOption('column');
             if (

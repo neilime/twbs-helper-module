@@ -2,10 +2,12 @@
 
 namespace TwbsHelper\View\Helper;
 
+use InvalidArgumentException;
+
 /**
  * Helper for rendering toast
  */
-class Toast extends \TwbsHelper\View\Helper\AbstractHtmlElement
+class Toast extends AbstractHtmlElement
 {
     public const PLACEMENT_TOP_LEFT = 'top-left';
     public const PLACEMENT_TOP_CENTER = 'top-center';
@@ -19,9 +21,9 @@ class Toast extends \TwbsHelper\View\Helper\AbstractHtmlElement
 
     /**
      * Generates a 'toast' element
-     * @return string|\TwbsHelper\View\Helper\Toast
+     * @return string|Toast
      */
-    public function __invoke(iterable $options = null)
+    public function __invoke(?iterable $options = null)
     {
         if ($options === null) {
             return $this;
@@ -318,7 +320,7 @@ class Toast extends \TwbsHelper\View\Helper\AbstractHtmlElement
                 $classes[] = 'end-0';
                 break;
             default:
-                throw new \InvalidArgumentException(sprintf(
+                throw new InvalidArgumentException(sprintf(
                     'Option "placement" "%s" is not supported',
                     $placement
                 ));

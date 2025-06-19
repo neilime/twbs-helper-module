@@ -2,7 +2,13 @@
 
 namespace TestSuite\TwbsHelper\Form\View\Helper;
 
-class FormTest extends \PHPUnit\Framework\TestCase
+use Laminas\Form\Form;
+use Laminas\View\Renderer\PhpRenderer;
+use PHPUnit\Framework\TestCase;
+use TestSuite\Bootstrap;
+use InvalidArgumentException;
+
+class FormTest extends TestCase
 {
     /**
      * @var \TwbsHelper\Form\View\Helper\Form
@@ -14,8 +20,8 @@ class FormTest extends \PHPUnit\Framework\TestCase
      */
     protected function setUp(): void
     {
-        $viewHelperPluginManager = \TestSuite\Bootstrap::getServiceManager()->get('ViewHelperManager');
-        $phpRenderer = new \Laminas\View\Renderer\PhpRenderer();
+        $viewHelperPluginManager = Bootstrap::getServiceManager()->get('ViewHelperManager');
+        $phpRenderer = new PhpRenderer();
         $this->formHelper = $viewHelperPluginManager
             ->get('form')
             ->setView($phpRenderer->setHelperPluginManager($viewHelperPluginManager));
@@ -31,7 +37,7 @@ class FormTest extends \PHPUnit\Framework\TestCase
 
     public function testRenderEmptyForm()
     {
-        $form = new \Laminas\Form\Form();
+        $form = new Form();
 
         $this->assertEquals(
             '<form method="POST" role="form"></form>',
@@ -41,7 +47,7 @@ class FormTest extends \PHPUnit\Framework\TestCase
 
     public function testInitializeAnHorizontalFormClass()
     {
-        $horizontalFormClass = new class () extends \Laminas\Form\Form {
+        $horizontalFormClass = new class () extends Form {
             public function prepare()
             {
                 $this->setName('form');
@@ -84,7 +90,7 @@ class FormTest extends \PHPUnit\Framework\TestCase
 
     public function testRenderSpecWithWrongFormElementThrowsAnException()
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage(
             'Invalid spec specified, Laminas\Form\Element does not inherit from Laminas\Form\FormInterface.'
         );

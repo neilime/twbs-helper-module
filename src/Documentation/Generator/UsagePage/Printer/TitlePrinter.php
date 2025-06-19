@@ -2,7 +2,7 @@
 
 namespace Documentation\Generator\UsagePage\Printer;
 
-class TitlePrinter extends \Documentation\Generator\UsagePage\Printer\AbstractPrinter
+class TitlePrinter extends AbstractPrinter
 {
     public function getPageContent()
     {

@@ -2,10 +2,14 @@
 
 namespace TestSuite\TwbsHelper\Form\View\Helper;
 
-class FormRadioTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
+use Laminas\Form\Element\Radio;
+use TestSuite\TwbsHelper\AbstractViewHelperTestCase;
+use TwbsHelper\Form\View\Helper\FormRadio;
+
+class FormRadioTest extends AbstractViewHelperTestCase
 {
     /**
-     * @var \TwbsHelper\Form\View\Helper\FormRadio
+     * @var FormRadio
      */
     protected $helper = 'formRadio';
 
@@ -17,7 +21,7 @@ class FormRadioTest extends \TestSuite\TwbsHelper\AbstractViewHelperTestCase
                 . PHP_EOL .
                 '    <label class="form-check-label" for="radioDefault1">Default radio</label>' . PHP_EOL .
                 '</div>',
-            $this->helper->render(new \Laminas\Form\Element\Radio(
+            $this->helper->render(new Radio(
                 'test',
                 [
                     'label' => 'Choose from the list below',
