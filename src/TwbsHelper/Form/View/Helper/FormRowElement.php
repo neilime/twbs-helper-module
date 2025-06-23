@@ -37,45 +37,9 @@ class FormRowElement extends FormRow
     {
         $this->prepareElementForRendering($element);
 
-        if ($this->elementIsMultiCheckbox($element)) {
-            $elementContent = $this->renderMultiCheckboxCommonParts($element);
-        } else {
-            $elementContent = $this->renderElementCommonParts($element);
-        }
+        $renderingOrder = $this->getElementRenderingOrder($element, $labelPosition);
 
-        $layout = $element->getOption('layout');
-        switch ($layout) {
-            case null:
-            case Form::LAYOUT_INLINE:
-                $renderingOrder = [
-                    'renderLayoutContentContainer' => [],
-                    'renderLabel' =>  [$labelPosition],
-                    'renderHelpBlock' => [],
-                    'renderDedicatedContainer' => [],
-                ];
-                break;
-
-            case Form::LAYOUT_HORIZONTAL:
-                $renderingOrder = [
-                    'renderLayoutContentContainer' => [],
-                    'renderHelpBlock' => [],
-                    'renderDedicatedContainer' => [],
-                ];
-
-                $isCheckbox = $this->elementIsCheckbox($element);
-
-                if ($isCheckbox) {
-                    $renderingOrder = ['renderLabel' => []] + $renderingOrder;
-                } else {
-                    $renderingOrder += ['renderLabel' => []];
-                }
-
-                break;
-
-            default:
-                throw new DomainException('Layout "' . $layout . '" is not supported');
-        }
-
+        $elementContent = "";
         foreach ($renderingOrder as $function => $arguments) {
             array_unshift($arguments, $element, $elementContent);
             $elementContent = call_user_func_array([$this, $function], $arguments);
@@ -84,23 +48,103 @@ class FormRowElement extends FormRow
         return $elementContent;
     }
 
-    protected function renderElementCommonParts(ElementInterface $element): string
+    protected function getElementRenderingOrder(ElementInterface $element, ?string $labelPosition = null): array
     {
-        // Render element
-        $elementContent = $this->getElementHelper()->render($element);
+        $isMultiCheckbox = $this->elementIsMultiCheckbox($element);
+        $isCheckbox = $this->elementIsCheckbox($element);
 
-        $renderingOrder = [
-            'renderErrors' => [],
-            'renderValidFeedback' => [],
-            'renderAddOn' => [],
-        ];
-
-        foreach ($renderingOrder as $function => $arguments) {
-            array_unshift($arguments, $element, $elementContent);
-            $elementContent = call_user_func_array([$this, $function], $arguments);
+        if ($isMultiCheckbox) {
+            $renderingOrder = [
+                'renderErrors' => [],
+                'renderValidFeedback' => [],
+                'renderElement' => [],
+            ];
+        } else {
+            $renderingOrder = [
+                'renderElement' => [],
+                'renderErrors' => [],
+                'renderValidFeedback' => [],
+            ];
         }
 
-        return $elementContent;
+        $renderingOrder +=  ['renderAddOn' => []];
+
+        $layout = $element->getOption('layout');
+        switch ($layout) {
+            case null:
+            case Form::LAYOUT_INLINE:
+                if ($isCheckbox) {
+                    unset($renderingOrder['renderElement']);
+
+                    $renderingOrder = [
+                        'renderElement' => [],
+                        'renderLayoutContentContainer' => [],
+                        'renderLabel' =>  [$labelPosition],
+
+                    ] + $renderingOrder + [
+                        'renderHelpBlock' => [],
+                        'renderDedicatedContainer' => [],
+                    ];
+                } else {
+                    $renderingOrder += [
+                        'renderLayoutContentContainer' => [],
+                        'renderLabel' =>  [$labelPosition],
+                        'renderHelpBlock' => [],
+                        'renderDedicatedContainer' => [],
+                    ];
+                }
+                break;
+
+            case Form::LAYOUT_HORIZONTAL:
+                $layoutRenderingOrder = [
+                    'renderLayoutContentContainer' => [],
+                    'renderHelpBlock' => [],
+                    'renderDedicatedContainer' => [],
+                ];
+
+                $isCheckbox = $this->elementIsCheckbox($element);
+
+                if ($isCheckbox) {
+                    $layoutRenderingOrder = ['renderLabel' => []] + $layoutRenderingOrder;
+                } else {
+                    $layoutRenderingOrder += ['renderLabel' => []];
+                }
+
+                $renderingOrder += $layoutRenderingOrder;
+
+                break;
+
+            default:
+                throw new DomainException('Layout "' . $layout . '" is not supported');
+        }
+
+        return $renderingOrder;
+    }
+
+    protected function renderElement(ElementInterface $element, $content): string
+    {
+
+        $elementContent = $this->getElementHelper()->render($element);
+
+        if (!$elementContent) {
+            return $content;
+        }
+
+        if ($this->elementIsMultiCheckbox($element)) {
+            // Inject previous generated content in last multicheckbox container
+            $multicheckboxContent = trim(
+                (string) $this->getView()->plugin('htmlElement')->addProperIndentation($content, true),
+                PHP_EOL
+            );
+
+            $elementContent = preg_replace(
+                '/<\/div\s*>(?!.*<\/div\s*>)/is',
+                $multicheckboxContent . '</div>',
+                $elementContent
+            );
+        }
+
+        return  $elementContent;
     }
 
     protected function renderMultiCheckboxCommonParts(ElementInterface $element): string

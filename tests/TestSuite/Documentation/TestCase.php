@@ -17,11 +17,11 @@ use LogicException;
  * This test class use configuration files existing in this directory.
  * Each configuration file match with a part of the Bootstrap documentation website.
  * Sample structure of a configuration file :
- * array(
+ * [
  *     'title' => 'Sample', // The title of the documentation part
  *     'url' => '%bootstrap-url%/sample/', // The url of the documentation "Sample part"
- *     'tests' => array(
- *         array(
+ *     'tests' => [
+ *         [
  *             'title' => 'Test 1 for sample part',
  *             'url' => '%bootstrap-url%/sample/test-1', // The url of the documentation "Sample part, test 1"
  *             // The rendering function should return the expected markup
@@ -29,23 +29,23 @@ use LogicException;
  *             'rendering' => function(\Laminas\ServiceManager\ServiceManager $viewHelperPluginManager){
  *                 return $viewHelperPluginManager->get('sampleTestOneHelper')->render('sample test-one');
  *             },
- *         ),
- *         array(
+ *         ],
+ *         [
  *             'title' => 'Nested Tests for sample part',
  *             // The url of the documentation "Sample part, nested tests"
  *             'url' => '%bootstrap-url%/sample/nested-tests',
- *             'tests' => array(
- *                 array(
+ *             'tests' => [
+ *                 [
  *                     'title' => '...',
  *                     'url' => '...',
  *                     'rendering' => function(\Laminas\ServiceManager\ServiceManager $viewHelperPluginManager){
  *                         // ...
  *                     },
- *                 ),
- *             ),
- *         ),
- *     ), // Tests array define tests to performs, each one of them compares a rendering versus an expected markup
- * );
+ *                 ],
+ *             ],
+ *         ],
+ *     ], // Tests array define tests to performs, each one of them compares a rendering versus an expected markup
+ * ];
  */
 class TestCase extends \PHPUnit\Framework\TestCase
 {
