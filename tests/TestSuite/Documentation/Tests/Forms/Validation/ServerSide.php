@@ -138,7 +138,7 @@ return [
             'city' => ['Please provide a valid city.'],
             'state' => ['Please select a valid state.'],
             'zip' => ['Please select a valid zip.'],
-            'terms-and-conditions' => ['You must agree before submitting..'],
+            'terms-and-conditions' => ['You must agree before submitting.'],
         ]));
     },
 ];
