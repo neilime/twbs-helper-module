@@ -15,10 +15,10 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@docusaurus/core": "^3.6.1",
-    "@docusaurus/faster": "^3.6.1",
-    "@docusaurus/plugin-rsdoctor": "^3.6.1",
-    "@docusaurus/preset-classic": "^3.6.1",
+    "@docusaurus/core": "^3.8.1",
+    "@docusaurus/faster": "^3.8.1",
+    "@docusaurus/plugin-rsdoctor": "^3.8.1",
+    "@docusaurus/preset-classic": "^3.8.1",
     "@mdx-js/react": "^3.0.0",
     "@svgr/webpack": "^8.0.1",
     "clsx": "^2.1.0",
@@ -29,7 +29,7 @@
     "url-loader": "^4.1.1"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.6.1",
+    "@docusaurus/module-type-aliases": "^3.8.1",
     "@tsconfig/docusaurus": "^2.0.0",
     "@types/react": "^19.1.8",
     "@types/react-helmet": "^6.1.6",

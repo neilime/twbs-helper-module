@@ -8,6 +8,7 @@ const {
   module.exports = {
     future: {
       experimental_faster: true,
+      v4: true,
     },
     title: "TwbsHelper",
     tagline:
