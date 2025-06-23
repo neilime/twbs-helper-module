@@ -35,6 +35,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: documentation
+          path: website/docs
 
       - uses: actions/setup-node@v4.4.0
         with:
