@@ -1,0 +1,555 @@
+---
+sidebar_position: 14
+label: Navs and tabs
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../src/components/HtmlCode.tsx";
+
+# Navs and tabs
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/navs-tabs/)
+
+## Base nav
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/navs-tabs/#base-nav)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<ul class="nav">
+    <li class="nav-item">
+        <a aria-current="page" class="active nav-link" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a aria-disabled="true" class="disabled nav-link" href="#" tabindex="-1">Disabled</a>
+    </li>
+</ul>
+<nav class="nav">
+    <a aria-current="page" class="active nav-link" href="#">Active</a>
+    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="#">Link</a>
+    <a aria-disabled="true" class="disabled nav-link" href="#" tabindex="-1">Disabled</a>
+</nav>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->navigation()->menu()->renderMenu(new \Laminas\Navigation\Navigation([
+    ['label' => 'Active', 'uri' => '#', 'active' => true],
+    ['label' => 'Link', 'uri' => '#'],
+    ['label' => 'Link', 'uri' => '#'],
+    ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+]), ['page' => true]);
+
+echo $this->navigation()->menu()->renderMenu(new \Laminas\Navigation\Navigation([
+    ['label' => 'Active', 'uri' => '#', 'active' => true],
+    ['label' => 'Link', 'uri' => '#'],
+    ['label' => 'Link', 'uri' => '#'],
+    ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+]), ['list' => false, 'page' => true]);
+```
+
+</TabItem>
+</Tabs>
+
+## Available styles
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/navs-tabs/#available-styles)
+
+### Horizontal alignment
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/navs-tabs/#horizontal-alignment)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<ul class="justify-content-center nav">
+    <li class="nav-item">
+        <a aria-current="page" class="active nav-link" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a aria-disabled="true" class="disabled nav-link" href="#" tabindex="-1">Disabled</a>
+    </li>
+</ul>
+<ul class="justify-content-end nav">
+    <li class="nav-item">
+        <a aria-current="page" class="active nav-link" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a aria-disabled="true" class="disabled nav-link" href="#" tabindex="-1">Disabled</a>
+    </li>
+</ul>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+// Centered with option 'center'
+echo $this->navigation()->menu()->renderMenu(new \Laminas\Navigation\Navigation([
+    ['label' => 'Active', 'uri' => '#', 'active' => true],
+    ['label' => 'Link', 'uri' => '#'],
+    ['label' => 'Link', 'uri' => '#'],
+    ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+]), ['centered' => true, 'page' => true]);
+
+// Right-aligned with option 'right_aligned'
+echo $this->navigation()->menu()->renderMenu(new \Laminas\Navigation\Navigation([
+    ['label' => 'Active', 'uri' => '#', 'active' => true],
+    ['label' => 'Link', 'uri' => '#'],
+    ['label' => 'Link', 'uri' => '#'],
+    ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+]), ['right_aligned' => true, 'page' => true]);
+```
+
+</TabItem>
+</Tabs>
+
+### Vertical
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/navs-tabs/#vertical)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<ul class="flex-column nav">
+    <li class="nav-item">
+        <a aria-current="page" class="active nav-link" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a aria-disabled="true" class="disabled nav-link" href="#" tabindex="-1">Disabled</a>
+    </li>
+</ul>
+<nav class="flex-column nav">
+    <a aria-current="page" class="active nav-link" href="#">Active</a>
+    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="#">Link</a>
+    <a aria-disabled="true" class="disabled nav-link" href="#" tabindex="-1">Disabled</a>
+</nav>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->navigation()->menu()->renderMenu(
+    new \Laminas\Navigation\Navigation([
+        ['label' => 'Active', 'uri' => '#', 'active' => true],
+        ['label' => 'Link', 'uri' => '#'],
+        ['label' => 'Link', 'uri' => '#'],
+        ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+    ]),
+    ['vertical' => true, 'page' => true]
+);
+
+echo $this->navigation()->menu()->renderMenu(
+    new \Laminas\Navigation\Navigation([
+        ['label' => 'Active', 'uri' => '#', 'active' => true],
+        ['label' => 'Link', 'uri' => '#'],
+        ['label' => 'Link', 'uri' => '#'],
+        ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+    ]),
+    [
+        'vertical' => true,
+        'list' => false,
+        'page' => true,
+    ]
+);
+```
+
+</TabItem>
+</Tabs>
+
+### Tabs
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/navs-tabs/#tabs)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a aria-current="page" class="active nav-link" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a aria-disabled="true" class="disabled nav-link" href="#" tabindex="-1">Disabled</a>
+    </li>
+</ul>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->navigation()->menu()->renderMenu(new \Laminas\Navigation\Navigation([
+    ['label' => 'Active', 'uri' => '#', 'active' => true],
+    ['label' => 'Link', 'uri' => '#'],
+    ['label' => 'Link', 'uri' => '#'],
+    ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+]), ['tabs' => true, 'page' => true]);
+```
+
+</TabItem>
+</Tabs>
+
+### Pills
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/navs-pills/#pills)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<ul class="nav nav-pills">
+    <li class="nav-item">
+        <a aria-current="page" class="active nav-link" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a aria-disabled="true" class="disabled nav-link" href="#" tabindex="-1">Disabled</a>
+    </li>
+</ul>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->navigation()->menu()->renderMenu(new \Laminas\Navigation\Navigation([
+    ['label' => 'Active', 'uri' => '#', 'active' => true],
+    ['label' => 'Link', 'uri' => '#'],
+    ['label' => 'Link', 'uri' => '#'],
+    ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+]), ['pills' => true, 'page' => true]);
+```
+
+</TabItem>
+</Tabs>
+
+### Fill and justify
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/navs-pills/#fill-and-justify)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<ul class="nav nav-fill nav-pills">
+    <li class="nav-item">
+        <a aria-current="page" class="active nav-link" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Much longer nav link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a aria-disabled="true" class="disabled nav-link" href="#" tabindex="-1">Disabled</a>
+    </li>
+</ul>
+<br>
+<nav class="nav nav-fill nav-pills">
+    <a aria-current="page" class="active nav-link" href="#">Active</a>
+    <a class="nav-link" href="#">Much longer nav link</a>
+    <a class="nav-link" href="#">Link</a>
+    <a aria-disabled="true" class="disabled nav-link" href="#" tabindex="-1">Disabled</a>
+</nav>
+<br>
+<ul class="nav nav-justified nav-pills">
+    <li class="nav-item">
+        <a aria-current="page" class="active nav-link" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Much longer nav link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a aria-disabled="true" class="disabled nav-link" href="#" tabindex="-1">Disabled</a>
+    </li>
+</ul>
+<br>
+<nav class="nav nav-justified nav-pills">
+    <a aria-current="page" class="active nav-link" href="#">Active</a>
+    <a class="nav-link" href="#">Much longer nav link</a>
+    <a class="nav-link" href="#">Link</a>
+    <a aria-disabled="true" class="disabled nav-link" href="#" tabindex="-1">Disabled</a>
+</nav>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->navigation()->menu()->renderMenu(
+    new \Laminas\Navigation\Navigation([
+        ['label' => 'Active', 'uri' => '#', 'active' => true],
+        ['label' => 'Much longer nav link', 'uri' => '#'],
+        ['label' => 'Link', 'uri' => '#'],
+        ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+    ]),
+    [
+        'pills' => true,
+        'fill' => true,
+        'page' => true,
+    ]
+);
+
+echo PHP_EOL . '<br/>';
+
+echo $this->navigation()->menu()->renderMenu(
+    new \Laminas\Navigation\Navigation([
+        ['label' => 'Active', 'uri' => '#', 'active' => true],
+        ['label' => 'Much longer nav link', 'uri' => '#'],
+        ['label' => 'Link', 'uri' => '#'],
+        ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+    ]),
+    [
+        'pills' => true,
+        'fill' => true,
+        'list' => false,
+        'page' => true,
+    ]
+);
+
+echo PHP_EOL . '<br/>';
+
+echo $this->navigation()->menu()->renderMenu(
+    new \Laminas\Navigation\Navigation([
+        ['label' => 'Active', 'uri' => '#', 'active' => true],
+        ['label' => 'Much longer nav link', 'uri' => '#'],
+        ['label' => 'Link', 'uri' => '#'],
+        ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+    ]),
+    [
+        'pills' => true,
+        'justified' => true,
+        'page' => true,
+    ]
+);
+
+echo PHP_EOL . '<br/>';
+
+echo $this->navigation()->menu()->renderMenu(
+    new \Laminas\Navigation\Navigation([
+        ['label' => 'Active', 'uri' => '#', 'active' => true],
+        ['label' => 'Much longer nav link', 'uri' => '#'],
+        ['label' => 'Link', 'uri' => '#'],
+        ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+    ]),
+    [
+        'pills' => true,
+        'justified' => true,
+        'list' => false,
+        'page' => true,
+    ]
+);
+```
+
+</TabItem>
+</Tabs>
+
+## Working with flex utilities
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/navs-tabs/#working-with-flex-utilities)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<nav class="flex-column flex-sm-row nav nav-pills">
+    <a aria-current="page" class="active flex-sm-fill nav-link text-sm-center" href="#">Active</a>
+    <a class="flex-sm-fill nav-link text-sm-center" href="#">Longer nav link</a>
+    <a class="flex-sm-fill nav-link text-sm-center" href="#">Link</a>
+    <a aria-disabled="true" class="disabled flex-sm-fill nav-link text-sm-center" href="#" tabindex="-1">Disabled</a>
+</nav>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->navigation()->menu()->renderMenu(new \Laminas\Navigation\Navigation([
+    ['label' => 'Active', 'uri' => '#', 'active' => true, 'class' => 'flex-sm-fill text-sm-center'],
+    ['label' => 'Longer nav link', 'uri' => '#', 'class' => 'flex-sm-fill text-sm-center'],
+    ['label' => 'Link', 'uri' => '#', 'class' => 'flex-sm-fill text-sm-center'],
+    ['label' => 'Disabled', 'uri' => '#', 'visible' => false, 'class' => 'flex-sm-fill text-sm-center'],
+]), [
+    'page' => true,
+    'list' => false,
+    'pills' => true,
+    'ulClass' => 'flex-column flex-sm-row nav',
+]);
+```
+
+</TabItem>
+</Tabs>
+
+## Using dropdowns
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/navs-tabs/#using-dropdowns)
+
+### Tabs with dropdowns
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/navs-tabs/#tabs-with-dropdowns)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a aria-current="page" class="active nav-link" href="#">Active</a>
+    </li>
+    <li class="dropdown nav-item">
+        <a aria-expanded="false" class="dropdown-toggle nav-link" data-bs-toggle="dropdown" href="#" role="button">Dropdown</a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+        </ul>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a aria-disabled="true" class="disabled nav-link" href="#" tabindex="-1">Disabled</a>
+    </li>
+</ul>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->navigation()->menu()->renderMenu(
+    new \Laminas\Navigation\Navigation([
+        ['label' => 'Active', 'uri' => '#', 'active' => true],
+        [
+            'type' => \TwbsHelper\Navigation\Page\DropdownPage::class,
+            'label' => 'Dropdown',
+            'dropdown' => [
+                'Action',
+                'Another action',
+                'Something else here',
+                '---',
+                'Separated link',
+            ],
+        ],
+        ['label' => 'Link', 'uri' => '#'],
+        ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+    ]),
+    ['tabs' => true, 'page' => true]
+);
+```
+
+</TabItem>
+</Tabs>
+
+### Pills with dropdowns
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/navs-tabs/#pills-with-dropdowns)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<ul class="nav nav-pills">
+    <li class="nav-item">
+        <a aria-current="page" class="active nav-link" href="#">Active</a>
+    </li>
+    <li class="dropdown nav-item">
+        <a aria-expanded="false" class="dropdown-toggle nav-link" data-bs-toggle="dropdown" href="#" role="button">Dropdown</a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Separated link</a></li>
+        </ul>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a aria-disabled="true" class="disabled nav-link" href="#" tabindex="-1">Disabled</a>
+    </li>
+</ul>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->navigation()->menu()->renderMenu(
+    new \Laminas\Navigation\Navigation([
+        ['label' => 'Active', 'uri' => '#', 'active' => true],
+        [
+            'type' => \TwbsHelper\Navigation\Page\DropdownPage::class,
+            'label' => 'Dropdown',
+            'dropdown' => [
+                'Action',
+                'Another action',
+                'Something else here',
+                '---',
+                'Separated link',
+            ],
+        ],
+        ['label' => 'Link', 'uri' => '#'],
+        ['label' => 'Disabled', 'uri' => '#', 'visible' => false],
+    ]),
+    ['pills' => true, 'page' => true]
+);
+```
+
+</TabItem>
+</Tabs>
+

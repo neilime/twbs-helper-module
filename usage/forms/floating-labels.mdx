@@ -1,0 +1,324 @@
+---
+sidebar_position: 7
+label: Floating labels
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../src/components/HtmlCode.tsx";
+
+# Floating labels
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/forms/floating-labels)
+
+## Example
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/forms/floating-labels/#example)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="form-floating mb-3">
+    <input class="form-control" id="floatingInput" name="email" placeholder="name@example.com" type="email" value="">
+    <label for="floatingInput">Email address</label>
+</div>
+<div class="form-floating">
+    <input class="form-control" id="floatingPassword" name="password" placeholder="Password" type="password" value="">
+    <label for="floatingPassword">Password</label>
+</div>
+<form id="form" method="POST" name="form" role="form">
+    <div class="form-floating">
+        <input class="form-control" id="floatingInputValue" name="emailWithValue" placeholder="name@example.com" type="email" value="test@example.com">
+        <label for="floatingInputValue">Input with value</label>
+    </div>
+</form>
+<form class="was-validated" id="form" method="POST" name="form" role="form">
+    <div class="form-floating has-error">
+        <input class="form-control is-invalid" id="floatingInputInvalid" name="invalidEmailWithValue" placeholder="name@example.com" type="email" value="test@example.com">
+        <div class="invalid-feedback"></div>
+        <label for="floatingInputInvalid">Invalid input</label>
+    </div>
+</form>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$factory = new \Laminas\Form\Factory();
+
+echo $this->formRow($factory->create([
+    'name' => 'email',
+    'options' => [
+        'label' => 'Email address',
+        'floating_label' => true,
+    ],
+    'attributes' => [
+        'type' => 'email',
+        'id' => 'floatingInput',
+        'placeholder' => 'name@example.com',
+    ],
+]));
+
+echo $this->formRow($factory->create([
+    'name' => 'password',
+    'options' => [
+        'label' => 'Password',
+        'floating_label' => true,
+        'row_spacing_class' => false,
+    ],
+    'attributes' => [
+        'type' => 'password',
+        'id' => 'floatingPassword',
+        'placeholder' => 'Password',
+    ],
+]));
+
+echo $this->form($factory->create([
+    'type' => 'form',
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'emailWithValue',
+                'options' => [
+                    'label' => 'Input with value',
+                    'floating_label' => true,
+                    'row_spacing_class' => false,
+                ],
+                'attributes' => [
+                    'type' => 'email',
+                    'id' => 'floatingInputValue',
+                    'placeholder' => 'name@example.com',
+                    'value' => 'test@example.com',
+                ],
+            ],
+        ],
+    ],
+]));
+
+echo $this->form($factory->create([
+    'type' => 'form',
+    'elements' => [
+        [
+            'spec' => [
+
+                'name' => 'invalidEmailWithValue',
+                'options' => [
+                    'label' => 'Invalid input',
+                    'floating_label' => true,
+                    'row_spacing_class' => false,
+                ],
+                'attributes' => [
+                    'type' => 'email',
+                    'id' => 'floatingInputInvalid',
+                    'placeholder' => 'name@example.com',
+                    'value' => 'test@example.com',
+                ],
+            ],
+        ],
+    ],
+])->setMessages(['invalidEmailWithValue' => ['']]));
+```
+
+</TabItem>
+</Tabs>
+
+## Textareas
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/forms/floating-labels/#textareas)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="form-floating">
+    <textarea class="form-control" id="floatingTextarea" name="comments" placeholder="Leave a comment here"></textarea>
+    <label for="floatingTextarea">Comments</label>
+</div>
+<div class="form-floating">
+    <textarea class="form-control" id="floatingTextarea" name="customHeightComments" placeholder="Leave a comment here" style="height: 100px;"></textarea>
+    <label for="floatingTextarea">Comments</label>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$factory = new \Laminas\Form\Factory();
+
+echo $this->formRow($factory->create(
+    [
+        'name' => 'comments',
+        'options' => [
+            'label' => 'Comments',
+            'floating_label' => true,
+            'row_spacing_class' => false,
+        ],
+        'attributes' => [
+            'type' => 'textarea',
+            'id' => 'floatingTextarea',
+            'placeholder' => 'Leave a comment here',
+        ],
+    ],
+));
+
+echo $this->formRow($factory->create([
+    'name' => 'customHeightComments',
+    'options' => [
+        'label' => 'Comments',
+        'floating_label' => true,
+        'row_spacing_class' => false,
+    ],
+    'attributes' => [
+        'type' => 'textarea',
+        'id' => 'floatingTextarea',
+        'placeholder' => 'Leave a comment here',
+        'style' => 'height: 100px',
+    ],
+]));
+```
+
+</TabItem>
+</Tabs>
+
+## Selects
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/forms/floating-labels/#selects)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="form-floating">
+    <select aria-label="Floating label select example" class="form-select" id="floatingSelect" name="floatingSelect">
+        <option selected value="">Open this select menu</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+    </select>
+    <label for="floatingSelect">Works with selects</label>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$factory = new \Laminas\Form\Factory();
+
+echo $this->formRow($factory->create(
+    [
+        'name' => 'floatingSelect',
+        'type' => 'select',
+        'options' => [
+            'label' => 'Works with selects',
+            'floating_label' => true,
+            'row_spacing_class' => false,
+            'empty_option' => 'Open this select menu',
+            'value_options' => [
+                1 => 'One',
+                2 => 'Two',
+                3 => 'Three',
+            ],
+        ],
+        'attributes' => [
+            'id' => 'floatingSelect',
+            'aria-label' => 'Floating label select example',
+            'value' => '',
+        ],
+    ],
+));
+```
+
+</TabItem>
+</Tabs>
+
+## Layout
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/forms/floating-labels/#layout)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<form id="form" method="POST" name="form" role="form">
+    <div class="g-2 row">
+        <div class="col-md form-floating">
+            <input class="form-control" id="floatingInputGrid" name="floatingInputGrid" placeholder="name@example.com" type="email" value="mdo@example.com">
+            <label for="floatingInputGrid">Email address</label>
+        </div>
+        <div class="col-md form-floating">
+            <select aria-label="Floating label select example" class="form-select" id="floatingSelectGrid" name="floatingSelectGrid">
+                <option selected value="">Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+            <label for="floatingSelectGrid">Works with selects</label>
+        </div>
+    </div>
+</form>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$factory = new \Laminas\Form\Factory();
+
+echo $this->form($factory->create([
+    'type' => 'form',
+    'options' => [
+        'gutter' => 2,
+    ],
+    'elements' => [
+        [
+            'spec' => [
+                'name' => 'floatingInputGrid',
+                'options' => [
+                    'column' => 'md',
+                    'label' => 'Email address',
+                    'floating_label' => true,
+                    'row_spacing_class' => false,
+                ],
+                'attributes' => [
+                    'type' => 'email',
+                    'id' => 'floatingInputGrid',
+                    'placeholder' => 'name@example.com',
+                    'value' => 'mdo@example.com',
+                ],
+            ],
+        ],
+        [
+            'spec' => [
+                'name' => 'floatingSelectGrid',
+                'type' => 'select',
+                'options' => [
+                    'column' => 'md',
+                    'label' => 'Works with selects',
+                    'floating_label' => true,
+                    'row_spacing_class' => false,
+                    'empty_option' => 'Open this select menu',
+                    'value_options' => [
+                        1 => 'One',
+                        2 => 'Two',
+                        3 => 'Three',
+                    ],
+                ],
+                'attributes' => [
+                    'id' => 'floatingSelectGrid',
+                    'aria-label' => 'Floating label select example',
+                    'value' => '',
+                ],
+            ],
+        ],
+    ],
+]));
+```
+
+</TabItem>
+</Tabs>
+

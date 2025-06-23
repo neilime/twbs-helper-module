@@ -1,0 +1,538 @@
+---
+sidebar_position: 5
+label: Buttons
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../src/components/HtmlCode.tsx";
+
+# Buttons
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/buttons/)
+
+## Examples
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/buttons/#examples)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<button class="btn btn-primary" name="button" type="button" value="">Primary</button>
+<button class="btn btn-secondary" name="button" type="button" value="">Secondary</button>
+<button class="btn btn-success" name="button" type="button" value="">Success</button>
+<button class="btn btn-danger" name="button" type="button" value="">Danger</button>
+<button class="btn btn-warning" name="button" type="button" value="">Warning</button>
+<button class="btn btn-info" name="button" type="button" value="">Info</button>
+<button class="btn btn-light" name="button" type="button" value="">Light</button>
+<button class="btn btn-dark" name="button" type="button" value="">Dark</button>
+<button class="btn btn-link" name="button" type="button" value="">Link</button>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+foreach (
+    [
+        'primary', 'secondary', 'success', 'danger',
+        'warning', 'info', 'light', 'dark', 'link',
+    ] as $variant
+) {
+    echo $this->formButton()->renderSpec([
+        'options' => [
+            'label' => ucfirst($variant),
+            'variant' => $variant,
+        ],
+    ]);
+}
+```
+
+</TabItem>
+</Tabs>
+
+## Button tags
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/buttons/#button-tags)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<a class="btn btn-primary" href="#" role="button">Link</a>
+<button class="btn btn-primary" name="button" type="submit" value="">Button</button>
+<input class="btn btn-primary" name="button" type="button" value="Input">
+<input class="btn btn-primary" name="button" type="submit" value="Submit">
+<input class="btn btn-primary" name="button" type="reset" value="Reset">` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+
+// Link button
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Link',
+        'variant' => 'primary',
+        'tag' => 'a',
+    ],
+    'attributes' => ['href' => '#'],
+]);
+
+// Submit button
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Button',
+        'variant' => 'primary',
+    ],
+    'attributes' => ['type' => 'submit'],
+]);
+
+// Input button
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'tag' => 'input',
+        'label' => 'Input',
+        'variant' => 'primary',
+    ],
+    'attributes' => ['type' => 'button'],
+]);
+
+// Submit input
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'tag' => 'input',
+        'label' => 'Submit',
+        'variant' => 'primary',
+    ],
+    'attributes' => ['type' => 'submit'],
+]);
+
+// Reset
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'tag' => 'input',
+        'label' => 'Reset',
+        'variant' => 'primary',
+    ],
+    'attributes' => ['type' => 'reset'],
+]);
+```
+
+</TabItem>
+</Tabs>
+
+## Outline buttons
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/buttons/#outline-buttons)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<button class="btn btn-outline-primary" name="button" type="button" value="">Primary</button>
+<button class="btn btn-outline-secondary" name="button" type="button" value="">Secondary</button>
+<button class="btn btn-outline-success" name="button" type="button" value="">Success</button>
+<button class="btn btn-outline-danger" name="button" type="button" value="">Danger</button>
+<button class="btn btn-outline-warning" name="button" type="button" value="">Warning</button>
+<button class="btn btn-outline-info" name="button" type="button" value="">Info</button>
+<button class="btn btn-outline-light" name="button" type="button" value="">Light</button>
+<button class="btn btn-outline-dark" name="button" type="button" value="">Dark</button>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+foreach (
+    [
+        'primary', 'secondary', 'success', 'danger',
+        'warning', 'info', 'light', 'dark',
+    ] as $variant
+) {
+    echo $this->formButton()->renderSpec([
+        'options' => [
+            'label' => ucfirst($variant),
+            'variant' => 'outline-' . $variant,
+        ],
+    ]);
+}
+```
+
+</TabItem>
+</Tabs>
+
+## Sizes
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/buttons/#sizes)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<button class="btn btn-lg btn-primary" name="button" type="button" value="">Large button</button>
+<button class="btn btn-lg btn-secondary" name="button" type="button" value="">Large button</button>
+<br><br>
+<button class="btn btn-primary btn-sm" name="button" type="button" value="">Small button</button>
+<button class="btn btn-secondary btn-sm" name="button" type="button" value="">Small button</button>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+
+// Large buttons
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Large button',
+        'variant' => 'primary',
+        'size' => 'lg',
+    ],
+]);
+
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Large button',
+        'size' => 'lg',
+    ],
+]);
+
+echo '<br/><br/>';
+
+// Small buttons
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Small button',
+        'variant' => 'primary',
+        'size' => 'sm',
+    ],
+]);
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Small button',
+        'size' => 'sm',
+    ],
+]);
+```
+
+</TabItem>
+</Tabs>
+
+## Disabled state
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/buttons/#disabled-state)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<button class="btn btn-lg btn-primary" disabled name="button" type="button" value="">Primary button</button>
+<button class="btn btn-lg btn-secondary" disabled name="button" type="button" value="">Button</button>
+<br><br>
+<a aria-disabled="true" class="btn btn-lg btn-primary disabled" role="button">Primary link</a>
+<a aria-disabled="true" class="btn btn-lg btn-secondary disabled" role="button">Link</a>
+<br><br>
+<a aria-disabled="true" class="btn btn-lg btn-primary disabled" href="#" role="button" tabindex="-1">Primary link</a>
+<a aria-disabled="true" class="btn btn-lg btn-secondary disabled" href="#" role="button" tabindex="-1">Link</a>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Primary button',
+        'variant' => 'primary',
+        'size' => 'lg',
+    ],
+    'attributes' => [
+        'disabled' => true,
+    ],
+]);
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Button',
+        'size' => 'lg',
+    ],
+    'attributes' => [
+        'disabled' => true,
+    ],
+]);
+
+echo '<br/><br/>';
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'tag' => 'a',
+        'label' => 'Primary link',
+        'variant' => 'primary',
+        'size' => 'lg',
+    ],
+    'attributes' => [
+        'disabled' => true,
+    ],
+]);
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'tag' => 'a',
+        'label' => 'Link',
+        'size' => 'lg',
+    ],
+    'attributes' => [
+        'disabled' => true,
+    ],
+]);
+
+echo '<br/><br/>';
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'tag' => 'a',
+        'label' => 'Primary link',
+        'variant' => 'primary',
+        'size' => 'lg',
+    ],
+    'attributes' => [
+        'href' => '#',
+        'disabled' => true,
+    ],
+]);
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'tag' => 'a',
+        'label' => 'Link',
+        'size' => 'lg',
+    ],
+    'attributes' => [
+        'href' => '#',
+        'disabled' => true,
+    ],
+]);
+```
+
+</TabItem>
+</Tabs>
+
+## Block buttons
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/buttons/#block-buttons)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="d-grid gap-2">
+<button class="btn btn-primary" name="button" type="button" value="">Button</button>
+<button class="btn btn-primary" name="button" type="button" value="">Button</button>
+</div>
+<br><br>
+<div class="d-grid gap-2 d-md-block">
+<button class="btn btn-primary" name="button" type="button" value="">Button</button>
+<button class="btn btn-primary" name="button" type="button" value="">Button</button>
+</div>
+<br><br>
+<div class="d-grid gap-2 col-6 mx-auto">
+<button class="btn btn-primary" name="button" type="button" value="">Button</button>
+<button class="btn btn-primary" name="button" type="button" value="">Button</button>
+</div>
+<br><br>
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+<button class="btn btn-primary" name="button" type="button" value="">Button</button>
+<button class="btn btn-primary" name="button" type="button" value="">Button</button>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+
+echo '<div class="d-grid gap-2">';
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Button',
+        'variant' => 'primary',
+    ],
+]);
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Button',
+        'variant' => 'primary',
+    ],
+]);
+
+echo '</div>';
+
+echo '<br/><br/>';
+
+echo '<div class="d-grid gap-2 d-md-block">';
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Button',
+        'variant' => 'primary',
+    ],
+]);
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Button',
+        'variant' => 'primary',
+    ],
+]);
+
+echo '</div>';
+
+echo '<br/><br/>';
+
+echo '<div class="d-grid gap-2 col-6 mx-auto">';
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Button',
+        'variant' => 'primary',
+    ],
+]);
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Button',
+        'variant' => 'primary',
+    ],
+]);
+
+echo '</div>';
+
+echo '<br/><br/>';
+
+echo '<div class="d-grid gap-2 d-md-flex justify-content-md-end">';
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Button',
+        'variant' => 'primary',
+    ],
+]);
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Button',
+        'variant' => 'primary',
+    ],
+]);
+
+echo '</div>';
+```
+
+</TabItem>
+</Tabs>
+
+## Button plugin
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/buttons/#button-plugin)
+
+### Toggle states
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/buttons/#toggle-states)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<button autocomplete="off" class="btn btn-primary" data-bs-toggle="button" name="button" type="button" value="">Toggle button</button>
+<button aria-pressed="true" autocomplete="off" class="active btn btn-primary" data-bs-toggle="button" name="button" type="button" value="">Active toggle button</button>
+<button autocomplete="off" class="btn btn-primary" data-bs-toggle="button" disabled name="button" type="button" value="">Disabled toggle button</button>
+<br><br>
+<a class="btn btn-primary" data-bs-toggle="button" href="#" role="button">Toggle link</a>
+<a aria-pressed="true" class="active btn btn-primary" data-bs-toggle="button" href="#" role="button">Active toggle link</a>
+<a aria-disabled="true" class="btn btn-primary disabled" data-bs-toggle="button" href="#" role="button" tabindex="-1">Disabled toggle link</a>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Toggle button',
+        'variant' => 'primary',
+        'toggle' => false,
+    ],
+]);
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Active toggle button',
+        'variant' => 'primary',
+        'toggle' => true,
+    ],
+]);
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Disabled toggle button',
+        'variant' => 'primary',
+        'toggle' => false,
+    ],
+    'attributes' => [
+        'disabled' => true,
+    ],
+]);
+
+echo '<br/><br/>';
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'tag' => 'a',
+        'label' => 'Toggle link',
+        'variant' => 'primary',
+        'toggle' => false,
+    ],
+    'attributes' => [
+        'href' => '#',
+    ],
+]);
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'tag' => 'a',
+        'label' => 'Active toggle link',
+        'variant' => 'primary',
+        'toggle' => true,
+    ],
+    'attributes' => [
+        'href' => '#',
+    ],
+]);
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'tag' => 'a',
+        'label' => 'Disabled toggle link',
+        'variant' => 'primary',
+        'toggle' => false,
+    ],
+    'attributes' => [
+        'disabled' => true,
+        'href' => '#',
+    ],
+]);
+```
+
+</TabItem>
+</Tabs>
+

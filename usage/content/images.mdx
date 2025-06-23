@@ -1,0 +1,165 @@
+---
+sidebar_position: 2
+label: Images
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../src/components/HtmlCode.tsx";
+
+# Images
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/content/images/)
+
+## Responsive images
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/content/images/#responsive-images)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<img alt="..." class="img-fluid" src="/twbs-helper-module/img/docs/responsive.svg">` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->image('/twbs-helper-module/img/docs/responsive.svg', ['fluid' => true, 'alt' => '...',]);
+```
+
+</TabItem>
+</Tabs>
+
+## Image thumbnails
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/content/images/#image-thumbnails)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<img alt="..." class="img-thumbnail" src="/twbs-helper-module/img/docs/200x200.svg">` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->image('/twbs-helper-module/img/docs/200x200.svg', ['thumbnail' => true, 'alt' => '...',]);
+```
+
+</TabItem>
+</Tabs>
+
+## Aligning images
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/content/images/#aligning-images)
+
+### Float
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<img alt="..." class="float-start rounded" src="/twbs-helper-module/img/docs/200x200.svg">
+<img alt="..." class="float-end rounded" src="/twbs-helper-module/img/docs/200x200.svg">` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->image(
+    '/twbs-helper-module/img/docs/200x200.svg',
+    ['rounded' => true, 'alt' => '...', 'class' => 'float-start']
+);
+
+echo PHP_EOL;
+
+echo $this->image(
+    '/twbs-helper-module/img/docs/200x200.svg',
+    ['rounded' => true, 'alt' => '...', 'class' => 'float-end']
+);
+```
+
+</TabItem>
+</Tabs>
+
+### Mx Auto
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<img alt="..." class="d-block mx-auto rounded" src="/twbs-helper-module/img/docs/200x200.svg">` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->image(
+    '/twbs-helper-module/img/docs/200x200.svg',
+    ['rounded' => true, 'alt' => '...', 'class' => 'mx-auto d-block']
+);
+```
+
+</TabItem>
+</Tabs>
+
+### Centered
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="text-center">
+    <img alt="..." class="rounded" src="/twbs-helper-module/img/docs/200x200.svg">
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->image(
+    '/twbs-helper-module/img/docs/200x200.svg',
+    ['rounded' => true, 'centered' => true, 'alt' => '...']
+);
+```
+
+</TabItem>
+</Tabs>
+
+## Picture
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/content/images/#picture)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<picture>
+    <source srcset="/twbs-helper-module/img/docs/200x200.svg" type="image/svg+xml"></source>
+    <img alt="..." class="img-fluid img-thumbnail" src="/twbs-helper-module/img/docs/200x200.svg">
+</picture>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->image('/twbs-helper-module/img/docs/200x200.svg', [
+    'thumbnail' => true,
+    'fluid' => true,
+    'alt' => '...',
+    'sources' => ['/twbs-helper-module/img/docs/200x200.svg' => 'image/svg+xml'],
+]);
+```
+
+</TabItem>
+</Tabs>
+

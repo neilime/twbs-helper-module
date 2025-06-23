@@ -1,0 +1,628 @@
+---
+sidebar_position: 3
+label: Columns
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../src/components/HtmlCode.tsx";
+
+# Columns
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/layout/columns/)
+
+## Alignment
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/layout/columns/#alignment)
+
+### Vertical alignment
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/layout/columns/#vertical-alignment)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="container">
+    <div class="align-items-start row">
+        <div class="col">
+            One of three columns
+        </div>
+        <div class="col">
+            One of three columns
+        </div>
+        <div class="col">
+            One of three columns
+        </div>
+    </div>
+    <div class="align-items-center row">
+        <div class="col">
+            One of three columns
+        </div>
+        <div class="col">
+            One of three columns
+        </div>
+        <div class="col">
+            One of three columns
+        </div>
+    </div>
+    <div class="align-items-end row">
+        <div class="col">
+            One of three columns
+        </div>
+        <div class="col">
+            One of three columns
+        </div>
+        <div class="col">
+            One of three columns
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="align-self-start col">
+            One of three columns
+        </div>
+        <div class="align-self-center col">
+            One of three columns
+        </div>
+        <div class="align-self-end col">
+            One of three columns
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->grid([
+    [
+        ['One of three columns', 'One of three columns', 'One of three columns'],
+        ['align' => 'start'],
+    ],
+    [
+        ['One of three columns', 'One of three columns', 'One of three columns'],
+        ['align' => 'center'],
+    ],
+    [
+        ['One of three columns', 'One of three columns', 'One of three columns'],
+        ['align' => 'end'],
+    ],
+]);
+
+echo $this->grid([
+    [
+        [
+            ['One of three columns', ['align' => 'start']],
+            ['One of three columns', ['align' => 'center']],
+            ['One of three columns', ['align' => 'end']],
+        ],
+    ],
+]);
+```
+
+</TabItem>
+</Tabs>
+
+### Horizontal alignment
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/layout/columns/#horizontal-alignment)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="container">
+    <div class="justify-content-start row">
+        <div class="col-4">
+            One of two columns
+        </div>
+        <div class="col-4">
+            One of two columns
+        </div>
+    </div>
+    <div class="justify-content-center row">
+        <div class="col-4">
+            One of two columns
+        </div>
+        <div class="col-4">
+            One of two columns
+        </div>
+    </div>
+    <div class="justify-content-end row">
+        <div class="col-4">
+            One of two columns
+        </div>
+        <div class="col-4">
+            One of two columns
+        </div>
+    </div>
+    <div class="justify-content-around row">
+        <div class="col-4">
+            One of two columns
+        </div>
+        <div class="col-4">
+            One of two columns
+        </div>
+    </div>
+    <div class="justify-content-between row">
+        <div class="col-4">
+            One of two columns
+        </div>
+        <div class="col-4">
+            One of two columns
+        </div>
+    </div>
+    <div class="justify-content-evenly row">
+        <div class="col-4">
+            One of two columns
+        </div>
+        <div class="col-4">
+            One of two columns
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->grid([
+    [
+        [
+            ['One of two columns', ['column' => 4]],
+            ['One of two columns', ['column' => 4]],
+        ],
+        ['justify_content' => 'start'],
+    ],
+    [
+        [
+            ['One of two columns', ['column' => 4]],
+            ['One of two columns', ['column' => 4]],
+        ],
+        ['justify_content' => 'center'],
+    ],
+    [
+        [
+            ['One of two columns', ['column' => 4]],
+            ['One of two columns', ['column' => 4]],
+        ],
+        ['justify_content' => 'end'],
+    ],
+    [
+        [
+            ['One of two columns', ['column' => 4]],
+            ['One of two columns', ['column' => 4]],
+        ],
+        ['justify_content' => 'around'],
+    ],
+    [
+        [
+            ['One of two columns', ['column' => 4]],
+            ['One of two columns', ['column' => 4]],
+        ],
+        ['justify_content' => 'between'],
+    ],
+    [
+        [
+            ['One of two columns', ['column' => 4]],
+            ['One of two columns', ['column' => 4]],
+        ],
+        ['justify_content' => 'evenly'],
+    ],
+]);
+```
+
+</TabItem>
+</Tabs>
+
+### Column wrapping
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/layout/columns/#column-wrapping)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="container">
+    <div class="row">
+        <div class="col-9">
+            .col-9
+        </div>
+        <div class="col-4">
+            .col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.
+        </div>
+        <div class="col-6">
+            .col-6<br>Subsequent columns continue along the new line.
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->grid([
+    [
+        [
+            ['.col-9', ['column' => 9]],
+            [
+                '.col-4<br>Since 9 + 4 = 13 &gt; 12, ' .
+                'this 4-column-wide div gets wrapped onto a new line as one contiguous unit.',
+                ['column' => 4],
+            ],
+            [
+                '.col-6<br>Subsequent columns continue along the new line.',
+                ['column' => 6],
+            ],
+        ],
+    ],
+]);
+```
+
+</TabItem>
+</Tabs>
+
+### Column breaks
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/layout/columns/#column-breaks)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="container">
+    <div class="row">
+        <div class="col-6 col-sm-3">
+            .col-6 .col-sm-3
+        </div>
+        <div class="col-6 col-sm-3">
+            .col-6 .col-sm-3
+        </div>
+        <div class="w-100"></div>
+        <div class="col-6 col-sm-3">
+            .col-6 .col-sm-3
+        </div>
+        <div class="col-6 col-sm-3">
+            .col-6 .col-sm-3
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-6 col-sm-4">
+            .col-6 .col-sm-4
+        </div>
+        <div class="col-6 col-sm-4">
+            .col-6 .col-sm-4
+        </div>
+        <div class="d-md-block d-none w-100"></div>
+        <div class="col-6 col-sm-4">
+            .col-6 .col-sm-4
+        </div>
+        <div class="col-6 col-sm-4">
+            .col-6 .col-sm-4
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->grid([
+    [
+        [
+            ['.col-6 .col-sm-3'],
+            ['.col-6 .col-sm-3'],
+            [null, ['divider' => true]],
+            ['.col-6 .col-sm-3'],
+            ['.col-6 .col-sm-3'],
+        ],
+        ['column' => [6, 'sm-3']],
+    ],
+]);
+
+echo $this->grid([
+    [
+        [
+            ['.col-6 .col-sm-4'],
+            ['.col-6 .col-sm-4'],
+            [null, ['divider' => 'md']],
+            ['.col-6 .col-sm-4'],
+            ['.col-6 .col-sm-4'],
+        ],
+        ['column' => [6, 'sm-4']],
+    ],
+]);
+```
+
+</TabItem>
+</Tabs>
+
+## Reordering
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/layout/columns/#reordering)
+
+### Order classes
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/layout/columns/#order-classes)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="container">
+    <div class="row">
+        <div class="col">
+            First in DOM, no order applied
+        </div>
+        <div class="col order-5">
+            Second in DOM, with a larger order
+        </div>
+        <div class="col order-1">
+            Third in DOM, with an order of 1
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col order-last">
+            First in DOM, ordered last
+        </div>
+        <div class="col">
+            Second in DOM, unordered
+        </div>
+        <div class="col order-first">
+            Third in DOM, ordered first
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->grid([
+    [
+        [
+            'First in DOM, no order applied',
+            ['Second in DOM, with a larger order', ['order' => 5]],
+            ['Third in DOM, with an order of 1', ['order' => 1]],
+        ],
+    ],
+]);
+
+echo $this->grid([
+    [
+        [
+            ['First in DOM, ordered last', ['order' => 'last']],
+            'Second in DOM, unordered',
+            ['Third in DOM, ordered first', ['order' => 'first']],
+        ],
+    ],
+]);
+```
+
+</TabItem>
+</Tabs>
+
+### Offsetting columns
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/layout/columns/#offsetting-columns)
+
+#### Offset classes
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/layout/columns/#offset-classes)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            .col-md-4
+        </div>
+        <div class="col-md-4 offset-md-4">
+            .col-md-4 .offset-md-4
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 offset-md-3">
+            .col-md-3 .offset-md-3
+        </div>
+        <div class="col-md-3 offset-md-3">
+            .col-md-3 .offset-md-3
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            .col-md-6 .offset-md-3
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-sm-5">
+            .col-sm-5 .col-md-6
+        </div>
+        <div class="col-md-6 col-sm-5 offset-md-0 offset-sm-2">
+            .col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-md-5 col-sm-6">
+            .col-sm-6 .col-md-5 .col-lg-6
+        </div>
+        <div class="col-lg-6 col-md-5 col-sm-6 offset-lg-0 offset-md-2">
+            .col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->grid([
+    [
+        [
+            ['.col-md-4', ['column' => 'md-4']],
+            ['.col-md-4 .offset-md-4', ['column' => 'md-4', 'offset' => 'md-4']],
+        ],
+    ],
+    [
+        [
+            ['.col-md-3 .offset-md-3', ['column' => 'md-3', 'offset' => 'md-3']],
+            ['.col-md-3 .offset-md-3', ['column' => 'md-3', 'offset' => 'md-3']],
+        ],
+    ],
+    [
+        [
+            ['.col-md-6 .offset-md-3', ['column' => 'md-6', 'offset' => 'md-3']],
+        ],
+    ],
+]);
+
+echo $this->grid([
+    [
+        [
+            ['.col-sm-5 .col-md-6', ['column' => ['sm-5', 'md-6']]],
+            [
+                '.col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0',
+                [
+                    'column' => ['sm-5', 'md-6'],
+                    'offset' => ['sm-2', 'md-0'],
+                ],
+            ],
+        ],
+    ],
+    [
+        [
+            [
+                '.col-sm-6 .col-md-5 .col-lg-6',
+                ['column' => ['sm-6', 'md-5', 'lg-6']],
+            ],
+            [
+                '.col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0',
+                [
+                    'column' => ['sm-6', 'md-5', 'lg-6'],
+                    'offset' => ['md-2', 'lg-0'],
+                ],
+            ],
+        ],
+    ],
+]);
+```
+
+</TabItem>
+</Tabs>
+
+#### Margin utilities
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/layout/columns/#margin-utilities)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            .col-md-4
+        </div>
+        <div class="col-md-4 ms-auto">
+            .col-md-4 .ms-auto
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 ms-md-auto">
+            .col-md-3 .ms-md-auto
+        </div>
+        <div class="col-md-3 ms-md-auto">
+            .col-md-3 .ms-md-auto
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-auto me-auto">
+            .col-auto .me-auto
+        </div>
+        <div class="col-auto">
+            .col-auto
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->grid([
+    [
+        [
+            ['.col-md-4', ['column' => 'md-4']],
+            ['.col-md-4 .ms-auto', ['column' => 'md-4', 'class' => 'ms-auto']],
+        ],
+    ],
+    [
+        [
+            ['.col-md-3 .ms-md-auto', ['column' => 'md-3', 'class' => 'ms-md-auto']],
+            ['.col-md-3 .ms-md-auto', ['column' => 'md-3', 'class' => 'ms-md-auto']],
+        ],
+    ],
+    [
+        [
+            ['.col-auto .me-auto', ['column' => 'auto', 'class' => 'me-auto']],
+            ['.col-auto', ['column' => 'auto']],
+        ],
+    ],
+]);
+```
+
+</TabItem>
+</Tabs>
+
+## Standalone column classes
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/layout/columns/#order-classes)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="bg-light border col-3 p-3">
+    .col-3: width of 25%
+</div>
+<div class="bg-light border col-sm-9 p-3">
+    .col-sm-9: width of 75% above sm breakpoint
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->gridColumn(
+    '.col-3: width of 25%',
+    ['column' => 3, 'class' => 'bg-light border p-3']
+);
+
+echo $this->gridColumn(
+    '.col-sm-9: width of 75% above sm breakpoint',
+    ['column' => 'sm-9', 'class' => 'bg-light border p-3']
+);
+```
+
+</TabItem>
+</Tabs>
+

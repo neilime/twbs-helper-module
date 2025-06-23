@@ -1,0 +1,1559 @@
+---
+sidebar_position: 13
+label: Modal
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../src/components/HtmlCode.tsx";
+
+# Modal
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/modal/)
+
+## Examples
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/modal/#examples)
+
+### Modal components
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/modal/#modal-components)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" name="button" type="button" value=""></button>
+            </div>
+            <div class="modal-body">
+                <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal" name="button" type="button" value="">Close</button>
+                <button class="btn btn-primary" name="button" type="button" value="">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+echo $this->modal([
+    'title' => 'Modal title',
+    'Modal body text goes here.',
+    'footer' => [
+        'button' => [
+            [
+                'options' => [
+                    'label' => 'Close',
+                    'variant' => 'secondary',
+                ],
+                'attributes' => [
+                    'data-bs-dismiss' => 'modal',
+                ],
+            ],
+            [
+                'options' => [
+                    'label' => 'Save changes',
+                    'variant' => 'primary',
+                ],
+            ],
+        ],
+    ],
+]);
+```
+
+</TabItem>
+</Tabs>
+
+### Live demo
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/modal/#live-demo)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<button class="btn btn-secondary" data-bs-target="#exampleModal" data-bs-toggle="modal" name="button" type="button" value="">Launch demo modal</button>
+<div aria-hidden="true" aria-labelledby="exampleModalLabel" class="fade modal" id="exampleModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" name="button" type="button" value=""></button>
+            </div>
+            <div class="modal-body">
+                <p>Woohoo, you're reading this text in a modal!</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal" name="button" type="button" value="">Close</button>
+                <button class="btn btn-primary" name="button" type="button" value="">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Launch demo modal',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#exampleModal',
+    ],
+]);
+
+echo $this->modal(
+    [
+        'title' => [
+            'content' => 'Modal title',
+            'attributes' => ['id' => 'exampleModalLabel'],
+        ],
+        'Woohoo, you\'re reading this text in a modal!',
+        'footer' => [
+            'button' => [
+                [
+                    'options' => [
+                        'label' => 'Close',
+                        'variant' => 'secondary',
+                    ],
+                    'attributes' => [
+                        'data-bs-dismiss' => 'modal',
+                    ],
+                ],
+                [
+                    'options' => [
+                        'label' => 'Save changes',
+                        'variant' => 'primary',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    [
+        'fade' => true,
+        'hidden' => true,
+        'id' => 'exampleModal',
+    ]
+);
+```
+
+</TabItem>
+</Tabs>
+
+### Static backdrop
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/modal/#static-backdrop)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<button class="btn btn-primary" data-bs-target="#staticBackdrop" data-bs-toggle="modal" name="button" type="button" value="">Launch static backdrop modal</button>
+<div aria-hidden="true" aria-labelledby="staticBackdropLabel" class="fade modal" data-bs-backdrop="static" data-bs-keyboard="false" id="staticBackdrop" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" name="button" type="button" value=""></button>
+            </div>
+            <div class="modal-body">
+                <p>I will not close if you click outside me. Don't even try to press escape key.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal" name="button" type="button" value="">Close</button>
+                <button class="btn btn-primary" name="button" type="button" value="">Understood</button>
+            </div>
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Launch static backdrop modal',
+        'variant' => 'primary',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#staticBackdrop',
+    ],
+]);
+
+echo $this->modal(
+    [
+        'title' => [
+            'content' => 'Modal title',
+            'attributes' => ['id' => 'staticBackdropLabel'],
+        ],
+        'I will not close if you click outside me. Don\'t even try to press escape key.',
+        'footer' => [
+            'button' => [
+                [
+                    'options' => [
+                        'label' => 'Close',
+                        'variant' => 'secondary',
+                    ],
+                    'attributes' => [
+                        'data-bs-dismiss' => 'modal',
+                    ],
+                ],
+                [
+                    'options' => [
+                        'label' => 'Understood',
+                        'variant' => 'primary',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    [
+        'fade' => true,
+        'hidden' => true,
+        'backdrop' => true,
+        'id' => 'staticBackdrop',
+    ]
+);
+```
+
+</TabItem>
+</Tabs>
+
+### Scrolling long content
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/modal/#scrolling-long-content)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<button class="btn btn-primary" data-bs-target="#exampleModalLong" data-bs-toggle="modal" name="button" type="button" value="">Launch demo modal</button>
+<div aria-hidden="true" aria-labelledby="exampleModalLongTitle" class="fade modal" id="exampleModalLong" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" name="button" type="button" value=""></button>
+            </div>
+            <div class="modal-body" style="min-height: 1500px;">
+                <p>This is some placeholder content to show the scrolling behavior for modals. Instead of repeating the text the modal, we use an inline style set a minimum height, thereby extending the length of the overall modal and demonstrating the overflow scrolling. When content becomes longer than the height of the viewport, scrolling will move the modal as needed.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal" name="button" type="button" value="">Close</button>
+                <button class="btn btn-primary" name="button" type="button" value="">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<button class="btn btn-primary" data-bs-target="#exampleModalScrollable" data-bs-toggle="modal" name="button" type="button" value="">Launch demo modal</button>
+<div aria-hidden="true" aria-labelledby="exampleModalScrollableTitle" class="fade modal" id="exampleModalScrollable" tabindex="-1">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalScrollableTitle">Modal title</h5>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" name="button" type="button" value=""></button>
+            </div>
+            <div class="modal-body">
+                <p>This is some placeholder content to show the scrolling behavior for modals. We use repeated line breaks to demonstrate how content can exceed minimum inner height, thereby showing inner scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modal.</p>
+                <p><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+                <p>This content should appear at the bottom after you scroll.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal" name="button" type="button" value="">Close</button>
+                <button class="btn btn-primary" name="button" type="button" value="">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Launch demo modal',
+        'variant' => 'primary',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#exampleModalLong',
+    ],
+]);
+
+echo $this->modal(
+    [
+        'title' => [
+            'content' => 'Modal title',
+            'attributes' => ['id' => 'exampleModalLongTitle'],
+        ],
+        'This is some placeholder content to show the scrolling behavior for modals. ' .
+        'Instead of repeating the text the modal, ' .
+        'we use an inline style set a minimum height, ' .
+        'thereby extending the length of the overall modal ' .
+        'and demonstrating the overflow scrolling. ' .
+        'When content becomes longer than the height of the viewport, ' .
+        'scrolling will move the modal as needed.',
+        'footer' => [
+            'button' => [
+                [
+                    'options' => [
+                        'label' => 'Close',
+                        'variant' => 'secondary',
+                    ],
+                    'attributes' => [
+                        'data-bs-dismiss' => 'modal',
+                    ],
+                ],
+                [
+                    'options' => [
+                        'label' => 'Save changes',
+                        'variant' => 'primary',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    [
+        'fade' => true,
+        'hidden' => true,
+        'id' => 'exampleModalLong',
+        'body_attributes' => ['style' => 'min-height: 1500px'],
+    ]
+);
+
+echo PHP_EOL . '<br/>';
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Launch demo modal',
+        'variant' => 'primary',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#exampleModalScrollable',
+    ],
+]);
+
+echo $this->modal(
+    [
+        'title' => [
+            'content' => 'Modal title',
+            'attributes' => ['id' => 'exampleModalScrollableTitle'],
+        ],
+        'This is some placeholder content to show the scrolling behavior for modals. ' .
+        'We use repeated line breaks to demonstrate how content can exceed minimum inner height, ' .
+        'thereby showing inner scrolling. ' .
+        'When content becomes longer than the predefined max-height of modal, ' .
+        'content will be cropped and scrollable within the modal.',
+        '<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>' .
+        '<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>',
+        'This content should appear at the bottom after you scroll.',
+        'footer' => [
+            'button' => [
+                [
+                    'options' => [
+                        'label' => 'Close',
+                        'variant' => 'secondary',
+                    ],
+                    'attributes' => [
+                        'data-bs-dismiss' => 'modal',
+                    ],
+                ],
+                [
+                    'options' => [
+                        'label' => 'Save changes',
+                        'variant' => 'primary',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    [
+        'fade' => true,
+        'hidden' => true,
+        'scrollable' => true,
+        'id' => 'exampleModalScrollable',
+    ]
+);
+```
+
+</TabItem>
+</Tabs>
+
+### Vertically centered
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/modal/#live-demo)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<button class="btn btn-primary" data-bs-target="#exampleModalCenter" data-bs-toggle="modal" name="button" type="button" value="">Vertically centered modal</button>
+<div aria-hidden="true" aria-labelledby="exampleModalCenterTitle" class="fade modal" id="exampleModalCenter" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" name="button" type="button" value=""></button>
+            </div>
+            <div class="modal-body">
+                <p>This is a vertically centered modal.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal" name="button" type="button" value="">Close</button>
+                <button class="btn btn-primary" name="button" type="button" value="">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<button class="btn btn-primary" data-bs-target="#exampleModalCenteredScrollable" data-bs-toggle="modal" name="button" type="button" value="">Vertically centered scrollable modal</button>
+<div aria-hidden="true" aria-labelledby="exampleModalCenteredScrollableTitle" class="fade modal" id="exampleModalCenteredScrollable" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">Modal title</h5>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" name="button" type="button" value=""></button>
+            </div>
+            <div class="modal-body">
+                <p>This is some placeholder content to show a vertically centered modal. We've added some extra copy here to show how vertically centering the modal works when combined with scrollable modals. We also use some repeated line breaks to quickly extend the height of the content, thereby triggering the scrolling. When content becomes longer than the predefined max-height of modal, content will be cropped and scrollable within the modal.</p>
+                <p><br><br><br><br><br><br><br><br><br><br></p>
+                <p>Just like that.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal" name="button" type="button" value="">Close</button>
+                <button class="btn btn-primary" name="button" type="button" value="">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Vertically centered modal',
+        'variant' => 'primary',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#exampleModalCenter',
+    ],
+]);
+
+echo $this->modal(
+    [
+        'title' => [
+            'content' => 'Modal title',
+            'attributes' => ['id' => 'exampleModalCenterTitle'],
+        ],
+        'This is a vertically centered modal.',
+        'footer' => [
+            'button' => [
+                [
+                    'options' => [
+                        'label' => 'Close',
+                        'variant' => 'secondary',
+                    ],
+                    'attributes' => [
+                        'data-bs-dismiss' => 'modal',
+                    ],
+                ],
+                [
+                    'options' => [
+                        'label' => 'Save changes',
+                        'variant' => 'primary',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    [
+        'fade' => true,
+        'hidden' => true,
+        'id' => 'exampleModalCenter',
+        'centered' => true,
+    ]
+);
+
+echo PHP_EOL . '<br/>';
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Vertically centered scrollable modal',
+        'variant' => 'primary',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#exampleModalCenteredScrollable',
+    ],
+]);
+
+echo $this->modal(
+    [
+        'title' => [
+            'content' => 'Modal title',
+            'attributes' => ['id' => 'exampleModalCenteredScrollableTitle'],
+        ],
+        'This is some placeholder content to show a vertically centered modal. ' .
+        'We\'ve added some extra copy here to show how vertically centering the modal works when ' .
+        'combined with scrollable modals. ' .
+        'We also use some repeated line breaks to quickly extend the height of the content, ' .
+        'thereby triggering the scrolling. ' .
+        'When content becomes longer than the predefined max-height of modal, ' .
+        'content will be cropped and scrollable within the modal.</p>',
+        '<br><br><br><br><br><br><br><br><br><br>',
+        'Just like that.',
+        'footer' => [
+            'button' => [
+                [
+                    'options' => [
+                        'label' => 'Close',
+                        'variant' => 'secondary',
+                    ],
+                    'attributes' => [
+                        'data-bs-dismiss' => 'modal',
+                    ],
+                ],
+                [
+                    'options' => [
+                        'label' => 'Save changes',
+                        'variant' => 'primary',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    [
+        'fade' => true,
+        'hidden' => true,
+        'id' => 'exampleModalCenteredScrollable',
+        'centered' => true,
+        'scrollable' => true,
+    ]
+);
+```
+
+</TabItem>
+</Tabs>
+
+### Tooltips and popovers
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/modal/#tooltips-and-popovers)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<button class="btn btn-primary" data-bs-target="#exampleModalPopovers" data-bs-toggle="modal" name="button" type="button" value="">Launch demo modal</button>
+<div aria-hidden="true" aria-labelledby="exampleModalPopoversLabel" class="fade modal" id="exampleModalPopovers" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalPopoversLabel">Modal title</h5>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" name="button" type="button" value=""></button>
+            </div>
+            <div class="modal-body">
+                <h5>Popover in a modal</h5>
+                <p>This <a class="btn btn-secondary popover-test" data-bs-container="#exampleModalPopovers" data-bs-content="Popover body content is set in this attribute." data-bs-original-title="Popover title" href="#" role="button" title="">button</a> triggers a popover on click.</p>
+                <hr>
+                <h5>Tooltips in a modal</h5>
+                <p><a class="tooltip-test" data-bs-container="#exampleModalPopovers" data-bs-original-title="Tooltip" href="#" title="">This link</a> and <a class="tooltip-test" data-bs-container="#exampleModalPopovers" data-bs-original-title="Tooltip" href="#" title="">that link</a> have tooltips on hover.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal" name="button" type="button" value="">Close</button>
+                <button class="btn btn-primary" name="button" type="button" value="">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Launch demo modal',
+        'variant' => 'primary',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#exampleModalPopovers',
+    ],
+]);
+
+echo $this->modal(
+    [
+        'title' => [
+            'content' => 'Modal title',
+            'attributes' => ['id' => 'exampleModalPopoversLabel'],
+        ],
+        [
+            'type' => 'subtitle',
+            'content' => 'Popover in a modal',
+        ],
+        'This <a class="btn btn-secondary popover-test" data-bs-container="#exampleModalPopovers" ' .
+        'data-bs-content="Popover body content is set in this attribute." ' .
+        'data-bs-original-title="Popover title" ' .
+        'href="#" role="button" title="">button</a> triggers a popover on click.',
+        '---',
+        [
+            'type' => 'subtitle',
+            'content' => 'Tooltips in a modal',
+        ],
+        '<a class="tooltip-test" data-bs-container="#exampleModalPopovers" data-bs-original-title="Tooltip" ' .
+        'href="#" title="">This link</a> and <a class="tooltip-test" ' .
+        'data-bs-container="#exampleModalPopovers" ' .
+        'data-bs-original-title="Tooltip" href="#" title="">that link</a> have tooltips on hover.',
+        'footer' => [
+            'button' => [
+                [
+                    'options' => [
+                        'label' => 'Close',
+                        'variant' => 'secondary',
+                    ],
+                    'attributes' => [
+                        'data-bs-dismiss' => 'modal',
+                    ],
+                ],
+                [
+                    'options' => [
+                        'label' => 'Save changes',
+                        'variant' => 'primary',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    [
+        'fade' => true,
+        'hidden' => true,
+        'id' => 'exampleModalPopovers',
+    ]
+);
+```
+
+</TabItem>
+</Tabs>
+
+### Using the grid
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/modal/#using-the-grid)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<button class="btn btn-primary" data-bs-target="#gridSystemModal" data-bs-toggle="modal" name="button" type="button" value="">Launch demo modal</button>
+<div aria-hidden="true" aria-labelledby="gridModalLabel" class="fade modal" id="gridSystemModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="gridModalLabel">Grids in modals</h5>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" name="button" type="button" value=""></button>
+            </div>
+            <div class="modal-body">
+                <div class="bd-example-row container-fluid">
+                    <div class="row">
+                        <div class="col-md-4">
+                            .col-md-4
+                        </div>
+                        <div class="col-md-4 ms-auto">
+                            .col-md-4 .ms-auto
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 ms-auto">
+                            .col-md-3 .ms-auto
+                        </div>
+                        <div class="col-md-2 ms-auto">
+                            .col-md-2 .ms-auto
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 ms-auto">
+                            .col-md-6 .ms-auto
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-9">
+                            Level 1: .col-sm-9
+                            <div class="row">
+                                <div class="col-8 col-sm-6">
+                                    Level 2: .col-8 .col-sm-6
+                                </div>
+                                <div class="col-4 col-sm-6">
+                                    Level 2: .col-4 .col-sm-6
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal" name="button" type="button" value="">Close</button>
+                <button class="btn btn-primary" name="button" type="button" value="">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Launch demo modal',
+        'variant' => 'primary',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#gridSystemModal',
+    ],
+]);
+
+echo $this->modal(
+    [
+        'title' => [
+            'content' => 'Grids in modals',
+            'attributes' => ['id' => 'gridModalLabel'],
+        ],
+        'grid' => [
+            'rows' => [
+                [
+                    [
+                        [
+                            '.col-md-4',
+                            ['column' => 'md-4'],
+                        ],
+                        [
+                            '.col-md-4 .ms-auto',
+                            ['column' => 'md-4', 'class' => 'ms-auto'],
+                        ],
+                    ],
+                ],
+                [
+                    [
+                        [
+                            '.col-md-3 .ms-auto',
+                            ['column' => 'md-3', 'class' => 'ms-auto'],
+                        ],
+                        [
+                            '.col-md-2 .ms-auto',
+                            ['column' => 'md-2', 'class' => 'ms-auto'],
+                        ],
+                    ],
+                ],
+                [
+                    [
+                        [
+                            '.col-md-6 .ms-auto',
+                            ['column' => 'md-6', 'class' => 'ms-auto'],
+                        ],
+                    ],
+                ],
+                [
+                    [
+                        [
+                            'Level 1: .col-sm-9',
+                            [
+                                'column' => 'sm-9',
+                                'grid' => [
+                                    'rows' => [
+                                        [
+                                            [
+                                                [
+                                                    'Level 2: .col-8 .col-sm-6',
+                                                    ['column' => [8, 'sm-6']],
+                                                ],
+                                                [
+                                                    'Level 2: .col-4 .col-sm-6',
+                                                    ['column' => [4, 'sm-6']],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'attributes' => [
+                'container' => 'fluid',
+                'class' => 'bd-example-row',
+            ],
+        ],
+        'footer' => [
+            'button' => [
+                [
+                    'options' => [
+                        'label' => 'Close',
+                        'variant' => 'secondary',
+                    ],
+                    'attributes' => [
+                        'data-bs-dismiss' => 'modal',
+                    ],
+                ],
+                [
+                    'options' => [
+                        'label' => 'Save changes',
+                        'variant' => 'primary',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    [
+        'fade' => true,
+        'hidden' => true,
+        'id' => 'gridSystemModal',
+    ]
+);
+```
+
+</TabItem>
+</Tabs>
+
+### Varying modal content
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/modal/#varying-modal-content)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<button class="btn btn-primary" data-bs-target="#exampleModal" data-bs-toggle="modal" data-bs-whatever="@mdo" name="button" type="button" value="">Open modal for @mdo</button>
+<button class="btn btn-primary" data-bs-target="#exampleModal" data-bs-toggle="modal" data-bs-whatever="@fat" name="button" type="button" value="">Open modal for @fat</button>
+<button class="btn btn-primary" data-bs-target="#exampleModal" data-bs-toggle="modal" data-bs-whatever="@getbootstrap" name="button" type="button" value="">Open modal for @getbootstrap</button>
+<div aria-hidden="true" aria-labelledby="exampleModalLabel" class="fade modal" id="exampleModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">New message to @mdo</h5>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" name="button" type="button" value=""></button>
+            </div>
+            <div class="modal-body">
+                <form id="form" method="POST" name="form" role="form">
+                    <div class="mb-3">
+                        <label class="form-label" for="recipient-name">Recipient:</label>
+                        <input class="form-control" id="recipient-name" name="recipient" type="text" value="">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="message-text">Message:</label>
+                        <textarea class="form-control" id="message-text" name="message"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal" name="button" type="button" value="">Close</button>
+                <button class="btn btn-primary" name="button" type="button" value="">Send message</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script></script>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Open modal for @mdo',
+        'variant' => 'primary',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#exampleModal',
+        'data-bs-whatever' => '@mdo',
+    ],
+]);
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Open modal for @fat',
+        'variant' => 'primary',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#exampleModal',
+        'data-bs-whatever' => '@fat',
+    ],
+]);
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Open modal for @getbootstrap',
+        'variant' => 'primary',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#exampleModal',
+        'data-bs-whatever' => '@getbootstrap',
+    ],
+]);
+
+echo $this->modal(
+    [
+        'title' => [
+            'content' => 'New message to @mdo',
+            'attributes' => ['id' => 'exampleModalLabel'],
+        ],
+        'form' => [
+            'elements' => [
+                [
+                    'spec' => [
+                        'name' => 'recipient',
+                        'options' => [
+                            'label' => 'Recipient:',
+                        ],
+                        'attributes' => [
+                            'id' => 'recipient-name',
+                        ],
+                    ],
+                ],
+                [
+                    'spec' => [
+                        'name' => 'message',
+                        'options' => [
+                            'label' => 'Message:',
+                        ],
+                        'attributes' => [
+                            'type' => 'textarea',
+                            'id' => 'message-text',
+                        ],
+                    ],
+                ],
+            ],
+        ],
+        'footer' => [
+            'button' => [
+                [
+                    'options' => [
+                        'label' => 'Close',
+                        'variant' => 'secondary',
+                    ],
+                    'attributes' => [
+                        'data-bs-dismiss' => 'modal',
+                    ],
+                ],
+                [
+                    'options' => [
+                        'label' => 'Send message',
+                        'variant' => 'primary',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    [
+        'fade' => true,
+        'hidden' => true,
+        'id' => 'exampleModal',
+    ]
+);
+
+$this->inlineScript()->captureStart();
+
+// TODO: docusaurus mdx-loader does not support this
+// echo <<<JS
+//     var exampleModal = document.getElementById('exampleModal')
+//     exampleModal.addEventListener('show.bs.modal', function (event) {
+//         // Button that triggered the modal
+//         var button = event.relatedTarget
+//         // Extract info from data-bs-* attributes
+//         var recipient = button.getAttribute('data-bs-whatever')
+//         // If necessary, you could initiate an AJAX request here
+//         // and then do the updating in a callback.
+//         //
+//         // Update the modal's content.
+//         var modalTitle = exampleModal.querySelector('.modal-title')
+//         var modalBodyInput = exampleModal.querySelector('.modal-body input')
+
+//         modalTitle.textContent = 'New message to ' + recipient
+//         modalBodyInput.value = recipient
+//     })
+// JS;
+
+$this->inlineScript()->captureEnd();
+echo $this->inlineScript();
+```
+
+</TabItem>
+</Tabs>
+
+### Toggle between modals
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/modal/#toggle-between-modals)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Open first modal</a>
+<div aria-hidden="true" aria-labelledby="exampleModalToggleLabel" class="fade modal" id="exampleModalToggle" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel">Modal 1</h5>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" name="button" type="button" value=""></button>
+            </div>
+            <div class="modal-body">
+                <p>Show a second modal and hide this one with the button below.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" name="button" type="button" value="">Open second modal</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" class="fade modal" id="exampleModalToggle2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel2">Modal 2</h5>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" name="button" type="button" value=""></button>
+            </div>
+            <div class="modal-body">
+                <p>Hide this modal and show the first with the button below.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" name="button" type="button" value="">Back to first</button>
+            </div>
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Open first modal',
+        'tag' => 'a',
+        'variant' => 'primary',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'href' => '#exampleModalToggle',
+    ],
+]);
+
+echo $this->modal(
+    [
+        'title' => [
+            'content' => 'Modal 1',
+            'attributes' => ['id' => 'exampleModalToggleLabel'],
+        ],
+        'Show a second modal and hide this one with the button below.',
+        'footer' => [
+            'button' => [
+                [
+                    'options' => [
+                        'label' => 'Open second modal',
+                        'variant' => 'primary',
+                    ],
+                    'attributes' => [
+                        'data-bs-toggle' => 'modal',
+                        'data-bs-target' => '#exampleModalToggle2',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    [
+        'fade' => true,
+        'hidden' => true,
+        'centered' => true,
+        'id' => 'exampleModalToggle',
+    ]
+);
+
+echo $this->modal(
+    [
+        'title' => [
+            'content' => 'Modal 2',
+            'attributes' => ['id' => 'exampleModalToggleLabel2'],
+        ],
+        'Hide this modal and show the first with the button below.',
+        'footer' => [
+            'button' => [
+                [
+                    'options' => [
+                        'label' => 'Back to first',
+                        'variant' => 'primary',
+                    ],
+                    'attributes' => [
+                        'data-bs-toggle' => 'modal',
+                        'data-bs-target' => '#exampleModalToggle',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    [
+        'fade' => true,
+        'hidden' => true,
+        'centered' => true,
+        'id' => 'exampleModalToggle2',
+    ]
+);
+```
+
+</TabItem>
+</Tabs>
+
+### Remove animation
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/modal/#remove-animation)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<button class="btn btn-secondary" data-bs-target="#exampleModal" data-bs-toggle="modal" name="button" type="button" value="">Launch demo modal</button>
+<div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal" id="exampleModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" name="button" type="button" value=""></button>
+            </div>
+            <div class="modal-body">
+                <p>Woohoo, you're reading this text in a modal!</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal" name="button" type="button" value="">Close</button>
+                <button class="btn btn-primary" name="button" type="button" value="">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Launch demo modal',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#exampleModal',
+    ],
+]);
+
+echo $this->modal(
+    [
+        'title' => [
+            'content' => 'Modal title',
+            'attributes' => ['id' => 'exampleModalLabel'],
+        ],
+        'Woohoo, you\'re reading this text in a modal!',
+        'footer' => [
+            'button' => [
+                [
+                    'options' => [
+                        'label' => 'Close',
+                        'variant' => 'secondary',
+                    ],
+                    'attributes' => [
+                        'data-bs-dismiss' => 'modal',
+                    ],
+                ],
+                [
+                    'options' => [
+                        'label' => 'Save changes',
+                        'variant' => 'primary',
+                    ],
+                ],
+            ],
+        ],
+    ],
+    [
+        'hidden' => true,
+        'id' => 'exampleModal',
+    ]
+);
+```
+
+</TabItem>
+</Tabs>
+
+## Optional sizes
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/modal/#optional-sizes)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<button class="btn btn-primary" data-bs-target="#exampleModalXl" data-bs-toggle="modal" name="button" type="button" value="">Extra large modal</button>
+<button class="btn btn-primary" data-bs-target="#exampleModalLg" data-bs-toggle="modal" name="button" type="button" value="">Large modal</button>
+<button class="btn btn-primary" data-bs-target="#exampleModalSm" data-bs-toggle="modal" name="button" type="button" value="">Small modal</button>
+<div aria-hidden="true" aria-labelledby="exampleModalXlLabel" class="fade modal" id="exampleModalXl" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="h4 modal-title" id="exampleModalXlLabel">Extra large modal</h5>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" name="button" type="button" value=""></button>
+            </div>
+            <div class="modal-body">
+                <p>...</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div aria-hidden="true" aria-labelledby="exampleModalLgLabel" class="fade modal" id="exampleModalLg" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="h4 modal-title" id="exampleModalLgLabel">Large modal</h5>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" name="button" type="button" value=""></button>
+            </div>
+            <div class="modal-body">
+                <p>...</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div aria-hidden="true" aria-labelledby="exampleModalSmLabel" class="fade modal" id="exampleModalSm" tabindex="-1">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="h4 modal-title" id="exampleModalSmLabel">Small modal</h5>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" name="button" type="button" value=""></button>
+            </div>
+            <div class="modal-body">
+                <p>...</p>
+            </div>
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Extra large modal',
+        'variant' => 'primary',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#exampleModalXl',
+    ],
+]);
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Large modal',
+        'variant' => 'primary',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#exampleModalLg',
+    ],
+]);
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Small modal',
+        'variant' => 'primary',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#exampleModalSm',
+    ],
+]);
+
+echo $this->modal([
+    'title' => [
+        'content' => 'Extra large modal',
+        'attributes' => ['id' => 'exampleModalXlLabel', 'class' => 'h4'],
+    ],
+    '...',
+], [
+    'hidden' => true,
+    'fade' => true,
+    'size' => 'xl',
+    'id' => 'exampleModalXl',
+]);
+
+echo $this->modal([
+    'title' => [
+        'content' => 'Large modal',
+        'attributes' => ['id' => 'exampleModalLgLabel', 'class' => 'h4'],
+    ],
+    '...',
+], [
+    'hidden' => true,
+    'fade' => true,
+    'size' => 'lg',
+    'id' => 'exampleModalLg',
+]);
+
+echo $this->modal([
+    'title' => [
+        'content' => 'Small modal',
+        'attributes' => ['id' => 'exampleModalSmLabel', 'class' => 'h4'],
+    ],
+    '...',
+], [
+    'hidden' => true,
+    'fade' => true,
+    'size' => 'sm',
+    'id' => 'exampleModalSm',
+]);
+```
+
+</TabItem>
+</Tabs>
+
+## Fullscreen Modal
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/components/modal/#fullscreen-modal)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<button class="btn btn-primary" data-bs-target="#exampleModalFullscreen" data-bs-toggle="modal" name="button" type="button" value="">Full screen</button>
+<button class="btn btn-primary" data-bs-target="#exampleModalFullscreenSm" data-bs-toggle="modal" name="button" type="button" value="">Full screen below sm</button>
+<button class="btn btn-primary" data-bs-target="#exampleModalFullscreenMd" data-bs-toggle="modal" name="button" type="button" value="">Full screen below md</button>
+<button class="btn btn-primary" data-bs-target="#exampleModalFullscreenLg" data-bs-toggle="modal" name="button" type="button" value="">Full screen below lg</button>
+<button class="btn btn-primary" data-bs-target="#exampleModalFullscreenXl" data-bs-toggle="modal" name="button" type="button" value="">Full screen below xl</button>
+<button class="btn btn-primary" data-bs-target="#exampleModalFullscreenXxl" data-bs-toggle="modal" name="button" type="button" value="">Full screen below xxl</button>
+<div aria-hidden="true" aria-labelledby="exampleModalFullscreenLabel" class="fade modal" id="exampleModalFullscreen" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="h4 modal-title" id="exampleModalFullscreenLabel">Full screen modal</h5>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" name="button" type="button" value=""></button>
+            </div>
+            <div class="modal-body">
+                <p>...</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal" name="button" type="button" value="">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div aria-hidden="true" aria-labelledby="exampleModalFullscreenSmLabel" class="fade modal" id="exampleModalFullscreenSm" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen-sm-down">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="h4 modal-title" id="exampleModalFullscreenSmLabel">Full screen below sm</h5>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" name="button" type="button" value=""></button>
+            </div>
+            <div class="modal-body">
+                <p>...</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal" name="button" type="button" value="">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div aria-hidden="true" aria-labelledby="exampleModalFullscreenMdLabel" class="fade modal" id="exampleModalFullscreenMd" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen-md-down">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="h4 modal-title" id="exampleModalFullscreenMdLabel">Full screen below md</h5>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" name="button" type="button" value=""></button>
+            </div>
+            <div class="modal-body">
+                <p>...</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal" name="button" type="button" value="">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div aria-hidden="true" aria-labelledby="exampleModalFullscreenLgLabel" class="fade modal" id="exampleModalFullscreenLg" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen-lg-down">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="h4 modal-title" id="exampleModalFullscreenLgLabel">Full screen below lg</h5>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" name="button" type="button" value=""></button>
+            </div>
+            <div class="modal-body">
+                <p>...</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal" name="button" type="button" value="">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div aria-hidden="true" aria-labelledby="exampleModalFullscreenXlLabel" class="fade modal" id="exampleModalFullscreenXl" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen-xl-down">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="h4 modal-title" id="exampleModalFullscreenXlLabel">Full screen below xl</h5>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" name="button" type="button" value=""></button>
+            </div>
+            <div class="modal-body">
+                <p>...</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal" name="button" type="button" value="">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div aria-hidden="true" aria-labelledby="exampleModalFullscreenXxlLabel" class="fade modal" id="exampleModalFullscreenXxl" tabindex="-1">
+    <div class="modal-dialog modal-fullscreen-xxl-down">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="h4 modal-title" id="exampleModalFullscreenXxlLabel">Full screen below xxl</h5>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" name="button" type="button" value=""></button>
+            </div>
+            <div class="modal-body">
+                <p>...</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal" name="button" type="button" value="">Close</button>
+            </div>
+        </div>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+
+$fullscreenSizes = ['sm', 'md', 'lg', 'xl', 'xxl'];
+
+echo $this->formButton()->renderSpec([
+    'options' => [
+        'label' => 'Full screen',
+        'variant' => 'primary',
+    ],
+    'attributes' => [
+        'data-bs-toggle' => 'modal',
+        'data-bs-target' => '#exampleModalFullscreen',
+    ],
+]);
+
+foreach ($fullscreenSizes as $size) {
+    echo $this->formButton()->renderSpec([
+        'options' => [
+            'label' => 'Full screen below ' . $size,
+            'variant' => 'primary',
+        ],
+        'attributes' => [
+            'data-bs-toggle' => 'modal',
+            'data-bs-target' => '#exampleModalFullscreen' . ucfirst($size),
+        ],
+    ]);
+}
+
+echo $this->modal([
+    'title' => [
+        'content' => 'Full screen modal',
+        'attributes' => ['id' => 'exampleModalFullscreenLabel', 'class' => 'h4'],
+    ],
+    '...',
+    'footer' => [
+        'button' => [
+            [
+                'options' => [
+                    'label' => 'Close',
+                    'variant' => 'secondary',
+                ],
+                'attributes' => [
+                    'data-bs-dismiss' => 'modal',
+                ],
+            ],
+        ],
+    ],
+], [
+    'hidden' => true,
+    'fade' => true,
+    'fullscreen' => true,
+    'id' => 'exampleModalFullscreen',
+]);
+
+foreach ($fullscreenSizes as $size) {
+    echo $this->modal([
+        'title' => [
+            'content' => 'Full screen below ' . $size,
+            'attributes' => ['id' => 'exampleModalFullscreen' . ucfirst($size) . 'Label', 'class' => 'h4'],
+        ],
+        '...',
+        'footer' => [
+            'button' => [
+                [
+                    'options' => [
+                        'label' => 'Close',
+                        'variant' => 'secondary',
+                    ],
+                    'attributes' => [
+                        'data-bs-dismiss' => 'modal',
+                    ],
+                ],
+            ],
+        ],
+    ], [
+        'hidden' => true,
+        'fade' => true,
+        'fullscreen' => $size,
+        'id' => 'exampleModalFullscreen' . ucfirst($size),
+    ]);
+}
+```
+
+</TabItem>
+</Tabs>
+

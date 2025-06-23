@@ -1,0 +1,886 @@
+---
+sidebar_position: 4
+label: Checks and radios
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import HtmlCode from "../../../src/components/HtmlCode.tsx";
+
+# Checks and radios
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/forms/checks-radios)
+
+## Checks
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/forms/checks-radios/#checks)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="form-check">
+    <input type="hidden" name="default-checkbox" value="0"><input class="form-check-input" id="flexCheckDefault" name="default-checkbox" type="checkbox" value="1">
+    <label class="form-check-label" for="flexCheckDefault">Default checkbox</label>
+</div>
+<div class="form-check">
+    <input type="hidden" name="checked-checkbox" value="0"><input checked class="form-check-input" id="flexCheckChecked" name="checked-checkbox" type="checkbox" value="1">
+    <label class="form-check-label" for="flexCheckChecked">Checked checkbox</label>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$factory = new \Laminas\Form\Factory();
+
+// Default checkbox
+echo $this->formRow($factory->create([
+    'name' => 'default-checkbox',
+    'type' => 'checkbox',
+    'options' => [
+        'label' => 'Default checkbox',
+        'form_group' => false,
+    ],
+    'attributes' => [
+        'id' => 'flexCheckDefault',
+    ],
+]));
+
+echo  PHP_EOL;
+
+// Checked checkbox
+echo $this->formRow($factory->create([
+    'name' => 'checked-checkbox',
+    'type' => 'checkbox',
+    'options' => [
+        'label' => 'Checked checkbox',
+        'form_group' => false,
+    ],
+    'attributes' => [
+        'id' => 'flexCheckChecked',
+        'checked' => true,
+    ],
+]));
+```
+
+</TabItem>
+</Tabs>
+
+### Indeterminate
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/forms/checks-radios/#indeterminate)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="form-check">
+    <input class="form-check-input" id="flexCheckIndeterminate" name="indeterminate-checkbox" type="checkbox" value="">
+    <label class="form-check-label" for="flexCheckIndeterminate">Indeterminate checkbox</label>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$factory = new \Laminas\Form\Factory();
+
+echo $this->formRow($factory->create([
+    'name' => 'indeterminate-checkbox',
+    'type' => 'checkbox',
+    'options' => [
+        'label' => 'Indeterminate checkbox',
+        'use_hidden_element' => false,
+        'form_group' => false,
+        'checked_value' => "",
+    ],
+    'attributes' => [
+        'id' => 'flexCheckIndeterminate',
+    ],
+]));
+```
+
+</TabItem>
+</Tabs>
+
+### Disabled
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/forms/checks-radios/#disabled)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="form-check">
+    <input type="hidden" disabled name="default-checkbox" value="0"><input class="form-check-input" disabled id="flexCheckDisabled" name="default-checkbox" type="checkbox" value="1">
+    <label class="form-check-label" for="flexCheckDisabled">Disabled checkbox</label>
+</div>
+<div class="form-check">
+    <input type="hidden" disabled name="checked-checkbox" value="0"><input checked class="form-check-input" disabled id="flexCheckCheckedDisabled" name="checked-checkbox" type="checkbox" value="1">
+    <label class="form-check-label" for="flexCheckCheckedDisabled">Disabled checked checkbox</label>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$factory = new \Laminas\Form\Factory();
+
+// Disabled checkbox
+echo $this->formRow($factory->create([
+    'name' => 'default-checkbox',
+    'type' => 'checkbox',
+    'options' => [
+        'label' => 'Disabled checkbox',
+        'form_group' => false,
+    ],
+    'attributes' => [
+        'id' => 'flexCheckDisabled',
+        'disabled' => true,
+    ],
+]));
+
+echo  PHP_EOL;
+
+// Disabled checked checkbox
+echo $this->formRow($factory->create([
+    'name' => 'checked-checkbox',
+    'type' => 'checkbox',
+    'options' => [
+        'label' => 'Disabled checked checkbox',
+        'form_group' => false,
+    ],
+    'attributes' => [
+        'id' => 'flexCheckCheckedDisabled',
+        'checked' => true,
+        'disabled' => true,
+    ],
+]));
+```
+
+</TabItem>
+</Tabs>
+
+## Radios
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/forms/checks-radios/#radios)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="form-check">
+    <input class="form-check-input" id="flexRadioDefault1" name="flexRadioDefault" type="radio" value="option1">
+    <label class="form-check-label" for="flexRadioDefault1">Default radio</label>
+</div>
+<div class="form-check">
+    <input checked class="form-check-input" id="flexRadioDefault2" name="flexRadioDefault" type="radio" value="option2">
+    <label class="form-check-label" for="flexRadioDefault2">Default checked radio</label>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$factory = new \Laminas\Form\Factory();
+
+echo $this->formRow($factory->create([
+    'name' => 'flexRadioDefault',
+    'type' => 'radio',
+    'options' => [
+        'form_group' => false,
+        'value_options' => [
+            [
+                'label' => 'Default radio',
+                'value' => 'option1',
+                'attributes' => ['id' => 'flexRadioDefault1'],
+            ],
+            [
+                'label' => 'Default checked radio',
+                'value' => 'option2',
+                'attributes' => ['id' => 'flexRadioDefault2'],
+            ],
+        ],
+    ],
+    'attributes' => [
+        'value' => 'option2',
+    ],
+]));
+```
+
+</TabItem>
+</Tabs>
+
+### Disabled
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/forms/checks-radios/#disabled-1)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="form-check">
+    <input class="form-check-input" disabled id="flexRadioDisabled" name="flexRadioDisabled" type="radio" value="option1">
+    <label class="form-check-label" for="flexRadioDisabled">Default radio</label>
+</div>
+<div class="form-check">
+    <input checked class="form-check-input" disabled id="flexRadioCheckedDisabled" name="flexRadioDisabled" type="radio" value="option2">
+    <label class="form-check-label" for="flexRadioCheckedDisabled">Default checked radio</label>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$factory = new \Laminas\Form\Factory();
+
+echo $this->formRow($factory->create([
+    'name' => 'flexRadioDisabled',
+    'type' => 'radio',
+    'options' => [
+        'form_group' => false,
+        'value_options' => [
+            [
+                'label' => 'Default radio',
+                'value' => 'option1',
+                'attributes' => ['id' => 'flexRadioDisabled'],
+            ],
+            [
+                'label' => 'Default checked radio',
+                'value' => 'option2',
+                'attributes' => ['id' => 'flexRadioCheckedDisabled'],
+            ],
+        ],
+    ],
+    'attributes' => [
+        'value' => 'option2',
+        'disabled' => true,
+    ],
+]));
+```
+
+</TabItem>
+</Tabs>
+
+## Switches
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/forms/checks-radios/#switches)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="form-check form-switch">
+    <input type="hidden" name="default-switch-checkbox" value="0"><input class="form-check-input" id="flexSwitchCheckDefault" name="default-switch-checkbox" role="switch" type="checkbox" value="1">
+    <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+</div>
+<div class="form-check form-switch">
+    <input type="hidden" name="checked-switch-checkbox" value="0"><input checked class="form-check-input" id="flexSwitchCheckChecked" name="checked-switch-checkbox" role="switch" type="checkbox" value="1">
+    <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
+</div>
+<div class="form-check form-switch">
+    <input type="hidden" disabled name="disabled-switch-checkbox" value="0"><input class="form-check-input" disabled id="flexSwitchCheckDisabled" name="disabled-switch-checkbox" role="switch" type="checkbox" value="1">
+    <label class="form-check-label" for="flexSwitchCheckDisabled">Disabled switch checkbox input</label>
+</div>
+<div class="form-check form-switch">
+    <input type="hidden" disabled name="disabled-checked-switch-checkbox" value="0"><input checked class="form-check-input" disabled id="flexSwitchCheckChecked" name="disabled-checked-switch-checkbox" role="switch" type="checkbox" value="1">
+    <label class="form-check-label" for="flexSwitchCheckChecked">Disabled checked switch checkbox input</label>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$factory = new \Laminas\Form\Factory();
+
+// Default switch checkbox input
+echo $this->formRow($factory->create([
+    'name' => 'default-switch-checkbox',
+    'type' => 'checkbox',
+    'options' => [
+        'switch' => true,
+        'label' => 'Default switch checkbox input',
+        'form_group' => false,
+    ],
+    'attributes' => [
+        'id' => 'flexSwitchCheckDefault',
+    ],
+]));
+
+echo  PHP_EOL;
+
+// Checked switch checkbox input
+echo $this->formRow($factory->create([
+    'name' => 'checked-switch-checkbox',
+    'type' => 'checkbox',
+    'options' => [
+        'switch' => true,
+        'label' => 'Checked switch checkbox input',
+        'form_group' => false,
+    ],
+    'attributes' => [
+        'id' => 'flexSwitchCheckChecked',
+        'checked' => true,
+    ],
+]));
+
+echo  PHP_EOL;
+
+// Disabled switch checkbox input
+echo $this->formRow($factory->create([
+    'name' => 'disabled-switch-checkbox',
+    'type' => 'checkbox',
+    'options' => [
+        'switch' => true,
+        'label' => 'Disabled switch checkbox input',
+        'form_group' => false,
+    ],
+    'attributes' => [
+        'id' => 'flexSwitchCheckDisabled',
+        'disabled' => true,
+    ],
+]));
+
+echo  PHP_EOL;
+
+// Disabled checked switch checkbox input
+echo $this->formRow($factory->create([
+    'name' => 'disabled-checked-switch-checkbox',
+    'type' => 'checkbox',
+    'options' => [
+        'switch' => true,
+        'label' => 'Disabled checked switch checkbox input',
+        'form_group' => false,
+    ],
+    'attributes' => [
+        'id' => 'flexSwitchCheckChecked',
+        'checked' => true,
+        'disabled' => true,
+    ],
+]));
+```
+
+</TabItem>
+</Tabs>
+
+## Default (stacked)
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/forms/checks-radios/#default-stacked)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="form-check">
+    <input type="hidden" name="default-checkbox" value="0"><input class="form-check-input" id="defaultCheck1" name="default-checkbox" type="checkbox" value="1">
+    <label class="form-check-label" for="defaultCheck1">Default checkbox</label>
+</div>
+<div class="form-check">
+    <input type="hidden" disabled name="disabled-checkbox" value="0"><input class="form-check-input" disabled id="defaultCheck2" name="disabled-checkbox" type="checkbox" value="1">
+    <label class="form-check-label" for="defaultCheck2">Disabled checkbox</label>
+</div>
+<br>
+<div class="form-check">
+    <input class="form-check-input" id="exampleRadios1" name="exampleRadios" type="radio" value="option1">
+    <label class="form-check-label" for="exampleRadios1">Default radio</label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" id="exampleRadios2" name="exampleRadios" type="radio" value="option2">
+    <label class="form-check-label" for="exampleRadios2">Second default radio</label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" disabled id="exampleRadios3" name="exampleRadios" type="radio" value="option3">
+    <label class="form-check-label" for="exampleRadios3">Disabled radio</label>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$factory = new \Laminas\Form\Factory();
+
+// Render Default checkbox
+echo $this->formRow($factory->create([
+    'name' => 'default-checkbox',
+    'type' => 'checkbox',
+    'options' => [
+        'label' => 'Default checkbox',
+        'form_group' => false,
+    ],
+    'attributes' => [
+        'id' => 'defaultCheck1',
+    ],
+]));
+
+// Render Disabled checkbox
+echo $this->formRow($factory->create([
+    'name' => 'disabled-checkbox',
+    'type' => 'checkbox',
+    'options' => [
+        'label' => 'Disabled checkbox',
+        'form_group' => false,
+    ],
+    'attributes' => [
+        'id' => 'defaultCheck2',
+        'disabled' => true,
+    ],
+]));
+
+echo PHP_EOL . '<br/>';
+
+// Render radio
+echo $this->formRow($factory->create([
+    'name' => 'exampleRadios',
+    'type' => 'radio',
+    'options' => [
+        'form_group' => false,
+        'value_options' => [
+            [
+                'label' => 'Default radio',
+                'value' => 'option1',
+                'attributes' => ['id' => 'exampleRadios1'],
+            ],
+            [
+                'label' => 'Second default radio',
+                'value' => 'option2',
+                'attributes' => ['id' => 'exampleRadios2'],
+            ],
+            [
+                'label' => 'Disabled radio',
+                'value' => 'option3',
+                'disabled' => true,
+                'attributes' => ['id' => 'exampleRadios3'],
+            ],
+        ],
+    ],
+]));
+```
+
+</TabItem>
+</Tabs>
+
+## Inline
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/forms/checks-radios/#inline)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="col-auto">
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" id="inlineCheckbox1" name="inlineCheckboxOptions[]" type="checkbox" value="option1">
+        <label class="form-check-label" for="inlineCheckbox1">1</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" id="inlineCheckbox2" name="inlineCheckboxOptions[]" type="checkbox" value="option2">
+        <label class="form-check-label" for="inlineCheckbox2">2</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" disabled id="inlineCheckbox3" name="inlineCheckboxOptions[]" type="checkbox" value="option3">
+        <label class="form-check-label" for="inlineCheckbox3">3 (disabled)</label>
+    </div>
+</div>
+<br>
+<div class="col-auto">
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" id="inlineRadio1" name="inlineRadioOptions" type="radio" value="option1">
+        <label class="form-check-label" for="inlineRadio1">1</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" id="inlineRadio2" name="inlineRadioOptions" type="radio" value="option2">
+        <label class="form-check-label" for="inlineRadio2">2</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" disabled id="inlineRadio3" name="inlineRadioOptions" type="radio" value="option3">
+        <label class="form-check-label" for="inlineRadio3">3 (disabled)</label>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$factory = new \Laminas\Form\Factory();
+
+// Render checkbox
+echo $this->formRow($factory->create([
+    'name' => 'inlineCheckboxOptions',
+    'type' => 'multicheckbox',
+    'options' => [
+        'layout' => 'inline',
+        'form_group' => false,
+        'value_options' => [
+            [
+                'label' => '1',
+                'value' => 'option1',
+                'attributes' => ['id' => 'inlineCheckbox1'],
+            ],
+            [
+                'label' => '2',
+                'value' => 'option2',
+                'attributes' => ['id' => 'inlineCheckbox2'],
+            ],
+            [
+                'label' => '3 (disabled)',
+                'value' => 'option3',
+                'disabled' => true,
+                'attributes' => ['id' => 'inlineCheckbox3'],
+            ],
+        ],
+    ],
+]));
+
+echo PHP_EOL . '<br/>';
+
+// Render radio
+echo $this->formRow($factory->create([
+    'name' => 'inlineRadioOptions',
+    'type' => 'radio',
+    'options' => [
+        'layout' => 'inline',
+        'form_group' => false,
+        'value_options' => [
+            [
+                'label' => '1',
+                'value' => 'option1',
+                'attributes' => ['id' => 'inlineRadio1'],
+            ],
+            [
+                'label' => '2',
+                'value' => 'option2',
+                'attributes' => ['id' => 'inlineRadio2'],
+            ],
+            [
+                'label' => '3 (disabled)',
+                'value' => 'option3',
+                'disabled' => true,
+                'attributes' => ['id' => 'inlineRadio3'],
+            ],
+        ],
+    ],
+]));
+```
+
+</TabItem>
+</Tabs>
+
+## Without labels
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/forms/checks-radios/#without-labels)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="form-check">
+    <input type="hidden" name="checkboxNoLabel" value="0"><input aria-label="..." class="form-check-input" id="checkboxNoLabel" name="checkboxNoLabel" type="checkbox" value="1">
+</div>
+<div class="form-check">
+    <input aria-label="..." class="form-check-input position-static" id="radioNoLabel1" name="radioNoLabel" type="radio" value="option1">
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+
+$factory = new \Laminas\Form\Factory();
+
+// Render checkbox
+echo $this->formRow($factory->create([
+    'name' => 'checkboxNoLabel',
+    'type' => 'checkbox',
+    'options' => [
+        'form_group' => false,
+        'label' => '',
+        'value' => 'option1',
+    ],
+    'attributes' => ['id' => 'checkboxNoLabel', 'aria-label' => '...'],
+]));
+
+// Render radio
+echo $this->formRow($factory->create([
+    'name' => 'radioNoLabel',
+    'type' => 'radio',
+    'options' => [
+        'form_group' => false,
+        'value_options' => [
+            [
+                'label' => '',
+                'value' => 'option1',
+                'attributes' => ['id' => 'radioNoLabel1', 'aria-label' => '...'],
+            ],
+        ],
+    ],
+]));
+```
+
+</TabItem>
+</Tabs>
+
+## Toggle buttons
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/forms/checks-radios/#toggle-buttons)
+
+### Checkbox toggle buttons
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/forms/checks-radios/#checkbox-toggle-buttons)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="form-check">
+    <input type="hidden" name="single-toggle" value="0"><input autocomplete="off" class="btn-check" id="btn-check-1" name="single-toggle" type="checkbox" value="1">
+    <label class="btn btn-primary" for="btn-check-1">Single toggle</label>
+</div>
+<div class="form-check">
+    <input type="hidden" name="single-toggle" value="0"><input autocomplete="off" checked class="btn-check" id="btn-check-2" name="single-toggle" type="checkbox" value="1">
+    <label class="btn btn-primary" for="btn-check-2">Checked</label>
+</div>
+<div class="form-check">
+    <input type="hidden" disabled name="single-toggle" value="0"><input autocomplete="off" class="btn-check" disabled id="btn-check-3" name="single-toggle" type="checkbox" value="1">
+    <label class="btn btn-primary" for="btn-check-3">Disabled</label>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+
+$factory = new \Laminas\Form\Factory();
+
+// Single toggle
+echo $this->formRow($factory->create([
+    'name' => 'single-toggle',
+    'type' => 'checkbox',
+    'options' => [
+        'button' => 'primary',
+        'form_group' => false,
+        'label' => 'Single toggle',
+    ],
+    'attributes' => ['id' => 'btn-check-1', 'autocomplete' => 'off'],
+]));
+
+echo PHP_EOL;
+
+// Checked
+echo $this->formRow($factory->create([
+    'name' => 'single-toggle',
+    'type' => 'checkbox',
+    'options' => [
+        'button' => 'primary',
+        'form_group' => false,
+        'label' => 'Checked',
+    ],
+    'attributes' => [
+        'id' => 'btn-check-2',
+        'autocomplete' => 'off',
+        'checked' => true,
+    ],
+]));
+
+echo PHP_EOL;
+
+// Disabled
+echo $this->formRow($factory->create([
+    'name' => 'single-toggle',
+    'type' => 'checkbox',
+    'options' => [
+        'button' => 'primary',
+        'form_group' => false,
+        'label' => 'Disabled',
+    ],
+    'attributes' => [
+        'id' => 'btn-check-3',
+        'autocomplete' => 'off',
+        'disabled' => true,
+    ],
+]));
+
+echo PHP_EOL;
+```
+
+</TabItem>
+</Tabs>
+
+### Radio toggle buttons
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/forms/checks-radios/#radio-toggle-buttons)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="col-auto">
+    <div class="form-check form-check-inline">
+        <input autocomplete="off" checked class="btn-check" id="option1" name="inlineRadioOptions" type="radio" value="option1">
+        <label class="btn btn-secondary" for="option1">Checked</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input autocomplete="off" class="btn-check" id="option2" name="inlineRadioOptions" type="radio" value="option2">
+        <label class="btn btn-secondary" for="option2">Radio</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input autocomplete="off" class="btn-check" disabled id="inlineRadio3" name="inlineRadioOptions" type="radio" value="option3">
+        <label class="btn btn-secondary" for="inlineRadio3">Disabled</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="btn-check" id="inlineRadio3" name="inlineRadioOptions" type="radio" value="option4">
+        <label class="btn btn-secondary" for="inlineRadio3">Radio</label>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$factory = new \Laminas\Form\Factory();
+
+echo $this->formRow($factory->create([
+    'name' => 'inlineRadioOptions',
+    'type' => 'radio',
+    'options' => [
+        'button' => true,
+        'layout' => 'inline',
+        'form_group' => false,
+        'value_options' => [
+            [
+                'label' => 'Checked',
+                'value' => 'option1',
+                'attributes' => ['id' => 'option1', 'autocomplete' => 'off'],
+            ],
+            [
+                'label' => 'Radio',
+                'value' => 'option2',
+                'attributes' => ['id' => 'option2', 'autocomplete' => 'off'],
+            ],
+            [
+                'label' => 'Disabled',
+                'value' => 'option3',
+                'disabled' => true,
+                'attributes' => ['id' => 'inlineRadio3', 'autocomplete' => 'off'],
+            ],
+            [
+                'label' => 'Radio',
+                'value' => 'option4',
+                'attributes' => ['id' => 'inlineRadio3'],
+            ],
+        ],
+    ],
+    'attributes' => ['value' => 'option1'],
+]));
+```
+
+</TabItem>
+</Tabs>
+
+### Outlined styles
+
+[Twitter bootstrap Documentation](https://getbootstrap.com/docs/5.3/forms/checks-radios/#outlined-styles)
+
+<Tabs>
+<TabItem value="result" label="Result" default>
+  <HtmlCode bootstrapVersion="5.3">
+      <div dangerouslySetInnerHTML={{ __html: `<div class="form-check">
+    <input type="hidden" name="single-toggle-outlined" value="0"><input autocomplete="off" class="btn-check" id="btn-check-outlined" name="single-toggle-outlined" type="checkbox" value="1">
+    <label class="btn btn-outline-primary" for="btn-check-outlined">Single toggle</label>
+</div>
+<div class="form-check">
+    <input type="hidden" name="single-toggle" value="0"><input autocomplete="off" checked class="btn-check" id="btn-check-2-outlined" name="single-toggle" type="checkbox" value="1">
+    <label class="btn btn-outline-secondary" for="btn-check-2-outlined">Checked</label>
+</div>
+<div class="col-auto">
+    <div class="form-check form-check-inline">
+        <input autocomplete="off" checked class="btn-check" id="success-outlined" name="options-outlined" type="radio" value="option1">
+        <label class="btn btn-outline-success" for="success-outlined">Checked success radio</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input autocomplete="off" class="btn-check" id="danger-outlined" name="options-outlined" type="radio" value="option2">
+        <label class="btn btn-outline-danger" for="danger-outlined">Danger radio</label>
+    </div>
+</div>` }}></div>
+  </HtmlCode>
+</TabItem>
+<TabItem value="source" label="Source">
+
+```php
+<?php
+
+$factory = new \Laminas\Form\Factory();
+
+// Single toggle outlined
+echo $this->formRow($factory->create([
+    'name' => 'single-toggle-outlined',
+    'type' => 'checkbox',
+    'options' => [
+        'button' => 'outline-primary',
+        'form_group' => false,
+        'label' => 'Single toggle',
+    ],
+    'attributes' => ['id' => 'btn-check-outlined', 'autocomplete' => 'off'],
+]));
+
+echo PHP_EOL;
+
+// Checked outlined
+echo $this->formRow($factory->create([
+    'name' => 'single-toggle',
+    'type' => 'checkbox',
+    'options' => [
+        'button' => 'outline-secondary',
+        'form_group' => false,
+        'label' => 'Checked',
+    ],
+    'attributes' => [
+        'id' => 'btn-check-2-outlined',
+        'autocomplete' => 'off',
+        'checked' => true,
+    ],
+]));
+
+echo PHP_EOL;
+
+// Checked success radio
+echo $this->formRow($factory->create([
+    'name' => 'options-outlined',
+    'type' => 'radio',
+    'options' => [
+        'form_group' => false,
+        'layout' => 'inline',
+        'value_options' => [
+            [
+                'label' => 'Checked success radio',
+                'value' => 'option1',
+                'button' => 'outline-success',
+                'attributes' => ['id' => 'success-outlined', 'autocomplete' => 'off'],
+            ],
+            [
+                'label' => 'Danger radio',
+                'value' => 'option2',
+                'button' => 'outline-danger',
+                'attributes' => ['id' => 'danger-outlined', 'autocomplete' => 'off'],
+            ],
+        ],
+    ],
+    'attributes' => ['value' => 'option1'],
+]));
+```
+
+</TabItem>
+</Tabs>
+
