@@ -61,6 +61,6 @@ jobs:
 
       - name: 📦 Upload website build artifact
         if: inputs.publish
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: website/build
