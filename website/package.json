@@ -29,12 +29,12 @@
     "url-loader": "^4.1.1"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.9.0",
+    "@docusaurus/module-type-aliases": "^3.9.1",
     "@tsconfig/docusaurus": "^2.0.0",
     "@types/react": "^19.1.13",
     "@types/react-helmet": "^6.1.6",
     "@types/react-router-dom": "^5.3.3",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   },
   "browserslist": {
     "production": [
