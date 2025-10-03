@@ -15,10 +15,10 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@docusaurus/core": "^3.9.0",
-    "@docusaurus/faster": "^3.9.0",
-    "@docusaurus/plugin-rsdoctor": "^3.9.0",
-    "@docusaurus/preset-classic": "^3.9.0",
+    "@docusaurus/core": "^3.9.1",
+    "@docusaurus/faster": "^3.9.1",
+    "@docusaurus/plugin-rsdoctor": "^3.9.1",
+    "@docusaurus/preset-classic": "^3.9.1",
     "@mdx-js/react": "^3.1.1",
     "@svgr/webpack": "^8.0.1",
     "clsx": "^2.1.0",
