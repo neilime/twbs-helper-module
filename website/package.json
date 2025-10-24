@@ -29,7 +29,7 @@
     "url-loader": "^4.1.1"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^3.9.1",
+    "@docusaurus/module-type-aliases": "^3.9.2",
     "@tsconfig/docusaurus": "^2.0.4",
     "@types/react": "^19.2.2",
     "@types/react-helmet": "^6.1.6",
