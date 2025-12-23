@@ -29,6 +29,13 @@ class HtmlStyleAttributeSet extends ArrayObject implements Stringable
             foreach ($matches as $match) {
                 $styles[$match[1]] = $match[2];
             }
+        } elseif (! is_array($styles)) {
+            $normalizedStyles = [];
+            foreach ($styles as $key => $value) {
+                $normalizedStyles[$key] = $value;
+            }
+
+            $styles = $normalizedStyles;
         }
 
         parent::__construct($styles);

@@ -6,41 +6,76 @@ on:
       publish:
         default: false
         type: boolean
+    outputs:
+      website-artifact-id:
+        description: "The uploaded website build artifact ID"
+        value: ${{ jobs.build-website.outputs.artifact-id }}
+      website-artifact-path:
+        description: "The uploaded website build artifact path"
+        value: ${{ jobs.build-website.outputs.artifact-path }}
+
+permissions: {}
 
 jobs:
   checks:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     strategy:
       matrix:
         include:
-          - php-versions: "8.1"
           - php-versions: "8.2"
           - php-versions: "8.3"
+          - php-versions: "8.4"
+          - php-versions: "8.5"
             stable: true
-
-    runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          persist-credentials: false
 
       - name: ⚙️ Setup PHP, with composer and extensions
-        uses: ./.github/actions/setup-php
+        uses: ./.github/workflows/actions/setup-php
         with:
           php-version: ${{ matrix.php-versions }}
+
+      - name: ♻️ Tools cache
+        uses: actions/cache@9255dc7a253b0ccc959486e2bca901246202afeb # v5.0.1
+        with:
+          path: tools/cache
+          key: ${{ runner.os }}-tools-${{ matrix.php-versions }}-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-tools-
 
       - name: 👕 Lint
         if: matrix.stable
         run: composer php-cs-fixer -- --format=checkstyle | tools/vendor/bin/cs2pr
 
+      - name: 🔬 Rector
+        id: rector
+        if: matrix.stable
+        run: composer rector
+
       - name: 🔬 Static analysis
         if: matrix.stable
-        run: composer phpstan -- --error-format=checkstyle | tools/vendor/bin/cs2pr
+        run: composer phpstan -- --error-format=github
+
+      - name: ♻️ Tests cache
+        uses: actions/cache@9255dc7a253b0ccc959486e2bca901246202afeb # v5.0.1
+        with:
+          path: tests/.phpunit.result.cache
+          key: ${{ runner.os }}-tests-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-tests-
 
       - name: 🧪 Test
         run: composer test:ci
 
       - name: 📊 Upload coverage results to Codecov
         if: matrix.stable
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # v5.5.2
         with:
           files: ./build/logs/clover.xml
 

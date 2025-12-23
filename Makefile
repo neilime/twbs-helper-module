@@ -1,4 +1,4 @@
-PHP_VERSION=8.3
+PHP_VERSION ?= 8.5
 PROJECT_NAME=$(shell basename $(CURDIR))
 UID=$(shell id -u)
 GID=$(shell id -g)
@@ -68,7 +68,7 @@ generate-snapshot: ## Generate snapshot
 
 ## Run PHP for given version
 define run-php
-	@docker run -it --rm -v ${PWD}:${PWD} -e PHP_CS_FIXER_IGNORE_ENV=$(if $(filter 8.4,$(PHP_VERSION)),1,) -w ${PWD} "${IMAGE}" $(1)
+	@docker run -it --rm -v ${PWD}:${PWD} -w ${PWD} "${IMAGE}" $(1)
 endef
 
 #############################

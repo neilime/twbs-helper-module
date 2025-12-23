@@ -71,4 +71,43 @@ class FormCollectionTest extends TestCase
             $this->formCollectionHelper->renderTemplate($collection)
         );
     }
+
+    public function testRenderWithHorizontalLayoutAddsRowClasses()
+    {
+        $collection = new Collection('test-collection', [
+            'count' => 1,
+            'layout' => 'horizontal',
+            'should_create_template' => true,
+            'target_element' => new Button(
+                'test',
+                ['label' => 'test']
+            ),
+        ]);
+
+        $result = $this->formCollectionHelper->render($collection);
+
+        $this->assertStringContainsString('<fieldset class="', $result);
+        $this->assertStringContainsString('row', $result);
+        $this->assertStringContainsString('mb-3', $result);
+    }
+
+    public function testRenderWithColumnWrapsContentAndLegendCounterpartClasses()
+    {
+        $collection = new Collection('test-collection', [
+            'label' => 'Collection legend',
+            'count' => 1,
+            'column' => 'sm-4',
+            'should_create_template' => true,
+            'target_element' => new Button(
+                'test',
+                ['label' => 'test']
+            ),
+        ]);
+
+        $result = $this->formCollectionHelper->render($collection);
+
+        $this->assertStringContainsString('Collection legend', $result);
+        $this->assertStringContainsString('col-sm-8', $result);
+        $this->assertStringContainsString('col-sm-4', $result);
+    }
 }

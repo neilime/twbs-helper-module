@@ -43,7 +43,7 @@ class ProgressBar extends AbstractHtmlElement
         $min = $optionsAndAttributes['min'] ?? 0;
         $max = $optionsAndAttributes['max'] ?? 0;
 
-        $percent = $optionsAndAttributes['min'] === $optionsAndAttributes['max']
+        $percent = $min === $max
             ? .0
             : (float)(
                 ($current - $min) / ($max - $min)
@@ -74,7 +74,7 @@ class ProgressBar extends AbstractHtmlElement
             $attributes['class']->merge(['progress-bar-animated']);
         }
 
-        $progressBarStyles = $percent !== false && $percent > 0 ? ['width' => $percent . '%'] : [];
+        $progressBarStyles = $percent > 0 ? ['width' => $percent . '%'] : [];
         $attributes->merge(['style' => $progressBarStyles]);
 
         $progressBarContent = empty($optionsAndAttributes['show_label']) ? '' : $percent . '%';

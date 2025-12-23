@@ -3,9 +3,14 @@
 namespace TestSuite\TwbsHelper\Form\View\Helper;
 
 use Laminas\Form\Element;
-use Laminas\Form\Element\MultiCheckbox;
+use Laminas\Form\Element\Button;
 use Laminas\Form\Element\Text;
+use Laminas\Form\Element\MultiCheckbox;
+use Laminas\I18n\Translator\TranslatorInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
+use ReflectionProperty;
 use TestSuite\TwbsHelper\AbstractViewHelperTestCase;
+use TwbsHelper\Form\View\Helper\Form;
 use TwbsHelper\Form\View\Helper\FormLabel;
 
 class FormLabelTest extends AbstractViewHelperTestCase
@@ -15,9 +20,7 @@ class FormLabelTest extends AbstractViewHelperTestCase
      */
     protected $helper = 'formLabel';
 
-    /**
-     * @dataProvider dataProviderRenderLabels
-     */
+    #[DataProvider('dataProviderRenderLabels')]
     public function testRenderWithLabel(Element $element, string $expected)
     {
         $this->assertEquals(
@@ -26,7 +29,7 @@ class FormLabelTest extends AbstractViewHelperTestCase
         );
     }
 
-    public function dataProviderRenderLabels(): array
+    public static function dataProviderRenderLabels(): array
     {
         return [
             [
@@ -214,5 +217,88 @@ class FormLabelTest extends AbstractViewHelperTestCase
 </div>',
             ],
         ];
+    }
+
+    public function testInvokeReturnsProvidedLabelContentForButtons(): void
+    {
+        $element = new Button('action', ['label' => 'Ignored']);
+
+        $this->assertSame('Rendered elsewhere', $this->helper->__invoke($element, 'Rendered elsewhere'));
+    }
+
+    public function testInvokeWithoutElementReturnsHelper(): void
+    {
+        $this->assertSame($this->helper, $this->helper->__invoke());
+    }
+
+    public function testInvokeSkipsBootstrapDecorationWhenDisabled(): void
+    {
+        $element = new Text('test_one', [
+            'label' => 'Disabled twbs',
+            'disable_twbs' => true,
+        ]);
+
+        $this->assertSame(
+            '<label for="test_one">Disabled twbs</label>',
+            $this->helper->__invoke($element)
+        );
+    }
+
+    public function testRenderAddsVisuallyHiddenClassWhenLabelIsHidden(): void
+    {
+        $element = new Text('test_one', [
+            'label' => 'Hidden label',
+            'show_label' => false,
+        ]);
+
+        $result = $this->helper->__invoke($element);
+
+        $this->assertStringContainsString('visually-hidden', $result);
+        $this->assertStringContainsString('Hidden label', $result);
+    }
+
+    public function testRenderAddsHorizontalColumnCounterpartClasses(): void
+    {
+        $element = new Text('test_one', [
+            'label' => 'Horizontal label',
+            'layout' => Form::LAYOUT_HORIZONTAL,
+            'column' => 'sm-4',
+        ]);
+
+        $result = $this->helper->__invoke($element);
+
+        $this->assertStringContainsString('col-sm-8', $result);
+        $this->assertStringContainsString('col-form-label', $result);
+    }
+
+    public function testInvokeAppendsRequiredFormatWhenMissing(): void
+    {
+        $requiredFormatProperty = new ReflectionProperty($this->helper, 'requiredFormat');
+        $requiredFormatProperty->setValue($this->helper, ' *');
+
+        $element = new Text('test_one', ['label' => 'Required label']);
+        $element->setAttribute('required', true);
+
+        $this->assertStringContainsString('Required label *', $this->helper->__invoke($element));
+    }
+
+    public function testRenderPartialReturnsEmptyStringForNonLabelAwareElement(): void
+    {
+        $element = $this->createMock(Element::class);
+
+        $this->assertSame('', $this->helper->renderPartial($element));
+    }
+
+    public function testRenderPartialTranslatesLabelWhenTranslatorIsPresent(): void
+    {
+        $translator = $this->createMock(TranslatorInterface::class);
+        $translator->method('translate')->with('hello', 'default')->willReturn('bonjour');
+
+        $this->helper->setTranslator($translator);
+        $this->helper->setTranslatorTextDomain('default');
+
+        $element = new Text('test_one', ['label' => 'hello']);
+
+        $this->assertSame('bonjour', $this->helper->renderPartial($element));
     }
 }

@@ -12,6 +12,7 @@ use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Column;
 use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Variant;
 use TwbsHelper\View\HtmlAttributesSet;
 
+/** @phpstan-ignore class.extendsFinalByPhpDoc */
 class FormLabel extends \Laminas\Form\View\Helper\FormLabel
 {
     use ElementHelperTrait;

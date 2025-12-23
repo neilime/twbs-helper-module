@@ -19,6 +19,7 @@ class PaginationControl extends \Laminas\View\Helper\PaginationControl
      *
      * @var string|array
      */
+    /** @phpstan-ignore property.parentPropertyFinalByPhpDoc */
     protected static $defaultViewPartial = 'TwbsHelper/pagination_control';
 
     public function renderPageItem(

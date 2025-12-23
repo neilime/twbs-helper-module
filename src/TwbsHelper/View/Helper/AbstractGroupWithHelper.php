@@ -15,7 +15,9 @@ abstract class AbstractGroupWithHelper extends AbstractGroup
      */
     protected static $helperName;
 
-    // @var \Laminas\View\Helper\HelperInterface
+    /**
+     * @var ?HelperInterface
+     */
     protected $itemViewHelper = null;
 
     protected function renderGroupItem(
@@ -39,6 +41,7 @@ abstract class AbstractGroupWithHelper extends AbstractGroup
         }
 
         $phpRenderer = $this->getView();
+        // @phpstan-ignore-next-line Runtime guard kept for contexts where no renderer is attached.
         if ($phpRenderer !== null && method_exists($phpRenderer, 'plugin')) {
             return $this->itemViewHelper = $phpRenderer->plugin(static::$helperName);
         }

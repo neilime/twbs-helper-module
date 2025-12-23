@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="Bootstrap.php" colors="true" verbose="true" backupGlobals="false" backupStaticAttributes="false" stopOnFailure="true" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd" cacheResultFile="../tools/cache/.phpunit.result.cache">
-  <coverage>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="Bootstrap.php" colors="true" backupGlobals="false" backupStaticProperties="false" stopOnFailure="true" failOnWarning="true" failOnDeprecation="true" displayDetailsOnTestsThatTriggerWarnings="true" displayDetailsOnTestsThatTriggerErrors="true" displayDetailsOnTestsThatTriggerDeprecations="true" cacheDirectory="../tools/cache/phpunit" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.5/phpunit.xsd">
+  <source>
     <include>
       <directory suffix=".php">../src/</directory>
     </include>
-  </coverage>
+  </source>
   <testsuites>
     <testsuite name="Documentation">
-      <directory suffix=".php">./TestSuite/Documentation/</directory>
+      <directory suffix="Test.php">./TestSuite/Documentation/</directory>
+      <file>./TestSuite/Documentation/TestCase.php</file>
     </testsuite>
     <testsuite name="TwbsHelper">
-      <directory suffix=".php">./TestSuite/TwbsHelper/</directory>
+      <directory suffix="Test.php">./TestSuite/TwbsHelper/</directory>
     </testsuite>
   </testsuites>
 </phpunit>

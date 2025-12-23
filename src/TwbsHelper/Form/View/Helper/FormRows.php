@@ -243,7 +243,7 @@ class FormRows extends AbstractHelper
 
         if ($rowName) {
             foreach ($existingKeys as $existingKey) {
-                if (preg_match('/^[0-9]+_' . preg_quote((string) $rowName, '/') . '$/', $existingKey)) {
+                if (preg_match('/^[0-9]+_' . preg_quote((string) $rowName, '/') . '$/', (string) $existingKey)) {
                     return $existingKey;
                 }
             }
@@ -255,7 +255,7 @@ class FormRows extends AbstractHelper
         }
 
         $lastKey = array_pop($existingKeys);
-        if (preg_match('/^\d+_$/', $lastKey)) {
+        if (preg_match('/^\d+_$/', (string) $lastKey)) {
             return $lastKey;
         }
 

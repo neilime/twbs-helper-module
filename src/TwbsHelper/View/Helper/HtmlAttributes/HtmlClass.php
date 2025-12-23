@@ -29,7 +29,7 @@ class HtmlClass extends AbstractHelper
 
     public function trimClassPrefix(string $class, string $prefix): string
     {
-        return preg_replace('/^' . preg_quote($prefix . $this->classSeparator) . '/', '', $class);
+        return preg_replace('/^' . preg_quote($prefix . $this->classSeparator, '/') . '/', '', $class);
     }
 
     public function getSuffixedClass(string $class, string $suffix): string

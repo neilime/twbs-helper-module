@@ -2,6 +2,7 @@
 
 namespace TestSuite\TwbsHelper\View;
 
+use ArrayIterator;
 use Laminas\View\Renderer\PhpRenderer;
 use PHPUnit\Framework\TestCase;
 use TestSuite\Bootstrap;
@@ -54,6 +55,22 @@ class HtmlStyleAttributeSetTest extends TestCase
                 'width' => '50%',
             ],
             $htmlStyleAttributeSet->getArrayCopy()
+        );
+    }
+
+    public function testConstructorNormalizesIterableObjects(): void
+    {
+        $htmlStyleAttributeSet = new HtmlStyleAttributeSet(new ArrayIterator([
+            'WIDTH' => '50%',
+            'color' => 'red',
+        ]));
+
+        $this->assertSame(
+            [
+                'color' => 'red',
+                'width' => '50%',
+            ],
+            $htmlStyleAttributeSet->cleanAttribute()->getArrayCopy()
         );
     }
 }

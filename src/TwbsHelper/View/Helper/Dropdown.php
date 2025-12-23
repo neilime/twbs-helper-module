@@ -59,7 +59,10 @@ class Dropdown extends AbstractHtmlElement
      * @var array
      */
     protected static $directions = [
-        'down', 'up', 'start', 'end',
+        'down',
+        'up',
+        'start',
+        'end',
     ];
 
     /**
@@ -104,25 +107,25 @@ class Dropdown extends AbstractHtmlElement
     }
 
     /**
-     * @param ElementInterface|iterable $dropdown
      * @return ElementInterface
      */
     protected function createDropdown($dropdown)
     {
-        if (
-            is_iterable($dropdown)
-            && !($dropdown instanceof ElementInterface)
-        ) {
+        if ($dropdown instanceof ElementInterface) {
+            return $dropdown;
+        }
+
+        if (is_iterable($dropdown)) {
             $factory = new Factory();
             $dropdown = $factory->create($dropdown);
-        } elseif (!($dropdown instanceof ElementInterface)) {
-            throw new InvalidArgumentException(sprintf(
-                'Argument "$dropdown" expects %s, "%s" given',
-                'an instanceof \Laminas\Form\ElementInterface or an iterable',
-                $dropdown::class
-            ));
+            return $dropdown;
         }
-        return $dropdown;
+
+        throw new InvalidArgumentException(sprintf(
+            'Argument "$dropdown" expects %s, "%s" given',
+            'an instanceof \Laminas\Form\ElementInterface or an iterable',
+            get_debug_type($dropdown)
+        ));
     }
 
     protected function renderContainer(array $dropdownOptions, string $dropdownContent): string

@@ -7,7 +7,7 @@ return [
     'rendering' => function (\Laminas\View\Renderer\PhpRenderer $view) {
         foreach (
             [
-                null => 10,
+                '' => 10,
                 'success' => 25,
                 'info' => 50,
                 'warning' => 75,

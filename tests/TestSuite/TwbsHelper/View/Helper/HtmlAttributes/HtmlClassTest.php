@@ -23,4 +23,12 @@ class HtmlClassTest extends AbstractViewHelperTestCase
         );
         $this->helper->setHelperPluginManager(stdClass::class);
     }
+
+    public function testSetHelperPluginManagerWithUnknownClassName()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid helper helpers class provided (Unknown\\Missing\\HelperManager)');
+
+        $this->helper->setHelperPluginManager('Unknown\\Missing\\HelperManager');
+    }
 }

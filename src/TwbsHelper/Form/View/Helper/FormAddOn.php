@@ -19,6 +19,23 @@ class FormAddOn extends AbstractHelper
     public const POSITION_PREPEND = 'prepend';
 
     /**
+     * @param array<mixed>|ElementInterface|string $addOnOptions
+     * @return array<mixed>
+     */
+    private function normalizeAddOnOptions($addOnOptions): array
+    {
+        if ($addOnOptions instanceof ElementInterface) {
+            return ['element' => $addOnOptions];
+        }
+
+        if (is_string($addOnOptions)) {
+            return ['text' => $addOnOptions];
+        }
+
+        return $addOnOptions;
+    }
+
+    /**
      * @var Factory|null
      */
     protected $formFactory;
@@ -87,11 +104,7 @@ class FormAddOn extends AbstractHelper
         ElementInterface $element,
         string $addOnPosition
     ): string {
-        if ($addOnOptions instanceof ElementInterface) {
-            $addOnOptions = ['element' => $addOnOptions];
-        } elseif (is_string($addOnOptions)) {
-            $addOnOptions = ['text' => $addOnOptions];
-        }
+        $addOnOptions = $this->normalizeAddOnOptions($addOnOptions);
 
         if (ArrayUtils::isList($addOnOptions)) {
             $content = '';
@@ -148,21 +161,28 @@ class FormAddOn extends AbstractHelper
                 break;
 
             case isset($addOnOptions['element']):
-                if (
-                    is_iterable($addOnOptions['element'])
-                    && !($addOnOptions['element'] instanceof ElementInterface)
-                ) {
-                    $addOnOptions['element'] = $this->createElement($addOnOptions['element']);
+                $addOnElement = $addOnOptions['element'];
+
+                if (is_iterable($addOnElement) && !($addOnElement instanceof ElementInterface)) {
+                    $addOnElement = $this->createElement($addOnElement);
                 }
 
-                $shouldWrapContent = $addOnOptions['element'] instanceof Checkbox;
+                if (!$addOnElement instanceof ElementInterface) {
+                    throw new InvalidArgumentException(sprintf(
+                        '"element" option expects an iterable spec or %s, "%s" given',
+                        ElementInterface::class,
+                        get_debug_type($addOnElement)
+                    ));
+                }
+
+                $shouldWrapContent = $addOnElement instanceof Checkbox;
                 // Define global add-on id based on element's aria-describedby
                 if (!$shouldWrapContent && $addOnId) {
-                    $addOnOptions['element']->setAttribute('id', $addOnId);
+                    $addOnElement->setAttribute('id', $addOnId);
                 }
 
                 $addOnContent = $this->renderElement(
-                    $addOnOptions['element'],
+                    $addOnElement,
                     $attributes,
                     $addOnPosition
                 );

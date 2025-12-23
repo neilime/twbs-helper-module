@@ -7,6 +7,7 @@ use ReturnTypeWillChange;
 
 /**
  * Class for storing and processing HTML tag attributes.
+ * @phpstan-import-type AttributeSet from OriginalHtmlAttributesSet
  */
 class HtmlAttributesSet extends OriginalHtmlAttributesSet
 {
@@ -70,6 +71,7 @@ class HtmlAttributesSet extends OriginalHtmlAttributesSet
 
     /**
      * Merge attributes with existing attributes.
+     * @param AttributeSet|HtmlAttributesSet $attributes
      */
     public function merge(iterable $attributes): self
     {
@@ -94,7 +96,7 @@ class HtmlAttributesSet extends OriginalHtmlAttributesSet
             }
         }
 
-        return  $this;
+        return $this;
     }
 
     public function getArrayCopy(): array
@@ -126,7 +128,7 @@ class HtmlAttributesSet extends OriginalHtmlAttributesSet
 
         $cleanedAttributes = [];
         foreach ($this as $key => $value) {
-            $cleanedAttributes[strtolower($key)] = $value;
+            $cleanedAttributes[strtolower((string) $key)] = $value;
         }
         ksort($cleanedAttributes);
 

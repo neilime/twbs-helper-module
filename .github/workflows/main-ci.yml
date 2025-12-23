@@ -1,55 +1,42 @@
 name: Main - Continuous Integration
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 on:
   push:
     branches:
       - main
       - 4.x
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions: {}
+
 jobs:
   ci:
     name: Continuous Integration
     uses: ./.github/workflows/__shared-ci.yml
+    permissions:
+      contents: read
+      id-token: write
     secrets: inherit
     with:
-      publish: true
+      publish: ${{ github.ref_name == github.event.repository.default_branch }}
 
   deploy:
+    if: github.ref_name == github.event.repository.default_branch
     name: Deploy website
     needs: ci
     runs-on: ubuntu-latest
     permissions:
-      contents: write
       pages: write
       id-token: write
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.url }}
     steps:
-      - uses: actions/checkout@v5
+      - id: deployment
+        uses: hoverkraft-tech/ci-github-publish/actions/deploy/github-pages@daee4406a47682bd2adf0822c12f1d46338d7da1 # 0.18.1
         with:
-          token: ${{ secrets.GH_PRIVATE_ACCESS_TOKEN }}
-
-      - uses: actions/download-artifact@v5
-        with:
-          name: documentation
-          path: website/docs
-
-      - uses: stefanzweifel/git-auto-commit-action@v6
-        with:
-          commit_message: "docs: update documentation"
-          commit_options: "--no-verify --signoff"
-          push_options: --force
-
-      - name: ⚙️ Setup Pages
-        if: github.ref == 'refs/heads/main'
-        uses: actions/configure-pages@v5
-
-      - name: 🚀 Deploy to GitHub Pages
-        id: deployment
-        if: github.ref == 'refs/heads/main'
-        uses: actions/deploy-pages@v4
+          build-path: ${{ needs.ci.outputs.website-artifact-path }}
+          build-artifact-id: ${{ needs.ci.outputs.website-artifact-id }}

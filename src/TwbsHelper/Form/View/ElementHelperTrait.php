@@ -3,6 +3,7 @@
 namespace TwbsHelper\Form\View;
 
 use Laminas\Form\ElementInterface;
+use ReflectionMethod;
 
 trait ElementHelperTrait
 {
@@ -10,12 +11,14 @@ trait ElementHelperTrait
     {
         $attributes = $this->getView()->plugin('htmlattributes')->__invoke($attributes)->getArrayCopy();
 
-        $callParentPrepareAttributes = parent::class . '::prepareAttributes';
-        if (is_callable($callParentPrepareAttributes)) {
-            $attributes = call_user_func($callParentPrepareAttributes, $attributes);
+        $parentClass = get_parent_class($this);
+        if ($parentClass === false) {
+            return $attributes;
         }
 
-        return $attributes;
+        $prepareAttributesMethod = new ReflectionMethod($parentClass, 'prepareAttributes');
+
+        return $prepareAttributesMethod->invoke($this, $attributes);
     }
 
     protected function setClassesToElement(
