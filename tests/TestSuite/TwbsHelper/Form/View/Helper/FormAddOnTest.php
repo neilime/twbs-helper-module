@@ -71,6 +71,29 @@ class FormAddOnTest extends TestCase
         );
     }
 
+    public function testRenderAddOnWithIterableElementSpecPropagatesDescribedById()
+    {
+        $element = new Text('test', [
+            'add_on_prepend' => [
+                'element' => [
+                    'type' => Button::class,
+                    'name' => 'add-on',
+                    'options' => ['label' => 'Add-On'],
+                ],
+            ],
+        ]);
+        $element->setAttribute('aria-describedby', 'test-addon');
+
+        $this->assertEquals(
+            '<div class="input-group">' . PHP_EOL .
+                '    <button class="btn&#x20;btn-secondary" id="test-addon" name="add-on" type="button" value="">' .
+                'Add-On' .
+                '</button>' . PHP_EOL .
+                '</div>',
+            $this->formAddOnHelper->__invoke($element)
+        );
+    }
+
     public function testRenderAddOnWithWrongTextOptionThrowsAnException()
     {
         $this->expectException(InvalidArgumentException::class);
@@ -103,6 +126,20 @@ class FormAddOnTest extends TestCase
         $this->formAddOnHelper->__invoke(new Text(
             'test',
             ['add_on_prepend' => ['wrong' => new stdClass()]]
+        ));
+    }
+
+    public function testRenderAddOnWithWrongElementOptionThrowsAnException()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage(sprintf(
+            '"element" option expects an iterable spec or %s, "stdClass" given',
+            \Laminas\Form\ElementInterface::class
+        ));
+
+        $this->formAddOnHelper->__invoke(new Text(
+            'test',
+            ['add_on_prepend' => ['element' => new stdClass()]]
         ));
     }
 }

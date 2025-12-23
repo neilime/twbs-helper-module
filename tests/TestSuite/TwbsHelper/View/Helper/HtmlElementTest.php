@@ -5,6 +5,14 @@ namespace TestSuite\TwbsHelper\View\Helper;
 use TestSuite\TwbsHelper\AbstractViewHelperTestCase;
 use TwbsHelper\View\Helper\HtmlElement;
 
+final class HtmlElementProxy extends HtmlElement
+{
+    public function removeIndentationProxy(string $content): string
+    {
+        return $this->removeIndentation($content);
+    }
+}
+
 class HtmlElementTest extends AbstractViewHelperTestCase
 {
     /**
@@ -85,6 +93,17 @@ class HtmlElementTest extends AbstractViewHelperTestCase
         $this->assertSame(
             $expectedContent,
             $result
+        );
+    }
+
+    public function testRemoveIndentationRemovesLeadingWhitespaceFromEachLine()
+    {
+        $helper = new HtmlElementProxy();
+        $helper->setView($this->helper->getView());
+
+        $this->assertSame(
+            '<div>' . PHP_EOL . 'content' . PHP_EOL . '</div>',
+            $helper->removeIndentationProxy("    <div>\n        content\n    </div>")
         );
     }
 }

@@ -16,8 +16,6 @@ const {
     url: "https://neilime.github.io",
     baseUrl: "/twbs-helper-module/",
     trailingSlash: true,
-    onBrokenLinks: "ignore",
-    onBrokenMarkdownLinks: "warn",
     favicon: "img/favicon.ico",
     organizationName: "neilime",
     projectName: "twbs-helper-module",
@@ -44,7 +42,12 @@ const {
         }),
       ],
     ],
-
+    onBrokenLinks: "ignore",
+    markdown: {
+      hooks: {
+        onBrokenMarkdownLinks: "warn",
+      },
+    },
     themeConfig:
       /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
       ({
@@ -78,6 +81,12 @@ const {
               docId: "development",
               position: "left",
               label: "Development",
+            },
+            {
+              type: "doc",
+              docId: "phpdoc/index",
+              position: "left",
+              label: "API (PHPDoc)",
             },
             {
               href: "https://github.com/neilime/twbs-helper-module",

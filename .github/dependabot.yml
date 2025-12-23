@@ -1,9 +1,11 @@
 version: 2
 updates:
   - package-ecosystem: composer
-    open-pull-requests-limit: 20    
-    versioning-strategy: widen # As this package is public we aims to support the widest range of dependencies versions.
-    directory: "/"
+    open-pull-requests-limit: 20
+    versioning-strategy: increase
+    directories:
+      - "/"
+      - "/tools"
     schedule:
       interval: weekly
       day: friday
@@ -18,19 +20,6 @@ updates:
           - "spatie/phpunit-snapshot-assertions"
       composer-dev-dependencies:
         dependency-type: development
-
-  - package-ecosystem: composer
-    open-pull-requests-limit: 20
-    versioning-strategy: increase
-    directory: "/tools"
-    schedule:
-      interval: weekly
-      day: friday
-      time: "04:00"
-    groups:
-      composer-tools-dependencies:
-        patterns:
-          - "*"
 
   - package-ecosystem: npm
     open-pull-requests-limit: 20
@@ -55,10 +44,22 @@ updates:
       npm-dev-dependencies:
         dependency-type: development
 
+  - package-ecosystem: "docker"
+    open-pull-requests-limit: 20
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: friday
+      time: "04:00"
+    groups:
+      docker-dependencies:
+        patterns:
+          - "*"
+
   - package-ecosystem: github-actions
     directories:
       - "/"
-      - ".github/actions/**/*"
+      - "/.github/workflows/actions/**/*"
     schedule:
       interval: weekly
       day: friday
@@ -67,3 +68,11 @@ updates:
       github-actions-dependencies:
         patterns:
           - "*"
+
+  - package-ecosystem: "devcontainers"
+    open-pull-requests-limit: 20
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: friday
+      time: "04:00"

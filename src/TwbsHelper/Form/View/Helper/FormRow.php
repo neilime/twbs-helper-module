@@ -8,6 +8,7 @@ use TwbsHelper\Options\ModuleOptions;
 use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Column;
 use DomainException;
 
+/** @phpstan-ignore class.extendsFinalByPhpDoc */
 class FormRow extends \Laminas\Form\View\Helper\FormRow
 {
     use ElementHelperTrait;

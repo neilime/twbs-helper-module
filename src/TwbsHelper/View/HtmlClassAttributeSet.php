@@ -25,6 +25,13 @@ class HtmlClassAttributeSet extends ArrayObject implements Stringable
     {
         if (is_string($classes)) {
             $classes = explode(' ', $classes);
+        } elseif (! is_array($classes)) {
+            $normalizedClasses = [];
+            foreach ($classes as $key => $class) {
+                $normalizedClasses[$key] = $class;
+            }
+
+            $classes = $normalizedClasses;
         }
 
         parent::__construct($classes);
@@ -79,7 +86,7 @@ class HtmlClassAttributeSet extends ArrayObject implements Stringable
     {
         $classes = $this->getArrayCopy();
 
-        $classes = array_unique(array_filter(array_map('trim', array_filter($classes))));
+        $classes = array_unique(array_filter(array_map(trim(...), array_filter($classes))));
         sort($classes);
 
         $this->exchangeArray($classes);

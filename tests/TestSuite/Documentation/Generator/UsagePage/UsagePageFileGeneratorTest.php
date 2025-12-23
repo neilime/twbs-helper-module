@@ -4,55 +4,113 @@ namespace TestSuite\Documentation\Generator\UsagePage;
 
 use Documentation\Generator\Configuration;
 use Documentation\Generator\FileSystem\File;
-use Documentation\Generator\UsagePageFileGenerator;
+use Documentation\Generator\UsagePage\UsagePageFileGenerator;
 use Documentation\Test\Config;
+use PHPUnit\Framework\AssertionFailedError;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use MockObject;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
 
 class UsagePageFileGeneratorTest extends TestCase
 {
-    /**
-     * @var MockObject
-     */
+    /** @var File&MockObject */
     protected $file;
 
-    /**
-     * @var UsagePageFileGenerator
-     */
-    protected $usagePageFileGenerator;
+    protected UsagePageFileGenerator $usagePageFileGenerator;
+
+    private string $rootDirPath;
 
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->file = $this->createMock(File::class);
+        $this->rootDirPath = sys_get_temp_dir() . DIRECTORY_SEPARATOR . 'twbs-helper-usage-page-' . bin2hex(random_bytes(8));
+        mkdir($this->rootDirPath . DIRECTORY_SEPARATOR . 'website' . DIRECTORY_SEPARATOR . 'docs' . DIRECTORY_SEPARATOR . 'usage', 0o777, true);
+
         $configuration = new Configuration(
-            '/tmp/test-dir',
-            '/tmp/test-dir/tests',
+            $this->rootDirPath,
+            $this->rootDirPath . DIRECTORY_SEPARATOR . 'tests',
             'x.x',
             2,
             $this->file
         );
         $config = new Config();
 
-        $this->usagePageFileGenerator = new \Documentation\Generator\UsagePage\UsagePageFileGenerator(
+        $this->usagePageFileGenerator = new UsagePageFileGenerator(
             $configuration,
             $config
         );
     }
 
-    public function testGenerateShouldCreateUsagePage()
+    protected function tearDown(): void
     {
-        $this->file->expects($this->exactly(2))->method('dirExists')->withConsecutive(
-            ['/tmp/test-dir/website/docs/usage'],
-        )->willReturn(true);
+        if (is_dir($this->rootDirPath)) {
+            $iterator = new RecursiveIteratorIterator(
+                new RecursiveDirectoryIterator($this->rootDirPath, RecursiveDirectoryIterator::SKIP_DOTS),
+                RecursiveIteratorIterator::CHILD_FIRST
+            );
 
-        $this->usagePageFileGenerator->generate('test');
+            foreach ($iterator as $path) {
+                $path->isDir() ? rmdir($path->getPathname()) : unlink($path->getPathname());
+            }
+
+            rmdir($this->rootDirPath);
+        }
+
+        parent::tearDown();
     }
 
-    public function testGenerateThrowsAnErrorWhenUsageDirPathDoesNotExist()
+    public function testGenerateShouldCreateUsagePage(): void
     {
+        $usageDirPath = realpath($this->rootDirPath . DIRECTORY_SEPARATOR . 'website' . DIRECTORY_SEPARATOR . 'docs' . DIRECTORY_SEPARATOR . 'usage');
+        $pageDirPath = $usageDirPath . DIRECTORY_SEPARATOR . 'n-a';
+        $pagePath = $pageDirPath . DIRECTORY_SEPARATOR . 'n-a.mdx';
+        $categoryPath = $pageDirPath . DIRECTORY_SEPARATOR . '_category_.json';
+        $dirExistsCalls = [];
+
+        $this->file->expects($this->exactly(2))
+            ->method('dirExists')
+            ->willReturnCallback(function (string $dirPath) use ($usageDirPath, $pageDirPath, &$dirExistsCalls): bool {
+                $dirExistsCalls[] = $dirPath;
+
+                return match ($dirPath) {
+                    $usageDirPath => true,
+                    $pageDirPath => false,
+                    default => throw new AssertionFailedError('Unexpected dirExists path: ' . $dirPath),
+                };
+            });
+
+        $this->file->expects($this->once())
+            ->method('writeFile')
+            ->with(
+                $categoryPath,
+                "{\n    \"label\": \"\",\n    \"position\": 1\n}"
+            );
+
+        $this->file->expects($this->once())
+            ->method('appendFile')
+            ->with($pagePath, 'test');
+
+        $this->usagePageFileGenerator->generate('test');
+
+        $this->assertSame([$usageDirPath, $pageDirPath], $dirExistsCalls);
+        $this->assertDirectoryExists($pageDirPath);
+    }
+
+    public function testGenerateThrowsAnErrorWhenUsageDirPathDoesNotExist(): void
+    {
+        $this->file->method('dirExists')->willReturn(false);
+
         $this->expectExceptionMessage(
-            "Usage dir path \"/tmp/test-dir/website/docs/usage\" does not exist"
+            'Usage dir path "' . $this->rootDirPath . DIRECTORY_SEPARATOR . 'website' . DIRECTORY_SEPARATOR . 'docs' . DIRECTORY_SEPARATOR . 'usage" does not exist'
         );
+
+        rmdir($this->rootDirPath . DIRECTORY_SEPARATOR . 'website' . DIRECTORY_SEPARATOR . 'docs' . DIRECTORY_SEPARATOR . 'usage');
+        rmdir($this->rootDirPath . DIRECTORY_SEPARATOR . 'website' . DIRECTORY_SEPARATOR . 'docs');
+        rmdir($this->rootDirPath . DIRECTORY_SEPARATOR . 'website');
+
         $this->usagePageFileGenerator->generate('test');
     }
 }

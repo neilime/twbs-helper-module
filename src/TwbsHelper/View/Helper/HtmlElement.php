@@ -117,7 +117,7 @@ class HtmlElement extends AbstractHtmlElement
 
     protected function removeIndentation(string $content): string
     {
-        return implode(PHP_EOL, array_map('ltrim', explode(
+        return implode(PHP_EOL, array_map(ltrim(...), explode(
             PHP_EOL,
             $content
         )));

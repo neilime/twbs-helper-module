@@ -10,6 +10,7 @@ use TwbsHelper\Form\View\ElementHelperTrait;
 use DomainException;
 use InvalidArgumentException;
 
+/** @phpstan-ignore class.extendsFinalByPhpDoc */
 class FormRowElement extends FormRow
 {
     use ElementHelperTrait;
@@ -19,6 +20,7 @@ class FormRowElement extends FormRow
      *
      * @var string
      */
+    /** @phpstan-ignore property.parentPropertyFinalByPhpDoc */
     protected $inputErrorClass = 'is-invalid';
 
     /**

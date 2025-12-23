@@ -6,7 +6,7 @@ FROM php:${VERSION}-cli
 RUN --mount=type=cache,target=/var/cache/apt \
     export DEBIAN_FRONTEND=noninteractive && \
     apt-get update -yq; \
-    apt-get install -yq unzip libicu-dev libonig-dev libxml2-dev; \
+    apt-get install -yq git unzip libicu-dev libonig-dev libxml2-dev; \
     pecl install pcov libsodium; \
     docker-php-ext-enable pcov sodium; \
     docker-php-ext-install intl;

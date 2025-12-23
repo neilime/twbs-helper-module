@@ -14,6 +14,7 @@ use Laminas\Form\Element\DateTimeSelect;
 use Laminas\Form\Element\File;
 use Laminas\Form\Element\MonthSelect;
 
+/** @phpstan-ignore class.extendsFinalByPhpDoc */
 class FormElement extends \Laminas\Form\View\Helper\FormElement
 {
     use ElementHelperTrait;
@@ -22,6 +23,7 @@ class FormElement extends \Laminas\Form\View\Helper\FormElement
     protected $options;
 
     // Instance map to view helper
+    /** @phpstan-ignore property.parentPropertyFinalByPhpDoc */
     protected $classMap = [
         File::class                => 'formfile',
         Button::class              => 'formbutton',
@@ -41,13 +43,8 @@ class FormElement extends \Laminas\Form\View\Helper\FormElement
      */
     public function __construct(ModuleOptions $options)
     {
-        if (is_array($options->getTypeMap())) {
-            $this->typeMap = array_merge($this->typeMap, $options->getTypeMap());
-        }
-
-        if (is_array($options->getClassMap())) {
-            $this->classMap = array_merge($this->classMap, $options->getClassMap());
-        }
+        $this->typeMap = array_merge($this->typeMap, $options->getTypeMap());
+        $this->classMap = array_merge($this->classMap, $options->getClassMap());
 
         $this->options = $options;
     }

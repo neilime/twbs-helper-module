@@ -12,6 +12,7 @@ use TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Column;
 /**
  * FormCollection
  */
+/** @phpstan-ignore class.extendsFinalByPhpDoc */
 class FormCollection extends \Laminas\Form\View\Helper\FormCollection
 {
     use ElementHelperTrait;
@@ -28,6 +29,7 @@ class FormCollection extends \Laminas\Form\View\Helper\FormCollection
      *
      * @var string
      */
+    /** @phpstan-ignore property.parentPropertyFinalByPhpDoc */
     protected $wrapper = '<fieldset%4$s>%2$s%1$s%3$s</fieldset>';
 
     /**
@@ -37,6 +39,7 @@ class FormCollection extends \Laminas\Form\View\Helper\FormCollection
      *
      * @var array
      */
+    /** @phpstan-ignore property.parentPropertyFinalByPhpDoc */
     protected $validTagAttributes = [
         'disabled' => true,
     ];

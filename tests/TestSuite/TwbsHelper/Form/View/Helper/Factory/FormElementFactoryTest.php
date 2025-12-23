@@ -2,6 +2,7 @@
 
 namespace TestSuite\TwbsHelper\Form\View\Helper\Factory;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use TestSuite\Bootstrap;
 use TwbsHelper\Form\View\Helper\Factory\FormModuleOptionsFactory;
@@ -27,9 +28,7 @@ class FormElementFactoryTest extends TestCase
         $this->formElementFactory = new FormModuleOptionsFactory();
     }
 
-    /**
-     * @dataProvider formElementProvider
-     */
+    #[DataProvider('formElementProvider')]
     public function testRenderElement(string $formElement)
     {
         $this->assertInstanceOf(
@@ -41,7 +40,7 @@ class FormElementFactoryTest extends TestCase
         );
     }
 
-    public function formElementProvider(): array
+    public static function formElementProvider(): array
     {
         return [
             Form::class           => [

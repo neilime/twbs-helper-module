@@ -7,19 +7,18 @@ use PHPUnit\Framework\TestCase;
 
 class HtmlDriverTest extends TestCase
 {
-    /**
-     * @var HtmlDriver
-     */
-    protected $htmlDriver;
+    private HtmlDriver $htmlDriver;
 
     protected function setUp(): void
     {
+        parent::setUp();
+
         $this->htmlDriver = new HtmlDriver();
     }
 
-    public function testSerialize()
+    public function testSerialize(): void
     {
-        $this->assertEquals(
+        $this->assertSame(
             '<p>test</p>',
             $this->htmlDriver->serialize('test')
         );

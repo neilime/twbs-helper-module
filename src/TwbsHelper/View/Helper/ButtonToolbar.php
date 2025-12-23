@@ -118,6 +118,7 @@ class ButtonToolbar extends AbstractHtmlElement
         }
 
         $view = $this->getView();
+        // @phpstan-ignore-next-line Runtime guard kept for contexts where no renderer is attached.
         if ($view !== null && method_exists($view, 'plugin')) {
             return $this->buttonGroupHelper = $view->plugin('buttonGroup');
         }
@@ -132,6 +133,7 @@ class ButtonToolbar extends AbstractHtmlElement
         }
 
         $view = $this->getView();
+        // @phpstan-ignore-next-line Runtime guard kept for contexts where no renderer is attached.
         if ($view !== null && method_exists($view, 'plugin')) {
             return $this->formRowHelper = $view->plugin('form_row');
         }
@@ -148,6 +150,7 @@ class ButtonToolbar extends AbstractHtmlElement
         }
 
         $view = $this->getView();
+        // @phpstan-ignore-next-line Runtime guard kept for contexts where no renderer is attached.
         if ($view !== null && method_exists($view, 'plugin')) {
             return $this->htmlElementHelper = $view->plugin('htmlElement');
         }

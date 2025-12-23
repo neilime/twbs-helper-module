@@ -96,11 +96,11 @@ trait MultiCheckboxTrait
         $valueOptions = $multiCheckbox->getValueOptions();
 
         foreach ($valueOptions as &$valueOption) {
-            /** @var ValueOptionSpec&TwbsValueOptionSpec $valueOption */
             // Skip from preparing simple string value
             if (!is_array($valueOption)) {
                 continue;
             }
+            /** @var ValueOptionSpec&TwbsValueOptionSpec $valueOption */
 
             // Input attributes
             $inputAttributes = $this->getView()->plugin('htmlattributes')->__invoke($valueOption['attributes'] ?? []);

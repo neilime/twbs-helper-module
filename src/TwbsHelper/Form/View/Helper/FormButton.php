@@ -12,6 +12,7 @@ use TwbsHelper\View\HtmlAttributesSet;
 use DomainException;
 use InvalidArgumentException;
 
+/** @phpstan-ignore class.extendsFinalByPhpDoc */
 class FormButton extends \Laminas\Form\View\Helper\FormButton
 {
     use ElementHelperTrait;

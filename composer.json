@@ -26,25 +26,25 @@
     "twitter/bootstrap": "Twitter bootstrap assets"
   },
   "require": {
-    "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
-    "laminas/laminas-escaper": "^2.12",
-    "laminas/laminas-form": "^3.4",
-    "laminas/laminas-i18n": "^2.17",
-    "laminas/laminas-navigation": "^2.15",
-    "laminas/laminas-paginator": "^2.13",
-    "laminas/laminas-servicemanager": "^3.17",
-    "laminas/laminas-stdlib": "^3.13",
-    "laminas/laminas-view": "^2.23"
+    "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
+    "laminas/laminas-escaper": "^2.18",
+    "laminas/laminas-form": "^3.24",
+    "laminas/laminas-i18n": "^2.32",
+    "laminas/laminas-navigation": "^2.23",
+    "laminas/laminas-paginator": "^2.22",
+    "laminas/laminas-servicemanager": "^3.24",
+    "laminas/laminas-stdlib": "^3.21",
+    "laminas/laminas-view": "^2.44"
   },
   "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.92",
     "jfcherng/php-diff": "^6.16",
-    "laminas/laminas-component-installer": "^3.0",
-    "laminas/laminas-modulemanager": "^2.12",
-    "laminas/laminas-mvc": "^3.3",
+    "laminas/laminas-component-installer": "^3.7",
+    "laminas/laminas-http": "^2.22",
+    "laminas/laminas-router": "^3.15",
     "mikey179/vfsstream": "^1.6",
-    "pcov/clobber": "^2.0",
-    "phpunit/phpunit": "^9.5.26",
-    "spatie/phpunit-snapshot-assertions": "^4.2",
+    "phpunit/phpunit": "^11.5",
+    "spatie/phpunit-snapshot-assertions": "^5.2",
     "twbs/bootstrap": "^5.3"
   },
   "autoload": {
@@ -62,6 +62,10 @@
     "test": "phpunit --colors --configuration tests/phpunit.xml",
     "test:update-snapshot": "@test -d --update-snapshots",
     "test:ci": "@test -d pcov.enabled=1 -d max_execution_time=0 --coverage-text --coverage-clover ./build/logs/clover.xml --coverage-html ./build/coverage/",
+    "generate-phpdoc": [
+      "tools/vendor/bin/phpdoc run -d ./src -t ./website/docs/phpdoc --template=\"tools/vendor/saggre/phpdocumentor-markdown/themes/markdown\" --cache-folder=\"./tools/cache/phpdoc\" -s template.markdown.markdownFlavour=github",
+      "php scripts/transformPhpdocForDocusaurus.php"
+    ],
     "generate-docs": "php scripts/generateDocumentation.php",
     "generate-snapshot": "php scripts/generateSnapshot.php",
     "php-cs-fixer": "@php-cs-fixer:fix --dry-run",
@@ -81,8 +85,7 @@
     "optimize-autoloader": true,
     "sort-packages": true,
     "allow-plugins": {
-      "laminas/laminas-component-installer": true,
-      "phpstan/extension-installer": true
+      "laminas/laminas-component-installer": true
     }
   },
   "extra": {

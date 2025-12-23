@@ -1,6 +1,6 @@
 <?php
 
-error_reporting(E_ALL | E_STRICT);
+error_reporting(E_ALL);
 
 // Composer autoloading
 if (!file_exists($composerAutoloadPath = __DIR__ . '/../vendor/autoload.php')) {

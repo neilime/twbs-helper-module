@@ -5,6 +5,7 @@ namespace TwbsHelper\Form\View\Helper;
 use Laminas\Form\ElementInterface;
 use TwbsHelper\Form\View\ElementHelperTrait;
 
+/** @phpstan-ignore class.extendsFinalByPhpDoc */
 class FormCheckbox extends \Laminas\Form\View\Helper\FormCheckbox
 {
     use ElementHelperTrait;

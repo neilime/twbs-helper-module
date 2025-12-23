@@ -4,51 +4,106 @@ on:
       publish:
         default: false
         type: boolean
+    outputs:
+      artifact-id:
+        description: "The uploaded website build artifact ID"
+        value: ${{ jobs.build-website.outputs.artifact-id }}
+      artifact-path:
+        description: "The uploaded website build artifact path"
+        value: ${{ jobs.build-website.outputs.artifact-path }}
 
 jobs:
-  generate-documentation:
+  generate-phpdoc:
     runs-on: ubuntu-latest
+    env:
+      ARTIFACT_PATH: ./website/docs/phpdoc
+    outputs:
+      artifact-id: ${{ steps.upload-artifact.outputs.artifact-id }}
+      artifact-path: ${{ env.ARTIFACT_PATH }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v5
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          persist-credentials: false
 
       - name: ⚙️ Setup PHP, with composer and extensions
-        uses: ./.github/actions/setup-php
+        uses: ./.github/workflows/actions/setup-php
         with:
-          php-version: 8.3
+          php-version: 8.5
+
+      - name: ♻️ Tools cache
+        uses: actions/cache@9255dc7a253b0ccc959486e2bca901246202afeb # v5.0.1
+        with:
+          path: tools/cache
+          key: ${{ runner.os }}-tools-${{ matrix.php-versions }}-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-tools-
+
+      - name: 📃 Generate PHP documentation
+        run: composer generate-phpdoc
+
+      - uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        id: upload-artifact
+        with:
+          name: docs-phpdoc
+          path: ${{ env.ARTIFACT_PATH }}
+
+  generate-documentation:
+    runs-on: ubuntu-latest
+    env:
+      ARTIFACT_PATH: ./website/docs
+    outputs:
+      artifact-id: ${{ steps.upload-artifact.outputs.artifact-id }}
+      artifact-path: ${{ env.ARTIFACT_PATH }}
+    steps:
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          persist-credentials: false
+
+      - name: ⚙️ Setup PHP, with composer and extensions
+        uses: ./.github/workflows/actions/setup-php
+        with:
+          php-version: 8.5
 
       - name: 📃 Generate documentation
         run: composer generate-docs
 
       - name: 📦 Upload generated documentation artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        id: upload-artifact
         with:
           name: documentation
-          path: website/docs
+          path: ${{ env.ARTIFACT_PATH }}
 
   build-website:
-    needs: generate-documentation
+    needs: [generate-phpdoc, generate-documentation]
     runs-on: ubuntu-latest
+    env:
+      ARTIFACT_PATH: ./website/build
+    outputs:
+      artifact-id: ${{ steps.upload-artifact.outputs.artifact-id }}
+      artifact-path: ${{ env.ARTIFACT_PATH }}
     steps:
-      - uses: actions/checkout@v5
-
-      - uses: actions/download-artifact@v5
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
         with:
-          name: documentation
-          path: website/docs
+          persist-credentials: false
 
-      - uses: actions/setup-node@v5.0.0
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
         with:
-          node-version-file: ".nvmrc"
-          cache: yarn
-          cache-dependency-path: website/yarn.lock
+          artifact-ids: ${{ needs.generate-phpdoc.outputs.artifact-id }}
+          path: ${{ needs.generate-phpdoc.outputs.artifact-path }}
 
-      - name: ⚙️ Install Dependencies
-        working-directory: website
-        run: yarn install --frozen-lockfile
+      - uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0
+        with:
+          artifact-ids: ${{ needs.generate-documentation.outputs.artifact-id }}
+          path: ${{ needs.generate-documentation.outputs.artifact-path }}
+
+      - uses: hoverkraft-tech/ci-github-nodejs/actions/setup-node@25ef8d971c0a866fb9e5d90130c7aaa084619df6 # 0.21.0
+        id: setup-node
+        with:
+          working-directory: website
 
       - name: ♻️ Webpack cache
-        uses: actions/cache@v4
+        uses: actions/cache@9255dc7a253b0ccc959486e2bca901246202afeb # v5.0.1
         with:
           path: website/node_modules/.cache/webpack
           key: ${{ runner.os }}-webpack-${{ github.sha }}
@@ -56,11 +111,20 @@ jobs:
             ${{ runner.os }}-webpack-
 
       - name: 🏗️ Build website
-        run: yarn build
+        run: ${{ steps.setup-node.outputs.run-script-command }} build
         working-directory: website
+
+      - uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7.1.0
+        if: inputs.publish
+        with:
+          commit_message: "docs: update documentation"
+          commit_options: "--no-verify --signoff"
+          push_options: "--force"
+          file_pattern: "website/docs/**"
 
       - name: 📦 Upload website build artifact
         if: inputs.publish
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        id: upload-artifact
         with:
-          path: website/build
+          path: ${{ env.ARTIFACT_PATH }}

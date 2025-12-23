@@ -1,14 +1,16 @@
-name: Setup PHP
-description: Opiniated PHP setup with composer and extensions
+name: "Setup PHP"
+description: "A composite action to set up PHP with specified version and extensions"
+
 inputs:
   php-version:
-    description: Php version to use
+    description: "The PHP version to install"
     required: true
+
 runs:
   using: "composite"
   steps:
     - name: ⚙️ Setup PHP, with composer and extensions
-      uses: shivammathur/setup-php@v2
+      uses: shivammathur/setup-php@44454db4f0199b8b9685a5d763dc37cbf79108e1 # 2.36.0
       with:
         php-version: ${{ inputs.php-version }}
         extensions: none, curl, json, dom, tokenizer, xml, xmlwriter, simplexml, iconv, mbstring, intl, sodium
@@ -20,10 +22,10 @@ runs:
       run: echo "dir=$(composer config cache-files-dir)" >> "$GITHUB_OUTPUT"
 
     - name: ♻️ Cache composer dependencies
-      uses: actions/cache@v4
+      uses: actions/cache@9255dc7a253b0ccc959486e2bca901246202afeb # v5.0.1
       with:
         path: ${{ steps.composer-cache.outputs.dir }}
-        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
+        key: ${{ runner.os }}-composer-${{ inputs.php-versions }}-${{ hashFiles('**/composer.json') }}
         restore-keys: ${{ runner.os }}-composer-
 
     - name: ⚙️ Install dependencies
@@ -31,19 +33,3 @@ runs:
       run: |
         composer install --no-progress --prefer-dist --optimize-autoloader
         composer --working-dir=tools install --no-progress --prefer-dist --optimize-autoloader
-
-    - name: ♻️ Tools cache
-      uses: actions/cache@v4
-      with:
-        path: tools/cache
-        key: ${{ runner.os }}-tools-${{ github.sha }}
-        restore-keys: |
-          ${{ runner.os }}-tools-
-
-    - name: ♻️ Tests cache
-      uses: actions/cache@v4
-      with:
-        path: tests/.phpunit.cache
-        key: ${{ runner.os }}-tests-${{ github.sha }}
-        restore-keys: |
-          ${{ runner.os }}-tests-

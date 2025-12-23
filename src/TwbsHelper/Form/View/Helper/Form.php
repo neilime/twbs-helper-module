@@ -12,6 +12,7 @@ use InvalidArgumentException;
 use Laminas\Form\FieldsetInterface;
 use LogicException;
 
+/** @phpstan-ignore class.extendsFinalByPhpDoc */
 class Form extends \Laminas\Form\View\Helper\Form
 {
     use ElementHelperTrait;

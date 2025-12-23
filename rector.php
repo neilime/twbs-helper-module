@@ -14,9 +14,9 @@ return RectorConfig::configure()
     ->withAttributesSets(
         all: true
     )
-    // ->withComposerBased(
-    //     phpunit: true,
-    // )
+    ->withComposerBased(
+        phpunit: true,
+    )
     ->withCache(
         cacheClass: FileCacheStorage::class,
         cacheDirectory: __DIR__ . '/tools/cache/rector'
