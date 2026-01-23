@@ -44,7 +44,7 @@
     "mikey179/vfsstream": "^1.6",
     "pcov/clobber": "^2.0",
     "phpunit/phpunit": "^9.5.26",
-    "spatie/phpunit-snapshot-assertions": "^4.2",
+    "spatie/phpunit-snapshot-assertions": "^4.2 || ^5.0",
     "twbs/bootstrap": "^5.3"
   },
   "autoload": {
