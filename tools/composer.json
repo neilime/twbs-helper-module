@@ -1,6 +1,6 @@
 {
   "require": {
-    "friendsofphp/php-cs-fixer": "^3.92",
+    "friendsofphp/php-cs-fixer": "^3.95",
     "phpdocumentor/shim": "^3.9",
     "phpstan/extension-installer": "^1.4",
     "phpstan/phpstan": "^2.1",
