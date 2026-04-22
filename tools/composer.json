@@ -7,7 +7,7 @@
     "phpstan/phpstan-phpunit": "^2.0",
     "rector/rector": "^2.4",
     "saggre/phpdocumentor-markdown": "^1.0",
-    "slam/phpstan-laminas-framework": "^2.0",
+    "slam/phpstan-laminas-framework": "^2.1",
     "staabm/annotate-pull-request-from-checkstyle": "^1.8"
   },
   "config": {
