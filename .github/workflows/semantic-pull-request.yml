@@ -11,7 +11,7 @@ permissions: {}
 
 jobs:
   main:
-    uses: hoverkraft-tech/ci-github-common/.github/workflows/semantic-pull-request.yml@b17226e57c8ef31f860719766656ebb6df017218 # 0.31.6
+    uses: hoverkraft-tech/ci-github-common/.github/workflows/semantic-pull-request.yml@71b85947453f32b5d147ff3ab37351439a92d840 # 0.34.2
     permissions:
       contents: write
       pull-requests: write
