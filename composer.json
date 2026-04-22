@@ -44,7 +44,7 @@
     "laminas/laminas-router": "^3.18",
     "mikey179/vfsstream": "^1.6",
     "phpunit/phpunit": "^11.5",
-    "spatie/phpunit-snapshot-assertions": "^5.2",
+    "spatie/phpunit-snapshot-assertions": "^5.3",
     "twbs/bootstrap": "^5.3"
   },
   "autoload": {
