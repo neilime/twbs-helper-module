@@ -20,6 +20,12 @@ updates:
           - "spatie/phpunit-snapshot-assertions"
       composer-dev-dependencies:
         dependency-type: development
+        patterns:
+          - "*"
+      composer-production-dependencies:
+        dependency-type: production
+        patterns:
+          - "*"
 
   - package-ecosystem: npm
     open-pull-requests-limit: 20
@@ -30,19 +36,23 @@ updates:
       day: friday
       time: "04:00"
     groups:
-      npm-docusaurus-dependencies:
+      npm-docusaurus-react-dependencies:
         patterns:
           - "@docusaurus/*"
           - "@tsconfig/docusaurus"
           - "clsx"
-      npm-react-dependencies:
-        patterns:
           - react
           - react-*
           - "@types/react"
           - "@types/react-*"
       npm-dev-dependencies:
         dependency-type: development
+        patterns:
+          - "*"
+      npm-production-dependencies:
+        dependency-type: production
+        patterns:
+          - "*"
 
   - package-ecosystem: "docker"
     open-pull-requests-limit: 20
