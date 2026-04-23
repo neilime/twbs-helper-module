@@ -127,6 +127,8 @@ jobs:
             Automated documentation update for the website.
 
             This pull request was created and merged by the website build workflow.
+
+            [skip ci]
           commit-message: "docs: update documentation"
 
       - name: 📦 Upload website build artifact
