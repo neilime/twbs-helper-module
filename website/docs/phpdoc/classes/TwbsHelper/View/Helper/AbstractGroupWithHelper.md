@@ -7,7 +7,7 @@ Abstract helper for group rendering
 ***
 
 * Full name: `\TwbsHelper\View\Helper\AbstractGroupWithHelper`
-* Parent class: [`\TwbsHelper\View\Helper\AbstractGroup`](./AbstractGroup)
+* Parent class: [`\TwbsHelper\View\Helper\AbstractGroup`](/docs/phpdoc/classes/TwbsHelper/View/Helper/AbstractGroup)
 * This class is an **Abstract class**
 
 ## Properties
@@ -59,7 +59,7 @@ protected getItemViewHelper(): \Laminas\View\Helper\HelperInterface
 **Throws:**
 
 if the view or plugin method is unavailable in the current context
-- [`LogicException`](../../../LogicException)
+- `LogicException`
 
 ***
 

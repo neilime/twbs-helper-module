@@ -7,7 +7,7 @@ Helper for rendering progress bar
 ***
 
 * Full name: `\TwbsHelper\View\Helper\ProgressBar`
-* Parent class: [`\TwbsHelper\View\Helper\AbstractHtmlElement`](./AbstractHtmlElement)
+* Parent class: [`\TwbsHelper\View\Helper\AbstractHtmlElement`](/docs/phpdoc/classes/TwbsHelper/View/Helper/AbstractHtmlElement)
 
 ## Methods
 

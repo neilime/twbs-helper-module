@@ -7,7 +7,7 @@ Helper for ordered and unordered lists
 ***
 
 * Full name: `\TwbsHelper\View\Helper\ListGroup`
-* Parent class: [`\TwbsHelper\View\Helper\HtmlList`](./HtmlList)
+* Parent class: [`\TwbsHelper\View\Helper\HtmlList`](/docs/phpdoc/classes/TwbsHelper/View/Helper/HtmlList)
 
 ## Properties
 
@@ -148,7 +148,7 @@ The list XHTML.
 
 **Throws:**
 
-- [`InvalidArgumentException`](../../../InvalidArgumentException)
+- `InvalidArgumentException`
 
 ***
 

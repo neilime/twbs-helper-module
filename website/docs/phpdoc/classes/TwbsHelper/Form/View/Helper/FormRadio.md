@@ -5,7 +5,7 @@ title: "FormRadio"
 ***
 
 * Full name: `\TwbsHelper\Form\View\Helper\FormRadio`
-* Parent class: [`FormRadio`](../../../../Laminas/Form/View/Helper/FormRadio)
+* Parent class: `FormRadio`
 
 ## Inherited methods
 

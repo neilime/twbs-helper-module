@@ -7,7 +7,7 @@ Helper for grid row
 ***
 
 * Full name: `\TwbsHelper\View\Helper\GridRow`
-* Parent class: [`\TwbsHelper\View\Helper\AbstractGroupWithHelper`](./AbstractGroupWithHelper)
+* Parent class: [`\TwbsHelper\View\Helper\AbstractGroupWithHelper`](/docs/phpdoc/classes/TwbsHelper/View/Helper/AbstractGroupWithHelper)
 
 ## Properties
 
@@ -182,6 +182,6 @@ protected getItemViewHelper(): \Laminas\View\Helper\HelperInterface
 **Throws:**
 
 if the view or plugin method is unavailable in the current context
-- [`LogicException`](../../../LogicException)
+- `LogicException`
 
 ***

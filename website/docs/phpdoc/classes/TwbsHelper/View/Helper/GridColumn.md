@@ -7,7 +7,7 @@ Generates a grid 'column' element
 ***
 
 * Full name: `\TwbsHelper\View\Helper\GridColumn`
-* Parent class: [`\TwbsHelper\View\Helper\AbstractHtmlElement`](./AbstractHtmlElement)
+* Parent class: [`\TwbsHelper\View\Helper\AbstractHtmlElement`](/docs/phpdoc/classes/TwbsHelper/View/Helper/AbstractHtmlElement)
 
 ## Constants
 

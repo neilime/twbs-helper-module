@@ -7,7 +7,7 @@ Abstract helper for group rendering
 ***
 
 * Full name: `\TwbsHelper\View\Helper\AbstractGroup`
-* Parent class: [`\TwbsHelper\View\Helper\AbstractHtmlElement`](./AbstractHtmlElement)
+* Parent class: [`\TwbsHelper\View\Helper\AbstractHtmlElement`](/docs/phpdoc/classes/TwbsHelper/View/Helper/AbstractHtmlElement)
 * This class is an **Abstract class**
 
 ## Properties

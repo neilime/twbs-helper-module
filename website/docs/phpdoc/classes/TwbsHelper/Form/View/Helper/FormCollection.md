@@ -7,7 +7,7 @@ FormCollection
 ***
 
 * Full name: `\TwbsHelper\Form\View\Helper\FormCollection`
-* Parent class: [`FormCollection`](../../../../Laminas/Form/View/Helper/FormCollection)
+* Parent class: `FormCollection`
 
 ## Properties
 

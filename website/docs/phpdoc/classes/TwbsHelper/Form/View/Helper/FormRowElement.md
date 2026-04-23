@@ -5,7 +5,7 @@ title: "FormRowElement"
 ***
 
 * Full name: `\TwbsHelper\Form\View\Helper\FormRowElement`
-* Parent class: [`FormRow`](../../../../Laminas/Form/View/Helper/FormRow)
+* Parent class: `FormRow`
 
 ## Properties
 

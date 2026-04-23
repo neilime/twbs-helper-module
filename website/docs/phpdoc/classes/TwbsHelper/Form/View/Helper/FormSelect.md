@@ -5,7 +5,7 @@ title: "FormSelect"
 ***
 
 * Full name: `\TwbsHelper\Form\View\Helper\FormSelect`
-* Parent class: [`FormSelect`](../../../../Laminas/Form/View/Helper/FormSelect)
+* Parent class: `FormSelect`
 
 ## Methods
 

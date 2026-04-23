@@ -77,6 +77,9 @@ jobs:
   build-website:
     needs: [generate-phpdoc, generate-documentation]
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     env:
       ARTIFACT_PATH: ./website/build
     outputs:
@@ -114,13 +117,17 @@ jobs:
         run: ${{ steps.setup-node.outputs.run-script-command }} build
         working-directory: website
 
-      - uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7.1.0
+      - uses: hoverkraft-tech/ci-github-common/actions/create-and-merge-pull-request@71b85947453f32b5d147ff3ab37351439a92d840 # 0.34.2
         if: inputs.publish
         with:
-          commit_message: "docs: update documentation"
-          commit_options: "--no-verify --signoff"
-          push_options: "--force"
-          file_pattern: "website/docs/**"
+          github-token: ${{ github.token }}
+          branch: docs/update-website
+          title: "docs: update documentation"
+          body: |
+            Automated documentation update for the website.
+
+            This pull request was created and merged by the website build workflow.
+          commit-message: "docs: update documentation"
 
       - name: 📦 Upload website build artifact
         if: inputs.publish

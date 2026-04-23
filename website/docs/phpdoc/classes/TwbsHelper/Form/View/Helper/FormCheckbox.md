@@ -5,7 +5,7 @@ title: "FormCheckbox"
 ***
 
 * Full name: `\TwbsHelper\Form\View\Helper\FormCheckbox`
-* Parent class: [`FormCheckbox`](../../../../Laminas/Form/View/Helper/FormCheckbox)
+* Parent class: `FormCheckbox`
 
 ## Methods
 

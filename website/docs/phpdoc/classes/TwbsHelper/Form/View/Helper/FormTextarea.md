@@ -5,7 +5,7 @@ title: "FormTextarea"
 ***
 
 * Full name: `\TwbsHelper\Form\View\Helper\FormTextarea`
-* Parent class: [`FormTextarea`](../../../../Laminas/Form/View/Helper/FormTextarea)
+* Parent class: `FormTextarea`
 
 ## Inherited methods
 

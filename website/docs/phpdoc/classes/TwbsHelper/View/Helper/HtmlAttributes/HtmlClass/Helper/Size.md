@@ -5,7 +5,7 @@ title: "Size"
 ***
 
 * Full name: `\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Size`
-* Parent class: [`\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\AbstractHelper`](./AbstractHelper)
+* Parent class: [`\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\AbstractHelper`](/docs/phpdoc/classes/TwbsHelper/View/Helper/HtmlAttributes/HtmlClass/Helper/AbstractHelper)
 
 ## Constants
 

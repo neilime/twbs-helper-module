@@ -5,7 +5,7 @@ title: "FormInput"
 ***
 
 * Full name: `\TwbsHelper\Form\View\Helper\FormInput`
-* Parent class: [`FormInput`](../../../../Laminas/Form/View/Helper/FormInput)
+* Parent class: `FormInput`
 
 ## Inherited methods
 

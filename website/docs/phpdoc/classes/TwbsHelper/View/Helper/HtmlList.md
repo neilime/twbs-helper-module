@@ -7,7 +7,7 @@ Helper for numbered and unnumbered lists
 ***
 
 * Full name: `\TwbsHelper\View\Helper\HtmlList`
-* Parent class: [`\TwbsHelper\View\Helper\AbstractHtmlElement`](./AbstractHtmlElement)
+* Parent class: [`\TwbsHelper\View\Helper\AbstractHtmlElement`](/docs/phpdoc/classes/TwbsHelper/View/Helper/AbstractHtmlElement)
 
 ## Properties
 
@@ -46,7 +46,7 @@ The list XHTML.
 
 **Throws:**
 
-- [`InvalidArgumentException`](../../../InvalidArgumentException)
+- `InvalidArgumentException`
 
 ***
 

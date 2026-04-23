@@ -6,7 +6,7 @@ title: "File"
 
 * Full name: `\Documentation\Generator\FileSystem\Local\File`
 * This class implements:
-  [`\Documentation\Generator\FileSystem\File`](../File)
+  [`\Documentation\Generator\FileSystem\File`](/docs/phpdoc/classes/Documentation/Generator/FileSystem/File)
 
 ## Methods
 

@@ -5,7 +5,7 @@ title: "FormAddOn"
 ***
 
 * Full name: `\TwbsHelper\Form\View\Helper\FormAddOn`
-* Parent class: [`AbstractHelper`](../../../../Laminas/Form/View/Helper/AbstractHelper)
+* Parent class: `AbstractHelper`
 
 ## Constants
 

@@ -5,7 +5,7 @@ title: "Offset"
 ***
 
 * Full name: `\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Offset`
-* Parent class: [`\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Size`](./Size)
+* Parent class: [`\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Size`](/docs/phpdoc/classes/TwbsHelper/View/Helper/HtmlAttributes/HtmlClass/Helper/Size)
 
 ## Properties
 

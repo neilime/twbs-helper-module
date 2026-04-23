@@ -5,7 +5,7 @@ title: "ComparisonFailure"
 ***
 
 * Full name: `\Documentation\Test\Snapshots\Drivers\ComparisonFailure`
-* Parent class: [`ComparisonFailure`](../../../../SebastianBergmann/Comparator/ComparisonFailure)
+* Parent class: `ComparisonFailure`
 
 ## Methods
 

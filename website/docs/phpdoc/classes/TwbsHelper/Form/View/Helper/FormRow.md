@@ -5,7 +5,7 @@ title: "FormRow"
 ***
 
 * Full name: `\TwbsHelper\Form\View\Helper\FormRow`
-* Parent class: [`FormRow`](../../../../Laminas/Form/View/Helper/FormRow)
+* Parent class: `FormRow`
 
 ## Properties
 
@@ -134,7 +134,7 @@ protected renderElement(\Laminas\Form\ElementInterface $element, string $labelPo
 
 **Throws:**
 
-- [`DomainException`](../../../../DomainException)
+- `DomainException`
 
 ***
 

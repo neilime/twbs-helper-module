@@ -5,7 +5,7 @@ title: "FormText"
 ***
 
 * Full name: `\TwbsHelper\Form\View\Helper\FormText`
-* Parent class: [`FormText`](../../../../Laminas/Form/View/Helper/FormText)
+* Parent class: `FormText`
 
 ## Inherited methods
 

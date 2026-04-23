@@ -11,7 +11,7 @@ helpers.
 ***
 
 * Full name: `\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\HelperPluginManager`
-* Parent class: [`AbstractPluginManager`](../../../../../Laminas/ServiceManager/AbstractPluginManager)
+* Parent class: `AbstractPluginManager`
 
 ## Properties
 
@@ -125,6 +125,6 @@ Validates against callables and HelperInterface implementations.
 
 **Throws:**
 
-- [`InvalidServiceException`](../../../../../Laminas/ServiceManager/Exception/InvalidServiceException)
+- `InvalidServiceException`
 
 ***

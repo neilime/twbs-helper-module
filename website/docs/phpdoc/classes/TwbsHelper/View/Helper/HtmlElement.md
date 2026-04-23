@@ -5,7 +5,7 @@ title: "HtmlElement"
 ***
 
 * Full name: `\TwbsHelper\View\Helper\HtmlElement`
-* Parent class: [`AbstractHtmlElement`](../../../Laminas/View/Helper/AbstractHtmlElement)
+* Parent class: `AbstractHtmlElement`
 
 ## Properties
 

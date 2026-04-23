@@ -5,7 +5,7 @@ title: "FormMultiCheckbox"
 ***
 
 * Full name: `\TwbsHelper\Form\View\Helper\FormMultiCheckbox`
-* Parent class: [`FormMultiCheckbox`](../../../../Laminas/Form/View/Helper/FormMultiCheckbox)
+* Parent class: `FormMultiCheckbox`
 
 ## Inherited methods
 

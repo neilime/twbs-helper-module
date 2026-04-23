@@ -5,7 +5,7 @@ title: "FormSearch"
 ***
 
 * Full name: `\TwbsHelper\Form\View\Helper\FormSearch`
-* Parent class: [`FormSearch`](../../../../Laminas/Form/View/Helper/FormSearch)
+* Parent class: `FormSearch`
 
 ## Inherited methods
 

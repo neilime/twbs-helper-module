@@ -7,7 +7,7 @@ Helper for rendering leads (Make a paragraph stand out)
 ***
 
 * Full name: `\TwbsHelper\View\Helper\Lead`
-* Parent class: [`\TwbsHelper\View\Helper\AbstractHtmlElement`](./AbstractHtmlElement)
+* Parent class: [`\TwbsHelper\View\Helper\AbstractHtmlElement`](/docs/phpdoc/classes/TwbsHelper/View/Helper/AbstractHtmlElement)
 
 ## Methods
 

@@ -5,7 +5,7 @@ title: "FormEmail"
 ***
 
 * Full name: `\TwbsHelper\Form\View\Helper\FormEmail`
-* Parent class: [`FormEmail`](../../../../Laminas/Form/View/Helper/FormEmail)
+* Parent class: `FormEmail`
 
 ## Inherited methods
 

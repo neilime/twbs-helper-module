@@ -5,7 +5,7 @@ title: "ColumnOffsetCounterpart"
 ***
 
 * Full name: `\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\ColumnOffsetCounterpart`
-* Parent class: [`\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Column`](./Column)
+* Parent class: [`\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Column`](/docs/phpdoc/classes/TwbsHelper/View/Helper/HtmlAttributes/HtmlClass/Helper/Column)
 
 ## Methods
 

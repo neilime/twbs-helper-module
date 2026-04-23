@@ -5,7 +5,7 @@ title: "FormLabel"
 ***
 
 * Full name: `\TwbsHelper\Form\View\Helper\FormLabel`
-* Parent class: [`FormLabel`](../../../../Laminas/Form/View/Helper/FormLabel)
+* Parent class: `FormLabel`
 
 ## Properties
 

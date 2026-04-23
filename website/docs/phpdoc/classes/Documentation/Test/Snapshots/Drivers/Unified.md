@@ -7,7 +7,7 @@ Unified diff generator.
 ***
 
 * Full name: `\Documentation\Test\Snapshots\Drivers\Unified`
-* Parent class: [`AbstractText`](../../../../Jfcherng/Diff/Renderer/Text/AbstractText)
+* Parent class: `AbstractText`
 
 ## Methods
 
