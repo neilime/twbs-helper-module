@@ -7,7 +7,7 @@ FormElementErrors
 ***
 
 * Full name: `\TwbsHelper\Form\View\Helper\FormElementErrors`
-* Parent class: [`FormElementErrors`](../../../../Laminas/Form/View/Helper/FormElementErrors)
+* Parent class: `FormElementErrors`
 
 ## Properties
 

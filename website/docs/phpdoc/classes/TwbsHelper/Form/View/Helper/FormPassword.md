@@ -5,7 +5,7 @@ title: "FormPassword"
 ***
 
 * Full name: `\TwbsHelper\Form\View\Helper\FormPassword`
-* Parent class: [`FormPassword`](../../../../Laminas/Form/View/Helper/FormPassword)
+* Parent class: `FormPassword`
 
 ## Inherited methods
 

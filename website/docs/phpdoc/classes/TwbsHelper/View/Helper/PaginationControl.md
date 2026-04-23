@@ -7,7 +7,7 @@ Helper for rendering pagination
 ***
 
 * Full name: `\TwbsHelper\View\Helper\PaginationControl`
-* Parent class: [`PaginationControl`](../../../Laminas/View/Helper/PaginationControl)
+* Parent class: `PaginationControl`
 
 ## Constants
 

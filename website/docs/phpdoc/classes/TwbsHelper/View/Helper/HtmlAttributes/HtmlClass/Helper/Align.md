@@ -5,7 +5,7 @@ title: "Align"
 ***
 
 * Full name: `\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Align`
-* Parent class: [`\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Size`](./Size)
+* Parent class: [`\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\Size`](/docs/phpdoc/classes/TwbsHelper/View/Helper/HtmlAttributes/HtmlClass/Helper/Size)
 
 ## Constants
 

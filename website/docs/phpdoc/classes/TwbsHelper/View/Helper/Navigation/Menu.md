@@ -7,7 +7,7 @@ Helper for rendering abbreviations
 ***
 
 * Full name: `\TwbsHelper\View\Helper\Navigation\Menu`
-* Parent class: [`Menu`](../../../../Laminas/View/Helper/Navigation/Menu)
+* Parent class: `Menu`
 
 ## Properties
 

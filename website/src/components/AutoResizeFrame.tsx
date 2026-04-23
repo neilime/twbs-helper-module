@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { FunctionComponent } from "react";
 
 const AutoResizeFrame: FunctionComponent<{ srcDoc: string }> = ({ srcDoc }) => {
-  const ref = useRef<HTMLIFrameElement>();
+  const ref = useRef<HTMLIFrameElement>(null);
   const [height, setHeight] = useState("100px");
   const onLoad = () => {
     const refreshHeight = () => {

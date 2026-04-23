@@ -7,8 +7,13 @@ const {
 (
   module.exports = {
     future: {
-      experimental_faster: true,
-      v4: true,
+      faster: true,
+      v4: {
+        removeLegacyPostBuildHeadAttribute: true,
+        useCssCascadeLayers: true,
+        siteStorageNamespacing: true,
+        mdx1CompatDisabledByDefault: true,
+      },
     },
     title: "TwbsHelper",
     tagline:
@@ -34,7 +39,8 @@ const {
         ({
           docs: {
             sidebarPath: require.resolve("./sidebars.js"),
-            editUrl: "https://neilime/twbs-helper-module/edit/main/website/",
+            editUrl:
+              "https://github.com/neilime/twbs-helper-module/edit/main/website/",
           },
           theme: {
             customCss: require.resolve("./src/css/custom.css"),
@@ -42,10 +48,10 @@ const {
         }),
       ],
     ],
-    onBrokenLinks: "ignore",
+    onBrokenLinks: "throw",
     markdown: {
       hooks: {
-        onBrokenMarkdownLinks: "warn",
+        onBrokenMarkdownLinks: "throw",
       },
     },
     themeConfig:
@@ -111,7 +117,7 @@ const {
                 },
                 {
                   label: "Usage",
-                  to: "/docs/usage",
+                  to: "/docs/usage/intro",
                 },
                 {
                   label: "Development",

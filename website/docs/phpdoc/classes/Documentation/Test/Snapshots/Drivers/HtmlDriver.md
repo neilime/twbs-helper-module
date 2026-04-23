@@ -5,7 +5,7 @@ title: "HtmlDriver"
 ***
 
 * Full name: `\Documentation\Test\Snapshots\Drivers\HtmlDriver`
-* Parent class: [`HtmlDriver`](../../../../Spatie/Snapshots/Drivers/HtmlDriver)
+* Parent class: `HtmlDriver`
 
 ## Methods
 

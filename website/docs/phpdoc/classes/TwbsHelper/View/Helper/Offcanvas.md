@@ -7,7 +7,7 @@ Helper for rendering offcanvas
 ***
 
 * Full name: `\TwbsHelper\View\Helper\Offcanvas`
-* Parent class: [`\TwbsHelper\View\Helper\AbstractHtmlElement`](./AbstractHtmlElement)
+* Parent class: [`\TwbsHelper\View\Helper\AbstractHtmlElement`](/docs/phpdoc/classes/TwbsHelper/View/Helper/AbstractHtmlElement)
 
 ## Constants
 

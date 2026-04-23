@@ -82,5 +82,8 @@ jobs:
   build-website:
     name: Check that website is building without errors
     uses: ./.github/workflows/__build-website.yml
+    permissions:
+      contents: write
+      pull-requests: write
     with:
       publish: ${{ inputs.publish }}

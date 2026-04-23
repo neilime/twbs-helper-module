@@ -7,7 +7,7 @@ Helper for rendering abbreviations
 ***
 
 * Full name: `\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass`
-* Parent class: [`AbstractHelper`](../../../../Laminas/View/Helper/AbstractHelper)
+* Parent class: `AbstractHelper`
 
 ## Properties
 
@@ -92,7 +92,7 @@ public setHelperPluginManager(string|\TwbsHelper\View\Helper\HtmlAttributes\Html
 
 **Throws:**
 
-- [`InvalidArgumentException`](../../../../InvalidArgumentException)
+- `InvalidArgumentException`
 
 ***
 

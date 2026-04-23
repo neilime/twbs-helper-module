@@ -7,7 +7,7 @@ Class for storing and processing HTML class attribute.
 ***
 
 * Full name: `\TwbsHelper\View\HtmlClassAttributeSet`
-* Parent class: [`ArrayObject`](../../ArrayObject)
+* Parent class: `ArrayObject`
 * This class implements:
   `Stringable`
 

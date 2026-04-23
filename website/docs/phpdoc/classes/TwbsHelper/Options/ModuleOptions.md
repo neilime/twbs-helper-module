@@ -8,7 +8,7 @@ Hold options for TwbsHelper module
 ***
 
 * Full name: `\TwbsHelper\Options\ModuleOptions`
-* Parent class: [`AbstractOptions`](../../Laminas/Stdlib/AbstractOptions)
+* Parent class: `AbstractOptions`
 
 ## Properties
 

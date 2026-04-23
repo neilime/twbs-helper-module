@@ -5,7 +5,7 @@ title: "DropdownPage"
 ***
 
 * Full name: `\TwbsHelper\Navigation\Page\DropdownPage`
-* Parent class: [`AbstractPage`](../../../Laminas/Navigation/Page/AbstractPage)
+* Parent class: `AbstractPage`
 
 ## Properties
 

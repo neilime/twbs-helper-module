@@ -360,7 +360,7 @@ function renameHomeToIndexAndUpdateLinks(string $docsDir): array
         }
 
         // Reuse the same transform pass used for escaping, but only for link rewrite.
-        $rewritten = rewriteHomeLinksInMarkdown($original);
+        $rewritten = rewriteHomeLinksInMarkdown($original, $path, $docsDir);
         if ($rewritten === $original) {
             continue;
         }
@@ -374,7 +374,7 @@ function renameHomeToIndexAndUpdateLinks(string $docsDir): array
     return [$renamed, $linksUpdated];
 }
 
-function rewriteHomeLinksInMarkdown(string $markdown): string
+function rewriteHomeLinksInMarkdown(string $markdown, string $filePath, string $docsRoot): string
 {
     $hasTrailingNewline = str_ends_with($markdown, "\n");
     $markdown = str_replace(["\r\n", "\r"], "\n", $markdown);
@@ -399,7 +399,7 @@ function rewriteHomeLinksInMarkdown(string $markdown): string
             continue;
         }
 
-        $lines[$i] = rewriteHomeLinksOutsideInlineCode($line);
+        $lines[$i] = rewriteLocalMarkdownLinks($line, $filePath, $docsRoot);
     }
 
     $out = implode("\n", $lines);
@@ -410,49 +410,145 @@ function rewriteHomeLinksInMarkdown(string $markdown): string
     return $out;
 }
 
-function rewriteHomeLinksOutsideInlineCode(string $line): string
+function rewriteLocalMarkdownLinks(string $text, string $filePath, string $docsRoot): string
+{
+    if ($text === '') {
+        return '';
+    }
+
+    $text = preg_replace('/\]\(([^)\\s]*?)Home\.md(#[^)\\s]+)?\)/', ']($1index.md$2)', $text) ?? $text;
+
+    return rewriteMarkdownLinksManually($text, $filePath, $docsRoot);
+}
+
+function rewriteMarkdownLinksManually(string $text, string $filePath, string $docsRoot): string
 {
     $out = '';
-    $textBuffer = '';
+    $offset = 0;
+    $length = strlen($text);
 
-    $len = strlen($line);
-    $inCode = false;
-    $codeTickLen = 0;
+    while ($offset < $length) {
+        $start = strpos($text, '[', $offset);
+        if ($start === false) {
+            $out .= substr($text, $offset);
+            break;
+        }
 
-    for ($i = 0; $i < $len; $i++) {
-        $ch = $line[$i];
-
-        if ($ch !== '`') {
-            if ($inCode) {
-                $out .= $ch;
-            } else {
-                $textBuffer .= $ch;
-            }
+        if ($start > 0 && $text[$start - 1] === '!') {
+            $out .= substr($text, $offset, ($start + 1) - $offset);
+            $offset = $start + 1;
             continue;
         }
 
-        $runLen = 1;
-        while (($i + $runLen) < $len && $line[$i + $runLen] === '`') {
-            $runLen++;
+        $labelEnd = strpos($text, ']', $start + 1);
+        if ($labelEnd === false || ($labelEnd + 1) >= $length || $text[$labelEnd + 1] !== '(') {
+            $out .= substr($text, $offset, ($start + 1) - $offset);
+            $offset = $start + 1;
+            continue;
         }
 
-        if (!$inCode) {
-            $out .= (preg_replace('/\]\(([^)\\s]*?)Home\.md(#[^)\\s]+)?\)/', ']($1index.md$2)', $textBuffer) ?? $textBuffer);
-            $textBuffer = '';
-            $inCode = true;
-            $codeTickLen = $runLen;
-        } elseif ($runLen === $codeTickLen) {
-            $inCode = false;
-            $codeTickLen = 0;
+        $targetEnd = strpos($text, ')', $labelEnd + 2);
+        if ($targetEnd === false) {
+            $out .= substr($text, $offset);
+            break;
         }
 
-        $out .= str_repeat('`', $runLen);
-        $i += $runLen - 1;
-    }
+        $out .= substr($text, $offset, $start - $offset);
 
-    if (!$inCode) {
-        $out .= (preg_replace('/\]\(([^)\\s]*?)Home\.md(#[^)\\s]+)?\)/', ']($1index.md$2)', $textBuffer) ?? $textBuffer);
+        $label = substr($text, $start + 1, $labelEnd - $start - 1);
+        $target = substr($text, $labelEnd + 2, $targetEnd - $labelEnd - 2);
+
+        if (
+            $target === ''
+            || str_starts_with($target, '#')
+            || preg_match('/^(https?:|mailto:|tel:)/i', $target) === 1
+            || (!str_starts_with($target, '.') && !str_starts_with($target, '/'))
+        ) {
+            $out .= substr($text, $start, $targetEnd - $start + 1);
+            $offset = $targetEnd + 1;
+            continue;
+        }
+
+        $resolved = resolveGeneratedDocFile($target, $filePath, $docsRoot);
+        if ($resolved !== null) {
+            $out .= sprintf('[%s](%s)', $label, buildDocusaurusDocRoute($resolved, $docsRoot, $target));
+        } else {
+            $out .= $label;
+        }
+
+        $offset = $targetEnd + 1;
     }
 
     return $out;
+}
+
+function resolveGeneratedDocFile(string $target, string $filePath, string $docsRoot): ?string
+{
+    $targetPath = preg_replace('/[#?].*$/', '', $target);
+    if (!is_string($targetPath) || $targetPath === '') {
+        return null;
+    }
+
+    $baseDir = dirname($filePath);
+    $candidate = str_starts_with($targetPath, '/')
+        ? normalizePath($docsRoot . '/' . ltrim($targetPath, '/'))
+        : normalizePath($baseDir . '/' . $targetPath);
+
+    if (is_file($candidate)) {
+        return $candidate;
+    }
+
+    if (is_file($candidate . '.md')) {
+        return $candidate . '.md';
+    }
+
+    $indexCandidate = rtrim($candidate, '/') . '/index.md';
+    if (is_file($indexCandidate)) {
+        return $indexCandidate;
+    }
+
+    return null;
+}
+
+function buildDocusaurusDocRoute(string $resolvedFile, string $docsRoot, string $originalTarget): string
+{
+    $relative = ltrim(str_replace($docsRoot, '', $resolvedFile), '/');
+    $suffix = '';
+
+    if (preg_match('/([#?].*)$/', $originalTarget, $matches) === 1) {
+        $suffix = $matches[1];
+    }
+
+    if ($relative === 'index.md') {
+        return '/docs/phpdoc' . $suffix;
+    }
+
+    if (str_ends_with($relative, '/index.md')) {
+        return '/docs/phpdoc/' . dirname(substr($relative, 0, -3)) . $suffix;
+    }
+
+    return '/docs/phpdoc/' . substr($relative, 0, -3) . $suffix;
+}
+
+function normalizePath(string $path): string
+{
+    $path = str_replace('\\', '/', $path);
+    $prefix = str_starts_with($path, '/') ? '/' : '';
+    $segments = explode('/', $path);
+    $normalized = [];
+
+    foreach ($segments as $segment) {
+        if ($segment === '' || $segment === '.') {
+            continue;
+        }
+
+        if ($segment === '..') {
+            array_pop($normalized);
+            continue;
+        }
+
+        $normalized[] = $segment;
+    }
+
+    return $prefix . implode('/', $normalized);
 }

@@ -5,7 +5,7 @@ title: "FormFile"
 ***
 
 * Full name: `\TwbsHelper\Form\View\Helper\FormFile`
-* Parent class: [`FormFile`](../../../../Laminas/Form/View/Helper/FormFile)
+* Parent class: `FormFile`
 
 ## Inherited methods
 

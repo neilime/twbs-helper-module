@@ -7,7 +7,7 @@ Class for storing and processing HTML tag attributes.
 ***
 
 * Full name: `\TwbsHelper\View\HtmlAttributesSet`
-* Parent class: [`\TwbsHelper\View\OriginalHtmlAttributesSet`](./OriginalHtmlAttributesSet)
+* Parent class: [`\TwbsHelper\View\OriginalHtmlAttributesSet`](/docs/phpdoc/classes/TwbsHelper/View/OriginalHtmlAttributesSet)
 
 ## Properties
 

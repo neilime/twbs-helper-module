@@ -5,7 +5,7 @@ title: "Dropdown"
 ***
 
 * Full name: `\TwbsHelper\View\Helper\Dropdown`
-* Parent class: [`\TwbsHelper\View\Helper\AbstractHtmlElement`](./AbstractHtmlElement)
+* Parent class: [`\TwbsHelper\View\Helper\AbstractHtmlElement`](/docs/phpdoc/classes/TwbsHelper/View/Helper/AbstractHtmlElement)
 
 ## Constants
 
@@ -119,7 +119,7 @@ protected renderToggle(\Laminas\Form\ElementInterface $dropdown): string
 
 **Throws:**
 
-- [`InvalidArgumentException`](../../../InvalidArgumentException)
+- `InvalidArgumentException`
 
 ***
 
@@ -139,7 +139,7 @@ protected getToggleSplitElement(\Laminas\Form\ElementInterface $dropdown): \Lami
 
 **Throws:**
 
-- [`InvalidArgumentException`](../../../InvalidArgumentException)
+- `InvalidArgumentException`
 
 ***
 
@@ -204,7 +204,7 @@ public renderMenu(iterable $items, iterable $attributes = [], bool $escape = tru
 
 **Throws:**
 
-- [`InvalidArgumentException`](../../../InvalidArgumentException)
+- `InvalidArgumentException`
 
 ***
 
@@ -225,7 +225,7 @@ protected renderItem(array $itemOptions, bool $escape): string
 
 **Throws:**
 
-- [`InvalidArgumentException`](../../../InvalidArgumentException)
+- `InvalidArgumentException`
 
 ***
 

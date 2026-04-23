@@ -7,7 +7,7 @@ Helper for card deck
 ***
 
 * Full name: `\TwbsHelper\View\Helper\CardDeck`
-* Parent class: [`\TwbsHelper\View\Helper\CardGroup`](./CardGroup)
+* Parent class: [`\TwbsHelper\View\Helper\CardGroup`](/docs/phpdoc/classes/TwbsHelper/View/Helper/CardGroup)
 
 ## Properties
 
@@ -118,6 +118,6 @@ protected getItemViewHelper(): \Laminas\View\Helper\HelperInterface
 **Throws:**
 
 if the view or plugin method is unavailable in the current context
-- [`LogicException`](../../../LogicException)
+- `LogicException`
 
 ***

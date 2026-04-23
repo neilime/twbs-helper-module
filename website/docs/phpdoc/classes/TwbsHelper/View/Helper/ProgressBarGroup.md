@@ -7,7 +7,7 @@ Helper for rendering multiple progress bar
 ***
 
 * Full name: `\TwbsHelper\View\Helper\ProgressBarGroup`
-* Parent class: [`\TwbsHelper\View\Helper\AbstractHtmlElement`](./AbstractHtmlElement)
+* Parent class: [`\TwbsHelper\View\Helper\AbstractHtmlElement`](/docs/phpdoc/classes/TwbsHelper/View/Helper/AbstractHtmlElement)
 
 ## Methods
 

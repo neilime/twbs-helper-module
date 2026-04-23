@@ -1,5 +1,7 @@
 <p align="center">
-  <a href="https://github.com/neilime/twbs-helper-module" target="_blank"><img src="https://repository-images.githubusercontent.com/80362393/425f1180-7115-11ea-96d4-75646c99df22" width="600" /></a>
+  <a href="https://github.com/neilime/twbs-helper-module" target="_blank">
+    <img src="https://repository-images.githubusercontent.com/80362393/425f1180-7115-11ea-96d4-75646c99df22" width="600" />
+  </a>
 </p>
 
 [![Continuous integration](https://github.com/neilime/twbs-helper-module/workflows/Continuous%20integration/badge.svg)](https://github.com/neilime/twbs-helper-module/actions?query=workflow%3A%22Continuous+integration%22)
@@ -7,7 +9,7 @@
 [![Latest Stable Version](https://poser.pugx.org/neilime/twbs-helper-module/v/stable)](https://packagist.org/packages/neilime/twbs-helper-module)
 [![Total Downloads](https://poser.pugx.org/neilime/twbs-helper-module/downloads)](https://packagist.org/packages/neilime/twbs-helper-module)
 [![License](https://poser.pugx.org/neilime/twbs-helper-module/license)](https://packagist.org/packages/neilime/twbs-helper-module)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/neilime/twbs-helper-module/blob/main/CONTRIBUTING.md)
 [![Sponsor](https://img.shields.io/badge/%E2%9D%A4-Sponsor-ff69b4)](https://github.com/sponsors/neilime)
 
 📢 **TwbsHelper** is a [Laminas](https://getlaminas.org/) (formerly Zend Framework) module for easy integration of the [Twitter Bootstrap v5+](https://getbootstrap.com/).
@@ -18,7 +20,7 @@
 
 ## Contributing
 
-👍 If you wish to contribute to TwbsHelper, PRs are welcome! Please read the [CONTRIBUTING.md](CONTRIBUTING.md) file.
+👍 If you wish to contribute to TwbsHelper, PRs are welcome! Please read the [CONTRIBUTING guide](https://github.com/neilime/twbs-helper-module/blob/main/CONTRIBUTING.md).
 
 ## Demonstration / example
 

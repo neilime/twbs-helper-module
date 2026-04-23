@@ -7,7 +7,7 @@ Helper for Accordion
 ***
 
 * Full name: `\TwbsHelper\View\Helper\Accordion`
-* Parent class: [`\TwbsHelper\View\Helper\AbstractGroup`](./AbstractGroup)
+* Parent class: [`\TwbsHelper\View\Helper\AbstractGroup`](/docs/phpdoc/classes/TwbsHelper/View/Helper/AbstractGroup)
 
 ## Properties
 

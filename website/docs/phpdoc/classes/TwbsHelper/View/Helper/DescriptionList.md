@@ -7,7 +7,7 @@ Helper for ordered and unordered lists
 ***
 
 * Full name: `\TwbsHelper\View\Helper\DescriptionList`
-* Parent class: [`\TwbsHelper\View\Helper\AbstractHtmlElement`](./AbstractHtmlElement)
+* Parent class: [`\TwbsHelper\View\Helper\AbstractHtmlElement`](/docs/phpdoc/classes/TwbsHelper/View/Helper/AbstractHtmlElement)
 
 ## Methods
 
@@ -30,7 +30,7 @@ If class attributes contains "list-inline", so the li will have the class "list-
 
 **Throws:**
 
-- [`InvalidArgumentException`](../../../InvalidArgumentException)
+- `InvalidArgumentException`
 
 ***
 
@@ -57,7 +57,7 @@ The list XHTML.
 
 **Throws:**
 
-- [`InvalidArgumentException`](../../../InvalidArgumentException)
+- `InvalidArgumentException`
 
 ***
 

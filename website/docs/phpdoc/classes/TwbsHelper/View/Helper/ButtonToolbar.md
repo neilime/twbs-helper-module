@@ -5,7 +5,7 @@ title: "ButtonToolbar"
 ***
 
 * Full name: `\TwbsHelper\View\Helper\ButtonToolbar`
-* Parent class: [`\TwbsHelper\View\Helper\AbstractHtmlElement`](./AbstractHtmlElement)
+* Parent class: [`\TwbsHelper\View\Helper\AbstractHtmlElement`](/docs/phpdoc/classes/TwbsHelper/View/Helper/AbstractHtmlElement)
 
 ## Properties
 
@@ -67,7 +67,7 @@ public render(array $items, ?array $buttonToolbarOptions = null): string
 
 **Throws:**
 
-- [`LogicException`](../../../LogicException)
+- `LogicException`
 
 ***
 

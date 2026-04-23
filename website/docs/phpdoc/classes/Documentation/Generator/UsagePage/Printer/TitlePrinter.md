@@ -5,7 +5,7 @@ title: "TitlePrinter"
 ***
 
 * Full name: `\Documentation\Generator\UsagePage\Printer\TitlePrinter`
-* Parent class: [`\Documentation\Generator\UsagePage\Printer\AbstractPrinter`](./AbstractPrinter)
+* Parent class: [`\Documentation\Generator\UsagePage\Printer\AbstractPrinter`](/docs/phpdoc/classes/Documentation/Generator/UsagePage/Printer/AbstractPrinter)
 
 ## Methods
 

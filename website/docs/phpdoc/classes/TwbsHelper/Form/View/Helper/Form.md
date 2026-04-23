@@ -5,7 +5,7 @@ title: "Form"
 ***
 
 * Full name: `\TwbsHelper\Form\View\Helper\Form`
-* Parent class: [`Form`](../../../../Laminas/Form/View/Helper/Form)
+* Parent class: `Form`
 
 ## Constants
 

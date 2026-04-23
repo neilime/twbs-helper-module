@@ -7,7 +7,7 @@ Helper for creating HtmlAttributesSet objects
 ***
 
 * Full name: `\TwbsHelper\View\Helper\HtmlAttributes`
-* Parent class: [`AbstractHelper`](../../../Laminas/View/Helper/AbstractHelper)
+* Parent class: `AbstractHelper`
 
 ## Methods
 

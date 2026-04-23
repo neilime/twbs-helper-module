@@ -7,7 +7,7 @@ Helper for rendering navbar
 ***
 
 * Full name: `\TwbsHelper\View\Helper\Navigation\Navbar`
-* Parent class: [`AbstractHelper`](../../../../Laminas/View/Helper/Navigation/AbstractHelper)
+* Parent class: `AbstractHelper`
 
 ## Constants
 

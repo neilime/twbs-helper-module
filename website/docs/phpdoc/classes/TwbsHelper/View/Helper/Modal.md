@@ -7,7 +7,7 @@ Helper for rendering modal objects
 ***
 
 * Full name: `\TwbsHelper\View\Helper\Modal`
-* Parent class: [`\TwbsHelper\View\Helper\AbstractHtmlElement`](./AbstractHtmlElement)
+* Parent class: [`\TwbsHelper\View\Helper\AbstractHtmlElement`](/docs/phpdoc/classes/TwbsHelper/View/Helper/AbstractHtmlElement)
 
 ## Constants
 

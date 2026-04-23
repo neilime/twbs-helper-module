@@ -18,6 +18,7 @@ jobs:
     name: Continuous Integration
     uses: ./.github/workflows/__shared-ci.yml
     permissions:
-      contents: read
+      contents: write
       id-token: write
+      pull-requests: write
     secrets: inherit

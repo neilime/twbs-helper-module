@@ -5,7 +5,7 @@ title: "FormRange"
 ***
 
 * Full name: `\TwbsHelper\Form\View\Helper\FormRange`
-* Parent class: [`FormRange`](../../../../Laminas/Form/View/Helper/FormRange)
+* Parent class: `FormRange`
 
 ## Methods
 

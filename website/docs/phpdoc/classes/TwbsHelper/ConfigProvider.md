@@ -45,7 +45,7 @@ method which returns an array with its configuration.
 
 **Throws:**
 
-- [`InvalidArgumentException`](../InvalidArgumentException)
+- `InvalidArgumentException`
 
 ***
 

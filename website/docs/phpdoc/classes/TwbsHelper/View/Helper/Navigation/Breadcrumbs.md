@@ -7,7 +7,7 @@ Helper for rendering breadcrumbs
 ***
 
 * Full name: `\TwbsHelper\View\Helper\Navigation\Breadcrumbs`
-* Parent class: [`Breadcrumbs`](../../../../Laminas/View/Helper/Navigation/Breadcrumbs)
+* Parent class: `Breadcrumbs`
 
 ## Methods
 

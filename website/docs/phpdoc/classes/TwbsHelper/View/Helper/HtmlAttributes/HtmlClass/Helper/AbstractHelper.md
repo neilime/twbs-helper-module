@@ -6,7 +6,7 @@ title: "AbstractHelper"
 
 * Full name: `\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\AbstractHelper`
 * This class implements:
-  [`\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\HelperInterface`](./HelperInterface)
+  [`\TwbsHelper\View\Helper\HtmlAttributes\HtmlClass\Helper\HelperInterface`](/docs/phpdoc/classes/TwbsHelper/View/Helper/HtmlAttributes/HtmlClass/Helper/HelperInterface)
 * This class is an **Abstract class**
 
 ## Properties

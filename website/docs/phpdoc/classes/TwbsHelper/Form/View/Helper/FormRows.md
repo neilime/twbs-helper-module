@@ -5,7 +5,7 @@ title: "FormRows"
 ***
 
 * Full name: `\TwbsHelper\Form\View\Helper\FormRows`
-* Parent class: [`AbstractHelper`](../../../../Laminas/Form/View/Helper/AbstractHelper)
+* Parent class: `AbstractHelper`
 
 ## Properties
 

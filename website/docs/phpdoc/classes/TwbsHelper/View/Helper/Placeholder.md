@@ -7,7 +7,7 @@ Helper for rendering placeholders
 ***
 
 * Full name: `\TwbsHelper\View\Helper\Placeholder`
-* Parent class: [`\TwbsHelper\View\Helper\AbstractHtmlElement`](./AbstractHtmlElement)
+* Parent class: [`\TwbsHelper\View\Helper\AbstractHtmlElement`](/docs/phpdoc/classes/TwbsHelper/View/Helper/AbstractHtmlElement)
 
 ## Constants
 
@@ -69,7 +69,7 @@ The placeholder XHTML.
 
 **Throws:**
 
-- [`InvalidArgumentException`](../../../InvalidArgumentException)
+- `InvalidArgumentException`
 
 ***
 

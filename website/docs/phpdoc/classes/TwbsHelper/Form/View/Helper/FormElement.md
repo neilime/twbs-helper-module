@@ -5,7 +5,7 @@ title: "FormElement"
 ***
 
 * Full name: `\TwbsHelper\Form\View\Helper\FormElement`
-* Parent class: [`FormElement`](../../../../Laminas/Form/View/Helper/FormElement)
+* Parent class: `FormElement`
 
 ## Properties
 
