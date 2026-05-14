@@ -112,6 +112,8 @@ return [
             'formFile'            => \TwbsHelper\Form\View\Helper\FormFile::class,
             'forminput'           => \TwbsHelper\Form\View\Helper\FormInput::class,
             'formInput'           => \TwbsHelper\Form\View\Helper\FormInput::class,
+            'formdate'            => \TwbsHelper\Form\View\Helper\FormInput::class,
+            'formDate'            => \TwbsHelper\Form\View\Helper\FormInput::class,
             'formsearch'          => \TwbsHelper\Form\View\Helper\FormSearch::class,
             'formSearch'          => \TwbsHelper\Form\View\Helper\FormSearch::class,
             'formtext'            => \TwbsHelper\Form\View\Helper\FormText::class,

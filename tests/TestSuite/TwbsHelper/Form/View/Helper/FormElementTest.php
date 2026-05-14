@@ -2,6 +2,7 @@
 
 namespace TestSuite\TwbsHelper\Form\View\Helper;
 
+use Laminas\Form\Element\Date;
 use Laminas\Form\Element\Email;
 use Laminas\Form\Form;
 use Laminas\View\Renderer\PhpRenderer;
@@ -54,6 +55,28 @@ class FormElementTest extends TestCase
         $this->assertEquals(
             $this->formElementHelper->render($element),
             '<input class="form-control" maxlength="254" name="email" type="email" value=""/>'
+        );
+    }
+
+    public function testRenderDateElementWithValue(): void
+    {
+        $this->form->add([
+            'name' => 'createdDate',
+            'type' => Date::class,
+            'options' => [
+                'label' => 'Erfassungsdatum',
+                'format' => 'Y-m-d',
+            ],
+            'attributes' => [
+                'value' => '2026-05-14',
+            ],
+        ]);
+
+        $element = $this->form->get('createdDate');
+
+        $this->assertSame(
+            '<input class="form-control" name="createdDate" type="date" value="2026-05-14"/>',
+            $this->formElementHelper->render($element)
         );
     }
 }
