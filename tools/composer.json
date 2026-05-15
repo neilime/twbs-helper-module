@@ -1,13 +1,13 @@
 {
   "require": {
     "friendsofphp/php-cs-fixer": "^3.95",
-    "phpdocumentor/shim": "^3.9",
+    "phpdocumentor/shim": "^3.10",
     "phpstan/extension-installer": "^1.4",
     "phpstan/phpstan": "^2.1",
     "phpstan/phpstan-phpunit": "^2.0",
     "rector/rector": "^2.4",
     "saggre/phpdocumentor-markdown": "^1.0",
-    "slam/phpstan-laminas-framework": "^2.0",
+    "slam/phpstan-laminas-framework": "^2.1",
     "staabm/annotate-pull-request-from-checkstyle": "^1.8"
   },
   "config": {
