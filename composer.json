@@ -29,7 +29,7 @@
     "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
     "laminas/laminas-escaper": "^2.18",
     "laminas/laminas-form": "^3.24",
-    "laminas/laminas-i18n": "^2.32",
+    "laminas/laminas-i18n": "^2.33",
     "laminas/laminas-navigation": "^2.23",
     "laminas/laminas-paginator": "^2.22",
     "laminas/laminas-servicemanager": "^3.24",
@@ -39,7 +39,7 @@
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^3.95",
     "jfcherng/php-diff": "^6.16",
-    "laminas/laminas-component-installer": "^3.7",
+    "laminas/laminas-component-installer": "^3.8",
     "laminas/laminas-http": "^2.23",
     "laminas/laminas-router": "^3.18",
     "mikey179/vfsstream": "^1.6",
