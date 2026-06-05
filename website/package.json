@@ -22,13 +22,13 @@
     "@mdx-js/react": "^3.1.1",
     "clsx": "^2.1.0",
     "prism-react-renderer": "^2.0.3",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6"
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.10.0",
     "@docusaurus/tsconfig": "^3.10.1",
-    "@types/react": "^19.2.15",
+    "@types/react": "^19.2.16",
     "typescript": "^6.0.3"
   },
   "browserslist": {
