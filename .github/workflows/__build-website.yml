@@ -21,7 +21,7 @@ jobs:
       artifact-id: ${{ steps.upload-artifact.outputs.artifact-id }}
       artifact-path: ${{ env.ARTIFACT_PATH }}
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
@@ -31,7 +31,7 @@ jobs:
           php-version: 8.5
 
       - name: ♻️ Tools cache
-        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: tools/cache
           key: ${{ runner.os }}-tools-${{ matrix.php-versions }}-${{ github.sha }}
@@ -55,7 +55,7 @@ jobs:
       artifact-id: ${{ steps.upload-artifact.outputs.artifact-id }}
       artifact-path: ${{ env.ARTIFACT_PATH }}
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
@@ -86,7 +86,7 @@ jobs:
       artifact-id: ${{ steps.upload-artifact.outputs.artifact-id }}
       artifact-path: ${{ env.ARTIFACT_PATH }}
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
@@ -100,13 +100,13 @@ jobs:
           artifact-ids: ${{ needs.generate-documentation.outputs.artifact-id }}
           path: ${{ needs.generate-documentation.outputs.artifact-path }}
 
-      - uses: hoverkraft-tech/ci-github-nodejs/actions/setup-node@9d465a03741b287db18b242e0ec46990888cc6a3 # 0.23.0
+      - uses: hoverkraft-tech/ci-github-nodejs/actions/setup-node@df348077afa4e79725151d50606e9dc63f86dcb6 # 0.24.4
         id: setup-node
         with:
           working-directory: website
 
       - name: ♻️ Webpack cache
-        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: website/node_modules/.cache/webpack
           key: ${{ runner.os }}-webpack-${{ github.sha }}
@@ -117,7 +117,7 @@ jobs:
         run: ${{ steps.setup-node.outputs.run-script-command }} build
         working-directory: website
 
-      - uses: hoverkraft-tech/ci-github-common/actions/create-and-merge-pull-request@71b85947453f32b5d147ff3ab37351439a92d840 # 0.34.2
+      - uses: hoverkraft-tech/ci-github-common/actions/create-and-merge-pull-request@2334d395217f9811699dbd4ace9d8559e4d99e0d # 0.37.3
         if: inputs.publish
         with:
           github-token: ${{ github.token }}
