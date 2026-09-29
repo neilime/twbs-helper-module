@@ -254,9 +254,7 @@ class Card extends AbstractHtmlElement
             $options['tabs'] = true;
         }
 
-        if (!isset($options['ulClass'])) {
-            $options['ulClass'] = empty($options['pills']) ? 'card-header-tabs' : 'card-header-pills';
-        }
+        $options['ulClass'] ??= empty($options['pills']) ? 'card-header-tabs' : 'card-header-pills';
 
         $content = $this->getView()->plugin('menu')->renderMenu($container, $options);
 

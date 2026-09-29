@@ -72,9 +72,7 @@ class Navbar extends AbstractHelper
      */
     public function renderNavbar($container = null, array $options = []): string
     {
-        if (null === $container) {
-            $container = $this->getContainer();
-        }
+        $container ??= $this->getContainer();
         $this->parseContainer($container);
 
         $attributes = $this->prepareAttributes($options);

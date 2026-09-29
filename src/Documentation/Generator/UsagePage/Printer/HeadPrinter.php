@@ -79,9 +79,7 @@ import HtmlCode from "%s";
     public function normalizePath($path, $separator = '\\/')
     {
         return array_reduce(explode('/', $path), function ($a, $b) {
-            if ($a === null) {
-                $a = "/";
-            }
+            $a ??= "/";
             if ($b === "" || $b === ".") {
                 return $a;
             }

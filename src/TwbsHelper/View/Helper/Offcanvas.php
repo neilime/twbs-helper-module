@@ -105,9 +105,7 @@ class Offcanvas extends AbstractHtmlElement
             );
         }
 
-        if (!isset($headerOptions['close'])) {
-            $headerOptions['close'] = true;
-        }
+        $headerOptions['close'] ??= true;
 
         if (!empty($headerOptions['close'])) {
             $headerContent .= ($headerContent ? PHP_EOL : '') . $this->getView()->plugin('formButton')->renderSpec(
