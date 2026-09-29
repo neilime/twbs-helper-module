@@ -202,9 +202,7 @@ class Table extends AbstractHtmlElement
             unset($rows['footer']);
         }
 
-        if (!isset($bodyRows)) {
-            $bodyRows = $rows;
-        }
+        $bodyRows ??= $rows;
 
         if (isset($caption)) {
             $markup .= $this->renderTableCation($caption, $escape);
@@ -576,9 +574,7 @@ class Table extends AbstractHtmlElement
                 ));
         }
 
-        if (!isset($cell['type'])) {
-            $cell['type'] = $defaultCellType;
-        }
+        $cell['type'] ??= $defaultCellType;
         return $cell;
     }
 

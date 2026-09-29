@@ -52,9 +52,7 @@ class Menu extends \Laminas\View\Helper\Navigation\Menu
      */
     protected function prepareContainer(&$container = null)
     {
-        if (null === $container) {
-            $container = $this->getContainer();
-        }
+        $container ??= $this->getContainer();
 
         $this->parseContainer($container);
 

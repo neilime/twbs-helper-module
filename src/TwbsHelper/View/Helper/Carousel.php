@@ -126,9 +126,7 @@ class Carousel extends AbstractHtmlElement
                 }
             } elseif (is_iterable($slide)) {
                 if (is_string($key)) {
-                    if (!isset($slide['src'])) {
-                        $slide['src'] = $key;
-                    }
+                    $slide['src'] ??= $key;
                 }
             }
 

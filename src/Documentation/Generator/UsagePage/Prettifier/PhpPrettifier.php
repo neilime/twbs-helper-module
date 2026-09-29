@@ -40,9 +40,7 @@ class PhpPrettifier
     public static function getInstance(
         Configuration $configuration
     ): PhpPrettifier {
-        if (self::$instance === null) {
-            self::$instance = new self($configuration);
-        }
+        self::$instance ??= new self($configuration);
 
         return self::$instance;
     }

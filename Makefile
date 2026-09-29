@@ -58,6 +58,7 @@ phpstan: ## Execute PHPStan
 	@$(call run-php,composer phpstan -- $(filter-out $@,$(MAKECMDGOALS)))
 
 ci: ## Execute CI scripts
+	$(MAKE) setup
 	@$(call run-php,composer ci -- $(filter-out $@,$(MAKECMDGOALS)))
 
 generate-docs: ## Generate documentation

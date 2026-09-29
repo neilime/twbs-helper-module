@@ -20,9 +20,7 @@ class Breadcrumbs extends \Laminas\View\Helper\Navigation\Breadcrumbs
      */
     public function renderStraight($container = null)
     {
-        if (null === $container) {
-            $container = $this->getContainer();
-        }
+        $container ??= $this->getContainer();
         $this->parseContainer($container);
 
         // Find deepest active

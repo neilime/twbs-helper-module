@@ -391,12 +391,8 @@ class Dropdown extends AbstractHtmlElement
                     ];
                     break;
                 case is_array($itemOptions):
-                    if (!isset($itemOptions['label'])) {
-                        $itemOptions['label'] = is_string($key) ? $key : null;
-                    }
-                    if (!isset($itemOptions['type'])) {
-                        $itemOptions['type'] = $itemType;
-                    }
+                    $itemOptions['label'] ??= is_string($key) ? $key : null;
+                    $itemOptions['type'] ??= $itemType;
                     break;
                 case is_scalar($itemOptions):
                     if (isset(static::$dropdownItemTags[$itemOptions])) {
