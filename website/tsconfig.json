@@ -1,4 +1,23 @@
 {
-  // This file is not used in compilation. It is here just for a nice editor experience.
-  "extends": "@docusaurus/tsconfig/tsconfig.json"
+  "$schema": "https://json.schemastore.org/tsconfig",
+  // Docusaurus' shared tsconfig still sets baseUrl, which TypeScript 7 rejects.
+  "compilerOptions": {
+    "allowJs": true,
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "target": "ES2022",
+    "lib": [
+      "ES2022",
+      "DOM"
+    ],
+    "moduleResolution": "bundler",
+    "module": "esnext",
+    "noEmit": true,
+    "paths": {
+      "@site/*": [
+        "./*"
+      ]
+    },
+    "skipLibCheck": true
+  }
 }

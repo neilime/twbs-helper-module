@@ -5,21 +5,26 @@ const AutoResizeFrame: FunctionComponent<{ srcDoc: string }> = ({ srcDoc }) => {
   const ref = useRef<HTMLIFrameElement>(null);
   const [height, setHeight] = useState("100px");
   const onLoad = () => {
+    const frameWindow = ref.current?.contentWindow;
+
+    if (!frameWindow) {
+      return;
+    }
+
     const refreshHeight = () => {
-      setHeight(ref?.current?.contentWindow.document.body.scrollHeight + "px");
+      setHeight(frameWindow.document.body.scrollHeight + "px");
     };
 
-    if (ref?.current?.contentWindow.addEventListener) {
-      ref?.current?.contentWindow.addEventListener(
-        "message",
-        ({ data }) => {
-          if (data.type === "refreshHeight") {
-            refreshHeight();
-          }
-        },
-        false
-      );
-    }
+    frameWindow.addEventListener(
+      "message",
+      ({ data }) => {
+        if (data.type === "refreshHeight") {
+          refreshHeight();
+        }
+      },
+      false
+    );
+
     refreshHeight();
   };
 
