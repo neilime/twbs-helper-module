@@ -15,7 +15,7 @@ permissions: {}
 
 jobs:
   release:
-    uses: hoverkraft-tech/ci-github-publish/.github/workflows/prepare-release.yml@48e0c54489152b98d9e18f0454ccce120e9d0fd1 # 0.23.0
+    uses: hoverkraft-tech/ci-github-publish/.github/workflows/prepare-release.yml@4d906685a32df3cfab9139296d49dd914a86bafd # 1.0.2
     permissions:
       contents: read
       id-token: write
