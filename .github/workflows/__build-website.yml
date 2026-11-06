@@ -6,12 +6,11 @@ on:
         type: boolean
     outputs:
       artifact-id:
-        description: "The uploaded website build artifact ID"
+        description: The uploaded website build artifact ID
         value: ${{ jobs.build-website.outputs.artifact-id }}
       artifact-path:
-        description: "The uploaded website build artifact path"
+        description: The uploaded website build artifact path
         value: ${{ jobs.build-website.outputs.artifact-path }}
-
 jobs:
   generate-phpdoc:
     runs-on: ubuntu-latest
@@ -21,32 +20,28 @@ jobs:
       artifact-id: ${{ steps.upload-artifact.outputs.artifact-id }}
       artifact-path: ${{ env.ARTIFACT_PATH }}
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-
       - name: ⚙️ Setup PHP, with composer and extensions
-        uses: ./.github/workflows/actions/setup-php
+        uses: hoverkraft-tech/ci-github-php/actions/setup-php@b81aa7b46f6b7a18ff1d9582c918cc1cc8296b98 # 2.0.0
         with:
-          php-version: 8.5
-
+          ignore-plugins: "false"
+        id: setup
       - name: ♻️ Tools cache
-        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: tools/cache
-          key: ${{ runner.os }}-tools-${{ matrix.php-versions }}-${{ github.sha }}
+          key: ${{ runner.os }}-tools-${{ steps.setup.outputs.php-version }}-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-tools-
-
       - name: 📃 Generate PHP documentation
         run: composer generate-phpdoc
-
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         id: upload-artifact
         with:
           name: docs-phpdoc
           path: ${{ env.ARTIFACT_PATH }}
-
   generate-documentation:
     runs-on: ubuntu-latest
     env:
@@ -55,27 +50,26 @@ jobs:
       artifact-id: ${{ steps.upload-artifact.outputs.artifact-id }}
       artifact-path: ${{ env.ARTIFACT_PATH }}
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-
       - name: ⚙️ Setup PHP, with composer and extensions
-        uses: ./.github/workflows/actions/setup-php
+        uses: hoverkraft-tech/ci-github-php/actions/setup-php@b81aa7b46f6b7a18ff1d9582c918cc1cc8296b98 # 2.0.0
         with:
-          php-version: 8.5
-
+          ignore-plugins: "false"
+        id: setup
       - name: 📃 Generate documentation
         run: composer generate-docs
-
       - name: 📦 Upload generated documentation artifact
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         id: upload-artifact
         with:
           name: documentation
           path: ${{ env.ARTIFACT_PATH }}
-
   build-website:
-    needs: [generate-phpdoc, generate-documentation]
+    needs:
+      - generate-phpdoc
+      - generate-documentation
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -86,41 +80,34 @@ jobs:
       artifact-id: ${{ steps.upload-artifact.outputs.artifact-id }}
       artifact-path: ${{ env.ARTIFACT_PATH }}
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-
-      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           artifact-ids: ${{ needs.generate-phpdoc.outputs.artifact-id }}
           path: ${{ needs.generate-phpdoc.outputs.artifact-path }}
-
-      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           artifact-ids: ${{ needs.generate-documentation.outputs.artifact-id }}
           path: ${{ needs.generate-documentation.outputs.artifact-path }}
-
-      - uses: hoverkraft-tech/ci-github-nodejs/actions/setup-node@9d465a03741b287db18b242e0ec46990888cc6a3 # 0.23.0
+      - uses: hoverkraft-tech/ci-github-nodejs/actions/setup-node@fbd3522b68c55a6314aadbededaa487825ba9b35 # 3.0.0
         id: setup-node
         with:
           working-directory: website
-
       - name: ♻️ Webpack cache
-        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: website/node_modules/.cache/webpack
           key: ${{ runner.os }}-webpack-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-webpack-
-
       - name: 🏗️ Build website
         run: ${{ steps.setup-node.outputs.run-script-command }} build
         working-directory: website
-
-      - uses: hoverkraft-tech/ci-github-common/actions/create-and-merge-pull-request@71b85947453f32b5d147ff3ab37351439a92d840 # 0.34.2
+      - uses: hoverkraft-tech/ci-github-common/actions/create-and-merge-pull-request@d07ee49b460ae2f3815804b5153fe918092aa321 # 4.2.0
         if: inputs.publish
         with:
-          github-token: ${{ github.token }}
           branch: docs/update-website
           title: "docs: update documentation"
           body: |
@@ -130,7 +117,6 @@ jobs:
 
             [skip ci]
           commit-message: "docs: update documentation"
-
       - uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         id: artifact-full-path
         env:
@@ -144,10 +130,9 @@ jobs:
             const fullpath = absolutePath.replace(/\/([^/]+)/, '/*$1');
 
             core.setOutput("path", fullpath);
-
       - name: 📦 Upload website build artifact
         if: inputs.publish
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         id: upload-artifact
         with:
           path: ${{ steps.artifact-full-path.outputs.path }}

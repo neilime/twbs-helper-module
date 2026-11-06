@@ -1,8 +1,9 @@
-PHP_VERSION ?= 8.5
+PHP_VERSION ?=
+PHP_IMAGE_TAG = $(if $(PHP_VERSION),$(PHP_VERSION),dev)
 PROJECT_NAME=$(shell basename $(CURDIR))
 UID=$(shell id -u)
 GID=$(shell id -g)
-IMAGE="${PROJECT_NAME}:${PHP_VERSION}"
+IMAGE="${PROJECT_NAME}:$(PHP_IMAGE_TAG)"
 
 .PHONY: help
 
@@ -11,9 +12,18 @@ help:
 
 setup: build-php install ## Initialize project
 
-build-php: ## Build PHP image
-	@echo "Build php ${PHP_VERSION}"
-	@DOCKER_BUILDKIT=1 docker build -t "${IMAGE}" --build-arg "VERSION=${PHP_VERSION}" --build-arg "UID=${UID}" --build-arg "GID=${GID}" .
+build-php: ## Build PHP image from the Composer constraint, or PHP_VERSION override
+	@set -eu; version="$(PHP_VERSION)"; \
+	if [ -z "$$version" ]; then \
+		workflow_ref=$$(grep -hE '^[[:space:]]*(-[[:space:]]*)?uses:' .github/workflows/*.y*ml | grep -oE 'hoverkraft-tech/ci-github-php/[^@[:space:]]+@[a-f0-9]{40}' | cut -d@ -f2 | sort -u); \
+		if [ "$${#workflow_ref}" -ne 40 ]; then \
+			echo 'Expected one consistent ci-github-php commit pin in .github/workflows.' >&2; exit 1; \
+		fi; \
+		resolver=$$(docker build --quiet "https://github.com/hoverkraft-tech/ci-github-php.git#$$workflow_ref:actions/get-php-versions"); \
+		version=$$(docker run --rm --volume "$(CURDIR):/project:ro" "$$resolver"); \
+	fi; \
+	echo "Build PHP $$version"; \
+	DOCKER_BUILDKIT=1 docker build -t "${IMAGE}" --build-arg "VERSION=$$version" --build-arg "UID=${UID}" --build-arg "GID=${GID}" .
 
 install: ## Install PHP dependencies
 	rm -f composer.lock
@@ -28,7 +38,7 @@ test: ## Execute tests
 	@$(call run-php,composer test -- $(filter-out $@,$(MAKECMDGOALS)))
 
 test-ci: ## Execute tests and CI
-	@$(call run-php,composer test:ci -- $(filter-out $@,$(MAKECMDGOALS)))
+	@$(call run-php,composer test -- $(filter-out $@,$(MAKECMDGOALS)))
 
 test-update: ## Execute tests and update snapshots
 	@$(call run-php,composer test:update-snapshot -- $(filter-out $@,$(MAKECMDGOALS)))

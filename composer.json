@@ -61,7 +61,6 @@
   "scripts": {
     "test": "phpunit --colors --configuration tests/phpunit.xml",
     "test:update-snapshot": "@test -d --update-snapshots",
-    "test:ci": "@test -d pcov.enabled=1 -d max_execution_time=0 --coverage-text --coverage-clover ./build/logs/clover.xml --coverage-html ./build/coverage/",
     "generate-phpdoc": [
       "tools/vendor/bin/phpdoc run -d ./src -t ./website/docs/phpdoc --template=\"tools/vendor/saggre/phpdocumentor-markdown/themes/markdown\" --cache-folder=\"./tools/cache/phpdoc\" -s template.markdown.markdownFlavour=github",
       "php scripts/transformPhpdocForDocusaurus.php"
@@ -77,9 +76,15 @@
       "@php-cs-fixer",
       "@rector",
       "@phpstan",
-      "@test:ci",
+      "@test",
       "@generate-docs"
-    ]
+    ],
+    "lint:ci": [
+      "@php-cs-fixer",
+      "@rector",
+      "@phpstan --error-format=github"
+    ],
+    "test:ci": "@test --log-junit=junit.xml --coverage-clover=clover.xml"
   },
   "config": {
     "optimize-autoloader": true,

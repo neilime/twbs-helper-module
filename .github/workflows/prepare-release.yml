@@ -1,22 +1,15 @@
----
-name: "Prepare release"
-
+name: Prepare release
 on:
-  push:
-    branches: [main]
   pull_request:
-    types: [opened, reopened, synchronize]
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - edited
 permissions: {}
-
 jobs:
-  release:
-    uses: hoverkraft-tech/ci-github-publish/.github/workflows/prepare-release.yml@48e0c54489152b98d9e18f0454ccce120e9d0fd1 # 0.23.0
+  prepare-release:
+    uses: hoverkraft-tech/ci-github-publish/.github/workflows/prepare-release.yml@4193622a365c0ab0bcbd6645895fd2c3126b72ba # 3.0.2
     permissions:
       contents: read
-      id-token: write
       pull-requests: write
