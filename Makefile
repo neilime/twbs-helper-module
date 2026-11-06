@@ -28,7 +28,7 @@ test: ## Execute tests
 	@$(call run-php,composer test -- $(filter-out $@,$(MAKECMDGOALS)))
 
 test-ci: ## Execute tests and CI
-	@$(call run-php,composer test:ci -- $(filter-out $@,$(MAKECMDGOALS)))
+	@$(call run-php,composer test -- $(filter-out $@,$(MAKECMDGOALS)))
 
 test-update: ## Execute tests and update snapshots
 	@$(call run-php,composer test:update-snapshot -- $(filter-out $@,$(MAKECMDGOALS)))
