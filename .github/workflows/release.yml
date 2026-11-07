@@ -1,0 +1,45 @@
+name: Release
+on:
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Release even when no relevant changes were detected.
+        type: boolean
+        default: false
+  schedule:
+    - cron: 37 7 * * 1
+permissions: {}
+concurrency:
+  group: composer-release
+  cancel-in-progress: false
+jobs:
+  prepare:
+    uses: hoverkraft-tech/ci-github-php/.github/workflows/prepare-package-release.yml@5d4c9035deb6daac5456825c90294439510fdf0c # 1.0.0
+    permissions:
+      contents: read
+      pull-requests: read
+    with:
+      force: ${{ github.event_name == 'workflow_dispatch' && inputs.force || false }}
+      release-config: &release-config |
+        tag-prefix: v
+        tag-template: v$RESOLVED_VERSION
+        name-template: v$RESOLVED_VERSION
+  validate:
+    needs: prepare
+    if: needs.prepare.outputs.status == 'ready'
+    uses: ./.github/workflows/__shared-ci.yml
+    permissions:
+      contents: write
+      id-token: write
+      pull-requests: write
+  publish:
+    needs: [prepare, validate]
+    uses: hoverkraft-tech/ci-github-php/.github/workflows/release.yml@5d4c9035deb6daac5456825c90294439510fdf0c # 1.0.0
+    permissions:
+      contents: write
+      pull-requests: read
+    with:
+      tag: ${{ needs.prepare.outputs.tag }}
+      release-config: *release-config
+    secrets:
+      changelog-summary: ${{ secrets.CHANGELOG_SUMMARY }}

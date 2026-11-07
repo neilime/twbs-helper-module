@@ -13,3 +13,5 @@ composer.lock
 *.swp
 /website/node_modules
 tests/.phpunit.result.cache
+/junit.xml
+/clover.xml

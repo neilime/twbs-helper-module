@@ -1,5 +1,4 @@
 name: Shared - Continuous Integration for common tasks
-
 on:
   workflow_call:
     inputs:
@@ -8,77 +7,26 @@ on:
         type: boolean
     outputs:
       website-artifact-id:
-        description: "The uploaded website build artifact ID"
+        description: The uploaded website build artifact ID
         value: ${{ jobs.build-website.outputs.artifact-id }}
       website-artifact-path:
-        description: "The uploaded website build artifact path"
+        description: The uploaded website build artifact path
         value: ${{ jobs.build-website.outputs.artifact-path }}
-
 permissions: {}
-
 jobs:
   checks:
-    runs-on: ubuntu-latest
+    uses: hoverkraft-tech/ci-github-php/.github/workflows/continuous-integration.yml@5d4c9035deb6daac5456825c90294439510fdf0c # 1.0.0
     permissions:
       contents: read
       id-token: write
-    strategy:
-      matrix:
-        include:
-          - php-versions: "8.2"
-          - php-versions: "8.3"
-          - php-versions: "8.4"
-          - php-versions: "8.5"
-            stable: true
-    steps:
-      - name: Checkout
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-        with:
-          persist-credentials: false
-
-      - name: ⚙️ Setup PHP, with composer and extensions
-        uses: ./.github/workflows/actions/setup-php
-        with:
-          php-version: ${{ matrix.php-versions }}
-
-      - name: ♻️ Tools cache
-        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
-        with:
-          path: tools/cache
-          key: ${{ runner.os }}-tools-${{ matrix.php-versions }}-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-tools-
-
-      - name: 👕 Lint
-        if: matrix.stable
-        run: composer php-cs-fixer -- --format=checkstyle | tools/vendor/bin/cs2pr
-
-      - name: 🔬 Rector
-        id: rector
-        if: matrix.stable
-        run: composer rector
-
-      - name: 🔬 Static analysis
-        if: matrix.stable
-        run: composer phpstan -- --error-format=github
-
-      - name: ♻️ Tests cache
-        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
-        with:
-          path: tests/.phpunit.result.cache
-          key: ${{ runner.os }}-tests-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-tests-
-
-      - name: 🧪 Test
-        run: composer test:ci
-
-      - name: 📊 Upload coverage results to Codecov
-        if: matrix.stable
-        uses: codecov/codecov-action@57e3a136b779b570ffcdbf80b3bdc90e7fab3de2 # v6.0.0
-        with:
-          files: ./build/logs/clover.xml
-
+    with:
+      php-versions: '["8.2", "8.3", "8.4", "8.5"]'
+      ignore-plugins: false
+      test: '{"coverage":"codecov"}'
+      package: |
+        {
+          "tests": "php <<'PHP'\n<?php\nrequire 'vendor/autoload.php';\n$config = (new TwbsHelper\\ConfigProvider())();\nif (empty($config['view_helpers']) || empty($config['view_manager']['template_map'])) {\n    throw new RuntimeException('The installed module must include its configuration and templates.');\n}\nforeach ($config['view_manager']['template_map'] as $directory) {\n    if (!is_file($directory)) {\n        throw new RuntimeException('Missing packaged template file.');\n    }\n}\nPHP"
+        }
   build-website:
     name: Check that website is building without errors
     uses: ./.github/workflows/__build-website.yml
