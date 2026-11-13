@@ -43,5 +43,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "overrides": {
+    "@docusaurus/core": {
+      "tinypool": "^2.2.0"
+    },
+    "@docusaurus/plugin-rsdoctor": {
+      "@rsdoctor/rspack-plugin": "^1.6.5",
+      "@rsdoctor/webpack-plugin": "^1.6.5"
+    },
+    "@docusaurus/bundler": {
+      "serialize-javascript": "^7.1.4"
+    }
   }
 }
