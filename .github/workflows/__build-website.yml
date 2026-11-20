@@ -24,7 +24,7 @@ jobs:
         with:
           persist-credentials: false
       - name: ⚙️ Setup PHP, with composer and extensions
-        uses: hoverkraft-tech/ci-github-php/actions/setup-php@b81aa7b46f6b7a18ff1d9582c918cc1cc8296b98 # 2.0.0
+        uses: hoverkraft-tech/ci-github-php/actions/setup-php@6d0964888074223db9c53b756d004846f3a1569e # 2.0.1
         with:
           ignore-plugins: "false"
         id: setup
@@ -54,7 +54,7 @@ jobs:
         with:
           persist-credentials: false
       - name: ⚙️ Setup PHP, with composer and extensions
-        uses: hoverkraft-tech/ci-github-php/actions/setup-php@b81aa7b46f6b7a18ff1d9582c918cc1cc8296b98 # 2.0.0
+        uses: hoverkraft-tech/ci-github-php/actions/setup-php@6d0964888074223db9c53b756d004846f3a1569e # 2.0.1
         with:
           ignore-plugins: "false"
         id: setup
@@ -91,7 +91,7 @@ jobs:
         with:
           artifact-ids: ${{ needs.generate-documentation.outputs.artifact-id }}
           path: ${{ needs.generate-documentation.outputs.artifact-path }}
-      - uses: hoverkraft-tech/ci-github-nodejs/actions/setup-node@a60704c5e9902675a1b4a5141411d95733e80ff5 # 3.0.2
+      - uses: hoverkraft-tech/ci-github-nodejs/actions/setup-node@98d91b1cc347efc64cd5fb20bc0ebc076acad114 # 3.1.0
         id: setup-node
         with:
           working-directory: website
@@ -105,7 +105,7 @@ jobs:
       - name: 🏗️ Build website
         run: ${{ steps.setup-node.outputs.run-script-command }} build
         working-directory: website
-      - uses: hoverkraft-tech/ci-github-common/actions/create-and-merge-pull-request@d07ee49b460ae2f3815804b5153fe918092aa321 # 4.2.0
+      - uses: hoverkraft-tech/ci-github-common/actions/create-and-merge-pull-request@d606f77fad305ef07dfde3db5270f5e324019c97 # 4.2.4
         if: inputs.publish
         with:
           branch: docs/update-website
