@@ -12,7 +12,7 @@ permissions: {}
 jobs:
   greetings:
     if: ${{ github.event_name == 'issues' || (github.event.pull_request.head.repo.full_name == github.repository && github.actor != 'dependabot[bot]') }}
-    uses: hoverkraft-tech/ci-github-common/.github/workflows/greetings.yml@d606f77fad305ef07dfde3db5270f5e324019c97 # 4.2.4
+    uses: hoverkraft-tech/ci-github-common/.github/workflows/greetings.yml@af0bdd6313bd49aaf4a8a7f0de005fb0db856b03 # 4.3.3
     permissions:
       contents: read
       issues: write
