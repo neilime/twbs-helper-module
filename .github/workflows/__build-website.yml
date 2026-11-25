@@ -91,7 +91,7 @@ jobs:
         with:
           artifact-ids: ${{ needs.generate-documentation.outputs.artifact-id }}
           path: ${{ needs.generate-documentation.outputs.artifact-path }}
-      - uses: hoverkraft-tech/ci-github-nodejs/actions/setup-node@98d91b1cc347efc64cd5fb20bc0ebc076acad114 # 3.1.0
+      - uses: hoverkraft-tech/ci-github-nodejs/actions/setup-node@191d7230d57982bfc11d57f68b005f386a6d7fbf # 3.1.1
         id: setup-node
         with:
           working-directory: website
@@ -103,7 +103,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-webpack-
       - name: 🏗️ Build website
-        run: ${{ steps.setup-node.outputs.run-script-command }} build
+        env:
+          RUN_SCRIPT_COMMAND: ${{ steps.setup-node.outputs.run-script-command }}
+        run: |
+          read -r -a run_script_command <<< "$RUN_SCRIPT_COMMAND"
+          "${run_script_command[@]}" build
         working-directory: website
       - uses: hoverkraft-tech/ci-github-common/actions/create-and-merge-pull-request@af0bdd6313bd49aaf4a8a7f0de005fb0db856b03 # 4.3.3
         if: inputs.publish

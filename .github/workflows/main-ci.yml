@@ -20,7 +20,6 @@ jobs:
       contents: write
       id-token: write
       pull-requests: write
-    secrets: inherit
     with:
       publish: ${{ github.ref_name == github.event.repository.default_branch }}
 
@@ -37,7 +36,7 @@ jobs:
       url: ${{ steps.deployment.outputs.url }}
     steps:
       - id: deployment
-        uses: hoverkraft-tech/ci-github-publish/actions/deploy/github-pages@ecbe8c0907c86baa1d20036eca019a780bf20123 # fix/artifact-discovery (pending release)
+        uses: hoverkraft-tech/ci-github-publish/actions/deploy/github-pages@482833700bdec1d0c072ca18372b34f33a0ebfd4 # fix/artifact-discovery (pending release)
         with:
           build-path: ${{ needs.ci.outputs.website-artifact-path }}
           build-artifact-id: ${{ needs.ci.outputs.website-artifact-id }}
