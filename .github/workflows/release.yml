@@ -14,7 +14,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   prepare:
-    uses: hoverkraft-tech/ci-github-php/.github/workflows/prepare-package-release.yml@6d0964888074223db9c53b756d004846f3a1569e # 2.0.1
+    uses: hoverkraft-tech/ci-github-php/.github/workflows/prepare-package-release.yml@63aed766521b3b3bff31c4d36f59b2916e90a361 # 2.0.3
     permissions:
       contents: read
       pull-requests: read
@@ -34,7 +34,7 @@ jobs:
       pull-requests: write
   publish:
     needs: [prepare, validate]
-    uses: hoverkraft-tech/ci-github-php/.github/workflows/release.yml@6d0964888074223db9c53b756d004846f3a1569e # 2.0.1
+    uses: hoverkraft-tech/ci-github-php/.github/workflows/release.yml@63aed766521b3b3bff31c4d36f59b2916e90a361 # 2.0.3
     permissions:
       contents: write
       pull-requests: read

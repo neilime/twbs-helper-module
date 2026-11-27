@@ -24,7 +24,7 @@ jobs:
         with:
           persist-credentials: false
       - name: ⚙️ Setup PHP, with composer and extensions
-        uses: hoverkraft-tech/ci-github-php/actions/setup-php@6d0964888074223db9c53b756d004846f3a1569e # 2.0.1
+        uses: hoverkraft-tech/ci-github-php/actions/setup-php@63aed766521b3b3bff31c4d36f59b2916e90a361 # 2.0.3
         with:
           ignore-plugins: "false"
         id: setup
@@ -54,7 +54,7 @@ jobs:
         with:
           persist-credentials: false
       - name: ⚙️ Setup PHP, with composer and extensions
-        uses: hoverkraft-tech/ci-github-php/actions/setup-php@6d0964888074223db9c53b756d004846f3a1569e # 2.0.1
+        uses: hoverkraft-tech/ci-github-php/actions/setup-php@63aed766521b3b3bff31c4d36f59b2916e90a361 # 2.0.3
         with:
           ignore-plugins: "false"
         id: setup
